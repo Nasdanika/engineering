@@ -5,50 +5,31 @@ package org.nasdanika.engineering.impl;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.EReference;
+
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
-import org.nasdanika.engineering.AbstractComponent;
-import org.nasdanika.engineering.AbstractEngineer;
-import org.nasdanika.engineering.Comparison;
-import org.nasdanika.engineering.Component;
-import org.nasdanika.engineering.ComponentCategory;
-import org.nasdanika.engineering.ComponentCategoryElement;
-import org.nasdanika.engineering.ComponentReference;
-import org.nasdanika.engineering.Criterion;
-import org.nasdanika.engineering.Edition;
+import org.nasdanika.common.Adaptable;
+
+import org.nasdanika.engineering.Activity;
+import org.nasdanika.engineering.Artifact;
+import org.nasdanika.engineering.Call;
+import org.nasdanika.engineering.Directory;
 import org.nasdanika.engineering.Engineer;
+import org.nasdanika.engineering.EngineeredElement;
 import org.nasdanika.engineering.EngineeringFactory;
-import org.nasdanika.engineering.EngineeringOrganization;
-import org.nasdanika.engineering.EngineeringOrganizationalUnit;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Feature;
-import org.nasdanika.engineering.FeatureCategory;
-import org.nasdanika.engineering.FeatureCategoryElement;
-import org.nasdanika.engineering.FeatureType;
 import org.nasdanika.engineering.Increment;
 import org.nasdanika.engineering.Issue;
-import org.nasdanika.engineering.IssueCategory;
-import org.nasdanika.engineering.IssueNote;
-import org.nasdanika.engineering.IssueRelationship;
-import org.nasdanika.engineering.IssueRelationshipType;
-import org.nasdanika.engineering.IssueResolution;
-import org.nasdanika.engineering.IssueStatus;
-import org.nasdanika.engineering.IssueType;
-import org.nasdanika.engineering.KeyResult;
-import org.nasdanika.engineering.Need;
-import org.nasdanika.engineering.NeedCategory;
-import org.nasdanika.engineering.NeedCategoryElement;
-import org.nasdanika.engineering.Objective;
-import org.nasdanika.engineering.Offering;
+import org.nasdanika.engineering.Journey;
+import org.nasdanika.engineering.ModelElement;
+import org.nasdanika.engineering.NamedElement;
+import org.nasdanika.engineering.Organization;
 import org.nasdanika.engineering.Persona;
 import org.nasdanika.engineering.Product;
 import org.nasdanika.engineering.Release;
-import org.nasdanika.engineering.Risk;
-import org.nasdanika.engineering.Scenario;
-import org.nasdanika.ncore.NcorePackage;
-import org.nasdanika.party.PartyPackage;
+import org.nasdanika.engineering.Transition;
 
 /**
  * <!-- begin-user-doc -->
@@ -62,193 +43,28 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass componentCategoryElementEClass = null;
+	private EClass adaptableEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass abstractComponentEClass = null;
+	private EClass modelElementEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass componentCategoryEClass = null;
+	private EClass namedElementEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass componentReferenceEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass abstractEngineerEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass engineerEClass = null;
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass issueTypeEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass issueResolutionEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass issueCategoryEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass issueStatusEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass issueNoteEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass issueRelationshipTypeEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass issueRelationshipEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass issueEClass = null;
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass incrementEClass = null;
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass engineeringOrganizationalUnitEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass engineeringOrganizationEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass releaseEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass objectiveEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass keyResultEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass productEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass offeringEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass editionEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass featureTypeEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass featureCategoryElementEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass featureCategoryEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass featureEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass componentEClass = null;
+	private EClass engineeredElementEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -262,49 +78,98 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass needCategoryElementEClass = null;
+	private EClass engineerEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass needCategoryEClass = null;
+	private EClass organizationEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass needEClass = null;
+	private EClass moduleEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass scenarioEClass = null;
+	private EClass productEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass criterionEClass = null;
+	private EClass incrementEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass comparisonEClass = null;
+	private EClass releaseEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass riskEClass = null;
+	private EClass featureEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass activityEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass journeyEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass transitionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass callEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass issueEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass artifactEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass directoryEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -353,10 +218,6 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 
 		isInited = true;
 
-		// Initialize simple dependencies
-		NcorePackage.eINSTANCE.eClass();
-		PartyPackage.eINSTANCE.eClass();
-
 		// Create package meta-data objects
 		theEngineeringPackage.createPackageContents();
 
@@ -377,8 +238,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EClass getComponentCategoryElement() {
-		return componentCategoryElementEClass;
+	public EClass getAdaptable() {
+		return adaptableEClass;
 	}
 
 	/**
@@ -387,8 +248,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EClass getAbstractComponent() {
-		return abstractComponentEClass;
+	public EClass getModelElement() {
+		return modelElementEClass;
 	}
 
 	/**
@@ -397,8 +258,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EReference getAbstractComponent_Owners() {
-		return (EReference)abstractComponentEClass.getEStructuralFeatures().get(0);
+	public EAttribute getModelElement_Id() {
+		return (EAttribute)modelElementEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -407,8 +268,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EReference getAbstractComponent_Issues() {
-		return (EReference)abstractComponentEClass.getEStructuralFeatures().get(1);
+	public EAttribute getModelElement_Path() {
+		return (EAttribute)modelElementEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -417,8 +278,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EReference getAbstractComponent_Releases() {
-		return (EReference)abstractComponentEClass.getEStructuralFeatures().get(2);
+	public EAttribute getModelElement_Description() {
+		return (EAttribute)modelElementEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -427,8 +288,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EClass getComponentCategory() {
-		return componentCategoryEClass;
+	public EReference getModelElement_Actions() {
+		return (EReference)modelElementEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -437,8 +298,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EReference getComponentCategory_Elements() {
-		return (EReference)componentCategoryEClass.getEStructuralFeatures().get(0);
+	public EReference getModelElement_Resources() {
+		return (EReference)modelElementEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -447,8 +308,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EClass getComponentReference() {
-		return componentReferenceEClass;
+	public EClass getNamedElement() {
+		return namedElementEClass;
 	}
 
 	/**
@@ -457,8 +318,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EReference getComponentReference_Target() {
-		return (EReference)componentReferenceEClass.getEStructuralFeatures().get(0);
+	public EAttribute getNamedElement_Name() {
+		return (EAttribute)namedElementEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -467,8 +328,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EClass getAbstractEngineer() {
-		return abstractEngineerEClass;
+	public EClass getEngineeredElement() {
+		return engineeredElementEClass;
 	}
 
 	/**
@@ -477,8 +338,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EReference getAbstractEngineer_Issues() {
-		return (EReference)abstractEngineerEClass.getEStructuralFeatures().get(0);
+	public EReference getEngineeredElement_Issues() {
+		return (EReference)engineeredElementEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -487,8 +348,18 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EReference getAbstractEngineer_Objectives() {
-		return (EReference)abstractEngineerEClass.getEStructuralFeatures().get(1);
+	public EReference getEngineeredElement_Owner() {
+		return (EReference)engineeredElementEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getPersona() {
+		return personaEClass;
 	}
 
 	/**
@@ -507,8 +378,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EClass getIssueType() {
-		return issueTypeEClass;
+	public EReference getEngineer_Modules() {
+		return (EReference)engineerEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -517,8 +388,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EReference getIssueType_Children() {
-		return (EReference)issueTypeEClass.getEStructuralFeatures().get(0);
+	public EReference getEngineer_Owns() {
+		return (EReference)engineerEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -527,8 +398,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EClass getIssueResolution() {
-		return issueResolutionEClass;
+	public EReference getEngineer_Increments() {
+		return (EReference)engineerEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -537,8 +408,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EAttribute getIssueResolution_Completed() {
-		return (EAttribute)issueResolutionEClass.getEStructuralFeatures().get(0);
+	public EReference getEngineer_Services() {
+		return (EReference)engineerEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -547,8 +418,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EClass getIssueCategory() {
-		return issueCategoryEClass;
+	public EReference getEngineer_Personas() {
+		return (EReference)engineerEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -557,8 +428,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EReference getIssueCategory_Children() {
-		return (EReference)issueCategoryEClass.getEStructuralFeatures().get(0);
+	public EClass getOrganization() {
+		return organizationEClass;
 	}
 
 	/**
@@ -567,8 +438,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EClass getIssue() {
-		return issueEClass;
+	public EReference getOrganization_Engineers() {
+		return (EReference)organizationEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -577,8 +448,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EReference getIssue_AssignedTo() {
-		return (EReference)issueEClass.getEStructuralFeatures().get(0);
+	public EClass getModule() {
+		return moduleEClass;
 	}
 
 	/**
@@ -587,8 +458,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EAttribute getIssue_Size() {
-		return (EAttribute)issueEClass.getEStructuralFeatures().get(1);
+	public EReference getModule_Modules() {
+		return (EReference)moduleEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -597,8 +468,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EAttribute getIssue_Cost() {
-		return (EAttribute)issueEClass.getEStructuralFeatures().get(2);
+	public EClass getProduct() {
+		return productEClass;
 	}
 
 	/**
@@ -607,8 +478,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EAttribute getIssue_Benefit() {
-		return (EAttribute)issueEClass.getEStructuralFeatures().get(3);
+	public EReference getProduct_Releases() {
+		return (EReference)productEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -617,8 +488,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EReference getIssue_Children() {
-		return (EReference)issueEClass.getEStructuralFeatures().get(5);
+	public EReference getProduct_Features() {
+		return (EReference)productEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -627,98 +498,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EReference getIssue_Type() {
-		return (EReference)issueEClass.getEStructuralFeatures().get(6);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getIssue_Status() {
-		return (EReference)issueEClass.getEStructuralFeatures().get(7);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getIssue_Resolution() {
-		return (EReference)issueEClass.getEStructuralFeatures().get(8);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getIssue_Categories() {
-		return (EReference)issueEClass.getEStructuralFeatures().get(9);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getIssue_Notes() {
-		return (EReference)issueEClass.getEStructuralFeatures().get(10);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getIssue_Releases() {
-		return (EReference)issueEClass.getEStructuralFeatures().get(11);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getIssue_Relationships() {
-		return (EReference)issueEClass.getEStructuralFeatures().get(12);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getIssue_Requires() {
-		return (EReference)issueEClass.getEStructuralFeatures().get(13);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getIssue_Actionable() {
-		return (EAttribute)issueEClass.getEStructuralFeatures().get(14);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getIssue_PlannedFor() {
-		return (EReference)issueEClass.getEStructuralFeatures().get(4);
+	public EReference getProduct_Activities() {
+		return (EReference)productEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -767,116 +548,6 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EClass getEngineeringOrganizationalUnit() {
-		return engineeringOrganizationalUnitEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getEngineeringOrganizationalUnit_Portfolio() {
-		return (EReference)engineeringOrganizationalUnitEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getEngineeringOrganizationalUnit_TargetAudiences() {
-		return (EReference)engineeringOrganizationalUnitEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getEngineeringOrganizationalUnit_IssueTypes() {
-		return (EReference)engineeringOrganizationalUnitEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getEngineeringOrganizationalUnit_IssueResolutions() {
-		return (EReference)engineeringOrganizationalUnitEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getEngineeringOrganizationalUnit_IssueCategories() {
-		return (EReference)engineeringOrganizationalUnitEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getEngineeringOrganizationalUnit_IssueStatuses() {
-		return (EReference)engineeringOrganizationalUnitEClass.getEStructuralFeatures().get(5);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getEngineeringOrganizationalUnit_IssueRelationshipTypes() {
-		return (EReference)engineeringOrganizationalUnitEClass.getEStructuralFeatures().get(6);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getEngineeringOrganizationalUnit_Increments() {
-		return (EReference)engineeringOrganizationalUnitEClass.getEStructuralFeatures().get(7);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getEngineeringOrganizationalUnit_FeatureTypes() {
-		return (EReference)engineeringOrganizationalUnitEClass.getEStructuralFeatures().get(8);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getEngineeringOrganization() {
-		return engineeringOrganizationEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EClass getRelease() {
 		return releaseEClass;
 	}
@@ -887,228 +558,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EReference getRelease_Requires() {
+	public EReference getRelease_Increment() {
 		return (EReference)releaseEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getRelease_Includes() {
-		return (EReference)releaseEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getRelease_Date() {
-		return (EAttribute)releaseEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getRelease_PlannedFor() {
-		return (EReference)releaseEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getRelease_Released() {
-		return (EAttribute)releaseEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getObjective() {
-		return objectiveEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getObjective_Increment() {
-		return (EReference)objectiveEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getObjective_Children() {
-		return (EReference)objectiveEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getObjective_KeyResults() {
-		return (EReference)objectiveEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getObjective_Parent() {
-		return (EReference)objectiveEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getKeyResult() {
-		return keyResultEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getProduct() {
-		return productEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getProduct_Editions() {
-		return (EReference)productEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getProduct_Features() {
-		return (EReference)productEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getOffering() {
-		return offeringEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getOffering_TargetAudiences() {
-		return (EReference)offeringEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getEdition() {
-		return editionEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getEdition_Bases() {
-		return (EReference)editionEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getEdition_Features() {
-		return (EReference)editionEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getFeatureType() {
-		return featureTypeEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getFeatureCategoryElement() {
-		return featureCategoryElementEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getFeatureCategory() {
-		return featureCategoryEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getFeatureCategory_Elements() {
-		return (EReference)featureCategoryEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1127,7 +578,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EReference getFeature_PlannedFor() {
+	public EReference getFeature_Release() {
 		return (EReference)featureEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -1137,8 +588,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EReference getFeature_Type() {
-		return (EReference)featureEClass.getEStructuralFeatures().get(1);
+	public EClass getActivity() {
+		return activityEClass;
 	}
 
 	/**
@@ -1147,8 +598,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EReference getFeature_Requires() {
-		return (EReference)featureEClass.getEStructuralFeatures().get(2);
+	public EReference getActivity_Persona() {
+		return (EReference)activityEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1157,8 +608,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EClass getComponent() {
-		return componentEClass;
+	public EReference getActivity_Outputs() {
+		return (EReference)activityEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1167,8 +618,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EReference getComponent_Components() {
-		return (EReference)componentEClass.getEStructuralFeatures().get(0);
+	public EAttribute getActivity_ActivityType() {
+		return (EAttribute)activityEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -1177,8 +628,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EClass getPersona() {
-		return personaEClass;
+	public EReference getActivity_Requirements() {
+		return (EReference)activityEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -1187,8 +638,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EReference getPersona_Needs() {
-		return (EReference)personaEClass.getEStructuralFeatures().get(0);
+	public EReference getActivity_Deliverables() {
+		return (EReference)activityEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -1197,8 +648,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EReference getPersona_Extends() {
-		return (EReference)personaEClass.getEStructuralFeatures().get(1);
+	public EReference getActivity_Calls() {
+		return (EReference)activityEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -1207,8 +658,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EClass getNeedCategoryElement() {
-		return needCategoryElementEClass;
+	public EClass getJourney() {
+		return journeyEClass;
 	}
 
 	/**
@@ -1217,8 +668,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EClass getNeedCategory() {
-		return needCategoryEClass;
+	public EReference getJourney_Activities() {
+		return (EReference)journeyEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1227,8 +678,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EReference getNeedCategory_Elements() {
-		return (EReference)needCategoryEClass.getEStructuralFeatures().get(0);
+	public EAttribute getJourney_Partition() {
+		return (EAttribute)journeyEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1237,8 +688,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EClass getNeed() {
-		return needEClass;
+	public EClass getTransition() {
+		return transitionEClass;
 	}
 
 	/**
@@ -1247,8 +698,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EReference getNeed_Scenarios() {
-		return (EReference)needEClass.getEStructuralFeatures().get(0);
+	public EReference getTransition_Target() {
+		return (EReference)transitionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1257,8 +708,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EClass getScenario() {
-		return scenarioEClass;
+	public EReference getTransition_Payload() {
+		return (EReference)transitionEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1267,8 +718,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EReference getScenario_Offerings() {
-		return (EReference)scenarioEClass.getEStructuralFeatures().get(0);
+	public EAttribute getTransition_Name() {
+		return (EAttribute)transitionEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -1277,8 +728,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EClass getCriterion() {
-		return criterionEClass;
+	public EAttribute getTransition_Description() {
+		return (EAttribute)transitionEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -1287,8 +738,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EClass getComparison() {
-		return comparisonEClass;
+	public EClass getCall() {
+		return callEClass;
 	}
 
 	/**
@@ -1297,8 +748,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EClass getRisk() {
-		return riskEClass;
+	public EReference getCall_Response() {
+		return (EReference)callEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1307,8 +758,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EClass getIssueStatus() {
-		return issueStatusEClass;
+	public EClass getIssue() {
+		return issueEClass;
 	}
 
 	/**
@@ -1317,8 +768,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EReference getIssueStatus_Transitions() {
-		return (EReference)issueStatusEClass.getEStructuralFeatures().get(0);
+	public EReference getIssue_Children() {
+		return (EReference)issueEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1327,8 +778,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EClass getIssueNote() {
-		return issueNoteEClass;
+	public EReference getIssue_Assignee() {
+		return (EReference)issueEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1337,8 +788,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EAttribute getIssueNote_Description() {
-		return (EAttribute)issueNoteEClass.getEStructuralFeatures().get(0);
+	public EReference getIssue_Dependencies() {
+		return (EReference)issueEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -1347,8 +798,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EClass getIssueRelationshipType() {
-		return issueRelationshipTypeEClass;
+	public EReference getIssue_PlannedFor() {
+		return (EReference)issueEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -1357,8 +808,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EAttribute getIssueRelationshipType_Blocks() {
-		return (EAttribute)issueRelationshipTypeEClass.getEStructuralFeatures().get(0);
+	public EReference getIssue_ContributesTo() {
+		return (EReference)issueEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -1367,8 +818,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EClass getIssueRelationship() {
-		return issueRelationshipEClass;
+	public EClass getArtifact() {
+		return artifactEClass;
 	}
 
 	/**
@@ -1377,8 +828,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EReference getIssueRelationship_Type() {
-		return (EReference)issueRelationshipEClass.getEStructuralFeatures().get(0);
+	public EClass getDirectory() {
+		return directoryEClass;
 	}
 
 	/**
@@ -1387,8 +838,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EReference getIssueRelationship_Source() {
-		return (EReference)issueRelationshipEClass.getEStructuralFeatures().get(1);
+	public EReference getDirectory_Elements() {
+		return (EReference)directoryEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1420,76 +871,41 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		isCreated = true;
 
 		// Create classes and their features
-		componentCategoryElementEClass = createEClass(COMPONENT_CATEGORY_ELEMENT);
+		adaptableEClass = createEClass(ADAPTABLE);
 
-		abstractComponentEClass = createEClass(ABSTRACT_COMPONENT);
-		createEReference(abstractComponentEClass, ABSTRACT_COMPONENT__OWNERS);
-		createEReference(abstractComponentEClass, ABSTRACT_COMPONENT__ISSUES);
-		createEReference(abstractComponentEClass, ABSTRACT_COMPONENT__RELEASES);
+		modelElementEClass = createEClass(MODEL_ELEMENT);
+		createEAttribute(modelElementEClass, MODEL_ELEMENT__ID);
+		createEAttribute(modelElementEClass, MODEL_ELEMENT__PATH);
+		createEAttribute(modelElementEClass, MODEL_ELEMENT__DESCRIPTION);
+		createEReference(modelElementEClass, MODEL_ELEMENT__ACTIONS);
+		createEReference(modelElementEClass, MODEL_ELEMENT__RESOURCES);
 
-		componentCategoryEClass = createEClass(COMPONENT_CATEGORY);
-		createEReference(componentCategoryEClass, COMPONENT_CATEGORY__ELEMENTS);
+		namedElementEClass = createEClass(NAMED_ELEMENT);
+		createEAttribute(namedElementEClass, NAMED_ELEMENT__NAME);
 
-		componentReferenceEClass = createEClass(COMPONENT_REFERENCE);
-		createEReference(componentReferenceEClass, COMPONENT_REFERENCE__TARGET);
+		engineeredElementEClass = createEClass(ENGINEERED_ELEMENT);
+		createEReference(engineeredElementEClass, ENGINEERED_ELEMENT__ISSUES);
+		createEReference(engineeredElementEClass, ENGINEERED_ELEMENT__OWNER);
 
-		abstractEngineerEClass = createEClass(ABSTRACT_ENGINEER);
-		createEReference(abstractEngineerEClass, ABSTRACT_ENGINEER__ISSUES);
-		createEReference(abstractEngineerEClass, ABSTRACT_ENGINEER__OBJECTIVES);
-
-		engineeringOrganizationalUnitEClass = createEClass(ENGINEERING_ORGANIZATIONAL_UNIT);
-		createEReference(engineeringOrganizationalUnitEClass, ENGINEERING_ORGANIZATIONAL_UNIT__PORTFOLIO);
-		createEReference(engineeringOrganizationalUnitEClass, ENGINEERING_ORGANIZATIONAL_UNIT__TARGET_AUDIENCES);
-		createEReference(engineeringOrganizationalUnitEClass, ENGINEERING_ORGANIZATIONAL_UNIT__ISSUE_TYPES);
-		createEReference(engineeringOrganizationalUnitEClass, ENGINEERING_ORGANIZATIONAL_UNIT__ISSUE_RESOLUTIONS);
-		createEReference(engineeringOrganizationalUnitEClass, ENGINEERING_ORGANIZATIONAL_UNIT__ISSUE_CATEGORIES);
-		createEReference(engineeringOrganizationalUnitEClass, ENGINEERING_ORGANIZATIONAL_UNIT__ISSUE_STATUSES);
-		createEReference(engineeringOrganizationalUnitEClass, ENGINEERING_ORGANIZATIONAL_UNIT__ISSUE_RELATIONSHIP_TYPES);
-		createEReference(engineeringOrganizationalUnitEClass, ENGINEERING_ORGANIZATIONAL_UNIT__INCREMENTS);
-		createEReference(engineeringOrganizationalUnitEClass, ENGINEERING_ORGANIZATIONAL_UNIT__FEATURE_TYPES);
-
-		engineeringOrganizationEClass = createEClass(ENGINEERING_ORGANIZATION);
+		personaEClass = createEClass(PERSONA);
 
 		engineerEClass = createEClass(ENGINEER);
+		createEReference(engineerEClass, ENGINEER__MODULES);
+		createEReference(engineerEClass, ENGINEER__OWNS);
+		createEReference(engineerEClass, ENGINEER__INCREMENTS);
+		createEReference(engineerEClass, ENGINEER__SERVICES);
+		createEReference(engineerEClass, ENGINEER__PERSONAS);
 
-		issueTypeEClass = createEClass(ISSUE_TYPE);
-		createEReference(issueTypeEClass, ISSUE_TYPE__CHILDREN);
+		organizationEClass = createEClass(ORGANIZATION);
+		createEReference(organizationEClass, ORGANIZATION__ENGINEERS);
 
-		issueResolutionEClass = createEClass(ISSUE_RESOLUTION);
-		createEAttribute(issueResolutionEClass, ISSUE_RESOLUTION__COMPLETED);
+		moduleEClass = createEClass(MODULE);
+		createEReference(moduleEClass, MODULE__MODULES);
 
-		issueCategoryEClass = createEClass(ISSUE_CATEGORY);
-		createEReference(issueCategoryEClass, ISSUE_CATEGORY__CHILDREN);
-
-		issueStatusEClass = createEClass(ISSUE_STATUS);
-		createEReference(issueStatusEClass, ISSUE_STATUS__TRANSITIONS);
-
-		issueNoteEClass = createEClass(ISSUE_NOTE);
-		createEAttribute(issueNoteEClass, ISSUE_NOTE__DESCRIPTION);
-
-		issueRelationshipTypeEClass = createEClass(ISSUE_RELATIONSHIP_TYPE);
-		createEAttribute(issueRelationshipTypeEClass, ISSUE_RELATIONSHIP_TYPE__BLOCKS);
-
-		issueRelationshipEClass = createEClass(ISSUE_RELATIONSHIP);
-		createEReference(issueRelationshipEClass, ISSUE_RELATIONSHIP__TYPE);
-		createEReference(issueRelationshipEClass, ISSUE_RELATIONSHIP__SOURCE);
-
-		issueEClass = createEClass(ISSUE);
-		createEReference(issueEClass, ISSUE__ASSIGNED_TO);
-		createEAttribute(issueEClass, ISSUE__SIZE);
-		createEAttribute(issueEClass, ISSUE__COST);
-		createEAttribute(issueEClass, ISSUE__BENEFIT);
-		createEReference(issueEClass, ISSUE__PLANNED_FOR);
-		createEReference(issueEClass, ISSUE__CHILDREN);
-		createEReference(issueEClass, ISSUE__TYPE);
-		createEReference(issueEClass, ISSUE__STATUS);
-		createEReference(issueEClass, ISSUE__RESOLUTION);
-		createEReference(issueEClass, ISSUE__CATEGORIES);
-		createEReference(issueEClass, ISSUE__NOTES);
-		createEReference(issueEClass, ISSUE__RELEASES);
-		createEReference(issueEClass, ISSUE__RELATIONSHIPS);
-		createEReference(issueEClass, ISSUE__REQUIRES);
-		createEAttribute(issueEClass, ISSUE__ACTIONABLE);
+		productEClass = createEClass(PRODUCT);
+		createEReference(productEClass, PRODUCT__RELEASES);
+		createEReference(productEClass, PRODUCT__FEATURES);
+		createEReference(productEClass, PRODUCT__ACTIVITIES);
 
 		incrementEClass = createEClass(INCREMENT);
 		createEReference(incrementEClass, INCREMENT__CHILDREN);
@@ -1497,66 +913,43 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		createEAttribute(incrementEClass, INCREMENT__END);
 
 		releaseEClass = createEClass(RELEASE);
-		createEReference(releaseEClass, RELEASE__REQUIRES);
-		createEReference(releaseEClass, RELEASE__INCLUDES);
-		createEAttribute(releaseEClass, RELEASE__DATE);
-		createEReference(releaseEClass, RELEASE__PLANNED_FOR);
-		createEAttribute(releaseEClass, RELEASE__RELEASED);
-
-		objectiveEClass = createEClass(OBJECTIVE);
-		createEReference(objectiveEClass, OBJECTIVE__INCREMENT);
-		createEReference(objectiveEClass, OBJECTIVE__CHILDREN);
-		createEReference(objectiveEClass, OBJECTIVE__KEY_RESULTS);
-		createEReference(objectiveEClass, OBJECTIVE__PARENT);
-
-		keyResultEClass = createEClass(KEY_RESULT);
-
-		componentEClass = createEClass(COMPONENT);
-		createEReference(componentEClass, COMPONENT__COMPONENTS);
-
-		offeringEClass = createEClass(OFFERING);
-		createEReference(offeringEClass, OFFERING__TARGET_AUDIENCES);
-
-		productEClass = createEClass(PRODUCT);
-		createEReference(productEClass, PRODUCT__EDITIONS);
-		createEReference(productEClass, PRODUCT__FEATURES);
-
-		editionEClass = createEClass(EDITION);
-		createEReference(editionEClass, EDITION__BASES);
-		createEReference(editionEClass, EDITION__FEATURES);
-
-		featureTypeEClass = createEClass(FEATURE_TYPE);
-
-		featureCategoryElementEClass = createEClass(FEATURE_CATEGORY_ELEMENT);
-
-		featureCategoryEClass = createEClass(FEATURE_CATEGORY);
-		createEReference(featureCategoryEClass, FEATURE_CATEGORY__ELEMENTS);
+		createEReference(releaseEClass, RELEASE__INCREMENT);
 
 		featureEClass = createEClass(FEATURE);
-		createEReference(featureEClass, FEATURE__PLANNED_FOR);
-		createEReference(featureEClass, FEATURE__TYPE);
-		createEReference(featureEClass, FEATURE__REQUIRES);
+		createEReference(featureEClass, FEATURE__RELEASE);
 
-		personaEClass = createEClass(PERSONA);
-		createEReference(personaEClass, PERSONA__NEEDS);
-		createEReference(personaEClass, PERSONA__EXTENDS);
+		activityEClass = createEClass(ACTIVITY);
+		createEReference(activityEClass, ACTIVITY__PERSONA);
+		createEReference(activityEClass, ACTIVITY__OUTPUTS);
+		createEAttribute(activityEClass, ACTIVITY__ACTIVITY_TYPE);
+		createEReference(activityEClass, ACTIVITY__REQUIREMENTS);
+		createEReference(activityEClass, ACTIVITY__DELIVERABLES);
+		createEReference(activityEClass, ACTIVITY__CALLS);
 
-		needCategoryElementEClass = createEClass(NEED_CATEGORY_ELEMENT);
+		journeyEClass = createEClass(JOURNEY);
+		createEReference(journeyEClass, JOURNEY__ACTIVITIES);
+		createEAttribute(journeyEClass, JOURNEY__PARTITION);
 
-		needCategoryEClass = createEClass(NEED_CATEGORY);
-		createEReference(needCategoryEClass, NEED_CATEGORY__ELEMENTS);
+		transitionEClass = createEClass(TRANSITION);
+		createEReference(transitionEClass, TRANSITION__TARGET);
+		createEReference(transitionEClass, TRANSITION__PAYLOAD);
+		createEAttribute(transitionEClass, TRANSITION__NAME);
+		createEAttribute(transitionEClass, TRANSITION__DESCRIPTION);
 
-		needEClass = createEClass(NEED);
-		createEReference(needEClass, NEED__SCENARIOS);
+		callEClass = createEClass(CALL);
+		createEReference(callEClass, CALL__RESPONSE);
 
-		scenarioEClass = createEClass(SCENARIO);
-		createEReference(scenarioEClass, SCENARIO__OFFERINGS);
+		issueEClass = createEClass(ISSUE);
+		createEReference(issueEClass, ISSUE__CHILDREN);
+		createEReference(issueEClass, ISSUE__ASSIGNEE);
+		createEReference(issueEClass, ISSUE__DEPENDENCIES);
+		createEReference(issueEClass, ISSUE__PLANNED_FOR);
+		createEReference(issueEClass, ISSUE__CONTRIBUTES_TO);
 
-		criterionEClass = createEClass(CRITERION);
+		artifactEClass = createEClass(ARTIFACT);
 
-		comparisonEClass = createEClass(COMPARISON);
-
-		riskEClass = createEClass(RISK);
+		directoryEClass = createEClass(DIRECTORY);
+		createEReference(directoryEClass, DIRECTORY__ELEMENTS);
 	}
 
 	/**
@@ -1582,126 +975,63 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		setNsPrefix(eNS_PREFIX);
 		setNsURI(eNS_URI);
 
-		// Obtain other dependent packages
-		NcorePackage theNcorePackage = (NcorePackage)EPackage.Registry.INSTANCE.getEPackage(NcorePackage.eNS_URI);
-		PartyPackage thePartyPackage = (PartyPackage)EPackage.Registry.INSTANCE.getEPackage(PartyPackage.eNS_URI);
-
 		// Create type parameters
 
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		abstractComponentEClass.getESuperTypes().add(this.getComponentCategoryElement());
-		componentCategoryEClass.getESuperTypes().add(theNcorePackage.getModelElement());
-		componentCategoryEClass.getESuperTypes().add(this.getComponentCategoryElement());
-		componentReferenceEClass.getESuperTypes().add(this.getComponentCategoryElement());
-		engineeringOrganizationalUnitEClass.getESuperTypes().add(thePartyPackage.getOrganizationalUnit());
-		engineeringOrganizationalUnitEClass.getESuperTypes().add(this.getAbstractEngineer());
-		engineeringOrganizationEClass.getESuperTypes().add(thePartyPackage.getOrganization());
-		engineeringOrganizationEClass.getESuperTypes().add(this.getEngineeringOrganizationalUnit());
-		engineerEClass.getESuperTypes().add(thePartyPackage.getRole());
-		engineerEClass.getESuperTypes().add(this.getAbstractEngineer());
-		issueTypeEClass.getESuperTypes().add(theNcorePackage.getModelElement());
-		issueResolutionEClass.getESuperTypes().add(theNcorePackage.getModelElement());
-		issueCategoryEClass.getESuperTypes().add(theNcorePackage.getModelElement());
-		issueStatusEClass.getESuperTypes().add(theNcorePackage.getModelElement());
-		issueRelationshipTypeEClass.getESuperTypes().add(theNcorePackage.getModelElement());
-		issueRelationshipEClass.getESuperTypes().add(theNcorePackage.getModelElement());
-		issueEClass.getESuperTypes().add(theNcorePackage.getEntity());
-		incrementEClass.getESuperTypes().add(theNcorePackage.getModelElement());
-		releaseEClass.getESuperTypes().add(theNcorePackage.getModelElement());
-		objectiveEClass.getESuperTypes().add(theNcorePackage.getModelElement());
-		keyResultEClass.getESuperTypes().add(theNcorePackage.getModelElement());
-		componentEClass.getESuperTypes().add(theNcorePackage.getModelElement());
-		componentEClass.getESuperTypes().add(this.getAbstractComponent());
-		productEClass.getESuperTypes().add(this.getComponent());
-		productEClass.getESuperTypes().add(this.getOffering());
-		editionEClass.getESuperTypes().add(theNcorePackage.getModelElement());
-		editionEClass.getESuperTypes().add(this.getOffering());
-		featureTypeEClass.getESuperTypes().add(theNcorePackage.getModelElement());
-		featureCategoryEClass.getESuperTypes().add(theNcorePackage.getModelElement());
-		featureCategoryEClass.getESuperTypes().add(this.getFeatureCategoryElement());
-		featureEClass.getESuperTypes().add(this.getFeatureCategoryElement());
-		personaEClass.getESuperTypes().add(theNcorePackage.getModelElement());
-		needCategoryEClass.getESuperTypes().add(theNcorePackage.getModelElement());
-		needCategoryEClass.getESuperTypes().add(this.getNeedCategoryElement());
-		needEClass.getESuperTypes().add(theNcorePackage.getEntity());
-		needEClass.getESuperTypes().add(this.getNeedCategoryElement());
-		scenarioEClass.getESuperTypes().add(theNcorePackage.getModelElement());
-		criterionEClass.getESuperTypes().add(theNcorePackage.getModelElement());
-		riskEClass.getESuperTypes().add(theNcorePackage.getModelElement());
+		modelElementEClass.getESuperTypes().add(this.getAdaptable());
+		namedElementEClass.getESuperTypes().add(this.getModelElement());
+		engineeredElementEClass.getESuperTypes().add(this.getNamedElement());
+		personaEClass.getESuperTypes().add(this.getEngineeredElement());
+		engineerEClass.getESuperTypes().add(this.getPersona());
+		organizationEClass.getESuperTypes().add(this.getEngineer());
+		moduleEClass.getESuperTypes().add(this.getEngineeredElement());
+		productEClass.getESuperTypes().add(this.getModule());
+		incrementEClass.getESuperTypes().add(this.getNamedElement());
+		featureEClass.getESuperTypes().add(this.getNamedElement());
+		activityEClass.getESuperTypes().add(this.getEngineeredElement());
+		journeyEClass.getESuperTypes().add(this.getActivity());
+		callEClass.getESuperTypes().add(this.getTransition());
+		artifactEClass.getESuperTypes().add(this.getEngineeredElement());
+		directoryEClass.getESuperTypes().add(this.getNamedElement());
 
 		// Initialize classes, features, and operations; add parameters
-		initEClass(componentCategoryElementEClass, ComponentCategoryElement.class, "ComponentCategoryElement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(adaptableEClass, Adaptable.class, "Adaptable", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(abstractComponentEClass, AbstractComponent.class, "AbstractComponent", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getAbstractComponent_Owners(), this.getAbstractEngineer(), null, "owners", null, 0, -1, AbstractComponent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getAbstractComponent_Issues(), this.getIssue(), null, "issues", null, 0, -1, AbstractComponent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getAbstractComponent_Releases(), this.getRelease(), null, "releases", null, 0, -1, AbstractComponent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(modelElementEClass, ModelElement.class, "ModelElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getModelElement_Id(), ecorePackage.getEString(), "id", null, 0, 1, ModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEAttribute(getModelElement_Path(), ecorePackage.getEString(), "path", null, 0, 1, ModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getModelElement_Description(), ecorePackage.getEString(), "description", null, 0, 1, ModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getModelElement_Actions(), ecorePackage.getEObject(), null, "actions", null, 0, -1, ModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getModelElement_Resources(), this.getNamedElement(), null, "resources", null, 0, -1, ModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(componentCategoryEClass, ComponentCategory.class, "ComponentCategory", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getComponentCategory_Elements(), this.getComponentCategoryElement(), null, "elements", null, 0, -1, ComponentCategory.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(namedElementEClass, NamedElement.class, "NamedElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getNamedElement_Name(), ecorePackage.getEString(), "name", null, 0, 1, NamedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(componentReferenceEClass, ComponentReference.class, "ComponentReference", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getComponentReference_Target(), this.getAbstractComponent(), null, "target", null, 0, -1, ComponentReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(engineeredElementEClass, EngineeredElement.class, "EngineeredElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getEngineeredElement_Issues(), this.getIssue(), null, "issues", null, 0, -1, EngineeredElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEngineeredElement_Owner(), this.getEngineer(), null, "owner", null, 0, -1, EngineeredElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(abstractEngineerEClass, AbstractEngineer.class, "AbstractEngineer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getAbstractEngineer_Issues(), this.getIssue(), null, "issues", null, 0, -1, AbstractEngineer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getAbstractEngineer_Objectives(), this.getObjective(), null, "objectives", null, 0, -1, AbstractEngineer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(personaEClass, Persona.class, "Persona", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(engineeringOrganizationalUnitEClass, EngineeringOrganizationalUnit.class, "EngineeringOrganizationalUnit", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getEngineeringOrganizationalUnit_Portfolio(), this.getComponentCategoryElement(), null, "portfolio", null, 0, -1, EngineeringOrganizationalUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getEngineeringOrganizationalUnit_TargetAudiences(), this.getPersona(), null, "targetAudiences", null, 0, -1, EngineeringOrganizationalUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getEngineeringOrganizationalUnit_IssueTypes(), this.getIssueType(), null, "issueTypes", null, 0, -1, EngineeringOrganizationalUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getEngineeringOrganizationalUnit_IssueResolutions(), this.getIssueResolution(), null, "issueResolutions", null, 0, -1, EngineeringOrganizationalUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getEngineeringOrganizationalUnit_IssueCategories(), this.getIssueCategory(), null, "issueCategories", null, 0, -1, EngineeringOrganizationalUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getEngineeringOrganizationalUnit_IssueStatuses(), this.getIssueStatus(), null, "issueStatuses", null, 0, -1, EngineeringOrganizationalUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getEngineeringOrganizationalUnit_IssueRelationshipTypes(), this.getIssueRelationshipType(), null, "issueRelationshipTypes", null, 0, -1, EngineeringOrganizationalUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getEngineeringOrganizationalUnit_Increments(), this.getIncrement(), null, "increments", null, 0, -1, EngineeringOrganizationalUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getEngineeringOrganizationalUnit_FeatureTypes(), this.getFeatureType(), null, "featureTypes", null, 0, -1, EngineeringOrganizationalUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(engineerEClass, Engineer.class, "Engineer", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getEngineer_Modules(), this.getModule(), null, "modules", null, 0, -1, Engineer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEngineer_Owns(), this.getModule(), null, "owns", null, 0, -1, Engineer.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getEngineer_Increments(), this.getIncrement(), null, "increments", null, 0, -1, Engineer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEngineer_Services(), this.getActivity(), null, "services", null, 0, -1, Engineer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEngineer_Personas(), this.getPersona(), null, "personas", null, 0, -1, Engineer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(engineeringOrganizationEClass, EngineeringOrganization.class, "EngineeringOrganization", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(organizationEClass, Organization.class, "Organization", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getOrganization_Engineers(), this.getEngineer(), null, "engineers", null, 0, -1, Organization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(engineerEClass, Engineer.class, "Engineer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(moduleEClass, org.nasdanika.engineering.Module.class, "Module", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getModule_Modules(), this.getModule(), null, "modules", null, 0, -1, org.nasdanika.engineering.Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(issueTypeEClass, IssueType.class, "IssueType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getIssueType_Children(), this.getIssueType(), null, "children", null, 0, -1, IssueType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(issueResolutionEClass, IssueResolution.class, "IssueResolution", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getIssueResolution_Completed(), ecorePackage.getEBoolean(), "completed", null, 0, 1, IssueResolution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(issueCategoryEClass, IssueCategory.class, "IssueCategory", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getIssueCategory_Children(), this.getIssueCategory(), null, "children", null, 0, -1, IssueCategory.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(issueStatusEClass, IssueStatus.class, "IssueStatus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getIssueStatus_Transitions(), this.getIssueStatus(), null, "transitions", null, 0, -1, IssueStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(issueNoteEClass, IssueNote.class, "IssueNote", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getIssueNote_Description(), ecorePackage.getEString(), "description", null, 0, 1, IssueNote.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(issueRelationshipTypeEClass, IssueRelationshipType.class, "IssueRelationshipType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getIssueRelationshipType_Blocks(), ecorePackage.getEBoolean(), "blocks", null, 0, 1, IssueRelationshipType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(issueRelationshipEClass, IssueRelationship.class, "IssueRelationship", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getIssueRelationship_Type(), this.getIssueRelationshipType(), null, "type", null, 0, 1, IssueRelationship.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getIssueRelationship_Source(), this.getIssue(), null, "source", null, 0, 1, IssueRelationship.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(issueEClass, Issue.class, "Issue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getIssue_AssignedTo(), this.getAbstractEngineer(), null, "assignedTo", null, 0, -1, Issue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getIssue_Size(), ecorePackage.getEDouble(), "size", null, 0, 1, Issue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getIssue_Cost(), ecorePackage.getEDouble(), "cost", null, 0, 1, Issue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getIssue_Benefit(), ecorePackage.getEDouble(), "benefit", null, 0, 1, Issue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getIssue_PlannedFor(), this.getIncrement(), null, "plannedFor", null, 0, 1, Issue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getIssue_Children(), this.getIssue(), null, "children", null, 0, -1, Issue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getIssue_Type(), this.getIssueType(), null, "type", null, 0, 1, Issue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getIssue_Status(), this.getIssueStatus(), null, "status", null, 0, 1, Issue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getIssue_Resolution(), this.getIssueResolution(), null, "resolution", null, 0, 1, Issue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getIssue_Categories(), this.getIssueCategory(), null, "categories", null, 0, -1, Issue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getIssue_Notes(), this.getIssueNote(), null, "notes", null, 0, -1, Issue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getIssue_Releases(), this.getRelease(), null, "releases", null, 0, -1, Issue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getIssue_Relationships(), this.getIssueRelationship(), null, "relationships", null, 0, -1, Issue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getIssue_Requires(), this.getRelease(), null, "requires", null, 0, -1, Issue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getIssue_Actionable(), ecorePackage.getEBoolean(), "actionable", null, 0, 1, Issue.class, IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEClass(productEClass, Product.class, "Product", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getProduct_Releases(), this.getRelease(), null, "releases", null, 0, -1, Product.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProduct_Features(), this.getFeature(), null, "features", null, 0, -1, Product.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProduct_Activities(), this.getActivity(), null, "activities", null, 0, -1, Product.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(incrementEClass, Increment.class, "Increment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getIncrement_Children(), this.getIncrement(), null, "children", null, 0, -1, Increment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1709,66 +1039,43 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		initEAttribute(getIncrement_End(), ecorePackage.getEDate(), "end", null, 0, 1, Increment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(releaseEClass, Release.class, "Release", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getRelease_Requires(), this.getRelease(), null, "requires", null, 0, -1, Release.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getRelease_Includes(), this.getRelease(), null, "includes", null, 0, -1, Release.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getRelease_Date(), ecorePackage.getEDate(), "date", null, 0, 1, Release.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getRelease_PlannedFor(), this.getIncrement(), null, "plannedFor", null, 0, 1, Release.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getRelease_Released(), ecorePackage.getEBoolean(), "released", null, 0, 1, Release.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(objectiveEClass, Objective.class, "Objective", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getObjective_Increment(), this.getIncrement(), null, "increment", null, 0, 1, Objective.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getObjective_Children(), this.getObjective(), null, "children", null, 0, -1, Objective.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getObjective_KeyResults(), this.getKeyResult(), null, "keyResults", null, 0, -1, Objective.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getObjective_Parent(), this.getObjective(), null, "parent", null, 0, 1, Objective.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(keyResultEClass, KeyResult.class, "KeyResult", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(componentEClass, Component.class, "Component", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getComponent_Components(), this.getComponentCategoryElement(), null, "components", null, 0, -1, Component.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(offeringEClass, Offering.class, "Offering", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getOffering_TargetAudiences(), this.getPersona(), null, "targetAudiences", null, 0, -1, Offering.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(productEClass, Product.class, "Product", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getProduct_Editions(), this.getEdition(), null, "editions", null, 0, -1, Product.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getProduct_Features(), this.getFeatureCategoryElement(), null, "features", null, 0, 1, Product.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(editionEClass, Edition.class, "Edition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getEdition_Bases(), this.getEdition(), null, "bases", null, 0, -1, Edition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getEdition_Features(), this.getFeature(), null, "features", null, 0, -1, Edition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(featureTypeEClass, FeatureType.class, "FeatureType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(featureCategoryElementEClass, FeatureCategoryElement.class, "FeatureCategoryElement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(featureCategoryEClass, FeatureCategory.class, "FeatureCategory", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getFeatureCategory_Elements(), this.getFeatureCategoryElement(), null, "elements", null, 0, -1, FeatureCategory.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRelease_Increment(), this.getIncrement(), null, "increment", null, 0, 1, Release.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(featureEClass, Feature.class, "Feature", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getFeature_PlannedFor(), this.getRelease(), null, "plannedFor", null, 0, 1, Feature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getFeature_Type(), this.getFeatureType(), null, "type", null, 0, 1, Feature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getFeature_Requires(), this.getFeature(), null, "requires", null, 0, -1, Feature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getFeature_Release(), this.getRelease(), null, "release", null, 0, 1, Feature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(personaEClass, Persona.class, "Persona", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getPersona_Needs(), this.getNeedCategoryElement(), null, "needs", null, 0, -1, Persona.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPersona_Extends(), this.getPersona(), null, "extends", null, 0, -1, Persona.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(activityEClass, Activity.class, "Activity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getActivity_Persona(), this.getPersona(), null, "persona", null, 0, 1, Activity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getActivity_Outputs(), this.getTransition(), null, "outputs", null, 0, -1, Activity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getActivity_ActivityType(), ecorePackage.getEString(), "activityType", null, 0, 1, Activity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getActivity_Requirements(), this.getArtifact(), null, "requirements", null, 0, -1, Activity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getActivity_Deliverables(), this.getArtifact(), null, "deliverables", null, 0, -1, Activity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getActivity_Calls(), this.getCall(), null, "calls", null, 0, -1, Activity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(needCategoryElementEClass, NeedCategoryElement.class, "NeedCategoryElement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(journeyEClass, Journey.class, "Journey", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getJourney_Activities(), this.getActivity(), null, "activities", null, 0, -1, Journey.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getJourney_Partition(), ecorePackage.getEBoolean(), "partition", null, 0, 1, Journey.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(needCategoryEClass, NeedCategory.class, "NeedCategory", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getNeedCategory_Elements(), this.getNeedCategoryElement(), null, "elements", null, 0, -1, NeedCategory.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(transitionEClass, Transition.class, "Transition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getTransition_Target(), this.getActivity(), null, "target", null, 1, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTransition_Payload(), this.getArtifact(), null, "payload", null, 0, -1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTransition_Name(), ecorePackage.getEString(), "name", null, 0, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTransition_Description(), ecorePackage.getEString(), "description", null, 0, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(needEClass, Need.class, "Need", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getNeed_Scenarios(), this.getScenario(), null, "scenarios", null, 0, -1, Need.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(callEClass, Call.class, "Call", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getCall_Response(), this.getArtifact(), null, "response", null, 0, -1, Call.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(scenarioEClass, Scenario.class, "Scenario", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getScenario_Offerings(), this.getOffering(), null, "offerings", null, 0, -1, Scenario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(issueEClass, Issue.class, "Issue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getIssue_Children(), this.getIssue(), null, "children", null, 0, -1, Issue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getIssue_Assignee(), this.getEngineer(), null, "assignee", null, 0, 1, Issue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getIssue_Dependencies(), this.getRelease(), null, "dependencies", null, 0, -1, Issue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getIssue_PlannedFor(), this.getRelease(), null, "plannedFor", null, 0, 1, Issue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getIssue_ContributesTo(), this.getFeature(), null, "contributesTo", null, 0, 1, Issue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(criterionEClass, Criterion.class, "Criterion", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(artifactEClass, Artifact.class, "Artifact", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(comparisonEClass, Comparison.class, "Comparison", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(riskEClass, Risk.class, "Risk", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(directoryEClass, Directory.class, "Directory", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getDirectory_Elements(), this.getNamedElement(), null, "elements", null, 0, -1, Directory.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -1778,430 +1085,6 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		createUrnorgAnnotations();
 		// http://www.eclipse.org/emf/2002/GenModel
 		createGenModelAnnotations();
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://www.eclipse.org/emf/2002/GenModel</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createGenModelAnnotations() {
-		String source = "http://www.eclipse.org/emf/2002/GenModel";
-		addAnnotation
-		  (componentCategoryElementEClass,
-		   source,
-		   new String[] {
-			   "documentation", "Base class for model elements which can be contained by the component category - components and sub-categories."
-		   });
-		addAnnotation
-		  (abstractComponentEClass,
-		   source,
-		   new String[] {
-			   "documentation", "Component is a unit of engineering. Base class for elements which have an owning engineers and may contain issues or be referenced by issues."
-		   });
-		addAnnotation
-		  (getAbstractComponent_Owners(),
-		   source,
-		   new String[] {
-			   "documentation", "Engineers responsible for this component."
-		   });
-		addAnnotation
-		  (getAbstractComponent_Issues(),
-		   source,
-		   new String[] {
-			   "documentation", "Issues associated with the component - problems/pain points, improvement opportunities/enhancements."
-		   });
-		addAnnotation
-		  (getAbstractComponent_Releases(),
-		   source,
-		   new String[] {
-			   "documentation", "Component releases."
-		   });
-		addAnnotation
-		  (componentCategoryEClass,
-		   source,
-		   new String[] {
-			   "documentation", "Grouping of components."
-		   });
-		addAnnotation
-		  (getComponentCategory_Elements(),
-		   source,
-		   new String[] {
-			   "documentation", "Category elements."
-		   });
-		addAnnotation
-		  (componentReferenceEClass,
-		   source,
-		   new String[] {
-			   "documentation", "Reference to a component. Can be used to federate multiple model resources into a single logical model."
-		   });
-		addAnnotation
-		  (getComponentReference_Target(),
-		   source,
-		   new String[] {
-			   "documentation", "Reference target."
-		   });
-		addAnnotation
-		  (abstractEngineerEClass,
-		   source,
-		   new String[] {
-			   "documentation", "Base class for Engineer and EngineeringOrganizationalUnit. Can own components and be assigned to issues. Can also contain its own issues list."
-		   });
-		addAnnotation
-		  (getAbstractEngineer_Issues(),
-		   source,
-		   new String[] {
-			   "documentation", "Issues owned by this engineer. Issues related to a single component shall be defined at the component level. If an issue doesn\'t have a related component or has multiple related components it can be defined at the engineer level."
-		   });
-		addAnnotation
-		  (engineeringOrganizationalUnitEClass,
-		   source,
-		   new String[] {
-			   "documentation", "Defines engineering practice - issue types, priorities, categories, etc. Scope, if a flag is set, for engineers and issues - they can see only categories etc defined at the\ncomponents organized into categories. Palette for components."
-		   });
-		addAnnotation
-		  (getEngineeringOrganizationalUnit_Portfolio(),
-		   source,
-		   new String[] {
-			   "documentation", "Components and products owned by the organizational unit."
-		   });
-		addAnnotation
-		  (engineeringOrganizationEClass,
-		   source,
-		   new String[] {
-			   "documentation", "Engineering organization."
-		   });
-		addAnnotation
-		  (engineerEClass,
-		   source,
-		   new String[] {
-			   "documentation", "Engineer is a role which can own components, be assigned to issues and has its own issues list."
-		   });
-		addAnnotation
-		  (issueTypeEClass,
-		   source,
-		   new String[] {
-			   "documentation", "Issue type. E.g. feature or bug. Or epic/story/task. May define child type(s). E.g. epics may contain only stories, but not tasks. Defined at engineering org unit level and referenced by issues."
-		   });
-		addAnnotation
-		  (getIssueType_Children(),
-		   source,
-		   new String[] {
-			   "documentation", "Issue type(s) which can be children of this issue type. E.g. epics may contain stories but not tasks."
-		   });
-		addAnnotation
-		  (issueResolutionEClass,
-		   source,
-		   new String[] {
-			   "documentation", "Issue resolution. E.g. fixed, cancelled, wont fix."
-		   });
-		addAnnotation
-		  (getIssueResolution_Completed(),
-		   source,
-		   new String[] {
-			   "documentation", "If true, the issue is successfully completed and blocked issues can be worked on."
-		   });
-		addAnnotation
-		  (issueCategoryEClass,
-		   source,
-		   new String[] {
-			   "documentation", "Issue category. E.g. documentation, code, automated build. An issue may have multiple categories. Categories can be hierarchical. Category may have an owning engineer. E.g. an automated build category would be owned by a build engineer."
-		   });
-		addAnnotation
-		  (issueStatusEClass,
-		   source,
-		   new String[] {
-			   "documentation", "Issue status. E.g. open, in progress, closed. May define transitions. If transitions are empty then can transition to any status. Defined at engineering org unit level. Visualization - statuses and transitions diagram."
-		   });
-		addAnnotation
-		  (getIssueStatus_Transitions(),
-		   source,
-		   new String[] {
-			   "documentation", "Statuses to which this status can transition. If empty then can transition to any status."
-		   });
-		addAnnotation
-		  (issueNoteEClass,
-		   source,
-		   new String[] {
-			   "documentation", "Issue note - progress report or comment. Can contain time and expense information. Reporter, resources."
-		   });
-		addAnnotation
-		  (getIssueNote_Description(),
-		   source,
-		   new String[] {
-			   "documentation", "Note description in markdown."
-		   });
-		addAnnotation
-		  (issueRelationshipTypeEClass,
-		   source,
-		   new String[] {
-			   "documentation", "Relationship type."
-		   });
-		addAnnotation
-		  (getIssueRelationshipType_Blocks(),
-		   source,
-		   new String[] {
-			   "documentation", "If true, source must be completed in order to start working on the target/container."
-		   });
-		addAnnotation
-		  (issueRelationshipEClass,
-		   source,
-		   new String[] {
-			   "documentation", "Relationship between issues. Contained by the target (dependent) issue, references the source issue. "
-		   });
-		addAnnotation
-		  (issueEClass,
-		   source,
-		   new String[] {
-			   "documentation", "Something to possibly act on regarding the owning element - a problem/pain point, an improvement opportunity/enhancement.\n\nExample:\n\n* Containing activity - \"Initial setup of a software project\", \n* Size - 4.0 (hours) - copy an existing project and modify its sources.\n* Issue - \"Create a code generator\" (enhancement),\n    * Size - 40.0 (hours).\n    * Benefit - 3.5 (hours).\n    * Implementation - an activity providing a detailed explanation how code generator shall be implemented."
-		   });
-		addAnnotation
-		  (getIssue_AssignedTo(),
-		   source,
-		   new String[] {
-			   "documentation", "Engineer this issue is assigned to. If this attribute is null the issue is assumed to be assigned to the owner of the containing element."
-		   });
-		addAnnotation
-		  (getIssue_Size(),
-		   source,
-		   new String[] {
-			   "documentation", "An estimation of effort required to complete this issue in some units used consistently throughout the model - e.g. points or person hours."
-		   });
-		addAnnotation
-		  (getIssue_Cost(),
-		   source,
-		   new String[] {
-			   "documentation", "An estimation of monetary expenditure required to complete this issue in some units used consistently throughout the model - e.g. dollars. "
-		   });
-		addAnnotation
-		  (getIssue_Benefit(),
-		   source,
-		   new String[] {
-			   "documentation", "Explicitly assigned issue benefit value. Used for computing effective benefit which in turn is used for prioritization."
-		   });
-		addAnnotation
-		  (getIssue_PlannedFor(),
-		   source,
-		   new String[] {
-			   "documentation", "Interment in which issue is scheduled to be worked on."
-		   });
-		addAnnotation
-		  (getIssue_Children(),
-		   source,
-		   new String[] {
-			   "documentation", "Issues may be organized into a hierarchy, a [Work Breakdown Structure](https://en.wikipedia.org/wiki/Work_breakdown_structure). The parent issue is implicitly blocked by its children, i.e. it can be worked on and closed only after all of its children are closed."
-		   });
-		addAnnotation
-		  (getIssue_Categories(),
-		   source,
-		   new String[] {
-			   "documentation", "An issue can be assigned zero or more categories."
-		   });
-		addAnnotation
-		  (getIssue_Notes(),
-		   source,
-		   new String[] {
-			   "documentation", "Issue notes can be used for tracking work progress including time and expenditure reporting."
-		   });
-		addAnnotation
-		  (getIssue_Releases(),
-		   source,
-		   new String[] {
-			   "documentation", "Modifications performed as part of the issue work may appear in zero or more component releases."
-		   });
-		addAnnotation
-		  (getIssue_Requires(),
-		   source,
-		   new String[] {
-			   "documentation", "Releases required to start working on the issue. "
-		   });
-		addAnnotation
-		  (getIssue_Actionable(),
-		   source,
-		   new String[] {
-			   "documentation", "Computed attribute. True if the issue doesn\'t have blocking relationships with open issues and doesn\'t have unreleased releases in its requires list."
-		   });
-		addAnnotation
-		  (incrementEClass,
-		   source,
-		   new String[] {
-			   "documentation", "A time period in which engineers are working on issues. "
-		   });
-		addAnnotation
-		  (getIncrement_Children(),
-		   source,
-		   new String[] {
-			   "documentation", "Increments can be organized into a hierarchy. E.g. Year - Quarter - Month - Week."
-		   });
-		addAnnotation
-		  (releaseEClass,
-		   source,
-		   new String[] {
-			   "documentation", "Release/version of component. Date, may include other releases of other components or depend/require other releases - in either case a given release cannot be released before the included/dependency release."
-		   });
-		addAnnotation
-		  (getRelease_Requires(),
-		   source,
-		   new String[] {
-			   "documentation", "Releases required by this release. For example product B release 1.2.0 may require product or component A release 1.5.6"
-		   });
-		addAnnotation
-		  (getRelease_Includes(),
-		   source,
-		   new String[] {
-			   "documentation", "Release included in this release. For example product release 2020-12 may include component release 1.2.0."
-		   });
-		addAnnotation
-		  (getRelease_Date(),
-		   source,
-		   new String[] {
-			   "documentation", "Release can be planned for a date, an increment, or both. In the latter case the date shall be within the increment."
-		   });
-		addAnnotation
-		  (getRelease_PlannedFor(),
-		   source,
-		   new String[] {
-			   "documentation", "Interment in which release is scheduled to be published."
-		   });
-		addAnnotation
-		  (objectiveEClass,
-		   source,
-		   new String[] {
-			   "documentation", "Strategic objective owned by an engineer or engineering org unit. Hierarchical, may reference a non-containing parent (only for top level?). References an increment. Parent shall be for the same or larger increment. Inherits increment from the parent if not set. Issue references objectives. Weight in the parent objective. Effective weight. Completion status - manually entered number? Effective completion - manually entered number plus computed from associated issues and key results. Status - open/closed? Or auto-closes when increment closes?\n\nTODO - risk to objectives as well as to issues. Affects effective importance and may be used for filtering based on org risk appetite/tolerance."
-		   });
-		addAnnotation
-		  (getObjective_Increment(),
-		   source,
-		   new String[] {
-			   "documentation", "Interment in which release is scheduled to be published."
-		   });
-		addAnnotation
-		  (keyResultEClass,
-		   source,
-		   new String[] {
-			   "documentation", "Owned by an objective. Weight in the objective."
-		   });
-		addAnnotation
-		  (componentEClass,
-		   source,
-		   new String[] {
-			   "documentation", "Component is a concrete generic component, can be a part of a product. Components can be nested. They can also depend on other components. More precisely, component releases may depend on other releases."
-		   });
-		addAnnotation
-		  (offeringEClass,
-		   source,
-		   new String[] {
-			   "documentation", "Offering is something which satisfies persona needs - product, edition, feature. Offerings may reference personas as their intended target audiences. Also offering benefit may be computed from needs and scenarios weights."
-		   });
-		addAnnotation
-		  (productEClass,
-		   source,
-		   new String[] {
-			   "documentation", "Product is an offering and a component. It has features which satisfy personas neeeds. It may have editions, which are collections of features offered at different prices and or to different personas"
-		   });
-		addAnnotation
-		  (editionEClass,
-		   source,
-		   new String[] {
-			   "documentation", "A subset of product features offered to different personas at different prices to maximize value for a particular persona. For example, a beginner user may not get benefit from advanced product features and therefore does not need a professional edition. Editions may have bases, e.g. professional edition is based on community edition."
-		   });
-		addAnnotation
-		  (featureTypeEClass,
-		   source,
-		   new String[] {
-			   "documentation", "Feature type. E.g. Basic, Performance, Delighter"
-		   });
-		addAnnotation
-		  (featureCategoryElementEClass,
-		   source,
-		   new String[] {
-			   "documentation", "Base class for model elements which can be contained by feature category - features and sub-categories."
-		   });
-		addAnnotation
-		  (featureCategoryEClass,
-		   source,
-		   new String[] {
-			   "documentation", "Grouping of features."
-		   });
-		addAnnotation
-		  (getFeatureCategory_Elements(),
-		   source,
-		   new String[] {
-			   "documentation", "Category elements."
-		   });
-		addAnnotation
-		  (featureEClass,
-		   source,
-		   new String[] {
-			   "documentation", "Unit of product functionality which satisfies persona needs. Maybe included in multiple editions. Scheduled for a release. May depend on other features and on product components releases or issues. I.e. an issue is owned by an engineered element, but it contributes to a feature. Benefit - explicit value and computed from needs and scenarios etc."
-		   });
-		addAnnotation
-		  (getFeature_Requires(),
-		   source,
-		   new String[] {
-			   "documentation", "One feature may require another feature to build on/extend."
-		   });
-		addAnnotation
-		  (personaEClass,
-		   source,
-		   new String[] {
-			   "documentation", "Description from internet, e.g. Wikipedia. Abstraction of parties who benefit from organization offerings. Not necessarily pay for them or use them. Weight - manual or computed with decision analysis. Manual may be sales volume, budget contribution for internal customers, population, percentage in profit generation. E.g. a grant size is dependent on how many personas adopt a product. References parties are persona representatives. Such parties may be involved in need identification and prioritization. Defined at EngineeringOrgUnit level - may be internal personas and internal products. May have base personas and personas can be organized into a hierarchy. Base personas define common needs, what everybody needs. Base personas may be abstract - no representatives and no own weight.\nReference roles in addition to representatives - internal clients.\n\n\nPersona benefits from engineering organization outputs (offerings). Not necessarily buys or uses.\nPersona is an engineered element - owner, issues, ... representatives\n\nResources reference and palette - markdown docs, rigel flows, ... - party level. Embedded and references. Folders\n\n\nRigel activities defined in roles (actor). Prof extensions report which flows role participates in.\n\nNeeds, scenarios, offerings\n\nCustomer value and strategic value/alignment - objectives.\n"
-		   });
-		addAnnotation
-		  (getPersona_Extends(),
-		   source,
-		   new String[] {
-			   "documentation", "Description from internet, e.g. Wikipedia. Abstraction of parties who benefit from organization offerings. Not necessarily pay for them or use them. Weight - manual or computed with decision analysis. Manual may be sales volume, budget contribution for internal customers, population, percentage in profit generation. E.g. a grant size is dependent on how many personas adopt a product. References parties are persona representatives. Such parties may be involved in need identification and prioritization. Defined at EngineeringOrgUnit level - may be internal personas and internal products. May have base personas and personas can be organized into a hierarchy. Base personas define common needs, what everybody needs. Base personas may be abstract - no representatives and no own weight.\nReference roles in addition to representatives - internal clients.\n\n\nPersona benefits from engineering organization outputs (offerings). Not necessarily buys or uses.\nPersona is an engineered element - owner, issues, ... representatives\n\nResources reference and palette - markdown docs, rigel flows, ... - party level. Embedded and references. Folders\n\n\nRigel activities defined in roles (actor). Prof extensions report which flows role participates in.\n\nNeeds, scenarios, offerings\n\nCustomer value and strategic value/alignment - objectives.\n"
-		   });
-		addAnnotation
-		  (needCategoryElementEClass,
-		   source,
-		   new String[] {
-			   "documentation", "Base class for model elements which can be contained by need category - needs and sub-categories."
-		   });
-		addAnnotation
-		  (needCategoryEClass,
-		   source,
-		   new String[] {
-			   "documentation", "Grouping of persona needs."
-		   });
-		addAnnotation
-		  (getNeedCategory_Elements(),
-		   source,
-		   new String[] {
-			   "documentation", "Category elements."
-		   });
-		addAnnotation
-		  (needEClass,
-		   source,
-		   new String[] {
-			   "documentation", "Personas have needs which may be satisfied by organization offerings. Needs can be organized into a hierarchy and assigned weights either manually or using decision analysis techniques. Needs may be satisfied by offerings via scenarios explaining how a need is satisfied.\n\nMust have, need to have, delighter - here or at the offering level?"
-		   });
-		addAnnotation
-		  (scenarioEClass,
-		   source,
-		   new String[] {
-			   "documentation", "Scenario explains how a need is satisfied by offerings. A scenario references offerings and can be assigned weight - manually or computed. Scenarios can be organized into a hierarchy. Generally scenarios may have steps/flow and include other scenarios, it needs to be understood whether this level of detalization is necessary."
-		   });
-		addAnnotation
-		  (criterionEClass,
-		   source,
-		   new String[] {
-			   "documentation", "A criterion for MCDA methodologies. Can be nested"
-		   });
-		addAnnotation
-		  (comparisonEClass,
-		   source,
-		   new String[] {
-			   "documentation", "AHP comparison of two criteria. Owned by the left criterion and references the right criterion."
-		   });
-		addAnnotation
-		  (riskEClass,
-		   source,
-		   new String[] {
-			   "documentation", "TODO - ISO 31000 definition. Positive flag, risk category, quantitative and qualitative.\nFor qualitatieve - likelihood and impact reference value in the engineering org with quantification in percents. E.g. High likelihood is 50%, High impact is 50%. \nQualitative risk is in numbers - percents for likelihood, absolute numbers for impact, e.g. 8 hours impact on effort, $1000 dollars impact on cost.\nRisks affect effective value (benefit/cost). \n\nProbability of an adverse event which will affect effort, cost, or totally prevent issue implementation. Attributes such as probability, affect on effort and cost, show-stopper flag."
-		   });
 	}
 
 	/**
@@ -2217,6 +1100,161 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		   source,
 		   new String[] {
 			   "documentation-reference", "doc/engineering.md"
+		   });
+		addAnnotation
+		  (modelElementEClass,
+		   source,
+		   new String[] {
+			   "documentation-reference", "../doc/model-element.md"
+		   });
+		addAnnotation
+		  (getModelElement_Path(),
+		   source,
+		   new String[] {
+			   "load-key", "path"
+		   });
+		addAnnotation
+		  (namedElementEClass,
+		   source,
+		   new String[] {
+			   "documentation-reference", "../doc/named-element.md"
+		   });
+		addAnnotation
+		  (engineeredElementEClass,
+		   source,
+		   new String[] {
+			   "documentation-reference", "../doc/engineered-element.md"
+		   });
+		addAnnotation
+		  (engineerEClass,
+		   source,
+		   new String[] {
+			   "documentation-reference", "../doc/engineer.md"
+		   });
+		addAnnotation
+		  (moduleEClass,
+		   source,
+		   new String[] {
+			   "documentation-reference", "../doc/module.md"
+		   });
+		addAnnotation
+		  (productEClass,
+		   source,
+		   new String[] {
+			   "documentation-reference", "../doc/product.md",
+			   "type-code", "d"
+		   });
+		addAnnotation
+		  (getProduct_Activities(),
+		   source,
+		   new String[] {
+			   "homogenous", "true"
+		   });
+		addAnnotation
+		  (releaseEClass,
+		   source,
+		   new String[] {
+			   "documentation-reference", "../doc/release.md"
+		   });
+		addAnnotation
+		  (featureEClass,
+		   source,
+		   new String[] {
+			   "documentation-reference", "../doc/feature.md"
+		   });
+		addAnnotation
+		  (activityEClass,
+		   source,
+		   new String[] {
+			   "documentation-reference", "../doc/activity.md"
+		   });
+		addAnnotation
+		  (journeyEClass,
+		   source,
+		   new String[] {
+			   "documentation-reference", "../doc/journey.md"
+		   });
+		addAnnotation
+		  (transitionEClass,
+		   source,
+		   new String[] {
+			   "documentation-reference", "../doc/transition.md"
+		   });
+		addAnnotation
+		  (getTransition_Target(),
+		   source,
+		   new String[] {
+			   "default-feature", "true"
+		   });
+		addAnnotation
+		  (issueEClass,
+		   source,
+		   new String[] {
+			   "documentation-reference", "../doc/issue.md"
+		   });
+		addAnnotation
+		  (artifactEClass,
+		   source,
+		   new String[] {
+			   "documentation-reference", "../doc/artifact.md"
+		   });
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.eclipse.org/emf/2002/GenModel</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createGenModelAnnotations() {
+		String source = "http://www.eclipse.org/emf/2002/GenModel";
+		addAnnotation
+		  (getModelElement_Id(),
+		   source,
+		   new String[] {
+			   "documentation", "Element\'s unique ID. Derived from element type and containment path (parent ID)."
+		   });
+		addAnnotation
+		  (getModelElement_Path(),
+		   source,
+		   new String[] {
+			   "documentation", "Element\'s path to form full element URL. Shall be unique in the containing collection. If blank, derived from element\'s position in the collection or from the local ID. For named elements can be derived from element name.\nElement URL is formed by adding ``.html`` extension to the path if the model element\'s EClass doesn\'t have containment references and as such the element may not have children, and by adding ``/index.html`` otherwise."
+		   });
+		addAnnotation
+		  (getModelElement_Description(),
+		   source,
+		   new String[] {
+			   "documentation", "Description in markdown."
+		   });
+		addAnnotation
+		  (getNamedElement_Name(),
+		   source,
+		   new String[] {
+			   "documentation", "Element name."
+		   });
+		addAnnotation
+		  (getProduct_Activities(),
+		   source,
+		   new String[] {
+			   "documentation", "Product journeys define how to use a particular product and its features."
+		   });
+		addAnnotation
+		  (getActivity_ActivityType(),
+		   source,
+		   new String[] {
+			   "documentation", "Pseudo-activity (stereo)type. One of:\n\n* choice\n* fork\n* join\n* entryPoint\n* exitPoint\n* inputPin\n* outputPin\n* expansionInput\n* expansionOutput\n* end\n\nPseudo-activities name is not shown on the diagram, they are not clickable, and they are not listed as journey children.\n\nSee [PlantUML State Diagram](https://plantuml.com/state-diagram) for more details."
+		   });
+		addAnnotation
+		  (getJourney_Partition(),
+		   source,
+		   new String[] {
+			   "documentation", "If true, journey is visualized as a composite state on its parent journey diagram. If false, it is visualized as a simple state."
+		   });
+		addAnnotation
+		  (getTransition_Description(),
+		   source,
+		   new String[] {
+			   "documentation", "Description in markdown."
 		   });
 	}
 

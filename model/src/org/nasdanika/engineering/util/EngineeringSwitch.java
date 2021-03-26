@@ -7,15 +7,26 @@ import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.util.Switch;
 
-import org.nasdanika.engineering.*;
-import org.nasdanika.ncore.Entity;
-import org.nasdanika.ncore.ModelElement;
-import org.nasdanika.party.AbstractOrganizationalUnit;
-import org.nasdanika.party.DirectoryElement;
-import org.nasdanika.party.Organization;
-import org.nasdanika.party.OrganizationalUnit;
-import org.nasdanika.party.Party;
-import org.nasdanika.party.Role;
+import org.nasdanika.common.Adaptable;
+
+import org.nasdanika.engineering.Activity;
+import org.nasdanika.engineering.Artifact;
+import org.nasdanika.engineering.Call;
+import org.nasdanika.engineering.Directory;
+import org.nasdanika.engineering.Engineer;
+import org.nasdanika.engineering.EngineeredElement;
+import org.nasdanika.engineering.EngineeringPackage;
+import org.nasdanika.engineering.Feature;
+import org.nasdanika.engineering.Increment;
+import org.nasdanika.engineering.Issue;
+import org.nasdanika.engineering.Journey;
+import org.nasdanika.engineering.ModelElement;
+import org.nasdanika.engineering.NamedElement;
+import org.nasdanika.engineering.Organization;
+import org.nasdanika.engineering.Persona;
+import org.nasdanika.engineering.Product;
+import org.nasdanika.engineering.Release;
+import org.nasdanika.engineering.Transition;
 
 /**
  * <!-- begin-user-doc -->
@@ -74,278 +85,170 @@ public class EngineeringSwitch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-			case EngineeringPackage.COMPONENT_CATEGORY_ELEMENT: {
-				ComponentCategoryElement componentCategoryElement = (ComponentCategoryElement)theEObject;
-				T result = caseComponentCategoryElement(componentCategoryElement);
+			case EngineeringPackage.ADAPTABLE: {
+				Adaptable adaptable = (Adaptable)theEObject;
+				T result = caseAdaptable(adaptable);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case EngineeringPackage.ABSTRACT_COMPONENT: {
-				AbstractComponent abstractComponent = (AbstractComponent)theEObject;
-				T result = caseAbstractComponent(abstractComponent);
-				if (result == null) result = caseComponentCategoryElement(abstractComponent);
+			case EngineeringPackage.MODEL_ELEMENT: {
+				ModelElement modelElement = (ModelElement)theEObject;
+				T result = caseModelElement(modelElement);
+				if (result == null) result = caseAdaptable(modelElement);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case EngineeringPackage.COMPONENT_CATEGORY: {
-				ComponentCategory componentCategory = (ComponentCategory)theEObject;
-				T result = caseComponentCategory(componentCategory);
-				if (result == null) result = caseModelElement(componentCategory);
-				if (result == null) result = caseComponentCategoryElement(componentCategory);
+			case EngineeringPackage.NAMED_ELEMENT: {
+				NamedElement namedElement = (NamedElement)theEObject;
+				T result = caseNamedElement(namedElement);
+				if (result == null) result = caseModelElement(namedElement);
+				if (result == null) result = caseAdaptable(namedElement);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case EngineeringPackage.COMPONENT_REFERENCE: {
-				ComponentReference componentReference = (ComponentReference)theEObject;
-				T result = caseComponentReference(componentReference);
-				if (result == null) result = caseComponentCategoryElement(componentReference);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case EngineeringPackage.ABSTRACT_ENGINEER: {
-				AbstractEngineer abstractEngineer = (AbstractEngineer)theEObject;
-				T result = caseAbstractEngineer(abstractEngineer);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case EngineeringPackage.ENGINEERING_ORGANIZATIONAL_UNIT: {
-				EngineeringOrganizationalUnit engineeringOrganizationalUnit = (EngineeringOrganizationalUnit)theEObject;
-				T result = caseEngineeringOrganizationalUnit(engineeringOrganizationalUnit);
-				if (result == null) result = caseOrganizationalUnit(engineeringOrganizationalUnit);
-				if (result == null) result = caseAbstractEngineer(engineeringOrganizationalUnit);
-				if (result == null) result = caseParty(engineeringOrganizationalUnit);
-				if (result == null) result = caseAbstractOrganizationalUnit(engineeringOrganizationalUnit);
-				if (result == null) result = caseDirectoryElement(engineeringOrganizationalUnit);
-				if (result == null) result = caseEntity(engineeringOrganizationalUnit);
-				if (result == null) result = caseModelElement(engineeringOrganizationalUnit);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case EngineeringPackage.ENGINEERING_ORGANIZATION: {
-				EngineeringOrganization engineeringOrganization = (EngineeringOrganization)theEObject;
-				T result = caseEngineeringOrganization(engineeringOrganization);
-				if (result == null) result = caseOrganization(engineeringOrganization);
-				if (result == null) result = caseEngineeringOrganizationalUnit(engineeringOrganization);
-				if (result == null) result = caseOrganizationalUnit(engineeringOrganization);
-				if (result == null) result = caseAbstractEngineer(engineeringOrganization);
-				if (result == null) result = caseParty(engineeringOrganization);
-				if (result == null) result = caseAbstractOrganizationalUnit(engineeringOrganization);
-				if (result == null) result = caseDirectoryElement(engineeringOrganization);
-				if (result == null) result = caseEntity(engineeringOrganization);
-				if (result == null) result = caseModelElement(engineeringOrganization);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case EngineeringPackage.ENGINEER: {
-				Engineer engineer = (Engineer)theEObject;
-				T result = caseEngineer(engineer);
-				if (result == null) result = caseRole(engineer);
-				if (result == null) result = caseAbstractEngineer(engineer);
-				if (result == null) result = caseEntity(engineer);
-				if (result == null) result = caseModelElement(engineer);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case EngineeringPackage.ISSUE_TYPE: {
-				IssueType issueType = (IssueType)theEObject;
-				T result = caseIssueType(issueType);
-				if (result == null) result = caseModelElement(issueType);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case EngineeringPackage.ISSUE_RESOLUTION: {
-				IssueResolution issueResolution = (IssueResolution)theEObject;
-				T result = caseIssueResolution(issueResolution);
-				if (result == null) result = caseModelElement(issueResolution);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case EngineeringPackage.ISSUE_CATEGORY: {
-				IssueCategory issueCategory = (IssueCategory)theEObject;
-				T result = caseIssueCategory(issueCategory);
-				if (result == null) result = caseModelElement(issueCategory);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case EngineeringPackage.ISSUE_STATUS: {
-				IssueStatus issueStatus = (IssueStatus)theEObject;
-				T result = caseIssueStatus(issueStatus);
-				if (result == null) result = caseModelElement(issueStatus);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case EngineeringPackage.ISSUE_NOTE: {
-				IssueNote issueNote = (IssueNote)theEObject;
-				T result = caseIssueNote(issueNote);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case EngineeringPackage.ISSUE_RELATIONSHIP_TYPE: {
-				IssueRelationshipType issueRelationshipType = (IssueRelationshipType)theEObject;
-				T result = caseIssueRelationshipType(issueRelationshipType);
-				if (result == null) result = caseModelElement(issueRelationshipType);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case EngineeringPackage.ISSUE_RELATIONSHIP: {
-				IssueRelationship issueRelationship = (IssueRelationship)theEObject;
-				T result = caseIssueRelationship(issueRelationship);
-				if (result == null) result = caseModelElement(issueRelationship);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case EngineeringPackage.ISSUE: {
-				Issue issue = (Issue)theEObject;
-				T result = caseIssue(issue);
-				if (result == null) result = caseEntity(issue);
-				if (result == null) result = caseModelElement(issue);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case EngineeringPackage.INCREMENT: {
-				Increment increment = (Increment)theEObject;
-				T result = caseIncrement(increment);
-				if (result == null) result = caseModelElement(increment);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case EngineeringPackage.RELEASE: {
-				Release release = (Release)theEObject;
-				T result = caseRelease(release);
-				if (result == null) result = caseModelElement(release);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case EngineeringPackage.OBJECTIVE: {
-				Objective objective = (Objective)theEObject;
-				T result = caseObjective(objective);
-				if (result == null) result = caseModelElement(objective);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case EngineeringPackage.KEY_RESULT: {
-				KeyResult keyResult = (KeyResult)theEObject;
-				T result = caseKeyResult(keyResult);
-				if (result == null) result = caseModelElement(keyResult);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case EngineeringPackage.COMPONENT: {
-				Component component = (Component)theEObject;
-				T result = caseComponent(component);
-				if (result == null) result = caseModelElement(component);
-				if (result == null) result = caseAbstractComponent(component);
-				if (result == null) result = caseComponentCategoryElement(component);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case EngineeringPackage.OFFERING: {
-				Offering offering = (Offering)theEObject;
-				T result = caseOffering(offering);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case EngineeringPackage.PRODUCT: {
-				Product product = (Product)theEObject;
-				T result = caseProduct(product);
-				if (result == null) result = caseComponent(product);
-				if (result == null) result = caseOffering(product);
-				if (result == null) result = caseModelElement(product);
-				if (result == null) result = caseAbstractComponent(product);
-				if (result == null) result = caseComponentCategoryElement(product);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case EngineeringPackage.EDITION: {
-				Edition edition = (Edition)theEObject;
-				T result = caseEdition(edition);
-				if (result == null) result = caseModelElement(edition);
-				if (result == null) result = caseOffering(edition);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case EngineeringPackage.FEATURE_TYPE: {
-				FeatureType featureType = (FeatureType)theEObject;
-				T result = caseFeatureType(featureType);
-				if (result == null) result = caseModelElement(featureType);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case EngineeringPackage.FEATURE_CATEGORY_ELEMENT: {
-				FeatureCategoryElement featureCategoryElement = (FeatureCategoryElement)theEObject;
-				T result = caseFeatureCategoryElement(featureCategoryElement);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case EngineeringPackage.FEATURE_CATEGORY: {
-				FeatureCategory featureCategory = (FeatureCategory)theEObject;
-				T result = caseFeatureCategory(featureCategory);
-				if (result == null) result = caseModelElement(featureCategory);
-				if (result == null) result = caseFeatureCategoryElement(featureCategory);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case EngineeringPackage.FEATURE: {
-				Feature feature = (Feature)theEObject;
-				T result = caseFeature(feature);
-				if (result == null) result = caseFeatureCategoryElement(feature);
+			case EngineeringPackage.ENGINEERED_ELEMENT: {
+				EngineeredElement engineeredElement = (EngineeredElement)theEObject;
+				T result = caseEngineeredElement(engineeredElement);
+				if (result == null) result = caseNamedElement(engineeredElement);
+				if (result == null) result = caseModelElement(engineeredElement);
+				if (result == null) result = caseAdaptable(engineeredElement);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case EngineeringPackage.PERSONA: {
 				Persona persona = (Persona)theEObject;
 				T result = casePersona(persona);
+				if (result == null) result = caseEngineeredElement(persona);
+				if (result == null) result = caseNamedElement(persona);
 				if (result == null) result = caseModelElement(persona);
+				if (result == null) result = caseAdaptable(persona);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case EngineeringPackage.NEED_CATEGORY_ELEMENT: {
-				NeedCategoryElement needCategoryElement = (NeedCategoryElement)theEObject;
-				T result = caseNeedCategoryElement(needCategoryElement);
+			case EngineeringPackage.ENGINEER: {
+				Engineer engineer = (Engineer)theEObject;
+				T result = caseEngineer(engineer);
+				if (result == null) result = casePersona(engineer);
+				if (result == null) result = caseEngineeredElement(engineer);
+				if (result == null) result = caseNamedElement(engineer);
+				if (result == null) result = caseModelElement(engineer);
+				if (result == null) result = caseAdaptable(engineer);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case EngineeringPackage.NEED_CATEGORY: {
-				NeedCategory needCategory = (NeedCategory)theEObject;
-				T result = caseNeedCategory(needCategory);
-				if (result == null) result = caseModelElement(needCategory);
-				if (result == null) result = caseNeedCategoryElement(needCategory);
+			case EngineeringPackage.ORGANIZATION: {
+				Organization organization = (Organization)theEObject;
+				T result = caseOrganization(organization);
+				if (result == null) result = caseEngineer(organization);
+				if (result == null) result = casePersona(organization);
+				if (result == null) result = caseEngineeredElement(organization);
+				if (result == null) result = caseNamedElement(organization);
+				if (result == null) result = caseModelElement(organization);
+				if (result == null) result = caseAdaptable(organization);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case EngineeringPackage.NEED: {
-				Need need = (Need)theEObject;
-				T result = caseNeed(need);
-				if (result == null) result = caseEntity(need);
-				if (result == null) result = caseNeedCategoryElement(need);
-				if (result == null) result = caseModelElement(need);
+			case EngineeringPackage.MODULE: {
+				org.nasdanika.engineering.Module module = (org.nasdanika.engineering.Module)theEObject;
+				T result = caseModule(module);
+				if (result == null) result = caseEngineeredElement(module);
+				if (result == null) result = caseNamedElement(module);
+				if (result == null) result = caseModelElement(module);
+				if (result == null) result = caseAdaptable(module);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case EngineeringPackage.SCENARIO: {
-				Scenario scenario = (Scenario)theEObject;
-				T result = caseScenario(scenario);
-				if (result == null) result = caseModelElement(scenario);
+			case EngineeringPackage.PRODUCT: {
+				Product product = (Product)theEObject;
+				T result = caseProduct(product);
+				if (result == null) result = caseModule(product);
+				if (result == null) result = caseEngineeredElement(product);
+				if (result == null) result = caseNamedElement(product);
+				if (result == null) result = caseModelElement(product);
+				if (result == null) result = caseAdaptable(product);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case EngineeringPackage.CRITERION: {
-				Criterion criterion = (Criterion)theEObject;
-				T result = caseCriterion(criterion);
-				if (result == null) result = caseModelElement(criterion);
+			case EngineeringPackage.INCREMENT: {
+				Increment increment = (Increment)theEObject;
+				T result = caseIncrement(increment);
+				if (result == null) result = caseNamedElement(increment);
+				if (result == null) result = caseModelElement(increment);
+				if (result == null) result = caseAdaptable(increment);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case EngineeringPackage.COMPARISON: {
-				Comparison comparison = (Comparison)theEObject;
-				T result = caseComparison(comparison);
+			case EngineeringPackage.RELEASE: {
+				Release release = (Release)theEObject;
+				T result = caseRelease(release);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case EngineeringPackage.RISK: {
-				Risk risk = (Risk)theEObject;
-				T result = caseRisk(risk);
-				if (result == null) result = caseModelElement(risk);
+			case EngineeringPackage.FEATURE: {
+				Feature feature = (Feature)theEObject;
+				T result = caseFeature(feature);
+				if (result == null) result = caseNamedElement(feature);
+				if (result == null) result = caseModelElement(feature);
+				if (result == null) result = caseAdaptable(feature);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EngineeringPackage.ACTIVITY: {
+				Activity activity = (Activity)theEObject;
+				T result = caseActivity(activity);
+				if (result == null) result = caseEngineeredElement(activity);
+				if (result == null) result = caseNamedElement(activity);
+				if (result == null) result = caseModelElement(activity);
+				if (result == null) result = caseAdaptable(activity);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EngineeringPackage.JOURNEY: {
+				Journey journey = (Journey)theEObject;
+				T result = caseJourney(journey);
+				if (result == null) result = caseActivity(journey);
+				if (result == null) result = caseEngineeredElement(journey);
+				if (result == null) result = caseNamedElement(journey);
+				if (result == null) result = caseModelElement(journey);
+				if (result == null) result = caseAdaptable(journey);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EngineeringPackage.TRANSITION: {
+				Transition transition = (Transition)theEObject;
+				T result = caseTransition(transition);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EngineeringPackage.CALL: {
+				Call call = (Call)theEObject;
+				T result = caseCall(call);
+				if (result == null) result = caseTransition(call);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EngineeringPackage.ISSUE: {
+				Issue issue = (Issue)theEObject;
+				T result = caseIssue(issue);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EngineeringPackage.ARTIFACT: {
+				Artifact artifact = (Artifact)theEObject;
+				T result = caseArtifact(artifact);
+				if (result == null) result = caseEngineeredElement(artifact);
+				if (result == null) result = caseNamedElement(artifact);
+				if (result == null) result = caseModelElement(artifact);
+				if (result == null) result = caseAdaptable(artifact);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EngineeringPackage.DIRECTORY: {
+				Directory directory = (Directory)theEObject;
+				T result = caseDirectory(directory);
+				if (result == null) result = caseNamedElement(directory);
+				if (result == null) result = caseModelElement(directory);
+				if (result == null) result = caseAdaptable(directory);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -354,542 +257,17 @@ public class EngineeringSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Component Category Element</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Adaptable</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Component Category Element</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Adaptable</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseComponentCategoryElement(ComponentCategoryElement object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Abstract Component</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Abstract Component</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseAbstractComponent(AbstractComponent object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Component Category</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Component Category</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseComponentCategory(ComponentCategory object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Component Reference</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Component Reference</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseComponentReference(ComponentReference object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Abstract Engineer</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Abstract Engineer</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseAbstractEngineer(AbstractEngineer object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Engineer</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Engineer</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseEngineer(Engineer object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Issue Type</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Issue Type</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseIssueType(IssueType object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Issue Resolution</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Issue Resolution</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseIssueResolution(IssueResolution object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Issue Category</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Issue Category</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseIssueCategory(IssueCategory object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Issue Status</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Issue Status</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseIssueStatus(IssueStatus object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Issue Note</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Issue Note</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseIssueNote(IssueNote object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Issue Relationship Type</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Issue Relationship Type</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseIssueRelationshipType(IssueRelationshipType object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Issue Relationship</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Issue Relationship</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseIssueRelationship(IssueRelationship object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Issue</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Issue</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseIssue(Issue object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Increment</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Increment</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseIncrement(Increment object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Organizational Unit</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Organizational Unit</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseEngineeringOrganizationalUnit(EngineeringOrganizationalUnit object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Organization</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Organization</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseEngineeringOrganization(EngineeringOrganization object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Release</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Release</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseRelease(Release object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Objective</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Objective</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseObjective(Objective object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Key Result</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Key Result</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseKeyResult(KeyResult object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Product</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Product</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseProduct(Product object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Offering</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Offering</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseOffering(Offering object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Edition</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Edition</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseEdition(Edition object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Feature Type</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Feature Type</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseFeatureType(FeatureType object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Feature Category Element</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Feature Category Element</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseFeatureCategoryElement(FeatureCategoryElement object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Feature Category</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Feature Category</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseFeatureCategory(FeatureCategory object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Feature</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Feature</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseFeature(Feature object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Component</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Component</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseComponent(Component object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Persona</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Persona</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T casePersona(Persona object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Need Category Element</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Need Category Element</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseNeedCategoryElement(NeedCategoryElement object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Need Category</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Need Category</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseNeedCategory(NeedCategory object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Need</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Need</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseNeed(Need object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Scenario</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Scenario</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseScenario(Scenario object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Criterion</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Criterion</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseCriterion(Criterion object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Comparison</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Comparison</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseComparison(Comparison object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Risk</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Risk</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseRisk(Risk object) {
+	public T caseAdaptable(Adaptable object) {
 		return null;
 	}
 
@@ -909,92 +287,62 @@ public class EngineeringSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Role</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Named Element</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Role</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Named Element</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseRole(Role object) {
+	public T caseNamedElement(NamedElement object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Entity</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Engineered Element</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Entity</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Engineered Element</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseEntity(Entity object) {
+	public T caseEngineeredElement(EngineeredElement object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Directory Element</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Persona</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Directory Element</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Persona</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseDirectoryElement(DirectoryElement object) {
+	public T casePersona(Persona object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Party</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Engineer</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Party</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Engineer</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseParty(Party object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Abstract Organizational Unit</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Abstract Organizational Unit</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseAbstractOrganizationalUnit(AbstractOrganizationalUnit object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Organizational Unit</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Organizational Unit</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseOrganizationalUnit(OrganizationalUnit object) {
+	public T caseEngineer(Engineer object) {
 		return null;
 	}
 
@@ -1010,6 +358,186 @@ public class EngineeringSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseOrganization(Organization object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Module</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Module</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseModule(org.nasdanika.engineering.Module object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Product</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Product</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseProduct(Product object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Increment</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Increment</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseIncrement(Increment object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Release</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Release</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseRelease(Release object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Feature</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Feature</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseFeature(Feature object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Activity</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Activity</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseActivity(Activity object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Journey</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Journey</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseJourney(Journey object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Transition</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Transition</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTransition(Transition object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Call</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Call</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseCall(Call object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Issue</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Issue</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseIssue(Issue object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Artifact</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Artifact</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseArtifact(Artifact object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Directory</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Directory</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDirectory(Directory object) {
 		return null;
 	}
 

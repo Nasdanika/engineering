@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Engineering Tests
+Bundle-SymbolicName: org.nasdanika.engineering.tests
+Bundle-Version: 2021.4.0.qualifier
+Bundle-Vendor: Nasdanika LLC
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Require-Bundle: org.junit,
+ org.nasdanika.engineering,
+ org.nasdanika.emf,
+ org.nasdanika.engineering.gen,
+ org.nasdanika.html.ecore,
+ org.apache.commons.codec;bundle-version="1.13.0"
+Automatic-Module-Name: org.nasdanika.engineering.tests
+Export-Package: org.nasdanika.engineering.tests

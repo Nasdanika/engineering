@@ -9,15 +9,26 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 
 import org.eclipse.emf.ecore.EObject;
 
-import org.nasdanika.engineering.*;
-import org.nasdanika.ncore.Entity;
-import org.nasdanika.ncore.ModelElement;
-import org.nasdanika.party.AbstractOrganizationalUnit;
-import org.nasdanika.party.DirectoryElement;
-import org.nasdanika.party.Organization;
-import org.nasdanika.party.OrganizationalUnit;
-import org.nasdanika.party.Party;
-import org.nasdanika.party.Role;
+import org.nasdanika.common.Adaptable;
+
+import org.nasdanika.engineering.Activity;
+import org.nasdanika.engineering.Artifact;
+import org.nasdanika.engineering.Call;
+import org.nasdanika.engineering.Directory;
+import org.nasdanika.engineering.Engineer;
+import org.nasdanika.engineering.EngineeredElement;
+import org.nasdanika.engineering.EngineeringPackage;
+import org.nasdanika.engineering.Feature;
+import org.nasdanika.engineering.Increment;
+import org.nasdanika.engineering.Issue;
+import org.nasdanika.engineering.Journey;
+import org.nasdanika.engineering.ModelElement;
+import org.nasdanika.engineering.NamedElement;
+import org.nasdanika.engineering.Organization;
+import org.nasdanika.engineering.Persona;
+import org.nasdanika.engineering.Product;
+import org.nasdanika.engineering.Release;
+import org.nasdanika.engineering.Transition;
 
 /**
  * <!-- begin-user-doc -->
@@ -76,68 +87,40 @@ public class EngineeringAdapterFactory extends AdapterFactoryImpl {
 	protected EngineeringSwitch<Adapter> modelSwitch =
 		new EngineeringSwitch<Adapter>() {
 			@Override
-			public Adapter caseComponentCategoryElement(ComponentCategoryElement object) {
-				return createComponentCategoryElementAdapter();
+			public Adapter caseAdaptable(Adaptable object) {
+				return createAdaptableAdapter();
 			}
 			@Override
-			public Adapter caseAbstractComponent(AbstractComponent object) {
-				return createAbstractComponentAdapter();
+			public Adapter caseModelElement(ModelElement object) {
+				return createModelElementAdapter();
 			}
 			@Override
-			public Adapter caseComponentCategory(ComponentCategory object) {
-				return createComponentCategoryAdapter();
+			public Adapter caseNamedElement(NamedElement object) {
+				return createNamedElementAdapter();
 			}
 			@Override
-			public Adapter caseComponentReference(ComponentReference object) {
-				return createComponentReferenceAdapter();
+			public Adapter caseEngineeredElement(EngineeredElement object) {
+				return createEngineeredElementAdapter();
 			}
 			@Override
-			public Adapter caseAbstractEngineer(AbstractEngineer object) {
-				return createAbstractEngineerAdapter();
-			}
-			@Override
-			public Adapter caseEngineeringOrganizationalUnit(EngineeringOrganizationalUnit object) {
-				return createEngineeringOrganizationalUnitAdapter();
-			}
-			@Override
-			public Adapter caseEngineeringOrganization(EngineeringOrganization object) {
-				return createEngineeringOrganizationAdapter();
+			public Adapter casePersona(Persona object) {
+				return createPersonaAdapter();
 			}
 			@Override
 			public Adapter caseEngineer(Engineer object) {
 				return createEngineerAdapter();
 			}
 			@Override
-			public Adapter caseIssueType(IssueType object) {
-				return createIssueTypeAdapter();
+			public Adapter caseOrganization(Organization object) {
+				return createOrganizationAdapter();
 			}
 			@Override
-			public Adapter caseIssueResolution(IssueResolution object) {
-				return createIssueResolutionAdapter();
+			public Adapter caseModule(org.nasdanika.engineering.Module object) {
+				return createModuleAdapter();
 			}
 			@Override
-			public Adapter caseIssueCategory(IssueCategory object) {
-				return createIssueCategoryAdapter();
-			}
-			@Override
-			public Adapter caseIssueStatus(IssueStatus object) {
-				return createIssueStatusAdapter();
-			}
-			@Override
-			public Adapter caseIssueNote(IssueNote object) {
-				return createIssueNoteAdapter();
-			}
-			@Override
-			public Adapter caseIssueRelationshipType(IssueRelationshipType object) {
-				return createIssueRelationshipTypeAdapter();
-			}
-			@Override
-			public Adapter caseIssueRelationship(IssueRelationship object) {
-				return createIssueRelationshipAdapter();
-			}
-			@Override
-			public Adapter caseIssue(Issue object) {
-				return createIssueAdapter();
+			public Adapter caseProduct(Product object) {
+				return createProductAdapter();
 			}
 			@Override
 			public Adapter caseIncrement(Increment object) {
@@ -148,108 +131,36 @@ public class EngineeringAdapterFactory extends AdapterFactoryImpl {
 				return createReleaseAdapter();
 			}
 			@Override
-			public Adapter caseObjective(Objective object) {
-				return createObjectiveAdapter();
-			}
-			@Override
-			public Adapter caseKeyResult(KeyResult object) {
-				return createKeyResultAdapter();
-			}
-			@Override
-			public Adapter caseComponent(Component object) {
-				return createComponentAdapter();
-			}
-			@Override
-			public Adapter caseOffering(Offering object) {
-				return createOfferingAdapter();
-			}
-			@Override
-			public Adapter caseProduct(Product object) {
-				return createProductAdapter();
-			}
-			@Override
-			public Adapter caseEdition(Edition object) {
-				return createEditionAdapter();
-			}
-			@Override
-			public Adapter caseFeatureType(FeatureType object) {
-				return createFeatureTypeAdapter();
-			}
-			@Override
-			public Adapter caseFeatureCategoryElement(FeatureCategoryElement object) {
-				return createFeatureCategoryElementAdapter();
-			}
-			@Override
-			public Adapter caseFeatureCategory(FeatureCategory object) {
-				return createFeatureCategoryAdapter();
-			}
-			@Override
 			public Adapter caseFeature(Feature object) {
 				return createFeatureAdapter();
 			}
 			@Override
-			public Adapter casePersona(Persona object) {
-				return createPersonaAdapter();
+			public Adapter caseActivity(Activity object) {
+				return createActivityAdapter();
 			}
 			@Override
-			public Adapter caseNeedCategoryElement(NeedCategoryElement object) {
-				return createNeedCategoryElementAdapter();
+			public Adapter caseJourney(Journey object) {
+				return createJourneyAdapter();
 			}
 			@Override
-			public Adapter caseNeedCategory(NeedCategory object) {
-				return createNeedCategoryAdapter();
+			public Adapter caseTransition(Transition object) {
+				return createTransitionAdapter();
 			}
 			@Override
-			public Adapter caseNeed(Need object) {
-				return createNeedAdapter();
+			public Adapter caseCall(Call object) {
+				return createCallAdapter();
 			}
 			@Override
-			public Adapter caseScenario(Scenario object) {
-				return createScenarioAdapter();
+			public Adapter caseIssue(Issue object) {
+				return createIssueAdapter();
 			}
 			@Override
-			public Adapter caseCriterion(Criterion object) {
-				return createCriterionAdapter();
+			public Adapter caseArtifact(Artifact object) {
+				return createArtifactAdapter();
 			}
 			@Override
-			public Adapter caseComparison(Comparison object) {
-				return createComparisonAdapter();
-			}
-			@Override
-			public Adapter caseRisk(Risk object) {
-				return createRiskAdapter();
-			}
-			@Override
-			public Adapter caseModelElement(ModelElement object) {
-				return createModelElementAdapter();
-			}
-			@Override
-			public Adapter caseDirectoryElement(DirectoryElement object) {
-				return createDirectoryElementAdapter();
-			}
-			@Override
-			public Adapter caseEntity(Entity object) {
-				return createEntityAdapter();
-			}
-			@Override
-			public Adapter caseParty(Party object) {
-				return createPartyAdapter();
-			}
-			@Override
-			public Adapter caseAbstractOrganizationalUnit(AbstractOrganizationalUnit object) {
-				return createAbstractOrganizationalUnitAdapter();
-			}
-			@Override
-			public Adapter caseOrganizationalUnit(OrganizationalUnit object) {
-				return createOrganizationalUnitAdapter();
-			}
-			@Override
-			public Adapter caseOrganization(Organization object) {
-				return createOrganizationAdapter();
-			}
-			@Override
-			public Adapter caseRole(Role object) {
-				return createRoleAdapter();
+			public Adapter caseDirectory(Directory object) {
+				return createDirectoryAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -272,394 +183,58 @@ public class EngineeringAdapterFactory extends AdapterFactoryImpl {
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.ComponentCategoryElement <em>Component Category Element</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.common.Adaptable <em>Adaptable</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.nasdanika.engineering.ComponentCategoryElement
+	 * @see org.nasdanika.common.Adaptable
 	 * @generated
 	 */
-	public Adapter createComponentCategoryElementAdapter() {
+	public Adapter createAdaptableAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.AbstractComponent <em>Abstract Component</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.ModelElement <em>Model Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.nasdanika.engineering.AbstractComponent
+	 * @see org.nasdanika.engineering.ModelElement
 	 * @generated
 	 */
-	public Adapter createAbstractComponentAdapter() {
+	public Adapter createModelElementAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.ComponentCategory <em>Component Category</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.NamedElement <em>Named Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.nasdanika.engineering.ComponentCategory
+	 * @see org.nasdanika.engineering.NamedElement
 	 * @generated
 	 */
-	public Adapter createComponentCategoryAdapter() {
+	public Adapter createNamedElementAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.ComponentReference <em>Component Reference</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.EngineeredElement <em>Engineered Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.nasdanika.engineering.ComponentReference
+	 * @see org.nasdanika.engineering.EngineeredElement
 	 * @generated
 	 */
-	public Adapter createComponentReferenceAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.AbstractEngineer <em>Abstract Engineer</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.engineering.AbstractEngineer
-	 * @generated
-	 */
-	public Adapter createAbstractEngineerAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.Engineer <em>Engineer</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.engineering.Engineer
-	 * @generated
-	 */
-	public Adapter createEngineerAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.IssueType <em>Issue Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.engineering.IssueType
-	 * @generated
-	 */
-	public Adapter createIssueTypeAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.IssueResolution <em>Issue Resolution</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.engineering.IssueResolution
-	 * @generated
-	 */
-	public Adapter createIssueResolutionAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.IssueCategory <em>Issue Category</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.engineering.IssueCategory
-	 * @generated
-	 */
-	public Adapter createIssueCategoryAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.IssueStatus <em>Issue Status</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.engineering.IssueStatus
-	 * @generated
-	 */
-	public Adapter createIssueStatusAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.IssueNote <em>Issue Note</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.engineering.IssueNote
-	 * @generated
-	 */
-	public Adapter createIssueNoteAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.IssueRelationshipType <em>Issue Relationship Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.engineering.IssueRelationshipType
-	 * @generated
-	 */
-	public Adapter createIssueRelationshipTypeAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.IssueRelationship <em>Issue Relationship</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.engineering.IssueRelationship
-	 * @generated
-	 */
-	public Adapter createIssueRelationshipAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.Issue <em>Issue</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.engineering.Issue
-	 * @generated
-	 */
-	public Adapter createIssueAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.Increment <em>Increment</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.engineering.Increment
-	 * @generated
-	 */
-	public Adapter createIncrementAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.EngineeringOrganizationalUnit <em>Organizational Unit</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.engineering.EngineeringOrganizationalUnit
-	 * @generated
-	 */
-	public Adapter createEngineeringOrganizationalUnitAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.EngineeringOrganization <em>Organization</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.engineering.EngineeringOrganization
-	 * @generated
-	 */
-	public Adapter createEngineeringOrganizationAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.Release <em>Release</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.engineering.Release
-	 * @generated
-	 */
-	public Adapter createReleaseAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.Objective <em>Objective</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.engineering.Objective
-	 * @generated
-	 */
-	public Adapter createObjectiveAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.KeyResult <em>Key Result</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.engineering.KeyResult
-	 * @generated
-	 */
-	public Adapter createKeyResultAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.Product <em>Product</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.engineering.Product
-	 * @generated
-	 */
-	public Adapter createProductAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.Offering <em>Offering</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.engineering.Offering
-	 * @generated
-	 */
-	public Adapter createOfferingAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.Edition <em>Edition</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.engineering.Edition
-	 * @generated
-	 */
-	public Adapter createEditionAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.FeatureType <em>Feature Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.engineering.FeatureType
-	 * @generated
-	 */
-	public Adapter createFeatureTypeAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.FeatureCategoryElement <em>Feature Category Element</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.engineering.FeatureCategoryElement
-	 * @generated
-	 */
-	public Adapter createFeatureCategoryElementAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.FeatureCategory <em>Feature Category</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.engineering.FeatureCategory
-	 * @generated
-	 */
-	public Adapter createFeatureCategoryAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.Feature <em>Feature</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.engineering.Feature
-	 * @generated
-	 */
-	public Adapter createFeatureAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.Component <em>Component</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.engineering.Component
-	 * @generated
-	 */
-	public Adapter createComponentAdapter() {
+	public Adapter createEngineeredElementAdapter() {
 		return null;
 	}
 
@@ -678,212 +253,198 @@ public class EngineeringAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.NeedCategoryElement <em>Need Category Element</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.Engineer <em>Engineer</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.nasdanika.engineering.NeedCategoryElement
+	 * @see org.nasdanika.engineering.Engineer
 	 * @generated
 	 */
-	public Adapter createNeedCategoryElementAdapter() {
+	public Adapter createEngineerAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.NeedCategory <em>Need Category</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.Organization <em>Organization</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.nasdanika.engineering.NeedCategory
-	 * @generated
-	 */
-	public Adapter createNeedCategoryAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.Need <em>Need</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.engineering.Need
-	 * @generated
-	 */
-	public Adapter createNeedAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.Scenario <em>Scenario</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.engineering.Scenario
-	 * @generated
-	 */
-	public Adapter createScenarioAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.Criterion <em>Criterion</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.engineering.Criterion
-	 * @generated
-	 */
-	public Adapter createCriterionAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.Comparison <em>Comparison</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.engineering.Comparison
-	 * @generated
-	 */
-	public Adapter createComparisonAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.Risk <em>Risk</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.engineering.Risk
-	 * @generated
-	 */
-	public Adapter createRiskAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.ncore.ModelElement <em>Model Element</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.ncore.ModelElement
-	 * @generated
-	 */
-	public Adapter createModelElementAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.party.Role <em>Role</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.party.Role
-	 * @generated
-	 */
-	public Adapter createRoleAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.ncore.Entity <em>Entity</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.ncore.Entity
-	 * @generated
-	 */
-	public Adapter createEntityAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.party.DirectoryElement <em>Directory Element</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.party.DirectoryElement
-	 * @generated
-	 */
-	public Adapter createDirectoryElementAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.party.Party <em>Party</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.party.Party
-	 * @generated
-	 */
-	public Adapter createPartyAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.party.AbstractOrganizationalUnit <em>Abstract Organizational Unit</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.party.AbstractOrganizationalUnit
-	 * @generated
-	 */
-	public Adapter createAbstractOrganizationalUnitAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.party.OrganizationalUnit <em>Organizational Unit</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.party.OrganizationalUnit
-	 * @generated
-	 */
-	public Adapter createOrganizationalUnitAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.party.Organization <em>Organization</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.party.Organization
+	 * @see org.nasdanika.engineering.Organization
 	 * @generated
 	 */
 	public Adapter createOrganizationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.Module <em>Module</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.nasdanika.engineering.Module
+	 * @generated
+	 */
+	public Adapter createModuleAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.Product <em>Product</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.nasdanika.engineering.Product
+	 * @generated
+	 */
+	public Adapter createProductAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.Increment <em>Increment</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.nasdanika.engineering.Increment
+	 * @generated
+	 */
+	public Adapter createIncrementAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.Release <em>Release</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.nasdanika.engineering.Release
+	 * @generated
+	 */
+	public Adapter createReleaseAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.Feature <em>Feature</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.nasdanika.engineering.Feature
+	 * @generated
+	 */
+	public Adapter createFeatureAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.Activity <em>Activity</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.nasdanika.engineering.Activity
+	 * @generated
+	 */
+	public Adapter createActivityAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.Journey <em>Journey</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.nasdanika.engineering.Journey
+	 * @generated
+	 */
+	public Adapter createJourneyAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.Transition <em>Transition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.nasdanika.engineering.Transition
+	 * @generated
+	 */
+	public Adapter createTransitionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.Call <em>Call</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.nasdanika.engineering.Call
+	 * @generated
+	 */
+	public Adapter createCallAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.Issue <em>Issue</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.nasdanika.engineering.Issue
+	 * @generated
+	 */
+	public Adapter createIssueAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.Artifact <em>Artifact</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.nasdanika.engineering.Artifact
+	 * @generated
+	 */
+	public Adapter createArtifactAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.Directory <em>Directory</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.nasdanika.engineering.Directory
+	 * @generated
+	 */
+	public Adapter createDirectoryAdapter() {
 		return null;
 	}
 

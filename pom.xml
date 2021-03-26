@@ -20,6 +20,7 @@
 
 	<properties>
 		<core.version>2021.3.3</core.version>
+		<html.version>2021.3.1</html.version>
 	</properties>	
 
 	<scm>
@@ -138,6 +139,7 @@
 	
 	<modules>
 		<module>model</module>
+		<module>gen</module>
 	</modules>	
 
 	<distributionManagement>

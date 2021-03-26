@@ -22,121 +22,13 @@ public interface EngineeringFactory extends EFactory {
 	EngineeringFactory eINSTANCE = org.nasdanika.engineering.impl.EngineeringFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>Component Category</em>'.
+	 * Returns a new object of class '<em>Persona</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Component Category</em>'.
+	 * @return a new object of class '<em>Persona</em>'.
 	 * @generated
 	 */
-	ComponentCategory createComponentCategory();
-
-	/**
-	 * Returns a new object of class '<em>Abstract Engineer</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Abstract Engineer</em>'.
-	 * @generated
-	 */
-	AbstractEngineer createAbstractEngineer();
-
-	/**
-	 * Returns a new object of class '<em>Engineer</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Engineer</em>'.
-	 * @generated
-	 */
-	Engineer createEngineer();
-
-	/**
-	 * Returns a new object of class '<em>Issue Type</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Issue Type</em>'.
-	 * @generated
-	 */
-	IssueType createIssueType();
-
-	/**
-	 * Returns a new object of class '<em>Issue Resolution</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Issue Resolution</em>'.
-	 * @generated
-	 */
-	IssueResolution createIssueResolution();
-
-	/**
-	 * Returns a new object of class '<em>Issue Category</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Issue Category</em>'.
-	 * @generated
-	 */
-	IssueCategory createIssueCategory();
-
-	/**
-	 * Returns a new object of class '<em>Issue Status</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Issue Status</em>'.
-	 * @generated
-	 */
-	IssueStatus createIssueStatus();
-
-	/**
-	 * Returns a new object of class '<em>Issue Note</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Issue Note</em>'.
-	 * @generated
-	 */
-	IssueNote createIssueNote();
-
-	/**
-	 * Returns a new object of class '<em>Issue Relationship Type</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Issue Relationship Type</em>'.
-	 * @generated
-	 */
-	IssueRelationshipType createIssueRelationshipType();
-
-	/**
-	 * Returns a new object of class '<em>Issue Relationship</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Issue Relationship</em>'.
-	 * @generated
-	 */
-	IssueRelationship createIssueRelationship();
-
-	/**
-	 * Returns a new object of class '<em>Issue</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Issue</em>'.
-	 * @generated
-	 */
-	Issue createIssue();
-
-	/**
-	 * Returns a new object of class '<em>Increment</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Increment</em>'.
-	 * @generated
-	 */
-	Increment createIncrement();
-
-	/**
-	 * Returns a new object of class '<em>Organizational Unit</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Organizational Unit</em>'.
-	 * @generated
-	 */
-	EngineeringOrganizationalUnit createEngineeringOrganizationalUnit();
+	Persona createPersona();
 
 	/**
 	 * Returns a new object of class '<em>Organization</em>'.
@@ -145,34 +37,7 @@ public interface EngineeringFactory extends EFactory {
 	 * @return a new object of class '<em>Organization</em>'.
 	 * @generated
 	 */
-	EngineeringOrganization createEngineeringOrganization();
-
-	/**
-	 * Returns a new object of class '<em>Release</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Release</em>'.
-	 * @generated
-	 */
-	Release createRelease();
-
-	/**
-	 * Returns a new object of class '<em>Objective</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Objective</em>'.
-	 * @generated
-	 */
-	Objective createObjective();
-
-	/**
-	 * Returns a new object of class '<em>Key Result</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Key Result</em>'.
-	 * @generated
-	 */
-	KeyResult createKeyResult();
+	Organization createOrganization();
 
 	/**
 	 * Returns a new object of class '<em>Product</em>'.
@@ -184,40 +49,22 @@ public interface EngineeringFactory extends EFactory {
 	Product createProduct();
 
 	/**
-	 * Returns a new object of class '<em>Offering</em>'.
+	 * Returns a new object of class '<em>Increment</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Offering</em>'.
+	 * @return a new object of class '<em>Increment</em>'.
 	 * @generated
 	 */
-	Offering createOffering();
+	Increment createIncrement();
 
 	/**
-	 * Returns a new object of class '<em>Edition</em>'.
+	 * Returns a new object of class '<em>Release</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Edition</em>'.
+	 * @return a new object of class '<em>Release</em>'.
 	 * @generated
 	 */
-	Edition createEdition();
-
-	/**
-	 * Returns a new object of class '<em>Feature Type</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Feature Type</em>'.
-	 * @generated
-	 */
-	FeatureType createFeatureType();
-
-	/**
-	 * Returns a new object of class '<em>Feature Category</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Feature Category</em>'.
-	 * @generated
-	 */
-	FeatureCategory createFeatureCategory();
+	Release createRelease();
 
 	/**
 	 * Returns a new object of class '<em>Feature</em>'.
@@ -229,76 +76,67 @@ public interface EngineeringFactory extends EFactory {
 	Feature createFeature();
 
 	/**
-	 * Returns a new object of class '<em>Component</em>'.
+	 * Returns a new object of class '<em>Activity</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Component</em>'.
+	 * @return a new object of class '<em>Activity</em>'.
 	 * @generated
 	 */
-	Component createComponent();
+	Activity createActivity();
 
 	/**
-	 * Returns a new object of class '<em>Persona</em>'.
+	 * Returns a new object of class '<em>Journey</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Persona</em>'.
+	 * @return a new object of class '<em>Journey</em>'.
 	 * @generated
 	 */
-	Persona createPersona();
+	Journey createJourney();
 
 	/**
-	 * Returns a new object of class '<em>Need Category</em>'.
+	 * Returns a new object of class '<em>Transition</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Need Category</em>'.
+	 * @return a new object of class '<em>Transition</em>'.
 	 * @generated
 	 */
-	NeedCategory createNeedCategory();
+	Transition createTransition();
 
 	/**
-	 * Returns a new object of class '<em>Need</em>'.
+	 * Returns a new object of class '<em>Call</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Need</em>'.
+	 * @return a new object of class '<em>Call</em>'.
 	 * @generated
 	 */
-	Need createNeed();
+	Call createCall();
 
 	/**
-	 * Returns a new object of class '<em>Scenario</em>'.
+	 * Returns a new object of class '<em>Issue</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Scenario</em>'.
+	 * @return a new object of class '<em>Issue</em>'.
 	 * @generated
 	 */
-	Scenario createScenario();
+	Issue createIssue();
 
 	/**
-	 * Returns a new object of class '<em>Criterion</em>'.
+	 * Returns a new object of class '<em>Artifact</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Criterion</em>'.
+	 * @return a new object of class '<em>Artifact</em>'.
 	 * @generated
 	 */
-	Criterion createCriterion();
+	Artifact createArtifact();
 
 	/**
-	 * Returns a new object of class '<em>Comparison</em>'.
+	 * Returns a new object of class '<em>Directory</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Comparison</em>'.
+	 * @return a new object of class '<em>Directory</em>'.
 	 * @generated
 	 */
-	Comparison createComparison();
-
-	/**
-	 * Returns a new object of class '<em>Risk</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Risk</em>'.
-	 * @generated
-	 */
-	Risk createRisk();
+	Directory createDirectory();
 
 	/**
 	 * Returns the package supported by this factory.

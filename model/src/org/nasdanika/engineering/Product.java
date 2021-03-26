@@ -9,55 +9,58 @@ import org.eclipse.emf.common.util.EList;
  * A representation of the model object '<em><b>Product</b></em>'.
  * <!-- end-user-doc -->
  *
- * <!-- begin-model-doc -->
- * Product is an offering and a component. It has features which satisfy personas neeeds. It may have editions, which are collections of features offered at different prices and or to different personas
- * <!-- end-model-doc -->
- *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.nasdanika.engineering.Product#getEditions <em>Editions</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.Product#getReleases <em>Releases</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Product#getFeatures <em>Features</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.Product#getActivities <em>Activities</em>}</li>
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getProduct()
- * @model
+ * @model annotation="urn:org.nasdanika documentation-reference='../doc/product.md' type-code='d'"
  * @generated
  */
-public interface Product extends Component, Offering {
-
+public interface Product extends org.nasdanika.engineering.Module {
 	/**
-	 * Returns the value of the '<em><b>Editions</b></em>' containment reference list.
-	 * The list contents are of type {@link org.nasdanika.engineering.Edition}.
+	 * Returns the value of the '<em><b>Releases</b></em>' containment reference list.
+	 * The list contents are of type {@link org.nasdanika.engineering.Release}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Editions</em>' containment reference list.
-	 * @see org.nasdanika.engineering.EngineeringPackage#getProduct_Editions()
+	 * @return the value of the '<em>Releases</em>' containment reference list.
+	 * @see org.nasdanika.engineering.EngineeringPackage#getProduct_Releases()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<Edition> getEditions();
+	EList<Release> getReleases();
 
 	/**
-	 * Returns the value of the '<em><b>Features</b></em>' reference.
+	 * Returns the value of the '<em><b>Features</b></em>' containment reference list.
+	 * The list contents are of type {@link org.nasdanika.engineering.Feature}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Features</em>' reference.
-	 * @see #setFeatures(FeatureCategoryElement)
+	 * @return the value of the '<em>Features</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getProduct_Features()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
-	FeatureCategoryElement getFeatures();
+	EList<Feature> getFeatures();
 
 	/**
-	 * Sets the value of the '{@link org.nasdanika.engineering.Product#getFeatures <em>Features</em>}' reference.
+	 * Returns the value of the '<em><b>Activities</b></em>' containment reference list.
+	 * The list contents are of type {@link org.nasdanika.engineering.Activity}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Features</em>' reference.
-	 * @see #getFeatures()
+	 * <!-- begin-model-doc -->
+	 * Product journeys define how to use a particular product and its features.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Activities</em>' containment reference list.
+	 * @see org.nasdanika.engineering.EngineeringPackage#getProduct_Activities()
+	 * @model containment="true"
+	 *        annotation="urn:org.nasdanika homogenous='true'"
 	 * @generated
 	 */
-	void setFeatures(FeatureCategoryElement value);
+	EList<Activity> getActivities();
+
 } // Product

@@ -10,7 +10,21 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
-import org.nasdanika.engineering.*;
+import org.nasdanika.engineering.Activity;
+import org.nasdanika.engineering.Artifact;
+import org.nasdanika.engineering.Call;
+import org.nasdanika.engineering.Directory;
+import org.nasdanika.engineering.EngineeringFactory;
+import org.nasdanika.engineering.EngineeringPackage;
+import org.nasdanika.engineering.Feature;
+import org.nasdanika.engineering.Increment;
+import org.nasdanika.engineering.Issue;
+import org.nasdanika.engineering.Journey;
+import org.nasdanika.engineering.Organization;
+import org.nasdanika.engineering.Persona;
+import org.nasdanika.engineering.Product;
+import org.nasdanika.engineering.Release;
+import org.nasdanika.engineering.Transition;
 
 /**
  * <!-- begin-user-doc -->
@@ -56,304 +70,22 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case EngineeringPackage.COMPONENT_CATEGORY: return createComponentCategory();
-			case EngineeringPackage.ABSTRACT_ENGINEER: return createAbstractEngineer();
-			case EngineeringPackage.ENGINEERING_ORGANIZATIONAL_UNIT: return createEngineeringOrganizationalUnit();
-			case EngineeringPackage.ENGINEERING_ORGANIZATION: return createEngineeringOrganization();
-			case EngineeringPackage.ENGINEER: return createEngineer();
-			case EngineeringPackage.ISSUE_TYPE: return createIssueType();
-			case EngineeringPackage.ISSUE_RESOLUTION: return createIssueResolution();
-			case EngineeringPackage.ISSUE_CATEGORY: return createIssueCategory();
-			case EngineeringPackage.ISSUE_STATUS: return createIssueStatus();
-			case EngineeringPackage.ISSUE_NOTE: return createIssueNote();
-			case EngineeringPackage.ISSUE_RELATIONSHIP_TYPE: return createIssueRelationshipType();
-			case EngineeringPackage.ISSUE_RELATIONSHIP: return createIssueRelationship();
-			case EngineeringPackage.ISSUE: return createIssue();
+			case EngineeringPackage.PERSONA: return createPersona();
+			case EngineeringPackage.ORGANIZATION: return createOrganization();
+			case EngineeringPackage.PRODUCT: return createProduct();
 			case EngineeringPackage.INCREMENT: return createIncrement();
 			case EngineeringPackage.RELEASE: return createRelease();
-			case EngineeringPackage.OBJECTIVE: return createObjective();
-			case EngineeringPackage.KEY_RESULT: return createKeyResult();
-			case EngineeringPackage.COMPONENT: return createComponent();
-			case EngineeringPackage.OFFERING: return createOffering();
-			case EngineeringPackage.PRODUCT: return createProduct();
-			case EngineeringPackage.EDITION: return createEdition();
-			case EngineeringPackage.FEATURE_TYPE: return createFeatureType();
-			case EngineeringPackage.FEATURE_CATEGORY: return createFeatureCategory();
 			case EngineeringPackage.FEATURE: return createFeature();
-			case EngineeringPackage.PERSONA: return createPersona();
-			case EngineeringPackage.NEED_CATEGORY: return createNeedCategory();
-			case EngineeringPackage.NEED: return createNeed();
-			case EngineeringPackage.SCENARIO: return createScenario();
-			case EngineeringPackage.CRITERION: return createCriterion();
-			case EngineeringPackage.COMPARISON: return createComparison();
-			case EngineeringPackage.RISK: return createRisk();
+			case EngineeringPackage.ACTIVITY: return createActivity();
+			case EngineeringPackage.JOURNEY: return createJourney();
+			case EngineeringPackage.TRANSITION: return createTransition();
+			case EngineeringPackage.CALL: return createCall();
+			case EngineeringPackage.ISSUE: return createIssue();
+			case EngineeringPackage.ARTIFACT: return createArtifact();
+			case EngineeringPackage.DIRECTORY: return createDirectory();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public ComponentCategory createComponentCategory() {
-		ComponentCategoryImpl componentCategory = new ComponentCategoryImpl();
-		return componentCategory;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public AbstractEngineer createAbstractEngineer() {
-		AbstractEngineerImpl abstractEngineer = new AbstractEngineerImpl();
-		return abstractEngineer;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Engineer createEngineer() {
-		EngineerImpl engineer = new EngineerImpl();
-		return engineer;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public IssueType createIssueType() {
-		IssueTypeImpl issueType = new IssueTypeImpl();
-		return issueType;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public IssueResolution createIssueResolution() {
-		IssueResolutionImpl issueResolution = new IssueResolutionImpl();
-		return issueResolution;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public IssueCategory createIssueCategory() {
-		IssueCategoryImpl issueCategory = new IssueCategoryImpl();
-		return issueCategory;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public IssueStatus createIssueStatus() {
-		IssueStatusImpl issueStatus = new IssueStatusImpl();
-		return issueStatus;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public IssueNote createIssueNote() {
-		IssueNoteImpl issueNote = new IssueNoteImpl();
-		return issueNote;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public IssueRelationshipType createIssueRelationshipType() {
-		IssueRelationshipTypeImpl issueRelationshipType = new IssueRelationshipTypeImpl();
-		return issueRelationshipType;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public IssueRelationship createIssueRelationship() {
-		IssueRelationshipImpl issueRelationship = new IssueRelationshipImpl();
-		return issueRelationship;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Issue createIssue() {
-		IssueImpl issue = new IssueImpl();
-		return issue;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Increment createIncrement() {
-		IncrementImpl increment = new IncrementImpl();
-		return increment;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EngineeringOrganizationalUnit createEngineeringOrganizationalUnit() {
-		EngineeringOrganizationalUnitImpl engineeringOrganizationalUnit = new EngineeringOrganizationalUnitImpl();
-		return engineeringOrganizationalUnit;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EngineeringOrganization createEngineeringOrganization() {
-		EngineeringOrganizationImpl engineeringOrganization = new EngineeringOrganizationImpl();
-		return engineeringOrganization;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Release createRelease() {
-		ReleaseImpl release = new ReleaseImpl();
-		return release;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Objective createObjective() {
-		ObjectiveImpl objective = new ObjectiveImpl();
-		return objective;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public KeyResult createKeyResult() {
-		KeyResultImpl keyResult = new KeyResultImpl();
-		return keyResult;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Product createProduct() {
-		ProductImpl product = new ProductImpl();
-		return product;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Offering createOffering() {
-		OfferingImpl offering = new OfferingImpl();
-		return offering;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Edition createEdition() {
-		EditionImpl edition = new EditionImpl();
-		return edition;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public FeatureType createFeatureType() {
-		FeatureTypeImpl featureType = new FeatureTypeImpl();
-		return featureType;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public FeatureCategory createFeatureCategory() {
-		FeatureCategoryImpl featureCategory = new FeatureCategoryImpl();
-		return featureCategory;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Feature createFeature() {
-		FeatureImpl feature = new FeatureImpl();
-		return feature;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Component createComponent() {
-		ComponentImpl component = new ComponentImpl();
-		return component;
 	}
 
 	/**
@@ -373,9 +105,9 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 	 * @generated
 	 */
 	@Override
-	public NeedCategory createNeedCategory() {
-		NeedCategoryImpl needCategory = new NeedCategoryImpl();
-		return needCategory;
+	public Organization createOrganization() {
+		OrganizationImpl organization = new OrganizationImpl();
+		return organization;
 	}
 
 	/**
@@ -384,9 +116,9 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 	 * @generated
 	 */
 	@Override
-	public Need createNeed() {
-		NeedImpl need = new NeedImpl();
-		return need;
+	public Product createProduct() {
+		ProductImpl product = new ProductImpl();
+		return product;
 	}
 
 	/**
@@ -395,9 +127,9 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 	 * @generated
 	 */
 	@Override
-	public Scenario createScenario() {
-		ScenarioImpl scenario = new ScenarioImpl();
-		return scenario;
+	public Increment createIncrement() {
+		IncrementImpl increment = new IncrementImpl();
+		return increment;
 	}
 
 	/**
@@ -406,9 +138,9 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 	 * @generated
 	 */
 	@Override
-	public Criterion createCriterion() {
-		CriterionImpl criterion = new CriterionImpl();
-		return criterion;
+	public Release createRelease() {
+		ReleaseImpl release = new ReleaseImpl();
+		return release;
 	}
 
 	/**
@@ -417,9 +149,9 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 	 * @generated
 	 */
 	@Override
-	public Comparison createComparison() {
-		ComparisonImpl comparison = new ComparisonImpl();
-		return comparison;
+	public Feature createFeature() {
+		FeatureImpl feature = new FeatureImpl();
+		return feature;
 	}
 
 	/**
@@ -428,9 +160,75 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 	 * @generated
 	 */
 	@Override
-	public Risk createRisk() {
-		RiskImpl risk = new RiskImpl();
-		return risk;
+	public Activity createActivity() {
+		ActivityImpl activity = new ActivityImpl();
+		return activity;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Journey createJourney() {
+		JourneyImpl journey = new JourneyImpl();
+		return journey;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Transition createTransition() {
+		TransitionImpl transition = new TransitionImpl();
+		return transition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Call createCall() {
+		CallImpl call = new CallImpl();
+		return call;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Issue createIssue() {
+		IssueImpl issue = new IssueImpl();
+		return issue;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Artifact createArtifact() {
+		ArtifactImpl artifact = new ArtifactImpl();
+		return artifact;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Directory createDirectory() {
+		DirectoryImpl directory = new DirectoryImpl();
+		return directory;
 	}
 
 	/**

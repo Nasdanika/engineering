@@ -1,0 +1,11 @@
+engineering-organization:
+   name: Nasdanika
+   path: nasdanika
+   modules:
+     - core/root.yml
+     - html/root.yml
+     - engineering/root.yml
+
+   
+# TODO: to issues - model element appearance
+# TODO  Footer - sources  

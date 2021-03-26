@@ -6,16 +6,10 @@ import java.util.Date;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.nasdanika.ncore.ModelElement;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Increment</b></em>'.
  * <!-- end-user-doc -->
- *
- * <!-- begin-model-doc -->
- * A time period in which engineers are working on issues. 
- * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
@@ -30,15 +24,12 @@ import org.nasdanika.ncore.ModelElement;
  * @model
  * @generated
  */
-public interface Increment extends ModelElement {
+public interface Increment extends NamedElement {
 	/**
 	 * Returns the value of the '<em><b>Children</b></em>' containment reference list.
 	 * The list contents are of type {@link org.nasdanika.engineering.Increment}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Increments can be organized into a hierarchy. E.g. Year - Quarter - Month - Week.
-	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Children</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getIncrement_Children()
 	 * @model containment="true"
