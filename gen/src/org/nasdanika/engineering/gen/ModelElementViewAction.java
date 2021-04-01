@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.nasdanika.common.Context;
@@ -20,6 +21,7 @@ import org.nasdanika.common.persistence.Marked;
 import org.nasdanika.common.persistence.SourceResolver;
 import org.nasdanika.emf.EObjectAdaptable;
 import org.nasdanika.emf.EmfUtil;
+import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.ModelElement;
 import org.nasdanika.html.Fragment;
 import org.nasdanika.html.OrderedListType;
@@ -35,6 +37,7 @@ import org.nasdanika.html.app.impl.PathNavigationActionActivator;
 import org.nasdanika.html.app.viewparts.ListOfActionsViewPart;
 import org.nasdanika.html.bootstrap.BootstrapFactory;
 import org.nasdanika.html.bootstrap.Color;
+import org.nasdanika.html.bootstrap.Table;
 import org.nasdanika.html.emf.ViewAction;
 
 /**
@@ -84,15 +87,16 @@ public class ModelElementViewAction<T extends ModelElement> implements ViewActio
 	public Object generate(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
 		BootstrapFactory bootstrapFactory = viewGenerator.get(BootstrapFactory.class, BootstrapFactory.INSTANCE);
 		Fragment ret = bootstrapFactory.getHTMLFactory().fragment();
-		Object diagram = generateDiagram();
-		if (diagram != null) {
-			ret.content(diagram);
-		}
 		String id = target.getId();
 		if (!Util.isBlank(id)) {
 			Tag idAlert = bootstrapFactory.alert(Color.INFO, "ID: ", id);
 			bootstrapFactory.wrap(idAlert).text().monospace().toBootstrapElement()._float().right();
 			ret.content(idAlert);
+		}
+		ret.content(propertiesTable(viewGenerator, progressMonitor));
+		Object diagram = generateDiagram();
+		if (diagram != null) {
+			ret.content(diagram);
 		}
 		
 		String description = target.getDescription();
@@ -111,6 +115,7 @@ public class ModelElementViewAction<T extends ModelElement> implements ViewActio
 		return null;
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Action> getChildren() {
 		ArrayList<Action> children = new ArrayList<Action>();
@@ -137,8 +142,24 @@ public class ModelElementViewAction<T extends ModelElement> implements ViewActio
 				}
 			}
 		}
+
+		EClass targetClass = target.eClass();
+		for (EReference ref: targetClass.getEAllReferences()) {
+			if (isChildFeature(ref)) {
+				children.addAll(adaptToViewActionNonNullSorted((Collection<ModelElement>) target.eGet(ref)));
+			}
+		}
+		
+		children.addAll(target.getActions().stream().map(ModelElementViewAction::adaptToActionNonNull).collect(Collectors.toList()));		
+		
 		return children;
 	}
+	
+	
+	protected boolean isChildFeature(EReference ref) {
+		return ref.isContainment() && ref.isMany() && EngineeringPackage.Literals.MODEL_ELEMENT.isSuperTypeOf(ref.getEReferenceType());
+	}
+	
 
 	@Override
 	public boolean isDisabled() {
@@ -212,6 +233,13 @@ public class ModelElementViewAction<T extends ModelElement> implements ViewActio
 		ret.put(Context.BASE_URI_PROPERTY, relativeBaseUri);
 		return ret;
 	}
+	
+	protected Table	propertiesTable(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
+		BootstrapFactory bootstrapFactory = viewGenerator.getBootstrapFactory();
+		Table pTable = bootstrapFactory.table().bordered(); 
+		pTable.toHTMLElement().style().width("auto") ;
+		return pTable;
+	}	
 
 	@Override
 	public String getNotification() {
@@ -229,10 +257,17 @@ public class ModelElementViewAction<T extends ModelElement> implements ViewActio
 		if (cf == null) {
 			return null;
 		}
+		
+		EObject ec = target.eContainer();
+		
+		// not exactly valid approach - should use isChildFeature of the container view action, but need to "peel" proxy for that.
+		if (ec.eClass().getEAllReferences().stream().filter(this::isChildFeature).count() == 1) {
+			return null;
+		}		
+		
 		LabelImpl category = new LabelImpl();
 		category.setText(EmfUtil.getNasdanikaAnnotationDetail(cf, "label", Util.nameToLabel(cf.getName()))); 
 		category.setIcon(EmfUtil.getNasdanikaAnnotationDetail(cf, "icon"));
-		EObject ec = target.eContainer();
 		if (ec instanceof ModelElement) {
 			category.setId(((ModelElement) ec).getId() + "-" + cf.getName());
 		} else {
@@ -273,6 +308,16 @@ public class ModelElementViewAction<T extends ModelElement> implements ViewActio
 		if (ret == null) {
 			Marked marked = EObjectAdaptable.adaptTo(obj, Marked.class);
 			throw new ConfigurationException("ViewAction adapter not found for " + obj, marked);
+		}
+		
+		return ret;
+	}
+	
+	protected static Action adaptToActionNonNull(EObject obj) {
+		Action ret = EObjectAdaptable.adaptTo(obj, Action.class); 
+		if (ret == null) {
+			Marked marked = EObjectAdaptable.adaptTo(obj, Marked.class);
+			throw new ConfigurationException("Action adapter not found for " + obj, marked);
 		}
 		
 		return ret;

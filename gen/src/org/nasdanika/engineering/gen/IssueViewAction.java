@@ -1,17 +1,14 @@
 package org.nasdanika.engineering.gen;
 
-import java.util.List;
-
 import org.nasdanika.common.ProgressMonitor;
-import org.nasdanika.engineering.Engineer;
+import org.nasdanika.engineering.Issue;
 import org.nasdanika.html.Fragment;
-import org.nasdanika.html.app.Action;
 import org.nasdanika.html.app.ViewGenerator;
 import org.nasdanika.html.bootstrap.BootstrapFactory;
 
-public class EngineerViewAction<T extends Engineer> extends PersonaViewAction<T> {
+public class IssueViewAction extends NamedElementViewAction<Issue> {
 	
-	public EngineerViewAction(T value) {
+	protected IssueViewAction(Issue value) {
 		super(value);
 	}
 	

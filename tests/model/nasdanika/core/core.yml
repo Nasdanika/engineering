@@ -1,0 +1,23 @@
+engineering-product:
+   name: Core
+   path: core
+   modules:
+      - engineering-module:
+         name: Common
+         path: common
+         actions:
+            - app-action:
+               text: JavaDoc
+               role: navigation    
+               location: javadoc/index.html           
+      - engineering-module:
+         name: CLI
+         path: cli
+      - engineering-module:
+         name: EMF
+         path: emf
+         issues:
+            - engineering-issue:
+                name: Support of mutually exclusive features                
+         
+      - ${nasdanika/core}/exec/engineering/root.yml

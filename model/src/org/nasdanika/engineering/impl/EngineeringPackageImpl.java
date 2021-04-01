@@ -993,6 +993,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		activityEClass.getESuperTypes().add(this.getEngineeredElement());
 		journeyEClass.getESuperTypes().add(this.getActivity());
 		callEClass.getESuperTypes().add(this.getTransition());
+		issueEClass.getESuperTypes().add(this.getNamedElement());
 		artifactEClass.getESuperTypes().add(this.getEngineeredElement());
 		directoryEClass.getESuperTypes().add(this.getNamedElement());
 
@@ -1025,7 +1026,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		initEClass(organizationEClass, Organization.class, "Organization", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getOrganization_Engineers(), this.getEngineer(), null, "engineers", null, 0, -1, Organization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(moduleEClass, org.nasdanika.engineering.Module.class, "Module", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(moduleEClass, org.nasdanika.engineering.Module.class, "Module", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getModule_Modules(), this.getModule(), null, "modules", null, 0, -1, org.nasdanika.engineering.Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(productEClass, Product.class, "Product", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1132,6 +1133,12 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 			   "documentation-reference", "../doc/engineer.md"
 		   });
 		addAnnotation
+		  (getEngineer_Increments(),
+		   source,
+		   new String[] {
+			   "homogenous", "true"
+		   });
+		addAnnotation
 		  (moduleEClass,
 		   source,
 		   new String[] {
@@ -1146,6 +1153,12 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		   });
 		addAnnotation
 		  (getProduct_Activities(),
+		   source,
+		   new String[] {
+			   "homogenous", "true"
+		   });
+		addAnnotation
+		  (getIncrement_Children(),
 		   source,
 		   new String[] {
 			   "homogenous", "true"

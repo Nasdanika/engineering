@@ -230,6 +230,9 @@ public class EngineeringSwitch<T> extends Switch<T> {
 			case EngineeringPackage.ISSUE: {
 				Issue issue = (Issue)theEObject;
 				T result = caseIssue(issue);
+				if (result == null) result = caseNamedElement(issue);
+				if (result == null) result = caseModelElement(issue);
+				if (result == null) result = caseAdaptable(issue);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}

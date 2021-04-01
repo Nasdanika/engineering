@@ -10,6 +10,7 @@ Require-Bundle: org.junit,
  org.nasdanika.emf,
  org.nasdanika.engineering.gen,
  org.nasdanika.html.ecore,
- org.apache.commons.codec;bundle-version="1.13.0"
+ org.apache.commons.codec;bundle-version="1.13.0",
+ org.nasdanika.html.model.app;bundle-version="2021.4.0"
 Automatic-Module-Name: org.nasdanika.engineering.tests
 Export-Package: org.nasdanika.engineering.tests

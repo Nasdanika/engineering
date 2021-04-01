@@ -17,8 +17,7 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getModule()
- * @model abstract="true"
- *        annotation="urn:org.nasdanika documentation-reference='../doc/module.md'"
+ * @model annotation="urn:org.nasdanika documentation-reference='../doc/module.md'"
  * @generated
  */
 public interface Module extends EngineeredElement {

@@ -33,6 +33,7 @@ public interface Increment extends NamedElement {
 	 * @return the value of the '<em>Children</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getIncrement_Children()
 	 * @model containment="true"
+	 *        annotation="urn:org.nasdanika homogenous='true'"
 	 * @generated
 	 */
 	EList<Increment> getChildren();

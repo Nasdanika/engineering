@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
@@ -58,6 +59,7 @@ import org.nasdanika.html.ecore.EcoreViewActionStorableAdapterFactory;
 import org.nasdanika.html.ecore.GenModelResourceSet;
 import org.nasdanika.html.emf.ViewAction;
 import org.nasdanika.html.emf.ViewActionStorable;
+import org.nasdanika.html.model.app.AppPackage;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.DumperOptions.FlowStyle;
 import org.yaml.snakeyaml.Yaml;
@@ -83,27 +85,29 @@ public class TestModel {
 		ResourceSet resourceSet = new ResourceSetImpl();		
 		Resource.Factory.Registry resourceFactoryRegistry = new ResourceFactoryRegistryImpl();
 		resourceSet.getPackageRegistry().put(EngineeringPackage.eNS_URI, EngineeringPackage.eINSTANCE);
-		ObjectLoader modelLoader = new EObjectLoader(resourceSet);
-		ObjectLoader composedLoader = new ComposedLoader(modelLoader);
+		resourceSet.getPackageRegistry().put(AppPackage.eNS_URI, AppPackage.eINSTANCE);
+		ObjectLoader loader = new EObjectLoader(new ComposedLoader(), null, resourceSet);
 		
 		MutableContext context = Context.EMPTY_CONTEXT.fork();
 		String base = "tmp://base/engineering/";
 		context.put(Context.BASE_URI_PROPERTY, base);
+		
+		context.put("nasdanika/core", new File("..\\..\\core").toURI().toString());
 				
 		ProgressMonitor progressMonitor = new PrintStreamProgressMonitor();
 		context.register(DiagramGenerator.class, createDiagramGenerator(progressMonitor));//DiagramGenerator.createClient(new URL("http://localhost:8090/spring-exec/api/v1/exec/diagram/")));
 		
-		resourceFactoryRegistry.getExtensionToFactoryMap().put("yml", new YamlResourceFactory(composedLoader, context, progressMonitor));
+		resourceFactoryRegistry.getExtensionToFactoryMap().put("yml", new YamlResourceFactory(loader, context, progressMonitor));
 		resourceSet.setResourceFactoryRegistry(resourceFactoryRegistry);
 				
-		Object actionFactory = composedLoader.loadYaml(new File("model/site.yml"), progressMonitor);
+		Object actionFactory = loader.loadYaml(new File("model/nasdanika/site.yml"), progressMonitor);
 		Action root = Util.callSupplier(Util.<Action>asSupplierFactory(actionFactory).create(context), progressMonitor);
 		
 		// Registering adapter factories
 		resourceSet.getAdapterFactories().add(new EngineeringViewActionAdapterFactory(root, context));
 		
 		// Loading the root of the model and adapting to Action.		
-		URI uri = URI.createURI(new File("model/nasdanika.yml").toURI().toString());
+		URI uri = URI.createURI(new File("model/nasdanika/nasdanika.yml").toURI().toString());
 		
 		SourceResolver sourceResolver = marker -> {
 			if (marker != null && !Util.isBlank(marker.getLocation())) {
@@ -120,7 +124,7 @@ public class TestModel {
 		Action principal = org.adaptTo(ViewAction.class);	
 		root.getChildren().add(principal);
 		
-		writeAction(composedLoader, context, base, root, principal, root, progressMonitor);
+		writeAction(loader, context, base, root, principal, root, progressMonitor);
 	}
 	
 	private void writeAction(
@@ -214,7 +218,7 @@ public class TestModel {
 		resourceSet.getAdapterFactories().add(new EcoreViewActionStorableAdapterFactory(context, getEPackagePath));
 		
 		Map<String,String> bundleMap = new LinkedHashMap<>();
-		bundleMap.put("engineering", "org.nasdanika.engineering");
+		bundleMap.put("model", "org.nasdanika.engineering");
 
 		File modelDir = new File("target/models").getAbsoluteFile();
 		modelDir.mkdirs();
@@ -226,11 +230,14 @@ public class TestModel {
 		Map<URI,File> modelToDocMap = new LinkedHashMap<>();
 		
 		for (Entry<String, String> be: bundleMap.entrySet()) {					
-			File sourceDir = new File("../" + be.getKey());
+			File sourceDir = new File("..\\" + be.getKey());
 			File targetDir = new File(modelDir, be.getValue());
-			copy(new File(sourceDir, "model"), new File(targetDir, "model"), true);
-			modelToDocMap.put(URI.createFileURI(targetDir.getAbsolutePath() + "/model/" + be.getKey() + ".genmodel"), new File(modelDocDir, be.getKey() + ".yml"));
-			copy(new File(sourceDir, "doc"), new File(targetDir, "doc"), true);
+			copy(new File(sourceDir, "model"), new File(targetDir, "model"), true, (source, target) -> {
+				if (target.getName().endsWith(".genmodel")) {
+					modelToDocMap.put(URI.createFileURI(target.getAbsolutePath()), new File(modelDocDir, target.getName() + ".yml"));
+				}
+			});			
+			copy(new File(sourceDir, "doc"), new File(targetDir, "doc"), true, null);
 		}		
 		
 		// Loading resources to the resource set.
@@ -266,24 +273,27 @@ public class TestModel {
 		context.put(Context.BASE_URI_PROPERTY, base);
 		
 		ComposedLoader loader = new ComposedLoader();
-		Object actionFactory = loader.loadYaml(new File("model/doc-site.yml"), progressMonitor);
+		Object actionFactory = loader.loadYaml(new File("model\\nasdanika\\doc-site.yml"), progressMonitor);
 		Action action = Util.callSupplier(Util.<Action>asSupplierFactory(actionFactory).create(context), progressMonitor);
 		writeAction(loader, context, base, action, action.getNavigationChildren().get(0), action, progressMonitor);		
 		
 		System.out.println(diagramGenerator);
 	}
 	
-	public static void copy(File source, File target, boolean cleanTarget) throws IOException {
+	public static void copy(File source, File target, boolean cleanTarget, BiConsumer<File,File> listener) throws IOException {
 		if (cleanTarget && target.isDirectory()) {
 			delete(target.listFiles());
 		}
 		if (source.isDirectory()) {
 			target.mkdirs();
 			for (File sc: source.listFiles()) {
-				copy(sc, new File(target, sc.getName()), false);
+				copy(sc, new File(target, sc.getName()), false, listener);
 			}
 		} else if (source.isFile()) {
 			Files.copy(source.toPath(), target.toPath(), StandardCopyOption.REPLACE_EXISTING);			
+			if (listener != null) {
+				listener.accept(source, target);
+			}
 		}
 	}
 

@@ -72,6 +72,7 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 		switch (eClass.getClassifierID()) {
 			case EngineeringPackage.PERSONA: return createPersona();
 			case EngineeringPackage.ORGANIZATION: return createOrganization();
+			case EngineeringPackage.MODULE: return createModule();
 			case EngineeringPackage.PRODUCT: return createProduct();
 			case EngineeringPackage.INCREMENT: return createIncrement();
 			case EngineeringPackage.RELEASE: return createRelease();
@@ -108,6 +109,17 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 	public Organization createOrganization() {
 		OrganizationImpl organization = new OrganizationImpl();
 		return organization;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public org.nasdanika.engineering.Module createModule() {
+		ModuleImpl module = new ModuleImpl();
+		return module;
 	}
 
 	/**

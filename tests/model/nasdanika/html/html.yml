@@ -1,0 +1,50 @@
+engineering-product:
+   name: HTML
+   path: html
+   modules:
+      - engineering-module:
+         name: HTML
+         path: html
+      - engineering-module:
+         name: HTML Model
+         path: models/html
+      - engineering-module:
+         name: Bootstrap
+         path: bootstrap
+      - engineering-module:
+         name: Bootstrap Model
+         path: models/bootstrap
+      - engineering-module:
+         name: App
+         path: App
+      - engineering-module:
+         name: App Model
+         path: models/app
+      - engineering-module:
+         name: Components Model
+         path: models/components
+      - engineering-module:
+         name: jsTree
+         path: jstree
+      - engineering-module:
+         name: Knockout
+         path: knockout
+      - engineering-module:
+         name: FontAwesome
+         path: fontawesome
+      - engineering-module:
+         name: ECharts
+         path: echarts
+      - engineering-module:
+         name: EMF
+         path: emf
+      - engineering-module:
+         name: Ecore
+         path: ecore
+         issues:
+            - engineering-issue:
+                name: Application model as output in addition to YAML                
+            - engineering-issue:
+                name: Engineering model as output
+                description: EClass and EPackage are output as engineered elements. Issues, owner, and other things are loaded using Nasdanika engineering annotation pointing to a yaml file.                
+                

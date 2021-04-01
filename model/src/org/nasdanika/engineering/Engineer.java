@@ -58,6 +58,7 @@ public interface Engineer extends Persona {
 	 * @return the value of the '<em>Increments</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getEngineer_Increments()
 	 * @model containment="true"
+	 *        annotation="urn:org.nasdanika homogenous='true'"
 	 * @generated
 	 */
 	EList<Increment> getIncrements();

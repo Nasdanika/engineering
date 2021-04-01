@@ -2,12 +2,12 @@ app-action:
    children:
       - app-action:
          text: Sources
-         href: https://github.com/Nasdanika
+         location: https://github.com/Nasdanika
          icon: fab fa-github
          role: context
       - app-action:
          text: Contribute
-         href: ${base-uri}contributor-guide.html
+         location: ${base-uri}contributor-guide.html
          content:
             exec-styled-markdown:
                exec-resource: contributing.md

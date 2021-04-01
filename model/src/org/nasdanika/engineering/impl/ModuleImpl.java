@@ -28,7 +28,7 @@ import org.nasdanika.engineering.EngineeringPackage;
  *
  * @generated
  */
-public abstract class ModuleImpl extends EngineeredElementImpl implements org.nasdanika.engineering.Module {
+public class ModuleImpl extends EngineeredElementImpl implements org.nasdanika.engineering.Module {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

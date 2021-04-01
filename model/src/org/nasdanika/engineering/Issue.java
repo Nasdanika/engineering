@@ -4,8 +4,6 @@ package org.nasdanika.engineering;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Issue</b></em>'.
@@ -26,7 +24,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model annotation="urn:org.nasdanika documentation-reference='../doc/issue.md'"
  * @generated
  */
-public interface Issue extends EObject {
+public interface Issue extends NamedElement {
 	/**
 	 * Returns the value of the '<em><b>Children</b></em>' containment reference list.
 	 * The list contents are of type {@link org.nasdanika.engineering.Issue}.

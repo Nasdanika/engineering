@@ -1,0 +1,14 @@
+engineering-product:
+   name: Engineering
+   path: engineering
+   modules:
+      - engineering-module:
+         name: Model
+         path: model
+         issues:
+            - engineering-issue:
+                name: Validation of duplicate paths in containing collection and duplicate IDs                         
+      - engineering-module:
+         name: Gen
+         path: gen
+   

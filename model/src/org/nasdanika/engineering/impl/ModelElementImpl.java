@@ -108,21 +108,23 @@ public abstract class ModelElementImpl extends MinimalEObjectImpl.Container impl
 		EObject c = eContainer();
 		String cId = c instanceof ModelElement ? ((ModelElement) c).getId() : null;
 		if (!Util.isBlank(cId)) {
-			int idx = cId.indexOf("-");
-			if (idx != -1) {
-				ret.append(cId.substring(idx));
-			}
+			ret.append(cId);
 		}
-		String path = getPath();
-		if (Util.isBlank(path)) {
-			EReference eContainmentFeature = eContainmentFeature();
-			if (eContainer != null && eContainmentFeature != null && eContainmentFeature.isMany()) {
-				ret.append("-").append(((List<?>) eContainer.eGet(eContainmentFeature)).indexOf(this));
-			}
-		} else {
+		String path = getPath();		
+		EReference eContainmentFeature = eContainmentFeature();
+		if (c != null && eContainmentFeature != null) {
+			ret.append("-").append(eContainmentFeature().getName());
+			if (Util.isBlank(path)) {
+				if (eContainmentFeature.isMany()) {
+					ret.append("-").append(((List<?>) c.eGet(eContainmentFeature)).indexOf(this));
+				}
+			} 
+		}
+		if (!Util.isBlank(path)) {
 			if (ret.length() > 0) {
 				ret.append("-");
 			}
+
 			ret.append(path);
 		}
 		return ret.toString();

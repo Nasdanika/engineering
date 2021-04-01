@@ -1,0 +1,87 @@
+engineering-organization:
+   name: Nasdanika
+   path: nasdanika
+   modules:
+     - core/core.yml
+     - html/html.yml
+     - engineering/engineering.yml
+   increments:
+      - path: 2021
+        name: 2021
+        start: 1/1/2021
+        end: 12/31/2021
+        children:
+           - path: q1
+             name: Q1
+             start: 1/1/2021
+             end: 03/31/2021
+             children:
+               - path: jan
+                 name: Jan
+                 start: 1/1/2021
+                 end: 1/31/2021 
+               - path: feb
+                 name: Feb
+                 start: 2/1/2021
+                 end: 2/28/2021 
+               - path: mar
+                 name: Mar
+                 start: 3/1/2021
+                 end: 3/31/2021 
+           - path: q2
+             name: Q2
+             start: 4/1/2021
+             end: 6/30/2021
+             children:
+               - path: apr
+                 name: Apr
+                 start: 4/1/2021
+                 end: 6/30/2021 
+               - path: may
+                 name: May
+                 start: 5/1/2021
+                 end: 5/31/2021 
+               - path: jun
+                 name: Jun
+                 start: 6/1/2021
+                 end: 6/30/2021 
+           - path: q3
+             name: Q3
+             start: 7/1/2021
+             end: 9/30/2021
+             children:
+               - path: jul
+                 name: Jul
+                 start: 7/1/2021
+                 end: 7/31/2021 
+               - path: aug
+                 name: Aug
+                 start: 8/1/2021
+                 end: 8/31/2021 
+               - path: sep
+                 name: Sep
+                 start: 9/1/2021
+                 end: 9/30/2021 
+           - path: q4
+             name: Q4
+             start: 10/1/2021
+             end: 12/31/2021
+             children:
+               - path: oct
+                 name: Oct
+                 start: 10/1/2021
+                 end: 12/31/2021 
+               - path: nov
+                 name: Nov
+                 start: 11/1/2021
+                 end: 11/30/2021 
+               - path: dec
+                 name: Dec
+                 start: 12/1/2021
+                 end: 12/31/2021 
+      - path: 2022
+        name: 2022     
+
+   
+# TODO: to issues - model element appearance
+# TODO  Footer - sources  

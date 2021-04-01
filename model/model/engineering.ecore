@@ -63,7 +63,11 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="owns" upperBound="-1" eType="#//Module"
         changeable="false" derived="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="increments" upperBound="-1"
-        eType="#//Increment" containment="true"/>
+        eType="#//Increment" containment="true">
+      <eAnnotations source="urn:org.nasdanika">
+        <details key="homogenous" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="services" upperBound="-1"
         eType="#//Activity" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="personas" upperBound="-1"
@@ -73,7 +77,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="engineers" upperBound="-1"
         eType="#//Engineer" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Module" abstract="true" eSuperTypes="#//EngineeredElement">
+  <eClassifiers xsi:type="ecore:EClass" name="Module" eSuperTypes="#//EngineeredElement">
     <eAnnotations source="urn:org.nasdanika">
       <details key="documentation-reference" value="../doc/module.md"/>
     </eAnnotations>
@@ -101,7 +105,11 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Increment" eSuperTypes="#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
-        eType="#//Increment" containment="true"/>
+        eType="#//Increment" containment="true">
+      <eAnnotations source="urn:org.nasdanika">
+        <details key="homogenous" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="start" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="end" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
   </eClassifiers>
@@ -171,7 +179,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="response" upperBound="-1"
         eType="#//Artifact"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Issue">
+  <eClassifiers xsi:type="ecore:EClass" name="Issue" eSuperTypes="#//NamedElement">
     <eAnnotations source="urn:org.nasdanika">
       <details key="documentation-reference" value="../doc/issue.md"/>
     </eAnnotations>
