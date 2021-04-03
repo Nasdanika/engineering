@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.nasdanika.engineering.Activity;
 import org.nasdanika.engineering.Artifact;
 import org.nasdanika.engineering.Call;
+import org.nasdanika.engineering.Capability;
 import org.nasdanika.engineering.Directory;
 import org.nasdanika.engineering.EngineeringFactory;
 import org.nasdanika.engineering.EngineeringPackage;
@@ -20,6 +21,7 @@ import org.nasdanika.engineering.Feature;
 import org.nasdanika.engineering.Increment;
 import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.Journey;
+import org.nasdanika.engineering.Note;
 import org.nasdanika.engineering.Organization;
 import org.nasdanika.engineering.Persona;
 import org.nasdanika.engineering.Product;
@@ -70,18 +72,20 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
+			case EngineeringPackage.INCREMENT: return createIncrement();
+			case EngineeringPackage.ISSUE: return createIssue();
+			case EngineeringPackage.NOTE: return createNote();
 			case EngineeringPackage.PERSONA: return createPersona();
 			case EngineeringPackage.ORGANIZATION: return createOrganization();
 			case EngineeringPackage.MODULE: return createModule();
 			case EngineeringPackage.PRODUCT: return createProduct();
-			case EngineeringPackage.INCREMENT: return createIncrement();
+			case EngineeringPackage.CAPABILITY: return createCapability();
 			case EngineeringPackage.RELEASE: return createRelease();
 			case EngineeringPackage.FEATURE: return createFeature();
 			case EngineeringPackage.ACTIVITY: return createActivity();
 			case EngineeringPackage.JOURNEY: return createJourney();
 			case EngineeringPackage.TRANSITION: return createTransition();
 			case EngineeringPackage.CALL: return createCall();
-			case EngineeringPackage.ISSUE: return createIssue();
 			case EngineeringPackage.ARTIFACT: return createArtifact();
 			case EngineeringPackage.DIRECTORY: return createDirectory();
 			default:
@@ -131,6 +135,17 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 	public Product createProduct() {
 		ProductImpl product = new ProductImpl();
 		return product;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Capability createCapability() {
+		CapabilityImpl capability = new CapabilityImpl();
+		return capability;
 	}
 
 	/**
@@ -219,6 +234,17 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 	public Issue createIssue() {
 		IssueImpl issue = new IssueImpl();
 		return issue;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Note createNote() {
+		NoteImpl note = new NoteImpl();
+		return note;
 	}
 
 	/**

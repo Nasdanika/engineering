@@ -1,21 +1,26 @@
 package org.nasdanika.engineering.gen;
 
-import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.nasdanika.common.ProgressMonitor;
+import org.nasdanika.engineering.Capability;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.html.Fragment;
 import org.nasdanika.html.app.ViewGenerator;
 import org.nasdanika.html.bootstrap.BootstrapFactory;
 
-public class ModuleViewAction<T extends org.nasdanika.engineering.Module> extends EngineeredElementViewAction<T> {
+public class CapabilityViewAction<T extends Capability> extends NamedElementViewAction<T> {
 	
-	protected ModuleViewAction(T value) {
+	protected CapabilityViewAction(T value) {
 		super(value);
 	}
 	
 	@Override
 	public Object generate(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
 		BootstrapFactory bootstrapFactory = viewGenerator.getBootstrapFactory();
+		
+		// TODO - required by - list of actions, ...
+		
+		
 		Fragment ret = bootstrapFactory.getHTMLFactory().fragment(super.generate(viewGenerator, progressMonitor));
 		return ret;
 	}

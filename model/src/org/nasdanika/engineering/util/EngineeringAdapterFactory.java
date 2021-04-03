@@ -14,6 +14,7 @@ import org.nasdanika.common.Adaptable;
 import org.nasdanika.engineering.Activity;
 import org.nasdanika.engineering.Artifact;
 import org.nasdanika.engineering.Call;
+import org.nasdanika.engineering.Capability;
 import org.nasdanika.engineering.Directory;
 import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeredElement;
@@ -24,6 +25,7 @@ import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.Journey;
 import org.nasdanika.engineering.ModelElement;
 import org.nasdanika.engineering.NamedElement;
+import org.nasdanika.engineering.Note;
 import org.nasdanika.engineering.Organization;
 import org.nasdanika.engineering.Persona;
 import org.nasdanika.engineering.Product;
@@ -99,6 +101,18 @@ public class EngineeringAdapterFactory extends AdapterFactoryImpl {
 				return createNamedElementAdapter();
 			}
 			@Override
+			public Adapter caseIncrement(Increment object) {
+				return createIncrementAdapter();
+			}
+			@Override
+			public Adapter caseIssue(Issue object) {
+				return createIssueAdapter();
+			}
+			@Override
+			public Adapter caseNote(Note object) {
+				return createNoteAdapter();
+			}
+			@Override
 			public Adapter caseEngineeredElement(EngineeredElement object) {
 				return createEngineeredElementAdapter();
 			}
@@ -123,8 +137,8 @@ public class EngineeringAdapterFactory extends AdapterFactoryImpl {
 				return createProductAdapter();
 			}
 			@Override
-			public Adapter caseIncrement(Increment object) {
-				return createIncrementAdapter();
+			public Adapter caseCapability(Capability object) {
+				return createCapabilityAdapter();
 			}
 			@Override
 			public Adapter caseRelease(Release object) {
@@ -149,10 +163,6 @@ public class EngineeringAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseCall(Call object) {
 				return createCallAdapter();
-			}
-			@Override
-			public Adapter caseIssue(Issue object) {
-				return createIssueAdapter();
 			}
 			@Override
 			public Adapter caseArtifact(Artifact object) {
@@ -309,6 +319,20 @@ public class EngineeringAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.Capability <em>Capability</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.nasdanika.engineering.Capability
+	 * @generated
+	 */
+	public Adapter createCapabilityAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.Increment <em>Increment</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -417,6 +441,20 @@ public class EngineeringAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createIssueAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.Note <em>Note</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.nasdanika.engineering.Note
+	 * @generated
+	 */
+	public Adapter createNoteAdapter() {
 		return null;
 	}
 

@@ -248,7 +248,607 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getEngineeredElement()
 	 * @generated
 	 */
-	int ENGINEERED_ELEMENT = 3;
+	int ENGINEERED_ELEMENT = 6;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.PersonaImpl <em>Persona</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.PersonaImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getPersona()
+	 * @generated
+	 */
+	int PERSONA = 7;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.EngineerImpl <em>Engineer</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.EngineerImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getEngineer()
+	 * @generated
+	 */
+	int ENGINEER = 8;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.OrganizationImpl <em>Organization</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.OrganizationImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getOrganization()
+	 * @generated
+	 */
+	int ORGANIZATION = 9;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.ModuleImpl <em>Module</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.ModuleImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getModule()
+	 * @generated
+	 */
+	int MODULE = 10;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.ProductImpl <em>Product</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.ProductImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getProduct()
+	 * @generated
+	 */
+	int PRODUCT = 11;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.CapabilityImpl <em>Capability</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.CapabilityImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getCapability()
+	 * @generated
+	 */
+	int CAPABILITY = 12;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.IncrementImpl <em>Increment</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.IncrementImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getIncrement()
+	 * @generated
+	 */
+	int INCREMENT = 3;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INCREMENT__ID = NAMED_ELEMENT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INCREMENT__PATH = NAMED_ELEMENT__PATH;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INCREMENT__DESCRIPTION = NAMED_ELEMENT__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Actions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INCREMENT__ACTIONS = NAMED_ELEMENT__ACTIONS;
+
+	/**
+	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INCREMENT__RESOURCES = NAMED_ELEMENT__RESOURCES;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INCREMENT__NAME = NAMED_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INCREMENT__CHILDREN = NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Start</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INCREMENT__START = NAMED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>End</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INCREMENT__END = NAMED_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Issues</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INCREMENT__ISSUES = NAMED_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the '<em>Increment</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INCREMENT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
+	 * The number of operations of the '<em>Increment</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INCREMENT_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY__ID = NAMED_ELEMENT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY__PATH = NAMED_ELEMENT__PATH;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY__DESCRIPTION = NAMED_ELEMENT__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Actions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY__ACTIONS = NAMED_ELEMENT__ACTIONS;
+
+	/**
+	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY__RESOURCES = NAMED_ELEMENT__RESOURCES;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY__NAME = NAMED_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Required By</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY__REQUIRED_BY = NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Capability</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Capability</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.ReleaseImpl <em>Release</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.ReleaseImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getRelease()
+	 * @generated
+	 */
+	int RELEASE = 13;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.FeatureImpl <em>Feature</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.FeatureImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getFeature()
+	 * @generated
+	 */
+	int FEATURE = 14;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.ActivityImpl <em>Activity</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.ActivityImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getActivity()
+	 * @generated
+	 */
+	int ACTIVITY = 15;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.JourneyImpl <em>Journey</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.JourneyImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getJourney()
+	 * @generated
+	 */
+	int JOURNEY = 16;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.TransitionImpl <em>Transition</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.TransitionImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getTransition()
+	 * @generated
+	 */
+	int TRANSITION = 17;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.CallImpl <em>Call</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.CallImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getCall()
+	 * @generated
+	 */
+	int CALL = 18;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.IssueImpl <em>Issue</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.IssueImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getIssue()
+	 * @generated
+	 */
+	int ISSUE = 4;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE__ID = CAPABILITY__ID;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE__PATH = CAPABILITY__PATH;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE__DESCRIPTION = CAPABILITY__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Actions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE__ACTIONS = CAPABILITY__ACTIONS;
+
+	/**
+	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE__RESOURCES = CAPABILITY__RESOURCES;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE__NAME = CAPABILITY__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Required By</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE__REQUIRED_BY = CAPABILITY__REQUIRED_BY;
+
+	/**
+	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE__CHILDREN = CAPABILITY_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Assignee</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE__ASSIGNEE = CAPABILITY_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Requirements</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE__REQUIREMENTS = CAPABILITY_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Increment Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE__INCREMENT_ID = CAPABILITY_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Increment</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE__INCREMENT = CAPABILITY_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Contributes To</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE__CONTRIBUTES_TO = CAPABILITY_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>Status</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE__STATUS = CAPABILITY_FEATURE_COUNT + 6;
+
+	/**
+	 * The feature id for the '<em><b>Done</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE__DONE = CAPABILITY_FEATURE_COUNT + 7;
+
+	/**
+	 * The feature id for the '<em><b>Notes</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE__NOTES = CAPABILITY_FEATURE_COUNT + 8;
+
+	/**
+	 * The number of structural features of the '<em>Issue</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE_FEATURE_COUNT = CAPABILITY_FEATURE_COUNT + 9;
+
+	/**
+	 * The number of operations of the '<em>Issue</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE_OPERATION_COUNT = CAPABILITY_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.NoteImpl <em>Note</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.NoteImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getNote()
+	 * @generated
+	 */
+	int NOTE = 5;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NOTE__ID = MODEL_ELEMENT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NOTE__PATH = MODEL_ELEMENT__PATH;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NOTE__DESCRIPTION = MODEL_ELEMENT__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Actions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NOTE__ACTIONS = MODEL_ELEMENT__ACTIONS;
+
+	/**
+	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NOTE__RESOURCES = MODEL_ELEMENT__RESOURCES;
+
+	/**
+	 * The feature id for the '<em><b>Author</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NOTE__AUTHOR = MODEL_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Increment</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NOTE__INCREMENT = MODEL_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Date</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NOTE__DATE = MODEL_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Effort</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NOTE__EFFORT = MODEL_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the '<em>Note</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NOTE_FEATURE_COUNT = MODEL_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
+	 * The number of operations of the '<em>Note</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NOTE_OPERATION_COUNT = MODEL_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -341,16 +941,6 @@ public interface EngineeringPackage extends EPackage {
 	int ENGINEERED_ELEMENT_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.PersonaImpl <em>Persona</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.PersonaImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getPersona()
-	 * @generated
-	 */
-	int PERSONA = 4;
-
-	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -439,16 +1029,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int PERSONA_OPERATION_COUNT = ENGINEERED_ELEMENT_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.EngineerImpl <em>Engineer</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.EngineerImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getEngineer()
-	 * @generated
-	 */
-	int ENGINEER = 5;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -584,16 +1164,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int ENGINEER_OPERATION_COUNT = PERSONA_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.OrganizationImpl <em>Organization</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.OrganizationImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getOrganization()
-	 * @generated
-	 */
-	int ORGANIZATION = 6;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -740,16 +1310,6 @@ public interface EngineeringPackage extends EPackage {
 	int ORGANIZATION_OPERATION_COUNT = ENGINEER_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.ModuleImpl <em>Module</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.ModuleImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getModule()
-	 * @generated
-	 */
-	int MODULE = 7;
-
-	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -847,16 +1407,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int MODULE_OPERATION_COUNT = ENGINEERED_ELEMENT_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.ProductImpl <em>Product</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.ProductImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getProduct()
-	 * @generated
-	 */
-	int PRODUCT = 8;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -985,23 +1535,13 @@ public interface EngineeringPackage extends EPackage {
 	int PRODUCT_OPERATION_COUNT = MODULE_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.IncrementImpl <em>Increment</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.IncrementImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getIncrement()
-	 * @generated
-	 */
-	int INCREMENT = 9;
-
-	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INCREMENT__ID = NAMED_ELEMENT__ID;
+	int RELEASE__ID = CAPABILITY__ID;
 
 	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
@@ -1010,7 +1550,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INCREMENT__PATH = NAMED_ELEMENT__PATH;
+	int RELEASE__PATH = CAPABILITY__PATH;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -1019,7 +1559,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INCREMENT__DESCRIPTION = NAMED_ELEMENT__DESCRIPTION;
+	int RELEASE__DESCRIPTION = CAPABILITY__DESCRIPTION;
 
 	/**
 	 * The feature id for the '<em><b>Actions</b></em>' containment reference list.
@@ -1028,7 +1568,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INCREMENT__ACTIONS = NAMED_ELEMENT__ACTIONS;
+	int RELEASE__ACTIONS = CAPABILITY__ACTIONS;
 
 	/**
 	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
@@ -1037,7 +1577,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INCREMENT__RESOURCES = NAMED_ELEMENT__RESOURCES;
+	int RELEASE__RESOURCES = CAPABILITY__RESOURCES;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1046,62 +1586,16 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INCREMENT__NAME = NAMED_ELEMENT__NAME;
+	int RELEASE__NAME = CAPABILITY__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Required By</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INCREMENT__CHILDREN = NAMED_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Start</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INCREMENT__START = NAMED_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>End</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INCREMENT__END = NAMED_ELEMENT_FEATURE_COUNT + 2;
-
-	/**
-	 * The number of structural features of the '<em>Increment</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INCREMENT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 3;
-
-	/**
-	 * The number of operations of the '<em>Increment</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INCREMENT_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.ReleaseImpl <em>Release</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.ReleaseImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getRelease()
-	 * @generated
-	 */
-	int RELEASE = 10;
+	int RELEASE__REQUIRED_BY = CAPABILITY__REQUIRED_BY;
 
 	/**
 	 * The feature id for the '<em><b>Increment</b></em>' reference.
@@ -1110,7 +1604,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RELEASE__INCREMENT = 0;
+	int RELEASE__INCREMENT = CAPABILITY_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Release</em>' class.
@@ -1119,7 +1613,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RELEASE_FEATURE_COUNT = 1;
+	int RELEASE_FEATURE_COUNT = CAPABILITY_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Release</em>' class.
@@ -1128,17 +1622,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RELEASE_OPERATION_COUNT = 0;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.FeatureImpl <em>Feature</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.FeatureImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getFeature()
-	 * @generated
-	 */
-	int FEATURE = 11;
+	int RELEASE_OPERATION_COUNT = CAPABILITY_OPERATION_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1204,13 +1688,22 @@ public interface EngineeringPackage extends EPackage {
 	int FEATURE__RELEASE = NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Activities</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE__ACTIVITIES = NAMED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Feature</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FEATURE_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 1;
+	int FEATURE_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Feature</em>' class.
@@ -1220,16 +1713,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int FEATURE_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.ActivityImpl <em>Activity</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.ActivityImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getActivity()
-	 * @generated
-	 */
-	int ACTIVITY = 12;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1358,13 +1841,22 @@ public interface EngineeringPackage extends EPackage {
 	int ACTIVITY__CALLS = ENGINEERED_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
+	 * The feature id for the '<em><b>Features</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__FEATURES = ENGINEERED_ELEMENT_FEATURE_COUNT + 6;
+
+	/**
 	 * The number of structural features of the '<em>Activity</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY_FEATURE_COUNT = ENGINEERED_ELEMENT_FEATURE_COUNT + 6;
+	int ACTIVITY_FEATURE_COUNT = ENGINEERED_ELEMENT_FEATURE_COUNT + 7;
 
 	/**
 	 * The number of operations of the '<em>Activity</em>' class.
@@ -1374,16 +1866,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int ACTIVITY_OPERATION_COUNT = ENGINEERED_ELEMENT_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.JourneyImpl <em>Journey</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.JourneyImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getJourney()
-	 * @generated
-	 */
-	int JOURNEY = 13;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1512,6 +1994,15 @@ public interface EngineeringPackage extends EPackage {
 	int JOURNEY__CALLS = ACTIVITY__CALLS;
 
 	/**
+	 * The feature id for the '<em><b>Features</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY__FEATURES = ACTIVITY__FEATURES;
+
+	/**
 	 * The feature id for the '<em><b>Activities</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1546,16 +2037,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int JOURNEY_OPERATION_COUNT = ACTIVITY_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.TransitionImpl <em>Transition</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.TransitionImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getTransition()
-	 * @generated
-	 */
-	int TRANSITION = 14;
 
 	/**
 	 * The feature id for the '<em><b>Target</b></em>' reference.
@@ -1610,16 +2091,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int TRANSITION_OPERATION_COUNT = 0;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.CallImpl <em>Call</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.CallImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getCall()
-	 * @generated
-	 */
-	int CALL = 15;
 
 	/**
 	 * The feature id for the '<em><b>Target</b></em>' reference.
@@ -1685,133 +2156,6 @@ public interface EngineeringPackage extends EPackage {
 	int CALL_OPERATION_COUNT = TRANSITION_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.IssueImpl <em>Issue</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.IssueImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getIssue()
-	 * @generated
-	 */
-	int ISSUE = 16;
-
-	/**
-	 * The feature id for the '<em><b>Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ISSUE__ID = NAMED_ELEMENT__ID;
-
-	/**
-	 * The feature id for the '<em><b>Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ISSUE__PATH = NAMED_ELEMENT__PATH;
-
-	/**
-	 * The feature id for the '<em><b>Description</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ISSUE__DESCRIPTION = NAMED_ELEMENT__DESCRIPTION;
-
-	/**
-	 * The feature id for the '<em><b>Actions</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ISSUE__ACTIONS = NAMED_ELEMENT__ACTIONS;
-
-	/**
-	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ISSUE__RESOURCES = NAMED_ELEMENT__RESOURCES;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ISSUE__NAME = NAMED_ELEMENT__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ISSUE__CHILDREN = NAMED_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Assignee</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ISSUE__ASSIGNEE = NAMED_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Dependencies</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ISSUE__DEPENDENCIES = NAMED_ELEMENT_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Planned For</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ISSUE__PLANNED_FOR = NAMED_ELEMENT_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>Contributes To</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ISSUE__CONTRIBUTES_TO = NAMED_ELEMENT_FEATURE_COUNT + 4;
-
-	/**
-	 * The number of structural features of the '<em>Issue</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ISSUE_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 5;
-
-	/**
-	 * The number of operations of the '<em>Issue</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ISSUE_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.ArtifactImpl <em>Artifact</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1819,7 +2163,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getArtifact()
 	 * @generated
 	 */
-	int ARTIFACT = 17;
+	int ARTIFACT = 19;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1919,7 +2263,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getDirectory()
 	 * @generated
 	 */
-	int DIRECTORY = 18;
+	int DIRECTORY = 20;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2293,6 +2637,27 @@ public interface EngineeringPackage extends EPackage {
 	EReference getProduct_Activities();
 
 	/**
+	 * Returns the meta object for class '{@link org.nasdanika.engineering.Capability <em>Capability</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Capability</em>'.
+	 * @see org.nasdanika.engineering.Capability
+	 * @generated
+	 */
+	EClass getCapability();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.Capability#getRequiredBy <em>Required By</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Required By</em>'.
+	 * @see org.nasdanika.engineering.Capability#getRequiredBy()
+	 * @see #getCapability()
+	 * @generated
+	 */
+	EReference getCapability_RequiredBy();
+
+	/**
 	 * Returns the meta object for class '{@link org.nasdanika.engineering.Increment <em>Increment</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2336,6 +2701,17 @@ public interface EngineeringPackage extends EPackage {
 	EAttribute getIncrement_End();
 
 	/**
+	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.Increment#getIssues <em>Issues</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Issues</em>'.
+	 * @see org.nasdanika.engineering.Increment#getIssues()
+	 * @see #getIncrement()
+	 * @generated
+	 */
+	EReference getIncrement_Issues();
+
+	/**
 	 * Returns the meta object for class '{@link org.nasdanika.engineering.Release <em>Release</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2376,6 +2752,17 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getFeature_Release();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.Feature#getActivities <em>Activities</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Activities</em>'.
+	 * @see org.nasdanika.engineering.Feature#getActivities()
+	 * @see #getFeature()
+	 * @generated
+	 */
+	EReference getFeature_Activities();
 
 	/**
 	 * Returns the meta object for class '{@link org.nasdanika.engineering.Activity <em>Activity</em>}'.
@@ -2452,6 +2839,17 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getActivity_Calls();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.Activity#getFeatures <em>Features</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Features</em>'.
+	 * @see org.nasdanika.engineering.Activity#getFeatures()
+	 * @see #getActivity()
+	 * @generated
+	 */
+	EReference getActivity_Features();
 
 	/**
 	 * Returns the meta object for class '{@link org.nasdanika.engineering.Journey <em>Journey</em>}'.
@@ -2593,26 +2991,37 @@ public interface EngineeringPackage extends EPackage {
 	EReference getIssue_Assignee();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.Issue#getDependencies <em>Dependencies</em>}'.
+	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.Issue#getRequirements <em>Requirements</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Dependencies</em>'.
-	 * @see org.nasdanika.engineering.Issue#getDependencies()
+	 * @return the meta object for the reference list '<em>Requirements</em>'.
+	 * @see org.nasdanika.engineering.Issue#getRequirements()
 	 * @see #getIssue()
 	 * @generated
 	 */
-	EReference getIssue_Dependencies();
+	EReference getIssue_Requirements();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.nasdanika.engineering.Issue#getPlannedFor <em>Planned For</em>}'.
+	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Issue#getIncrementId <em>Increment Id</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Planned For</em>'.
-	 * @see org.nasdanika.engineering.Issue#getPlannedFor()
+	 * @return the meta object for the attribute '<em>Increment Id</em>'.
+	 * @see org.nasdanika.engineering.Issue#getIncrementId()
 	 * @see #getIssue()
 	 * @generated
 	 */
-	EReference getIssue_PlannedFor();
+	EAttribute getIssue_IncrementId();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.nasdanika.engineering.Issue#getIncrement <em>Increment</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Increment</em>'.
+	 * @see org.nasdanika.engineering.Issue#getIncrement()
+	 * @see #getIssue()
+	 * @generated
+	 */
+	EReference getIssue_Increment();
 
 	/**
 	 * Returns the meta object for the reference '{@link org.nasdanika.engineering.Issue#getContributesTo <em>Contributes To</em>}'.
@@ -2624,6 +3033,93 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getIssue_ContributesTo();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Issue#getStatus <em>Status</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Status</em>'.
+	 * @see org.nasdanika.engineering.Issue#getStatus()
+	 * @see #getIssue()
+	 * @generated
+	 */
+	EAttribute getIssue_Status();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Issue#isDone <em>Done</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Done</em>'.
+	 * @see org.nasdanika.engineering.Issue#isDone()
+	 * @see #getIssue()
+	 * @generated
+	 */
+	EAttribute getIssue_Done();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.nasdanika.engineering.Issue#getNotes <em>Notes</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Notes</em>'.
+	 * @see org.nasdanika.engineering.Issue#getNotes()
+	 * @see #getIssue()
+	 * @generated
+	 */
+	EReference getIssue_Notes();
+
+	/**
+	 * Returns the meta object for class '{@link org.nasdanika.engineering.Note <em>Note</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Note</em>'.
+	 * @see org.nasdanika.engineering.Note
+	 * @generated
+	 */
+	EClass getNote();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.nasdanika.engineering.Note#getAuthor <em>Author</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Author</em>'.
+	 * @see org.nasdanika.engineering.Note#getAuthor()
+	 * @see #getNote()
+	 * @generated
+	 */
+	EReference getNote_Author();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.nasdanika.engineering.Note#getIncrement <em>Increment</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Increment</em>'.
+	 * @see org.nasdanika.engineering.Note#getIncrement()
+	 * @see #getNote()
+	 * @generated
+	 */
+	EReference getNote_Increment();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Note#getDate <em>Date</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Date</em>'.
+	 * @see org.nasdanika.engineering.Note#getDate()
+	 * @see #getNote()
+	 * @generated
+	 */
+	EAttribute getNote_Date();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Note#getEffort <em>Effort</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Effort</em>'.
+	 * @see org.nasdanika.engineering.Note#getEffort()
+	 * @see #getNote()
+	 * @generated
+	 */
+	EAttribute getNote_Effort();
 
 	/**
 	 * Returns the meta object for class '{@link org.nasdanika.engineering.Artifact <em>Artifact</em>}'.
@@ -2914,6 +3410,24 @@ public interface EngineeringPackage extends EPackage {
 		EReference PRODUCT__ACTIVITIES = eINSTANCE.getProduct_Activities();
 
 		/**
+		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.CapabilityImpl <em>Capability</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.engineering.impl.CapabilityImpl
+		 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getCapability()
+		 * @generated
+		 */
+		EClass CAPABILITY = eINSTANCE.getCapability();
+
+		/**
+		 * The meta object literal for the '<em><b>Required By</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CAPABILITY__REQUIRED_BY = eINSTANCE.getCapability_RequiredBy();
+
+		/**
 		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.IncrementImpl <em>Increment</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2946,6 +3460,14 @@ public interface EngineeringPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute INCREMENT__END = eINSTANCE.getIncrement_End();
+
+		/**
+		 * The meta object literal for the '<em><b>Issues</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INCREMENT__ISSUES = eINSTANCE.getIncrement_Issues();
 
 		/**
 		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.ReleaseImpl <em>Release</em>}' class.
@@ -2982,6 +3504,14 @@ public interface EngineeringPackage extends EPackage {
 		 * @generated
 		 */
 		EReference FEATURE__RELEASE = eINSTANCE.getFeature_Release();
+
+		/**
+		 * The meta object literal for the '<em><b>Activities</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference FEATURE__ACTIVITIES = eINSTANCE.getFeature_Activities();
 
 		/**
 		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.ActivityImpl <em>Activity</em>}' class.
@@ -3040,6 +3570,14 @@ public interface EngineeringPackage extends EPackage {
 		 * @generated
 		 */
 		EReference ACTIVITY__CALLS = eINSTANCE.getActivity_Calls();
+
+		/**
+		 * The meta object literal for the '<em><b>Features</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ACTIVITY__FEATURES = eINSTANCE.getActivity_Features();
 
 		/**
 		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.JourneyImpl <em>Journey</em>}' class.
@@ -3154,20 +3692,28 @@ public interface EngineeringPackage extends EPackage {
 		EReference ISSUE__ASSIGNEE = eINSTANCE.getIssue_Assignee();
 
 		/**
-		 * The meta object literal for the '<em><b>Dependencies</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Requirements</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference ISSUE__DEPENDENCIES = eINSTANCE.getIssue_Dependencies();
+		EReference ISSUE__REQUIREMENTS = eINSTANCE.getIssue_Requirements();
 
 		/**
-		 * The meta object literal for the '<em><b>Planned For</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Increment Id</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference ISSUE__PLANNED_FOR = eINSTANCE.getIssue_PlannedFor();
+		EAttribute ISSUE__INCREMENT_ID = eINSTANCE.getIssue_IncrementId();
+
+		/**
+		 * The meta object literal for the '<em><b>Increment</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ISSUE__INCREMENT = eINSTANCE.getIssue_Increment();
 
 		/**
 		 * The meta object literal for the '<em><b>Contributes To</b></em>' reference feature.
@@ -3176,6 +3722,72 @@ public interface EngineeringPackage extends EPackage {
 		 * @generated
 		 */
 		EReference ISSUE__CONTRIBUTES_TO = eINSTANCE.getIssue_ContributesTo();
+
+		/**
+		 * The meta object literal for the '<em><b>Status</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ISSUE__STATUS = eINSTANCE.getIssue_Status();
+
+		/**
+		 * The meta object literal for the '<em><b>Done</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ISSUE__DONE = eINSTANCE.getIssue_Done();
+
+		/**
+		 * The meta object literal for the '<em><b>Notes</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ISSUE__NOTES = eINSTANCE.getIssue_Notes();
+
+		/**
+		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.NoteImpl <em>Note</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.engineering.impl.NoteImpl
+		 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getNote()
+		 * @generated
+		 */
+		EClass NOTE = eINSTANCE.getNote();
+
+		/**
+		 * The meta object literal for the '<em><b>Author</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference NOTE__AUTHOR = eINSTANCE.getNote_Author();
+
+		/**
+		 * The meta object literal for the '<em><b>Increment</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference NOTE__INCREMENT = eINSTANCE.getNote_Increment();
+
+		/**
+		 * The meta object literal for the '<em><b>Date</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute NOTE__DATE = eINSTANCE.getNote_Date();
+
+		/**
+		 * The meta object literal for the '<em><b>Effort</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute NOTE__EFFORT = eINSTANCE.getNote_Effort();
 
 		/**
 		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.ArtifactImpl <em>Artifact</em>}' class.

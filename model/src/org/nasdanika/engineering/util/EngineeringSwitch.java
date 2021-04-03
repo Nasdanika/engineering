@@ -12,6 +12,7 @@ import org.nasdanika.common.Adaptable;
 import org.nasdanika.engineering.Activity;
 import org.nasdanika.engineering.Artifact;
 import org.nasdanika.engineering.Call;
+import org.nasdanika.engineering.Capability;
 import org.nasdanika.engineering.Directory;
 import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeredElement;
@@ -22,6 +23,7 @@ import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.Journey;
 import org.nasdanika.engineering.ModelElement;
 import org.nasdanika.engineering.NamedElement;
+import org.nasdanika.engineering.Note;
 import org.nasdanika.engineering.Organization;
 import org.nasdanika.engineering.Persona;
 import org.nasdanika.engineering.Product;
@@ -106,6 +108,33 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case EngineeringPackage.INCREMENT: {
+				Increment increment = (Increment)theEObject;
+				T result = caseIncrement(increment);
+				if (result == null) result = caseNamedElement(increment);
+				if (result == null) result = caseModelElement(increment);
+				if (result == null) result = caseAdaptable(increment);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EngineeringPackage.ISSUE: {
+				Issue issue = (Issue)theEObject;
+				T result = caseIssue(issue);
+				if (result == null) result = caseCapability(issue);
+				if (result == null) result = caseNamedElement(issue);
+				if (result == null) result = caseModelElement(issue);
+				if (result == null) result = caseAdaptable(issue);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EngineeringPackage.NOTE: {
+				Note note = (Note)theEObject;
+				T result = caseNote(note);
+				if (result == null) result = caseModelElement(note);
+				if (result == null) result = caseAdaptable(note);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case EngineeringPackage.ENGINEERED_ELEMENT: {
 				EngineeredElement engineeredElement = (EngineeredElement)theEObject;
 				T result = caseEngineeredElement(engineeredElement);
@@ -169,18 +198,22 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case EngineeringPackage.INCREMENT: {
-				Increment increment = (Increment)theEObject;
-				T result = caseIncrement(increment);
-				if (result == null) result = caseNamedElement(increment);
-				if (result == null) result = caseModelElement(increment);
-				if (result == null) result = caseAdaptable(increment);
+			case EngineeringPackage.CAPABILITY: {
+				Capability capability = (Capability)theEObject;
+				T result = caseCapability(capability);
+				if (result == null) result = caseNamedElement(capability);
+				if (result == null) result = caseModelElement(capability);
+				if (result == null) result = caseAdaptable(capability);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case EngineeringPackage.RELEASE: {
 				Release release = (Release)theEObject;
 				T result = caseRelease(release);
+				if (result == null) result = caseCapability(release);
+				if (result == null) result = caseNamedElement(release);
+				if (result == null) result = caseModelElement(release);
+				if (result == null) result = caseAdaptable(release);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -224,15 +257,6 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				Call call = (Call)theEObject;
 				T result = caseCall(call);
 				if (result == null) result = caseTransition(call);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case EngineeringPackage.ISSUE: {
-				Issue issue = (Issue)theEObject;
-				T result = caseIssue(issue);
-				if (result == null) result = caseNamedElement(issue);
-				if (result == null) result = caseModelElement(issue);
-				if (result == null) result = caseAdaptable(issue);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -395,6 +419,21 @@ public class EngineeringSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Capability</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Capability</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseCapability(Capability object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Increment</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -511,6 +550,21 @@ public class EngineeringSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseIssue(Issue object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Note</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Note</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseNote(Note object) {
 		return null;
 	}
 

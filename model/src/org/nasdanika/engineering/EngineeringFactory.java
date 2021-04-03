@@ -58,6 +58,15 @@ public interface EngineeringFactory extends EFactory {
 	Product createProduct();
 
 	/**
+	 * Returns a new object of class '<em>Capability</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Capability</em>'.
+	 * @generated
+	 */
+	Capability createCapability();
+
+	/**
 	 * Returns a new object of class '<em>Increment</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -128,6 +137,15 @@ public interface EngineeringFactory extends EFactory {
 	 * @generated
 	 */
 	Issue createIssue();
+
+	/**
+	 * Returns a new object of class '<em>Note</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Note</em>'.
+	 * @generated
+	 */
+	Note createNote();
 
 	/**
 	 * Returns a new object of class '<em>Artifact</em>'.

@@ -2,8 +2,6 @@
  */
 package org.nasdanika.engineering;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Release</b></em>'.
@@ -20,7 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model annotation="urn:org.nasdanika documentation-reference='../doc/release.md'"
  * @generated
  */
-public interface Release extends EObject {
+public interface Release extends Capability {
 	/**
 	 * Returns the value of the '<em><b>Increment</b></em>' reference.
 	 * <!-- begin-user-doc -->

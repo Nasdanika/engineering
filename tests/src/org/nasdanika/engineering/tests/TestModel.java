@@ -21,6 +21,8 @@ import java.util.function.Function;
 import org.apache.commons.codec.binary.Hex;
 import org.eclipse.emf.codegen.ecore.genmodel.GenModel;
 import org.eclipse.emf.codegen.ecore.genmodel.GenPackage;
+import org.eclipse.emf.common.notify.Notifier;
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -38,6 +40,7 @@ import org.nasdanika.common.MutableContext;
 import org.nasdanika.common.PrintStreamProgressMonitor;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.common.Util;
+import org.nasdanika.common.persistence.ConfigurationException;
 import org.nasdanika.common.persistence.ObjectLoader;
 import org.nasdanika.common.persistence.SourceResolver;
 import org.nasdanika.common.resources.FileSystemContainer;
@@ -45,6 +48,7 @@ import org.nasdanika.emf.EObjectAdaptable;
 import org.nasdanika.emf.persistence.EObjectLoader;
 import org.nasdanika.emf.persistence.YamlResourceFactory;
 import org.nasdanika.engineering.EngineeringPackage;
+import org.nasdanika.engineering.ModelElement;
 import org.nasdanika.engineering.Organization;
 import org.nasdanika.engineering.gen.EngineeringViewActionAdapterFactory;
 import org.nasdanika.html.app.Action;
@@ -82,7 +86,25 @@ public class TestModel {
 	@Test
 	public void testSite() throws Exception {		
 		// Creating loader
-		ResourceSet resourceSet = new ResourceSetImpl();		
+		ResourceSet resourceSet = new ResourceSetImpl() {
+			
+			@Override
+			public EObject getEObject(URI uri, boolean loadOnDemand) {
+				// id is a special authority for finding by id.
+				if ("id".equals(uri.scheme())) {
+					TreeIterator<Notifier> cit = getAllContents();
+					while (cit.hasNext()) {
+						Notifier next = cit.next();
+						if (next instanceof ModelElement && uri.authority().equals(((ModelElement) next).getId())) {
+							return (EObject) next;
+						}						
+					}
+					throw new ConfigurationException("Object not found with id: " + uri.authority());
+				}
+				return super.getEObject(uri, loadOnDemand);
+			}
+			
+		};		
 		Resource.Factory.Registry resourceFactoryRegistry = new ResourceFactoryRegistryImpl();
 		resourceSet.getPackageRegistry().put(EngineeringPackage.eNS_URI, EngineeringPackage.eINSTANCE);
 		resourceSet.getPackageRegistry().put(AppPackage.eNS_URI, AppPackage.eINSTANCE);
@@ -119,6 +141,7 @@ public class TestModel {
 		context.register(SourceResolver.class, sourceResolver);
 		
 		Resource engineeringResource = resourceSet.getResource(uri, true);
+		EcoreUtil.resolveAll(resourceSet);
 		Organization org = (Organization) engineeringResource.getContents().get(0);
 		
 		Action principal = org.adaptTo(ViewAction.class);	

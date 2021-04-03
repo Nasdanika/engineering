@@ -7,9 +7,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.nasdanika.common.Context;
 import org.nasdanika.common.DefaultConverter;
 import org.nasdanika.common.MarkdownHelper;
@@ -18,6 +20,7 @@ import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.common.Util;
 import org.nasdanika.common.persistence.ConfigurationException;
 import org.nasdanika.common.persistence.Marked;
+import org.nasdanika.common.persistence.Marker;
 import org.nasdanika.common.persistence.SourceResolver;
 import org.nasdanika.emf.EObjectAdaptable;
 import org.nasdanika.emf.EmfUtil;
@@ -25,11 +28,11 @@ import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.ModelElement;
 import org.nasdanika.html.Fragment;
 import org.nasdanika.html.OrderedListType;
-import org.nasdanika.html.Tag;
 import org.nasdanika.html.app.Action;
 import org.nasdanika.html.app.ActionActivator;
 import org.nasdanika.html.app.Label;
 import org.nasdanika.html.app.NavigationActionActivator;
+import org.nasdanika.html.app.SectionStyle;
 import org.nasdanika.html.app.ViewGenerator;
 import org.nasdanika.html.app.impl.ActionImpl;
 import org.nasdanika.html.app.impl.LabelImpl;
@@ -37,6 +40,7 @@ import org.nasdanika.html.app.impl.PathNavigationActionActivator;
 import org.nasdanika.html.app.viewparts.ListOfActionsViewPart;
 import org.nasdanika.html.bootstrap.BootstrapFactory;
 import org.nasdanika.html.bootstrap.Color;
+import org.nasdanika.html.bootstrap.RowContainer.Row;
 import org.nasdanika.html.bootstrap.Table;
 import org.nasdanika.html.emf.ViewAction;
 
@@ -62,7 +66,6 @@ public class ModelElementViewAction<T extends ModelElement> implements ViewActio
 		if (eContainmentReference == null) {
 			return new PathNavigationActionActivator(this, contextUri, contextUri + "index.html", marked == null ? null : marked.getMarker());
 		}
-		
 		StringBuilder path = new StringBuilder(Util.camelToKebab(eContainmentReference.getName()));
 		if (eContainmentReference.isMany()) {
 			path.append("/");			
@@ -87,12 +90,6 @@ public class ModelElementViewAction<T extends ModelElement> implements ViewActio
 	public Object generate(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
 		BootstrapFactory bootstrapFactory = viewGenerator.get(BootstrapFactory.class, BootstrapFactory.INSTANCE);
 		Fragment ret = bootstrapFactory.getHTMLFactory().fragment();
-		String id = target.getId();
-		if (!Util.isBlank(id)) {
-			Tag idAlert = bootstrapFactory.alert(Color.INFO, "ID: ", id);
-			bootstrapFactory.wrap(idAlert).text().monospace().toBootstrapElement()._float().right();
-			ret.content(idAlert);
-		}
 		ret.content(propertiesTable(viewGenerator, progressMonitor));
 		Object diagram = generateDiagram();
 		if (diagram != null) {
@@ -154,12 +151,29 @@ public class ModelElementViewAction<T extends ModelElement> implements ViewActio
 		
 		return children;
 	}
-	
-	
+		
 	protected boolean isChildFeature(EReference ref) {
 		return ref.isContainment() && ref.isMany() && EngineeringPackage.Literals.MODEL_ELEMENT.isSuperTypeOf(ref.getEReferenceType());
 	}
-	
+
+	protected boolean isPropertyFeature(EStructuralFeature sf) {
+		if (sf instanceof EAttribute) {
+			if (sf == EngineeringPackage.Literals.MODEL_ELEMENT__DESCRIPTION) {
+				return false;
+			}
+			if (sf == EngineeringPackage.Literals.MODEL_ELEMENT__PATH) {
+				return false;
+			}
+			if (sf == EngineeringPackage.Literals.NAMED_ELEMENT__NAME) {
+				return false;
+			}
+			
+			return true;
+		}
+		
+		EReference ref = (EReference) sf;
+		return !ref.isContainment() && !ref.isMany() && EngineeringPackage.Literals.MODEL_ELEMENT.isSuperTypeOf(ref.getEReferenceType());
+	}
 
 	@Override
 	public boolean isDisabled() {
@@ -238,8 +252,38 @@ public class ModelElementViewAction<T extends ModelElement> implements ViewActio
 		BootstrapFactory bootstrapFactory = viewGenerator.getBootstrapFactory();
 		Table pTable = bootstrapFactory.table().bordered(); 
 		pTable.toHTMLElement().style().width("auto") ;
+		
+		Marker marker = getMarker(); // TODO - convert to something either relative or in the source system.
+		if (marker != null) {
+			Row locationRow = pTable.row(); 
+			locationRow.header("Location");
+			locationRow.cell(marker);			
+		}
+		
+		for (EStructuralFeature sf: target.eClass().getEAllStructuralFeatures()) {
+			if (isPropertyFeature(sf) && (sf.isDerived() || target.eIsSet(sf))) {
+				Object fv = target.eGet(sf);
+				if (fv == null || (fv instanceof String && Util.isBlank((String) fv))) {
+					continue;
+				}
+				Row fRow = pTable.row(); 
+				fRow.header(Util.nameToLabel(sf.getName()));
+				fRow.cell(featureValue(fv, viewGenerator, progressMonitor));
+			}
+		}		
+		
 		return pTable;
 	}	
+	
+	protected Object featureValue(Object value, ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
+		if (value instanceof EObject) {
+			Action va = EObjectAdaptable.adaptTo((EObject) value, ViewAction.class);
+			if (va != null) {
+				return viewGenerator.link(va);
+			}
+		}
+		return value;
+	}
 
 	@Override
 	public String getNotification() {
@@ -334,6 +378,16 @@ public class ModelElementViewAction<T extends ModelElement> implements ViewActio
 	@Override
 	public String toString() {
 		return super.toString() + " -> " + target;
-	}	
-		
+	}
+	
+	protected Marker getMarker() {
+		Marked marked = EObjectAdaptable.adaptTo(target, Marked.class);
+		return marked == null ? null : marked.getMarker();
+	}
+
+	@Override
+	public SectionStyle getSectionStyle() {
+		return SectionStyle.DEFAULT;
+	}
+	
 }

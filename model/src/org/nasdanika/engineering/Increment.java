@@ -18,6 +18,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.nasdanika.engineering.Increment#getChildren <em>Children</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Increment#getStart <em>Start</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Increment#getEnd <em>End</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.Increment#getIssues <em>Issues</em>}</li>
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getIncrement()
@@ -81,5 +82,20 @@ public interface Increment extends NamedElement {
 	 * @generated
 	 */
 	void setEnd(Date value);
+
+	/**
+	 * Returns the value of the '<em><b>Issues</b></em>' reference list.
+	 * The list contents are of type {@link org.nasdanika.engineering.Issue}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Issues scheduled to work on in this release.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Issues</em>' reference list.
+	 * @see org.nasdanika.engineering.EngineeringPackage#getIncrement_Issues()
+	 * @model derived="true"
+	 * @generated
+	 */
+	EList<Issue> getIssues();
 
 } // Increment

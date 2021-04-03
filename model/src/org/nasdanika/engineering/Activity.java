@@ -19,6 +19,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.nasdanika.engineering.Activity#getRequirements <em>Requirements</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Activity#getDeliverables <em>Deliverables</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Activity#getCalls <em>Calls</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.Activity#getFeatures <em>Features</em>}</li>
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getActivity()
@@ -135,5 +136,20 @@ public interface Activity extends EngineeredElement {
 	 * @generated
 	 */
 	EList<Call> getCalls();
+
+	/**
+	 * Returns the value of the '<em><b>Features</b></em>' reference list.
+	 * The list contents are of type {@link org.nasdanika.engineering.Feature}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Product features used by this activity.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Features</em>' reference list.
+	 * @see org.nasdanika.engineering.EngineeringPackage#getActivity_Features()
+	 * @model
+	 * @generated
+	 */
+	EList<Feature> getFeatures();
 
 } // Activity

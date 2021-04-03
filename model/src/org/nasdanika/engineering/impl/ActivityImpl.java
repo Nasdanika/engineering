@@ -17,6 +17,7 @@ import org.nasdanika.engineering.Activity;
 import org.nasdanika.engineering.Artifact;
 import org.nasdanika.engineering.Call;
 import org.nasdanika.engineering.EngineeringPackage;
+import org.nasdanika.engineering.Feature;
 import org.nasdanika.engineering.Persona;
 import org.nasdanika.engineering.Transition;
 
@@ -34,6 +35,7 @@ import org.nasdanika.engineering.Transition;
  *   <li>{@link org.nasdanika.engineering.impl.ActivityImpl#getRequirements <em>Requirements</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.ActivityImpl#getDeliverables <em>Deliverables</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.ActivityImpl#getCalls <em>Calls</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.ActivityImpl#getFeatures <em>Features</em>}</li>
  * </ul>
  *
  * @generated
@@ -166,6 +168,17 @@ public class ActivityImpl extends EngineeredElementImpl implements Activity {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public EList<Feature> getFeatures() {
+		return (EList<Feature>)eDynamicGet(EngineeringPackage.ACTIVITY__FEATURES, EngineeringPackage.Literals.ACTIVITY__FEATURES, true, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -198,6 +211,8 @@ public class ActivityImpl extends EngineeredElementImpl implements Activity {
 				return getDeliverables();
 			case EngineeringPackage.ACTIVITY__CALLS:
 				return getCalls();
+			case EngineeringPackage.ACTIVITY__FEATURES:
+				return getFeatures();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -233,6 +248,10 @@ public class ActivityImpl extends EngineeredElementImpl implements Activity {
 				getCalls().clear();
 				getCalls().addAll((Collection<? extends Call>)newValue);
 				return;
+			case EngineeringPackage.ACTIVITY__FEATURES:
+				getFeatures().clear();
+				getFeatures().addAll((Collection<? extends Feature>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -263,6 +282,9 @@ public class ActivityImpl extends EngineeredElementImpl implements Activity {
 			case EngineeringPackage.ACTIVITY__CALLS:
 				getCalls().clear();
 				return;
+			case EngineeringPackage.ACTIVITY__FEATURES:
+				getFeatures().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -287,6 +309,8 @@ public class ActivityImpl extends EngineeredElementImpl implements Activity {
 				return !getDeliverables().isEmpty();
 			case EngineeringPackage.ACTIVITY__CALLS:
 				return !getCalls().isEmpty();
+			case EngineeringPackage.ACTIVITY__FEATURES:
+				return !getFeatures().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

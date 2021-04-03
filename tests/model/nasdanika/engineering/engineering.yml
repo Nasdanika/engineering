@@ -6,9 +6,11 @@ engineering-product:
          name: Model
          path: model
          issues:
-            - engineering-issue:
-                name: Validation of duplicate paths in containing collection and duplicate IDs                         
+            - name: Validation of duplicate paths in containing collection and duplicate IDs                         
       - engineering-module:
          name: Gen
          path: gen
+   issues:
+     - name: Issue diagram
+       description: State diagram showing nesting, dependencies, completion status - light green, workability status - gray if not workable. Clickable.         
    

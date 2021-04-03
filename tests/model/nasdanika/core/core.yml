@@ -17,7 +17,5 @@ engineering-product:
          name: EMF
          path: emf
          issues:
-            - engineering-issue:
-                name: Support of mutually exclusive features                
-         
+            - name: Support of mutually exclusive features                         
       - ${nasdanika/core}/exec/engineering/root.yml

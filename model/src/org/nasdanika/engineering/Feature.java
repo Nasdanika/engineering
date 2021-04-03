@@ -2,6 +2,8 @@
  */
 package org.nasdanika.engineering;
 
+import org.eclipse.emf.common.util.EList;
+
 
 /**
  * <!-- begin-user-doc -->
@@ -13,6 +15,7 @@ package org.nasdanika.engineering;
  * </p>
  * <ul>
  *   <li>{@link org.nasdanika.engineering.Feature#getRelease <em>Release</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.Feature#getActivities <em>Activities</em>}</li>
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getFeature()
@@ -41,5 +44,20 @@ public interface Feature extends NamedElement {
 	 * @generated
 	 */
 	void setRelease(Release value);
+
+	/**
+	 * Returns the value of the '<em><b>Activities</b></em>' reference list.
+	 * The list contents are of type {@link org.nasdanika.engineering.Activity}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Activities using this feature.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Activities</em>' reference list.
+	 * @see org.nasdanika.engineering.EngineeringPackage#getFeature_Activities()
+	 * @model derived="true"
+	 * @generated
+	 */
+	EList<Activity> getActivities();
 
 } // Feature

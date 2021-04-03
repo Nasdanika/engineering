@@ -3,9 +3,6 @@
 package org.nasdanika.engineering.impl;
 
 import org.eclipse.emf.ecore.EClass;
-
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Increment;
 import org.nasdanika.engineering.Release;
@@ -23,7 +20,7 @@ import org.nasdanika.engineering.Release;
  *
  * @generated
  */
-public class ReleaseImpl extends MinimalEObjectImpl.Container implements Release {
+public class ReleaseImpl extends CapabilityImpl implements Release {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -41,16 +38,6 @@ public class ReleaseImpl extends MinimalEObjectImpl.Container implements Release
 	@Override
 	protected EClass eStaticClass() {
 		return EngineeringPackage.Literals.RELEASE;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected int eStaticFeatureCount() {
-		return 0;
 	}
 
 	/**

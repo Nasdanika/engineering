@@ -31,6 +31,7 @@ public interface EngineeredElement extends NamedElement {
 	 * @return the value of the '<em>Issues</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getEngineeredElement_Issues()
 	 * @model containment="true"
+	 *        annotation="urn:org.nasdanika homogenous='true'"
 	 * @generated
 	 */
 	EList<Issue> getIssues();
