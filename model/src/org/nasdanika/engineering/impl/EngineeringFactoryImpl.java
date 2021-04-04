@@ -20,6 +20,7 @@ import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Feature;
 import org.nasdanika.engineering.Increment;
 import org.nasdanika.engineering.Issue;
+import org.nasdanika.engineering.IssueCategory;
 import org.nasdanika.engineering.Journey;
 import org.nasdanika.engineering.Note;
 import org.nasdanika.engineering.Organization;
@@ -73,6 +74,7 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case EngineeringPackage.INCREMENT: return createIncrement();
+			case EngineeringPackage.ISSUE_CATEGORY: return createIssueCategory();
 			case EngineeringPackage.ISSUE: return createIssue();
 			case EngineeringPackage.NOTE: return createNote();
 			case EngineeringPackage.PERSONA: return createPersona();
@@ -157,6 +159,17 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 	public Increment createIncrement() {
 		IncrementImpl increment = new IncrementImpl();
 		return increment;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public IssueCategory createIssueCategory() {
+		IssueCategoryImpl issueCategory = new IssueCategoryImpl();
+		return issueCategory;
 	}
 
 	/**

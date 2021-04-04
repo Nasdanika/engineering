@@ -17,6 +17,8 @@ import org.nasdanika.engineering.Activity;
 import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Increment;
+import org.nasdanika.engineering.Issue;
+import org.nasdanika.engineering.IssueCategory;
 import org.nasdanika.engineering.Persona;
 
 /**
@@ -32,6 +34,8 @@ import org.nasdanika.engineering.Persona;
  *   <li>{@link org.nasdanika.engineering.impl.EngineerImpl#getIncrements <em>Increments</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineerImpl#getServices <em>Services</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineerImpl#getPersonas <em>Personas</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.EngineerImpl#getAssignments <em>Assignments</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.EngineerImpl#getIssueCategories <em>Issue Categories</em>}</li>
  * </ul>
  *
  * @generated
@@ -114,6 +118,48 @@ public abstract class EngineerImpl extends PersonaImpl implements Engineer {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public EList<Issue> getAssignments() {
+		return getReferrers(EngineeringPackage.Literals.ISSUE__ASSIGNEE);
+	}
+	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public EList<IssueCategory> getIssueCategories() {
+		return (EList<IssueCategory>)eDynamicGet(EngineeringPackage.ENGINEER__ISSUE_CATEGORIES, EngineeringPackage.Literals.ENGINEER__ISSUE_CATEGORIES, true, true);
+	}
+
+	@Override
+	public Engineer getOwner() {
+		Engineer owner = super.getOwner();		
+		return owner == null ? this : owner;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case EngineeringPackage.ENGINEER__ASSIGNMENTS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getAssignments()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -127,6 +173,10 @@ public abstract class EngineerImpl extends PersonaImpl implements Engineer {
 				return ((InternalEList<?>)getServices()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.ENGINEER__PERSONAS:
 				return ((InternalEList<?>)getPersonas()).basicRemove(otherEnd, msgs);
+			case EngineeringPackage.ENGINEER__ASSIGNMENTS:
+				return ((InternalEList<?>)getAssignments()).basicRemove(otherEnd, msgs);
+			case EngineeringPackage.ENGINEER__ISSUE_CATEGORIES:
+				return ((InternalEList<?>)getIssueCategories()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -149,6 +199,10 @@ public abstract class EngineerImpl extends PersonaImpl implements Engineer {
 				return getServices();
 			case EngineeringPackage.ENGINEER__PERSONAS:
 				return getPersonas();
+			case EngineeringPackage.ENGINEER__ASSIGNMENTS:
+				return getAssignments();
+			case EngineeringPackage.ENGINEER__ISSUE_CATEGORIES:
+				return getIssueCategories();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -178,6 +232,10 @@ public abstract class EngineerImpl extends PersonaImpl implements Engineer {
 				getPersonas().clear();
 				getPersonas().addAll((Collection<? extends Persona>)newValue);
 				return;
+			case EngineeringPackage.ENGINEER__ISSUE_CATEGORIES:
+				getIssueCategories().clear();
+				getIssueCategories().addAll((Collection<? extends IssueCategory>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -202,6 +260,9 @@ public abstract class EngineerImpl extends PersonaImpl implements Engineer {
 			case EngineeringPackage.ENGINEER__PERSONAS:
 				getPersonas().clear();
 				return;
+			case EngineeringPackage.ENGINEER__ISSUE_CATEGORIES:
+				getIssueCategories().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -224,6 +285,10 @@ public abstract class EngineerImpl extends PersonaImpl implements Engineer {
 				return !getServices().isEmpty();
 			case EngineeringPackage.ENGINEER__PERSONAS:
 				return !getPersonas().isEmpty();
+			case EngineeringPackage.ENGINEER__ASSIGNMENTS:
+				return !getAssignments().isEmpty();
+			case EngineeringPackage.ENGINEER__ISSUE_CATEGORIES:
+				return !getIssueCategories().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

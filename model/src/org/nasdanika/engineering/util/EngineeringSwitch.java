@@ -20,6 +20,7 @@ import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Feature;
 import org.nasdanika.engineering.Increment;
 import org.nasdanika.engineering.Issue;
+import org.nasdanika.engineering.IssueCategory;
 import org.nasdanika.engineering.Journey;
 import org.nasdanika.engineering.ModelElement;
 import org.nasdanika.engineering.NamedElement;
@@ -114,6 +115,15 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				if (result == null) result = caseNamedElement(increment);
 				if (result == null) result = caseModelElement(increment);
 				if (result == null) result = caseAdaptable(increment);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EngineeringPackage.ISSUE_CATEGORY: {
+				IssueCategory issueCategory = (IssueCategory)theEObject;
+				T result = caseIssueCategory(issueCategory);
+				if (result == null) result = caseNamedElement(issueCategory);
+				if (result == null) result = caseModelElement(issueCategory);
+				if (result == null) result = caseAdaptable(issueCategory);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -445,6 +455,21 @@ public class EngineeringSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseIncrement(Increment object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Issue Category</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Issue Category</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseIssueCategory(IssueCategory object) {
 		return null;
 	}
 

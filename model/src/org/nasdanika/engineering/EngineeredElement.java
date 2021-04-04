@@ -15,6 +15,7 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link org.nasdanika.engineering.EngineeredElement#getIssues <em>Issues</em>}</li>
  *   <li>{@link org.nasdanika.engineering.EngineeredElement#getOwner <em>Owner</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.EngineeredElement#getOwnerId <em>Owner Id</em>}</li>
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getEngineeredElement()
@@ -37,15 +38,36 @@ public interface EngineeredElement extends NamedElement {
 	EList<Issue> getIssues();
 
 	/**
-	 * Returns the value of the '<em><b>Owner</b></em>' reference list.
-	 * The list contents are of type {@link org.nasdanika.engineering.Engineer}.
+	 * Returns the value of the '<em><b>Owner</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owner</em>' reference list.
+	 * @return the value of the '<em>Owner</em>' reference.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getEngineeredElement_Owner()
-	 * @model
+	 * @model changeable="false" derived="true"
 	 * @generated
 	 */
-	EList<Engineer> getOwner();
+	Engineer getOwner();
+
+	/**
+	 * Returns the value of the '<em><b>Owner Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Owner Id</em>' attribute.
+	 * @see #setOwnerId(String)
+	 * @see org.nasdanika.engineering.EngineeringPackage#getEngineeredElement_OwnerId()
+	 * @model annotation="urn:org.nasdanika load-key='owner'"
+	 * @generated
+	 */
+	String getOwnerId();
+
+	/**
+	 * Sets the value of the '{@link org.nasdanika.engineering.EngineeredElement#getOwnerId <em>Owner Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Owner Id</em>' attribute.
+	 * @see #getOwnerId()
+	 * @generated
+	 */
+	void setOwnerId(String value);
 
 } // EngineeredElement

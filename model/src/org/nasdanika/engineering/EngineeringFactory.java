@@ -76,6 +76,15 @@ public interface EngineeringFactory extends EFactory {
 	Increment createIncrement();
 
 	/**
+	 * Returns a new object of class '<em>Issue Category</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Issue Category</em>'.
+	 * @generated
+	 */
+	IssueCategory createIssueCategory();
+
+	/**
 	 * Returns a new object of class '<em>Release</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -1,6 +1,5 @@
 package org.nasdanika.engineering.gen;
 
-import java.util.Date;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
@@ -16,10 +15,6 @@ import org.nasdanika.html.app.ViewGenerator;
 import org.nasdanika.html.app.impl.ActionImpl;
 import org.nasdanika.html.app.impl.PathNavigationActionActivator;
 import org.nasdanika.html.bootstrap.BootstrapFactory;
-import org.nasdanika.html.bootstrap.Color;
-import org.nasdanika.html.bootstrap.RowContainer.Row;
-import org.nasdanika.html.emf.ViewAction;
-import org.nasdanika.html.bootstrap.Table;
 
 public class IncrementViewAction extends NamedElementViewAction<Increment> {
 	
@@ -52,17 +47,22 @@ public class IncrementViewAction extends NamedElementViewAction<Increment> {
 				
 				@Override
 				public Object generate(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) { 
-					BootstrapFactory bootstrapFactory = viewGenerator.getBootstrapFactory();
-					Table ret = bootstrapFactory.table().bordered();
-					ret.header().headerRow("Summary" /*, "Engineered Element", "Increment" */).color(Color.INFO); 
-					for (Issue issue: issues) {
-						Row issueRow = ret.body().row();
-						ViewAction issueAction = adaptToViewActionNonNull(issue); 
-						issueRow.cell(viewGenerator.link(issueAction)); 
-//						issueRow.cell("TODO");
-//						issueRow.cell(issue.getIn.getDescription());
-//						issueRow.cell(ListOfActions(input. getPayloadQ, null, true, false, 1));
-					}
+					Fragment ret = viewGenerator.getHTMLFactory().fragment();
+					
+					// TODO - summary
+					
+					ret.content(issuesTable(
+							issues, 
+							viewGenerator, 
+							progressMonitor, 
+							EngineeringPackage.Literals.NAMED_ELEMENT__NAME,
+							EngineeringPackage.Literals.ISSUE__STATUS,
+							EngineeringPackage.Literals.ISSUE__TARGET,
+							EngineeringPackage.Literals.ISSUE__CATEGORY,				
+							EngineeringPackage.Literals.ISSUE__ASSIGNEE,				
+							EngineeringPackage.Literals.ISSUE__EFFORT,
+							EngineeringPackage.Literals.ISSUE__BENEFIT));
+					
 					return ret;
 				};
 				

@@ -3,7 +3,14 @@ package org.nasdanika.engineering.gen;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.function.BiFunction;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import org.eclipse.emf.common.util.URI;
@@ -12,6 +19,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.nasdanika.common.Context;
 import org.nasdanika.common.DefaultConverter;
 import org.nasdanika.common.MarkdownHelper;
@@ -25,6 +33,8 @@ import org.nasdanika.common.persistence.SourceResolver;
 import org.nasdanika.emf.EObjectAdaptable;
 import org.nasdanika.emf.EmfUtil;
 import org.nasdanika.engineering.EngineeringPackage;
+import org.nasdanika.engineering.Increment;
+import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.ModelElement;
 import org.nasdanika.html.Fragment;
 import org.nasdanika.html.OrderedListType;
@@ -33,6 +43,7 @@ import org.nasdanika.html.app.ActionActivator;
 import org.nasdanika.html.app.Label;
 import org.nasdanika.html.app.NavigationActionActivator;
 import org.nasdanika.html.app.SectionStyle;
+import org.nasdanika.html.app.ViewBuilder;
 import org.nasdanika.html.app.ViewGenerator;
 import org.nasdanika.html.app.impl.ActionImpl;
 import org.nasdanika.html.app.impl.LabelImpl;
@@ -41,6 +52,7 @@ import org.nasdanika.html.app.viewparts.ListOfActionsViewPart;
 import org.nasdanika.html.bootstrap.BootstrapFactory;
 import org.nasdanika.html.bootstrap.Color;
 import org.nasdanika.html.bootstrap.RowContainer.Row;
+import org.nasdanika.html.bootstrap.RowContainer.Row.Cell;
 import org.nasdanika.html.bootstrap.Table;
 import org.nasdanika.html.emf.ViewAction;
 
@@ -389,5 +401,224 @@ public class ModelElementViewAction<T extends ModelElement> implements ViewActio
 	public SectionStyle getSectionStyle() {
 		return SectionStyle.DEFAULT;
 	}
+	
+	public static <K, V extends EObject> Map<K, List<V>> groupBy(Collection<V> elements, EStructuralFeature keyFeature) {
+		Map<K, List<V>> ret = new LinkedHashMap<>();
+		for (V e: elements) {
+			@SuppressWarnings("unchecked")
+			K k = (K) e.eGet(keyFeature);
+			ret.computeIfAbsent(k, key -> new ArrayList<>()).add(e);
+		}
+		return ret;
+	}
+	
+	protected static final Comparator<Increment> INCREMENT_COMPARATOR = (a,b) -> {
+		if (a == b) {
+			return 0;
+		}
+		
+		if (a == null) {
+			return 1;
+		}
+		
+		if (b == null) {
+			return -1;
+		}
+		
+		if (EcoreUtil.isAncestor(a, b)) {
+			return -1;
+		}
+		
+		if (EcoreUtil.isAncestor(b, a)) {
+			return 1;
+		}
+		
+		Date aStart = a.getStart();
+		Date bStart = b.getStart();
+		
+		if (aStart == bStart) {
+			return containmentPath(a).compareTo(containmentPath(b));
+		}
+
+		if (aStart == null) {
+			return 1;
+		}
+		
+		if (bStart == null) {
+			return -1;
+		}
+		
+		return aStart.before(bStart) ? -1 : 1;
+	};
+	
+	protected static String containmentPath(EObject obj) {
+		if (obj == null) {
+			return null;
+		}
+		EObject eContainer = obj.eContainer();
+		String cPath = containmentPath(eContainer);
+		if (cPath == null) {
+			return "";
+		}
+		EReference eContainmentFeature = obj.eContainmentFeature();
+		String ret = cPath + "/" +	eContainmentFeature.getName();
+		return eContainmentFeature.isMany() ? ret + (((List<?>) eContainer.eGet(eContainmentFeature)).indexOf(obj)) : ret;
+	}
+	
+	protected static <T extends EObject> Table table(
+			Collection<T> elements,
+			Function<T, ViewBuilder> rowBuilderProvider,
+			BiFunction<T, EStructuralFeature, ViewBuilder> cellBuilderProvider, 
+			ViewGenerator viewGenerator, 
+			ProgressMonitor progressMonitor,
+			EStructuralFeature... features) {
+		BootstrapFactory bootstrapFactory = viewGenerator.getBootstrapFactory();
+		Table ret = bootstrapFactory.table().bordered();
+		Row header = ret.header().row().color(Color.INFO);
+		for (EStructuralFeature feature: features) {
+			header.header(Util.nameToLabel(feature.getName()));
+		}
+		
+		for (T element: elements) {
+			Row row = ret.body().row();
+			for (EStructuralFeature feature: features) {
+				Cell cell = row.cell();
+				ViewBuilder cellBuilder = cellBuilderProvider == null ? null : cellBuilderProvider.apply(element, feature);
+				if (cellBuilder == null) {
+					Object value = element.eGet(feature);
+					if (value != null) {
+						if (value instanceof EObject) {
+							ViewAction va = EObjectAdaptable.adaptTo((EObject) value, ViewAction.class);
+							cell.toHTMLElement().content(va == null ? value : viewGenerator.link(va));
+						} else {
+							cell.toHTMLElement().content(value);							
+						}
+					}
+				} else {
+					cellBuilder.build(cell, viewGenerator, progressMonitor);
+				}
+			}
+			
+			if (rowBuilderProvider != null) {
+				ViewBuilder rowBuilder = rowBuilderProvider.apply(element);
+				if (rowBuilder != null) {
+					rowBuilder.build(row, viewGenerator, progressMonitor);
+				}
+			}
+		}
+		return ret;
+	}
+	
+	protected static Table issuesTable(
+			Collection<Issue> issues,
+			ViewGenerator viewGenerator, 
+			ProgressMonitor progressMonitor,
+			EStructuralFeature... features) {
+		
+		Function<Issue,ViewBuilder> rowBuilderProvider = issue -> new ViewBuilder() {
+
+			@Override
+			public void build(Object target, ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
+				if (issue.isDone()) {
+					((org.nasdanika.html.bootstrap.RowContainer.Row) target).color(Color.SUCCESS);
+				}									
+			}
+			
+		};
+		BiFunction<Issue, EStructuralFeature, ViewBuilder> cellBuilderProvider = (issue, feature) -> {
+			if (feature == EngineeringPackage.Literals.NAMED_ELEMENT__NAME) {
+				return (target, vg, pm) -> {
+					((org.nasdanika.html.bootstrap.RowContainer.Row.Cell) target).toHTMLElement().content(vg.link(adaptToViewActionNonNull(issue)));
+				};
+			}
+			return null;
+		};							
+		
+		return table(
+				issues, 
+				rowBuilderProvider, 
+				cellBuilderProvider, 
+				viewGenerator, 
+				progressMonitor, 
+				features);
+		
+	}
+
+	/**
+	 * If issues collection is not empty creates a section action with issues grouped into increments with 
+	 * specified features in the issue table. 
+	 * @param issues
+	 * @param features
+	 * @return
+	 */
+	protected Action issuesSection(Collection<Issue> issues, String text, String id, EStructuralFeature... features) {
+		if (issues.isEmpty()) {
+			return null;
+		}
+		
+		Map<Increment, List<Issue>> increments = groupBy(issues, EngineeringPackage.Literals.ISSUE__INCREMENT);
+		boolean backlogOnly = increments.size() == 1 && increments.keySet().iterator().next() == null;
+		
+		ActionImpl issuesSection = new ActionImpl() {
+			
+			@Override
+			public Object generate(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
+				Fragment ret = viewGenerator.getHTMLFactory().fragment();
+				
+				ret.content("TODO: summary table");
+				
+				if (backlogOnly) {
+					ret.content(issuesTable(
+							issues, 
+							viewGenerator, 
+							progressMonitor, 
+							features));
+				}
+				return ret;
+			};
+			
+			@Override
+			public List<Action> getChildren() {
+				return backlogOnly ? Collections.emptyList() : increments.keySet().stream().sorted(INCREMENT_COMPARATOR).map(i -> incrementAction(i, increments.get(i))).collect(Collectors.toList());
+			}
+			
+			private Action incrementAction(Increment increment, List<Issue> incrementIssues) {
+				ActionImpl incrementSection = new ActionImpl() {
+					
+					@Override
+					public Object generate(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
+						Fragment ret = viewGenerator.getHTMLFactory().fragment();
+						
+						// TODO - summary
+						
+						ret.content(issuesTable(
+								incrementIssues, 
+								viewGenerator, 
+								progressMonitor, 
+								features));
+						
+						return ret;
+					}
+					
+				};
+				
+				incrementSection.getRoles().add(Action.Role.SECTION); 
+				incrementSection.setText(increment == null ? "Backlog" : increment.getName()); 			
+				incrementSection.setActivator(new PathNavigationActionActivator(incrementSection, ((NavigationActionActivator) getActivator()).getUrl(null), "#" + id + "-" + (increment == null ? "backlog" : increment.getId() ), getMarker()));
+				return incrementSection; 					
+			}
+		};
+		
+		issuesSection.getRoles().add(Action.Role.SECTION); 
+		issuesSection.setSectionStyle(SectionStyle.DEFAULT);
+		issuesSection.setText(text); 			
+		issuesSection.setActivator(new PathNavigationActionActivator(issuesSection, ((NavigationActionActivator) getActivator()).getUrl(null), "#" + id, getMarker()));
+
+		return issuesSection;
+	}
+	
+	
+	// TODO - totals table, % completed - shared method for engineers, increments, releases, ... - in ModelElementView...
+	// Generic table - takes a list of EObjects, BiConsumer of element and table row, BiFunction of element and feature to extract value, and var-arg of str features 
 	
 }

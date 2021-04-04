@@ -4,15 +4,15 @@ import java.util.List;
 
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.engineering.EngineeringPackage;
-import org.nasdanika.engineering.Issue;
+import org.nasdanika.engineering.IssueCategory;
 import org.nasdanika.html.Fragment;
 import org.nasdanika.html.app.Action;
 import org.nasdanika.html.app.ViewGenerator;
 import org.nasdanika.html.bootstrap.BootstrapFactory;
 
-public class IssueViewAction extends CapabilityViewAction<Issue> {
-	
-	protected IssueViewAction(Issue value) {
+public class IssueCategoryViewAction extends NamedElementViewAction<IssueCategory> {
+		
+	public IssueCategoryViewAction(IssueCategory value) {
 		super(value);
 	}
 	
@@ -22,38 +22,27 @@ public class IssueViewAction extends CapabilityViewAction<Issue> {
 		Fragment ret = bootstrapFactory.getHTMLFactory().fragment(super.generate(viewGenerator, progressMonitor));
 		return ret;
 	}
-	
-	@Override
-	public boolean isInRole(String role) {
-		if (target.eContainmentFeature() == EngineeringPackage.Literals.ENGINEERED_ELEMENT__ISSUES) {
-			return false; // Anonymous actions - rendered in a table.
-		}
-		if (target.eContainmentFeature() == EngineeringPackage.Literals.ISSUE__CHILDREN) {
-			return false; // Anonymous actions - rendered in a table.
-		}
-		return super.isInRole(role);
-	}
-	
+		
 	@Override
 	public List<Action> getChildren() {
 		List<Action> children = super.getChildren();
 		
-		Action childrenSection = issuesSection(
-				target.getChildren(), 
-				"Children", 
-				"children", 
+		Action issuesSection = issuesSection(
+				target.getIssues(), 
+				"Issues", 
+				"Issues", 
 				EngineeringPackage.Literals.NAMED_ELEMENT__NAME,
 				EngineeringPackage.Literals.ISSUE__STATUS,
-				EngineeringPackage.Literals.ISSUE__CATEGORY,				
+				EngineeringPackage.Literals.ISSUE__TARGET,
 				EngineeringPackage.Literals.ISSUE__ASSIGNEE,				
 				EngineeringPackage.Literals.ISSUE__EFFORT,
 				EngineeringPackage.Literals.ISSUE__BENEFIT);
 		
-		if (childrenSection != null) {
-			children.add(childrenSection);
+		if (issuesSection != null) {
+			children.add(issuesSection);
 		}
 		
 		return children;
-	}	
+	}		
 
 }

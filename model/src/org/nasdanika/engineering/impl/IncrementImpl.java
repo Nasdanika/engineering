@@ -6,13 +6,9 @@ import java.util.Collection;
 import java.util.Date;
 
 import org.eclipse.emf.common.notify.NotificationChain;
-import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Increment;
@@ -128,24 +124,26 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public EList<Issue> getIssues() {
-		EList<Issue> ret = new BasicEList<>();
-		Resource res = eResource(); 
-		if (res != null) {
-			ResourceSet rSet = res.getResourceSet();
-			TreeIterator<?> cit = rSet == null ? res.getAllContents() : rSet. getAllContents();
-			while (cit.hasNext()) {
-				Object next = cit.next(); 
-				if (next instanceof Issue && ((Issue) next).getIncrement() == this) {
-					ret.add((Issue) next);
-				}
-			}
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case EngineeringPackage.INCREMENT__ISSUES:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getIssues()).basicAdd(otherEnd, msgs);
 		}
-		return ret;
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public EList<Issue> getIssues() {
+		return getReferrers(EngineeringPackage.Literals.ISSUE__INCREMENT);
 	}
 
 	/**
@@ -158,6 +156,8 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 		switch (featureID) {
 			case EngineeringPackage.INCREMENT__CHILDREN:
 				return ((InternalEList<?>)getChildren()).basicRemove(otherEnd, msgs);
+			case EngineeringPackage.INCREMENT__ISSUES:
+				return ((InternalEList<?>)getIssues()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -201,10 +201,6 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 			case EngineeringPackage.INCREMENT__END:
 				setEnd((Date)newValue);
 				return;
-			case EngineeringPackage.INCREMENT__ISSUES:
-				getIssues().clear();
-				getIssues().addAll((Collection<? extends Issue>)newValue);
-				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -225,9 +221,6 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 				return;
 			case EngineeringPackage.INCREMENT__END:
 				setEnd(END_EDEFAULT);
-				return;
-			case EngineeringPackage.INCREMENT__ISSUES:
-				getIssues().clear();
 				return;
 		}
 		super.eUnset(featureID);

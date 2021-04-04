@@ -1,9 +1,7 @@
 package org.nasdanika.engineering.gen;
 
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.engineering.Capability;
-import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.html.Fragment;
 import org.nasdanika.html.app.ViewGenerator;
 import org.nasdanika.html.bootstrap.BootstrapFactory;

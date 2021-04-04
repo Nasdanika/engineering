@@ -16,12 +16,16 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.nasdanika.engineering.Issue#getChildren <em>Children</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Issue#getAssignee <em>Assignee</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Issue#getRequirements <em>Requirements</em>}</li>
- *   <li>{@link org.nasdanika.engineering.Issue#getIncrementId <em>Increment Id</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Issue#getIncrement <em>Increment</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Issue#getContributesTo <em>Contributes To</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Issue#getStatus <em>Status</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Issue#isDone <em>Done</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Issue#getNotes <em>Notes</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.Issue#getAssigneeId <em>Assignee Id</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.Issue#getEffort <em>Effort</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.Issue#getBenefit <em>Benefit</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.Issue#getCategory <em>Category</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.Issue#getTarget <em>Target</em>}</li>
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getIssue()
@@ -44,25 +48,16 @@ public interface Issue extends Capability {
 
 	/**
 	 * Returns the value of the '<em><b>Assignee</b></em>' reference.
+	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Engineer#getAssignments <em>Assignments</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Assignee</em>' reference.
-	 * @see #setAssignee(Engineer)
 	 * @see org.nasdanika.engineering.EngineeringPackage#getIssue_Assignee()
-	 * @model
+	 * @see org.nasdanika.engineering.Engineer#getAssignments
+	 * @model opposite="assignments" changeable="false" derived="true"
 	 * @generated
 	 */
 	Engineer getAssignee();
-
-	/**
-	 * Sets the value of the '{@link org.nasdanika.engineering.Issue#getAssignee <em>Assignee</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Assignee</em>' reference.
-	 * @see #getAssignee()
-	 * @generated
-	 */
-	void setAssignee(Engineer value);
 
 	/**
 	 * Returns the value of the '<em><b>Requirements</b></em>' reference list.
@@ -82,35 +77,16 @@ public interface Issue extends Capability {
 	EList<Capability> getRequirements();
 
 	/**
-	 * Returns the value of the '<em><b>Increment Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Increment Id</em>' attribute.
-	 * @see #setIncrementId(String)
-	 * @see org.nasdanika.engineering.EngineeringPackage#getIssue_IncrementId()
-	 * @model annotation="urn:org.nasdanika load-key='increment_'"
-	 * @generated
-	 */
-	String getIncrementId();
-
-	/**
-	 * Sets the value of the '{@link org.nasdanika.engineering.Issue#getIncrementId <em>Increment Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Increment Id</em>' attribute.
-	 * @see #getIncrementId()
-	 * @generated
-	 */
-	void setIncrementId(String value);
-
-	/**
 	 * Returns the value of the '<em><b>Increment</b></em>' reference.
+	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Increment#getIssues <em>Issues</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Increment</em>' reference.
 	 * @see #setIncrement(Increment)
 	 * @see org.nasdanika.engineering.EngineeringPackage#getIssue_Increment()
-	 * @model annotation="urn:org.nasdanika homogenous='true'"
+	 * @see org.nasdanika.engineering.Increment#getIssues
+	 * @model opposite="issues"
+	 *        annotation="urn:org.nasdanika homogenous='true'"
 	 * @generated
 	 */
 	Increment getIncrement();
@@ -203,5 +179,107 @@ public interface Issue extends Capability {
 	 * @generated
 	 */
 	EList<Note> getNotes();
+
+	/**
+	 * Returns the value of the '<em><b>Assignee Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Assignee Id</em>' attribute.
+	 * @see #setAssigneeId(String)
+	 * @see org.nasdanika.engineering.EngineeringPackage#getIssue_AssigneeId()
+	 * @model annotation="urn:org.nasdanika load-key='assignee'"
+	 * @generated
+	 */
+	String getAssigneeId();
+
+	/**
+	 * Sets the value of the '{@link org.nasdanika.engineering.Issue#getAssigneeId <em>Assignee Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Assignee Id</em>' attribute.
+	 * @see #getAssigneeId()
+	 * @generated
+	 */
+	void setAssigneeId(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Effort</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Effort</em>' attribute.
+	 * @see #setEffort(double)
+	 * @see org.nasdanika.engineering.EngineeringPackage#getIssue_Effort()
+	 * @model
+	 * @generated
+	 */
+	double getEffort();
+
+	/**
+	 * Sets the value of the '{@link org.nasdanika.engineering.Issue#getEffort <em>Effort</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Effort</em>' attribute.
+	 * @see #getEffort()
+	 * @generated
+	 */
+	void setEffort(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Benefit</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Benefit</em>' attribute.
+	 * @see #setBenefit(double)
+	 * @see org.nasdanika.engineering.EngineeringPackage#getIssue_Benefit()
+	 * @model
+	 * @generated
+	 */
+	double getBenefit();
+
+	/**
+	 * Sets the value of the '{@link org.nasdanika.engineering.Issue#getBenefit <em>Benefit</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Benefit</em>' attribute.
+	 * @see #getBenefit()
+	 * @generated
+	 */
+	void setBenefit(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Category</b></em>' reference.
+	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.IssueCategory#getIssues <em>Issues</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Category</em>' reference.
+	 * @see #setCategory(IssueCategory)
+	 * @see org.nasdanika.engineering.EngineeringPackage#getIssue_Category()
+	 * @see org.nasdanika.engineering.IssueCategory#getIssues
+	 * @model opposite="issues"
+	 *        annotation="urn:org.nasdanika homogenous='true'"
+	 * @generated
+	 */
+	IssueCategory getCategory();
+
+	/**
+	 * Sets the value of the '{@link org.nasdanika.engineering.Issue#getCategory <em>Category</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Category</em>' reference.
+	 * @see #getCategory()
+	 * @generated
+	 */
+	void setCategory(IssueCategory value);
+
+	/**
+	 * Returns the value of the '<em><b>Target</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Target</em>' reference.
+	 * @see org.nasdanika.engineering.EngineeringPackage#getIssue_Target()
+	 * @model changeable="false" derived="true"
+	 * @generated
+	 */
+	EngineeredElement getTarget();
 
 } // Issue

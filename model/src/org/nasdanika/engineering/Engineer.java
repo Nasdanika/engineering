@@ -18,6 +18,8 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.nasdanika.engineering.Engineer#getIncrements <em>Increments</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Engineer#getServices <em>Services</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Engineer#getPersonas <em>Personas</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.Engineer#getAssignments <em>Assignments</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.Engineer#getIssueCategories <em>Issue Categories</em>}</li>
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getEngineer()
@@ -86,5 +88,32 @@ public interface Engineer extends Persona {
 	 * @generated
 	 */
 	EList<Persona> getPersonas();
+
+	/**
+	 * Returns the value of the '<em><b>Assignments</b></em>' reference list.
+	 * The list contents are of type {@link org.nasdanika.engineering.Issue}.
+	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Issue#getAssignee <em>Assignee</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Assignments</em>' reference list.
+	 * @see org.nasdanika.engineering.EngineeringPackage#getEngineer_Assignments()
+	 * @see org.nasdanika.engineering.Issue#getAssignee
+	 * @model opposite="assignee" changeable="false" derived="true"
+	 * @generated
+	 */
+	EList<Issue> getAssignments();
+
+	/**
+	 * Returns the value of the '<em><b>Issue Categories</b></em>' containment reference list.
+	 * The list contents are of type {@link org.nasdanika.engineering.IssueCategory}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Issue Categories</em>' containment reference list.
+	 * @see org.nasdanika.engineering.EngineeringPackage#getEngineer_IssueCategories()
+	 * @model containment="true"
+	 *        annotation="urn:org.nasdanika homogenous='true' strict-containment='true'"
+	 * @generated
+	 */
+	EList<IssueCategory> getIssueCategories();
 
 } // Engineer

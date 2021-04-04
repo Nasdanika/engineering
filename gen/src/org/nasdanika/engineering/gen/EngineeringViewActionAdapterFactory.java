@@ -8,6 +8,7 @@ import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Increment;
 import org.nasdanika.engineering.Issue;
+import org.nasdanika.engineering.IssueCategory;
 import org.nasdanika.engineering.Organization;
 import org.nasdanika.engineering.Persona;
 import org.nasdanika.engineering.Product;
@@ -78,6 +79,13 @@ public class EngineeringViewActionAdapterFactory extends ComposedAdapterFactory 
 				ViewAction.class, 
 				this.getClass().getClassLoader(), 
 				IncrementViewAction::new));					
+		
+		registerAdapterFactory(
+			new FunctionAdapterFactory<ViewAction, IssueCategory>(
+				EngineeringPackage.Literals.ISSUE_CATEGORY, 
+				ViewAction.class, 
+				this.getClass().getClassLoader(), 
+				IssueCategoryViewAction::new));					
 		
 	}
 

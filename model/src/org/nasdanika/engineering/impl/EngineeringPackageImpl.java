@@ -23,6 +23,7 @@ import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Feature;
 import org.nasdanika.engineering.Increment;
 import org.nasdanika.engineering.Issue;
+import org.nasdanika.engineering.IssueCategory;
 import org.nasdanika.engineering.Journey;
 import org.nasdanika.engineering.ModelElement;
 import org.nasdanika.engineering.NamedElement;
@@ -116,6 +117,13 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	private EClass incrementEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass issueCategoryEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -374,6 +382,16 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
+	public EAttribute getEngineeredElement_OwnerId() {
+		return (EAttribute)engineeredElementEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getPersona() {
 		return personaEClass;
 	}
@@ -436,6 +454,26 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	@Override
 	public EReference getEngineer_Personas() {
 		return (EReference)engineerEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getEngineer_Assignments() {
+		return (EReference)engineerEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getEngineer_IssueCategories() {
+		return (EReference)engineerEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -586,6 +624,36 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	@Override
 	public EReference getIncrement_Issues() {
 		return (EReference)incrementEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getIssueCategory() {
+		return issueCategoryEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getIssueCategory_Weight() {
+		return (EAttribute)issueCategoryEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getIssueCategory_Issues() {
+		return (EReference)issueCategoryEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -864,18 +932,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EAttribute getIssue_IncrementId() {
-		return (EAttribute)issueEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EReference getIssue_Increment() {
-		return (EReference)issueEClass.getEStructuralFeatures().get(4);
+		return (EReference)issueEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -885,7 +943,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 */
 	@Override
 	public EReference getIssue_ContributesTo() {
-		return (EReference)issueEClass.getEStructuralFeatures().get(5);
+		return (EReference)issueEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -895,7 +953,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 */
 	@Override
 	public EAttribute getIssue_Status() {
-		return (EAttribute)issueEClass.getEStructuralFeatures().get(6);
+		return (EAttribute)issueEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -905,7 +963,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 */
 	@Override
 	public EAttribute getIssue_Done() {
-		return (EAttribute)issueEClass.getEStructuralFeatures().get(7);
+		return (EAttribute)issueEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -915,7 +973,57 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 */
 	@Override
 	public EReference getIssue_Notes() {
-		return (EReference)issueEClass.getEStructuralFeatures().get(8);
+		return (EReference)issueEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getIssue_AssigneeId() {
+		return (EAttribute)issueEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getIssue_Effort() {
+		return (EAttribute)issueEClass.getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getIssue_Benefit() {
+		return (EAttribute)issueEClass.getEStructuralFeatures().get(10);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getIssue_Category() {
+		return (EReference)issueEClass.getEStructuralFeatures().get(11);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getIssue_Target() {
+		return (EReference)issueEClass.getEStructuralFeatures().get(12);
 	}
 
 	/**
@@ -1045,16 +1153,24 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		createEAttribute(incrementEClass, INCREMENT__END);
 		createEReference(incrementEClass, INCREMENT__ISSUES);
 
+		issueCategoryEClass = createEClass(ISSUE_CATEGORY);
+		createEAttribute(issueCategoryEClass, ISSUE_CATEGORY__WEIGHT);
+		createEReference(issueCategoryEClass, ISSUE_CATEGORY__ISSUES);
+
 		issueEClass = createEClass(ISSUE);
 		createEReference(issueEClass, ISSUE__CHILDREN);
 		createEReference(issueEClass, ISSUE__ASSIGNEE);
 		createEReference(issueEClass, ISSUE__REQUIREMENTS);
-		createEAttribute(issueEClass, ISSUE__INCREMENT_ID);
 		createEReference(issueEClass, ISSUE__INCREMENT);
 		createEReference(issueEClass, ISSUE__CONTRIBUTES_TO);
 		createEAttribute(issueEClass, ISSUE__STATUS);
 		createEAttribute(issueEClass, ISSUE__DONE);
 		createEReference(issueEClass, ISSUE__NOTES);
+		createEAttribute(issueEClass, ISSUE__ASSIGNEE_ID);
+		createEAttribute(issueEClass, ISSUE__EFFORT);
+		createEAttribute(issueEClass, ISSUE__BENEFIT);
+		createEReference(issueEClass, ISSUE__CATEGORY);
+		createEReference(issueEClass, ISSUE__TARGET);
 
 		noteEClass = createEClass(NOTE);
 		createEReference(noteEClass, NOTE__AUTHOR);
@@ -1065,6 +1181,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		engineeredElementEClass = createEClass(ENGINEERED_ELEMENT);
 		createEReference(engineeredElementEClass, ENGINEERED_ELEMENT__ISSUES);
 		createEReference(engineeredElementEClass, ENGINEERED_ELEMENT__OWNER);
+		createEAttribute(engineeredElementEClass, ENGINEERED_ELEMENT__OWNER_ID);
 
 		personaEClass = createEClass(PERSONA);
 
@@ -1074,6 +1191,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		createEReference(engineerEClass, ENGINEER__INCREMENTS);
 		createEReference(engineerEClass, ENGINEER__SERVICES);
 		createEReference(engineerEClass, ENGINEER__PERSONAS);
+		createEReference(engineerEClass, ENGINEER__ASSIGNMENTS);
+		createEReference(engineerEClass, ENGINEER__ISSUE_CATEGORIES);
 
 		organizationEClass = createEClass(ORGANIZATION);
 		createEReference(organizationEClass, ORGANIZATION__ENGINEERS);
@@ -1155,6 +1274,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		modelElementEClass.getESuperTypes().add(this.getAdaptable());
 		namedElementEClass.getESuperTypes().add(this.getModelElement());
 		incrementEClass.getESuperTypes().add(this.getNamedElement());
+		issueCategoryEClass.getESuperTypes().add(this.getNamedElement());
 		issueEClass.getESuperTypes().add(this.getCapability());
 		noteEClass.getESuperTypes().add(this.getModelElement());
 		engineeredElementEClass.getESuperTypes().add(this.getNamedElement());
@@ -1189,18 +1309,26 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		initEReference(getIncrement_Children(), this.getIncrement(), null, "children", null, 0, -1, Increment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getIncrement_Start(), ecorePackage.getEDate(), "start", null, 0, 1, Increment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getIncrement_End(), ecorePackage.getEDate(), "end", null, 0, 1, Increment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getIncrement_Issues(), this.getIssue(), null, "issues", null, 0, -1, Increment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getIncrement_Issues(), this.getIssue(), this.getIssue_Increment(), "issues", null, 0, -1, Increment.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+
+		initEClass(issueCategoryEClass, IssueCategory.class, "IssueCategory", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getIssueCategory_Weight(), ecorePackage.getEDouble(), "weight", null, 0, 1, IssueCategory.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getIssueCategory_Issues(), this.getIssue(), this.getIssue_Category(), "issues", null, 0, -1, IssueCategory.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEClass(issueEClass, Issue.class, "Issue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getIssue_Children(), this.getIssue(), null, "children", null, 0, -1, Issue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getIssue_Assignee(), this.getEngineer(), null, "assignee", null, 0, 1, Issue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getIssue_Assignee(), this.getEngineer(), this.getEngineer_Assignments(), "assignee", null, 0, 1, Issue.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getIssue_Requirements(), this.getCapability(), this.getCapability_RequiredBy(), "requirements", null, 0, -1, Issue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getIssue_IncrementId(), ecorePackage.getEString(), "incrementId", null, 0, 1, Issue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getIssue_Increment(), this.getIncrement(), null, "increment", null, 0, 1, Issue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getIssue_Increment(), this.getIncrement(), this.getIncrement_Issues(), "increment", null, 0, 1, Issue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getIssue_ContributesTo(), this.getFeature(), null, "contributesTo", null, 0, 1, Issue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getIssue_Status(), ecorePackage.getEString(), "status", null, 0, 1, Issue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getIssue_Done(), ecorePackage.getEBoolean(), "done", null, 0, 1, Issue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getIssue_Notes(), this.getNote(), null, "notes", null, 0, -1, Issue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getIssue_AssigneeId(), ecorePackage.getEString(), "assigneeId", null, 0, 1, Issue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getIssue_Effort(), ecorePackage.getEDouble(), "effort", null, 0, 1, Issue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getIssue_Benefit(), ecorePackage.getEDouble(), "benefit", null, 0, 1, Issue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getIssue_Category(), this.getIssueCategory(), this.getIssueCategory_Issues(), "category", null, 0, 1, Issue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getIssue_Target(), this.getEngineeredElement(), null, "target", null, 0, 1, Issue.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEClass(noteEClass, Note.class, "Note", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getNote_Author(), this.getEngineer(), null, "author", null, 0, 1, Note.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1210,7 +1338,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 
 		initEClass(engineeredElementEClass, EngineeredElement.class, "EngineeredElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEngineeredElement_Issues(), this.getIssue(), null, "issues", null, 0, -1, EngineeredElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getEngineeredElement_Owner(), this.getEngineer(), null, "owner", null, 0, -1, EngineeredElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEngineeredElement_Owner(), this.getEngineer(), null, "owner", null, 0, 1, EngineeredElement.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEngineeredElement_OwnerId(), ecorePackage.getEString(), "ownerId", null, 0, 1, EngineeredElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(personaEClass, Persona.class, "Persona", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -1220,6 +1349,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		initEReference(getEngineer_Increments(), this.getIncrement(), null, "increments", null, 0, -1, Engineer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEngineer_Services(), this.getActivity(), null, "services", null, 0, -1, Engineer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEngineer_Personas(), this.getPersona(), null, "personas", null, 0, -1, Engineer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEngineer_Assignments(), this.getIssue(), this.getIssue_Assignee(), "assignments", null, 0, -1, Engineer.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getEngineer_IssueCategories(), this.getIssueCategory(), null, "issueCategories", null, 0, -1, Engineer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(organizationEClass, Organization.class, "Organization", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getOrganization_Engineers(), this.getEngineer(), null, "engineers", null, 0, -1, Organization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1330,12 +1461,6 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 			   "homogenous", "true"
 		   });
 		addAnnotation
-		  (getIssue_IncrementId(),
-		   source,
-		   new String[] {
-			   "load-key", "increment_"
-		   });
-		addAnnotation
 		  (getIssue_Increment(),
 		   source,
 		   new String[] {
@@ -1347,6 +1472,18 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		   new String[] {
 			   "homogenous", "true",
 			   "strict-containment", "true"
+		   });
+		addAnnotation
+		  (getIssue_AssigneeId(),
+		   source,
+		   new String[] {
+			   "load-key", "assignee"
+		   });
+		addAnnotation
+		  (getIssue_Category(),
+		   source,
+		   new String[] {
+			   "homogenous", "true"
 		   });
 		addAnnotation
 		  (engineeredElementEClass,
@@ -1361,6 +1498,12 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 			   "homogenous", "true"
 		   });
 		addAnnotation
+		  (getEngineeredElement_OwnerId(),
+		   source,
+		   new String[] {
+			   "load-key", "owner"
+		   });
+		addAnnotation
 		  (engineerEClass,
 		   source,
 		   new String[] {
@@ -1371,6 +1514,13 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		   source,
 		   new String[] {
 			   "homogenous", "true"
+		   });
+		addAnnotation
+		  (getEngineer_IssueCategories(),
+		   source,
+		   new String[] {
+			   "homogenous", "true",
+			   "strict-containment", "true"
 		   });
 		addAnnotation
 		  (moduleEClass,
@@ -1477,7 +1627,13 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		  (getIncrement_Issues(),
 		   source,
 		   new String[] {
-			   "documentation", "Issues scheduled to work on in this release."
+			   "documentation", "Issues scheduled to work on in this increment"
+		   });
+		addAnnotation
+		  (getIssueCategory_Issues(),
+		   source,
+		   new String[] {
+			   "documentation", "Issues in the category."
 		   });
 		addAnnotation
 		  (getIssue_Requirements(),

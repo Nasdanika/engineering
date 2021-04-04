@@ -86,14 +86,16 @@ public interface Increment extends NamedElement {
 	/**
 	 * Returns the value of the '<em><b>Issues</b></em>' reference list.
 	 * The list contents are of type {@link org.nasdanika.engineering.Issue}.
+	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Issue#getIncrement <em>Increment</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Issues scheduled to work on in this release.
+	 * Issues scheduled to work on in this increment
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Issues</em>' reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getIncrement_Issues()
-	 * @model derived="true"
+	 * @see org.nasdanika.engineering.Issue#getIncrement
+	 * @model opposite="increment" changeable="false" derived="true"
 	 * @generated
 	 */
 	EList<Issue> getIssues();

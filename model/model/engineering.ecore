@@ -54,9 +54,18 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="start" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="end" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="issues" upperBound="-1"
-        eType="#//Issue" derived="true">
+        eType="#//Issue" changeable="false" derived="true" eOpposite="#//Issue/increment">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Issues scheduled to work on in this release."/>
+        <details key="documentation" value="Issues scheduled to work on in this increment"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IssueCategory" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="weight" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="issues" upperBound="-1"
+        eType="#//Issue" changeable="false" derived="true" eOpposite="#//Issue/category">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Issues in the category."/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
@@ -70,19 +79,16 @@
         <details key="homogenous" value="true"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="assignee" eType="#//Engineer"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="assignee" eType="#//Engineer"
+        changeable="false" derived="true" eOpposite="#//Engineer/assignments"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="requirements" upperBound="-1"
         eType="#//Capability" eOpposite="#//Capability/requiredBy">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Capabilities required to start working on an issue."/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="incrementId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
-      <eAnnotations source="urn:org.nasdanika">
-        <details key="load-key" value="increment_"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="increment" eType="#//Increment">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="increment" eType="#//Increment"
+        eOpposite="#//Increment/issues">
       <eAnnotations source="urn:org.nasdanika">
         <details key="homogenous" value="true"/>
       </eAnnotations>
@@ -97,6 +103,21 @@
         <details key="strict-containment" value="true"/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="assigneeId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="urn:org.nasdanika">
+        <details key="load-key" value="assignee"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="effort" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="benefit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="category" eType="#//IssueCategory"
+        eOpposite="#//IssueCategory/issues">
+      <eAnnotations source="urn:org.nasdanika">
+        <details key="homogenous" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//EngineeredElement"
+        changeable="false" derived="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Note" eSuperTypes="#//ModelElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="author" eType="#//Engineer"/>
@@ -114,8 +135,13 @@
         <details key="homogenous" value="true"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="owner" upperBound="-1"
-        eType="#//Engineer"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="owner" eType="#//Engineer"
+        changeable="false" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ownerId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="urn:org.nasdanika">
+        <details key="load-key" value="owner"/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Persona" eSuperTypes="#//EngineeredElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="Engineer" abstract="true" eSuperTypes="#//Persona">
@@ -136,6 +162,15 @@
         eType="#//Activity" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="personas" upperBound="-1"
         eType="#//Persona" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="assignments" upperBound="-1"
+        eType="#//Issue" changeable="false" derived="true" eOpposite="#//Issue/assignee"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="issueCategories" upperBound="-1"
+        eType="#//IssueCategory" containment="true">
+      <eAnnotations source="urn:org.nasdanika">
+        <details key="homogenous" value="true"/>
+        <details key="strict-containment" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Organization" eSuperTypes="#//Engineer">
     <eStructuralFeatures xsi:type="ecore:EReference" name="engineers" upperBound="-1"

@@ -7,13 +7,19 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.util.BasicInternalEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.nasdanika.common.Util;
+import org.nasdanika.common.persistence.ConfigurationException;
+import org.nasdanika.common.persistence.Marked;
 import org.nasdanika.emf.EObjectAdaptable;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.ModelElement;
@@ -95,7 +101,6 @@ public abstract class ModelElementImpl extends MinimalEObjectImpl.Container impl
 	protected int eStaticFeatureCount() {
 		return 0;
 	}
-
 	
 	/**
 	 * <!-- begin-user-doc -->
@@ -309,6 +314,52 @@ public abstract class ModelElementImpl extends MinimalEObjectImpl.Container impl
 	@Override
 	public <T> T adaptTo(Class<T> type) {
 		return EObjectAdaptable.adaptTo(this, type);
+	}
+	
+	protected <T extends ModelElement> EList<T> findById(Class<T> type, Collection<String> ids) {
+		EList<T> ret = new BasicInternalEList<>(type);
+		ids.stream().map(id -> findById(type, id)).forEach(ret::add);
+		return ret;
+	}
+	
+	@SuppressWarnings("unchecked")
+	protected <T extends ModelElement> T findById(Class<T> type, String id) {
+		Resource res = eResource(); 
+		if (res != null) {
+			ResourceSet rSet = res.getResourceSet();
+			TreeIterator<?> cit = rSet == null ? res.getAllContents() : rSet. getAllContents();
+			while (cit.hasNext()) {
+				Object next = cit.next(); 
+				if (type.isInstance(next) && id.equals(((T) next).getId())) {
+					return (T) next;
+				}
+			}
+		}
+		throw new ConfigurationException("Could not find " + type.getName() + " with id " + id, EObjectAdaptable.adaptTo(this, Marked.class));
+	}
+	
+	@SuppressWarnings("unchecked")
+	protected <T extends EObject> EList<T> getReferrers(EReference eReference) {
+		EList<T> ret = new BasicInternalEList<>(EObject.class);
+		Resource res = eResource(); 
+		if (res != null) {
+			ResourceSet rSet = res.getResourceSet();
+			TreeIterator<?> cit = rSet == null ? res.getAllContents() : rSet. getAllContents();
+			while (cit.hasNext()) {
+				Object next = cit.next(); 
+				if (eReference.getEContainingClass().isInstance(next)) {
+					Object value = ((EObject) next).eGet(eReference);
+					if (eReference.isMany()) {
+						if (((Collection<?>) value).contains(this)) {
+							ret.add((T) next);
+						}
+					} else if (value == this) {
+						ret.add((T) next);
+					}					
+				}
+			}
+		}
+		return ret;
 	}
 
 } //ModelElementImpl

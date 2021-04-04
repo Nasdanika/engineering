@@ -5,6 +5,11 @@ engineering-organization:
      - core/core.yml
      - html/html.yml
      - engineering/engineering.yml
+   issue-categories:
+      - path: test
+        name: Test Category
+        description: Blah
+        weight: 1
    increments:
       - path: 2021
         name: 2021

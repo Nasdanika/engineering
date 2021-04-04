@@ -1,8 +1,6 @@
 package org.nasdanika.engineering.gen;
 
-import org.eclipse.emf.ecore.EReference;
 import org.nasdanika.common.ProgressMonitor;
-import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.html.Fragment;
 import org.nasdanika.html.app.ViewGenerator;
 import org.nasdanika.html.bootstrap.BootstrapFactory;

@@ -7,14 +7,18 @@ import java.util.Collection;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.nasdanika.common.Util;
 import org.nasdanika.engineering.Capability;
 import org.nasdanika.engineering.Engineer;
+import org.nasdanika.engineering.EngineeredElement;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Feature;
 import org.nasdanika.engineering.Increment;
 import org.nasdanika.engineering.Issue;
+import org.nasdanika.engineering.IssueCategory;
 import org.nasdanika.engineering.Note;
 
 /**
@@ -28,26 +32,21 @@ import org.nasdanika.engineering.Note;
  *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getChildren <em>Children</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getAssignee <em>Assignee</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getRequirements <em>Requirements</em>}</li>
- *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getIncrementId <em>Increment Id</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getIncrement <em>Increment</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getContributesTo <em>Contributes To</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getStatus <em>Status</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#isDone <em>Done</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getNotes <em>Notes</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getAssigneeId <em>Assignee Id</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getEffort <em>Effort</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getBenefit <em>Benefit</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getCategory <em>Category</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getTarget <em>Target</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class IssueImpl extends CapabilityImpl implements Issue {
-	/**
-	 * The default value of the '{@link #getIncrementId() <em>Increment Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getIncrementId()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String INCREMENT_ID_EDEFAULT = null;
 	/**
 	 * The default value of the '{@link #getStatus() <em>Status</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -67,6 +66,36 @@ public class IssueImpl extends CapabilityImpl implements Issue {
 	 * @ordered
 	 */
 	protected static final boolean DONE_EDEFAULT = false;
+
+	/**
+	 * The default value of the '{@link #getAssigneeId() <em>Assignee Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAssigneeId()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String ASSIGNEE_ID_EDEFAULT = null;
+
+	/**
+	 * The default value of the '{@link #getEffort() <em>Effort</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEffort()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double EFFORT_EDEFAULT = 0.0;
+
+	/**
+	 * The default value of the '{@link #getBenefit() <em>Benefit</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBenefit()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double BENEFIT_EDEFAULT = 0.0;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -101,11 +130,29 @@ public class IssueImpl extends CapabilityImpl implements Issue {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public Engineer getAssignee() {
-		return (Engineer)eDynamicGet(EngineeringPackage.ISSUE__ASSIGNEE, EngineeringPackage.Literals.ISSUE__ASSIGNEE, true, true);
+		String assigneeId = getAssigneeId();
+		if (!Util.isBlank(assigneeId)) {
+			return findById(Engineer.class, assigneeId);
+		}
+
+		EObject ec = eContainer();
+		if (ec instanceof Issue) {
+			return ((Issue) ec).getAssignee();
+		}
+		
+		if (ec instanceof Engineer) {
+			return (Engineer) ec;
+		}
+		
+		if (ec instanceof EngineeredElement) {
+			return ((EngineeredElement) ec).getOwner();
+		}
+		
+		return null;
 	}
 
 	/**
@@ -122,9 +169,9 @@ public class IssueImpl extends CapabilityImpl implements Issue {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public void setAssignee(Engineer newAssignee) {
-		eDynamicSet(EngineeringPackage.ISSUE__ASSIGNEE, EngineeringPackage.Literals.ISSUE__ASSIGNEE, newAssignee);
+	public NotificationChain basicSetAssignee(Engineer newAssignee, NotificationChain msgs) {
+		msgs = eDynamicInverseAdd((InternalEObject)newAssignee, EngineeringPackage.ISSUE__ASSIGNEE, msgs);
+		return msgs;
 	}
 
 	/**
@@ -139,26 +186,6 @@ public class IssueImpl extends CapabilityImpl implements Issue {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String getIncrementId() {
-		return (String)eDynamicGet(EngineeringPackage.ISSUE__INCREMENT_ID, EngineeringPackage.Literals.ISSUE__INCREMENT_ID, true, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setIncrementId(String newIncrementId) {
-		eDynamicSet(EngineeringPackage.ISSUE__INCREMENT_ID, EngineeringPackage.Literals.ISSUE__INCREMENT_ID, newIncrementId);
-	}
-
-/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -200,6 +227,16 @@ public class IssueImpl extends CapabilityImpl implements Issue {
 	 */
 	public Increment basicGetIncrement() {
 		return (Increment)eDynamicGet(EngineeringPackage.ISSUE__INCREMENT, EngineeringPackage.Literals.ISSUE__INCREMENT, false, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetIncrement(Increment newIncrement, NotificationChain msgs) {
+		msgs = eDynamicInverseAdd((InternalEObject)newIncrement, EngineeringPackage.ISSUE__INCREMENT, msgs);
+		return msgs;
 	}
 
 	/**
@@ -297,12 +334,152 @@ public class IssueImpl extends CapabilityImpl implements Issue {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public String getAssigneeId() {
+		return (String)eDynamicGet(EngineeringPackage.ISSUE__ASSIGNEE_ID, EngineeringPackage.Literals.ISSUE__ASSIGNEE_ID, true, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setAssigneeId(String newAssigneeId) {
+		eDynamicSet(EngineeringPackage.ISSUE__ASSIGNEE_ID, EngineeringPackage.Literals.ISSUE__ASSIGNEE_ID, newAssigneeId);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public double getEffort() {
+		return (Double)eDynamicGet(EngineeringPackage.ISSUE__EFFORT, EngineeringPackage.Literals.ISSUE__EFFORT, true, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setEffort(double newEffort) {
+		eDynamicSet(EngineeringPackage.ISSUE__EFFORT, EngineeringPackage.Literals.ISSUE__EFFORT, newEffort);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public double getBenefit() {
+		return (Double)eDynamicGet(EngineeringPackage.ISSUE__BENEFIT, EngineeringPackage.Literals.ISSUE__BENEFIT, true, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setBenefit(double newBenefit) {
+		eDynamicSet(EngineeringPackage.ISSUE__BENEFIT, EngineeringPackage.Literals.ISSUE__BENEFIT, newBenefit);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public IssueCategory getCategory() {
+		return (IssueCategory)eDynamicGet(EngineeringPackage.ISSUE__CATEGORY, EngineeringPackage.Literals.ISSUE__CATEGORY, true, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public IssueCategory basicGetCategory() {
+		return (IssueCategory)eDynamicGet(EngineeringPackage.ISSUE__CATEGORY, EngineeringPackage.Literals.ISSUE__CATEGORY, false, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetCategory(IssueCategory newCategory, NotificationChain msgs) {
+		msgs = eDynamicInverseAdd((InternalEObject)newCategory, EngineeringPackage.ISSUE__CATEGORY, msgs);
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setCategory(IssueCategory newCategory) {
+		eDynamicSet(EngineeringPackage.ISSUE__CATEGORY, EngineeringPackage.Literals.ISSUE__CATEGORY, newCategory);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public EngineeredElement getTarget() {
+		EObject c = eContainer();
+		if (c instanceof EngineeredElement) {
+			return (EngineeredElement) c;
+		}
+		if (c instanceof Issue) {
+			return ((Issue) c).getTarget();
+		}
+		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EngineeredElement basicGetTarget() {
+		return (EngineeredElement)eDynamicGet(EngineeringPackage.ISSUE__TARGET, EngineeringPackage.Literals.ISSUE__TARGET, false, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+			case EngineeringPackage.ISSUE__ASSIGNEE:
+				Engineer assignee = basicGetAssignee();
+				if (assignee != null)
+					msgs = ((InternalEObject)assignee).eInverseRemove(this, EngineeringPackage.ENGINEER__ASSIGNMENTS, Engineer.class, msgs);
+				return basicSetAssignee((Engineer)otherEnd, msgs);
 			case EngineeringPackage.ISSUE__REQUIREMENTS:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getRequirements()).basicAdd(otherEnd, msgs);
+			case EngineeringPackage.ISSUE__INCREMENT:
+				Increment increment = basicGetIncrement();
+				if (increment != null)
+					msgs = ((InternalEObject)increment).eInverseRemove(this, EngineeringPackage.INCREMENT__ISSUES, Increment.class, msgs);
+				return basicSetIncrement((Increment)otherEnd, msgs);
+			case EngineeringPackage.ISSUE__CATEGORY:
+				IssueCategory category = basicGetCategory();
+				if (category != null)
+					msgs = ((InternalEObject)category).eInverseRemove(this, EngineeringPackage.ISSUE_CATEGORY__ISSUES, IssueCategory.class, msgs);
+				return basicSetCategory((IssueCategory)otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -317,10 +494,16 @@ public class IssueImpl extends CapabilityImpl implements Issue {
 		switch (featureID) {
 			case EngineeringPackage.ISSUE__CHILDREN:
 				return ((InternalEList<?>)getChildren()).basicRemove(otherEnd, msgs);
+			case EngineeringPackage.ISSUE__ASSIGNEE:
+				return basicSetAssignee(null, msgs);
 			case EngineeringPackage.ISSUE__REQUIREMENTS:
 				return ((InternalEList<?>)getRequirements()).basicRemove(otherEnd, msgs);
+			case EngineeringPackage.ISSUE__INCREMENT:
+				return basicSetIncrement(null, msgs);
 			case EngineeringPackage.ISSUE__NOTES:
 				return ((InternalEList<?>)getNotes()).basicRemove(otherEnd, msgs);
+			case EngineeringPackage.ISSUE__CATEGORY:
+				return basicSetCategory(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -340,8 +523,6 @@ public class IssueImpl extends CapabilityImpl implements Issue {
 				return basicGetAssignee();
 			case EngineeringPackage.ISSUE__REQUIREMENTS:
 				return getRequirements();
-			case EngineeringPackage.ISSUE__INCREMENT_ID:
-				return getIncrementId();
 			case EngineeringPackage.ISSUE__INCREMENT:
 				if (resolve) return getIncrement();
 				return basicGetIncrement();
@@ -354,6 +535,18 @@ public class IssueImpl extends CapabilityImpl implements Issue {
 				return isDone();
 			case EngineeringPackage.ISSUE__NOTES:
 				return getNotes();
+			case EngineeringPackage.ISSUE__ASSIGNEE_ID:
+				return getAssigneeId();
+			case EngineeringPackage.ISSUE__EFFORT:
+				return getEffort();
+			case EngineeringPackage.ISSUE__BENEFIT:
+				return getBenefit();
+			case EngineeringPackage.ISSUE__CATEGORY:
+				if (resolve) return getCategory();
+				return basicGetCategory();
+			case EngineeringPackage.ISSUE__TARGET:
+				if (resolve) return getTarget();
+				return basicGetTarget();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -371,15 +564,9 @@ public class IssueImpl extends CapabilityImpl implements Issue {
 				getChildren().clear();
 				getChildren().addAll((Collection<? extends Issue>)newValue);
 				return;
-			case EngineeringPackage.ISSUE__ASSIGNEE:
-				setAssignee((Engineer)newValue);
-				return;
 			case EngineeringPackage.ISSUE__REQUIREMENTS:
 				getRequirements().clear();
 				getRequirements().addAll((Collection<? extends Capability>)newValue);
-				return;
-			case EngineeringPackage.ISSUE__INCREMENT_ID:
-				setIncrementId((String)newValue);
 				return;
 			case EngineeringPackage.ISSUE__INCREMENT:
 				setIncrement((Increment)newValue);
@@ -397,6 +584,18 @@ public class IssueImpl extends CapabilityImpl implements Issue {
 				getNotes().clear();
 				getNotes().addAll((Collection<? extends Note>)newValue);
 				return;
+			case EngineeringPackage.ISSUE__ASSIGNEE_ID:
+				setAssigneeId((String)newValue);
+				return;
+			case EngineeringPackage.ISSUE__EFFORT:
+				setEffort((Double)newValue);
+				return;
+			case EngineeringPackage.ISSUE__BENEFIT:
+				setBenefit((Double)newValue);
+				return;
+			case EngineeringPackage.ISSUE__CATEGORY:
+				setCategory((IssueCategory)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -412,14 +611,8 @@ public class IssueImpl extends CapabilityImpl implements Issue {
 			case EngineeringPackage.ISSUE__CHILDREN:
 				getChildren().clear();
 				return;
-			case EngineeringPackage.ISSUE__ASSIGNEE:
-				setAssignee((Engineer)null);
-				return;
 			case EngineeringPackage.ISSUE__REQUIREMENTS:
 				getRequirements().clear();
-				return;
-			case EngineeringPackage.ISSUE__INCREMENT_ID:
-				setIncrementId(INCREMENT_ID_EDEFAULT);
 				return;
 			case EngineeringPackage.ISSUE__INCREMENT:
 				setIncrement((Increment)null);
@@ -435,6 +628,18 @@ public class IssueImpl extends CapabilityImpl implements Issue {
 				return;
 			case EngineeringPackage.ISSUE__NOTES:
 				getNotes().clear();
+				return;
+			case EngineeringPackage.ISSUE__ASSIGNEE_ID:
+				setAssigneeId(ASSIGNEE_ID_EDEFAULT);
+				return;
+			case EngineeringPackage.ISSUE__EFFORT:
+				setEffort(EFFORT_EDEFAULT);
+				return;
+			case EngineeringPackage.ISSUE__BENEFIT:
+				setBenefit(BENEFIT_EDEFAULT);
+				return;
+			case EngineeringPackage.ISSUE__CATEGORY:
+				setCategory((IssueCategory)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -454,8 +659,6 @@ public class IssueImpl extends CapabilityImpl implements Issue {
 				return basicGetAssignee() != null;
 			case EngineeringPackage.ISSUE__REQUIREMENTS:
 				return !getRequirements().isEmpty();
-			case EngineeringPackage.ISSUE__INCREMENT_ID:
-				return INCREMENT_ID_EDEFAULT == null ? getIncrementId() != null : !INCREMENT_ID_EDEFAULT.equals(getIncrementId());
 			case EngineeringPackage.ISSUE__INCREMENT:
 				return basicGetIncrement() != null;
 			case EngineeringPackage.ISSUE__CONTRIBUTES_TO:
@@ -466,6 +669,16 @@ public class IssueImpl extends CapabilityImpl implements Issue {
 				return isDone() != DONE_EDEFAULT;
 			case EngineeringPackage.ISSUE__NOTES:
 				return !getNotes().isEmpty();
+			case EngineeringPackage.ISSUE__ASSIGNEE_ID:
+				return ASSIGNEE_ID_EDEFAULT == null ? getAssigneeId() != null : !ASSIGNEE_ID_EDEFAULT.equals(getAssigneeId());
+			case EngineeringPackage.ISSUE__EFFORT:
+				return getEffort() != EFFORT_EDEFAULT;
+			case EngineeringPackage.ISSUE__BENEFIT:
+				return getBenefit() != BENEFIT_EDEFAULT;
+			case EngineeringPackage.ISSUE__CATEGORY:
+				return basicGetCategory() != null;
+			case EngineeringPackage.ISSUE__TARGET:
+				return basicGetTarget() != null;
 		}
 		return super.eIsSet(featureID);
 	}
