@@ -33,12 +33,6 @@ engineering-product:
          default behavior.
        increment: id://Increment-nasdanika-increments-2021-children-q2-children-apr
        effort: 3 
-     - name: Capability is concrete to allow proxying
-       description: |+2
-         References shall check if reference type is concrete for proxies instead of checking homogenous.
-         Capability and EngineeredCapability are concrete classes so proxies can be created.
-       increment: id://Increment-nasdanika-increments-2021-children-q2-children-apr
-       effort: 1 
      - name: Filterable and sortable table component - use KnockoutJs 
        description: |+2
          May start with a method in ModelElementViewAction. Then extract into a component which takes descriptors. 
