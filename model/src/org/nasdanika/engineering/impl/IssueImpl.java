@@ -39,6 +39,7 @@ import org.nasdanika.engineering.Note;
  *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getNotes <em>Notes</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getAssigneeId <em>Assignee Id</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getEffort <em>Effort</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getCost <em>Cost</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getBenefit <em>Benefit</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getCategory <em>Category</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getTarget <em>Target</em>}</li>
@@ -86,6 +87,16 @@ public class IssueImpl extends CapabilityImpl implements Issue {
 	 * @ordered
 	 */
 	protected static final double EFFORT_EDEFAULT = 0.0;
+
+	/**
+	 * The default value of the '{@link #getCost() <em>Cost</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCost()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double COST_EDEFAULT = 0.0;
 
 	/**
 	 * The default value of the '{@link #getBenefit() <em>Benefit</em>}' attribute.
@@ -375,6 +386,26 @@ public class IssueImpl extends CapabilityImpl implements Issue {
 	 * @generated
 	 */
 	@Override
+	public double getCost() {
+		return (Double)eDynamicGet(EngineeringPackage.ISSUE__COST, EngineeringPackage.Literals.ISSUE__COST, true, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setCost(double newCost) {
+		eDynamicSet(EngineeringPackage.ISSUE__COST, EngineeringPackage.Literals.ISSUE__COST, newCost);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public double getBenefit() {
 		return (Double)eDynamicGet(EngineeringPackage.ISSUE__BENEFIT, EngineeringPackage.Literals.ISSUE__BENEFIT, true, true);
 	}
@@ -539,6 +570,8 @@ public class IssueImpl extends CapabilityImpl implements Issue {
 				return getAssigneeId();
 			case EngineeringPackage.ISSUE__EFFORT:
 				return getEffort();
+			case EngineeringPackage.ISSUE__COST:
+				return getCost();
 			case EngineeringPackage.ISSUE__BENEFIT:
 				return getBenefit();
 			case EngineeringPackage.ISSUE__CATEGORY:
@@ -590,6 +623,9 @@ public class IssueImpl extends CapabilityImpl implements Issue {
 			case EngineeringPackage.ISSUE__EFFORT:
 				setEffort((Double)newValue);
 				return;
+			case EngineeringPackage.ISSUE__COST:
+				setCost((Double)newValue);
+				return;
 			case EngineeringPackage.ISSUE__BENEFIT:
 				setBenefit((Double)newValue);
 				return;
@@ -635,6 +671,9 @@ public class IssueImpl extends CapabilityImpl implements Issue {
 			case EngineeringPackage.ISSUE__EFFORT:
 				setEffort(EFFORT_EDEFAULT);
 				return;
+			case EngineeringPackage.ISSUE__COST:
+				setCost(COST_EDEFAULT);
+				return;
 			case EngineeringPackage.ISSUE__BENEFIT:
 				setBenefit(BENEFIT_EDEFAULT);
 				return;
@@ -673,6 +712,8 @@ public class IssueImpl extends CapabilityImpl implements Issue {
 				return ASSIGNEE_ID_EDEFAULT == null ? getAssigneeId() != null : !ASSIGNEE_ID_EDEFAULT.equals(getAssigneeId());
 			case EngineeringPackage.ISSUE__EFFORT:
 				return getEffort() != EFFORT_EDEFAULT;
+			case EngineeringPackage.ISSUE__COST:
+				return getCost() != COST_EDEFAULT;
 			case EngineeringPackage.ISSUE__BENEFIT:
 				return getBenefit() != BENEFIT_EDEFAULT;
 			case EngineeringPackage.ISSUE__CATEGORY:

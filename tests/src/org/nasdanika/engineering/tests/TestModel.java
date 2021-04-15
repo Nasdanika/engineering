@@ -1,10 +1,11 @@
 package org.nasdanika.engineering.tests;
 
+import static org.nasdanika.html.app.impl.Util.writeAction;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.Writer;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
@@ -31,7 +32,6 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceFactoryRegistryImpl;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.junit.Assert;
 import org.junit.Test;
 import org.nasdanika.common.Context;
 import org.nasdanika.common.DefaultConverter;
@@ -43,6 +43,7 @@ import org.nasdanika.common.Util;
 import org.nasdanika.common.persistence.ConfigurationException;
 import org.nasdanika.common.persistence.ObjectLoader;
 import org.nasdanika.common.persistence.SourceResolver;
+import org.nasdanika.common.resources.Container;
 import org.nasdanika.common.resources.FileSystemContainer;
 import org.nasdanika.emf.EObjectAdaptable;
 import org.nasdanika.emf.persistence.EObjectLoader;
@@ -52,12 +53,8 @@ import org.nasdanika.engineering.ModelElement;
 import org.nasdanika.engineering.Organization;
 import org.nasdanika.engineering.gen.EngineeringViewActionAdapterFactory;
 import org.nasdanika.html.app.Action;
-import org.nasdanika.html.app.Application;
-import org.nasdanika.html.app.ApplicationBuilder;
-import org.nasdanika.html.app.NavigationActionActivator;
 import org.nasdanika.html.app.factories.BootstrapContainerApplicationSupplierFactory;
 import org.nasdanika.html.app.factories.ComposedLoader;
-import org.nasdanika.html.app.impl.ActionApplicationBuilder;
 import org.nasdanika.html.app.viewparts.AdaptiveNavigationPanelViewPart.Style;
 import org.nasdanika.html.ecore.EcoreViewActionStorableAdapterFactory;
 import org.nasdanika.html.ecore.GenModelResourceSet;
@@ -147,66 +144,24 @@ public class TestModel {
 		Action principal = org.adaptTo(ViewAction.class);	
 		root.getChildren().add(principal);
 		
-		writeAction(loader, context, base, root, principal, root, progressMonitor);
-	}
-	
-	private void writeAction(
-			ObjectLoader loader,
-			Context context, 
-			String base, 
-			Action root, 
-			Action principal, 
-			Action active, 
-			ProgressMonitor monitor) throws Exception {
+		FileSystemContainer output = new FileSystemContainer(new File("target\\site"));
+		BiFunction<String, InputStream, String> decoder = Util.INPUT_STREAM_TO_STRING_DECODER;
+		BiFunction<String, Object, InputStream> encoder = Util.OBJECT_TO_INPUT_STREAM_ENCODER;
+		Container<String> container = output.stateAdapter().adapt(decoder, encoder);
 		
-		MutableContext actionContext = context.fork();		
-		if (!active.isEmpty() && active.getActivator() instanceof NavigationActionActivator) {
-			NavigationActionActivator activator = (NavigationActionActivator) active.getActivator();
-			String actionURI = activator.getUrl(null);
-			actionContext.put(Context.BASE_URI_PROPERTY, actionURI);
-			actionContext.put("page-title", active.getText());
-			ApplicationBuilder builder = new ActionApplicationBuilder(actionContext, root, principal, active) {
-				
-				@Override
-				protected Style getNavigationPanelStyle() {
-					return Style.CARDS;
-				}
-				
-			};
-			String resourceName = "org/nasdanika/html/app/templates/cerulean/dark-fluid.yml";
-			Application app = Util.callSupplier(((BootstrapContainerApplicationSupplierFactory) loader.loadYaml(getClass().getClassLoader().getResource(resourceName), monitor)).create(actionContext), monitor);
-			builder.build(app, monitor);
-			// app.getHTMLPage().head("\n<!-- my comment -->\n");
-
-			String url = ((NavigationActionActivator) active.getActivator()).getUrl(null);
-			if (url != null && url.startsWith(base)) {			
-				writeFile(url.substring(base.length()), app.toString());
-			}			
-		}		
-		for (Action child: active.getChildren()) {
-			writeAction(loader, actionContext, base, root, principal, child, monitor);
-		}
-	}
-	
-	/**
-	 * Writes text file.
-	 * @param path
-	 * @param content
-	 */
-	private void writeFile(String path, String content) throws IOException {
-		File target = new File(("target/site/"+path).replace("/", File.separator));
-		File parent = target.getParentFile();
-		if (!parent.exists()) {
-			if (!parent.mkdirs()) {
-				Assert.fail("Cannot create "+parent.getAbsolutePath());
-			}
-		}
+		String resourceName = "org/nasdanika/html/app/templates/cerulean/dark-fluid.yml";
+		BootstrapContainerApplicationSupplierFactory applicationSupplierFactory = (BootstrapContainerApplicationSupplierFactory) loader.loadYaml(getClass().getClassLoader().getResource(resourceName), progressMonitor);
 		
-		System.out.println("Writing to "+target.getAbsolutePath());
-		try (Writer writer = new FileWriter(target)) {
-			writer.write(content);
-		}		
-		
+		writeAction(
+				root, 
+				principal, 
+				root, 
+				base, 
+				container, 
+				context, 
+				Style.CARDS, 
+				applicationSupplierFactory, 
+				progressMonitor);
 	}
 	
 	@Test
@@ -298,7 +253,26 @@ public class TestModel {
 		ComposedLoader loader = new ComposedLoader();
 		Object actionFactory = loader.loadYaml(new File("model\\nasdanika\\doc-site.yml"), progressMonitor);
 		Action action = Util.callSupplier(Util.<Action>asSupplierFactory(actionFactory).create(context), progressMonitor);
-		writeAction(loader, context, base, action, action.getNavigationChildren().get(0), action, progressMonitor);		
+		
+		FileSystemContainer output = new FileSystemContainer(new File("target\\site"));
+		BiFunction<String, InputStream, String> decoder = Util.INPUT_STREAM_TO_STRING_DECODER;
+		BiFunction<String, Object, InputStream> encoder = Util.OBJECT_TO_INPUT_STREAM_ENCODER;
+		Container<String> container = output.stateAdapter().adapt(decoder, encoder);
+
+		String resourceName = "org/nasdanika/html/app/templates/cerulean/dark-fluid.yml";
+		BootstrapContainerApplicationSupplierFactory applicationSupplierFactory = (BootstrapContainerApplicationSupplierFactory) loader.loadYaml(getClass().getClassLoader().getResource(resourceName), progressMonitor);
+		
+		writeAction(
+				action, 
+				action.getNavigationChildren().get(0), 
+				action, 
+				base, 
+				container, 
+				context, 
+				Style.CARDS, 
+				applicationSupplierFactory, 
+				progressMonitor);
+		
 		
 		System.out.println(diagramGenerator);
 	}
@@ -329,6 +303,15 @@ public class TestModel {
 				file.delete();
 			}
 		}
+	}
+	
+	@Test
+	public void testURI() {
+		URI uri = URI.createURI("citi:/");
+		URI relative = URI.createHierarchicalURI(uri.scheme(), "purum", null, null, null);
+		System.out.println(relative);
+		System.out.println(relative.authority());
+		System.out.println(relative.scheme());
 	}
 
 }

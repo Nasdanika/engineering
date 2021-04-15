@@ -17,6 +17,9 @@ engineering-product:
       - engineering-module:
          name: App
          path: App
+         issues:
+            - name: Ability to inherit action hierarchies and override specific actions.
+              description: With ability to provide action path (of action ID's) for actions to be overridden.
       - engineering-module:
          name: App Model
          path: models/app

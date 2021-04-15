@@ -17,6 +17,7 @@ import java.util.Date;
  *   <li>{@link org.nasdanika.engineering.Note#getIncrement <em>Increment</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Note#getDate <em>Date</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Note#getEffort <em>Effort</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.Note#getCost <em>Cost</em>}</li>
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getNote()
@@ -111,5 +112,27 @@ public interface Note extends ModelElement {
 	 * @generated
 	 */
 	void setEffort(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Cost</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Cost</em>' attribute.
+	 * @see #setCost(double)
+	 * @see org.nasdanika.engineering.EngineeringPackage#getNote_Cost()
+	 * @model
+	 * @generated
+	 */
+	double getCost();
+
+	/**
+	 * Sets the value of the '{@link org.nasdanika.engineering.Note#getCost <em>Cost</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Cost</em>' attribute.
+	 * @see #getCost()
+	 * @generated
+	 */
+	void setCost(double value);
 
 } // Note

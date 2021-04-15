@@ -41,6 +41,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//Issue/notes"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Issue/assigneeId"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Issue/effort"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Issue/cost"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Issue/benefit"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//Issue/category"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference engineering.ecore#//Issue/target"/>
@@ -50,6 +51,7 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//Note/increment"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Note/date"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Note/effort"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Note/cost"/>
     </genClasses>
     <genClasses image="false" ecoreClass="engineering.ecore#//EngineeredElement">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//EngineeredElement/issues"/>

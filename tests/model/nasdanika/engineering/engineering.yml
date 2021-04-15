@@ -11,6 +11,90 @@ engineering-product:
          name: Gen
          path: gen
    issues:
+     - name: <T extends EObject> equal(T a, T b, EStructuralFeature... features)
+       description: Equality test for value objects such as Increments.  
+       increment: id://Increment-nasdanika-increments-2021-children-q2-children-apr
+       effort: 0.5 
+     - name: Grouping by increment shall take increment equality into account
+       description: Helper class with equals based on start/end dates, takes name from the first increment.  
+       increment: id://Increment-nasdanika-increments-2021-children-q2-children-apr
+       effort: 0.5 
+     - name: Owner back to owners
+       description: Multiple owners, use the first one when just one is needed.
+       increment: id://Increment-nasdanika-increments-2021-children-q2-children-apr
+       effort: 3 
+     - name: Refactor id's to URI's
+       description: |+2
+         Engineer may specify uri-scheme attribute. If this attribute is specified all elements
+         under that engineer have uri's with that scheme relative to the engineer. The engineer
+         itself has <uri-scheme>:// URI with empty authority. Rename id to uri, change type to URI,
+         set ID attribute to false. Use "/" as separator. Example: nasdanika://increments/2021/children/q2/children/apr
+         Site generator looks for id URI's first - use cache, store all collected URI's and perhaps scan the entire resource set. Then falls back to 
+         default behavior.
+       increment: id://Increment-nasdanika-increments-2021-children-q2-children-apr
+       effort: 3 
+     - name: Capability is concrete to allow proxying
+       description: |+2
+         References shall check if reference type is concrete for proxies instead of checking homogenous.
+         Capability and EngineeredCapability are concrete classes so proxies can be created.
+       increment: id://Increment-nasdanika-increments-2021-children-q2-children-apr
+       effort: 1 
+     - name: Filterable and sortable table component - use KnockoutJs 
+       description: |+2
+         May start with a method in ModelElementViewAction. Then extract into a component which takes descriptors. 
+         Introduce EMF components or descriptor adaptor/wrapper including collections wrapper.
+         Also, along the same lines - single object properties table using the existing descriptor table components.
+         Inject scripts into the head if head consumer is available or below or above the table otherwise.  
+       effort: 4 
+     - name: Drop Owner ID - use URI's. Drop other ID's helper attributes. 
+       increment: id://Increment-nasdanika-increments-2021-children-q2-children-apr
+       effort: 3 
+     - name: Site generator class in Gen
+       description: Extract from TestModel. Validate and fail if there are errors. Also fail on unresolved proxies.
+       increment: id://Increment-nasdanika-increments-2021-children-q2-children-apr
+       effort: 1 
+     - name: Issue requirements and requiredBy opposite
+       description: Loading from the model, show in the view.
+       increment: id://Increment-nasdanika-increments-2021-children-q2-children-apr
+       effort: 1 
+     - name: Notes
+       description: Loading from the model, show in the view.
+       increment: id://Increment-nasdanika-increments-2021-children-q2-children-apr
+       effort: 0.5 
+     - name: Issue effort, cost, benefit, and benefit to cost ratio derived attributes, isWorkable(Increment) function.
+       description: |+2
+         Actual effort and cost - sum of effort and cost from notes. 
+         Also percentage completed - own and effective. progress and effectiveProgress derived attributes.
+         Total effort and cost - actual plus in the effort/cost field - estimated remaining (zero if done).
+         Effective effort and cost - actual and total (3 effective costs and efforts) - includes all not done children and all not done requirements.
+         Introduce EngineeredCapability with derived costs, efforts, and benefits. Issue, feature, and release extend it.
+         Effective benefit, total benefit - collected in the opposite way as requirements - in the direction of parent and requiredBy.
+         Use HashSet accumulator to avoid loops and scanning issues more than once - derived references allRequirements, allRequiredBy
+         Update issue tables with the new attributes.
+         Engineer rate - to convert effort to cost. Default is 1.
+         Plan can override rate per increment, iherits from engineer if not overridden.  
+       increment: id://Increment-nasdanika-increments-2021-children-q2-children-apr
+       effort: 4 
+     - name: Display effort and cost
+       description: Issues table and section display aggregated costs, efforts, benefit and benefit to cost ratio. Per increment and total for engineer, engineered element, category, etc.  
+       increment: id://Increment-nasdanika-increments-2021-children-q2-children-apr
+       effort: 2 
+     - name: Validations
+       description: Issue - scheduled for an increment before one of required issues increments. Add isBefore() and isAfter() functions to increment - move code from view action.  
+       effort: 2 
+     - name: Release, feature
+       description: Add releases and features to the model, implement view actions with issue sections and totals tables.   
+       effort: 4 
+     - name: Persona goals, activities, journeys
+       description: Modeling, diagram, weights, derive benefit.   
+       effort: 8 
      - name: Issue diagram
-       description: State diagram showing nesting, dependencies, completion status - light green, workability status - gray if not workable. Clickable.         
+       description: State diagram showing nesting, dependencies, completion status - light green, workability status - gray if not workable. Clickable.
+       effort: 3         
+     - name: Planning and scheduling
+       description: |+2
+         Plan - contains capacity per icrement per engineer and cost budget. Scheduler allocates issues to increments to achieve maximum effective benefit per cost ratio for the increment. 
+         How to handle spill-over issues?
+         Benefit discount rate - how much more the present benefit is valued over future benefit. Related to it - even benefit stream as well as allocation to categories.          
+       effort: 8         
    

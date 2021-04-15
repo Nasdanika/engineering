@@ -23,6 +23,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.nasdanika.engineering.Issue#getNotes <em>Notes</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Issue#getAssigneeId <em>Assignee Id</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Issue#getEffort <em>Effort</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.Issue#getCost <em>Cost</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Issue#getBenefit <em>Benefit</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Issue#getCategory <em>Category</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Issue#getTarget <em>Target</em>}</li>
@@ -223,6 +224,28 @@ public interface Issue extends Capability {
 	 * @generated
 	 */
 	void setEffort(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Cost</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Cost</em>' attribute.
+	 * @see #setCost(double)
+	 * @see org.nasdanika.engineering.EngineeringPackage#getIssue_Cost()
+	 * @model
+	 * @generated
+	 */
+	double getCost();
+
+	/**
+	 * Sets the value of the '{@link org.nasdanika.engineering.Issue#getCost <em>Cost</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Cost</em>' attribute.
+	 * @see #getCost()
+	 * @generated
+	 */
+	void setCost(double value);
 
 	/**
 	 * Returns the value of the '<em><b>Benefit</b></em>' attribute.

@@ -833,13 +833,22 @@ public interface EngineeringPackage extends EPackage {
 	int ISSUE__EFFORT = CAPABILITY_FEATURE_COUNT + 9;
 
 	/**
+	 * The feature id for the '<em><b>Cost</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE__COST = CAPABILITY_FEATURE_COUNT + 10;
+
+	/**
 	 * The feature id for the '<em><b>Benefit</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ISSUE__BENEFIT = CAPABILITY_FEATURE_COUNT + 10;
+	int ISSUE__BENEFIT = CAPABILITY_FEATURE_COUNT + 11;
 
 	/**
 	 * The feature id for the '<em><b>Category</b></em>' reference.
@@ -848,7 +857,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ISSUE__CATEGORY = CAPABILITY_FEATURE_COUNT + 11;
+	int ISSUE__CATEGORY = CAPABILITY_FEATURE_COUNT + 12;
 
 	/**
 	 * The feature id for the '<em><b>Target</b></em>' reference.
@@ -857,7 +866,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ISSUE__TARGET = CAPABILITY_FEATURE_COUNT + 12;
+	int ISSUE__TARGET = CAPABILITY_FEATURE_COUNT + 13;
 
 	/**
 	 * The number of structural features of the '<em>Issue</em>' class.
@@ -866,7 +875,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ISSUE_FEATURE_COUNT = CAPABILITY_FEATURE_COUNT + 13;
+	int ISSUE_FEATURE_COUNT = CAPABILITY_FEATURE_COUNT + 14;
 
 	/**
 	 * The number of operations of the '<em>Issue</em>' class.
@@ -969,13 +978,22 @@ public interface EngineeringPackage extends EPackage {
 	int NOTE__EFFORT = MODEL_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Cost</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NOTE__COST = MODEL_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
 	 * The number of structural features of the '<em>Note</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NOTE_FEATURE_COUNT = MODEL_ELEMENT_FEATURE_COUNT + 4;
+	int NOTE_FEATURE_COUNT = MODEL_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of operations of the '<em>Note</em>' class.
@@ -3397,6 +3415,17 @@ public interface EngineeringPackage extends EPackage {
 	EAttribute getIssue_Effort();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Issue#getCost <em>Cost</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Cost</em>'.
+	 * @see org.nasdanika.engineering.Issue#getCost()
+	 * @see #getIssue()
+	 * @generated
+	 */
+	EAttribute getIssue_Cost();
+
+	/**
 	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Issue#getBenefit <em>Benefit</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3482,6 +3511,17 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getNote_Effort();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Note#getCost <em>Cost</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Cost</em>'.
+	 * @see org.nasdanika.engineering.Note#getCost()
+	 * @see #getNote()
+	 * @generated
+	 */
+	EAttribute getNote_Cost();
 
 	/**
 	 * Returns the meta object for class '{@link org.nasdanika.engineering.Artifact <em>Artifact</em>}'.
@@ -4168,6 +4208,14 @@ public interface EngineeringPackage extends EPackage {
 		EAttribute ISSUE__EFFORT = eINSTANCE.getIssue_Effort();
 
 		/**
+		 * The meta object literal for the '<em><b>Cost</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ISSUE__COST = eINSTANCE.getIssue_Cost();
+
+		/**
 		 * The meta object literal for the '<em><b>Benefit</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -4232,6 +4280,14 @@ public interface EngineeringPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute NOTE__EFFORT = eINSTANCE.getNote_Effort();
+
+		/**
+		 * The meta object literal for the '<em><b>Cost</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute NOTE__COST = eINSTANCE.getNote_Cost();
 
 		/**
 		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.ArtifactImpl <em>Artifact</em>}' class.

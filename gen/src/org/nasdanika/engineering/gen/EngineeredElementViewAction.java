@@ -37,6 +37,7 @@ public class EngineeredElementViewAction<T extends EngineeredElement> extends Na
 				EngineeringPackage.Literals.ISSUE__CATEGORY,				
 				EngineeringPackage.Literals.ISSUE__ASSIGNEE,				
 				EngineeringPackage.Literals.ISSUE__EFFORT,
+				EngineeringPackage.Literals.ISSUE__COST,
 				EngineeringPackage.Literals.ISSUE__BENEFIT);
 		
 		if (issuesSection != null) {

@@ -1002,7 +1002,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EAttribute getIssue_Benefit() {
+	public EAttribute getIssue_Cost() {
 		return (EAttribute)issueEClass.getEStructuralFeatures().get(10);
 	}
 
@@ -1012,8 +1012,18 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
+	public EAttribute getIssue_Benefit() {
+		return (EAttribute)issueEClass.getEStructuralFeatures().get(11);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EReference getIssue_Category() {
-		return (EReference)issueEClass.getEStructuralFeatures().get(11);
+		return (EReference)issueEClass.getEStructuralFeatures().get(12);
 	}
 
 	/**
@@ -1023,7 +1033,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 */
 	@Override
 	public EReference getIssue_Target() {
-		return (EReference)issueEClass.getEStructuralFeatures().get(12);
+		return (EReference)issueEClass.getEStructuralFeatures().get(13);
 	}
 
 	/**
@@ -1074,6 +1084,16 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	@Override
 	public EAttribute getNote_Effort() {
 		return (EAttribute)noteEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getNote_Cost() {
+		return (EAttribute)noteEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -1168,6 +1188,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		createEReference(issueEClass, ISSUE__NOTES);
 		createEAttribute(issueEClass, ISSUE__ASSIGNEE_ID);
 		createEAttribute(issueEClass, ISSUE__EFFORT);
+		createEAttribute(issueEClass, ISSUE__COST);
 		createEAttribute(issueEClass, ISSUE__BENEFIT);
 		createEReference(issueEClass, ISSUE__CATEGORY);
 		createEReference(issueEClass, ISSUE__TARGET);
@@ -1177,6 +1198,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		createEReference(noteEClass, NOTE__INCREMENT);
 		createEAttribute(noteEClass, NOTE__DATE);
 		createEAttribute(noteEClass, NOTE__EFFORT);
+		createEAttribute(noteEClass, NOTE__COST);
 
 		engineeredElementEClass = createEClass(ENGINEERED_ELEMENT);
 		createEReference(engineeredElementEClass, ENGINEERED_ELEMENT__ISSUES);
@@ -1326,6 +1348,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		initEReference(getIssue_Notes(), this.getNote(), null, "notes", null, 0, -1, Issue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getIssue_AssigneeId(), ecorePackage.getEString(), "assigneeId", null, 0, 1, Issue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getIssue_Effort(), ecorePackage.getEDouble(), "effort", null, 0, 1, Issue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getIssue_Cost(), ecorePackage.getEDouble(), "cost", null, 0, 1, Issue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getIssue_Benefit(), ecorePackage.getEDouble(), "benefit", null, 0, 1, Issue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getIssue_Category(), this.getIssueCategory(), this.getIssueCategory_Issues(), "category", null, 0, 1, Issue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getIssue_Target(), this.getEngineeredElement(), null, "target", null, 0, 1, Issue.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
@@ -1335,6 +1358,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		initEReference(getNote_Increment(), this.getIncrement(), null, "increment", null, 0, 1, Note.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getNote_Date(), ecorePackage.getEDate(), "date", null, 0, 1, Note.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getNote_Effort(), ecorePackage.getEDouble(), "effort", null, 0, 1, Note.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getNote_Cost(), ecorePackage.getEDouble(), "cost", null, 0, 1, Note.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(engineeredElementEClass, EngineeredElement.class, "EngineeredElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEngineeredElement_Issues(), this.getIssue(), null, "issues", null, 0, -1, EngineeredElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

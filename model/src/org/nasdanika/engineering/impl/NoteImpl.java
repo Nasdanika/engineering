@@ -23,6 +23,7 @@ import org.nasdanika.engineering.Note;
  *   <li>{@link org.nasdanika.engineering.impl.NoteImpl#getIncrement <em>Increment</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.NoteImpl#getDate <em>Date</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.NoteImpl#getEffort <em>Effort</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.NoteImpl#getCost <em>Cost</em>}</li>
  * </ul>
  *
  * @generated
@@ -47,6 +48,16 @@ public class NoteImpl extends ModelElementImpl implements Note {
 	 * @ordered
 	 */
 	protected static final double EFFORT_EDEFAULT = 0.0;
+
+	/**
+	 * The default value of the '{@link #getCost() <em>Cost</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCost()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double COST_EDEFAULT = 0.0;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -171,6 +182,26 @@ public class NoteImpl extends ModelElementImpl implements Note {
 	 * @generated
 	 */
 	@Override
+	public double getCost() {
+		return (Double)eDynamicGet(EngineeringPackage.NOTE__COST, EngineeringPackage.Literals.NOTE__COST, true, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setCost(double newCost) {
+		eDynamicSet(EngineeringPackage.NOTE__COST, EngineeringPackage.Literals.NOTE__COST, newCost);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case EngineeringPackage.NOTE__AUTHOR:
@@ -183,6 +214,8 @@ public class NoteImpl extends ModelElementImpl implements Note {
 				return getDate();
 			case EngineeringPackage.NOTE__EFFORT:
 				return getEffort();
+			case EngineeringPackage.NOTE__COST:
+				return getCost();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -206,6 +239,9 @@ public class NoteImpl extends ModelElementImpl implements Note {
 				return;
 			case EngineeringPackage.NOTE__EFFORT:
 				setEffort((Double)newValue);
+				return;
+			case EngineeringPackage.NOTE__COST:
+				setCost((Double)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -231,6 +267,9 @@ public class NoteImpl extends ModelElementImpl implements Note {
 			case EngineeringPackage.NOTE__EFFORT:
 				setEffort(EFFORT_EDEFAULT);
 				return;
+			case EngineeringPackage.NOTE__COST:
+				setCost(COST_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -251,6 +290,8 @@ public class NoteImpl extends ModelElementImpl implements Note {
 				return DATE_EDEFAULT == null ? getDate() != null : !DATE_EDEFAULT.equals(getDate());
 			case EngineeringPackage.NOTE__EFFORT:
 				return getEffort() != EFFORT_EDEFAULT;
+			case EngineeringPackage.NOTE__COST:
+				return getCost() != COST_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}

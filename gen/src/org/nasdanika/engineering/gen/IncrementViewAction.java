@@ -61,6 +61,7 @@ public class IncrementViewAction extends NamedElementViewAction<Increment> {
 							EngineeringPackage.Literals.ISSUE__CATEGORY,				
 							EngineeringPackage.Literals.ISSUE__ASSIGNEE,				
 							EngineeringPackage.Literals.ISSUE__EFFORT,
+							EngineeringPackage.Literals.ISSUE__COST,
 							EngineeringPackage.Literals.ISSUE__BENEFIT));
 					
 					return ret;

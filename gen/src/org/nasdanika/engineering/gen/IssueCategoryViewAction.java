@@ -36,6 +36,7 @@ public class IssueCategoryViewAction extends NamedElementViewAction<IssueCategor
 				EngineeringPackage.Literals.ISSUE__TARGET,
 				EngineeringPackage.Literals.ISSUE__ASSIGNEE,				
 				EngineeringPackage.Literals.ISSUE__EFFORT,
+				EngineeringPackage.Literals.ISSUE__COST,
 				EngineeringPackage.Literals.ISSUE__BENEFIT);
 		
 		if (issuesSection != null) {
