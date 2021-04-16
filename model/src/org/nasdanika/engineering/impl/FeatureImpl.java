@@ -25,7 +25,7 @@ import org.nasdanika.engineering.Release;
  *
  * @generated
  */
-public class FeatureImpl extends NamedElementImpl implements Feature {
+public class FeatureImpl extends EngineeredCapabilityImpl implements Feature {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

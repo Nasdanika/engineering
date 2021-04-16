@@ -21,7 +21,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.nasdanika.engineering.Issue#getStatus <em>Status</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Issue#isDone <em>Done</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Issue#getNotes <em>Notes</em>}</li>
- *   <li>{@link org.nasdanika.engineering.Issue#getAssigneeId <em>Assignee Id</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Issue#getEffort <em>Effort</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Issue#getCost <em>Cost</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Issue#getBenefit <em>Benefit</em>}</li>
@@ -33,7 +32,7 @@ import org.eclipse.emf.common.util.EList;
  * @model annotation="urn:org.nasdanika documentation-reference='../doc/issue.md'"
  * @generated
  */
-public interface Issue extends Capability {
+public interface Issue extends EngineeredCapability {
 	/**
 	 * Returns the value of the '<em><b>Children</b></em>' containment reference list.
 	 * The list contents are of type {@link org.nasdanika.engineering.Issue}.
@@ -53,12 +52,23 @@ public interface Issue extends Capability {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Assignee</em>' reference.
+	 * @see #setAssignee(Engineer)
 	 * @see org.nasdanika.engineering.EngineeringPackage#getIssue_Assignee()
 	 * @see org.nasdanika.engineering.Engineer#getAssignments
-	 * @model opposite="assignments" changeable="false" derived="true"
+	 * @model opposite="assignments"
 	 * @generated
 	 */
 	Engineer getAssignee();
+
+	/**
+	 * Sets the value of the '{@link org.nasdanika.engineering.Issue#getAssignee <em>Assignee</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Assignee</em>' reference.
+	 * @see #getAssignee()
+	 * @generated
+	 */
+	void setAssignee(Engineer value);
 
 	/**
 	 * Returns the value of the '<em><b>Requirements</b></em>' reference list.
@@ -180,28 +190,6 @@ public interface Issue extends Capability {
 	 * @generated
 	 */
 	EList<Note> getNotes();
-
-	/**
-	 * Returns the value of the '<em><b>Assignee Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Assignee Id</em>' attribute.
-	 * @see #setAssigneeId(String)
-	 * @see org.nasdanika.engineering.EngineeringPackage#getIssue_AssigneeId()
-	 * @model annotation="urn:org.nasdanika load-key='assignee'"
-	 * @generated
-	 */
-	String getAssigneeId();
-
-	/**
-	 * Sets the value of the '{@link org.nasdanika.engineering.Issue#getAssigneeId <em>Assignee Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Assignee Id</em>' attribute.
-	 * @see #getAssigneeId()
-	 * @generated
-	 */
-	void setAssigneeId(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Effort</b></em>' attribute.

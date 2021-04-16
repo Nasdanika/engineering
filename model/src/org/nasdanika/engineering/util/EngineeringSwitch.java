@@ -15,6 +15,7 @@ import org.nasdanika.engineering.Call;
 import org.nasdanika.engineering.Capability;
 import org.nasdanika.engineering.Directory;
 import org.nasdanika.engineering.Engineer;
+import org.nasdanika.engineering.EngineeredCapability;
 import org.nasdanika.engineering.EngineeredElement;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Feature;
@@ -130,6 +131,7 @@ public class EngineeringSwitch<T> extends Switch<T> {
 			case EngineeringPackage.ISSUE: {
 				Issue issue = (Issue)theEObject;
 				T result = caseIssue(issue);
+				if (result == null) result = caseEngineeredCapability(issue);
 				if (result == null) result = caseCapability(issue);
 				if (result == null) result = caseNamedElement(issue);
 				if (result == null) result = caseModelElement(issue);
@@ -217,9 +219,20 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case EngineeringPackage.ENGINEERED_CAPABILITY: {
+				EngineeredCapability engineeredCapability = (EngineeredCapability)theEObject;
+				T result = caseEngineeredCapability(engineeredCapability);
+				if (result == null) result = caseCapability(engineeredCapability);
+				if (result == null) result = caseNamedElement(engineeredCapability);
+				if (result == null) result = caseModelElement(engineeredCapability);
+				if (result == null) result = caseAdaptable(engineeredCapability);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case EngineeringPackage.RELEASE: {
 				Release release = (Release)theEObject;
 				T result = caseRelease(release);
+				if (result == null) result = caseEngineeredCapability(release);
 				if (result == null) result = caseCapability(release);
 				if (result == null) result = caseNamedElement(release);
 				if (result == null) result = caseModelElement(release);
@@ -230,6 +243,8 @@ public class EngineeringSwitch<T> extends Switch<T> {
 			case EngineeringPackage.FEATURE: {
 				Feature feature = (Feature)theEObject;
 				T result = caseFeature(feature);
+				if (result == null) result = caseEngineeredCapability(feature);
+				if (result == null) result = caseCapability(feature);
 				if (result == null) result = caseNamedElement(feature);
 				if (result == null) result = caseModelElement(feature);
 				if (result == null) result = caseAdaptable(feature);
@@ -440,6 +455,21 @@ public class EngineeringSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseCapability(Capability object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Engineered Capability</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Engineered Capability</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseEngineeredCapability(EngineeredCapability object) {
 		return null;
 	}
 

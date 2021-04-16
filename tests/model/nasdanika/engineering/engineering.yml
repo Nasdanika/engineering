@@ -13,15 +13,18 @@ engineering-product:
    issues:
      - name: <T extends EObject> equal(T a, T b, EStructuralFeature... features)
        description: Equality test for value objects such as Increments.  
-       increment: id://Increment-nasdanika-increments-2021-children-q2-children-apr
+       increment: nasdanika://increments/2021/children/q2/children/apr
        effort: 0.5 
      - name: Grouping by increment shall take increment equality into account
        description: Helper class with equals based on start/end dates, takes name from the first increment.  
-       increment: id://Increment-nasdanika-increments-2021-children-q2-children-apr
+       increment: nasdanika://increments/2021/children/q2/children/apr
        effort: 0.5 
      - name: Owner back to owners
-       description: Multiple owners, use the first one when just one is needed.
-       increment: id://Increment-nasdanika-increments-2021-children-q2-children-apr
+       description: Multiple owners, use the first one when just one is needed. Get rid of ownerId, use proxies (first).
+       increment: nasdanika://increments/2021/children/q2/children/apr
+       effort: 3 
+     - name: Experts reference
+       description: Have expertise, but not authority.
        effort: 3 
      - name: Refactor id's to URI's
        description: |+2
@@ -30,8 +33,8 @@ engineering-product:
          itself has <uri-scheme>:// URI with empty authority. Rename id to uri, change type to URI,
          set ID attribute to false. Use "/" as separator. Example: nasdanika://increments/2021/children/q2/children/apr
          Site generator looks for id URI's first - use cache, store all collected URI's and perhaps scan the entire resource set. Then falls back to 
-         default behavior.
-       increment: id://Increment-nasdanika-increments-2021-children-q2-children-apr
+         default behavior. Default uri scheme is engineering
+       increment: nasdanika://increments/2021/children/q2/children/apr
        effort: 3 
      - name: Filterable and sortable table component - use KnockoutJs 
        description: |+2
@@ -41,19 +44,19 @@ engineering-product:
          Inject scripts into the head if head consumer is available or below or above the table otherwise.  
        effort: 4 
      - name: Drop Owner ID - use URI's. Drop other ID's helper attributes. 
-       increment: id://Increment-nasdanika-increments-2021-children-q2-children-apr
+       increment: nasdanika://increments/2021/children/q2/children/apr
        effort: 3 
      - name: Site generator class in Gen
        description: Extract from TestModel. Validate and fail if there are errors. Also fail on unresolved proxies.
-       increment: id://Increment-nasdanika-increments-2021-children-q2-children-apr
+       increment: nasdanika://increments/2021/children/q2/children/apr
        effort: 1 
      - name: Issue requirements and requiredBy opposite
        description: Loading from the model, show in the view.
-       increment: id://Increment-nasdanika-increments-2021-children-q2-children-apr
+       increment: nasdanika://increments/2021/children/q2/children/apr
        effort: 1 
      - name: Notes
        description: Loading from the model, show in the view.
-       increment: id://Increment-nasdanika-increments-2021-children-q2-children-apr
+       increment: nasdanika://increments/2021/children/q2/children/apr
        effort: 0.5 
      - name: Issue effort, cost, benefit, and benefit to cost ratio derived attributes, isWorkable(Increment) function.
        description: |+2
@@ -67,11 +70,11 @@ engineering-product:
          Update issue tables with the new attributes.
          Engineer rate - to convert effort to cost. Default is 1.
          Plan can override rate per increment, iherits from engineer if not overridden.  
-       increment: id://Increment-nasdanika-increments-2021-children-q2-children-apr
+       increment: nasdanika://increments/2021/children/q2/children/apr
        effort: 4 
      - name: Display effort and cost
        description: Issues table and section display aggregated costs, efforts, benefit and benefit to cost ratio. Per increment and total for engineer, engineered element, category, etc.  
-       increment: id://Increment-nasdanika-increments-2021-children-q2-children-apr
+       increment: nasdanika://increments/2021/children/q2/children/apr
        effort: 2 
      - name: Validations
        description: Issue - scheduled for an increment before one of required issues increments. Add isBefore() and isAfter() functions to increment - move code from view action.  

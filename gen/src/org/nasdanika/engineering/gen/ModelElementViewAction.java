@@ -1,6 +1,9 @@
 package org.nasdanika.engineering.gen;
 
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -13,6 +16,7 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+import org.apache.commons.codec.binary.Hex;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -24,6 +28,7 @@ import org.nasdanika.common.Context;
 import org.nasdanika.common.DefaultConverter;
 import org.nasdanika.common.MarkdownHelper;
 import org.nasdanika.common.MutableContext;
+import org.nasdanika.common.NasdanikaException;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.common.Util;
 import org.nasdanika.common.persistence.ConfigurationException;
@@ -65,9 +70,15 @@ import org.nasdanika.html.emf.ViewAction;
 public class ModelElementViewAction<T extends ModelElement> implements ViewAction {
 	
 	protected T target;
+	private String id;
 		
 	protected ModelElementViewAction(T target) {
 		this.target = target;		
+		try {
+			id = Hex.encodeHexString(MessageDigest.getInstance("SHA-256").digest(target.getUri().getBytes(StandardCharsets.UTF_8)));
+		} catch (NoSuchAlgorithmException e) {
+			throw new NasdanikaException(e);
+		}
 	}
 		
 	@Override
@@ -304,7 +315,7 @@ public class ModelElementViewAction<T extends ModelElement> implements ViewActio
 
 	@Override
 	public Object getId() {
-		return target.getId();
+		return id;
 	}
 
 	@Override
@@ -325,7 +336,7 @@ public class ModelElementViewAction<T extends ModelElement> implements ViewActio
 		category.setText(EmfUtil.getNasdanikaAnnotationDetail(cf, "label", Util.nameToLabel(cf.getName()))); 
 		category.setIcon(EmfUtil.getNasdanikaAnnotationDetail(cf, "icon"));
 		if (ec instanceof ModelElement) {
-			category.setId(((ModelElement) ec).getId() + "-" + cf.getName());
+			category.setId(adaptToViewActionNonNull(ec).getId() + "-" + cf.getName());
 		} else {
 			category.setId(cf.getName());
 		}
@@ -360,6 +371,9 @@ public class ModelElementViewAction<T extends ModelElement> implements ViewActio
 	}
 	
 	protected static ViewAction adaptToViewActionNonNull(EObject obj) {
+		if (obj.eIsProxy()) {
+			throw new ConfigurationException("Unresolved proxy " + obj);			
+		}
 		ViewAction ret = EObjectAdaptable.adaptTo(obj, ViewAction.class); 
 		if (ret == null) {
 			Marked marked = EObjectAdaptable.adaptTo(obj, Marked.class);
@@ -604,7 +618,7 @@ public class ModelElementViewAction<T extends ModelElement> implements ViewActio
 				
 				incrementSection.getRoles().add(Action.Role.SECTION); 
 				incrementSection.setText(increment == null ? "Backlog" : increment.getName()); 			
-				incrementSection.setActivator(new PathNavigationActionActivator(incrementSection, ((NavigationActionActivator) getActivator()).getUrl(null), "#" + id + "-" + (increment == null ? "backlog" : increment.getId() ), getMarker()));
+				incrementSection.setActivator(new PathNavigationActionActivator(incrementSection, ((NavigationActionActivator) getActivator()).getUrl(null), "#" + id + "-" + (increment == null ? "backlog" : adaptToViewActionNonNull(increment).getId()), getMarker()));
 				return incrementSection; 					
 			}
 		};

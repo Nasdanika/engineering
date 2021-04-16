@@ -15,6 +15,7 @@ import org.nasdanika.engineering.Artifact;
 import org.nasdanika.engineering.Call;
 import org.nasdanika.engineering.Capability;
 import org.nasdanika.engineering.Directory;
+import org.nasdanika.engineering.EngineeredCapability;
 import org.nasdanika.engineering.EngineeringFactory;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Feature;
@@ -82,6 +83,7 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 			case EngineeringPackage.MODULE: return createModule();
 			case EngineeringPackage.PRODUCT: return createProduct();
 			case EngineeringPackage.CAPABILITY: return createCapability();
+			case EngineeringPackage.ENGINEERED_CAPABILITY: return createEngineeredCapability();
 			case EngineeringPackage.RELEASE: return createRelease();
 			case EngineeringPackage.FEATURE: return createFeature();
 			case EngineeringPackage.ACTIVITY: return createActivity();
@@ -148,6 +150,17 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 	public Capability createCapability() {
 		CapabilityImpl capability = new CapabilityImpl();
 		return capability;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EngineeredCapability createEngineeredCapability() {
+		EngineeredCapabilityImpl engineeredCapability = new EngineeredCapabilityImpl();
+		return engineeredCapability;
 	}
 
 	/**

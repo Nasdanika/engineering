@@ -18,7 +18,7 @@ package org.nasdanika.engineering;
  * @model annotation="urn:org.nasdanika documentation-reference='../doc/release.md'"
  * @generated
  */
-public interface Release extends Capability {
+public interface Release extends EngineeredCapability {
 	/**
 	 * Returns the value of the '<em><b>Increment</b></em>' reference.
 	 * <!-- begin-user-doc -->

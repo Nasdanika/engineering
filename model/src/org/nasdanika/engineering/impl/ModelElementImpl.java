@@ -8,6 +8,7 @@ import java.util.List;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
@@ -33,7 +34,7 @@ import org.nasdanika.engineering.NamedElement;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.nasdanika.engineering.impl.ModelElementImpl#getId <em>Id</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.ModelElementImpl#getUri <em>Uri</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.ModelElementImpl#getPath <em>Path</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.ModelElementImpl#getDescription <em>Description</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.ModelElementImpl#getActions <em>Actions</em>}</li>
@@ -43,15 +44,17 @@ import org.nasdanika.engineering.NamedElement;
  * @generated
  */
 public abstract class ModelElementImpl extends MinimalEObjectImpl.Container implements ModelElement {
+	private static final String THIS_AUTHORITY = "://this";
+
 	/**
-	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
+	 * The default value of the '{@link #getUri() <em>Uri</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getId()
+	 * @see #getUri()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String ID_EDEFAULT = null;
+	protected static final String URI_EDEFAULT = null;
 
 	/**
 	 * The default value of the '{@link #getPath() <em>Path</em>}' attribute.
@@ -108,34 +111,34 @@ public abstract class ModelElementImpl extends MinimalEObjectImpl.Container impl
 	 * @generated NOT
 	 */
 	@Override
-	public String getId() {
-		StringBuilder ret = new StringBuilder(eClass().getName()).append("-");
+	public String getUri() {
+		String path = getPath();
+		if (!Util.isBlank(path) && path.startsWith("/")) {
+			return path.substring(1) + THIS_AUTHORITY;			
+		}
+		
 		EObject c = eContainer();
-		String cId = c instanceof ModelElement ? ((ModelElement) c).getId() : null;
-		if (!Util.isBlank(cId)) {			
-			ret.append(cId.substring(cId.indexOf("-") + 1));
-		}
-		String path = getPath();		
-		EReference eContainmentFeature = eContainmentFeature();
-		if (c != null && eContainmentFeature != null) {
-			if (!ret.toString().endsWith("-")) {
-				ret.append("-");
+		if (c instanceof ModelElement) {
+			String base = ((ModelElement) c).getUri();
+			EReference eContainmentFeature = eContainmentFeature();			
+			StringBuilder ret = new StringBuilder();
+			if (base.endsWith(THIS_AUTHORITY)) {
+				ret.append(base.substring(0, base.length() - THIS_AUTHORITY.length() + 2));
+			} else {
+				ret.append(base);
 			}
-			ret.append(eContainmentFeature().getName());
-			if (Util.isBlank(path)) {
-				if (eContainmentFeature.isMany()) {
-					ret.append("-").append(((List<?>) c.eGet(eContainmentFeature)).indexOf(this));
+			ret.append("/").append(Util.camelToKebab(eContainmentFeature.getName()));
+			if (eContainmentFeature.isMany()) {
+				if (Util.isBlank(path)) {
+					path = String.valueOf(((List<?>) c.eGet(eContainmentFeature)).indexOf(this));
 				}
+				ret.append("/").append(path);
 			}
+			
+			return ret.toString();
 		}
-		if (!Util.isBlank(path)) {
-			if (ret.length() > 0 && !ret.toString().endsWith("-")) {
-				ret.append("-");
-			}
-
-			ret.append(path);
-		}
-		return ret.toString();
+		
+		return (Util.isBlank(path) ? "engineering" : path) + THIS_AUTHORITY;
 	}
 
 	/**
@@ -224,8 +227,8 @@ public abstract class ModelElementImpl extends MinimalEObjectImpl.Container impl
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EngineeringPackage.MODEL_ELEMENT__ID:
-				return getId();
+			case EngineeringPackage.MODEL_ELEMENT__URI:
+				return getUri();
 			case EngineeringPackage.MODEL_ELEMENT__PATH:
 				return getPath();
 			case EngineeringPackage.MODEL_ELEMENT__DESCRIPTION:
@@ -297,8 +300,8 @@ public abstract class ModelElementImpl extends MinimalEObjectImpl.Container impl
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EngineeringPackage.MODEL_ELEMENT__ID:
-				return ID_EDEFAULT == null ? getId() != null : !ID_EDEFAULT.equals(getId());
+			case EngineeringPackage.MODEL_ELEMENT__URI:
+				return URI_EDEFAULT == null ? getUri() != null : !URI_EDEFAULT.equals(getUri());
 			case EngineeringPackage.MODEL_ELEMENT__PATH:
 				return PATH_EDEFAULT == null ? getPath() != null : !PATH_EDEFAULT.equals(getPath());
 			case EngineeringPackage.MODEL_ELEMENT__DESCRIPTION:
@@ -316,26 +319,26 @@ public abstract class ModelElementImpl extends MinimalEObjectImpl.Container impl
 		return EObjectAdaptable.adaptTo(this, type);
 	}
 	
-	protected <T extends ModelElement> EList<T> findById(Class<T> type, Collection<String> ids) {
+	protected <T extends ModelElement> EList<T> findByURI(Class<T> type, Collection<URI> uris) {
 		EList<T> ret = new BasicInternalEList<>(type);
-		ids.stream().map(id -> findById(type, id)).forEach(ret::add);
+		uris.stream().map(uri -> findByURI(type, uri)).forEach(ret::add);
 		return ret;
 	}
 	
 	@SuppressWarnings("unchecked")
-	protected <T extends ModelElement> T findById(Class<T> type, String id) {
+	protected <T extends ModelElement> T findByURI(Class<T> type, URI uri) {
 		Resource res = eResource(); 
 		if (res != null) {
 			ResourceSet rSet = res.getResourceSet();
 			TreeIterator<?> cit = rSet == null ? res.getAllContents() : rSet. getAllContents();
 			while (cit.hasNext()) {
 				Object next = cit.next(); 
-				if (type.isInstance(next) && id.equals(((T) next).getId())) {
+				if (type.isInstance(next) && uri.equals(((T) next).getUri())) {
 					return (T) next;
 				}
 			}
 		}
-		throw new ConfigurationException("Could not find " + type.getName() + " with id " + id, EObjectAdaptable.adaptTo(this, Marked.class));
+		throw new ConfigurationException("Could not find " + type.getName() + " with uri " + uri, EObjectAdaptable.adaptTo(this, Marked.class));
 	}
 	
 	@SuppressWarnings("unchecked")

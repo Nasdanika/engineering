@@ -17,6 +17,7 @@ import org.nasdanika.engineering.Call;
 import org.nasdanika.engineering.Capability;
 import org.nasdanika.engineering.Directory;
 import org.nasdanika.engineering.Engineer;
+import org.nasdanika.engineering.EngineeredCapability;
 import org.nasdanika.engineering.EngineeredElement;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Feature;
@@ -144,6 +145,10 @@ public class EngineeringAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseCapability(Capability object) {
 				return createCapabilityAdapter();
+			}
+			@Override
+			public Adapter caseEngineeredCapability(EngineeredCapability object) {
+				return createEngineeredCapabilityAdapter();
 			}
 			@Override
 			public Adapter caseRelease(Release object) {
@@ -334,6 +339,20 @@ public class EngineeringAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createCapabilityAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.EngineeredCapability <em>Engineered Capability</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.nasdanika.engineering.EngineeredCapability
+	 * @generated
+	 */
+	public Adapter createEngineeredCapabilityAdapter() {
 		return null;
 	}
 

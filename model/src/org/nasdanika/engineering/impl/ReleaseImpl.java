@@ -20,7 +20,7 @@ import org.nasdanika.engineering.Release;
  *
  * @generated
  */
-public class ReleaseImpl extends CapabilityImpl implements Release {
+public class ReleaseImpl extends EngineeredCapabilityImpl implements Release {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

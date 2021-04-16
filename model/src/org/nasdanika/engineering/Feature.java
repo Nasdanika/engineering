@@ -22,7 +22,7 @@ import org.eclipse.emf.common.util.EList;
  * @model annotation="urn:org.nasdanika documentation-reference='../doc/feature.md'"
  * @generated
  */
-public interface Feature extends NamedElement {
+public interface Feature extends EngineeredCapability {
 	/**
 	 * Returns the value of the '<em><b>Release</b></em>' reference.
 	 * <!-- begin-user-doc -->

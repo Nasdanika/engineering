@@ -10,7 +10,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.nasdanika.common.Util;
 import org.nasdanika.engineering.Capability;
 import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeredElement;
@@ -37,7 +36,6 @@ import org.nasdanika.engineering.Note;
  *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getStatus <em>Status</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#isDone <em>Done</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getNotes <em>Notes</em>}</li>
- *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getAssigneeId <em>Assignee Id</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getEffort <em>Effort</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getCost <em>Cost</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getBenefit <em>Benefit</em>}</li>
@@ -47,7 +45,7 @@ import org.nasdanika.engineering.Note;
  *
  * @generated
  */
-public class IssueImpl extends CapabilityImpl implements Issue {
+public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 	/**
 	 * The default value of the '{@link #getStatus() <em>Status</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -67,16 +65,6 @@ public class IssueImpl extends CapabilityImpl implements Issue {
 	 * @ordered
 	 */
 	protected static final boolean DONE_EDEFAULT = false;
-
-	/**
-	 * The default value of the '{@link #getAssigneeId() <em>Assignee Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getAssigneeId()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String ASSIGNEE_ID_EDEFAULT = null;
 
 	/**
 	 * The default value of the '{@link #getEffort() <em>Effort</em>}' attribute.
@@ -141,29 +129,11 @@ public class IssueImpl extends CapabilityImpl implements Issue {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	@Override
 	public Engineer getAssignee() {
-		String assigneeId = getAssigneeId();
-		if (!Util.isBlank(assigneeId)) {
-			return findById(Engineer.class, assigneeId);
-		}
-
-		EObject ec = eContainer();
-		if (ec instanceof Issue) {
-			return ((Issue) ec).getAssignee();
-		}
-		
-		if (ec instanceof Engineer) {
-			return (Engineer) ec;
-		}
-		
-		if (ec instanceof EngineeredElement) {
-			return ((EngineeredElement) ec).getOwner();
-		}
-		
-		return null;
+		return (Engineer)eDynamicGet(EngineeringPackage.ISSUE__ASSIGNEE, EngineeringPackage.Literals.ISSUE__ASSIGNEE, true, true);
 	}
 
 	/**
@@ -183,6 +153,16 @@ public class IssueImpl extends CapabilityImpl implements Issue {
 	public NotificationChain basicSetAssignee(Engineer newAssignee, NotificationChain msgs) {
 		msgs = eDynamicInverseAdd((InternalEObject)newAssignee, EngineeringPackage.ISSUE__ASSIGNEE, msgs);
 		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setAssignee(Engineer newAssignee) {
+		eDynamicSet(EngineeringPackage.ISSUE__ASSIGNEE, EngineeringPackage.Literals.ISSUE__ASSIGNEE, newAssignee);
 	}
 
 	/**
@@ -338,26 +318,6 @@ public class IssueImpl extends CapabilityImpl implements Issue {
 	@Override
 	public EList<Note> getNotes() {
 		return (EList<Note>)eDynamicGet(EngineeringPackage.ISSUE__NOTES, EngineeringPackage.Literals.ISSUE__NOTES, true, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String getAssigneeId() {
-		return (String)eDynamicGet(EngineeringPackage.ISSUE__ASSIGNEE_ID, EngineeringPackage.Literals.ISSUE__ASSIGNEE_ID, true, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setAssigneeId(String newAssigneeId) {
-		eDynamicSet(EngineeringPackage.ISSUE__ASSIGNEE_ID, EngineeringPackage.Literals.ISSUE__ASSIGNEE_ID, newAssigneeId);
 	}
 
 	/**
@@ -566,8 +526,6 @@ public class IssueImpl extends CapabilityImpl implements Issue {
 				return isDone();
 			case EngineeringPackage.ISSUE__NOTES:
 				return getNotes();
-			case EngineeringPackage.ISSUE__ASSIGNEE_ID:
-				return getAssigneeId();
 			case EngineeringPackage.ISSUE__EFFORT:
 				return getEffort();
 			case EngineeringPackage.ISSUE__COST:
@@ -597,6 +555,9 @@ public class IssueImpl extends CapabilityImpl implements Issue {
 				getChildren().clear();
 				getChildren().addAll((Collection<? extends Issue>)newValue);
 				return;
+			case EngineeringPackage.ISSUE__ASSIGNEE:
+				setAssignee((Engineer)newValue);
+				return;
 			case EngineeringPackage.ISSUE__REQUIREMENTS:
 				getRequirements().clear();
 				getRequirements().addAll((Collection<? extends Capability>)newValue);
@@ -616,9 +577,6 @@ public class IssueImpl extends CapabilityImpl implements Issue {
 			case EngineeringPackage.ISSUE__NOTES:
 				getNotes().clear();
 				getNotes().addAll((Collection<? extends Note>)newValue);
-				return;
-			case EngineeringPackage.ISSUE__ASSIGNEE_ID:
-				setAssigneeId((String)newValue);
 				return;
 			case EngineeringPackage.ISSUE__EFFORT:
 				setEffort((Double)newValue);
@@ -647,6 +605,9 @@ public class IssueImpl extends CapabilityImpl implements Issue {
 			case EngineeringPackage.ISSUE__CHILDREN:
 				getChildren().clear();
 				return;
+			case EngineeringPackage.ISSUE__ASSIGNEE:
+				setAssignee((Engineer)null);
+				return;
 			case EngineeringPackage.ISSUE__REQUIREMENTS:
 				getRequirements().clear();
 				return;
@@ -664,9 +625,6 @@ public class IssueImpl extends CapabilityImpl implements Issue {
 				return;
 			case EngineeringPackage.ISSUE__NOTES:
 				getNotes().clear();
-				return;
-			case EngineeringPackage.ISSUE__ASSIGNEE_ID:
-				setAssigneeId(ASSIGNEE_ID_EDEFAULT);
 				return;
 			case EngineeringPackage.ISSUE__EFFORT:
 				setEffort(EFFORT_EDEFAULT);
@@ -708,8 +666,6 @@ public class IssueImpl extends CapabilityImpl implements Issue {
 				return isDone() != DONE_EDEFAULT;
 			case EngineeringPackage.ISSUE__NOTES:
 				return !getNotes().isEmpty();
-			case EngineeringPackage.ISSUE__ASSIGNEE_ID:
-				return ASSIGNEE_ID_EDEFAULT == null ? getAssigneeId() != null : !ASSIGNEE_ID_EDEFAULT.equals(getAssigneeId());
 			case EngineeringPackage.ISSUE__EFFORT:
 				return getEffort() != EFFORT_EDEFAULT;
 			case EngineeringPackage.ISSUE__COST:

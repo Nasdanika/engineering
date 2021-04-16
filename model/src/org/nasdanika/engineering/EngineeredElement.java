@@ -14,8 +14,7 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link org.nasdanika.engineering.EngineeredElement#getIssues <em>Issues</em>}</li>
- *   <li>{@link org.nasdanika.engineering.EngineeredElement#getOwner <em>Owner</em>}</li>
- *   <li>{@link org.nasdanika.engineering.EngineeredElement#getOwnerId <em>Owner Id</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.EngineeredElement#getOwners <em>Owners</em>}</li>
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getEngineeredElement()
@@ -38,36 +37,15 @@ public interface EngineeredElement extends NamedElement {
 	EList<Issue> getIssues();
 
 	/**
-	 * Returns the value of the '<em><b>Owner</b></em>' reference.
+	 * Returns the value of the '<em><b>Owners</b></em>' reference list.
+	 * The list contents are of type {@link org.nasdanika.engineering.Engineer}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owner</em>' reference.
-	 * @see org.nasdanika.engineering.EngineeringPackage#getEngineeredElement_Owner()
-	 * @model changeable="false" derived="true"
+	 * @return the value of the '<em>Owners</em>' reference list.
+	 * @see org.nasdanika.engineering.EngineeringPackage#getEngineeredElement_Owners()
+	 * @model
 	 * @generated
 	 */
-	Engineer getOwner();
-
-	/**
-	 * Returns the value of the '<em><b>Owner Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owner Id</em>' attribute.
-	 * @see #setOwnerId(String)
-	 * @see org.nasdanika.engineering.EngineeringPackage#getEngineeredElement_OwnerId()
-	 * @model annotation="urn:org.nasdanika load-key='owner'"
-	 * @generated
-	 */
-	String getOwnerId();
-
-	/**
-	 * Sets the value of the '{@link org.nasdanika.engineering.EngineeredElement#getOwnerId <em>Owner Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Owner Id</em>' attribute.
-	 * @see #getOwnerId()
-	 * @generated
-	 */
-	void setOwnerId(String value);
+	EList<Engineer> getOwners();
 
 } // EngineeredElement

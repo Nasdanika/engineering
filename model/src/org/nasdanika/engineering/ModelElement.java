@@ -3,7 +3,6 @@
 package org.nasdanika.engineering;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
 import org.nasdanika.common.Adaptable;
@@ -17,7 +16,7 @@ import org.nasdanika.common.Adaptable;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.nasdanika.engineering.ModelElement#getId <em>Id</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.ModelElement#getUri <em>Uri</em>}</li>
  *   <li>{@link org.nasdanika.engineering.ModelElement#getPath <em>Path</em>}</li>
  *   <li>{@link org.nasdanika.engineering.ModelElement#getDescription <em>Description</em>}</li>
  *   <li>{@link org.nasdanika.engineering.ModelElement#getActions <em>Actions</em>}</li>
@@ -31,18 +30,18 @@ import org.nasdanika.common.Adaptable;
  */
 public interface ModelElement extends EObject, Adaptable {
 	/**
-	 * Returns the value of the '<em><b>Id</b></em>' attribute.
+	 * Returns the value of the '<em><b>Uri</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Element's unique ID. Derived from element type and containment path (parent ID).
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Id</em>' attribute.
-	 * @see org.nasdanika.engineering.EngineeringPackage#getModelElement_Id()
-	 * @model id="true" changeable="false" derived="true"
+	 * @return the value of the '<em>Uri</em>' attribute.
+	 * @see org.nasdanika.engineering.EngineeringPackage#getModelElement_Uri()
+	 * @model changeable="false" derived="true"
 	 * @generated
 	 */
-	String getId();
+	String getUri();
 
 	/**
 	 * Returns the value of the '<em><b>Path</b></em>' attribute.

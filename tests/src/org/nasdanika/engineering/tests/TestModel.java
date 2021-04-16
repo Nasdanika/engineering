@@ -10,6 +10,8 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,6 +29,7 @@ import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceFactoryRegistryImpl;
@@ -37,10 +40,10 @@ import org.nasdanika.common.Context;
 import org.nasdanika.common.DefaultConverter;
 import org.nasdanika.common.DiagramGenerator;
 import org.nasdanika.common.MutableContext;
+import org.nasdanika.common.NasdanikaException;
 import org.nasdanika.common.PrintStreamProgressMonitor;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.common.Util;
-import org.nasdanika.common.persistence.ConfigurationException;
 import org.nasdanika.common.persistence.ObjectLoader;
 import org.nasdanika.common.persistence.SourceResolver;
 import org.nasdanika.common.resources.Container;
@@ -85,19 +88,32 @@ public class TestModel {
 		// Creating loader
 		ResourceSet resourceSet = new ResourceSetImpl() {
 			
+			Map<String, EObject> cache = new HashMap<>();
+			
 			@Override
 			public EObject getEObject(URI uri, boolean loadOnDemand) {
-				// id is a special authority for finding by id.
-				if ("id".equals(uri.scheme())) {
-					TreeIterator<Notifier> cit = getAllContents();
-					while (cit.hasNext()) {
-						Notifier next = cit.next();
-						if (next instanceof ModelElement && uri.authority().equals(((ModelElement) next).getId())) {
-							return (EObject) next;
-						}						
-					}
-					throw new ConfigurationException("Object not found with id: " + uri.authority());
+				EObject ret = cache.get(uri.toString());
+				if (ret != null) {
+					return ret;
 				}
+				
+				TreeIterator<Notifier> cit = getAllContents();
+				while (cit.hasNext()) {
+					Notifier next = cit.next();
+					if (next instanceof ModelElement) {
+						ModelElement nextModelElement = (ModelElement) next;
+						String nUri = nextModelElement.getUri();
+						cache.put(nUri, (ModelElement) next);
+						if (uri != null && uri.toString().equals(nUri)) {
+							ret = nextModelElement;
+						}
+					}						
+				}
+
+				if (ret != null) {
+					return ret;
+				}
+				
 				return super.getEObject(uri, loadOnDemand);
 			}
 			
@@ -139,6 +155,46 @@ public class TestModel {
 		
 		Resource engineeringResource = resourceSet.getResource(uri, true);
 		EcoreUtil.resolveAll(resourceSet);
+		
+		TreeIterator<Notifier> cit = resourceSet.getAllContents();
+		int unresolvedCount = 0;
+		while (cit.hasNext()) {
+			Notifier next = cit.next();
+			if (next instanceof EObject) {
+				EObject nextEObject = (EObject) next;
+				if (nextEObject.eIsProxy()) {
+					System.err.println("Unresolved proxy: " + next);
+					++unresolvedCount;
+				} else {
+					for (EReference ref: nextEObject.eClass().getEAllReferences()) {
+						Object val = nextEObject.eGet(ref);
+						if (val instanceof EObject) {
+							if (((EObject) val).eIsProxy()) {
+								System.err.println("Unresolved proxy: " + val);
+								++unresolvedCount;							
+							}
+						} else if (val instanceof Collection) {
+							for (EObject ve: (Collection<EObject>) val) {
+								if (ve.eIsProxy()) {
+									System.err.println("Unresolved proxy: " + ve);
+									++unresolvedCount;							
+								}								
+							}
+						}
+					}
+				}
+			}	
+			
+//			if (next instanceof ModelElement) {
+//				System.out.println(((ModelElement) next).getUri());
+//			}
+		}
+		
+		if (unresolvedCount > 0) {
+			throw new NasdanikaException("There are "+ unresolvedCount + " unresolved proxies"); 
+		}
+		
+		
 		Organization org = (Organization) engineeringResource.getContents().get(0);
 		
 		Action principal = org.adaptTo(ViewAction.class);	
@@ -307,11 +363,22 @@ public class TestModel {
 	
 	@Test
 	public void testURI() {
-		URI uri = URI.createURI("citi:/");
-		URI relative = URI.createHierarchicalURI(uri.scheme(), "purum", null, null, null);
+		URI uri = URI.createURI("nasdanika://");
+		System.out.println(uri);
+		System.out.println(uri.hasAuthority() + " " + uri.authority());
+		System.out.println(uri.scheme());
+		
+		URI relative = URI.createHierarchicalURI(uri.scheme(), "this", null, null, null);
 		System.out.println(relative);
 		System.out.println(relative.authority());
 		System.out.println(relative.scheme());
+		
+		URI that = URI.createURI("that").resolve(relative);
+		System.out.println(that);
+		
+		URI purum = URI.createURI("purum").resolve(that);
+		System.out.println(purum);
+		
 	}
 
 }

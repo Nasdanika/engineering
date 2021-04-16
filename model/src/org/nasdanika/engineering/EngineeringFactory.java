@@ -67,6 +67,15 @@ public interface EngineeringFactory extends EFactory {
 	Capability createCapability();
 
 	/**
+	 * Returns a new object of class '<em>Engineered Capability</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Engineered Capability</em>'.
+	 * @generated
+	 */
+	EngineeredCapability createEngineeredCapability();
+
+	/**
 	 * Returns a new object of class '<em>Increment</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

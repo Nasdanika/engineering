@@ -5,14 +5,11 @@ package org.nasdanika.engineering.impl;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.NotificationChain;
-
+import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.util.InternalEList;
-
 import org.nasdanika.engineering.Activity;
 import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeringPackage;
@@ -137,9 +134,9 @@ public abstract class EngineerImpl extends PersonaImpl implements Engineer {
 	}
 
 	@Override
-	public Engineer getOwner() {
-		Engineer owner = super.getOwner();		
-		return owner == null ? this : owner;
+	public EList<Engineer> getOwners() {
+		EList<Engineer> owners = super.getOwners();
+		return owners.isEmpty() ? ECollections.singletonEList(this) : owners;
 	}
 
 	/**
@@ -292,5 +289,5 @@ public abstract class EngineerImpl extends PersonaImpl implements Engineer {
 		}
 		return super.eIsSet(featureID);
 	}
-
+	
 } //EngineerImpl

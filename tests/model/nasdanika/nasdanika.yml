@@ -1,6 +1,7 @@
 engineering-organization:
    name: Nasdanika
    path: nasdanika
+   
    modules:
      - core/core.yml
      - html/html.yml
