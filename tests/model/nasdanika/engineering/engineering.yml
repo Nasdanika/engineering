@@ -28,12 +28,14 @@ engineering-product:
        effort: 3 
      - name: Refactor id's to URI's
        description: |+2
+         If path starts with / then it's part after the slash is treated as uri scheme. 
+         The element's URI becomes <path>://this. 
          Engineer may specify uri-scheme attribute. If this attribute is specified all elements
          under that engineer have uri's with that scheme relative to the engineer. The engineer
          itself has <uri-scheme>:// URI with empty authority. Rename id to uri, change type to URI,
          set ID attribute to false. Use "/" as separator. Example: nasdanika://increments/2021/children/q2/children/apr
          Site generator looks for id URI's first - use cache, store all collected URI's and perhaps scan the entire resource set. Then falls back to 
-         default behavior. Default uri scheme is engineering
+         default behavior. Default uri scheme is engineering         
        increment: nasdanika://increments/2021/children/q2/children/apr
        effort: 3 
      - name: Filterable and sortable table component - use KnockoutJs 
