@@ -166,7 +166,7 @@ public class ModelElementViewAction<T extends ModelElement> implements ViewActio
 		EClass targetClass = target.eClass();
 		for (EReference ref: targetClass.getEAllReferences()) {
 			if (isChildFeature(ref)) {
-				children.addAll(adaptToViewActionNonNullSorted((Collection<ModelElement>) target.eGet(ref)));
+				children.addAll(ViewAction.adaptToViewActionNonNullSorted((Collection<ModelElement>) target.eGet(ref)));
 			}
 		}
 		
@@ -336,7 +336,7 @@ public class ModelElementViewAction<T extends ModelElement> implements ViewActio
 		category.setText(EmfUtil.getNasdanikaAnnotationDetail(cf, "label", Util.nameToLabel(cf.getName()))); 
 		category.setIcon(EmfUtil.getNasdanikaAnnotationDetail(cf, "icon"));
 		if (ec instanceof ModelElement) {
-			category.setId(adaptToViewActionNonNull(ec).getId() + "-" + cf.getName());
+			category.setId(ViewAction.adaptToViewActionNonNull(ec).getId() + "-" + cf.getName());
 		} else {
 			category.setId(cf.getName());
 		}
@@ -367,20 +367,7 @@ public class ModelElementViewAction<T extends ModelElement> implements ViewActio
 		if (elements.isEmpty()) {
 			return null;
 		}
-		return new ListOfActionsViewPart(adaptToViewActionNonNullSorted(elements), header, tooltip, depth, OrderedListType.ROTATE);
-	}
-	
-	protected static ViewAction adaptToViewActionNonNull(EObject obj) {
-		if (obj.eIsProxy()) {
-			throw new ConfigurationException("Unresolved proxy " + obj);			
-		}
-		ViewAction ret = EObjectAdaptable.adaptTo(obj, ViewAction.class); 
-		if (ret == null) {
-			Marked marked = EObjectAdaptable.adaptTo(obj, Marked.class);
-			throw new ConfigurationException("ViewAction adapter not found for " + obj, marked);
-		}
-		
-		return ret;
+		return new ListOfActionsViewPart(ViewAction.adaptToViewActionNonNullSorted(elements), header, tooltip, depth, OrderedListType.ROTATE);
 	}
 	
 	protected static Action adaptToActionNonNull(EObject obj) {
@@ -391,14 +378,6 @@ public class ModelElementViewAction<T extends ModelElement> implements ViewActio
 		}
 		
 		return ret;
-	}
-	
-	protected static List<Action> adaptToViewActionNonNull(Collection<? extends EObject> c) {
-		return c.stream().map(ModelElementViewAction::adaptToViewActionNonNull).collect(Collectors.toList());
-	}
-	
-	protected static List<Action> adaptToViewActionNonNullSorted(Collection<? extends EObject> c) {
-		return c.stream().map(ModelElementViewAction::adaptToViewActionNonNull).sorted((a,b) -> a.getText().compareTo(b.getText())).collect(Collectors.toList());
 	}
 	
 	@Override
@@ -542,7 +521,7 @@ public class ModelElementViewAction<T extends ModelElement> implements ViewActio
 		BiFunction<Issue, EStructuralFeature, ViewBuilder> cellBuilderProvider = (issue, feature) -> {
 			if (feature == EngineeringPackage.Literals.NAMED_ELEMENT__NAME) {
 				return (target, vg, pm) -> {
-					((org.nasdanika.html.bootstrap.RowContainer.Row.Cell) target).toHTMLElement().content(vg.link(adaptToViewActionNonNull(issue)));
+					((org.nasdanika.html.bootstrap.RowContainer.Row.Cell) target).toHTMLElement().content(vg.link(ViewAction.adaptToViewActionNonNull(issue)));
 				};
 			}
 			return null;
@@ -618,7 +597,7 @@ public class ModelElementViewAction<T extends ModelElement> implements ViewActio
 				
 				incrementSection.getRoles().add(Action.Role.SECTION); 
 				incrementSection.setText(increment == null ? "Backlog" : increment.getName()); 			
-				incrementSection.setActivator(new PathNavigationActionActivator(incrementSection, ((NavigationActionActivator) getActivator()).getUrl(null), "#" + id + "-" + (increment == null ? "backlog" : adaptToViewActionNonNull(increment).getId()), getMarker()));
+				incrementSection.setActivator(new PathNavigationActionActivator(incrementSection, ((NavigationActionActivator) getActivator()).getUrl(null), "#" + id + "-" + (increment == null ? "backlog" : ViewAction.adaptToViewActionNonNull(increment).getId()), getMarker()));
 				return incrementSection; 					
 			}
 		};

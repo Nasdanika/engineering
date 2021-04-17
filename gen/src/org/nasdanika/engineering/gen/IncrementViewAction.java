@@ -15,6 +15,7 @@ import org.nasdanika.html.app.ViewGenerator;
 import org.nasdanika.html.app.impl.ActionImpl;
 import org.nasdanika.html.app.impl.PathNavigationActionActivator;
 import org.nasdanika.html.bootstrap.BootstrapFactory;
+import org.nasdanika.html.emf.ViewAction;
 
 public class IncrementViewAction extends NamedElementViewAction<Increment> {
 	
@@ -69,7 +70,7 @@ public class IncrementViewAction extends NamedElementViewAction<Increment> {
 				
 				@Override
 				public List<Action> getChildren() {
-					return adaptToViewActionNonNull(issues);
+					return ViewAction.adaptToViewActionNonNull(issues);
 				}
 			};
 			
