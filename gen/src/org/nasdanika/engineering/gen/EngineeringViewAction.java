@@ -3,6 +3,7 @@ package org.nasdanika.engineering.gen;
 import java.util.Collection;
 import java.util.List;
 
+import org.eclipse.emf.ecore.EObject;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.engineering.ModelElement;
 import org.nasdanika.html.app.Action;
@@ -18,15 +19,15 @@ import org.nasdanika.html.emf.ViewAction;
  */
 public class EngineeringViewAction extends ActionImpl {
 	
-	private Collection<ModelElement> elements;
+	private Collection<EObject> elements;
 
-	public EngineeringViewAction(Collection<ModelElement> elements) {
+	public EngineeringViewAction(Collection<EObject> elements) {
 		this.elements = elements;
 	}
 	
 	@Override
 	public List<Action> getChildren() {
-		return ModelElementViewAction.adaptToViewActionNonNull(elements);
+		return ViewAction.adaptToViewActionNonNull(elements);
 	}
 	
 	@Override
