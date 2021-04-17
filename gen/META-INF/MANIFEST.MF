@@ -9,6 +9,7 @@ Require-Bundle: net.sourceforge.plantuml,
  org.nasdanika.engineering;visibility:=reexport,
  org.nasdanika.html.emf;visibility:=reexport,
  org.apache.commons.commons-text;bundle-version="1.9.0",
- org.apache.commons.codec;bundle-version="1.14.0"
+ org.apache.commons.codec;bundle-version="1.14.0",
+ org.nasdanika.html.model.app;bundle-version="2021.4.0"
 Export-Package: org.nasdanika.engineering.gen
 Automatic-Module-Name: org.nasdanika.engineering.gen

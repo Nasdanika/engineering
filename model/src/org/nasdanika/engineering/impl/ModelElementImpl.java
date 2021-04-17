@@ -4,6 +4,7 @@ package org.nasdanika.engineering.impl;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.function.Predicate;
 
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
@@ -364,5 +365,23 @@ public abstract class ModelElementImpl extends MinimalEObjectImpl.Container impl
 		}
 		return ret;
 	}
+	
+	@SuppressWarnings("unchecked")
+	protected <T extends EObject> EList<T> collect(Predicate<EObject> selector) {
+		EList<T> ret = new BasicInternalEList<>(EObject.class);
+		Resource res = eResource(); 
+		if (res != null) {
+			ResourceSet rSet = res.getResourceSet();
+			TreeIterator<?> cit = rSet == null ? res.getAllContents() : rSet. getAllContents();
+			while (cit.hasNext()) {
+				Object next = cit.next(); 
+				if (next instanceof EObject && selector.test((EObject) next)) {
+					ret.add((T) next);
+				}
+			}
+		}
+		return ret;
+	}
+	
 
 } //ModelElementImpl

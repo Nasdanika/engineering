@@ -11,6 +11,7 @@ import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -36,13 +37,16 @@ import org.eclipse.emf.ecore.resource.impl.ResourceFactoryRegistryImpl;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.junit.Test;
+import org.nasdanika.common.CommandFactory;
 import org.nasdanika.common.Context;
 import org.nasdanika.common.DefaultConverter;
+import org.nasdanika.common.DiagnosticException;
 import org.nasdanika.common.DiagramGenerator;
 import org.nasdanika.common.MutableContext;
 import org.nasdanika.common.NasdanikaException;
 import org.nasdanika.common.PrintStreamProgressMonitor;
 import org.nasdanika.common.ProgressMonitor;
+import org.nasdanika.common.SupplierFactory;
 import org.nasdanika.common.Util;
 import org.nasdanika.common.persistence.ObjectLoader;
 import org.nasdanika.common.persistence.SourceResolver;
@@ -55,6 +59,7 @@ import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.ModelElement;
 import org.nasdanika.engineering.Organization;
 import org.nasdanika.engineering.gen.EngineeringViewActionAdapterFactory;
+import org.nasdanika.engineering.gen.GenerateSiteConsumerFactory;
 import org.nasdanika.html.app.Action;
 import org.nasdanika.html.app.factories.BootstrapContainerApplicationSupplierFactory;
 import org.nasdanika.html.app.factories.ComposedLoader;
@@ -136,7 +141,7 @@ public class TestModel {
 		resourceSet.setResourceFactoryRegistry(resourceFactoryRegistry);
 				
 		Object actionFactory = loader.loadYaml(new File("model/nasdanika/site.yml"), progressMonitor);
-		Action root = Util.callSupplier(Util.<Action>asSupplierFactory(actionFactory).create(context), progressMonitor);
+		Action root = Util.call(Util.<Action>asSupplierFactory(actionFactory).create(context), progressMonitor);
 		
 		// Registering adapter factories
 		resourceSet.getAdapterFactories().add(new EngineeringViewActionAdapterFactory(root, context));
@@ -218,6 +223,34 @@ public class TestModel {
 				Style.CARDS, 
 				applicationSupplierFactory, 
 				progressMonitor);
+	}
+	
+	@Test
+	public void testGenerateSiteConsumerFactory() throws Exception {
+		ObjectLoader loader = new EObjectLoader(new ComposedLoader(), null, AppPackage.eINSTANCE);
+		
+		ProgressMonitor progressMonitor = new PrintStreamProgressMonitor();
+		String resourceName = "org/nasdanika/html/app/templates/cerulean/dark-fluid.yml";
+		BootstrapContainerApplicationSupplierFactory applicationSupplierFactory = (BootstrapContainerApplicationSupplierFactory) loader.loadYaml(getClass().getClassLoader().getResource(resourceName), progressMonitor);
+		
+		GenerateSiteConsumerFactory consumerFactory = new GenerateSiteConsumerFactory(
+				Collections.singletonList(URI.createURI(new File("model/nasdanika/nasdanika.yml").toURI().toString())), 
+				applicationSupplierFactory, 
+				new File("target\\site"));
+		
+		Object actionFactory = loader.loadYaml(new File("model/nasdanika/site.yml"), progressMonitor);
+		SupplierFactory<Action> asf = Util.<Action>asSupplierFactory(actionFactory);		
+		
+		CommandFactory commandFactory = asf.then(consumerFactory);
+		MutableContext context = Context.EMPTY_CONTEXT.fork();
+		context.put("nasdanika/core", new File("..\\..\\core").toURI().toString());
+		
+		try {
+			Util.call(commandFactory.create(context), progressMonitor);
+		} catch (DiagnosticException e) {
+			e.getDiagnostic().dump(System.out, 4);
+			throw e;
+		}
 	}
 	
 	@Test
@@ -308,7 +341,7 @@ public class TestModel {
 		
 		ComposedLoader loader = new ComposedLoader();
 		Object actionFactory = loader.loadYaml(new File("model\\nasdanika\\doc-site.yml"), progressMonitor);
-		Action action = Util.callSupplier(Util.<Action>asSupplierFactory(actionFactory).create(context), progressMonitor);
+		Action action = Util.call(Util.<Action>asSupplierFactory(actionFactory).create(context), progressMonitor);
 		
 		FileSystemContainer output = new FileSystemContainer(new File("target\\site"));
 		BiFunction<String, InputStream, String> decoder = Util.INPUT_STREAM_TO_STRING_DECODER;

@@ -19,24 +19,11 @@ engineering-product:
        description: Helper class with equals based on start/end dates, takes name from the first increment.  
        increment: nasdanika://increments/2021/children/q2/children/apr
        effort: 0.5 
-     - name: Owner back to owners
-       description: Multiple owners, use the first one when just one is needed. Get rid of ownerId, use proxies (first).
-       increment: nasdanika://increments/2021/children/q2/children/apr
-       effort: 3 
      - name: Experts reference
        description: Have expertise, but not authority.
        effort: 3 
-     - name: Refactor id's to URI's
-       description: |+2
-         If path starts with / then it's part after the slash is treated as uri scheme. 
-         The element's URI becomes <path>://this. 
-         Engineer may specify uri-scheme attribute. If this attribute is specified all elements
-         under that engineer have uri's with that scheme relative to the engineer. The engineer
-         itself has <uri-scheme>:// URI with empty authority. Rename id to uri, change type to URI,
-         set ID attribute to false. Use "/" as separator. Example: nasdanika://increments/2021/children/q2/children/apr
-         Site generator looks for id URI's first - use cache, store all collected URI's and perhaps scan the entire resource set. Then falls back to 
-         default behavior. Default uri scheme is engineering         
-       increment: nasdanika://increments/2021/children/q2/children/apr
+     - name: Multi-model
+       description: Change to CLI, all issues view - home page - principal view action.
        effort: 3 
      - name: Filterable and sortable table component - use KnockoutJs 
        description: |+2

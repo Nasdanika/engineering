@@ -3,15 +3,18 @@
 package org.nasdanika.engineering.impl;
 
 import java.util.Collection;
+import java.util.function.Predicate;
 
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.nasdanika.engineering.Activity;
 import org.nasdanika.engineering.Engineer;
+import org.nasdanika.engineering.EngineeredElement;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Increment;
 import org.nasdanika.engineering.Issue;
@@ -111,6 +114,21 @@ public abstract class EngineerImpl extends PersonaImpl implements Engineer {
 	public EList<Persona> getPersonas() {
 		return (EList<Persona>)eDynamicGet(EngineeringPackage.ENGINEER__PERSONAS, EngineeringPackage.Literals.ENGINEER__PERSONAS, true, true);
 	}
+	
+	private boolean isOwner(EngineeredElement engineeredElement) {
+		EList<Engineer> owners = engineeredElement.getOwners();
+		if (!owners.isEmpty()) {
+			return owners.contains(this);
+		}
+		EObject c = engineeredElement.eContainer();
+		if (c == this) {
+			return true;
+		}
+		if (c instanceof EngineeredElement) {
+			return isOwner((EngineeredElement) c);
+		}
+		return false;
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -119,7 +137,33 @@ public abstract class EngineerImpl extends PersonaImpl implements Engineer {
 	 */
 	@Override
 	public EList<Issue> getAssignments() {
-		return getReferrers(EngineeringPackage.Literals.ISSUE__ASSIGNEE);
+		Predicate<EObject> effectiveAssigneeSelector = new Predicate<EObject>() {
+
+			@Override
+			public boolean test(EObject eObj) {
+				if (eObj instanceof Issue) {
+					Issue issue = (Issue) eObj;
+					if (issue.getAssignee() == EngineerImpl.this) {
+						return true;
+					}
+					EObject c = issue.eContainer();
+					if (c instanceof Issue) {
+						return test(c);
+					}
+					if (c instanceof EngineeredElement) {						
+						return isOwner((EngineeredElement) c);
+					}
+					if (c == EngineerImpl.this) {
+						return true;
+					}
+				} 
+				
+				return false;
+			}
+			
+		};
+		
+		return collect(effectiveAssigneeSelector);
 	}
 	
 	/**
@@ -144,21 +188,6 @@ public abstract class EngineerImpl extends PersonaImpl implements Engineer {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case EngineeringPackage.ENGINEER__ASSIGNMENTS:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getAssignments()).basicAdd(otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -170,8 +199,6 @@ public abstract class EngineerImpl extends PersonaImpl implements Engineer {
 				return ((InternalEList<?>)getServices()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.ENGINEER__PERSONAS:
 				return ((InternalEList<?>)getPersonas()).basicRemove(otherEnd, msgs);
-			case EngineeringPackage.ENGINEER__ASSIGNMENTS:
-				return ((InternalEList<?>)getAssignments()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.ENGINEER__ISSUE_CATEGORIES:
 				return ((InternalEList<?>)getIssueCategories()).basicRemove(otherEnd, msgs);
 		}
