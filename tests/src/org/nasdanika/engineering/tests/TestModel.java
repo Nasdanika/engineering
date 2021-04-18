@@ -12,7 +12,6 @@ import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,16 +24,10 @@ import java.util.function.Function;
 import org.apache.commons.codec.binary.Hex;
 import org.eclipse.emf.codegen.ecore.genmodel.GenModel;
 import org.eclipse.emf.codegen.ecore.genmodel.GenPackage;
-import org.eclipse.emf.common.notify.Notifier;
-import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceFactoryRegistryImpl;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.junit.Test;
 import org.nasdanika.common.CommandFactory;
@@ -43,22 +36,15 @@ import org.nasdanika.common.DefaultConverter;
 import org.nasdanika.common.DiagnosticException;
 import org.nasdanika.common.DiagramGenerator;
 import org.nasdanika.common.MutableContext;
-import org.nasdanika.common.NasdanikaException;
 import org.nasdanika.common.PrintStreamProgressMonitor;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.common.SupplierFactory;
 import org.nasdanika.common.Util;
 import org.nasdanika.common.persistence.ObjectLoader;
-import org.nasdanika.common.persistence.SourceResolver;
 import org.nasdanika.common.resources.Container;
 import org.nasdanika.common.resources.FileSystemContainer;
 import org.nasdanika.emf.EObjectAdaptable;
 import org.nasdanika.emf.persistence.EObjectLoader;
-import org.nasdanika.emf.persistence.YamlResourceFactory;
-import org.nasdanika.engineering.EngineeringPackage;
-import org.nasdanika.engineering.ModelElement;
-import org.nasdanika.engineering.Organization;
-import org.nasdanika.engineering.gen.EngineeringViewActionAdapterFactory;
 import org.nasdanika.engineering.gen.GenerateSiteConsumerFactory;
 import org.nasdanika.html.app.Action;
 import org.nasdanika.html.app.factories.BootstrapContainerApplicationSupplierFactory;
@@ -66,7 +52,6 @@ import org.nasdanika.html.app.factories.ComposedLoader;
 import org.nasdanika.html.app.viewparts.AdaptiveNavigationPanelViewPart.Style;
 import org.nasdanika.html.ecore.EcoreViewActionStorableAdapterFactory;
 import org.nasdanika.html.ecore.GenModelResourceSet;
-import org.nasdanika.html.emf.ViewAction;
 import org.nasdanika.html.emf.ViewActionStorable;
 import org.nasdanika.html.model.app.AppPackage;
 import org.yaml.snakeyaml.DumperOptions;
@@ -87,144 +72,6 @@ public class TestModel {
 		BiFunction<String,String,InputStream> encoder = (path, state) -> DefaultConverter.INSTANCE.convert(state, InputStream.class);
 		return DiagramGenerator.INSTANCE.cachingDiagramGenerator(output.stateAdapter().adapt(decoder, encoder), progressMonitor);
 	}
-		
-	@Test
-	public void testSite() throws Exception {		
-		// Creating loader
-		ResourceSet resourceSet = new ResourceSetImpl() {
-			
-			Map<String, EObject> cache = new HashMap<>();
-			
-			@Override
-			public EObject getEObject(URI uri, boolean loadOnDemand) {
-				EObject ret = cache.get(uri.toString());
-				if (ret != null) {
-					return ret;
-				}
-				
-				TreeIterator<Notifier> cit = getAllContents();
-				while (cit.hasNext()) {
-					Notifier next = cit.next();
-					if (next instanceof ModelElement) {
-						ModelElement nextModelElement = (ModelElement) next;
-						String nUri = nextModelElement.getUri();
-						cache.put(nUri, (ModelElement) next);
-						if (uri != null && uri.toString().equals(nUri)) {
-							ret = nextModelElement;
-						}
-					}						
-				}
-
-				if (ret != null) {
-					return ret;
-				}
-				
-				return super.getEObject(uri, loadOnDemand);
-			}
-			
-		};		
-		Resource.Factory.Registry resourceFactoryRegistry = new ResourceFactoryRegistryImpl();
-		resourceSet.getPackageRegistry().put(EngineeringPackage.eNS_URI, EngineeringPackage.eINSTANCE);
-		resourceSet.getPackageRegistry().put(AppPackage.eNS_URI, AppPackage.eINSTANCE);
-		ObjectLoader loader = new EObjectLoader(new ComposedLoader(), null, resourceSet);
-		
-		MutableContext context = Context.EMPTY_CONTEXT.fork();
-		String base = "tmp://base/engineering/";
-		context.put(Context.BASE_URI_PROPERTY, base);
-		
-		context.put("nasdanika/core", new File("..\\..\\core").toURI().toString());
-				
-		ProgressMonitor progressMonitor = new PrintStreamProgressMonitor();
-		context.register(DiagramGenerator.class, createDiagramGenerator(progressMonitor));//DiagramGenerator.createClient(new URL("http://localhost:8090/spring-exec/api/v1/exec/diagram/")));
-		
-		resourceFactoryRegistry.getExtensionToFactoryMap().put("yml", new YamlResourceFactory(loader, context, progressMonitor));
-		resourceSet.setResourceFactoryRegistry(resourceFactoryRegistry);
-				
-		Object actionFactory = loader.loadYaml(new File("model/nasdanika/site.yml"), progressMonitor);
-		Action root = Util.call(Util.<Action>asSupplierFactory(actionFactory).create(context), progressMonitor);
-		
-		// Registering adapter factories
-		resourceSet.getAdapterFactories().add(new EngineeringViewActionAdapterFactory(root, context));
-		
-		// Loading the root of the model and adapting to Action.		
-		URI uri = URI.createURI(new File("model/nasdanika/nasdanika.yml").toURI().toString());
-		
-		SourceResolver sourceResolver = marker -> {
-			if (marker != null && !Util.isBlank(marker.getLocation())) {
-				// TODO - use jGit to resolve origin URL from marker location - cache.
-//				return marker.getLine() > 0 ? ret + "#L" + marker.getLine() : ret;
-			}			
-			return null;			
-		};
-		context.register(SourceResolver.class, sourceResolver);
-		
-		Resource engineeringResource = resourceSet.getResource(uri, true);
-		EcoreUtil.resolveAll(resourceSet);
-		
-		TreeIterator<Notifier> cit = resourceSet.getAllContents();
-		int unresolvedCount = 0;
-		while (cit.hasNext()) {
-			Notifier next = cit.next();
-			if (next instanceof EObject) {
-				EObject nextEObject = (EObject) next;
-				if (nextEObject.eIsProxy()) {
-					System.err.println("Unresolved proxy: " + next);
-					++unresolvedCount;
-				} else {
-					for (EReference ref: nextEObject.eClass().getEAllReferences()) {
-						Object val = nextEObject.eGet(ref);
-						if (val instanceof EObject) {
-							if (((EObject) val).eIsProxy()) {
-								System.err.println("Unresolved proxy: " + val);
-								++unresolvedCount;							
-							}
-						} else if (val instanceof Collection) {
-							for (EObject ve: (Collection<EObject>) val) {
-								if (ve.eIsProxy()) {
-									System.err.println("Unresolved proxy: " + ve);
-									++unresolvedCount;							
-								}								
-							}
-						}
-					}
-				}
-			}	
-			
-//			if (next instanceof ModelElement) {
-//				System.out.println(((ModelElement) next).getUri());
-//			}
-		}
-		
-		if (unresolvedCount > 0) {
-			throw new NasdanikaException("There are "+ unresolvedCount + " unresolved proxies"); 
-		}
-		
-		
-		Organization org = (Organization) engineeringResource.getContents().get(0);
-		
-		Action principal = org.adaptTo(ViewAction.class);	
-		root.getChildren().add(principal);
-		
-		FileSystemContainer output = new FileSystemContainer(new File("target\\site"));
-		BiFunction<String, InputStream, String> decoder = Util.INPUT_STREAM_TO_STRING_DECODER;
-		BiFunction<String, Object, InputStream> encoder = Util.OBJECT_TO_INPUT_STREAM_ENCODER;
-		Container<String> container = output.stateAdapter().adapt(decoder, encoder);
-		
-		String resourceName = "org/nasdanika/html/app/templates/cerulean/dark-fluid.yml";
-		BootstrapContainerApplicationSupplierFactory applicationSupplierFactory = (BootstrapContainerApplicationSupplierFactory) loader.loadYaml(getClass().getClassLoader().getResource(resourceName), progressMonitor);
-		
-		writeAction(
-				root, 
-				principal, 
-				root, 
-				base, 
-				container, 
-				context, 
-				Style.CARDS, 
-				applicationSupplierFactory, 
-				progressMonitor);
-	}
-	
 	@Test
 	public void testGenerateSiteConsumerFactory() throws Exception {
 		ObjectLoader loader = new EObjectLoader(new ComposedLoader(), null, AppPackage.eINSTANCE);
@@ -233,8 +80,13 @@ public class TestModel {
 		String resourceName = "org/nasdanika/html/app/templates/cerulean/dark-fluid.yml";
 		BootstrapContainerApplicationSupplierFactory applicationSupplierFactory = (BootstrapContainerApplicationSupplierFactory) loader.loadYaml(getClass().getClassLoader().getResource(resourceName), progressMonitor);
 		
+		Collection<URI> models = new ArrayList<>();
+		for (String model: System.getenv("MODELS").split(";")) {
+			models.add(URI.createURI(new File(model).toURI().toString()));
+		}
+		
 		GenerateSiteConsumerFactory consumerFactory = new GenerateSiteConsumerFactory(
-				Collections.singletonList(URI.createURI(new File("model/nasdanika/nasdanika.yml").toURI().toString())), 
+				models, 
 				applicationSupplierFactory, 
 				new File("target\\site"));
 		
