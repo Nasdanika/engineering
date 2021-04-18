@@ -94,6 +94,15 @@ public interface EngineeringFactory extends EFactory {
 	IssueCategory createIssueCategory();
 
 	/**
+	 * Returns a new object of class '<em>Issue Status</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Issue Status</em>'.
+	 * @generated
+	 */
+	IssueStatus createIssueStatus();
+
+	/**
 	 * Returns a new object of class '<em>Release</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

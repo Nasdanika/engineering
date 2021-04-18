@@ -3,46 +3,49 @@
 package org.nasdanika.engineering.impl;
 
 import org.eclipse.emf.common.notify.NotificationChain;
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.common.util.EList;
+
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.nasdanika.engineering.Capability;
+
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Issue;
+import org.nasdanika.engineering.IssueStatus;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Capability</b></em>'.
+ * An implementation of the model object '<em><b>Issue Status</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.nasdanika.engineering.impl.CapabilityImpl#getRequiredBy <em>Required By</em>}</li>
- *   <li>{@link org.nasdanika.engineering.impl.CapabilityImpl#isAvailable <em>Available</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.IssueStatusImpl#getIssues <em>Issues</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.IssueStatusImpl#isDone <em>Done</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class CapabilityImpl extends NamedElementImpl implements Capability {
+public class IssueStatusImpl extends NamedElementImpl implements IssueStatus {
 	/**
-	 * The default value of the '{@link #isAvailable() <em>Available</em>}' attribute.
+	 * The default value of the '{@link #isDone() <em>Done</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isAvailable()
+	 * @see #isDone()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean AVAILABLE_EDEFAULT = false;
+	protected static final boolean DONE_EDEFAULT = false;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected CapabilityImpl() {
+	protected IssueStatusImpl() {
 		super();
 	}
 
@@ -53,7 +56,7 @@ public class CapabilityImpl extends NamedElementImpl implements Capability {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return EngineeringPackage.Literals.CAPABILITY;
+		return EngineeringPackage.Literals.ISSUE_STATUS;
 	}
 
 	/**
@@ -62,8 +65,8 @@ public class CapabilityImpl extends NamedElementImpl implements Capability {
 	 * @generated NOT
 	 */
 	@Override
-	public EList<Issue> getRequiredBy() {
-		return getReferrers(EngineeringPackage.Literals.ISSUE__REQUIRES);
+	public EList<Issue> getIssues() {
+		return getReferrers(EngineeringPackage.Literals.ISSUE__STATUS);
 	}
 
 	/**
@@ -72,8 +75,8 @@ public class CapabilityImpl extends NamedElementImpl implements Capability {
 	 * @generated
 	 */
 	@Override
-	public boolean isAvailable() {
-		return (Boolean)eDynamicGet(EngineeringPackage.CAPABILITY__AVAILABLE, EngineeringPackage.Literals.CAPABILITY__AVAILABLE, true, true);
+	public boolean isDone() {
+		return (Boolean)eDynamicGet(EngineeringPackage.ISSUE_STATUS__DONE, EngineeringPackage.Literals.ISSUE_STATUS__DONE, true, true);
 	}
 
 	/**
@@ -82,8 +85,8 @@ public class CapabilityImpl extends NamedElementImpl implements Capability {
 	 * @generated
 	 */
 	@Override
-	public void setAvailable(boolean newAvailable) {
-		eDynamicSet(EngineeringPackage.CAPABILITY__AVAILABLE, EngineeringPackage.Literals.CAPABILITY__AVAILABLE, newAvailable);
+	public void setDone(boolean newDone) {
+		eDynamicSet(EngineeringPackage.ISSUE_STATUS__DONE, EngineeringPackage.Literals.ISSUE_STATUS__DONE, newDone);
 	}
 
 	/**
@@ -95,8 +98,8 @@ public class CapabilityImpl extends NamedElementImpl implements Capability {
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case EngineeringPackage.CAPABILITY__REQUIRED_BY:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getRequiredBy()).basicAdd(otherEnd, msgs);
+			case EngineeringPackage.ISSUE_STATUS__ISSUES:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getIssues()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -109,8 +112,8 @@ public class CapabilityImpl extends NamedElementImpl implements Capability {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case EngineeringPackage.CAPABILITY__REQUIRED_BY:
-				return ((InternalEList<?>)getRequiredBy()).basicRemove(otherEnd, msgs);
+			case EngineeringPackage.ISSUE_STATUS__ISSUES:
+				return ((InternalEList<?>)getIssues()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -123,10 +126,10 @@ public class CapabilityImpl extends NamedElementImpl implements Capability {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EngineeringPackage.CAPABILITY__REQUIRED_BY:
-				return getRequiredBy();
-			case EngineeringPackage.CAPABILITY__AVAILABLE:
-				return isAvailable();
+			case EngineeringPackage.ISSUE_STATUS__ISSUES:
+				return getIssues();
+			case EngineeringPackage.ISSUE_STATUS__DONE:
+				return isDone();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -139,8 +142,8 @@ public class CapabilityImpl extends NamedElementImpl implements Capability {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EngineeringPackage.CAPABILITY__AVAILABLE:
-				setAvailable((Boolean)newValue);
+			case EngineeringPackage.ISSUE_STATUS__DONE:
+				setDone((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -154,8 +157,8 @@ public class CapabilityImpl extends NamedElementImpl implements Capability {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EngineeringPackage.CAPABILITY__AVAILABLE:
-				setAvailable(AVAILABLE_EDEFAULT);
+			case EngineeringPackage.ISSUE_STATUS__DONE:
+				setDone(DONE_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -169,12 +172,12 @@ public class CapabilityImpl extends NamedElementImpl implements Capability {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EngineeringPackage.CAPABILITY__REQUIRED_BY:
-				return !getRequiredBy().isEmpty();
-			case EngineeringPackage.CAPABILITY__AVAILABLE:
-				return isAvailable() != AVAILABLE_EDEFAULT;
+			case EngineeringPackage.ISSUE_STATUS__ISSUES:
+				return !getIssues().isEmpty();
+			case EngineeringPackage.ISSUE_STATUS__DONE:
+				return isDone() != DONE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //CapabilityImpl
+} //IssueStatusImpl

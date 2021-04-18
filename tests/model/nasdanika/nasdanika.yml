@@ -11,6 +11,14 @@ engineering-organization:
         name: Test Category
         description: Blah
         weight: 1
+   issue-statuses:
+      - path: open
+        name: Open
+      - path: in-progress
+        name: In Progress
+      - path: done
+        name: Done
+        done: true
    increments:
       - path: 2021
         name: 2021

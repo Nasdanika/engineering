@@ -20,6 +20,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.nasdanika.engineering.Engineer#getPersonas <em>Personas</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Engineer#getAssignments <em>Assignments</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Engineer#getIssueCategories <em>Issue Categories</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.Engineer#getIssueStatuses <em>Issue Statuses</em>}</li>
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getEngineer()
@@ -113,5 +114,18 @@ public interface Engineer extends Persona {
 	 * @generated
 	 */
 	EList<IssueCategory> getIssueCategories();
+
+	/**
+	 * Returns the value of the '<em><b>Issue Statuses</b></em>' containment reference list.
+	 * The list contents are of type {@link org.nasdanika.engineering.IssueStatus}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Issue Statuses</em>' containment reference list.
+	 * @see org.nasdanika.engineering.EngineeringPackage#getEngineer_IssueStatuses()
+	 * @model containment="true"
+	 *        annotation="urn:org.nasdanika homogenous='true' strict-containment='true'"
+	 * @generated
+	 */
+	EList<IssueStatus> getIssueStatuses();
 
 } // Engineer

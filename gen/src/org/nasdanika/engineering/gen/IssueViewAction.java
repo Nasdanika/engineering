@@ -11,6 +11,7 @@ import org.nasdanika.html.Fragment;
 import org.nasdanika.html.app.Action;
 import org.nasdanika.html.app.ViewGenerator;
 import org.nasdanika.html.bootstrap.BootstrapFactory;
+import org.nasdanika.html.emf.ViewAction;
 
 public class IssueViewAction extends CapabilityViewAction<Issue> {
 	
@@ -22,6 +23,7 @@ public class IssueViewAction extends CapabilityViewAction<Issue> {
 	public Object generate(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
 		BootstrapFactory bootstrapFactory = viewGenerator.getBootstrapFactory();
 		Fragment ret = bootstrapFactory.getHTMLFactory().fragment(super.generate(viewGenerator, progressMonitor));
+		ret.content(viewGenerator.processViewPart(ViewAction.listOfActions(target.getRequires(), "Requires", false, false, 1), progressMonitor));				
 		return ret;
 	}
 	

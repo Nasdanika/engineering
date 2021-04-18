@@ -18,6 +18,7 @@ import org.nasdanika.engineering.Feature;
 import org.nasdanika.engineering.Increment;
 import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.IssueCategory;
+import org.nasdanika.engineering.IssueStatus;
 import org.nasdanika.engineering.Note;
 
 /**
@@ -30,42 +31,22 @@ import org.nasdanika.engineering.Note;
  * <ul>
  *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getChildren <em>Children</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getAssignee <em>Assignee</em>}</li>
- *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getRequirements <em>Requirements</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getRequires <em>Requires</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getIncrement <em>Increment</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getContributesTo <em>Contributes To</em>}</li>
- *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getStatus <em>Status</em>}</li>
- *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#isDone <em>Done</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getNotes <em>Notes</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getEffort <em>Effort</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getCost <em>Cost</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getBenefit <em>Benefit</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getCategory <em>Category</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getTarget <em>Target</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getStatus <em>Status</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#isWorkable <em>Workable</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
-	/**
-	 * The default value of the '{@link #getStatus() <em>Status</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getStatus()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String STATUS_EDEFAULT = null;
-
-	/**
-	 * The default value of the '{@link #isDone() <em>Done</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isDone()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean DONE_EDEFAULT = false;
-
 	/**
 	 * The default value of the '{@link #getEffort() <em>Effort</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -95,6 +76,16 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 	 * @ordered
 	 */
 	protected static final double BENEFIT_EDEFAULT = 0.0;
+
+	/**
+	 * The default value of the '{@link #isWorkable() <em>Workable</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isWorkable()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean WORKABLE_EDEFAULT = false;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -162,8 +153,8 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public EList<Capability> getRequirements() {
-		return (EList<Capability>)eDynamicGet(EngineeringPackage.ISSUE__REQUIREMENTS, EngineeringPackage.Literals.ISSUE__REQUIREMENTS, true, true);
+	public EList<Capability> getRequires() {
+		return (EList<Capability>)eDynamicGet(EngineeringPackage.ISSUE__REQUIRES, EngineeringPackage.Literals.ISSUE__REQUIRES, true, true);
 	}
 
 	/**
@@ -265,8 +256,27 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 	 * @generated
 	 */
 	@Override
-	public String getStatus() {
-		return (String)eDynamicGet(EngineeringPackage.ISSUE__STATUS, EngineeringPackage.Literals.ISSUE__STATUS, true, true);
+	public IssueStatus getStatus() {
+		return (IssueStatus)eDynamicGet(EngineeringPackage.ISSUE__STATUS, EngineeringPackage.Literals.ISSUE__STATUS, true, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public IssueStatus basicGetStatus() {
+		return (IssueStatus)eDynamicGet(EngineeringPackage.ISSUE__STATUS, EngineeringPackage.Literals.ISSUE__STATUS, false, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetStatus(IssueStatus newStatus, NotificationChain msgs) {
+		msgs = eDynamicInverseAdd((InternalEObject)newStatus, EngineeringPackage.ISSUE__STATUS, msgs);
+		return msgs;
 	}
 
 	/**
@@ -275,28 +285,28 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 	 * @generated
 	 */
 	@Override
-	public void setStatus(String newStatus) {
+	public void setStatus(IssueStatus newStatus) {
 		eDynamicSet(EngineeringPackage.ISSUE__STATUS, EngineeringPackage.Literals.ISSUE__STATUS, newStatus);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
-	public boolean isDone() {
-		return (Boolean)eDynamicGet(EngineeringPackage.ISSUE__DONE, EngineeringPackage.Literals.ISSUE__DONE, true, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setDone(boolean newDone) {
-		eDynamicSet(EngineeringPackage.ISSUE__DONE, EngineeringPackage.Literals.ISSUE__DONE, newDone);
+	public boolean isWorkable() {
+		for (Issue child: getChildren()) {
+			if (!child.isAvailable()) {
+				return false;
+			}
+		}
+		for (Capability req: getRequires()) {
+			if (!req.isAvailable()) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 	/**
@@ -444,8 +454,8 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case EngineeringPackage.ISSUE__REQUIREMENTS:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getRequirements()).basicAdd(otherEnd, msgs);
+			case EngineeringPackage.ISSUE__REQUIRES:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getRequires()).basicAdd(otherEnd, msgs);
 			case EngineeringPackage.ISSUE__INCREMENT:
 				Increment increment = basicGetIncrement();
 				if (increment != null)
@@ -456,6 +466,11 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 				if (category != null)
 					msgs = ((InternalEObject)category).eInverseRemove(this, EngineeringPackage.ISSUE_CATEGORY__ISSUES, IssueCategory.class, msgs);
 				return basicSetCategory((IssueCategory)otherEnd, msgs);
+			case EngineeringPackage.ISSUE__STATUS:
+				IssueStatus status = basicGetStatus();
+				if (status != null)
+					msgs = ((InternalEObject)status).eInverseRemove(this, EngineeringPackage.ISSUE_STATUS__ISSUES, IssueStatus.class, msgs);
+				return basicSetStatus((IssueStatus)otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -470,14 +485,16 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 		switch (featureID) {
 			case EngineeringPackage.ISSUE__CHILDREN:
 				return ((InternalEList<?>)getChildren()).basicRemove(otherEnd, msgs);
-			case EngineeringPackage.ISSUE__REQUIREMENTS:
-				return ((InternalEList<?>)getRequirements()).basicRemove(otherEnd, msgs);
+			case EngineeringPackage.ISSUE__REQUIRES:
+				return ((InternalEList<?>)getRequires()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.ISSUE__INCREMENT:
 				return basicSetIncrement(null, msgs);
 			case EngineeringPackage.ISSUE__NOTES:
 				return ((InternalEList<?>)getNotes()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.ISSUE__CATEGORY:
 				return basicSetCategory(null, msgs);
+			case EngineeringPackage.ISSUE__STATUS:
+				return basicSetStatus(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -495,18 +512,14 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 			case EngineeringPackage.ISSUE__ASSIGNEE:
 				if (resolve) return getAssignee();
 				return basicGetAssignee();
-			case EngineeringPackage.ISSUE__REQUIREMENTS:
-				return getRequirements();
+			case EngineeringPackage.ISSUE__REQUIRES:
+				return getRequires();
 			case EngineeringPackage.ISSUE__INCREMENT:
 				if (resolve) return getIncrement();
 				return basicGetIncrement();
 			case EngineeringPackage.ISSUE__CONTRIBUTES_TO:
 				if (resolve) return getContributesTo();
 				return basicGetContributesTo();
-			case EngineeringPackage.ISSUE__STATUS:
-				return getStatus();
-			case EngineeringPackage.ISSUE__DONE:
-				return isDone();
 			case EngineeringPackage.ISSUE__NOTES:
 				return getNotes();
 			case EngineeringPackage.ISSUE__EFFORT:
@@ -521,6 +534,11 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 			case EngineeringPackage.ISSUE__TARGET:
 				if (resolve) return getTarget();
 				return basicGetTarget();
+			case EngineeringPackage.ISSUE__STATUS:
+				if (resolve) return getStatus();
+				return basicGetStatus();
+			case EngineeringPackage.ISSUE__WORKABLE:
+				return isWorkable();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -541,21 +559,15 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 			case EngineeringPackage.ISSUE__ASSIGNEE:
 				setAssignee((Engineer)newValue);
 				return;
-			case EngineeringPackage.ISSUE__REQUIREMENTS:
-				getRequirements().clear();
-				getRequirements().addAll((Collection<? extends Capability>)newValue);
+			case EngineeringPackage.ISSUE__REQUIRES:
+				getRequires().clear();
+				getRequires().addAll((Collection<? extends Capability>)newValue);
 				return;
 			case EngineeringPackage.ISSUE__INCREMENT:
 				setIncrement((Increment)newValue);
 				return;
 			case EngineeringPackage.ISSUE__CONTRIBUTES_TO:
 				setContributesTo((Feature)newValue);
-				return;
-			case EngineeringPackage.ISSUE__STATUS:
-				setStatus((String)newValue);
-				return;
-			case EngineeringPackage.ISSUE__DONE:
-				setDone((Boolean)newValue);
 				return;
 			case EngineeringPackage.ISSUE__NOTES:
 				getNotes().clear();
@@ -572,6 +584,9 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 				return;
 			case EngineeringPackage.ISSUE__CATEGORY:
 				setCategory((IssueCategory)newValue);
+				return;
+			case EngineeringPackage.ISSUE__STATUS:
+				setStatus((IssueStatus)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -591,20 +606,14 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 			case EngineeringPackage.ISSUE__ASSIGNEE:
 				setAssignee((Engineer)null);
 				return;
-			case EngineeringPackage.ISSUE__REQUIREMENTS:
-				getRequirements().clear();
+			case EngineeringPackage.ISSUE__REQUIRES:
+				getRequires().clear();
 				return;
 			case EngineeringPackage.ISSUE__INCREMENT:
 				setIncrement((Increment)null);
 				return;
 			case EngineeringPackage.ISSUE__CONTRIBUTES_TO:
 				setContributesTo((Feature)null);
-				return;
-			case EngineeringPackage.ISSUE__STATUS:
-				setStatus(STATUS_EDEFAULT);
-				return;
-			case EngineeringPackage.ISSUE__DONE:
-				setDone(DONE_EDEFAULT);
 				return;
 			case EngineeringPackage.ISSUE__NOTES:
 				getNotes().clear();
@@ -620,6 +629,9 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 				return;
 			case EngineeringPackage.ISSUE__CATEGORY:
 				setCategory((IssueCategory)null);
+				return;
+			case EngineeringPackage.ISSUE__STATUS:
+				setStatus((IssueStatus)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -637,16 +649,12 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 				return !getChildren().isEmpty();
 			case EngineeringPackage.ISSUE__ASSIGNEE:
 				return basicGetAssignee() != null;
-			case EngineeringPackage.ISSUE__REQUIREMENTS:
-				return !getRequirements().isEmpty();
+			case EngineeringPackage.ISSUE__REQUIRES:
+				return !getRequires().isEmpty();
 			case EngineeringPackage.ISSUE__INCREMENT:
 				return basicGetIncrement() != null;
 			case EngineeringPackage.ISSUE__CONTRIBUTES_TO:
 				return basicGetContributesTo() != null;
-			case EngineeringPackage.ISSUE__STATUS:
-				return STATUS_EDEFAULT == null ? getStatus() != null : !STATUS_EDEFAULT.equals(getStatus());
-			case EngineeringPackage.ISSUE__DONE:
-				return isDone() != DONE_EDEFAULT;
 			case EngineeringPackage.ISSUE__NOTES:
 				return !getNotes().isEmpty();
 			case EngineeringPackage.ISSUE__EFFORT:
@@ -659,8 +667,18 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 				return basicGetCategory() != null;
 			case EngineeringPackage.ISSUE__TARGET:
 				return basicGetTarget() != null;
+			case EngineeringPackage.ISSUE__STATUS:
+				return basicGetStatus() != null;
+			case EngineeringPackage.ISSUE__WORKABLE:
+				return isWorkable() != WORKABLE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
+	}
+	
+	@Override
+	public boolean isAvailable() {
+		IssueStatus status = getStatus();
+		return status != null && status.isDone();
 	}
 
 } //IssueImpl

@@ -53,6 +53,7 @@ engineering-product:
               children:
                 - name: Sub-issue
                   path: sub-iss
+                  status: nasdanika://issue-statuses/done
                   description:
                     exec-markdown: "``Purum``-pum-pum."           
                 

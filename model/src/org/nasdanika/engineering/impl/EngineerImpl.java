@@ -19,6 +19,7 @@ import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Increment;
 import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.IssueCategory;
+import org.nasdanika.engineering.IssueStatus;
 import org.nasdanika.engineering.Persona;
 
 /**
@@ -36,6 +37,7 @@ import org.nasdanika.engineering.Persona;
  *   <li>{@link org.nasdanika.engineering.impl.EngineerImpl#getPersonas <em>Personas</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineerImpl#getAssignments <em>Assignments</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineerImpl#getIssueCategories <em>Issue Categories</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.EngineerImpl#getIssueStatuses <em>Issue Statuses</em>}</li>
  * </ul>
  *
  * @generated
@@ -177,6 +179,17 @@ public abstract class EngineerImpl extends PersonaImpl implements Engineer {
 		return (EList<IssueCategory>)eDynamicGet(EngineeringPackage.ENGINEER__ISSUE_CATEGORIES, EngineeringPackage.Literals.ENGINEER__ISSUE_CATEGORIES, true, true);
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public EList<IssueStatus> getIssueStatuses() {
+		return (EList<IssueStatus>)eDynamicGet(EngineeringPackage.ENGINEER__ISSUE_STATUSES, EngineeringPackage.Literals.ENGINEER__ISSUE_STATUSES, true, true);
+	}
+
 	@Override
 	public EList<Engineer> getOwners() {
 		EList<Engineer> owners = super.getOwners();
@@ -201,6 +214,8 @@ public abstract class EngineerImpl extends PersonaImpl implements Engineer {
 				return ((InternalEList<?>)getPersonas()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.ENGINEER__ISSUE_CATEGORIES:
 				return ((InternalEList<?>)getIssueCategories()).basicRemove(otherEnd, msgs);
+			case EngineeringPackage.ENGINEER__ISSUE_STATUSES:
+				return ((InternalEList<?>)getIssueStatuses()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -227,6 +242,8 @@ public abstract class EngineerImpl extends PersonaImpl implements Engineer {
 				return getAssignments();
 			case EngineeringPackage.ENGINEER__ISSUE_CATEGORIES:
 				return getIssueCategories();
+			case EngineeringPackage.ENGINEER__ISSUE_STATUSES:
+				return getIssueStatuses();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -260,6 +277,10 @@ public abstract class EngineerImpl extends PersonaImpl implements Engineer {
 				getIssueCategories().clear();
 				getIssueCategories().addAll((Collection<? extends IssueCategory>)newValue);
 				return;
+			case EngineeringPackage.ENGINEER__ISSUE_STATUSES:
+				getIssueStatuses().clear();
+				getIssueStatuses().addAll((Collection<? extends IssueStatus>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -287,6 +308,9 @@ public abstract class EngineerImpl extends PersonaImpl implements Engineer {
 			case EngineeringPackage.ENGINEER__ISSUE_CATEGORIES:
 				getIssueCategories().clear();
 				return;
+			case EngineeringPackage.ENGINEER__ISSUE_STATUSES:
+				getIssueStatuses().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -313,6 +337,8 @@ public abstract class EngineerImpl extends PersonaImpl implements Engineer {
 				return !getAssignments().isEmpty();
 			case EngineeringPackage.ENGINEER__ISSUE_CATEGORIES:
 				return !getIssueCategories().isEmpty();
+			case EngineeringPackage.ENGINEER__ISSUE_STATUSES:
+				return !getIssueStatuses().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

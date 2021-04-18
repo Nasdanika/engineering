@@ -11,13 +11,10 @@ engineering-product:
          name: Gen
          path: gen
    issues:
-     - name: <T extends EObject> equal(T a, T b, EStructuralFeature... features)
-       description: Equality test for value objects such as Increments.  
-       increment: nasdanika://increments/2021/children/q2/children/apr
-       effort: 0.5 
      - name: Grouping by increment shall take increment equality into account
        description: Helper class with equals based on start/end dates, takes name from the first increment.  
        increment: nasdanika://increments/2021/children/q2/children/apr
+       status: nasdanika://issue-statuses/done
        effort: 0.5 
      - name: Experts reference
        description: Have expertise, but not authority.
@@ -35,7 +32,9 @@ engineering-product:
      - name: Drop Owner ID - use URI's. Drop other ID's helper attributes. 
        increment: nasdanika://increments/2021/children/q2/children/apr
        effort: 3 
+       requires: nasdanika://modules/engineering/issues/site-generator
      - name: Site generator class in Gen
+       path: site-generator
        description: Extract from TestModel. Validate and fail if there are errors. Also fail on unresolved proxies.
        increment: nasdanika://increments/2021/children/q2/children/apr
        effort: 1 

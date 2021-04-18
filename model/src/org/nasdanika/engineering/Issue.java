@@ -15,17 +15,17 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link org.nasdanika.engineering.Issue#getChildren <em>Children</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Issue#getAssignee <em>Assignee</em>}</li>
- *   <li>{@link org.nasdanika.engineering.Issue#getRequirements <em>Requirements</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.Issue#getRequires <em>Requires</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Issue#getIncrement <em>Increment</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Issue#getContributesTo <em>Contributes To</em>}</li>
- *   <li>{@link org.nasdanika.engineering.Issue#getStatus <em>Status</em>}</li>
- *   <li>{@link org.nasdanika.engineering.Issue#isDone <em>Done</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Issue#getNotes <em>Notes</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Issue#getEffort <em>Effort</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Issue#getCost <em>Cost</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Issue#getBenefit <em>Benefit</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Issue#getCategory <em>Category</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Issue#getTarget <em>Target</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.Issue#getStatus <em>Status</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.Issue#isWorkable <em>Workable</em>}</li>
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getIssue()
@@ -69,7 +69,7 @@ public interface Issue extends EngineeredCapability {
 	void setAssignee(Engineer value);
 
 	/**
-	 * Returns the value of the '<em><b>Requirements</b></em>' reference list.
+	 * Returns the value of the '<em><b>Requires</b></em>' reference list.
 	 * The list contents are of type {@link org.nasdanika.engineering.Capability}.
 	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Capability#getRequiredBy <em>Required By</em>}'.
 	 * <!-- begin-user-doc -->
@@ -77,13 +77,13 @@ public interface Issue extends EngineeredCapability {
 	 * <!-- begin-model-doc -->
 	 * Capabilities required to start working on an issue.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Requirements</em>' reference list.
-	 * @see org.nasdanika.engineering.EngineeringPackage#getIssue_Requirements()
+	 * @return the value of the '<em>Requires</em>' reference list.
+	 * @see org.nasdanika.engineering.EngineeringPackage#getIssue_Requires()
 	 * @see org.nasdanika.engineering.Capability#getRequiredBy
 	 * @model opposite="requiredBy"
 	 * @generated
 	 */
-	EList<Capability> getRequirements();
+	EList<Capability> getRequires();
 
 	/**
 	 * Returns the value of the '<em><b>Increment</b></em>' reference.
@@ -133,48 +133,40 @@ public interface Issue extends EngineeredCapability {
 	void setContributesTo(Feature value);
 
 	/**
-	 * Returns the value of the '<em><b>Status</b></em>' attribute.
+	 * Returns the value of the '<em><b>Status</b></em>' reference.
+	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.IssueStatus#getIssues <em>Issues</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Status</em>' attribute.
-	 * @see #setStatus(String)
+	 * @return the value of the '<em>Status</em>' reference.
+	 * @see #setStatus(IssueStatus)
 	 * @see org.nasdanika.engineering.EngineeringPackage#getIssue_Status()
-	 * @model
+	 * @see org.nasdanika.engineering.IssueStatus#getIssues
+	 * @model opposite="issues"
+	 *        annotation="urn:org.nasdanika homogenous='true'"
 	 * @generated
 	 */
-	String getStatus();
+	IssueStatus getStatus();
 
 	/**
-	 * Sets the value of the '{@link org.nasdanika.engineering.Issue#getStatus <em>Status</em>}' attribute.
+	 * Sets the value of the '{@link org.nasdanika.engineering.Issue#getStatus <em>Status</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Status</em>' attribute.
+	 * @param value the new value of the '<em>Status</em>' reference.
 	 * @see #getStatus()
 	 * @generated
 	 */
-	void setStatus(String value);
+	void setStatus(IssueStatus value);
 
 	/**
-	 * Returns the value of the '<em><b>Done</b></em>' attribute.
+	 * Returns the value of the '<em><b>Workable</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Done</em>' attribute.
-	 * @see #setDone(boolean)
-	 * @see org.nasdanika.engineering.EngineeringPackage#getIssue_Done()
-	 * @model
+	 * @return the value of the '<em>Workable</em>' attribute.
+	 * @see org.nasdanika.engineering.EngineeringPackage#getIssue_Workable()
+	 * @model changeable="false" derived="true"
 	 * @generated
 	 */
-	boolean isDone();
-
-	/**
-	 * Sets the value of the '{@link org.nasdanika.engineering.Issue#isDone <em>Done</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Done</em>' attribute.
-	 * @see #isDone()
-	 * @generated
-	 */
-	void setDone(boolean value);
+	boolean isWorkable();
 
 	/**
 	 * Returns the value of the '<em><b>Notes</b></em>' containment reference list.

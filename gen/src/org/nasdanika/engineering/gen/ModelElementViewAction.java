@@ -9,9 +9,9 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -401,16 +401,6 @@ public class ModelElementViewAction<T extends ModelElement> implements ViewActio
 		return SectionStyle.DEFAULT;
 	}
 	
-	public static <K, V extends EObject> Map<K, List<V>> groupBy(Collection<V> elements, EStructuralFeature keyFeature) {
-		Map<K, List<V>> ret = new LinkedHashMap<>();
-		for (V e: elements) {
-			@SuppressWarnings("unchecked")
-			K k = (K) e.eGet(keyFeature);
-			ret.computeIfAbsent(k, key -> new ArrayList<>()).add(e);
-		}
-		return ret;
-	}
-	
 	protected static final Comparator<Increment> INCREMENT_COMPARATOR = (a,b) -> {
 		if (a == b) {
 			return 0;
@@ -435,7 +425,7 @@ public class ModelElementViewAction<T extends ModelElement> implements ViewActio
 		Date aStart = a.getStart();
 		Date bStart = b.getStart();
 		
-		if (aStart == bStart) {
+		if (Objects.equals(aStart, bStart)) {
 			return containmentPath(a).compareTo(containmentPath(b));
 		}
 
@@ -518,9 +508,12 @@ public class ModelElementViewAction<T extends ModelElement> implements ViewActio
 
 			@Override
 			public void build(Object target, ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
-				if (issue.isDone()) {
+				if (issue.isAvailable()) {
 					((org.nasdanika.html.bootstrap.RowContainer.Row) target).color(Color.SUCCESS);
-				}									
+				}
+				if (!issue.isWorkable()) {
+					((org.nasdanika.html.bootstrap.RowContainer.Row) target).color(Color.PRIMARY); // TODO - configurable.					
+				}
 			}
 			
 		};
@@ -539,10 +532,9 @@ public class ModelElementViewAction<T extends ModelElement> implements ViewActio
 				cellBuilderProvider, 
 				viewGenerator, 
 				progressMonitor, 
-				features);
-		
+				features);		
 	}
-
+		
 	/**
 	 * If issues collection is not empty creates a section action with issues grouped into increments with 
 	 * specified features in the issue table. 
@@ -550,12 +542,35 @@ public class ModelElementViewAction<T extends ModelElement> implements ViewActio
 	 * @param features
 	 * @return
 	 */
-	protected Action issuesSection(Collection<Issue> issues, String text, String id, EStructuralFeature... features) {
+	public Action issuesSection(
+			Collection<Issue> issues, 
+			String text, 
+			String id, 
+			EStructuralFeature... features) {
+		
+		return issuesSection(issues, text, id, getMarker(), getActivator(), features);
+	}
+	
+	/**
+	 * If issues collection is not empty creates a section action with issues grouped into increments with 
+	 * specified features in the issue table. 
+	 * @param issues
+	 * @param features
+	 * @return
+	 */
+	public static Action issuesSection(
+			Collection<Issue> issues, 
+			String text, 
+			String id, 
+			Marker marker, 
+			ActionActivator activator,			
+			EStructuralFeature... features) {
+		
 		if (issues.isEmpty()) {
 			return null;
 		}
 		
-		Map<Increment, List<Issue>> increments = groupBy(issues, EngineeringPackage.Literals.ISSUE__INCREMENT);
+		Map<IncrementValueObject, List<Issue>> increments = Util.groupBy(issues, IncrementValueObject::new);
 		boolean backlogOnly = increments.size() == 1 && increments.keySet().iterator().next() == null;
 		
 		ActionImpl issuesSection = new ActionImpl() {
@@ -578,10 +593,10 @@ public class ModelElementViewAction<T extends ModelElement> implements ViewActio
 			
 			@Override
 			public List<Action> getChildren() {
-				return backlogOnly ? Collections.emptyList() : increments.keySet().stream().sorted(INCREMENT_COMPARATOR).map(i -> incrementAction(i, increments.get(i))).collect(Collectors.toList());
+				return backlogOnly ? Collections.emptyList() : increments.keySet().stream().sorted().map(i -> incrementValueObjectAction(i, increments.get(i))).collect(Collectors.toList());
 			}
 			
-			private Action incrementAction(Increment increment, List<Issue> incrementIssues) {
+			private Action incrementValueObjectAction(IncrementValueObject incrementValueObject, List<Issue> incrementIssues) {
 				ActionImpl incrementSection = new ActionImpl() {
 					
 					@Override
@@ -602,8 +617,8 @@ public class ModelElementViewAction<T extends ModelElement> implements ViewActio
 				};
 				
 				incrementSection.getRoles().add(Action.Role.SECTION); 
-				incrementSection.setText(increment == null ? "Backlog" : increment.getName()); 			
-				incrementSection.setActivator(new PathNavigationActionActivator(incrementSection, ((NavigationActionActivator) getActivator()).getUrl(null), "#" + id + "-" + (increment == null ? "backlog" : ViewAction.adaptToViewActionNonNull(increment).getId()), getMarker()));
+				incrementSection.setText(Util.isBlank(incrementValueObject.getName()) ? "Backlog" : incrementValueObject.getName()); 			
+				incrementSection.setActivator(new PathNavigationActionActivator(incrementSection, ((NavigationActionActivator) getActivator()).getUrl(null), "#" + id + "-" + incrementValueObject.hashCode(), marker));
 				return incrementSection; 					
 			}
 		};
@@ -611,7 +626,7 @@ public class ModelElementViewAction<T extends ModelElement> implements ViewActio
 		issuesSection.getRoles().add(Action.Role.SECTION); 
 		issuesSection.setSectionStyle(SectionStyle.DEFAULT);
 		issuesSection.setText(text); 			
-		issuesSection.setActivator(new PathNavigationActionActivator(issuesSection, ((NavigationActionActivator) getActivator()).getUrl(null), "#" + id, getMarker()));
+		issuesSection.setActivator(new PathNavigationActionActivator(issuesSection, ((NavigationActionActivator) activator).getUrl(null), "#" + id, marker));
 
 		return issuesSection;
 	}
