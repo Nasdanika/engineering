@@ -1,5 +1,8 @@
 package org.nasdanika.engineering.gen;
 
+import java.util.function.Function;
+
+import org.eclipse.emf.ecore.resource.Resource;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.html.Fragment;
 import org.nasdanika.html.app.ViewGenerator;
@@ -7,8 +10,8 @@ import org.nasdanika.html.bootstrap.BootstrapFactory;
 
 public class ModuleViewAction<T extends org.nasdanika.engineering.Module> extends EngineeredElementViewAction<T> {
 	
-	protected ModuleViewAction(T value) {
-		super(value);
+	protected ModuleViewAction(T value, Function<Resource, String> resourcePathResolver) {
+		super(value, resourcePathResolver);
 	}
 	
 	@Override

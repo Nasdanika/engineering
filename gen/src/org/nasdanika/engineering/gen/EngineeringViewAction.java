@@ -6,6 +6,7 @@ import java.util.List;
 import org.eclipse.emf.ecore.EObject;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.engineering.ModelElement;
+import org.nasdanika.html.Fragment;
 import org.nasdanika.html.app.Action;
 import org.nasdanika.html.app.ViewGenerator;
 import org.nasdanika.html.app.impl.ActionImpl;
@@ -23,6 +24,7 @@ public class EngineeringViewAction extends ActionImpl {
 
 	public EngineeringViewAction(Collection<EObject> elements) {
 		this.elements = elements;
+		setText("Engineering");
 	}
 	
 	@Override
@@ -32,9 +34,15 @@ public class EngineeringViewAction extends ActionImpl {
 	
 	@Override
 	public Object generate(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
-		// TODO List of contents for elements.
-		return super.generate(viewGenerator, progressMonitor);
+		Fragment ret = viewGenerator.getHTMLFactory().fragment();
+		ret.content(viewGenerator.processViewPart(ViewAction.listOfActions(elements, null, false, false, 1), progressMonitor));
+		
+		return ret;
 	}
 
+	@Override
+	public boolean isEmpty() {
+		return false;
+	}
 
 }

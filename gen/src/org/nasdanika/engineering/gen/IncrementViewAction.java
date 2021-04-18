@@ -1,8 +1,10 @@
 package org.nasdanika.engineering.gen;
 
 import java.util.List;
+import java.util.function.Function;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Increment;
@@ -19,8 +21,8 @@ import org.nasdanika.html.emf.ViewAction;
 
 public class IncrementViewAction extends NamedElementViewAction<Increment> {
 	
-	protected IncrementViewAction(Increment value) {
-		super(value);
+	protected IncrementViewAction(Increment value, Function<Resource, String> resourcePathResolver) {
+		super(value, resourcePathResolver);
 	}
 	
 	@Override

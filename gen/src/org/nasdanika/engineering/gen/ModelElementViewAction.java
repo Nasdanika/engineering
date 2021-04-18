@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.nasdanika.common.Context;
 import org.nasdanika.common.DefaultConverter;
@@ -42,7 +43,6 @@ import org.nasdanika.engineering.Increment;
 import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.ModelElement;
 import org.nasdanika.html.Fragment;
-import org.nasdanika.html.OrderedListType;
 import org.nasdanika.html.app.Action;
 import org.nasdanika.html.app.ActionActivator;
 import org.nasdanika.html.app.Label;
@@ -53,7 +53,6 @@ import org.nasdanika.html.app.ViewGenerator;
 import org.nasdanika.html.app.impl.ActionImpl;
 import org.nasdanika.html.app.impl.LabelImpl;
 import org.nasdanika.html.app.impl.PathNavigationActionActivator;
-import org.nasdanika.html.app.viewparts.ListOfActionsViewPart;
 import org.nasdanika.html.bootstrap.BootstrapFactory;
 import org.nasdanika.html.bootstrap.Color;
 import org.nasdanika.html.bootstrap.RowContainer.Row;
@@ -71,9 +70,11 @@ public class ModelElementViewAction<T extends ModelElement> implements ViewActio
 	
 	protected T target;
 	private String id;
+	private Function<Resource, String> resourcePathResolver;
 		
-	protected ModelElementViewAction(T target) {
+	protected ModelElementViewAction(T target, Function<Resource, String> resourcePathResolver) {
 		this.target = target;		
+		this.resourcePathResolver = resourcePathResolver;
 		try {
 			id = Hex.encodeHexString(MessageDigest.getInstance("SHA-256").digest(target.getUri().getBytes(StandardCharsets.UTF_8)));
 		} catch (NoSuchAlgorithmException e) {
@@ -85,27 +86,39 @@ public class ModelElementViewAction<T extends ModelElement> implements ViewActio
 	public ActionActivator getActivator() {
 		String contextUri = (String) EObjectAdaptable.adaptTo(target, Context.class).get(Context.BASE_URI_PROPERTY);
 		Marked marked = EObjectAdaptable.adaptTo(target, Marked.class);
+		StringBuilder path = new StringBuilder();
 		EReference eContainmentReference = target.eContainmentFeature();
 		if (eContainmentReference == null) {
-			return new PathNavigationActionActivator(this, contextUri, contextUri + "index.html", marked == null ? null : marked.getMarker());
-		}
-		StringBuilder path = new StringBuilder(Util.camelToKebab(eContainmentReference.getName()));
-		if (eContainmentReference.isMany()) {
-			path.append("/");			
+			path.append(contextUri);
+			String resourcePath = resourcePathResolver == null ? null : resourcePathResolver.apply(target.eResource());			
+			if (!Util.isBlank(resourcePath)) {
+				path.append(resourcePath);
+			}
 			String localPath = target.getPath();
-			if (Util.isBlank(localPath)) {
-				EObject eContainer = target.eContainer();
-				if (eContainer != null) {
-					path.append(((List<?>) eContainer.eGet(eContainmentReference)).indexOf(target));
-				}
+			if (Util.isBlank(localPath) && target.eResource() != null) {
+				path.append(target.eResource().getContents().indexOf(target));
 			} else {
 				path.append(localPath);
 			}
-			if (target.eClass().getEReferences().stream().filter(EReference::isContainment).findAny().isPresent()) {
-				path.append("/index");
-			}
-			path.append(".html");				
-		}			
+		} else {
+			path.append(Util.camelToKebab(eContainmentReference.getName()));
+			if (eContainmentReference.isMany()) {
+				path.append("/");			
+				String localPath = target.getPath();
+				if (Util.isBlank(localPath)) {
+					EObject eContainer = target.eContainer();
+					if (eContainer != null) {
+						path.append(((List<?>) eContainer.eGet(eContainmentReference)).indexOf(target));
+					}
+				} else {
+					path.append(localPath);
+				}
+			}	
+		}
+		if (target.eClass().getEReferences().stream().filter(EReference::isContainment).findAny().isPresent()) {
+			path.append("/index");
+		}
+		path.append(".html");				
 		return new PathNavigationActionActivator(this, contextUri, path.toString(), marked == null ? null : marked.getMarker());			
 	}
 
@@ -361,13 +374,6 @@ public class ModelElementViewAction<T extends ModelElement> implements ViewActio
 			return false;		
 		ModelElementViewAction<?> other = (ModelElementViewAction<?>) obj;
 		return target == other.target;
-	}
-	
-	protected static Object listOfActions(Collection<? extends EObject> elements, String header, boolean sort, boolean tooltip, int depth) { 
-		if (elements.isEmpty()) {
-			return null;
-		}
-		return new ListOfActionsViewPart(ViewAction.adaptToViewActionNonNullSorted(elements), header, tooltip, depth, OrderedListType.ROTATE);
 	}
 	
 	protected static Action adaptToActionNonNull(EObject obj) {

@@ -1,5 +1,8 @@
 package org.nasdanika.engineering.gen;
 
+import java.util.function.Function;
+
+import org.eclipse.emf.ecore.resource.Resource;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.engineering.Persona;
 import org.nasdanika.html.Fragment;
@@ -8,8 +11,8 @@ import org.nasdanika.html.bootstrap.BootstrapFactory;
 
 public class PersonaViewAction<T extends Persona> extends EngineeredElementViewAction<T> {
 	
-	public PersonaViewAction(T value) {
-		super(value);
+	public PersonaViewAction(T value, Function<Resource, String> resourcePathResolver) {
+		super(value, resourcePathResolver);
 	}
 	
 	@Override

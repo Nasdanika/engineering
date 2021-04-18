@@ -3,7 +3,8 @@ package org.nasdanika.engineering.gen;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.util.URI;
@@ -18,6 +19,7 @@ import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.ModelElement;
 import org.nasdanika.html.app.Action;
 import org.nasdanika.html.app.Application;
+import org.nasdanika.html.app.impl.PathNavigationActionActivator;
 import org.nasdanika.html.app.viewparts.AdaptiveNavigationPanelViewPart.Style;
 import org.nasdanika.html.emf.AbstractGenerateSiteConsumerFactory;
 import org.nasdanika.html.model.app.AppPackage;
@@ -30,21 +32,21 @@ import org.nasdanika.html.model.app.AppPackage;
 public class GenerateSiteConsumerFactory extends AbstractGenerateSiteConsumerFactory {
 	
 	public GenerateSiteConsumerFactory(
-			List<URI> resources,
+			Collection<URI> resources,
 			SupplierFactory<? extends Application> applicationSupplierFactory, 
 			BinaryEntityContainer output) {
 		super(resources, applicationSupplierFactory, output);
 	}
 
 	public GenerateSiteConsumerFactory(
-			List<URI> resources,
+			Collection<URI> resources,
 			SupplierFactory<? extends Application> applicationSupplierFactory, 
 			Container<String> output) {
 		super(resources, applicationSupplierFactory, output);
 	}
 
 	public GenerateSiteConsumerFactory(
-			List<URI> resources,
+			Collection<URI> resources,
 			SupplierFactory<? extends Application> applicationSupplierFactory, 
 			File output) {
 		super(resources, applicationSupplierFactory, output);
@@ -53,6 +55,7 @@ public class GenerateSiteConsumerFactory extends AbstractGenerateSiteConsumerFac
 	@Override
 	protected Action createPricipalAction(Action rootAction, Collection<EObject> topLevelElements) {
 		EngineeringViewAction principal = new EngineeringViewAction(topLevelElements);
+		principal.setActivator(new PathNavigationActionActivator(principal, getBaseURI(), "index.html", null));
 		principal.setParent(rootAction);
 		return principal;		
 	}
@@ -63,7 +66,40 @@ public class GenerateSiteConsumerFactory extends AbstractGenerateSiteConsumerFac
 
 	@Override
 	protected AdapterFactory createAdapterFactory(Action parent, Context context) {		
-		return new EngineeringViewActionAdapterFactory(parent, context);
+		return new EngineeringViewActionAdapterFactory(parent, this::resolveResourcePath, context);
+	}
+	
+	private Map<String, Resource> resourcePaths = new HashMap<>();
+	
+	/**
+	 * Uses resource URI last segment without extension as path, de-dups by adding index.
+	 * @param resource
+	 * @return
+	 */
+	protected String resolveResourcePath(Resource resource) {
+		String lastSegment = resource.getURI().lastSegment();
+		if (lastSegment == null) {
+			return null;
+		}
+		int dotIdx = lastSegment.lastIndexOf('.');
+		if (dotIdx != -1) {
+			lastSegment = lastSegment.substring(0, dotIdx);
+		}
+		for (int i = 0; ; ++i) {
+			String path = lastSegment;
+			if (i > 0) {
+				path += "-" + Integer.toString(i, Character.MAX_RADIX);
+			}
+			path +=  "/";
+			Resource existing = resourcePaths.get(path);
+			if (existing == null) {
+				resourcePaths.put(path, resource);
+				return path;
+			}
+			if (existing == resource) {
+				return path;
+			}
+		}
 	}
 
 	@Override

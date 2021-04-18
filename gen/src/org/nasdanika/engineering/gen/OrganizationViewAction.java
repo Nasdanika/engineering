@@ -1,5 +1,8 @@
 package org.nasdanika.engineering.gen;
 
+import java.util.function.Function;
+
+import org.eclipse.emf.ecore.resource.Resource;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.engineering.Organization;
 import org.nasdanika.html.Fragment;
@@ -11,8 +14,8 @@ public class OrganizationViewAction extends EngineerViewAction<Organization> {
 	
 	private Action parent;
 
-	public OrganizationViewAction(Organization value, Action parent) {
-		super(value);
+	public OrganizationViewAction(Organization value, Function<Resource, String> resourcePathResolver, Action parent) {
+		super(value, resourcePathResolver);
 		this.parent = parent;
 	}
 	

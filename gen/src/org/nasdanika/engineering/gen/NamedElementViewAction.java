@@ -1,6 +1,9 @@
 package org.nasdanika.engineering.gen;
 
+import java.util.function.Function;
+
 import org.apache.commons.text.StringEscapeUtils;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.nasdanika.engineering.NamedElement;
 
 /**
@@ -11,8 +14,8 @@ import org.nasdanika.engineering.NamedElement;
  */
 public class NamedElementViewAction<T extends NamedElement> extends ModelElementViewAction<T> {
 			
-	protected NamedElementViewAction(T target) {
-		super(target);		
+	protected NamedElementViewAction(T target, Function<Resource, String> resourcePathResolver) {
+		super(target, resourcePathResolver);		
 	}
 	
 	@Override

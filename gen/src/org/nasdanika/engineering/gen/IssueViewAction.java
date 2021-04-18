@@ -1,7 +1,9 @@
 package org.nasdanika.engineering.gen;
 
 import java.util.List;
+import java.util.function.Function;
 
+import org.eclipse.emf.ecore.resource.Resource;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Issue;
@@ -12,8 +14,8 @@ import org.nasdanika.html.bootstrap.BootstrapFactory;
 
 public class IssueViewAction extends CapabilityViewAction<Issue> {
 	
-	protected IssueViewAction(Issue value) {
-		super(value);
+	protected IssueViewAction(Issue value, Function<Resource, String> resourcePathResolver) {
+		super(value, resourcePathResolver);
 	}
 	
 	@Override

@@ -1,5 +1,8 @@
 package org.nasdanika.engineering.gen;
 
+import java.util.function.Function;
+
+import org.eclipse.emf.ecore.resource.Resource;
 import org.nasdanika.common.Context;
 import org.nasdanika.emf.ComposedAdapterFactory;
 import org.nasdanika.emf.FunctionAdapterFactory;
@@ -22,7 +25,7 @@ import org.nasdanika.html.emf.ViewAction;
  */
 public class EngineeringViewActionAdapterFactory extends ComposedAdapterFactory {
 	
-	public EngineeringViewActionAdapterFactory(Action parent, Context context) {		
+	public EngineeringViewActionAdapterFactory(Action parent, Function<Resource, String> resourcePathResolver, Context context) {		
 		// Registering adapter factories.
 		registerAdapterFactory(
 			new InstanceAdapterFactory<Context>(
@@ -36,57 +39,57 @@ public class EngineeringViewActionAdapterFactory extends ComposedAdapterFactory 
 				EngineeringPackage.Literals.PERSONA, 
 				ViewAction.class, 
 				this.getClass().getClassLoader(), 
-				PersonaViewAction::new));
+				obj -> new PersonaViewAction<Persona>(obj, resourcePathResolver)));
 				
 		registerAdapterFactory(
 			new FunctionAdapterFactory<ViewAction, Engineer>(
 				EngineeringPackage.Literals.ENGINEER, 
 				ViewAction.class, 
 				this.getClass().getClassLoader(), 
-				EngineerViewAction::new));
+				obj -> new EngineerViewAction<Engineer>(obj, resourcePathResolver)));
 		
 		registerAdapterFactory(
 			new FunctionAdapterFactory<ViewAction, Organization>(
 				EngineeringPackage.Literals.ORGANIZATION, 
 				ViewAction.class, 
 				this.getClass().getClassLoader(), 
-				org -> new OrganizationViewAction(org, parent)));					
+				org -> new OrganizationViewAction(org, resourcePathResolver, parent)));					
 				
 		registerAdapterFactory(
 			new FunctionAdapterFactory<ViewAction, org.nasdanika.engineering.Module>(
 				EngineeringPackage.Literals.MODULE, 
 				ViewAction.class, 
 				this.getClass().getClassLoader(), 
-				ModuleViewAction::new));					
+				obj -> new ModuleViewAction<org.nasdanika.engineering.Module>(obj, resourcePathResolver)));					
 		
 		registerAdapterFactory(
 			new FunctionAdapterFactory<ViewAction, Product>(
 				EngineeringPackage.Literals.PRODUCT, 
 				ViewAction.class, 
 				this.getClass().getClassLoader(), 
-				ProductViewAction::new));					
+				obj -> new ProductViewAction(obj, resourcePathResolver)));					
 		
 		registerAdapterFactory(
 			new FunctionAdapterFactory<ViewAction, Issue>(
 				EngineeringPackage.Literals.ISSUE, 
 				ViewAction.class, 
 				this.getClass().getClassLoader(), 
-				IssueViewAction::new));					
+				obj -> new IssueViewAction(obj, resourcePathResolver)));					
 		
 		registerAdapterFactory(
 			new FunctionAdapterFactory<ViewAction, Increment>(
 				EngineeringPackage.Literals.INCREMENT, 
 				ViewAction.class, 
 				this.getClass().getClassLoader(), 
-				IncrementViewAction::new));					
+				obj -> new IncrementViewAction(obj, resourcePathResolver)));					
 		
 		registerAdapterFactory(
 			new FunctionAdapterFactory<ViewAction, IssueCategory>(
 				EngineeringPackage.Literals.ISSUE_CATEGORY, 
 				ViewAction.class, 
 				this.getClass().getClassLoader(), 
-				IssueCategoryViewAction::new));					
+				obj -> new IssueCategoryViewAction(obj, resourcePathResolver)));					
 		
 	}
-
+	
 }
