@@ -15,6 +15,7 @@ import org.nasdanika.engineering.Artifact;
 import org.nasdanika.engineering.Call;
 import org.nasdanika.engineering.Capability;
 import org.nasdanika.engineering.Directory;
+import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeredCapability;
 import org.nasdanika.engineering.EngineeringFactory;
 import org.nasdanika.engineering.EngineeringPackage;
@@ -81,6 +82,7 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 			case EngineeringPackage.ISSUE: return createIssue();
 			case EngineeringPackage.NOTE: return createNote();
 			case EngineeringPackage.PERSONA: return createPersona();
+			case EngineeringPackage.ENGINEER: return createEngineer();
 			case EngineeringPackage.ORGANIZATION: return createOrganization();
 			case EngineeringPackage.MODULE: return createModule();
 			case EngineeringPackage.PRODUCT: return createProduct();
@@ -108,6 +110,17 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 	public Persona createPersona() {
 		PersonaImpl persona = new PersonaImpl();
 		return persona;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Engineer createEngineer() {
+		EngineerImpl engineer = new EngineerImpl();
+		return engineer;
 	}
 
 	/**

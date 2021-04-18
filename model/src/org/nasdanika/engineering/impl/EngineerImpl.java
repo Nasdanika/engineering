@@ -42,7 +42,7 @@ import org.nasdanika.engineering.Persona;
  *
  * @generated
  */
-public abstract class EngineerImpl extends PersonaImpl implements Engineer {
+public class EngineerImpl extends PersonaImpl implements Engineer {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

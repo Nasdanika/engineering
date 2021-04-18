@@ -24,8 +24,7 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getEngineer()
- * @model abstract="true"
- *        annotation="urn:org.nasdanika documentation-reference='../doc/engineer.md'"
+ * @model annotation="urn:org.nasdanika documentation-reference='../doc/engineer.md'"
  * @generated
  */
 public interface Engineer extends Persona {

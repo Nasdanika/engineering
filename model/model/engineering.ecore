@@ -150,7 +150,7 @@
         eType="#//Engineer"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Persona" eSuperTypes="#//EngineeredElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Engineer" abstract="true" eSuperTypes="#//Persona">
+  <eClassifiers xsi:type="ecore:EClass" name="Engineer" eSuperTypes="#//Persona">
     <eAnnotations source="urn:org.nasdanika">
       <details key="documentation-reference" value="../doc/engineer.md"/>
     </eAnnotations>
