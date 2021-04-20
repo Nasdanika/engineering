@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.nasdanika.engineering</groupId>
-	<version>2021.4.0</version>
+	<version>2021.4.2</version>
 	<artifactId>parent</artifactId>
 	<packaging>pom</packaging>
 	<name>Nasdanika Engineering Parent</name>
@@ -19,13 +19,20 @@
 	</licenses>
 
 	<properties>
-		<core.version>2021.3.3</core.version>
-		<html.version>2021.3.1</html.version>
+		<core.version>2021.4.1</core.version>
+		<html.version>2021.4.1</html.version>
 	</properties>	
 
 	<scm>
 		<url>https://github.com/Nasdanika/engineering</url>
 	</scm>
+
+<distributionManagement>
+  <snapshotRepository>
+    <id>ossrh</id>
+    <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+  </snapshotRepository>
+</distributionManagement>
 
 	<build>
 	    <extensions>
@@ -50,17 +57,18 @@
 					</execution>
 				</executions>
 			</plugin>	
-			<plugin>
-				<groupId>org.sonatype.plugins</groupId>
-				<artifactId>nexus-staging-maven-plugin</artifactId>
-				<version>1.6.8</version>
-				<extensions>true</extensions>
-				<configuration>
-					<serverId>ossrh</serverId>
-					<nexusUrl>https://oss.sonatype.org/</nexusUrl>
-					<autoReleaseAfterClose>true</autoReleaseAfterClose>
-				</configuration>
-			</plugin>								
+    <plugin>
+      <groupId>org.sonatype.plugins</groupId>
+      <artifactId>nexus-staging-maven-plugin</artifactId>
+      <version>1.6.7</version>
+      <extensions>true</extensions>
+      <configuration>
+        <serverId>ossrh</serverId>
+        <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
+        <autoReleaseAfterClose>true</autoReleaseAfterClose>
+      </configuration>
+    </plugin>
+
                         <plugin>
                               <groupId>pl.project13.maven</groupId>
                               <artifactId>git-commit-id-plugin</artifactId>
@@ -141,15 +149,4 @@
 		<module>model</module>
 		<module>gen</module>
 	</modules>	
-
-	<distributionManagement>
-		<repository>
-			<id>ossrh</id>
-			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
-		</repository>
-		<snapshotRepository>
-			<id>ossrh</id>
-			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
-		</snapshotRepository>
-	</distributionManagement>	
 </project>

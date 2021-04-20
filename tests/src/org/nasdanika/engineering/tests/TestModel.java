@@ -41,6 +41,7 @@ import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.common.SupplierFactory;
 import org.nasdanika.common.Util;
 import org.nasdanika.common.persistence.ObjectLoader;
+import org.nasdanika.common.persistence.SourceResolver;
 import org.nasdanika.common.resources.Container;
 import org.nasdanika.common.resources.FileSystemContainer;
 import org.nasdanika.emf.EObjectAdaptable;
@@ -96,6 +97,13 @@ public class TestModel {
 		CommandFactory commandFactory = asf.then(consumerFactory);
 		MutableContext context = Context.EMPTY_CONTEXT.fork();
 		context.put("nasdanika/core", new File("..\\..\\core").toURI().toString());
+		
+		SourceResolver sourceResolver = marker -> {
+			
+			return marker.toString() + " ***";
+		};
+		
+		context.register(SourceResolver.class, sourceResolver);
 		
 		try {
 			Util.call(commandFactory.create(context), progressMonitor);

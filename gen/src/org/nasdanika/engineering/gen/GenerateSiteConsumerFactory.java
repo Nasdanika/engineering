@@ -66,7 +66,7 @@ public class GenerateSiteConsumerFactory extends AbstractGenerateSiteConsumerFac
 
 	@Override
 	protected AdapterFactory createAdapterFactory(Action parent, Context context) {		
-		return new EngineeringViewActionAdapterFactory(parent, this::resolveResourcePath, context);
+		return new EngineeringViewActionAdapterFactory(parent, resources.size() == 1 ? null : this::resolveResourcePath, context);
 	}
 	
 	private Map<String, Resource> resourcePaths = new HashMap<>();

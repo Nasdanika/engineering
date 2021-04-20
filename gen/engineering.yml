@@ -1,26 +1,21 @@
-engineering-product:
-   name: Engineering
-   path: engineering
-   modules:
-      - engineering-module:
-         name: Model
-         path: model
-         issues:
-            - name: Validation of duplicate paths in containing collection and duplicate IDs                         
-      - engineering-module:
-         name: Gen
-         path: gen
+engineering-module:
+   name: Gen
+   path: gen
    issues:
      - name: Grouping by increment shall take increment equality into account
        description: Helper class with equals based on start/end dates, takes name from the first increment.  
        increment: nasdanika://increments/2021/children/q2/children/apr
        status: nasdanika://issue-statuses/done
        effort: 0.5 
+     - name: Document the model
+       description: Model and dialogs  
+       increment: nasdanika://increments/2021/children/q2/children/apr
+       effort: 4 
      - name: Experts reference
        description: Have expertise, but not authority.
        effort: 3 
-     - name: Multi-model
-       description: Change to CLI, all issues view - home page - principal view action.
+     - name: Features and releases
+       description: Basic support. Add issues for visualizations (gantt) and aggregations.
        effort: 3 
      - name: Filterable and sortable table component - use KnockoutJs 
        description: |+2
@@ -32,7 +27,7 @@ engineering-product:
      - name: Drop Owner ID - use URI's. Drop other ID's helper attributes. 
        increment: nasdanika://increments/2021/children/q2/children/apr
        effort: 3 
-       requires: nasdanika://modules/engineering/issues/site-generator
+       #requires: resolve://site-generator
      - name: Site generator class in Gen
        path: site-generator
        description: Extract from TestModel. Validate and fail if there are errors. Also fail on unresolved proxies.
@@ -82,4 +77,28 @@ engineering-product:
          How to handle spill-over issues?
          Benefit discount rate - how much more the present benefit is valued over future benefit. Related to it - even benefit stream as well as allocation to categories.          
        effort: 8         
+     - name: Journey to engineering export
+       description: |+2
+         During generation create YAML engineering model from journey definition with back-links to definitions. 
+         Activities and journeys map to issues, personas map to engineers. 
+         I.e. journey is a template for an engineering model which then can be executed and tracked.  
+     - name: MavenModule extends Module?
+       description: Group ID, artifact ID, repository if not default.
+     - name: Refactor to output HTML App model
+       description: More flexible as it would allow to construct larger sites from multiple models. Requires implementing bootstra table and list of actions component.
+     - name: Journey inheritance
+       description: superJourney and subJourneys links the first is a proxy, the second is derived. Opposite. Override by path match. Would also need allElements derived reference - own and inherited.
+     - name: Engineer view
+       description: Modules - list of actions. Increments as a hierarhical table (with indents) and stats - total number of issues, by status.
+     - name: Issue status appearance or just color?
+       description: E.g. blocked in danger.
+     - name: Issue and increment visualizations
+       description: Issue - pert chart (state diagram) with color coding of statuses. Increment - gantt or gantts for issues and also for features and releases. Release as a milestone.
+     - name: Announce initial release
+       description: Presentation, video, post on LinkedIn. After restructuring the Nasdanika site to use Engineering.
+     - name: Issue and increment visualizations
+       description: Issue - pert chart (state diagram) with color coding of statuses. Increment - gantt or gantts for issues and also for features and releases. Release as a milestone.
+     - name: Configurable colors
+       description: Inject adapter factory into ModelElementViewAction. Methods in the factory to obtain parent, resource path resolver (the factory is the resolver), colors. Remove parent and resolver from constructors. 
+       
    

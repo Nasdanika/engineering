@@ -152,30 +152,6 @@ public class ModelElementViewAction<T extends ModelElement> implements ViewActio
 	@Override
 	public List<Action> getChildren() {
 		ArrayList<Action> children = new ArrayList<Action>();
-		Marked marked = EObjectAdaptable.adaptTo(target, Marked.class);
-		Context context = EObjectAdaptable.adaptTo(target, Context.class);
-		if (context != null && marked != null && marked.getMarker() != null) {
-			SourceResolver sourceResolver = context.get(SourceResolver.class);
-			if (sourceResolver != null) {
-				String source = sourceResolver.getSource(marked.getMarker());
-				if (!Util.isBlank(source)) {
-					ActionImpl sourceAction = new ActionImpl();
-					sourceAction.setIcon("fas fa-code-branch");
-					sourceAction.setText("Source");
-					sourceAction.getRoles().add(Action.Role.CONTEXT);
-					sourceAction.setActivator(new NavigationActionActivator() {
-						
-						@Override
-						public String getUrl(String base) {
-							return source;
-						}
-						
-					});
-					children.add(sourceAction);
-				}
-			}
-		}
-
 		EClass targetClass = target.eClass();
 		for (EReference ref: targetClass.getEAllReferences()) {
 			if (isChildFeature(ref)) {
@@ -289,11 +265,11 @@ public class ModelElementViewAction<T extends ModelElement> implements ViewActio
 		Table pTable = bootstrapFactory.table().bordered(); 
 		pTable.toHTMLElement().style().width("auto") ;
 		
-		Marker marker = getMarker(); // TODO - convert to something either relative or in the source system.
+		Marker marker = getMarker();
 		if (marker != null) {
 			Row locationRow = pTable.row(); 
 			locationRow.header("Location");
-			locationRow.cell(marker);			
+			locationRow.cell(location(marker, viewGenerator, progressMonitor));			
 		}
 		
 		for (EStructuralFeature sf: target.eClass().getEAllStructuralFeatures()) {
@@ -304,14 +280,33 @@ public class ModelElementViewAction<T extends ModelElement> implements ViewActio
 				}
 				Row fRow = pTable.row(); 
 				fRow.header(Util.nameToLabel(sf.getName()));
-				fRow.cell(featureValue(fv, viewGenerator, progressMonitor));
+				fRow.cell(featureValue(sf, fv, viewGenerator, progressMonitor));
 			}
 		}		
 		
 		return pTable;
 	}	
 	
-	protected Object featureValue(Object value, ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
+	protected Object location(Marker marker, ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
+		Context context = getContext();
+		if (context == null) {
+			return marker;
+		}
+		
+		SourceResolver sourceResolver = context.get(SourceResolver.class);
+		if (sourceResolver == null) {
+			return marker;
+		}
+		
+		String source = sourceResolver.getSource(marker);
+		if (Util.isBlank(source)) {
+			return marker;
+		}
+				
+		return viewGenerator.getHTMLFactory().link(source, source);
+	}
+	
+	protected Object featureValue(EStructuralFeature feature, Object value, ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {		
 		if (value instanceof EObject) {
 			Action va = EObjectAdaptable.adaptTo((EObject) value, ViewAction.class);
 			if (va != null) {

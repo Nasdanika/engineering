@@ -1,11 +1,11 @@
 engineering-organization:
    name: Nasdanika
    path: nasdanika
-   
    modules:
-     - core/core.yml
-     - html/html.yml
-     - engineering/engineering.yml
+     - ../../../../core/engineering.yml
+     - ../../../../html/engineering.yml
+     - ../../../engineering.yml
+     - ../../../../cv/engineering.yml
    issue-categories:
       - path: test
         name: Test Category
@@ -95,7 +95,22 @@ engineering-organization:
                  end: 12/31/2021 
       - path: 2022
         name: 2022     
-
+   issues:
+     - name: Refactor the site to be generated using Engineering
+       description: Implement support of actions, add existing actions to the model, e.g. exec. Descriptions for all products and modules.
+     - name: Video recording article
+       description: |+2
+         "Knowledge base" section of the site.
+         Structure - action model. (Tran)script - section. Use tabs section style.
+         Record video. Record audio. Edit audio in Audacity - silence at front for noise profile, remove noise, edit, keep enough space between phrases, normalize, export.
+         Git for the paranoid. Add audio to the project media. Align video and audio. Key shortcuts - zoom timeline, split, extend frame, ...
+         Sample project on Git - commits for stages. Add captions. Add annotations. Add markers. Produce video. Publish - YouTube or own site - how to embed. 
+         LinkedIn post. 
+       effort: 40
+     - name: Migrate to Java modules.
+       description: Start from Engineering and go down to HTML and then Core.
+     - name: Git history iteration
+       description: In order to collect trends. One option is to check-out. Another - in-memory and use special URI's to address commits. E.g. commit://<commit id>/<path in the commit> - in order to load models. May be a special container of URI's to iterate.
    
 # TODO: to issues - model element appearance
 # TODO  Footer - sources  

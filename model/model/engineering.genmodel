@@ -4,7 +4,7 @@
     editorDirectory="" modelPluginID="org.nasdanika.engineering" modelName="Engineering"
     rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore"
     featureDelegation="Dynamic" complianceLevel="8.0" suppressGenModelAnnotations="false"
-    copyrightFields="false" providerRootExtendsClass="org.nasdanika.ncore.provider.NcoreItemProviderAdapter"
+    copyrightFields="false" 
     operationReflection="true" importOrganizing="true">
   <foreignModel>engineering.ecore</foreignModel>
   <genPackages prefix="Engineering" basePackage="org.nasdanika" disposableProviderFactory="true"

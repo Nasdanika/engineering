@@ -1,0 +1,8 @@
+engineering-product:
+   name: Engineering
+   path: engineering
+   modules:
+      - model/engineering.yml
+      - gen/engineering.yml
+   issues:
+      - name: Maven plugin for site generation. Explicit source base property, later support jGit origin.   
