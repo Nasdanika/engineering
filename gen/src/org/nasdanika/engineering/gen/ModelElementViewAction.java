@@ -108,7 +108,7 @@ public class ModelElementViewAction<T extends ModelElement> implements ViewActio
 				if (Util.isBlank(localPath)) {
 					EObject eContainer = target.eContainer();
 					if (eContainer != null) {
-						path.append(((List<?>) eContainer.eGet(eContainmentReference)).indexOf(target));
+						path.append(getDefaultPath());
 					}
 				} else {
 					path.append(localPath);
@@ -120,6 +120,10 @@ public class ModelElementViewAction<T extends ModelElement> implements ViewActio
 		}
 		path.append(".html");				
 		return new PathNavigationActionActivator(this, contextUri, path.toString(), marked == null ? null : marked.getMarker());			
+	}
+	
+	protected String getDefaultPath() {
+		return String.valueOf(((List<?>) target.eContainer().eGet(target.eContainmentFeature())).indexOf(this));
 	}
 
 	@Override

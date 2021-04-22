@@ -18,7 +18,6 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.BasicInternalEList;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.nasdanika.common.Util;
 import org.nasdanika.common.persistence.ConfigurationException;
@@ -132,7 +131,7 @@ public abstract class ModelElementImpl extends MinimalEObjectImpl.Container impl
 			ret.append("/").append(Util.camelToKebab(eContainmentFeature.getName()));
 			if (eContainmentFeature.isMany()) {
 				if (Util.isBlank(path)) {
-					path = String.valueOf(((List<?>) c.eGet(eContainmentFeature)).indexOf(this));
+					path = getDefaultPath();
 				}
 				ret.append("/").append(path);
 			}
@@ -141,6 +140,10 @@ public abstract class ModelElementImpl extends MinimalEObjectImpl.Container impl
 		}
 		
 		return (Util.isBlank(path) ? "engineering" : path) + THIS_AUTHORITY;
+	}
+	
+	protected String getDefaultPath() {
+		return String.valueOf(((List<?>) eContainer().eGet(eContainmentFeature())).indexOf(this));
 	}
 
 	/**

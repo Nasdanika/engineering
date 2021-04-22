@@ -2,8 +2,18 @@
  */
 package org.nasdanika.engineering.impl;
 
-import org.eclipse.emf.ecore.EClass;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.List;
+import java.util.stream.Collectors;
 
+import org.apache.commons.codec.binary.Hex;
+import org.eclipse.emf.ecore.EClass;
+import org.nasdanika.common.Util;
+import org.nasdanika.common.persistence.ConfigurationException;
+import org.nasdanika.common.persistence.Marked;
+import org.nasdanika.emf.EObjectAdaptable;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.NamedElement;
 
@@ -126,6 +136,21 @@ public abstract class NamedElementImpl extends ModelElementImpl implements Named
 				return NAME_EDEFAULT == null ? getName() != null : !NAME_EDEFAULT.equals(getName());
 		}
 		return super.eIsSet(featureID);
+	}
+	
+	@Override
+	protected String getDefaultPath() {
+		String name = getName();
+		if (!Util.isBlank(name)) {
+			int idx = ((List<?>) eContainer().eGet(eContainmentFeature())).stream().filter(e -> e instanceof NamedElement && name.equals(((NamedElement) e).getName())).collect(Collectors.toList()).indexOf(this);
+			try {
+				String digest = Hex.encodeHexString(MessageDigest.getInstance("SHA-256").digest(name.getBytes(StandardCharsets.UTF_8)));
+				return idx == 0 ? digest : (digest + "-" + idx);
+			} catch (NoSuchAlgorithmException e) {
+				throw new ConfigurationException("Cannot encode name: " + 3, e, EObjectAdaptable.adaptTo(this, Marked.class));
+			}
+		}
+		return super.getDefaultPath();
 	}
 
 } //NamedElementImpl
