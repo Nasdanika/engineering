@@ -5,7 +5,7 @@ engineering-module:
      - name: All issues under Engineer, not only assignments
        description: 
          exec-markdown:
-           Similar to EngineringViewAction. Tabs section style. ${link/nasdanika://modules/engineering/modules/gen/issues/f48c01946dd3e959feaa25f31853410bbc1f621e1e45e4c31d9bdd9c66f282fb}
+           Similar to EngineringViewAction. Tabs section style. 
      - name: Increment summary tables
        description: Issue status columns. Completion percentages - use done flag and remaining effort/logged effort. For the increment - engieers. Children. Self, total - self and children.      
      - name: Configurable colors

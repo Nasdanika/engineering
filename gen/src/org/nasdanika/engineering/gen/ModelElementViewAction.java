@@ -54,7 +54,6 @@ import org.nasdanika.html.app.NavigationActionActivator;
 import org.nasdanika.html.app.SectionStyle;
 import org.nasdanika.html.app.ViewBuilder;
 import org.nasdanika.html.app.ViewGenerator;
-import org.nasdanika.html.app.ViewPart;
 import org.nasdanika.html.app.impl.ActionFilter;
 import org.nasdanika.html.app.impl.ActionImpl;
 import org.nasdanika.html.app.impl.LabelImpl;
@@ -109,6 +108,8 @@ public class ModelElementViewAction<T extends ModelElement> implements ViewActio
 				} else {
 					path.append(localPath);
 				}
+			} else if (path.toString().endsWith("/")) {
+				path.replace(path.length()-1, path.length(), "");
 			}
 		} else {
 			path.append(Util.camelToKebab(eContainmentReference.getName()));
@@ -124,7 +125,7 @@ public class ModelElementViewAction<T extends ModelElement> implements ViewActio
 					path.append(localPath);
 				}
 			}	
-		}
+		}		
 		if (target.eClass().getEReferences().stream().filter(EReference::isContainment).findAny().isPresent()) {
 			path.append("/index");
 		}
