@@ -3,12 +3,16 @@
 package org.nasdanika.engineering.impl;
 
 import java.util.Collection;
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.util.InternalEList;
 import org.nasdanika.engineering.Activity;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Feature;
+import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.Release;
 
 /**
@@ -19,8 +23,9 @@ import org.nasdanika.engineering.Release;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.nasdanika.engineering.impl.FeatureImpl#getRelease <em>Release</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.FeatureImpl#getReleases <em>Releases</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.FeatureImpl#getActivities <em>Activities</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.FeatureImpl#getIssues <em>Issues</em>}</li>
  * </ul>
  *
  * @generated
@@ -50,28 +55,10 @@ public class FeatureImpl extends EngineeredCapabilityImpl implements Feature {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
-	public Release getRelease() {
-		return (Release)eDynamicGet(EngineeringPackage.FEATURE__RELEASE, EngineeringPackage.Literals.FEATURE__RELEASE, true, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Release basicGetRelease() {
-		return (Release)eDynamicGet(EngineeringPackage.FEATURE__RELEASE, EngineeringPackage.Literals.FEATURE__RELEASE, false, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setRelease(Release newRelease) {
-		eDynamicSet(EngineeringPackage.FEATURE__RELEASE, EngineeringPackage.Literals.FEATURE__RELEASE, newRelease);
+	public EList<Release> getReleases() {
+		return (EList<Release>)eDynamicGet(EngineeringPackage.FEATURE__RELEASES, EngineeringPackage.Literals.FEATURE__RELEASES, true, true);
 	}
 
 	/**
@@ -88,16 +75,60 @@ public class FeatureImpl extends EngineeredCapabilityImpl implements Feature {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public EList<Issue> getIssues() {
+		return getReferrers(EngineeringPackage.Literals.ISSUE__CONTRIBUTES_TO);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case EngineeringPackage.FEATURE__RELEASES:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getReleases()).basicAdd(otherEnd, msgs);
+			case EngineeringPackage.FEATURE__ISSUES:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getIssues()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case EngineeringPackage.FEATURE__RELEASES:
+				return ((InternalEList<?>)getReleases()).basicRemove(otherEnd, msgs);
+			case EngineeringPackage.FEATURE__ISSUES:
+				return ((InternalEList<?>)getIssues()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EngineeringPackage.FEATURE__RELEASE:
-				if (resolve) return getRelease();
-				return basicGetRelease();
+			case EngineeringPackage.FEATURE__RELEASES:
+				return getReleases();
 			case EngineeringPackage.FEATURE__ACTIVITIES:
 				return getActivities();
+			case EngineeringPackage.FEATURE__ISSUES:
+				return getIssues();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -111,8 +142,9 @@ public class FeatureImpl extends EngineeredCapabilityImpl implements Feature {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EngineeringPackage.FEATURE__RELEASE:
-				setRelease((Release)newValue);
+			case EngineeringPackage.FEATURE__RELEASES:
+				getReleases().clear();
+				getReleases().addAll((Collection<? extends Release>)newValue);
 				return;
 			case EngineeringPackage.FEATURE__ACTIVITIES:
 				getActivities().clear();
@@ -130,8 +162,8 @@ public class FeatureImpl extends EngineeredCapabilityImpl implements Feature {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EngineeringPackage.FEATURE__RELEASE:
-				setRelease((Release)null);
+			case EngineeringPackage.FEATURE__RELEASES:
+				getReleases().clear();
 				return;
 			case EngineeringPackage.FEATURE__ACTIVITIES:
 				getActivities().clear();
@@ -148,10 +180,12 @@ public class FeatureImpl extends EngineeredCapabilityImpl implements Feature {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EngineeringPackage.FEATURE__RELEASE:
-				return basicGetRelease() != null;
+			case EngineeringPackage.FEATURE__RELEASES:
+				return !getReleases().isEmpty();
 			case EngineeringPackage.FEATURE__ACTIVITIES:
 				return !getActivities().isEmpty();
+			case EngineeringPackage.FEATURE__ISSUES:
+				return !getIssues().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

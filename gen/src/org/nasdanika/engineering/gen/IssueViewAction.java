@@ -2,6 +2,7 @@ package org.nasdanika.engineering.gen;
 
 import java.util.List;
 
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Issue;
@@ -11,7 +12,7 @@ import org.nasdanika.html.app.ViewGenerator;
 import org.nasdanika.html.bootstrap.BootstrapFactory;
 import org.nasdanika.html.emf.ViewAction;
 
-public class IssueViewAction extends CapabilityViewAction<Issue> {
+public class IssueViewAction extends EngineeredCapabilityViewAction<Issue> {
 	
 	protected IssueViewAction(Issue value, EngineeringViewActionAdapterFactory factory) {
 		super(value, factory);
@@ -37,6 +38,17 @@ public class IssueViewAction extends CapabilityViewAction<Issue> {
 	}
 	
 	@Override
+	protected boolean isPropertyFeature(EStructuralFeature sf) {
+		if (sf == EngineeringPackage.Literals.ISSUE__RELEASES) {
+			return true;
+		}
+		if (sf == EngineeringPackage.Literals.ISSUE__CONTRIBUTES_TO) {
+			return true;
+		}
+		return super.isPropertyFeature(sf);
+	}
+	
+	@Override
 	public List<Action> getChildren() {
 		List<Action> children = super.getChildren();
 		
@@ -58,5 +70,7 @@ public class IssueViewAction extends CapabilityViewAction<Issue> {
 		
 		return children;
 	}	
+	
+	// TODO - releases, features.
 
 }

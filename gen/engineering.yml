@@ -11,7 +11,13 @@ engineering-module:
        effort: 3 
      - name: Features and releases
        description: Basic support. Add issues for visualizations (gantt) and aggregations. Issue to release association.
+       releases: 
+         - nasdanika://modules/engineering/releases/2021/4/4
+       increment: nasdanika://increments/2021/children/q2/children/apr
+       contributes-to:
+         - nasdanika://modules/engineering/features/test
        effort: 3 
+       status: nasdanika://issue-statuses/done
      - name: Filterable and sortable table component - use KnockoutJs 
        description: |+2
          May start with a method in ModelElementViewAction. Then extract into a component which takes descriptors. 

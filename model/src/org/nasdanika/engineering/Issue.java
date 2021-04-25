@@ -26,6 +26,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.nasdanika.engineering.Issue#getTarget <em>Target</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Issue#getStatus <em>Status</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Issue#isWorkable <em>Workable</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.Issue#getReleases <em>Releases</em>}</li>
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getIssue()
@@ -111,26 +112,18 @@ public interface Issue extends EngineeredCapability {
 	void setIncrement(Increment value);
 
 	/**
-	 * Returns the value of the '<em><b>Contributes To</b></em>' reference.
+	 * Returns the value of the '<em><b>Contributes To</b></em>' reference list.
+	 * The list contents are of type {@link org.nasdanika.engineering.Feature}.
+	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Feature#getIssues <em>Issues</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Contributes To</em>' reference.
-	 * @see #setContributesTo(Feature)
+	 * @return the value of the '<em>Contributes To</em>' reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getIssue_ContributesTo()
-	 * @model
+	 * @see org.nasdanika.engineering.Feature#getIssues
+	 * @model opposite="issues"
 	 * @generated
 	 */
-	Feature getContributesTo();
-
-	/**
-	 * Sets the value of the '{@link org.nasdanika.engineering.Issue#getContributesTo <em>Contributes To</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Contributes To</em>' reference.
-	 * @see #getContributesTo()
-	 * @generated
-	 */
-	void setContributesTo(Feature value);
+	EList<Feature> getContributesTo();
 
 	/**
 	 * Returns the value of the '<em><b>Status</b></em>' reference.
@@ -167,6 +160,21 @@ public interface Issue extends EngineeredCapability {
 	 * @generated
 	 */
 	boolean isWorkable();
+
+	/**
+	 * Returns the value of the '<em><b>Releases</b></em>' reference list.
+	 * The list contents are of type {@link org.nasdanika.engineering.Release}.
+	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Release#getIssues <em>Issues</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Releases</em>' reference list.
+	 * @see org.nasdanika.engineering.EngineeringPackage#getIssue_Releases()
+	 * @see org.nasdanika.engineering.Release#getIssues
+	 * @model opposite="issues"
+	 *        annotation="urn:org.nasdanika homogenous='true'"
+	 * @generated
+	 */
+	EList<Release> getReleases();
 
 	/**
 	 * Returns the value of the '<em><b>Notes</b></em>' containment reference list.

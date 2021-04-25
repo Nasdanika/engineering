@@ -14,8 +14,9 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.nasdanika.engineering.Feature#getRelease <em>Release</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.Feature#getReleases <em>Releases</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Feature#getActivities <em>Activities</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.Feature#getIssues <em>Issues</em>}</li>
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getFeature()
@@ -24,26 +25,18 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface Feature extends EngineeredCapability {
 	/**
-	 * Returns the value of the '<em><b>Release</b></em>' reference.
+	 * Returns the value of the '<em><b>Releases</b></em>' reference list.
+	 * The list contents are of type {@link org.nasdanika.engineering.Release}.
+	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Release#getFeatures <em>Features</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Release</em>' reference.
-	 * @see #setRelease(Release)
-	 * @see org.nasdanika.engineering.EngineeringPackage#getFeature_Release()
-	 * @model
+	 * @return the value of the '<em>Releases</em>' reference list.
+	 * @see org.nasdanika.engineering.EngineeringPackage#getFeature_Releases()
+	 * @see org.nasdanika.engineering.Release#getFeatures
+	 * @model opposite="features"
 	 * @generated
 	 */
-	Release getRelease();
-
-	/**
-	 * Sets the value of the '{@link org.nasdanika.engineering.Feature#getRelease <em>Release</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Release</em>' reference.
-	 * @see #getRelease()
-	 * @generated
-	 */
-	void setRelease(Release value);
+	EList<Release> getReleases();
 
 	/**
 	 * Returns the value of the '<em><b>Activities</b></em>' reference list.
@@ -59,5 +52,22 @@ public interface Feature extends EngineeredCapability {
 	 * @generated
 	 */
 	EList<Activity> getActivities();
+
+	/**
+	 * Returns the value of the '<em><b>Issues</b></em>' reference list.
+	 * The list contents are of type {@link org.nasdanika.engineering.Issue}.
+	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Issue#getContributesTo <em>Contributes To</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Issues contributing to this feature.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Issues</em>' reference list.
+	 * @see org.nasdanika.engineering.EngineeringPackage#getFeature_Issues()
+	 * @see org.nasdanika.engineering.Issue#getContributesTo
+	 * @model opposite="contributesTo" changeable="false" derived="true"
+	 * @generated
+	 */
+	EList<Issue> getIssues();
 
 } // Feature

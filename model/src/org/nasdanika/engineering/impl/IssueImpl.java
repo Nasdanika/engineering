@@ -20,6 +20,7 @@ import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.IssueCategory;
 import org.nasdanika.engineering.IssueStatus;
 import org.nasdanika.engineering.Note;
+import org.nasdanika.engineering.Release;
 
 /**
  * <!-- begin-user-doc -->
@@ -42,6 +43,7 @@ import org.nasdanika.engineering.Note;
  *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getTarget <em>Target</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getStatus <em>Status</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#isWorkable <em>Workable</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getReleases <em>Releases</em>}</li>
  * </ul>
  *
  * @generated
@@ -226,28 +228,10 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
-	public Feature getContributesTo() {
-		return (Feature)eDynamicGet(EngineeringPackage.ISSUE__CONTRIBUTES_TO, EngineeringPackage.Literals.ISSUE__CONTRIBUTES_TO, true, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Feature basicGetContributesTo() {
-		return (Feature)eDynamicGet(EngineeringPackage.ISSUE__CONTRIBUTES_TO, EngineeringPackage.Literals.ISSUE__CONTRIBUTES_TO, false, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setContributesTo(Feature newContributesTo) {
-		eDynamicSet(EngineeringPackage.ISSUE__CONTRIBUTES_TO, EngineeringPackage.Literals.ISSUE__CONTRIBUTES_TO, newContributesTo);
+	public EList<Feature> getContributesTo() {
+		return (EList<Feature>)eDynamicGet(EngineeringPackage.ISSUE__CONTRIBUTES_TO, EngineeringPackage.Literals.ISSUE__CONTRIBUTES_TO, true, true);
 	}
 
 	/**
@@ -307,6 +291,17 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 			}
 		}
 		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public EList<Release> getReleases() {
+		return (EList<Release>)eDynamicGet(EngineeringPackage.ISSUE__RELEASES, EngineeringPackage.Literals.ISSUE__RELEASES, true, true);
 	}
 
 	/**
@@ -461,6 +456,8 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 				if (increment != null)
 					msgs = ((InternalEObject)increment).eInverseRemove(this, EngineeringPackage.INCREMENT__ISSUES, Increment.class, msgs);
 				return basicSetIncrement((Increment)otherEnd, msgs);
+			case EngineeringPackage.ISSUE__CONTRIBUTES_TO:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getContributesTo()).basicAdd(otherEnd, msgs);
 			case EngineeringPackage.ISSUE__CATEGORY:
 				IssueCategory category = basicGetCategory();
 				if (category != null)
@@ -471,6 +468,8 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 				if (status != null)
 					msgs = ((InternalEObject)status).eInverseRemove(this, EngineeringPackage.ISSUE_STATUS__ISSUES, IssueStatus.class, msgs);
 				return basicSetStatus((IssueStatus)otherEnd, msgs);
+			case EngineeringPackage.ISSUE__RELEASES:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getReleases()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -489,12 +488,16 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 				return ((InternalEList<?>)getRequires()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.ISSUE__INCREMENT:
 				return basicSetIncrement(null, msgs);
+			case EngineeringPackage.ISSUE__CONTRIBUTES_TO:
+				return ((InternalEList<?>)getContributesTo()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.ISSUE__NOTES:
 				return ((InternalEList<?>)getNotes()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.ISSUE__CATEGORY:
 				return basicSetCategory(null, msgs);
 			case EngineeringPackage.ISSUE__STATUS:
 				return basicSetStatus(null, msgs);
+			case EngineeringPackage.ISSUE__RELEASES:
+				return ((InternalEList<?>)getReleases()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -518,8 +521,7 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 				if (resolve) return getIncrement();
 				return basicGetIncrement();
 			case EngineeringPackage.ISSUE__CONTRIBUTES_TO:
-				if (resolve) return getContributesTo();
-				return basicGetContributesTo();
+				return getContributesTo();
 			case EngineeringPackage.ISSUE__NOTES:
 				return getNotes();
 			case EngineeringPackage.ISSUE__EFFORT:
@@ -539,6 +541,8 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 				return basicGetStatus();
 			case EngineeringPackage.ISSUE__WORKABLE:
 				return isWorkable();
+			case EngineeringPackage.ISSUE__RELEASES:
+				return getReleases();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -567,7 +571,8 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 				setIncrement((Increment)newValue);
 				return;
 			case EngineeringPackage.ISSUE__CONTRIBUTES_TO:
-				setContributesTo((Feature)newValue);
+				getContributesTo().clear();
+				getContributesTo().addAll((Collection<? extends Feature>)newValue);
 				return;
 			case EngineeringPackage.ISSUE__NOTES:
 				getNotes().clear();
@@ -587,6 +592,10 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 				return;
 			case EngineeringPackage.ISSUE__STATUS:
 				setStatus((IssueStatus)newValue);
+				return;
+			case EngineeringPackage.ISSUE__RELEASES:
+				getReleases().clear();
+				getReleases().addAll((Collection<? extends Release>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -613,7 +622,7 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 				setIncrement((Increment)null);
 				return;
 			case EngineeringPackage.ISSUE__CONTRIBUTES_TO:
-				setContributesTo((Feature)null);
+				getContributesTo().clear();
 				return;
 			case EngineeringPackage.ISSUE__NOTES:
 				getNotes().clear();
@@ -632,6 +641,9 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 				return;
 			case EngineeringPackage.ISSUE__STATUS:
 				setStatus((IssueStatus)null);
+				return;
+			case EngineeringPackage.ISSUE__RELEASES:
+				getReleases().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -654,7 +666,7 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 			case EngineeringPackage.ISSUE__INCREMENT:
 				return basicGetIncrement() != null;
 			case EngineeringPackage.ISSUE__CONTRIBUTES_TO:
-				return basicGetContributesTo() != null;
+				return !getContributesTo().isEmpty();
 			case EngineeringPackage.ISSUE__NOTES:
 				return !getNotes().isEmpty();
 			case EngineeringPackage.ISSUE__EFFORT:
@@ -671,6 +683,8 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 				return basicGetStatus() != null;
 			case EngineeringPackage.ISSUE__WORKABLE:
 				return isWorkable() != WORKABLE_EDEFAULT;
+			case EngineeringPackage.ISSUE__RELEASES:
+				return !getReleases().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

@@ -4,8 +4,7 @@
     editorDirectory="" modelPluginID="org.nasdanika.engineering" modelName="Engineering"
     rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore"
     featureDelegation="Dynamic" complianceLevel="8.0" suppressGenModelAnnotations="false"
-    copyrightFields="false" 
-    operationReflection="true" importOrganizing="true">
+    copyrightFields="false" operationReflection="true" importOrganizing="true">
   <foreignModel>engineering.ecore</foreignModel>
   <genPackages prefix="Engineering" basePackage="org.nasdanika" disposableProviderFactory="true"
       ecorePackage="engineering.ecore#/">
@@ -48,6 +47,7 @@
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference engineering.ecore#//Issue/target"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EReference engineering.ecore#//Issue/status"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Issue/workable"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//Issue/releases"/>
     </genClasses>
     <genClasses ecoreClass="engineering.ecore#//Note">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//Note/author"/>
@@ -89,10 +89,13 @@
     <genClasses ecoreClass="engineering.ecore#//EngineeredCapability"/>
     <genClasses ecoreClass="engineering.ecore#//Release">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//Release/increment"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference engineering.ecore#//Release/issues"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference engineering.ecore#//Release/features"/>
     </genClasses>
     <genClasses ecoreClass="engineering.ecore#//Feature">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//Feature/release"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//Feature/releases"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//Feature/activities"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference engineering.ecore#//Feature/issues"/>
     </genClasses>
     <genClasses ecoreClass="engineering.ecore#//Activity">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//Activity/persona"/>

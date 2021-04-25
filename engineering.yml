@@ -1,6 +1,14 @@
 engineering-product:
    name: Engineering
    path: engineering
+   releases:
+      - name: 2021.4.4
+        path: 2021/4/4
+        increment: nasdanika://increments/2021/children/q2/children/apr
+   features:
+      - name: Test feature
+        path: test
+        releases: nasdanika://modules/engineering/releases/2021/4/4
    modules:
       - model/engineering.yml
       - gen/engineering.yml

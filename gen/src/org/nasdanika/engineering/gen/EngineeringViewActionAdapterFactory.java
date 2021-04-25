@@ -7,6 +7,7 @@ import org.nasdanika.emf.FunctionAdapterFactory;
 import org.nasdanika.emf.InstanceAdapterFactory;
 import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeringPackage;
+import org.nasdanika.engineering.Feature;
 import org.nasdanika.engineering.Increment;
 import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.IssueCategory;
@@ -14,6 +15,7 @@ import org.nasdanika.engineering.IssueStatus;
 import org.nasdanika.engineering.Organization;
 import org.nasdanika.engineering.Persona;
 import org.nasdanika.engineering.Product;
+import org.nasdanika.engineering.Release;
 import org.nasdanika.html.app.Action;
 import org.nasdanika.html.emf.ViewAction;
 
@@ -95,6 +97,20 @@ public class EngineeringViewActionAdapterFactory extends ComposedAdapterFactory 
 				ViewAction.class, 
 				this.getClass().getClassLoader(), 
 				obj -> new IssueStatusViewAction(obj, this)));					
+		
+		registerAdapterFactory(
+			new FunctionAdapterFactory<ViewAction, Release>(
+				EngineeringPackage.Literals.RELEASE, 
+				ViewAction.class, 
+				this.getClass().getClassLoader(), 
+				obj -> new ReleaseViewAction(obj, this)));					
+		
+		registerAdapterFactory(
+			new FunctionAdapterFactory<ViewAction, Feature>(
+				EngineeringPackage.Literals.FEATURE, 
+				ViewAction.class, 
+				this.getClass().getClassLoader(), 
+				obj -> new FeatureViewAction(obj, this)));					
 		
 	}
 	

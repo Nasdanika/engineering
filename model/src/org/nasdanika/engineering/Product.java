@@ -31,7 +31,7 @@ public interface Product extends org.nasdanika.engineering.Module {
 	 * @return the value of the '<em>Releases</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getProduct_Releases()
 	 * @model containment="true"
-	 *        annotation="urn:org.nasdanika homogenous='true'"
+	 *        annotation="urn:org.nasdanika homogenous='true' strict-containment='true'"
 	 * @generated
 	 */
 	EList<Release> getReleases();
@@ -44,6 +44,7 @@ public interface Product extends org.nasdanika.engineering.Module {
 	 * @return the value of the '<em>Features</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getProduct_Features()
 	 * @model containment="true"
+	 *        annotation="urn:org.nasdanika homogenous='true' strict-containment='true'"
 	 * @generated
 	 */
 	EList<Feature> getFeatures();

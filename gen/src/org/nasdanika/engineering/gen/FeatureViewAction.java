@@ -3,25 +3,23 @@ package org.nasdanika.engineering.gen;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EReference;
-import org.nasdanika.common.ProgressMonitor;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.nasdanika.engineering.EngineeringPackage;
-import org.nasdanika.engineering.IssueStatus;
-import org.nasdanika.html.Fragment;
+import org.nasdanika.engineering.Feature;
 import org.nasdanika.html.app.Action;
-import org.nasdanika.html.app.ViewGenerator;
-import org.nasdanika.html.bootstrap.BootstrapFactory;
 
-public class IssueStatusViewAction extends NamedElementViewAction<IssueStatus> {
-		
-	public IssueStatusViewAction(IssueStatus value, EngineeringViewActionAdapterFactory factory) {
+public class FeatureViewAction extends EngineeredCapabilityViewAction<Feature> {
+	
+	protected FeatureViewAction(Feature value, EngineeringViewActionAdapterFactory factory) {
 		super(value, factory);
 	}
 	
 	@Override
-	public Object generate(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
-		BootstrapFactory bootstrapFactory = viewGenerator.getBootstrapFactory();
-		Fragment ret = bootstrapFactory.getHTMLFactory().fragment(super.generate(viewGenerator, progressMonitor));
-		return ret;
+	protected boolean isPropertyFeature(EStructuralFeature sf) {
+		if (sf == EngineeringPackage.Literals.FEATURE__RELEASES) {
+			return true;
+		}
+		return super.isPropertyFeature(sf);
 	}
 		
 	@Override
@@ -31,10 +29,10 @@ public class IssueStatusViewAction extends NamedElementViewAction<IssueStatus> {
 		Action issuesSection = issuesSection(
 				target.getIssues(), 
 				"Issues", 
-				"Issues", 
+				"issues", 
 				EngineeringPackage.Literals.NAMED_ELEMENT__NAME,
-				EngineeringPackage.Literals.ISSUE__CATEGORY,
-				EngineeringPackage.Literals.ISSUE__TARGET,
+				EngineeringPackage.Literals.ISSUE__STATUS,
+				EngineeringPackage.Literals.ISSUE__CATEGORY,				
 				EngineeringPackage.Literals.ISSUE__ASSIGNEE,				
 				EngineeringPackage.Literals.ISSUE__EFFORT,
 				EngineeringPackage.Literals.ISSUE__COST,
@@ -43,13 +41,13 @@ public class IssueStatusViewAction extends NamedElementViewAction<IssueStatus> {
 		if (issuesSection != null) {
 			children.add(issuesSection);
 		}
-		
+				
 		return children;
-	}		
+	}
 	
 	@Override
 	protected boolean isContentReference(EReference ref) {
-		if (ref == EngineeringPackage.Literals.ISSUE_STATUS__ISSUES) {
+		if (ref == EngineeringPackage.Literals.FEATURE__ISSUES) {
 			return false;
 		}
 		

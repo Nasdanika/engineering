@@ -233,9 +233,8 @@ public class ModelElementViewAction<T extends ModelElement> implements ViewActio
 	 * @return true if the feature shall be displayed as a list of actions.
 	 */
 	protected boolean isContentReference(EReference ref) {
-		return ref.isMany() && EngineeringPackage.Literals.MODEL_ELEMENT.isSuperTypeOf(ref.getEReferenceType());
-	}
-	
+		return !isPropertyFeature(ref) && ref.isMany() && EngineeringPackage.Literals.MODEL_ELEMENT.isSuperTypeOf(ref.getEReferenceType());
+	}	
 
 	@Override
 	public boolean isDisabled() {
