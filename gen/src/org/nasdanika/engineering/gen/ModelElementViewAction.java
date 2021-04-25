@@ -152,9 +152,29 @@ public class ModelElementViewAction<T extends ModelElement> implements ViewActio
 			ret.content(getContext().interpolateToString(description));
 		}
 		
+		// Contents
+		for (EReference ref: target.eClass().getEAllReferences()) {
+			if (isContentReference(ref)) {
+				ret.content(contentReference(ref, viewGenerator, progressMonitor));
+			}
+		}				
+		
 		return ret;
 	}
 	
+	/**
+	 * Generates content from a reference.
+	 * @param ref
+	 * @param viewGenerator
+	 * @param progressMonitor
+	 * @return
+	 */
+	@SuppressWarnings("unchecked")
+	protected Object contentReference(EReference ref, ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
+		Object listOfActions = ViewAction.listOfActions((Collection<EObject>) target.eGet(ref), Util.nameToLabel(ref.getName()), false, true, 1);
+		return viewGenerator.processViewPart(listOfActions, progressMonitor);
+	}
+
 	/**
 	 * Override to generate a diagram to be displayed on the top of the page.
 	 * @return
@@ -183,6 +203,10 @@ public class ModelElementViewAction<T extends ModelElement> implements ViewActio
 		return ref.isContainment() && ref.isMany() && EngineeringPackage.Literals.MODEL_ELEMENT.isSuperTypeOf(ref.getEReferenceType());
 	}
 
+	/**
+	 * @param sf
+	 * @return true if the feature value shall be displayed in the properties table.
+	 */
 	protected boolean isPropertyFeature(EStructuralFeature sf) {
 		if (sf instanceof EAttribute) {
 			if (sf == EngineeringPackage.Literals.MODEL_ELEMENT__DESCRIPTION) {
@@ -201,6 +225,15 @@ public class ModelElementViewAction<T extends ModelElement> implements ViewActio
 		EReference ref = (EReference) sf;
 		return !ref.isContainment() && !ref.isMany() && EngineeringPackage.Literals.MODEL_ELEMENT.isSuperTypeOf(ref.getEReferenceType());
 	}
+	
+	/**
+	 * @param sf
+	 * @return true if the feature shall be displayed as a list of actions.
+	 */
+	protected boolean isContentReference(EReference ref) {
+		return ref.isMany() && EngineeringPackage.Literals.MODEL_ELEMENT.isSuperTypeOf(ref.getEReferenceType());
+	}
+	
 
 	@Override
 	public boolean isDisabled() {
@@ -241,6 +274,11 @@ public class ModelElementViewAction<T extends ModelElement> implements ViewActio
 
 	@Override
 	public String getTooltip() {
+		String description = target.getDescription();
+		if (!Util.isBlank(description)) {
+			return Util.firstPlainTextSentence(getContext().interpolateToString(description), 50, 250);
+		}
+		
 		return null;
 	}
 

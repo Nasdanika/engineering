@@ -3,6 +3,7 @@ package org.nasdanika.engineering.gen;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.engineering.EngineeredElement;
@@ -80,6 +81,18 @@ public class EngineeredElementViewAction<T extends EngineeredElement> extends Na
 	@Override
 	protected boolean isPropertyFeature(EStructuralFeature sf) {
 		return sf == EngineeringPackage.Literals.ENGINEERED_ELEMENT__OWNERS || super.isPropertyFeature(sf);
+	}
+	
+	@Override
+	protected boolean isContentReference(EReference ref) {
+		if (ref == EngineeringPackage.Literals.ENGINEERED_ELEMENT__OWNERS) {
+			return false;
+		}
+		if (ref == EngineeringPackage.Literals.ENGINEERED_ELEMENT__ISSUES) {
+			return false;
+		}
+		
+		return super.isContentReference(ref);
 	}
 	
 	@Override
