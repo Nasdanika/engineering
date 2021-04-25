@@ -2,10 +2,6 @@ engineering-module:
    name: Gen
    path: gen
    issues:
-     - name: All issues under Engineer, not only assignments
-       description: 
-         exec-markdown:
-           Similar to EngineringViewAction. Tabs section style. 
      - name: Increment summary tables
        description: Issue status columns. Completion percentages - use done flag and remaining effort/logged effort. For the increment - engieers. Children. Self, total - self and children.      
      - name: Configurable colors

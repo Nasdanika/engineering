@@ -1,13 +1,16 @@
 package org.nasdanika.engineering.gen;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.engineering.EngineeredElement;
 import org.nasdanika.engineering.EngineeringPackage;
+import org.nasdanika.engineering.Issue;
 import org.nasdanika.html.Fragment;
 import org.nasdanika.html.app.Action;
+import org.nasdanika.html.app.SectionStyle;
 import org.nasdanika.html.app.ViewGenerator;
 import org.nasdanika.html.bootstrap.BootstrapFactory;
 
@@ -43,6 +46,33 @@ public class EngineeredElementViewAction<T extends EngineeredElement> extends Na
 		if (issuesSection != null) {
 			children.add(issuesSection);
 		}
+		
+		
+		List<Issue> issues = new ArrayList<>();
+		target.eAllContents().forEachRemaining(e -> {
+			if (e instanceof Issue) {
+				issues.add((Issue) e);
+			}
+		});
+		
+		Action allIssuesSection = ModelElementViewAction.issuesSection(
+				issues, 
+				"All Issues", 
+				"all-issues", 
+				null,
+				getActivator(),
+				EngineeringPackage.Literals.NAMED_ELEMENT__NAME,
+				EngineeringPackage.Literals.ISSUE__TARGET,
+				EngineeringPackage.Literals.ISSUE__ASSIGNEE,
+				EngineeringPackage.Literals.ISSUE__STATUS,
+				EngineeringPackage.Literals.ISSUE__CATEGORY,				
+				EngineeringPackage.Literals.ISSUE__EFFORT,
+				EngineeringPackage.Literals.ISSUE__COST,
+				EngineeringPackage.Literals.ISSUE__BENEFIT);
+		
+		if (allIssuesSection != null) {
+			children.add(allIssuesSection);
+		}
 				
 		return children;
 	}
@@ -51,5 +81,10 @@ public class EngineeredElementViewAction<T extends EngineeredElement> extends Na
 	protected boolean isPropertyFeature(EStructuralFeature sf) {
 		return sf == EngineeringPackage.Literals.ENGINEERED_ELEMENT__OWNERS || super.isPropertyFeature(sf);
 	}
-			
+	
+	@Override
+	public SectionStyle getSectionStyle() {
+		return SectionStyle.TAB;
+	}
+	
 }
