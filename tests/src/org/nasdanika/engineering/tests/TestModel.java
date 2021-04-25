@@ -11,7 +11,6 @@ import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -42,6 +41,7 @@ import org.nasdanika.common.SupplierFactory;
 import org.nasdanika.common.Util;
 import org.nasdanika.common.persistence.ObjectLoader;
 import org.nasdanika.common.persistence.SourceResolver;
+import org.nasdanika.common.persistence.SourceResolver.Link;
 import org.nasdanika.common.resources.Container;
 import org.nasdanika.common.resources.FileSystemContainer;
 import org.nasdanika.emf.EObjectAdaptable;
@@ -97,10 +97,33 @@ public class TestModel {
 		CommandFactory commandFactory = asf.then(consumerFactory);
 		MutableContext context = Context.EMPTY_CONTEXT.fork();
 		context.put("nasdanika/core", new File("..\\..\\core").toURI().toString());
-		
+
+		URI uri = URI.createFileURI(new File(".").getCanonicalPath());
 		SourceResolver sourceResolver = marker -> {
+			if (marker != null && !Util.isBlank(marker.getLocation())) { 
+				try {
+					File locationFile = new File(new java.net.URI(marker.getLocation()));
+					URI locationURI = URI.createFileURI(locationFile.getCanonicalPath());
+					URI relativeLocationURI = locationURI.deresolve(uri, true, true, true); 
+					return new Link() {
+	
+						@Override
+						public String getLocation() {
+							return marker.getLocation();
+						}
+						
+						@Override
+						public String getText() {							
+							return relativeLocationURI.toString() + " " + marker.getLine() + ":" + marker.getColumn();
+						}
+						
+					};
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
 			
-			return marker.toString() + " ***";
+			return null;
 		};
 		
 		context.register(SourceResolver.class, sourceResolver);

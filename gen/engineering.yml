@@ -2,20 +2,16 @@ engineering-module:
    name: Gen
    path: gen
    issues:
-     - name: Grouping by increment shall take increment equality into account
-       description: Helper class with equals based on start/end dates, takes name from the first increment.  
+     - name: All issues under Engineer, not only assignments
+       description: Similar to EngineringViewAction. Tabs section style
+     - name: Increment summary tables
+       description: Issue status columns. Completion percentages - use done flag and remaining effort/logged effort. For the increment - engieers. Children. Self, total - self and children.      
+     - name: Configurable colors
+       description: Inject adapter factory into ModelElementViewAction. Methods in the factory to obtain parent, resource path resolver (the factory is the resolver), colors. Remove parent and resolver from constructors.
        increment: nasdanika://increments/2021/children/q2/children/apr
-       status: nasdanika://issue-statuses/done
-       effort: 0.5 
-     - name: Relative path in location
-       description: |+2
-         Refactor source resolver to return a Link instance instead of String. Link is a nested interface of SourceResolver with getText() and getLocation() - location is a URL. 
-         Both can be null. If location null then just text, if text is null than a link with text and url being the same.    
+     - name: Context property computer for element linking
+       description: "Something like ${element-link:<uri> [alternative text]|default}. E.g. ${element-link:nasdanika://modules/engineering/modules/gen/issues/site-generator}"
        increment: nasdanika://increments/2021/children/q2/children/apr
-       effort: 1 
-     - name: Owners
-       description: Owns action list on engineer page. Owner/owners property in the property table - single link or a bulleted list.
-       effort: 1 
      - name: Document the model
        description: Model and dialogs  
        increment: nasdanika://increments/2021/children/q2/children/apr
@@ -33,19 +29,6 @@ engineering-module:
          Also, along the same lines - single object properties table using the existing descriptor table components.
          Inject scripts into the head if head consumer is available or below or above the table otherwise.  
        effort: 4 
-     - name: Drop Owner ID - use URI's. Drop other ID's helper attributes. 
-       increment: nasdanika://increments/2021/children/q2/children/apr
-       effort: 3 
-       #requires: resolve://site-generator
-     - name: Site generator class in Gen
-       path: site-generator
-       description: Extract from TestModel. Validate and fail if there are errors. Also fail on unresolved proxies.
-       increment: nasdanika://increments/2021/children/q2/children/apr
-       effort: 1 
-     - name: Issue requirements and requiredBy opposite
-       description: Loading from the model, show in the view.
-       increment: nasdanika://increments/2021/children/q2/children/apr
-       effort: 1 
      - name: Notes
        description: Loading from the model, show in the view.
        increment: nasdanika://increments/2021/children/q2/children/apr
@@ -107,22 +90,10 @@ engineering-module:
        description: Presentation, video, post on LinkedIn. After restructuring the Nasdanika site to use Engineering. A tree of innovation - seed and grow your ideas and products.
      - name: Issue and increment visualizations
        description: Issue - pert chart (state diagram) with color coding of statuses. Increment - gantt or gantts for issues and also for features and releases. Release as a milestone.
-     - name: Configurable colors
-       description: Inject adapter factory into ModelElementViewAction. Methods in the factory to obtain parent, resource path resolver (the factory is the resolver), colors. Remove parent and resolver from constructors.
      - name: URI copy to clipboard button similar to GitHub clone URL. 
        description: Or a click on a cell copies to clipboard - change cursor and show tooltip.
-     - name: All issues under Engineer, not only assignments
-       description: Similar to EngineringViewAction. Tabs section style
-     - name: Increment summary tables
-       description: Issue status columns. Completion percentage - use done flag. For the increment - engieers. Children. Self, total - self and children.      
-     - name: Context property computer for element linking
-       description: "Something like ${element-link:<uri> [alternative text]|default}. E.g. ${element-link:nasdanika://modules/engineering/modules/gen/issues/site-generator}"
-     - name: Use SHA-256 name digest as default path instead of position
-       description: For named elements. Results in more stable URI which survives adding/removing elements, but will break if the name changes.
-     - name: Aliasing, global ID
+     - name: Aliasing
        description: |+2
-         Provide a way to specify a global ID for an element, e.g. increment or engineer - path starting with double-slash (//). 
-         In a multi-model scenario all elements with the same id will be logically merged and will appear as a single object in the UI.
+         In a multi-model scenario all elements with the same URI will be logically merged and will appear as a single object in the UI.
          That single object may be explicitly designated by setting "primary" attribute to true computed as the first object found in the hierarchy by the content iterator.
-         "guid://" URI for addressing such objects, i.e. "guid" is a reseved schema.
    

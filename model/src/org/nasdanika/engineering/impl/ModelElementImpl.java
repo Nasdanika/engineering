@@ -115,7 +115,11 @@ public abstract class ModelElementImpl extends MinimalEObjectImpl.Container impl
 	public String getUri() {
 		String path = getPath();
 		if (!Util.isBlank(path) && path.startsWith("/")) {
-			return path.substring(1) + THIS_AUTHORITY;			
+			int idx = path.indexOf("/", 1);
+			if (idx == -1) {
+				return path.substring(1) + THIS_AUTHORITY;
+			}
+			return path.substring(1, idx) + THIS_AUTHORITY + path.substring(idx + 1);
 		}
 		
 		EObject c = eContainer();

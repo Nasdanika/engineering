@@ -43,6 +43,9 @@ import org.nasdanika.engineering.Increment;
 import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.ModelElement;
 import org.nasdanika.html.Fragment;
+import org.nasdanika.html.HTMLFactory;
+import org.nasdanika.html.Tag;
+import org.nasdanika.html.TagName;
 import org.nasdanika.html.app.Action;
 import org.nasdanika.html.app.ActionActivator;
 import org.nasdanika.html.app.Label;
@@ -282,9 +285,12 @@ public class ModelElementViewAction<T extends ModelElement> implements ViewActio
 				if (fv == null || (fv instanceof String && Util.isBlank((String) fv))) {
 					continue;
 				}
-				Row fRow = pTable.row(); 
-				fRow.header(Util.nameToLabel(sf.getName()));
-				fRow.cell(featureValue(sf, fv, viewGenerator, progressMonitor));
+				Object featureValue = featureValue(sf, fv, viewGenerator, progressMonitor);
+				if (featureValue != null) {
+					Row fRow = pTable.row(); 
+					fRow.header(Util.nameToLabel(sf.getName()));
+					fRow.cell(featureValue);
+				}
 			}
 		}		
 		
@@ -302,12 +308,16 @@ public class ModelElementViewAction<T extends ModelElement> implements ViewActio
 			return marker;
 		}
 		
-		String source = sourceResolver.getSource(marker);
-		if (Util.isBlank(source)) {
+		SourceResolver.Link source = sourceResolver.getSource(marker);
+		if (source == null) {
 			return marker;
 		}
 				
-		return viewGenerator.getHTMLFactory().link(source, source);
+		if (Util.isBlank(source.getLocation())) {
+			return source.getText();
+		}
+		
+		return viewGenerator.getHTMLFactory().link(source.getLocation(), source.getText());
 	}
 	
 	protected Object featureValue(EStructuralFeature feature, Object value, ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {		
@@ -316,6 +326,20 @@ public class ModelElementViewAction<T extends ModelElement> implements ViewActio
 			if (va != null) {
 				return viewGenerator.link(va);
 			}
+		} else if (value instanceof Collection) {
+			Collection<?> vc = (Collection<?>) value;
+			if (vc.isEmpty()) {
+				return null;
+			}
+			if (vc.size() == 1) {
+				return featureValue(feature, vc.iterator().next(), viewGenerator, progressMonitor);
+			}			
+			HTMLFactory htmlFactory = viewGenerator.getHTMLFactory();
+			Tag ret = htmlFactory.tag(TagName.ol);
+			for (Object e: (Iterable<?>) value) {
+				ret.content(htmlFactory.tag(TagName.li, featureValue(feature, e, viewGenerator, progressMonitor)));
+			}
+			return ret;
 		}
 		return value;
 	}

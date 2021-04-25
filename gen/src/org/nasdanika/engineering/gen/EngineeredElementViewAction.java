@@ -3,6 +3,7 @@ package org.nasdanika.engineering.gen;
 import java.util.List;
 import java.util.function.Function;
 
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.engineering.EngineeredElement;
@@ -46,6 +47,11 @@ public class EngineeredElementViewAction<T extends EngineeredElement> extends Na
 		}
 				
 		return children;
+	}
+	
+	@Override
+	protected boolean isPropertyFeature(EStructuralFeature sf) {
+		return sf == EngineeringPackage.Literals.ENGINEERED_ELEMENT__OWNERS || super.isPropertyFeature(sf);
 	}
 			
 }
