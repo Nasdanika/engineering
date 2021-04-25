@@ -668,6 +668,16 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
+	public EReference getIncrement_Releases() {
+		return (EReference)incrementEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getIssueCategory() {
 		return issueCategoryEClass;
 	}
@@ -1268,6 +1278,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		createEAttribute(incrementEClass, INCREMENT__START);
 		createEAttribute(incrementEClass, INCREMENT__END);
 		createEReference(incrementEClass, INCREMENT__ISSUES);
+		createEReference(incrementEClass, INCREMENT__RELEASES);
 
 		issueCategoryEClass = createEClass(ISSUE_CATEGORY);
 		createEAttribute(issueCategoryEClass, ISSUE_CATEGORY__WEIGHT);
@@ -1440,6 +1451,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		initEAttribute(getIncrement_Start(), ecorePackage.getEDate(), "start", null, 0, 1, Increment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getIncrement_End(), ecorePackage.getEDate(), "end", null, 0, 1, Increment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getIncrement_Issues(), this.getIssue(), this.getIssue_Increment(), "issues", null, 0, -1, Increment.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getIncrement_Releases(), this.getRelease(), this.getRelease_Increment(), "releases", null, 0, -1, Increment.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEClass(issueCategoryEClass, IssueCategory.class, "IssueCategory", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getIssueCategory_Weight(), ecorePackage.getEDouble(), "weight", null, 0, 1, IssueCategory.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1506,7 +1518,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		initEClass(engineeredCapabilityEClass, EngineeredCapability.class, "EngineeredCapability", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(releaseEClass, Release.class, "Release", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getRelease_Increment(), this.getIncrement(), null, "increment", null, 0, 1, Release.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRelease_Increment(), this.getIncrement(), this.getIncrement_Releases(), "increment", null, 0, 1, Release.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRelease_Issues(), this.getIssue(), this.getIssue_Releases(), "issues", null, 0, -1, Release.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getRelease_Features(), this.getFeature(), this.getFeature_Releases(), "features", null, 0, -1, Release.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
@@ -1785,6 +1797,12 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		   source,
 		   new String[] {
 			   "documentation", "Issues scheduled to work on in this increment"
+		   });
+		addAnnotation
+		  (getIncrement_Releases(),
+		   source,
+		   new String[] {
+			   "documentation", "Releases scheduled to be made available in this increment"
 		   });
 		addAnnotation
 		  (getIssueCategory_Issues(),

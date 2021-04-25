@@ -40,8 +40,9 @@ engineering-module:
          Use HashSet accumulator to avoid loops and scanning issues more than once - derived references allRequirements, allRequiredBy
          Update issue tables with the new attributes.
          Engineer rate - to convert effort to cost. Default is 1.
-         Plan can override rate per increment, iherits from engineer if not overridden.  
-       increment: nasdanika://increments/2021/children/q2/children/apr
+         Plan can override rate per increment, iherits from engineer if not overridden.
+         Percentage completed for releases, features, etc.  
+       increment: nasdanika://increments/2021/children/q2/children/may
        effort: 4 
      - name: Display effort and cost
        description: Issues table and section display aggregated costs, efforts, benefit and benefit to cost ratio. Per increment and total for engineer, engineered element, category, etc.  

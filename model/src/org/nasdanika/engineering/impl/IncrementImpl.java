@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Increment;
 import org.nasdanika.engineering.Issue;
+import org.nasdanika.engineering.Release;
 
 /**
  * <!-- begin-user-doc -->
@@ -26,6 +27,7 @@ import org.nasdanika.engineering.Issue;
  *   <li>{@link org.nasdanika.engineering.impl.IncrementImpl#getStart <em>Start</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IncrementImpl#getEnd <em>End</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IncrementImpl#getIssues <em>Issues</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.IncrementImpl#getReleases <em>Releases</em>}</li>
  * </ul>
  *
  * @generated
@@ -132,6 +134,8 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 		switch (featureID) {
 			case EngineeringPackage.INCREMENT__ISSUES:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getIssues()).basicAdd(otherEnd, msgs);
+			case EngineeringPackage.INCREMENT__RELEASES:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getReleases()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -149,6 +153,16 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public EList<Release> getReleases() {
+		return getReferrers(EngineeringPackage.Literals.RELEASE__INCREMENT);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -158,6 +172,8 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 				return ((InternalEList<?>)getChildren()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.INCREMENT__ISSUES:
 				return ((InternalEList<?>)getIssues()).basicRemove(otherEnd, msgs);
+			case EngineeringPackage.INCREMENT__RELEASES:
+				return ((InternalEList<?>)getReleases()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -178,6 +194,8 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 				return getEnd();
 			case EngineeringPackage.INCREMENT__ISSUES:
 				return getIssues();
+			case EngineeringPackage.INCREMENT__RELEASES:
+				return getReleases();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -242,6 +260,8 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 				return END_EDEFAULT == null ? getEnd() != null : !END_EDEFAULT.equals(getEnd());
 			case EngineeringPackage.INCREMENT__ISSUES:
 				return !getIssues().isEmpty();
+			case EngineeringPackage.INCREMENT__RELEASES:
+				return !getReleases().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

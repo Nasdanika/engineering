@@ -24,6 +24,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Increment/start"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Increment/end"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//Increment/issues"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference engineering.ecore#//Increment/releases"/>
     </genClasses>
     <genClasses ecoreClass="engineering.ecore#//IssueCategory">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//IssueCategory/weight"/>

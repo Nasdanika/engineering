@@ -25,12 +25,14 @@ import org.eclipse.emf.common.util.EList;
 public interface Release extends EngineeredCapability {
 	/**
 	 * Returns the value of the '<em><b>Increment</b></em>' reference.
+	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Increment#getReleases <em>Releases</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Increment</em>' reference.
 	 * @see #setIncrement(Increment)
 	 * @see org.nasdanika.engineering.EngineeringPackage#getRelease_Increment()
-	 * @model
+	 * @see org.nasdanika.engineering.Increment#getReleases
+	 * @model opposite="releases"
 	 * @generated
 	 */
 	Increment getIncrement();

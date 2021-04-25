@@ -411,13 +411,22 @@ public interface EngineeringPackage extends EPackage {
 	int INCREMENT__ISSUES = NAMED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Releases</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INCREMENT__RELEASES = NAMED_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
 	 * The number of structural features of the '<em>Increment</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INCREMENT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 4;
+	int INCREMENT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of operations of the '<em>Increment</em>' class.
@@ -3246,6 +3255,17 @@ public interface EngineeringPackage extends EPackage {
 	EReference getIncrement_Issues();
 
 	/**
+	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.Increment#getReleases <em>Releases</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Releases</em>'.
+	 * @see org.nasdanika.engineering.Increment#getReleases()
+	 * @see #getIncrement()
+	 * @generated
+	 */
+	EReference getIncrement_Releases();
+
+	/**
 	 * Returns the meta object for class '{@link org.nasdanika.engineering.IssueCategory <em>Issue Category</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4207,6 +4227,14 @@ public interface EngineeringPackage extends EPackage {
 		 * @generated
 		 */
 		EReference INCREMENT__ISSUES = eINSTANCE.getIncrement_Issues();
+
+		/**
+		 * The meta object literal for the '<em><b>Releases</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INCREMENT__RELEASES = eINSTANCE.getIncrement_Releases();
 
 		/**
 		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.IssueCategoryImpl <em>Issue Category</em>}' class.

@@ -19,6 +19,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.nasdanika.engineering.Increment#getStart <em>Start</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Increment#getEnd <em>End</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Increment#getIssues <em>Issues</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.Increment#getReleases <em>Releases</em>}</li>
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getIncrement()
@@ -99,5 +100,22 @@ public interface Increment extends NamedElement {
 	 * @generated
 	 */
 	EList<Issue> getIssues();
+
+	/**
+	 * Returns the value of the '<em><b>Releases</b></em>' reference list.
+	 * The list contents are of type {@link org.nasdanika.engineering.Release}.
+	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Release#getIncrement <em>Increment</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Releases scheduled to be made available in this increment
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Releases</em>' reference list.
+	 * @see org.nasdanika.engineering.EngineeringPackage#getIncrement_Releases()
+	 * @see org.nasdanika.engineering.Release#getIncrement
+	 * @model opposite="increment" changeable="false" derived="true"
+	 * @generated
+	 */
+	EList<Release> getReleases();
 
 } // Increment

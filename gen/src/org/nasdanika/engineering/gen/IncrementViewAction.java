@@ -3,19 +3,29 @@ package org.nasdanika.engineering.gen;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.nasdanika.common.ProgressMonitor;
+import org.nasdanika.common.Util;
+import org.nasdanika.emf.EObjectAdaptable;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Increment;
 import org.nasdanika.engineering.Issue;
+import org.nasdanika.engineering.Release;
 import org.nasdanika.html.Fragment;
 import org.nasdanika.html.app.Action;
 import org.nasdanika.html.app.Label;
 import org.nasdanika.html.app.NavigationActionActivator;
+import org.nasdanika.html.app.ViewBuilder;
 import org.nasdanika.html.app.ViewGenerator;
 import org.nasdanika.html.app.impl.ActionImpl;
 import org.nasdanika.html.app.impl.PathNavigationActionActivator;
 import org.nasdanika.html.bootstrap.BootstrapFactory;
+import org.nasdanika.html.bootstrap.Color;
+import org.nasdanika.html.bootstrap.Table;
+import org.nasdanika.html.bootstrap.RowContainer.Row;
+import org.nasdanika.html.bootstrap.RowContainer.Row.Cell;
 import org.nasdanika.html.emf.ViewAction;
 
 public class IncrementViewAction extends NamedElementViewAction<Increment> {
@@ -37,6 +47,9 @@ public class IncrementViewAction extends NamedElementViewAction<Increment> {
 		if (ref == EngineeringPackage.Literals.INCREMENT__ISSUES) {
 			return false;
 		}
+		if (ref == EngineeringPackage.Literals.INCREMENT__RELEASES) {
+			return false;
+		}
 		return super.isContentReference(ref);
 	}
 	
@@ -50,6 +63,35 @@ public class IncrementViewAction extends NamedElementViewAction<Increment> {
 	@Override
 	public List<Action> getChildren() {
 		List<Action> children = super.getChildren();
+		
+		EList<Release> releases = target.getReleases();
+		if (!releases.isEmpty()) {
+			ActionImpl releasesSection = new ActionImpl() {
+				
+				@Override
+				public Object generate(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) { 
+					BootstrapFactory bootstrapFactory = viewGenerator.getBootstrapFactory();
+					Table ret = bootstrapFactory.table().bordered();
+					ret.header().headerRow("Product", "Release").color(Color.INFO);
+					
+					for (Release release: releases) {						
+						Row releaseRow = ret.body().row(
+							viewGenerator.link(EObjectAdaptable.adaptTo(release.eContainer(), ViewAction.class)),
+							viewGenerator.link(EObjectAdaptable.adaptTo(release, ViewAction.class)));
+						if (release.isAvailable()) {
+							releaseRow.color(Color.SUCCESS);
+						}
+					}
+					return ret;
+				};
+				
+			};
+			
+			releasesSection.getRoles().add(Action.Role.SECTION); 
+			releasesSection.setText("Releases"); 			
+			releasesSection.setActivator(new PathNavigationActionActivator(releasesSection, ((NavigationActionActivator) getActivator()).getUrl(null), "#releases", getMarker()));
+			children.add(releasesSection);			
+		}
 		
 		EList<Issue> issues = target.getIssues();
 		if (!issues.isEmpty()) {
