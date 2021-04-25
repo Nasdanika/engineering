@@ -82,6 +82,17 @@ public class IncrementValueObject implements Comparable<IncrementValueObject> {
 		if (o == null) {
 			return -1;
 		}
+
+		Date oEnd = o.getEnd();
+		if (!Objects.equals(oEnd, end)) {
+			if (end == null) {
+				return 1;
+			}
+			if (oEnd == null) {
+				return -1;
+			}
+			return end.compareTo(oEnd);
+		}
 		
 		Date oStart = o.getStart();
 		
@@ -93,17 +104,6 @@ public class IncrementValueObject implements Comparable<IncrementValueObject> {
 				return -1;
 			}
 			return start.compareTo(oStart);
-		}
-
-		Date oEnd = o.getEnd();
-		if (!Objects.equals(oEnd, end)) {
-			if (end == null) {
-				return 1;
-			}
-			if (oEnd == null) {
-				return -1;
-			}
-			return end.compareTo(oEnd);
 		}
 		
 		String oName = o.getName();

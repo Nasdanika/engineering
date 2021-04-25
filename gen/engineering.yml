@@ -4,7 +4,8 @@ engineering-module:
    issues:
      - name: Document the model
        description: Model and dialogs  
-       increment: nasdanika://increments/2021/children/q2/children/apr
+       increment: nasdanika://increments/2021/children/q2/children/may
+       releases: nasdanika://modules/engineering/releases/2021/5/0
        effort: 4 
      - name: Experts reference
        description: Have expertise, but not authority.
@@ -27,8 +28,9 @@ engineering-module:
        effort: 4 
      - name: Notes
        description: Loading from the model, show in the view.
-       increment: nasdanika://increments/2021/children/q2/children/apr
-       effort: 0.5 
+       increment: nasdanika://increments/2021/children/q2/children/may
+       releases: nasdanika://modules/engineering/releases/2021/5/0
+       effort: 1 
      - name: Issue effort, cost, benefit, and benefit to cost ratio derived attributes, isWorkable(Increment) function.
        description: |+2
          Actual effort and cost - sum of effort and cost from notes. 
@@ -46,17 +48,16 @@ engineering-module:
        effort: 4 
      - name: Display effort and cost
        description: Issues table and section display aggregated costs, efforts, benefit and benefit to cost ratio. Per increment and total for engineer, engineered element, category, etc.  
-       increment: nasdanika://increments/2021/children/q2/children/apr
-       effort: 2 
+       increment: nasdanika://increments/2021/children/q2/children/may
+       #releases: nasdanika://modules/engineering/releases/2021/5/0
+       effort: 4 
      - name: Validations
        description: Issue - scheduled for an increment before one of required issues increments. Add isBefore() and isAfter() functions to increment - move code from view action.  
        effort: 2 
-     - name: Release, feature
-       description: Add releases and features to the model, implement view actions with issue sections and totals tables.   
-       effort: 4 
      - name: Persona goals, activities, journeys
        description: Modeling, diagram, weights, derive benefit.   
        effort: 8 
+       increment: nasdanika://increments/2021/children/q2/children/may
      - name: Issue diagram
        description: State diagram showing nesting, dependencies, completion status - light green, workability status - gray if not workable. Clickable.
        effort: 3         
