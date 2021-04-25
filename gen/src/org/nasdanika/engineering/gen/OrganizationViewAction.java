@@ -1,28 +1,15 @@
 package org.nasdanika.engineering.gen;
 
-import java.util.function.Function;
-
-import org.eclipse.emf.ecore.resource.Resource;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.engineering.Organization;
 import org.nasdanika.html.Fragment;
-import org.nasdanika.html.app.Action;
 import org.nasdanika.html.app.ViewGenerator;
 import org.nasdanika.html.bootstrap.BootstrapFactory;
 
 public class OrganizationViewAction extends EngineerViewAction<Organization> {
 	
-	private Action parent;
-
-	public OrganizationViewAction(Organization value, Function<Resource, String> resourcePathResolver, Action parent) {
-		super(value, resourcePathResolver);
-		this.parent = parent;
-	}
-	
-	@Override
-	public Action getParent() {
-		Action ret = super.getParent();
-		return ret == null ? parent : ret;
+	public OrganizationViewAction(Organization value, EngineeringViewActionAdapterFactory factory) {
+		super(value, factory);
 	}
 	
 	@Override

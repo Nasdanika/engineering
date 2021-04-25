@@ -1,17 +1,15 @@
 package org.nasdanika.engineering.gen;
 
 import java.util.List;
-import java.util.function.Function;
 
-import org.eclipse.emf.ecore.resource.Resource;
 import org.nasdanika.engineering.Capability;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.html.app.Action;
 
 public class CapabilityViewAction<T extends Capability> extends NamedElementViewAction<T> {
 	
-	protected CapabilityViewAction(T value, Function<Resource, String> resourcePathResolver) {
-		super(value, resourcePathResolver);
+	protected CapabilityViewAction(T value, EngineeringViewActionAdapterFactory factory) {
+		super(value, factory);
 	}
 	
 //	@Override

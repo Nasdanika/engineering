@@ -4,12 +4,10 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.text.StringEscapeUtils;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.nasdanika.common.Util;
 import org.nasdanika.common.persistence.ConfigurationException;
 import org.nasdanika.common.persistence.Marked;
@@ -24,8 +22,8 @@ import org.nasdanika.engineering.NamedElement;
  */
 public class NamedElementViewAction<T extends NamedElement> extends ModelElementViewAction<T> {
 			
-	protected NamedElementViewAction(T target, Function<Resource, String> resourcePathResolver) {
-		super(target, resourcePathResolver);		
+	protected NamedElementViewAction(T target, EngineeringViewActionAdapterFactory factory) {
+		super(target, factory);		
 	}
 	
 	@Override

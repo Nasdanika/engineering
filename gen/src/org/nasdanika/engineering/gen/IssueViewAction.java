@@ -1,9 +1,7 @@
 package org.nasdanika.engineering.gen;
 
 import java.util.List;
-import java.util.function.Function;
 
-import org.eclipse.emf.ecore.resource.Resource;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Issue;
@@ -15,8 +13,8 @@ import org.nasdanika.html.emf.ViewAction;
 
 public class IssueViewAction extends CapabilityViewAction<Issue> {
 	
-	protected IssueViewAction(Issue value, Function<Resource, String> resourcePathResolver) {
-		super(value, resourcePathResolver);
+	protected IssueViewAction(Issue value, EngineeringViewActionAdapterFactory factory) {
+		super(value, factory);
 	}
 	
 	@Override

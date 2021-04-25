@@ -1,7 +1,5 @@
 package org.nasdanika.engineering.gen;
 
-import java.util.function.Function;
-
 import org.eclipse.emf.ecore.resource.Resource;
 import org.nasdanika.common.Context;
 import org.nasdanika.emf.ComposedAdapterFactory;
@@ -26,7 +24,7 @@ import org.nasdanika.html.emf.ViewAction;
  */
 public class EngineeringViewActionAdapterFactory extends ComposedAdapterFactory {
 	
-	public EngineeringViewActionAdapterFactory(Action parent, Function<Resource, String> resourcePathResolver, Context context) {		
+	public EngineeringViewActionAdapterFactory(Context context) {		
 		// Registering adapter factories.
 		registerAdapterFactory(
 			new InstanceAdapterFactory<Context>(
@@ -40,64 +38,79 @@ public class EngineeringViewActionAdapterFactory extends ComposedAdapterFactory 
 				EngineeringPackage.Literals.PERSONA, 
 				ViewAction.class, 
 				this.getClass().getClassLoader(), 
-				obj -> new PersonaViewAction<Persona>(obj, resourcePathResolver)));
+				obj -> new PersonaViewAction<Persona>(obj, this)));
 				
 		registerAdapterFactory(
 			new FunctionAdapterFactory<ViewAction, Engineer>(
 				EngineeringPackage.Literals.ENGINEER, 
 				ViewAction.class, 
 				this.getClass().getClassLoader(), 
-				obj -> new EngineerViewAction<Engineer>(obj, resourcePathResolver)));
+				obj -> new EngineerViewAction<Engineer>(obj, this)));
 		
 		registerAdapterFactory(
 			new FunctionAdapterFactory<ViewAction, Organization>(
 				EngineeringPackage.Literals.ORGANIZATION, 
 				ViewAction.class, 
 				this.getClass().getClassLoader(), 
-				org -> new OrganizationViewAction(org, resourcePathResolver, parent)));					
+				org -> new OrganizationViewAction(org, this)));					
 				
 		registerAdapterFactory(
 			new FunctionAdapterFactory<ViewAction, org.nasdanika.engineering.Module>(
 				EngineeringPackage.Literals.MODULE, 
 				ViewAction.class, 
 				this.getClass().getClassLoader(), 
-				obj -> new ModuleViewAction<org.nasdanika.engineering.Module>(obj, resourcePathResolver)));					
+				obj -> new ModuleViewAction<org.nasdanika.engineering.Module>(obj, this)));					
 		
 		registerAdapterFactory(
 			new FunctionAdapterFactory<ViewAction, Product>(
 				EngineeringPackage.Literals.PRODUCT, 
 				ViewAction.class, 
 				this.getClass().getClassLoader(), 
-				obj -> new ProductViewAction(obj, resourcePathResolver)));					
+				obj -> new ProductViewAction(obj, this)));					
 		
 		registerAdapterFactory(
 			new FunctionAdapterFactory<ViewAction, Issue>(
 				EngineeringPackage.Literals.ISSUE, 
 				ViewAction.class, 
 				this.getClass().getClassLoader(), 
-				obj -> new IssueViewAction(obj, resourcePathResolver)));					
+				obj -> new IssueViewAction(obj, this)));					
 		
 		registerAdapterFactory(
 			new FunctionAdapterFactory<ViewAction, Increment>(
 				EngineeringPackage.Literals.INCREMENT, 
 				ViewAction.class, 
 				this.getClass().getClassLoader(), 
-				obj -> new IncrementViewAction(obj, resourcePathResolver)));					
+				obj -> new IncrementViewAction(obj, this)));					
 		
 		registerAdapterFactory(
 			new FunctionAdapterFactory<ViewAction, IssueCategory>(
 				EngineeringPackage.Literals.ISSUE_CATEGORY, 
 				ViewAction.class, 
 				this.getClass().getClassLoader(), 
-				obj -> new IssueCategoryViewAction(obj, resourcePathResolver)));					
+				obj -> new IssueCategoryViewAction(obj, this)));					
 		
 		registerAdapterFactory(
 			new FunctionAdapterFactory<ViewAction, IssueStatus>(
 				EngineeringPackage.Literals.ISSUE_STATUS, 
 				ViewAction.class, 
 				this.getClass().getClassLoader(), 
-				obj -> new IssueStatusViewAction(obj, resourcePathResolver)));					
+				obj -> new IssueStatusViewAction(obj, this)));					
 		
+	}
+	
+	/**
+	 * @param resource
+	 * @return Resource path to use the case of multi-resource models.
+	 */
+	public String resolveResourcePath(Resource resource) {
+		return null;
+	}
+	
+	/**
+	 * @return Parent action for top-level actions.
+	 */
+	public Action getParent() {
+		return null;
 	}
 	
 }

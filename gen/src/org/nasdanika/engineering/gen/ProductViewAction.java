@@ -1,8 +1,5 @@
 package org.nasdanika.engineering.gen;
 
-import java.util.function.Function;
-
-import org.eclipse.emf.ecore.resource.Resource;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.engineering.Product;
 import org.nasdanika.html.Fragment;
@@ -11,8 +8,8 @@ import org.nasdanika.html.bootstrap.BootstrapFactory;
 
 public class ProductViewAction extends ModuleViewAction<Product> {
 	
-	public ProductViewAction(Product value, Function<Resource, String> resourcePathResolver) {
-		super(value, resourcePathResolver);
+	public ProductViewAction(Product value, EngineeringViewActionAdapterFactory factory) {
+		super(value, factory);
 	}
 	
 	@Override

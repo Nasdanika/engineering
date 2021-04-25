@@ -1,9 +1,7 @@
 package org.nasdanika.engineering.gen;
 
 import java.util.List;
-import java.util.function.Function;
 
-import org.eclipse.emf.ecore.resource.Resource;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeringPackage;
@@ -14,8 +12,8 @@ import org.nasdanika.html.bootstrap.BootstrapFactory;
 
 public class EngineerViewAction<T extends Engineer> extends PersonaViewAction<T> {
 		
-	public EngineerViewAction(T value, Function<Resource, String> resourcePathResolver) {
-		super(value, resourcePathResolver);
+	public EngineerViewAction(T value, EngineeringViewActionAdapterFactory factory) {
+		super(value, factory);
 	}
 	
 	@Override

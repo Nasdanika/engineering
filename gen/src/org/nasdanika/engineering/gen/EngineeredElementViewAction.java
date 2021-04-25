@@ -1,10 +1,8 @@
 package org.nasdanika.engineering.gen;
 
 import java.util.List;
-import java.util.function.Function;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.engineering.EngineeredElement;
 import org.nasdanika.engineering.EngineeringPackage;
@@ -15,8 +13,8 @@ import org.nasdanika.html.bootstrap.BootstrapFactory;
 
 public class EngineeredElementViewAction<T extends EngineeredElement> extends NamedElementViewAction<T> {
 	
-	protected EngineeredElementViewAction(T value, Function<Resource, String> resourcePathResolver) {
-		super(value, resourcePathResolver);
+	protected EngineeredElementViewAction(T value, EngineeringViewActionAdapterFactory factory) {
+		super(value, factory);
 	}
 	
 	@Override

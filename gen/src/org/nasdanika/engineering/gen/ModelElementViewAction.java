@@ -17,13 +17,13 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import org.apache.commons.codec.binary.Hex;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.nasdanika.common.Context;
 import org.nasdanika.common.DefaultConverter;
@@ -31,6 +31,7 @@ import org.nasdanika.common.MarkdownHelper;
 import org.nasdanika.common.MutableContext;
 import org.nasdanika.common.NasdanikaException;
 import org.nasdanika.common.ProgressMonitor;
+import org.nasdanika.common.PropertyComputer;
 import org.nasdanika.common.Util;
 import org.nasdanika.common.persistence.ConfigurationException;
 import org.nasdanika.common.persistence.Marked;
@@ -53,9 +54,12 @@ import org.nasdanika.html.app.NavigationActionActivator;
 import org.nasdanika.html.app.SectionStyle;
 import org.nasdanika.html.app.ViewBuilder;
 import org.nasdanika.html.app.ViewGenerator;
+import org.nasdanika.html.app.ViewPart;
+import org.nasdanika.html.app.impl.ActionFilter;
 import org.nasdanika.html.app.impl.ActionImpl;
 import org.nasdanika.html.app.impl.LabelImpl;
 import org.nasdanika.html.app.impl.PathNavigationActionActivator;
+import org.nasdanika.html.app.impl.ViewGeneratorImpl;
 import org.nasdanika.html.bootstrap.BootstrapFactory;
 import org.nasdanika.html.bootstrap.Color;
 import org.nasdanika.html.bootstrap.RowContainer.Row;
@@ -73,11 +77,11 @@ public class ModelElementViewAction<T extends ModelElement> implements ViewActio
 	
 	protected T target;
 	private String id;
-	private Function<Resource, String> resourcePathResolver;
+	protected EngineeringViewActionAdapterFactory factory;
 		
-	protected ModelElementViewAction(T target, Function<Resource, String> resourcePathResolver) {
+	protected ModelElementViewAction(T target, EngineeringViewActionAdapterFactory factory) {
 		this.target = target;		
-		this.resourcePathResolver = resourcePathResolver;
+		this.factory = factory;
 		try {
 			id = Hex.encodeHexString(MessageDigest.getInstance("SHA-256").digest(target.getUri().getBytes(StandardCharsets.UTF_8)));
 		} catch (NoSuchAlgorithmException e) {
@@ -93,15 +97,18 @@ public class ModelElementViewAction<T extends ModelElement> implements ViewActio
 		EReference eContainmentReference = target.eContainmentFeature();
 		if (eContainmentReference == null) {
 			path.append(contextUri);
-			String resourcePath = resourcePathResolver == null ? null : resourcePathResolver.apply(target.eResource());			
+			String resourcePath = factory.resolveResourcePath(target.eResource());			
 			if (!Util.isBlank(resourcePath)) {
 				path.append(resourcePath);
 			}
-			String localPath = target.getPath();
-			if (Util.isBlank(localPath) && target.eResource() != null) {
-				path.append(target.eResource().getContents().indexOf(target));
-			} else {
-				path.append(localPath);
+			EList<EObject> resourceContents = target.eResource().getContents();
+			if (resourceContents.size() > 1) {
+				String localPath = target.getPath();
+				if (Util.isBlank(localPath) && target.eResource() != null) {
+					path.append(resourceContents.indexOf(target));
+				} else {
+					path.append(localPath);
+				}
 			}
 		} else {
 			path.append(Util.camelToKebab(eContainmentReference.getName()));
@@ -212,7 +219,13 @@ public class ModelElementViewAction<T extends ModelElement> implements ViewActio
 	@Override
 	public Action getParent() {
 		EObject eContainer = target.eContainer();
-		return eContainer instanceof ModelElement ? ((ModelElement) eContainer).adaptTo(ViewAction.class) : null;
+		if (eContainer == null) {
+			return factory.getParent();
+		}
+		if (eContainer instanceof ModelElement) {
+			return ((ModelElement) eContainer).adaptTo(ViewAction.class);
+		}
+		return null;
 	}
 
 	@Override
@@ -255,7 +268,7 @@ public class ModelElementViewAction<T extends ModelElement> implements ViewActio
 	}
 
 	/**
-	 * @return Action context built from the resource set context plus "base-uri" properties containing relative URI's of the site root. 
+	 * @return Action context built from the resource set context plus link resolver and "base-uri" property containing relative URI's of the site root. 
 	 */
 	protected Context getContext() {
 		URI thisUri = URI.createURI(((NavigationActionActivator) getActivator()).getUrl(null));
@@ -264,6 +277,45 @@ public class ModelElementViewAction<T extends ModelElement> implements ViewActio
 		URI relativeBaseUri = baseUri.deresolve(thisUri, true, true, true);
 		MutableContext ret = targetContext.fork();
 		ret.put(Context.BASE_URI_PROPERTY, relativeBaseUri);
+		
+		ret.put("link", new PropertyComputer() {
+			
+			@SuppressWarnings("unchecked")
+			@Override
+			public <U> U compute(Context context, String key, String path, Class<U> type) {
+				String prefix = "<a href=\"";
+				if (path.startsWith(prefix)) {
+					path = path.substring(prefix.length(), path.indexOf("\"", prefix.length() + 1));
+				}
+				int idx = path.indexOf(" ");
+				String text = idx == -1 ? null : path.substring(idx + 1);
+				URI uri = URI.createURI(idx == -1 ? path : path.substring(0, idx));
+				EObject eObj = target.eResource().getResourceSet().getEObject(uri, false);
+				if (eObj == null) {
+					return null;
+				}
+
+				Action action = ViewAction.adaptToViewActionNonNull(eObj);
+				String ref = ((NavigationActionActivator) action.getActivator()).getUrl(thisUri.toString());
+				if (!Util.isBlank(text)) {
+					action = new ActionFilter<Action>(action) {
+						
+						@Override
+						public String getText() {
+							return text;
+						}
+								
+					};
+				}
+
+				ViewGenerator viewGenerator = new ViewGeneratorImpl(context, null, null);
+				Tag label = viewGenerator.getHTMLFactory().tag(TagName.a);
+				viewGenerator.label(action, label);
+				label.attribute("href", ref);
+				return (U) label.toString();
+			}
+		});
+		
 		return ret;
 	}
 	
