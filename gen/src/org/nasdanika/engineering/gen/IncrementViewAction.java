@@ -3,11 +3,8 @@ package org.nasdanika.engineering.gen;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.nasdanika.common.ProgressMonitor;
-import org.nasdanika.common.Util;
 import org.nasdanika.emf.EObjectAdaptable;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Increment;
@@ -17,15 +14,13 @@ import org.nasdanika.html.Fragment;
 import org.nasdanika.html.app.Action;
 import org.nasdanika.html.app.Label;
 import org.nasdanika.html.app.NavigationActionActivator;
-import org.nasdanika.html.app.ViewBuilder;
 import org.nasdanika.html.app.ViewGenerator;
 import org.nasdanika.html.app.impl.ActionImpl;
 import org.nasdanika.html.app.impl.PathNavigationActionActivator;
 import org.nasdanika.html.bootstrap.BootstrapFactory;
 import org.nasdanika.html.bootstrap.Color;
-import org.nasdanika.html.bootstrap.Table;
 import org.nasdanika.html.bootstrap.RowContainer.Row;
-import org.nasdanika.html.bootstrap.RowContainer.Row.Cell;
+import org.nasdanika.html.bootstrap.Table;
 import org.nasdanika.html.emf.ViewAction;
 
 public class IncrementViewAction extends NamedElementViewAction<Increment> {
