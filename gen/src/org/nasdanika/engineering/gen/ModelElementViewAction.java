@@ -11,6 +11,7 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Objects;
 import java.util.function.BiFunction;
 import java.util.function.Function;
@@ -64,6 +65,7 @@ import org.nasdanika.html.bootstrap.Color;
 import org.nasdanika.html.bootstrap.RowContainer.Row;
 import org.nasdanika.html.bootstrap.RowContainer.Row.Cell;
 import org.nasdanika.html.bootstrap.Table;
+import org.nasdanika.html.bootstrap.Text.Alignment;
 import org.nasdanika.html.emf.ViewAction;
 
 /**
@@ -693,7 +695,7 @@ public class ModelElementViewAction<T extends ModelElement> implements ViewActio
 			public Object generate(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
 				Fragment ret = viewGenerator.getHTMLFactory().fragment();
 				
-				ret.content("TODO: summary table");
+				ret.content(issueStatusSummaryTable(issues, viewGenerator, progressMonitor));
 				
 				if (backlogOnly) {
 					ret.content(issuesTable(
@@ -717,7 +719,7 @@ public class ModelElementViewAction<T extends ModelElement> implements ViewActio
 					public Object generate(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
 						Fragment ret = viewGenerator.getHTMLFactory().fragment();
 						
-						// TODO - summary
+						ret.content(issueStatusSummaryTable(incrementIssues, viewGenerator, progressMonitor));
 						
 						ret.content(issuesTable(
 								incrementIssues, 
@@ -745,6 +747,42 @@ public class ModelElementViewAction<T extends ModelElement> implements ViewActio
 		return issuesSection;
 	}
 	
+	public static Object issueStatusSummaryTable(Collection<Issue> issues, ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
+		if (issues.isEmpty()) {
+			return null;
+		}
+		Map<Object, List<Issue>> groupedIssues = EmfUtil.groupBy(issues, EngineeringPackage.Literals.ISSUE__STATUS);
+		BootstrapFactory bootstrapFactory = viewGenerator.getBootstrapFactory();
+		Table table = bootstrapFactory.table().bordered().striped();
+		table.header().headerRow("Status", "Issues", "Effort", "Cost").color(Color.INFO);
+		for (Entry<Object, List<Issue>> se: groupedIssues.entrySet()) {
+			Row sRow = table.row();
+			if (se.getKey() == null) {
+				sRow.cell("Blank");
+			} else {
+				ViewAction statusAction = ViewAction.adaptToViewActionNonNull((EObject) se.getKey());
+				sRow.cell(viewGenerator.link(statusAction));
+			}
+			List<Issue> statusIssues = se.getValue();
+			if (statusIssues == null || statusIssues.isEmpty()) {
+				sRow.cell();
+				sRow.cell();
+				sRow.cell();
+			} else {
+				sRow.cell(statusIssues.size()).text().alignment(Alignment.RIGHT);
+				double totalEffort = 0;
+				double totalCost = 0;
+				for (Issue si: statusIssues) {
+					totalEffort += si.getEffort();
+					totalCost += si.getCost();
+				}
+				sRow.cell(totalEffort).text().alignment(Alignment.RIGHT);
+				sRow.cell(totalCost).text().alignment(Alignment.RIGHT);
+			}
+			
+		}
+		return table;
+	}
 	
 	// TODO - totals table, % completed - shared method for engineers, increments, releases, ... - in ModelElementView...
 	// Generic table - takes a list of EObjects, BiConsumer of element and table row, BiFunction of element and feature to extract value, and var-arg of str features 

@@ -3,6 +3,7 @@ package org.nasdanika.engineering.gen;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EReference;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Increment;
@@ -32,6 +33,14 @@ public class IncrementViewAction extends NamedElementViewAction<Increment> {
 	}
 	
 	@Override
+	protected boolean isContentReference(EReference ref) {
+		if (ref == EngineeringPackage.Literals.INCREMENT__ISSUES) {
+			return false;
+		}
+		return super.isContentReference(ref);
+	}
+	
+	@Override
 	public Object generate(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
 		BootstrapFactory bootstrapFactory = viewGenerator.getBootstrapFactory();
 		Fragment ret = bootstrapFactory.getHTMLFactory().fragment(super.generate(viewGenerator, progressMonitor));
@@ -50,7 +59,7 @@ public class IncrementViewAction extends NamedElementViewAction<Increment> {
 				public Object generate(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) { 
 					Fragment ret = viewGenerator.getHTMLFactory().fragment();
 					
-					// TODO - summary
+					ret.content(issueStatusSummaryTable(issues, viewGenerator, progressMonitor));
 					
 					ret.content(issuesTable(
 							issues, 

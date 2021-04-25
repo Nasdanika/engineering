@@ -2,14 +2,6 @@ engineering-module:
    name: Gen
    path: gen
    issues:
-     - name: Increment summary tables
-       description: Issue status columns. Completion percentages - use done flag and remaining effort/logged effort. For the increment - engieers. Children. Self, total - self and children.      
-     - name: Configurable colors
-       description: Inject adapter factory into ModelElementViewAction. Methods in the factory to obtain parent, resource path resolver (the factory is the resolver), colors. Remove parent and resolver from constructors.
-       increment: nasdanika://increments/2021/children/q2/children/apr
-     - name: Context property computer for element linking
-       description: "Something like ${element-link:<uri> [alternative text]|default}. E.g. ${element-link:nasdanika://modules/engineering/modules/gen/issues/site-generator}"
-       increment: nasdanika://increments/2021/children/q2/children/apr
      - name: Document the model
        description: Model and dialogs  
        increment: nasdanika://increments/2021/children/q2/children/apr
@@ -94,4 +86,8 @@ engineering-module:
        description: |+2
          In a multi-model scenario all elements with the same URI will be logically merged and will appear as a single object in the UI.
          That single object may be explicitly designated by setting "primary" attribute to true computed as the first object found in the hierarchy by the content iterator.
+     - name: Increment summary tables completion percentages
+       description: Use done flag and remaining effort/logged effort. For the increment - engieers. Children. Self, total - self and children.  
+     - name: Configurable colors
+       description: Methods in the factory to obtain colors. Remove parent and resolver from constructors.
    
