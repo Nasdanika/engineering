@@ -76,12 +76,12 @@ public class EngineerImpl extends PersonaImpl implements Engineer {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public EList<org.nasdanika.engineering.Module> getOwns() {
-		return (EList<org.nasdanika.engineering.Module>)eDynamicGet(EngineeringPackage.ENGINEER__OWNS, EngineeringPackage.Literals.ENGINEER__OWNS, true, true);
+	public EList<EngineeredElement> getOwns() {
+		return getReferrers(EngineeringPackage.Literals.ENGINEERED_ELEMENT__OWNERS);
 	}
 
 	/**
@@ -190,11 +190,26 @@ public class EngineerImpl extends PersonaImpl implements Engineer {
 		return (EList<IssueStatus>)eDynamicGet(EngineeringPackage.ENGINEER__ISSUE_STATUSES, EngineeringPackage.Literals.ENGINEER__ISSUE_STATUSES, true, true);
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
 	@Override
-	public EList<Engineer> getOwners() {
-		EList<Engineer> owners = super.getOwners();
-		return owners.isEmpty() ? ECollections.singletonEList(this) : owners;
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case EngineeringPackage.ENGINEER__OWNS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getOwns()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
+
+//	@Override
+//	public EList<Engineer> getOwners() {
+//		EList<Engineer> owners = super.getOwners();
+//		return owners.isEmpty() ? ECollections.singletonEList(this) : owners;
+//	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -206,6 +221,8 @@ public class EngineerImpl extends PersonaImpl implements Engineer {
 		switch (featureID) {
 			case EngineeringPackage.ENGINEER__MODULES:
 				return ((InternalEList<?>)getModules()).basicRemove(otherEnd, msgs);
+			case EngineeringPackage.ENGINEER__OWNS:
+				return ((InternalEList<?>)getOwns()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.ENGINEER__INCREMENTS:
 				return ((InternalEList<?>)getIncrements()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.ENGINEER__SERVICES:

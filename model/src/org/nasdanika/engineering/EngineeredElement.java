@@ -39,11 +39,13 @@ public interface EngineeredElement extends NamedElement {
 	/**
 	 * Returns the value of the '<em><b>Owners</b></em>' reference list.
 	 * The list contents are of type {@link org.nasdanika.engineering.Engineer}.
+	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Engineer#getOwns <em>Owns</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Owners</em>' reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getEngineeredElement_Owners()
-	 * @model
+	 * @see org.nasdanika.engineering.Engineer#getOwns
+	 * @model opposite="owns"
 	 * @generated
 	 */
 	EList<Engineer> getOwners();

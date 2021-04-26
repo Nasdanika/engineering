@@ -42,15 +42,17 @@ public interface Engineer extends Persona {
 
 	/**
 	 * Returns the value of the '<em><b>Owns</b></em>' reference list.
-	 * The list contents are of type {@link org.nasdanika.engineering.Module}.
+	 * The list contents are of type {@link org.nasdanika.engineering.EngineeredElement}.
+	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.EngineeredElement#getOwners <em>Owners</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Owns</em>' reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getEngineer_Owns()
-	 * @model changeable="false" derived="true"
+	 * @see org.nasdanika.engineering.EngineeredElement#getOwners
+	 * @model opposite="owners" changeable="false" derived="true"
 	 * @generated
 	 */
-	EList<org.nasdanika.engineering.Module> getOwns();
+	EList<EngineeredElement> getOwns();
 
 	/**
 	 * Returns the value of the '<em><b>Increments</b></em>' containment reference list.

@@ -160,7 +160,7 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="owners" upperBound="-1"
-        eType="#//Engineer"/>
+        eType="#//Engineer" eOpposite="#//Engineer/owns"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Persona" eSuperTypes="#//EngineeredElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="Engineer" eSuperTypes="#//Persona">
@@ -169,8 +169,8 @@
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="modules" upperBound="-1"
         eType="#//Module" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="owns" upperBound="-1" eType="#//Module"
-        changeable="false" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="owns" upperBound="-1" eType="#//EngineeredElement"
+        changeable="false" derived="true" eOpposite="#//EngineeredElement/owners"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="increments" upperBound="-1"
         eType="#//Increment" containment="true">
       <eAnnotations source="urn:org.nasdanika">

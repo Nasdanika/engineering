@@ -1,6 +1,7 @@
 engineering-module:
    name: Model
    path: model
+   owners: pavel://this
    issues:
      - name: Validation of duplicate paths in containing collection and duplicate IDs                         
      - name: Support of objectives and key results                         
