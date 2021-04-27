@@ -2051,22 +2051,22 @@ public interface EngineeringPackage extends EPackage {
 	int RELEASE__INCREMENT = ENGINEERED_CAPABILITY_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Issues</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RELEASE__ISSUES = ENGINEERED_CAPABILITY_FEATURE_COUNT + 1;
-
-	/**
 	 * The feature id for the '<em><b>Features</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RELEASE__FEATURES = ENGINEERED_CAPABILITY_FEATURE_COUNT + 2;
+	int RELEASE__FEATURES = ENGINEERED_CAPABILITY_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Issues</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RELEASE__ISSUES = ENGINEERED_CAPABILITY_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Release</em>' class.

@@ -759,7 +759,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 */
 	@Override
 	public EReference getRelease_Issues() {
-		return (EReference)releaseEClass.getEStructuralFeatures().get(1);
+		return (EReference)releaseEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -769,7 +769,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 */
 	@Override
 	public EReference getRelease_Features() {
-		return (EReference)releaseEClass.getEStructuralFeatures().get(2);
+		return (EReference)releaseEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1346,8 +1346,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 
 		releaseEClass = createEClass(RELEASE);
 		createEReference(releaseEClass, RELEASE__INCREMENT);
-		createEReference(releaseEClass, RELEASE__ISSUES);
 		createEReference(releaseEClass, RELEASE__FEATURES);
+		createEReference(releaseEClass, RELEASE__ISSUES);
 
 		featureEClass = createEClass(FEATURE);
 		createEReference(featureEClass, FEATURE__RELEASES);
@@ -1519,8 +1519,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 
 		initEClass(releaseEClass, Release.class, "Release", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getRelease_Increment(), this.getIncrement(), this.getIncrement_Releases(), "increment", null, 0, 1, Release.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getRelease_Issues(), this.getIssue(), this.getIssue_Releases(), "issues", null, 0, -1, Release.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getRelease_Features(), this.getFeature(), this.getFeature_Releases(), "features", null, 0, -1, Release.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getRelease_Issues(), this.getIssue(), this.getIssue_Releases(), "issues", null, 0, -1, Release.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEClass(featureEClass, Feature.class, "Feature", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getFeature_Releases(), this.getRelease(), this.getRelease_Features(), "releases", null, 0, -1, Feature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1835,16 +1835,16 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 			   "documentation", "Issues requiring this capability."
 		   });
 		addAnnotation
-		  (getRelease_Issues(),
-		   source,
-		   new String[] {
-			   "documentation", "Issues closed in this release."
-		   });
-		addAnnotation
 		  (getRelease_Features(),
 		   source,
 		   new String[] {
 			   "documentation", "Features made available in this release."
+		   });
+		addAnnotation
+		  (getRelease_Issues(),
+		   source,
+		   new String[] {
+			   "documentation", "Issues closed in this release."
 		   });
 		addAnnotation
 		  (getFeature_Activities(),

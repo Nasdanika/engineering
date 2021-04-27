@@ -3,7 +3,7 @@ package org.nasdanika.engineering.gen;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.emf.EObjectAdaptable;
 import org.nasdanika.engineering.EngineeringPackage;
@@ -38,14 +38,18 @@ public class IncrementViewAction extends NamedElementViewAction<Increment> {
 	}
 	
 	@Override
-	protected boolean isContentReference(EReference ref) {
-		if (ref == EngineeringPackage.Literals.INCREMENT__ISSUES) {
+	protected boolean isFeatureInRole(EStructuralFeature feature, FeatureRole role) {
+		if (feature == EngineeringPackage.Literals.INCREMENT__ISSUES) {
 			return false;
 		}
-		if (ref == EngineeringPackage.Literals.INCREMENT__RELEASES) {
+		if (feature == EngineeringPackage.Literals.INCREMENT__RELEASES) {
 			return false;
 		}
-		return super.isContentReference(ref);
+		if (feature == EngineeringPackage.Literals.INCREMENT__CHILDREN) {
+			return role == FeatureRole.ELEMENT_ACTIONS;
+		}
+		
+		return super.isFeatureInRole(feature, role);
 	}
 	
 	@Override
@@ -128,6 +132,5 @@ public class IncrementViewAction extends NamedElementViewAction<Increment> {
 		
 		return children;
 	}
-	
 
 }

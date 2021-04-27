@@ -2,23 +2,65 @@ engineering-module:
    name: Gen
    path: gen
    issues:
+   
+       ### 2021.5.0 ###
+     
+     - name: Do not show all issues if equal to issues
+       increment: nasdanika://increments/2021/children/q2/children/may
+       releases: nasdanika://modules/engineering/releases/2021/5/0
+       effort: 1 
+       status: nasdanika://issue-statuses/done
+     - name: Show benefit in increment summary tables
+       increment: nasdanika://increments/2021/children/q2/children/may
+       releases: nasdanika://modules/engineering/releases/2021/5/0
+       effort: 1 
+       status: nasdanika://issue-statuses/done
+     - name: Module column in releases table
+       increment: nasdanika://increments/2021/children/q2/children/may
+       releases: nasdanika://modules/engineering/releases/2021/5/0
+       status: nasdanika://issue-statuses/done
+       effort: 1 
+     - name: Feature role
+       description: Create an enum for feature role - NONE, PROPERTY, CONTENT, CHILD (e.g. section). Refactor to use the role so the same feature is not shown twice by omission. 
+       increment: nasdanika://increments/2021/children/q2/children/may
+       releases: nasdanika://modules/engineering/releases/2021/5/0
+       status: nasdanika://issue-statuses/done
+       effort: 1 
+     - name: Do not sort increments and releases by name
+       increment: nasdanika://increments/2021/children/q2/children/may
+       releases: nasdanika://modules/engineering/releases/2021/5/0
+       status: nasdanika://issue-statuses/done
+       effort: 1 
+       
+       ### --> 
+       
      - name: Document the model
-       description: Model and dialogs  
+       description: 
+         exec-styled-markdown: Model and dialogs [Purum](${link/nasdanika://modules/engineering/modules/gen})  
+       increment: nasdanika://increments/2021/children/q2/children/may
+       releases: nasdanika://modules/engineering/releases/2021/5/0
+       effort: 4 
+     - name: Increment roll-up stats
+       description: |+2
+         Effort, cost, percentage completion. Own and total - own and children. 
+         Also totals summary table. Also children as a summary table. Completed with 100% - SUCCESS. In the past and not completed - DANGER. 
+         Linear extrapolation and WARNING is behind schedule for a specified margin, e.g. 10%.    
+       increment: nasdanika://increments/2021/children/q2/children/may
+       releases: nasdanika://modules/engineering/releases/2021/5/0
+       effort: 4 
+     - name: Completion derived attribute
+       description: In engineered capability - release, feature, issue. Show in properties. Along with effective benefit, cost, etc. Kinda duplicate.  
        increment: nasdanika://increments/2021/children/q2/children/may
        releases: nasdanika://modules/engineering/releases/2021/5/0
        effort: 4 
      - name: Experts reference
        description: Have expertise, but not authority.
-       effort: 3 
-     - name: Features and releases
-       description: Basic support. Add issues for visualizations (gantt) and aggregations. Issue to release association.
-       releases: 
-         - nasdanika://modules/engineering/releases/2021/4/4
-       increment: nasdanika://increments/2021/children/q2/children/apr
-       contributes-to:
-         - nasdanika://modules/engineering/features/test
-       effort: 3 
-       status: nasdanika://issue-statuses/done
+       increment: nasdanika://increments/2021/children/q2/children/may
+       releases: nasdanika://modules/engineering/releases/2021/5/0
+       effort: 3
+
+       ### Backlog ###
+       
      - name: Filterable and sortable table component - use KnockoutJs 
        description: |+2
          May start with a method in ModelElementViewAction. Then extract into a component which takes descriptors. 
@@ -27,7 +69,10 @@ engineering-module:
          Inject scripts into the head if head consumer is available or below or above the table otherwise.  
        effort: 4 
      - name: Notes
-       description: Loading from the model, show in the view.
+       description: |+2
+         Loading from the model, show in the view. Remaining effort and remaining cost attributes. If not set then remaining is calculated as a subtraction of spent from previous remaining.
+         So the calculation is a running total with ability to override. 
+         Remaining cost and effort to engineered capability, but derived. Also totals. And completion percentage. 
        increment: nasdanika://increments/2021/children/q2/children/may
        releases: nasdanika://modules/engineering/releases/2021/5/0
        effort: 1 
@@ -98,4 +143,25 @@ engineering-module:
        description: Use done flag and remaining effort/logged effort. For the increment - engieers. Children. Self, total - self and children.  
      - name: Configurable colors
        description: Methods in the factory to obtain colors. Remove parent and resolver from constructors.
+
+#### Done ####
+
+     - name: Engineer owned elements
+       description: Back-reference and list.  
+       increment: nasdanika://increments/2021/children/q2/children/apr
+       releases: nasdanika://modules/engineering/releases/2021/5/0
+       status: nasdanika://issue-statuses/done
+       effort: 1 
+   
+       ### 2021.4.4 ###
+        
+     - name: Features and releases
+       description: Basic support. Add issues for visualizations (gantt) and aggregations. Issue to release association.
+       releases: 
+         - nasdanika://modules/engineering/releases/2021/4/4
+       increment: nasdanika://increments/2021/children/q2/children/apr
+       contributes-to:
+         - nasdanika://modules/engineering/features/test
+       effort: 3 
+       status: nasdanika://issue-statuses/done
    

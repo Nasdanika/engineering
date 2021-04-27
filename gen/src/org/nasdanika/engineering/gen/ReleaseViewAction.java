@@ -1,8 +1,6 @@
 package org.nasdanika.engineering.gen;
 
-import java.util.List;
-
-import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Release;
 import org.nasdanika.html.app.Action;
@@ -14,35 +12,31 @@ public class ReleaseViewAction extends EngineeredCapabilityViewAction<Release> {
 	}
 	
 	@Override
-	public List<Action> getChildren() {
-		List<Action> children = super.getChildren();
-		
-		Action issuesSection = issuesSection(
-				target.getIssues(), 
-				"Issues", 
-				"issues", 
-				EngineeringPackage.Literals.NAMED_ELEMENT__NAME,
-				EngineeringPackage.Literals.ISSUE__STATUS,
-				EngineeringPackage.Literals.ISSUE__CATEGORY,				
-				EngineeringPackage.Literals.ISSUE__ASSIGNEE,				
-				EngineeringPackage.Literals.ISSUE__EFFORT,
-				EngineeringPackage.Literals.ISSUE__COST,
-				EngineeringPackage.Literals.ISSUE__BENEFIT);
-		
-		if (issuesSection != null) {
-			children.add(issuesSection);
+	protected Action featureAction(EStructuralFeature feature) {
+		if (feature == EngineeringPackage.Literals.RELEASE__ISSUES) {
+			return issuesSection(
+					target.getIssues(), 
+					"Issues", 
+					"issues", 
+					EngineeringPackage.Literals.NAMED_ELEMENT__NAME,
+					EngineeringPackage.Literals.ISSUE__STATUS,
+					EngineeringPackage.Literals.ISSUE__CATEGORY,				
+					EngineeringPackage.Literals.ISSUE__ASSIGNEE,				
+					EngineeringPackage.Literals.ISSUE__TARGET,				
+					EngineeringPackage.Literals.ISSUE__EFFORT,
+					EngineeringPackage.Literals.ISSUE__COST,
+					EngineeringPackage.Literals.ISSUE__BENEFIT);			
 		}
-				
-		return children;
+
+		return super.featureAction(feature);
 	}
 	
 	@Override
-	protected boolean isContentReference(EReference ref) {
-		if (ref == EngineeringPackage.Literals.RELEASE__ISSUES) {
-			return false;
+	protected boolean isFeatureInRole(EStructuralFeature feature, FeatureRole role) {
+		if (feature == EngineeringPackage.Literals.RELEASE__ISSUES) {
+			return role == FeatureRole.FEATURE_ACTION;
 		}
-		
-		return super.isContentReference(ref);
+		return super.isFeatureInRole(feature, role);
 	}
 
 }

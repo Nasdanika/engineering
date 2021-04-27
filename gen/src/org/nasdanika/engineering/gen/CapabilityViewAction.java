@@ -1,7 +1,6 @@
 package org.nasdanika.engineering.gen;
 
-import java.util.List;
-
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.nasdanika.engineering.Capability;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.html.app.Action;
@@ -12,40 +11,33 @@ public class CapabilityViewAction<T extends Capability> extends NamedElementView
 		super(value, factory);
 	}
 	
-//	@Override
-//	public Object generate(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
-//		BootstrapFactory bootstrapFactory = viewGenerator.getBootstrapFactory();
-//		
-//		// TODO - required by - list of actions, ...
-//		
-//		
-//		Fragment ret = bootstrapFactory.getHTMLFactory().fragment(super.generate(viewGenerator, progressMonitor));
-//		return ret;
-//	}
+	@Override
+	protected Action featureAction(EStructuralFeature feature) {
+		if (feature == EngineeringPackage.Literals.CAPABILITY__REQUIRED_BY) {
+			return issuesSection(
+					target.getRequiredBy(), 
+					"Required By", 
+					"required-by", 
+					EngineeringPackage.Literals.NAMED_ELEMENT__NAME,
+					EngineeringPackage.Literals.ISSUE__ASSIGNEE,
+					EngineeringPackage.Literals.ISSUE__STATUS,
+					EngineeringPackage.Literals.ISSUE__CATEGORY,				
+					EngineeringPackage.Literals.ISSUE__ASSIGNEE,				
+					EngineeringPackage.Literals.ISSUE__EFFORT,
+					EngineeringPackage.Literals.ISSUE__COST,
+					EngineeringPackage.Literals.ISSUE__BENEFIT);
+		}
+		return super.featureAction(feature);
+	}
 	
 	@Override
-	public List<Action> getChildren() {
-		List<Action> children = super.getChildren();
-		
-		Action childrenSection = issuesSection(
-				target.getRequiredBy(), 
-				"Required By", 
-				"required-by", 
-				EngineeringPackage.Literals.NAMED_ELEMENT__NAME,
-				EngineeringPackage.Literals.ISSUE__ASSIGNEE,
-				EngineeringPackage.Literals.ISSUE__STATUS,
-				EngineeringPackage.Literals.ISSUE__CATEGORY,				
-				EngineeringPackage.Literals.ISSUE__ASSIGNEE,				
-				EngineeringPackage.Literals.ISSUE__EFFORT,
-				EngineeringPackage.Literals.ISSUE__COST,
-				EngineeringPackage.Literals.ISSUE__BENEFIT);
-		
-		if (childrenSection != null) {
-			children.add(childrenSection);
+	protected boolean isFeatureInRole(EStructuralFeature feature, FeatureRole role) {
+		if (feature == EngineeringPackage.Literals.CAPABILITY__REQUIRED_BY) {
+			return role == FeatureRole.FEATURE_ACTION;
 		}
-		
-		return children;
-	}	
+
+		return super.isFeatureInRole(feature, role);
+	}
 	
 
 }

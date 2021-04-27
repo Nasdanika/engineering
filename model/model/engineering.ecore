@@ -254,16 +254,16 @@
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="increment" eType="#//Increment"
         eOpposite="#//Increment/releases"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="issues" upperBound="-1"
-        eType="#//Issue" changeable="false" derived="true" eOpposite="#//Issue/releases">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Issues closed in this release."/>
-      </eAnnotations>
-    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="features" upperBound="-1"
         eType="#//Feature" changeable="false" derived="true" eOpposite="#//Feature/releases">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Features made available in this release."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="issues" upperBound="-1"
+        eType="#//Issue" changeable="false" derived="true" eOpposite="#//Issue/releases">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Issues closed in this release."/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>

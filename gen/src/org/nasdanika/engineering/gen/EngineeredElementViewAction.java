@@ -3,7 +3,7 @@ package org.nasdanika.engineering.gen;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.engineering.EngineeredElement;
@@ -32,8 +32,9 @@ public class EngineeredElementViewAction<T extends EngineeredElement> extends Na
 	public List<Action> getChildren() {
 		List<Action> children = super.getChildren();
 		
+		EList<Issue> issues = target.getIssues();
 		Action issuesSection = issuesSection(
-				target.getIssues(), 
+				issues, 
 				"Issues", 
 				"issues", 
 				EngineeringPackage.Literals.NAMED_ELEMENT__NAME,
@@ -49,55 +50,51 @@ public class EngineeredElementViewAction<T extends EngineeredElement> extends Na
 		}
 		
 		
-		List<Issue> issues = new ArrayList<>();
+		List<Issue> allIssues = new ArrayList<>();
 		target.eAllContents().forEachRemaining(e -> {
 			if (e instanceof Issue) {
-				issues.add((Issue) e);
+				allIssues.add((Issue) e);
 			}
 		});
 		
-		Action allIssuesSection = ModelElementViewAction.issuesSection(
-				issues, 
-				"All Issues", 
-				"all-issues", 
-				null,
-				getActivator(),
-				EngineeringPackage.Literals.NAMED_ELEMENT__NAME,
-				EngineeringPackage.Literals.ISSUE__TARGET,
-				EngineeringPackage.Literals.ISSUE__ASSIGNEE,
-				EngineeringPackage.Literals.ISSUE__STATUS,
-				EngineeringPackage.Literals.ISSUE__CATEGORY,				
-				EngineeringPackage.Literals.ISSUE__EFFORT,
-				EngineeringPackage.Literals.ISSUE__COST,
-				EngineeringPackage.Literals.ISSUE__BENEFIT);
-		
-		if (allIssuesSection != null) {
-			children.add(allIssuesSection);
+		if (!issues.equals(allIssues)) {
+			Action allIssuesSection = ModelElementViewAction.issuesSection(
+					allIssues, 
+					"All Issues", 
+					"all-issues", 
+					null,
+					getActivator(),
+					EngineeringPackage.Literals.NAMED_ELEMENT__NAME,
+					EngineeringPackage.Literals.ISSUE__TARGET,
+					EngineeringPackage.Literals.ISSUE__ASSIGNEE,
+					EngineeringPackage.Literals.ISSUE__STATUS,
+					EngineeringPackage.Literals.ISSUE__CATEGORY,				
+					EngineeringPackage.Literals.ISSUE__EFFORT,
+					EngineeringPackage.Literals.ISSUE__COST,
+					EngineeringPackage.Literals.ISSUE__BENEFIT);
+			
+			if (allIssuesSection != null) {
+				children.add(allIssuesSection);
+			}
 		}
 				
 		return children;
 	}
 	
 	@Override
-	protected boolean isPropertyFeature(EStructuralFeature sf) {
-		return sf == EngineeringPackage.Literals.ENGINEERED_ELEMENT__OWNERS || super.isPropertyFeature(sf);
-	}
-	
-	@Override
-	protected boolean isContentReference(EReference ref) {
-		if (ref == EngineeringPackage.Literals.ENGINEERED_ELEMENT__OWNERS) {
+	protected boolean isFeatureInRole(EStructuralFeature feature, FeatureRole role) {
+		if (feature == EngineeringPackage.Literals.ENGINEERED_ELEMENT__OWNERS) {
+			return role == FeatureRole.PROPERTY;
+		}
+		if (feature == EngineeringPackage.Literals.ENGINEERED_ELEMENT__ISSUES) {
 			return false;
 		}
-		if (ref == EngineeringPackage.Literals.ENGINEERED_ELEMENT__ISSUES) {
-			return false;
-		}
-		
-		return super.isContentReference(ref);
+		return super.isFeatureInRole(feature, role);
 	}
-	
+			
 	@Override
 	public SectionStyle getSectionStyle() {
-		return SectionStyle.TAB;
+		return getSectionChildren().size() > 1 ? SectionStyle.TAB : super.getSectionStyle();
 	}
 	
 }

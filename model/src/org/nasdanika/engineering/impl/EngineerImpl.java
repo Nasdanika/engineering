@@ -6,7 +6,6 @@ import java.util.Collection;
 import java.util.function.Predicate;
 
 import org.eclipse.emf.common.notify.NotificationChain;
-import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -78,7 +77,6 @@ public class EngineerImpl extends PersonaImpl implements Engineer {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public EList<EngineeredElement> getOwns() {
 		return getReferrers(EngineeringPackage.Literals.ENGINEERED_ELEMENT__OWNERS);

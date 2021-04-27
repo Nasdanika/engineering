@@ -22,8 +22,8 @@ import org.nasdanika.engineering.Release;
  * </p>
  * <ul>
  *   <li>{@link org.nasdanika.engineering.impl.ReleaseImpl#getIncrement <em>Increment</em>}</li>
- *   <li>{@link org.nasdanika.engineering.impl.ReleaseImpl#getIssues <em>Issues</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.ReleaseImpl#getFeatures <em>Features</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.ReleaseImpl#getIssues <em>Issues</em>}</li>
  * </ul>
  *
  * @generated
@@ -121,10 +121,10 @@ public class ReleaseImpl extends EngineeredCapabilityImpl implements Release {
 				if (increment != null)
 					msgs = ((InternalEObject)increment).eInverseRemove(this, EngineeringPackage.INCREMENT__RELEASES, Increment.class, msgs);
 				return basicSetIncrement((Increment)otherEnd, msgs);
-			case EngineeringPackage.RELEASE__ISSUES:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getIssues()).basicAdd(otherEnd, msgs);
 			case EngineeringPackage.RELEASE__FEATURES:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getFeatures()).basicAdd(otherEnd, msgs);
+			case EngineeringPackage.RELEASE__ISSUES:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getIssues()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -139,10 +139,10 @@ public class ReleaseImpl extends EngineeredCapabilityImpl implements Release {
 		switch (featureID) {
 			case EngineeringPackage.RELEASE__INCREMENT:
 				return basicSetIncrement(null, msgs);
-			case EngineeringPackage.RELEASE__ISSUES:
-				return ((InternalEList<?>)getIssues()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.RELEASE__FEATURES:
 				return ((InternalEList<?>)getFeatures()).basicRemove(otherEnd, msgs);
+			case EngineeringPackage.RELEASE__ISSUES:
+				return ((InternalEList<?>)getIssues()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -158,10 +158,10 @@ public class ReleaseImpl extends EngineeredCapabilityImpl implements Release {
 			case EngineeringPackage.RELEASE__INCREMENT:
 				if (resolve) return getIncrement();
 				return basicGetIncrement();
-			case EngineeringPackage.RELEASE__ISSUES:
-				return getIssues();
 			case EngineeringPackage.RELEASE__FEATURES:
 				return getFeatures();
+			case EngineeringPackage.RELEASE__ISSUES:
+				return getIssues();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -206,10 +206,10 @@ public class ReleaseImpl extends EngineeredCapabilityImpl implements Release {
 		switch (featureID) {
 			case EngineeringPackage.RELEASE__INCREMENT:
 				return basicGetIncrement() != null;
-			case EngineeringPackage.RELEASE__ISSUES:
-				return !getIssues().isEmpty();
 			case EngineeringPackage.RELEASE__FEATURES:
 				return !getFeatures().isEmpty();
+			case EngineeringPackage.RELEASE__ISSUES:
+				return !getIssues().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

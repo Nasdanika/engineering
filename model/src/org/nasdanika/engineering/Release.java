@@ -14,8 +14,8 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link org.nasdanika.engineering.Release#getIncrement <em>Increment</em>}</li>
- *   <li>{@link org.nasdanika.engineering.Release#getIssues <em>Issues</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Release#getFeatures <em>Features</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.Release#getIssues <em>Issues</em>}</li>
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getRelease()

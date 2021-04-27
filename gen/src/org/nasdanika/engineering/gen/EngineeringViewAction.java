@@ -69,7 +69,7 @@ public class EngineeringViewAction extends ActionImpl {
 	@Override
 	public Object generate(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
 		Fragment ret = viewGenerator.getHTMLFactory().fragment();
-		ret.content(viewGenerator.processViewPart(ViewAction.listOfActions(elements, null, false, false, 1), progressMonitor));		
+		ret.content(viewGenerator.processViewPart(ViewAction.listOfViewActionsSorted(elements, null, false, false, 1), progressMonitor));		
 		return ret;
 	}
 

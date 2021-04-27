@@ -1,7 +1,6 @@
 package org.nasdanika.engineering.gen;
 
-import java.util.List;
-
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.IssueCategory;
@@ -22,28 +21,33 @@ public class IssueCategoryViewAction extends NamedElementViewAction<IssueCategor
 		Fragment ret = bootstrapFactory.getHTMLFactory().fragment(super.generate(viewGenerator, progressMonitor));
 		return ret;
 	}
-		
+	
 	@Override
-	public List<Action> getChildren() {
-		List<Action> children = super.getChildren();
-		
-		Action issuesSection = issuesSection(
-				target.getIssues(), 
-				"Issues", 
-				"Issues", 
-				EngineeringPackage.Literals.NAMED_ELEMENT__NAME,
-				EngineeringPackage.Literals.ISSUE__STATUS,
-				EngineeringPackage.Literals.ISSUE__TARGET,
-				EngineeringPackage.Literals.ISSUE__ASSIGNEE,				
-				EngineeringPackage.Literals.ISSUE__EFFORT,
-				EngineeringPackage.Literals.ISSUE__COST,
-				EngineeringPackage.Literals.ISSUE__BENEFIT);
-		
-		if (issuesSection != null) {
-			children.add(issuesSection);
+	protected Action featureAction(EStructuralFeature feature) {
+		if (feature == EngineeringPackage.Literals.ISSUE_CATEGORY__ISSUES) {
+			return issuesSection(
+					target.getIssues(), 
+					"Issues", 
+					"Issues", 
+					EngineeringPackage.Literals.NAMED_ELEMENT__NAME,
+					EngineeringPackage.Literals.ISSUE__STATUS,
+					EngineeringPackage.Literals.ISSUE__TARGET,
+					EngineeringPackage.Literals.ISSUE__ASSIGNEE,				
+					EngineeringPackage.Literals.ISSUE__EFFORT,
+					EngineeringPackage.Literals.ISSUE__COST,
+					EngineeringPackage.Literals.ISSUE__BENEFIT);
 		}
-		
-		return children;
-	}		
+
+		return super.featureAction(feature);
+	}
+	
+	@Override
+	protected boolean isFeatureInRole(EStructuralFeature feature, FeatureRole role) {
+		if (feature == EngineeringPackage.Literals.ISSUE_CATEGORY__ISSUES) {
+			return role == FeatureRole.FEATURE_ACTION;
+		}
+
+		return super.isFeatureInRole(feature, role);
+	}
 
 }
