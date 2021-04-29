@@ -87,7 +87,7 @@ public class EngineeredElementViewAction<T extends EngineeredElement> extends Na
 			return role == FeatureRole.PROPERTY;
 		}
 		if (feature == EngineeringPackage.Literals.ENGINEERED_ELEMENT__ISSUES) {
-			return false;
+			return role == FeatureRole.ELEMENT_ACTIONS;
 		}
 		return super.isFeatureInRole(feature, role);
 	}

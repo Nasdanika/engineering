@@ -66,10 +66,7 @@ public class EngineerViewAction<T extends Engineer> extends PersonaViewAction<T>
 			return role == FeatureRole.FEATURE_ACTION;
 		}
 		if (feature == EngineeringPackage.Literals.ENGINEER__INCREMENTS) {
-			return role == FeatureRole.ELEMENT_ACTIONS;
-		}
-		if (feature == EngineeringPackage.Literals.ENGINEER__INCREMENTS && role == FeatureRole.CONTENT) {
-			return true;
+			return role == FeatureRole.ELEMENT_ACTIONS || role == FeatureRole.CONTENT;
 		}
 		
 		return super.isFeatureInRole(feature, role);

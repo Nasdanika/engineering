@@ -30,6 +30,7 @@ engineering-module:
        increment: nasdanika://increments/2021/children/q2/children/may
        releases: nasdanika://modules/engineering/releases/2021/5/0
        status: nasdanika://issue-statuses/done
+       path: no-sort
        effort: 1 
        
        ### --> 
@@ -61,6 +62,21 @@ engineering-module:
 
        ### Backlog ###
        
+     - name: Move requires to EngineeredCapabilty 
+       description: |+2
+         So release and feature can also specify requirements to support high-level roadmapping.
+         Introduce allRequirements derived reference. For issue it would be issue's own requirements and requirements of its children.
+         For release - own requirements and requirements of features and issues.
+         And for features - own requirements and requirements of issues contributing to the feature.
+         allRequirements shall not include "contained" requirements. E.g. for child issues if one child requires another it shall not be
+         shown. For features if one contributing issue requires another also contributing issue it shall not be shown.
+         The same for releases - if two features or issues in the release have requires dependency it shall not be included.
+         All requirements reference can be used to generate Gantt roadmap diagrams for products, engineers, and increments.  
+       effort: 4 
+     - name: Start/end dates to EngineeredCapabilty 
+       description: |+2
+         Validations that end falls into the increment and other things, e.g. requirements end shall be before required start.   
+       effort: 2 
      - name: Filterable and sortable table component - use KnockoutJs 
        description: |+2
          May start with a method in ModelElementViewAction. Then extract into a component which takes descriptors. 
@@ -131,8 +147,8 @@ engineering-module:
        description: Issue - pert chart (state diagram) with color coding of statuses. Increment - gantt or gantts for issues and also for features and releases. Release as a milestone.
      - name: Announce initial release
        description: Presentation, video, post on LinkedIn. After restructuring the Nasdanika site to use Engineering. A tree of innovation - seed and grow your ideas and products.
-     - name: Issue and increment visualizations
-       description: Issue - pert chart (state diagram) with color coding of statuses. Increment - gantt or gantts for issues and also for features and releases. Release as a milestone.
+     - name: Org visualizations
+       description: WBS dialect org charts.
      - name: URI copy to clipboard button similar to GitHub clone URL. 
        description: Or a click on a cell copies to clipboard - change cursor and show tooltip.
      - name: Aliasing
@@ -143,6 +159,8 @@ engineering-module:
        description: Use done flag and remaining effort/logged effort. For the increment - engieers. Children. Self, total - self and children.  
      - name: Configurable colors
        description: Methods in the factory to obtain colors. Remove parent and resolver from constructors.
+     - name: Improve diagnostic readability
+       description: Filter-out success in dumps. Possibly output to HTML (app) with tree in the nav panel. Or generate site anyway and output diagnostics in the UI and a summary page with all errors and warnings. 
 
 #### Done ####
 
