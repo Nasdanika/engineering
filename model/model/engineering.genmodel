@@ -13,6 +13,7 @@
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//ModelElement/uri"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//ModelElement/path"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//ModelElement/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//ModelElement/markdownDescription"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//ModelElement/actions"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//ModelElement/resources"/>
     </genClasses>

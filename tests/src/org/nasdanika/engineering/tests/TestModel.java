@@ -34,9 +34,11 @@ import org.nasdanika.common.Context;
 import org.nasdanika.common.DefaultConverter;
 import org.nasdanika.common.DiagnosticException;
 import org.nasdanika.common.DiagramGenerator;
+import org.nasdanika.common.MarkdownHelper;
 import org.nasdanika.common.MutableContext;
 import org.nasdanika.common.PrintStreamProgressMonitor;
 import org.nasdanika.common.ProgressMonitor;
+import org.nasdanika.common.Status;
 import org.nasdanika.common.SupplierFactory;
 import org.nasdanika.common.Util;
 import org.nasdanika.common.persistence.ObjectLoader;
@@ -89,7 +91,26 @@ public class TestModel {
 		GenerateSiteConsumerFactory consumerFactory = new GenerateSiteConsumerFactory(
 				models, 
 				applicationSupplierFactory, 
-				new File("target\\site"));
+				new File("target\\site")) {
+			
+			@Override
+			protected MutableContext forkContext(Context context, ProgressMonitor progressMonitor) {
+				MutableContext ret = super.forkContext(context, progressMonitor);
+
+				MarkdownHelper markdownHelper = new MarkdownHelper() {
+					
+					@Override
+					protected DiagramGenerator getDiagramGenerator() {
+						return context.get(DiagramGenerator.class, DiagramGenerator.INSTANCE);
+					}
+					
+				};
+				ret.register(MarkdownHelper.class, markdownHelper);
+				
+				return ret;
+			}
+			
+		};
 		
 		Object actionFactory = loader.loadYaml(new File("model/nasdanika/site.yml"), progressMonitor);
 		SupplierFactory<Action> asf = Util.<Action>asSupplierFactory(actionFactory);		
@@ -131,7 +152,10 @@ public class TestModel {
 		try {
 			Util.call(commandFactory.create(context), progressMonitor);
 		} catch (DiagnosticException e) {
-			e.getDiagnostic().dump(System.out, 4);
+			System.err.println("******************************");
+			System.err.println("*      Diagnostic failed     *");
+			System.err.println("******************************");
+			e.getDiagnostic().dump(System.err, 4, Status.FAIL);
 			throw e;
 		}
 	}
@@ -224,7 +248,7 @@ public class TestModel {
 		
 		ComposedLoader loader = new ComposedLoader();
 		Object actionFactory = loader.loadYaml(new File("model\\nasdanika\\doc-site.yml"), progressMonitor);
-		Action action = Util.call(Util.<Action>asSupplierFactory(actionFactory).create(context), progressMonitor);
+		Action action = Util.call(Util.<Action>asSupplierFactory(actionFactory).create(context), progressMonitor, null);
 		
 		FileSystemContainer output = new FileSystemContainer(new File("target\\site"));
 		BiFunction<String, InputStream, String> decoder = Util.INPUT_STREAM_TO_STRING_DECODER;

@@ -53,15 +53,8 @@ public class IncrementViewAction extends NamedElementViewAction<Increment> {
 	}
 	
 	@Override
-	public Object generate(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
-		BootstrapFactory bootstrapFactory = viewGenerator.getBootstrapFactory();
-		Fragment ret = bootstrapFactory.getHTMLFactory().fragment(super.generate(viewGenerator, progressMonitor));
-		return ret;
-	}	
-	
-	@Override
-	public List<Action> getChildren() {
-		List<Action> children = super.getChildren();
+	protected List<Action> collectChildren() {
+		List<Action> children = super.collectChildren();
 		
 		EList<Release> releases = target.getReleases();
 		if (!releases.isEmpty()) {

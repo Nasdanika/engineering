@@ -22,6 +22,8 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.nasdanika.common.Context;
+import org.nasdanika.common.MarkdownHelper;
 import org.nasdanika.common.NasdanikaException;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.common.Util;
@@ -83,12 +85,26 @@ public class ModelElementViewAction<T extends ModelElement> extends SimpleEObjec
 	
 	@Override
 	protected String getTargetDescription() {
-		return target.getDescription();
+		StringBuilder ret = new StringBuilder();
+		String description = target.getDescription();
+		Context context = getContext();
+		if (!Util.isBlank(description)) {
+			ret.append(context.interpolateToString(description));		
+		}
+		String markdownDescription = target.getMarkdownDescription();
+		if (!Util.isBlank(markdownDescription)) {
+			String markdown = context.interpolateToString(markdownDescription);
+			MarkdownHelper markdownHelper = context.computingContext().get(MarkdownHelper.class, MarkdownHelper.INSTANCE);
+			ret.append(markdownHelper.markdownToHtml(markdown));
+		}
+		return ret.toString();
 	}
-		
-		
+				
 	protected boolean isFeatureInRole(EStructuralFeature feature, FeatureRole role) {
 		if (feature == EngineeringPackage.Literals.MODEL_ELEMENT__DESCRIPTION) {
+			return false;
+		}
+		if (feature == EngineeringPackage.Literals.MODEL_ELEMENT__MARKDOWN_DESCRIPTION) {
 			return false;
 		}
 		if (feature == EngineeringPackage.Literals.MODEL_ELEMENT__PATH) {
@@ -105,8 +121,8 @@ public class ModelElementViewAction<T extends ModelElement> extends SimpleEObjec
 	}
 	
 	@Override
-	public List<Action> getChildren() {
-		List<Action> children = super.getChildren();
+	protected List<Action> collectChildren() {
+		List<Action> children = super.collectChildren();
 		children.addAll(HtmlEmfUtil.adaptToActionNonNull(target.getActions()));
 		return children;
 	}

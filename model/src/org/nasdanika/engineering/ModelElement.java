@@ -19,6 +19,7 @@ import org.nasdanika.common.Adaptable;
  *   <li>{@link org.nasdanika.engineering.ModelElement#getUri <em>Uri</em>}</li>
  *   <li>{@link org.nasdanika.engineering.ModelElement#getPath <em>Path</em>}</li>
  *   <li>{@link org.nasdanika.engineering.ModelElement#getDescription <em>Description</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.ModelElement#getMarkdownDescription <em>Markdown Description</em>}</li>
  *   <li>{@link org.nasdanika.engineering.ModelElement#getActions <em>Actions</em>}</li>
  *   <li>{@link org.nasdanika.engineering.ModelElement#getResources <em>Resources</em>}</li>
  * </ul>
@@ -74,7 +75,7 @@ public interface ModelElement extends EObject, Adaptable {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Description in markdown.
+	 * Description in HTML.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Description</em>' attribute.
 	 * @see #setDescription(String)
@@ -93,6 +94,31 @@ public interface ModelElement extends EObject, Adaptable {
 	 * @generated
 	 */
 	void setDescription(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Markdown Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Description in markdown.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Markdown Description</em>' attribute.
+	 * @see #setMarkdownDescription(String)
+	 * @see org.nasdanika.engineering.EngineeringPackage#getModelElement_MarkdownDescription()
+	 * @model
+	 * @generated
+	 */
+	String getMarkdownDescription();
+
+	/**
+	 * Sets the value of the '{@link org.nasdanika.engineering.ModelElement#getMarkdownDescription <em>Markdown Description</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Markdown Description</em>' attribute.
+	 * @see #getMarkdownDescription()
+	 * @generated
+	 */
+	void setMarkdownDescription(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Actions</b></em>' containment reference list.

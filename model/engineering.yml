@@ -3,9 +3,36 @@ engineering-module:
    path: model
    owners: pavel://this
    issues:
-     - name: Validation of duplicate paths in containing collection and duplicate IDs                         
+     - name: Validation of duplicate paths in containing collection and duplicate URI's                         
      - name: Support of objectives and key results                         
      - name: Support of Multi-criteria decision analysis - different methods - AHP, Weighted sum, Weighted product                         
      - name: Icons for model elements      
-     - name: Introduce Edition                   
+     - name: Introduce Edition  
+     - name: OKR
+       markdown-description: |+2
+         Add support of [OKR](https://en.wikipedia.org/wiki/OKR). Engineer contains objectives. 
+         Objectives can be nested and can reference a parent objective, e.g. Engineer's containing organization objective. Nested objective can't have parent reference.
+         Objectives can reference increments. E.g. 2021 Q3 objective.
+         Objectives may contain key results. Objectives and key results may have weight which determines how much they contribute to container/parent.
+         Objectives may contain issues. Issues may contribute either to objectives directly or to key results. Benefit may be used as issue weight or additional attribute.
+         Maybe EngineeredCapability shall be contributing, so release or feature may contribute.
+         Contribution class with weight and target. Default weight is 1, target is the default feature. 
+         Aim is a base class for Objective and Key Result. Concrete - for proxying.
+         Ability to manually set progress in aims - value between 0 and 1. This value will be added to the value of contributions.
+         Contributions count in aim progress only when they are available - done, released, ... 
+         Although effort/cost based progress may also be computed.  
+         Maybe an objective shall be able to contribute to key results and thus instead of parent link it shall have that contirbutes reference.
+         I.e. Contributions are done to Aim by Contributors - Objectives, Key results, EngineeredCapabilities. Contained aims have weight attribute which means their contribution to the container.  
+         Objectives may have benefit and that benefit may be used to compute effective benefit for contributors based on their weight. 
+         Objectives being contributors themselves also have effectiveBenefit. As such it should be possible to define benefits only for top-level objectives and compute
+         effective benefits down to issues. As "leaf" benefits are likely to be very small numbers they may be normalized to 1 for the largest benefit and also ranked. 
+         Issues can be sorted in the order of decreasing effective benefit. 
+     - name: Notes from Git commit history
+       markdown-description: |+2
+         Flag to enable - true by default.
+         Look for a YAML block in commit comments, e.g. something starting with --- Engineering --- and ending with --- End Engineering ---
+         Parse as YAML - issue key with issue URI. Also time spent and remaining effort. Engineer - find by committer e-mail or explicitly specify.
+         As part of it or before it (in 2021.5.0) - add support of referencing engineers by e-mail - AbstractGenerateSiteConsumerFactory getURI() to getURIs() or boolean matchURI().
+         Engineering block does not go to the note description. Decide how to treat commit contents - markdown by default and a flag to overrie to treat as plain text? 
+                      
    

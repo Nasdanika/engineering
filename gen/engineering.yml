@@ -32,6 +32,13 @@ engineering-module:
        status: nasdanika://issue-statuses/done
        path: no-sort
        effort: 1 
+     - name: Link token replacement in diagrams
+       description: Service computer in order to use the context of the action. Also markdownDescription attribute because otherwise markdown is generated at model loading time.
+       increment: nasdanika://increments/2021/children/q2/children/may
+       releases: nasdanika://modules/engineering/releases/2021/5/0
+       status: nasdanika://issue-statuses/done
+       path: no-sort
+       effort: 1 
        
        ### --> 
        
@@ -71,7 +78,7 @@ engineering-module:
          allRequirements shall not include "contained" requirements. E.g. for child issues if one child requires another it shall not be
          shown. For features if one contributing issue requires another also contributing issue it shall not be shown.
          The same for releases - if two features or issues in the release have requires dependency it shall not be included.
-         All requirements reference can be used to generate Gantt roadmap diagrams for products, engineers, and increments.  
+         All requirements reference can be used to generate Gantt roadmap diagrams for products, engineers, and increments.           
        effort: 4 
      - name: Start/end dates to EngineeredCapabilty 
        description: |+2
@@ -161,6 +168,10 @@ engineering-module:
        description: Methods in the factory to obtain colors. Remove parent and resolver from constructors.
      - name: Improve diagnostic readability
        description: Filter-out success in dumps. Possibly output to HTML (app) with tree in the nav panel. Or generate site anyway and output diagnostics in the UI and a summary page with all errors and warnings. 
+     - name: Diagram style to model elements
+       description: Some kind of a map. E.g. ability to display issues or releases differently on Gantt based on workability and issue status.  
+     - name: Progress bars in for percentages
+       markdown-description: "[Bootstrap progress bar](https://getbootstrap.com/docs/4.0/components/progress/#labels)"  
 
 #### Done ####
 

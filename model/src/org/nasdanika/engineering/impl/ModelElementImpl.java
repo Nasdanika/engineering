@@ -38,6 +38,7 @@ import org.nasdanika.engineering.NamedElement;
  *   <li>{@link org.nasdanika.engineering.impl.ModelElementImpl#getUri <em>Uri</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.ModelElementImpl#getPath <em>Path</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.ModelElementImpl#getDescription <em>Description</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.ModelElementImpl#getMarkdownDescription <em>Markdown Description</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.ModelElementImpl#getActions <em>Actions</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.ModelElementImpl#getResources <em>Resources</em>}</li>
  * </ul>
@@ -76,6 +77,16 @@ public abstract class ModelElementImpl extends MinimalEObjectImpl.Container impl
 	 * @ordered
 	 */
 	protected static final String DESCRIPTION_EDEFAULT = null;
+
+	/**
+	 * The default value of the '{@link #getMarkdownDescription() <em>Markdown Description</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMarkdownDescription()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String MARKDOWN_DESCRIPTION_EDEFAULT = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -195,6 +206,26 @@ public abstract class ModelElementImpl extends MinimalEObjectImpl.Container impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public String getMarkdownDescription() {
+		return (String)eDynamicGet(EngineeringPackage.MODEL_ELEMENT__MARKDOWN_DESCRIPTION, EngineeringPackage.Literals.MODEL_ELEMENT__MARKDOWN_DESCRIPTION, true, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setMarkdownDescription(String newMarkdownDescription) {
+		eDynamicSet(EngineeringPackage.MODEL_ELEMENT__MARKDOWN_DESCRIPTION, EngineeringPackage.Literals.MODEL_ELEMENT__MARKDOWN_DESCRIPTION, newMarkdownDescription);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public EList<EObject> getActions() {
@@ -242,6 +273,8 @@ public abstract class ModelElementImpl extends MinimalEObjectImpl.Container impl
 				return getPath();
 			case EngineeringPackage.MODEL_ELEMENT__DESCRIPTION:
 				return getDescription();
+			case EngineeringPackage.MODEL_ELEMENT__MARKDOWN_DESCRIPTION:
+				return getMarkdownDescription();
 			case EngineeringPackage.MODEL_ELEMENT__ACTIONS:
 				return getActions();
 			case EngineeringPackage.MODEL_ELEMENT__RESOURCES:
@@ -264,6 +297,9 @@ public abstract class ModelElementImpl extends MinimalEObjectImpl.Container impl
 				return;
 			case EngineeringPackage.MODEL_ELEMENT__DESCRIPTION:
 				setDescription((String)newValue);
+				return;
+			case EngineeringPackage.MODEL_ELEMENT__MARKDOWN_DESCRIPTION:
+				setMarkdownDescription((String)newValue);
 				return;
 			case EngineeringPackage.MODEL_ELEMENT__ACTIONS:
 				getActions().clear();
@@ -291,6 +327,9 @@ public abstract class ModelElementImpl extends MinimalEObjectImpl.Container impl
 			case EngineeringPackage.MODEL_ELEMENT__DESCRIPTION:
 				setDescription(DESCRIPTION_EDEFAULT);
 				return;
+			case EngineeringPackage.MODEL_ELEMENT__MARKDOWN_DESCRIPTION:
+				setMarkdownDescription(MARKDOWN_DESCRIPTION_EDEFAULT);
+				return;
 			case EngineeringPackage.MODEL_ELEMENT__ACTIONS:
 				getActions().clear();
 				return;
@@ -315,6 +354,8 @@ public abstract class ModelElementImpl extends MinimalEObjectImpl.Container impl
 				return PATH_EDEFAULT == null ? getPath() != null : !PATH_EDEFAULT.equals(getPath());
 			case EngineeringPackage.MODEL_ELEMENT__DESCRIPTION:
 				return DESCRIPTION_EDEFAULT == null ? getDescription() != null : !DESCRIPTION_EDEFAULT.equals(getDescription());
+			case EngineeringPackage.MODEL_ELEMENT__MARKDOWN_DESCRIPTION:
+				return MARKDOWN_DESCRIPTION_EDEFAULT == null ? getMarkdownDescription() != null : !MARKDOWN_DESCRIPTION_EDEFAULT.equals(getMarkdownDescription());
 			case EngineeringPackage.MODEL_ELEMENT__ACTIONS:
 				return !getActions().isEmpty();
 			case EngineeringPackage.MODEL_ELEMENT__RESOURCES:

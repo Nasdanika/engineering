@@ -5,15 +5,11 @@ import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.engineering.EngineeredElement;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Issue;
-import org.nasdanika.html.Fragment;
 import org.nasdanika.html.app.Action;
 import org.nasdanika.html.app.SectionStyle;
-import org.nasdanika.html.app.ViewGenerator;
-import org.nasdanika.html.bootstrap.BootstrapFactory;
 
 public class EngineeredElementViewAction<T extends EngineeredElement> extends NamedElementViewAction<T> {
 	
@@ -22,15 +18,8 @@ public class EngineeredElementViewAction<T extends EngineeredElement> extends Na
 	}
 	
 	@Override
-	public Object generate(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
-		BootstrapFactory bootstrapFactory = viewGenerator.getBootstrapFactory();
-		Fragment ret = bootstrapFactory.getHTMLFactory().fragment(super.generate(viewGenerator, progressMonitor));
-		return ret;
-	}
-	
-	@Override
-	public List<Action> getChildren() {
-		List<Action> children = super.getChildren();
+	protected List<Action> collectChildren() {
+		List<Action> children = super.collectChildren();
 		
 		EList<Issue> issues = target.getIssues();
 		Action issuesSection = issuesSection(

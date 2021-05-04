@@ -35,13 +35,6 @@ public class EngineerViewAction<T extends Engineer> extends PersonaViewAction<T>
 	}
 	
 	@Override
-	public Object generate(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
-		BootstrapFactory bootstrapFactory = viewGenerator.getBootstrapFactory();
-		Fragment ret = bootstrapFactory.getHTMLFactory().fragment(super.generate(viewGenerator, progressMonitor));
-		return ret;
-	}
-	
-	@Override
 	protected Action featureAction(EStructuralFeature feature) {
 		if (feature == EngineeringPackage.Literals.ENGINEER__ASSIGNMENTS) {
 			return issuesSection(

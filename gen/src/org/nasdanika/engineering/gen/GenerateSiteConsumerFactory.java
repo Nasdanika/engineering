@@ -121,10 +121,10 @@ public class GenerateSiteConsumerFactory extends AbstractGenerateSiteConsumerFac
 	protected boolean isTopLevelElement(EObject eObj) {
 		return eObj instanceof ModelElement;
 	}
-
+	
 	@Override
-	protected String getURI(EObject eObj) {
-		return eObj instanceof ModelElement ? ((ModelElement) eObj).getUri() : null;
+	protected boolean matchURI(EObject eObj, URI uri) {
+		return eObj instanceof ModelElement && uri != null && uri.toString().equals(((ModelElement) eObj).getUri()) ;
 	}
 
 	@Override

@@ -49,12 +49,14 @@ public interface Issue extends EngineeredCapability {
 
 	/**
 	 * Returns the value of the '<em><b>Assignee</b></em>' reference.
+	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Engineer#getAssignments <em>Assignments</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Assignee</em>' reference.
 	 * @see #setAssignee(Engineer)
 	 * @see org.nasdanika.engineering.EngineeringPackage#getIssue_Assignee()
-	 * @model
+	 * @see org.nasdanika.engineering.Engineer#getAssignments
+	 * @model opposite="assignments"
 	 * @generated
 	 */
 	Engineer getAssignee();
