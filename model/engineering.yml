@@ -1,13 +1,15 @@
 engineering-module:
    name: Model
    path: model
-   owners: pavel://this
+   owners: pavel:this
    issues:
      - name: Validation of duplicate paths in containing collection and duplicate URI's                         
      - name: Support of objectives and key results                         
      - name: Support of Multi-criteria decision analysis - different methods - AHP, Weighted sum, Weighted product                         
      - name: Icons for model elements      
      - name: Introduce Edition  
+     - name: Contact methods, resolving by
+       description: For example, engineer's e-mail(s) and resolving by mailto:<email> URI.  
      - name: OKR
        markdown-description: |+2
          Add support of [OKR](https://en.wikipedia.org/wiki/OKR). Engineer contains objectives. 
@@ -34,5 +36,17 @@ engineering-module:
          Parse as YAML - issue key with issue URI. Also time spent and remaining effort. Engineer - find by committer e-mail or explicitly specify.
          As part of it or before it (in 2021.5.0) - add support of referencing engineers by e-mail - AbstractGenerateSiteConsumerFactory getURI() to getURIs() or boolean matchURI().
          Engineering block does not go to the note description. Decide how to treat commit contents - markdown by default and a flag to overrie to treat as plain text? 
+     - name: Domain or Portfolio
+       markdown-description: |+2
+         Grouping of products, may contain child domains/portfolios. 
+     - name: Metrics/Measurements
+       markdown-description: |+2
+         Grouping of products, may contain child domains/portfolios. 
+     - name: Activity duration/cost
+       markdown-description: |+2
+         To compute duration/costs of journeys. Ideally/eventually - a distribution for activity and distributions for journeys.
+     - name: Resources allocation for activities and journeys
+       markdown-description: |+2
+         Banker's algorithm or something similar.
                       
    

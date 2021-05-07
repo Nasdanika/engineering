@@ -1,5 +1,8 @@
 package org.nasdanika.engineering.gen;
 
+import java.util.Collection;
+import java.util.Collections;
+
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Release;
@@ -12,10 +15,10 @@ public class ReleaseViewAction extends EngineeredCapabilityViewAction<Release> {
 	}
 	
 	@Override
-	protected Action featureAction(EStructuralFeature feature) {
+	protected Collection<Action> featureActions(EStructuralFeature feature) {
 		if (feature == EngineeringPackage.Literals.RELEASE__ISSUES) {
-			return issuesSection(
-					target.getIssues(), 
+			return Collections.singleton(issuesSection(
+					getSemanticElement().getIssues(), 
 					"Issues", 
 					"issues", 
 					EngineeringPackage.Literals.NAMED_ELEMENT__NAME,
@@ -25,16 +28,16 @@ public class ReleaseViewAction extends EngineeredCapabilityViewAction<Release> {
 					EngineeringPackage.Literals.ISSUE__TARGET,				
 					EngineeringPackage.Literals.ISSUE__EFFORT,
 					EngineeringPackage.Literals.ISSUE__COST,
-					EngineeringPackage.Literals.ISSUE__BENEFIT);			
+					EngineeringPackage.Literals.ISSUE__BENEFIT));			
 		}
 
-		return super.featureAction(feature);
+		return super.featureActions(feature);
 	}
 	
 	@Override
 	protected boolean isFeatureInRole(EStructuralFeature feature, FeatureRole role) {
 		if (feature == EngineeringPackage.Literals.RELEASE__ISSUES) {
-			return role == FeatureRole.FEATURE_ACTION;
+			return role == FeatureRole.FEATURE_ACTIONS;
 		}
 		return super.isFeatureInRole(feature, role);
 	}

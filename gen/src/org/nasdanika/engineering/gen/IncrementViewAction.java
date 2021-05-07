@@ -31,7 +31,7 @@ public class IncrementViewAction extends NamedElementViewAction<Increment> {
 	
 	@Override
 	public Label getCategory() {
-		if (target.eContainmentFeature() == EngineeringPackage.Literals.INCREMENT__CHILDREN) {
+		if (getSemanticElement().eContainmentFeature() == EngineeringPackage.Literals.INCREMENT__CHILDREN) {
 			return null;
 		}
 		return super.getCategory();
@@ -56,7 +56,7 @@ public class IncrementViewAction extends NamedElementViewAction<Increment> {
 	protected List<Action> collectChildren() {
 		List<Action> children = super.collectChildren();
 		
-		EList<Release> releases = target.getReleases();
+		EList<Release> releases = getSemanticElement().getReleases();
 		if (!releases.isEmpty()) {
 			ActionImpl releasesSection = new ActionImpl() {
 				
@@ -85,7 +85,7 @@ public class IncrementViewAction extends NamedElementViewAction<Increment> {
 			children.add(releasesSection);			
 		}
 		
-		EList<Issue> issues = target.getIssues();
+		EList<Issue> issues = getSemanticElement().getIssues();
 		if (!issues.isEmpty()) {
 			ActionImpl issuesSection = new ActionImpl() {
 				

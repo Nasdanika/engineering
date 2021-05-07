@@ -80,18 +80,18 @@ public class ModelElementViewAction<T extends ModelElement> extends SimpleEObjec
 	
 	@Override
 	protected String getTargetPath() {
-		return target.getPath();
+		return getSemanticElement().getPath();
 	}
 	
 	@Override
 	protected String getTargetDescription() {
 		StringBuilder ret = new StringBuilder();
-		String description = target.getDescription();
+		String description = getSemanticElement().getDescription();
 		Context context = getContext();
 		if (!Util.isBlank(description)) {
 			ret.append(context.interpolateToString(description));		
 		}
-		String markdownDescription = target.getMarkdownDescription();
+		String markdownDescription = getSemanticElement().getMarkdownDescription();
 		if (!Util.isBlank(markdownDescription)) {
 			String markdown = context.interpolateToString(markdownDescription);
 			MarkdownHelper markdownHelper = context.computingContext().get(MarkdownHelper.class, MarkdownHelper.INSTANCE);
@@ -123,13 +123,13 @@ public class ModelElementViewAction<T extends ModelElement> extends SimpleEObjec
 	@Override
 	protected List<Action> collectChildren() {
 		List<Action> children = super.collectChildren();
-		children.addAll(HtmlEmfUtil.adaptToActionNonNull(target.getActions()));
+		children.addAll(HtmlEmfUtil.adaptToActionNonNull(getSemanticElement().getActions()));
 		return children;
 	}
 
 	@Override
 	public Action getParent() {
-		EObject eContainer = target.eContainer();
+		EObject eContainer = getSemanticElement().eContainer();
 		if (eContainer == null) {
 			return factory.getParent();
 		}

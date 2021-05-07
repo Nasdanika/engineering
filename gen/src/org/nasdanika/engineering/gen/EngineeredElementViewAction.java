@@ -21,7 +21,7 @@ public class EngineeredElementViewAction<T extends EngineeredElement> extends Na
 	protected List<Action> collectChildren() {
 		List<Action> children = super.collectChildren();
 		
-		EList<Issue> issues = target.getIssues();
+		EList<Issue> issues = getSemanticElement().getIssues();
 		Action issuesSection = issuesSection(
 				issues, 
 				"Issues", 
@@ -40,7 +40,7 @@ public class EngineeredElementViewAction<T extends EngineeredElement> extends Na
 		
 		
 		List<Issue> allIssues = new ArrayList<>();
-		target.eAllContents().forEachRemaining(e -> {
+		getSemanticElement().eAllContents().forEachRemaining(e -> {
 			if (e instanceof Issue) {
 				allIssues.add((Issue) e);
 			}

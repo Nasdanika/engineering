@@ -46,7 +46,7 @@ import org.nasdanika.engineering.NamedElement;
  * @generated
  */
 public abstract class ModelElementImpl extends MinimalEObjectImpl.Container implements ModelElement {
-	private static final String THIS_AUTHORITY = "://this";
+	private static final String THIS_PATH = ":this";
 
 	/**
 	 * The default value of the '{@link #getUri() <em>Uri</em>}' attribute.
@@ -128,9 +128,9 @@ public abstract class ModelElementImpl extends MinimalEObjectImpl.Container impl
 		if (!Util.isBlank(path) && path.startsWith("/")) {
 			int idx = path.indexOf("/", 1);
 			if (idx == -1) {
-				return path.substring(1) + THIS_AUTHORITY;
+				return path.substring(1) + THIS_PATH;
 			}
-			return path.substring(1, idx) + THIS_AUTHORITY + path.substring(idx + 1);
+			return path.substring(1, idx) + ":" + path.substring(idx + 1);
 		}
 		
 		EObject c = eContainer();
@@ -138,12 +138,13 @@ public abstract class ModelElementImpl extends MinimalEObjectImpl.Container impl
 			String base = ((ModelElement) c).getUri();
 			EReference eContainmentFeature = eContainmentFeature();			
 			StringBuilder ret = new StringBuilder();
-			if (base.endsWith(THIS_AUTHORITY)) {
-				ret.append(base.substring(0, base.length() - THIS_AUTHORITY.length() + 2));
+			if (base.endsWith(THIS_PATH)) {
+				ret.append(base.substring(0, base.length() - THIS_PATH.length() + 1));
 			} else {
 				ret.append(base);
+				ret.append("/");
 			}
-			ret.append("/").append(Util.camelToKebab(eContainmentFeature.getName()));
+			ret.append(Util.camelToKebab(eContainmentFeature.getName()));
 			if (eContainmentFeature.isMany()) {
 				if (Util.isBlank(path)) {
 					path = getDefaultPath();
@@ -154,7 +155,7 @@ public abstract class ModelElementImpl extends MinimalEObjectImpl.Container impl
 			return ret.toString();
 		}
 		
-		return (Util.isBlank(path) ? "engineering" : path) + THIS_AUTHORITY;
+		return (Util.isBlank(path) ? "engineering" : path) + THIS_PATH;
 	}
 	
 	protected String getDefaultPath() {

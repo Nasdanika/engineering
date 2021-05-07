@@ -28,19 +28,19 @@ public class NamedElementViewAction<T extends NamedElement> extends ModelElement
 	
 	@Override
 	public String getText() {
-		return StringEscapeUtils.escapeHtml4(target.getName());
+		return StringEscapeUtils.escapeHtml4(getSemanticElement().getName());
 	}
 	
 	@Override
 	protected String getDefaultPath() {
-		String name = target.getName();
+		String name = getSemanticElement().getName();
 		if (!Util.isBlank(name)) {
-			int idx = ((List<?>) target.eContainer().eGet(target.eContainmentFeature())).stream().filter(e -> e instanceof NamedElement && name.equals(((NamedElement) e).getName())).collect(Collectors.toList()).indexOf(target);
+			int idx = ((List<?>) getSemanticElement().eContainer().eGet(getSemanticElement().eContainmentFeature())).stream().filter(e -> e instanceof NamedElement && name.equals(((NamedElement) e).getName())).collect(Collectors.toList()).indexOf(getSemanticElement());
 			try {
 				String digest = Hex.encodeHexString(MessageDigest.getInstance("SHA-256").digest(name.getBytes(StandardCharsets.UTF_8)));
 				return idx == 0 ? digest : (digest + "-" + idx);
 			} catch (NoSuchAlgorithmException e) {
-				throw new ConfigurationException("Cannot encode name: " + 3, e, EObjectAdaptable.adaptTo(target, Marked.class));
+				throw new ConfigurationException("Cannot encode name: " + 3, e, EObjectAdaptable.adaptTo(getSemanticElement(), Marked.class));
 			}
 		}
 		return super.getDefaultPath();

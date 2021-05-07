@@ -2,6 +2,7 @@ package org.nasdanika.engineering.gen;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -35,10 +36,10 @@ public class EngineerViewAction<T extends Engineer> extends PersonaViewAction<T>
 	}
 	
 	@Override
-	protected Action featureAction(EStructuralFeature feature) {
+	protected Collection<Action> featureActions(EStructuralFeature feature) {
 		if (feature == EngineeringPackage.Literals.ENGINEER__ASSIGNMENTS) {
-			return issuesSection(
-					target.getAssignments(), 
+			return Collections.singleton(issuesSection(
+					getSemanticElement().getAssignments(), 
 					"Assignments", 
 					"assignments", 
 					EngineeringPackage.Literals.NAMED_ELEMENT__NAME,
@@ -47,16 +48,16 @@ public class EngineerViewAction<T extends Engineer> extends PersonaViewAction<T>
 					EngineeringPackage.Literals.ISSUE__CATEGORY,				
 					EngineeringPackage.Literals.ISSUE__EFFORT,
 					EngineeringPackage.Literals.ISSUE__COST,
-					EngineeringPackage.Literals.ISSUE__BENEFIT);
+					EngineeringPackage.Literals.ISSUE__BENEFIT));
 		}
 
-		return super.featureAction(feature);
+		return super.featureActions(feature);
 	}
 	
 	@Override
 	protected boolean isFeatureInRole(EStructuralFeature feature, FeatureRole role) {
 		if (feature == EngineeringPackage.Literals.ENGINEER__ASSIGNMENTS) {
-			return role == FeatureRole.FEATURE_ACTION;
+			return role == FeatureRole.FEATURE_ACTIONS;
 		}
 		if (feature == EngineeringPackage.Literals.ENGINEER__INCREMENTS) {
 			return role == FeatureRole.ELEMENT_ACTIONS || role == FeatureRole.CONTENT;
@@ -72,7 +73,7 @@ public class EngineerViewAction<T extends Engineer> extends PersonaViewAction<T>
 			int headerLevel = viewGenerator.get(SectionStyle.HEADER_LEVEL, Integer.class, 3);
 			Fragment ret = htmlFactory.fragment(htmlFactory.tag("h" + headerLevel, Util.nameToLabel(feature.getName())));
 			Collection<Issue> scheduledIssues = new ArrayList<>();
-			target.getIncrements().forEach(i -> collectAllIncrementIssues(i, scheduledIssues));
+			getSemanticElement().getIncrements().forEach(i -> collectAllIncrementIssues(i, scheduledIssues));
 			List<IssueStatus> statuses = new ArrayList<>(EmfUtil.<IssueStatus, Issue>groupBy(scheduledIssues, EngineeringPackage.Literals.ISSUE__STATUS).keySet());
 			statuses.sort((as,bs) -> {
 				if (as == bs) {
@@ -116,7 +117,7 @@ public class EngineerViewAction<T extends Engineer> extends PersonaViewAction<T>
 				subHeader.header("Benefit");
 			}
 			
-			for (Increment increment: target.getIncrements()) {
+			for (Increment increment: getSemanticElement().getIncrements()) {
 				incrementRow(increment, 0, statuses, table, viewGenerator, progressMonitor);
 			}
 			

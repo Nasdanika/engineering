@@ -6,37 +6,37 @@ engineering-module:
        ### 2021.5.0 ###
      
      - name: Do not show all issues if equal to issues
-       increment: nasdanika://increments/2021/children/q2/children/may
-       releases: nasdanika://modules/engineering/releases/2021/5/0
+       increment: nasdanika:increments/2021/children/q2/children/may
+       releases: nasdanika:modules/engineering/releases/2021/5/0
        effort: 1 
-       status: nasdanika://issue-statuses/done
+       status: nasdanika:issue-statuses/done
      - name: Show benefit in increment summary tables
-       increment: nasdanika://increments/2021/children/q2/children/may
-       releases: nasdanika://modules/engineering/releases/2021/5/0
+       increment: nasdanika:increments/2021/children/q2/children/may
+       releases: nasdanika:modules/engineering/releases/2021/5/0
        effort: 1 
-       status: nasdanika://issue-statuses/done
+       status: nasdanika:issue-statuses/done
      - name: Module column in releases table
-       increment: nasdanika://increments/2021/children/q2/children/may
-       releases: nasdanika://modules/engineering/releases/2021/5/0
-       status: nasdanika://issue-statuses/done
+       increment: nasdanika:increments/2021/children/q2/children/may
+       releases: nasdanika:modules/engineering/releases/2021/5/0
+       status: nasdanika:issue-statuses/done
        effort: 1 
      - name: Feature role
        description: Create an enum for feature role - NONE, PROPERTY, CONTENT, CHILD (e.g. section). Refactor to use the role so the same feature is not shown twice by omission. 
-       increment: nasdanika://increments/2021/children/q2/children/may
-       releases: nasdanika://modules/engineering/releases/2021/5/0
-       status: nasdanika://issue-statuses/done
+       increment: nasdanika:increments/2021/children/q2/children/may
+       releases: nasdanika:modules/engineering/releases/2021/5/0
+       status: nasdanika:issue-statuses/done
        effort: 1 
      - name: Do not sort increments and releases by name
-       increment: nasdanika://increments/2021/children/q2/children/may
-       releases: nasdanika://modules/engineering/releases/2021/5/0
-       status: nasdanika://issue-statuses/done
+       increment: nasdanika:increments/2021/children/q2/children/may
+       releases: nasdanika:modules/engineering/releases/2021/5/0
+       status: nasdanika:issue-statuses/done
        path: no-sort
        effort: 1 
      - name: Link token replacement in diagrams
        description: Service computer in order to use the context of the action. Also markdownDescription attribute because otherwise markdown is generated at model loading time.
-       increment: nasdanika://increments/2021/children/q2/children/may
-       releases: nasdanika://modules/engineering/releases/2021/5/0
-       status: nasdanika://issue-statuses/done
+       increment: nasdanika:increments/2021/children/q2/children/may
+       releases: nasdanika:modules/engineering/releases/2021/5/0
+       status: nasdanika:issue-statuses/done
        path: no-sort
        effort: 1 
        
@@ -44,27 +44,27 @@ engineering-module:
        
      - name: Document the model
        description: 
-         exec-styled-markdown: Model and dialogs [Purum](${link/nasdanika://modules/engineering/modules/gen})  
-       increment: nasdanika://increments/2021/children/q2/children/may
-       releases: nasdanika://modules/engineering/releases/2021/5/0
+         exec-styled-markdown: Model and dialogs [Purum](${link/nasdanika:modules/engineering/modules/gen})  
+       increment: nasdanika:increments/2021/children/q2/children/may
+       releases: nasdanika:modules/engineering/releases/2021/5/0
        effort: 4 
      - name: Increment roll-up stats
        description: |+2
          Effort, cost, percentage completion. Own and total - own and children. 
          Also totals summary table. Also children as a summary table. Completed with 100% - SUCCESS. In the past and not completed - DANGER. 
          Linear extrapolation and WARNING is behind schedule for a specified margin, e.g. 10%.    
-       increment: nasdanika://increments/2021/children/q2/children/may
-       releases: nasdanika://modules/engineering/releases/2021/5/0
+       increment: nasdanika:increments/2021/children/q2/children/may
+       releases: nasdanika:modules/engineering/releases/2021/5/0
        effort: 4 
      - name: Completion derived attribute
        description: In engineered capability - release, feature, issue. Show in properties. Along with effective benefit, cost, etc. Kinda duplicate.  
-       increment: nasdanika://increments/2021/children/q2/children/may
-       releases: nasdanika://modules/engineering/releases/2021/5/0
+       increment: nasdanika:increments/2021/children/q2/children/may
+       releases: nasdanika:modules/engineering/releases/2021/5/0
        effort: 4 
      - name: Experts reference
        description: Have expertise, but not authority.
-       increment: nasdanika://increments/2021/children/q2/children/may
-       releases: nasdanika://modules/engineering/releases/2021/5/0
+       increment: nasdanika:increments/2021/children/q2/children/may
+       releases: nasdanika:modules/engineering/releases/2021/5/0
        effort: 3
 
        ### Backlog ###
@@ -96,8 +96,8 @@ engineering-module:
          Loading from the model, show in the view. Remaining effort and remaining cost attributes. If not set then remaining is calculated as a subtraction of spent from previous remaining.
          So the calculation is a running total with ability to override. 
          Remaining cost and effort to engineered capability, but derived. Also totals. And completion percentage. 
-       increment: nasdanika://increments/2021/children/q2/children/may
-       releases: nasdanika://modules/engineering/releases/2021/5/0
+       increment: nasdanika:increments/2021/children/q2/children/may
+       releases: nasdanika:modules/engineering/releases/2021/5/0
        effort: 1 
      - name: Issue effort, cost, benefit, and benefit to cost ratio derived attributes, isWorkable(Increment) function.
        description: |+2
@@ -112,12 +112,12 @@ engineering-module:
          Engineer rate - to convert effort to cost. Default is 1.
          Plan can override rate per increment, iherits from engineer if not overridden.
          Percentage completed for releases, features, etc.  
-       increment: nasdanika://increments/2021/children/q2/children/may
+       increment: nasdanika:increments/2021/children/q2/children/may
        effort: 4 
      - name: Display effort and cost
        description: Issues table and section display aggregated costs, efforts, benefit and benefit to cost ratio. Per increment and total for engineer, engineered element, category, etc.  
-       increment: nasdanika://increments/2021/children/q2/children/may
-       #releases: nasdanika://modules/engineering/releases/2021/5/0
+       increment: nasdanika:increments/2021/children/q2/children/may
+       #releases: nasdanika:modules/engineering/releases/2021/5/0
        effort: 4 
      - name: Validations
        description: Issue - scheduled for an increment before one of required issues increments. Add isBefore() and isAfter() functions to increment - move code from view action.  
@@ -125,7 +125,7 @@ engineering-module:
      - name: Persona goals, activities, journeys
        description: Modeling, diagram, weights, derive benefit.   
        effort: 8 
-       increment: nasdanika://increments/2021/children/q2/children/may
+       increment: nasdanika:increments/2021/children/q2/children/may
      - name: Issue diagram
        description: State diagram showing nesting, dependencies, completion status - light green, workability status - gray if not workable. Clickable.
        effort: 3         
@@ -177,9 +177,9 @@ engineering-module:
 
      - name: Engineer owned elements
        description: Back-reference and list.  
-       increment: nasdanika://increments/2021/children/q2/children/apr
-       releases: nasdanika://modules/engineering/releases/2021/5/0
-       status: nasdanika://issue-statuses/done
+       increment: nasdanika:increments/2021/children/q2/children/apr
+       releases: nasdanika:modules/engineering/releases/2021/5/0
+       status: nasdanika:issue-statuses/done
        effort: 1 
    
        ### 2021.4.4 ###
@@ -187,10 +187,10 @@ engineering-module:
      - name: Features and releases
        description: Basic support. Add issues for visualizations (gantt) and aggregations. Issue to release association.
        releases: 
-         - nasdanika://modules/engineering/releases/2021/4/4
-       increment: nasdanika://increments/2021/children/q2/children/apr
+         - nasdanika:modules/engineering/releases/2021/4/4
+       increment: nasdanika:increments/2021/children/q2/children/apr
        contributes-to:
-         - nasdanika://modules/engineering/features/test
+         - nasdanika:modules/engineering/features/test
        effort: 3 
-       status: nasdanika://issue-statuses/done
+       status: nasdanika:issue-statuses/done
    

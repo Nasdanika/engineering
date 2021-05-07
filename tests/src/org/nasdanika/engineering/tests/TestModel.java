@@ -303,7 +303,7 @@ public class TestModel {
 	
 	@Test
 	public void testURI() {
-		URI uri = URI.createURI("nasdanika://");
+		URI uri = URI.createURI("nasdanika:this");
 		System.out.println(uri);
 		System.out.println(uri.hasAuthority() + " " + uri.authority());
 		System.out.println(uri.scheme());

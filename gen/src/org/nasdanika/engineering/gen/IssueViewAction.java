@@ -1,5 +1,8 @@
 package org.nasdanika.engineering.gen;
 
+import java.util.Collection;
+import java.util.Collections;
+
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Issue;
@@ -13,10 +16,10 @@ public class IssueViewAction extends EngineeredCapabilityViewAction<Issue> {
 	
 	@Override
 	public boolean isInRole(String role) {
-		if (target.eContainmentFeature() == EngineeringPackage.Literals.ENGINEERED_ELEMENT__ISSUES) {
+		if (getSemanticElement().eContainmentFeature() == EngineeringPackage.Literals.ENGINEERED_ELEMENT__ISSUES) {
 			return false; // Anonymous actions - rendered in a table.
 		}
-		if (target.eContainmentFeature() == EngineeringPackage.Literals.ISSUE__CHILDREN) {
+		if (getSemanticElement().eContainmentFeature() == EngineeringPackage.Literals.ISSUE__CHILDREN) {
 			return false; // Anonymous actions - rendered in a table.
 		}
 		return super.isInRole(role);
@@ -31,16 +34,16 @@ public class IssueViewAction extends EngineeredCapabilityViewAction<Issue> {
 			return role == FeatureRole.PROPERTY;
 		}
 		if (feature == EngineeringPackage.Literals.ISSUE__CHILDREN) {
-			return role == FeatureRole.FEATURE_ACTION;
+			return role == FeatureRole.FEATURE_ACTIONS;
 		}
 		return super.isFeatureInRole(feature, role);
 	}
 	
 	@Override
-	protected Action featureAction(EStructuralFeature feature) {
+	protected Collection<Action> featureActions(EStructuralFeature feature) {
 		if (feature == EngineeringPackage.Literals.ISSUE__CHILDREN) {
-			return issuesSection(
-					target.getChildren(), 
+			return Collections.singleton(issuesSection(
+					getSemanticElement().getChildren(), 
 					"Children", 
 					"children", 
 					EngineeringPackage.Literals.NAMED_ELEMENT__NAME,
@@ -49,9 +52,9 @@ public class IssueViewAction extends EngineeredCapabilityViewAction<Issue> {
 					EngineeringPackage.Literals.ISSUE__ASSIGNEE,				
 					EngineeringPackage.Literals.ISSUE__EFFORT,
 					EngineeringPackage.Literals.ISSUE__COST,
-					EngineeringPackage.Literals.ISSUE__BENEFIT);
+					EngineeringPackage.Literals.ISSUE__BENEFIT));
 		}
-		return super.featureAction(feature);
+		return super.featureActions(feature);
 	}
 
 }
