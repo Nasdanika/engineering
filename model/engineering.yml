@@ -5,6 +5,7 @@ engineering-module:
    issues:
      - name: Validation of duplicate paths in containing collection and duplicate URI's                         
      - name: Support of objectives and key results                         
+     - name: Journey inheritance                         
      - name: Support of Multi-criteria decision analysis - different methods - AHP, Weighted sum, Weighted product                         
      - name: Icons for model elements      
      - name: Introduce Edition  
@@ -48,5 +49,8 @@ engineering-module:
      - name: Resources allocation for activities and journeys
        markdown-description: |+2
          Banker's algorithm or something similar.
+     - name: Issue effective status 
+       markdown-description: |+2
+         Derived from the last note status if not set explicitly. Default to the first status found by walking up the hierarchy of containment first and owning engineer second.
                       
    

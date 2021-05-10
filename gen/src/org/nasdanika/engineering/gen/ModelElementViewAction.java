@@ -360,7 +360,7 @@ public class ModelElementViewAction<T extends ModelElement> extends SimpleEObjec
 			if (se.getKey() == null) {
 				sRow.cell("Blank");
 			} else {
-				ViewAction statusAction = ViewAction.adaptToViewActionNonNull((EObject) se.getKey());
+				ViewAction<?> statusAction = ViewAction.adaptToViewActionNonNull((EObject) se.getKey());
 				sRow.cell(viewGenerator.link(statusAction));
 			}
 			List<Issue> statusIssues = se.getValue();

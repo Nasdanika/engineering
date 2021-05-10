@@ -103,7 +103,7 @@ public class EngineerViewAction<T extends Engineer> extends PersonaViewAction<T>
 				if (status == null) {
 					sHeader = header.header("Blank");
 				} else {
-					ViewAction statusAction = ViewAction.adaptToViewActionNonNull((EObject) status);
+					ViewAction<?> statusAction = ViewAction.adaptToViewActionNonNull((EObject) status);
 					sHeader = header.header(viewGenerator.link(statusAction));
 				}
 				sHeader.toHTMLElement().colspan(4);
@@ -135,7 +135,7 @@ public class EngineerViewAction<T extends Engineer> extends PersonaViewAction<T>
 	
 	private void incrementRow(Increment increment, int depth, Collection<IssueStatus> statuses, Table table, ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {		
 		Row row = table.row();
-		ViewAction incrementAction = ViewAction.adaptToViewActionNonNull(increment);
+		ViewAction<?> incrementAction = ViewAction.adaptToViewActionNonNull(increment);
 		row.cell(viewGenerator.link(incrementAction).style().padding().left(depth + "em"));
 		Map<IssueStatus, List<Issue>> groupedIssues = EmfUtil.groupBy(increment.getIssues(), EngineeringPackage.Literals.ISSUE__STATUS);		
 		for (IssueStatus status: statuses) {

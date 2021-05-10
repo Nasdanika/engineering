@@ -111,6 +111,11 @@ engineering-organization:
        description: Start from Engineering and go down to HTML and then Core.
      - name: Git history iteration
        description: In order to collect trends. One option is to check-out. Another - in-memory and use special URI's to address commits. E.g. commit://<commit id>/<path in the commit> - in order to load models. May be a special container of URI's to iterate.
+     - name: Git resource and resource factory
+       markdown-description: |+2
+         To be able to reference resources in Git repositories. In-memory and local file system clone, maybe just the second one - easier, but would need to implement cleanup.
+         Credentials from context or a method to override to lookup credentials by repo URL. Perhaps support aliases as URI authority and branch as the first segment with ability to 
+         use interpolation. Configuration in Java and also by loading a YAML config file with aliases and encrypted/tokenized credentials. Consider using OS secure store as Maven does.  
    
 # TODO: to issues - model element appearance
 # TODO  Footer - sources  

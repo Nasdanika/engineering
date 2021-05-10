@@ -1,5 +1,6 @@
 package org.nasdanika.engineering.gen;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.nasdanika.common.Context;
 import org.nasdanika.emf.ComposedAdapterFactory;
@@ -36,82 +37,87 @@ public class EngineeringViewActionAdapterFactory extends ComposedAdapterFactory 
 				context));
 				
 		registerAdapterFactory(
-			new FunctionAdapterFactory<ViewAction, Persona>(
+			new FunctionAdapterFactory<ViewAction<Persona>, Persona>(
 				EngineeringPackage.Literals.PERSONA, 
-				ViewAction.class, 
+				getViewActionClass(), 
 				this.getClass().getClassLoader(), 
 				obj -> new PersonaViewAction<Persona>(obj, this)));
 				
 		registerAdapterFactory(
-			new FunctionAdapterFactory<ViewAction, Engineer>(
+			new FunctionAdapterFactory<ViewAction<Engineer>, Engineer>(
 				EngineeringPackage.Literals.ENGINEER, 
-				ViewAction.class, 
+				getViewActionClass(), 
 				this.getClass().getClassLoader(), 
 				obj -> new EngineerViewAction<Engineer>(obj, this)));
 		
 		registerAdapterFactory(
-			new FunctionAdapterFactory<ViewAction, Organization>(
+			new FunctionAdapterFactory<ViewAction<Organization>, Organization>(
 				EngineeringPackage.Literals.ORGANIZATION, 
-				ViewAction.class, 
+				getViewActionClass(), 
 				this.getClass().getClassLoader(), 
 				org -> new OrganizationViewAction(org, this)));					
 				
 		registerAdapterFactory(
-			new FunctionAdapterFactory<ViewAction, org.nasdanika.engineering.Module>(
+			new FunctionAdapterFactory<ViewAction<org.nasdanika.engineering.Module>, org.nasdanika.engineering.Module>(
 				EngineeringPackage.Literals.MODULE, 
-				ViewAction.class, 
+				getViewActionClass(), 
 				this.getClass().getClassLoader(), 
 				obj -> new ModuleViewAction<org.nasdanika.engineering.Module>(obj, this)));					
 		
 		registerAdapterFactory(
-			new FunctionAdapterFactory<ViewAction, Product>(
+			new FunctionAdapterFactory<ViewAction<Product>, Product>(
 				EngineeringPackage.Literals.PRODUCT, 
-				ViewAction.class, 
+				getViewActionClass(), 
 				this.getClass().getClassLoader(), 
 				obj -> new ProductViewAction(obj, this)));					
 		
 		registerAdapterFactory(
-			new FunctionAdapterFactory<ViewAction, Issue>(
+			new FunctionAdapterFactory<ViewAction<Issue>, Issue>(
 				EngineeringPackage.Literals.ISSUE, 
-				ViewAction.class, 
+				getViewActionClass(), 
 				this.getClass().getClassLoader(), 
 				obj -> new IssueViewAction(obj, this)));					
 		
 		registerAdapterFactory(
-			new FunctionAdapterFactory<ViewAction, Increment>(
+			new FunctionAdapterFactory<ViewAction<Increment>, Increment>(
 				EngineeringPackage.Literals.INCREMENT, 
-				ViewAction.class, 
+				getViewActionClass(), 
 				this.getClass().getClassLoader(), 
 				obj -> new IncrementViewAction(obj, this)));					
 		
 		registerAdapterFactory(
-			new FunctionAdapterFactory<ViewAction, IssueCategory>(
+			new FunctionAdapterFactory<ViewAction<IssueCategory>, IssueCategory>(
 				EngineeringPackage.Literals.ISSUE_CATEGORY, 
-				ViewAction.class, 
+				getViewActionClass(), 
 				this.getClass().getClassLoader(), 
 				obj -> new IssueCategoryViewAction(obj, this)));					
 		
 		registerAdapterFactory(
-			new FunctionAdapterFactory<ViewAction, IssueStatus>(
+			new FunctionAdapterFactory<ViewAction<IssueStatus>, IssueStatus>(
 				EngineeringPackage.Literals.ISSUE_STATUS, 
-				ViewAction.class, 
+				getViewActionClass(), 
 				this.getClass().getClassLoader(), 
 				obj -> new IssueStatusViewAction(obj, this)));					
 		
 		registerAdapterFactory(
-			new FunctionAdapterFactory<ViewAction, Release>(
+			new FunctionAdapterFactory<ViewAction<Release>, Release>(
 				EngineeringPackage.Literals.RELEASE, 
-				ViewAction.class, 
+				getViewActionClass(), 
 				this.getClass().getClassLoader(), 
 				obj -> new ReleaseViewAction(obj, this)));					
 		
 		registerAdapterFactory(
-			new FunctionAdapterFactory<ViewAction, Feature>(
+			new FunctionAdapterFactory<ViewAction<Feature>, Feature>(
 				EngineeringPackage.Literals.FEATURE, 
-				ViewAction.class, 
+				getViewActionClass(), 
 				this.getClass().getClassLoader(), 
 				obj -> new FeatureViewAction(obj, this)));					
 		
+	}
+
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	protected <T extends EObject> Class<ViewAction<T>> getViewActionClass() {
+		return (Class) ViewAction.class;
 	}
 	
 	/**
