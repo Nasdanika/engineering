@@ -7,6 +7,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
+import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.nasdanika.common.Adaptable;
@@ -35,6 +36,7 @@ import org.nasdanika.engineering.Persona;
 import org.nasdanika.engineering.Product;
 import org.nasdanika.engineering.Release;
 import org.nasdanika.engineering.Transition;
+import org.nasdanika.engineering.util.EngineeringValidator;
 
 /**
  * <!-- begin-user-doc -->
@@ -263,6 +265,16 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 
 		// Initialize created meta-data
 		theEngineeringPackage.initializePackageContents();
+
+		// Register package validator
+		EValidator.Registry.INSTANCE.put
+			(theEngineeringPackage,
+			 new EValidator.Descriptor() {
+				 @Override
+				 public EValidator getEValidator() {
+					 return EngineeringValidator.INSTANCE;
+				 }
+			 });
 
 		// Mark meta-data to indicate it can't be changed
 		theEngineeringPackage.freeze();
@@ -1574,6 +1586,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		createUrnorgAnnotations();
 		// http://www.eclipse.org/emf/2002/GenModel
 		createGenModelAnnotations();
+		// http://www.eclipse.org/emf/2002/Ecore
+		createEcoreAnnotations();
 	}
 
 	/**
@@ -1899,6 +1913,22 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		   source,
 		   new String[] {
 			   "documentation", "Description in markdown."
+		   });
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.eclipse.org/emf/2002/Ecore</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createEcoreAnnotations() {
+		String source = "http://www.eclipse.org/emf/2002/Ecore";
+		addAnnotation
+		  (incrementEClass,
+		   source,
+		   new String[] {
+			   "constraints", "nesting"
 		   });
 	}
 

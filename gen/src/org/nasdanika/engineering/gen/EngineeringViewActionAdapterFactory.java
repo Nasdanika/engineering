@@ -1,5 +1,8 @@
 package org.nasdanika.engineering.gen;
 
+import java.util.Map;
+
+import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.nasdanika.common.Context;
@@ -27,7 +30,11 @@ import org.nasdanika.html.emf.ViewAction;
  */
 public class EngineeringViewActionAdapterFactory extends ComposedAdapterFactory {
 	
-	public EngineeringViewActionAdapterFactory(Context context) {		
+	private Map<EObject, Diagnostic> diagnosticMap;
+
+	public EngineeringViewActionAdapterFactory(Context context, Map<EObject, Diagnostic> diagnosticMap) {		
+		this.diagnosticMap = diagnosticMap;
+		
 		// Registering adapter factories.
 		registerAdapterFactory(
 			new InstanceAdapterFactory<Context>(
@@ -133,6 +140,10 @@ public class EngineeringViewActionAdapterFactory extends ComposedAdapterFactory 
 	 */
 	public Action getParent() {
 		return null;
+	}
+	
+	public Map<EObject, Diagnostic> getDiagnosticMap() {
+		return diagnosticMap;
 	}
 	
 }

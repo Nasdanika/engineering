@@ -65,8 +65,8 @@ public class GenerateSiteConsumerFactory extends AbstractGenerateSiteConsumerFac
 	}
 
 	@Override
-	protected AdapterFactory createAdapterFactory(Action parent, Context context) {		
-		return new EngineeringViewActionAdapterFactory(context) {
+	protected AdapterFactory createAdapterFactory(Action parent, Context context, Map<EObject, org.eclipse.emf.common.util.Diagnostic> diagnosticMap) {		
+		return new EngineeringViewActionAdapterFactory(context, diagnosticMap) {
 			
 			@Override
 			public Action getParent() {

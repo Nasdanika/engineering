@@ -17,6 +17,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import org.apache.commons.codec.binary.Hex;
+import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -390,5 +391,51 @@ public class ModelElementViewAction<T extends ModelElement> extends SimpleEObjec
 	
 	// TODO - totals table, % completed - shared method for engineers, increments, releases, ... - in ModelElementView...
 	// Generic table - takes a list of EObjects, BiConsumer of element and table row, BiFunction of element and feature to extract value, and var-arg of str features 
+
+
+	@Override
+	public Collection<Diagnostic> getDiagnostic() {		
+		Collection<Diagnostic> ret = new ArrayList<>();
+		Map<EObject, Diagnostic> diagnosticMap = factory.getDiagnosticMap();
+		if (diagnosticMap != null) {
+			for (Diagnostic diagnostic: diagnosticMap.values()) {
+				collectDiagnostic(getSemanticElement(), diagnostic, ret);
+			}
+		}
+		return ret;
+	}
+
+	@Override
+	public Collection<Diagnostic> getFeatureDiagnostic(EStructuralFeature feature) {
+		Collection<Diagnostic> ret = new ArrayList<>();
+		Map<EObject, Diagnostic> diagnosticMap = factory.getDiagnosticMap();
+		if (diagnosticMap != null) {
+			for (Diagnostic diagnostic: diagnosticMap.values()) {
+				collectFeatureDiagnostic(getSemanticElement(), feature, diagnostic, ret);
+			}
+		}
+		return ret;
+	}
+		
+	private static void collectDiagnostic(EObject eObject, Diagnostic diagnostic, Collection<Diagnostic> collector) {
+		List<?> data = diagnostic.getData();
+		if (data.size() == 1 && data.get(0) == eObject) {
+			collector.add(diagnostic);
+		}
+		for (Diagnostic child: diagnostic.getChildren()) {
+			collectDiagnostic(eObject, child, collector);
+		}
+	}
+	
+	private static void collectFeatureDiagnostic(EObject eObject, EStructuralFeature feature, Diagnostic diagnostic, Collection<Diagnostic> collector) {
+		List<?> data = diagnostic.getData();
+		if (data.size() == 2 && data.get(0) == eObject && data.get(1) == feature) {
+			collector.add(diagnostic);
+		}
+		for (Diagnostic child: diagnostic.getChildren()) {
+			collectFeatureDiagnostic(eObject, feature, child, collector);
+		}
+	}
+	
 	
 }
