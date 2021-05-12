@@ -2,7 +2,9 @@
  */
 package org.nasdanika.engineering.impl;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
@@ -44,6 +46,8 @@ import org.nasdanika.engineering.Release;
  *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getStatus <em>Status</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#isWorkable <em>Workable</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getReleases <em>Releases</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getRemainingEffort <em>Remaining Effort</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getRemainingCost <em>Remaining Cost</em>}</li>
  * </ul>
  *
  * @generated
@@ -90,6 +94,26 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 	protected static final boolean WORKABLE_EDEFAULT = false;
 
 	/**
+	 * The default value of the '{@link #getRemainingEffort() <em>Remaining Effort</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRemainingEffort()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double REMAINING_EFFORT_EDEFAULT = 0.0;
+
+	/**
+	 * The default value of the '{@link #getRemainingCost() <em>Remaining Cost</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRemainingCost()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double REMAINING_COST_EDEFAULT = 0.0;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -122,10 +146,27 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public Engineer getAssignee() {
+		if (!eIsSet(EngineeringPackage.ISSUE__ASSIGNEE)) {
+			for (EObject ancestor = eContainer; ancestor != null; ancestor = ancestor.eContainer()) {
+				if (ancestor instanceof Issue) {
+					return ((Issue) ancestor).getAssignee();				
+				}
+				if (ancestor instanceof Engineer) {
+					return (Engineer) ancestor;
+				}
+				if (ancestor instanceof EngineeredElement) {
+					EList<Engineer> owners = ((EngineeredElement) ancestor).getOwners();
+					if (!owners.isEmpty()) {
+						return owners.get(0);
+					}
+				}
+			}			
+		}
+		
 		return (Engineer)eDynamicGet(EngineeringPackage.ISSUE__ASSIGNEE, EngineeringPackage.Literals.ISSUE__ASSIGNEE, true, true);
 	}
 
@@ -136,6 +177,16 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 	 */
 	public Engineer basicGetAssignee() {
 		return (Engineer)eDynamicGet(EngineeringPackage.ISSUE__ASSIGNEE, EngineeringPackage.Literals.ISSUE__ASSIGNEE, false, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetAssignee(Engineer newAssignee, NotificationChain msgs) {
+		msgs = eDynamicInverseAdd((InternalEObject)newAssignee, EngineeringPackage.ISSUE__ASSIGNEE, msgs);
+		return msgs;
 	}
 
 	/**
@@ -237,11 +288,30 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public IssueStatus getStatus() {
-		return (IssueStatus)eDynamicGet(EngineeringPackage.ISSUE__STATUS, EngineeringPackage.Literals.ISSUE__STATUS, true, true);
+		if (!eIsSet(EngineeringPackage.Literals.ISSUE__STATUS)) {
+			ArrayList<Note> nl = new ArrayList<>(getNotes());
+			Collections.reverse(nl);
+			for (Note note: nl) {
+				if (note.eIsSet(EngineeringPackage.Literals.NOTE__STATUS)) {
+					return note.getStatus();
+				}
+			}
+			
+			// The first available status in the hierarchy is the default.
+			for (EObject ancestor = eContainer(); ancestor != null; ancestor = ancestor.eContainer()) {
+				if (ancestor instanceof Engineer) {
+					EList<IssueStatus> statuses = ((Engineer) ancestor).getIssueStatuses();
+					if (!statuses.isEmpty()) {
+						return statuses.get(0);
+					}
+				}
+			}
+		}
+		return (IssueStatus)eDynamicGet(EngineeringPackage.ISSUE__STATUS, EngineeringPackage.Literals.ISSUE__STATUS, true, true);		
 	}
 
 	/**
@@ -302,6 +372,62 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 	@Override
 	public EList<Release> getReleases() {
 		return (EList<Release>)eDynamicGet(EngineeringPackage.ISSUE__RELEASES, EngineeringPackage.Literals.ISSUE__RELEASES, true, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public double getRemainingEffort() {
+		IssueStatus status = getStatus();
+		if (status != null && status.isDone()) {
+			return 0;
+		}
+		double ret = getEffort();
+		for (Note note: getNotes()) {
+			if (note.eIsSet(EngineeringPackage.Literals.NOTE__REMAINING_EFFORT)) {
+				ret = note.getRemainingEffort();
+			} else {
+				ret -= note.getEffort();
+			}
+		}
+		return ret;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public double getRemainingCost() {
+		IssueStatus status = getStatus();
+		if (status != null && status.isDone()) {
+			return 0;
+		}
+		double ret = getCost();
+		for (Note note: getNotes()) {
+			if (note.eIsSet(EngineeringPackage.Literals.NOTE__REMAINING_COST)) {
+				ret = note.getRemainingCost();
+			} else {
+				ret -= note.getCost();
+			}
+		}
+		return ret;
+	}
+	
+	@Override
+	public double getCompletion() {
+		IssueStatus status = getStatus();
+		if (status != null && status.isDone()) {
+			return 1;
+		}
+		double rate = getAssignee().getRate();
+		double remaining = getRemainingCost() + rate * getRemainingEffort();
+		double total = getCost() + rate * getEffort();
+		return total == 0 ? Double.NaN : Math.max(0, total - remaining) / total;
 	}
 
 	/**
@@ -449,6 +575,11 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+			case EngineeringPackage.ISSUE__ASSIGNEE:
+				Engineer assignee = basicGetAssignee();
+				if (assignee != null)
+					msgs = ((InternalEObject)assignee).eInverseRemove(this, EngineeringPackage.ENGINEER__ASSIGNMENTS, Engineer.class, msgs);
+				return basicSetAssignee((Engineer)otherEnd, msgs);
 			case EngineeringPackage.ISSUE__REQUIRES:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getRequires()).basicAdd(otherEnd, msgs);
 			case EngineeringPackage.ISSUE__INCREMENT:
@@ -484,6 +615,8 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 		switch (featureID) {
 			case EngineeringPackage.ISSUE__CHILDREN:
 				return ((InternalEList<?>)getChildren()).basicRemove(otherEnd, msgs);
+			case EngineeringPackage.ISSUE__ASSIGNEE:
+				return basicSetAssignee(null, msgs);
 			case EngineeringPackage.ISSUE__REQUIRES:
 				return ((InternalEList<?>)getRequires()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.ISSUE__INCREMENT:
@@ -543,6 +676,10 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 				return isWorkable();
 			case EngineeringPackage.ISSUE__RELEASES:
 				return getReleases();
+			case EngineeringPackage.ISSUE__REMAINING_EFFORT:
+				return getRemainingEffort();
+			case EngineeringPackage.ISSUE__REMAINING_COST:
+				return getRemainingCost();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -685,6 +822,10 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 				return isWorkable() != WORKABLE_EDEFAULT;
 			case EngineeringPackage.ISSUE__RELEASES:
 				return !getReleases().isEmpty();
+			case EngineeringPackage.ISSUE__REMAINING_EFFORT:
+				return getRemainingEffort() != REMAINING_EFFORT_EDEFAULT;
+			case EngineeringPackage.ISSUE__REMAINING_COST:
+				return getRemainingCost() != REMAINING_COST_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}

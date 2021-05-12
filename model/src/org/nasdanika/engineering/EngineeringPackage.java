@@ -873,13 +873,22 @@ public interface EngineeringPackage extends EPackage {
 	int ENGINEERED_CAPABILITY__AVAILABLE = CAPABILITY__AVAILABLE;
 
 	/**
+	 * The feature id for the '<em><b>Completion</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEERED_CAPABILITY__COMPLETION = CAPABILITY_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Engineered Capability</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEERED_CAPABILITY_FEATURE_COUNT = CAPABILITY_FEATURE_COUNT + 0;
+	int ENGINEERED_CAPABILITY_FEATURE_COUNT = CAPABILITY_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Engineered Capability</em>' class.
@@ -1042,6 +1051,15 @@ public interface EngineeringPackage extends EPackage {
 	int ISSUE__AVAILABLE = ENGINEERED_CAPABILITY__AVAILABLE;
 
 	/**
+	 * The feature id for the '<em><b>Completion</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE__COMPLETION = ENGINEERED_CAPABILITY__COMPLETION;
+
+	/**
 	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1168,13 +1186,31 @@ public interface EngineeringPackage extends EPackage {
 	int ISSUE__RELEASES = ENGINEERED_CAPABILITY_FEATURE_COUNT + 13;
 
 	/**
+	 * The feature id for the '<em><b>Remaining Effort</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE__REMAINING_EFFORT = ENGINEERED_CAPABILITY_FEATURE_COUNT + 14;
+
+	/**
+	 * The feature id for the '<em><b>Remaining Cost</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE__REMAINING_COST = ENGINEERED_CAPABILITY_FEATURE_COUNT + 15;
+
+	/**
 	 * The number of structural features of the '<em>Issue</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ISSUE_FEATURE_COUNT = ENGINEERED_CAPABILITY_FEATURE_COUNT + 14;
+	int ISSUE_FEATURE_COUNT = ENGINEERED_CAPABILITY_FEATURE_COUNT + 16;
 
 	/**
 	 * The number of operations of the '<em>Issue</em>' class.
@@ -1718,13 +1754,22 @@ public interface EngineeringPackage extends EPackage {
 	int ENGINEER__ISSUE_STATUSES = PERSONA_FEATURE_COUNT + 8;
 
 	/**
+	 * The feature id for the '<em><b>Rate</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEER__RATE = PERSONA_FEATURE_COUNT + 9;
+
+	/**
 	 * The number of structural features of the '<em>Engineer</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEER_FEATURE_COUNT = PERSONA_FEATURE_COUNT + 9;
+	int ENGINEER_FEATURE_COUNT = PERSONA_FEATURE_COUNT + 10;
 
 	/**
 	 * The number of operations of the '<em>Engineer</em>' class.
@@ -1905,6 +1950,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int ORGANIZATION__ISSUE_STATUSES = ENGINEER__ISSUE_STATUSES;
+
+	/**
+	 * The feature id for the '<em><b>Rate</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANIZATION__RATE = ENGINEER__RATE;
 
 	/**
 	 * The feature id for the '<em><b>Engineers</b></em>' containment reference list.
@@ -2276,6 +2330,15 @@ public interface EngineeringPackage extends EPackage {
 	int RELEASE__AVAILABLE = ENGINEERED_CAPABILITY__AVAILABLE;
 
 	/**
+	 * The feature id for the '<em><b>Completion</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RELEASE__COMPLETION = ENGINEERED_CAPABILITY__COMPLETION;
+
+	/**
 	 * The feature id for the '<em><b>Increment</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2400,6 +2463,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int FEATURE__AVAILABLE = ENGINEERED_CAPABILITY__AVAILABLE;
+
+	/**
+	 * The feature id for the '<em><b>Completion</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE__COMPLETION = ENGINEERED_CAPABILITY__COMPLETION;
 
 	/**
 	 * The feature id for the '<em><b>Releases</b></em>' reference list.
@@ -3413,6 +3485,17 @@ public interface EngineeringPackage extends EPackage {
 	EReference getEngineer_IssueStatuses();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Engineer#getRate <em>Rate</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Rate</em>'.
+	 * @see org.nasdanika.engineering.Engineer#getRate()
+	 * @see #getEngineer()
+	 * @generated
+	 */
+	EAttribute getEngineer_Rate();
+
+	/**
 	 * Returns the meta object for class '{@link org.nasdanika.engineering.Organization <em>Organization</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3538,6 +3621,17 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getEngineeredCapability();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.EngineeredCapability#getCompletion <em>Completion</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Completion</em>'.
+	 * @see org.nasdanika.engineering.EngineeredCapability#getCompletion()
+	 * @see #getEngineeredCapability()
+	 * @generated
+	 */
+	EAttribute getEngineeredCapability_Completion();
 
 	/**
 	 * Returns the meta object for class '{@link org.nasdanika.engineering.Increment <em>Increment</em>}'.
@@ -4047,6 +4141,28 @@ public interface EngineeringPackage extends EPackage {
 	EReference getIssue_Releases();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Issue#getRemainingEffort <em>Remaining Effort</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Remaining Effort</em>'.
+	 * @see org.nasdanika.engineering.Issue#getRemainingEffort()
+	 * @see #getIssue()
+	 * @generated
+	 */
+	EAttribute getIssue_RemainingEffort();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Issue#getRemainingCost <em>Remaining Cost</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Remaining Cost</em>'.
+	 * @see org.nasdanika.engineering.Issue#getRemainingCost()
+	 * @see #getIssue()
+	 * @generated
+	 */
+	EAttribute getIssue_RemainingCost();
+
+	/**
 	 * Returns the meta object for the containment reference list '{@link org.nasdanika.engineering.Issue#getNotes <em>Notes</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4466,6 +4582,14 @@ public interface EngineeringPackage extends EPackage {
 		EReference ENGINEER__ISSUE_STATUSES = eINSTANCE.getEngineer_IssueStatuses();
 
 		/**
+		 * The meta object literal for the '<em><b>Rate</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ENGINEER__RATE = eINSTANCE.getEngineer_Rate();
+
+		/**
 		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.OrganizationImpl <em>Organization</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -4570,6 +4694,14 @@ public interface EngineeringPackage extends EPackage {
 		 * @generated
 		 */
 		EClass ENGINEERED_CAPABILITY = eINSTANCE.getEngineeredCapability();
+
+		/**
+		 * The meta object literal for the '<em><b>Completion</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ENGINEERED_CAPABILITY__COMPLETION = eINSTANCE.getEngineeredCapability_Completion();
 
 		/**
 		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.IncrementImpl <em>Increment</em>}' class.
@@ -4966,6 +5098,22 @@ public interface EngineeringPackage extends EPackage {
 		 * @generated
 		 */
 		EReference ISSUE__RELEASES = eINSTANCE.getIssue_Releases();
+
+		/**
+		 * The meta object literal for the '<em><b>Remaining Effort</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ISSUE__REMAINING_EFFORT = eINSTANCE.getIssue_RemainingEffort();
+
+		/**
+		 * The meta object literal for the '<em><b>Remaining Cost</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ISSUE__REMAINING_COST = eINSTANCE.getIssue_RemainingCost();
 
 		/**
 		 * The meta object literal for the '<em><b>Notes</b></em>' containment reference list feature.

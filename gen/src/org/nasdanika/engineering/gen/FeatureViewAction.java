@@ -39,7 +39,10 @@ public class FeatureViewAction extends EngineeredCapabilityViewAction<Feature> {
 					EngineeringPackage.Literals.ISSUE__ASSIGNEE,				
 					EngineeringPackage.Literals.ISSUE__EFFORT,
 					EngineeringPackage.Literals.ISSUE__COST,
-					EngineeringPackage.Literals.ISSUE__BENEFIT));
+					EngineeringPackage.Literals.ISSUE__BENEFIT,
+					EngineeringPackage.Literals.ISSUE__REMAINING_EFFORT,
+					EngineeringPackage.Literals.ISSUE__REMAINING_COST,
+					EngineeringPackage.Literals.ENGINEERED_CAPABILITY__COMPLETION));
 		}
 
 		return super.featureActions(feature);

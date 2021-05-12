@@ -27,6 +27,8 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.nasdanika.engineering.Issue#getStatus <em>Status</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Issue#isWorkable <em>Workable</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Issue#getReleases <em>Releases</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.Issue#getRemainingEffort <em>Remaining Effort</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.Issue#getRemainingCost <em>Remaining Cost</em>}</li>
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getIssue()
@@ -49,12 +51,14 @@ public interface Issue extends EngineeredCapability {
 
 	/**
 	 * Returns the value of the '<em><b>Assignee</b></em>' reference.
+	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Engineer#getAssignments <em>Assignments</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Assignee</em>' reference.
 	 * @see #setAssignee(Engineer)
 	 * @see org.nasdanika.engineering.EngineeringPackage#getIssue_Assignee()
-	 * @model
+	 * @see org.nasdanika.engineering.Engineer#getAssignments
+	 * @model opposite="assignments"
 	 * @generated
 	 */
 	Engineer getAssignee();
@@ -175,6 +179,28 @@ public interface Issue extends EngineeredCapability {
 	 * @generated
 	 */
 	EList<Release> getReleases();
+
+	/**
+	 * Returns the value of the '<em><b>Remaining Effort</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Remaining Effort</em>' attribute.
+	 * @see org.nasdanika.engineering.EngineeringPackage#getIssue_RemainingEffort()
+	 * @model changeable="false" derived="true"
+	 * @generated
+	 */
+	double getRemainingEffort();
+
+	/**
+	 * Returns the value of the '<em><b>Remaining Cost</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Remaining Cost</em>' attribute.
+	 * @see org.nasdanika.engineering.EngineeringPackage#getIssue_RemainingCost()
+	 * @model changeable="false" derived="true"
+	 * @generated
+	 */
+	double getRemainingCost();
 
 	/**
 	 * Returns the value of the '<em><b>Notes</b></em>' containment reference list.

@@ -59,7 +59,10 @@ public class EngineeringViewAction extends ActionImpl {
 				EngineeringPackage.Literals.ISSUE__CATEGORY,				
 				EngineeringPackage.Literals.ISSUE__EFFORT,
 				EngineeringPackage.Literals.ISSUE__COST,
-				EngineeringPackage.Literals.ISSUE__BENEFIT);
+				EngineeringPackage.Literals.ISSUE__BENEFIT,
+				EngineeringPackage.Literals.ISSUE__REMAINING_EFFORT,
+				EngineeringPackage.Literals.ISSUE__REMAINING_COST,
+				EngineeringPackage.Literals.ENGINEERED_CAPABILITY__COMPLETION);
 		
 		if (assignmentSection != null) {
 			children.add(assignmentSection);

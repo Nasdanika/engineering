@@ -7,10 +7,7 @@ import java.util.function.BiFunction;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.ETypedElement;
-import org.nasdanika.common.Context;
-import org.nasdanika.common.MarkdownHelper;
 import org.nasdanika.common.ProgressMonitor;
-import org.nasdanika.common.Util;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.Note;
@@ -71,7 +68,10 @@ public class IssueViewAction extends EngineeredCapabilityViewAction<Issue> {
 					EngineeringPackage.Literals.ISSUE__ASSIGNEE,				
 					EngineeringPackage.Literals.ISSUE__EFFORT,
 					EngineeringPackage.Literals.ISSUE__COST,
-					EngineeringPackage.Literals.ISSUE__BENEFIT));
+					EngineeringPackage.Literals.ISSUE__BENEFIT,
+					EngineeringPackage.Literals.ISSUE__REMAINING_EFFORT,
+					EngineeringPackage.Literals.ISSUE__REMAINING_COST,
+					EngineeringPackage.Literals.ENGINEERED_CAPABILITY__COMPLETION));
 		}
 		if (feature == EngineeringPackage.Literals.ISSUE__NOTES) {
 			if (getSemanticElement().getNotes().isEmpty()) {
@@ -89,18 +89,7 @@ public class IssueViewAction extends EngineeredCapabilityViewAction<Issue> {
 					BiFunction<Note, ETypedElement, ViewBuilder> cellBuilderProvider = (note, dataSource) -> {
 						if (dataSource == EngineeringPackage.Literals.MODEL_ELEMENT__DESCRIPTION) {
 							return (target, vg, pm) -> {
-								String description = note.getDescription();
-								Context context = getContext();
-								Container<?> container = (Container<?>) ((BootstrapElement<?,?>) target).toHTMLElement();
-								if (!Util.isBlank(description)) {
-									container.content(context.interpolateToString(description));		
-								}
-								String markdownDescription = note.getMarkdownDescription();
-								if (!Util.isBlank(markdownDescription)) {
-									String markdown = context.interpolateToString(markdownDescription);
-									MarkdownHelper markdownHelper = context.computingContext().get(MarkdownHelper.class, MarkdownHelper.INSTANCE);
-									container.content(markdownHelper.markdownToHtml(markdown));
-								}
+								((Container<?>) ((BootstrapElement<?,?>) target).toHTMLElement()).content(getModelElementDescription(note));
 							};
 						}
 						return null;

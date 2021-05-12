@@ -3,12 +3,10 @@
 package org.nasdanika.engineering.impl;
 
 import java.util.Collection;
-import java.util.function.Predicate;
 
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.nasdanika.engineering.Activity;
@@ -38,11 +36,22 @@ import org.nasdanika.engineering.Persona;
  *   <li>{@link org.nasdanika.engineering.impl.EngineerImpl#getAssignments <em>Assignments</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineerImpl#getIssueCategories <em>Issue Categories</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineerImpl#getIssueStatuses <em>Issue Statuses</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.EngineerImpl#getRate <em>Rate</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class EngineerImpl extends PersonaImpl implements Engineer {
+	/**
+	 * The default value of the '{@link #getRate() <em>Rate</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRate()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double RATE_EDEFAULT = 1.0;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -125,21 +134,6 @@ public class EngineerImpl extends PersonaImpl implements Engineer {
 	public EList<Persona> getPersonas() {
 		return (EList<Persona>)eDynamicGet(EngineeringPackage.ENGINEER__PERSONAS, EngineeringPackage.Literals.ENGINEER__PERSONAS, true, true);
 	}
-	
-	private boolean isOwner(EngineeredElement engineeredElement) {
-		EList<Engineer> owners = engineeredElement.getOwners();
-		if (!owners.isEmpty()) {
-			return owners.contains(this);
-		}
-		EObject c = engineeredElement.eContainer();
-		if (c == this) {
-			return true;
-		}
-		if (c instanceof EngineeredElement) {
-			return isOwner((EngineeredElement) c);
-		}
-		return false;
-	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -148,33 +142,7 @@ public class EngineerImpl extends PersonaImpl implements Engineer {
 	 */
 	@Override
 	public EList<Issue> getAssignments() {
-		Predicate<EObject> effectiveAssigneeSelector = new Predicate<EObject>() {
-
-			@Override
-			public boolean test(EObject eObj) {
-				if (eObj instanceof Issue) {
-					Issue issue = (Issue) eObj;
-					if (issue.getAssignee() == EngineerImpl.this) {
-						return true;
-					}
-					EObject c = issue.eContainer();
-					if (c instanceof Issue) {
-						return test(c);
-					}
-					if (c instanceof EngineeredElement) {						
-						return isOwner((EngineeredElement) c);
-					}
-					if (c == EngineerImpl.this) {
-						return true;
-					}
-				} 
-				
-				return false;
-			}
-			
-		};
-		
-		return collect(effectiveAssigneeSelector);
+		return getReferrers(EngineeringPackage.Literals.ISSUE__ASSIGNEE);
 	}
 	
 	/**
@@ -204,6 +172,26 @@ public class EngineerImpl extends PersonaImpl implements Engineer {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public double getRate() {
+		return (Double)eDynamicGet(EngineeringPackage.ENGINEER__RATE, EngineeringPackage.Literals.ENGINEER__RATE, true, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setRate(double newRate) {
+		eDynamicSet(EngineeringPackage.ENGINEER__RATE, EngineeringPackage.Literals.ENGINEER__RATE, newRate);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -212,6 +200,8 @@ public class EngineerImpl extends PersonaImpl implements Engineer {
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getOwns()).basicAdd(otherEnd, msgs);
 			case EngineeringPackage.ENGINEER__EXPERTISE:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getExpertise()).basicAdd(otherEnd, msgs);
+			case EngineeringPackage.ENGINEER__ASSIGNMENTS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getAssignments()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -242,6 +232,8 @@ public class EngineerImpl extends PersonaImpl implements Engineer {
 				return ((InternalEList<?>)getServices()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.ENGINEER__PERSONAS:
 				return ((InternalEList<?>)getPersonas()).basicRemove(otherEnd, msgs);
+			case EngineeringPackage.ENGINEER__ASSIGNMENTS:
+				return ((InternalEList<?>)getAssignments()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.ENGINEER__ISSUE_CATEGORIES:
 				return ((InternalEList<?>)getIssueCategories()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.ENGINEER__ISSUE_STATUSES:
@@ -276,6 +268,8 @@ public class EngineerImpl extends PersonaImpl implements Engineer {
 				return getIssueCategories();
 			case EngineeringPackage.ENGINEER__ISSUE_STATUSES:
 				return getIssueStatuses();
+			case EngineeringPackage.ENGINEER__RATE:
+				return getRate();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -313,6 +307,9 @@ public class EngineerImpl extends PersonaImpl implements Engineer {
 				getIssueStatuses().clear();
 				getIssueStatuses().addAll((Collection<? extends IssueStatus>)newValue);
 				return;
+			case EngineeringPackage.ENGINEER__RATE:
+				setRate((Double)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -342,6 +339,9 @@ public class EngineerImpl extends PersonaImpl implements Engineer {
 				return;
 			case EngineeringPackage.ENGINEER__ISSUE_STATUSES:
 				getIssueStatuses().clear();
+				return;
+			case EngineeringPackage.ENGINEER__RATE:
+				setRate(RATE_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -373,6 +373,8 @@ public class EngineerImpl extends PersonaImpl implements Engineer {
 				return !getIssueCategories().isEmpty();
 			case EngineeringPackage.ENGINEER__ISSUE_STATUSES:
 				return !getIssueStatuses().isEmpty();
+			case EngineeringPackage.ENGINEER__RATE:
+				return getRate() != RATE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}

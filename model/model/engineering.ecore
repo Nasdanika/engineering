@@ -105,7 +105,8 @@
         <details key="homogenous" value="true"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="assignee" eType="#//Engineer"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="assignee" eType="#//Engineer"
+        eOpposite="#//Engineer/assignments"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="requires" upperBound="-1"
         eType="#//Capability" eOpposite="#//Capability/requiredBy">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -152,6 +153,10 @@
         <details key="homogenous" value="true"/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="remainingEffort" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
+        changeable="false" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="remainingCost" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
+        changeable="false" derived="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Note" eSuperTypes="#//ModelElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="author" eType="#//Engineer"/>
@@ -204,7 +209,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="personas" upperBound="-1"
         eType="#//Persona" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="assignments" upperBound="-1"
-        eType="#//Issue" changeable="false" derived="true"/>
+        eType="#//Issue" changeable="false" derived="true" eOpposite="#//Issue/assignee"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="issueCategories" upperBound="-1"
         eType="#//IssueCategory" containment="true">
       <eAnnotations source="urn:org.nasdanika">
@@ -219,6 +224,8 @@
         <details key="strict-containment" value="true"/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
+        defaultValueLiteral="1"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Organization" eSuperTypes="#//Engineer">
     <eAnnotations source="urn:org.nasdanika">
@@ -276,7 +283,10 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="available" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="EngineeredCapability" eSuperTypes="#//Capability"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EngineeredCapability" eSuperTypes="#//Capability">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="completion" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
+        changeable="false" derived="true"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Release" eSuperTypes="#//EngineeredCapability">
     <eAnnotations source="urn:org.nasdanika">
       <details key="documentation-reference" value="../doc/release.md"/>

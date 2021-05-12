@@ -38,6 +38,8 @@ import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.IssueStatus;
 import org.nasdanika.engineering.ModelElement;
 import org.nasdanika.html.Fragment;
+import org.nasdanika.html.HTMLFactory;
+import org.nasdanika.html.Tag;
 import org.nasdanika.html.app.Action;
 import org.nasdanika.html.app.ActionActivator;
 import org.nasdanika.html.app.NavigationActionActivator;
@@ -88,13 +90,22 @@ public class ModelElementViewAction<T extends ModelElement> extends SimpleEObjec
 	
 	@Override
 	protected String getTargetDescription() {
+		return getModelElementDescription(getSemanticElement());
+	}
+	
+	/**
+	 * To render descriptions for model elements without view actions.
+	 * @param modelElement
+	 * @return
+	 */
+	protected String getModelElementDescription(ModelElement modelElement) {
 		StringBuilder ret = new StringBuilder();
-		String description = getSemanticElement().getDescription();
+		String description = modelElement.getDescription();
 		Context context = getContext();
 		if (!Util.isBlank(description)) {
 			ret.append(context.interpolateToString(description));		
 		}
-		String markdownDescription = getSemanticElement().getMarkdownDescription();
+		String markdownDescription = modelElement.getMarkdownDescription();
 		if (!Util.isBlank(markdownDescription)) {
 			String markdown = context.interpolateToString(markdownDescription);
 			MarkdownHelper markdownHelper = context.computingContext().get(MarkdownHelper.class, MarkdownHelper.INSTANCE);
@@ -220,6 +231,14 @@ public class ModelElementViewAction<T extends ModelElement> extends SimpleEObjec
 			if (dataSource == EngineeringPackage.Literals.NAMED_ELEMENT__NAME) {
 				return (target, vg, pm) -> {
 					((org.nasdanika.html.bootstrap.RowContainer.Row.Cell) target).toHTMLElement().content(vg.link(ViewAction.adaptToViewActionNonNull(issue)));
+				};
+			}
+			if (dataSource == EngineeringPackage.Literals.ENGINEERED_CAPABILITY__COMPLETION) {
+				return (target, vg, pm) -> {
+					double completion = issue.getCompletion();
+					if (completion != Double.NaN && completion > 0.001) {
+						((org.nasdanika.html.bootstrap.RowContainer.Row.Cell) target).toHTMLElement().content(viewGenerator.getBootstrapFactory().progressBar((int) (100 * completion)));
+					}
 				};
 			}
 			return null;

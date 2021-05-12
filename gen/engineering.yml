@@ -68,6 +68,11 @@ engineering-module:
        increment: nasdanika:increments/2021/children/q2/children/may
        releases: nasdanika:modules/engineering/releases/2021/5/0
        effort: 4 
+       notes:
+         - date: 2021/05/12
+           markdown-description: Implemented for Issue. Need to implement for Release and Feature. Also for Increment - derived from issues and releases scheduled for the increment. Show in the summary table for increments.
+           effort: 2
+           status: nasdanika:issue-statuses/in-progress
      - name: Notes
        description: |+2
          Loading from the model, show in the view. Remaining effort and remaining cost attributes. If not set then remaining is calculated as a subtraction of spent from previous remaining.
@@ -82,7 +87,17 @@ engineering-module:
            remaining-effort: 1
            author: pavel:this
            status: nasdanika:issue-statuses/in-progress
-       effort: 1 
+         - date: 2021/05/11
+           markdown-description: Default status (if not set) is computed from the last note with set status or from the first status in ancestor engineer if there are notes with status.
+           status: nasdanika:issue-statuses/done
+       effort: 2
+     - name: Increment view
+       description: All issues and children summary table like for engineers. 
+     - name: Cost, effort, benefit, remaining XXX, completion to increment, release, and feature
+       description: |+2
+         Perhaps some base interface (endeavor). Benefit duality - is not explicitly set is computed from contributing things. E.g. increment benefit computed from release and issue benefits.
+         Release benefit computed from feature benefits. For issues, if not set, benefit is computed from the container benefit or release/feature benefit. I.e. feature benefit is spread over
+         contributing features. 
 
        ### Backlog ###
        

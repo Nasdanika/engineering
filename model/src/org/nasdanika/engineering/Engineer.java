@@ -22,6 +22,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.nasdanika.engineering.Engineer#getAssignments <em>Assignments</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Engineer#getIssueCategories <em>Issue Categories</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Engineer#getIssueStatuses <em>Issue Statuses</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.Engineer#getRate <em>Rate</em>}</li>
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getEngineer()
@@ -109,11 +110,13 @@ public interface Engineer extends Persona {
 	/**
 	 * Returns the value of the '<em><b>Assignments</b></em>' reference list.
 	 * The list contents are of type {@link org.nasdanika.engineering.Issue}.
+	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Issue#getAssignee <em>Assignee</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Assignments</em>' reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getEngineer_Assignments()
-	 * @model changeable="false" derived="true"
+	 * @see org.nasdanika.engineering.Issue#getAssignee
+	 * @model opposite="assignee" changeable="false" derived="true"
 	 * @generated
 	 */
 	EList<Issue> getAssignments();
@@ -143,5 +146,28 @@ public interface Engineer extends Persona {
 	 * @generated
 	 */
 	EList<IssueStatus> getIssueStatuses();
+
+	/**
+	 * Returns the value of the '<em><b>Rate</b></em>' attribute.
+	 * The default value is <code>"1"</code>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Rate</em>' attribute.
+	 * @see #setRate(double)
+	 * @see org.nasdanika.engineering.EngineeringPackage#getEngineer_Rate()
+	 * @model default="1"
+	 * @generated
+	 */
+	double getRate();
+
+	/**
+	 * Sets the value of the '{@link org.nasdanika.engineering.Engineer#getRate <em>Rate</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Rate</em>' attribute.
+	 * @see #getRate()
+	 * @generated
+	 */
+	void setRate(double value);
 
 } // Engineer

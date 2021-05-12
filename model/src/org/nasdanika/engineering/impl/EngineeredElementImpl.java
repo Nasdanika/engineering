@@ -5,8 +5,10 @@ package org.nasdanika.engineering.impl;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.nasdanika.engineering.Engineer;
@@ -63,12 +65,23 @@ public abstract class EngineeredElementImpl extends NamedElementImpl implements 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
+	@SuppressWarnings("unchecked")
 	public EList<Engineer> getOwners() {
-		return (EList<Engineer>)eDynamicGet(EngineeringPackage.ENGINEERED_ELEMENT__OWNERS, EngineeringPackage.Literals.ENGINEERED_ELEMENT__OWNERS, true, true);
+		EList<Engineer> ret = (EList<Engineer>)eDynamicGet(EngineeringPackage.ENGINEERED_ELEMENT__OWNERS, EngineeringPackage.Literals.ENGINEERED_ELEMENT__OWNERS, true, true);
+		if (ret.isEmpty()) {
+			for (EObject ancestor = eContainer; ancestor != null; ancestor = ancestor.eContainer()) {
+				if (ancestor instanceof Engineer) {
+					return ECollections.singletonEList((Engineer) ancestor);
+				}
+				if (ancestor instanceof EngineeredElement) {
+					return ((EngineeredElement) ancestor).getOwners();
+				}
+			}
+		}
+		return ret;
 	}
 
 	/**
