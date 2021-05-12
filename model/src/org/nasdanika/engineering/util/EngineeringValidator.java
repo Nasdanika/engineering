@@ -3,14 +3,12 @@
 package org.nasdanika.engineering.util;
 
 import java.util.Map;
-
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.EObjectValidator;
 import org.nasdanika.common.Adaptable;
-import org.nasdanika.emf.DiagnosticHelper;
 import org.nasdanika.engineering.Activity;
 import org.nasdanika.engineering.Artifact;
 import org.nasdanika.engineering.Call;
@@ -214,7 +212,7 @@ public class EngineeringValidator extends EObjectValidator {
 	 */
 	public boolean validateIncrement_nesting(Increment increment, DiagnosticChain diagnostics, Map<Object, Object> context) {
 //		if (diagnostics != null) {
-//			// Validate circularity
+//			// Test
 //			DiagnosticHelper helper = new DiagnosticHelper(diagnostics, DIAGNOSTIC_SOURCE, 0, increment);
 //			helper.error("Test EObject error");
 //			helper.error("Test Feature error", EngineeringPackage.Literals.INCREMENT__END);

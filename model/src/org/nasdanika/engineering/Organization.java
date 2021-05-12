@@ -17,7 +17,7 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getOrganization()
- * @model
+ * @model annotation="urn:org.nasdanika icon='far fa-building'"
  * @generated
  */
 public interface Organization extends Engineer {
@@ -29,6 +29,7 @@ public interface Organization extends Engineer {
 	 * @return the value of the '<em>Engineers</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getOrganization_Engineers()
 	 * @model containment="true"
+	 *        annotation="urn:org.nasdanika icon='fas fa-users'"
 	 * @generated
 	 */
 	EList<Engineer> getEngineers();

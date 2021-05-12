@@ -1259,22 +1259,13 @@ public interface EngineeringPackage extends EPackage {
 	int NOTE__AUTHOR = MODEL_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Increment</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NOTE__INCREMENT = MODEL_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
 	 * The feature id for the '<em><b>Date</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NOTE__DATE = MODEL_ELEMENT_FEATURE_COUNT + 2;
+	int NOTE__DATE = MODEL_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Effort</b></em>' attribute.
@@ -1283,7 +1274,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NOTE__EFFORT = MODEL_ELEMENT_FEATURE_COUNT + 3;
+	int NOTE__EFFORT = MODEL_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Cost</b></em>' attribute.
@@ -1292,7 +1283,34 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NOTE__COST = MODEL_ELEMENT_FEATURE_COUNT + 4;
+	int NOTE__COST = MODEL_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Remaining Effort</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NOTE__REMAINING_EFFORT = MODEL_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Remaining Cost</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NOTE__REMAINING_COST = MODEL_ELEMENT_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>Status</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NOTE__STATUS = MODEL_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
 	 * The number of structural features of the '<em>Note</em>' class.
@@ -1301,7 +1319,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NOTE_FEATURE_COUNT = MODEL_ELEMENT_FEATURE_COUNT + 5;
+	int NOTE_FEATURE_COUNT = MODEL_ELEMENT_FEATURE_COUNT + 7;
 
 	/**
 	 * The number of operations of the '<em>Note</em>' class.
@@ -1394,13 +1412,22 @@ public interface EngineeringPackage extends EPackage {
 	int ENGINEERED_ELEMENT__OWNERS = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Experts</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEERED_ELEMENT__EXPERTS = NAMED_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Engineered Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEERED_ELEMENT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 2;
+	int ENGINEERED_ELEMENT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>Engineered Element</em>' class.
@@ -1491,6 +1518,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int PERSONA__OWNERS = ENGINEERED_ELEMENT__OWNERS;
+
+	/**
+	 * The feature id for the '<em><b>Experts</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSONA__EXPERTS = ENGINEERED_ELEMENT__EXPERTS;
 
 	/**
 	 * The number of structural features of the '<em>Persona</em>' class.
@@ -1592,6 +1628,15 @@ public interface EngineeringPackage extends EPackage {
 	int ENGINEER__OWNERS = PERSONA__OWNERS;
 
 	/**
+	 * The feature id for the '<em><b>Experts</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEER__EXPERTS = PERSONA__EXPERTS;
+
+	/**
 	 * The feature id for the '<em><b>Modules</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1610,13 +1655,22 @@ public interface EngineeringPackage extends EPackage {
 	int ENGINEER__OWNS = PERSONA_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Expertise</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEER__EXPERTISE = PERSONA_FEATURE_COUNT + 2;
+
+	/**
 	 * The feature id for the '<em><b>Increments</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEER__INCREMENTS = PERSONA_FEATURE_COUNT + 2;
+	int ENGINEER__INCREMENTS = PERSONA_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Services</b></em>' containment reference list.
@@ -1625,7 +1679,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEER__SERVICES = PERSONA_FEATURE_COUNT + 3;
+	int ENGINEER__SERVICES = PERSONA_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Personas</b></em>' containment reference list.
@@ -1634,7 +1688,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEER__PERSONAS = PERSONA_FEATURE_COUNT + 4;
+	int ENGINEER__PERSONAS = PERSONA_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Assignments</b></em>' reference list.
@@ -1643,7 +1697,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEER__ASSIGNMENTS = PERSONA_FEATURE_COUNT + 5;
+	int ENGINEER__ASSIGNMENTS = PERSONA_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Issue Categories</b></em>' containment reference list.
@@ -1652,7 +1706,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEER__ISSUE_CATEGORIES = PERSONA_FEATURE_COUNT + 6;
+	int ENGINEER__ISSUE_CATEGORIES = PERSONA_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Issue Statuses</b></em>' containment reference list.
@@ -1661,7 +1715,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEER__ISSUE_STATUSES = PERSONA_FEATURE_COUNT + 7;
+	int ENGINEER__ISSUE_STATUSES = PERSONA_FEATURE_COUNT + 8;
 
 	/**
 	 * The number of structural features of the '<em>Engineer</em>' class.
@@ -1670,7 +1724,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEER_FEATURE_COUNT = PERSONA_FEATURE_COUNT + 8;
+	int ENGINEER_FEATURE_COUNT = PERSONA_FEATURE_COUNT + 9;
 
 	/**
 	 * The number of operations of the '<em>Engineer</em>' class.
@@ -1763,6 +1817,15 @@ public interface EngineeringPackage extends EPackage {
 	int ORGANIZATION__OWNERS = ENGINEER__OWNERS;
 
 	/**
+	 * The feature id for the '<em><b>Experts</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANIZATION__EXPERTS = ENGINEER__EXPERTS;
+
+	/**
 	 * The feature id for the '<em><b>Modules</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1779,6 +1842,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int ORGANIZATION__OWNS = ENGINEER__OWNS;
+
+	/**
+	 * The feature id for the '<em><b>Expertise</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANIZATION__EXPERTISE = ENGINEER__EXPERTISE;
 
 	/**
 	 * The feature id for the '<em><b>Increments</b></em>' containment reference list.
@@ -1943,6 +2015,15 @@ public interface EngineeringPackage extends EPackage {
 	int MODULE__OWNERS = ENGINEERED_ELEMENT__OWNERS;
 
 	/**
+	 * The feature id for the '<em><b>Experts</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODULE__EXPERTS = ENGINEERED_ELEMENT__EXPERTS;
+
+	/**
 	 * The feature id for the '<em><b>Modules</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2049,6 +2130,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int PRODUCT__OWNERS = MODULE__OWNERS;
+
+	/**
+	 * The feature id for the '<em><b>Experts</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT__EXPERTS = MODULE__EXPERTS;
 
 	/**
 	 * The feature id for the '<em><b>Modules</b></em>' containment reference list.
@@ -2438,6 +2528,15 @@ public interface EngineeringPackage extends EPackage {
 	int ACTIVITY__OWNERS = ENGINEERED_ELEMENT__OWNERS;
 
 	/**
+	 * The feature id for the '<em><b>Experts</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__EXPERTS = ENGINEERED_ELEMENT__EXPERTS;
+
+	/**
 	 * The feature id for the '<em><b>Persona</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2598,6 +2697,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int JOURNEY__OWNERS = ACTIVITY__OWNERS;
+
+	/**
+	 * The feature id for the '<em><b>Experts</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY__EXPERTS = ACTIVITY__EXPERTS;
 
 	/**
 	 * The feature id for the '<em><b>Persona</b></em>' reference.
@@ -2907,6 +3015,15 @@ public interface EngineeringPackage extends EPackage {
 	int ARTIFACT__OWNERS = ENGINEERED_ELEMENT__OWNERS;
 
 	/**
+	 * The feature id for the '<em><b>Experts</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ARTIFACT__EXPERTS = ENGINEERED_ELEMENT__EXPERTS;
+
+	/**
 	 * The number of structural features of the '<em>Artifact</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3166,6 +3283,17 @@ public interface EngineeringPackage extends EPackage {
 	EReference getEngineeredElement_Owners();
 
 	/**
+	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.EngineeredElement#getExperts <em>Experts</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Experts</em>'.
+	 * @see org.nasdanika.engineering.EngineeredElement#getExperts()
+	 * @see #getEngineeredElement()
+	 * @generated
+	 */
+	EReference getEngineeredElement_Experts();
+
+	/**
 	 * Returns the meta object for class '{@link org.nasdanika.engineering.Persona <em>Persona</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3206,6 +3334,17 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getEngineer_Owns();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.Engineer#getExpertise <em>Expertise</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Expertise</em>'.
+	 * @see org.nasdanika.engineering.Engineer#getExpertise()
+	 * @see #getEngineer()
+	 * @generated
+	 */
+	EReference getEngineer_Expertise();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link org.nasdanika.engineering.Engineer#getIncrements <em>Increments</em>}'.
@@ -3995,17 +4134,6 @@ public interface EngineeringPackage extends EPackage {
 	EReference getNote_Author();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.nasdanika.engineering.Note#getIncrement <em>Increment</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Increment</em>'.
-	 * @see org.nasdanika.engineering.Note#getIncrement()
-	 * @see #getNote()
-	 * @generated
-	 */
-	EReference getNote_Increment();
-
-	/**
 	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Note#getDate <em>Date</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4037,6 +4165,39 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getNote_Cost();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Note#getRemainingEffort <em>Remaining Effort</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Remaining Effort</em>'.
+	 * @see org.nasdanika.engineering.Note#getRemainingEffort()
+	 * @see #getNote()
+	 * @generated
+	 */
+	EAttribute getNote_RemainingEffort();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Note#getRemainingCost <em>Remaining Cost</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Remaining Cost</em>'.
+	 * @see org.nasdanika.engineering.Note#getRemainingCost()
+	 * @see #getNote()
+	 * @generated
+	 */
+	EAttribute getNote_RemainingCost();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.nasdanika.engineering.Note#getStatus <em>Status</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Status</em>'.
+	 * @see org.nasdanika.engineering.Note#getStatus()
+	 * @see #getNote()
+	 * @generated
+	 */
+	EReference getNote_Status();
 
 	/**
 	 * Returns the meta object for class '{@link org.nasdanika.engineering.Artifact <em>Artifact</em>}'.
@@ -4205,6 +4366,14 @@ public interface EngineeringPackage extends EPackage {
 		EReference ENGINEERED_ELEMENT__OWNERS = eINSTANCE.getEngineeredElement_Owners();
 
 		/**
+		 * The meta object literal for the '<em><b>Experts</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ENGINEERED_ELEMENT__EXPERTS = eINSTANCE.getEngineeredElement_Experts();
+
+		/**
 		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.PersonaImpl <em>Persona</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -4239,6 +4408,14 @@ public interface EngineeringPackage extends EPackage {
 		 * @generated
 		 */
 		EReference ENGINEER__OWNS = eINSTANCE.getEngineer_Owns();
+
+		/**
+		 * The meta object literal for the '<em><b>Expertise</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ENGINEER__EXPERTISE = eINSTANCE.getEngineer_Expertise();
 
 		/**
 		 * The meta object literal for the '<em><b>Increments</b></em>' containment reference list feature.
@@ -4857,14 +5034,6 @@ public interface EngineeringPackage extends EPackage {
 		EReference NOTE__AUTHOR = eINSTANCE.getNote_Author();
 
 		/**
-		 * The meta object literal for the '<em><b>Increment</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference NOTE__INCREMENT = eINSTANCE.getNote_Increment();
-
-		/**
 		 * The meta object literal for the '<em><b>Date</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -4887,6 +5056,30 @@ public interface EngineeringPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute NOTE__COST = eINSTANCE.getNote_Cost();
+
+		/**
+		 * The meta object literal for the '<em><b>Remaining Effort</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute NOTE__REMAINING_EFFORT = eINSTANCE.getNote_RemainingEffort();
+
+		/**
+		 * The meta object literal for the '<em><b>Remaining Cost</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute NOTE__REMAINING_COST = eINSTANCE.getNote_RemainingCost();
+
+		/**
+		 * The meta object literal for the '<em><b>Status</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference NOTE__STATUS = eINSTANCE.getNote_Status();
 
 		/**
 		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.ArtifactImpl <em>Artifact</em>}' class.

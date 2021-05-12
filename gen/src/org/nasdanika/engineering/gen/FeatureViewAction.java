@@ -32,6 +32,7 @@ public class FeatureViewAction extends EngineeredCapabilityViewAction<Feature> {
 					getSemanticElement().getIssues(), 
 					"Issues", 
 					"issues", 
+					getFeatureDiagnostic(feature),					
 					EngineeringPackage.Literals.NAMED_ELEMENT__NAME,
 					EngineeringPackage.Literals.ISSUE__STATUS,
 					EngineeringPackage.Literals.ISSUE__CATEGORY,				

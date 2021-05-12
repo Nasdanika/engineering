@@ -17,10 +17,12 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import org.apache.commons.codec.binary.Hex;
+import org.apache.commons.text.StringEscapeUtils;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.ETypedElement;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.nasdanika.common.Context;
@@ -214,8 +216,8 @@ public class ModelElementViewAction<T extends ModelElement> extends SimpleEObjec
 			}
 			
 		};
-		BiFunction<Issue, EStructuralFeature, ViewBuilder> cellBuilderProvider = (issue, feature) -> {
-			if (feature == EngineeringPackage.Literals.NAMED_ELEMENT__NAME) {
+		BiFunction<Issue, ETypedElement, ViewBuilder> cellBuilderProvider = (issue, dataSource) -> {
+			if (dataSource == EngineeringPackage.Literals.NAMED_ELEMENT__NAME) {
 				return (target, vg, pm) -> {
 					((org.nasdanika.html.bootstrap.RowContainer.Row.Cell) target).toHTMLElement().content(vg.link(ViewAction.adaptToViewActionNonNull(issue)));
 				};
@@ -243,9 +245,10 @@ public class ModelElementViewAction<T extends ModelElement> extends SimpleEObjec
 			Collection<Issue> issues, 
 			String text, 
 			String id, 
+			Collection<Diagnostic> diagnostic,
 			EStructuralFeature... features) {
 		
-		return issuesSection(issues, text, id, getMarker(), getActivator(), features);
+		return issuesSection(issues, text, id, getMarker(), getActivator(), diagnostic, features);
 	}
 	
 	/**
@@ -260,7 +263,8 @@ public class ModelElementViewAction<T extends ModelElement> extends SimpleEObjec
 			String text, 
 			String id, 
 			Marker marker, 
-			ActionActivator activator,			
+			ActionActivator activator,
+			Collection<Diagnostic> diagnostic,
 			EStructuralFeature... features) {
 		
 		if (issues.isEmpty()) {
@@ -275,6 +279,12 @@ public class ModelElementViewAction<T extends ModelElement> extends SimpleEObjec
 			@Override
 			public Object generate(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
 				Fragment ret = viewGenerator.getHTMLFactory().fragment();
+				BootstrapFactory bootstrapFactory = viewGenerator.getBootstrapFactory();
+				if (diagnostic != null) {
+					for (Diagnostic diagnostic: diagnostic) {
+						ret.content(bootstrapFactory.alert(HtmlEmfUtil.getSeverityColor(diagnostic.getSeverity()), StringEscapeUtils.escapeHtml4(diagnostic.getMessage())));
+					}
+				}
 				
 				ret.content(issueStatusSummaryTable(issues, viewGenerator, progressMonitor));
 				
@@ -392,7 +402,6 @@ public class ModelElementViewAction<T extends ModelElement> extends SimpleEObjec
 	// TODO - totals table, % completed - shared method for engineers, increments, releases, ... - in ModelElementView...
 	// Generic table - takes a list of EObjects, BiConsumer of element and table row, BiFunction of element and feature to extract value, and var-arg of str features 
 
-
 	@Override
 	public Collection<Diagnostic> getDiagnostic() {		
 		Collection<Diagnostic> ret = new ArrayList<>();
@@ -419,7 +428,7 @@ public class ModelElementViewAction<T extends ModelElement> extends SimpleEObjec
 		
 	private static void collectDiagnostic(EObject eObject, Diagnostic diagnostic, Collection<Diagnostic> collector) {
 		List<?> data = diagnostic.getData();
-		if (data.size() == 1 && data.get(0) == eObject) {
+		if (data.size() == 1 && data.get(0) == eObject && matchSeverity(diagnostic) && diagnostic.getChildren().isEmpty()) {
 			collector.add(diagnostic);
 		}
 		for (Diagnostic child: diagnostic.getChildren()) {
@@ -429,13 +438,16 @@ public class ModelElementViewAction<T extends ModelElement> extends SimpleEObjec
 	
 	private static void collectFeatureDiagnostic(EObject eObject, EStructuralFeature feature, Diagnostic diagnostic, Collection<Diagnostic> collector) {
 		List<?> data = diagnostic.getData();
-		if (data.size() == 2 && data.get(0) == eObject && data.get(1) == feature) {
+		if (data.size() > 1 && data.get(0) == eObject && data.get(1) == feature && matchSeverity(diagnostic) && diagnostic.getChildren().isEmpty()) {
 			collector.add(diagnostic);
 		}
 		for (Diagnostic child: diagnostic.getChildren()) {
 			collectFeatureDiagnostic(eObject, feature, child, collector);
 		}
 	}
-	
-	
+
+	protected static boolean matchSeverity(Diagnostic diagnostic) {
+		return diagnostic.getSeverity() == Diagnostic.ERROR ||diagnostic.getSeverity() == Diagnostic.WARNING;
+	}
+		
 }

@@ -1,6 +1,7 @@
 package org.nasdanika.engineering.gen;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
@@ -26,6 +27,7 @@ public class EngineeredElementViewAction<T extends EngineeredElement> extends Na
 				issues, 
 				"Issues", 
 				"issues", 
+				getFeatureDiagnostic(EngineeringPackage.Literals.ENGINEERED_ELEMENT__ISSUES),
 				EngineeringPackage.Literals.NAMED_ELEMENT__NAME,
 				EngineeringPackage.Literals.ISSUE__STATUS,
 				EngineeringPackage.Literals.ISSUE__CATEGORY,				
@@ -53,6 +55,7 @@ public class EngineeredElementViewAction<T extends EngineeredElement> extends Na
 					"all-issues", 
 					null,
 					getActivator(),
+					Collections.emptyList(),
 					EngineeringPackage.Literals.NAMED_ELEMENT__NAME,
 					EngineeringPackage.Literals.ISSUE__TARGET,
 					EngineeringPackage.Literals.ISSUE__ASSIGNEE,

@@ -2,11 +2,26 @@ package org.nasdanika.engineering.gen;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.function.BiFunction;
 
+import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.ETypedElement;
+import org.nasdanika.common.Context;
+import org.nasdanika.common.MarkdownHelper;
+import org.nasdanika.common.ProgressMonitor;
+import org.nasdanika.common.Util;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Issue;
+import org.nasdanika.engineering.Note;
+import org.nasdanika.html.Container;
+import org.nasdanika.html.Fragment;
 import org.nasdanika.html.app.Action;
+import org.nasdanika.html.app.ViewBuilder;
+import org.nasdanika.html.app.ViewGenerator;
+import org.nasdanika.html.bootstrap.BootstrapElement;
+import org.nasdanika.html.emf.EStructuralFeatureViewActionImpl;
+import org.nasdanika.html.emf.HtmlEmfUtil;
 
 public class IssueViewAction extends EngineeredCapabilityViewAction<Issue> {
 	
@@ -36,6 +51,9 @@ public class IssueViewAction extends EngineeredCapabilityViewAction<Issue> {
 		if (feature == EngineeringPackage.Literals.ISSUE__CHILDREN) {
 			return role == FeatureRole.FEATURE_ACTIONS;
 		}
+		if (feature == EngineeringPackage.Literals.ISSUE__NOTES) {
+			return role == FeatureRole.FEATURE_ACTIONS;
+		}
 		return super.isFeatureInRole(feature, role);
 	}
 	
@@ -46,6 +64,7 @@ public class IssueViewAction extends EngineeredCapabilityViewAction<Issue> {
 					getSemanticElement().getChildren(), 
 					"Children", 
 					"children", 
+					getFeatureDiagnostic(feature),
 					EngineeringPackage.Literals.NAMED_ELEMENT__NAME,
 					EngineeringPackage.Literals.ISSUE__STATUS,
 					EngineeringPackage.Literals.ISSUE__CATEGORY,				
@@ -53,6 +72,63 @@ public class IssueViewAction extends EngineeredCapabilityViewAction<Issue> {
 					EngineeringPackage.Literals.ISSUE__EFFORT,
 					EngineeringPackage.Literals.ISSUE__COST,
 					EngineeringPackage.Literals.ISSUE__BENEFIT));
+		}
+		if (feature == EngineeringPackage.Literals.ISSUE__NOTES) {
+			if (getSemanticElement().getNotes().isEmpty()) {
+				return Collections.emptyList();
+			}
+			EStructuralFeatureViewActionImpl<Issue, EStructuralFeature> notesAction = new EStructuralFeatureViewActionImpl<Issue, EStructuralFeature>(getSemanticElement(), feature) {
+				
+				@Override
+				public Object generate(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
+					Fragment ret = viewGenerator.getHTMLFactory().fragment();
+					for (Diagnostic diagnostic: getFeatureDiagnostic(feature)) {
+						viewGenerator.getBootstrapFactory().alert(HtmlEmfUtil.getSeverityColor(diagnostic.getSeverity()), diagnostic.getMessage());
+					}
+					
+					BiFunction<Note, ETypedElement, ViewBuilder> cellBuilderProvider = (note, dataSource) -> {
+						if (dataSource == EngineeringPackage.Literals.MODEL_ELEMENT__DESCRIPTION) {
+							return (target, vg, pm) -> {
+								String description = note.getDescription();
+								Context context = getContext();
+								Container<?> container = (Container<?>) ((BootstrapElement<?,?>) target).toHTMLElement();
+								if (!Util.isBlank(description)) {
+									container.content(context.interpolateToString(description));		
+								}
+								String markdownDescription = note.getMarkdownDescription();
+								if (!Util.isBlank(markdownDescription)) {
+									String markdown = context.interpolateToString(markdownDescription);
+									MarkdownHelper markdownHelper = context.computingContext().get(MarkdownHelper.class, MarkdownHelper.INSTANCE);
+									container.content(markdownHelper.markdownToHtml(markdown));
+								}
+							};
+						}
+						return null;
+					};
+					
+					ret.content(HtmlEmfUtil.table(
+							getSemanticElement().getNotes(), 
+							null, 
+							cellBuilderProvider, 
+							viewGenerator, 
+							progressMonitor, 
+							EngineeringPackage.Literals.MODEL_ELEMENT__DESCRIPTION,
+							EngineeringPackage.Literals.NOTE__DATE,
+							EngineeringPackage.Literals.NOTE__AUTHOR,
+							EngineeringPackage.Literals.NOTE__STATUS,
+							EngineeringPackage.Literals.NOTE__EFFORT,
+							EngineeringPackage.Literals.NOTE__COST,
+							EngineeringPackage.Literals.NOTE__REMAINING_EFFORT,
+							EngineeringPackage.Literals.NOTE__REMAINING_COST));
+					
+					return ret;
+				}
+				
+			};
+			notesAction.getRoles().add(Action.Role.SECTION);
+			notesAction.setText(featureLabel(feature));
+			notesAction.setIcon(featureIcon(feature));
+			return Collections.singleton(notesAction);
 		}
 		return super.featureActions(feature);
 	}

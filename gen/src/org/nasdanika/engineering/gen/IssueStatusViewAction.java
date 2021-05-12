@@ -21,6 +21,7 @@ public class IssueStatusViewAction extends NamedElementViewAction<IssueStatus> {
 					getSemanticElement().getIssues(), 
 					"Issues", 
 					"Issues", 
+					getFeatureDiagnostic(feature),					
 					EngineeringPackage.Literals.NAMED_ELEMENT__NAME,
 					EngineeringPackage.Literals.ISSUE__CATEGORY,
 					EngineeringPackage.Literals.ISSUE__TARGET,

@@ -32,6 +32,7 @@ import org.junit.Test;
 import org.nasdanika.common.CommandFactory;
 import org.nasdanika.common.Context;
 import org.nasdanika.common.DefaultConverter;
+import org.nasdanika.common.Diagnostic;
 import org.nasdanika.common.DiagnosticException;
 import org.nasdanika.common.DiagramGenerator;
 import org.nasdanika.common.MarkdownHelper;
@@ -150,7 +151,13 @@ public class TestModel {
 		context.register(SourceResolver.class, sourceResolver);
 		
 		try {
-			Util.call(commandFactory.create(context), progressMonitor);
+			Diagnostic diagnostic = Util.call(commandFactory.create(context), progressMonitor);
+			if (diagnostic.getStatus() == Status.WARNING || diagnostic.getStatus() == Status.ERROR) {
+				System.err.println("***********************");
+				System.err.println("*      Diagnostic     *");
+				System.err.println("***********************");
+				diagnostic.dump(System.err, 4, Status.ERROR, Status.WARNING);
+			}
 		} catch (DiagnosticException e) {
 			System.err.println("******************************");
 			System.err.println("*      Diagnostic failed     *");

@@ -15,6 +15,7 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link org.nasdanika.engineering.Engineer#getModules <em>Modules</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Engineer#getOwns <em>Owns</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.Engineer#getExpertise <em>Expertise</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Engineer#getIncrements <em>Increments</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Engineer#getServices <em>Services</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Engineer#getPersonas <em>Personas</em>}</li>
@@ -24,7 +25,7 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getEngineer()
- * @model annotation="urn:org.nasdanika documentation-reference='../doc/engineer.md'"
+ * @model annotation="urn:org.nasdanika documentation-reference='../doc/engineer.md' icon='fas fa-user'"
  * @generated
  */
 public interface Engineer extends Persona {
@@ -53,6 +54,20 @@ public interface Engineer extends Persona {
 	 * @generated
 	 */
 	EList<EngineeredElement> getOwns();
+
+	/**
+	 * Returns the value of the '<em><b>Expertise</b></em>' reference list.
+	 * The list contents are of type {@link org.nasdanika.engineering.EngineeredElement}.
+	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.EngineeredElement#getExperts <em>Experts</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Expertise</em>' reference list.
+	 * @see org.nasdanika.engineering.EngineeringPackage#getEngineer_Expertise()
+	 * @see org.nasdanika.engineering.EngineeredElement#getExperts
+	 * @model opposite="experts" changeable="false" derived="true"
+	 * @generated
+	 */
+	EList<EngineeredElement> getExpertise();
 
 	/**
 	 * Returns the value of the '<em><b>Increments</b></em>' containment reference list.
@@ -94,13 +109,11 @@ public interface Engineer extends Persona {
 	/**
 	 * Returns the value of the '<em><b>Assignments</b></em>' reference list.
 	 * The list contents are of type {@link org.nasdanika.engineering.Issue}.
-	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Issue#getAssignee <em>Assignee</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Assignments</em>' reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getEngineer_Assignments()
-	 * @see org.nasdanika.engineering.Issue#getAssignee
-	 * @model opposite="assignee" changeable="false" derived="true"
+	 * @model changeable="false" derived="true"
 	 * @generated
 	 */
 	EList<Issue> getAssignments();

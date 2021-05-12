@@ -14,10 +14,12 @@ import java.util.Date;
  * </p>
  * <ul>
  *   <li>{@link org.nasdanika.engineering.Note#getAuthor <em>Author</em>}</li>
- *   <li>{@link org.nasdanika.engineering.Note#getIncrement <em>Increment</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Note#getDate <em>Date</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Note#getEffort <em>Effort</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Note#getCost <em>Cost</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.Note#getRemainingEffort <em>Remaining Effort</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.Note#getRemainingCost <em>Remaining Cost</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.Note#getStatus <em>Status</em>}</li>
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getNote()
@@ -46,28 +48,6 @@ public interface Note extends ModelElement {
 	 * @generated
 	 */
 	void setAuthor(Engineer value);
-
-	/**
-	 * Returns the value of the '<em><b>Increment</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Increment</em>' reference.
-	 * @see #setIncrement(Increment)
-	 * @see org.nasdanika.engineering.EngineeringPackage#getNote_Increment()
-	 * @model
-	 * @generated
-	 */
-	Increment getIncrement();
-
-	/**
-	 * Sets the value of the '{@link org.nasdanika.engineering.Note#getIncrement <em>Increment</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Increment</em>' reference.
-	 * @see #getIncrement()
-	 * @generated
-	 */
-	void setIncrement(Increment value);
 
 	/**
 	 * Returns the value of the '<em><b>Date</b></em>' attribute.
@@ -134,5 +114,71 @@ public interface Note extends ModelElement {
 	 * @generated
 	 */
 	void setCost(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Remaining Effort</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Remaining Effort</em>' attribute.
+	 * @see #setRemainingEffort(double)
+	 * @see org.nasdanika.engineering.EngineeringPackage#getNote_RemainingEffort()
+	 * @model
+	 * @generated
+	 */
+	double getRemainingEffort();
+
+	/**
+	 * Sets the value of the '{@link org.nasdanika.engineering.Note#getRemainingEffort <em>Remaining Effort</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Remaining Effort</em>' attribute.
+	 * @see #getRemainingEffort()
+	 * @generated
+	 */
+	void setRemainingEffort(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Remaining Cost</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Remaining Cost</em>' attribute.
+	 * @see #setRemainingCost(double)
+	 * @see org.nasdanika.engineering.EngineeringPackage#getNote_RemainingCost()
+	 * @model
+	 * @generated
+	 */
+	double getRemainingCost();
+
+	/**
+	 * Sets the value of the '{@link org.nasdanika.engineering.Note#getRemainingCost <em>Remaining Cost</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Remaining Cost</em>' attribute.
+	 * @see #getRemainingCost()
+	 * @generated
+	 */
+	void setRemainingCost(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Status</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Status</em>' reference.
+	 * @see #setStatus(IssueStatus)
+	 * @see org.nasdanika.engineering.EngineeringPackage#getNote_Status()
+	 * @model annotation="urn:org.nasdanika homogenous='true'"
+	 * @generated
+	 */
+	IssueStatus getStatus();
+
+	/**
+	 * Sets the value of the '{@link org.nasdanika.engineering.Note#getStatus <em>Status</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Status</em>' reference.
+	 * @see #getStatus()
+	 * @generated
+	 */
+	void setStatus(IssueStatus value);
 
 } // Note

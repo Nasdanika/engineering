@@ -2,6 +2,7 @@ package org.nasdanika.engineering.gen;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
@@ -50,6 +51,7 @@ public class EngineeringViewAction extends ActionImpl {
 				"issues", 
 				null,
 				getActivator(),
+				Collections.emptyList(),
 				EngineeringPackage.Literals.NAMED_ELEMENT__NAME,
 				EngineeringPackage.Literals.ISSUE__TARGET,
 				EngineeringPackage.Literals.ISSUE__ASSIGNEE,

@@ -53,6 +53,9 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
       <details key="constraints" value="nesting"/>
     </eAnnotations>
+    <eAnnotations source="urn:org.nasdanika">
+      <details key="icon" value="far fa-calendar-alt"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
         eType="#//Increment" containment="true">
       <eAnnotations source="urn:org.nasdanika">
@@ -102,8 +105,7 @@
         <details key="homogenous" value="true"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="assignee" eType="#//Engineer"
-        eOpposite="#//Engineer/assignments"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="assignee" eType="#//Engineer"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="requires" upperBound="-1"
         eType="#//Capability" eOpposite="#//Capability/requiredBy">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -153,10 +155,16 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Note" eSuperTypes="#//ModelElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="author" eType="#//Engineer"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="increment" eType="#//Increment"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="date" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="effort" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="cost" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="remainingEffort" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="remainingCost" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="status" eType="#//IssueStatus">
+      <eAnnotations source="urn:org.nasdanika">
+        <details key="homogenous" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EngineeredElement" abstract="true" eSuperTypes="#//NamedElement">
     <eAnnotations source="urn:org.nasdanika">
@@ -170,16 +178,21 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="owners" upperBound="-1"
         eType="#//Engineer" eOpposite="#//Engineer/owns"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="experts" upperBound="-1"
+        eType="#//Engineer" eOpposite="#//Engineer/expertise"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Persona" eSuperTypes="#//EngineeredElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="Engineer" eSuperTypes="#//Persona">
     <eAnnotations source="urn:org.nasdanika">
       <details key="documentation-reference" value="../doc/engineer.md"/>
+      <details key="icon" value="fas fa-user"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="modules" upperBound="-1"
         eType="#//Module" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="owns" upperBound="-1" eType="#//EngineeredElement"
         changeable="false" derived="true" eOpposite="#//EngineeredElement/owners"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expertise" upperBound="-1"
+        eType="#//EngineeredElement" changeable="false" derived="true" eOpposite="#//EngineeredElement/experts"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="increments" upperBound="-1"
         eType="#//Increment" containment="true">
       <eAnnotations source="urn:org.nasdanika">
@@ -191,7 +204,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="personas" upperBound="-1"
         eType="#//Persona" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="assignments" upperBound="-1"
-        eType="#//Issue" changeable="false" derived="true" eOpposite="#//Issue/assignee"/>
+        eType="#//Issue" changeable="false" derived="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="issueCategories" upperBound="-1"
         eType="#//IssueCategory" containment="true">
       <eAnnotations source="urn:org.nasdanika">
@@ -208,8 +221,15 @@
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Organization" eSuperTypes="#//Engineer">
+    <eAnnotations source="urn:org.nasdanika">
+      <details key="icon" value="far fa-building"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="engineers" upperBound="-1"
-        eType="#//Engineer" containment="true"/>
+        eType="#//Engineer" containment="true">
+      <eAnnotations source="urn:org.nasdanika">
+        <details key="icon" value="fas fa-users"/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Module" eSuperTypes="#//EngineeredElement">
     <eAnnotations source="urn:org.nasdanika">

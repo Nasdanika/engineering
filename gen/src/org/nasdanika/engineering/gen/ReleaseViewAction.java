@@ -21,6 +21,7 @@ public class ReleaseViewAction extends EngineeredCapabilityViewAction<Release> {
 					getSemanticElement().getIssues(), 
 					"Issues", 
 					"issues", 
+					getFeatureDiagnostic(feature),
 					EngineeringPackage.Literals.NAMED_ELEMENT__NAME,
 					EngineeringPackage.Literals.ISSUE__STATUS,
 					EngineeringPackage.Literals.ISSUE__CATEGORY,				

@@ -1,6 +1,7 @@
 engineering-module:
    name: Gen
    path: gen
+   experts: pavel:this
    issues:
    
        ### 2021.5.0 ###
@@ -39,6 +40,12 @@ engineering-module:
        status: nasdanika:issue-statuses/done
        path: no-sort
        effort: 1 
+     - name: Experts reference
+       description: Have expertise, but not authority.
+       increment: nasdanika:increments/2021/children/q2/children/may
+       releases: nasdanika:modules/engineering/releases/2021/5/0
+       status: nasdanika:issue-statuses/done
+       effort: 1
        
        ### --> 
        
@@ -61,11 +68,21 @@ engineering-module:
        increment: nasdanika:increments/2021/children/q2/children/may
        releases: nasdanika:modules/engineering/releases/2021/5/0
        effort: 4 
-     - name: Experts reference
-       description: Have expertise, but not authority.
+     - name: Notes
+       description: |+2
+         Loading from the model, show in the view. Remaining effort and remaining cost attributes. If not set then remaining is calculated as a subtraction of spent from previous remaining.
+         So the calculation is a running total with ability to override. 
+         Remaining cost and effort to engineered capability, but derived. Also totals. And completion percentage. 
        increment: nasdanika:increments/2021/children/q2/children/may
        releases: nasdanika:modules/engineering/releases/2021/5/0
-       effort: 3
+       notes:
+         - date: 2021/05/11
+           markdown-description: Notes work. Need to add effectiveStatus derived from issue status if it is set and last note status otherwise.
+           effort: 1
+           remaining-effort: 1
+           author: pavel:this
+           status: nasdanika:issue-statuses/in-progress
+       effort: 1 
 
        ### Backlog ###
        
@@ -91,14 +108,6 @@ engineering-module:
          Also, along the same lines - single object properties table using the existing descriptor table components.
          Inject scripts into the head if head consumer is available or below or above the table otherwise.  
        effort: 4 
-     - name: Notes
-       description: |+2
-         Loading from the model, show in the view. Remaining effort and remaining cost attributes. If not set then remaining is calculated as a subtraction of spent from previous remaining.
-         So the calculation is a running total with ability to override. 
-         Remaining cost and effort to engineered capability, but derived. Also totals. And completion percentage. 
-       increment: nasdanika:increments/2021/children/q2/children/may
-       releases: nasdanika:modules/engineering/releases/2021/5/0
-       effort: 1 
      - name: Issue effort, cost, benefit, and benefit to cost ratio derived attributes, isWorkable(Increment) function.
        description: |+2
          Actual effort and cost - sum of effort and cost from notes. 
@@ -172,6 +181,8 @@ engineering-module:
        description: Some kind of a map. E.g. ability to display issues or releases differently on Gantt based on workability and issue status.  
      - name: Progress bars in for percentages
        markdown-description: "[Bootstrap progress bar](https://getbootstrap.com/docs/4.0/components/progress/#labels)"  
+     - name: Diagnostic summary
+       markdown-description: Section at engineered element level and context at principal action level.  
 
 #### Done ####
 

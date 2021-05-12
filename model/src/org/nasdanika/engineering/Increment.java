@@ -24,6 +24,7 @@ import org.eclipse.emf.common.util.EList;
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getIncrement()
  * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='nesting'"
+ *        annotation="urn:org.nasdanika icon='far fa-calendar-alt'"
  * @generated
  */
 public interface Increment extends NamedElement {

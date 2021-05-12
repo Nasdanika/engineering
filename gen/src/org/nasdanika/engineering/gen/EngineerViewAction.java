@@ -42,6 +42,7 @@ public class EngineerViewAction<T extends Engineer> extends PersonaViewAction<T>
 					getSemanticElement().getAssignments(), 
 					"Assignments", 
 					"assignments", 
+					getFeatureDiagnostic(feature),
 					EngineeringPackage.Literals.NAMED_ELEMENT__NAME,
 					EngineeringPackage.Literals.ISSUE__TARGET,
 					EngineeringPackage.Literals.ISSUE__STATUS,

@@ -15,6 +15,7 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link org.nasdanika.engineering.EngineeredElement#getIssues <em>Issues</em>}</li>
  *   <li>{@link org.nasdanika.engineering.EngineeredElement#getOwners <em>Owners</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.EngineeredElement#getExperts <em>Experts</em>}</li>
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getEngineeredElement()
@@ -49,5 +50,19 @@ public interface EngineeredElement extends NamedElement {
 	 * @generated
 	 */
 	EList<Engineer> getOwners();
+
+	/**
+	 * Returns the value of the '<em><b>Experts</b></em>' reference list.
+	 * The list contents are of type {@link org.nasdanika.engineering.Engineer}.
+	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Engineer#getExpertise <em>Expertise</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Experts</em>' reference list.
+	 * @see org.nasdanika.engineering.EngineeringPackage#getEngineeredElement_Experts()
+	 * @see org.nasdanika.engineering.Engineer#getExpertise
+	 * @model opposite="expertise"
+	 * @generated
+	 */
+	EList<Engineer> getExperts();
 
 } // EngineeredElement

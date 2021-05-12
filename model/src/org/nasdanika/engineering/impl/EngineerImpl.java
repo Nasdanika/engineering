@@ -31,6 +31,7 @@ import org.nasdanika.engineering.Persona;
  * <ul>
  *   <li>{@link org.nasdanika.engineering.impl.EngineerImpl#getModules <em>Modules</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineerImpl#getOwns <em>Owns</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.EngineerImpl#getExpertise <em>Expertise</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineerImpl#getIncrements <em>Increments</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineerImpl#getServices <em>Services</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineerImpl#getPersonas <em>Personas</em>}</li>
@@ -80,6 +81,16 @@ public class EngineerImpl extends PersonaImpl implements Engineer {
 	@Override
 	public EList<EngineeredElement> getOwns() {
 		return getReferrers(EngineeringPackage.Literals.ENGINEERED_ELEMENT__OWNERS);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public EList<EngineeredElement> getExpertise() {
+		return getReferrers(EngineeringPackage.Literals.ENGINEERED_ELEMENT__EXPERTS);
 	}
 
 	/**
@@ -199,8 +210,8 @@ public class EngineerImpl extends PersonaImpl implements Engineer {
 		switch (featureID) {
 			case EngineeringPackage.ENGINEER__OWNS:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getOwns()).basicAdd(otherEnd, msgs);
-			case EngineeringPackage.ENGINEER__ASSIGNMENTS:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getAssignments()).basicAdd(otherEnd, msgs);
+			case EngineeringPackage.ENGINEER__EXPERTISE:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getExpertise()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -223,14 +234,14 @@ public class EngineerImpl extends PersonaImpl implements Engineer {
 				return ((InternalEList<?>)getModules()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.ENGINEER__OWNS:
 				return ((InternalEList<?>)getOwns()).basicRemove(otherEnd, msgs);
+			case EngineeringPackage.ENGINEER__EXPERTISE:
+				return ((InternalEList<?>)getExpertise()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.ENGINEER__INCREMENTS:
 				return ((InternalEList<?>)getIncrements()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.ENGINEER__SERVICES:
 				return ((InternalEList<?>)getServices()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.ENGINEER__PERSONAS:
 				return ((InternalEList<?>)getPersonas()).basicRemove(otherEnd, msgs);
-			case EngineeringPackage.ENGINEER__ASSIGNMENTS:
-				return ((InternalEList<?>)getAssignments()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.ENGINEER__ISSUE_CATEGORIES:
 				return ((InternalEList<?>)getIssueCategories()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.ENGINEER__ISSUE_STATUSES:
@@ -251,6 +262,8 @@ public class EngineerImpl extends PersonaImpl implements Engineer {
 				return getModules();
 			case EngineeringPackage.ENGINEER__OWNS:
 				return getOwns();
+			case EngineeringPackage.ENGINEER__EXPERTISE:
+				return getExpertise();
 			case EngineeringPackage.ENGINEER__INCREMENTS:
 				return getIncrements();
 			case EngineeringPackage.ENGINEER__SERVICES:
@@ -346,6 +359,8 @@ public class EngineerImpl extends PersonaImpl implements Engineer {
 				return !getModules().isEmpty();
 			case EngineeringPackage.ENGINEER__OWNS:
 				return !getOwns().isEmpty();
+			case EngineeringPackage.ENGINEER__EXPERTISE:
+				return !getExpertise().isEmpty();
 			case EngineeringPackage.ENGINEER__INCREMENTS:
 				return !getIncrements().isEmpty();
 			case EngineeringPackage.ENGINEER__SERVICES:

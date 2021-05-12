@@ -143,16 +143,6 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetAssignee(Engineer newAssignee, NotificationChain msgs) {
-		msgs = eDynamicInverseAdd((InternalEObject)newAssignee, EngineeringPackage.ISSUE__ASSIGNEE, msgs);
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public void setAssignee(Engineer newAssignee) {
 		eDynamicSet(EngineeringPackage.ISSUE__ASSIGNEE, EngineeringPackage.Literals.ISSUE__ASSIGNEE, newAssignee);
@@ -459,11 +449,6 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case EngineeringPackage.ISSUE__ASSIGNEE:
-				Engineer assignee = basicGetAssignee();
-				if (assignee != null)
-					msgs = ((InternalEObject)assignee).eInverseRemove(this, EngineeringPackage.ENGINEER__ASSIGNMENTS, Engineer.class, msgs);
-				return basicSetAssignee((Engineer)otherEnd, msgs);
 			case EngineeringPackage.ISSUE__REQUIRES:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getRequires()).basicAdd(otherEnd, msgs);
 			case EngineeringPackage.ISSUE__INCREMENT:
@@ -499,8 +484,6 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 		switch (featureID) {
 			case EngineeringPackage.ISSUE__CHILDREN:
 				return ((InternalEList<?>)getChildren()).basicRemove(otherEnd, msgs);
-			case EngineeringPackage.ISSUE__ASSIGNEE:
-				return basicSetAssignee(null, msgs);
 			case EngineeringPackage.ISSUE__REQUIRES:
 				return ((InternalEList<?>)getRequires()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.ISSUE__INCREMENT:
