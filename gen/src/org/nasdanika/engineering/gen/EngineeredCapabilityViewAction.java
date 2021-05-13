@@ -14,7 +14,7 @@ public class EngineeredCapabilityViewAction<T extends EngineeredCapability> exte
 	
 	@Override
 	protected Object featureValue(EStructuralFeature feature, Object value, ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
-		if (feature == EngineeringPackage.Literals.ENGINEERED_CAPABILITY__COMPLETION) {
+		if (feature == EngineeringPackage.Literals.ENDEAVOR__COMPLETION) {
 			double completion = getSemanticElement().getCompletion();
 			if (completion != Double.NaN && completion > 0.001) {
 				return viewGenerator.getBootstrapFactory().progressBar((int) (100 * completion));

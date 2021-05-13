@@ -5,7 +5,7 @@ engineering-organization:
      - ../../../../core/engineering.yml
      - ../../../../html/engineering.yml
      - ../../../engineering.yml
-     - ../../../../cv/engineering.yml
+#     - ../../../../cv/engineering.yml
    issue-categories:
       - path: test
         name: Test Category

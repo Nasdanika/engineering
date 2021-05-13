@@ -259,6 +259,88 @@ public interface EngineeringPackage extends EPackage {
 	int NAMED_ELEMENT_OPERATION_COUNT = MODEL_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.Endeavor <em>Endeavor</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.Endeavor
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getEndeavor()
+	 * @generated
+	 */
+	int ENDEAVOR = 3;
+
+	/**
+	 * The feature id for the '<em><b>Completion</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENDEAVOR__COMPLETION = 0;
+
+	/**
+	 * The feature id for the '<em><b>Effort</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENDEAVOR__EFFORT = 1;
+
+	/**
+	 * The feature id for the '<em><b>Cost</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENDEAVOR__COST = 2;
+
+	/**
+	 * The feature id for the '<em><b>Benefit</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENDEAVOR__BENEFIT = 3;
+
+	/**
+	 * The feature id for the '<em><b>Remaining Effort</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENDEAVOR__REMAINING_EFFORT = 4;
+
+	/**
+	 * The feature id for the '<em><b>Remaining Cost</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENDEAVOR__REMAINING_COST = 5;
+
+	/**
+	 * The number of structural features of the '<em>Endeavor</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENDEAVOR_FEATURE_COUNT = 6;
+
+	/**
+	 * The number of operations of the '<em>Endeavor</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENDEAVOR_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.EngineeredElementImpl <em>Engineered Element</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -266,7 +348,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getEngineeredElement()
 	 * @generated
 	 */
-	int ENGINEERED_ELEMENT = 8;
+	int ENGINEERED_ELEMENT = 9;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.PersonaImpl <em>Persona</em>}' class.
@@ -276,7 +358,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getPersona()
 	 * @generated
 	 */
-	int PERSONA = 9;
+	int PERSONA = 10;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.EngineerImpl <em>Engineer</em>}' class.
@@ -286,7 +368,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getEngineer()
 	 * @generated
 	 */
-	int ENGINEER = 10;
+	int ENGINEER = 11;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.OrganizationImpl <em>Organization</em>}' class.
@@ -296,7 +378,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getOrganization()
 	 * @generated
 	 */
-	int ORGANIZATION = 11;
+	int ORGANIZATION = 12;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.ModuleImpl <em>Module</em>}' class.
@@ -306,7 +388,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getModule()
 	 * @generated
 	 */
-	int MODULE = 12;
+	int MODULE = 13;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.ProductImpl <em>Product</em>}' class.
@@ -316,7 +398,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getProduct()
 	 * @generated
 	 */
-	int PRODUCT = 13;
+	int PRODUCT = 14;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.CapabilityImpl <em>Capability</em>}' class.
@@ -326,7 +408,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getCapability()
 	 * @generated
 	 */
-	int CAPABILITY = 14;
+	int CAPABILITY = 15;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.IncrementImpl <em>Increment</em>}' class.
@@ -336,7 +418,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getIncrement()
 	 * @generated
 	 */
-	int INCREMENT = 3;
+	int INCREMENT = 4;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -402,13 +484,67 @@ public interface EngineeringPackage extends EPackage {
 	int INCREMENT__NAME = NAMED_ELEMENT__NAME;
 
 	/**
+	 * The feature id for the '<em><b>Completion</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INCREMENT__COMPLETION = NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Effort</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INCREMENT__EFFORT = NAMED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Cost</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INCREMENT__COST = NAMED_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Benefit</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INCREMENT__BENEFIT = NAMED_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Remaining Effort</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INCREMENT__REMAINING_EFFORT = NAMED_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Remaining Cost</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INCREMENT__REMAINING_COST = NAMED_ELEMENT_FEATURE_COUNT + 5;
+
+	/**
 	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INCREMENT__CHILDREN = NAMED_ELEMENT_FEATURE_COUNT + 0;
+	int INCREMENT__CHILDREN = NAMED_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Start</b></em>' attribute.
@@ -417,7 +553,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INCREMENT__START = NAMED_ELEMENT_FEATURE_COUNT + 1;
+	int INCREMENT__START = NAMED_ELEMENT_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>End</b></em>' attribute.
@@ -426,7 +562,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INCREMENT__END = NAMED_ELEMENT_FEATURE_COUNT + 2;
+	int INCREMENT__END = NAMED_ELEMENT_FEATURE_COUNT + 8;
 
 	/**
 	 * The feature id for the '<em><b>Issues</b></em>' reference list.
@@ -435,7 +571,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INCREMENT__ISSUES = NAMED_ELEMENT_FEATURE_COUNT + 3;
+	int INCREMENT__ISSUES = NAMED_ELEMENT_FEATURE_COUNT + 9;
 
 	/**
 	 * The feature id for the '<em><b>Releases</b></em>' reference list.
@@ -444,7 +580,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INCREMENT__RELEASES = NAMED_ELEMENT_FEATURE_COUNT + 4;
+	int INCREMENT__RELEASES = NAMED_ELEMENT_FEATURE_COUNT + 10;
 
 	/**
 	 * The number of structural features of the '<em>Increment</em>' class.
@@ -453,7 +589,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INCREMENT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 5;
+	int INCREMENT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 11;
 
 	/**
 	 * The number of operations of the '<em>Increment</em>' class.
@@ -472,7 +608,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getIssueCategory()
 	 * @generated
 	 */
-	int ISSUE_CATEGORY = 4;
+	int ISSUE_CATEGORY = 5;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -581,7 +717,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getIssueStatus()
 	 * @generated
 	 */
-	int ISSUE_STATUS = 5;
+	int ISSUE_STATUS = 6;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -789,7 +925,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getEngineeredCapability()
 	 * @generated
 	 */
-	int ENGINEERED_CAPABILITY = 15;
+	int ENGINEERED_CAPABILITY = 16;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -882,13 +1018,58 @@ public interface EngineeringPackage extends EPackage {
 	int ENGINEERED_CAPABILITY__COMPLETION = CAPABILITY_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Effort</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEERED_CAPABILITY__EFFORT = CAPABILITY_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Cost</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEERED_CAPABILITY__COST = CAPABILITY_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Benefit</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEERED_CAPABILITY__BENEFIT = CAPABILITY_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Remaining Effort</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEERED_CAPABILITY__REMAINING_EFFORT = CAPABILITY_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Remaining Cost</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEERED_CAPABILITY__REMAINING_COST = CAPABILITY_FEATURE_COUNT + 5;
+
+	/**
 	 * The number of structural features of the '<em>Engineered Capability</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEERED_CAPABILITY_FEATURE_COUNT = CAPABILITY_FEATURE_COUNT + 1;
+	int ENGINEERED_CAPABILITY_FEATURE_COUNT = CAPABILITY_FEATURE_COUNT + 6;
 
 	/**
 	 * The number of operations of the '<em>Engineered Capability</em>' class.
@@ -907,7 +1088,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getRelease()
 	 * @generated
 	 */
-	int RELEASE = 16;
+	int RELEASE = 17;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.FeatureImpl <em>Feature</em>}' class.
@@ -917,7 +1098,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getFeature()
 	 * @generated
 	 */
-	int FEATURE = 17;
+	int FEATURE = 18;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.ActivityImpl <em>Activity</em>}' class.
@@ -927,7 +1108,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getActivity()
 	 * @generated
 	 */
-	int ACTIVITY = 18;
+	int ACTIVITY = 19;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.JourneyImpl <em>Journey</em>}' class.
@@ -937,7 +1118,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getJourney()
 	 * @generated
 	 */
-	int JOURNEY = 19;
+	int JOURNEY = 20;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.TransitionImpl <em>Transition</em>}' class.
@@ -947,7 +1128,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getTransition()
 	 * @generated
 	 */
-	int TRANSITION = 20;
+	int TRANSITION = 21;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.CallImpl <em>Call</em>}' class.
@@ -957,7 +1138,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getCall()
 	 * @generated
 	 */
-	int CALL = 21;
+	int CALL = 22;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.IssueImpl <em>Issue</em>}' class.
@@ -967,7 +1148,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getIssue()
 	 * @generated
 	 */
-	int ISSUE = 6;
+	int ISSUE = 7;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -1060,6 +1241,51 @@ public interface EngineeringPackage extends EPackage {
 	int ISSUE__COMPLETION = ENGINEERED_CAPABILITY__COMPLETION;
 
 	/**
+	 * The feature id for the '<em><b>Effort</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE__EFFORT = ENGINEERED_CAPABILITY__EFFORT;
+
+	/**
+	 * The feature id for the '<em><b>Cost</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE__COST = ENGINEERED_CAPABILITY__COST;
+
+	/**
+	 * The feature id for the '<em><b>Benefit</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE__BENEFIT = ENGINEERED_CAPABILITY__BENEFIT;
+
+	/**
+	 * The feature id for the '<em><b>Remaining Effort</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE__REMAINING_EFFORT = ENGINEERED_CAPABILITY__REMAINING_EFFORT;
+
+	/**
+	 * The feature id for the '<em><b>Remaining Cost</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE__REMAINING_COST = ENGINEERED_CAPABILITY__REMAINING_COST;
+
+	/**
 	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1114,40 +1340,13 @@ public interface EngineeringPackage extends EPackage {
 	int ISSUE__NOTES = ENGINEERED_CAPABILITY_FEATURE_COUNT + 5;
 
 	/**
-	 * The feature id for the '<em><b>Effort</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ISSUE__EFFORT = ENGINEERED_CAPABILITY_FEATURE_COUNT + 6;
-
-	/**
-	 * The feature id for the '<em><b>Cost</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ISSUE__COST = ENGINEERED_CAPABILITY_FEATURE_COUNT + 7;
-
-	/**
-	 * The feature id for the '<em><b>Benefit</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ISSUE__BENEFIT = ENGINEERED_CAPABILITY_FEATURE_COUNT + 8;
-
-	/**
 	 * The feature id for the '<em><b>Category</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ISSUE__CATEGORY = ENGINEERED_CAPABILITY_FEATURE_COUNT + 9;
+	int ISSUE__CATEGORY = ENGINEERED_CAPABILITY_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Target</b></em>' reference.
@@ -1156,7 +1355,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ISSUE__TARGET = ENGINEERED_CAPABILITY_FEATURE_COUNT + 10;
+	int ISSUE__TARGET = ENGINEERED_CAPABILITY_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Status</b></em>' reference.
@@ -1165,7 +1364,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ISSUE__STATUS = ENGINEERED_CAPABILITY_FEATURE_COUNT + 11;
+	int ISSUE__STATUS = ENGINEERED_CAPABILITY_FEATURE_COUNT + 8;
 
 	/**
 	 * The feature id for the '<em><b>Workable</b></em>' attribute.
@@ -1174,7 +1373,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ISSUE__WORKABLE = ENGINEERED_CAPABILITY_FEATURE_COUNT + 12;
+	int ISSUE__WORKABLE = ENGINEERED_CAPABILITY_FEATURE_COUNT + 9;
 
 	/**
 	 * The feature id for the '<em><b>Releases</b></em>' reference list.
@@ -1183,25 +1382,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ISSUE__RELEASES = ENGINEERED_CAPABILITY_FEATURE_COUNT + 13;
-
-	/**
-	 * The feature id for the '<em><b>Remaining Effort</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ISSUE__REMAINING_EFFORT = ENGINEERED_CAPABILITY_FEATURE_COUNT + 14;
-
-	/**
-	 * The feature id for the '<em><b>Remaining Cost</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ISSUE__REMAINING_COST = ENGINEERED_CAPABILITY_FEATURE_COUNT + 15;
+	int ISSUE__RELEASES = ENGINEERED_CAPABILITY_FEATURE_COUNT + 10;
 
 	/**
 	 * The number of structural features of the '<em>Issue</em>' class.
@@ -1210,7 +1391,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ISSUE_FEATURE_COUNT = ENGINEERED_CAPABILITY_FEATURE_COUNT + 16;
+	int ISSUE_FEATURE_COUNT = ENGINEERED_CAPABILITY_FEATURE_COUNT + 11;
 
 	/**
 	 * The number of operations of the '<em>Issue</em>' class.
@@ -1229,7 +1410,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getNote()
 	 * @generated
 	 */
-	int NOTE = 7;
+	int NOTE = 8;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -2339,6 +2520,51 @@ public interface EngineeringPackage extends EPackage {
 	int RELEASE__COMPLETION = ENGINEERED_CAPABILITY__COMPLETION;
 
 	/**
+	 * The feature id for the '<em><b>Effort</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RELEASE__EFFORT = ENGINEERED_CAPABILITY__EFFORT;
+
+	/**
+	 * The feature id for the '<em><b>Cost</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RELEASE__COST = ENGINEERED_CAPABILITY__COST;
+
+	/**
+	 * The feature id for the '<em><b>Benefit</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RELEASE__BENEFIT = ENGINEERED_CAPABILITY__BENEFIT;
+
+	/**
+	 * The feature id for the '<em><b>Remaining Effort</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RELEASE__REMAINING_EFFORT = ENGINEERED_CAPABILITY__REMAINING_EFFORT;
+
+	/**
+	 * The feature id for the '<em><b>Remaining Cost</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RELEASE__REMAINING_COST = ENGINEERED_CAPABILITY__REMAINING_COST;
+
+	/**
 	 * The feature id for the '<em><b>Increment</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2472,6 +2698,51 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int FEATURE__COMPLETION = ENGINEERED_CAPABILITY__COMPLETION;
+
+	/**
+	 * The feature id for the '<em><b>Effort</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE__EFFORT = ENGINEERED_CAPABILITY__EFFORT;
+
+	/**
+	 * The feature id for the '<em><b>Cost</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE__COST = ENGINEERED_CAPABILITY__COST;
+
+	/**
+	 * The feature id for the '<em><b>Benefit</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE__BENEFIT = ENGINEERED_CAPABILITY__BENEFIT;
+
+	/**
+	 * The feature id for the '<em><b>Remaining Effort</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE__REMAINING_EFFORT = ENGINEERED_CAPABILITY__REMAINING_EFFORT;
+
+	/**
+	 * The feature id for the '<em><b>Remaining Cost</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE__REMAINING_COST = ENGINEERED_CAPABILITY__REMAINING_COST;
 
 	/**
 	 * The feature id for the '<em><b>Releases</b></em>' reference list.
@@ -3003,7 +3274,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getArtifact()
 	 * @generated
 	 */
-	int ARTIFACT = 22;
+	int ARTIFACT = 23;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -3121,7 +3392,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getDirectory()
 	 * @generated
 	 */
-	int DIRECTORY = 23;
+	int DIRECTORY = 24;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -3321,6 +3592,82 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getNamedElement_Name();
+
+	/**
+	 * Returns the meta object for class '{@link org.nasdanika.engineering.Endeavor <em>Endeavor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Endeavor</em>'.
+	 * @see org.nasdanika.engineering.Endeavor
+	 * @generated
+	 */
+	EClass getEndeavor();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Endeavor#getCompletion <em>Completion</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Completion</em>'.
+	 * @see org.nasdanika.engineering.Endeavor#getCompletion()
+	 * @see #getEndeavor()
+	 * @generated
+	 */
+	EAttribute getEndeavor_Completion();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Endeavor#getEffort <em>Effort</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Effort</em>'.
+	 * @see org.nasdanika.engineering.Endeavor#getEffort()
+	 * @see #getEndeavor()
+	 * @generated
+	 */
+	EAttribute getEndeavor_Effort();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Endeavor#getCost <em>Cost</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Cost</em>'.
+	 * @see org.nasdanika.engineering.Endeavor#getCost()
+	 * @see #getEndeavor()
+	 * @generated
+	 */
+	EAttribute getEndeavor_Cost();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Endeavor#getBenefit <em>Benefit</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Benefit</em>'.
+	 * @see org.nasdanika.engineering.Endeavor#getBenefit()
+	 * @see #getEndeavor()
+	 * @generated
+	 */
+	EAttribute getEndeavor_Benefit();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Endeavor#getRemainingEffort <em>Remaining Effort</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Remaining Effort</em>'.
+	 * @see org.nasdanika.engineering.Endeavor#getRemainingEffort()
+	 * @see #getEndeavor()
+	 * @generated
+	 */
+	EAttribute getEndeavor_RemainingEffort();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Endeavor#getRemainingCost <em>Remaining Cost</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Remaining Cost</em>'.
+	 * @see org.nasdanika.engineering.Endeavor#getRemainingCost()
+	 * @see #getEndeavor()
+	 * @generated
+	 */
+	EAttribute getEndeavor_RemainingCost();
 
 	/**
 	 * Returns the meta object for class '{@link org.nasdanika.engineering.EngineeredElement <em>Engineered Element</em>}'.
@@ -3621,17 +3968,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getEngineeredCapability();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.EngineeredCapability#getCompletion <em>Completion</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Completion</em>'.
-	 * @see org.nasdanika.engineering.EngineeredCapability#getCompletion()
-	 * @see #getEngineeredCapability()
-	 * @generated
-	 */
-	EAttribute getEngineeredCapability_Completion();
 
 	/**
 	 * Returns the meta object for class '{@link org.nasdanika.engineering.Increment <em>Increment</em>}'.
@@ -4141,28 +4477,6 @@ public interface EngineeringPackage extends EPackage {
 	EReference getIssue_Releases();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Issue#getRemainingEffort <em>Remaining Effort</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Remaining Effort</em>'.
-	 * @see org.nasdanika.engineering.Issue#getRemainingEffort()
-	 * @see #getIssue()
-	 * @generated
-	 */
-	EAttribute getIssue_RemainingEffort();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Issue#getRemainingCost <em>Remaining Cost</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Remaining Cost</em>'.
-	 * @see org.nasdanika.engineering.Issue#getRemainingCost()
-	 * @see #getIssue()
-	 * @generated
-	 */
-	EAttribute getIssue_RemainingCost();
-
-	/**
 	 * Returns the meta object for the containment reference list '{@link org.nasdanika.engineering.Issue#getNotes <em>Notes</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4172,39 +4486,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getIssue_Notes();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Issue#getEffort <em>Effort</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Effort</em>'.
-	 * @see org.nasdanika.engineering.Issue#getEffort()
-	 * @see #getIssue()
-	 * @generated
-	 */
-	EAttribute getIssue_Effort();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Issue#getCost <em>Cost</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Cost</em>'.
-	 * @see org.nasdanika.engineering.Issue#getCost()
-	 * @see #getIssue()
-	 * @generated
-	 */
-	EAttribute getIssue_Cost();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Issue#getBenefit <em>Benefit</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Benefit</em>'.
-	 * @see org.nasdanika.engineering.Issue#getBenefit()
-	 * @see #getIssue()
-	 * @generated
-	 */
-	EAttribute getIssue_Benefit();
 
 	/**
 	 * Returns the meta object for the reference '{@link org.nasdanika.engineering.Issue#getCategory <em>Category</em>}'.
@@ -4456,6 +4737,64 @@ public interface EngineeringPackage extends EPackage {
 		EAttribute NAMED_ELEMENT__NAME = eINSTANCE.getNamedElement_Name();
 
 		/**
+		 * The meta object literal for the '{@link org.nasdanika.engineering.Endeavor <em>Endeavor</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.engineering.Endeavor
+		 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getEndeavor()
+		 * @generated
+		 */
+		EClass ENDEAVOR = eINSTANCE.getEndeavor();
+
+		/**
+		 * The meta object literal for the '<em><b>Completion</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ENDEAVOR__COMPLETION = eINSTANCE.getEndeavor_Completion();
+
+		/**
+		 * The meta object literal for the '<em><b>Effort</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ENDEAVOR__EFFORT = eINSTANCE.getEndeavor_Effort();
+
+		/**
+		 * The meta object literal for the '<em><b>Cost</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ENDEAVOR__COST = eINSTANCE.getEndeavor_Cost();
+
+		/**
+		 * The meta object literal for the '<em><b>Benefit</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ENDEAVOR__BENEFIT = eINSTANCE.getEndeavor_Benefit();
+
+		/**
+		 * The meta object literal for the '<em><b>Remaining Effort</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ENDEAVOR__REMAINING_EFFORT = eINSTANCE.getEndeavor_RemainingEffort();
+
+		/**
+		 * The meta object literal for the '<em><b>Remaining Cost</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ENDEAVOR__REMAINING_COST = eINSTANCE.getEndeavor_RemainingCost();
+
+		/**
 		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.EngineeredElementImpl <em>Engineered Element</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -4694,14 +5033,6 @@ public interface EngineeringPackage extends EPackage {
 		 * @generated
 		 */
 		EClass ENGINEERED_CAPABILITY = eINSTANCE.getEngineeredCapability();
-
-		/**
-		 * The meta object literal for the '<em><b>Completion</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ENGINEERED_CAPABILITY__COMPLETION = eINSTANCE.getEngineeredCapability_Completion();
 
 		/**
 		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.IncrementImpl <em>Increment</em>}' class.
@@ -5100,52 +5431,12 @@ public interface EngineeringPackage extends EPackage {
 		EReference ISSUE__RELEASES = eINSTANCE.getIssue_Releases();
 
 		/**
-		 * The meta object literal for the '<em><b>Remaining Effort</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ISSUE__REMAINING_EFFORT = eINSTANCE.getIssue_RemainingEffort();
-
-		/**
-		 * The meta object literal for the '<em><b>Remaining Cost</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ISSUE__REMAINING_COST = eINSTANCE.getIssue_RemainingCost();
-
-		/**
 		 * The meta object literal for the '<em><b>Notes</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EReference ISSUE__NOTES = eINSTANCE.getIssue_Notes();
-
-		/**
-		 * The meta object literal for the '<em><b>Effort</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ISSUE__EFFORT = eINSTANCE.getIssue_Effort();
-
-		/**
-		 * The meta object literal for the '<em><b>Cost</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ISSUE__COST = eINSTANCE.getIssue_Cost();
-
-		/**
-		 * The meta object literal for the '<em><b>Benefit</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ISSUE__BENEFIT = eINSTANCE.getIssue_Benefit();
 
 		/**
 		 * The meta object literal for the '<em><b>Category</b></em>' reference feature.

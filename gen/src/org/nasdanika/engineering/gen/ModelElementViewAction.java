@@ -38,8 +38,6 @@ import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.IssueStatus;
 import org.nasdanika.engineering.ModelElement;
 import org.nasdanika.html.Fragment;
-import org.nasdanika.html.HTMLFactory;
-import org.nasdanika.html.Tag;
 import org.nasdanika.html.app.Action;
 import org.nasdanika.html.app.ActionActivator;
 import org.nasdanika.html.app.NavigationActionActivator;
@@ -233,7 +231,7 @@ public class ModelElementViewAction<T extends ModelElement> extends SimpleEObjec
 					((org.nasdanika.html.bootstrap.RowContainer.Row.Cell) target).toHTMLElement().content(vg.link(ViewAction.adaptToViewActionNonNull(issue)));
 				};
 			}
-			if (dataSource == EngineeringPackage.Literals.ENGINEERED_CAPABILITY__COMPLETION) {
+			if (dataSource == EngineeringPackage.Literals.ENDEAVOR__COMPLETION) {
 				return (target, vg, pm) -> {
 					double completion = issue.getCompletion();
 					if (completion != Double.NaN && completion > 0.001) {

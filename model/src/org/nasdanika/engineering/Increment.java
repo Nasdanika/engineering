@@ -27,7 +27,7 @@ import org.eclipse.emf.common.util.EList;
  *        annotation="urn:org.nasdanika icon='far fa-calendar-alt'"
  * @generated
  */
-public interface Increment extends NamedElement {
+public interface Increment extends NamedElement, Endeavor {
 	/**
 	 * Returns the value of the '<em><b>Children</b></em>' containment reference list.
 	 * The list contents are of type {@link org.nasdanika.engineering.Increment}.

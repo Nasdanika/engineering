@@ -19,16 +19,11 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.nasdanika.engineering.Issue#getIncrement <em>Increment</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Issue#getContributesTo <em>Contributes To</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Issue#getNotes <em>Notes</em>}</li>
- *   <li>{@link org.nasdanika.engineering.Issue#getEffort <em>Effort</em>}</li>
- *   <li>{@link org.nasdanika.engineering.Issue#getCost <em>Cost</em>}</li>
- *   <li>{@link org.nasdanika.engineering.Issue#getBenefit <em>Benefit</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Issue#getCategory <em>Category</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Issue#getTarget <em>Target</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Issue#getStatus <em>Status</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Issue#isWorkable <em>Workable</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Issue#getReleases <em>Releases</em>}</li>
- *   <li>{@link org.nasdanika.engineering.Issue#getRemainingEffort <em>Remaining Effort</em>}</li>
- *   <li>{@link org.nasdanika.engineering.Issue#getRemainingCost <em>Remaining Cost</em>}</li>
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getIssue()
@@ -181,28 +176,6 @@ public interface Issue extends EngineeredCapability {
 	EList<Release> getReleases();
 
 	/**
-	 * Returns the value of the '<em><b>Remaining Effort</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Remaining Effort</em>' attribute.
-	 * @see org.nasdanika.engineering.EngineeringPackage#getIssue_RemainingEffort()
-	 * @model changeable="false" derived="true"
-	 * @generated
-	 */
-	double getRemainingEffort();
-
-	/**
-	 * Returns the value of the '<em><b>Remaining Cost</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Remaining Cost</em>' attribute.
-	 * @see org.nasdanika.engineering.EngineeringPackage#getIssue_RemainingCost()
-	 * @model changeable="false" derived="true"
-	 * @generated
-	 */
-	double getRemainingCost();
-
-	/**
 	 * Returns the value of the '<em><b>Notes</b></em>' containment reference list.
 	 * The list contents are of type {@link org.nasdanika.engineering.Note}.
 	 * <!-- begin-user-doc -->
@@ -214,72 +187,6 @@ public interface Issue extends EngineeredCapability {
 	 * @generated
 	 */
 	EList<Note> getNotes();
-
-	/**
-	 * Returns the value of the '<em><b>Effort</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Effort</em>' attribute.
-	 * @see #setEffort(double)
-	 * @see org.nasdanika.engineering.EngineeringPackage#getIssue_Effort()
-	 * @model
-	 * @generated
-	 */
-	double getEffort();
-
-	/**
-	 * Sets the value of the '{@link org.nasdanika.engineering.Issue#getEffort <em>Effort</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Effort</em>' attribute.
-	 * @see #getEffort()
-	 * @generated
-	 */
-	void setEffort(double value);
-
-	/**
-	 * Returns the value of the '<em><b>Cost</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Cost</em>' attribute.
-	 * @see #setCost(double)
-	 * @see org.nasdanika.engineering.EngineeringPackage#getIssue_Cost()
-	 * @model
-	 * @generated
-	 */
-	double getCost();
-
-	/**
-	 * Sets the value of the '{@link org.nasdanika.engineering.Issue#getCost <em>Cost</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Cost</em>' attribute.
-	 * @see #getCost()
-	 * @generated
-	 */
-	void setCost(double value);
-
-	/**
-	 * Returns the value of the '<em><b>Benefit</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Benefit</em>' attribute.
-	 * @see #setBenefit(double)
-	 * @see org.nasdanika.engineering.EngineeringPackage#getIssue_Benefit()
-	 * @model
-	 * @generated
-	 */
-	double getBenefit();
-
-	/**
-	 * Sets the value of the '{@link org.nasdanika.engineering.Issue#getBenefit <em>Benefit</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Benefit</em>' attribute.
-	 * @see #getBenefit()
-	 * @generated
-	 */
-	void setBenefit(double value);
 
 	/**
 	 * Returns the value of the '<em><b>Category</b></em>' reference.

@@ -14,6 +14,7 @@ import org.nasdanika.engineering.Artifact;
 import org.nasdanika.engineering.Call;
 import org.nasdanika.engineering.Capability;
 import org.nasdanika.engineering.Directory;
+import org.nasdanika.engineering.Endeavor;
 import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeredCapability;
 import org.nasdanika.engineering.EngineeredElement;
@@ -111,6 +112,8 @@ public class EngineeringValidator extends EObjectValidator {
 				return validateModelElement((ModelElement)value, diagnostics, context);
 			case EngineeringPackage.NAMED_ELEMENT:
 				return validateNamedElement((NamedElement)value, diagnostics, context);
+			case EngineeringPackage.ENDEAVOR:
+				return validateEndeavor((Endeavor)value, diagnostics, context);
 			case EngineeringPackage.INCREMENT:
 				return validateIncrement((Increment)value, diagnostics, context);
 			case EngineeringPackage.ISSUE_CATEGORY:
@@ -183,6 +186,15 @@ public class EngineeringValidator extends EObjectValidator {
 	 */
 	public boolean validateNamedElement(NamedElement namedElement, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(namedElement, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateEndeavor(Endeavor endeavor, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(endeavor, diagnostics, context);
 	}
 
 	/**

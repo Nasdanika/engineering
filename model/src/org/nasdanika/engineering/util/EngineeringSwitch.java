@@ -14,6 +14,7 @@ import org.nasdanika.engineering.Artifact;
 import org.nasdanika.engineering.Call;
 import org.nasdanika.engineering.Capability;
 import org.nasdanika.engineering.Directory;
+import org.nasdanika.engineering.Endeavor;
 import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeredCapability;
 import org.nasdanika.engineering.EngineeredElement;
@@ -111,10 +112,17 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case EngineeringPackage.ENDEAVOR: {
+				Endeavor endeavor = (Endeavor)theEObject;
+				T result = caseEndeavor(endeavor);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case EngineeringPackage.INCREMENT: {
 				Increment increment = (Increment)theEObject;
 				T result = caseIncrement(increment);
 				if (result == null) result = caseNamedElement(increment);
+				if (result == null) result = caseEndeavor(increment);
 				if (result == null) result = caseModelElement(increment);
 				if (result == null) result = caseAdaptable(increment);
 				if (result == null) result = defaultCase(theEObject);
@@ -143,6 +151,7 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				T result = caseIssue(issue);
 				if (result == null) result = caseEngineeredCapability(issue);
 				if (result == null) result = caseCapability(issue);
+				if (result == null) result = caseEndeavor(issue);
 				if (result == null) result = caseNamedElement(issue);
 				if (result == null) result = caseModelElement(issue);
 				if (result == null) result = caseAdaptable(issue);
@@ -233,6 +242,7 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				EngineeredCapability engineeredCapability = (EngineeredCapability)theEObject;
 				T result = caseEngineeredCapability(engineeredCapability);
 				if (result == null) result = caseCapability(engineeredCapability);
+				if (result == null) result = caseEndeavor(engineeredCapability);
 				if (result == null) result = caseNamedElement(engineeredCapability);
 				if (result == null) result = caseModelElement(engineeredCapability);
 				if (result == null) result = caseAdaptable(engineeredCapability);
@@ -244,6 +254,7 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				T result = caseRelease(release);
 				if (result == null) result = caseEngineeredCapability(release);
 				if (result == null) result = caseCapability(release);
+				if (result == null) result = caseEndeavor(release);
 				if (result == null) result = caseNamedElement(release);
 				if (result == null) result = caseModelElement(release);
 				if (result == null) result = caseAdaptable(release);
@@ -255,6 +266,7 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				T result = caseFeature(feature);
 				if (result == null) result = caseEngineeredCapability(feature);
 				if (result == null) result = caseCapability(feature);
+				if (result == null) result = caseEndeavor(feature);
 				if (result == null) result = caseNamedElement(feature);
 				if (result == null) result = caseModelElement(feature);
 				if (result == null) result = caseAdaptable(feature);
@@ -360,6 +372,21 @@ public class EngineeringSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseNamedElement(NamedElement object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Endeavor</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Endeavor</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseEndeavor(Endeavor object) {
 		return null;
 	}
 
