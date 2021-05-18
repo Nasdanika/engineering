@@ -43,6 +43,10 @@ import org.nasdanika.engineering.Release;
  *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getStatus <em>Status</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#isWorkable <em>Workable</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getReleases <em>Releases</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getEffort <em>Effort</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getCost <em>Cost</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getRemainingEffort <em>Remaining Effort</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getRemainingCost <em>Remaining Cost</em>}</li>
  * </ul>
  *
  * @generated
@@ -57,6 +61,43 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 	 * @ordered
 	 */
 	protected static final boolean WORKABLE_EDEFAULT = false;
+
+	/**
+	 * The default value of the '{@link #getEffort() <em>Effort</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEffort()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double EFFORT_EDEFAULT = 0.0;
+	/**
+	 * The default value of the '{@link #getCost() <em>Cost</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCost()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double COST_EDEFAULT = 0.0;
+	/**
+	 * The default value of the '{@link #getRemainingEffort() <em>Remaining Effort</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRemainingEffort()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double REMAINING_EFFORT_EDEFAULT = 0.0;
+	/**
+	 * The default value of the '{@link #getRemainingCost() <em>Remaining Cost</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRemainingCost()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double REMAINING_COST_EDEFAULT = 0.0;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -322,6 +363,46 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public double getEffort() {
+		return (Double)eDynamicGet(EngineeringPackage.ISSUE__EFFORT, EngineeringPackage.Literals.ISSUE__EFFORT, true, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setEffort(double newEffort) {
+		eDynamicSet(EngineeringPackage.ISSUE__EFFORT, EngineeringPackage.Literals.ISSUE__EFFORT, newEffort);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public double getCost() {
+		return (Double)eDynamicGet(EngineeringPackage.ISSUE__COST, EngineeringPackage.Literals.ISSUE__COST, true, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setCost(double newCost) {
+		eDynamicSet(EngineeringPackage.ISSUE__COST, EngineeringPackage.Literals.ISSUE__COST, newCost);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
 	@Override
@@ -372,7 +453,24 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 		double rate = getAssignee().getRate();
 		double remaining = getRemainingCost() + rate * getRemainingEffort();
 		double total = getCost() + rate * getEffort();
+		for (Issue child: getChildren()) {
+			double cc = child.getCompletion();
+			double ctc = child.getTotalCost();
+			total += ctc;
+			if (Double.isFinite(cc)) {
+				remaining += (1 - cc) * ctc; 
+			}
+		}
 		return total == 0 ? Double.NaN : Math.max(0, total - remaining) / total;
+	}
+	
+	@Override
+	public double getTotalCost() {
+		double ret = getCost() + getEffort() * getAssignee().getRate();
+		for (Issue child: getChildren()) {
+			ret += child.getTotalCost();
+		}
+		return ret;
 	}
 
 	/**
@@ -555,6 +653,14 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 				return isWorkable();
 			case EngineeringPackage.ISSUE__RELEASES:
 				return getReleases();
+			case EngineeringPackage.ISSUE__EFFORT:
+				return getEffort();
+			case EngineeringPackage.ISSUE__COST:
+				return getCost();
+			case EngineeringPackage.ISSUE__REMAINING_EFFORT:
+				return getRemainingEffort();
+			case EngineeringPackage.ISSUE__REMAINING_COST:
+				return getRemainingCost();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -600,6 +706,12 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 				getReleases().clear();
 				getReleases().addAll((Collection<? extends Release>)newValue);
 				return;
+			case EngineeringPackage.ISSUE__EFFORT:
+				setEffort((Double)newValue);
+				return;
+			case EngineeringPackage.ISSUE__COST:
+				setCost((Double)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -639,6 +751,12 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 			case EngineeringPackage.ISSUE__RELEASES:
 				getReleases().clear();
 				return;
+			case EngineeringPackage.ISSUE__EFFORT:
+				setEffort(EFFORT_EDEFAULT);
+				return;
+			case EngineeringPackage.ISSUE__COST:
+				setCost(COST_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -673,6 +791,14 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 				return isWorkable() != WORKABLE_EDEFAULT;
 			case EngineeringPackage.ISSUE__RELEASES:
 				return !getReleases().isEmpty();
+			case EngineeringPackage.ISSUE__EFFORT:
+				return getEffort() != EFFORT_EDEFAULT;
+			case EngineeringPackage.ISSUE__COST:
+				return getCost() != COST_EDEFAULT;
+			case EngineeringPackage.ISSUE__REMAINING_EFFORT:
+				return getRemainingEffort() != REMAINING_EFFORT_EDEFAULT;
+			case EngineeringPackage.ISSUE__REMAINING_COST:
+				return getRemainingCost() != REMAINING_COST_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}

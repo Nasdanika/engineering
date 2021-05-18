@@ -3,10 +3,10 @@
 package org.nasdanika.engineering.impl;
 
 import java.util.Collection;
+
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.nasdanika.engineering.Activity;
@@ -189,5 +189,29 @@ public class FeatureImpl extends EngineeredCapabilityImpl implements Feature {
 		}
 		return super.eIsSet(featureID);
 	}
-
+		
+	@Override
+	public double getCompletion() {
+		double remaining = 0;
+		double total = 0;
+		for (Issue issue: getIssues()) {
+			double cc = issue.getCompletion();
+			double ctc = issue.getTotalCost();
+			total += ctc;
+			if (Double.isFinite(cc)) {
+				remaining += (1 - cc) * ctc; 
+			}
+		}
+		return total == 0 ? Double.NaN : Math.max(0, total - remaining) / total;
+	}
+	
+	@Override
+	public double getTotalCost() {
+		double ret = 0;
+		for (Issue issue: getIssues()) {
+			ret += issue.getTotalCost();
+		}
+		return ret;
+	}
+	
 } //FeatureImpl

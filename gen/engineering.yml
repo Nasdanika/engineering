@@ -63,6 +63,12 @@ engineering-module:
        increment: nasdanika:increments/2021/children/q2/children/may
        releases: nasdanika:modules/engineering/releases/2021/5/0
        effort: 4 
+       children:
+         - name: Sample child
+           effort: 6
+           notes:
+             - date: 2021/05/13
+               effort: 2
      - name: Completion derived attribute
        description: In engineered capability - release, feature, issue. Show in properties. Along with effective benefit, cost, etc. Kinda duplicate.  
        increment: nasdanika:increments/2021/children/q2/children/may

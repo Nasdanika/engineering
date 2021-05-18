@@ -25,11 +25,8 @@ import org.nasdanika.engineering.Release;
  * </p>
  * <ul>
  *   <li>{@link org.nasdanika.engineering.impl.IncrementImpl#getCompletion <em>Completion</em>}</li>
- *   <li>{@link org.nasdanika.engineering.impl.IncrementImpl#getEffort <em>Effort</em>}</li>
- *   <li>{@link org.nasdanika.engineering.impl.IncrementImpl#getCost <em>Cost</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IncrementImpl#getBenefit <em>Benefit</em>}</li>
- *   <li>{@link org.nasdanika.engineering.impl.IncrementImpl#getRemainingEffort <em>Remaining Effort</em>}</li>
- *   <li>{@link org.nasdanika.engineering.impl.IncrementImpl#getRemainingCost <em>Remaining Cost</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.IncrementImpl#getTotalCost <em>Total Cost</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IncrementImpl#getChildren <em>Children</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IncrementImpl#getStart <em>Start</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IncrementImpl#getEnd <em>End</em>}</li>
@@ -51,26 +48,6 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 	protected static final double COMPLETION_EDEFAULT = 0.0;
 
 	/**
-	 * The default value of the '{@link #getEffort() <em>Effort</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getEffort()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final double EFFORT_EDEFAULT = 0.0;
-
-	/**
-	 * The default value of the '{@link #getCost() <em>Cost</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getCost()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final double COST_EDEFAULT = 0.0;
-
-	/**
 	 * The default value of the '{@link #getBenefit() <em>Benefit</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -81,24 +58,14 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 	protected static final double BENEFIT_EDEFAULT = 0.0;
 
 	/**
-	 * The default value of the '{@link #getRemainingEffort() <em>Remaining Effort</em>}' attribute.
+	 * The default value of the '{@link #getTotalCost() <em>Total Cost</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getRemainingEffort()
+	 * @see #getTotalCost()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final double REMAINING_EFFORT_EDEFAULT = 0.0;
-
-	/**
-	 * The default value of the '{@link #getRemainingCost() <em>Remaining Cost</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getRemainingCost()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final double REMAINING_COST_EDEFAULT = 0.0;
+	protected static final double TOTAL_COST_EDEFAULT = 0.0;
 
 	/**
 	 * The default value of the '{@link #getStart() <em>Start</em>}' attribute.
@@ -145,56 +112,6 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 	 * @generated
 	 */
 	@Override
-	public double getCompletion() {
-		return (Double)eDynamicGet(EngineeringPackage.INCREMENT__COMPLETION, EngineeringPackage.Literals.ENDEAVOR__COMPLETION, true, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public double getEffort() {
-		return (Double)eDynamicGet(EngineeringPackage.INCREMENT__EFFORT, EngineeringPackage.Literals.ENDEAVOR__EFFORT, true, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setEffort(double newEffort) {
-		eDynamicSet(EngineeringPackage.INCREMENT__EFFORT, EngineeringPackage.Literals.ENDEAVOR__EFFORT, newEffort);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public double getCost() {
-		return (Double)eDynamicGet(EngineeringPackage.INCREMENT__COST, EngineeringPackage.Literals.ENDEAVOR__COST, true, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setCost(double newCost) {
-		eDynamicSet(EngineeringPackage.INCREMENT__COST, EngineeringPackage.Literals.ENDEAVOR__COST, newCost);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public double getBenefit() {
 		return (Double)eDynamicGet(EngineeringPackage.INCREMENT__BENEFIT, EngineeringPackage.Literals.ENDEAVOR__BENEFIT, true, true);
 	}
@@ -207,26 +124,6 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 	@Override
 	public void setBenefit(double newBenefit) {
 		eDynamicSet(EngineeringPackage.INCREMENT__BENEFIT, EngineeringPackage.Literals.ENDEAVOR__BENEFIT, newBenefit);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public double getRemainingEffort() {
-		return (Double)eDynamicGet(EngineeringPackage.INCREMENT__REMAINING_EFFORT, EngineeringPackage.Literals.ENDEAVOR__REMAINING_EFFORT, true, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public double getRemainingCost() {
-		return (Double)eDynamicGet(EngineeringPackage.INCREMENT__REMAINING_COST, EngineeringPackage.Literals.ENDEAVOR__REMAINING_COST, true, true);
 	}
 
 	/**
@@ -345,16 +242,10 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 		switch (featureID) {
 			case EngineeringPackage.INCREMENT__COMPLETION:
 				return getCompletion();
-			case EngineeringPackage.INCREMENT__EFFORT:
-				return getEffort();
-			case EngineeringPackage.INCREMENT__COST:
-				return getCost();
 			case EngineeringPackage.INCREMENT__BENEFIT:
 				return getBenefit();
-			case EngineeringPackage.INCREMENT__REMAINING_EFFORT:
-				return getRemainingEffort();
-			case EngineeringPackage.INCREMENT__REMAINING_COST:
-				return getRemainingCost();
+			case EngineeringPackage.INCREMENT__TOTAL_COST:
+				return getTotalCost();
 			case EngineeringPackage.INCREMENT__CHILDREN:
 				return getChildren();
 			case EngineeringPackage.INCREMENT__START:
@@ -378,12 +269,6 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EngineeringPackage.INCREMENT__EFFORT:
-				setEffort((Double)newValue);
-				return;
-			case EngineeringPackage.INCREMENT__COST:
-				setCost((Double)newValue);
-				return;
 			case EngineeringPackage.INCREMENT__BENEFIT:
 				setBenefit((Double)newValue);
 				return;
@@ -409,12 +294,6 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EngineeringPackage.INCREMENT__EFFORT:
-				setEffort(EFFORT_EDEFAULT);
-				return;
-			case EngineeringPackage.INCREMENT__COST:
-				setCost(COST_EDEFAULT);
-				return;
 			case EngineeringPackage.INCREMENT__BENEFIT:
 				setBenefit(BENEFIT_EDEFAULT);
 				return;
@@ -441,16 +320,10 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 		switch (featureID) {
 			case EngineeringPackage.INCREMENT__COMPLETION:
 				return getCompletion() != COMPLETION_EDEFAULT;
-			case EngineeringPackage.INCREMENT__EFFORT:
-				return getEffort() != EFFORT_EDEFAULT;
-			case EngineeringPackage.INCREMENT__COST:
-				return getCost() != COST_EDEFAULT;
 			case EngineeringPackage.INCREMENT__BENEFIT:
 				return getBenefit() != BENEFIT_EDEFAULT;
-			case EngineeringPackage.INCREMENT__REMAINING_EFFORT:
-				return getRemainingEffort() != REMAINING_EFFORT_EDEFAULT;
-			case EngineeringPackage.INCREMENT__REMAINING_COST:
-				return getRemainingCost() != REMAINING_COST_EDEFAULT;
+			case EngineeringPackage.INCREMENT__TOTAL_COST:
+				return getTotalCost() != TOTAL_COST_EDEFAULT;
 			case EngineeringPackage.INCREMENT__CHILDREN:
 				return !getChildren().isEmpty();
 			case EngineeringPackage.INCREMENT__START:
@@ -475,11 +348,8 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 		if (baseClass == Endeavor.class) {
 			switch (derivedFeatureID) {
 				case EngineeringPackage.INCREMENT__COMPLETION: return EngineeringPackage.ENDEAVOR__COMPLETION;
-				case EngineeringPackage.INCREMENT__EFFORT: return EngineeringPackage.ENDEAVOR__EFFORT;
-				case EngineeringPackage.INCREMENT__COST: return EngineeringPackage.ENDEAVOR__COST;
 				case EngineeringPackage.INCREMENT__BENEFIT: return EngineeringPackage.ENDEAVOR__BENEFIT;
-				case EngineeringPackage.INCREMENT__REMAINING_EFFORT: return EngineeringPackage.ENDEAVOR__REMAINING_EFFORT;
-				case EngineeringPackage.INCREMENT__REMAINING_COST: return EngineeringPackage.ENDEAVOR__REMAINING_COST;
+				case EngineeringPackage.INCREMENT__TOTAL_COST: return EngineeringPackage.ENDEAVOR__TOTAL_COST;
 				default: return -1;
 			}
 		}
@@ -496,15 +366,64 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 		if (baseClass == Endeavor.class) {
 			switch (baseFeatureID) {
 				case EngineeringPackage.ENDEAVOR__COMPLETION: return EngineeringPackage.INCREMENT__COMPLETION;
-				case EngineeringPackage.ENDEAVOR__EFFORT: return EngineeringPackage.INCREMENT__EFFORT;
-				case EngineeringPackage.ENDEAVOR__COST: return EngineeringPackage.INCREMENT__COST;
 				case EngineeringPackage.ENDEAVOR__BENEFIT: return EngineeringPackage.INCREMENT__BENEFIT;
-				case EngineeringPackage.ENDEAVOR__REMAINING_EFFORT: return EngineeringPackage.INCREMENT__REMAINING_EFFORT;
-				case EngineeringPackage.ENDEAVOR__REMAINING_COST: return EngineeringPackage.INCREMENT__REMAINING_COST;
+				case EngineeringPackage.ENDEAVOR__TOTAL_COST: return EngineeringPackage.INCREMENT__TOTAL_COST;
 				default: return -1;
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
+	
+	@Override
+	/**
+	 * @generated NOT
+	 */
+	public double getCompletion() {
+		double remaining = 0;
+		double total = 0;
+		for (Issue issue: getIssues()) {
+			double cc = issue.getCompletion();
+			double ctc = issue.getTotalCost();
+			total += ctc;
+			if (Double.isFinite(cc)) {
+				remaining += (1 - cc) * ctc; 
+			}
+		}
+		for (Release release: getReleases()) {
+			double cc = release.getCompletion();
+			double ctc = release.getTotalCost();
+			total += ctc;
+			if (Double.isFinite(cc)) {
+				remaining += (1 - cc) * ctc; 
+			}
+		}
+		for (Increment child: getChildren()) {
+			double cc = child.getCompletion();
+			double ctc = child.getTotalCost();
+			total += ctc;
+			if (Double.isFinite(cc)) {
+				remaining += (1 - cc) * ctc; 
+			}
+		}
+		return total == 0 ? Double.NaN : Math.max(0, total - remaining) / total;
+	}
+	
+	@Override
+	/**
+	 * @generated NOT
+	 */
+	public double getTotalCost() {
+		double ret = 0;
+		for (Issue issue: getIssues()) {
+			ret += issue.getTotalCost();
+		}
+		for (Release release: getReleases()) {
+			ret += release.getTotalCost();
+		}
+		for (Increment child: getChildren()) {
+			ret += child.getTotalCost();
+		}
+		return ret;
 	}
 
 } //IncrementImpl

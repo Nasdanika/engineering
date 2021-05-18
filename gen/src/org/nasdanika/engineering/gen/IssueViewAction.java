@@ -46,7 +46,7 @@ public class IssueViewAction extends EngineeredCapabilityViewAction<Issue> {
 			return role == FeatureRole.PROPERTY;
 		}
 		if (feature == EngineeringPackage.Literals.ISSUE__CHILDREN) {
-			return role == FeatureRole.FEATURE_ACTIONS;
+			return role == FeatureRole.FEATURE_ACTIONS || role == FeatureRole.ELEMENT_ACTIONS;
 		}
 		if (feature == EngineeringPackage.Literals.ISSUE__NOTES) {
 			return role == FeatureRole.FEATURE_ACTIONS;
@@ -66,11 +66,11 @@ public class IssueViewAction extends EngineeredCapabilityViewAction<Issue> {
 					EngineeringPackage.Literals.ISSUE__STATUS,
 					EngineeringPackage.Literals.ISSUE__CATEGORY,				
 					EngineeringPackage.Literals.ISSUE__ASSIGNEE,				
-					EngineeringPackage.Literals.ENDEAVOR__EFFORT,
-					EngineeringPackage.Literals.ENDEAVOR__COST,
+					EngineeringPackage.Literals.ISSUE__EFFORT,
+					EngineeringPackage.Literals.ISSUE__COST,
 					EngineeringPackage.Literals.ENDEAVOR__BENEFIT,
-					EngineeringPackage.Literals.ENDEAVOR__REMAINING_EFFORT,
-					EngineeringPackage.Literals.ENDEAVOR__REMAINING_COST,
+					EngineeringPackage.Literals.ISSUE__REMAINING_EFFORT,
+					EngineeringPackage.Literals.ISSUE__REMAINING_COST,
 					EngineeringPackage.Literals.ENDEAVOR__COMPLETION));
 		}
 		if (feature == EngineeringPackage.Literals.ISSUE__NOTES) {

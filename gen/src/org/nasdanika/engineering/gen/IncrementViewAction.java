@@ -104,11 +104,11 @@ public class IncrementViewAction extends NamedElementViewAction<Increment> {
 							EngineeringPackage.Literals.ISSUE__TARGET,
 							EngineeringPackage.Literals.ISSUE__CATEGORY,				
 							EngineeringPackage.Literals.ISSUE__ASSIGNEE,				
-							EngineeringPackage.Literals.ENDEAVOR__EFFORT,
-							EngineeringPackage.Literals.ENDEAVOR__COST,
+							EngineeringPackage.Literals.ISSUE__EFFORT,
+							EngineeringPackage.Literals.ISSUE__COST,
 							EngineeringPackage.Literals.ENDEAVOR__BENEFIT,
-							EngineeringPackage.Literals.ENDEAVOR__REMAINING_EFFORT,
-							EngineeringPackage.Literals.ENDEAVOR__REMAINING_COST,
+							EngineeringPackage.Literals.ISSUE__REMAINING_EFFORT,
+							EngineeringPackage.Literals.ISSUE__REMAINING_COST,
 							EngineeringPackage.Literals.ENDEAVOR__COMPLETION));
 					
 					return ret;
@@ -127,6 +127,17 @@ public class IncrementViewAction extends NamedElementViewAction<Increment> {
 		}
 		
 		return children;
+	}
+
+	@Override
+	protected Object featureValue(EStructuralFeature feature, Object value, ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
+		if (feature == EngineeringPackage.Literals.ENDEAVOR__COMPLETION) {
+			double completion = getSemanticElement().getCompletion();
+			if (completion != Double.NaN && completion > 0.001) {
+				return viewGenerator.getBootstrapFactory().progressBar((int) (100 * completion));
+			}			
+		}
+		return super.featureValue(feature, value, viewGenerator, progressMonitor);
 	}
 
 }

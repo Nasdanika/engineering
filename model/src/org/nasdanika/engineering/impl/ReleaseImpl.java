@@ -213,5 +213,40 @@ public class ReleaseImpl extends EngineeredCapabilityImpl implements Release {
 		}
 		return super.eIsSet(featureID);
 	}
+	
+	@Override
+	public double getCompletion() {
+		double remaining = 0;
+		double total = 0;
+		for (Issue issue: getIssues()) {
+			double cc = issue.getCompletion();
+			double ctc = issue.getTotalCost();
+			total += ctc;
+			if (Double.isFinite(cc)) {
+				remaining += (1 - cc) * ctc; 
+			}
+		}
+		for (Feature feature: getFeatures()) {
+			double cc = feature.getCompletion();
+			double ctc = feature.getTotalCost();
+			total += ctc;
+			if (Double.isFinite(cc)) {
+				remaining += (1 - cc) * ctc; 
+			}
+		}
+		return total == 0 ? Double.NaN : Math.max(0, total - remaining) / total;
+	}
+	
+	@Override
+	public double getTotalCost() {
+		double ret = 0;
+		for (Issue issue: getIssues()) {
+			ret += issue.getTotalCost();
+		}
+		for (Feature feature: getFeatures()) {
+			ret += feature.getTotalCost();
+		}
+		return ret;
+	}
 
 } //ReleaseImpl
