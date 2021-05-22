@@ -83,13 +83,28 @@
         <details key="documentation" value="Releases scheduled to be made available in this increment"/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="capacity" upperBound="-1"
+        eType="#//Capacity" changeable="false" derived="true" eOpposite="#//Capacity/increment">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Capacity if element is capacity, utilization if element is Allocation."/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IssueCategory" eSuperTypes="#//NamedElement">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="weight" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="weight" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Category relative importance. Can be used to allocate issues to increments in a balanced way."/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="issues" upperBound="-1"
         eType="#//Issue" changeable="false" derived="true" eOpposite="#//Issue/category">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Issues in the category."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cumulative" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="If true, unused category weight &quot;capacity&quot; is carried over to future increments and overused is subtracted from future increments. This allow low-weight categories to accumulate weight over time."/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
@@ -191,8 +206,17 @@
         eType="#//Engineer" eOpposite="#//Engineer/owns"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="experts" upperBound="-1"
         eType="#//Engineer" eOpposite="#//Engineer/expertise"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="allocations" upperBound="-1"
+        eType="#//Allocation" containment="true">
+      <eAnnotations source="urn:org.nasdanika">
+        <details key="homogenous" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Persona" eSuperTypes="#//EngineeredElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Persona" eSuperTypes="#//EngineeredElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="activities" upperBound="-1"
+        eType="#//Activity" changeable="false" derived="true" eOpposite="#//Activity/personas"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Engineer" eSuperTypes="#//Persona">
     <eAnnotations source="urn:org.nasdanika">
       <details key="documentation-reference" value="../doc/engineer.md"/>
@@ -232,6 +256,18 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="rate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
         defaultValueLiteral="1"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="designations" upperBound="-1"
+        eType="#//Allocation" changeable="false" derived="true" eOpposite="#//Allocation/engineer">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Allocations of this engineer's effort to engineering elements."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="capacity" upperBound="-1"
+        eType="#//Capacity" containment="true">
+      <eAnnotations source="urn:org.nasdanika">
+        <details key="homogenous" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Organization" eSuperTypes="#//Engineer">
     <eAnnotations source="urn:org.nasdanika">
@@ -332,7 +368,8 @@
     <eAnnotations source="urn:org.nasdanika">
       <details key="documentation-reference" value="../doc/activity.md"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="persona" eType="#//Persona"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="personas" upperBound="-1"
+        eType="#//Persona" eOpposite="#//Persona/activities"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="outputs" upperBound="-1"
         eType="#//Transition" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="activityType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
@@ -396,5 +433,22 @@
   <eClassifiers xsi:type="ecore:EClass" name="Directory" eSuperTypes="#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
         eType="#//NamedElement" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Capacity" eSuperTypes="#//ModelElement">
+    <eAnnotations source="urn:org.nasdanika">
+      <details key="documentation-reference" value="../doc/capacity.md"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="increment" eType="#//Increment"
+        eOpposite="#//Increment/capacity"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="effort" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="funds" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Allocation" eSuperTypes="#//Capacity">
+    <eAnnotations source="urn:org.nasdanika">
+      <details key="documentation-reference" value="../doc/allocation.md"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="engineer" eType="#//Engineer"
+        eOpposite="#//Engineer/designations"/>
   </eClassifiers>
 </ecore:EPackage>

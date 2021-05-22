@@ -12,6 +12,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.nasdanika.common.Adaptable;
 
 import org.nasdanika.engineering.Activity;
+import org.nasdanika.engineering.Allocation;
 import org.nasdanika.engineering.Artifact;
 import org.nasdanika.engineering.Call;
 import org.nasdanika.engineering.Capability;
@@ -191,6 +192,10 @@ public class EngineeringAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseDirectory(Directory object) {
 				return createDirectoryAdapter();
+			}
+			@Override
+			public Adapter caseAllocation(Allocation object) {
+				return createAllocationAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -559,6 +564,20 @@ public class EngineeringAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createDirectoryAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.Allocation <em>Allocation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.nasdanika.engineering.Allocation
+	 * @generated
+	 */
+	public Adapter createAllocationAdapter() {
 		return null;
 	}
 

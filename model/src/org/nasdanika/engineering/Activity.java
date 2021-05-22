@@ -13,7 +13,7 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.nasdanika.engineering.Activity#getPersona <em>Persona</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.Activity#getPersonas <em>Personas</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Activity#getOutputs <em>Outputs</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Activity#getActivityType <em>Activity Type</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Activity#getRequirements <em>Requirements</em>}</li>
@@ -28,26 +28,18 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface Activity extends EngineeredElement {
 	/**
-	 * Returns the value of the '<em><b>Persona</b></em>' reference.
+	 * Returns the value of the '<em><b>Personas</b></em>' reference list.
+	 * The list contents are of type {@link org.nasdanika.engineering.Persona}.
+	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Persona#getActivities <em>Activities</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Persona</em>' reference.
-	 * @see #setPersona(Persona)
-	 * @see org.nasdanika.engineering.EngineeringPackage#getActivity_Persona()
-	 * @model
+	 * @return the value of the '<em>Personas</em>' reference list.
+	 * @see org.nasdanika.engineering.EngineeringPackage#getActivity_Personas()
+	 * @see org.nasdanika.engineering.Persona#getActivities
+	 * @model opposite="activities"
 	 * @generated
 	 */
-	Persona getPersona();
-
-	/**
-	 * Sets the value of the '{@link org.nasdanika.engineering.Activity#getPersona <em>Persona</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Persona</em>' reference.
-	 * @see #getPersona()
-	 * @generated
-	 */
-	void setPersona(Persona value);
+	EList<Persona> getPersonas();
 
 	/**
 	 * Returns the value of the '<em><b>Outputs</b></em>' containment reference list.

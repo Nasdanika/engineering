@@ -638,13 +638,22 @@ public interface EngineeringPackage extends EPackage {
 	int ISSUE_CATEGORY__ISSUES = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Cumulative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE_CATEGORY__CUMULATIVE = NAMED_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Issue Category</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ISSUE_CATEGORY_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 2;
+	int ISSUE_CATEGORY_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>Issue Category</em>' class.
@@ -1566,13 +1575,22 @@ public interface EngineeringPackage extends EPackage {
 	int ENGINEERED_ELEMENT__EXPERTS = NAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Allocations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEERED_ELEMENT__ALLOCATIONS = NAMED_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Engineered Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEERED_ELEMENT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 3;
+	int ENGINEERED_ELEMENT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of operations of the '<em>Engineered Element</em>' class.
@@ -1674,13 +1692,31 @@ public interface EngineeringPackage extends EPackage {
 	int PERSONA__EXPERTS = ENGINEERED_ELEMENT__EXPERTS;
 
 	/**
+	 * The feature id for the '<em><b>Allocations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSONA__ALLOCATIONS = ENGINEERED_ELEMENT__ALLOCATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Activities</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSONA__ACTIVITIES = ENGINEERED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Persona</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PERSONA_FEATURE_COUNT = ENGINEERED_ELEMENT_FEATURE_COUNT + 0;
+	int PERSONA_FEATURE_COUNT = ENGINEERED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Persona</em>' class.
@@ -1782,6 +1818,24 @@ public interface EngineeringPackage extends EPackage {
 	int ENGINEER__EXPERTS = PERSONA__EXPERTS;
 
 	/**
+	 * The feature id for the '<em><b>Allocations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEER__ALLOCATIONS = PERSONA__ALLOCATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Activities</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEER__ACTIVITIES = PERSONA__ACTIVITIES;
+
+	/**
 	 * The feature id for the '<em><b>Modules</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1872,13 +1926,22 @@ public interface EngineeringPackage extends EPackage {
 	int ENGINEER__RATE = PERSONA_FEATURE_COUNT + 9;
 
 	/**
+	 * The feature id for the '<em><b>Designations</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEER__DESIGNATIONS = PERSONA_FEATURE_COUNT + 10;
+
+	/**
 	 * The number of structural features of the '<em>Engineer</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEER_FEATURE_COUNT = PERSONA_FEATURE_COUNT + 10;
+	int ENGINEER_FEATURE_COUNT = PERSONA_FEATURE_COUNT + 11;
 
 	/**
 	 * The number of operations of the '<em>Engineer</em>' class.
@@ -1980,6 +2043,24 @@ public interface EngineeringPackage extends EPackage {
 	int ORGANIZATION__EXPERTS = ENGINEER__EXPERTS;
 
 	/**
+	 * The feature id for the '<em><b>Allocations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANIZATION__ALLOCATIONS = ENGINEER__ALLOCATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Activities</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANIZATION__ACTIVITIES = ENGINEER__ACTIVITIES;
+
+	/**
 	 * The feature id for the '<em><b>Modules</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2068,6 +2149,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int ORGANIZATION__RATE = ENGINEER__RATE;
+
+	/**
+	 * The feature id for the '<em><b>Designations</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANIZATION__DESIGNATIONS = ENGINEER__DESIGNATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Engineers</b></em>' containment reference list.
@@ -2187,6 +2277,15 @@ public interface EngineeringPackage extends EPackage {
 	int MODULE__EXPERTS = ENGINEERED_ELEMENT__EXPERTS;
 
 	/**
+	 * The feature id for the '<em><b>Allocations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODULE__ALLOCATIONS = ENGINEERED_ELEMENT__ALLOCATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Modules</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2302,6 +2401,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int PRODUCT__EXPERTS = MODULE__EXPERTS;
+
+	/**
+	 * The feature id for the '<em><b>Allocations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT__ALLOCATIONS = MODULE__ALLOCATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Modules</b></em>' containment reference list.
@@ -2754,13 +2862,22 @@ public interface EngineeringPackage extends EPackage {
 	int ACTIVITY__EXPERTS = ENGINEERED_ELEMENT__EXPERTS;
 
 	/**
-	 * The feature id for the '<em><b>Persona</b></em>' reference.
+	 * The feature id for the '<em><b>Allocations</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY__PERSONA = ENGINEERED_ELEMENT_FEATURE_COUNT + 0;
+	int ACTIVITY__ALLOCATIONS = ENGINEERED_ELEMENT__ALLOCATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Personas</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__PERSONAS = ENGINEERED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Outputs</b></em>' containment reference list.
@@ -2925,13 +3042,22 @@ public interface EngineeringPackage extends EPackage {
 	int JOURNEY__EXPERTS = ACTIVITY__EXPERTS;
 
 	/**
-	 * The feature id for the '<em><b>Persona</b></em>' reference.
+	 * The feature id for the '<em><b>Allocations</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JOURNEY__PERSONA = ACTIVITY__PERSONA;
+	int JOURNEY__ALLOCATIONS = ACTIVITY__ALLOCATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Personas</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY__PERSONAS = ACTIVITY__PERSONAS;
 
 	/**
 	 * The feature id for the '<em><b>Outputs</b></em>' containment reference list.
@@ -3241,6 +3367,15 @@ public interface EngineeringPackage extends EPackage {
 	int ARTIFACT__EXPERTS = ENGINEERED_ELEMENT__EXPERTS;
 
 	/**
+	 * The feature id for the '<em><b>Allocations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ARTIFACT__ALLOCATIONS = ENGINEERED_ELEMENT__ALLOCATIONS;
+
+	/**
 	 * The number of structural features of the '<em>Artifact</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3357,6 +3492,134 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int DIRECTORY_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
+
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.AllocationImpl <em>Allocation</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.AllocationImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getAllocation()
+	 * @generated
+	 */
+	int ALLOCATION = 25;
+
+	/**
+	 * The feature id for the '<em><b>Uri</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ALLOCATION__URI = MODEL_ELEMENT__URI;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ALLOCATION__PATH = MODEL_ELEMENT__PATH;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ALLOCATION__DESCRIPTION = MODEL_ELEMENT__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ALLOCATION__MARKDOWN_DESCRIPTION = MODEL_ELEMENT__MARKDOWN_DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Actions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ALLOCATION__ACTIONS = MODEL_ELEMENT__ACTIONS;
+
+	/**
+	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ALLOCATION__RESOURCES = MODEL_ELEMENT__RESOURCES;
+
+	/**
+	 * The feature id for the '<em><b>Increment</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ALLOCATION__INCREMENT = MODEL_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Engineer</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ALLOCATION__ENGINEER = MODEL_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Effort</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ALLOCATION__EFFORT = MODEL_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Rate</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ALLOCATION__RATE = MODEL_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Funds</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ALLOCATION__FUNDS = MODEL_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
+	 * The number of structural features of the '<em>Allocation</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ALLOCATION_FEATURE_COUNT = MODEL_ELEMENT_FEATURE_COUNT + 5;
+
+	/**
+	 * The number of operations of the '<em>Allocation</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ALLOCATION_OPERATION_COUNT = MODEL_ELEMENT_OPERATION_COUNT + 0;
 
 
 	/**
@@ -3554,6 +3817,17 @@ public interface EngineeringPackage extends EPackage {
 	EReference getEngineeredElement_Experts();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link org.nasdanika.engineering.EngineeredElement#getAllocations <em>Allocations</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Allocations</em>'.
+	 * @see org.nasdanika.engineering.EngineeredElement#getAllocations()
+	 * @see #getEngineeredElement()
+	 * @generated
+	 */
+	EReference getEngineeredElement_Allocations();
+
+	/**
 	 * Returns the meta object for class '{@link org.nasdanika.engineering.Persona <em>Persona</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3562,6 +3836,17 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getPersona();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.Persona#getActivities <em>Activities</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Activities</em>'.
+	 * @see org.nasdanika.engineering.Persona#getActivities()
+	 * @see #getPersona()
+	 * @generated
+	 */
+	EReference getPersona_Activities();
 
 	/**
 	 * Returns the meta object for class '{@link org.nasdanika.engineering.Engineer <em>Engineer</em>}'.
@@ -3682,6 +3967,17 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getEngineer_Rate();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.Engineer#getDesignations <em>Designations</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Designations</em>'.
+	 * @see org.nasdanika.engineering.Engineer#getDesignations()
+	 * @see #getEngineer()
+	 * @generated
+	 */
+	EReference getEngineer_Designations();
 
 	/**
 	 * Returns the meta object for class '{@link org.nasdanika.engineering.Organization <em>Organization</em>}'.
@@ -3908,6 +4204,17 @@ public interface EngineeringPackage extends EPackage {
 	EReference getIssueCategory_Issues();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.IssueCategory#isCumulative <em>Cumulative</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Cumulative</em>'.
+	 * @see org.nasdanika.engineering.IssueCategory#isCumulative()
+	 * @see #getIssueCategory()
+	 * @generated
+	 */
+	EAttribute getIssueCategory_Cumulative();
+
+	/**
 	 * Returns the meta object for class '{@link org.nasdanika.engineering.IssueStatus <em>Issue Status</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4036,15 +4343,15 @@ public interface EngineeringPackage extends EPackage {
 	EClass getActivity();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.nasdanika.engineering.Activity#getPersona <em>Persona</em>}'.
+	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.Activity#getPersonas <em>Personas</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Persona</em>'.
-	 * @see org.nasdanika.engineering.Activity#getPersona()
+	 * @return the meta object for the reference list '<em>Personas</em>'.
+	 * @see org.nasdanika.engineering.Activity#getPersonas()
 	 * @see #getActivity()
 	 * @generated
 	 */
-	EReference getActivity_Persona();
+	EReference getActivity_Personas();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link org.nasdanika.engineering.Activity#getOutputs <em>Outputs</em>}'.
@@ -4513,6 +4820,71 @@ public interface EngineeringPackage extends EPackage {
 	EReference getDirectory_Elements();
 
 	/**
+	 * Returns the meta object for class '{@link org.nasdanika.engineering.Allocation <em>Allocation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Allocation</em>'.
+	 * @see org.nasdanika.engineering.Allocation
+	 * @generated
+	 */
+	EClass getAllocation();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.nasdanika.engineering.Allocation#getIncrement <em>Increment</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Increment</em>'.
+	 * @see org.nasdanika.engineering.Allocation#getIncrement()
+	 * @see #getAllocation()
+	 * @generated
+	 */
+	EReference getAllocation_Increment();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.nasdanika.engineering.Allocation#getEngineer <em>Engineer</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Engineer</em>'.
+	 * @see org.nasdanika.engineering.Allocation#getEngineer()
+	 * @see #getAllocation()
+	 * @generated
+	 */
+	EReference getAllocation_Engineer();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Allocation#getEffort <em>Effort</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Effort</em>'.
+	 * @see org.nasdanika.engineering.Allocation#getEffort()
+	 * @see #getAllocation()
+	 * @generated
+	 */
+	EAttribute getAllocation_Effort();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Allocation#getRate <em>Rate</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Rate</em>'.
+	 * @see org.nasdanika.engineering.Allocation#getRate()
+	 * @see #getAllocation()
+	 * @generated
+	 */
+	EAttribute getAllocation_Rate();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Allocation#getFunds <em>Funds</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Funds</em>'.
+	 * @see org.nasdanika.engineering.Allocation#getFunds()
+	 * @see #getAllocation()
+	 * @generated
+	 */
+	EAttribute getAllocation_Funds();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4690,6 +5062,14 @@ public interface EngineeringPackage extends EPackage {
 		EReference ENGINEERED_ELEMENT__EXPERTS = eINSTANCE.getEngineeredElement_Experts();
 
 		/**
+		 * The meta object literal for the '<em><b>Allocations</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ENGINEERED_ELEMENT__ALLOCATIONS = eINSTANCE.getEngineeredElement_Allocations();
+
+		/**
 		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.PersonaImpl <em>Persona</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -4698,6 +5078,14 @@ public interface EngineeringPackage extends EPackage {
 		 * @generated
 		 */
 		EClass PERSONA = eINSTANCE.getPersona();
+
+		/**
+		 * The meta object literal for the '<em><b>Activities</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PERSONA__ACTIVITIES = eINSTANCE.getPersona_Activities();
 
 		/**
 		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.EngineerImpl <em>Engineer</em>}' class.
@@ -4788,6 +5176,14 @@ public interface EngineeringPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ENGINEER__RATE = eINSTANCE.getEngineer_Rate();
+
+		/**
+		 * The meta object literal for the '<em><b>Designations</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ENGINEER__DESIGNATIONS = eINSTANCE.getEngineer_Designations();
 
 		/**
 		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.OrganizationImpl <em>Organization</em>}' class.
@@ -4972,6 +5368,14 @@ public interface EngineeringPackage extends EPackage {
 		EReference ISSUE_CATEGORY__ISSUES = eINSTANCE.getIssueCategory_Issues();
 
 		/**
+		 * The meta object literal for the '<em><b>Cumulative</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ISSUE_CATEGORY__CUMULATIVE = eINSTANCE.getIssueCategory_Cumulative();
+
+		/**
 		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.IssueStatusImpl <em>Issue Status</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -5076,12 +5480,12 @@ public interface EngineeringPackage extends EPackage {
 		EClass ACTIVITY = eINSTANCE.getActivity();
 
 		/**
-		 * The meta object literal for the '<em><b>Persona</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Personas</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference ACTIVITY__PERSONA = eINSTANCE.getActivity_Persona();
+		EReference ACTIVITY__PERSONAS = eINSTANCE.getActivity_Personas();
 
 		/**
 		 * The meta object literal for the '<em><b>Outputs</b></em>' containment reference list feature.
@@ -5440,6 +5844,56 @@ public interface EngineeringPackage extends EPackage {
 		 * @generated
 		 */
 		EReference DIRECTORY__ELEMENTS = eINSTANCE.getDirectory_Elements();
+
+		/**
+		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.AllocationImpl <em>Allocation</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.engineering.impl.AllocationImpl
+		 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getAllocation()
+		 * @generated
+		 */
+		EClass ALLOCATION = eINSTANCE.getAllocation();
+
+		/**
+		 * The meta object literal for the '<em><b>Increment</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ALLOCATION__INCREMENT = eINSTANCE.getAllocation_Increment();
+
+		/**
+		 * The meta object literal for the '<em><b>Engineer</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ALLOCATION__ENGINEER = eINSTANCE.getAllocation_Engineer();
+
+		/**
+		 * The meta object literal for the '<em><b>Effort</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ALLOCATION__EFFORT = eINSTANCE.getAllocation_Effort();
+
+		/**
+		 * The meta object literal for the '<em><b>Rate</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ALLOCATION__RATE = eINSTANCE.getAllocation_Rate();
+
+		/**
+		 * The meta object literal for the '<em><b>Funds</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ALLOCATION__FUNDS = eINSTANCE.getAllocation_Funds();
 
 	}
 

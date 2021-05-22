@@ -10,6 +10,7 @@ import org.eclipse.emf.ecore.util.Switch;
 import org.nasdanika.common.Adaptable;
 
 import org.nasdanika.engineering.Activity;
+import org.nasdanika.engineering.Allocation;
 import org.nasdanika.engineering.Artifact;
 import org.nasdanika.engineering.Call;
 import org.nasdanika.engineering.Capability;
@@ -323,6 +324,14 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				if (result == null) result = caseNamedElement(directory);
 				if (result == null) result = caseModelElement(directory);
 				if (result == null) result = caseAdaptable(directory);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EngineeringPackage.ALLOCATION: {
+				Allocation allocation = (Allocation)theEObject;
+				T result = caseAllocation(allocation);
+				if (result == null) result = caseModelElement(allocation);
+				if (result == null) result = caseAdaptable(allocation);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -702,6 +711,21 @@ public class EngineeringSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseDirectory(Directory object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Allocation</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Allocation</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAllocation(Allocation object) {
 		return null;
 	}
 

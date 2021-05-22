@@ -17,5 +17,4 @@ app-action:
                path: models/
                actions:
                   - app-action-reference: ../../target/model-doc/engineering.genmodel.yml
-
                

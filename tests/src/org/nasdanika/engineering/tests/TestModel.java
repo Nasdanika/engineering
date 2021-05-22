@@ -14,6 +14,7 @@ import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.BiConsumer;
@@ -119,6 +120,7 @@ public class TestModel {
 		CommandFactory commandFactory = asf.then(consumerFactory);
 		MutableContext context = Context.EMPTY_CONTEXT.fork();
 		context.put("nasdanika/core", new File("..\\..\\core").toURI().toString());
+		context.put(Context.BASE_URI_PROPERTY, "random://" + UUID.randomUUID() + "/" + UUID.randomUUID() + "/");
 
 		URI uri = URI.createFileURI(new File(".").getCanonicalPath());
 		SourceResolver sourceResolver = marker -> {

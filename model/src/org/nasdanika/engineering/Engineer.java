@@ -23,6 +23,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.nasdanika.engineering.Engineer#getIssueCategories <em>Issue Categories</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Engineer#getIssueStatuses <em>Issue Statuses</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Engineer#getRate <em>Rate</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.Engineer#getDesignations <em>Designations</em>}</li>
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getEngineer()
@@ -169,5 +170,22 @@ public interface Engineer extends Persona {
 	 * @generated
 	 */
 	void setRate(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Designations</b></em>' reference list.
+	 * The list contents are of type {@link org.nasdanika.engineering.Allocation}.
+	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Allocation#getEngineer <em>Engineer</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Category relative importance. Can be used to allocate issues to increments in a balanced way.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Designations</em>' reference list.
+	 * @see org.nasdanika.engineering.EngineeringPackage#getEngineer_Designations()
+	 * @see org.nasdanika.engineering.Allocation#getEngineer
+	 * @model opposite="engineer" changeable="false" derived="true"
+	 * @generated
+	 */
+	EList<Allocation> getDesignations();
 
 } // Engineer

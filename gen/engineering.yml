@@ -204,6 +204,8 @@ engineering-module:
        markdown-description: "[Bootstrap progress bar](https://getbootstrap.com/docs/4.0/components/progress/#labels)"  
      - name: Diagnostic summary
        markdown-description: Section at engineered element level and context at principal action level.  
+     - name: Allocations, designations, and capacity
+       markdown-description: Sections with tables. Increment total capacity and utilization.       
 
 #### Done ####
 

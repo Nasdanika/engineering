@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.nasdanika.engineering.Allocation;
 import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeredElement;
 import org.nasdanika.engineering.EngineeringPackage;
@@ -27,6 +28,7 @@ import org.nasdanika.engineering.Issue;
  *   <li>{@link org.nasdanika.engineering.impl.EngineeredElementImpl#getIssues <em>Issues</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineeredElementImpl#getOwners <em>Owners</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineeredElementImpl#getExperts <em>Experts</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.EngineeredElementImpl#getAllocations <em>Allocations</em>}</li>
  * </ul>
  *
  * @generated
@@ -102,6 +104,17 @@ public abstract class EngineeredElementImpl extends NamedElementImpl implements 
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
+	public EList<Allocation> getAllocations() {
+		return (EList<Allocation>)eDynamicGet(EngineeringPackage.ENGINEERED_ELEMENT__ALLOCATIONS, EngineeringPackage.Literals.ENGINEERED_ELEMENT__ALLOCATIONS, true, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case EngineeringPackage.ENGINEERED_ELEMENT__OWNERS:
@@ -126,6 +139,8 @@ public abstract class EngineeredElementImpl extends NamedElementImpl implements 
 				return ((InternalEList<?>)getOwners()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.ENGINEERED_ELEMENT__EXPERTS:
 				return ((InternalEList<?>)getExperts()).basicRemove(otherEnd, msgs);
+			case EngineeringPackage.ENGINEERED_ELEMENT__ALLOCATIONS:
+				return ((InternalEList<?>)getAllocations()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -144,6 +159,8 @@ public abstract class EngineeredElementImpl extends NamedElementImpl implements 
 				return getOwners();
 			case EngineeringPackage.ENGINEERED_ELEMENT__EXPERTS:
 				return getExperts();
+			case EngineeringPackage.ENGINEERED_ELEMENT__ALLOCATIONS:
+				return getAllocations();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -169,6 +186,10 @@ public abstract class EngineeredElementImpl extends NamedElementImpl implements 
 				getExperts().clear();
 				getExperts().addAll((Collection<? extends Engineer>)newValue);
 				return;
+			case EngineeringPackage.ENGINEERED_ELEMENT__ALLOCATIONS:
+				getAllocations().clear();
+				getAllocations().addAll((Collection<? extends Allocation>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -190,6 +211,9 @@ public abstract class EngineeredElementImpl extends NamedElementImpl implements 
 			case EngineeringPackage.ENGINEERED_ELEMENT__EXPERTS:
 				getExperts().clear();
 				return;
+			case EngineeringPackage.ENGINEERED_ELEMENT__ALLOCATIONS:
+				getAllocations().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -208,6 +232,8 @@ public abstract class EngineeredElementImpl extends NamedElementImpl implements 
 				return !getOwners().isEmpty();
 			case EngineeringPackage.ENGINEERED_ELEMENT__EXPERTS:
 				return !getExperts().isEmpty();
+			case EngineeringPackage.ENGINEERED_ELEMENT__ALLOCATIONS:
+				return !getAllocations().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

@@ -15,6 +15,7 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link org.nasdanika.engineering.IssueCategory#getWeight <em>Weight</em>}</li>
  *   <li>{@link org.nasdanika.engineering.IssueCategory#getIssues <em>Issues</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.IssueCategory#isCumulative <em>Cumulative</em>}</li>
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getIssueCategory()
@@ -26,6 +27,9 @@ public interface IssueCategory extends NamedElement {
 	 * Returns the value of the '<em><b>Weight</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Category relative importance. Can be used to allocate issues to increments in a balanced way.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Weight</em>' attribute.
 	 * @see #setWeight(double)
 	 * @see org.nasdanika.engineering.EngineeringPackage#getIssueCategory_Weight()
@@ -60,5 +64,30 @@ public interface IssueCategory extends NamedElement {
 	 * @generated
 	 */
 	EList<Issue> getIssues();
+
+	/**
+	 * Returns the value of the '<em><b>Cumulative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * If true, unused category weight "capacity" is carried over to future increments and overused is subtracted from future increments. This allow low-weight categories to accumulate weight over time.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Cumulative</em>' attribute.
+	 * @see #setCumulative(boolean)
+	 * @see org.nasdanika.engineering.EngineeringPackage#getIssueCategory_Cumulative()
+	 * @model
+	 * @generated
+	 */
+	boolean isCumulative();
+
+	/**
+	 * Sets the value of the '{@link org.nasdanika.engineering.IssueCategory#isCumulative <em>Cumulative</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Cumulative</em>' attribute.
+	 * @see #isCumulative()
+	 * @generated
+	 */
+	void setCumulative(boolean value);
 
 } // IssueCategory

@@ -5,7 +5,8 @@ engineering-module:
    issues:
      - name: Validation of duplicate paths in containing collection and duplicate URI's                         
      - name: Support of objectives and key results                         
-     - name: Journey inheritance                         
+     - name: Journey inheritance
+       description: Override/overriden, suppress, inheritance of default values for features.                         
      - name: Support of Multi-criteria decision analysis - different methods - AHP, Weighted sum, Weighted product                         
      - name: Icons for model elements      
      - name: Introduce Edition  
@@ -52,5 +53,41 @@ engineering-module:
      - name: Issue effective status 
        markdown-description: |+2
          Derived from the last note status if not set explicitly. Default to the first status found by walking up the hierarchy of containment first and owning engineer second.
-                      
+     - name: Remove immutable collections from derived many-references
+     - name: Validation of unsatisfied requirements
+       markdown-description: |+2
+         Not available requirement which is not scheduled for the same increment or an increment before the scheduled increment.
+         Validate only for issues/engineered capabilities scheduled for increments directly or inderectly via releases or features.
+         Report at increment and release/feature levels as well as on the issue level? 
+     - name: Validation of issue increment after the release increment
+     - name: Computing default increment from the end date.
+     - name: Activity steps
+       markdown-description: |+2
+         Section actions, paragraphs. Engineered elements. URL with fragment. The goal is to allow maintaining issue and owners at a step level as well as discussion forums. 
+         Also allow to maintain steps in their own files.
+         Leverage list of contents. Steps can be nested.
+     - name: Generated org charts
+       markdown-description: |+2
+         Visualization of org structure. Configurable number of levels up and down. People-based or org based or combined - org name and head (owner) in parenthesis with individually linking to the org and the owner.
+         Option to specify whether to show individual engineers or just organizations. An option to show headcount - title with token expansion - ``name``, ``owner``, ``head-count``, ``total-head-count``. For leaf orgs at the bottom show total headcount.
+         Auto depth based on the total number of orgs to be shown, e.g. specify that max-shapes is 10 then no more than 10 orgs will be shown. For leaf orgs use a visual differentiator, e.g. a different border to show that there is more.
+         Engineers are boxless nodes? Support of multiple visualizations - many containment reference org-charts - homogenous, strict containment.
+     - name: Engineer reference/proxy
+       description: To define cross-functional teams. Show differently in org charts. Bi-directional reference, take into account in assignments. Other attributes are read-only delegating to the target.      
+     - name: External issue
+       markdown-description: |+2
+         Support of issues tracked elsewhere. Solve at the resource loading level by using specialized resource factories. Top-down and bottom-up approaches.         
+     - name: Configurable representations (diagrams)
+       markdown-description: |+2
+         Issues and other model elements have representation reference and different representations, which can be model-element specific. E.g. Gantt, WBS, or state diagram for issues and WBS (org chart) for organizations.
+         Representations are rendered as section actions. Composite representation - style - cards, pills, ... Cards columns. Charts can be introduced this way.           
+     - name: Journey element input artifacts (requirements) and output artifacts (deliverables)
+       markdown-description: Infer transition artifacts from journey element artirfacts and vice-versa, validations of consistency, e.g. an output transition lists an artifact which is not in the list of journey element deliverables.
+     - name: Capacity, allocation, utilization validation
+       markdown-description: |+2
+         Total of increment issues does not exceed allocation if it is present. If an issue is worked over multiple increments use issue start/end to pro-rate. 
+         Total of allocations does not exceed capacity.
+         Utilization, two levels - a) engineer capacity is allocated b) allocations are utilized by assigning issues. Configurable validations and under/over allocation margins - context service?
+          
+                           
    

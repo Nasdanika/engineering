@@ -10,6 +10,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.EObjectValidator;
 import org.nasdanika.common.Adaptable;
 import org.nasdanika.engineering.Activity;
+import org.nasdanika.engineering.Allocation;
 import org.nasdanika.engineering.Artifact;
 import org.nasdanika.engineering.Call;
 import org.nasdanika.engineering.Capability;
@@ -156,6 +157,8 @@ public class EngineeringValidator extends EObjectValidator {
 				return validateArtifact((Artifact)value, diagnostics, context);
 			case EngineeringPackage.DIRECTORY:
 				return validateDirectory((Directory)value, diagnostics, context);
+			case EngineeringPackage.ALLOCATION:
+				return validateAllocation((Allocation)value, diagnostics, context);
 			default:
 				return true;
 		}
@@ -411,6 +414,15 @@ public class EngineeringValidator extends EObjectValidator {
 	 */
 	public boolean validateDirectory(Directory directory, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(directory, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateAllocation(Allocation allocation, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(allocation, diagnostics, context);
 	}
 
 	/**

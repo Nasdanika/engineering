@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 import org.nasdanika.engineering.Activity;
+import org.nasdanika.engineering.Allocation;
 import org.nasdanika.engineering.Artifact;
 import org.nasdanika.engineering.Call;
 import org.nasdanika.engineering.Capability;
@@ -96,6 +97,7 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 			case EngineeringPackage.CALL: return createCall();
 			case EngineeringPackage.ARTIFACT: return createArtifact();
 			case EngineeringPackage.DIRECTORY: return createDirectory();
+			case EngineeringPackage.ALLOCATION: return createAllocation();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -319,6 +321,17 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 	public Directory createDirectory() {
 		DirectoryImpl directory = new DirectoryImpl();
 		return directory;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Allocation createAllocation() {
+		AllocationImpl allocation = new AllocationImpl();
+		return allocation;
 	}
 
 	/**

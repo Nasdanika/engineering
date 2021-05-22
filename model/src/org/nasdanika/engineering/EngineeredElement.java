@@ -16,6 +16,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.nasdanika.engineering.EngineeredElement#getIssues <em>Issues</em>}</li>
  *   <li>{@link org.nasdanika.engineering.EngineeredElement#getOwners <em>Owners</em>}</li>
  *   <li>{@link org.nasdanika.engineering.EngineeredElement#getExperts <em>Experts</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.EngineeredElement#getAllocations <em>Allocations</em>}</li>
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getEngineeredElement()
@@ -64,5 +65,18 @@ public interface EngineeredElement extends NamedElement {
 	 * @generated
 	 */
 	EList<Engineer> getExperts();
+
+	/**
+	 * Returns the value of the '<em><b>Allocations</b></em>' containment reference list.
+	 * The list contents are of type {@link org.nasdanika.engineering.Allocation}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Allocations</em>' containment reference list.
+	 * @see org.nasdanika.engineering.EngineeringPackage#getEngineeredElement_Allocations()
+	 * @model containment="true"
+	 *        annotation="urn:org.nasdanika homogenous='true'"
+	 * @generated
+	 */
+	EList<Allocation> getAllocations();
 
 } // EngineeredElement

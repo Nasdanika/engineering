@@ -19,8 +19,8 @@
 	</licenses>
 
 	<properties>
-		<core.version>2021.5.1</core.version>
-		<html.version>2021.5.8</html.version>
+		<core.version>2021.5.2</core.version>
+		<html.version>2021.5.10</html.version>
 	</properties>	
 
 	<scm>

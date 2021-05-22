@@ -29,7 +29,7 @@ import org.nasdanika.engineering.Transition;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.nasdanika.engineering.impl.ActivityImpl#getPersona <em>Persona</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.ActivityImpl#getPersonas <em>Personas</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.ActivityImpl#getOutputs <em>Outputs</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.ActivityImpl#getActivityType <em>Activity Type</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.ActivityImpl#getRequirements <em>Requirements</em>}</li>
@@ -75,28 +75,10 @@ public class ActivityImpl extends EngineeredElementImpl implements Activity {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
-	public Persona getPersona() {
-		return (Persona)eDynamicGet(EngineeringPackage.ACTIVITY__PERSONA, EngineeringPackage.Literals.ACTIVITY__PERSONA, true, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Persona basicGetPersona() {
-		return (Persona)eDynamicGet(EngineeringPackage.ACTIVITY__PERSONA, EngineeringPackage.Literals.ACTIVITY__PERSONA, false, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setPersona(Persona newPersona) {
-		eDynamicSet(EngineeringPackage.ACTIVITY__PERSONA, EngineeringPackage.Literals.ACTIVITY__PERSONA, newPersona);
+	public EList<Persona> getPersonas() {
+		return (EList<Persona>)eDynamicGet(EngineeringPackage.ACTIVITY__PERSONAS, EngineeringPackage.Literals.ACTIVITY__PERSONAS, true, true);
 	}
 
 	/**
@@ -179,9 +161,26 @@ public class ActivityImpl extends EngineeredElementImpl implements Activity {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case EngineeringPackage.ACTIVITY__PERSONAS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getPersonas()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+			case EngineeringPackage.ACTIVITY__PERSONAS:
+				return ((InternalEList<?>)getPersonas()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.ACTIVITY__OUTPUTS:
 				return ((InternalEList<?>)getOutputs()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.ACTIVITY__CALLS:
@@ -198,9 +197,8 @@ public class ActivityImpl extends EngineeredElementImpl implements Activity {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EngineeringPackage.ACTIVITY__PERSONA:
-				if (resolve) return getPersona();
-				return basicGetPersona();
+			case EngineeringPackage.ACTIVITY__PERSONAS:
+				return getPersonas();
 			case EngineeringPackage.ACTIVITY__OUTPUTS:
 				return getOutputs();
 			case EngineeringPackage.ACTIVITY__ACTIVITY_TYPE:
@@ -226,8 +224,9 @@ public class ActivityImpl extends EngineeredElementImpl implements Activity {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EngineeringPackage.ACTIVITY__PERSONA:
-				setPersona((Persona)newValue);
+			case EngineeringPackage.ACTIVITY__PERSONAS:
+				getPersonas().clear();
+				getPersonas().addAll((Collection<? extends Persona>)newValue);
 				return;
 			case EngineeringPackage.ACTIVITY__OUTPUTS:
 				getOutputs().clear();
@@ -264,8 +263,8 @@ public class ActivityImpl extends EngineeredElementImpl implements Activity {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EngineeringPackage.ACTIVITY__PERSONA:
-				setPersona((Persona)null);
+			case EngineeringPackage.ACTIVITY__PERSONAS:
+				getPersonas().clear();
 				return;
 			case EngineeringPackage.ACTIVITY__OUTPUTS:
 				getOutputs().clear();
@@ -297,8 +296,8 @@ public class ActivityImpl extends EngineeredElementImpl implements Activity {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EngineeringPackage.ACTIVITY__PERSONA:
-				return basicGetPersona() != null;
+			case EngineeringPackage.ACTIVITY__PERSONAS:
+				return !getPersonas().isEmpty();
 			case EngineeringPackage.ACTIVITY__OUTPUTS:
 				return !getOutputs().isEmpty();
 			case EngineeringPackage.ACTIVITY__ACTIVITY_TYPE:

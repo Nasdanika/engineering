@@ -10,6 +10,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.nasdanika.engineering.Activity;
+import org.nasdanika.engineering.Allocation;
 import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeredElement;
 import org.nasdanika.engineering.EngineeringPackage;
@@ -37,6 +38,7 @@ import org.nasdanika.engineering.Persona;
  *   <li>{@link org.nasdanika.engineering.impl.EngineerImpl#getIssueCategories <em>Issue Categories</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineerImpl#getIssueStatuses <em>Issue Statuses</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineerImpl#getRate <em>Rate</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.EngineerImpl#getDesignations <em>Designations</em>}</li>
  * </ul>
  *
  * @generated
@@ -190,6 +192,16 @@ public class EngineerImpl extends PersonaImpl implements Engineer {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public EList<Allocation> getDesignations() {
+		return getReferrers(EngineeringPackage.Literals.ALLOCATION__ENGINEER);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -202,6 +214,8 @@ public class EngineerImpl extends PersonaImpl implements Engineer {
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getExpertise()).basicAdd(otherEnd, msgs);
 			case EngineeringPackage.ENGINEER__ASSIGNMENTS:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getAssignments()).basicAdd(otherEnd, msgs);
+			case EngineeringPackage.ENGINEER__DESIGNATIONS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getDesignations()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -238,6 +252,8 @@ public class EngineerImpl extends PersonaImpl implements Engineer {
 				return ((InternalEList<?>)getIssueCategories()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.ENGINEER__ISSUE_STATUSES:
 				return ((InternalEList<?>)getIssueStatuses()).basicRemove(otherEnd, msgs);
+			case EngineeringPackage.ENGINEER__DESIGNATIONS:
+				return ((InternalEList<?>)getDesignations()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -270,6 +286,8 @@ public class EngineerImpl extends PersonaImpl implements Engineer {
 				return getIssueStatuses();
 			case EngineeringPackage.ENGINEER__RATE:
 				return getRate();
+			case EngineeringPackage.ENGINEER__DESIGNATIONS:
+				return getDesignations();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -375,6 +393,8 @@ public class EngineerImpl extends PersonaImpl implements Engineer {
 				return !getIssueStatuses().isEmpty();
 			case EngineeringPackage.ENGINEER__RATE:
 				return getRate() != RATE_EDEFAULT;
+			case EngineeringPackage.ENGINEER__DESIGNATIONS:
+				return !getDesignations().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

@@ -25,6 +25,7 @@ import org.nasdanika.engineering.IssueCategory;
  * <ul>
  *   <li>{@link org.nasdanika.engineering.impl.IssueCategoryImpl#getWeight <em>Weight</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IssueCategoryImpl#getIssues <em>Issues</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.IssueCategoryImpl#isCumulative <em>Cumulative</em>}</li>
  * </ul>
  *
  * @generated
@@ -39,6 +40,16 @@ public class IssueCategoryImpl extends NamedElementImpl implements IssueCategory
 	 * @ordered
 	 */
 	protected static final double WEIGHT_EDEFAULT = 0.0;
+
+	/**
+	 * The default value of the '{@link #isCumulative() <em>Cumulative</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isCumulative()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean CUMULATIVE_EDEFAULT = false;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -94,6 +105,26 @@ public class IssueCategoryImpl extends NamedElementImpl implements IssueCategory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public boolean isCumulative() {
+		return (Boolean)eDynamicGet(EngineeringPackage.ISSUE_CATEGORY__CUMULATIVE, EngineeringPackage.Literals.ISSUE_CATEGORY__CUMULATIVE, true, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setCumulative(boolean newCumulative) {
+		eDynamicSet(EngineeringPackage.ISSUE_CATEGORY__CUMULATIVE, EngineeringPackage.Literals.ISSUE_CATEGORY__CUMULATIVE, newCumulative);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -130,6 +161,8 @@ public class IssueCategoryImpl extends NamedElementImpl implements IssueCategory
 				return getWeight();
 			case EngineeringPackage.ISSUE_CATEGORY__ISSUES:
 				return getIssues();
+			case EngineeringPackage.ISSUE_CATEGORY__CUMULATIVE:
+				return isCumulative();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -145,6 +178,9 @@ public class IssueCategoryImpl extends NamedElementImpl implements IssueCategory
 			case EngineeringPackage.ISSUE_CATEGORY__WEIGHT:
 				setWeight((Double)newValue);
 				return;
+			case EngineeringPackage.ISSUE_CATEGORY__CUMULATIVE:
+				setCumulative((Boolean)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -159,6 +195,9 @@ public class IssueCategoryImpl extends NamedElementImpl implements IssueCategory
 		switch (featureID) {
 			case EngineeringPackage.ISSUE_CATEGORY__WEIGHT:
 				setWeight(WEIGHT_EDEFAULT);
+				return;
+			case EngineeringPackage.ISSUE_CATEGORY__CUMULATIVE:
+				setCumulative(CUMULATIVE_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -176,6 +215,8 @@ public class IssueCategoryImpl extends NamedElementImpl implements IssueCategory
 				return getWeight() != WEIGHT_EDEFAULT;
 			case EngineeringPackage.ISSUE_CATEGORY__ISSUES:
 				return !getIssues().isEmpty();
+			case EngineeringPackage.ISSUE_CATEGORY__CUMULATIVE:
+				return isCumulative() != CUMULATIVE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
