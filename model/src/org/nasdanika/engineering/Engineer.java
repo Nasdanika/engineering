@@ -24,6 +24,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.nasdanika.engineering.Engineer#getIssueStatuses <em>Issue Statuses</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Engineer#getRate <em>Rate</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Engineer#getDesignations <em>Designations</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.Engineer#getCapacity <em>Capacity</em>}</li>
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getEngineer()
@@ -178,7 +179,7 @@ public interface Engineer extends Persona {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Category relative importance. Can be used to allocate issues to increments in a balanced way.
+	 * Allocations of this engineer's effort to engineering elements.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Designations</em>' reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getEngineer_Designations()
@@ -187,5 +188,18 @@ public interface Engineer extends Persona {
 	 * @generated
 	 */
 	EList<Allocation> getDesignations();
+
+	/**
+	 * Returns the value of the '<em><b>Capacity</b></em>' containment reference list.
+	 * The list contents are of type {@link org.nasdanika.engineering.Capacity}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Capacity</em>' containment reference list.
+	 * @see org.nasdanika.engineering.EngineeringPackage#getEngineer_Capacity()
+	 * @model containment="true"
+	 *        annotation="urn:org.nasdanika homogenous='true'"
+	 * @generated
+	 */
+	EList<Capacity> getCapacity();
 
 } // Engineer

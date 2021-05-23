@@ -14,6 +14,7 @@ import org.nasdanika.engineering.Allocation;
 import org.nasdanika.engineering.Artifact;
 import org.nasdanika.engineering.Call;
 import org.nasdanika.engineering.Capability;
+import org.nasdanika.engineering.Capacity;
 import org.nasdanika.engineering.Directory;
 import org.nasdanika.engineering.Endeavor;
 import org.nasdanika.engineering.Engineer;
@@ -157,6 +158,8 @@ public class EngineeringValidator extends EObjectValidator {
 				return validateArtifact((Artifact)value, diagnostics, context);
 			case EngineeringPackage.DIRECTORY:
 				return validateDirectory((Directory)value, diagnostics, context);
+			case EngineeringPackage.CAPACITY:
+				return validateCapacity((Capacity)value, diagnostics, context);
 			case EngineeringPackage.ALLOCATION:
 				return validateAllocation((Allocation)value, diagnostics, context);
 			default:
@@ -414,6 +417,15 @@ public class EngineeringValidator extends EObjectValidator {
 	 */
 	public boolean validateDirectory(Directory directory, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(directory, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateCapacity(Capacity capacity, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(capacity, diagnostics, context);
 	}
 
 	/**

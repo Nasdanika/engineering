@@ -4,14 +4,18 @@ package org.nasdanika.engineering.impl;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.HashSet;
 
 import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.nasdanika.engineering.Capacity;
 import org.nasdanika.engineering.Endeavor;
 import org.nasdanika.engineering.EngineeringPackage;
+import org.nasdanika.engineering.Feature;
 import org.nasdanika.engineering.Increment;
 import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.Release;
@@ -32,6 +36,8 @@ import org.nasdanika.engineering.Release;
  *   <li>{@link org.nasdanika.engineering.impl.IncrementImpl#getEnd <em>End</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IncrementImpl#getIssues <em>Issues</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IncrementImpl#getReleases <em>Releases</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.IncrementImpl#getCapacity <em>Capacity</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.IncrementImpl#getAllIssues <em>All Issues</em>}</li>
  * </ul>
  *
  * @generated
@@ -190,6 +196,8 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getIssues()).basicAdd(otherEnd, msgs);
 			case EngineeringPackage.INCREMENT__RELEASES:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getReleases()).basicAdd(otherEnd, msgs);
+			case EngineeringPackage.INCREMENT__CAPACITY:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getCapacity()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -219,6 +227,43 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public EList<Capacity> getCapacity() {
+		return (EList<Capacity>)eDynamicGet(EngineeringPackage.INCREMENT__CAPACITY, EngineeringPackage.Literals.INCREMENT__CAPACITY, true, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public EList<Issue> getAllIssues() {
+		Collection<Issue> allIssues = new HashSet<>();
+		allIssues.addAll(getIssues());
+		for (Release release: getReleases()) {
+			for (Issue ri: release.getIssues()) {
+				if (ri.getIncrement() == null) {
+					allIssues.add(ri);
+				}
+			}
+			for (Feature feature: release.getFeatures()) {
+				for (Issue fi: feature.getIssues()) {
+					if (fi.getIncrement() == null) {
+						allIssues.add(fi);
+					}
+				}					
+			}
+		}
+		return new BasicEList<>(allIssues);		
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -228,6 +273,8 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 				return ((InternalEList<?>)getIssues()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.INCREMENT__RELEASES:
 				return ((InternalEList<?>)getReleases()).basicRemove(otherEnd, msgs);
+			case EngineeringPackage.INCREMENT__CAPACITY:
+				return ((InternalEList<?>)getCapacity()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -256,6 +303,10 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 				return getIssues();
 			case EngineeringPackage.INCREMENT__RELEASES:
 				return getReleases();
+			case EngineeringPackage.INCREMENT__CAPACITY:
+				return getCapacity();
+			case EngineeringPackage.INCREMENT__ALL_ISSUES:
+				return getAllIssues();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -334,6 +385,10 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 				return !getIssues().isEmpty();
 			case EngineeringPackage.INCREMENT__RELEASES:
 				return !getReleases().isEmpty();
+			case EngineeringPackage.INCREMENT__CAPACITY:
+				return !getCapacity().isEmpty();
+			case EngineeringPackage.INCREMENT__ALL_ISSUES:
+				return !getAllIssues().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

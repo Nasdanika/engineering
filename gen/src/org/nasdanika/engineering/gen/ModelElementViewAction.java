@@ -268,6 +268,16 @@ public class ModelElementViewAction<T extends ModelElement> extends SimpleEObjec
 		return issuesSection(issues, text, id, getMarker(), getActivator(), diagnostic, features);
 	}
 	
+	private static Increment rootIncrement(Increment increment) {
+		if (increment != null) {
+			EObject ic = increment.eContainer();
+			if (ic instanceof Increment) {
+				return rootIncrement((Increment) ic);
+			}
+		}
+		return increment;
+	}
+	
 	/**
 	 * If issues collection is not empty creates a section action with issues grouped into increments with 
 	 * specified features in the issue table. 
@@ -301,6 +311,21 @@ public class ModelElementViewAction<T extends ModelElement> extends SimpleEObjec
 					for (Diagnostic diagnostic: diagnostic) {
 						ret.content(bootstrapFactory.alert(HtmlEmfUtil.getSeverityColor(diagnostic.getSeverity()), StringEscapeUtils.escapeHtml4(diagnostic.getMessage())));
 					}
+				}
+				
+				List<Increment> rootIncrements = issues
+						.stream()
+						.map(i -> i.getIncrement())
+						.filter(Objects::nonNull)
+						.map(ModelElementViewAction::rootIncrement)
+						.collect(Collectors.toSet())
+						.stream()
+						.sorted(INCREMENT_COMPARATOR)
+						.collect(Collectors.toList());
+				
+				if (!rootIncrements.isEmpty()) {
+					Function<Increment, Collection<Issue>> issueSource = in -> issues.stream().filter(is -> is.getIncrement() == in).collect(Collectors.toList());
+					ret.content(IncrementViewAction.incrementsTable(rootIncrements, issueSource, false, viewGenerator, progressMonitor));
 				}
 				
 				ret.content(issueStatusSummaryTable(issues, viewGenerator, progressMonitor));

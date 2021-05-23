@@ -15,6 +15,7 @@ import org.nasdanika.engineering.Allocation;
 import org.nasdanika.engineering.Artifact;
 import org.nasdanika.engineering.Call;
 import org.nasdanika.engineering.Capability;
+import org.nasdanika.engineering.Capacity;
 import org.nasdanika.engineering.Directory;
 import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeredCapability;
@@ -97,6 +98,7 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 			case EngineeringPackage.CALL: return createCall();
 			case EngineeringPackage.ARTIFACT: return createArtifact();
 			case EngineeringPackage.DIRECTORY: return createDirectory();
+			case EngineeringPackage.CAPACITY: return createCapacity();
 			case EngineeringPackage.ALLOCATION: return createAllocation();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -321,6 +323,17 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 	public Directory createDirectory() {
 		DirectoryImpl directory = new DirectoryImpl();
 		return directory;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Capacity createCapacity() {
+		CapacityImpl capacity = new CapacityImpl();
+		return capacity;
 	}
 
 	/**

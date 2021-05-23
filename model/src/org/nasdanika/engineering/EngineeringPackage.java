@@ -529,13 +529,31 @@ public interface EngineeringPackage extends EPackage {
 	int INCREMENT__RELEASES = NAMED_ELEMENT_FEATURE_COUNT + 7;
 
 	/**
+	 * The feature id for the '<em><b>Capacity</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INCREMENT__CAPACITY = NAMED_ELEMENT_FEATURE_COUNT + 8;
+
+	/**
+	 * The feature id for the '<em><b>All Issues</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INCREMENT__ALL_ISSUES = NAMED_ELEMENT_FEATURE_COUNT + 9;
+
+	/**
 	 * The number of structural features of the '<em>Increment</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INCREMENT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 8;
+	int INCREMENT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 10;
 
 	/**
 	 * The number of operations of the '<em>Increment</em>' class.
@@ -1935,13 +1953,22 @@ public interface EngineeringPackage extends EPackage {
 	int ENGINEER__DESIGNATIONS = PERSONA_FEATURE_COUNT + 10;
 
 	/**
+	 * The feature id for the '<em><b>Capacity</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEER__CAPACITY = PERSONA_FEATURE_COUNT + 11;
+
+	/**
 	 * The number of structural features of the '<em>Engineer</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEER_FEATURE_COUNT = PERSONA_FEATURE_COUNT + 11;
+	int ENGINEER_FEATURE_COUNT = PERSONA_FEATURE_COUNT + 12;
 
 	/**
 	 * The number of operations of the '<em>Engineer</em>' class.
@@ -2158,6 +2185,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int ORGANIZATION__DESIGNATIONS = ENGINEER__DESIGNATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Capacity</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANIZATION__CAPACITY = ENGINEER__CAPACITY;
 
 	/**
 	 * The feature id for the '<em><b>Engineers</b></em>' containment reference list.
@@ -3495,14 +3531,14 @@ public interface EngineeringPackage extends EPackage {
 
 
 	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.AllocationImpl <em>Allocation</em>}' class.
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.CapacityImpl <em>Capacity</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.AllocationImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getAllocation()
+	 * @see org.nasdanika.engineering.impl.CapacityImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getCapacity()
 	 * @generated
 	 */
-	int ALLOCATION = 25;
+	int CAPACITY = 25;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -3511,7 +3547,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ALLOCATION__URI = MODEL_ELEMENT__URI;
+	int CAPACITY__URI = MODEL_ELEMENT__URI;
 
 	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
@@ -3520,7 +3556,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ALLOCATION__PATH = MODEL_ELEMENT__PATH;
+	int CAPACITY__PATH = MODEL_ELEMENT__PATH;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -3529,7 +3565,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ALLOCATION__DESCRIPTION = MODEL_ELEMENT__DESCRIPTION;
+	int CAPACITY__DESCRIPTION = MODEL_ELEMENT__DESCRIPTION;
 
 	/**
 	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
@@ -3538,7 +3574,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ALLOCATION__MARKDOWN_DESCRIPTION = MODEL_ELEMENT__MARKDOWN_DESCRIPTION;
+	int CAPACITY__MARKDOWN_DESCRIPTION = MODEL_ELEMENT__MARKDOWN_DESCRIPTION;
 
 	/**
 	 * The feature id for the '<em><b>Actions</b></em>' containment reference list.
@@ -3547,7 +3583,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ALLOCATION__ACTIONS = MODEL_ELEMENT__ACTIONS;
+	int CAPACITY__ACTIONS = MODEL_ELEMENT__ACTIONS;
 
 	/**
 	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
@@ -3556,7 +3592,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ALLOCATION__RESOURCES = MODEL_ELEMENT__RESOURCES;
+	int CAPACITY__RESOURCES = MODEL_ELEMENT__RESOURCES;
 
 	/**
 	 * The feature id for the '<em><b>Increment</b></em>' reference.
@@ -3565,16 +3601,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ALLOCATION__INCREMENT = MODEL_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Engineer</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ALLOCATION__ENGINEER = MODEL_ELEMENT_FEATURE_COUNT + 1;
+	int CAPACITY__INCREMENT = MODEL_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Effort</b></em>' attribute.
@@ -3583,16 +3610,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ALLOCATION__EFFORT = MODEL_ELEMENT_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Rate</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ALLOCATION__RATE = MODEL_ELEMENT_FEATURE_COUNT + 3;
+	int CAPACITY__EFFORT = MODEL_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Funds</b></em>' attribute.
@@ -3601,7 +3619,143 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ALLOCATION__FUNDS = MODEL_ELEMENT_FEATURE_COUNT + 4;
+	int CAPACITY__FUNDS = MODEL_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Rate</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPACITY__RATE = MODEL_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the '<em>Capacity</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPACITY_FEATURE_COUNT = MODEL_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
+	 * The number of operations of the '<em>Capacity</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPACITY_OPERATION_COUNT = MODEL_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.AllocationImpl <em>Allocation</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.AllocationImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getAllocation()
+	 * @generated
+	 */
+	int ALLOCATION = 26;
+
+	/**
+	 * The feature id for the '<em><b>Uri</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ALLOCATION__URI = CAPACITY__URI;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ALLOCATION__PATH = CAPACITY__PATH;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ALLOCATION__DESCRIPTION = CAPACITY__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ALLOCATION__MARKDOWN_DESCRIPTION = CAPACITY__MARKDOWN_DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Actions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ALLOCATION__ACTIONS = CAPACITY__ACTIONS;
+
+	/**
+	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ALLOCATION__RESOURCES = CAPACITY__RESOURCES;
+
+	/**
+	 * The feature id for the '<em><b>Increment</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ALLOCATION__INCREMENT = CAPACITY__INCREMENT;
+
+	/**
+	 * The feature id for the '<em><b>Effort</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ALLOCATION__EFFORT = CAPACITY__EFFORT;
+
+	/**
+	 * The feature id for the '<em><b>Funds</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ALLOCATION__FUNDS = CAPACITY__FUNDS;
+
+	/**
+	 * The feature id for the '<em><b>Rate</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ALLOCATION__RATE = CAPACITY__RATE;
+
+	/**
+	 * The feature id for the '<em><b>Engineer</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ALLOCATION__ENGINEER = CAPACITY_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Allocation</em>' class.
@@ -3610,7 +3764,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ALLOCATION_FEATURE_COUNT = MODEL_ELEMENT_FEATURE_COUNT + 5;
+	int ALLOCATION_FEATURE_COUNT = CAPACITY_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Allocation</em>' class.
@@ -3619,7 +3773,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ALLOCATION_OPERATION_COUNT = MODEL_ELEMENT_OPERATION_COUNT + 0;
+	int ALLOCATION_OPERATION_COUNT = CAPACITY_OPERATION_COUNT + 0;
 
 
 	/**
@@ -3980,6 +4134,17 @@ public interface EngineeringPackage extends EPackage {
 	EReference getEngineer_Designations();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link org.nasdanika.engineering.Engineer#getCapacity <em>Capacity</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Capacity</em>'.
+	 * @see org.nasdanika.engineering.Engineer#getCapacity()
+	 * @see #getEngineer()
+	 * @generated
+	 */
+	EReference getEngineer_Capacity();
+
+	/**
 	 * Returns the meta object for class '{@link org.nasdanika.engineering.Organization <em>Organization</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4170,6 +4335,28 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getIncrement_Releases();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.Increment#getCapacity <em>Capacity</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Capacity</em>'.
+	 * @see org.nasdanika.engineering.Increment#getCapacity()
+	 * @see #getIncrement()
+	 * @generated
+	 */
+	EReference getIncrement_Capacity();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.Increment#getAllIssues <em>All Issues</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>All Issues</em>'.
+	 * @see org.nasdanika.engineering.Increment#getAllIssues()
+	 * @see #getIncrement()
+	 * @generated
+	 */
+	EReference getIncrement_AllIssues();
 
 	/**
 	 * Returns the meta object for class '{@link org.nasdanika.engineering.IssueCategory <em>Issue Category</em>}'.
@@ -4820,6 +5007,60 @@ public interface EngineeringPackage extends EPackage {
 	EReference getDirectory_Elements();
 
 	/**
+	 * Returns the meta object for class '{@link org.nasdanika.engineering.Capacity <em>Capacity</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Capacity</em>'.
+	 * @see org.nasdanika.engineering.Capacity
+	 * @generated
+	 */
+	EClass getCapacity();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.nasdanika.engineering.Capacity#getIncrement <em>Increment</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Increment</em>'.
+	 * @see org.nasdanika.engineering.Capacity#getIncrement()
+	 * @see #getCapacity()
+	 * @generated
+	 */
+	EReference getCapacity_Increment();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Capacity#getEffort <em>Effort</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Effort</em>'.
+	 * @see org.nasdanika.engineering.Capacity#getEffort()
+	 * @see #getCapacity()
+	 * @generated
+	 */
+	EAttribute getCapacity_Effort();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Capacity#getFunds <em>Funds</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Funds</em>'.
+	 * @see org.nasdanika.engineering.Capacity#getFunds()
+	 * @see #getCapacity()
+	 * @generated
+	 */
+	EAttribute getCapacity_Funds();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Capacity#getRate <em>Rate</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Rate</em>'.
+	 * @see org.nasdanika.engineering.Capacity#getRate()
+	 * @see #getCapacity()
+	 * @generated
+	 */
+	EAttribute getCapacity_Rate();
+
+	/**
 	 * Returns the meta object for class '{@link org.nasdanika.engineering.Allocation <em>Allocation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4828,17 +5069,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getAllocation();
-
-	/**
-	 * Returns the meta object for the reference '{@link org.nasdanika.engineering.Allocation#getIncrement <em>Increment</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Increment</em>'.
-	 * @see org.nasdanika.engineering.Allocation#getIncrement()
-	 * @see #getAllocation()
-	 * @generated
-	 */
-	EReference getAllocation_Increment();
 
 	/**
 	 * Returns the meta object for the reference '{@link org.nasdanika.engineering.Allocation#getEngineer <em>Engineer</em>}'.
@@ -4850,39 +5080,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getAllocation_Engineer();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Allocation#getEffort <em>Effort</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Effort</em>'.
-	 * @see org.nasdanika.engineering.Allocation#getEffort()
-	 * @see #getAllocation()
-	 * @generated
-	 */
-	EAttribute getAllocation_Effort();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Allocation#getRate <em>Rate</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Rate</em>'.
-	 * @see org.nasdanika.engineering.Allocation#getRate()
-	 * @see #getAllocation()
-	 * @generated
-	 */
-	EAttribute getAllocation_Rate();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Allocation#getFunds <em>Funds</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Funds</em>'.
-	 * @see org.nasdanika.engineering.Allocation#getFunds()
-	 * @see #getAllocation()
-	 * @generated
-	 */
-	EAttribute getAllocation_Funds();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -5186,6 +5383,14 @@ public interface EngineeringPackage extends EPackage {
 		EReference ENGINEER__DESIGNATIONS = eINSTANCE.getEngineer_Designations();
 
 		/**
+		 * The meta object literal for the '<em><b>Capacity</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ENGINEER__CAPACITY = eINSTANCE.getEngineer_Capacity();
+
+		/**
 		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.OrganizationImpl <em>Organization</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -5340,6 +5545,22 @@ public interface EngineeringPackage extends EPackage {
 		 * @generated
 		 */
 		EReference INCREMENT__RELEASES = eINSTANCE.getIncrement_Releases();
+
+		/**
+		 * The meta object literal for the '<em><b>Capacity</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INCREMENT__CAPACITY = eINSTANCE.getIncrement_Capacity();
+
+		/**
+		 * The meta object literal for the '<em><b>All Issues</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INCREMENT__ALL_ISSUES = eINSTANCE.getIncrement_AllIssues();
 
 		/**
 		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.IssueCategoryImpl <em>Issue Category</em>}' class.
@@ -5846,6 +6067,48 @@ public interface EngineeringPackage extends EPackage {
 		EReference DIRECTORY__ELEMENTS = eINSTANCE.getDirectory_Elements();
 
 		/**
+		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.CapacityImpl <em>Capacity</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.engineering.impl.CapacityImpl
+		 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getCapacity()
+		 * @generated
+		 */
+		EClass CAPACITY = eINSTANCE.getCapacity();
+
+		/**
+		 * The meta object literal for the '<em><b>Increment</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CAPACITY__INCREMENT = eINSTANCE.getCapacity_Increment();
+
+		/**
+		 * The meta object literal for the '<em><b>Effort</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CAPACITY__EFFORT = eINSTANCE.getCapacity_Effort();
+
+		/**
+		 * The meta object literal for the '<em><b>Funds</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CAPACITY__FUNDS = eINSTANCE.getCapacity_Funds();
+
+		/**
+		 * The meta object literal for the '<em><b>Rate</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CAPACITY__RATE = eINSTANCE.getCapacity_Rate();
+
+		/**
 		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.AllocationImpl <em>Allocation</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -5856,44 +6119,12 @@ public interface EngineeringPackage extends EPackage {
 		EClass ALLOCATION = eINSTANCE.getAllocation();
 
 		/**
-		 * The meta object literal for the '<em><b>Increment</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ALLOCATION__INCREMENT = eINSTANCE.getAllocation_Increment();
-
-		/**
 		 * The meta object literal for the '<em><b>Engineer</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EReference ALLOCATION__ENGINEER = eINSTANCE.getAllocation_Engineer();
-
-		/**
-		 * The meta object literal for the '<em><b>Effort</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ALLOCATION__EFFORT = eINSTANCE.getAllocation_Effort();
-
-		/**
-		 * The meta object literal for the '<em><b>Rate</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ALLOCATION__RATE = eINSTANCE.getAllocation_Rate();
-
-		/**
-		 * The meta object literal for the '<em><b>Funds</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ALLOCATION__FUNDS = eINSTANCE.getAllocation_Funds();
 
 	}
 

@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.nasdanika.engineering.Activity;
 import org.nasdanika.engineering.Allocation;
+import org.nasdanika.engineering.Capacity;
 import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeredElement;
 import org.nasdanika.engineering.EngineeringPackage;
@@ -39,6 +40,7 @@ import org.nasdanika.engineering.Persona;
  *   <li>{@link org.nasdanika.engineering.impl.EngineerImpl#getIssueStatuses <em>Issue Statuses</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineerImpl#getRate <em>Rate</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineerImpl#getDesignations <em>Designations</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.EngineerImpl#getCapacity <em>Capacity</em>}</li>
  * </ul>
  *
  * @generated
@@ -206,6 +208,17 @@ public class EngineerImpl extends PersonaImpl implements Engineer {
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
+	public EList<Capacity> getCapacity() {
+		return (EList<Capacity>)eDynamicGet(EngineeringPackage.ENGINEER__CAPACITY, EngineeringPackage.Literals.ENGINEER__CAPACITY, true, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case EngineeringPackage.ENGINEER__OWNS:
@@ -254,6 +267,8 @@ public class EngineerImpl extends PersonaImpl implements Engineer {
 				return ((InternalEList<?>)getIssueStatuses()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.ENGINEER__DESIGNATIONS:
 				return ((InternalEList<?>)getDesignations()).basicRemove(otherEnd, msgs);
+			case EngineeringPackage.ENGINEER__CAPACITY:
+				return ((InternalEList<?>)getCapacity()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -288,6 +303,8 @@ public class EngineerImpl extends PersonaImpl implements Engineer {
 				return getRate();
 			case EngineeringPackage.ENGINEER__DESIGNATIONS:
 				return getDesignations();
+			case EngineeringPackage.ENGINEER__CAPACITY:
+				return getCapacity();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -328,6 +345,10 @@ public class EngineerImpl extends PersonaImpl implements Engineer {
 			case EngineeringPackage.ENGINEER__RATE:
 				setRate((Double)newValue);
 				return;
+			case EngineeringPackage.ENGINEER__CAPACITY:
+				getCapacity().clear();
+				getCapacity().addAll((Collection<? extends Capacity>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -360,6 +381,9 @@ public class EngineerImpl extends PersonaImpl implements Engineer {
 				return;
 			case EngineeringPackage.ENGINEER__RATE:
 				setRate(RATE_EDEFAULT);
+				return;
+			case EngineeringPackage.ENGINEER__CAPACITY:
+				getCapacity().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -395,6 +419,8 @@ public class EngineerImpl extends PersonaImpl implements Engineer {
 				return getRate() != RATE_EDEFAULT;
 			case EngineeringPackage.ENGINEER__DESIGNATIONS:
 				return !getDesignations().isEmpty();
+			case EngineeringPackage.ENGINEER__CAPACITY:
+				return !getCapacity().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

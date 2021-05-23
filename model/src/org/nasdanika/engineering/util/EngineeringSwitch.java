@@ -14,6 +14,7 @@ import org.nasdanika.engineering.Allocation;
 import org.nasdanika.engineering.Artifact;
 import org.nasdanika.engineering.Call;
 import org.nasdanika.engineering.Capability;
+import org.nasdanika.engineering.Capacity;
 import org.nasdanika.engineering.Directory;
 import org.nasdanika.engineering.Endeavor;
 import org.nasdanika.engineering.Engineer;
@@ -327,9 +328,18 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case EngineeringPackage.CAPACITY: {
+				Capacity capacity = (Capacity)theEObject;
+				T result = caseCapacity(capacity);
+				if (result == null) result = caseModelElement(capacity);
+				if (result == null) result = caseAdaptable(capacity);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case EngineeringPackage.ALLOCATION: {
 				Allocation allocation = (Allocation)theEObject;
 				T result = caseAllocation(allocation);
+				if (result == null) result = caseCapacity(allocation);
 				if (result == null) result = caseModelElement(allocation);
 				if (result == null) result = caseAdaptable(allocation);
 				if (result == null) result = defaultCase(theEObject);
@@ -711,6 +721,21 @@ public class EngineeringSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseDirectory(Directory object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Capacity</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Capacity</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseCapacity(Capacity object) {
 		return null;
 	}
 

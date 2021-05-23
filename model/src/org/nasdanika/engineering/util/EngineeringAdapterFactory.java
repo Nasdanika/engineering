@@ -16,6 +16,7 @@ import org.nasdanika.engineering.Allocation;
 import org.nasdanika.engineering.Artifact;
 import org.nasdanika.engineering.Call;
 import org.nasdanika.engineering.Capability;
+import org.nasdanika.engineering.Capacity;
 import org.nasdanika.engineering.Directory;
 import org.nasdanika.engineering.Endeavor;
 import org.nasdanika.engineering.Engineer;
@@ -192,6 +193,10 @@ public class EngineeringAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseDirectory(Directory object) {
 				return createDirectoryAdapter();
+			}
+			@Override
+			public Adapter caseCapacity(Capacity object) {
+				return createCapacityAdapter();
 			}
 			@Override
 			public Adapter caseAllocation(Allocation object) {
@@ -564,6 +569,20 @@ public class EngineeringAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createDirectoryAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.Capacity <em>Capacity</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.nasdanika.engineering.Capacity
+	 * @generated
+	 */
+	public Adapter createCapacityAdapter() {
 		return null;
 	}
 
