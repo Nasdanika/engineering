@@ -2,13 +2,16 @@
  */
 package org.nasdanika.engineering.util;
 
+import java.util.Date;
 import java.util.Map;
+
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.EObjectValidator;
 import org.nasdanika.common.Adaptable;
+import org.nasdanika.emf.DiagnosticHelper;
 import org.nasdanika.engineering.Activity;
 import org.nasdanika.engineering.Allocation;
 import org.nasdanika.engineering.Artifact;
@@ -263,7 +266,36 @@ public class EngineeringValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateIssue(Issue issue, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(issue, diagnostics, context);
+		if (!validate_NoCircularContainment(issue, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(issue, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(issue, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(issue, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(issue, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(issue, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(issue, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(issue, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(issue, diagnostics, context);
+		if (result || diagnostics != null) result &= validateIssue_increment(issue, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * Validates the increment constraint of '<em>Issue</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean validateIssue_increment(Issue issue, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (diagnostics != null && issue.eIsSet(EngineeringPackage.Literals.ISSUE__END) && issue.eIsSet(EngineeringPackage.Literals.ISSUE__INCREMENT)) {
+			Date start = issue.getIncrement().getStart();
+			Date end = issue.getIncrement().getEnd();
+			if ((start.after(issue.getEnd()) || end.before(issue.getEnd()))) {
+				DiagnosticHelper helper = new DiagnosticHelper(diagnostics, DIAGNOSTIC_SOURCE, 0, issue);
+				helper.error("Issue end date " + issue.getEnd() + " is not within the increment " + start + " - " + end, EngineeringPackage.Literals.ISSUE__INCREMENT);
+				return helper.isSuccess();
+			}
+		}
+		return true;
 	}
 
 	/**

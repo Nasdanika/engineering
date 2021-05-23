@@ -1340,13 +1340,31 @@ public interface EngineeringPackage extends EPackage {
 	int ISSUE__REMAINING_COST = ENGINEERED_CAPABILITY_FEATURE_COUNT + 14;
 
 	/**
+	 * The feature id for the '<em><b>Start</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE__START = ENGINEERED_CAPABILITY_FEATURE_COUNT + 15;
+
+	/**
+	 * The feature id for the '<em><b>End</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE__END = ENGINEERED_CAPABILITY_FEATURE_COUNT + 16;
+
+	/**
 	 * The number of structural features of the '<em>Issue</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ISSUE_FEATURE_COUNT = ENGINEERED_CAPABILITY_FEATURE_COUNT + 15;
+	int ISSUE_FEATURE_COUNT = ENGINEERED_CAPABILITY_FEATURE_COUNT + 17;
 
 	/**
 	 * The number of operations of the '<em>Issue</em>' class.
@@ -4856,6 +4874,28 @@ public interface EngineeringPackage extends EPackage {
 	EAttribute getIssue_RemainingCost();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Issue#getStart <em>Start</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Start</em>'.
+	 * @see org.nasdanika.engineering.Issue#getStart()
+	 * @see #getIssue()
+	 * @generated
+	 */
+	EAttribute getIssue_Start();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Issue#getEnd <em>End</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>End</em>'.
+	 * @see org.nasdanika.engineering.Issue#getEnd()
+	 * @see #getIssue()
+	 * @generated
+	 */
+	EAttribute getIssue_End();
+
+	/**
 	 * Returns the meta object for the containment reference list '{@link org.nasdanika.engineering.Issue#getNotes <em>Notes</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5947,6 +5987,22 @@ public interface EngineeringPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ISSUE__REMAINING_COST = eINSTANCE.getIssue_RemainingCost();
+
+		/**
+		 * The meta object literal for the '<em><b>Start</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ISSUE__START = eINSTANCE.getIssue_Start();
+
+		/**
+		 * The meta object literal for the '<em><b>End</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ISSUE__END = eINSTANCE.getIssue_End();
 
 		/**
 		 * The meta object literal for the '<em><b>Notes</b></em>' containment reference list feature.

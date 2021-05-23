@@ -34,6 +34,8 @@ public class FeatureViewAction extends EngineeredCapabilityViewAction<Feature> {
 					"issues", 
 					getFeatureDiagnostic(feature),					
 					EngineeringPackage.Literals.NAMED_ELEMENT__NAME,
+					EngineeringPackage.Literals.ISSUE__START,
+					EngineeringPackage.Literals.ISSUE__END,
 					EngineeringPackage.Literals.ISSUE__STATUS,
 					EngineeringPackage.Literals.ISSUE__CATEGORY,				
 					EngineeringPackage.Literals.ISSUE__ASSIGNEE,				

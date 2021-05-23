@@ -2,6 +2,7 @@
  */
 package org.nasdanika.engineering;
 
+import java.util.Date;
 import org.eclipse.emf.common.util.EList;
 
 /**
@@ -28,10 +29,13 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.nasdanika.engineering.Issue#getCost <em>Cost</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Issue#getRemainingEffort <em>Remaining Effort</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Issue#getRemainingCost <em>Remaining Cost</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.Issue#getStart <em>Start</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.Issue#getEnd <em>End</em>}</li>
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getIssue()
  * @model annotation="urn:org.nasdanika documentation-reference='../doc/issue.md'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='increment'"
  * @generated
  */
 public interface Issue extends EngineeredCapability {
@@ -244,6 +248,50 @@ public interface Issue extends EngineeredCapability {
 	 * @generated
 	 */
 	double getRemainingCost();
+
+	/**
+	 * Returns the value of the '<em><b>Start</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Start</em>' attribute.
+	 * @see #setStart(Date)
+	 * @see org.nasdanika.engineering.EngineeringPackage#getIssue_Start()
+	 * @model
+	 * @generated
+	 */
+	Date getStart();
+
+	/**
+	 * Sets the value of the '{@link org.nasdanika.engineering.Issue#getStart <em>Start</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Start</em>' attribute.
+	 * @see #getStart()
+	 * @generated
+	 */
+	void setStart(Date value);
+
+	/**
+	 * Returns the value of the '<em><b>End</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>End</em>' attribute.
+	 * @see #setEnd(Date)
+	 * @see org.nasdanika.engineering.EngineeringPackage#getIssue_End()
+	 * @model
+	 * @generated
+	 */
+	Date getEnd();
+
+	/**
+	 * Sets the value of the '{@link org.nasdanika.engineering.Issue#getEnd <em>End</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>End</em>' attribute.
+	 * @see #getEnd()
+	 * @generated
+	 */
+	void setEnd(Date value);
 
 	/**
 	 * Returns the value of the '<em><b>Notes</b></em>' containment reference list.

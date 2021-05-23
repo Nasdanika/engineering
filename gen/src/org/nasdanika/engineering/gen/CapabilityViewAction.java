@@ -23,6 +23,8 @@ public class CapabilityViewAction<T extends Capability> extends NamedElementView
 					"required-by", 
 					getFeatureDiagnostic(feature),
 					EngineeringPackage.Literals.NAMED_ELEMENT__NAME,
+					EngineeringPackage.Literals.ISSUE__START,
+					EngineeringPackage.Literals.ISSUE__END,
 					EngineeringPackage.Literals.ISSUE__ASSIGNEE,
 					EngineeringPackage.Literals.ISSUE__STATUS,
 					EngineeringPackage.Literals.ISSUE__CATEGORY,				

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 
+import java.util.Date;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
@@ -47,6 +48,8 @@ import org.nasdanika.engineering.Release;
  *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getCost <em>Cost</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getRemainingEffort <em>Remaining Effort</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getRemainingCost <em>Remaining Cost</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getStart <em>Start</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getEnd <em>End</em>}</li>
  * </ul>
  *
  * @generated
@@ -98,6 +101,26 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 	 * @ordered
 	 */
 	protected static final double REMAINING_COST_EDEFAULT = 0.0;
+
+	/**
+	 * The default value of the '{@link #getStart() <em>Start</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStart()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final Date START_EDEFAULT = null;
+
+	/**
+	 * The default value of the '{@link #getEnd() <em>End</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEnd()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final Date END_EDEFAULT = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -199,37 +222,35 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public Increment getIncrement() {
+		if (eIsSet(EngineeringPackage.Literals.ISSUE__END) && !eIsSet(EngineeringPackage.Literals.ISSUE__INCREMENT)) {
+			// Computing increment from the end date if the end data is set and the increment is not.
+			for (EObject ancestor = eContainer(); ancestor != null; ancestor = ancestor.eContainer()) {
+				if (ancestor instanceof Engineer) {
+					Increment increment = findIncrement(getEnd(), ((Engineer) ancestor).getIncrements());
+					if (increment != null) {
+						return increment;
+					}
+				}
+			}
+		}
 		return (Increment)eDynamicGet(EngineeringPackage.ISSUE__INCREMENT, EngineeringPackage.Literals.ISSUE__INCREMENT, true, true);
 	}
-
-	//	/**
-//	 * <!-- begin-user-doc -->
-//	 * <!-- end-user-doc -->
-//	 * @generated NOT
-//	 */
-//	@Override
-//	public Increment getIncrement() {
-//		String incrementId = getIncrementId();
-//		if (Util.isBlank(incrementId)) {
-//			return null;
-//		}
-//		Resource res = eResource(); 
-//		if (res != null) {
-//			ResourceSet rSet = res.getResourceSet();
-//			TreeIterator<?> cit = rSet == null ? res.getAllContents() : rSet. getAllContents();
-//			while (cit.hasNext()) {
-//				Object next = cit.next(); 
-//				if (next instanceof Increment && ((Increment) next).getId().equals(incrementId)) {
-//					return (Increment) next;
-//				}
-//			}
-//		}
-//		throw new ConfigurationException("Increment not found: " + incrementId, EObjectAdaptable.adaptTo(this, Marked.class));
-//	}
+	
+	private static Increment findIncrement(Date date, Collection<Increment> increments) {
+		for (Increment increment: increments) {
+			Date start = increment.getStart();
+			Date end = increment.getEnd();
+			if ((start.equals(date) || start.before(date)) && (end.equals(date) || end.after(date))) {
+				Increment ci = findIncrement(date, increment.getChildren());
+				return ci == null ? increment : ci;
+			}
+		}
+		return null;
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -444,6 +465,46 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 		return ret;
 	}
 	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Date getStart() {
+		return (Date)eDynamicGet(EngineeringPackage.ISSUE__START, EngineeringPackage.Literals.ISSUE__START, true, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setStart(Date newStart) {
+		eDynamicSet(EngineeringPackage.ISSUE__START, EngineeringPackage.Literals.ISSUE__START, newStart);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Date getEnd() {
+		return (Date)eDynamicGet(EngineeringPackage.ISSUE__END, EngineeringPackage.Literals.ISSUE__END, true, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setEnd(Date newEnd) {
+		eDynamicSet(EngineeringPackage.ISSUE__END, EngineeringPackage.Literals.ISSUE__END, newEnd);
+	}
+
 	@Override
 	public double getCompletion() {
 		IssueStatus status = getStatus();
@@ -661,6 +722,10 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 				return getRemainingEffort();
 			case EngineeringPackage.ISSUE__REMAINING_COST:
 				return getRemainingCost();
+			case EngineeringPackage.ISSUE__START:
+				return getStart();
+			case EngineeringPackage.ISSUE__END:
+				return getEnd();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -712,6 +777,12 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 			case EngineeringPackage.ISSUE__COST:
 				setCost((Double)newValue);
 				return;
+			case EngineeringPackage.ISSUE__START:
+				setStart((Date)newValue);
+				return;
+			case EngineeringPackage.ISSUE__END:
+				setEnd((Date)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -757,6 +828,12 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 			case EngineeringPackage.ISSUE__COST:
 				setCost(COST_EDEFAULT);
 				return;
+			case EngineeringPackage.ISSUE__START:
+				setStart(START_EDEFAULT);
+				return;
+			case EngineeringPackage.ISSUE__END:
+				setEnd(END_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -799,6 +876,10 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 				return getRemainingEffort() != REMAINING_EFFORT_EDEFAULT;
 			case EngineeringPackage.ISSUE__REMAINING_COST:
 				return getRemainingCost() != REMAINING_COST_EDEFAULT;
+			case EngineeringPackage.ISSUE__START:
+				return START_EDEFAULT == null ? getStart() != null : !START_EDEFAULT.equals(getStart());
+			case EngineeringPackage.ISSUE__END:
+				return END_EDEFAULT == null ? getEnd() != null : !END_EDEFAULT.equals(getEnd());
 		}
 		return super.eIsSet(featureID);
 	}

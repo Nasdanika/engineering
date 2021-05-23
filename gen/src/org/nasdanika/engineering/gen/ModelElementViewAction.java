@@ -92,6 +92,14 @@ public class ModelElementViewAction<T extends ModelElement> extends SimpleEObjec
 	}
 	
 	/**
+	 * Sorts features
+	 */
+	@Override
+	protected List<EStructuralFeature> getFeatures() {
+		return super.getFeatures().stream().sorted((Comparator<? super EStructuralFeature>) (a, b) -> featureLabel(a).compareTo(featureLabel(b))).collect(Collectors.toList());
+	}
+	
+	/**
 	 * To render descriptions for model elements without view actions.
 	 * @param modelElement
 	 * @return
