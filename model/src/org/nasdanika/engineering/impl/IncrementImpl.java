@@ -225,12 +225,11 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public EList<Capacity> getCapacity() {
-		return (EList<Capacity>)eDynamicGet(EngineeringPackage.INCREMENT__CAPACITY, EngineeringPackage.Literals.INCREMENT__CAPACITY, true, true);
+		return getReferrers(EngineeringPackage.Literals.CAPACITY__INCREMENT);
 	}
 
 	/**

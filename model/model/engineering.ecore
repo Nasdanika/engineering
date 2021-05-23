@@ -113,6 +113,8 @@
         <details key="documentation" value="If true, unused category weight &quot;capacity&quot; is carried over to future increments and overused is subtracted from future increments. This allow low-weight categories to accumulate weight over time."/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="allocations" upperBound="-1"
+        eType="#//Allocation" changeable="false" derived="true" eOpposite="#//Allocation/category"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IssueStatus" eSuperTypes="#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="issues" upperBound="-1"
@@ -461,5 +463,7 @@
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="engineer" eType="#//Engineer"
         eOpposite="#//Engineer/designations"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="category" upperBound="-1"
+        eType="#//IssueCategory" eOpposite="#//IssueCategory/allocations"/>
   </eClassifiers>
 </ecore:EPackage>

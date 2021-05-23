@@ -46,6 +46,16 @@ public class EngineerViewAction<T extends Engineer> extends PersonaViewAction<T>
 					EngineeringPackage.Literals.ISSUE__REMAINING_COST,
 					EngineeringPackage.Literals.ENDEAVOR__COMPLETION));
 		}
+		
+		if (feature == EngineeringPackage.Literals.ENGINEER__CAPACITY) {
+			// TODO
+			return Collections.emptyList();
+		}
+		
+		if (feature == EngineeringPackage.Literals.ENGINEER__DESIGNATIONS) {
+			// TODO
+			return Collections.emptyList();
+		}
 
 		return super.featureActions(feature);
 	}
@@ -57,6 +67,12 @@ public class EngineerViewAction<T extends Engineer> extends PersonaViewAction<T>
 		}
 		if (feature == EngineeringPackage.Literals.ENGINEER__INCREMENTS) {
 			return role == FeatureRole.ELEMENT_ACTIONS || role == FeatureRole.CONTENT;
+		}
+		if (feature == EngineeringPackage.Literals.ENGINEER__CAPACITY) {
+			return role == FeatureRole.FEATURE_ACTIONS;
+		}
+		if (feature == EngineeringPackage.Literals.ENGINEER__DESIGNATIONS) {
+			return role == FeatureRole.FEATURE_ACTIONS;
 		}
 		
 		return super.isFeatureInRole(feature, role);

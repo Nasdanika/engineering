@@ -2,6 +2,8 @@
  */
 package org.nasdanika.engineering;
 
+import org.eclipse.emf.common.util.EList;
+
 
 /**
  * <!-- begin-user-doc -->
@@ -13,6 +15,7 @@ package org.nasdanika.engineering;
  * </p>
  * <ul>
  *   <li>{@link org.nasdanika.engineering.Allocation#getEngineer <em>Engineer</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.Allocation#getCategory <em>Category</em>}</li>
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getAllocation()
@@ -43,5 +46,19 @@ public interface Allocation extends Capacity {
 	 * @generated
 	 */
 	void setEngineer(Engineer value);
+
+	/**
+	 * Returns the value of the '<em><b>Category</b></em>' reference list.
+	 * The list contents are of type {@link org.nasdanika.engineering.IssueCategory}.
+	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.IssueCategory#getAllocations <em>Allocations</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Category</em>' reference list.
+	 * @see org.nasdanika.engineering.EngineeringPackage#getAllocation_Category()
+	 * @see org.nasdanika.engineering.IssueCategory#getAllocations
+	 * @model opposite="allocations"
+	 * @generated
+	 */
+	EList<IssueCategory> getCategory();
 
 } // Allocation

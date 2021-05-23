@@ -2,6 +2,7 @@ package org.nasdanika.engineering.gen;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -55,6 +56,9 @@ public class IncrementViewAction extends NamedElementViewAction<Increment> {
 		}
 		if (feature == EngineeringPackage.Literals.INCREMENT__CHILDREN) {
 			return role == FeatureRole.ELEMENT_ACTIONS;
+		}
+		if (feature == EngineeringPackage.Literals.INCREMENT__CAPACITY) {
+			return role == FeatureRole.FEATURE_ACTIONS;
 		}
 		
 		return super.isFeatureInRole(feature, role);
@@ -293,5 +297,16 @@ public class IncrementViewAction extends NamedElementViewAction<Increment> {
 		}
 	}
 	
+	@Override
+	protected Collection<Action> featureActions(EStructuralFeature feature) {
+		if (feature == EngineeringPackage.Literals.INCREMENT__CAPACITY) {
+			if (getSemanticElement().getCapacity().isEmpty()) {
+				return Collections.emptyList();
+			}
+			// TODO - allocations and capacity. Target - eContainer() operation.
+			return Collections.emptyList();
+		}
+		return super.featureActions(feature);
+	}
 
 }

@@ -1,6 +1,7 @@
 package org.nasdanika.engineering.gen;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -91,12 +92,25 @@ public class EngineeredElementViewAction<T extends EngineeredElement> extends Na
 		if (feature == EngineeringPackage.Literals.ENGINEERED_ELEMENT__ISSUES) {
 			return role == FeatureRole.ELEMENT_ACTIONS;
 		}
+		if (feature == EngineeringPackage.Literals.ENGINEERED_ELEMENT__ALLOCATIONS) {
+			return role == FeatureRole.FEATURE_ACTIONS;
+		}
 		return super.isFeatureInRole(feature, role);
 	}
 			
 	@Override
 	public SectionStyle getSectionStyle() {
 		return getSectionChildren().size() > 1 ? SectionStyle.TAB : super.getSectionStyle();
+	}
+	
+	@Override
+	protected Collection<Action> featureActions(EStructuralFeature feature) {
+		if (feature == EngineeringPackage.Literals.ENGINEERED_ELEMENT__ALLOCATIONS) {
+			// TODO
+			return Collections.emptyList();
+		}
+
+		return super.featureActions(feature);
 	}
 	
 }

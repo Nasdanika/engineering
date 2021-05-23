@@ -116,6 +116,13 @@ engineering-organization:
          To be able to reference resources in Git repositories. In-memory and local file system clone, maybe just the second one - easier, but would need to implement cleanup.
          Credentials from context or a method to override to lookup credentials by repo URL. Perhaps support aliases as URI authority and branch as the first segment with ability to 
          use interpolation. Configuration in Java and also by loading a YAML config file with aliases and encrypted/tokenized credentials. Consider using OS secure store as Maven does.  
+   capacity:
+     - increment: nasdanika:increments/2021/children/q2/children/jun
+       effort: 40
+       markdown-description: For testing capacity and allocations.
+     - increment: nasdanika:increments/2021/children/q3/children/jul
+       effort: 50
+       markdown-description: For testing capacity and allocations.
    
 # TODO: to issues - model element appearance
 # TODO  Footer - sources  

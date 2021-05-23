@@ -83,11 +83,16 @@ engineering-module:
          Representations are rendered as section actions. Composite representation - style - cards, pills, ... Cards columns. Charts can be introduced this way.           
      - name: Journey element input artifacts (requirements) and output artifacts (deliverables)
        markdown-description: Infer transition artifacts from journey element artirfacts and vice-versa, validations of consistency, e.g. an output transition lists an artifact which is not in the list of journey element deliverables.
-     - name: Capacity, allocation, utilization validation
+     - name: Capacity, allocation, utilization calculation and validation
        markdown-description: |+2
          Total of increment issues does not exceed allocation if it is present. If an issue is worked over multiple increments use issue start/end to pro-rate. 
          Total of allocations does not exceed capacity.
          Utilization, two levels - a) engineer capacity is allocated b) allocations are utilized by assigning issues. Configurable validations and under/over allocation margins - context service?
-          
+         For allocation compute utilization from issue notes. For capacity from allocations. Capacity shall be allocated, allocations shall be assigned. Then utilization is tracked - burn down how much of allocated is used.
+   allocations:
+     - increment: nasdanika:increments/2021/children/q2/children/jun
+       effort: 30
+       markdown-description: Sample allocation.
+            
                            
    

@@ -665,13 +665,22 @@ public interface EngineeringPackage extends EPackage {
 	int ISSUE_CATEGORY__CUMULATIVE = NAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Allocations</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE_CATEGORY__ALLOCATIONS = NAMED_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Issue Category</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ISSUE_CATEGORY_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 3;
+	int ISSUE_CATEGORY_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of operations of the '<em>Issue Category</em>' class.
@@ -3776,13 +3785,22 @@ public interface EngineeringPackage extends EPackage {
 	int ALLOCATION__ENGINEER = CAPACITY_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Category</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ALLOCATION__CATEGORY = CAPACITY_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Allocation</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ALLOCATION_FEATURE_COUNT = CAPACITY_FEATURE_COUNT + 1;
+	int ALLOCATION_FEATURE_COUNT = CAPACITY_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Allocation</em>' class.
@@ -4418,6 +4436,17 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getIssueCategory_Cumulative();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.IssueCategory#getAllocations <em>Allocations</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Allocations</em>'.
+	 * @see org.nasdanika.engineering.IssueCategory#getAllocations()
+	 * @see #getIssueCategory()
+	 * @generated
+	 */
+	EReference getIssueCategory_Allocations();
 
 	/**
 	 * Returns the meta object for class '{@link org.nasdanika.engineering.IssueStatus <em>Issue Status</em>}'.
@@ -5122,6 +5151,17 @@ public interface EngineeringPackage extends EPackage {
 	EReference getAllocation_Engineer();
 
 	/**
+	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.Allocation#getCategory <em>Category</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Category</em>'.
+	 * @see org.nasdanika.engineering.Allocation#getCategory()
+	 * @see #getAllocation()
+	 * @generated
+	 */
+	EReference getAllocation_Category();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5635,6 +5675,14 @@ public interface EngineeringPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ISSUE_CATEGORY__CUMULATIVE = eINSTANCE.getIssueCategory_Cumulative();
+
+		/**
+		 * The meta object literal for the '<em><b>Allocations</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ISSUE_CATEGORY__ALLOCATIONS = eINSTANCE.getIssueCategory_Allocations();
 
 		/**
 		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.IssueStatusImpl <em>Issue Status</em>}' class.
@@ -6181,6 +6229,14 @@ public interface EngineeringPackage extends EPackage {
 		 * @generated
 		 */
 		EReference ALLOCATION__ENGINEER = eINSTANCE.getAllocation_Engineer();
+
+		/**
+		 * The meta object literal for the '<em><b>Category</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ALLOCATION__CATEGORY = eINSTANCE.getAllocation_Category();
 
 	}
 

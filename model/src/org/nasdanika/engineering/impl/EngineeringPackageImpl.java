@@ -894,6 +894,16 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
+	public EReference getIssueCategory_Allocations() {
+		return (EReference)issueCategoryEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getIssueStatus() {
 		return issueStatusEClass;
 	}
@@ -1544,6 +1554,16 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
+	public EReference getAllocation_Category() {
+		return (EReference)allocationEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EngineeringFactory getEngineeringFactory() {
 		return (EngineeringFactory)getEFactoryInstance();
 	}
@@ -1598,6 +1618,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		createEAttribute(issueCategoryEClass, ISSUE_CATEGORY__WEIGHT);
 		createEReference(issueCategoryEClass, ISSUE_CATEGORY__ISSUES);
 		createEAttribute(issueCategoryEClass, ISSUE_CATEGORY__CUMULATIVE);
+		createEReference(issueCategoryEClass, ISSUE_CATEGORY__ALLOCATIONS);
 
 		issueStatusEClass = createEClass(ISSUE_STATUS);
 		createEReference(issueStatusEClass, ISSUE_STATUS__ISSUES);
@@ -1716,6 +1737,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 
 		allocationEClass = createEClass(ALLOCATION);
 		createEReference(allocationEClass, ALLOCATION__ENGINEER);
+		createEReference(allocationEClass, ALLOCATION__CATEGORY);
 	}
 
 	/**
@@ -1805,6 +1827,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		initEAttribute(getIssueCategory_Weight(), ecorePackage.getEDouble(), "weight", null, 0, 1, IssueCategory.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getIssueCategory_Issues(), this.getIssue(), this.getIssue_Category(), "issues", null, 0, -1, IssueCategory.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEAttribute(getIssueCategory_Cumulative(), ecorePackage.getEBoolean(), "cumulative", null, 0, 1, IssueCategory.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getIssueCategory_Allocations(), this.getAllocation(), this.getAllocation_Category(), "allocations", null, 0, -1, IssueCategory.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEClass(issueStatusEClass, IssueStatus.class, "IssueStatus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getIssueStatus_Issues(), this.getIssue(), this.getIssue_Status(), "issues", null, 0, -1, IssueStatus.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
@@ -1923,6 +1946,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 
 		initEClass(allocationEClass, Allocation.class, "Allocation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getAllocation_Engineer(), this.getEngineer(), this.getEngineer_Designations(), "engineer", null, 0, 1, Allocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAllocation_Category(), this.getIssueCategory(), this.getIssueCategory_Allocations(), "category", null, 0, -1, Allocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

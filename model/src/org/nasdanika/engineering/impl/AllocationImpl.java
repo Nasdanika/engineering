@@ -2,13 +2,18 @@
  */
 package org.nasdanika.engineering.impl;
 
+import java.util.Collection;
 import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.util.InternalEList;
 import org.nasdanika.engineering.Allocation;
 import org.nasdanika.engineering.Engineer;
+import org.nasdanika.engineering.EngineeredElement;
 import org.nasdanika.engineering.EngineeringPackage;
+import org.nasdanika.engineering.IssueCategory;
 
 /**
  * <!-- begin-user-doc -->
@@ -19,6 +24,7 @@ import org.nasdanika.engineering.EngineeringPackage;
  * </p>
  * <ul>
  *   <li>{@link org.nasdanika.engineering.impl.AllocationImpl#getEngineer <em>Engineer</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.AllocationImpl#getCategory <em>Category</em>}</li>
  * </ul>
  *
  * @generated
@@ -46,10 +52,19 @@ public class AllocationImpl extends CapacityImpl implements Allocation {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public Engineer getEngineer() {
+		if (!eIsSet(EngineeringPackage.Literals.ALLOCATION__ENGINEER)) {
+			EObject c = eContainer();
+			if (c instanceof EngineeredElement) {
+				EList<Engineer> owners = ((EngineeredElement) c).getOwners();
+				if (!owners.isEmpty()) {
+					return owners.get(0);
+				}
+			}
+		}
 		return (Engineer)eDynamicGet(EngineeringPackage.ALLOCATION__ENGINEER, EngineeringPackage.Literals.ALLOCATION__ENGINEER, true, true);
 	}
 
@@ -87,6 +102,18 @@ public class AllocationImpl extends CapacityImpl implements Allocation {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public EList<IssueCategory> getCategory() {
+		return (EList<IssueCategory>)eDynamicGet(EngineeringPackage.ALLOCATION__CATEGORY, EngineeringPackage.Literals.ALLOCATION__CATEGORY, true, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -95,6 +122,8 @@ public class AllocationImpl extends CapacityImpl implements Allocation {
 				if (engineer != null)
 					msgs = ((InternalEObject)engineer).eInverseRemove(this, EngineeringPackage.ENGINEER__DESIGNATIONS, Engineer.class, msgs);
 				return basicSetEngineer((Engineer)otherEnd, msgs);
+			case EngineeringPackage.ALLOCATION__CATEGORY:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getCategory()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -109,6 +138,8 @@ public class AllocationImpl extends CapacityImpl implements Allocation {
 		switch (featureID) {
 			case EngineeringPackage.ALLOCATION__ENGINEER:
 				return basicSetEngineer(null, msgs);
+			case EngineeringPackage.ALLOCATION__CATEGORY:
+				return ((InternalEList<?>)getCategory()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -124,6 +155,8 @@ public class AllocationImpl extends CapacityImpl implements Allocation {
 			case EngineeringPackage.ALLOCATION__ENGINEER:
 				if (resolve) return getEngineer();
 				return basicGetEngineer();
+			case EngineeringPackage.ALLOCATION__CATEGORY:
+				return getCategory();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -133,11 +166,16 @@ public class AllocationImpl extends CapacityImpl implements Allocation {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case EngineeringPackage.ALLOCATION__ENGINEER:
 				setEngineer((Engineer)newValue);
+				return;
+			case EngineeringPackage.ALLOCATION__CATEGORY:
+				getCategory().clear();
+				getCategory().addAll((Collection<? extends IssueCategory>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -154,6 +192,9 @@ public class AllocationImpl extends CapacityImpl implements Allocation {
 			case EngineeringPackage.ALLOCATION__ENGINEER:
 				setEngineer((Engineer)null);
 				return;
+			case EngineeringPackage.ALLOCATION__CATEGORY:
+				getCategory().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -168,6 +209,8 @@ public class AllocationImpl extends CapacityImpl implements Allocation {
 		switch (featureID) {
 			case EngineeringPackage.ALLOCATION__ENGINEER:
 				return basicGetEngineer() != null;
+			case EngineeringPackage.ALLOCATION__CATEGORY:
+				return !getCategory().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

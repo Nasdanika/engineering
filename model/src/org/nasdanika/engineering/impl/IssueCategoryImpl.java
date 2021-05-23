@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.nasdanika.engineering.Allocation;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.IssueCategory;
@@ -26,6 +27,7 @@ import org.nasdanika.engineering.IssueCategory;
  *   <li>{@link org.nasdanika.engineering.impl.IssueCategoryImpl#getWeight <em>Weight</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IssueCategoryImpl#getIssues <em>Issues</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IssueCategoryImpl#isCumulative <em>Cumulative</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.IssueCategoryImpl#getAllocations <em>Allocations</em>}</li>
  * </ul>
  *
  * @generated
@@ -123,6 +125,16 @@ public class IssueCategoryImpl extends NamedElementImpl implements IssueCategory
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public EList<Allocation> getAllocations() {
+		return getReferrers(EngineeringPackage.Literals.ALLOCATION__CATEGORY);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -131,6 +143,8 @@ public class IssueCategoryImpl extends NamedElementImpl implements IssueCategory
 		switch (featureID) {
 			case EngineeringPackage.ISSUE_CATEGORY__ISSUES:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getIssues()).basicAdd(otherEnd, msgs);
+			case EngineeringPackage.ISSUE_CATEGORY__ALLOCATIONS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getAllocations()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -145,6 +159,8 @@ public class IssueCategoryImpl extends NamedElementImpl implements IssueCategory
 		switch (featureID) {
 			case EngineeringPackage.ISSUE_CATEGORY__ISSUES:
 				return ((InternalEList<?>)getIssues()).basicRemove(otherEnd, msgs);
+			case EngineeringPackage.ISSUE_CATEGORY__ALLOCATIONS:
+				return ((InternalEList<?>)getAllocations()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -163,6 +179,8 @@ public class IssueCategoryImpl extends NamedElementImpl implements IssueCategory
 				return getIssues();
 			case EngineeringPackage.ISSUE_CATEGORY__CUMULATIVE:
 				return isCumulative();
+			case EngineeringPackage.ISSUE_CATEGORY__ALLOCATIONS:
+				return getAllocations();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -217,6 +235,8 @@ public class IssueCategoryImpl extends NamedElementImpl implements IssueCategory
 				return !getIssues().isEmpty();
 			case EngineeringPackage.ISSUE_CATEGORY__CUMULATIVE:
 				return isCumulative() != CUMULATIVE_EDEFAULT;
+			case EngineeringPackage.ISSUE_CATEGORY__ALLOCATIONS:
+				return !getAllocations().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
