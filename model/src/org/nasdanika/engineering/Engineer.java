@@ -111,17 +111,17 @@ public interface Engineer extends Persona {
 
 	/**
 	 * Returns the value of the '<em><b>Assignments</b></em>' reference list.
-	 * The list contents are of type {@link org.nasdanika.engineering.Issue}.
-	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Issue#getAssignee <em>Assignee</em>}'.
+	 * The list contents are of type {@link org.nasdanika.engineering.Endeavor}.
+	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Endeavor#getAssignee <em>Assignee</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Assignments</em>' reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getEngineer_Assignments()
-	 * @see org.nasdanika.engineering.Issue#getAssignee
+	 * @see org.nasdanika.engineering.Endeavor#getAssignee
 	 * @model opposite="assignee" changeable="false" derived="true"
 	 * @generated
 	 */
-	EList<Issue> getAssignments();
+	EList<Endeavor> getAssignments();
 
 	/**
 	 * Returns the value of the '<em><b>Issue Categories</b></em>' containment reference list.

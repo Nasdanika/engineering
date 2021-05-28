@@ -296,13 +296,31 @@ public interface EngineeringPackage extends EPackage {
 	int ENDEAVOR__TOTAL_COST = 2;
 
 	/**
+	 * The feature id for the '<em><b>Assignee</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENDEAVOR__ASSIGNEE = 3;
+
+	/**
+	 * The feature id for the '<em><b>All Issues</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENDEAVOR__ALL_ISSUES = 4;
+
+	/**
 	 * The number of structural features of the '<em>Endeavor</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENDEAVOR_FEATURE_COUNT = 3;
+	int ENDEAVOR_FEATURE_COUNT = 5;
 
 	/**
 	 * The number of operations of the '<em>Endeavor</em>' class.
@@ -484,58 +502,13 @@ public interface EngineeringPackage extends EPackage {
 	int INCREMENT__TOTAL_COST = NAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Assignee</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INCREMENT__CHILDREN = NAMED_ELEMENT_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>Start</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INCREMENT__START = NAMED_ELEMENT_FEATURE_COUNT + 4;
-
-	/**
-	 * The feature id for the '<em><b>End</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INCREMENT__END = NAMED_ELEMENT_FEATURE_COUNT + 5;
-
-	/**
-	 * The feature id for the '<em><b>Issues</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INCREMENT__ISSUES = NAMED_ELEMENT_FEATURE_COUNT + 6;
-
-	/**
-	 * The feature id for the '<em><b>Releases</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INCREMENT__RELEASES = NAMED_ELEMENT_FEATURE_COUNT + 7;
-
-	/**
-	 * The feature id for the '<em><b>Capacity</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INCREMENT__CAPACITY = NAMED_ELEMENT_FEATURE_COUNT + 8;
+	int INCREMENT__ASSIGNEE = NAMED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>All Issues</b></em>' reference list.
@@ -544,7 +517,61 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INCREMENT__ALL_ISSUES = NAMED_ELEMENT_FEATURE_COUNT + 9;
+	int INCREMENT__ALL_ISSUES = NAMED_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INCREMENT__CHILDREN = NAMED_ELEMENT_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>Start</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INCREMENT__START = NAMED_ELEMENT_FEATURE_COUNT + 6;
+
+	/**
+	 * The feature id for the '<em><b>End</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INCREMENT__END = NAMED_ELEMENT_FEATURE_COUNT + 7;
+
+	/**
+	 * The feature id for the '<em><b>Issues</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INCREMENT__ISSUES = NAMED_ELEMENT_FEATURE_COUNT + 8;
+
+	/**
+	 * The feature id for the '<em><b>Releases</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INCREMENT__RELEASES = NAMED_ELEMENT_FEATURE_COUNT + 9;
+
+	/**
+	 * The feature id for the '<em><b>Capacity</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INCREMENT__CAPACITY = NAMED_ELEMENT_FEATURE_COUNT + 10;
 
 	/**
 	 * The number of structural features of the '<em>Increment</em>' class.
@@ -553,7 +580,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INCREMENT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 10;
+	int INCREMENT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 11;
 
 	/**
 	 * The number of operations of the '<em>Increment</em>' class.
@@ -1018,13 +1045,31 @@ public interface EngineeringPackage extends EPackage {
 	int ENGINEERED_CAPABILITY__TOTAL_COST = CAPABILITY_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Assignee</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEERED_CAPABILITY__ASSIGNEE = CAPABILITY_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>All Issues</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEERED_CAPABILITY__ALL_ISSUES = CAPABILITY_FEATURE_COUNT + 4;
+
+	/**
 	 * The number of structural features of the '<em>Engineered Capability</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEERED_CAPABILITY_FEATURE_COUNT = CAPABILITY_FEATURE_COUNT + 3;
+	int ENGINEERED_CAPABILITY_FEATURE_COUNT = CAPABILITY_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of operations of the '<em>Engineered Capability</em>' class.
@@ -1214,6 +1259,24 @@ public interface EngineeringPackage extends EPackage {
 	int ISSUE__TOTAL_COST = ENGINEERED_CAPABILITY__TOTAL_COST;
 
 	/**
+	 * The feature id for the '<em><b>Assignee</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE__ASSIGNEE = ENGINEERED_CAPABILITY__ASSIGNEE;
+
+	/**
+	 * The feature id for the '<em><b>All Issues</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE__ALL_ISSUES = ENGINEERED_CAPABILITY__ALL_ISSUES;
+
+	/**
 	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1223,22 +1286,13 @@ public interface EngineeringPackage extends EPackage {
 	int ISSUE__CHILDREN = ENGINEERED_CAPABILITY_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Assignee</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ISSUE__ASSIGNEE = ENGINEERED_CAPABILITY_FEATURE_COUNT + 1;
-
-	/**
 	 * The feature id for the '<em><b>Requires</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ISSUE__REQUIRES = ENGINEERED_CAPABILITY_FEATURE_COUNT + 2;
+	int ISSUE__REQUIRES = ENGINEERED_CAPABILITY_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Increment</b></em>' reference.
@@ -1247,7 +1301,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ISSUE__INCREMENT = ENGINEERED_CAPABILITY_FEATURE_COUNT + 3;
+	int ISSUE__INCREMENT = ENGINEERED_CAPABILITY_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Contributes To</b></em>' reference list.
@@ -1256,7 +1310,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ISSUE__CONTRIBUTES_TO = ENGINEERED_CAPABILITY_FEATURE_COUNT + 4;
+	int ISSUE__CONTRIBUTES_TO = ENGINEERED_CAPABILITY_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Notes</b></em>' containment reference list.
@@ -1265,7 +1319,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ISSUE__NOTES = ENGINEERED_CAPABILITY_FEATURE_COUNT + 5;
+	int ISSUE__NOTES = ENGINEERED_CAPABILITY_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Category</b></em>' reference.
@@ -1274,7 +1328,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ISSUE__CATEGORY = ENGINEERED_CAPABILITY_FEATURE_COUNT + 6;
+	int ISSUE__CATEGORY = ENGINEERED_CAPABILITY_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Target</b></em>' reference.
@@ -1283,7 +1337,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ISSUE__TARGET = ENGINEERED_CAPABILITY_FEATURE_COUNT + 7;
+	int ISSUE__TARGET = ENGINEERED_CAPABILITY_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Status</b></em>' reference.
@@ -1292,7 +1346,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ISSUE__STATUS = ENGINEERED_CAPABILITY_FEATURE_COUNT + 8;
+	int ISSUE__STATUS = ENGINEERED_CAPABILITY_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Workable</b></em>' attribute.
@@ -1301,7 +1355,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ISSUE__WORKABLE = ENGINEERED_CAPABILITY_FEATURE_COUNT + 9;
+	int ISSUE__WORKABLE = ENGINEERED_CAPABILITY_FEATURE_COUNT + 8;
 
 	/**
 	 * The feature id for the '<em><b>Releases</b></em>' reference list.
@@ -1310,7 +1364,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ISSUE__RELEASES = ENGINEERED_CAPABILITY_FEATURE_COUNT + 10;
+	int ISSUE__RELEASES = ENGINEERED_CAPABILITY_FEATURE_COUNT + 9;
 
 	/**
 	 * The feature id for the '<em><b>Effort</b></em>' attribute.
@@ -1319,7 +1373,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ISSUE__EFFORT = ENGINEERED_CAPABILITY_FEATURE_COUNT + 11;
+	int ISSUE__EFFORT = ENGINEERED_CAPABILITY_FEATURE_COUNT + 10;
 
 	/**
 	 * The feature id for the '<em><b>Cost</b></em>' attribute.
@@ -1328,7 +1382,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ISSUE__COST = ENGINEERED_CAPABILITY_FEATURE_COUNT + 12;
+	int ISSUE__COST = ENGINEERED_CAPABILITY_FEATURE_COUNT + 11;
 
 	/**
 	 * The feature id for the '<em><b>Remaining Effort</b></em>' attribute.
@@ -1337,7 +1391,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ISSUE__REMAINING_EFFORT = ENGINEERED_CAPABILITY_FEATURE_COUNT + 13;
+	int ISSUE__REMAINING_EFFORT = ENGINEERED_CAPABILITY_FEATURE_COUNT + 12;
 
 	/**
 	 * The feature id for the '<em><b>Remaining Cost</b></em>' attribute.
@@ -1346,7 +1400,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ISSUE__REMAINING_COST = ENGINEERED_CAPABILITY_FEATURE_COUNT + 14;
+	int ISSUE__REMAINING_COST = ENGINEERED_CAPABILITY_FEATURE_COUNT + 13;
 
 	/**
 	 * The feature id for the '<em><b>Start</b></em>' attribute.
@@ -1355,7 +1409,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ISSUE__START = ENGINEERED_CAPABILITY_FEATURE_COUNT + 15;
+	int ISSUE__START = ENGINEERED_CAPABILITY_FEATURE_COUNT + 14;
 
 	/**
 	 * The feature id for the '<em><b>End</b></em>' attribute.
@@ -1364,7 +1418,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ISSUE__END = ENGINEERED_CAPABILITY_FEATURE_COUNT + 16;
+	int ISSUE__END = ENGINEERED_CAPABILITY_FEATURE_COUNT + 15;
 
 	/**
 	 * The number of structural features of the '<em>Issue</em>' class.
@@ -1373,7 +1427,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ISSUE_FEATURE_COUNT = ENGINEERED_CAPABILITY_FEATURE_COUNT + 17;
+	int ISSUE_FEATURE_COUNT = ENGINEERED_CAPABILITY_FEATURE_COUNT + 16;
 
 	/**
 	 * The number of operations of the '<em>Issue</em>' class.
@@ -2637,6 +2691,24 @@ public interface EngineeringPackage extends EPackage {
 	int RELEASE__TOTAL_COST = ENGINEERED_CAPABILITY__TOTAL_COST;
 
 	/**
+	 * The feature id for the '<em><b>Assignee</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RELEASE__ASSIGNEE = ENGINEERED_CAPABILITY__ASSIGNEE;
+
+	/**
+	 * The feature id for the '<em><b>All Issues</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RELEASE__ALL_ISSUES = ENGINEERED_CAPABILITY__ALL_ISSUES;
+
+	/**
 	 * The feature id for the '<em><b>Increment</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2788,6 +2860,24 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int FEATURE__TOTAL_COST = ENGINEERED_CAPABILITY__TOTAL_COST;
+
+	/**
+	 * The feature id for the '<em><b>Assignee</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE__ASSIGNEE = ENGINEERED_CAPABILITY__ASSIGNEE;
+
+	/**
+	 * The feature id for the '<em><b>All Issues</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE__ALL_ISSUES = ENGINEERED_CAPABILITY__ALL_ISSUES;
 
 	/**
 	 * The feature id for the '<em><b>Releases</b></em>' reference list.
@@ -3964,6 +4054,28 @@ public interface EngineeringPackage extends EPackage {
 	EAttribute getEndeavor_TotalCost();
 
 	/**
+	 * Returns the meta object for the reference '{@link org.nasdanika.engineering.Endeavor#getAssignee <em>Assignee</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Assignee</em>'.
+	 * @see org.nasdanika.engineering.Endeavor#getAssignee()
+	 * @see #getEndeavor()
+	 * @generated
+	 */
+	EReference getEndeavor_Assignee();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.Endeavor#getAllIssues <em>All Issues</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>All Issues</em>'.
+	 * @see org.nasdanika.engineering.Endeavor#getAllIssues()
+	 * @see #getEndeavor()
+	 * @generated
+	 */
+	EReference getEndeavor_AllIssues();
+
+	/**
 	 * Returns the meta object for class '{@link org.nasdanika.engineering.EngineeredElement <em>Engineered Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4384,17 +4496,6 @@ public interface EngineeringPackage extends EPackage {
 	EReference getIncrement_Capacity();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.Increment#getAllIssues <em>All Issues</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>All Issues</em>'.
-	 * @see org.nasdanika.engineering.Increment#getAllIssues()
-	 * @see #getIncrement()
-	 * @generated
-	 */
-	EReference getIncrement_AllIssues();
-
-	/**
 	 * Returns the meta object for class '{@link org.nasdanika.engineering.IssueCategory <em>Issue Category</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4780,17 +4881,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getIssue_Children();
-
-	/**
-	 * Returns the meta object for the reference '{@link org.nasdanika.engineering.Issue#getAssignee <em>Assignee</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Assignee</em>'.
-	 * @see org.nasdanika.engineering.Issue#getAssignee()
-	 * @see #getIssue()
-	 * @generated
-	 */
-	EReference getIssue_Assignee();
 
 	/**
 	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.Issue#getRequires <em>Requires</em>}'.
@@ -5305,6 +5395,22 @@ public interface EngineeringPackage extends EPackage {
 		EAttribute ENDEAVOR__TOTAL_COST = eINSTANCE.getEndeavor_TotalCost();
 
 		/**
+		 * The meta object literal for the '<em><b>Assignee</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ENDEAVOR__ASSIGNEE = eINSTANCE.getEndeavor_Assignee();
+
+		/**
+		 * The meta object literal for the '<em><b>All Issues</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ENDEAVOR__ALL_ISSUES = eINSTANCE.getEndeavor_AllIssues();
+
+		/**
 		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.EngineeredElementImpl <em>Engineered Element</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -5635,14 +5741,6 @@ public interface EngineeringPackage extends EPackage {
 		EReference INCREMENT__CAPACITY = eINSTANCE.getIncrement_Capacity();
 
 		/**
-		 * The meta object literal for the '<em><b>All Issues</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference INCREMENT__ALL_ISSUES = eINSTANCE.getIncrement_AllIssues();
-
-		/**
 		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.IssueCategoryImpl <em>Issue Category</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -5947,14 +6045,6 @@ public interface EngineeringPackage extends EPackage {
 		 * @generated
 		 */
 		EReference ISSUE__CHILDREN = eINSTANCE.getIssue_Children();
-
-		/**
-		 * The meta object literal for the '<em><b>Assignee</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ISSUE__ASSIGNEE = eINSTANCE.getIssue_Assignee();
 
 		/**
 		 * The meta object literal for the '<em><b>Requires</b></em>' reference list feature.

@@ -17,7 +17,7 @@ public class IssueStatusViewAction extends NamedElementViewAction<IssueStatus> {
 	@Override
 	protected Collection<Action> featureActions(EStructuralFeature feature) {
 		if (feature == EngineeringPackage.Literals.ISSUE_STATUS__ISSUES) {
-			return Collections.singleton(issuesSection(
+			return Collections.singleton(endeavorsSection(
 					getSemanticElement().getIssues(), 
 					"Issues", 
 					"Issues", 
@@ -27,7 +27,7 @@ public class IssueStatusViewAction extends NamedElementViewAction<IssueStatus> {
 					EngineeringPackage.Literals.ISSUE__END,
 					EngineeringPackage.Literals.ISSUE__CATEGORY,
 					EngineeringPackage.Literals.ISSUE__TARGET,
-					EngineeringPackage.Literals.ISSUE__ASSIGNEE,				
+					EngineeringPackage.Literals.ENDEAVOR__ASSIGNEE,				
 					EngineeringPackage.Literals.ISSUE__EFFORT,
 					EngineeringPackage.Literals.ISSUE__COST,
 					EngineeringPackage.Literals.ENDEAVOR__BENEFIT,

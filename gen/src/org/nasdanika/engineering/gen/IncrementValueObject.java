@@ -3,8 +3,10 @@ package org.nasdanika.engineering.gen;
 import java.util.Date;
 import java.util.Objects;
 
+import org.nasdanika.engineering.Endeavor;
 import org.nasdanika.engineering.Increment;
 import org.nasdanika.engineering.Issue;
+import org.nasdanika.engineering.Release;
 
 public class IncrementValueObject implements Comparable<IncrementValueObject> {
 	
@@ -22,6 +24,10 @@ public class IncrementValueObject implements Comparable<IncrementValueObject> {
 	
 	public IncrementValueObject(Issue issue) {
 		this(issue.getIncrement());
+	}
+	
+	public IncrementValueObject(Release release) {
+		this(release.getIncrement());
 	}
 
 	public Date getStart() {
@@ -120,6 +126,19 @@ public class IncrementValueObject implements Comparable<IncrementValueObject> {
 		}
 
 		return name.compareTo(oName);
-	}		
+	}	
+	
+	public static IncrementValueObject from(Endeavor endeavor) {
+		if (endeavor instanceof Increment) {
+			return new IncrementValueObject((Increment) endeavor);
+		}
+		if (endeavor instanceof Issue) {
+			return new IncrementValueObject((Issue) endeavor);
+		}
+		if (endeavor instanceof Release) {
+			return new IncrementValueObject((Release) endeavor);
+		}
+		return null;
+	}
 
 }

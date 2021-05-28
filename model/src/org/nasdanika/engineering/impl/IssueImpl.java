@@ -7,7 +7,10 @@ import java.util.Collection;
 import java.util.Collections;
 
 import java.util.Date;
+import java.util.HashSet;
+
 import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -34,7 +37,6 @@ import org.nasdanika.engineering.Release;
  * </p>
  * <ul>
  *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getChildren <em>Children</em>}</li>
- *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getAssignee <em>Assignee</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getRequires <em>Requires</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getIncrement <em>Increment</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getContributesTo <em>Contributes To</em>}</li>
@@ -150,62 +152,6 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 	@Override
 	public EList<Issue> getChildren() {
 		return (EList<Issue>)eDynamicGet(EngineeringPackage.ISSUE__CHILDREN, EngineeringPackage.Literals.ISSUE__CHILDREN, true, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	@Override
-	public Engineer getAssignee() {
-		if (!eIsSet(EngineeringPackage.ISSUE__ASSIGNEE)) {
-			for (EObject ancestor = eContainer; ancestor != null; ancestor = ancestor.eContainer()) {
-				if (ancestor instanceof Issue) {
-					return ((Issue) ancestor).getAssignee();				
-				}
-				if (ancestor instanceof Engineer) {
-					return (Engineer) ancestor;
-				}
-				if (ancestor instanceof EngineeredElement) {
-					EList<Engineer> owners = ((EngineeredElement) ancestor).getOwners();
-					if (!owners.isEmpty()) {
-						return owners.get(0);
-					}
-				}
-			}			
-		}
-		
-		return (Engineer)eDynamicGet(EngineeringPackage.ISSUE__ASSIGNEE, EngineeringPackage.Literals.ISSUE__ASSIGNEE, true, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Engineer basicGetAssignee() {
-		return (Engineer)eDynamicGet(EngineeringPackage.ISSUE__ASSIGNEE, EngineeringPackage.Literals.ISSUE__ASSIGNEE, false, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetAssignee(Engineer newAssignee, NotificationChain msgs) {
-		msgs = eDynamicInverseAdd((InternalEObject)newAssignee, EngineeringPackage.ISSUE__ASSIGNEE, msgs);
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setAssignee(Engineer newAssignee) {
-		eDynamicSet(EngineeringPackage.ISSUE__ASSIGNEE, EngineeringPackage.Literals.ISSUE__ASSIGNEE, newAssignee);
 	}
 
 	/**
@@ -635,11 +581,6 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case EngineeringPackage.ISSUE__ASSIGNEE:
-				Engineer assignee = basicGetAssignee();
-				if (assignee != null)
-					msgs = ((InternalEObject)assignee).eInverseRemove(this, EngineeringPackage.ENGINEER__ASSIGNMENTS, Engineer.class, msgs);
-				return basicSetAssignee((Engineer)otherEnd, msgs);
 			case EngineeringPackage.ISSUE__REQUIRES:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getRequires()).basicAdd(otherEnd, msgs);
 			case EngineeringPackage.ISSUE__INCREMENT:
@@ -675,8 +616,6 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 		switch (featureID) {
 			case EngineeringPackage.ISSUE__CHILDREN:
 				return ((InternalEList<?>)getChildren()).basicRemove(otherEnd, msgs);
-			case EngineeringPackage.ISSUE__ASSIGNEE:
-				return basicSetAssignee(null, msgs);
 			case EngineeringPackage.ISSUE__REQUIRES:
 				return ((InternalEList<?>)getRequires()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.ISSUE__INCREMENT:
@@ -705,9 +644,6 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 		switch (featureID) {
 			case EngineeringPackage.ISSUE__CHILDREN:
 				return getChildren();
-			case EngineeringPackage.ISSUE__ASSIGNEE:
-				if (resolve) return getAssignee();
-				return basicGetAssignee();
 			case EngineeringPackage.ISSUE__REQUIRES:
 				return getRequires();
 			case EngineeringPackage.ISSUE__INCREMENT:
@@ -758,9 +694,6 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 			case EngineeringPackage.ISSUE__CHILDREN:
 				getChildren().clear();
 				getChildren().addAll((Collection<? extends Issue>)newValue);
-				return;
-			case EngineeringPackage.ISSUE__ASSIGNEE:
-				setAssignee((Engineer)newValue);
 				return;
 			case EngineeringPackage.ISSUE__REQUIRES:
 				getRequires().clear();
@@ -814,9 +747,6 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 			case EngineeringPackage.ISSUE__CHILDREN:
 				getChildren().clear();
 				return;
-			case EngineeringPackage.ISSUE__ASSIGNEE:
-				setAssignee((Engineer)null);
-				return;
 			case EngineeringPackage.ISSUE__REQUIRES:
 				getRequires().clear();
 				return;
@@ -864,8 +794,6 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 		switch (featureID) {
 			case EngineeringPackage.ISSUE__CHILDREN:
 				return !getChildren().isEmpty();
-			case EngineeringPackage.ISSUE__ASSIGNEE:
-				return basicGetAssignee() != null;
 			case EngineeringPackage.ISSUE__REQUIRES:
 				return !getRequires().isEmpty();
 			case EngineeringPackage.ISSUE__INCREMENT:
@@ -905,5 +833,20 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 		IssueStatus status = getStatus();
 		return status != null && status.isDone();
 	}
+	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public EList<Issue> getAllIssues() {
+		Collection<Issue> allIssues = new HashSet<>();
+		allIssues.add(this);
+		for (Issue issue: getChildren()) {
+			allIssues.addAll(issue.getAllIssues());
+		}
+		return new BasicEList<>(allIssues);		
+	}	
 
 } //IssueImpl

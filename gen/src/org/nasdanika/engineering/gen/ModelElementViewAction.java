@@ -32,11 +32,13 @@ import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.common.Util;
 import org.nasdanika.common.persistence.Marker;
 import org.nasdanika.emf.EmfUtil;
+import org.nasdanika.engineering.Endeavor;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Increment;
 import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.IssueStatus;
 import org.nasdanika.engineering.ModelElement;
+import org.nasdanika.engineering.Release;
 import org.nasdanika.html.Fragment;
 import org.nasdanika.html.app.Action;
 import org.nasdanika.html.app.ActionActivator;
@@ -214,26 +216,26 @@ public class ModelElementViewAction<T extends ModelElement> extends SimpleEObjec
 		return eContainmentFeature.isMany() ? ret + (((List<?>) eContainer.eGet(eContainmentFeature)).indexOf(obj)) : ret;
 	}
 	
-	protected static Table issuesTable(
-			Collection<Issue> issues,
+	protected static <E extends Endeavor> Table endeavorsTable(
+			Collection<E> endeavors,
 			ViewGenerator viewGenerator, 
 			ProgressMonitor progressMonitor,
 			EStructuralFeature... features) {
 		
-		Function<Issue,ViewBuilder> rowBuilderProvider = issue -> new ViewBuilder() {
+		Function<E,ViewBuilder> rowBuilderProvider = endeavor -> new ViewBuilder() {
 
 			@Override
 			public void build(Object target, ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
-				if (issue.isAvailable()) {
+				if ((endeavor instanceof Issue && ((Issue) endeavor).isAvailable()) || endeavor.getCompletion() > 0.9999) {
 					((org.nasdanika.html.bootstrap.RowContainer.Row) target).color(Color.SUCCESS);
 				}
-				if (!issue.isWorkable()) {
+				if (endeavor instanceof Issue && !((Issue) endeavor).isWorkable()) {
 					((org.nasdanika.html.bootstrap.RowContainer.Row) target).color(Color.PRIMARY); // TODO - configurable.					
 				}
 			}
 			
 		};
-		BiFunction<Issue, ETypedElement, ViewBuilder> cellBuilderProvider = (issue, dataSource) -> {
+		BiFunction<E, ETypedElement, ViewBuilder> cellBuilderProvider = (issue, dataSource) -> {
 			if (dataSource == EngineeringPackage.Literals.NAMED_ELEMENT__NAME) {
 				return (target, vg, pm) -> {
 					((org.nasdanika.html.bootstrap.RowContainer.Row.Cell) target).toHTMLElement().content(vg.link(ViewAction.adaptToViewActionNonNull(issue)));
@@ -251,7 +253,7 @@ public class ModelElementViewAction<T extends ModelElement> extends SimpleEObjec
 		};							
 		
 		return HtmlEmfUtil.table(
-				issues, 
+				endeavors, 
 				rowBuilderProvider, 
 				cellBuilderProvider, 
 				viewGenerator, 
@@ -266,14 +268,14 @@ public class ModelElementViewAction<T extends ModelElement> extends SimpleEObjec
 	 * @param features
 	 * @return
 	 */
-	public Action issuesSection(
-			Collection<Issue> issues, 
+	public <E extends Endeavor> Action endeavorsSection(
+			Collection<E> issues, 
 			String text, 
 			String id, 
 			Collection<Diagnostic> diagnostic,
 			EStructuralFeature... features) {
 		
-		return issuesSection(issues, text, id, getMarker(), getActivator(), diagnostic, features);
+		return endeavorsSection(issues, text, id, getMarker(), getActivator(), diagnostic, features);
 	}
 	
 	private static Increment rootIncrement(Increment increment) {
@@ -289,12 +291,12 @@ public class ModelElementViewAction<T extends ModelElement> extends SimpleEObjec
 	/**
 	 * If issues collection is not empty creates a section action with issues grouped into increments with 
 	 * specified features in the issue table. 
-	 * @param issues
+	 * @param endeavors
 	 * @param features
 	 * @return
 	 */
-	public static Action issuesSection(
-			Collection<Issue> issues, 
+	public static <E extends Endeavor> Action endeavorsSection(
+			Collection<E> endeavors, 
 			String text, 
 			String id, 
 			Marker marker, 
@@ -302,14 +304,27 @@ public class ModelElementViewAction<T extends ModelElement> extends SimpleEObjec
 			Collection<Diagnostic> diagnostic,
 			EStructuralFeature... features) {
 		
-		if (issues.isEmpty()) {
+		if (endeavors.isEmpty()) {
 			return null;
 		}
 		
-		Map<IncrementValueObject, List<Issue>> increments = Util.groupBy(issues, IncrementValueObject::new);
+		Map<IncrementValueObject, List<E>> increments = Util.groupBy(endeavors, IncrementValueObject::from);
 		boolean backlogOnly = increments.size() == 1 && increments.keySet().iterator().next() == null;
 		
 		ActionImpl issuesSection = new ActionImpl() {
+			
+			private Increment getIncrement(Endeavor endeavor) {
+				if (endeavor instanceof Increment) {
+					return (Increment) endeavor;
+				}
+				if (endeavor instanceof Issue) {
+					return ((Issue) endeavor).getIncrement();
+				}
+				if (endeavor instanceof Release) {
+					return ((Release) endeavor).getIncrement();
+				}
+				return null;
+			}			
 			
 			@Override
 			public Object generate(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
@@ -321,9 +336,9 @@ public class ModelElementViewAction<T extends ModelElement> extends SimpleEObjec
 					}
 				}
 				
-				List<Increment> rootIncrements = issues
+				List<Increment> rootIncrements = endeavors
 						.stream()
-						.map(i -> i.getIncrement())
+						.map(this::getIncrement)
 						.filter(Objects::nonNull)
 						.map(ModelElementViewAction::rootIncrement)
 						.collect(Collectors.toSet())
@@ -332,15 +347,17 @@ public class ModelElementViewAction<T extends ModelElement> extends SimpleEObjec
 						.collect(Collectors.toList());
 				
 				if (!rootIncrements.isEmpty()) {
-					Function<Increment, Collection<Issue>> issueSource = in -> issues.stream().filter(is -> is.getIncrement() == in).collect(Collectors.toList());
-					ret.content(IncrementViewAction.incrementsTable(rootIncrements, issueSource, false, viewGenerator, progressMonitor));
+					Function<Increment, Collection<Endeavor>> endeavorSource = in -> endeavors.stream().filter(e -> getIncrement(e) == in).collect(Collectors.toList());
+					ret.content(IncrementViewAction.incrementsTable(rootIncrements, endeavorSource, false, viewGenerator, progressMonitor));
 				}
 				
+				Collection<Issue> issues = new ArrayList<>();
+				endeavors.forEach(e -> issues.addAll(e.getAllIssues()));				
 				ret.content(issueStatusSummaryTable(issues, viewGenerator, progressMonitor));
 				
 				if (backlogOnly) {
-					ret.content(issuesTable(
-							issues, 
+					ret.content(endeavorsTable(
+							endeavors, 
 							viewGenerator, 
 							progressMonitor, 
 							features));
@@ -350,20 +367,22 @@ public class ModelElementViewAction<T extends ModelElement> extends SimpleEObjec
 			
 			@Override
 			public List<Action> getChildren() {
-				return backlogOnly ? Collections.emptyList() : increments.keySet().stream().sorted().map(i -> incrementValueObjectAction(i, increments.get(i))).collect(Collectors.toList());
+				return backlogOnly ? Collections.emptyList() : increments.keySet().stream().filter(Objects::nonNull).sorted().map(i -> incrementValueObjectAction(i, increments.get(i))).collect(Collectors.toList());
 			}
 			
-			private Action incrementValueObjectAction(IncrementValueObject incrementValueObject, List<Issue> incrementIssues) {
+			private Action incrementValueObjectAction(IncrementValueObject incrementValueObject, List<E> incrementEndeavors) {
 				ActionImpl incrementSection = new ActionImpl() {
 					
 					@Override
 					public Object generate(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
 						Fragment ret = viewGenerator.getHTMLFactory().fragment();
 						
-						ret.content(issueStatusSummaryTable(incrementIssues, viewGenerator, progressMonitor));
+						Collection<Issue> issues = new ArrayList<>();
+						incrementEndeavors.forEach(e -> issues.addAll(e.getAllIssues()));				
+						ret.content(issueStatusSummaryTable(issues, viewGenerator, progressMonitor));
 						
-						ret.content(issuesTable(
-								incrementIssues, 
+						ret.content(endeavorsTable(
+								incrementEndeavors, 
 								viewGenerator, 
 								progressMonitor, 
 								features));

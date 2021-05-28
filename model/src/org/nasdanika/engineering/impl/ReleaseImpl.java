@@ -2,7 +2,11 @@
  */
 package org.nasdanika.engineering.impl;
 
+import java.util.Collection;
+import java.util.HashSet;
+
 import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -248,5 +252,24 @@ public class ReleaseImpl extends EngineeredCapabilityImpl implements Release {
 		}
 		return ret;
 	}
+	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public EList<Issue> getAllIssues() {
+		Collection<Issue> allIssues = new HashSet<>();
+		for (Issue issue: getIssues()) {
+			allIssues.addAll(issue.getAllIssues());
+		}
+		for (Feature feature: getFeatures()) {
+			for (Issue fi: feature.getAllIssues()) {
+				allIssues.add(fi);
+			}					
+		}
+		return new BasicEList<>(allIssues);		
+	}	
 
 } //ReleaseImpl

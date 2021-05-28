@@ -2,6 +2,7 @@
  */
 package org.nasdanika.engineering;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -16,6 +17,8 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.nasdanika.engineering.Endeavor#getCompletion <em>Completion</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Endeavor#getBenefit <em>Benefit</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Endeavor#getTotalCost <em>Total Cost</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.Endeavor#getAssignee <em>Assignee</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.Endeavor#getAllIssues <em>All Issues</em>}</li>
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getEndeavor()
@@ -66,5 +69,44 @@ public interface Endeavor extends EObject {
 	 * @generated
 	 */
 	double getTotalCost();
+
+	/**
+	 * Returns the value of the '<em><b>Assignee</b></em>' reference.
+	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Engineer#getAssignments <em>Assignments</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Assignee</em>' reference.
+	 * @see #setAssignee(Engineer)
+	 * @see org.nasdanika.engineering.EngineeringPackage#getEndeavor_Assignee()
+	 * @see org.nasdanika.engineering.Engineer#getAssignments
+	 * @model opposite="assignments"
+	 * @generated
+	 */
+	Engineer getAssignee();
+
+	/**
+	 * Sets the value of the '{@link org.nasdanika.engineering.Endeavor#getAssignee <em>Assignee</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Assignee</em>' reference.
+	 * @see #getAssignee()
+	 * @generated
+	 */
+	void setAssignee(Engineer value);
+
+	/**
+	 * Returns the value of the '<em><b>All Issues</b></em>' reference list.
+	 * The list contents are of type {@link org.nasdanika.engineering.Issue}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Issues scheduled to work on in this increment directly or indirectly via releases and features.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>All Issues</em>' reference list.
+	 * @see org.nasdanika.engineering.EngineeringPackage#getEndeavor_AllIssues()
+	 * @model changeable="false" derived="true"
+	 * @generated
+	 */
+	EList<Issue> getAllIssues();
 
 } // Endeavor

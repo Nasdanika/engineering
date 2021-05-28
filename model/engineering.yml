@@ -100,6 +100,8 @@ engineering-module:
          For Issue with children, Release and Feature - default to derived from scheduled issues. For issues add validation - children shall be within parent if parent start/end is set.
          For releases compute default increment from the end date in the same way as for issues. 
      - name: Move assignee from Issue to Endeavor
+       increment: nasdanika:increments/2021/children/q2/children/may
+       status: nasdanika:issue-statuses/done
        markdown-description: |+2
          So releases, features, and increments may have engineers tracking/driving execution/delivery. Rework the assignments section in Engineer to have sub-sections - increments, releases, features, issues.
          Hide endeavors with zero total cost (e.g. incrments without scheduled releases or issues), and completed. To documentation - composite effort assignees are responsible for tracking and escalation/removal of obstacles,

@@ -11,13 +11,16 @@ import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.common.Util;
 import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeringPackage;
+import org.nasdanika.engineering.Feature;
 import org.nasdanika.engineering.Increment;
 import org.nasdanika.engineering.Issue;
+import org.nasdanika.engineering.Release;
 import org.nasdanika.html.Fragment;
 import org.nasdanika.html.HTMLFactory;
 import org.nasdanika.html.app.Action;
 import org.nasdanika.html.app.SectionStyle;
 import org.nasdanika.html.app.ViewGenerator;
+import org.nasdanika.html.emf.EStructuralFeatureViewActionImpl;
 
 public class EngineerViewAction<T extends Engineer> extends PersonaViewAction<T> {
 		
@@ -28,10 +31,49 @@ public class EngineerViewAction<T extends Engineer> extends PersonaViewAction<T>
 	@Override
 	protected Collection<Action> featureActions(EStructuralFeature feature) {
 		if (feature == EngineeringPackage.Literals.ENGINEER__ASSIGNMENTS) {
-			return Collections.singleton(issuesSection(
-					getSemanticElement().getAssignments(), 
-					"Assignments", 
-					"assignments", 
+			EStructuralFeatureViewActionImpl<T, EStructuralFeature> assignmentsAction = new EStructuralFeatureViewActionImpl<T, EStructuralFeature>(getSemanticElement(), feature);
+			assignmentsAction.getRoles().add(Action.Role.SECTION);
+			
+			assignmentsAction.getChildren().add(endeavorsSection(
+					getSemanticElement().getAssignments().stream().filter(e -> e instanceof Release && !e.getAllIssues().isEmpty()).collect(Collectors.toList()), 
+					"Releases", 
+					"assignments-releases", 
+					getFeatureDiagnostic(feature),
+					EngineeringPackage.Literals.NAMED_ELEMENT__NAME,
+//					EngineeringPackage.Literals.ISSUE__START,
+//					EngineeringPackage.Literals.ISSUE__END,
+					EngineeringPackage.Literals.ENDEAVOR__BENEFIT,
+					EngineeringPackage.Literals.ENDEAVOR__TOTAL_COST,					
+					EngineeringPackage.Literals.ENDEAVOR__COMPLETION));			
+			
+			assignmentsAction.getChildren().add(endeavorsSection(
+					getSemanticElement().getAssignments().stream().filter(e -> e instanceof Feature && !e.getAllIssues().isEmpty()).collect(Collectors.toList()), 
+					"Features", 
+					"assignments-features", 
+					getFeatureDiagnostic(feature),
+					EngineeringPackage.Literals.NAMED_ELEMENT__NAME,
+//					EngineeringPackage.Literals.ISSUE__START,
+//					EngineeringPackage.Literals.ISSUE__END,
+					EngineeringPackage.Literals.ENDEAVOR__BENEFIT,
+					EngineeringPackage.Literals.ENDEAVOR__TOTAL_COST,					
+					EngineeringPackage.Literals.ENDEAVOR__COMPLETION));			
+			
+			assignmentsAction.getChildren().add(endeavorsSection(
+					getSemanticElement().getAssignments().stream().filter(e -> e instanceof Increment && !e.getAllIssues().isEmpty()).collect(Collectors.toList()), 
+					"Increments", 
+					"assignments-increments", 
+					getFeatureDiagnostic(feature),
+					EngineeringPackage.Literals.NAMED_ELEMENT__NAME,
+//					EngineeringPackage.Literals.ISSUE__START,
+//					EngineeringPackage.Literals.ISSUE__END,
+					EngineeringPackage.Literals.ENDEAVOR__BENEFIT,
+					EngineeringPackage.Literals.ENDEAVOR__TOTAL_COST,					
+					EngineeringPackage.Literals.ENDEAVOR__COMPLETION));			
+			
+			assignmentsAction.getChildren().add(endeavorsSection(
+					getSemanticElement().getAssignments().stream().filter(e -> e instanceof Issue).collect(Collectors.toList()), 
+					"Issues", 
+					"assignments-issues", 
 					getFeatureDiagnostic(feature),
 					EngineeringPackage.Literals.NAMED_ELEMENT__NAME,
 					EngineeringPackage.Literals.ISSUE__START,
@@ -44,7 +86,10 @@ public class EngineerViewAction<T extends Engineer> extends PersonaViewAction<T>
 					EngineeringPackage.Literals.ENDEAVOR__BENEFIT,
 					EngineeringPackage.Literals.ISSUE__REMAINING_EFFORT,
 					EngineeringPackage.Literals.ISSUE__REMAINING_COST,
-					EngineeringPackage.Literals.ENDEAVOR__COMPLETION));
+					EngineeringPackage.Literals.ENDEAVOR__COMPLETION));			
+			
+			assignmentsAction.setSectionStyle(assignmentsAction.getChildren().size() > 1 ? SectionStyle.ACTION_GROUP : SectionStyle.DEFAULT);
+			return Collections.singleton(assignmentsAction);
 		}
 		
 		if (feature == EngineeringPackage.Literals.ENGINEER__CAPACITY) {

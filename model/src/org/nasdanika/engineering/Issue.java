@@ -15,7 +15,6 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link org.nasdanika.engineering.Issue#getChildren <em>Children</em>}</li>
- *   <li>{@link org.nasdanika.engineering.Issue#getAssignee <em>Assignee</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Issue#getRequires <em>Requires</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Issue#getIncrement <em>Increment</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Issue#getContributesTo <em>Contributes To</em>}</li>
@@ -51,30 +50,6 @@ public interface Issue extends EngineeredCapability {
 	 * @generated
 	 */
 	EList<Issue> getChildren();
-
-	/**
-	 * Returns the value of the '<em><b>Assignee</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Engineer#getAssignments <em>Assignments</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Assignee</em>' reference.
-	 * @see #setAssignee(Engineer)
-	 * @see org.nasdanika.engineering.EngineeringPackage#getIssue_Assignee()
-	 * @see org.nasdanika.engineering.Engineer#getAssignments
-	 * @model opposite="assignments"
-	 * @generated
-	 */
-	Engineer getAssignee();
-
-	/**
-	 * Sets the value of the '{@link org.nasdanika.engineering.Issue#getAssignee <em>Assignee</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Assignee</em>' reference.
-	 * @see #getAssignee()
-	 * @generated
-	 */
-	void setAssignee(Engineer value);
 
 	/**
 	 * Returns the value of the '<em><b>Requires</b></em>' reference list.

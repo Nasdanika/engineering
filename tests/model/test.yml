@@ -73,14 +73,23 @@ engineering-organization:
            - name: 1.0
              path: 1/0  
              increment: test:increments/2021/children/q2/children/jun                     
+         features: 
+           - name: My feature
+             path: my-feature  
+             releases: test:modules/test/releases/1/0                     
          issues:
            - name: Issue 1         
              effort: 10
            - name: Issue 2         
              effort: 20
              releases: test:modules/test/releases/1/0             
-             #increment: test:increments/2021/children/q2/children/jun                     
              notes:
                - date: 2021/5/28
                  effort: 5
+           - name: Issue 3         
+             effort: 10
+             contributes-to: test:modules/test/features/my-feature             
+             notes:
+               - date: 2021/5/28
+                 effort: 3
            

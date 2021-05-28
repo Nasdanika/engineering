@@ -22,5 +22,13 @@ public class EngineeredCapabilityViewAction<T extends EngineeredCapability> exte
 		}
 		return super.featureValue(feature, value, viewGenerator, progressMonitor);
 	}
+		
+	@Override
+	protected boolean isFeatureInRole(EStructuralFeature feature, FeatureRole role) {
+		if (feature == EngineeringPackage.Literals.ENDEAVOR__ALL_ISSUES) {
+			return false;
+		}
+		return super.isFeatureInRole(feature, role);
+	}	
 	
 }

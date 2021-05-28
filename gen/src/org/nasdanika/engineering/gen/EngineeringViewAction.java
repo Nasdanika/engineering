@@ -45,7 +45,7 @@ public class EngineeringViewAction extends ActionImpl {
 			}
 		});
 		
-		Action assignmentSection = ModelElementViewAction.issuesSection(
+		Action assignmentSection = ModelElementViewAction.endeavorsSection(
 				issues, 
 				"Issues", 
 				"issues", 
@@ -56,7 +56,7 @@ public class EngineeringViewAction extends ActionImpl {
 				EngineeringPackage.Literals.ISSUE__START,
 				EngineeringPackage.Literals.ISSUE__END,
 				EngineeringPackage.Literals.ISSUE__TARGET,
-				EngineeringPackage.Literals.ISSUE__ASSIGNEE,
+				EngineeringPackage.Literals.ENDEAVOR__ASSIGNEE,
 				EngineeringPackage.Literals.ISSUE__STATUS,
 				EngineeringPackage.Literals.ISSUE__CATEGORY,				
 				EngineeringPackage.Literals.ISSUE__EFFORT,

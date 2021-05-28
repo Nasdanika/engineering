@@ -12,6 +12,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.emf.EObjectAdaptable;
 import org.nasdanika.emf.EmfUtil;
+import org.nasdanika.engineering.Endeavor;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Increment;
 import org.nasdanika.engineering.Issue;
@@ -114,7 +115,7 @@ public class IncrementViewAction extends NamedElementViewAction<Increment> {
 					
 					ret.content(issueStatusSummaryTable(issues, viewGenerator, progressMonitor));
 					
-					ret.content(issuesTable(
+					ret.content(endeavorsTable(
 							issues, 
 							viewGenerator, 
 							progressMonitor, 
@@ -124,7 +125,7 @@ public class IncrementViewAction extends NamedElementViewAction<Increment> {
 							EngineeringPackage.Literals.ISSUE__STATUS,
 							EngineeringPackage.Literals.ISSUE__TARGET,
 							EngineeringPackage.Literals.ISSUE__CATEGORY,				
-							EngineeringPackage.Literals.ISSUE__ASSIGNEE,				
+							EngineeringPackage.Literals.ENDEAVOR__ASSIGNEE,				
 							EngineeringPackage.Literals.ISSUE__EFFORT,
 							EngineeringPackage.Literals.ISSUE__COST,
 							EngineeringPackage.Literals.ENDEAVOR__BENEFIT,
@@ -161,9 +162,9 @@ public class IncrementViewAction extends NamedElementViewAction<Increment> {
 		return super.featureValue(feature, value, viewGenerator, progressMonitor);
 	}
 	
-	public static Table incrementsTable(
+	public static <E extends Endeavor> Table incrementsTable(
 			Collection<Increment> increments, 
-			java.util.function.Function<Increment, Collection<Issue>> issueSource, 
+			java.util.function.Function<Increment, Collection<E>> endeavorSource, 
 			boolean showEmptyIncrements, 
 			ViewGenerator viewGenerator, 
 			ProgressMonitor progressMonitor) {
@@ -172,7 +173,7 @@ public class IncrementViewAction extends NamedElementViewAction<Increment> {
 			return null;
 		}
 		Collection<Issue> scheduledIssues = new ArrayList<>();
-		increments.forEach(i -> collectAllIncrementIssues(i, issueSource, scheduledIssues));
+		increments.forEach(i -> collectAllIncrementIssues(i, endeavorSource, scheduledIssues));
 		List<IssueStatus> statuses = new ArrayList<>(EmfUtil.<IssueStatus, Issue>groupBy(scheduledIssues, EngineeringPackage.Literals.ISSUE__STATUS).keySet());
 		statuses.sort((as,bs) -> {
 			if (as == bs) {
@@ -218,31 +219,33 @@ public class IncrementViewAction extends NamedElementViewAction<Increment> {
 		}
 		
 		for (Increment increment: increments) {
-			incrementRow(increment, 0, statuses, table, issueSource, showEmptyIncrements, viewGenerator, progressMonitor);
+			incrementRow(increment, 0, statuses, table, endeavorSource, showEmptyIncrements, viewGenerator, progressMonitor);
 		}
 		
 		return table;
 	}
 	
-	private static void collectAllIncrementIssues(
+	private static <E extends Endeavor> void collectAllIncrementIssues(
 			Increment increment, 
-			java.util.function.Function<Increment, Collection<Issue>> issueSource,
+			java.util.function.Function<Increment, Collection<E>> endeavorSource,
 			Collection<Issue> collector) {
-		collector.addAll(issueSource.apply(increment));
-		increment.getChildren().forEach(c -> collectAllIncrementIssues(c, issueSource, collector));
+		for (Endeavor endeavor: endeavorSource.apply(increment)) {
+			collector.addAll(endeavor.getAllIssues());
+		}
+		increment.getChildren().forEach(c -> collectAllIncrementIssues(c, endeavorSource, collector));
 	}
 	
-	private static void incrementRow(
+	private static <E extends Endeavor> void incrementRow(
 			Increment increment, 
 			int depth, 
 			Collection<IssueStatus> statuses, 
 			Table table,
-			java.util.function.Function<Increment, Collection<Issue>> issueSource,
+			java.util.function.Function<Increment, Collection<E>> endeavorSource,
 			boolean showEmptyIncrements,
 			ViewGenerator viewGenerator, 
 			ProgressMonitor progressMonitor) {
 		Collection<Issue> allIncrementIssues = new ArrayList<>();
-		collectAllIncrementIssues(increment, issueSource, allIncrementIssues);
+		collectAllIncrementIssues(increment, endeavorSource, allIncrementIssues);
 		if (!allIncrementIssues.isEmpty() || showEmptyIncrements) {
 			Row row = table.row();
 			ViewAction<?> incrementAction = ViewAction.adaptToViewActionNonNull(increment);
@@ -267,7 +270,11 @@ public class IncrementViewAction extends NamedElementViewAction<Increment> {
 				}			
 			}
 			
-			Map<IssueStatus, List<Issue>> groupedIssues = EmfUtil.groupBy(issueSource.apply(increment), EngineeringPackage.Literals.ISSUE__STATUS);				
+			Collection<Issue> incrementIssues = new ArrayList<>();
+			for (Endeavor endeavor: endeavorSource.apply(increment)) {
+				incrementIssues.addAll(endeavor.getAllIssues());
+			}			
+			Map<IssueStatus, List<Issue>> groupedIssues = EmfUtil.groupBy(incrementIssues, EngineeringPackage.Literals.ISSUE__STATUS);				
 			for (IssueStatus status: statuses) {
 				List<Issue> statusIssues = groupedIssues.get(status);
 				if (statusIssues == null || statusIssues.isEmpty()) {
@@ -293,7 +300,7 @@ public class IncrementViewAction extends NamedElementViewAction<Increment> {
 		}
 		
 		for (Increment c: increment.getChildren()) {
-			incrementRow(c, depth + 1, statuses, table, issueSource, showEmptyIncrements, viewGenerator, progressMonitor);
+			incrementRow(c, depth + 1, statuses, table, endeavorSource, showEmptyIncrements, viewGenerator, progressMonitor);
 		}
 	}
 	

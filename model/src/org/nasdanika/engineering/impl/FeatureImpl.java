@@ -3,8 +3,10 @@
 package org.nasdanika.engineering.impl;
 
 import java.util.Collection;
+import java.util.HashSet;
 
 import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -213,5 +215,19 @@ public class FeatureImpl extends EngineeredCapabilityImpl implements Feature {
 		}
 		return ret;
 	}
+	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public EList<Issue> getAllIssues() {
+		Collection<Issue> allIssues = new HashSet<>();
+		for (Issue issue: getIssues()) {
+			allIssues.addAll(issue.getAllIssues());
+		}
+		return new BasicEList<>(allIssues);		
+	}	
 	
 } //FeatureImpl

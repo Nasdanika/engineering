@@ -24,7 +24,7 @@ public class EngineeredElementViewAction<T extends EngineeredElement> extends Na
 		List<Action> children = super.collectChildren();
 		
 		EList<Issue> issues = getSemanticElement().getIssues();
-		Action issuesSection = issuesSection(
+		Action issuesSection = endeavorsSection(
 				issues, 
 				"Issues", 
 				"issues", 
@@ -34,7 +34,7 @@ public class EngineeredElementViewAction<T extends EngineeredElement> extends Na
 				EngineeringPackage.Literals.ISSUE__END,
 				EngineeringPackage.Literals.ISSUE__STATUS,
 				EngineeringPackage.Literals.ISSUE__CATEGORY,				
-				EngineeringPackage.Literals.ISSUE__ASSIGNEE,				
+				EngineeringPackage.Literals.ENDEAVOR__ASSIGNEE,				
 				EngineeringPackage.Literals.ISSUE__EFFORT,
 				EngineeringPackage.Literals.ISSUE__COST,
 				EngineeringPackage.Literals.ENDEAVOR__BENEFIT,
@@ -55,7 +55,7 @@ public class EngineeredElementViewAction<T extends EngineeredElement> extends Na
 		});
 		
 		if (!issues.equals(allIssues)) {
-			Action allIssuesSection = ModelElementViewAction.issuesSection(
+			Action allIssuesSection = ModelElementViewAction.endeavorsSection(
 					allIssues, 
 					"All Issues", 
 					"all-issues", 
@@ -66,7 +66,7 @@ public class EngineeredElementViewAction<T extends EngineeredElement> extends Na
 					EngineeringPackage.Literals.ISSUE__START,
 					EngineeringPackage.Literals.ISSUE__END,
 					EngineeringPackage.Literals.ISSUE__TARGET,
-					EngineeringPackage.Literals.ISSUE__ASSIGNEE,
+					EngineeringPackage.Literals.ENDEAVOR__ASSIGNEE,
 					EngineeringPackage.Literals.ISSUE__STATUS,
 					EngineeringPackage.Literals.ISSUE__CATEGORY,				
 					EngineeringPackage.Literals.ISSUE__EFFORT,

@@ -12,11 +12,11 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.nasdanika.engineering.Activity;
 import org.nasdanika.engineering.Allocation;
 import org.nasdanika.engineering.Capacity;
+import org.nasdanika.engineering.Endeavor;
 import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeredElement;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Increment;
-import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.IssueCategory;
 import org.nasdanika.engineering.IssueStatus;
 import org.nasdanika.engineering.Persona;
@@ -145,8 +145,8 @@ public class EngineerImpl extends PersonaImpl implements Engineer {
 	 * @generated NOT
 	 */
 	@Override
-	public EList<Issue> getAssignments() {
-		return getReferrers(EngineeringPackage.Literals.ISSUE__ASSIGNEE);
+	public EList<Endeavor> getAssignments() {
+		return getReferrers(EngineeringPackage.Literals.ENDEAVOR__ASSIGNEE);
 	}
 	
 	/**
