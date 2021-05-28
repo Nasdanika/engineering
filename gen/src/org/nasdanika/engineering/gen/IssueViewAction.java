@@ -117,8 +117,9 @@ public class IssueViewAction extends EngineeredCapabilityViewAction<Issue> {
 				
 			};
 			notesAction.getRoles().add(Action.Role.SECTION);
-			notesAction.setText(featureLabel(feature));
+			notesAction.setText(featureLabelText(feature));
 			notesAction.setIcon(featureIcon(feature));
+			notesAction.setDescription(featureDescription(feature));
 			return Collections.singleton(notesAction);
 		}
 		return super.featureActions(feature);

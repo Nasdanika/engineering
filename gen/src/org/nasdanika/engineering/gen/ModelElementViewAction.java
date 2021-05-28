@@ -96,7 +96,7 @@ public class ModelElementViewAction<T extends ModelElement> extends SimpleEObjec
 	 */
 	@Override
 	protected List<EStructuralFeature> getFeatures() {
-		return super.getFeatures().stream().sorted((Comparator<? super EStructuralFeature>) (a, b) -> featureLabel(a).compareTo(featureLabel(b))).collect(Collectors.toList());
+		return super.getFeatures().stream().sorted((Comparator<? super EStructuralFeature>) (a, b) -> featureLabelText(a).compareTo(featureLabelText(b))).collect(Collectors.toList());
 	}
 	
 	/**

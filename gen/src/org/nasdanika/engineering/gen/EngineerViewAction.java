@@ -81,16 +81,18 @@ public class EngineerViewAction<T extends Engineer> extends PersonaViewAction<T>
 	@Override
 	protected Object featureContent(EStructuralFeature feature, ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
 		if (feature == EngineeringPackage.Literals.ENGINEER__INCREMENTS) {
+			Collection<Issue> scheduledIssues = new ArrayList<>();
+			getSemanticElement().getIncrements().forEach(i -> collectAllIncrementIssues(i, scheduledIssues));
+			if (scheduledIssues.isEmpty()) {
+				return null;
+			}
 			HTMLFactory htmlFactory = viewGenerator.getHTMLFactory();
 			int headerLevel = viewGenerator.get(SectionStyle.HEADER_LEVEL, Integer.class, 3);
 			Fragment ret = htmlFactory.fragment(htmlFactory.tag("h" + headerLevel, Util.nameToLabel(feature.getName())));
-			Collection<Issue> scheduledIssues = new ArrayList<>();
-			getSemanticElement().getIncrements().forEach(i -> collectAllIncrementIssues(i, scheduledIssues));		
 			Function<Increment, Collection<Issue>> issueSource = in -> scheduledIssues.stream().filter(is -> is.getIncrement() == in).collect(Collectors.toList());
 			ret.content(IncrementViewAction.incrementsTable(getSemanticElement().getIncrements(), issueSource, true, viewGenerator, progressMonitor));
 			return ret.toString();
 		}
-		// TODO Auto-generated method stub
 		return super.featureContent(feature, viewGenerator, progressMonitor);
 	}
 	

@@ -203,9 +203,14 @@ engineering-module:
      - name: Progress bars in for percentages
        markdown-description: "[Bootstrap progress bar](https://getbootstrap.com/docs/4.0/components/progress/#labels)"  
      - name: Diagnostic summary
-       markdown-description: Section at engineered element level and context at principal action level.  
+       markdown-description: |+2
+         Section at engineered element level and context at principal action level.
+         Implement as a protected method in SimpleEObjectViewAction. Danger/Warning color, notification - number of errors/warnings.
+         Table - link to sources if adaptable to view actions.  
      - name: Allocations, designations, and capacity
        markdown-description: Sections with tables. Increment total capacity and utilization.       
+     - name: Includes reference to releases and maybe features
+       markdown-description: includes/partOf. For composite releases. Requires/requiredBy to Engineered Capability or introduce CompositeEngineeredCapability.       
 
 #### Done ####
 
