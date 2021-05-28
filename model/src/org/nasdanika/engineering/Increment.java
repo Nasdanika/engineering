@@ -16,7 +16,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.nasdanika.engineering.Increment#getChildren <em>Children</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Increment#getIssues <em>Issues</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Increment#getReleases <em>Releases</em>}</li>
- *   <li>{@link org.nasdanika.engineering.Increment#getCapacity <em>Capacity</em>}</li>
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getIncrement()
@@ -71,22 +70,5 @@ public interface Increment extends NamedElement, Endeavor {
 	 * @generated
 	 */
 	EList<Release> getReleases();
-
-	/**
-	 * Returns the value of the '<em><b>Capacity</b></em>' reference list.
-	 * The list contents are of type {@link org.nasdanika.engineering.Capacity}.
-	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Capacity#getIncrement <em>Increment</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Capacity if element is capacity, utilization if element is Allocation.
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Capacity</em>' reference list.
-	 * @see org.nasdanika.engineering.EngineeringPackage#getIncrement_Capacity()
-	 * @see org.nasdanika.engineering.Capacity#getIncrement
-	 * @model opposite="increment" changeable="false" derived="true"
-	 * @generated
-	 */
-	EList<Capacity> getCapacity();
 
 } // Increment

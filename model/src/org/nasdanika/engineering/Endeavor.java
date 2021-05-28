@@ -22,11 +22,12 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.nasdanika.engineering.Endeavor#getAllIssues <em>All Issues</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Endeavor#getStart <em>Start</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Endeavor#getEnd <em>End</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.Endeavor#getCapacity <em>Capacity</em>}</li>
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getEndeavor()
  * @model interface="true" abstract="true"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='start_end'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='start_end capacity'"
  * @generated
  */
 public interface Endeavor extends EObject {
@@ -156,5 +157,22 @@ public interface Endeavor extends EObject {
 	 * @generated
 	 */
 	void setEnd(Date value);
+
+	/**
+	 * Returns the value of the '<em><b>Capacity</b></em>' reference list.
+	 * The list contents are of type {@link org.nasdanika.engineering.Capacity}.
+	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Capacity#getEndeavor <em>Endeavor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * [Capacity](Capacity.html) or [Allocation](Allocation.html).  If an element is capacity that means that there is a capacity for an [engineer](Engineer.html) to work on this endeavor.  If an element is allocation that means that Engineer's capacity has been allocated to work on a particular [engineered element](EngineeredElement.html) [issues](Issue.html) in a particular [issue category](IssueCategory.html).
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Capacity</em>' reference list.
+	 * @see org.nasdanika.engineering.EngineeringPackage#getEndeavor_Capacity()
+	 * @see org.nasdanika.engineering.Capacity#getEndeavor
+	 * @model opposite="endeavor" changeable="false" derived="true"
+	 * @generated
+	 */
+	EList<Capacity> getCapacity();
 
 } // Endeavor

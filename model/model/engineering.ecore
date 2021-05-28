@@ -51,7 +51,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Endeavor" abstract="true" interface="true">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="start_end"/>
+      <details key="constraints" value="start_end capacity"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="completion" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
         changeable="false" derived="true"/>
@@ -68,6 +68,12 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="start" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="end" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="capacity" upperBound="-1"
+        eType="#//Capacity" changeable="false" derived="true" eOpposite="#//Capacity/endeavor">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="[Capacity](Capacity.html) or [Allocation](Allocation.html).  If an element is capacity that means that there is a capacity for an [engineer](Engineer.html) to work on this endeavor.  If an element is allocation that means that Engineer's capacity has been allocated to work on a particular [engineered element](EngineeredElement.html) [issues](Issue.html) in a particular [issue category](IssueCategory.html)."/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Increment" eSuperTypes="#//NamedElement #//Endeavor">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
@@ -92,12 +98,6 @@
         eType="#//Release" changeable="false" derived="true" eOpposite="#//Release/increment">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Releases scheduled to be made available in this increment"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="capacity" upperBound="-1"
-        eType="#//Capacity" changeable="false" derived="true" eOpposite="#//Capacity/increment">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Capacity if element is capacity, utilization if element is Allocation."/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
@@ -132,7 +132,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Issue" eSuperTypes="#//EngineeredCapability">
     <eAnnotations source="urn:org.nasdanika">
-      <details key="documentation-reference" value="../doc/issue.md"/>
+      <details key="documentation-reference" value="doc/issue.md"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
       <details key="constraints" value="increment"/>
@@ -209,6 +209,9 @@
     <eAnnotations source="urn:org.nasdanika">
       <details key="documentation-reference" value="../doc/engineered-element.md"/>
     </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="capacity"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="issues" upperBound="-1"
         eType="#//Issue" containment="true">
       <eAnnotations source="urn:org.nasdanika">
@@ -224,6 +227,9 @@
       <eAnnotations source="urn:org.nasdanika">
         <details key="homogenous" value="true"/>
       </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Allocations of [engineer](Engineer.html)'s [capacity](Capacity.html) to work on this engineered element [issues](Issue.html) for a particular [endeavor](Endeavor.html) and [issue category](IssueCategory.html)."/>
+      </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Persona" eSuperTypes="#//EngineeredElement">
@@ -234,6 +240,9 @@
     <eAnnotations source="urn:org.nasdanika">
       <details key="documentation-reference" value="../doc/engineer.md"/>
       <details key="icon" value="fas fa-user"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="capacity"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="modules" upperBound="-1"
         eType="#//Module" containment="true"/>
@@ -272,13 +281,16 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="designations" upperBound="-1"
         eType="#//Allocation" changeable="false" derived="true" eOpposite="#//Allocation/engineer">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Allocations of this engineer's effort to engineering elements."/>
+        <details key="documentation" value="Allocations of this [engineer](Engineer.html)'s [capacity](Capacity.html) to work on an [engineered element](EngineeredElement.hml) [issues](Issue.html) for a particular [endeavor](Endeavor.html) and [issue category](IssueCategory.html)."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="capacity" upperBound="-1"
         eType="#//Capacity" containment="true">
       <eAnnotations source="urn:org.nasdanika">
         <details key="homogenous" value="true"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Engineer's capacity for a particular [endeavor](Endeavor.html)"/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
@@ -452,20 +464,20 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Capacity" eSuperTypes="#//ModelElement">
     <eAnnotations source="urn:org.nasdanika">
-      <details key="documentation-reference" value="../doc/capacity.md"/>
+      <details key="documentation-reference" value="doc/capacity.md"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="increment" eType="#//Increment"
-        eOpposite="#//Increment/capacity"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="endeavor" lowerBound="1"
+        eType="#//Endeavor" eOpposite="#//Endeavor/capacity"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="effort" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="funds" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="rate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Allocation" eSuperTypes="#//Capacity">
     <eAnnotations source="urn:org.nasdanika">
-      <details key="documentation-reference" value="../doc/allocation.md"/>
+      <details key="documentation-reference" value="doc/allocation.md"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="engineer" eType="#//Engineer"
-        eOpposite="#//Engineer/designations"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="engineer" lowerBound="1"
+        eType="#//Engineer" eOpposite="#//Engineer/designations"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="category" upperBound="-1"
         eType="#//IssueCategory" eOpposite="#//IssueCategory/allocations"/>
   </eClassifiers>

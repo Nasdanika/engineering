@@ -58,7 +58,7 @@ public class IncrementViewAction extends NamedElementViewAction<Increment> {
 		if (feature == EngineeringPackage.Literals.INCREMENT__CHILDREN) {
 			return role == FeatureRole.ELEMENT_ACTIONS;
 		}
-		if (feature == EngineeringPackage.Literals.INCREMENT__CAPACITY) {
+		if (feature == EngineeringPackage.Literals.ENDEAVOR__CAPACITY) {
 			return role == FeatureRole.FEATURE_ACTIONS;
 		}
 		if (feature == EngineeringPackage.Literals.ENDEAVOR__ALL_ISSUES) {
@@ -309,7 +309,7 @@ public class IncrementViewAction extends NamedElementViewAction<Increment> {
 	
 	@Override
 	protected Collection<Action> featureActions(EStructuralFeature feature) {
-		if (feature == EngineeringPackage.Literals.INCREMENT__CAPACITY) {
+		if (feature == EngineeringPackage.Literals.ENDEAVOR__CAPACITY) {
 			if (getSemanticElement().getCapacity().isEmpty()) {
 				return Collections.emptyList();
 			}

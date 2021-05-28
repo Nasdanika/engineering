@@ -8,6 +8,8 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.util.InternalEList;
+import org.nasdanika.engineering.Capacity;
 import org.nasdanika.engineering.Endeavor;
 import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeredCapability;
@@ -30,6 +32,7 @@ import org.nasdanika.engineering.Issue;
  *   <li>{@link org.nasdanika.engineering.impl.EngineeredCapabilityImpl#getAllIssues <em>All Issues</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineeredCapabilityImpl#getStart <em>Start</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineeredCapabilityImpl#getEnd <em>End</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.EngineeredCapabilityImpl#getCapacity <em>Capacity</em>}</li>
  * </ul>
  *
  * @generated
@@ -253,8 +256,19 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public EList<Capacity> getCapacity() {
+		return getReferrers(EngineeringPackage.Literals.CAPACITY__ENDEAVOR);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -263,6 +277,8 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 				if (assignee != null)
 					msgs = ((InternalEObject)assignee).eInverseRemove(this, EngineeringPackage.ENGINEER__ASSIGNMENTS, Engineer.class, msgs);
 				return basicSetAssignee((Engineer)otherEnd, msgs);
+			case EngineeringPackage.ENGINEERED_CAPABILITY__CAPACITY:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getCapacity()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -277,6 +293,8 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 		switch (featureID) {
 			case EngineeringPackage.ENGINEERED_CAPABILITY__ASSIGNEE:
 				return basicSetAssignee(null, msgs);
+			case EngineeringPackage.ENGINEERED_CAPABILITY__CAPACITY:
+				return ((InternalEList<?>)getCapacity()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -304,6 +322,8 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 				return getStart();
 			case EngineeringPackage.ENGINEERED_CAPABILITY__END:
 				return getEnd();
+			case EngineeringPackage.ENGINEERED_CAPABILITY__CAPACITY:
+				return getCapacity();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -378,6 +398,8 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 				return START_EDEFAULT == null ? getStart() != null : !START_EDEFAULT.equals(getStart());
 			case EngineeringPackage.ENGINEERED_CAPABILITY__END:
 				return END_EDEFAULT == null ? getEnd() != null : !END_EDEFAULT.equals(getEnd());
+			case EngineeringPackage.ENGINEERED_CAPABILITY__CAPACITY:
+				return !getCapacity().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -398,6 +420,7 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 				case EngineeringPackage.ENGINEERED_CAPABILITY__ALL_ISSUES: return EngineeringPackage.ENDEAVOR__ALL_ISSUES;
 				case EngineeringPackage.ENGINEERED_CAPABILITY__START: return EngineeringPackage.ENDEAVOR__START;
 				case EngineeringPackage.ENGINEERED_CAPABILITY__END: return EngineeringPackage.ENDEAVOR__END;
+				case EngineeringPackage.ENGINEERED_CAPABILITY__CAPACITY: return EngineeringPackage.ENDEAVOR__CAPACITY;
 				default: return -1;
 			}
 		}
@@ -420,6 +443,7 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 				case EngineeringPackage.ENDEAVOR__ALL_ISSUES: return EngineeringPackage.ENGINEERED_CAPABILITY__ALL_ISSUES;
 				case EngineeringPackage.ENDEAVOR__START: return EngineeringPackage.ENGINEERED_CAPABILITY__START;
 				case EngineeringPackage.ENDEAVOR__END: return EngineeringPackage.ENGINEERED_CAPABILITY__END;
+				case EngineeringPackage.ENDEAVOR__CAPACITY: return EngineeringPackage.ENGINEERED_CAPABILITY__CAPACITY;
 				default: return -1;
 			}
 		}

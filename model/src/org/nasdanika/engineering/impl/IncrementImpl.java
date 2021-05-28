@@ -37,10 +37,10 @@ import org.nasdanika.engineering.Release;
  *   <li>{@link org.nasdanika.engineering.impl.IncrementImpl#getAllIssues <em>All Issues</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IncrementImpl#getStart <em>Start</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IncrementImpl#getEnd <em>End</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.IncrementImpl#getCapacity <em>Capacity</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IncrementImpl#getChildren <em>Children</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IncrementImpl#getIssues <em>Issues</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IncrementImpl#getReleases <em>Releases</em>}</li>
- *   <li>{@link org.nasdanika.engineering.impl.IncrementImpl#getCapacity <em>Capacity</em>}</li>
  * </ul>
  *
  * @generated
@@ -200,12 +200,12 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 				if (assignee != null)
 					msgs = ((InternalEObject)assignee).eInverseRemove(this, EngineeringPackage.ENGINEER__ASSIGNMENTS, Engineer.class, msgs);
 				return basicSetAssignee((Engineer)otherEnd, msgs);
+			case EngineeringPackage.INCREMENT__CAPACITY:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getCapacity()).basicAdd(otherEnd, msgs);
 			case EngineeringPackage.INCREMENT__ISSUES:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getIssues()).basicAdd(otherEnd, msgs);
 			case EngineeringPackage.INCREMENT__RELEASES:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getReleases()).basicAdd(otherEnd, msgs);
-			case EngineeringPackage.INCREMENT__CAPACITY:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getCapacity()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -237,7 +237,7 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 	 */
 	@Override
 	public EList<Capacity> getCapacity() {
-		return getReferrers(EngineeringPackage.Literals.CAPACITY__INCREMENT);
+		return getReferrers(EngineeringPackage.Literals.CAPACITY__ENDEAVOR);
 	}
 
 	/**
@@ -269,14 +269,14 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 		switch (featureID) {
 			case EngineeringPackage.INCREMENT__ASSIGNEE:
 				return basicSetAssignee(null, msgs);
+			case EngineeringPackage.INCREMENT__CAPACITY:
+				return ((InternalEList<?>)getCapacity()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.INCREMENT__CHILDREN:
 				return ((InternalEList<?>)getChildren()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.INCREMENT__ISSUES:
 				return ((InternalEList<?>)getIssues()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.INCREMENT__RELEASES:
 				return ((InternalEList<?>)getReleases()).basicRemove(otherEnd, msgs);
-			case EngineeringPackage.INCREMENT__CAPACITY:
-				return ((InternalEList<?>)getCapacity()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -304,14 +304,14 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 				return getStart();
 			case EngineeringPackage.INCREMENT__END:
 				return getEnd();
+			case EngineeringPackage.INCREMENT__CAPACITY:
+				return getCapacity();
 			case EngineeringPackage.INCREMENT__CHILDREN:
 				return getChildren();
 			case EngineeringPackage.INCREMENT__ISSUES:
 				return getIssues();
 			case EngineeringPackage.INCREMENT__RELEASES:
 				return getReleases();
-			case EngineeringPackage.INCREMENT__CAPACITY:
-				return getCapacity();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -394,14 +394,14 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 				return START_EDEFAULT == null ? getStart() != null : !START_EDEFAULT.equals(getStart());
 			case EngineeringPackage.INCREMENT__END:
 				return END_EDEFAULT == null ? getEnd() != null : !END_EDEFAULT.equals(getEnd());
+			case EngineeringPackage.INCREMENT__CAPACITY:
+				return !getCapacity().isEmpty();
 			case EngineeringPackage.INCREMENT__CHILDREN:
 				return !getChildren().isEmpty();
 			case EngineeringPackage.INCREMENT__ISSUES:
 				return !getIssues().isEmpty();
 			case EngineeringPackage.INCREMENT__RELEASES:
 				return !getReleases().isEmpty();
-			case EngineeringPackage.INCREMENT__CAPACITY:
-				return !getCapacity().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -422,6 +422,7 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 				case EngineeringPackage.INCREMENT__ALL_ISSUES: return EngineeringPackage.ENDEAVOR__ALL_ISSUES;
 				case EngineeringPackage.INCREMENT__START: return EngineeringPackage.ENDEAVOR__START;
 				case EngineeringPackage.INCREMENT__END: return EngineeringPackage.ENDEAVOR__END;
+				case EngineeringPackage.INCREMENT__CAPACITY: return EngineeringPackage.ENDEAVOR__CAPACITY;
 				default: return -1;
 			}
 		}
@@ -444,6 +445,7 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 				case EngineeringPackage.ENDEAVOR__ALL_ISSUES: return EngineeringPackage.INCREMENT__ALL_ISSUES;
 				case EngineeringPackage.ENDEAVOR__START: return EngineeringPackage.INCREMENT__START;
 				case EngineeringPackage.ENDEAVOR__END: return EngineeringPackage.INCREMENT__END;
+				case EngineeringPackage.ENDEAVOR__CAPACITY: return EngineeringPackage.INCREMENT__CAPACITY;
 				default: return -1;
 			}
 		}

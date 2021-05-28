@@ -12,40 +12,40 @@ package org.nasdanika.engineering;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.nasdanika.engineering.Capacity#getIncrement <em>Increment</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.Capacity#getEndeavor <em>Endeavor</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Capacity#getEffort <em>Effort</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Capacity#getFunds <em>Funds</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Capacity#getRate <em>Rate</em>}</li>
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getCapacity()
- * @model annotation="urn:org.nasdanika documentation-reference='../doc/capacity.md'"
+ * @model annotation="urn:org.nasdanika documentation-reference='doc/capacity.md'"
  * @generated
  */
 public interface Capacity extends ModelElement {
 	/**
-	 * Returns the value of the '<em><b>Increment</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Increment#getCapacity <em>Capacity</em>}'.
+	 * Returns the value of the '<em><b>Endeavor</b></em>' reference.
+	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Endeavor#getCapacity <em>Capacity</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Increment</em>' reference.
-	 * @see #setIncrement(Increment)
-	 * @see org.nasdanika.engineering.EngineeringPackage#getCapacity_Increment()
-	 * @see org.nasdanika.engineering.Increment#getCapacity
-	 * @model opposite="capacity"
+	 * @return the value of the '<em>Endeavor</em>' reference.
+	 * @see #setEndeavor(Endeavor)
+	 * @see org.nasdanika.engineering.EngineeringPackage#getCapacity_Endeavor()
+	 * @see org.nasdanika.engineering.Endeavor#getCapacity
+	 * @model opposite="capacity" required="true"
 	 * @generated
 	 */
-	Increment getIncrement();
+	Endeavor getEndeavor();
 
 	/**
-	 * Sets the value of the '{@link org.nasdanika.engineering.Capacity#getIncrement <em>Increment</em>}' reference.
+	 * Sets the value of the '{@link org.nasdanika.engineering.Capacity#getEndeavor <em>Endeavor</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Increment</em>' reference.
-	 * @see #getIncrement()
+	 * @param value the new value of the '<em>Endeavor</em>' reference.
+	 * @see #getEndeavor()
 	 * @generated
 	 */
-	void setIncrement(Increment value);
+	void setEndeavor(Endeavor value);
 
 	/**
 	 * Returns the value of the '<em><b>Effort</b></em>' attribute.

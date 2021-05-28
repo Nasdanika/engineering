@@ -28,12 +28,12 @@
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference engineering.ecore#//Endeavor/allIssues"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Endeavor/start"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Endeavor/end"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference engineering.ecore#//Endeavor/capacity"/>
     </genClasses>
     <genClasses ecoreClass="engineering.ecore#//Increment">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//Increment/children"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//Increment/issues"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference engineering.ecore#//Increment/releases"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference engineering.ecore#//Increment/capacity"/>
     </genClasses>
     <genClasses ecoreClass="engineering.ecore#//IssueCategory">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//IssueCategory/weight"/>
@@ -146,7 +146,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//Directory/elements"/>
     </genClasses>
     <genClasses ecoreClass="engineering.ecore#//Capacity">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//Capacity/increment"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//Capacity/endeavor"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Capacity/effort"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Capacity/funds"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Capacity/rate"/>

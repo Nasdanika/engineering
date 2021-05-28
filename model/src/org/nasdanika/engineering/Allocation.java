@@ -19,7 +19,7 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getAllocation()
- * @model annotation="urn:org.nasdanika documentation-reference='../doc/allocation.md'"
+ * @model annotation="urn:org.nasdanika documentation-reference='doc/allocation.md'"
  * @generated
  */
 public interface Allocation extends Capacity {
@@ -32,7 +32,7 @@ public interface Allocation extends Capacity {
 	 * @see #setEngineer(Engineer)
 	 * @see org.nasdanika.engineering.EngineeringPackage#getAllocation_Engineer()
 	 * @see org.nasdanika.engineering.Engineer#getDesignations
-	 * @model opposite="designations"
+	 * @model opposite="designations" required="true"
 	 * @generated
 	 */
 	Engineer getEngineer();

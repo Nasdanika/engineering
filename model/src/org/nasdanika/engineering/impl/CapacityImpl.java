@@ -8,8 +8,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.nasdanika.engineering.Capacity;
+import org.nasdanika.engineering.Endeavor;
 import org.nasdanika.engineering.EngineeringPackage;
-import org.nasdanika.engineering.Increment;
 
 /**
  * <!-- begin-user-doc -->
@@ -19,7 +19,7 @@ import org.nasdanika.engineering.Increment;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.nasdanika.engineering.impl.CapacityImpl#getIncrement <em>Increment</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.CapacityImpl#getEndeavor <em>Endeavor</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.CapacityImpl#getEffort <em>Effort</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.CapacityImpl#getFunds <em>Funds</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.CapacityImpl#getRate <em>Rate</em>}</li>
@@ -83,8 +83,8 @@ public class CapacityImpl extends ModelElementImpl implements Capacity {
 	 * @generated
 	 */
 	@Override
-	public Increment getIncrement() {
-		return (Increment)eDynamicGet(EngineeringPackage.CAPACITY__INCREMENT, EngineeringPackage.Literals.CAPACITY__INCREMENT, true, true);
+	public Endeavor getEndeavor() {
+		return (Endeavor)eDynamicGet(EngineeringPackage.CAPACITY__ENDEAVOR, EngineeringPackage.Literals.CAPACITY__ENDEAVOR, true, true);
 	}
 
 	/**
@@ -92,8 +92,8 @@ public class CapacityImpl extends ModelElementImpl implements Capacity {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Increment basicGetIncrement() {
-		return (Increment)eDynamicGet(EngineeringPackage.CAPACITY__INCREMENT, EngineeringPackage.Literals.CAPACITY__INCREMENT, false, true);
+	public Endeavor basicGetEndeavor() {
+		return (Endeavor)eDynamicGet(EngineeringPackage.CAPACITY__ENDEAVOR, EngineeringPackage.Literals.CAPACITY__ENDEAVOR, false, true);
 	}
 
 	/**
@@ -101,8 +101,8 @@ public class CapacityImpl extends ModelElementImpl implements Capacity {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetIncrement(Increment newIncrement, NotificationChain msgs) {
-		msgs = eDynamicInverseAdd((InternalEObject)newIncrement, EngineeringPackage.CAPACITY__INCREMENT, msgs);
+	public NotificationChain basicSetEndeavor(Endeavor newEndeavor, NotificationChain msgs) {
+		msgs = eDynamicInverseAdd((InternalEObject)newEndeavor, EngineeringPackage.CAPACITY__ENDEAVOR, msgs);
 		return msgs;
 	}
 
@@ -112,8 +112,8 @@ public class CapacityImpl extends ModelElementImpl implements Capacity {
 	 * @generated
 	 */
 	@Override
-	public void setIncrement(Increment newIncrement) {
-		eDynamicSet(EngineeringPackage.CAPACITY__INCREMENT, EngineeringPackage.Literals.CAPACITY__INCREMENT, newIncrement);
+	public void setEndeavor(Endeavor newEndeavor) {
+		eDynamicSet(EngineeringPackage.CAPACITY__ENDEAVOR, EngineeringPackage.Literals.CAPACITY__ENDEAVOR, newEndeavor);
 	}
 
 	/**
@@ -184,11 +184,11 @@ public class CapacityImpl extends ModelElementImpl implements Capacity {
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case EngineeringPackage.CAPACITY__INCREMENT:
-				Increment increment = basicGetIncrement();
-				if (increment != null)
-					msgs = ((InternalEObject)increment).eInverseRemove(this, EngineeringPackage.INCREMENT__CAPACITY, Increment.class, msgs);
-				return basicSetIncrement((Increment)otherEnd, msgs);
+			case EngineeringPackage.CAPACITY__ENDEAVOR:
+				Endeavor endeavor = basicGetEndeavor();
+				if (endeavor != null)
+					msgs = ((InternalEObject)endeavor).eInverseRemove(this, EngineeringPackage.ENDEAVOR__CAPACITY, Endeavor.class, msgs);
+				return basicSetEndeavor((Endeavor)otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -201,8 +201,8 @@ public class CapacityImpl extends ModelElementImpl implements Capacity {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case EngineeringPackage.CAPACITY__INCREMENT:
-				return basicSetIncrement(null, msgs);
+			case EngineeringPackage.CAPACITY__ENDEAVOR:
+				return basicSetEndeavor(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -215,9 +215,9 @@ public class CapacityImpl extends ModelElementImpl implements Capacity {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EngineeringPackage.CAPACITY__INCREMENT:
-				if (resolve) return getIncrement();
-				return basicGetIncrement();
+			case EngineeringPackage.CAPACITY__ENDEAVOR:
+				if (resolve) return getEndeavor();
+				return basicGetEndeavor();
 			case EngineeringPackage.CAPACITY__EFFORT:
 				return getEffort();
 			case EngineeringPackage.CAPACITY__FUNDS:
@@ -236,8 +236,8 @@ public class CapacityImpl extends ModelElementImpl implements Capacity {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EngineeringPackage.CAPACITY__INCREMENT:
-				setIncrement((Increment)newValue);
+			case EngineeringPackage.CAPACITY__ENDEAVOR:
+				setEndeavor((Endeavor)newValue);
 				return;
 			case EngineeringPackage.CAPACITY__EFFORT:
 				setEffort((Double)newValue);
@@ -260,8 +260,8 @@ public class CapacityImpl extends ModelElementImpl implements Capacity {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EngineeringPackage.CAPACITY__INCREMENT:
-				setIncrement((Increment)null);
+			case EngineeringPackage.CAPACITY__ENDEAVOR:
+				setEndeavor((Endeavor)null);
 				return;
 			case EngineeringPackage.CAPACITY__EFFORT:
 				setEffort(EFFORT_EDEFAULT);
@@ -284,8 +284,8 @@ public class CapacityImpl extends ModelElementImpl implements Capacity {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EngineeringPackage.CAPACITY__INCREMENT:
-				return basicGetIncrement() != null;
+			case EngineeringPackage.CAPACITY__ENDEAVOR:
+				return basicGetEndeavor() != null;
 			case EngineeringPackage.CAPACITY__EFFORT:
 				return getEffort() != EFFORT_EDEFAULT;
 			case EngineeringPackage.CAPACITY__FUNDS:

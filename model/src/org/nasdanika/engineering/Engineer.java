@@ -29,6 +29,7 @@ import org.eclipse.emf.common.util.EList;
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getEngineer()
  * @model annotation="urn:org.nasdanika documentation-reference='../doc/engineer.md' icon='fas fa-user'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='capacity'"
  * @generated
  */
 public interface Engineer extends Persona {
@@ -179,7 +180,7 @@ public interface Engineer extends Persona {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Allocations of this engineer's effort to engineering elements.
+	 * Allocations of this [engineer](Engineer.html)'s [capacity](Capacity.html) to work on an [engineered element](EngineeredElement.hml) [issues](Issue.html) for a particular [endeavor](Endeavor.html) and [issue category](IssueCategory.html).
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Designations</em>' reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getEngineer_Designations()
@@ -194,6 +195,9 @@ public interface Engineer extends Persona {
 	 * The list contents are of type {@link org.nasdanika.engineering.Capacity}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Engineer's capacity for a particular [endeavor](Endeavor.html)
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Capacity</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getEngineer_Capacity()
 	 * @model containment="true"

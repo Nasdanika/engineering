@@ -494,6 +494,16 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
+	public EReference getEndeavor_Capacity() {
+		return (EReference)endeavorEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getEngineeredElement() {
 		return engineeredElementEClass;
 	}
@@ -846,16 +856,6 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	@Override
 	public EReference getIncrement_Releases() {
 		return (EReference)incrementEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getIncrement_Capacity() {
-		return (EReference)incrementEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -1474,7 +1474,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EReference getCapacity_Increment() {
+	public EReference getCapacity_Endeavor() {
 		return (EReference)capacityEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -1588,12 +1588,12 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		createEReference(endeavorEClass, ENDEAVOR__ALL_ISSUES);
 		createEAttribute(endeavorEClass, ENDEAVOR__START);
 		createEAttribute(endeavorEClass, ENDEAVOR__END);
+		createEReference(endeavorEClass, ENDEAVOR__CAPACITY);
 
 		incrementEClass = createEClass(INCREMENT);
 		createEReference(incrementEClass, INCREMENT__CHILDREN);
 		createEReference(incrementEClass, INCREMENT__ISSUES);
 		createEReference(incrementEClass, INCREMENT__RELEASES);
-		createEReference(incrementEClass, INCREMENT__CAPACITY);
 
 		issueCategoryEClass = createEClass(ISSUE_CATEGORY);
 		createEAttribute(issueCategoryEClass, ISSUE_CATEGORY__WEIGHT);
@@ -1708,7 +1708,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		createEReference(directoryEClass, DIRECTORY__ELEMENTS);
 
 		capacityEClass = createEClass(CAPACITY);
-		createEReference(capacityEClass, CAPACITY__INCREMENT);
+		createEReference(capacityEClass, CAPACITY__ENDEAVOR);
 		createEAttribute(capacityEClass, CAPACITY__EFFORT);
 		createEAttribute(capacityEClass, CAPACITY__FUNDS);
 		createEAttribute(capacityEClass, CAPACITY__RATE);
@@ -1795,12 +1795,12 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		initEReference(getEndeavor_AllIssues(), this.getIssue(), null, "allIssues", null, 0, -1, Endeavor.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEAttribute(getEndeavor_Start(), ecorePackage.getEDate(), "start", null, 0, 1, Endeavor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getEndeavor_End(), ecorePackage.getEDate(), "end", null, 0, 1, Endeavor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEndeavor_Capacity(), this.getCapacity(), this.getCapacity_Endeavor(), "capacity", null, 0, -1, Endeavor.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEClass(incrementEClass, Increment.class, "Increment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getIncrement_Children(), this.getIncrement(), null, "children", null, 0, -1, Increment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getIncrement_Issues(), this.getIssue(), this.getIssue_Increment(), "issues", null, 0, -1, Increment.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getIncrement_Releases(), this.getRelease(), this.getRelease_Increment(), "releases", null, 0, -1, Increment.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEReference(getIncrement_Capacity(), this.getCapacity(), this.getCapacity_Increment(), "capacity", null, 0, -1, Increment.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEClass(issueCategoryEClass, IssueCategory.class, "IssueCategory", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getIssueCategory_Weight(), ecorePackage.getEDouble(), "weight", null, 0, 1, IssueCategory.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1915,13 +1915,13 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		initEReference(getDirectory_Elements(), this.getNamedElement(), null, "elements", null, 0, -1, Directory.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(capacityEClass, Capacity.class, "Capacity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getCapacity_Increment(), this.getIncrement(), this.getIncrement_Capacity(), "increment", null, 0, 1, Capacity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCapacity_Endeavor(), this.getEndeavor(), this.getEndeavor_Capacity(), "endeavor", null, 1, 1, Capacity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCapacity_Effort(), ecorePackage.getEDouble(), "effort", null, 0, 1, Capacity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCapacity_Funds(), ecorePackage.getEDouble(), "funds", null, 0, 1, Capacity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCapacity_Rate(), ecorePackage.getEDouble(), "rate", null, 0, 1, Capacity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(allocationEClass, Allocation.class, "Allocation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getAllocation_Engineer(), this.getEngineer(), this.getEngineer_Designations(), "engineer", null, 0, 1, Allocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAllocation_Engineer(), this.getEngineer(), this.getEngineer_Designations(), "engineer", null, 1, 1, Allocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAllocation_Category(), this.getIssueCategory(), this.getIssueCategory_Allocations(), "category", null, 0, -1, Allocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
@@ -1984,7 +1984,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		  (issueEClass,
 		   source,
 		   new String[] {
-			   "documentation-reference", "../doc/issue.md"
+			   "documentation-reference", "doc/issue.md"
 		   });
 		addAnnotation
 		  (getIssue_Children(),
@@ -2170,13 +2170,13 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		  (capacityEClass,
 		   source,
 		   new String[] {
-			   "documentation-reference", "../doc/capacity.md"
+			   "documentation-reference", "doc/capacity.md"
 		   });
 		addAnnotation
 		  (allocationEClass,
 		   source,
 		   new String[] {
-			   "documentation-reference", "../doc/allocation.md"
+			   "documentation-reference", "doc/allocation.md"
 		   });
 	}
 
@@ -2225,6 +2225,12 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 			   "documentation", "Issues scheduled to work on in this increment directly or indirectly via releases and features."
 		   });
 		addAnnotation
+		  (getEndeavor_Capacity(),
+		   source,
+		   new String[] {
+			   "documentation", "[Capacity](Capacity.html) or [Allocation](Allocation.html).  If an element is capacity that means that there is a capacity for an [engineer](Engineer.html) to work on this endeavor.  If an element is allocation that means that Engineer\'s capacity has been allocated to work on a particular [engineered element](EngineeredElement.html) [issues](Issue.html) in a particular [issue category](IssueCategory.html)."
+		   });
+		addAnnotation
 		  (getIncrement_Issues(),
 		   source,
 		   new String[] {
@@ -2235,12 +2241,6 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		   source,
 		   new String[] {
 			   "documentation", "Releases scheduled to be made available in this increment"
-		   });
-		addAnnotation
-		  (getIncrement_Capacity(),
-		   source,
-		   new String[] {
-			   "documentation", "Capacity if element is capacity, utilization if element is Allocation."
 		   });
 		addAnnotation
 		  (getIssueCategory_Weight(),
@@ -2273,10 +2273,22 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 			   "documentation", "Capabilities required to start working on an issue."
 		   });
 		addAnnotation
+		  (getEngineeredElement_Allocations(),
+		   source,
+		   new String[] {
+			   "documentation", "Allocations of [engineer](Engineer.html)\'s [capacity](Capacity.html) to work on this engineered element [issues](Issue.html) for a particular [endeavor](Endeavor.html) and [issue category](IssueCategory.html)."
+		   });
+		addAnnotation
 		  (getEngineer_Designations(),
 		   source,
 		   new String[] {
-			   "documentation", "Allocations of this engineer\'s effort to engineering elements."
+			   "documentation", "Allocations of this [engineer](Engineer.html)\'s [capacity](Capacity.html) to work on an [engineered element](EngineeredElement.hml) [issues](Issue.html) for a particular [endeavor](Endeavor.html) and [issue category](IssueCategory.html)."
+		   });
+		addAnnotation
+		  (getEngineer_Capacity(),
+		   source,
+		   new String[] {
+			   "documentation", "Engineer\'s capacity for a particular [endeavor](Endeavor.html)"
 		   });
 		addAnnotation
 		  (getProduct_Activities(),
@@ -2352,7 +2364,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		  (endeavorEClass,
 		   source,
 		   new String[] {
-			   "constraints", "start_end"
+			   "constraints", "start_end capacity"
 		   });
 		addAnnotation
 		  (incrementEClass,
@@ -2365,6 +2377,18 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		   source,
 		   new String[] {
 			   "constraints", "increment"
+		   });
+		addAnnotation
+		  (engineeredElementEClass,
+		   source,
+		   new String[] {
+			   "constraints", "capacity"
+		   });
+		addAnnotation
+		  (engineerEClass,
+		   source,
+		   new String[] {
+			   "constraints", "capacity"
 		   });
 		addAnnotation
 		  (releaseEClass,

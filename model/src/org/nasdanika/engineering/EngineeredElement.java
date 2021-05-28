@@ -22,6 +22,7 @@ import org.eclipse.emf.common.util.EList;
  * @see org.nasdanika.engineering.EngineeringPackage#getEngineeredElement()
  * @model abstract="true"
  *        annotation="urn:org.nasdanika documentation-reference='../doc/engineered-element.md'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='capacity'"
  * @generated
  */
 public interface EngineeredElement extends NamedElement {
@@ -71,6 +72,9 @@ public interface EngineeredElement extends NamedElement {
 	 * The list contents are of type {@link org.nasdanika.engineering.Allocation}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Allocations of [engineer](Engineer.html)'s [capacity](Capacity.html) to work on this engineered element [issues](Issue.html) for a particular [endeavor](Endeavor.html) and [issue category](IssueCategory.html).
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Allocations</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getEngineeredElement_Allocations()
 	 * @model containment="true"

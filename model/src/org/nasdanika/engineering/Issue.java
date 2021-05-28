@@ -30,7 +30,7 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getIssue()
- * @model annotation="urn:org.nasdanika documentation-reference='../doc/issue.md'"
+ * @model annotation="urn:org.nasdanika documentation-reference='doc/issue.md'"
  *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='increment'"
  * @generated
  */
