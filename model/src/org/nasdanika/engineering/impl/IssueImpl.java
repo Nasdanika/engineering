@@ -220,21 +220,37 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Issue increment. If not set defaults to release's increment or feature release increment. 
 	 * @generated NOT
 	 */
 	@Override
 	public Increment getIncrement() {
-		if (eIsSet(EngineeringPackage.Literals.ISSUE__END) && !eIsSet(EngineeringPackage.Literals.ISSUE__INCREMENT)) {
-			// Computing increment from the end date if the end data is set and the increment is not.
-			for (EObject ancestor = eContainer(); ancestor != null; ancestor = ancestor.eContainer()) {
-				if (ancestor instanceof Engineer) {
-					Increment increment = findIncrement(getEnd(), ((Engineer) ancestor).getIncrements());
-					if (increment != null) {
-						return increment;
+		if (!eIsSet(EngineeringPackage.Literals.ISSUE__INCREMENT)) {
+			if (eIsSet(EngineeringPackage.Literals.ISSUE__END)) {
+				// Computing increment from the end date if the end data is set and the increment is not.
+				for (EObject ancestor = eContainer(); ancestor != null; ancestor = ancestor.eContainer()) {
+					if (ancestor instanceof Engineer) {
+						Increment increment = findIncrement(getEnd(), ((Engineer) ancestor).getIncrements());
+						if (increment != null) {
+							return increment;
+						}
 					}
 				}
+			}
+			for (Release release: getReleases()) {
+				if (release.eIsSet(EngineeringPackage.Literals.RELEASE__INCREMENT)) {
+					return release.getIncrement();
+				}
+			}
+			for (Feature feature: getContributesTo()) {
+				for (Release release: feature.getReleases()) {
+					if (release.eIsSet(EngineeringPackage.Literals.RELEASE__INCREMENT)) {
+						return release.getIncrement();
+					}
+				}
+			}
+			if (eIsSet(EngineeringPackage.Literals.ISSUE__RELEASES)) {
+				
 			}
 		}
 		return (Increment)eDynamicGet(EngineeringPackage.ISSUE__INCREMENT, EngineeringPackage.Literals.ISSUE__INCREMENT, true, true);

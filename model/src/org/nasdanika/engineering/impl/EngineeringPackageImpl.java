@@ -2026,8 +2026,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		  (getIssue_Notes(),
 		   source,
 		   new String[] {
-			   "homogenous", "true",
-			   "strict-containment", "true"
+			   "homogenous", "true"
 		   });
 		addAnnotation
 		  (getIssue_Category(),

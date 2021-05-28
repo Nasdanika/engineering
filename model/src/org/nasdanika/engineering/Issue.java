@@ -301,7 +301,7 @@ public interface Issue extends EngineeredCapability {
 	 * @return the value of the '<em>Notes</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getIssue_Notes()
 	 * @model containment="true"
-	 *        annotation="urn:org.nasdanika homogenous='true' strict-containment='true'"
+	 *        annotation="urn:org.nasdanika homogenous='true'"
 	 * @generated
 	 */
 	EList<Note> getNotes();
