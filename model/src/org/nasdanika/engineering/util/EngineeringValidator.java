@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.EObjectValidator;
 import org.nasdanika.common.Adaptable;
+import org.nasdanika.common.Context;
 import org.nasdanika.emf.DiagnosticHelper;
 import org.nasdanika.engineering.Activity;
 import org.nasdanika.engineering.Allocation;
@@ -230,6 +231,71 @@ public class EngineeringValidator extends EObjectValidator {
 			if (start != null && end != null && start.after(end)) {
 				helper.error("Endeavor end date " + end + " is before the start date " + start, EngineeringPackage.Literals.ENDEAVOR__END);
 			}
+			
+			// Past due
+			if (end != null && endeavor.getCompletion() < 0.9999) {
+				Context ctx = (Context) context.get(Context.class);
+				if (ctx != null) {
+					Date date = ctx.get(Date.class);
+					if (date != null && date.after(end)) {
+						helper.warning("Past due", EngineeringPackage.Literals.ENDEAVOR__END);
+					}
+				}
+			}	
+						
+			// Issue - children, release, feature
+			if (endeavor instanceof Issue) {
+				Issue issue = (Issue) endeavor;
+				EObject ic = issue.eContainer();
+				if (ic instanceof Issue) {
+					Issue ci = (Issue) ic;
+					Date cStart = ci.getStart();
+					if (start != null && cStart != null && cStart.after(start)) {
+						helper.error("Issue start date " + start + " is before the parent issue start date " + cStart, EngineeringPackage.Literals.ENDEAVOR__START);						
+					}
+					Date cEnd = ci.getEnd();
+					if (end != null && cEnd != null && cEnd.before(end)) {
+						helper.error("Issue end date " + end + " is after the parent issue end date " + cEnd, EngineeringPackage.Literals.ENDEAVOR__END);						
+					}
+				}
+				
+				for (Release release: issue.getReleases()) {
+					Date rStart = release.getStart();
+					if (start != null && rStart != null && rStart.after(start)) {
+						helper.error("Issue start date " + start + " is before the release start date " + rStart, EngineeringPackage.Literals.ENDEAVOR__START);						
+					}
+					Date rEnd = release.getEnd();
+					if (end != null && rEnd != null && rEnd.before(end)) {
+						helper.error("Issue end date " + end + " is after the release end date " + rEnd, EngineeringPackage.Literals.ENDEAVOR__END);						
+					}					
+				}
+				
+				for (Feature feature: issue.getContributesTo()) {
+					Date fStart = feature.getStart();
+					if (start != null && fStart != null && fStart.after(start)) {
+						helper.error("Issue start date " + start + " is before the feature start date " + fStart, EngineeringPackage.Literals.ENDEAVOR__START);						
+					}
+					Date fEnd = feature.getEnd();
+					if (end != null && fEnd != null && fEnd.before(end)) {
+						helper.error("Issue end date " + end + " is after the feature end date " + fEnd, EngineeringPackage.Literals.ENDEAVOR__END);						
+					}					
+				}
+			}
+			
+			// Feature - release
+			if (endeavor instanceof Feature) {				
+				for (Release release: ((Feature) endeavor).getReleases()) {
+					Date rStart = release.getStart();
+					if (start != null && rStart != null && rStart.after(start)) {
+						helper.error("Feature start date " + start + " is before the release start date " + rStart, EngineeringPackage.Literals.ENDEAVOR__START);						
+					}
+					Date rEnd = release.getEnd();
+					if (end != null && rEnd != null && rEnd.before(end)) {
+						helper.error("Feature end date " + end + " is after the release end date " + rEnd, EngineeringPackage.Literals.ENDEAVOR__END);						
+					}					
+				}
+			}			
+			
 			return helper.isSuccess();
 		}
 		return true;

@@ -95,12 +95,14 @@ engineering-module:
          Endeavor has alignment homogenous strict containment reference. Alignment is a model element referencing Aim. allAlignments derived reference.
          Aim has derived opposite reference - alignements. Principle containment homogenous reference under EngineeredElement - e.g. architecture principles for an organization, design/coding principles for a component.
          Consider ``extends`` relationship between principles. E.g. module level principle extends a more generic organization level principle. Many-to-many relationship.   
+         
+     ### === Done === ###    
      - name: Start/end from Issue and Increment to Endeavor
+       increment: nasdanika:increments/2021/children/q2/children/may
+       status: nasdanika:issue-statuses/done
        markdown-description: |+2
          For Issue with children, Release and Feature - default to derived from scheduled issues. For issues add validation - children shall be within parent if parent start/end is set.
          For releases compute default increment from the end date in the same way as for issues. 
-         
-     ### === Done === ###    
      - name: Move assignee from Issue to Endeavor
        increment: nasdanika:increments/2021/children/q2/children/may
        status: nasdanika:issue-statuses/done
