@@ -2,6 +2,7 @@
  */
 package org.nasdanika.engineering.impl;
 
+import java.util.Date;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
@@ -27,6 +28,8 @@ import org.nasdanika.engineering.Issue;
  *   <li>{@link org.nasdanika.engineering.impl.EngineeredCapabilityImpl#getTotalCost <em>Total Cost</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineeredCapabilityImpl#getAssignee <em>Assignee</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineeredCapabilityImpl#getAllIssues <em>All Issues</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.EngineeredCapabilityImpl#getStart <em>Start</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.EngineeredCapabilityImpl#getEnd <em>End</em>}</li>
  * </ul>
  *
  * @generated
@@ -60,6 +63,26 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 	 * @ordered
 	 */
 	protected static final double TOTAL_COST_EDEFAULT = 0.0;
+
+	/**
+	 * The default value of the '{@link #getStart() <em>Start</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStart()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final Date START_EDEFAULT = null;
+
+	/**
+	 * The default value of the '{@link #getEnd() <em>End</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEnd()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final Date END_EDEFAULT = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -193,6 +216,46 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 	 * @generated
 	 */
 	@Override
+	public Date getStart() {
+		return (Date)eDynamicGet(EngineeringPackage.ENGINEERED_CAPABILITY__START, EngineeringPackage.Literals.ENDEAVOR__START, true, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setStart(Date newStart) {
+		eDynamicSet(EngineeringPackage.ENGINEERED_CAPABILITY__START, EngineeringPackage.Literals.ENDEAVOR__START, newStart);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Date getEnd() {
+		return (Date)eDynamicGet(EngineeringPackage.ENGINEERED_CAPABILITY__END, EngineeringPackage.Literals.ENDEAVOR__END, true, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setEnd(Date newEnd) {
+		eDynamicSet(EngineeringPackage.ENGINEERED_CAPABILITY__END, EngineeringPackage.Literals.ENDEAVOR__END, newEnd);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case EngineeringPackage.ENGINEERED_CAPABILITY__ASSIGNEE:
@@ -237,6 +300,10 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 				return basicGetAssignee();
 			case EngineeringPackage.ENGINEERED_CAPABILITY__ALL_ISSUES:
 				return getAllIssues();
+			case EngineeringPackage.ENGINEERED_CAPABILITY__START:
+				return getStart();
+			case EngineeringPackage.ENGINEERED_CAPABILITY__END:
+				return getEnd();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -255,6 +322,12 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 			case EngineeringPackage.ENGINEERED_CAPABILITY__ASSIGNEE:
 				setAssignee((Engineer)newValue);
 				return;
+			case EngineeringPackage.ENGINEERED_CAPABILITY__START:
+				setStart((Date)newValue);
+				return;
+			case EngineeringPackage.ENGINEERED_CAPABILITY__END:
+				setEnd((Date)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -272,6 +345,12 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 				return;
 			case EngineeringPackage.ENGINEERED_CAPABILITY__ASSIGNEE:
 				setAssignee((Engineer)null);
+				return;
+			case EngineeringPackage.ENGINEERED_CAPABILITY__START:
+				setStart(START_EDEFAULT);
+				return;
+			case EngineeringPackage.ENGINEERED_CAPABILITY__END:
+				setEnd(END_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -295,6 +374,10 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 				return basicGetAssignee() != null;
 			case EngineeringPackage.ENGINEERED_CAPABILITY__ALL_ISSUES:
 				return !getAllIssues().isEmpty();
+			case EngineeringPackage.ENGINEERED_CAPABILITY__START:
+				return START_EDEFAULT == null ? getStart() != null : !START_EDEFAULT.equals(getStart());
+			case EngineeringPackage.ENGINEERED_CAPABILITY__END:
+				return END_EDEFAULT == null ? getEnd() != null : !END_EDEFAULT.equals(getEnd());
 		}
 		return super.eIsSet(featureID);
 	}
@@ -313,6 +396,8 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 				case EngineeringPackage.ENGINEERED_CAPABILITY__TOTAL_COST: return EngineeringPackage.ENDEAVOR__TOTAL_COST;
 				case EngineeringPackage.ENGINEERED_CAPABILITY__ASSIGNEE: return EngineeringPackage.ENDEAVOR__ASSIGNEE;
 				case EngineeringPackage.ENGINEERED_CAPABILITY__ALL_ISSUES: return EngineeringPackage.ENDEAVOR__ALL_ISSUES;
+				case EngineeringPackage.ENGINEERED_CAPABILITY__START: return EngineeringPackage.ENDEAVOR__START;
+				case EngineeringPackage.ENGINEERED_CAPABILITY__END: return EngineeringPackage.ENDEAVOR__END;
 				default: return -1;
 			}
 		}
@@ -333,6 +418,8 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 				case EngineeringPackage.ENDEAVOR__TOTAL_COST: return EngineeringPackage.ENGINEERED_CAPABILITY__TOTAL_COST;
 				case EngineeringPackage.ENDEAVOR__ASSIGNEE: return EngineeringPackage.ENGINEERED_CAPABILITY__ASSIGNEE;
 				case EngineeringPackage.ENDEAVOR__ALL_ISSUES: return EngineeringPackage.ENGINEERED_CAPABILITY__ALL_ISSUES;
+				case EngineeringPackage.ENDEAVOR__START: return EngineeringPackage.ENGINEERED_CAPABILITY__START;
+				case EngineeringPackage.ENDEAVOR__END: return EngineeringPackage.ENGINEERED_CAPABILITY__END;
 				default: return -1;
 			}
 		}

@@ -40,8 +40,8 @@ public class EngineerViewAction<T extends Engineer> extends PersonaViewAction<T>
 					"assignments-releases", 
 					getFeatureDiagnostic(feature),
 					EngineeringPackage.Literals.NAMED_ELEMENT__NAME,
-//					EngineeringPackage.Literals.ISSUE__START,
-//					EngineeringPackage.Literals.ISSUE__END,
+					EngineeringPackage.Literals.ENDEAVOR__START,
+					EngineeringPackage.Literals.ENDEAVOR__END,
 					EngineeringPackage.Literals.ENDEAVOR__BENEFIT,
 					EngineeringPackage.Literals.ENDEAVOR__TOTAL_COST,					
 					EngineeringPackage.Literals.ENDEAVOR__COMPLETION));			
@@ -52,8 +52,8 @@ public class EngineerViewAction<T extends Engineer> extends PersonaViewAction<T>
 					"assignments-features", 
 					getFeatureDiagnostic(feature),
 					EngineeringPackage.Literals.NAMED_ELEMENT__NAME,
-//					EngineeringPackage.Literals.ISSUE__START,
-//					EngineeringPackage.Literals.ISSUE__END,
+					EngineeringPackage.Literals.ENDEAVOR__START,
+					EngineeringPackage.Literals.ENDEAVOR__END,
 					EngineeringPackage.Literals.ENDEAVOR__BENEFIT,
 					EngineeringPackage.Literals.ENDEAVOR__TOTAL_COST,					
 					EngineeringPackage.Literals.ENDEAVOR__COMPLETION));			
@@ -64,8 +64,8 @@ public class EngineerViewAction<T extends Engineer> extends PersonaViewAction<T>
 					"assignments-increments", 
 					getFeatureDiagnostic(feature),
 					EngineeringPackage.Literals.NAMED_ELEMENT__NAME,
-//					EngineeringPackage.Literals.ISSUE__START,
-//					EngineeringPackage.Literals.ISSUE__END,
+					EngineeringPackage.Literals.ENDEAVOR__START,
+					EngineeringPackage.Literals.ENDEAVOR__END,
 					EngineeringPackage.Literals.ENDEAVOR__BENEFIT,
 					EngineeringPackage.Literals.ENDEAVOR__TOTAL_COST,					
 					EngineeringPackage.Literals.ENDEAVOR__COMPLETION));			
@@ -76,8 +76,8 @@ public class EngineerViewAction<T extends Engineer> extends PersonaViewAction<T>
 					"assignments-issues", 
 					getFeatureDiagnostic(feature),
 					EngineeringPackage.Literals.NAMED_ELEMENT__NAME,
-					EngineeringPackage.Literals.ISSUE__START,
-					EngineeringPackage.Literals.ISSUE__END,
+					EngineeringPackage.Literals.ENDEAVOR__START,
+					EngineeringPackage.Literals.ENDEAVOR__END,
 					EngineeringPackage.Literals.ISSUE__TARGET,
 					EngineeringPackage.Literals.ISSUE__STATUS,
 					EngineeringPackage.Literals.ISSUE__CATEGORY,				
@@ -88,7 +88,7 @@ public class EngineerViewAction<T extends Engineer> extends PersonaViewAction<T>
 					EngineeringPackage.Literals.ISSUE__REMAINING_COST,
 					EngineeringPackage.Literals.ENDEAVOR__COMPLETION));			
 			
-			assignmentsAction.setSectionStyle(assignmentsAction.getChildren().size() > 1 ? SectionStyle.ACTION_GROUP : SectionStyle.DEFAULT);
+			assignmentsAction.setSectionStyle(assignmentsAction.getChildren().size() > 1 ? SectionStyle.CARD_PILL : SectionStyle.DEFAULT);
 			return Collections.singleton(assignmentsAction);
 		}
 		

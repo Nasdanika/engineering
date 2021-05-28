@@ -72,7 +72,8 @@ engineering-organization:
          releases: 
            - name: 1.0
              path: 1/0  
-             increment: test:increments/2021/children/q2/children/jun                     
+             increment: test:increments/2021/children/q2/children/jun  
+             end: 2021/6/25                   
          features: 
            - name: My feature
              path: my-feature  
@@ -88,7 +89,16 @@ engineering-organization:
                  effort: 5
            - name: Issue 3         
              effort: 10
-             contributes-to: test:modules/test/features/my-feature             
+             contributes-to: test:modules/test/features/my-feature    
+             children:
+               - name: Issue 3.1         
+                 effort: 7
+                 start: 2021/5/15                                   
+                 end: 2021/5/30                                   
+               - name: Issue 3.2         
+                 effort: 7
+                 start: 2021/5/25                                   
+                 end: 2021/6/10                                   
              notes:
                - date: 2021/5/28
                  effort: 3

@@ -50,8 +50,6 @@ import org.nasdanika.engineering.Release;
  *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getCost <em>Cost</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getRemainingEffort <em>Remaining Effort</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getRemainingCost <em>Remaining Cost</em>}</li>
- *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getStart <em>Start</em>}</li>
- *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getEnd <em>End</em>}</li>
  * </ul>
  *
  * @generated
@@ -105,26 +103,6 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 	protected static final double REMAINING_COST_EDEFAULT = 0.0;
 
 	/**
-	 * The default value of the '{@link #getStart() <em>Start</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getStart()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final Date START_EDEFAULT = null;
-
-	/**
-	 * The default value of the '{@link #getEnd() <em>End</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getEnd()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final Date END_EDEFAULT = null;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -171,8 +149,10 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 	 */
 	@Override
 	public Increment getIncrement() {
-		if (!eIsSet(EngineeringPackage.Literals.ISSUE__INCREMENT)) {
-			if (eIsSet(EngineeringPackage.Literals.ISSUE__END)) {
+		Increment ret = (Increment)eDynamicGet(EngineeringPackage.ISSUE__INCREMENT, EngineeringPackage.Literals.ISSUE__INCREMENT, true, true);
+		if (ret == null) {
+			Date end = getEnd();
+			if (end != null) {
 				// Computing increment from the end date if the end data is set and the increment is not.
 				for (EObject ancestor = eContainer(); ancestor != null; ancestor = ancestor.eContainer()) {
 					if (ancestor instanceof Engineer) {
@@ -195,11 +175,8 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 					}
 				}
 			}
-			if (eIsSet(EngineeringPackage.Literals.ISSUE__RELEASES)) {
-				
-			}
 		}
-		return (Increment)eDynamicGet(EngineeringPackage.ISSUE__INCREMENT, EngineeringPackage.Literals.ISSUE__INCREMENT, true, true);
+		return ret;
 	}
 	
 	private static Increment findIncrement(Date date, Collection<Increment> increments) {
@@ -427,46 +404,6 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 		return ret;
 	}
 	
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Date getStart() {
-		return (Date)eDynamicGet(EngineeringPackage.ISSUE__START, EngineeringPackage.Literals.ISSUE__START, true, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setStart(Date newStart) {
-		eDynamicSet(EngineeringPackage.ISSUE__START, EngineeringPackage.Literals.ISSUE__START, newStart);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Date getEnd() {
-		return (Date)eDynamicGet(EngineeringPackage.ISSUE__END, EngineeringPackage.Literals.ISSUE__END, true, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setEnd(Date newEnd) {
-		eDynamicSet(EngineeringPackage.ISSUE__END, EngineeringPackage.Literals.ISSUE__END, newEnd);
-	}
-
 	@Override
 	public double getCompletion() {
 		IssueStatus status = getStatus();
@@ -674,10 +611,6 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 				return getRemainingEffort();
 			case EngineeringPackage.ISSUE__REMAINING_COST:
 				return getRemainingCost();
-			case EngineeringPackage.ISSUE__START:
-				return getStart();
-			case EngineeringPackage.ISSUE__END:
-				return getEnd();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -726,12 +659,6 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 			case EngineeringPackage.ISSUE__COST:
 				setCost((Double)newValue);
 				return;
-			case EngineeringPackage.ISSUE__START:
-				setStart((Date)newValue);
-				return;
-			case EngineeringPackage.ISSUE__END:
-				setEnd((Date)newValue);
-				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -774,12 +701,6 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 			case EngineeringPackage.ISSUE__COST:
 				setCost(COST_EDEFAULT);
 				return;
-			case EngineeringPackage.ISSUE__START:
-				setStart(START_EDEFAULT);
-				return;
-			case EngineeringPackage.ISSUE__END:
-				setEnd(END_EDEFAULT);
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -820,10 +741,6 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 				return getRemainingEffort() != REMAINING_EFFORT_EDEFAULT;
 			case EngineeringPackage.ISSUE__REMAINING_COST:
 				return getRemainingCost() != REMAINING_COST_EDEFAULT;
-			case EngineeringPackage.ISSUE__START:
-				return START_EDEFAULT == null ? getStart() != null : !START_EDEFAULT.equals(getStart());
-			case EngineeringPackage.ISSUE__END:
-				return END_EDEFAULT == null ? getEnd() != null : !END_EDEFAULT.equals(getEnd());
 		}
 		return super.eIsSet(featureID);
 	}
@@ -847,6 +764,40 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 			allIssues.addAll(issue.getAllIssues());
 		}
 		return new BasicEList<>(allIssues);		
-	}	
+	}
+	
+	/**
+	 * Computes default end from children or increment if there are no children with set end.
+	 */
+	@Override
+	public Date getEnd() {
+		Date ret = super.getEnd();
+		if (ret == null) {
+			for (Issue child: getChildren()) {
+				Date cEnd = child.getEnd();
+				if (ret == null || (cEnd != null && ret.before(cEnd))) {
+					ret = cEnd;
+				}
+			}
+		}
+		return ret;
+	}
+	
+	/**
+	 * Computes default end from children or increment if there are no children with set end.
+	 */
+	@Override
+	public Date getStart() {
+		Date ret = super.getStart();
+		if (ret == null) {
+			for (Issue child: getChildren()) {
+				Date cStart = child.getStart();
+				if (ret == null || (cStart != null && ret.after(cStart))) {
+					ret = cStart;
+				}
+			}
+		}
+		return ret;
+	}
 
 } //IssueImpl

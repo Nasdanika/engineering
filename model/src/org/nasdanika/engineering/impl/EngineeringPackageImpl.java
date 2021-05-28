@@ -474,6 +474,26 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
+	public EAttribute getEndeavor_Start() {
+		return (EAttribute)endeavorEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getEndeavor_End() {
+		return (EAttribute)endeavorEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getEngineeredElement() {
 		return engineeredElementEClass;
 	}
@@ -814,28 +834,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EAttribute getIncrement_Start() {
-		return (EAttribute)incrementEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getIncrement_End() {
-		return (EAttribute)incrementEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EReference getIncrement_Issues() {
-		return (EReference)incrementEClass.getEStructuralFeatures().get(3);
+		return (EReference)incrementEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -845,7 +845,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 */
 	@Override
 	public EReference getIncrement_Releases() {
-		return (EReference)incrementEClass.getEStructuralFeatures().get(4);
+		return (EReference)incrementEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -855,7 +855,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 */
 	@Override
 	public EReference getIncrement_Capacity() {
-		return (EReference)incrementEClass.getEStructuralFeatures().get(5);
+		return (EReference)incrementEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -1324,26 +1324,6 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EAttribute getIssue_Start() {
-		return (EAttribute)issueEClass.getEStructuralFeatures().get(14);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getIssue_End() {
-		return (EAttribute)issueEClass.getEStructuralFeatures().get(15);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EReference getIssue_Notes() {
 		return (EReference)issueEClass.getEStructuralFeatures().get(4);
 	}
@@ -1606,11 +1586,11 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		createEAttribute(endeavorEClass, ENDEAVOR__TOTAL_COST);
 		createEReference(endeavorEClass, ENDEAVOR__ASSIGNEE);
 		createEReference(endeavorEClass, ENDEAVOR__ALL_ISSUES);
+		createEAttribute(endeavorEClass, ENDEAVOR__START);
+		createEAttribute(endeavorEClass, ENDEAVOR__END);
 
 		incrementEClass = createEClass(INCREMENT);
 		createEReference(incrementEClass, INCREMENT__CHILDREN);
-		createEAttribute(incrementEClass, INCREMENT__START);
-		createEAttribute(incrementEClass, INCREMENT__END);
 		createEReference(incrementEClass, INCREMENT__ISSUES);
 		createEReference(incrementEClass, INCREMENT__RELEASES);
 		createEReference(incrementEClass, INCREMENT__CAPACITY);
@@ -1640,8 +1620,6 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		createEAttribute(issueEClass, ISSUE__COST);
 		createEAttribute(issueEClass, ISSUE__REMAINING_EFFORT);
 		createEAttribute(issueEClass, ISSUE__REMAINING_COST);
-		createEAttribute(issueEClass, ISSUE__START);
-		createEAttribute(issueEClass, ISSUE__END);
 
 		noteEClass = createEClass(NOTE);
 		createEReference(noteEClass, NOTE__AUTHOR);
@@ -1815,11 +1793,11 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		initEAttribute(getEndeavor_TotalCost(), ecorePackage.getEDouble(), "totalCost", null, 0, 1, Endeavor.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getEndeavor_Assignee(), this.getEngineer(), this.getEngineer_Assignments(), "assignee", null, 0, 1, Endeavor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEndeavor_AllIssues(), this.getIssue(), null, "allIssues", null, 0, -1, Endeavor.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEndeavor_Start(), ecorePackage.getEDate(), "start", null, 0, 1, Endeavor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEndeavor_End(), ecorePackage.getEDate(), "end", null, 0, 1, Endeavor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(incrementEClass, Increment.class, "Increment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getIncrement_Children(), this.getIncrement(), null, "children", null, 0, -1, Increment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getIncrement_Start(), ecorePackage.getEDate(), "start", null, 0, 1, Increment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getIncrement_End(), ecorePackage.getEDate(), "end", null, 0, 1, Increment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getIncrement_Issues(), this.getIssue(), this.getIssue_Increment(), "issues", null, 0, -1, Increment.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getIncrement_Releases(), this.getRelease(), this.getRelease_Increment(), "releases", null, 0, -1, Increment.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getIncrement_Capacity(), this.getCapacity(), this.getCapacity_Increment(), "capacity", null, 0, -1, Increment.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
@@ -1849,8 +1827,6 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		initEAttribute(getIssue_Cost(), ecorePackage.getEDouble(), "cost", null, 0, 1, Issue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getIssue_RemainingEffort(), ecorePackage.getEDouble(), "remainingEffort", null, 0, 1, Issue.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEAttribute(getIssue_RemainingCost(), ecorePackage.getEDouble(), "remainingCost", null, 0, 1, Issue.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEAttribute(getIssue_Start(), ecorePackage.getEDate(), "start", null, 0, 1, Issue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getIssue_End(), ecorePackage.getEDate(), "end", null, 0, 1, Issue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(noteEClass, Note.class, "Note", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getNote_Author(), this.getEngineer(), null, "author", null, 0, 1, Note.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

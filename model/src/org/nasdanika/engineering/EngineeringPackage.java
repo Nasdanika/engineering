@@ -314,13 +314,31 @@ public interface EngineeringPackage extends EPackage {
 	int ENDEAVOR__ALL_ISSUES = 4;
 
 	/**
+	 * The feature id for the '<em><b>Start</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENDEAVOR__START = 5;
+
+	/**
+	 * The feature id for the '<em><b>End</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENDEAVOR__END = 6;
+
+	/**
 	 * The number of structural features of the '<em>Endeavor</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENDEAVOR_FEATURE_COUNT = 5;
+	int ENDEAVOR_FEATURE_COUNT = 7;
 
 	/**
 	 * The number of operations of the '<em>Endeavor</em>' class.
@@ -520,22 +538,13 @@ public interface EngineeringPackage extends EPackage {
 	int INCREMENT__ALL_ISSUES = NAMED_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
-	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INCREMENT__CHILDREN = NAMED_ELEMENT_FEATURE_COUNT + 5;
-
-	/**
 	 * The feature id for the '<em><b>Start</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INCREMENT__START = NAMED_ELEMENT_FEATURE_COUNT + 6;
+	int INCREMENT__START = NAMED_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>End</b></em>' attribute.
@@ -544,7 +553,16 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INCREMENT__END = NAMED_ELEMENT_FEATURE_COUNT + 7;
+	int INCREMENT__END = NAMED_ELEMENT_FEATURE_COUNT + 6;
+
+	/**
+	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INCREMENT__CHILDREN = NAMED_ELEMENT_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Issues</b></em>' reference list.
@@ -1063,13 +1081,31 @@ public interface EngineeringPackage extends EPackage {
 	int ENGINEERED_CAPABILITY__ALL_ISSUES = CAPABILITY_FEATURE_COUNT + 4;
 
 	/**
+	 * The feature id for the '<em><b>Start</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEERED_CAPABILITY__START = CAPABILITY_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>End</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEERED_CAPABILITY__END = CAPABILITY_FEATURE_COUNT + 6;
+
+	/**
 	 * The number of structural features of the '<em>Engineered Capability</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEERED_CAPABILITY_FEATURE_COUNT = CAPABILITY_FEATURE_COUNT + 5;
+	int ENGINEERED_CAPABILITY_FEATURE_COUNT = CAPABILITY_FEATURE_COUNT + 7;
 
 	/**
 	 * The number of operations of the '<em>Engineered Capability</em>' class.
@@ -1277,6 +1313,24 @@ public interface EngineeringPackage extends EPackage {
 	int ISSUE__ALL_ISSUES = ENGINEERED_CAPABILITY__ALL_ISSUES;
 
 	/**
+	 * The feature id for the '<em><b>Start</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE__START = ENGINEERED_CAPABILITY__START;
+
+	/**
+	 * The feature id for the '<em><b>End</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE__END = ENGINEERED_CAPABILITY__END;
+
+	/**
 	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1403,31 +1457,13 @@ public interface EngineeringPackage extends EPackage {
 	int ISSUE__REMAINING_COST = ENGINEERED_CAPABILITY_FEATURE_COUNT + 13;
 
 	/**
-	 * The feature id for the '<em><b>Start</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ISSUE__START = ENGINEERED_CAPABILITY_FEATURE_COUNT + 14;
-
-	/**
-	 * The feature id for the '<em><b>End</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ISSUE__END = ENGINEERED_CAPABILITY_FEATURE_COUNT + 15;
-
-	/**
 	 * The number of structural features of the '<em>Issue</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ISSUE_FEATURE_COUNT = ENGINEERED_CAPABILITY_FEATURE_COUNT + 16;
+	int ISSUE_FEATURE_COUNT = ENGINEERED_CAPABILITY_FEATURE_COUNT + 14;
 
 	/**
 	 * The number of operations of the '<em>Issue</em>' class.
@@ -2709,6 +2745,24 @@ public interface EngineeringPackage extends EPackage {
 	int RELEASE__ALL_ISSUES = ENGINEERED_CAPABILITY__ALL_ISSUES;
 
 	/**
+	 * The feature id for the '<em><b>Start</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RELEASE__START = ENGINEERED_CAPABILITY__START;
+
+	/**
+	 * The feature id for the '<em><b>End</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RELEASE__END = ENGINEERED_CAPABILITY__END;
+
+	/**
 	 * The feature id for the '<em><b>Increment</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2878,6 +2932,24 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int FEATURE__ALL_ISSUES = ENGINEERED_CAPABILITY__ALL_ISSUES;
+
+	/**
+	 * The feature id for the '<em><b>Start</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE__START = ENGINEERED_CAPABILITY__START;
+
+	/**
+	 * The feature id for the '<em><b>End</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE__END = ENGINEERED_CAPABILITY__END;
 
 	/**
 	 * The feature id for the '<em><b>Releases</b></em>' reference list.
@@ -4076,6 +4148,28 @@ public interface EngineeringPackage extends EPackage {
 	EReference getEndeavor_AllIssues();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Endeavor#getStart <em>Start</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Start</em>'.
+	 * @see org.nasdanika.engineering.Endeavor#getStart()
+	 * @see #getEndeavor()
+	 * @generated
+	 */
+	EAttribute getEndeavor_Start();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Endeavor#getEnd <em>End</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>End</em>'.
+	 * @see org.nasdanika.engineering.Endeavor#getEnd()
+	 * @see #getEndeavor()
+	 * @generated
+	 */
+	EAttribute getEndeavor_End();
+
+	/**
 	 * Returns the meta object for class '{@link org.nasdanika.engineering.EngineeredElement <em>Engineered Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4439,28 +4533,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getIncrement_Children();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Increment#getStart <em>Start</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Start</em>'.
-	 * @see org.nasdanika.engineering.Increment#getStart()
-	 * @see #getIncrement()
-	 * @generated
-	 */
-	EAttribute getIncrement_Start();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Increment#getEnd <em>End</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>End</em>'.
-	 * @see org.nasdanika.engineering.Increment#getEnd()
-	 * @see #getIncrement()
-	 * @generated
-	 */
-	EAttribute getIncrement_End();
 
 	/**
 	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.Increment#getIssues <em>Issues</em>}'.
@@ -4993,28 +5065,6 @@ public interface EngineeringPackage extends EPackage {
 	EAttribute getIssue_RemainingCost();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Issue#getStart <em>Start</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Start</em>'.
-	 * @see org.nasdanika.engineering.Issue#getStart()
-	 * @see #getIssue()
-	 * @generated
-	 */
-	EAttribute getIssue_Start();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Issue#getEnd <em>End</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>End</em>'.
-	 * @see org.nasdanika.engineering.Issue#getEnd()
-	 * @see #getIssue()
-	 * @generated
-	 */
-	EAttribute getIssue_End();
-
-	/**
 	 * Returns the meta object for the containment reference list '{@link org.nasdanika.engineering.Issue#getNotes <em>Notes</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5411,6 +5461,22 @@ public interface EngineeringPackage extends EPackage {
 		EReference ENDEAVOR__ALL_ISSUES = eINSTANCE.getEndeavor_AllIssues();
 
 		/**
+		 * The meta object literal for the '<em><b>Start</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ENDEAVOR__START = eINSTANCE.getEndeavor_Start();
+
+		/**
+		 * The meta object literal for the '<em><b>End</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ENDEAVOR__END = eINSTANCE.getEndeavor_End();
+
+		/**
 		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.EngineeredElementImpl <em>Engineered Element</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -5699,22 +5765,6 @@ public interface EngineeringPackage extends EPackage {
 		 * @generated
 		 */
 		EReference INCREMENT__CHILDREN = eINSTANCE.getIncrement_Children();
-
-		/**
-		 * The meta object literal for the '<em><b>Start</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute INCREMENT__START = eINSTANCE.getIncrement_Start();
-
-		/**
-		 * The meta object literal for the '<em><b>End</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute INCREMENT__END = eINSTANCE.getIncrement_End();
 
 		/**
 		 * The meta object literal for the '<em><b>Issues</b></em>' reference list feature.
@@ -6125,22 +6175,6 @@ public interface EngineeringPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ISSUE__REMAINING_COST = eINSTANCE.getIssue_RemainingCost();
-
-		/**
-		 * The meta object literal for the '<em><b>Start</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ISSUE__START = eINSTANCE.getIssue_Start();
-
-		/**
-		 * The meta object literal for the '<em><b>End</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ISSUE__END = eINSTANCE.getIssue_End();
 
 		/**
 		 * The meta object literal for the '<em><b>Notes</b></em>' containment reference list feature.

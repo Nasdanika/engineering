@@ -26,11 +26,11 @@
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Endeavor/totalCost"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//Endeavor/assignee"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference engineering.ecore#//Endeavor/allIssues"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Endeavor/start"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Endeavor/end"/>
     </genClasses>
     <genClasses ecoreClass="engineering.ecore#//Increment">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//Increment/children"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Increment/start"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Increment/end"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//Increment/issues"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference engineering.ecore#//Increment/releases"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference engineering.ecore#//Increment/capacity"/>
@@ -60,8 +60,6 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Issue/cost"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Issue/remainingEffort"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Issue/remainingCost"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Issue/start"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Issue/end"/>
     </genClasses>
     <genClasses ecoreClass="engineering.ecore#//Note">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//Note/author"/>

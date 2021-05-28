@@ -35,9 +35,9 @@ import org.nasdanika.engineering.Release;
  *   <li>{@link org.nasdanika.engineering.impl.IncrementImpl#getTotalCost <em>Total Cost</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IncrementImpl#getAssignee <em>Assignee</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IncrementImpl#getAllIssues <em>All Issues</em>}</li>
- *   <li>{@link org.nasdanika.engineering.impl.IncrementImpl#getChildren <em>Children</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IncrementImpl#getStart <em>Start</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IncrementImpl#getEnd <em>End</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.IncrementImpl#getChildren <em>Children</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IncrementImpl#getIssues <em>Issues</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IncrementImpl#getReleases <em>Releases</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IncrementImpl#getCapacity <em>Capacity</em>}</li>
@@ -153,7 +153,7 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 	 */
 	@Override
 	public Date getStart() {
-		return (Date)eDynamicGet(EngineeringPackage.INCREMENT__START, EngineeringPackage.Literals.INCREMENT__START, true, true);
+		return (Date)eDynamicGet(EngineeringPackage.INCREMENT__START, EngineeringPackage.Literals.ENDEAVOR__START, true, true);
 	}
 
 	/**
@@ -163,7 +163,7 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 	 */
 	@Override
 	public void setStart(Date newStart) {
-		eDynamicSet(EngineeringPackage.INCREMENT__START, EngineeringPackage.Literals.INCREMENT__START, newStart);
+		eDynamicSet(EngineeringPackage.INCREMENT__START, EngineeringPackage.Literals.ENDEAVOR__START, newStart);
 	}
 
 	/**
@@ -173,7 +173,7 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 	 */
 	@Override
 	public Date getEnd() {
-		return (Date)eDynamicGet(EngineeringPackage.INCREMENT__END, EngineeringPackage.Literals.INCREMENT__END, true, true);
+		return (Date)eDynamicGet(EngineeringPackage.INCREMENT__END, EngineeringPackage.Literals.ENDEAVOR__END, true, true);
 	}
 
 	/**
@@ -183,7 +183,7 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 	 */
 	@Override
 	public void setEnd(Date newEnd) {
-		eDynamicSet(EngineeringPackage.INCREMENT__END, EngineeringPackage.Literals.INCREMENT__END, newEnd);
+		eDynamicSet(EngineeringPackage.INCREMENT__END, EngineeringPackage.Literals.ENDEAVOR__END, newEnd);
 	}
 
 	/**
@@ -300,12 +300,12 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 				return basicGetAssignee();
 			case EngineeringPackage.INCREMENT__ALL_ISSUES:
 				return getAllIssues();
-			case EngineeringPackage.INCREMENT__CHILDREN:
-				return getChildren();
 			case EngineeringPackage.INCREMENT__START:
 				return getStart();
 			case EngineeringPackage.INCREMENT__END:
 				return getEnd();
+			case EngineeringPackage.INCREMENT__CHILDREN:
+				return getChildren();
 			case EngineeringPackage.INCREMENT__ISSUES:
 				return getIssues();
 			case EngineeringPackage.INCREMENT__RELEASES:
@@ -331,15 +331,15 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 			case EngineeringPackage.INCREMENT__ASSIGNEE:
 				setAssignee((Engineer)newValue);
 				return;
-			case EngineeringPackage.INCREMENT__CHILDREN:
-				getChildren().clear();
-				getChildren().addAll((Collection<? extends Increment>)newValue);
-				return;
 			case EngineeringPackage.INCREMENT__START:
 				setStart((Date)newValue);
 				return;
 			case EngineeringPackage.INCREMENT__END:
 				setEnd((Date)newValue);
+				return;
+			case EngineeringPackage.INCREMENT__CHILDREN:
+				getChildren().clear();
+				getChildren().addAll((Collection<? extends Increment>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -359,14 +359,14 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 			case EngineeringPackage.INCREMENT__ASSIGNEE:
 				setAssignee((Engineer)null);
 				return;
-			case EngineeringPackage.INCREMENT__CHILDREN:
-				getChildren().clear();
-				return;
 			case EngineeringPackage.INCREMENT__START:
 				setStart(START_EDEFAULT);
 				return;
 			case EngineeringPackage.INCREMENT__END:
 				setEnd(END_EDEFAULT);
+				return;
+			case EngineeringPackage.INCREMENT__CHILDREN:
+				getChildren().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -390,12 +390,12 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 				return basicGetAssignee() != null;
 			case EngineeringPackage.INCREMENT__ALL_ISSUES:
 				return !getAllIssues().isEmpty();
-			case EngineeringPackage.INCREMENT__CHILDREN:
-				return !getChildren().isEmpty();
 			case EngineeringPackage.INCREMENT__START:
 				return START_EDEFAULT == null ? getStart() != null : !START_EDEFAULT.equals(getStart());
 			case EngineeringPackage.INCREMENT__END:
 				return END_EDEFAULT == null ? getEnd() != null : !END_EDEFAULT.equals(getEnd());
+			case EngineeringPackage.INCREMENT__CHILDREN:
+				return !getChildren().isEmpty();
 			case EngineeringPackage.INCREMENT__ISSUES:
 				return !getIssues().isEmpty();
 			case EngineeringPackage.INCREMENT__RELEASES:
@@ -420,6 +420,8 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 				case EngineeringPackage.INCREMENT__TOTAL_COST: return EngineeringPackage.ENDEAVOR__TOTAL_COST;
 				case EngineeringPackage.INCREMENT__ASSIGNEE: return EngineeringPackage.ENDEAVOR__ASSIGNEE;
 				case EngineeringPackage.INCREMENT__ALL_ISSUES: return EngineeringPackage.ENDEAVOR__ALL_ISSUES;
+				case EngineeringPackage.INCREMENT__START: return EngineeringPackage.ENDEAVOR__START;
+				case EngineeringPackage.INCREMENT__END: return EngineeringPackage.ENDEAVOR__END;
 				default: return -1;
 			}
 		}
@@ -440,6 +442,8 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 				case EngineeringPackage.ENDEAVOR__TOTAL_COST: return EngineeringPackage.INCREMENT__TOTAL_COST;
 				case EngineeringPackage.ENDEAVOR__ASSIGNEE: return EngineeringPackage.INCREMENT__ASSIGNEE;
 				case EngineeringPackage.ENDEAVOR__ALL_ISSUES: return EngineeringPackage.INCREMENT__ALL_ISSUES;
+				case EngineeringPackage.ENDEAVOR__START: return EngineeringPackage.INCREMENT__START;
+				case EngineeringPackage.ENDEAVOR__END: return EngineeringPackage.INCREMENT__END;
 				default: return -1;
 			}
 		}

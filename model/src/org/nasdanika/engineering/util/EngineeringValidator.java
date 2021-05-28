@@ -285,7 +285,7 @@ public class EngineeringValidator extends EObjectValidator {
 	 * @generated NOT
 	 */
 	public boolean validateIssue_increment(Issue issue, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		if (diagnostics != null && issue.eIsSet(EngineeringPackage.Literals.ISSUE__END) && issue.eIsSet(EngineeringPackage.Literals.ISSUE__INCREMENT)) {
+		if (diagnostics != null && issue.eIsSet(EngineeringPackage.Literals.ENDEAVOR__END) && issue.eIsSet(EngineeringPackage.Literals.ISSUE__INCREMENT)) {
 			Date start = issue.getIncrement().getStart();
 			Date end = issue.getIncrement().getEnd();
 			if ((start.after(issue.getEnd()) || end.before(issue.getEnd()))) {

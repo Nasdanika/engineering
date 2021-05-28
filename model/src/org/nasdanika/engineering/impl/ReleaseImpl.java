@@ -3,6 +3,7 @@
 package org.nasdanika.engineering.impl;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashSet;
 
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -270,6 +271,40 @@ public class ReleaseImpl extends EngineeredCapabilityImpl implements Release {
 			}					
 		}
 		return new BasicEList<>(allIssues);		
-	}	
-
+	}
+		
+	/**
+	 * Computes default end from children or increment if there are no children with set end.
+	 */
+	@Override
+	public Date getEnd() {
+		Date ret = super.getEnd();
+		if (ret == null) {
+			for (Issue child: getAllIssues()) {
+				Date cEnd = child.getEnd();
+				if (ret == null || (cEnd != null && ret.before(cEnd))) {
+					ret = cEnd;
+				}
+			}
+		}
+		return ret;
+	}
+	
+	/**
+	 * Computes default end from children or increment if there are no children with set end.
+	 */
+	@Override
+	public Date getStart() {
+		Date ret = super.getStart();
+		if (ret == null) {
+			for (Issue child: getAllIssues()) {
+				Date cStart = child.getStart();
+				if (ret == null || (cStart != null && ret.after(cStart))) {
+					ret = cStart;
+				}
+			}
+		}
+		return ret;
+	}
+	
 } //ReleaseImpl
