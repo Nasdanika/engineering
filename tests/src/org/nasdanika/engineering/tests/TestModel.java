@@ -11,6 +11,7 @@ import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -77,8 +78,9 @@ public class TestModel {
 		BiFunction<String,String,InputStream> encoder = (path, state) -> DefaultConverter.INSTANCE.convert(state, InputStream.class);
 		return DiagramGenerator.INSTANCE.cachingDiagramGenerator(output.stateAdapter().adapt(decoder, encoder), progressMonitor);
 	}
+	
 	@Test
-	public void testGenerateSiteConsumerFactory() throws Exception {
+	public void testGenerateNasdanikaSite() throws Exception {
 		ObjectLoader loader = new EObjectLoader(new ComposedLoader(), null, AppPackage.eINSTANCE);
 		
 		ProgressMonitor progressMonitor = new PrintStreamProgressMonitor();
@@ -117,9 +119,95 @@ public class TestModel {
 		Object actionFactory = loader.loadYaml(new File("model/nasdanika/site.yml"), progressMonitor);
 		SupplierFactory<Action> asf = Util.<Action>asSupplierFactory(actionFactory);		
 		
-		CommandFactory commandFactory = asf.then(consumerFactory);
+		CommandFactory commandFactory = asf.then(consumerFactory); 
 		MutableContext context = Context.EMPTY_CONTEXT.fork();
 		context.put("nasdanika/core", new File("..\\..\\core").toURI().toString());
+		context.put(Context.BASE_URI_PROPERTY, "random://" + UUID.randomUUID() + "/" + UUID.randomUUID() + "/");
+
+		URI uri = URI.createFileURI(new File(".").getCanonicalPath());
+		SourceResolver sourceResolver = marker -> {
+			if (marker != null && !Util.isBlank(marker.getLocation())) { 
+				try {
+					File locationFile = new File(new java.net.URI(marker.getLocation()));
+					URI locationURI = URI.createFileURI(locationFile.getCanonicalPath());
+					URI relativeLocationURI = locationURI.deresolve(uri, true, true, true); 
+					return new Link() {
+	
+						@Override
+						public String getLocation() {
+							return marker.getLocation();
+						}
+						
+						@Override
+						public String getText() {							
+							return relativeLocationURI.toString() + " " + marker.getLine() + ":" + marker.getColumn();
+						}
+						
+					};
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+			
+			return null;
+		};
+		
+		context.register(SourceResolver.class, sourceResolver);
+		
+		try {
+			Diagnostic diagnostic = Util.call(commandFactory.create(context), progressMonitor);
+			if (diagnostic.getStatus() == Status.WARNING || diagnostic.getStatus() == Status.ERROR) {
+				System.err.println("***********************");
+				System.err.println("*      Diagnostic     *");
+				System.err.println("***********************");
+				diagnostic.dump(System.err, 4, Status.ERROR, Status.WARNING);
+			}
+		} catch (DiagnosticException e) {
+			System.err.println("******************************");
+			System.err.println("*      Diagnostic failed     *");
+			System.err.println("******************************");
+			e.getDiagnostic().dump(System.err, 4, Status.FAIL);
+			throw e;
+		}
+	}
+	
+	@Test
+	public void testGenerateTestSite() throws Exception {
+		ObjectLoader loader = new EObjectLoader(new ComposedLoader(), null, AppPackage.eINSTANCE);
+		
+		ProgressMonitor progressMonitor = new PrintStreamProgressMonitor();
+		String resourceName = "org/nasdanika/html/app/templates/cerulean/dark-fluid.yml";
+		BootstrapContainerApplicationSupplierFactory applicationSupplierFactory = (BootstrapContainerApplicationSupplierFactory) loader.loadYaml(getClass().getClassLoader().getResource(resourceName), progressMonitor);
+		
+		GenerateSiteConsumerFactory consumerFactory = new GenerateSiteConsumerFactory(
+				Collections.singleton(URI.createURI(new File("model/test.yml").toURI().toString())), 
+				applicationSupplierFactory, 
+				new File("target\\test-site")) {
+			
+			@Override
+			protected MutableContext forkContext(Context context, ProgressMonitor progressMonitor) {
+				MutableContext ret = super.forkContext(context, progressMonitor);
+
+				MarkdownHelper markdownHelper = new MarkdownHelper() {
+					
+					@Override
+					protected DiagramGenerator getDiagramGenerator() {
+						return context.get(DiagramGenerator.class, DiagramGenerator.INSTANCE);
+					}
+					
+				};
+				ret.register(MarkdownHelper.class, markdownHelper);
+				
+				return ret;
+			}
+			
+		};
+		
+		Object actionFactory = loader.loadYaml(new File("model/nasdanika/site.yml"), progressMonitor);
+		SupplierFactory<Action> asf = Util.<Action>asSupplierFactory(actionFactory);		
+		
+		CommandFactory commandFactory = asf.then(consumerFactory); 
+		MutableContext context = Context.EMPTY_CONTEXT.fork();
 		context.put(Context.BASE_URI_PROPERTY, "random://" + UUID.randomUUID() + "/" + UUID.randomUUID() + "/");
 
 		URI uri = URI.createFileURI(new File(".").getCanonicalPath());

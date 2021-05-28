@@ -1,0 +1,86 @@
+engineering-organization:
+   name: Test
+   path: test
+   issue-categories:
+      - path: test
+        name: Test Category
+        description: Blah
+        weight: 1
+   issue-statuses:
+      - path: open
+        name: Open
+      - path: in-progress
+        name: In Progress
+      - path: done
+        name: Done
+        done: true
+   increments:
+      - path: 2021
+        name: 2021
+        start: 1/1/2021
+        end: 12/31/2021
+        children:
+           - path: q2
+             name: Q2
+             start: 4/1/2021
+             end: 6/30/2021
+             children:
+               - path: jun
+                 name: Jun
+                 start: 6/1/2021
+                 end: 6/30/2021 
+           - path: q3
+             name: Q3
+             start: 7/1/2021
+             end: 9/30/2021
+             children:
+               - path: jul
+                 name: Jul
+                 start: 7/1/2021
+                 end: 7/31/2021 
+               - path: aug
+                 name: Aug
+                 start: 8/1/2021
+                 end: 8/31/2021 
+               - path: sep
+                 name: Sep
+                 start: 9/1/2021
+                 end: 9/30/2021 
+           - path: q4
+             name: Q4
+             start: 10/1/2021
+             end: 12/31/2021
+             children:
+               - path: oct
+                 name: Oct
+                 start: 10/1/2021
+                 end: 12/31/2021 
+               - path: nov
+                 name: Nov
+                 start: 11/1/2021
+                 end: 11/30/2021 
+               - path: dec
+                 name: Dec
+                 start: 12/1/2021
+                 end: 12/31/2021 
+      - path: 2022
+        name: 2022     
+   modules:
+     - engineering-product:
+         name: Test
+         path: test
+         releases: 
+           - name: 1.0
+             path: 1/0  
+             increment: test:increments/2021/children/q2/children/jun                     
+         issues:
+           - name: Issue 1         
+             effort: 10
+           - name: Issue 2         
+             effort: 20
+             releases: test:modules/test/releases/1/0             
+             #increment: test:increments/2021/children/q2/children/jun                     
+             notes:
+               - date: 2021/5/28
+                 effort: 5
+           
