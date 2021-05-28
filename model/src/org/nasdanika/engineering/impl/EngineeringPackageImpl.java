@@ -2349,6 +2349,12 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	protected void createEcoreAnnotations() {
 		String source = "http://www.eclipse.org/emf/2002/Ecore";
 		addAnnotation
+		  (endeavorEClass,
+		   source,
+		   new String[] {
+			   "constraints", "start_end"
+		   });
+		addAnnotation
 		  (incrementEClass,
 		   source,
 		   new String[] {
@@ -2356,6 +2362,12 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		   });
 		addAnnotation
 		  (issueEClass,
+		   source,
+		   new String[] {
+			   "constraints", "increment"
+		   });
+		addAnnotation
+		  (releaseEClass,
 		   source,
 		   new String[] {
 			   "constraints", "increment"

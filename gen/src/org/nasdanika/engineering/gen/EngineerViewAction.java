@@ -145,5 +145,5 @@ public class EngineerViewAction<T extends Engineer> extends PersonaViewAction<T>
 		collector.addAll(increment.getIssues());
 		increment.getChildren().forEach(c -> collectAllIncrementIssues(c, collector));
 	}
-
+	
 }

@@ -31,6 +31,7 @@ import org.nasdanika.common.NasdanikaException;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.common.Util;
 import org.nasdanika.common.persistence.Marker;
+import org.nasdanika.emf.EObjectAdaptable;
 import org.nasdanika.emf.EmfUtil;
 import org.nasdanika.engineering.Endeavor;
 import org.nasdanika.engineering.EngineeringPackage;
@@ -51,6 +52,7 @@ import org.nasdanika.html.app.impl.PathNavigationActionActivator;
 import org.nasdanika.html.bootstrap.BootstrapFactory;
 import org.nasdanika.html.bootstrap.Color;
 import org.nasdanika.html.bootstrap.RowContainer.Row;
+import org.nasdanika.html.bootstrap.RowContainer.Row.Cell;
 import org.nasdanika.html.bootstrap.Table;
 import org.nasdanika.html.bootstrap.Text.Alignment;
 import org.nasdanika.html.emf.HtmlEmfUtil;
@@ -145,10 +147,10 @@ public class ModelElementViewAction<T extends ModelElement> extends SimpleEObjec
 	@Override
 	protected List<Action> collectChildren() {
 		List<Action> children = super.collectChildren();
-		children.addAll(HtmlEmfUtil.adaptToActionNonNull(getSemanticElement().getActions()));
+		children.addAll(HtmlEmfUtil.adaptToActionNonNull(getSemanticElement().getActions()));		
 		return children;
 	}
-
+	
 	@Override
 	public Action getParent() {
 		EObject eContainer = getSemanticElement().eContainer();
@@ -519,4 +521,78 @@ public class ModelElementViewAction<T extends ModelElement> extends SimpleEObjec
 		return diagnostic.getSeverity() == Diagnostic.ERROR ||diagnostic.getSeverity() == Diagnostic.WARNING;
 	}
 		
+	@Override
+	protected Object diagnosticSummary(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
+		Map<EObject, Diagnostic> diagnosticMap = factory.getDiagnosticMap();
+		if (diagnosticMap == null || diagnosticMap.isEmpty()) {
+			return null;
+		}
+		BootstrapFactory bootstrapFactory = viewGenerator.getBootstrapFactory();
+		Table table = bootstrapFactory.table().bordered().striped();
+		Row header = table.header().headerRow("Status", "Source", "Feature", "Message");
+		header.color(Color.INFO);
+		boolean hasDiagnostic = false;
+		for (Entry<EObject, Diagnostic> de: diagnosticMap.entrySet()) {
+			if (EcoreUtil.isAncestor(getSemanticElement(), de.getKey())) {
+				if (diagnosticRow(de.getValue(), table, 0, viewGenerator)) {
+					hasDiagnostic = true;
+				}
+				
+			}
+		}
+		return hasDiagnostic ? "<h3>Diagnostic</h3>" + table : null;
+	}
+	
+	protected boolean diagnosticRow(Diagnostic diagnostic, Table table, int depth, ViewGenerator viewGenerator) {
+		if (matchSeverity(diagnostic)) {
+			List<?> data = diagnostic.getData();
+			if (diagnostic.getChildren().isEmpty()) {
+				Color severityColor = HtmlEmfUtil.getSeverityColor(diagnostic.getSeverity());
+				Row diagnosticRow = table.row().color(severityColor);
+				Cell statusCell = diagnosticRow.header();
+				statusCell.text().color(severityColor);
+				switch (diagnostic.getSeverity()) {
+				case Diagnostic.OK:
+					statusCell.toHTMLElement().content("OK");
+					break;
+				case Diagnostic.CANCEL:
+					statusCell.toHTMLElement().content("Cancel");
+					break;
+				case Diagnostic.ERROR:
+					statusCell.toHTMLElement().content("Error");
+					break;
+				case Diagnostic.INFO:
+					statusCell.toHTMLElement().content("Info");
+					break;
+				case Diagnostic.WARNING:
+					statusCell.toHTMLElement().content("Warning");
+					break;
+				}
+				
+				Cell sourceCell = diagnosticRow.cell();
+				//sourceCell.toHTMLElement().style().padding().left(depth + "em");
+				if (data.size() > 0) {
+					Object source = data.get(0);
+					if (source instanceof EObject) {
+						ViewAction<?> sva = EObjectAdaptable.adaptTo((EObject) source, ViewAction.class);
+						sourceCell.toHTMLElement().content(sva == null ? source : viewGenerator.link(sva));
+					} else {
+						sourceCell.toHTMLElement().content(source);
+					}
+				}
+				Cell featureCell = diagnosticRow.cell();
+				if (data.size() > 1 && data.get(1) instanceof EStructuralFeature) {
+					featureCell.toHTMLElement().content(viewGenerator.label(featureLabel((EStructuralFeature) data.get(1))));
+				}			
+				diagnosticRow.cell(StringEscapeUtils.escapeHtml4(diagnostic.getMessage()));
+				
+			}
+			for (Diagnostic child: diagnostic.getChildren()) {
+				diagnosticRow(child, table, depth + 1, viewGenerator);
+			}			
+			return true;
+		}
+		return false;
+	}
+	
 }

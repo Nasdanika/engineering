@@ -20,6 +20,7 @@ import org.eclipse.emf.common.util.EList;
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getRelease()
  * @model annotation="urn:org.nasdanika documentation-reference='../doc/release.md'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='increment'"
  * @generated
  */
 public interface Release extends EngineeredCapability {

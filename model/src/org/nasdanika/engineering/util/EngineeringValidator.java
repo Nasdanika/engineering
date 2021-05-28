@@ -4,6 +4,7 @@ package org.nasdanika.engineering.util;
 
 import java.util.Date;
 import java.util.Map;
+
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EObject;
@@ -202,7 +203,36 @@ public class EngineeringValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateEndeavor(Endeavor endeavor, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(endeavor, diagnostics, context);
+		if (!validate_NoCircularContainment(endeavor, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(endeavor, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(endeavor, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(endeavor, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(endeavor, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(endeavor, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(endeavor, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(endeavor, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(endeavor, diagnostics, context);
+		if (result || diagnostics != null) result &= validateEndeavor_start_end(endeavor, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * Validates the start_end constraint of '<em>Endeavor</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean validateEndeavor_start_end(Endeavor endeavor, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (diagnostics != null) {
+			DiagnosticHelper helper = new DiagnosticHelper(diagnostics, DIAGNOSTIC_SOURCE, 0, endeavor);
+			Date start = endeavor.getStart();
+			Date end = endeavor.getEnd();
+			if (start != null && end != null && start.after(end)) {
+				helper.error("Endeavor end date " + end + " is before the start date " + start, EngineeringPackage.Literals.ENDEAVOR__END);
+			}
+			return helper.isSuccess();
+		}
+		return true;
 	}
 
 	/**
@@ -220,6 +250,7 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_UniqueID(increment, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(increment, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(increment, diagnostics, context);
+		if (result || diagnostics != null) result &= validateEndeavor_start_end(increment, diagnostics, context);
 		if (result || diagnostics != null) result &= validateIncrement_nesting(increment, diagnostics, context);
 		return result;
 	}
@@ -274,6 +305,7 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_UniqueID(issue, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(issue, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(issue, diagnostics, context);
+		if (result || diagnostics != null) result &= validateEndeavor_start_end(issue, diagnostics, context);
 		if (result || diagnostics != null) result &= validateIssue_increment(issue, diagnostics, context);
 		return result;
 	}
@@ -285,12 +317,17 @@ public class EngineeringValidator extends EObjectValidator {
 	 * @generated NOT
 	 */
 	public boolean validateIssue_increment(Issue issue, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		if (diagnostics != null && issue.eIsSet(EngineeringPackage.Literals.ENDEAVOR__END) && issue.eIsSet(EngineeringPackage.Literals.ISSUE__INCREMENT)) {
-			Date start = issue.getIncrement().getStart();
-			Date end = issue.getIncrement().getEnd();
-			if ((start.after(issue.getEnd()) || end.before(issue.getEnd()))) {
+		if (diagnostics != null) {			
+			Increment increment = issue.getIncrement();
+			if (increment != null) {
+				Date incStart = increment.getStart();
+				Date issEnd = issue.getEnd();
+				Date incEnd = increment.getEnd();
 				DiagnosticHelper helper = new DiagnosticHelper(diagnostics, DIAGNOSTIC_SOURCE, 0, issue);
-				helper.error("Issue end date " + issue.getEnd() + " is not within the increment " + start + " - " + end, EngineeringPackage.Literals.ISSUE__INCREMENT);
+				if (issEnd != null && (incStart.after(issEnd) || incEnd.before(issEnd))) {
+					helper.error("Issue end date " + issEnd + " is not within the increment " + incStart + " - " + incEnd, EngineeringPackage.Literals.ISSUE__INCREMENT);
+					return helper.isSuccess();
+				}
 				return helper.isSuccess();
 			}
 		}
@@ -375,7 +412,17 @@ public class EngineeringValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateEngineeredCapability(EngineeredCapability engineeredCapability, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(engineeredCapability, diagnostics, context);
+		if (!validate_NoCircularContainment(engineeredCapability, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(engineeredCapability, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(engineeredCapability, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(engineeredCapability, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(engineeredCapability, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(engineeredCapability, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(engineeredCapability, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(engineeredCapability, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(engineeredCapability, diagnostics, context);
+		if (result || diagnostics != null) result &= validateEndeavor_start_end(engineeredCapability, diagnostics, context);
+		return result;
 	}
 
 	/**
@@ -384,7 +431,42 @@ public class EngineeringValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateRelease(Release release, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(release, diagnostics, context);
+		if (!validate_NoCircularContainment(release, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(release, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(release, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(release, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(release, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(release, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(release, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(release, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(release, diagnostics, context);
+		if (result || diagnostics != null) result &= validateEndeavor_start_end(release, diagnostics, context);
+		if (result || diagnostics != null) result &= validateRelease_increment(release, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * Validates the increment constraint of '<em>Release</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean validateRelease_increment(Release release, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (diagnostics != null) {			
+			Increment increment = release.getIncrement();
+			if (increment != null) {
+				Date incStart = increment.getStart();
+				Date relEnd = release.getEnd();
+				Date incEnd = increment.getEnd();
+				DiagnosticHelper helper = new DiagnosticHelper(diagnostics, DIAGNOSTIC_SOURCE, 0, release);
+				if (relEnd != null && (incStart.after(relEnd) || incEnd.before(relEnd))) {
+					helper.error("Release end date " + relEnd + " is not within the increment " + incStart + " - " + incEnd, EngineeringPackage.Literals.RELEASE__INCREMENT);
+					return helper.isSuccess();
+				}
+				return helper.isSuccess();
+			}
+		}
+		return true;
 	}
 
 	/**
@@ -393,7 +475,17 @@ public class EngineeringValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateFeature(Feature feature, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(feature, diagnostics, context);
+		if (!validate_NoCircularContainment(feature, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(feature, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(feature, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(feature, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(feature, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(feature, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(feature, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(feature, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(feature, diagnostics, context);
+		if (result || diagnostics != null) result &= validateEndeavor_start_end(feature, diagnostics, context);
+		return result;
 	}
 
 	/**
