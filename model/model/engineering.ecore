@@ -158,7 +158,6 @@
         eType="#//Note" containment="true">
       <eAnnotations source="urn:org.nasdanika">
         <details key="homogenous" value="true"/>
-        <details key="strict-containment" value="true"/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="category" eType="#//IssueCategory"

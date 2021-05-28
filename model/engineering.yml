@@ -89,6 +89,21 @@ engineering-module:
          Total of allocations does not exceed capacity.
          Utilization, two levels - a) engineer capacity is allocated b) allocations are utilized by assigning issues. Configurable validations and under/over allocation margins - context service?
          For allocation compute utilization from issue notes. For capacity from allocations. Capacity shall be allocated, allocations shall be assigned. Then utilization is tracked - burn down how much of allocated is used.
+     - name: Aims, principles, alignments
+       markdown-description: |+2
+         Aim is a a concrete base class for Objective, KeyResult, Persona Goal, and Principle. Principle is hierarchical. Steal principle definition from TOGAF. 
+         Endeavor has alignment homogenous strict containment reference. Alignment is a model element referencing Aim. allAlignments derived reference.
+         Aim has derived opposite reference - alignements. Principle containment homogenous reference under EngineeredElement - e.g. architecture principles for an organization, design/coding principles for a component.
+         Consider ``extends`` relationship between principles. E.g. module level principle extends a more generic organization level principle. Many-to-many relationship.   
+     - name: Start/end from Issue and Increment to Endeavor
+       markdown-description: |+2
+         For Issue with children, Release and Feature - default to derived from scheduled issues. For issues add validation - children shall be within parent if parent start/end is set.
+         For releases compute default increment from the end date in the same way as for issues. 
+     - name: Move assignee from Issue to Endeavor
+       markdown-description: |+2
+         So releases, features, and increments may have engineers tracking/driving execution/delivery. Rework the assignments section in Engineer to have sub-sections - increments, releases, features, issues.
+         Hide endeavors with zero total cost (e.g. incrments without scheduled releases or issues), and completed. To documentation - composite effort assignees are responsible for tracking and escalation/removal of obstacles,
+         e.g. increment assignee is kinda scrum master and release/feature assignee is kinda project manager. 
    allocations:
      - increment: nasdanika:increments/2021/children/q2/children/jun
        effort: 30
