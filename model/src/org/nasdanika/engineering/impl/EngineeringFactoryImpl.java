@@ -17,6 +17,7 @@ import org.nasdanika.engineering.Call;
 import org.nasdanika.engineering.Capability;
 import org.nasdanika.engineering.Capacity;
 import org.nasdanika.engineering.Directory;
+import org.nasdanika.engineering.Endeavor;
 import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeredCapability;
 import org.nasdanika.engineering.EngineeringFactory;
@@ -78,6 +79,7 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
+			case EngineeringPackage.ENDEAVOR: return createEndeavor();
 			case EngineeringPackage.INCREMENT: return createIncrement();
 			case EngineeringPackage.ISSUE_CATEGORY: return createIssueCategory();
 			case EngineeringPackage.ISSUE_STATUS: return createIssueStatus();
@@ -103,6 +105,17 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Endeavor createEndeavor() {
+		EndeavorImpl endeavor = new EndeavorImpl();
+		return endeavor;
 	}
 
 	/**

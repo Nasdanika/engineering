@@ -3,10 +3,19 @@ package org.nasdanika.engineering.gen;
 import java.util.Collection;
 import java.util.Collections;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.nasdanika.common.ProgressMonitor;
+import org.nasdanika.engineering.Allocation;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.IssueCategory;
 import org.nasdanika.html.app.Action;
+import org.nasdanika.html.app.ViewGenerator;
+import org.nasdanika.html.bootstrap.BootstrapFactory;
+import org.nasdanika.html.bootstrap.Color;
+import org.nasdanika.html.bootstrap.Table;
+import org.nasdanika.html.emf.EStructuralFeatureViewActionImpl;
+import org.nasdanika.html.emf.ViewAction;
 
 public class IssueCategoryViewAction extends NamedElementViewAction<IssueCategory> {
 		
@@ -35,6 +44,35 @@ public class IssueCategoryViewAction extends NamedElementViewAction<IssueCategor
 					EngineeringPackage.Literals.ISSUE__REMAINING_COST,
 					EngineeringPackage.Literals.ENDEAVOR__COMPLETION));
 		}
+		if (feature == EngineeringPackage.Literals.ISSUE_CATEGORY__ALLOCATIONS) {
+			EList<Allocation> allocations = getSemanticElement().getAllocations();
+			if (allocations.isEmpty()) {
+				return Collections.emptyList();
+			}
+			EStructuralFeatureViewActionImpl<IssueCategory, EStructuralFeature> allocationsSection = new EStructuralFeatureViewActionImpl<IssueCategory, EStructuralFeature>(getSemanticElement(), feature) {
+				
+				@Override
+				public Object generate(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
+					BootstrapFactory bootstrapFactory = viewGenerator.getBootstrapFactory();
+					Table table = bootstrapFactory.table().bordered().striped();
+					table.header().headerRow("Endeavor", "Engineer", "Target", "Effort", "Rate", "Funds").color(Color.INFO);
+					for (Allocation allocation: allocations) {
+						table.body().row(
+								viewGenerator.link(ViewAction.adaptToViewActionNonNull(allocation.getEndeavor())),
+								viewGenerator.link(ViewAction.adaptToViewActionNonNull(allocation.getEngineer())),
+								viewGenerator.link(ViewAction.adaptToViewActionNonNull(allocation.eContainer())),
+								allocation.getEffort(),
+								allocation.getRate(),
+								allocation.getFunds()
+						);
+					}					
+					return table;
+				}				
+				
+			};
+			allocationsSection.getRoles().add(Action.Role.SECTION);
+			return Collections.singleton(allocationsSection);
+		}
 
 		return super.featureActions(feature);
 	}
@@ -44,8 +82,11 @@ public class IssueCategoryViewAction extends NamedElementViewAction<IssueCategor
 		if (feature == EngineeringPackage.Literals.ISSUE_CATEGORY__ISSUES) {
 			return role == FeatureRole.FEATURE_ACTIONS;
 		}
+		if (feature == EngineeringPackage.Literals.ISSUE_CATEGORY__ALLOCATIONS) {
+			return role == FeatureRole.FEATURE_ACTIONS;
+		}
 
 		return super.isFeatureInRole(feature, role);
 	}
-
+	
 }

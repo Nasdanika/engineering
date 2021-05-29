@@ -259,10 +259,10 @@ public interface EngineeringPackage extends EPackage {
 	int NAMED_ELEMENT_OPERATION_COUNT = MODEL_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.Endeavor <em>Endeavor</em>}' class.
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.EndeavorImpl <em>Endeavor</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.Endeavor
+	 * @see org.nasdanika.engineering.impl.EndeavorImpl
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getEndeavor()
 	 * @generated
 	 */
@@ -5456,10 +5456,10 @@ public interface EngineeringPackage extends EPackage {
 		EAttribute NAMED_ELEMENT__NAME = eINSTANCE.getNamedElement_Name();
 
 		/**
-		 * The meta object literal for the '{@link org.nasdanika.engineering.Endeavor <em>Endeavor</em>}' class.
+		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.EndeavorImpl <em>Endeavor</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.nasdanika.engineering.Endeavor
+		 * @see org.nasdanika.engineering.impl.EndeavorImpl
 		 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getEndeavor()
 		 * @generated
 		 */

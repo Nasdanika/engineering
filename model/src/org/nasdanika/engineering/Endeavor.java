@@ -26,8 +26,7 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getEndeavor()
- * @model interface="true" abstract="true"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='start_end capacity'"
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='start_end capacity'"
  * @generated
  */
 public interface Endeavor extends EObject {

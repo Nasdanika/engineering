@@ -22,6 +22,15 @@ public interface EngineeringFactory extends EFactory {
 	EngineeringFactory eINSTANCE = org.nasdanika.engineering.impl.EngineeringFactoryImpl.init();
 
 	/**
+	 * Returns a new object of class '<em>Endeavor</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Endeavor</em>'.
+	 * @generated
+	 */
+	Endeavor createEndeavor();
+
+	/**
 	 * Returns a new object of class '<em>Persona</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

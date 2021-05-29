@@ -3,12 +3,12 @@
 package org.nasdanika.engineering.impl;
 
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.nasdanika.engineering.Capacity;
 import org.nasdanika.engineering.Endeavor;
+import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeringPackage;
 
 /**
@@ -159,11 +159,18 @@ public class CapacityImpl extends ModelElementImpl implements Capacity {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public double getRate() {
-		return (Double)eDynamicGet(EngineeringPackage.CAPACITY__RATE, EngineeringPackage.Literals.CAPACITY__RATE, true, true);
+		Double rate = (Double)eDynamicGet(EngineeringPackage.CAPACITY__RATE, EngineeringPackage.Literals.CAPACITY__RATE, true, true);
+		if (rate == 0) {
+			EObject c = eContainer();
+			if (c instanceof Engineer) {
+				return ((Engineer) c).getRate();
+			}
+		}
+		return rate;
 	}
 
 	/**

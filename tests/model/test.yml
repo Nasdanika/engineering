@@ -64,7 +64,11 @@ engineering-organization:
                  start: 12/1/2021
                  end: 12/31/2021 
       - path: 2022
-        name: 2022     
+        name: 2022
+   engineers:
+     - engineering-engineer:
+         name: Pavel
+         path: pv          
    modules:
      - engineering-product:
          name: Test
@@ -102,4 +106,9 @@ engineering-organization:
              notes:
                - date: 2021/5/28
                  effort: 3
-           
+         allocations:
+           - engineer: test:engineers/pv
+             endeavor: test:modules/test/features/my-feature
+             effort: 5  
+             category: test:issue-categories/test
+             

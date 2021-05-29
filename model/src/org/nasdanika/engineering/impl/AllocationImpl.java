@@ -198,6 +198,18 @@ public class AllocationImpl extends CapacityImpl implements Allocation {
 		}
 		super.eUnset(featureID);
 	}
+	
+	@Override
+	public double getRate() {
+		double rate = super.getRate();
+		if (rate == 0) {
+			Engineer engineer = getEngineer();
+			if (engineer != null) {
+				return engineer.getRate();
+			}
+		}
+		return rate;
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
