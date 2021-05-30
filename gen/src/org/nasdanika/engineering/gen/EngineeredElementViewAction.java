@@ -7,11 +7,21 @@ import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.nasdanika.common.ProgressMonitor;
+import org.nasdanika.engineering.Allocation;
 import org.nasdanika.engineering.EngineeredElement;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Issue;
+import org.nasdanika.engineering.IssueCategory;
+import org.nasdanika.html.Tag;
+import org.nasdanika.html.TagName;
 import org.nasdanika.html.app.Action;
-import org.nasdanika.html.app.SectionStyle;
+import org.nasdanika.html.app.ViewGenerator;
+import org.nasdanika.html.bootstrap.BootstrapFactory;
+import org.nasdanika.html.bootstrap.Color;
+import org.nasdanika.html.bootstrap.Table;
+import org.nasdanika.html.emf.EStructuralFeatureViewActionImpl;
+import org.nasdanika.html.emf.ViewAction;
 
 public class EngineeredElementViewAction<T extends EngineeredElement> extends NamedElementViewAction<T> {
 	
@@ -26,6 +36,7 @@ public class EngineeredElementViewAction<T extends EngineeredElement> extends Na
 		EList<Issue> issues = getSemanticElement().getIssues();
 		Action issuesSection = endeavorsSection(
 				issues, 
+				null,
 				"Issues", 
 				"issues", 
 				getFeatureDiagnostic(EngineeringPackage.Literals.ENGINEERED_ELEMENT__ISSUES),
@@ -57,6 +68,7 @@ public class EngineeredElementViewAction<T extends EngineeredElement> extends Na
 		if (!issues.equals(allIssues)) {
 			Action allIssuesSection = ModelElementViewAction.endeavorsSection(
 					allIssues, 
+					null,
 					"All Issues", 
 					"all-issues", 
 					null,
@@ -97,17 +109,49 @@ public class EngineeredElementViewAction<T extends EngineeredElement> extends Na
 		}
 		return super.isFeatureInRole(feature, role);
 	}
-			
-	@Override
-	public SectionStyle getSectionStyle() {
-		return getSectionChildren().size() > 1 ? SectionStyle.TAB : super.getSectionStyle();
-	}
 	
 	@Override
 	protected Collection<Action> featureActions(EStructuralFeature feature) {
 		if (feature == EngineeringPackage.Literals.ENGINEERED_ELEMENT__ALLOCATIONS) {
-			// TODO
-			return Collections.emptyList();
+			EList<Allocation> allocations = getSemanticElement().getAllocations();
+			if (allocations.isEmpty()) {
+				return Collections.emptyList();
+			}
+			EStructuralFeatureViewActionImpl<T, EStructuralFeature> allocationsSection = new EStructuralFeatureViewActionImpl<T, EStructuralFeature>(getSemanticElement(), feature) {
+				
+				@Override
+				public Object generate(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
+					BootstrapFactory bootstrapFactory = viewGenerator.getBootstrapFactory();
+					Table table = bootstrapFactory.table().bordered().striped();
+					table.header().headerRow("Endeavor", "Engineer", "Category", "Effort", "Rate", "Funds").color(Color.INFO);
+					for (Allocation allocation: allocations) {
+						Tag categoriesTag;
+						EList<IssueCategory> category = allocation.getCategory();
+						if (category.isEmpty()) {
+							categoriesTag = TagName.span.create();
+						} else if (category.size() == 1) {
+							categoriesTag = viewGenerator.link(ViewAction.adaptToViewActionNonNull(category.get(0)));							
+						} else {
+							categoriesTag = viewGenerator.getHTMLFactory().tag(TagName.ul);
+							for (Action ca: ViewAction.adaptToViewActionsNonNull(category)) {
+								categoriesTag.content(TagName.li.create(viewGenerator.link(ca)));
+							}
+						}
+						table.body().row(
+								viewGenerator.link(ViewAction.adaptToViewActionNonNull(allocation.getEndeavor())),
+								viewGenerator.link(ViewAction.adaptToViewActionNonNull(allocation.getEngineer())),
+								categoriesTag,
+								allocation.getEffort(),
+								allocation.getRate(),
+								allocation.getFunds()
+						);
+					}					
+					return table;
+				}				
+				
+			};
+			allocationsSection.getRoles().add(Action.Role.SECTION);
+			return Collections.singleton(allocationsSection);
 		}
 
 		return super.featureActions(feature);

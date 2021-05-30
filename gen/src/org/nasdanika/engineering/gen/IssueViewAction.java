@@ -59,6 +59,7 @@ public class IssueViewAction extends EngineeredCapabilityViewAction<Issue> {
 		if (feature == EngineeringPackage.Literals.ISSUE__CHILDREN) {
 			return Collections.singleton(endeavorsSection(
 					getSemanticElement().getChildren(), 
+					null,
 					"Children", 
 					"children", 
 					getFeatureDiagnostic(feature),
@@ -99,6 +100,7 @@ public class IssueViewAction extends EngineeredCapabilityViewAction<Issue> {
 					
 					ret.content(HtmlEmfUtil.table(
 							getSemanticElement().getNotes(), 
+							null,
 							null, 
 							cellBuilderProvider, 
 							viewGenerator, 

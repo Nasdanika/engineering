@@ -30,6 +30,7 @@ public class FeatureViewAction extends EngineeredCapabilityViewAction<Feature> {
 		if (feature == EngineeringPackage.Literals.FEATURE__ISSUES) {
 			return Collections.singleton(endeavorsSection(
 					getSemanticElement().getIssues(), 
+					null,
 					"Issues", 
 					"issues", 
 					getFeatureDiagnostic(feature),					

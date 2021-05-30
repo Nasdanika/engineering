@@ -28,6 +28,7 @@ public class IssueCategoryViewAction extends NamedElementViewAction<IssueCategor
 		if (feature == EngineeringPackage.Literals.ISSUE_CATEGORY__ISSUES) {
 			return Collections.singleton(endeavorsSection(
 					getSemanticElement().getIssues(), 
+					null,
 					"Issues", 
 					"Issues", 
 					getFeatureDiagnostic(feature),					

@@ -19,6 +19,7 @@ public class ReleaseViewAction extends EngineeredCapabilityViewAction<Release> {
 		if (feature == EngineeringPackage.Literals.RELEASE__FEATURES) {
 			return Collections.singleton(endeavorsSection(
 					getSemanticElement().getFeatures(), 
+					null,
 					"Features", 
 					"features", 
 					getFeatureDiagnostic(feature),
@@ -32,6 +33,7 @@ public class ReleaseViewAction extends EngineeredCapabilityViewAction<Release> {
 		if (feature == EngineeringPackage.Literals.RELEASE__ISSUES) {
 			return Collections.singleton(endeavorsSection(
 					getSemanticElement().getIssues(), 
+					null,
 					"Issues", 
 					"issues", 
 					getFeatureDiagnostic(feature),

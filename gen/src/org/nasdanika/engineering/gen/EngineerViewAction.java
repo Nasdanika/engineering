@@ -7,6 +7,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.common.Util;
 import org.nasdanika.engineering.Engineer;
@@ -19,7 +20,9 @@ import org.nasdanika.html.Fragment;
 import org.nasdanika.html.HTMLFactory;
 import org.nasdanika.html.app.Action;
 import org.nasdanika.html.app.SectionStyle;
+import org.nasdanika.html.app.ViewBuilder;
 import org.nasdanika.html.app.ViewGenerator;
+import org.nasdanika.html.bootstrap.RowContainer;
 import org.nasdanika.html.emf.EStructuralFeatureViewActionImpl;
 
 public class EngineerViewAction<T extends Engineer> extends PersonaViewAction<T> {
@@ -34,11 +37,22 @@ public class EngineerViewAction<T extends Engineer> extends PersonaViewAction<T>
 			EStructuralFeatureViewActionImpl<T, EStructuralFeature> assignmentsAction = new EStructuralFeatureViewActionImpl<T, EStructuralFeature>(getSemanticElement(), feature);
 			assignmentsAction.getRoles().add(Action.Role.SECTION);
 			
+			ViewBuilder productHeaderBuilder = new ViewBuilder() {
+
+				@Override
+				public void build(Object target, ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
+					((RowContainer.Row.Cell) target).toHTMLElement().content("Product");
+				}
+				
+			};
+			
 			assignmentsAction.getChildren().add(endeavorsSection(
 					getSemanticElement().getAssignments().stream().filter(e -> e instanceof Release && !e.getAllIssues().isEmpty()).collect(Collectors.toList()), 
+					e -> e == EcorePackage.Literals.EOBJECT___ECONTAINER ? productHeaderBuilder : null,
 					"Releases", 
 					"assignments-releases", 
 					getFeatureDiagnostic(feature),
+					EcorePackage.Literals.EOBJECT___ECONTAINER,
 					EngineeringPackage.Literals.NAMED_ELEMENT__NAME,
 					EngineeringPackage.Literals.ENDEAVOR__START,
 					EngineeringPackage.Literals.ENDEAVOR__END,
@@ -48,6 +62,7 @@ public class EngineerViewAction<T extends Engineer> extends PersonaViewAction<T>
 			
 			assignmentsAction.getChildren().add(endeavorsSection(
 					getSemanticElement().getAssignments().stream().filter(e -> e instanceof Feature && !e.getAllIssues().isEmpty()).collect(Collectors.toList()), 
+					null,
 					"Features", 
 					"assignments-features", 
 					getFeatureDiagnostic(feature),
@@ -60,6 +75,7 @@ public class EngineerViewAction<T extends Engineer> extends PersonaViewAction<T>
 			
 			assignmentsAction.getChildren().add(endeavorsSection(
 					getSemanticElement().getAssignments().stream().filter(e -> e instanceof Increment && !e.getAllIssues().isEmpty()).collect(Collectors.toList()), 
+					null,
 					"Increments", 
 					"assignments-increments", 
 					getFeatureDiagnostic(feature),
@@ -72,6 +88,7 @@ public class EngineerViewAction<T extends Engineer> extends PersonaViewAction<T>
 			
 			assignmentsAction.getChildren().add(endeavorsSection(
 					getSemanticElement().getAssignments().stream().filter(e -> e instanceof Issue).collect(Collectors.toList()), 
+					null,
 					"Issues", 
 					"assignments-issues", 
 					getFeatureDiagnostic(feature),
@@ -91,6 +108,8 @@ public class EngineerViewAction<T extends Engineer> extends PersonaViewAction<T>
 			assignmentsAction.setSectionStyle(assignmentsAction.getChildren().size() > 1 ? SectionStyle.CARD_PILL : SectionStyle.DEFAULT);
 			return Collections.singleton(assignmentsAction);
 		}
+		
+		// Single action for capacity and designations on which list by endeavor capacity and designations.
 		
 		if (feature == EngineeringPackage.Literals.ENGINEER__CAPACITY) {
 			// TODO

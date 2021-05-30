@@ -9,6 +9,7 @@ import java.util.Map;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.emf.EObjectAdaptable;
 import org.nasdanika.emf.EmfUtil;
@@ -22,11 +23,13 @@ import org.nasdanika.html.Fragment;
 import org.nasdanika.html.app.Action;
 import org.nasdanika.html.app.Label;
 import org.nasdanika.html.app.NavigationActionActivator;
+import org.nasdanika.html.app.ViewBuilder;
 import org.nasdanika.html.app.ViewGenerator;
 import org.nasdanika.html.app.impl.ActionImpl;
 import org.nasdanika.html.app.impl.PathNavigationActionActivator;
 import org.nasdanika.html.bootstrap.BootstrapFactory;
 import org.nasdanika.html.bootstrap.Color;
+import org.nasdanika.html.bootstrap.RowContainer;
 import org.nasdanika.html.bootstrap.RowContainer.Row;
 import org.nasdanika.html.bootstrap.RowContainer.Row.Cell;
 import org.nasdanika.html.bootstrap.Table;
@@ -53,7 +56,7 @@ public class IncrementViewAction extends NamedElementViewAction<Increment> {
 			return false;
 		}
 		if (feature == EngineeringPackage.Literals.INCREMENT__RELEASES) {
-			return false;
+			return role == FeatureRole.FEATURE_ACTIONS;
 		}
 		if (feature == EngineeringPackage.Literals.INCREMENT__CHILDREN) {
 			return role == FeatureRole.ELEMENT_ACTIONS;
@@ -79,35 +82,6 @@ public class IncrementViewAction extends NamedElementViewAction<Increment> {
 	protected List<Action> collectChildren() {
 		List<Action> children = super.collectChildren();
 		
-		EList<Release> releases = getSemanticElement().getReleases();
-		if (!releases.isEmpty()) {
-			ActionImpl releasesSection = new ActionImpl() {
-				
-				@Override
-				public Object generate(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) { 
-					BootstrapFactory bootstrapFactory = viewGenerator.getBootstrapFactory();
-					Table ret = bootstrapFactory.table().bordered();
-					ret.header().headerRow("Product", "Release").color(Color.INFO);
-					
-					for (Release release: releases) {						
-						Row releaseRow = ret.body().row(
-							viewGenerator.link(EObjectAdaptable.adaptTo(release.eContainer(), ViewAction.class)),
-							viewGenerator.link(EObjectAdaptable.adaptTo(release, ViewAction.class)));
-						if (release.isAvailable()) {
-							releaseRow.color(Color.SUCCESS);
-						}
-					}
-					return ret;
-				};
-				
-			};
-			
-			releasesSection.getRoles().add(Action.Role.SECTION); 
-			releasesSection.setText("Releases"); 			
-			releasesSection.setActivator(new PathNavigationActionActivator(releasesSection, ((NavigationActionActivator) getActivator()).getUrl(null), "#releases", getMarker()));
-			children.add(releasesSection);			
-		}
-		
 		EList<Issue> issues = getSemanticElement().getIssues();
 		if (!issues.isEmpty()) {
 			ActionImpl issuesSection = new ActionImpl() {
@@ -120,6 +94,7 @@ public class IncrementViewAction extends NamedElementViewAction<Increment> {
 					
 					ret.content(endeavorsTable(
 							issues, 
+							null,
 							viewGenerator, 
 							progressMonitor, 
 							EngineeringPackage.Literals.NAMED_ELEMENT__NAME,
@@ -141,7 +116,7 @@ public class IncrementViewAction extends NamedElementViewAction<Increment> {
 				
 				@Override
 				public List<Action> getChildren() {
-					return ViewAction.adaptToViewActionNonNull(issues);
+					return ViewAction.adaptToViewActionsNonNull(issues);
 				}
 			};
 			
@@ -310,11 +285,32 @@ public class IncrementViewAction extends NamedElementViewAction<Increment> {
 	@Override
 	protected Collection<Action> featureActions(EStructuralFeature feature) {
 		if (feature == EngineeringPackage.Literals.ENDEAVOR__CAPACITY) {
-			if (getSemanticElement().getCapacity().isEmpty()) {
-				return Collections.emptyList();
-			}
-			// TODO - allocations and capacity. Target - eContainer() operation.
-			return Collections.emptyList();
+			return EngineeredCapabilityViewAction.endeavorCapacityFeatureActions(getSemanticElement());
+		}
+		if (feature == EngineeringPackage.Literals.INCREMENT__RELEASES) {
+			ViewBuilder productHeaderBuilder = new ViewBuilder() {
+
+				@Override
+				public void build(Object target, ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
+					((RowContainer.Row.Cell) target).toHTMLElement().content("Product");
+				}
+				
+			};
+			
+			return Collections.singleton(endeavorsSection(
+					getSemanticElement().getReleases(), 
+					e -> e == EcorePackage.Literals.EOBJECT___ECONTAINER ? productHeaderBuilder : null,
+					"Releases", 
+					"releases", 
+					getFeatureDiagnostic(feature),
+					EcorePackage.Literals.EOBJECT___ECONTAINER,					
+					EngineeringPackage.Literals.NAMED_ELEMENT__NAME,
+					EngineeringPackage.Literals.ENDEAVOR__START,
+					EngineeringPackage.Literals.ENDEAVOR__END,
+					EngineeringPackage.Literals.ENDEAVOR__BENEFIT,
+					EngineeringPackage.Literals.ENDEAVOR__TOTAL_COST,					
+					EngineeringPackage.Literals.ENDEAVOR__COMPLETION));			
+			
 		}
 		return super.featureActions(feature);
 	}

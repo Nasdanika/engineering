@@ -220,9 +220,10 @@ public class ModelElementViewAction<T extends ModelElement> extends SimpleEObjec
 	
 	protected static <E extends Endeavor> Table endeavorsTable(
 			Collection<E> endeavors,
+			Function<ETypedElement, ViewBuilder> headerBuilderProvider,			
 			ViewGenerator viewGenerator, 
-			ProgressMonitor progressMonitor,
-			EStructuralFeature... features) {
+			ProgressMonitor progressMonitor,			
+			ETypedElement... dataSources) {
 		
 		Function<E,ViewBuilder> rowBuilderProvider = endeavor -> new ViewBuilder() {
 
@@ -256,28 +257,30 @@ public class ModelElementViewAction<T extends ModelElement> extends SimpleEObjec
 		
 		return HtmlEmfUtil.table(
 				endeavors, 
+				headerBuilderProvider,
 				rowBuilderProvider, 
 				cellBuilderProvider, 
 				viewGenerator, 
 				progressMonitor, 
-				features);		
+				dataSources);		
 	}
 		
 	/**
 	 * If issues collection is not empty creates a section action with issues grouped into increments with 
 	 * specified features in the issue table. 
-	 * @param issues
+	 * @param endeavors
 	 * @param features
 	 * @return
 	 */
 	public <E extends Endeavor> Action endeavorsSection(
-			Collection<E> issues, 
+			Collection<E> endeavors, 
+			Function<ETypedElement, ViewBuilder> headerBuilderProvider,
 			String text, 
 			String id, 
 			Collection<Diagnostic> diagnostic,
-			EStructuralFeature... features) {
+			ETypedElement... dataSources) {
 		
-		return endeavorsSection(issues, text, id, getMarker(), getActivator(), diagnostic, features);
+		return endeavorsSection(endeavors, headerBuilderProvider, text, id, getMarker(), getActivator(), diagnostic, dataSources);
 	}
 	
 	private static Increment rootIncrement(Increment increment) {
@@ -299,12 +302,13 @@ public class ModelElementViewAction<T extends ModelElement> extends SimpleEObjec
 	 */
 	public static <E extends Endeavor> Action endeavorsSection(
 			Collection<E> endeavors, 
+			Function<ETypedElement, ViewBuilder> headerBuilderProvider,			
 			String text, 
 			String id, 
 			Marker marker, 
 			ActionActivator activator,
 			Collection<Diagnostic> diagnostic,
-			EStructuralFeature... features) {
+			ETypedElement... dataSources) {
 		
 		if (endeavors.isEmpty()) {
 			return null;
@@ -360,9 +364,10 @@ public class ModelElementViewAction<T extends ModelElement> extends SimpleEObjec
 				if (backlogOnly) {
 					ret.content(endeavorsTable(
 							endeavors, 
+							headerBuilderProvider,
 							viewGenerator, 
 							progressMonitor, 
-							features));
+							dataSources));
 				}
 				return ret;
 			};
@@ -385,9 +390,10 @@ public class ModelElementViewAction<T extends ModelElement> extends SimpleEObjec
 						
 						ret.content(endeavorsTable(
 								incrementEndeavors, 
+								headerBuilderProvider,
 								viewGenerator, 
 								progressMonitor, 
-								features));
+								dataSources));
 						
 						return ret;
 					}

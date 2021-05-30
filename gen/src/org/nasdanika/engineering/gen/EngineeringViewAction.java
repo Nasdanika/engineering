@@ -36,7 +36,7 @@ public class EngineeringViewAction extends ActionImpl {
 	
 	@Override
 	public List<Action> getChildren() {
-		List<Action> children = new ArrayList<>(ViewAction.adaptToViewActionNonNull(elements));
+		List<Action> children = new ArrayList<>(ViewAction.adaptToViewActionsNonNull(elements));
 		
 		List<Issue> issues = new ArrayList<>();
 		EcoreUtil.getAllContents(elements).forEachRemaining(e -> {
@@ -47,6 +47,7 @@ public class EngineeringViewAction extends ActionImpl {
 		
 		Action assignmentSection = ModelElementViewAction.endeavorsSection(
 				issues, 
+				null,
 				"Issues", 
 				"issues", 
 				null,

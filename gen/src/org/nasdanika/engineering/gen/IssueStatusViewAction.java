@@ -19,6 +19,7 @@ public class IssueStatusViewAction extends NamedElementViewAction<IssueStatus> {
 		if (feature == EngineeringPackage.Literals.ISSUE_STATUS__ISSUES) {
 			return Collections.singleton(endeavorsSection(
 					getSemanticElement().getIssues(), 
+					null,
 					"Issues", 
 					"Issues", 
 					getFeatureDiagnostic(feature),					

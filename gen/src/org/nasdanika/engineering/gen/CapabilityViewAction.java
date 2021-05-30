@@ -19,6 +19,7 @@ public class CapabilityViewAction<T extends Capability> extends NamedElementView
 		if (feature == EngineeringPackage.Literals.CAPABILITY__REQUIRED_BY) {
 			return Collections.singleton(endeavorsSection(
 					getSemanticElement().getRequiredBy(), 
+					null,
 					"Required By", 
 					"required-by", 
 					getFeatureDiagnostic(feature),

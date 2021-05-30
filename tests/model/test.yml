@@ -69,6 +69,9 @@ engineering-organization:
      - engineering-engineer:
          name: Pavel
          path: pv          
+         capacity:
+           - endeavor: test:increments/2021/children/q2/children/jun
+             effort: 50  
    modules:
      - engineering-product:
          name: Test
