@@ -28,6 +28,9 @@ public interface Capacity extends ModelElement {
 	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Endeavor#getCapacity <em>Capacity</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Endeavor for which containing [engineer](Engineer.html) has this capacity for.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Endeavor</em>' reference.
 	 * @see #setEndeavor(Endeavor)
 	 * @see org.nasdanika.engineering.EngineeringPackage#getCapacity_Endeavor()
@@ -51,6 +54,9 @@ public interface Capacity extends ModelElement {
 	 * Returns the value of the '<em><b>Effort</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * For capacitly - amount of effort which the containing [engineer](Engineer.html) can spend on the capacity's [endeavor](Endeavor.html). For allocation - amount of effort which allocation's engineer can spend on the containing [engineered element](EngineeredElement.html) and, optionally, [issue category](IssueCategory.html).
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Effort</em>' attribute.
 	 * @see #setEffort(double)
 	 * @see org.nasdanika.engineering.EngineeringPackage#getCapacity_Effort()
@@ -73,6 +79,9 @@ public interface Capacity extends ModelElement {
 	 * Returns the value of the '<em><b>Funds</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * For capacitly - monetary amount which the containing [engineer](Engineer.html) can spend on the capacity's [endeavor](Endeavor.html). For allocation - monetary amount which allocation's engineer can spend on the containing [engineered element](EngineeredElement.html) and, optionally, [issue category](IssueCategory.html).
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Funds</em>' attribute.
 	 * @see #setFunds(double)
 	 * @see org.nasdanika.engineering.EngineeringPackage#getCapacity_Funds()
@@ -95,6 +104,9 @@ public interface Capacity extends ModelElement {
 	 * Returns the value of the '<em><b>Rate</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * For effort capacity, containing [engineer](Engineer.html) rate, if different from the engineer's default rate.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Rate</em>' attribute.
 	 * @see #setRate(double)
 	 * @see org.nasdanika.engineering.EngineeringPackage#getCapacity_Rate()

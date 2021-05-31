@@ -30,7 +30,7 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getEngineer()
- * @model annotation="urn:org.nasdanika documentation-reference='../doc/engineer.md' icon='fas fa-user'"
+ * @model annotation="urn:org.nasdanika documentation-reference='doc/engineer.md' icon='fas fa-user'"
  *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='capacity'"
  * @generated
  */
@@ -40,6 +40,9 @@ public interface Engineer extends Persona {
 	 * The list contents are of type {@link org.nasdanika.engineering.Module}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Modules ([products](Product.html)) are defined under engineer or [organization](Organization.html).
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Modules</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getEngineer_Modules()
 	 * @model containment="true"
@@ -53,6 +56,9 @@ public interface Engineer extends Persona {
 	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.EngineeredElement#getOwners <em>Owners</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Engineered elements owned by this engineer.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owns</em>' reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getEngineer_Owns()
 	 * @see org.nasdanika.engineering.EngineeredElement#getOwners
@@ -67,6 +73,9 @@ public interface Engineer extends Persona {
 	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.EngineeredElement#getExperts <em>Experts</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Engineered element which this engineer has experience with.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Expertise</em>' reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getEngineer_Expertise()
 	 * @see org.nasdanika.engineering.EngineeredElement#getExperts
@@ -80,6 +89,9 @@ public interface Engineer extends Persona {
 	 * The list contents are of type {@link org.nasdanika.engineering.Increment}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Increments are defined under engineer/[organization](Organization.html).
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Increments</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getEngineer_Increments()
 	 * @model containment="true"
@@ -93,6 +105,9 @@ public interface Engineer extends Persona {
 	 * The list contents are of type {@link org.nasdanika.engineering.Activity}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Engineer may perform shared activities (services) which can be parts of [persona](Persona.html) [journeys](Journey.html).
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Services</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getEngineer_Services()
 	 * @model containment="true"
@@ -105,6 +120,9 @@ public interface Engineer extends Persona {
 	 * The list contents are of type {@link org.nasdanika.engineering.Persona}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Personas which this engineer/[organization](Organization.html) builds products for.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Personas</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getEngineer_Personas()
 	 * @model containment="true"
@@ -119,6 +137,9 @@ public interface Engineer extends Persona {
 	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Endeavor#getAssignee <em>Assignee</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Engineer assignments.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Assignments</em>' reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getEngineer_Assignments()
 	 * @see org.nasdanika.engineering.Endeavor#getAssignee
@@ -132,6 +153,9 @@ public interface Engineer extends Persona {
 	 * The list contents are of type {@link org.nasdanika.engineering.IssueCategory}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Issue categories are defined under engineer/[organization](Organization.html).
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Issue Categories</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getEngineer_IssueCategories()
 	 * @model containment="true"
@@ -145,6 +169,9 @@ public interface Engineer extends Persona {
 	 * The list contents are of type {@link org.nasdanika.engineering.IssueStatus}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Issue statuses are defined under engineer/[organization](Organization.html).
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Issue Statuses</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getEngineer_IssueStatuses()
 	 * @model containment="true"
@@ -158,6 +185,9 @@ public interface Engineer extends Persona {
 	 * The default value is <code>"1"</code>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Default engineer rate. Can be customized in capacity.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Rate</em>' attribute.
 	 * @see #setRate(double)
 	 * @see org.nasdanika.engineering.EngineeringPackage#getEngineer_Rate()
@@ -215,6 +245,9 @@ public interface Engineer extends Persona {
 	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Persona#getRepresentatives <em>Representatives</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Personas which this engineer represents.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Represents</em>' reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getEngineer_Represents()
 	 * @see org.nasdanika.engineering.Persona#getRepresentatives
@@ -229,6 +262,9 @@ public interface Engineer extends Persona {
 	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Message#getAuthor <em>Author</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Discussion messages authored by this engineer.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Messages</em>' reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getEngineer_Messages()
 	 * @see org.nasdanika.engineering.Message#getAuthor

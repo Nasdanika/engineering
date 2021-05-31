@@ -18,7 +18,7 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getGoal()
- * @model
+ * @model annotation="urn:org.nasdanika documentation-reference='doc/goal.md'"
  * @generated
  */
 public interface Goal extends Aim {
@@ -28,6 +28,9 @@ public interface Goal extends Aim {
 	 * The list contents are of type {@link org.nasdanika.engineering.Goal}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * [Persona](Persona.html) goals can be nested.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Children</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getGoal_Children()
 	 * @model containment="true"

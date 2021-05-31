@@ -17,7 +17,7 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getPrinciple()
- * @model
+ * @model annotation="urn:org.nasdanika documentation-reference='doc/principle.md'"
  * @generated
  */
 public interface Principle extends Aim {
@@ -26,6 +26,9 @@ public interface Principle extends Aim {
 	 * The list contents are of type {@link org.nasdanika.engineering.Principle}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Principles can be nested. E.g. Architectural Principles may contain Data Architecture principles.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Children</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getPrinciple_Children()
 	 * @model containment="true"

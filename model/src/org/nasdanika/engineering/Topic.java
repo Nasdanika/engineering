@@ -17,7 +17,7 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getTopic()
- * @model
+ * @model annotation="urn:org.nasdanika documentation-reference='doc/topic.md'"
  * @generated
  */
 public interface Topic extends Message {
@@ -26,6 +26,9 @@ public interface Topic extends Message {
 	 * The list contents are of type {@link org.nasdanika.engineering.Message}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Messages in this topic.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Messages</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getTopic_Messages()
 	 * @model containment="true"

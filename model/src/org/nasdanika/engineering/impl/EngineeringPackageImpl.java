@@ -1300,26 +1300,6 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EAttribute getTransition_Name() {
-		return (EAttribute)transitionEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getTransition_Description() {
-		return (EAttribute)transitionEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EClass getCall() {
 		return callEClass;
 	}
@@ -2010,8 +1990,6 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		transitionEClass = createEClass(TRANSITION);
 		createEReference(transitionEClass, TRANSITION__TARGET);
 		createEReference(transitionEClass, TRANSITION__PAYLOAD);
-		createEAttribute(transitionEClass, TRANSITION__NAME);
-		createEAttribute(transitionEClass, TRANSITION__DESCRIPTION);
 
 		callEClass = createEClass(CALL);
 		createEReference(callEClass, CALL__RESPONSE);
@@ -2105,6 +2083,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		featureEClass.getESuperTypes().add(this.getEngineeredCapability());
 		activityEClass.getESuperTypes().add(this.getEngineeredElement());
 		journeyEClass.getESuperTypes().add(this.getActivity());
+		transitionEClass.getESuperTypes().add(this.getNamedElement());
 		callEClass.getESuperTypes().add(this.getTransition());
 		artifactEClass.getESuperTypes().add(this.getEngineeredElement());
 		directoryEClass.getESuperTypes().add(this.getNamedElement());
@@ -2256,8 +2235,6 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		initEClass(transitionEClass, Transition.class, "Transition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTransition_Target(), this.getActivity(), null, "target", null, 1, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTransition_Payload(), this.getArtifact(), null, "payload", null, 0, -1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTransition_Name(), ecorePackage.getEString(), "name", null, 0, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTransition_Description(), ecorePackage.getEString(), "description", null, 0, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(callEClass, Call.class, "Call", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getCall_Response(), this.getArtifact(), null, "response", null, 0, -1, Call.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2331,7 +2308,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		  (modelElementEClass,
 		   source,
 		   new String[] {
-			   "documentation-reference", "../doc/model-element.md"
+			   "documentation-reference", "doc/model-element.md"
 		   });
 		addAnnotation
 		  (getModelElement_Path(),
@@ -2343,19 +2320,38 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		  (namedElementEClass,
 		   source,
 		   new String[] {
-			   "documentation-reference", "../doc/named-element.md"
+			   "documentation-reference", "doc/named-element.md"
+		   });
+		addAnnotation
+		  (endeavorEClass,
+		   source,
+		   new String[] {
+			   "documentation-reference", "doc/endeavor.md"
 		   });
 		addAnnotation
 		  (incrementEClass,
 		   source,
 		   new String[] {
-			   "icon", "far fa-calendar-alt"
+			   "icon", "far fa-calendar-alt",
+			   "documentation-reference", "doc/increment.md"
 		   });
 		addAnnotation
 		  (getIncrement_Children(),
 		   source,
 		   new String[] {
 			   "homogenous", "true"
+		   });
+		addAnnotation
+		  (issueCategoryEClass,
+		   source,
+		   new String[] {
+			   "documentation-reference", "doc/issue-category.md"
+		   });
+		addAnnotation
+		  (issueStatusEClass,
+		   source,
+		   new String[] {
+			   "documentation-reference", "doc/issue-status.md"
 		   });
 		addAnnotation
 		  (issueEClass,
@@ -2400,6 +2396,12 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 			   "homogenous", "true"
 		   });
 		addAnnotation
+		  (noteEClass,
+		   source,
+		   new String[] {
+			   "documentation-reference", "doc/note.md"
+		   });
+		addAnnotation
 		  (getNote_Status(),
 		   source,
 		   new String[] {
@@ -2409,7 +2411,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		  (engineeredElementEClass,
 		   source,
 		   new String[] {
-			   "documentation-reference", "../doc/engineered-element.md"
+			   "documentation-reference", "doc/engineered-element.md"
 		   });
 		addAnnotation
 		  (getEngineeredElement_Issues(),
@@ -2446,7 +2448,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		  (engineerEClass,
 		   source,
 		   new String[] {
-			   "documentation-reference", "../doc/engineer.md",
+			   "documentation-reference", "doc/engineer.md",
 			   "icon", "fas fa-user"
 		   });
 		addAnnotation
@@ -2485,7 +2487,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		  (organizationEClass,
 		   source,
 		   new String[] {
-			   "icon", "far fa-building"
+			   "icon", "far fa-building",
+			   "documentation-reference", "doc/organization.md"
 		   });
 		addAnnotation
 		  (getOrganization_Engineers(),
@@ -2497,13 +2500,13 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		  (moduleEClass,
 		   source,
 		   new String[] {
-			   "documentation-reference", "../doc/module.md"
+			   "documentation-reference", "doc/module.md"
 		   });
 		addAnnotation
 		  (productEClass,
 		   source,
 		   new String[] {
-			   "documentation-reference", "../doc/product.md",
+			   "documentation-reference", "doc/product.md",
 			   "type-code", "d"
 		   });
 		addAnnotation
@@ -2527,6 +2530,18 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 			   "homogenous", "true"
 		   });
 		addAnnotation
+		  (capabilityEClass,
+		   source,
+		   new String[] {
+			   "documentation-reference", "doc/capability.md"
+		   });
+		addAnnotation
+		  (engineeredCapabilityEClass,
+		   source,
+		   new String[] {
+			   "documentation-reference", "doc/engineered-capability.md"
+		   });
+		addAnnotation
 		  (getEngineeredCapability_Aligns(),
 		   source,
 		   new String[] {
@@ -2537,31 +2552,31 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		  (releaseEClass,
 		   source,
 		   new String[] {
-			   "documentation-reference", "../doc/release.md"
+			   "documentation-reference", "doc/release.md"
 		   });
 		addAnnotation
 		  (featureEClass,
 		   source,
 		   new String[] {
-			   "documentation-reference", "../doc/feature.md"
+			   "documentation-reference", "doc/feature.md"
 		   });
 		addAnnotation
 		  (activityEClass,
 		   source,
 		   new String[] {
-			   "documentation-reference", "../doc/activity.md"
+			   "documentation-reference", "doc/activity.md"
 		   });
 		addAnnotation
 		  (journeyEClass,
 		   source,
 		   new String[] {
-			   "documentation-reference", "../doc/journey.md"
+			   "documentation-reference", "doc/journey.md"
 		   });
 		addAnnotation
 		  (transitionEClass,
 		   source,
 		   new String[] {
-			   "documentation-reference", "../doc/transition.md"
+			   "documentation-reference", "doc/transition.md"
 		   });
 		addAnnotation
 		  (getTransition_Target(),
@@ -2570,10 +2585,22 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 			   "default-feature", "true"
 		   });
 		addAnnotation
+		  (callEClass,
+		   source,
+		   new String[] {
+			   "documentation-reference", "doc/call.md"
+		   });
+		addAnnotation
 		  (artifactEClass,
 		   source,
 		   new String[] {
-			   "documentation-reference", "../doc/artifact.md"
+			   "documentation-reference", "doc/artifact.md"
+		   });
+		addAnnotation
+		  (directoryEClass,
+		   source,
+		   new String[] {
+			   "documentation-reference", "doc/directory.md"
 		   });
 		addAnnotation
 		  (capacityEClass,
@@ -2588,11 +2615,23 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 			   "documentation-reference", "doc/allocation.md"
 		   });
 		addAnnotation
+		  (aimEClass,
+		   source,
+		   new String[] {
+			   "documentation-reference", "doc/aim.md"
+		   });
+		addAnnotation
 		  (getAim_Aligns(),
 		   source,
 		   new String[] {
 			   "homogenous", "true",
 			   "strict-containment", "true"
+		   });
+		addAnnotation
+		  (principleEClass,
+		   source,
+		   new String[] {
+			   "documentation-reference", "doc/principle.md"
 		   });
 		addAnnotation
 		  (getPrinciple_Children(),
@@ -2601,16 +2640,34 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 			   "homogenous", "true"
 		   });
 		addAnnotation
+		  (alignmentEClass,
+		   source,
+		   new String[] {
+			   "documentation-reference", "doc/alignment.md"
+		   });
+		addAnnotation
 		  (getAlignment_Aim(),
 		   source,
 		   new String[] {
 			   "default-feature", "true"
 		   });
 		addAnnotation
+		  (goalEClass,
+		   source,
+		   new String[] {
+			   "documentation-reference", "doc/goal.md"
+		   });
+		addAnnotation
 		  (getGoal_Children(),
 		   source,
 		   new String[] {
 			   "homogenous", "true"
+		   });
+		addAnnotation
+		  (forumEClass,
+		   source,
+		   new String[] {
+			   "documentation-reference", "doc/forum.md"
 		   });
 		addAnnotation
 		  (getForum_Discussion(),
@@ -2623,6 +2680,18 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		   source,
 		   new String[] {
 			   "homogenous", "true"
+		   });
+		addAnnotation
+		  (messageEClass,
+		   source,
+		   new String[] {
+			   "documentation-reference", "doc/message.md"
+		   });
+		addAnnotation
+		  (topicEClass,
+		   source,
+		   new String[] {
+			   "documentation-reference", "doc/topic.md"
 		   });
 		addAnnotation
 		  (getTopic_Messages(),
@@ -2644,13 +2713,13 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		  (getModelElement_Uri(),
 		   source,
 		   new String[] {
-			   "documentation", "Element\'s unique ID. Derived from element type and containment path (parent ID)."
+			   "documentation", "Element\'s URI is derived from ``path``, container URI, and containment reference. URI is used for cross-referencing of elements."
 		   });
 		addAnnotation
 		  (getModelElement_Path(),
 		   source,
 		   new String[] {
-			   "documentation", "Element\'s path to form full element URL. Shall be unique in the containing collection. If blank, derived from element\'s position in the collection or from the local ID. For named elements can be derived from element name.\nElement URL is formed by adding ``.html`` extension to the path if the model element\'s EClass doesn\'t have containment references and as such the element may not have children, and by adding ``/index.html`` otherwise."
+			   "documentation", "Element\'s path to form full element URI and URL. Shall be unique in the containing collection. If blank, derived from element\'s position in the collection. For named elements is derived from element name.\nElement URL is formed by adding ``.html`` extension to the path if the model element\'s EClass doesn\'t have containment references and as such the element may not have children, and by adding ``/index.html`` otherwise."
 		   });
 		addAnnotation
 		  (getModelElement_Description(),
@@ -2662,7 +2731,19 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		  (getModelElement_MarkdownDescription(),
 		   source,
 		   new String[] {
-			   "documentation", "Description in markdown."
+			   "documentation", "Description in [Markdown](https://en.wikipedia.org/wiki/Markdown)."
+		   });
+		addAnnotation
+		  (getModelElement_Actions(),
+		   source,
+		   new String[] {
+			   "documentation", "HTML actions to be mounted under the element action in generated site."
+		   });
+		addAnnotation
+		  (getModelElement_Resources(),
+		   source,
+		   new String[] {
+			   "documentation", "Resources associated with the element, e.g. documentation."
 		   });
 		addAnnotation
 		  (getNamedElement_Name(),
@@ -2671,16 +2752,58 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 			   "documentation", "Element name."
 		   });
 		addAnnotation
+		  (getEndeavor_Completion(),
+		   source,
+		   new String[] {
+			   "documentation", "Number between 0 and 1."
+		   });
+		addAnnotation
+		  (getEndeavor_Benefit(),
+		   source,
+		   new String[] {
+			   "documentation", "Number representing benefit of this endeavor. Can be explicitly provided or derived."
+		   });
+		addAnnotation
+		  (getEndeavor_TotalCost(),
+		   source,
+		   new String[] {
+			   "documentation", "Total cost of the endeavor includes both cost and labor multiplied by rate."
+		   });
+		addAnnotation
+		  (getEndeavor_Assignee(),
+		   source,
+		   new String[] {
+			   "documentation", "Engineer responsible for completion of this endeavor. For a simple issue it would be an engineer working on the issue, for other endeavors the assignee\'s may not actually work on issues, but rather coordinate. E.g. [increment](Increment.html) assignee responsibility would be similar to those of a [scrum master](https://en.wikipedia.org/wiki/Scrum_(software_development)#Scrum_master)."
+		   });
+		addAnnotation
 		  (getEndeavor_AllIssues(),
 		   source,
 		   new String[] {
-			   "documentation", "Issues scheduled to work on in this increment directly or indirectly via releases and features."
+			   "documentation", "Issues scheduled to work on in this increment directly or indirectly via [releases](Release.html) and [features](Feature.html)."
+		   });
+		addAnnotation
+		  (getEndeavor_Start(),
+		   source,
+		   new String[] {
+			   "documentation", "Endeavor start date. Default value can be derived for complex endeavors such as [issues](Issue.html) with children, [releases](Release.html), and [features](Feature.html)."
+		   });
+		addAnnotation
+		  (getEndeavor_End(),
+		   source,
+		   new String[] {
+			   "documentation", "Endeavor end date. Default value can be derived for complex endeavors such as [issues](Issue.html) with children, [releases](Release.html), and [features](Feature.html)."
 		   });
 		addAnnotation
 		  (getEndeavor_Capacity(),
 		   source,
 		   new String[] {
 			   "documentation", "[Capacity](Capacity.html) or [Allocation](Allocation.html).  If an element is capacity that means that there is a capacity for an [engineer](Engineer.html) to work on this endeavor.  If an element is allocation that means that Engineer\'s capacity has been allocated to work on a particular [engineered element](EngineeredElement.html) [issues](Issue.html) in a particular [issue category](IssueCategory.html)."
+		   });
+		addAnnotation
+		  (getIncrement_Children(),
+		   source,
+		   new String[] {
+			   "documentation", "Increment children, e.g. quarters for a year or months for a quarter."
 		   });
 		addAnnotation
 		  (getIncrement_Issues(),
@@ -2713,10 +2836,28 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 			   "documentation", "If true, unused category weight \"capacity\" is carried over to future increments and overused is subtracted from future increments. This allow low-weight categories to accumulate weight over time."
 		   });
 		addAnnotation
+		  (getIssueCategory_Allocations(),
+		   source,
+		   new String[] {
+			   "documentation", "Allocations for this category."
+		   });
+		addAnnotation
 		  (getIssueStatus_Issues(),
 		   source,
 		   new String[] {
 			   "documentation", "Issues in this status."
+		   });
+		addAnnotation
+		  (getIssueStatus_Done(),
+		   source,
+		   new String[] {
+			   "documentation", "If ``true``, indicates that the issue in this status is successfully completed and issues requiring is are now workable. Issue can be completed (completion = 1), but not done, e.g. it can be cancelled."
+		   });
+		addAnnotation
+		  (getIssue_Children(),
+		   source,
+		   new String[] {
+			   "documentation", "Issues can be infinitely nested to form a [Work Breakdown Structure](https://en.wikipedia.org/wiki/Work_breakdown_structure)."
 		   });
 		addAnnotation
 		  (getIssue_Requires(),
@@ -2725,10 +2866,238 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 			   "documentation", "Capabilities required to start working on an issue."
 		   });
 		addAnnotation
+		  (getIssue_Increment(),
+		   source,
+		   new String[] {
+			   "documentation", "Increment for which this issue is directly scheduled. Issue can be scheduled for an increment directly or indirectly via [features](Feature.html) and [releases](Release.html). Release increment can be different from issue incrmenent. E.g. issue can be scheduled for May, but its release might be scheduled for July."
+		   });
+		addAnnotation
+		  (getIssue_ContributesTo(),
+		   source,
+		   new String[] {
+			   "documentation", "Issue can contribute to zero or more features."
+		   });
+		addAnnotation
+		  (getIssue_Notes(),
+		   source,
+		   new String[] {
+			   "documentation", "Issue notes are used for discussion and to record progress, remaining effort, and issue status if it is not set at the issue level. "
+		   });
+		addAnnotation
+		  (getIssue_Category(),
+		   source,
+		   new String[] {
+			   "documentation", "Issue category."
+		   });
+		addAnnotation
+		  (getIssue_Target(),
+		   source,
+		   new String[] {
+			   "documentation", "Target element for this issue - container of the issue itself or the root issue in the issue hierarchy."
+		   });
+		addAnnotation
+		  (getIssue_Status(),
+		   source,
+		   new String[] {
+			   "documentation", "Issue status."
+		   });
+		addAnnotation
+		  (getIssue_Workable(),
+		   source,
+		   new String[] {
+			   "documentation", "Issue is workable if it doesn\'t have any unavailable required capabilities."
+		   });
+		addAnnotation
+		  (getIssue_Releases(),
+		   source,
+		   new String[] {
+			   "documentation", "Issue can be planned for zero or more releases directly. It can be also indirectly planned for releases via contribution to [features](Feature.html)."
+		   });
+		addAnnotation
+		  (getIssue_Effort(),
+		   source,
+		   new String[] {
+			   "documentation", "Effort for this issue."
+		   });
+		addAnnotation
+		  (getIssue_Cost(),
+		   source,
+		   new String[] {
+			   "documentation", "Monetary cost for this issue, e.g. cost of materials."
+		   });
+		addAnnotation
+		  (getIssue_RemainingEffort(),
+		   source,
+		   new String[] {
+			   "documentation", "Remaining effort is computed from issue effort and [notes](Note.html) effort or remaining effort."
+		   });
+		addAnnotation
+		  (getIssue_RemainingCost(),
+		   source,
+		   new String[] {
+			   "documentation", "Remaining cost is computed from issue cost and [notes](Note.html) cost or remaining cost."
+		   });
+		addAnnotation
+		  (getNote_Author(),
+		   source,
+		   new String[] {
+			   "documentation", "Note author."
+		   });
+		addAnnotation
+		  (getNote_Date(),
+		   source,
+		   new String[] {
+			   "documentation", "Note date and time."
+		   });
+		addAnnotation
+		  (getNote_Effort(),
+		   source,
+		   new String[] {
+			   "documentation", "Effort spent."
+		   });
+		addAnnotation
+		  (getNote_Cost(),
+		   source,
+		   new String[] {
+			   "documentation", "Cost spent."
+		   });
+		addAnnotation
+		  (getNote_RemainingEffort(),
+		   source,
+		   new String[] {
+			   "documentation", "If remaining effort is not specified explicitly is it computed from by subtracting note effort from the issue remaining effort. "
+		   });
+		addAnnotation
+		  (getNote_RemainingCost(),
+		   source,
+		   new String[] {
+			   "documentation", "If remaining cost is not specified explicitly is it computed from by subtracting note cost from the issue remaining cost. "
+		   });
+		addAnnotation
+		  (getNote_Status(),
+		   source,
+		   new String[] {
+			   "documentation", "If issue status is not set explicitly the the status of the last note with status is used as issue status. It can be used to keep track of status changes."
+		   });
+		addAnnotation
+		  (getEngineeredElement_Issues(),
+		   source,
+		   new String[] {
+			   "documentation", "Issues (work items) for this element."
+		   });
+		addAnnotation
+		  (getEngineeredElement_Owners(),
+		   source,
+		   new String[] {
+			   "documentation", "Element owners have both expertise and authority over the element."
+		   });
+		addAnnotation
+		  (getEngineeredElement_Experts(),
+		   source,
+		   new String[] {
+			   "documentation", "Experts have expertise with the element, but no authority. E.g. they can help others with using the element, but cannot make changes in the element without owners\' approval."
+		   });
+		addAnnotation
 		  (getEngineeredElement_Allocations(),
 		   source,
 		   new String[] {
 			   "documentation", "Allocations of [engineer](Engineer.html)\'s [capacity](Capacity.html) to work on this engineered element [issues](Issue.html) for a particular [endeavor](Endeavor.html) and [issue category](IssueCategory.html)."
+		   });
+		addAnnotation
+		  (getEngineeredElement_Principles(),
+		   source,
+		   new String[] {
+			   "documentation", "Principles associated with this element to support decision making."
+		   });
+		addAnnotation
+		  (getPersona_Activities(),
+		   source,
+		   new String[] {
+			   "documentation", "Persona activities which demonstrate use of [product](Product.html) [features](Feature.html)."
+		   });
+		addAnnotation
+		  (getPersona_Goals(),
+		   source,
+		   new String[] {
+			   "documentation", "Persona goals are used to elicit and align [endeavors](Endeavor.html). E.g. new [product](Product.html) [features](Feature.html)."
+		   });
+		addAnnotation
+		  (getPersona_Representatives(),
+		   source,
+		   new String[] {
+			   "documentation", "Engineers which represent this persona. E.g. in a hierarchical [organization](Organization.html) some units or engineers may build products for internal customers - other units or engineers. In this case some of those internal customers act as persona representatives and work with the persona owner to identify persona goals and product features to address those goals. "
+		   });
+		addAnnotation
+		  (getPersona_Extends(),
+		   source,
+		   new String[] {
+			   "documentation", "A persona may extend another persona. E.g. \"Moderator\" discussion forum persona extends \"User\" persona, which may in turn extend \"Visitor\" persona. This persona inherits goals for the extended personas."
+		   });
+		addAnnotation
+		  (getPersona_Extensions(),
+		   source,
+		   new String[] {
+			   "documentation", "Personas extending this persona."
+		   });
+		addAnnotation
+		  (getEngineer_Modules(),
+		   source,
+		   new String[] {
+			   "documentation", "Modules ([products](Product.html)) are defined under engineer or [organization](Organization.html)."
+		   });
+		addAnnotation
+		  (getEngineer_Owns(),
+		   source,
+		   new String[] {
+			   "documentation", "Engineered elements owned by this engineer."
+		   });
+		addAnnotation
+		  (getEngineer_Expertise(),
+		   source,
+		   new String[] {
+			   "documentation", "Engineered element which this engineer has experience with."
+		   });
+		addAnnotation
+		  (getEngineer_Increments(),
+		   source,
+		   new String[] {
+			   "documentation", "Increments are defined under engineer/[organization](Organization.html)."
+		   });
+		addAnnotation
+		  (getEngineer_Services(),
+		   source,
+		   new String[] {
+			   "documentation", "Engineer may perform shared activities (services) which can be parts of [persona](Persona.html) [journeys](Journey.html)."
+		   });
+		addAnnotation
+		  (getEngineer_Personas(),
+		   source,
+		   new String[] {
+			   "documentation", "Personas which this engineer/[organization](Organization.html) builds products for."
+		   });
+		addAnnotation
+		  (getEngineer_Assignments(),
+		   source,
+		   new String[] {
+			   "documentation", "Engineer assignments."
+		   });
+		addAnnotation
+		  (getEngineer_IssueCategories(),
+		   source,
+		   new String[] {
+			   "documentation", "Issue categories are defined under engineer/[organization](Organization.html)."
+		   });
+		addAnnotation
+		  (getEngineer_IssueStatuses(),
+		   source,
+		   new String[] {
+			   "documentation", "Issue statuses are defined under engineer/[organization](Organization.html)."
+		   });
+		addAnnotation
+		  (getEngineer_Rate(),
+		   source,
+		   new String[] {
+			   "documentation", "Default engineer rate. Can be customized in capacity."
 		   });
 		addAnnotation
 		  (getEngineer_Designations(),
@@ -2743,10 +3112,46 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 			   "documentation", "Engineer\'s capacity for a particular [endeavor](Endeavor.html)"
 		   });
 		addAnnotation
+		  (getEngineer_Represents(),
+		   source,
+		   new String[] {
+			   "documentation", "Personas which this engineer represents."
+		   });
+		addAnnotation
+		  (getEngineer_Messages(),
+		   source,
+		   new String[] {
+			   "documentation", "Discussion messages authored by this engineer."
+		   });
+		addAnnotation
+		  (getOrganization_Engineers(),
+		   source,
+		   new String[] {
+			   "documentation", "Members of this organization."
+		   });
+		addAnnotation
+		  (getModule_Modules(),
+		   source,
+		   new String[] {
+			   "documentation", "Sub-modules of this module."
+		   });
+		addAnnotation
+		  (getProduct_Releases(),
+		   source,
+		   new String[] {
+			   "documentation", "Product releases."
+		   });
+		addAnnotation
+		  (getProduct_Features(),
+		   source,
+		   new String[] {
+			   "documentation", "Product features."
+		   });
+		addAnnotation
 		  (getProduct_Activities(),
 		   source,
 		   new String[] {
-			   "documentation", "Product journeys define how to use a particular product and its features."
+			   "documentation", "Activities/[journeys](Journey.html) which demonstrate how to use the product and its features."
 		   });
 		addAnnotation
 		  (getCapability_RequiredBy(),
@@ -2755,16 +3160,40 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 			   "documentation", "Issues requiring this capability."
 		   });
 		addAnnotation
+		  (getCapability_Available(),
+		   source,
+		   new String[] {
+			   "documentation", "Indicates that this capability is available and [issues](Issue.html) which require it are workable, unless they have other unavailable requirements."
+		   });
+		addAnnotation
+		  (getEngineeredCapability_Aligns(),
+		   source,
+		   new String[] {
+			   "documentation", "Engineered capability can be aligned to [aims](Aim.html) such as [persona](Persona.html) [goals](Goal.html) or [principles](Principle.html) to support decision making and prioritization."
+		   });
+		addAnnotation
+		  (getRelease_Increment(),
+		   source,
+		   new String[] {
+			   "documentation", "Increment for which this release is scheduled."
+		   });
+		addAnnotation
 		  (getRelease_Features(),
 		   source,
 		   new String[] {
-			   "documentation", "Features made available in this release."
+			   "documentation", "Features planned for this release."
 		   });
 		addAnnotation
 		  (getRelease_Issues(),
 		   source,
 		   new String[] {
-			   "documentation", "Issues closed in this release."
+			   "documentation", "Issues planned for this release."
+		   });
+		addAnnotation
+		  (getFeature_Releases(),
+		   source,
+		   new String[] {
+			   "documentation", "Releases for which this feature is planned."
 		   });
 		addAnnotation
 		  (getFeature_Activities(),
@@ -2779,10 +3208,40 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 			   "documentation", "Issues contributing to this feature."
 		   });
 		addAnnotation
+		  (getActivity_Personas(),
+		   source,
+		   new String[] {
+			   "documentation", "Personas performing this activity."
+		   });
+		addAnnotation
+		  (getActivity_Outputs(),
+		   source,
+		   new String[] {
+			   "documentation", "Activity outbound transitions to other activities."
+		   });
+		addAnnotation
 		  (getActivity_ActivityType(),
 		   source,
 		   new String[] {
 			   "documentation", "Pseudo-activity (stereo)type. One of:\n\n* choice\n* fork\n* join\n* entryPoint\n* exitPoint\n* inputPin\n* outputPin\n* expansionInput\n* expansionOutput\n* end\n\nPseudo-activities name is not shown on the diagram, they are not clickable, and they are not listed as journey children.\n\nSee [PlantUML State Diagram](https://plantuml.com/state-diagram) for more details."
+		   });
+		addAnnotation
+		  (getActivity_Requirements(),
+		   source,
+		   new String[] {
+			   "documentation", "Input artifacts required to start working on this activity."
+		   });
+		addAnnotation
+		  (getActivity_Deliverables(),
+		   source,
+		   new String[] {
+			   "documentation", "Output artifacts of the activity."
+		   });
+		addAnnotation
+		  (getActivity_Calls(),
+		   source,
+		   new String[] {
+			   "documentation", "Calls to other activities."
 		   });
 		addAnnotation
 		  (getActivity_Features(),
@@ -2791,16 +3250,136 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 			   "documentation", "Product features used by this activity."
 		   });
 		addAnnotation
+		  (getJourney_Activities(),
+		   source,
+		   new String[] {
+			   "documentation", "Journey activities."
+		   });
+		addAnnotation
 		  (getJourney_Partition(),
 		   source,
 		   new String[] {
 			   "documentation", "If true, journey is visualized as a composite state on its parent journey diagram. If false, it is visualized as a simple state."
 		   });
 		addAnnotation
-		  (getTransition_Description(),
+		  (getTransition_Target(),
 		   source,
 		   new String[] {
-			   "documentation", "Description in markdown."
+			   "documentation", "Transition target activity."
+		   });
+		addAnnotation
+		  (getTransition_Payload(),
+		   source,
+		   new String[] {
+			   "documentation", "Artifacts passed from source to target activity."
+		   });
+		addAnnotation
+		  (getCall_Response(),
+		   source,
+		   new String[] {
+			   "documentation", "Response artifacts passed back from the target to the source activity."
+		   });
+		addAnnotation
+		  (getDirectory_Elements(),
+		   source,
+		   new String[] {
+			   "documentation", "Directory elements."
+		   });
+		addAnnotation
+		  (getCapacity_Endeavor(),
+		   source,
+		   new String[] {
+			   "documentation", "Endeavor for which containing [engineer](Engineer.html) has this capacity for."
+		   });
+		addAnnotation
+		  (getCapacity_Effort(),
+		   source,
+		   new String[] {
+			   "documentation", "For capacitly - amount of effort which the containing [engineer](Engineer.html) can spend on the capacity\'s [endeavor](Endeavor.html). For allocation - amount of effort which allocation\'s engineer can spend on the containing [engineered element](EngineeredElement.html) and, optionally, [issue category](IssueCategory.html)."
+		   });
+		addAnnotation
+		  (getCapacity_Funds(),
+		   source,
+		   new String[] {
+			   "documentation", "For capacitly - monetary amount which the containing [engineer](Engineer.html) can spend on the capacity\'s [endeavor](Endeavor.html). For allocation - monetary amount which allocation\'s engineer can spend on the containing [engineered element](EngineeredElement.html) and, optionally, [issue category](IssueCategory.html)."
+		   });
+		addAnnotation
+		  (getCapacity_Rate(),
+		   source,
+		   new String[] {
+			   "documentation", "For effort capacity, containing [engineer](Engineer.html) rate, if different from the engineer\'s default rate."
+		   });
+		addAnnotation
+		  (getAllocation_Engineer(),
+		   source,
+		   new String[] {
+			   "documentation", "Engineer whose capacity is allocated to work on the containing [engineered element](EngineeredElement.html)."
+		   });
+		addAnnotation
+		  (getAllocation_Category(),
+		   source,
+		   new String[] {
+			   "documentation", "Optional issue category for this allocation. E.g. a allocation can be made to \"Documentation\" or \"Test coverage\" categories."
+		   });
+		addAnnotation
+		  (getAim_Alignments(),
+		   source,
+		   new String[] {
+			   "documentation", "Alignments to this aim. "
+		   });
+		addAnnotation
+		  (getAim_Aligns(),
+		   source,
+		   new String[] {
+			   "documentation", "Higher level aims to which this aim aligns. E.g. a module level principle may align to organization pirinciples."
+		   });
+		addAnnotation
+		  (getPrinciple_Children(),
+		   source,
+		   new String[] {
+			   "documentation", "Principles can be nested. E.g. Architectural Principles may contain Data Architecture principles."
+		   });
+		addAnnotation
+		  (getAlignment_Aim(),
+		   source,
+		   new String[] {
+			   "documentation", "Aim to which the containing element, e.g. [endeavor](Endeavor.html) aligns."
+		   });
+		addAnnotation
+		  (getGoal_Children(),
+		   source,
+		   new String[] {
+			   "documentation", "[Persona](Persona.html) goals can be nested."
+		   });
+		addAnnotation
+		  (getForum_Discussion(),
+		   source,
+		   new String[] {
+			   "documentation", "Sub-forums."
+		   });
+		addAnnotation
+		  (getForum_Topics(),
+		   source,
+		   new String[] {
+			   "documentation", "Discussion topics in this forum."
+		   });
+		addAnnotation
+		  (getMessage_Date(),
+		   source,
+		   new String[] {
+			   "documentation", "Date/time when this message was posted."
+		   });
+		addAnnotation
+		  (getMessage_Author(),
+		   source,
+		   new String[] {
+			   "documentation", "Message author."
+		   });
+		addAnnotation
+		  (getTopic_Messages(),
+		   source,
+		   new String[] {
+			   "documentation", "Messages in this topic."
 		   });
 	}
 

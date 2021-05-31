@@ -7,9 +7,6 @@ import java.util.Collection;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.nasdanika.engineering.Activity;
 import org.nasdanika.engineering.Artifact;
 import org.nasdanika.engineering.EngineeringPackage;
@@ -25,33 +22,11 @@ import org.nasdanika.engineering.Transition;
  * <ul>
  *   <li>{@link org.nasdanika.engineering.impl.TransitionImpl#getTarget <em>Target</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.TransitionImpl#getPayload <em>Payload</em>}</li>
- *   <li>{@link org.nasdanika.engineering.impl.TransitionImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.nasdanika.engineering.impl.TransitionImpl#getDescription <em>Description</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class TransitionImpl extends MinimalEObjectImpl.Container implements Transition {
-	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String NAME_EDEFAULT = null;
-
-	/**
-	 * The default value of the '{@link #getDescription() <em>Description</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDescription()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String DESCRIPTION_EDEFAULT = null;
-
+public class TransitionImpl extends NamedElementImpl implements Transition {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -69,16 +44,6 @@ public class TransitionImpl extends MinimalEObjectImpl.Container implements Tran
 	@Override
 	protected EClass eStaticClass() {
 		return EngineeringPackage.Literals.TRANSITION;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected int eStaticFeatureCount() {
-		return 0;
 	}
 
 	/**
@@ -127,46 +92,6 @@ public class TransitionImpl extends MinimalEObjectImpl.Container implements Tran
 	 * @generated
 	 */
 	@Override
-	public String getName() {
-		return (String)eDynamicGet(EngineeringPackage.TRANSITION__NAME, EngineeringPackage.Literals.TRANSITION__NAME, true, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setName(String newName) {
-		eDynamicSet(EngineeringPackage.TRANSITION__NAME, EngineeringPackage.Literals.TRANSITION__NAME, newName);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String getDescription() {
-		return (String)eDynamicGet(EngineeringPackage.TRANSITION__DESCRIPTION, EngineeringPackage.Literals.TRANSITION__DESCRIPTION, true, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setDescription(String newDescription) {
-		eDynamicSet(EngineeringPackage.TRANSITION__DESCRIPTION, EngineeringPackage.Literals.TRANSITION__DESCRIPTION, newDescription);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case EngineeringPackage.TRANSITION__TARGET:
@@ -174,10 +99,6 @@ public class TransitionImpl extends MinimalEObjectImpl.Container implements Tran
 				return basicGetTarget();
 			case EngineeringPackage.TRANSITION__PAYLOAD:
 				return getPayload();
-			case EngineeringPackage.TRANSITION__NAME:
-				return getName();
-			case EngineeringPackage.TRANSITION__DESCRIPTION:
-				return getDescription();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -198,12 +119,6 @@ public class TransitionImpl extends MinimalEObjectImpl.Container implements Tran
 				getPayload().clear();
 				getPayload().addAll((Collection<? extends Artifact>)newValue);
 				return;
-			case EngineeringPackage.TRANSITION__NAME:
-				setName((String)newValue);
-				return;
-			case EngineeringPackage.TRANSITION__DESCRIPTION:
-				setDescription((String)newValue);
-				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -222,12 +137,6 @@ public class TransitionImpl extends MinimalEObjectImpl.Container implements Tran
 			case EngineeringPackage.TRANSITION__PAYLOAD:
 				getPayload().clear();
 				return;
-			case EngineeringPackage.TRANSITION__NAME:
-				setName(NAME_EDEFAULT);
-				return;
-			case EngineeringPackage.TRANSITION__DESCRIPTION:
-				setDescription(DESCRIPTION_EDEFAULT);
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -244,10 +153,6 @@ public class TransitionImpl extends MinimalEObjectImpl.Container implements Tran
 				return basicGetTarget() != null;
 			case EngineeringPackage.TRANSITION__PAYLOAD:
 				return !getPayload().isEmpty();
-			case EngineeringPackage.TRANSITION__NAME:
-				return NAME_EDEFAULT == null ? getName() != null : !NAME_EDEFAULT.equals(getName());
-			case EngineeringPackage.TRANSITION__DESCRIPTION:
-				return DESCRIPTION_EDEFAULT == null ? getDescription() != null : !DESCRIPTION_EDEFAULT.equals(getDescription());
 		}
 		return super.eIsSet(featureID);
 	}

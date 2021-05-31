@@ -10,7 +10,7 @@ package org.nasdanika.engineering;
  *
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getArtifact()
- * @model annotation="urn:org.nasdanika documentation-reference='../doc/artifact.md'"
+ * @model annotation="urn:org.nasdanika documentation-reference='doc/artifact.md'"
  * @generated
  */
 public interface Artifact extends EngineeredElement {

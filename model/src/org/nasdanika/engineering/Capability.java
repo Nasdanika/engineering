@@ -19,7 +19,7 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getCapability()
- * @model
+ * @model annotation="urn:org.nasdanika documentation-reference='doc/capability.md'"
  * @generated
  */
 public interface Capability extends NamedElement {
@@ -45,6 +45,9 @@ public interface Capability extends NamedElement {
 	 * Returns the value of the '<em><b>Available</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Indicates that this capability is available and [issues](Issue.html) which require it are workable, unless they have other unavailable requirements.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Available</em>' attribute.
 	 * @see #setAvailable(boolean)
 	 * @see org.nasdanika.engineering.EngineeringPackage#getCapability_Available()

@@ -18,7 +18,7 @@ import java.util.Date;
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getMessage()
- * @model
+ * @model annotation="urn:org.nasdanika documentation-reference='doc/message.md'"
  * @generated
  */
 public interface Message extends NamedElement {
@@ -26,6 +26,9 @@ public interface Message extends NamedElement {
 	 * Returns the value of the '<em><b>Date</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Date/time when this message was posted.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Date</em>' attribute.
 	 * @see #setDate(Date)
 	 * @see org.nasdanika.engineering.EngineeringPackage#getMessage_Date()
@@ -49,6 +52,9 @@ public interface Message extends NamedElement {
 	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Engineer#getMessages <em>Messages</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Message author.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Author</em>' reference.
 	 * @see #setAuthor(Engineer)
 	 * @see org.nasdanika.engineering.EngineeringPackage#getMessage_Author()

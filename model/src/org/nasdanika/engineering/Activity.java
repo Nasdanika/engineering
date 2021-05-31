@@ -23,7 +23,7 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getActivity()
- * @model annotation="urn:org.nasdanika documentation-reference='../doc/activity.md'"
+ * @model annotation="urn:org.nasdanika documentation-reference='doc/activity.md'"
  * @generated
  */
 public interface Activity extends EngineeredElement {
@@ -33,6 +33,9 @@ public interface Activity extends EngineeredElement {
 	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Persona#getActivities <em>Activities</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Personas performing this activity.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Personas</em>' reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getActivity_Personas()
 	 * @see org.nasdanika.engineering.Persona#getActivities
@@ -46,6 +49,9 @@ public interface Activity extends EngineeredElement {
 	 * The list contents are of type {@link org.nasdanika.engineering.Transition}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Activity outbound transitions to other activities.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Outputs</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getActivity_Outputs()
 	 * @model containment="true"
@@ -98,6 +104,9 @@ public interface Activity extends EngineeredElement {
 	 * The list contents are of type {@link org.nasdanika.engineering.Artifact}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Input artifacts required to start working on this activity.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Requirements</em>' reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getActivity_Requirements()
 	 * @model
@@ -110,6 +119,9 @@ public interface Activity extends EngineeredElement {
 	 * The list contents are of type {@link org.nasdanika.engineering.Artifact}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Output artifacts of the activity.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Deliverables</em>' reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getActivity_Deliverables()
 	 * @model
@@ -122,6 +134,9 @@ public interface Activity extends EngineeredElement {
 	 * The list contents are of type {@link org.nasdanika.engineering.Call}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Calls to other activities.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Calls</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getActivity_Calls()
 	 * @model containment="true"

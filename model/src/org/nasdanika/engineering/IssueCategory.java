@@ -20,7 +20,7 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getIssueCategory()
- * @model
+ * @model annotation="urn:org.nasdanika documentation-reference='doc/issue-category.md'"
  * @generated
  */
 public interface IssueCategory extends NamedElement {
@@ -97,6 +97,9 @@ public interface IssueCategory extends NamedElement {
 	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Allocation#getCategory <em>Category</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Allocations for this category.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Allocations</em>' reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getIssueCategory_Allocations()
 	 * @see org.nasdanika.engineering.Allocation#getCategory

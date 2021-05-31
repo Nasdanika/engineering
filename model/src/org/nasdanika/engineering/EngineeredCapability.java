@@ -18,7 +18,7 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getEngineeredCapability()
- * @model
+ * @model annotation="urn:org.nasdanika documentation-reference='doc/engineered-capability.md'"
  * @generated
  */
 public interface EngineeredCapability extends Capability, Endeavor {
@@ -28,6 +28,9 @@ public interface EngineeredCapability extends Capability, Endeavor {
 	 * The list contents are of type {@link org.nasdanika.engineering.Alignment}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Engineered capability can be aligned to [aims](Aim.html) such as [persona](Persona.html) [goals](Goal.html) or [principles](Principle.html) to support decision making and prioritization.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Aligns</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getEngineeredCapability_Aligns()
 	 * @model containment="true"

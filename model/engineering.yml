@@ -95,6 +95,8 @@ engineering-module:
          Endeavor has alignment homogenous strict containment reference. Alignment is a model element referencing Aim. allAlignments derived reference.
          Aim has derived opposite reference - alignements. Principle containment homogenous reference under EngineeredElement - e.g. architecture principles for an organization, design/coding principles for a component.
          Consider ``extends`` relationship between principles. E.g. module level principle extends a more generic organization level principle. Many-to-many relationship.   
+     - name: YAML spec examples
+       markdown-description: Add to documentation.             
          
      ### === Done === ###    
      - name: Start/end from Issue and Increment to Endeavor

@@ -18,7 +18,7 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getJourney()
- * @model annotation="urn:org.nasdanika documentation-reference='../doc/journey.md'"
+ * @model annotation="urn:org.nasdanika documentation-reference='doc/journey.md'"
  * @generated
  */
 public interface Journey extends Activity {
@@ -27,6 +27,9 @@ public interface Journey extends Activity {
 	 * The list contents are of type {@link org.nasdanika.engineering.Activity}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Journey activities.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Activities</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getJourney_Activities()
 	 * @model containment="true"

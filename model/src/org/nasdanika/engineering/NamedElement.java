@@ -17,7 +17,7 @@ package org.nasdanika.engineering;
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getNamedElement()
  * @model abstract="true"
- *        annotation="urn:org.nasdanika documentation-reference='../doc/named-element.md'"
+ *        annotation="urn:org.nasdanika documentation-reference='doc/named-element.md'"
  * @generated
  */
 public interface NamedElement extends ModelElement {

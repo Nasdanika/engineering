@@ -23,7 +23,7 @@ import java.util.Date;
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getNote()
- * @model
+ * @model annotation="urn:org.nasdanika documentation-reference='doc/note.md'"
  * @generated
  */
 public interface Note extends ModelElement {
@@ -31,6 +31,9 @@ public interface Note extends ModelElement {
 	 * Returns the value of the '<em><b>Author</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Note author.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Author</em>' reference.
 	 * @see #setAuthor(Engineer)
 	 * @see org.nasdanika.engineering.EngineeringPackage#getNote_Author()
@@ -53,6 +56,9 @@ public interface Note extends ModelElement {
 	 * Returns the value of the '<em><b>Date</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Note date and time.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Date</em>' attribute.
 	 * @see #setDate(Date)
 	 * @see org.nasdanika.engineering.EngineeringPackage#getNote_Date()
@@ -75,6 +81,9 @@ public interface Note extends ModelElement {
 	 * Returns the value of the '<em><b>Effort</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Effort spent.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Effort</em>' attribute.
 	 * @see #setEffort(double)
 	 * @see org.nasdanika.engineering.EngineeringPackage#getNote_Effort()
@@ -97,6 +106,9 @@ public interface Note extends ModelElement {
 	 * Returns the value of the '<em><b>Cost</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Cost spent.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Cost</em>' attribute.
 	 * @see #setCost(double)
 	 * @see org.nasdanika.engineering.EngineeringPackage#getNote_Cost()
@@ -119,6 +131,9 @@ public interface Note extends ModelElement {
 	 * Returns the value of the '<em><b>Remaining Effort</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * If remaining effort is not specified explicitly is it computed from by subtracting note effort from the issue remaining effort. 
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Remaining Effort</em>' attribute.
 	 * @see #setRemainingEffort(double)
 	 * @see org.nasdanika.engineering.EngineeringPackage#getNote_RemainingEffort()
@@ -141,6 +156,9 @@ public interface Note extends ModelElement {
 	 * Returns the value of the '<em><b>Remaining Cost</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * If remaining cost is not specified explicitly is it computed from by subtracting note cost from the issue remaining cost. 
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Remaining Cost</em>' attribute.
 	 * @see #setRemainingCost(double)
 	 * @see org.nasdanika.engineering.EngineeringPackage#getNote_RemainingCost()
@@ -163,6 +181,9 @@ public interface Note extends ModelElement {
 	 * Returns the value of the '<em><b>Status</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * If issue status is not set explicitly the the status of the last note with status is used as issue status. It can be used to keep track of status changes.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Status</em>' reference.
 	 * @see #setStatus(IssueStatus)
 	 * @see org.nasdanika.engineering.EngineeringPackage#getNote_Status()

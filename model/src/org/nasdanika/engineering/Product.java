@@ -19,7 +19,7 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getProduct()
- * @model annotation="urn:org.nasdanika documentation-reference='../doc/product.md' type-code='d'"
+ * @model annotation="urn:org.nasdanika documentation-reference='doc/product.md' type-code='d'"
  * @generated
  */
 public interface Product extends org.nasdanika.engineering.Module {
@@ -28,6 +28,9 @@ public interface Product extends org.nasdanika.engineering.Module {
 	 * The list contents are of type {@link org.nasdanika.engineering.Release}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Product releases.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Releases</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getProduct_Releases()
 	 * @model containment="true"
@@ -41,6 +44,9 @@ public interface Product extends org.nasdanika.engineering.Module {
 	 * The list contents are of type {@link org.nasdanika.engineering.Feature}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Product features.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Features</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getProduct_Features()
 	 * @model containment="true"
@@ -55,7 +61,7 @@ public interface Product extends org.nasdanika.engineering.Module {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Product journeys define how to use a particular product and its features.
+	 * Activities/[journeys](Journey.html) which demonstrate how to use the product and its features.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Activities</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getProduct_Activities()

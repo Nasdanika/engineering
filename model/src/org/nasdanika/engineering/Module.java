@@ -17,7 +17,7 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getModule()
- * @model annotation="urn:org.nasdanika documentation-reference='../doc/module.md'"
+ * @model annotation="urn:org.nasdanika documentation-reference='doc/module.md'"
  * @generated
  */
 public interface Module extends EngineeredElement {
@@ -26,6 +26,9 @@ public interface Module extends EngineeredElement {
 	 * The list contents are of type {@link org.nasdanika.engineering.Module}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Sub-modules of this module.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Modules</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getModule_Modules()
 	 * @model containment="true"

@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getEndeavor()
  * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='start_end capacity'"
+ *        annotation="urn:org.nasdanika documentation-reference='doc/endeavor.md'"
  * @generated
  */
 public interface Endeavor extends EObject {
@@ -34,6 +35,9 @@ public interface Endeavor extends EObject {
 	 * Returns the value of the '<em><b>Completion</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Number between 0 and 1.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Completion</em>' attribute.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getEndeavor_Completion()
 	 * @model changeable="false" derived="true"
@@ -45,6 +49,9 @@ public interface Endeavor extends EObject {
 	 * Returns the value of the '<em><b>Benefit</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Number representing benefit of this endeavor. Can be explicitly provided or derived.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Benefit</em>' attribute.
 	 * @see #setBenefit(double)
 	 * @see org.nasdanika.engineering.EngineeringPackage#getEndeavor_Benefit()
@@ -67,6 +74,9 @@ public interface Endeavor extends EObject {
 	 * Returns the value of the '<em><b>Total Cost</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Total cost of the endeavor includes both cost and labor multiplied by rate.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Total Cost</em>' attribute.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getEndeavor_TotalCost()
 	 * @model changeable="false" derived="true"
@@ -79,6 +89,9 @@ public interface Endeavor extends EObject {
 	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Engineer#getAssignments <em>Assignments</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Engineer responsible for completion of this endeavor. For a simple issue it would be an engineer working on the issue, for other endeavors the assignee's may not actually work on issues, but rather coordinate. E.g. [increment](Increment.html) assignee responsibility would be similar to those of a [scrum master](https://en.wikipedia.org/wiki/Scrum_(software_development)#Scrum_master).
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Assignee</em>' reference.
 	 * @see #setAssignee(Engineer)
 	 * @see org.nasdanika.engineering.EngineeringPackage#getEndeavor_Assignee()
@@ -104,7 +117,7 @@ public interface Endeavor extends EObject {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Issues scheduled to work on in this increment directly or indirectly via releases and features.
+	 * Issues scheduled to work on in this increment directly or indirectly via [releases](Release.html) and [features](Feature.html).
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>All Issues</em>' reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getEndeavor_AllIssues()
@@ -117,6 +130,9 @@ public interface Endeavor extends EObject {
 	 * Returns the value of the '<em><b>Start</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Endeavor start date. Default value can be derived for complex endeavors such as [issues](Issue.html) with children, [releases](Release.html), and [features](Feature.html).
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Start</em>' attribute.
 	 * @see #setStart(Date)
 	 * @see org.nasdanika.engineering.EngineeringPackage#getEndeavor_Start()
@@ -139,6 +155,9 @@ public interface Endeavor extends EObject {
 	 * Returns the value of the '<em><b>End</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Endeavor end date. Default value can be derived for complex endeavors such as [issues](Issue.html) with children, [releases](Release.html), and [features](Feature.html).
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>End</em>' attribute.
 	 * @see #setEnd(Date)
 	 * @see org.nasdanika.engineering.EngineeringPackage#getEndeavor_End()

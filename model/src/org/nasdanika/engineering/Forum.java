@@ -18,7 +18,7 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getForum()
- * @model
+ * @model annotation="urn:org.nasdanika documentation-reference='doc/forum.md'"
  * @generated
  */
 public interface Forum extends NamedElement {
@@ -27,6 +27,9 @@ public interface Forum extends NamedElement {
 	 * The list contents are of type {@link org.nasdanika.engineering.Forum}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Sub-forums.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Discussion</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getForum_Discussion()
 	 * @model containment="true"
@@ -40,6 +43,9 @@ public interface Forum extends NamedElement {
 	 * The list contents are of type {@link org.nasdanika.engineering.Topic}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Discussion topics in this forum.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Topics</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getForum_Topics()
 	 * @model containment="true"

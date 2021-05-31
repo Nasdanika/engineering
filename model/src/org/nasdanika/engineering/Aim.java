@@ -18,7 +18,7 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getAim()
- * @model
+ * @model annotation="urn:org.nasdanika documentation-reference='doc/aim.md'"
  * @generated
  */
 public interface Aim extends NamedElement {
@@ -28,6 +28,9 @@ public interface Aim extends NamedElement {
 	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Alignment#getAim <em>Aim</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Alignments to this aim. 
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Alignments</em>' reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getAim_Alignments()
 	 * @see org.nasdanika.engineering.Alignment#getAim
@@ -41,6 +44,9 @@ public interface Aim extends NamedElement {
 	 * The list contents are of type {@link org.nasdanika.engineering.Alignment}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Higher level aims to which this aim aligns. E.g. a module level principle may align to organization pirinciples.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Aligns</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getAim_Aligns()
 	 * @model containment="true"

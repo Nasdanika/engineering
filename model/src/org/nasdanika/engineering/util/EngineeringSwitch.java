@@ -314,6 +314,9 @@ public class EngineeringSwitch<T> extends Switch<T> {
 			case EngineeringPackage.TRANSITION: {
 				Transition transition = (Transition)theEObject;
 				T result = caseTransition(transition);
+				if (result == null) result = caseNamedElement(transition);
+				if (result == null) result = caseModelElement(transition);
+				if (result == null) result = caseAdaptable(transition);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -321,6 +324,9 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				Call call = (Call)theEObject;
 				T result = caseCall(call);
 				if (result == null) result = caseTransition(call);
+				if (result == null) result = caseNamedElement(call);
+				if (result == null) result = caseModelElement(call);
+				if (result == null) result = caseAdaptable(call);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}

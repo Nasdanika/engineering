@@ -16,7 +16,7 @@ package org.nasdanika.engineering;
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getAlignment()
- * @model
+ * @model annotation="urn:org.nasdanika documentation-reference='doc/alignment.md'"
  * @generated
  */
 public interface Alignment extends ModelElement {
@@ -25,6 +25,9 @@ public interface Alignment extends ModelElement {
 	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Aim#getAlignments <em>Alignments</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Aim to which the containing element, e.g. [endeavor](Endeavor.html) aligns.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Aim</em>' reference.
 	 * @see #setAim(Aim)
 	 * @see org.nasdanika.engineering.EngineeringPackage#getAlignment_Aim()

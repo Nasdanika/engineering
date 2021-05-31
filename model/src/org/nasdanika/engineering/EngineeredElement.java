@@ -22,7 +22,7 @@ import org.eclipse.emf.common.util.EList;
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getEngineeredElement()
  * @model abstract="true"
- *        annotation="urn:org.nasdanika documentation-reference='../doc/engineered-element.md'"
+ *        annotation="urn:org.nasdanika documentation-reference='doc/engineered-element.md'"
  *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='capacity'"
  * @generated
  */
@@ -32,6 +32,9 @@ public interface EngineeredElement extends Forum {
 	 * The list contents are of type {@link org.nasdanika.engineering.Issue}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Issues (work items) for this element.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Issues</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getEngineeredElement_Issues()
 	 * @model containment="true"
@@ -46,6 +49,9 @@ public interface EngineeredElement extends Forum {
 	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Engineer#getOwns <em>Owns</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Element owners have both expertise and authority over the element.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owners</em>' reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getEngineeredElement_Owners()
 	 * @see org.nasdanika.engineering.Engineer#getOwns
@@ -60,6 +66,9 @@ public interface EngineeredElement extends Forum {
 	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Engineer#getExpertise <em>Expertise</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Experts have expertise with the element, but no authority. E.g. they can help others with using the element, but cannot make changes in the element without owners' approval.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Experts</em>' reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getEngineeredElement_Experts()
 	 * @see org.nasdanika.engineering.Engineer#getExpertise
@@ -89,6 +98,9 @@ public interface EngineeredElement extends Forum {
 	 * The list contents are of type {@link org.nasdanika.engineering.Principle}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Principles associated with this element to support decision making.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Principles</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getEngineeredElement_Principles()
 	 * @model containment="true"

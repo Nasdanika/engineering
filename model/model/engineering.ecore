@@ -8,17 +8,17 @@
       abstract="true" interface="true"/>
   <eClassifiers xsi:type="ecore:EClass" name="ModelElement" abstract="true" eSuperTypes="#//Adaptable">
     <eAnnotations source="urn:org.nasdanika">
-      <details key="documentation-reference" value="../doc/model-element.md"/>
+      <details key="documentation-reference" value="doc/model-element.md"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="uri" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         changeable="false" derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Element's unique ID. Derived from element type and containment path (parent ID)."/>
+        <details key="documentation" value="Element's URI is derived from ``path``, container URI, and containment reference. URI is used for cross-referencing of elements."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="path" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Element's path to form full element URL. Shall be unique in the containing collection. If blank, derived from element's position in the collection or from the local ID. For named elements can be derived from element name.&#xA;Element URL is formed by adding ``.html`` extension to the path if the model element's EClass doesn't have containment references and as such the element may not have children, and by adding ``/index.html`` otherwise."/>
+        <details key="documentation" value="Element's path to form full element URI and URL. Shall be unique in the containing collection. If blank, derived from element's position in the collection. For named elements is derived from element name.&#xA;Element URL is formed by adding ``.html`` extension to the path if the model element's EClass doesn't have containment references and as such the element may not have children, and by adding ``/index.html`` otherwise."/>
       </eAnnotations>
       <eAnnotations source="urn:org.nasdanika">
         <details key="load-key" value="path"/>
@@ -31,17 +31,25 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="markdownDescription" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Description in markdown."/>
+        <details key="documentation" value="Description in [Markdown](https://en.wikipedia.org/wiki/Markdown)."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="actions" upperBound="-1"
-        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject" containment="true"/>
+        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject" containment="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="HTML actions to be mounted under the element action in generated site."/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="resources" upperBound="-1"
-        eType="#//NamedElement" containment="true"/>
+        eType="#//NamedElement" containment="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Resources associated with the element, e.g. documentation."/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NamedElement" abstract="true" eSuperTypes="#//ModelElement">
     <eAnnotations source="urn:org.nasdanika">
-      <details key="documentation-reference" value="../doc/named-element.md"/>
+      <details key="documentation-reference" value="doc/named-element.md"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -53,21 +61,48 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
       <details key="constraints" value="start_end capacity"/>
     </eAnnotations>
+    <eAnnotations source="urn:org.nasdanika">
+      <details key="documentation-reference" value="doc/endeavor.md"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="completion" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
-        changeable="false" derived="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="benefit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+        changeable="false" derived="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Number between 0 and 1."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="benefit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Number representing benefit of this endeavor. Can be explicitly provided or derived."/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="totalCost" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
-        changeable="false" derived="true"/>
+        changeable="false" derived="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Total cost of the endeavor includes both cost and labor multiplied by rate."/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="assignee" eType="#//Engineer"
-        eOpposite="#//Engineer/assignments"/>
+        eOpposite="#//Engineer/assignments">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Engineer responsible for completion of this endeavor. For a simple issue it would be an engineer working on the issue, for other endeavors the assignee's may not actually work on issues, but rather coordinate. E.g. [increment](Increment.html) assignee responsibility would be similar to those of a [scrum master](https://en.wikipedia.org/wiki/Scrum_(software_development)#Scrum_master)."/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="allIssues" upperBound="-1"
         eType="#//Issue" changeable="false" derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Issues scheduled to work on in this increment directly or indirectly via releases and features."/>
+        <details key="documentation" value="Issues scheduled to work on in this increment directly or indirectly via [releases](Release.html) and [features](Feature.html)."/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="start" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="end" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="start" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Endeavor start date. Default value can be derived for complex endeavors such as [issues](Issue.html) with children, [releases](Release.html), and [features](Feature.html)."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="end" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Endeavor end date. Default value can be derived for complex endeavors such as [issues](Issue.html) with children, [releases](Release.html), and [features](Feature.html)."/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="capacity" upperBound="-1"
         eType="#//Capacity" changeable="false" derived="true" eOpposite="#//Capacity/endeavor">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -81,11 +116,15 @@
     </eAnnotations>
     <eAnnotations source="urn:org.nasdanika">
       <details key="icon" value="far fa-calendar-alt"/>
+      <details key="documentation-reference" value="doc/increment.md"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
         eType="#//Increment" containment="true">
       <eAnnotations source="urn:org.nasdanika">
         <details key="homogenous" value="true"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Increment children, e.g. quarters for a year or months for a quarter."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="issues" upperBound="-1"
@@ -102,6 +141,9 @@
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IssueCategory" eSuperTypes="#//NamedElement">
+    <eAnnotations source="urn:org.nasdanika">
+      <details key="documentation-reference" value="doc/issue-category.md"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="weight" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Category relative importance. Can be used to allocate issues to increments in a balanced way."/>
@@ -119,16 +161,27 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="allocations" upperBound="-1"
-        eType="#//Allocation" changeable="false" derived="true" eOpposite="#//Allocation/category"/>
+        eType="#//Allocation" changeable="false" derived="true" eOpposite="#//Allocation/category">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Allocations for this category."/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IssueStatus" eSuperTypes="#//NamedElement">
+    <eAnnotations source="urn:org.nasdanika">
+      <details key="documentation-reference" value="doc/issue-status.md"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="issues" upperBound="-1"
         eType="#//Issue" changeable="false" derived="true" eOpposite="#//Issue/status">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Issues in this status."/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="done" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="done" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="If ``true``, indicates that the issue in this status is successfully completed and issues requiring is are now workable. Issue can be completed (completion = 1), but not done, e.g. it can be cancelled."/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Issue" eSuperTypes="#//EngineeredCapability">
     <eAnnotations source="urn:org.nasdanika">
@@ -142,6 +195,9 @@
       <eAnnotations source="urn:org.nasdanika">
         <details key="homogenous" value="true"/>
       </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Issues can be infinitely nested to form a [Work Breakdown Structure](https://en.wikipedia.org/wiki/Work_breakdown_structure)."/>
+      </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="requires" upperBound="-1"
         eType="#//Capability" eOpposite="#//Capability/requiredBy">
@@ -154,13 +210,23 @@
       <eAnnotations source="urn:org.nasdanika">
         <details key="homogenous" value="true"/>
       </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Increment for which this issue is directly scheduled. Issue can be scheduled for an increment directly or indirectly via [features](Feature.html) and [releases](Release.html). Release increment can be different from issue incrmenent. E.g. issue can be scheduled for May, but its release might be scheduled for July."/>
+      </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="contributesTo" upperBound="-1"
-        eType="#//Feature" eOpposite="#//Feature/issues"/>
+        eType="#//Feature" eOpposite="#//Feature/issues">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Issue can contribute to zero or more features."/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="notes" upperBound="-1"
         eType="#//Note" containment="true">
       <eAnnotations source="urn:org.nasdanika">
         <details key="homogenous" value="true"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Issue notes are used for discussion and to record progress, remaining effort, and issue status if it is not set at the issue level. "/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="category" eType="#//IssueCategory"
@@ -168,46 +234,109 @@
       <eAnnotations source="urn:org.nasdanika">
         <details key="homogenous" value="true"/>
       </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Issue category."/>
+      </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//EngineeredElement"
-        changeable="false" derived="true"/>
+        changeable="false" derived="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Target element for this issue - container of the issue itself or the root issue in the issue hierarchy."/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="status" eType="#//IssueStatus"
         eOpposite="#//IssueStatus/issues">
       <eAnnotations source="urn:org.nasdanika">
         <details key="homogenous" value="true"/>
       </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Issue status."/>
+      </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="workable" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        changeable="false" derived="true"/>
+        changeable="false" derived="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Issue is workable if it doesn't have any unavailable required capabilities."/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="releases" upperBound="-1"
         eType="#//Release" eOpposite="#//Release/issues">
       <eAnnotations source="urn:org.nasdanika">
         <details key="homogenous" value="true"/>
       </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Issue can be planned for zero or more releases directly. It can be also indirectly planned for releases via contribution to [features](Feature.html)."/>
+      </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="effort" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cost" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="effort" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Effort for this issue."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cost" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Monetary cost for this issue, e.g. cost of materials."/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="remainingEffort" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
-        changeable="false" derived="true"/>
+        changeable="false" derived="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Remaining effort is computed from issue effort and [notes](Note.html) effort or remaining effort."/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="remainingCost" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
-        changeable="false" derived="true"/>
+        changeable="false" derived="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Remaining cost is computed from issue cost and [notes](Note.html) cost or remaining cost."/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Note" eSuperTypes="#//ModelElement">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="author" eType="#//Engineer"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="date" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="effort" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cost" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="remainingEffort" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="remainingCost" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eAnnotations source="urn:org.nasdanika">
+      <details key="documentation-reference" value="doc/note.md"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="author" eType="#//Engineer">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Note author."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="date" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Note date and time."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="effort" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Effort spent."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cost" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Cost spent."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="remainingEffort" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="If remaining effort is not specified explicitly is it computed from by subtracting note effort from the issue remaining effort. "/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="remainingCost" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="If remaining cost is not specified explicitly is it computed from by subtracting note cost from the issue remaining cost. "/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="status" eType="#//IssueStatus">
       <eAnnotations source="urn:org.nasdanika">
         <details key="homogenous" value="true"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="If issue status is not set explicitly the the status of the last note with status is used as issue status. It can be used to keep track of status changes."/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EngineeredElement" abstract="true" eSuperTypes="#//Forum">
     <eAnnotations source="urn:org.nasdanika">
-      <details key="documentation-reference" value="../doc/engineered-element.md"/>
+      <details key="documentation-reference" value="doc/engineered-element.md"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
       <details key="constraints" value="capacity"/>
@@ -217,11 +346,22 @@
       <eAnnotations source="urn:org.nasdanika">
         <details key="homogenous" value="true"/>
       </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Issues (work items) for this element."/>
+      </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="owners" upperBound="-1"
-        eType="#//Engineer" eOpposite="#//Engineer/owns"/>
+        eType="#//Engineer" eOpposite="#//Engineer/owns">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Element owners have both expertise and authority over the element."/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="experts" upperBound="-1"
-        eType="#//Engineer" eOpposite="#//Engineer/expertise"/>
+        eType="#//Engineer" eOpposite="#//Engineer/expertise">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Experts have expertise with the element, but no authority. E.g. they can help others with using the element, but cannot make changes in the element without owners' approval."/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="allocations" upperBound="-1"
         eType="#//Allocation" containment="true">
       <eAnnotations source="urn:org.nasdanika">
@@ -236,6 +376,9 @@
       <eAnnotations source="urn:org.nasdanika">
         <details key="homogenous" value="true"/>
       </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Principles associated with this element to support decision making."/>
+      </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Persona" eSuperTypes="#//EngineeredElement">
@@ -244,55 +387,103 @@
       <details key="icon" value="far fa-user"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="activities" upperBound="-1"
-        eType="#//Activity" changeable="false" derived="true" eOpposite="#//Activity/personas"/>
+        eType="#//Activity" changeable="false" derived="true" eOpposite="#//Activity/personas">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Persona activities which demonstrate use of [product](Product.html) [features](Feature.html)."/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="goals" upperBound="-1"
         eType="#//Goal" containment="true">
       <eAnnotations source="urn:org.nasdanika">
         <details key="homogenous" value="true"/>
       </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Persona goals are used to elicit and align [endeavors](Endeavor.html). E.g. new [product](Product.html) [features](Feature.html)."/>
+      </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="representatives" upperBound="-1"
-        eType="#//Engineer" eOpposite="#//Engineer/represents"/>
+        eType="#//Engineer" eOpposite="#//Engineer/represents">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Engineers which represent this persona. E.g. in a hierarchical [organization](Organization.html) some units or engineers may build products for internal customers - other units or engineers. In this case some of those internal customers act as persona representatives and work with the persona owner to identify persona goals and product features to address those goals. "/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="extends" upperBound="-1"
-        eType="#//Persona" eOpposite="#//Persona/extensions"/>
+        eType="#//Persona" eOpposite="#//Persona/extensions">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="A persona may extend another persona. E.g. &quot;Moderator&quot; discussion forum persona extends &quot;User&quot; persona, which may in turn extend &quot;Visitor&quot; persona. This persona inherits goals for the extended personas."/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="extensions" upperBound="-1"
-        eType="#//Persona" changeable="false" derived="true" eOpposite="#//Persona/extends"/>
+        eType="#//Persona" changeable="false" derived="true" eOpposite="#//Persona/extends">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Personas extending this persona."/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Engineer" eSuperTypes="#//Persona">
     <eAnnotations source="urn:org.nasdanika">
-      <details key="documentation-reference" value="../doc/engineer.md"/>
+      <details key="documentation-reference" value="doc/engineer.md"/>
       <details key="icon" value="fas fa-user"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
       <details key="constraints" value="capacity"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="modules" upperBound="-1"
-        eType="#//Module" containment="true"/>
+        eType="#//Module" containment="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Modules ([products](Product.html)) are defined under engineer or [organization](Organization.html)."/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="owns" upperBound="-1" eType="#//EngineeredElement"
-        changeable="false" derived="true" eOpposite="#//EngineeredElement/owners"/>
+        changeable="false" derived="true" eOpposite="#//EngineeredElement/owners">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Engineered elements owned by this engineer."/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="expertise" upperBound="-1"
-        eType="#//EngineeredElement" changeable="false" derived="true" eOpposite="#//EngineeredElement/experts"/>
+        eType="#//EngineeredElement" changeable="false" derived="true" eOpposite="#//EngineeredElement/experts">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Engineered element which this engineer has experience with."/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="increments" upperBound="-1"
         eType="#//Increment" containment="true">
       <eAnnotations source="urn:org.nasdanika">
         <details key="homogenous" value="true"/>
       </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Increments are defined under engineer/[organization](Organization.html)."/>
+      </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="services" upperBound="-1"
-        eType="#//Activity" containment="true"/>
+        eType="#//Activity" containment="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Engineer may perform shared activities (services) which can be parts of [persona](Persona.html) [journeys](Journey.html)."/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="personas" upperBound="-1"
         eType="#//Persona" containment="true">
       <eAnnotations source="urn:org.nasdanika">
         <details key="homogenous" value="true"/>
       </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Personas which this engineer/[organization](Organization.html) builds products for."/>
+      </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="assignments" upperBound="-1"
-        eType="#//Endeavor" changeable="false" derived="true" eOpposite="#//Endeavor/assignee"/>
+        eType="#//Endeavor" changeable="false" derived="true" eOpposite="#//Endeavor/assignee">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Engineer assignments."/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="issueCategories" upperBound="-1"
         eType="#//IssueCategory" containment="true">
       <eAnnotations source="urn:org.nasdanika">
         <details key="homogenous" value="true"/>
         <details key="strict-containment" value="true"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Issue categories are defined under engineer/[organization](Organization.html)."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="issueStatuses" upperBound="-1"
@@ -301,9 +492,16 @@
         <details key="homogenous" value="true"/>
         <details key="strict-containment" value="true"/>
       </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Issue statuses are defined under engineer/[organization](Organization.html)."/>
+      </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="rate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
-        defaultValueLiteral="1"/>
+        defaultValueLiteral="1">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Default engineer rate. Can be customized in capacity."/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="designations" upperBound="-1"
         eType="#//Allocation" changeable="false" derived="true" eOpposite="#//Allocation/engineer">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -320,31 +518,47 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="represents" upperBound="-1"
-        eType="#//Persona" changeable="false" derived="true" eOpposite="#//Persona/representatives"/>
+        eType="#//Persona" changeable="false" derived="true" eOpposite="#//Persona/representatives">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Personas which this engineer represents."/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="messages" upperBound="-1"
-        eType="#//Message" changeable="false" derived="true" eOpposite="#//Message/author"/>
+        eType="#//Message" changeable="false" derived="true" eOpposite="#//Message/author">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Discussion messages authored by this engineer."/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Organization" eSuperTypes="#//Engineer">
     <eAnnotations source="urn:org.nasdanika">
       <details key="icon" value="far fa-building"/>
+      <details key="documentation-reference" value="doc/organization.md"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="engineers" upperBound="-1"
         eType="#//Engineer" containment="true">
       <eAnnotations source="urn:org.nasdanika">
         <details key="icon" value="fas fa-users"/>
       </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Members of this organization."/>
+      </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Module" eSuperTypes="#//EngineeredElement">
     <eAnnotations source="urn:org.nasdanika">
-      <details key="documentation-reference" value="../doc/module.md"/>
+      <details key="documentation-reference" value="doc/module.md"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="modules" upperBound="-1"
-        eType="#//Module" containment="true"/>
+        eType="#//Module" containment="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Sub-modules of this module."/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Product" eSuperTypes="#//Module">
     <eAnnotations source="urn:org.nasdanika">
-      <details key="documentation-reference" value="../doc/product.md"/>
+      <details key="documentation-reference" value="doc/product.md"/>
       <details key="type-code" value="d"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="releases" upperBound="-1"
@@ -353,6 +567,9 @@
         <details key="homogenous" value="true"/>
         <details key="strict-containment" value="true"/>
       </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Product releases."/>
+      </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="features" upperBound="-1"
         eType="#//Feature" containment="true">
@@ -360,11 +577,14 @@
         <details key="homogenous" value="true"/>
         <details key="strict-containment" value="true"/>
       </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Product features."/>
+      </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="activities" upperBound="-1"
         eType="#//Activity" containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Product journeys define how to use a particular product and its features."/>
+        <details key="documentation" value="Activities/[journeys](Journey.html) which demonstrate how to use the product and its features."/>
       </eAnnotations>
       <eAnnotations source="urn:org.nasdanika">
         <details key="homogenous" value="true"/>
@@ -372,51 +592,72 @@
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Capability" eSuperTypes="#//NamedElement">
+    <eAnnotations source="urn:org.nasdanika">
+      <details key="documentation-reference" value="doc/capability.md"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="requiredBy" upperBound="-1"
         eType="#//Issue" changeable="false" derived="true" eOpposite="#//Issue/requires">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Issues requiring this capability."/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="available" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="available" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Indicates that this capability is available and [issues](Issue.html) which require it are workable, unless they have other unavailable requirements."/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EngineeredCapability" eSuperTypes="#//Capability #//Endeavor">
+    <eAnnotations source="urn:org.nasdanika">
+      <details key="documentation-reference" value="doc/engineered-capability.md"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="aligns" upperBound="-1"
         eType="#//Alignment" containment="true">
       <eAnnotations source="urn:org.nasdanika">
         <details key="homogenous" value="true"/>
         <details key="strict-containment" value="true"/>
       </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Engineered capability can be aligned to [aims](Aim.html) such as [persona](Persona.html) [goals](Goal.html) or [principles](Principle.html) to support decision making and prioritization."/>
+      </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Release" eSuperTypes="#//EngineeredCapability">
     <eAnnotations source="urn:org.nasdanika">
-      <details key="documentation-reference" value="../doc/release.md"/>
+      <details key="documentation-reference" value="doc/release.md"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
       <details key="constraints" value="increment"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="increment" eType="#//Increment"
-        eOpposite="#//Increment/releases"/>
+        eOpposite="#//Increment/releases">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Increment for which this release is scheduled."/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="features" upperBound="-1"
         eType="#//Feature" changeable="false" derived="true" eOpposite="#//Feature/releases">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Features made available in this release."/>
+        <details key="documentation" value="Features planned for this release."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="issues" upperBound="-1"
         eType="#//Issue" changeable="false" derived="true" eOpposite="#//Issue/releases">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Issues closed in this release."/>
+        <details key="documentation" value="Issues planned for this release."/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Feature" eSuperTypes="#//EngineeredCapability">
     <eAnnotations source="urn:org.nasdanika">
-      <details key="documentation-reference" value="../doc/feature.md"/>
+      <details key="documentation-reference" value="doc/feature.md"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="releases" upperBound="-1"
-        eType="#//Release" eOpposite="#//Release/features"/>
+        eType="#//Release" eOpposite="#//Release/features">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Releases for which this feature is planned."/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="activities" upperBound="-1"
         eType="#//Activity" derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -432,23 +673,43 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Activity" eSuperTypes="#//EngineeredElement">
     <eAnnotations source="urn:org.nasdanika">
-      <details key="documentation-reference" value="../doc/activity.md"/>
+      <details key="documentation-reference" value="doc/activity.md"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="personas" upperBound="-1"
-        eType="#//Persona" eOpposite="#//Persona/activities"/>
+        eType="#//Persona" eOpposite="#//Persona/activities">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Personas performing this activity."/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="outputs" upperBound="-1"
-        eType="#//Transition" containment="true"/>
+        eType="#//Transition" containment="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Activity outbound transitions to other activities."/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="activityType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Pseudo-activity (stereo)type. One of:&#xA;&#xA;* choice&#xA;* fork&#xA;* join&#xA;* entryPoint&#xA;* exitPoint&#xA;* inputPin&#xA;* outputPin&#xA;* expansionInput&#xA;* expansionOutput&#xA;* end&#xA;&#xA;Pseudo-activities name is not shown on the diagram, they are not clickable, and they are not listed as journey children.&#xA;&#xA;See [PlantUML State Diagram](https://plantuml.com/state-diagram) for more details."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="requirements" upperBound="-1"
-        eType="#//Artifact"/>
+        eType="#//Artifact">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Input artifacts required to start working on this activity."/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="deliverables" upperBound="-1"
-        eType="#//Artifact"/>
+        eType="#//Artifact">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Output artifacts of the activity."/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="calls" upperBound="-1"
-        eType="#//Call" containment="true"/>
+        eType="#//Call" containment="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Calls to other activities."/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="features" upperBound="-1"
         eType="#//Feature">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -458,106 +719,183 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Journey" eSuperTypes="#//Activity">
     <eAnnotations source="urn:org.nasdanika">
-      <details key="documentation-reference" value="../doc/journey.md"/>
+      <details key="documentation-reference" value="doc/journey.md"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="activities" upperBound="-1"
-        eType="#//Activity" containment="true"/>
+        eType="#//Activity" containment="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Journey activities."/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="partition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="If true, journey is visualized as a composite state on its parent journey diagram. If false, it is visualized as a simple state."/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Transition">
+  <eClassifiers xsi:type="ecore:EClass" name="Transition" eSuperTypes="#//NamedElement">
     <eAnnotations source="urn:org.nasdanika">
-      <details key="documentation-reference" value="../doc/transition.md"/>
+      <details key="documentation-reference" value="doc/transition.md"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
         eType="#//Activity">
       <eAnnotations source="urn:org.nasdanika">
         <details key="default-feature" value="true"/>
       </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Transition target activity."/>
+      </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="payload" upperBound="-1"
-        eType="#//Artifact"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+        eType="#//Artifact">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Description in markdown."/>
+        <details key="documentation" value="Artifacts passed from source to target activity."/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Call" eSuperTypes="#//Transition">
+    <eAnnotations source="urn:org.nasdanika">
+      <details key="documentation-reference" value="doc/call.md"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="response" upperBound="-1"
-        eType="#//Artifact"/>
+        eType="#//Artifact">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Response artifacts passed back from the target to the source activity."/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Artifact" eSuperTypes="#//EngineeredElement">
     <eAnnotations source="urn:org.nasdanika">
-      <details key="documentation-reference" value="../doc/artifact.md"/>
+      <details key="documentation-reference" value="doc/artifact.md"/>
     </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Directory" eSuperTypes="#//NamedElement">
+    <eAnnotations source="urn:org.nasdanika">
+      <details key="documentation-reference" value="doc/directory.md"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
-        eType="#//NamedElement" containment="true"/>
+        eType="#//NamedElement" containment="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Directory elements."/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Capacity" eSuperTypes="#//ModelElement">
     <eAnnotations source="urn:org.nasdanika">
       <details key="documentation-reference" value="doc/capacity.md"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="endeavor" lowerBound="1"
-        eType="#//Endeavor" eOpposite="#//Endeavor/capacity"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="effort" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="funds" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+        eType="#//Endeavor" eOpposite="#//Endeavor/capacity">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Endeavor for which containing [engineer](Engineer.html) has this capacity for."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="effort" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="For capacitly - amount of effort which the containing [engineer](Engineer.html) can spend on the capacity's [endeavor](Endeavor.html). For allocation - amount of effort which allocation's engineer can spend on the containing [engineered element](EngineeredElement.html) and, optionally, [issue category](IssueCategory.html)."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="funds" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="For capacitly - monetary amount which the containing [engineer](Engineer.html) can spend on the capacity's [endeavor](Endeavor.html). For allocation - monetary amount which allocation's engineer can spend on the containing [engineered element](EngineeredElement.html) and, optionally, [issue category](IssueCategory.html)."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="For effort capacity, containing [engineer](Engineer.html) rate, if different from the engineer's default rate."/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Allocation" eSuperTypes="#//Capacity">
     <eAnnotations source="urn:org.nasdanika">
       <details key="documentation-reference" value="doc/allocation.md"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="engineer" lowerBound="1"
-        eType="#//Engineer" eOpposite="#//Engineer/designations"/>
+        eType="#//Engineer" eOpposite="#//Engineer/designations">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Engineer whose capacity is allocated to work on the containing [engineered element](EngineeredElement.html)."/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="category" upperBound="-1"
-        eType="#//IssueCategory" eOpposite="#//IssueCategory/allocations"/>
+        eType="#//IssueCategory" eOpposite="#//IssueCategory/allocations">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Optional issue category for this allocation. E.g. a allocation can be made to &quot;Documentation&quot; or &quot;Test coverage&quot; categories."/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Aim" eSuperTypes="#//NamedElement">
+    <eAnnotations source="urn:org.nasdanika">
+      <details key="documentation-reference" value="doc/aim.md"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="alignments" upperBound="-1"
-        eType="#//Alignment" derived="true" eOpposite="#//Alignment/aim"/>
+        eType="#//Alignment" derived="true" eOpposite="#//Alignment/aim">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Alignments to this aim. "/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="aligns" upperBound="-1"
         eType="#//Alignment" containment="true">
       <eAnnotations source="urn:org.nasdanika">
         <details key="homogenous" value="true"/>
         <details key="strict-containment" value="true"/>
       </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Higher level aims to which this aim aligns. E.g. a module level principle may align to organization pirinciples."/>
+      </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Principle" eSuperTypes="#//Aim">
+    <eAnnotations source="urn:org.nasdanika">
+      <details key="documentation-reference" value="doc/principle.md"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
         eType="#//Principle" containment="true">
       <eAnnotations source="urn:org.nasdanika">
         <details key="homogenous" value="true"/>
       </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Principles can be nested. E.g. Architectural Principles may contain Data Architecture principles."/>
+      </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Alignment" eSuperTypes="#//ModelElement">
+    <eAnnotations source="urn:org.nasdanika">
+      <details key="documentation-reference" value="doc/alignment.md"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="aim" eType="#//Aim" eOpposite="#//Aim/alignments">
       <eAnnotations source="urn:org.nasdanika">
         <details key="default-feature" value="true"/>
       </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Aim to which the containing element, e.g. [endeavor](Endeavor.html) aligns."/>
+      </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Goal" eSuperTypes="#//Aim">
+    <eAnnotations source="urn:org.nasdanika">
+      <details key="documentation-reference" value="doc/goal.md"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
         eType="#//Goal" containment="true">
       <eAnnotations source="urn:org.nasdanika">
         <details key="homogenous" value="true"/>
       </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="[Persona](Persona.html) goals can be nested."/>
+      </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Forum" eSuperTypes="#//NamedElement">
+    <eAnnotations source="urn:org.nasdanika">
+      <details key="documentation-reference" value="doc/forum.md"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="discussion" upperBound="-1"
         eType="#//Forum" containment="true">
       <eAnnotations source="urn:org.nasdanika">
         <details key="homogenous" value="true"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Sub-forums."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="topics" upperBound="-1"
@@ -565,18 +903,38 @@
       <eAnnotations source="urn:org.nasdanika">
         <details key="homogenous" value="true"/>
       </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Discussion topics in this forum."/>
+      </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Message" eSuperTypes="#//NamedElement">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="date" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+    <eAnnotations source="urn:org.nasdanika">
+      <details key="documentation-reference" value="doc/message.md"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="date" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Date/time when this message was posted."/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="author" eType="#//Engineer"
-        eOpposite="#//Engineer/messages"/>
+        eOpposite="#//Engineer/messages">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Message author."/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Topic" eSuperTypes="#//Message">
+    <eAnnotations source="urn:org.nasdanika">
+      <details key="documentation-reference" value="doc/topic.md"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="messages" upperBound="-1"
         eType="#//Message" containment="true">
       <eAnnotations source="urn:org.nasdanika">
         <details key="homogenous" value="true"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Messages in this topic."/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>

@@ -28,6 +28,9 @@ public interface Allocation extends Capacity {
 	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Engineer#getDesignations <em>Designations</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Engineer whose capacity is allocated to work on the containing [engineered element](EngineeredElement.html).
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Engineer</em>' reference.
 	 * @see #setEngineer(Engineer)
 	 * @see org.nasdanika.engineering.EngineeringPackage#getAllocation_Engineer()
@@ -53,6 +56,9 @@ public interface Allocation extends Capacity {
 	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.IssueCategory#getAllocations <em>Allocations</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Optional issue category for this allocation. E.g. a allocation can be made to "Documentation" or "Test coverage" categories.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Category</em>' reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getAllocation_Category()
 	 * @see org.nasdanika.engineering.IssueCategory#getAllocations

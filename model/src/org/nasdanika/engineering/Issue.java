@@ -40,6 +40,9 @@ public interface Issue extends EngineeredCapability {
 	 * The list contents are of type {@link org.nasdanika.engineering.Issue}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Issues can be infinitely nested to form a [Work Breakdown Structure](https://en.wikipedia.org/wiki/Work_breakdown_structure).
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Children</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getIssue_Children()
 	 * @model containment="true"
@@ -70,6 +73,9 @@ public interface Issue extends EngineeredCapability {
 	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Increment#getIssues <em>Issues</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Increment for which this issue is directly scheduled. Issue can be scheduled for an increment directly or indirectly via [features](Feature.html) and [releases](Release.html). Release increment can be different from issue incrmenent. E.g. issue can be scheduled for May, but its release might be scheduled for July.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Increment</em>' reference.
 	 * @see #setIncrement(Increment)
 	 * @see org.nasdanika.engineering.EngineeringPackage#getIssue_Increment()
@@ -96,6 +102,9 @@ public interface Issue extends EngineeredCapability {
 	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Feature#getIssues <em>Issues</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Issue can contribute to zero or more features.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Contributes To</em>' reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getIssue_ContributesTo()
 	 * @see org.nasdanika.engineering.Feature#getIssues
@@ -109,6 +118,9 @@ public interface Issue extends EngineeredCapability {
 	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.IssueStatus#getIssues <em>Issues</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Issue status.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Status</em>' reference.
 	 * @see #setStatus(IssueStatus)
 	 * @see org.nasdanika.engineering.EngineeringPackage#getIssue_Status()
@@ -133,6 +145,9 @@ public interface Issue extends EngineeredCapability {
 	 * Returns the value of the '<em><b>Workable</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Issue is workable if it doesn't have any unavailable required capabilities.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Workable</em>' attribute.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getIssue_Workable()
 	 * @model changeable="false" derived="true"
@@ -146,6 +161,9 @@ public interface Issue extends EngineeredCapability {
 	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Release#getIssues <em>Issues</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Issue can be planned for zero or more releases directly. It can be also indirectly planned for releases via contribution to [features](Feature.html).
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Releases</em>' reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getIssue_Releases()
 	 * @see org.nasdanika.engineering.Release#getIssues
@@ -159,6 +177,9 @@ public interface Issue extends EngineeredCapability {
 	 * Returns the value of the '<em><b>Effort</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Effort for this issue.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Effort</em>' attribute.
 	 * @see #setEffort(double)
 	 * @see org.nasdanika.engineering.EngineeringPackage#getIssue_Effort()
@@ -181,6 +202,9 @@ public interface Issue extends EngineeredCapability {
 	 * Returns the value of the '<em><b>Cost</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Monetary cost for this issue, e.g. cost of materials.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Cost</em>' attribute.
 	 * @see #setCost(double)
 	 * @see org.nasdanika.engineering.EngineeringPackage#getIssue_Cost()
@@ -203,6 +227,9 @@ public interface Issue extends EngineeredCapability {
 	 * Returns the value of the '<em><b>Remaining Effort</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Remaining effort is computed from issue effort and [notes](Note.html) effort or remaining effort.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Remaining Effort</em>' attribute.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getIssue_RemainingEffort()
 	 * @model changeable="false" derived="true"
@@ -214,6 +241,9 @@ public interface Issue extends EngineeredCapability {
 	 * Returns the value of the '<em><b>Remaining Cost</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Remaining cost is computed from issue cost and [notes](Note.html) cost or remaining cost.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Remaining Cost</em>' attribute.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getIssue_RemainingCost()
 	 * @model changeable="false" derived="true"
@@ -226,6 +256,9 @@ public interface Issue extends EngineeredCapability {
 	 * The list contents are of type {@link org.nasdanika.engineering.Note}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Issue notes are used for discussion and to record progress, remaining effort, and issue status if it is not set at the issue level. 
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Notes</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getIssue_Notes()
 	 * @model containment="true"
@@ -239,6 +272,9 @@ public interface Issue extends EngineeredCapability {
 	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.IssueCategory#getIssues <em>Issues</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Issue category.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Category</em>' reference.
 	 * @see #setCategory(IssueCategory)
 	 * @see org.nasdanika.engineering.EngineeringPackage#getIssue_Category()
@@ -263,6 +299,9 @@ public interface Issue extends EngineeredCapability {
 	 * Returns the value of the '<em><b>Target</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Target element for this issue - container of the issue itself or the root issue in the issue hierarchy.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Target</em>' reference.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getIssue_Target()
 	 * @model changeable="false" derived="true"

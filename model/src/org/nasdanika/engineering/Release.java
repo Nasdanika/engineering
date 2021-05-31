@@ -19,7 +19,7 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getRelease()
- * @model annotation="urn:org.nasdanika documentation-reference='../doc/release.md'"
+ * @model annotation="urn:org.nasdanika documentation-reference='doc/release.md'"
  *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='increment'"
  * @generated
  */
@@ -29,6 +29,9 @@ public interface Release extends EngineeredCapability {
 	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Increment#getReleases <em>Releases</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Increment for which this release is scheduled.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Increment</em>' reference.
 	 * @see #setIncrement(Increment)
 	 * @see org.nasdanika.engineering.EngineeringPackage#getRelease_Increment()
@@ -55,7 +58,7 @@ public interface Release extends EngineeredCapability {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Issues closed in this release.
+	 * Issues planned for this release.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Issues</em>' reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getRelease_Issues()
@@ -72,7 +75,7 @@ public interface Release extends EngineeredCapability {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Features made available in this release.
+	 * Features planned for this release.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Features</em>' reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getRelease_Features()

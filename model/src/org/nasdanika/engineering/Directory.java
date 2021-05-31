@@ -17,7 +17,7 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getDirectory()
- * @model
+ * @model annotation="urn:org.nasdanika documentation-reference='doc/directory.md'"
  * @generated
  */
 public interface Directory extends NamedElement {
@@ -26,6 +26,9 @@ public interface Directory extends NamedElement {
 	 * The list contents are of type {@link org.nasdanika.engineering.NamedElement}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Directory elements.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Elements</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getDirectory_Elements()
 	 * @model containment="true"

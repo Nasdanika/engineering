@@ -20,7 +20,7 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getFeature()
- * @model annotation="urn:org.nasdanika documentation-reference='../doc/feature.md'"
+ * @model annotation="urn:org.nasdanika documentation-reference='doc/feature.md'"
  * @generated
  */
 public interface Feature extends EngineeredCapability {
@@ -30,6 +30,9 @@ public interface Feature extends EngineeredCapability {
 	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Release#getFeatures <em>Features</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Releases for which this feature is planned.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Releases</em>' reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getFeature_Releases()
 	 * @see org.nasdanika.engineering.Release#getFeatures

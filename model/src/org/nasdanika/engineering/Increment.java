@@ -20,7 +20,7 @@ import org.eclipse.emf.common.util.EList;
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getIncrement()
  * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='nesting'"
- *        annotation="urn:org.nasdanika icon='far fa-calendar-alt'"
+ *        annotation="urn:org.nasdanika icon='far fa-calendar-alt' documentation-reference='doc/increment.md'"
  * @generated
  */
 public interface Increment extends NamedElement, Endeavor {
@@ -29,6 +29,9 @@ public interface Increment extends NamedElement, Endeavor {
 	 * The list contents are of type {@link org.nasdanika.engineering.Increment}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Increment children, e.g. quarters for a year or months for a quarter.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Children</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getIncrement_Children()
 	 * @model containment="true"

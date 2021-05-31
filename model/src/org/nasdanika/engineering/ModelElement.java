@@ -26,7 +26,7 @@ import org.nasdanika.common.Adaptable;
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getModelElement()
  * @model abstract="true" superTypes="org.nasdanika.engineering.Adaptable"
- *        annotation="urn:org.nasdanika documentation-reference='../doc/model-element.md'"
+ *        annotation="urn:org.nasdanika documentation-reference='doc/model-element.md'"
  * @generated
  */
 public interface ModelElement extends EObject, Adaptable {
@@ -35,7 +35,7 @@ public interface ModelElement extends EObject, Adaptable {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Element's unique ID. Derived from element type and containment path (parent ID).
+	 * Element's URI is derived from ``path``, container URI, and containment reference. URI is used for cross-referencing of elements.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Uri</em>' attribute.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getModelElement_Uri()
@@ -49,7 +49,7 @@ public interface ModelElement extends EObject, Adaptable {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Element's path to form full element URL. Shall be unique in the containing collection. If blank, derived from element's position in the collection or from the local ID. For named elements can be derived from element name.
+	 * Element's path to form full element URI and URL. Shall be unique in the containing collection. If blank, derived from element's position in the collection. For named elements is derived from element name.
 	 * Element URL is formed by adding ``.html`` extension to the path if the model element's EClass doesn't have containment references and as such the element may not have children, and by adding ``/index.html`` otherwise.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Path</em>' attribute.
@@ -100,7 +100,7 @@ public interface ModelElement extends EObject, Adaptable {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Description in markdown.
+	 * Description in [Markdown](https://en.wikipedia.org/wiki/Markdown).
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Markdown Description</em>' attribute.
 	 * @see #setMarkdownDescription(String)
@@ -125,6 +125,9 @@ public interface ModelElement extends EObject, Adaptable {
 	 * The list contents are of type {@link org.eclipse.emf.ecore.EObject}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * HTML actions to be mounted under the element action in generated site.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Actions</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getModelElement_Actions()
 	 * @model containment="true"
@@ -137,6 +140,9 @@ public interface ModelElement extends EObject, Adaptable {
 	 * The list contents are of type {@link org.nasdanika.engineering.NamedElement}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Resources associated with the element, e.g. documentation.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Resources</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getModelElement_Resources()
 	 * @model containment="true"

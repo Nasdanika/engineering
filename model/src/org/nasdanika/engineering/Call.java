@@ -17,7 +17,7 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getCall()
- * @model
+ * @model annotation="urn:org.nasdanika documentation-reference='doc/call.md'"
  * @generated
  */
 public interface Call extends Transition {
@@ -26,6 +26,9 @@ public interface Call extends Transition {
 	 * The list contents are of type {@link org.nasdanika.engineering.Artifact}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Response artifacts passed back from the target to the source activity.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Response</em>' reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getCall_Response()
 	 * @model
