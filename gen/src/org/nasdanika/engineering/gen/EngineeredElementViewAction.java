@@ -33,7 +33,7 @@ import org.nasdanika.html.bootstrap.Table;
 import org.nasdanika.html.emf.EStructuralFeatureViewActionImpl;
 import org.nasdanika.html.emf.ViewAction;
 
-public class EngineeredElementViewAction<T extends EngineeredElement> extends NamedElementViewAction<T> {
+public class EngineeredElementViewAction<T extends EngineeredElement> extends ForumViewAction<T> {
 	
 	protected EngineeredElementViewAction(T value, EngineeringViewActionAdapterFactory factory) {
 		super(value, factory);
@@ -202,6 +202,11 @@ public class EngineeredElementViewAction<T extends EngineeredElement> extends Na
 		}
 
 		return super.featureActions(feature);
+	}
+
+	@Override
+	public boolean isInRole(String role) {
+		return Action.Role.NAVIGATION.equals(role);
 	}
 		
 }

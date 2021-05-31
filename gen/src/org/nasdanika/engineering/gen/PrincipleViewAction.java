@@ -11,7 +11,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.engineering.EngineeringPackage;
-import org.nasdanika.engineering.Goal;
 import org.nasdanika.engineering.Principle;
 import org.nasdanika.html.OrderedListType;
 import org.nasdanika.html.app.Action;

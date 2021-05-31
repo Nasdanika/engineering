@@ -1665,13 +1665,103 @@ public interface EngineeringPackage extends EPackage {
 	int NOTE_OPERATION_COUNT = MODEL_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.ArtifactImpl <em>Artifact</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.ArtifactImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getArtifact()
+	 * @generated
+	 */
+	int ARTIFACT = 23;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.DirectoryImpl <em>Directory</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.DirectoryImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getDirectory()
+	 * @generated
+	 */
+	int DIRECTORY = 24;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.CapacityImpl <em>Capacity</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.CapacityImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getCapacity()
+	 * @generated
+	 */
+	int CAPACITY = 25;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.AllocationImpl <em>Allocation</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.AllocationImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getAllocation()
+	 * @generated
+	 */
+	int ALLOCATION = 26;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.AimImpl <em>Aim</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.AimImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getAim()
+	 * @generated
+	 */
+	int AIM = 27;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.PrincipleImpl <em>Principle</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.PrincipleImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getPrinciple()
+	 * @generated
+	 */
+	int PRINCIPLE = 28;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.AlignmentImpl <em>Alignment</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.AlignmentImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getAlignment()
+	 * @generated
+	 */
+	int ALIGNMENT = 29;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.GoalImpl <em>Goal</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.GoalImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getGoal()
+	 * @generated
+	 */
+	int GOAL = 30;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.ForumImpl <em>Forum</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.ForumImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getForum()
+	 * @generated
+	 */
+	int FORUM = 31;
+
+	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEERED_ELEMENT__URI = NAMED_ELEMENT__URI;
+	int FORUM__URI = NAMED_ELEMENT__URI;
 
 	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
@@ -1680,7 +1770,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEERED_ELEMENT__PATH = NAMED_ELEMENT__PATH;
+	int FORUM__PATH = NAMED_ELEMENT__PATH;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -1689,7 +1779,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEERED_ELEMENT__DESCRIPTION = NAMED_ELEMENT__DESCRIPTION;
+	int FORUM__DESCRIPTION = NAMED_ELEMENT__DESCRIPTION;
 
 	/**
 	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
@@ -1698,7 +1788,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEERED_ELEMENT__MARKDOWN_DESCRIPTION = NAMED_ELEMENT__MARKDOWN_DESCRIPTION;
+	int FORUM__MARKDOWN_DESCRIPTION = NAMED_ELEMENT__MARKDOWN_DESCRIPTION;
 
 	/**
 	 * The feature id for the '<em><b>Actions</b></em>' containment reference list.
@@ -1707,7 +1797,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEERED_ELEMENT__ACTIONS = NAMED_ELEMENT__ACTIONS;
+	int FORUM__ACTIONS = NAMED_ELEMENT__ACTIONS;
 
 	/**
 	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
@@ -1716,7 +1806,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEERED_ELEMENT__RESOURCES = NAMED_ELEMENT__RESOURCES;
+	int FORUM__RESOURCES = NAMED_ELEMENT__RESOURCES;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1725,7 +1815,124 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEERED_ELEMENT__NAME = NAMED_ELEMENT__NAME;
+	int FORUM__NAME = NAMED_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Discussion</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORUM__DISCUSSION = NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Topics</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORUM__TOPICS = NAMED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Forum</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORUM_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Forum</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORUM_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Uri</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEERED_ELEMENT__URI = FORUM__URI;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEERED_ELEMENT__PATH = FORUM__PATH;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEERED_ELEMENT__DESCRIPTION = FORUM__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEERED_ELEMENT__MARKDOWN_DESCRIPTION = FORUM__MARKDOWN_DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Actions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEERED_ELEMENT__ACTIONS = FORUM__ACTIONS;
+
+	/**
+	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEERED_ELEMENT__RESOURCES = FORUM__RESOURCES;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEERED_ELEMENT__NAME = FORUM__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Discussion</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEERED_ELEMENT__DISCUSSION = FORUM__DISCUSSION;
+
+	/**
+	 * The feature id for the '<em><b>Topics</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEERED_ELEMENT__TOPICS = FORUM__TOPICS;
 
 	/**
 	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
@@ -1734,7 +1941,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEERED_ELEMENT__ISSUES = NAMED_ELEMENT_FEATURE_COUNT + 0;
+	int ENGINEERED_ELEMENT__ISSUES = FORUM_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Owners</b></em>' reference list.
@@ -1743,7 +1950,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEERED_ELEMENT__OWNERS = NAMED_ELEMENT_FEATURE_COUNT + 1;
+	int ENGINEERED_ELEMENT__OWNERS = FORUM_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Experts</b></em>' reference list.
@@ -1752,7 +1959,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEERED_ELEMENT__EXPERTS = NAMED_ELEMENT_FEATURE_COUNT + 2;
+	int ENGINEERED_ELEMENT__EXPERTS = FORUM_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Allocations</b></em>' containment reference list.
@@ -1761,7 +1968,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEERED_ELEMENT__ALLOCATIONS = NAMED_ELEMENT_FEATURE_COUNT + 3;
+	int ENGINEERED_ELEMENT__ALLOCATIONS = FORUM_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Principles</b></em>' containment reference list.
@@ -1770,7 +1977,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEERED_ELEMENT__PRINCIPLES = NAMED_ELEMENT_FEATURE_COUNT + 4;
+	int ENGINEERED_ELEMENT__PRINCIPLES = FORUM_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>Engineered Element</em>' class.
@@ -1779,7 +1986,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEERED_ELEMENT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 5;
+	int ENGINEERED_ELEMENT_FEATURE_COUNT = FORUM_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of operations of the '<em>Engineered Element</em>' class.
@@ -1788,7 +1995,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEERED_ELEMENT_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
+	int ENGINEERED_ELEMENT_OPERATION_COUNT = FORUM_OPERATION_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -1852,6 +2059,24 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int PERSONA__NAME = ENGINEERED_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Discussion</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSONA__DISCUSSION = ENGINEERED_ELEMENT__DISCUSSION;
+
+	/**
+	 * The feature id for the '<em><b>Topics</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSONA__TOPICS = ENGINEERED_ELEMENT__TOPICS;
 
 	/**
 	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
@@ -2023,6 +2248,24 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int ENGINEER__NAME = PERSONA__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Discussion</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEER__DISCUSSION = PERSONA__DISCUSSION;
+
+	/**
+	 * The feature id for the '<em><b>Topics</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEER__TOPICS = PERSONA__TOPICS;
 
 	/**
 	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
@@ -2232,13 +2475,22 @@ public interface EngineeringPackage extends EPackage {
 	int ENGINEER__REPRESENTS = PERSONA_FEATURE_COUNT + 12;
 
 	/**
+	 * The feature id for the '<em><b>Messages</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEER__MESSAGES = PERSONA_FEATURE_COUNT + 13;
+
+	/**
 	 * The number of structural features of the '<em>Engineer</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEER_FEATURE_COUNT = PERSONA_FEATURE_COUNT + 13;
+	int ENGINEER_FEATURE_COUNT = PERSONA_FEATURE_COUNT + 14;
 
 	/**
 	 * The number of operations of the '<em>Engineer</em>' class.
@@ -2311,6 +2563,24 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int ORGANIZATION__NAME = ENGINEER__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Discussion</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANIZATION__DISCUSSION = ENGINEER__DISCUSSION;
+
+	/**
+	 * The feature id for the '<em><b>Topics</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANIZATION__TOPICS = ENGINEER__TOPICS;
 
 	/**
 	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
@@ -2520,6 +2790,15 @@ public interface EngineeringPackage extends EPackage {
 	int ORGANIZATION__REPRESENTS = ENGINEER__REPRESENTS;
 
 	/**
+	 * The feature id for the '<em><b>Messages</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANIZATION__MESSAGES = ENGINEER__MESSAGES;
+
+	/**
 	 * The feature id for the '<em><b>Engineers</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2608,6 +2887,24 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int MODULE__NAME = ENGINEERED_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Discussion</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODULE__DISCUSSION = ENGINEERED_ELEMENT__DISCUSSION;
+
+	/**
+	 * The feature id for the '<em><b>Topics</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODULE__TOPICS = ENGINEERED_ELEMENT__TOPICS;
 
 	/**
 	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
@@ -2743,6 +3040,24 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int PRODUCT__NAME = MODULE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Discussion</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT__DISCUSSION = MODULE__DISCUSSION;
+
+	/**
+	 * The feature id for the '<em><b>Topics</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT__TOPICS = MODULE__TOPICS;
 
 	/**
 	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
@@ -3321,6 +3636,24 @@ public interface EngineeringPackage extends EPackage {
 	int ACTIVITY__NAME = ENGINEERED_ELEMENT__NAME;
 
 	/**
+	 * The feature id for the '<em><b>Discussion</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__DISCUSSION = ENGINEERED_ELEMENT__DISCUSSION;
+
+	/**
+	 * The feature id for the '<em><b>Topics</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__TOPICS = ENGINEERED_ELEMENT__TOPICS;
+
+	/**
 	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3508,6 +3841,24 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int JOURNEY__NAME = ACTIVITY__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Discussion</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY__DISCUSSION = ACTIVITY__DISCUSSION;
+
+	/**
+	 * The feature id for the '<em><b>Topics</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY__TOPICS = ACTIVITY__TOPICS;
 
 	/**
 	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
@@ -3771,16 +4122,6 @@ public interface EngineeringPackage extends EPackage {
 	int CALL_OPERATION_COUNT = TRANSITION_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.ArtifactImpl <em>Artifact</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.ArtifactImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getArtifact()
-	 * @generated
-	 */
-	int ARTIFACT = 23;
-
-	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3844,6 +4185,24 @@ public interface EngineeringPackage extends EPackage {
 	int ARTIFACT__NAME = ENGINEERED_ELEMENT__NAME;
 
 	/**
+	 * The feature id for the '<em><b>Discussion</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ARTIFACT__DISCUSSION = ENGINEERED_ELEMENT__DISCUSSION;
+
+	/**
+	 * The feature id for the '<em><b>Topics</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ARTIFACT__TOPICS = ENGINEERED_ELEMENT__TOPICS;
+
+	/**
 	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3905,16 +4264,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int ARTIFACT_OPERATION_COUNT = ENGINEERED_ELEMENT_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.DirectoryImpl <em>Directory</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.DirectoryImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getDirectory()
-	 * @generated
-	 */
-	int DIRECTORY = 24;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -4005,17 +4354,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int DIRECTORY_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
-
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.CapacityImpl <em>Capacity</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.CapacityImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getCapacity()
-	 * @generated
-	 */
-	int CAPACITY = 25;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -4124,16 +4462,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int CAPACITY_OPERATION_COUNT = MODEL_ELEMENT_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.AllocationImpl <em>Allocation</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.AllocationImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getAllocation()
-	 * @generated
-	 */
-	int ALLOCATION = 26;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -4261,17 +4589,6 @@ public interface EngineeringPackage extends EPackage {
 	 */
 	int ALLOCATION_OPERATION_COUNT = CAPACITY_OPERATION_COUNT + 0;
 
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.AimImpl <em>Aim</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.AimImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getAim()
-	 * @generated
-	 */
-	int AIM = 27;
-
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -4370,16 +4687,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int AIM_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.PrincipleImpl <em>Principle</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.PrincipleImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getPrinciple()
-	 * @generated
-	 */
-	int PRINCIPLE = 28;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -4490,16 +4797,6 @@ public interface EngineeringPackage extends EPackage {
 	int PRINCIPLE_OPERATION_COUNT = AIM_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.AlignmentImpl <em>Alignment</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.AlignmentImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getAlignment()
-	 * @generated
-	 */
-	int ALIGNMENT = 29;
-
-	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4579,16 +4876,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int ALIGNMENT_OPERATION_COUNT = MODEL_ELEMENT_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.GoalImpl <em>Goal</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.GoalImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getGoal()
-	 * @generated
-	 */
-	int GOAL = 30;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -4697,6 +4984,233 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int GOAL_OPERATION_COUNT = AIM_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.TopicImpl <em>Topic</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.TopicImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getTopic()
+	 * @generated
+	 */
+	int TOPIC = 33;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.MessageImpl <em>Message</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.MessageImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getMessage()
+	 * @generated
+	 */
+	int MESSAGE = 32;
+
+	/**
+	 * The feature id for the '<em><b>Uri</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE__URI = NAMED_ELEMENT__URI;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE__PATH = NAMED_ELEMENT__PATH;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE__DESCRIPTION = NAMED_ELEMENT__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE__MARKDOWN_DESCRIPTION = NAMED_ELEMENT__MARKDOWN_DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Actions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE__ACTIONS = NAMED_ELEMENT__ACTIONS;
+
+	/**
+	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE__RESOURCES = NAMED_ELEMENT__RESOURCES;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE__NAME = NAMED_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Date</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE__DATE = NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Author</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE__AUTHOR = NAMED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Message</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Message</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Uri</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TOPIC__URI = MESSAGE__URI;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TOPIC__PATH = MESSAGE__PATH;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TOPIC__DESCRIPTION = MESSAGE__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TOPIC__MARKDOWN_DESCRIPTION = MESSAGE__MARKDOWN_DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Actions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TOPIC__ACTIONS = MESSAGE__ACTIONS;
+
+	/**
+	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TOPIC__RESOURCES = MESSAGE__RESOURCES;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TOPIC__NAME = MESSAGE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Date</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TOPIC__DATE = MESSAGE__DATE;
+
+	/**
+	 * The feature id for the '<em><b>Author</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TOPIC__AUTHOR = MESSAGE__AUTHOR;
+
+	/**
+	 * The feature id for the '<em><b>Messages</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TOPIC__MESSAGES = MESSAGE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Topic</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TOPIC_FEATURE_COUNT = MESSAGE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Topic</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TOPIC_OPERATION_COUNT = MESSAGE_OPERATION_COUNT + 0;
 
 
 	/**
@@ -5187,6 +5701,17 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getEngineer_Represents();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.Engineer#getMessages <em>Messages</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Messages</em>'.
+	 * @see org.nasdanika.engineering.Engineer#getMessages()
+	 * @see #getEngineer()
+	 * @generated
+	 */
+	EReference getEngineer_Messages();
 
 	/**
 	 * Returns the meta object for class '{@link org.nasdanika.engineering.Organization <em>Organization</em>}'.
@@ -6199,6 +6724,91 @@ public interface EngineeringPackage extends EPackage {
 	EReference getGoal_Children();
 
 	/**
+	 * Returns the meta object for class '{@link org.nasdanika.engineering.Forum <em>Forum</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Forum</em>'.
+	 * @see org.nasdanika.engineering.Forum
+	 * @generated
+	 */
+	EClass getForum();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.nasdanika.engineering.Forum#getDiscussion <em>Discussion</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Discussion</em>'.
+	 * @see org.nasdanika.engineering.Forum#getDiscussion()
+	 * @see #getForum()
+	 * @generated
+	 */
+	EReference getForum_Discussion();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.nasdanika.engineering.Forum#getTopics <em>Topics</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Topics</em>'.
+	 * @see org.nasdanika.engineering.Forum#getTopics()
+	 * @see #getForum()
+	 * @generated
+	 */
+	EReference getForum_Topics();
+
+	/**
+	 * Returns the meta object for class '{@link org.nasdanika.engineering.Topic <em>Topic</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Topic</em>'.
+	 * @see org.nasdanika.engineering.Topic
+	 * @generated
+	 */
+	EClass getTopic();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.nasdanika.engineering.Topic#getMessages <em>Messages</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Messages</em>'.
+	 * @see org.nasdanika.engineering.Topic#getMessages()
+	 * @see #getTopic()
+	 * @generated
+	 */
+	EReference getTopic_Messages();
+
+	/**
+	 * Returns the meta object for class '{@link org.nasdanika.engineering.Message <em>Message</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Message</em>'.
+	 * @see org.nasdanika.engineering.Message
+	 * @generated
+	 */
+	EClass getMessage();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Message#getDate <em>Date</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Date</em>'.
+	 * @see org.nasdanika.engineering.Message#getDate()
+	 * @see #getMessage()
+	 * @generated
+	 */
+	EAttribute getMessage_Date();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.nasdanika.engineering.Message#getAuthor <em>Author</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Author</em>'.
+	 * @see org.nasdanika.engineering.Message#getAuthor()
+	 * @see #getMessage()
+	 * @generated
+	 */
+	EReference getMessage_Author();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6594,6 +7204,14 @@ public interface EngineeringPackage extends EPackage {
 		 * @generated
 		 */
 		EReference ENGINEER__REPRESENTS = eINSTANCE.getEngineer_Represents();
+
+		/**
+		 * The meta object literal for the '<em><b>Messages</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ENGINEER__MESSAGES = eINSTANCE.getEngineer_Messages();
 
 		/**
 		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.OrganizationImpl <em>Organization</em>}' class.
@@ -7394,6 +8012,76 @@ public interface EngineeringPackage extends EPackage {
 		 * @generated
 		 */
 		EReference GOAL__CHILDREN = eINSTANCE.getGoal_Children();
+
+		/**
+		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.ForumImpl <em>Forum</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.engineering.impl.ForumImpl
+		 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getForum()
+		 * @generated
+		 */
+		EClass FORUM = eINSTANCE.getForum();
+
+		/**
+		 * The meta object literal for the '<em><b>Discussion</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference FORUM__DISCUSSION = eINSTANCE.getForum_Discussion();
+
+		/**
+		 * The meta object literal for the '<em><b>Topics</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference FORUM__TOPICS = eINSTANCE.getForum_Topics();
+
+		/**
+		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.TopicImpl <em>Topic</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.engineering.impl.TopicImpl
+		 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getTopic()
+		 * @generated
+		 */
+		EClass TOPIC = eINSTANCE.getTopic();
+
+		/**
+		 * The meta object literal for the '<em><b>Messages</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TOPIC__MESSAGES = eINSTANCE.getTopic_Messages();
+
+		/**
+		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.MessageImpl <em>Message</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.engineering.impl.MessageImpl
+		 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getMessage()
+		 * @generated
+		 */
+		EClass MESSAGE = eINSTANCE.getMessage();
+
+		/**
+		 * The meta object literal for the '<em><b>Date</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MESSAGE__DATE = eINSTANCE.getMessage_Date();
+
+		/**
+		 * The meta object literal for the '<em><b>Author</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MESSAGE__AUTHOR = eINSTANCE.getMessage_Author();
 
 	}
 

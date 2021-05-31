@@ -27,12 +27,14 @@ import org.nasdanika.engineering.EngineeredCapability;
 import org.nasdanika.engineering.EngineeredElement;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Feature;
+import org.nasdanika.engineering.Forum;
 import org.nasdanika.engineering.Goal;
 import org.nasdanika.engineering.Increment;
 import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.IssueCategory;
 import org.nasdanika.engineering.IssueStatus;
 import org.nasdanika.engineering.Journey;
+import org.nasdanika.engineering.Message;
 import org.nasdanika.engineering.ModelElement;
 import org.nasdanika.engineering.NamedElement;
 import org.nasdanika.engineering.Note;
@@ -41,6 +43,7 @@ import org.nasdanika.engineering.Persona;
 import org.nasdanika.engineering.Principle;
 import org.nasdanika.engineering.Product;
 import org.nasdanika.engineering.Release;
+import org.nasdanika.engineering.Topic;
 import org.nasdanika.engineering.Transition;
 
 /**
@@ -177,6 +180,12 @@ public class EngineeringValidator extends EObjectValidator {
 				return validateAlignment((Alignment)value, diagnostics, context);
 			case EngineeringPackage.GOAL:
 				return validateGoal((Goal)value, diagnostics, context);
+			case EngineeringPackage.FORUM:
+				return validateForum((Forum)value, diagnostics, context);
+			case EngineeringPackage.MESSAGE:
+				return validateMessage((Message)value, diagnostics, context);
+			case EngineeringPackage.TOPIC:
+				return validateTopic((Topic)value, diagnostics, context);
 			default:
 				return true;
 		}
@@ -829,6 +838,33 @@ public class EngineeringValidator extends EObjectValidator {
 	 */
 	public boolean validateGoal(Goal goal, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(goal, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateForum(Forum forum, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(forum, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateTopic(Topic topic, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(topic, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateMessage(Message message, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(message, diagnostics, context);
 	}
 
 	/**

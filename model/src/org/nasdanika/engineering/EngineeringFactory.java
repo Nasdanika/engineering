@@ -265,6 +265,33 @@ public interface EngineeringFactory extends EFactory {
 	Goal createGoal();
 
 	/**
+	 * Returns a new object of class '<em>Forum</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Forum</em>'.
+	 * @generated
+	 */
+	Forum createForum();
+
+	/**
+	 * Returns a new object of class '<em>Topic</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Topic</em>'.
+	 * @generated
+	 */
+	Topic createTopic();
+
+	/**
+	 * Returns a new object of class '<em>Message</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Message</em>'.
+	 * @generated
+	 */
+	Message createMessage();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

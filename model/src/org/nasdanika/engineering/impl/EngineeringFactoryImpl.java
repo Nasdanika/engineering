@@ -25,18 +25,21 @@ import org.nasdanika.engineering.EngineeredCapability;
 import org.nasdanika.engineering.EngineeringFactory;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Feature;
+import org.nasdanika.engineering.Forum;
 import org.nasdanika.engineering.Goal;
 import org.nasdanika.engineering.Increment;
 import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.IssueCategory;
 import org.nasdanika.engineering.IssueStatus;
 import org.nasdanika.engineering.Journey;
+import org.nasdanika.engineering.Message;
 import org.nasdanika.engineering.Note;
 import org.nasdanika.engineering.Organization;
 import org.nasdanika.engineering.Persona;
 import org.nasdanika.engineering.Principle;
 import org.nasdanika.engineering.Product;
 import org.nasdanika.engineering.Release;
+import org.nasdanika.engineering.Topic;
 import org.nasdanika.engineering.Transition;
 
 /**
@@ -110,6 +113,9 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 			case EngineeringPackage.PRINCIPLE: return createPrinciple();
 			case EngineeringPackage.ALIGNMENT: return createAlignment();
 			case EngineeringPackage.GOAL: return createGoal();
+			case EngineeringPackage.FORUM: return createForum();
+			case EngineeringPackage.MESSAGE: return createMessage();
+			case EngineeringPackage.TOPIC: return createTopic();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -410,6 +416,39 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 	public Goal createGoal() {
 		GoalImpl goal = new GoalImpl();
 		return goal;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Forum createForum() {
+		ForumImpl forum = new ForumImpl();
+		return forum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Topic createTopic() {
+		TopicImpl topic = new TopicImpl();
+		return topic;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Message createMessage() {
+		MessageImpl message = new MessageImpl();
+		return message;
 	}
 
 	/**

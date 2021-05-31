@@ -26,6 +26,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.nasdanika.engineering.Engineer#getDesignations <em>Designations</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Engineer#getCapacity <em>Capacity</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Engineer#getRepresents <em>Represents</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.Engineer#getMessages <em>Messages</em>}</li>
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getEngineer()
@@ -221,5 +222,19 @@ public interface Engineer extends Persona {
 	 * @generated
 	 */
 	EList<Persona> getRepresents();
+
+	/**
+	 * Returns the value of the '<em><b>Messages</b></em>' reference list.
+	 * The list contents are of type {@link org.nasdanika.engineering.Message}.
+	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Message#getAuthor <em>Author</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Messages</em>' reference list.
+	 * @see org.nasdanika.engineering.EngineeringPackage#getEngineer_Messages()
+	 * @see org.nasdanika.engineering.Message#getAuthor
+	 * @model opposite="author" changeable="false" derived="true"
+	 * @generated
+	 */
+	EList<Message> getMessages();
 
 } // Engineer

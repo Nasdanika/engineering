@@ -157,6 +157,9 @@ public class EngineerViewAction<T extends Engineer> extends PersonaViewAction<T>
 		if (feature == EngineeringPackage.Literals.ENGINEER__DESIGNATIONS) {
 			return false;
 		}
+		if (feature == EngineeringPackage.Literals.ENGINEER__MESSAGES) {
+			return false;
+		}
 		if (feature == EngineeringPackage.Literals.ENGINEER__PERSONAS) {
 			return role == FeatureRole.FEATURE_ACTIONS || role == FeatureRole.ELEMENT_ACTIONS;
 		}

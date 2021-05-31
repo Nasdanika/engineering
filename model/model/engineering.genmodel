@@ -98,6 +98,7 @@
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference engineering.ecore#//Engineer/designations"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//Engineer/capacity"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference engineering.ecore#//Engineer/represents"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference engineering.ecore#//Engineer/messages"/>
     </genClasses>
     <genClasses ecoreClass="engineering.ecore#//Organization">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//Organization/engineers"/>
@@ -175,6 +176,17 @@
     </genClasses>
     <genClasses ecoreClass="engineering.ecore#//Goal">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//Goal/children"/>
+    </genClasses>
+    <genClasses ecoreClass="engineering.ecore#//Forum">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//Forum/discussion"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//Forum/topics"/>
+    </genClasses>
+    <genClasses ecoreClass="engineering.ecore#//Message">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Message/date"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//Message/author"/>
+    </genClasses>
+    <genClasses ecoreClass="engineering.ecore#//Topic">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//Topic/messages"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

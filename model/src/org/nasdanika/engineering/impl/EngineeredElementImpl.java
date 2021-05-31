@@ -35,7 +35,7 @@ import org.nasdanika.engineering.Principle;
  *
  * @generated
  */
-public abstract class EngineeredElementImpl extends NamedElementImpl implements EngineeredElement {
+public abstract class EngineeredElementImpl extends ForumImpl implements EngineeredElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

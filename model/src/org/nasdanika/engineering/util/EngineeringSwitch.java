@@ -24,12 +24,14 @@ import org.nasdanika.engineering.EngineeredCapability;
 import org.nasdanika.engineering.EngineeredElement;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Feature;
+import org.nasdanika.engineering.Forum;
 import org.nasdanika.engineering.Goal;
 import org.nasdanika.engineering.Increment;
 import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.IssueCategory;
 import org.nasdanika.engineering.IssueStatus;
 import org.nasdanika.engineering.Journey;
+import org.nasdanika.engineering.Message;
 import org.nasdanika.engineering.ModelElement;
 import org.nasdanika.engineering.NamedElement;
 import org.nasdanika.engineering.Note;
@@ -38,6 +40,7 @@ import org.nasdanika.engineering.Persona;
 import org.nasdanika.engineering.Principle;
 import org.nasdanika.engineering.Product;
 import org.nasdanika.engineering.Release;
+import org.nasdanika.engineering.Topic;
 import org.nasdanika.engineering.Transition;
 
 /**
@@ -175,6 +178,7 @@ public class EngineeringSwitch<T> extends Switch<T> {
 			case EngineeringPackage.ENGINEERED_ELEMENT: {
 				EngineeredElement engineeredElement = (EngineeredElement)theEObject;
 				T result = caseEngineeredElement(engineeredElement);
+				if (result == null) result = caseForum(engineeredElement);
 				if (result == null) result = caseNamedElement(engineeredElement);
 				if (result == null) result = caseModelElement(engineeredElement);
 				if (result == null) result = caseAdaptable(engineeredElement);
@@ -185,6 +189,7 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				Persona persona = (Persona)theEObject;
 				T result = casePersona(persona);
 				if (result == null) result = caseEngineeredElement(persona);
+				if (result == null) result = caseForum(persona);
 				if (result == null) result = caseNamedElement(persona);
 				if (result == null) result = caseModelElement(persona);
 				if (result == null) result = caseAdaptable(persona);
@@ -196,6 +201,7 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				T result = caseEngineer(engineer);
 				if (result == null) result = casePersona(engineer);
 				if (result == null) result = caseEngineeredElement(engineer);
+				if (result == null) result = caseForum(engineer);
 				if (result == null) result = caseNamedElement(engineer);
 				if (result == null) result = caseModelElement(engineer);
 				if (result == null) result = caseAdaptable(engineer);
@@ -208,6 +214,7 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				if (result == null) result = caseEngineer(organization);
 				if (result == null) result = casePersona(organization);
 				if (result == null) result = caseEngineeredElement(organization);
+				if (result == null) result = caseForum(organization);
 				if (result == null) result = caseNamedElement(organization);
 				if (result == null) result = caseModelElement(organization);
 				if (result == null) result = caseAdaptable(organization);
@@ -218,6 +225,7 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				org.nasdanika.engineering.Module module = (org.nasdanika.engineering.Module)theEObject;
 				T result = caseModule(module);
 				if (result == null) result = caseEngineeredElement(module);
+				if (result == null) result = caseForum(module);
 				if (result == null) result = caseNamedElement(module);
 				if (result == null) result = caseModelElement(module);
 				if (result == null) result = caseAdaptable(module);
@@ -229,6 +237,7 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				T result = caseProduct(product);
 				if (result == null) result = caseModule(product);
 				if (result == null) result = caseEngineeredElement(product);
+				if (result == null) result = caseForum(product);
 				if (result == null) result = caseNamedElement(product);
 				if (result == null) result = caseModelElement(product);
 				if (result == null) result = caseAdaptable(product);
@@ -283,6 +292,7 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				Activity activity = (Activity)theEObject;
 				T result = caseActivity(activity);
 				if (result == null) result = caseEngineeredElement(activity);
+				if (result == null) result = caseForum(activity);
 				if (result == null) result = caseNamedElement(activity);
 				if (result == null) result = caseModelElement(activity);
 				if (result == null) result = caseAdaptable(activity);
@@ -294,6 +304,7 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				T result = caseJourney(journey);
 				if (result == null) result = caseActivity(journey);
 				if (result == null) result = caseEngineeredElement(journey);
+				if (result == null) result = caseForum(journey);
 				if (result == null) result = caseNamedElement(journey);
 				if (result == null) result = caseModelElement(journey);
 				if (result == null) result = caseAdaptable(journey);
@@ -317,6 +328,7 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				Artifact artifact = (Artifact)theEObject;
 				T result = caseArtifact(artifact);
 				if (result == null) result = caseEngineeredElement(artifact);
+				if (result == null) result = caseForum(artifact);
 				if (result == null) result = caseNamedElement(artifact);
 				if (result == null) result = caseModelElement(artifact);
 				if (result == null) result = caseAdaptable(artifact);
@@ -383,6 +395,34 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				if (result == null) result = caseNamedElement(goal);
 				if (result == null) result = caseModelElement(goal);
 				if (result == null) result = caseAdaptable(goal);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EngineeringPackage.FORUM: {
+				Forum forum = (Forum)theEObject;
+				T result = caseForum(forum);
+				if (result == null) result = caseNamedElement(forum);
+				if (result == null) result = caseModelElement(forum);
+				if (result == null) result = caseAdaptable(forum);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EngineeringPackage.MESSAGE: {
+				Message message = (Message)theEObject;
+				T result = caseMessage(message);
+				if (result == null) result = caseNamedElement(message);
+				if (result == null) result = caseModelElement(message);
+				if (result == null) result = caseAdaptable(message);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EngineeringPackage.TOPIC: {
+				Topic topic = (Topic)theEObject;
+				T result = caseTopic(topic);
+				if (result == null) result = caseMessage(topic);
+				if (result == null) result = caseNamedElement(topic);
+				if (result == null) result = caseModelElement(topic);
+				if (result == null) result = caseAdaptable(topic);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -852,6 +892,51 @@ public class EngineeringSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseGoal(Goal object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Forum</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Forum</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseForum(Forum object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Topic</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Topic</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTopic(Topic object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Message</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Message</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseMessage(Message object) {
 		return null;
 	}
 

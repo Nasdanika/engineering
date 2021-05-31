@@ -12,6 +12,7 @@ import org.nasdanika.emf.InstanceAdapterFactory;
 import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Feature;
+import org.nasdanika.engineering.Forum;
 import org.nasdanika.engineering.Goal;
 import org.nasdanika.engineering.Increment;
 import org.nasdanika.engineering.Issue;
@@ -22,6 +23,7 @@ import org.nasdanika.engineering.Persona;
 import org.nasdanika.engineering.Principle;
 import org.nasdanika.engineering.Product;
 import org.nasdanika.engineering.Release;
+import org.nasdanika.engineering.Topic;
 import org.nasdanika.html.app.Action;
 import org.nasdanika.html.emf.ViewAction;
 
@@ -135,6 +137,20 @@ public class EngineeringViewActionAdapterFactory extends ComposedAdapterFactory 
 				getViewActionClass(), 
 				this.getClass().getClassLoader(), 
 				obj -> new PrincipleViewAction(obj, this)));					
+		
+		registerAdapterFactory(
+			new FunctionAdapterFactory<ViewAction<Forum>, Forum>(
+				EngineeringPackage.Literals.FORUM, 
+				getViewActionClass(), 
+				this.getClass().getClassLoader(), 
+				obj -> new ForumViewAction<Forum>(obj, this)));					
+		
+		registerAdapterFactory(
+			new FunctionAdapterFactory<ViewAction<Topic>, Topic>(
+				EngineeringPackage.Literals.TOPIC, 
+				getViewActionClass(), 
+				this.getClass().getClassLoader(), 
+				obj -> new TopicViewAction(obj, this)));					
 		
 	}
 
