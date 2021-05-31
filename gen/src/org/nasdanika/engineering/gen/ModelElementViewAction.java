@@ -317,7 +317,7 @@ public class ModelElementViewAction<T extends ModelElement> extends SimpleEObjec
 		Map<IncrementValueObject, List<E>> increments = Util.groupBy(endeavors, IncrementValueObject::from);
 		boolean backlogOnly = increments.size() == 1 && increments.keySet().iterator().next() == null;
 		
-		ActionImpl issuesSection = new ActionImpl() {
+		ActionImpl endeavorsSection = new ActionImpl() {
 			
 			private Increment getIncrement(Endeavor endeavor) {
 				if (endeavor instanceof Increment) {
@@ -407,12 +407,12 @@ public class ModelElementViewAction<T extends ModelElement> extends SimpleEObjec
 			}
 		};
 		
-		issuesSection.getRoles().add(Action.Role.SECTION); 
-		issuesSection.setSectionStyle(SectionStyle.DEFAULT);
-		issuesSection.setText(text); 			
-		issuesSection.setActivator(new PathNavigationActionActivator(issuesSection, ((NavigationActionActivator) activator).getUrl(null), "#" + id, marker));
+		endeavorsSection.getRoles().add(Action.Role.SECTION); 
+		endeavorsSection.setSectionStyle(SectionStyle.DEFAULT);
+		endeavorsSection.setText(text); 			
+		endeavorsSection.setActivator(new PathNavigationActionActivator(endeavorsSection, ((NavigationActionActivator) activator).getUrl(null), "#" + id, marker));
 
-		return issuesSection;
+		return endeavorsSection;
 	}
 	
 	public static Object issueStatusSummaryTable(Collection<Issue> issues, ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {

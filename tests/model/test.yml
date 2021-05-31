@@ -96,7 +96,8 @@ engineering-organization:
                  effort: 5
            - name: Issue 3         
              effort: 10
-             contributes-to: test:modules/test/features/my-feature    
+             contributes-to: test:modules/test/features/my-feature
+             assignee: test:engineers/pv                 
              children:
                - name: Issue 3.1         
                  effort: 7
