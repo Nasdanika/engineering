@@ -1117,13 +1117,22 @@ public interface EngineeringPackage extends EPackage {
 	int ENGINEERED_CAPABILITY__CAPACITY = CAPABILITY_FEATURE_COUNT + 7;
 
 	/**
+	 * The feature id for the '<em><b>Aligns</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEERED_CAPABILITY__ALIGNS = CAPABILITY_FEATURE_COUNT + 8;
+
+	/**
 	 * The number of structural features of the '<em>Engineered Capability</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEERED_CAPABILITY_FEATURE_COUNT = CAPABILITY_FEATURE_COUNT + 8;
+	int ENGINEERED_CAPABILITY_FEATURE_COUNT = CAPABILITY_FEATURE_COUNT + 9;
 
 	/**
 	 * The number of operations of the '<em>Engineered Capability</em>' class.
@@ -1356,6 +1365,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int ISSUE__CAPACITY = ENGINEERED_CAPABILITY__CAPACITY;
+
+	/**
+	 * The feature id for the '<em><b>Aligns</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE__ALIGNS = ENGINEERED_CAPABILITY__ALIGNS;
 
 	/**
 	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
@@ -1746,13 +1764,22 @@ public interface EngineeringPackage extends EPackage {
 	int ENGINEERED_ELEMENT__ALLOCATIONS = NAMED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Principles</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEERED_ELEMENT__PRINCIPLES = NAMED_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
 	 * The number of structural features of the '<em>Engineered Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEERED_ELEMENT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 4;
+	int ENGINEERED_ELEMENT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of operations of the '<em>Engineered Element</em>' class.
@@ -1863,6 +1890,15 @@ public interface EngineeringPackage extends EPackage {
 	int PERSONA__ALLOCATIONS = ENGINEERED_ELEMENT__ALLOCATIONS;
 
 	/**
+	 * The feature id for the '<em><b>Principles</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSONA__PRINCIPLES = ENGINEERED_ELEMENT__PRINCIPLES;
+
+	/**
 	 * The feature id for the '<em><b>Activities</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1872,13 +1908,49 @@ public interface EngineeringPackage extends EPackage {
 	int PERSONA__ACTIVITIES = ENGINEERED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Goals</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSONA__GOALS = ENGINEERED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Representatives</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSONA__REPRESENTATIVES = ENGINEERED_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Extends</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSONA__EXTENDS = ENGINEERED_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Extensions</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSONA__EXTENSIONS = ENGINEERED_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
 	 * The number of structural features of the '<em>Persona</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PERSONA_FEATURE_COUNT = ENGINEERED_ELEMENT_FEATURE_COUNT + 1;
+	int PERSONA_FEATURE_COUNT = ENGINEERED_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of operations of the '<em>Persona</em>' class.
@@ -1989,6 +2061,15 @@ public interface EngineeringPackage extends EPackage {
 	int ENGINEER__ALLOCATIONS = PERSONA__ALLOCATIONS;
 
 	/**
+	 * The feature id for the '<em><b>Principles</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEER__PRINCIPLES = PERSONA__PRINCIPLES;
+
+	/**
 	 * The feature id for the '<em><b>Activities</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1996,6 +2077,42 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int ENGINEER__ACTIVITIES = PERSONA__ACTIVITIES;
+
+	/**
+	 * The feature id for the '<em><b>Goals</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEER__GOALS = PERSONA__GOALS;
+
+	/**
+	 * The feature id for the '<em><b>Representatives</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEER__REPRESENTATIVES = PERSONA__REPRESENTATIVES;
+
+	/**
+	 * The feature id for the '<em><b>Extends</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEER__EXTENDS = PERSONA__EXTENDS;
+
+	/**
+	 * The feature id for the '<em><b>Extensions</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEER__EXTENSIONS = PERSONA__EXTENSIONS;
 
 	/**
 	 * The feature id for the '<em><b>Modules</b></em>' containment reference list.
@@ -2106,13 +2223,22 @@ public interface EngineeringPackage extends EPackage {
 	int ENGINEER__CAPACITY = PERSONA_FEATURE_COUNT + 11;
 
 	/**
+	 * The feature id for the '<em><b>Represents</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEER__REPRESENTS = PERSONA_FEATURE_COUNT + 12;
+
+	/**
 	 * The number of structural features of the '<em>Engineer</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEER_FEATURE_COUNT = PERSONA_FEATURE_COUNT + 12;
+	int ENGINEER_FEATURE_COUNT = PERSONA_FEATURE_COUNT + 13;
 
 	/**
 	 * The number of operations of the '<em>Engineer</em>' class.
@@ -2223,6 +2349,15 @@ public interface EngineeringPackage extends EPackage {
 	int ORGANIZATION__ALLOCATIONS = ENGINEER__ALLOCATIONS;
 
 	/**
+	 * The feature id for the '<em><b>Principles</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANIZATION__PRINCIPLES = ENGINEER__PRINCIPLES;
+
+	/**
 	 * The feature id for the '<em><b>Activities</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2230,6 +2365,42 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int ORGANIZATION__ACTIVITIES = ENGINEER__ACTIVITIES;
+
+	/**
+	 * The feature id for the '<em><b>Goals</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANIZATION__GOALS = ENGINEER__GOALS;
+
+	/**
+	 * The feature id for the '<em><b>Representatives</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANIZATION__REPRESENTATIVES = ENGINEER__REPRESENTATIVES;
+
+	/**
+	 * The feature id for the '<em><b>Extends</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANIZATION__EXTENDS = ENGINEER__EXTENDS;
+
+	/**
+	 * The feature id for the '<em><b>Extensions</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANIZATION__EXTENSIONS = ENGINEER__EXTENSIONS;
 
 	/**
 	 * The feature id for the '<em><b>Modules</b></em>' containment reference list.
@@ -2338,6 +2509,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int ORGANIZATION__CAPACITY = ENGINEER__CAPACITY;
+
+	/**
+	 * The feature id for the '<em><b>Represents</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANIZATION__REPRESENTS = ENGINEER__REPRESENTS;
 
 	/**
 	 * The feature id for the '<em><b>Engineers</b></em>' containment reference list.
@@ -2466,6 +2646,15 @@ public interface EngineeringPackage extends EPackage {
 	int MODULE__ALLOCATIONS = ENGINEERED_ELEMENT__ALLOCATIONS;
 
 	/**
+	 * The feature id for the '<em><b>Principles</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODULE__PRINCIPLES = ENGINEERED_ELEMENT__PRINCIPLES;
+
+	/**
 	 * The feature id for the '<em><b>Modules</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2590,6 +2779,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int PRODUCT__ALLOCATIONS = MODULE__ALLOCATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Principles</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT__PRINCIPLES = MODULE__PRINCIPLES;
 
 	/**
 	 * The feature id for the '<em><b>Modules</b></em>' containment reference list.
@@ -2799,6 +2997,15 @@ public interface EngineeringPackage extends EPackage {
 	int RELEASE__CAPACITY = ENGINEERED_CAPABILITY__CAPACITY;
 
 	/**
+	 * The feature id for the '<em><b>Aligns</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RELEASE__ALIGNS = ENGINEERED_CAPABILITY__ALIGNS;
+
+	/**
 	 * The feature id for the '<em><b>Increment</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2997,6 +3204,15 @@ public interface EngineeringPackage extends EPackage {
 	int FEATURE__CAPACITY = ENGINEERED_CAPABILITY__CAPACITY;
 
 	/**
+	 * The feature id for the '<em><b>Aligns</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE__ALIGNS = ENGINEERED_CAPABILITY__ALIGNS;
+
+	/**
 	 * The feature id for the '<em><b>Releases</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3139,6 +3355,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int ACTIVITY__ALLOCATIONS = ENGINEERED_ELEMENT__ALLOCATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Principles</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__PRINCIPLES = ENGINEERED_ELEMENT__PRINCIPLES;
 
 	/**
 	 * The feature id for the '<em><b>Personas</b></em>' reference list.
@@ -3319,6 +3544,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int JOURNEY__ALLOCATIONS = ACTIVITY__ALLOCATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Principles</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY__PRINCIPLES = ACTIVITY__PRINCIPLES;
 
 	/**
 	 * The feature id for the '<em><b>Personas</b></em>' reference list.
@@ -3644,6 +3878,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int ARTIFACT__ALLOCATIONS = ENGINEERED_ELEMENT__ALLOCATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Principles</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ARTIFACT__PRINCIPLES = ENGINEERED_ELEMENT__PRINCIPLES;
 
 	/**
 	 * The number of structural features of the '<em>Artifact</em>' class.
@@ -4020,6 +4263,443 @@ public interface EngineeringPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.AimImpl <em>Aim</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.AimImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getAim()
+	 * @generated
+	 */
+	int AIM = 27;
+
+	/**
+	 * The feature id for the '<em><b>Uri</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AIM__URI = NAMED_ELEMENT__URI;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AIM__PATH = NAMED_ELEMENT__PATH;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AIM__DESCRIPTION = NAMED_ELEMENT__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AIM__MARKDOWN_DESCRIPTION = NAMED_ELEMENT__MARKDOWN_DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Actions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AIM__ACTIONS = NAMED_ELEMENT__ACTIONS;
+
+	/**
+	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AIM__RESOURCES = NAMED_ELEMENT__RESOURCES;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AIM__NAME = NAMED_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Alignments</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AIM__ALIGNMENTS = NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Aligns</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AIM__ALIGNS = NAMED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Aim</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AIM_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Aim</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AIM_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.PrincipleImpl <em>Principle</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.PrincipleImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getPrinciple()
+	 * @generated
+	 */
+	int PRINCIPLE = 28;
+
+	/**
+	 * The feature id for the '<em><b>Uri</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRINCIPLE__URI = AIM__URI;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRINCIPLE__PATH = AIM__PATH;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRINCIPLE__DESCRIPTION = AIM__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRINCIPLE__MARKDOWN_DESCRIPTION = AIM__MARKDOWN_DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Actions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRINCIPLE__ACTIONS = AIM__ACTIONS;
+
+	/**
+	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRINCIPLE__RESOURCES = AIM__RESOURCES;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRINCIPLE__NAME = AIM__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Alignments</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRINCIPLE__ALIGNMENTS = AIM__ALIGNMENTS;
+
+	/**
+	 * The feature id for the '<em><b>Aligns</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRINCIPLE__ALIGNS = AIM__ALIGNS;
+
+	/**
+	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRINCIPLE__CHILDREN = AIM_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Principle</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRINCIPLE_FEATURE_COUNT = AIM_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Principle</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRINCIPLE_OPERATION_COUNT = AIM_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.AlignmentImpl <em>Alignment</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.AlignmentImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getAlignment()
+	 * @generated
+	 */
+	int ALIGNMENT = 29;
+
+	/**
+	 * The feature id for the '<em><b>Uri</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ALIGNMENT__URI = MODEL_ELEMENT__URI;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ALIGNMENT__PATH = MODEL_ELEMENT__PATH;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ALIGNMENT__DESCRIPTION = MODEL_ELEMENT__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ALIGNMENT__MARKDOWN_DESCRIPTION = MODEL_ELEMENT__MARKDOWN_DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Actions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ALIGNMENT__ACTIONS = MODEL_ELEMENT__ACTIONS;
+
+	/**
+	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ALIGNMENT__RESOURCES = MODEL_ELEMENT__RESOURCES;
+
+	/**
+	 * The feature id for the '<em><b>Aim</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ALIGNMENT__AIM = MODEL_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Alignment</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ALIGNMENT_FEATURE_COUNT = MODEL_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Alignment</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ALIGNMENT_OPERATION_COUNT = MODEL_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.GoalImpl <em>Goal</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.GoalImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getGoal()
+	 * @generated
+	 */
+	int GOAL = 30;
+
+	/**
+	 * The feature id for the '<em><b>Uri</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GOAL__URI = AIM__URI;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GOAL__PATH = AIM__PATH;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GOAL__DESCRIPTION = AIM__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GOAL__MARKDOWN_DESCRIPTION = AIM__MARKDOWN_DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Actions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GOAL__ACTIONS = AIM__ACTIONS;
+
+	/**
+	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GOAL__RESOURCES = AIM__RESOURCES;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GOAL__NAME = AIM__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Alignments</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GOAL__ALIGNMENTS = AIM__ALIGNMENTS;
+
+	/**
+	 * The feature id for the '<em><b>Aligns</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GOAL__ALIGNS = AIM__ALIGNS;
+
+	/**
+	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GOAL__CHILDREN = AIM_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Goal</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GOAL_FEATURE_COUNT = AIM_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Goal</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GOAL_OPERATION_COUNT = AIM_OPERATION_COUNT + 0;
+
+
+	/**
 	 * Returns the meta object for class '{@link org.nasdanika.common.Adaptable <em>Adaptable</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4280,6 +4960,17 @@ public interface EngineeringPackage extends EPackage {
 	EReference getEngineeredElement_Allocations();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link org.nasdanika.engineering.EngineeredElement#getPrinciples <em>Principles</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Principles</em>'.
+	 * @see org.nasdanika.engineering.EngineeredElement#getPrinciples()
+	 * @see #getEngineeredElement()
+	 * @generated
+	 */
+	EReference getEngineeredElement_Principles();
+
+	/**
 	 * Returns the meta object for class '{@link org.nasdanika.engineering.Persona <em>Persona</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4299,6 +4990,50 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getPersona_Activities();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.nasdanika.engineering.Persona#getGoals <em>Goals</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Goals</em>'.
+	 * @see org.nasdanika.engineering.Persona#getGoals()
+	 * @see #getPersona()
+	 * @generated
+	 */
+	EReference getPersona_Goals();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.Persona#getRepresentatives <em>Representatives</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Representatives</em>'.
+	 * @see org.nasdanika.engineering.Persona#getRepresentatives()
+	 * @see #getPersona()
+	 * @generated
+	 */
+	EReference getPersona_Representatives();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.Persona#getExtends <em>Extends</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Extends</em>'.
+	 * @see org.nasdanika.engineering.Persona#getExtends()
+	 * @see #getPersona()
+	 * @generated
+	 */
+	EReference getPersona_Extends();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.Persona#getExtensions <em>Extensions</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Extensions</em>'.
+	 * @see org.nasdanika.engineering.Persona#getExtensions()
+	 * @see #getPersona()
+	 * @generated
+	 */
+	EReference getPersona_Extensions();
 
 	/**
 	 * Returns the meta object for class '{@link org.nasdanika.engineering.Engineer <em>Engineer</em>}'.
@@ -4443,6 +5178,17 @@ public interface EngineeringPackage extends EPackage {
 	EReference getEngineer_Capacity();
 
 	/**
+	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.Engineer#getRepresents <em>Represents</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Represents</em>'.
+	 * @see org.nasdanika.engineering.Engineer#getRepresents()
+	 * @see #getEngineer()
+	 * @generated
+	 */
+	EReference getEngineer_Represents();
+
+	/**
 	 * Returns the meta object for class '{@link org.nasdanika.engineering.Organization <em>Organization</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4568,6 +5314,17 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getEngineeredCapability();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.nasdanika.engineering.EngineeredCapability#getAligns <em>Aligns</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Aligns</em>'.
+	 * @see org.nasdanika.engineering.EngineeredCapability#getAligns()
+	 * @see #getEngineeredCapability()
+	 * @generated
+	 */
+	EReference getEngineeredCapability_Aligns();
 
 	/**
 	 * Returns the meta object for class '{@link org.nasdanika.engineering.Increment <em>Increment</em>}'.
@@ -5347,6 +6104,101 @@ public interface EngineeringPackage extends EPackage {
 	EReference getAllocation_Category();
 
 	/**
+	 * Returns the meta object for class '{@link org.nasdanika.engineering.Aim <em>Aim</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Aim</em>'.
+	 * @see org.nasdanika.engineering.Aim
+	 * @generated
+	 */
+	EClass getAim();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.Aim#getAlignments <em>Alignments</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Alignments</em>'.
+	 * @see org.nasdanika.engineering.Aim#getAlignments()
+	 * @see #getAim()
+	 * @generated
+	 */
+	EReference getAim_Alignments();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.nasdanika.engineering.Aim#getAligns <em>Aligns</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Aligns</em>'.
+	 * @see org.nasdanika.engineering.Aim#getAligns()
+	 * @see #getAim()
+	 * @generated
+	 */
+	EReference getAim_Aligns();
+
+	/**
+	 * Returns the meta object for class '{@link org.nasdanika.engineering.Principle <em>Principle</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Principle</em>'.
+	 * @see org.nasdanika.engineering.Principle
+	 * @generated
+	 */
+	EClass getPrinciple();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.nasdanika.engineering.Principle#getChildren <em>Children</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Children</em>'.
+	 * @see org.nasdanika.engineering.Principle#getChildren()
+	 * @see #getPrinciple()
+	 * @generated
+	 */
+	EReference getPrinciple_Children();
+
+	/**
+	 * Returns the meta object for class '{@link org.nasdanika.engineering.Alignment <em>Alignment</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Alignment</em>'.
+	 * @see org.nasdanika.engineering.Alignment
+	 * @generated
+	 */
+	EClass getAlignment();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.nasdanika.engineering.Alignment#getAim <em>Aim</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Aim</em>'.
+	 * @see org.nasdanika.engineering.Alignment#getAim()
+	 * @see #getAlignment()
+	 * @generated
+	 */
+	EReference getAlignment_Aim();
+
+	/**
+	 * Returns the meta object for class '{@link org.nasdanika.engineering.Goal <em>Goal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Goal</em>'.
+	 * @see org.nasdanika.engineering.Goal
+	 * @generated
+	 */
+	EClass getGoal();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.nasdanika.engineering.Goal#getChildren <em>Children</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Children</em>'.
+	 * @see org.nasdanika.engineering.Goal#getChildren()
+	 * @see #getGoal()
+	 * @generated
+	 */
+	EReference getGoal_Children();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5572,6 +6424,14 @@ public interface EngineeringPackage extends EPackage {
 		EReference ENGINEERED_ELEMENT__ALLOCATIONS = eINSTANCE.getEngineeredElement_Allocations();
 
 		/**
+		 * The meta object literal for the '<em><b>Principles</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ENGINEERED_ELEMENT__PRINCIPLES = eINSTANCE.getEngineeredElement_Principles();
+
+		/**
 		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.PersonaImpl <em>Persona</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -5588,6 +6448,38 @@ public interface EngineeringPackage extends EPackage {
 		 * @generated
 		 */
 		EReference PERSONA__ACTIVITIES = eINSTANCE.getPersona_Activities();
+
+		/**
+		 * The meta object literal for the '<em><b>Goals</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PERSONA__GOALS = eINSTANCE.getPersona_Goals();
+
+		/**
+		 * The meta object literal for the '<em><b>Representatives</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PERSONA__REPRESENTATIVES = eINSTANCE.getPersona_Representatives();
+
+		/**
+		 * The meta object literal for the '<em><b>Extends</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PERSONA__EXTENDS = eINSTANCE.getPersona_Extends();
+
+		/**
+		 * The meta object literal for the '<em><b>Extensions</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PERSONA__EXTENSIONS = eINSTANCE.getPersona_Extensions();
 
 		/**
 		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.EngineerImpl <em>Engineer</em>}' class.
@@ -5696,6 +6588,14 @@ public interface EngineeringPackage extends EPackage {
 		EReference ENGINEER__CAPACITY = eINSTANCE.getEngineer_Capacity();
 
 		/**
+		 * The meta object literal for the '<em><b>Represents</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ENGINEER__REPRESENTS = eINSTANCE.getEngineer_Represents();
+
+		/**
 		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.OrganizationImpl <em>Organization</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -5800,6 +6700,14 @@ public interface EngineeringPackage extends EPackage {
 		 * @generated
 		 */
 		EClass ENGINEERED_CAPABILITY = eINSTANCE.getEngineeredCapability();
+
+		/**
+		 * The meta object literal for the '<em><b>Aligns</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ENGINEERED_CAPABILITY__ALIGNS = eINSTANCE.getEngineeredCapability_Aligns();
 
 		/**
 		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.IncrementImpl <em>Increment</em>}' class.
@@ -6406,6 +7314,86 @@ public interface EngineeringPackage extends EPackage {
 		 * @generated
 		 */
 		EReference ALLOCATION__CATEGORY = eINSTANCE.getAllocation_Category();
+
+		/**
+		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.AimImpl <em>Aim</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.engineering.impl.AimImpl
+		 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getAim()
+		 * @generated
+		 */
+		EClass AIM = eINSTANCE.getAim();
+
+		/**
+		 * The meta object literal for the '<em><b>Alignments</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference AIM__ALIGNMENTS = eINSTANCE.getAim_Alignments();
+
+		/**
+		 * The meta object literal for the '<em><b>Aligns</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference AIM__ALIGNS = eINSTANCE.getAim_Aligns();
+
+		/**
+		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.PrincipleImpl <em>Principle</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.engineering.impl.PrincipleImpl
+		 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getPrinciple()
+		 * @generated
+		 */
+		EClass PRINCIPLE = eINSTANCE.getPrinciple();
+
+		/**
+		 * The meta object literal for the '<em><b>Children</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PRINCIPLE__CHILDREN = eINSTANCE.getPrinciple_Children();
+
+		/**
+		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.AlignmentImpl <em>Alignment</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.engineering.impl.AlignmentImpl
+		 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getAlignment()
+		 * @generated
+		 */
+		EClass ALIGNMENT = eINSTANCE.getAlignment();
+
+		/**
+		 * The meta object literal for the '<em><b>Aim</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ALIGNMENT__AIM = eINSTANCE.getAlignment_Aim();
+
+		/**
+		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.GoalImpl <em>Goal</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.engineering.impl.GoalImpl
+		 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getGoal()
+		 * @generated
+		 */
+		EClass GOAL = eINSTANCE.getGoal();
+
+		/**
+		 * The meta object literal for the '<em><b>Children</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference GOAL__CHILDREN = eINSTANCE.getGoal_Children();
 
 	}
 

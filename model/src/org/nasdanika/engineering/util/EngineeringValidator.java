@@ -13,6 +13,8 @@ import org.nasdanika.common.Adaptable;
 import org.nasdanika.common.Context;
 import org.nasdanika.emf.DiagnosticHelper;
 import org.nasdanika.engineering.Activity;
+import org.nasdanika.engineering.Aim;
+import org.nasdanika.engineering.Alignment;
 import org.nasdanika.engineering.Allocation;
 import org.nasdanika.engineering.Artifact;
 import org.nasdanika.engineering.Call;
@@ -25,6 +27,7 @@ import org.nasdanika.engineering.EngineeredCapability;
 import org.nasdanika.engineering.EngineeredElement;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Feature;
+import org.nasdanika.engineering.Goal;
 import org.nasdanika.engineering.Increment;
 import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.IssueCategory;
@@ -35,6 +38,7 @@ import org.nasdanika.engineering.NamedElement;
 import org.nasdanika.engineering.Note;
 import org.nasdanika.engineering.Organization;
 import org.nasdanika.engineering.Persona;
+import org.nasdanika.engineering.Principle;
 import org.nasdanika.engineering.Product;
 import org.nasdanika.engineering.Release;
 import org.nasdanika.engineering.Transition;
@@ -165,6 +169,14 @@ public class EngineeringValidator extends EObjectValidator {
 				return validateCapacity((Capacity)value, diagnostics, context);
 			case EngineeringPackage.ALLOCATION:
 				return validateAllocation((Allocation)value, diagnostics, context);
+			case EngineeringPackage.AIM:
+				return validateAim((Aim)value, diagnostics, context);
+			case EngineeringPackage.PRINCIPLE:
+				return validatePrinciple((Principle)value, diagnostics, context);
+			case EngineeringPackage.ALIGNMENT:
+				return validateAlignment((Alignment)value, diagnostics, context);
+			case EngineeringPackage.GOAL:
+				return validateGoal((Goal)value, diagnostics, context);
 			default:
 				return true;
 		}
@@ -781,6 +793,42 @@ public class EngineeringValidator extends EObjectValidator {
 	 */
 	public boolean validateAllocation(Allocation allocation, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(allocation, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateAim(Aim aim, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(aim, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validatePrinciple(Principle principle, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(principle, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateAlignment(Alignment alignment, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(alignment, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateGoal(Goal goal, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(goal, diagnostics, context);
 	}
 
 	/**

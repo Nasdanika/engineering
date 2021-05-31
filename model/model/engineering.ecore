@@ -231,10 +231,32 @@
         <details key="documentation" value="Allocations of [engineer](Engineer.html)'s [capacity](Capacity.html) to work on this engineered element [issues](Issue.html) for a particular [endeavor](Endeavor.html) and [issue category](IssueCategory.html)."/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="principles" upperBound="-1"
+        eType="#//Principle" containment="true">
+      <eAnnotations source="urn:org.nasdanika">
+        <details key="homogenous" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Persona" eSuperTypes="#//EngineeredElement">
+    <eAnnotations source="urn:org.nasdanika">
+      <details key="documentation-reference" value="doc/persona.md"/>
+      <details key="icon" value="far fa-user"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="activities" upperBound="-1"
         eType="#//Activity" changeable="false" derived="true" eOpposite="#//Activity/personas"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="goals" upperBound="-1"
+        eType="#//Goal" containment="true">
+      <eAnnotations source="urn:org.nasdanika">
+        <details key="homogenous" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="representatives" upperBound="-1"
+        eType="#//Engineer" eOpposite="#//Engineer/represents"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="extends" upperBound="-1"
+        eType="#//Persona" eOpposite="#//Persona/extensions"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="extensions" upperBound="-1"
+        eType="#//Persona" changeable="false" derived="true" eOpposite="#//Persona/extends"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Engineer" eSuperTypes="#//Persona">
     <eAnnotations source="urn:org.nasdanika">
@@ -259,7 +281,11 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="services" upperBound="-1"
         eType="#//Activity" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="personas" upperBound="-1"
-        eType="#//Persona" containment="true"/>
+        eType="#//Persona" containment="true">
+      <eAnnotations source="urn:org.nasdanika">
+        <details key="homogenous" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="assignments" upperBound="-1"
         eType="#//Endeavor" changeable="false" derived="true" eOpposite="#//Endeavor/assignee"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="issueCategories" upperBound="-1"
@@ -293,6 +319,8 @@
         <details key="documentation" value="Engineer's capacity for a particular [endeavor](Endeavor.html)"/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="represents" upperBound="-1"
+        eType="#//Persona" changeable="false" derived="true" eOpposite="#//Persona/representatives"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Organization" eSuperTypes="#//Engineer">
     <eAnnotations source="urn:org.nasdanika">
@@ -350,7 +378,15 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="available" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="EngineeredCapability" eSuperTypes="#//Capability #//Endeavor"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EngineeredCapability" eSuperTypes="#//Capability #//Endeavor">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="aligns" upperBound="-1"
+        eType="#//Alignment" containment="true">
+      <eAnnotations source="urn:org.nasdanika">
+        <details key="homogenous" value="true"/>
+        <details key="strict-containment" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Release" eSuperTypes="#//EngineeredCapability">
     <eAnnotations source="urn:org.nasdanika">
       <details key="documentation-reference" value="../doc/release.md"/>
@@ -480,5 +516,39 @@
         eType="#//Engineer" eOpposite="#//Engineer/designations"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="category" upperBound="-1"
         eType="#//IssueCategory" eOpposite="#//IssueCategory/allocations"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Aim" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="alignments" upperBound="-1"
+        eType="#//Alignment" derived="true" eOpposite="#//Alignment/aim"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="aligns" upperBound="-1"
+        eType="#//Alignment" containment="true">
+      <eAnnotations source="urn:org.nasdanika">
+        <details key="homogenous" value="true"/>
+        <details key="strict-containment" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Principle" eSuperTypes="#//Aim">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
+        eType="#//Principle" containment="true">
+      <eAnnotations source="urn:org.nasdanika">
+        <details key="homogenous" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Alignment" eSuperTypes="#//ModelElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="aim" eType="#//Aim" eOpposite="#//Aim/alignments">
+      <eAnnotations source="urn:org.nasdanika">
+        <details key="default-feature" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Goal" eSuperTypes="#//Aim">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
+        eType="#//Goal" containment="true">
+      <eAnnotations source="urn:org.nasdanika">
+        <details key="homogenous" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
 </ecore:EPackage>

@@ -12,12 +12,14 @@ import org.nasdanika.emf.InstanceAdapterFactory;
 import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Feature;
+import org.nasdanika.engineering.Goal;
 import org.nasdanika.engineering.Increment;
 import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.IssueCategory;
 import org.nasdanika.engineering.IssueStatus;
 import org.nasdanika.engineering.Organization;
 import org.nasdanika.engineering.Persona;
+import org.nasdanika.engineering.Principle;
 import org.nasdanika.engineering.Product;
 import org.nasdanika.engineering.Release;
 import org.nasdanika.html.app.Action;
@@ -119,6 +121,20 @@ public class EngineeringViewActionAdapterFactory extends ComposedAdapterFactory 
 				getViewActionClass(), 
 				this.getClass().getClassLoader(), 
 				obj -> new FeatureViewAction(obj, this)));					
+		
+		registerAdapterFactory(
+			new FunctionAdapterFactory<ViewAction<Goal>, Goal>(
+				EngineeringPackage.Literals.GOAL, 
+				getViewActionClass(), 
+				this.getClass().getClassLoader(), 
+				obj -> new GoalViewAction(obj, this)));					
+		
+		registerAdapterFactory(
+			new FunctionAdapterFactory<ViewAction<Principle>, Principle>(
+				EngineeringPackage.Literals.PRINCIPLE, 
+				getViewActionClass(), 
+				this.getClass().getClassLoader(), 
+				obj -> new PrincipleViewAction(obj, this)));					
 		
 	}
 

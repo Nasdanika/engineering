@@ -71,7 +71,28 @@ engineering-organization:
          path: pv          
          capacity:
            - endeavor: test:increments/2021/children/q2/children/jun
-             effort: 50  
+             effort: 50
+   principles:
+     - name: Low tech
+       path: low-tech
+       markdown-description: Use easily available technology to drive wide adoption.
+       children:
+         - name: YAML 
+           path: yaml
+           markdown-description: Use YAML for structured data.
+         - name: Markdown 
+           path: markdown
+           markdown-description: Use Markdown for descriptions.
+   personas: 
+     - name: Innovator
+       path: innovator
+       markdown-description: A person with many ideas who wants them to be quickly prototyped and published.
+       goals:
+         - name: Publish
+           path: publish
+           markdown-description: Ability to quickly publish ideas/prototypes with minimal overhead.
+       representatives:
+         - test:engineers/pv                   
    modules:
      - engineering-product:
          name: Test
@@ -88,6 +109,9 @@ engineering-organization:
          issues:
            - name: Issue 1         
              effort: 10
+             aligns: 
+               - test:personas/innovator/goals/publish
+               - test:principles/low-tech/children/yaml                            
            - name: Issue 2         
              effort: 20
              releases: test:modules/test/releases/1/0             

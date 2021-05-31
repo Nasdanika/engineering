@@ -111,7 +111,8 @@ engineering-module:
          Hide endeavors with zero total cost (e.g. incrments without scheduled releases or issues), and completed. To documentation - composite effort assignees are responsible for tracking and escalation/removal of obstacles,
          e.g. increment assignee is kinda scrum master and release/feature assignee is kinda project manager. 
    allocations:
-     - increment: nasdanika:increments/2021/children/q2/children/jun
+     - endeavor: nasdanika:increments/2021/children/q2/children/jun
+       engineer: pavel:this
        effort: 30
        markdown-description: Sample allocation.
             

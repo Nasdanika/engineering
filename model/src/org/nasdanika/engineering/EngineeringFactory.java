@@ -229,6 +229,42 @@ public interface EngineeringFactory extends EFactory {
 	Allocation createAllocation();
 
 	/**
+	 * Returns a new object of class '<em>Aim</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Aim</em>'.
+	 * @generated
+	 */
+	Aim createAim();
+
+	/**
+	 * Returns a new object of class '<em>Principle</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Principle</em>'.
+	 * @generated
+	 */
+	Principle createPrinciple();
+
+	/**
+	 * Returns a new object of class '<em>Alignment</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Alignment</em>'.
+	 * @generated
+	 */
+	Alignment createAlignment();
+
+	/**
+	 * Returns a new object of class '<em>Goal</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Goal</em>'.
+	 * @generated
+	 */
+	Goal createGoal();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -17,6 +17,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.nasdanika.engineering.EngineeredElement#getOwners <em>Owners</em>}</li>
  *   <li>{@link org.nasdanika.engineering.EngineeredElement#getExperts <em>Experts</em>}</li>
  *   <li>{@link org.nasdanika.engineering.EngineeredElement#getAllocations <em>Allocations</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.EngineeredElement#getPrinciples <em>Principles</em>}</li>
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getEngineeredElement()
@@ -82,5 +83,18 @@ public interface EngineeredElement extends NamedElement {
 	 * @generated
 	 */
 	EList<Allocation> getAllocations();
+
+	/**
+	 * Returns the value of the '<em><b>Principles</b></em>' containment reference list.
+	 * The list contents are of type {@link org.nasdanika.engineering.Principle}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Principles</em>' containment reference list.
+	 * @see org.nasdanika.engineering.EngineeringPackage#getEngineeredElement_Principles()
+	 * @model containment="true"
+	 *        annotation="urn:org.nasdanika homogenous='true'"
+	 * @generated
+	 */
+	EList<Principle> getPrinciples();
 
 } // EngineeredElement

@@ -12,7 +12,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Goal;
-import org.nasdanika.engineering.Persona;
+import org.nasdanika.engineering.Principle;
 import org.nasdanika.html.OrderedListType;
 import org.nasdanika.html.app.Action;
 import org.nasdanika.html.app.Label;
@@ -24,47 +24,42 @@ import org.nasdanika.html.app.viewparts.ListOfActionsViewPart;
 import org.nasdanika.html.emf.EStructuralFeatureViewActionImpl;
 import org.nasdanika.html.emf.ViewAction;
 
-public class PersonaViewAction<T extends Persona> extends EngineeredElementViewAction<T> {
-	
-	public PersonaViewAction(T value, EngineeringViewActionAdapterFactory factory) {
-		super(value, factory);
+/**
+ * @author Pavel
+ *
+ */
+public class PrincipleViewAction extends AimViewAction<Principle> {
+			
+	protected PrincipleViewAction(Principle target, EngineeringViewActionAdapterFactory factory) {
+		super(target, factory);		
 	}
 	
 	@Override
 	protected boolean isFeatureInRole(EStructuralFeature feature, FeatureRole role) {
-		if (feature == EngineeringPackage.Literals.PERSONA__REPRESENTATIVES) {
-			return role == FeatureRole.PROPERTY;
-		}
-		if (feature == EngineeringPackage.Literals.PERSONA__EXTENDS) {
-			return role == FeatureRole.PROPERTY;
-		}
-		if (feature == EngineeringPackage.Literals.PERSONA__EXTENSIONS) {
-			return role == FeatureRole.PROPERTY;
-		}
-		if (feature == EngineeringPackage.Literals.PERSONA__GOALS) {
+		if (feature == EngineeringPackage.Literals.PRINCIPLE__CHILDREN) {
 			return role == FeatureRole.FEATURE_ACTIONS || role == FeatureRole.ELEMENT_ACTIONS;
-		}		
+		}
 		return super.isFeatureInRole(feature, role);
 	}
 	
 	@Override
 	protected Collection<Action> featureActions(EStructuralFeature feature) {
-		if (feature == EngineeringPackage.Literals.PERSONA__GOALS) {
-			EList<Goal> goals = getSemanticElement().getGoals();
-			if (goals.isEmpty()) {
+		if (feature == EngineeringPackage.Literals.PRINCIPLE__CHILDREN) {
+			EList<Principle> children = getSemanticElement().getChildren();
+			if (children.isEmpty()) {
 				return Collections.emptyList();
 			}
-			EStructuralFeatureViewActionImpl<T, EStructuralFeature> goalsSection = new EStructuralFeatureViewActionImpl<T, EStructuralFeature>(getSemanticElement(), feature) {
+			EStructuralFeatureViewActionImpl<Principle, EStructuralFeature> childrenSection = new EStructuralFeatureViewActionImpl<Principle, EStructuralFeature>(getSemanticElement(), feature) {
 				
 				@Override
 				public Object generate(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
-					ListOfActionsViewPart listOfPrinciples = new ListOfActionsViewPart(ViewAction.adaptToViewActionsNonNull(goals), null, true, 10, OrderedListType.ROTATE) {
+					ListOfActionsViewPart listOfPrinciples = new ListOfActionsViewPart(ViewAction.adaptToViewActionsNonNull(children), null, true, 10, OrderedListType.ROTATE) {
 						@Override
 						protected Collection<Entry<Label, List<Action>>> getGroupedActions(ViewGenerator viewGenerator, Action currentAction) {
 							if (currentAction instanceof ViewAction) {
 								EObject se = ((ViewAction<?>) currentAction).getSemanticElement();
-								if (se instanceof Goal) {
-									return Collections.singleton(new AbstractMap.SimpleEntry<Label, List<Action>>(null, ViewAction.adaptToViewActionsNonNull(((Goal) se).getChildren())));
+								if (se instanceof Principle) {
+									return Collections.singleton(new AbstractMap.SimpleEntry<Label, List<Action>>(null, ViewAction.adaptToViewActionsNonNull(((Principle) se).getChildren())));
 								}
 							}
 							return super.getGroupedActions(viewGenerator, currentAction);
@@ -75,21 +70,15 @@ public class PersonaViewAction<T extends Persona> extends EngineeredElementViewA
 				
 			};
 			
-			goalsSection.getRoles().add(Action.Role.SECTION); 
-			goalsSection.setSectionStyle(SectionStyle.DEFAULT);
-			goalsSection.setText(featureLabelText(feature)); 		
-			goalsSection.setIcon(featureIcon(feature));
-			goalsSection.setDescription(featureDescription(feature));
-			goalsSection.setActivator(new PathNavigationActionActivator(goalsSection, ((NavigationActionActivator) getActivator()).getUrl(null), "#feature-" + feature.getName(), getMarker()));
-			return Collections.singleton(goalsSection);
+			childrenSection.getRoles().add(Action.Role.SECTION); 
+			childrenSection.setSectionStyle(SectionStyle.DEFAULT);
+			childrenSection.setText(featureLabelText(feature)); 		
+			childrenSection.setIcon(featureIcon(feature));
+			childrenSection.setDescription(featureDescription(feature));
+			childrenSection.setActivator(new PathNavigationActionActivator(childrenSection, ((NavigationActionActivator) getActivator()).getUrl(null), "#feature-" + feature.getName(), getMarker()));
+			return Collections.singleton(childrenSection);
 		}
 		return super.featureActions(feature);
 	}
-	
-//	@Override
-//	public boolean isInRole(String role) {
-//		// Anonymous action, navigating from a persona list.
-//		return false;
-//	}
 	
 }

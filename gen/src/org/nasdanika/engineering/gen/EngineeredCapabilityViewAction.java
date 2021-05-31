@@ -13,6 +13,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.common.Util;
+import org.nasdanika.engineering.Alignment;
 import org.nasdanika.engineering.Allocation;
 import org.nasdanika.engineering.Capacity;
 import org.nasdanika.engineering.Endeavor;
@@ -56,6 +57,9 @@ public class EngineeredCapabilityViewAction<T extends EngineeredCapability> exte
 		if (feature == EngineeringPackage.Literals.ENDEAVOR__CAPACITY) {
 			return role == FeatureRole.FEATURE_ACTIONS;
 		}
+		if (feature == EngineeringPackage.Literals.ENGINEERED_CAPABILITY__ALIGNS) {
+			return role == FeatureRole.FEATURE_ACTIONS;
+		}
 		return super.isFeatureInRole(feature, role);
 	}
 	
@@ -63,6 +67,29 @@ public class EngineeredCapabilityViewAction<T extends EngineeredCapability> exte
 	protected Collection<Action> featureActions(EStructuralFeature feature) {
 		if (feature == EngineeringPackage.Literals.ENDEAVOR__CAPACITY) {
 			return endeavorCapacityFeatureActions(getSemanticElement());
+		}
+		if (feature == EngineeringPackage.Literals.ENGINEERED_CAPABILITY__ALIGNS) {
+			EList<Alignment> aligns = getSemanticElement().getAligns();
+			if (aligns.isEmpty()) {
+				return Collections.emptyList();
+			}
+			EStructuralFeatureViewActionImpl<T, EStructuralFeature> alignsFeatureAction = new EStructuralFeatureViewActionImpl<T, EStructuralFeature>(getSemanticElement(), feature) {
+				
+				@Override
+				public Object generate(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
+					Table table = viewGenerator.getBootstrapFactory().table().bordered().striped();
+					table.header().headerRow("Aim", "Description").color(Color.INFO);
+					for (Alignment alignment: aligns) {
+						table.body().row(
+								viewGenerator.link(ViewAction.adaptToViewActionNonNull(alignment.getAim())),
+								getModelElementDescription(alignment));
+					}
+					return table;
+				}				
+				
+			};
+			alignsFeatureAction.getRoles().add(Action.Role.SECTION);
+			return Collections.singleton(alignsFeatureAction);
 		}
 		return super.featureActions(feature);
 	}

@@ -16,6 +16,7 @@ import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeredElement;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Issue;
+import org.nasdanika.engineering.Principle;
 
 /**
  * <!-- begin-user-doc -->
@@ -29,6 +30,7 @@ import org.nasdanika.engineering.Issue;
  *   <li>{@link org.nasdanika.engineering.impl.EngineeredElementImpl#getOwners <em>Owners</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineeredElementImpl#getExperts <em>Experts</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineeredElementImpl#getAllocations <em>Allocations</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.EngineeredElementImpl#getPrinciples <em>Principles</em>}</li>
  * </ul>
  *
  * @generated
@@ -115,6 +117,17 @@ public abstract class EngineeredElementImpl extends NamedElementImpl implements 
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
+	public EList<Principle> getPrinciples() {
+		return (EList<Principle>)eDynamicGet(EngineeringPackage.ENGINEERED_ELEMENT__PRINCIPLES, EngineeringPackage.Literals.ENGINEERED_ELEMENT__PRINCIPLES, true, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case EngineeringPackage.ENGINEERED_ELEMENT__OWNERS:
@@ -141,6 +154,8 @@ public abstract class EngineeredElementImpl extends NamedElementImpl implements 
 				return ((InternalEList<?>)getExperts()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.ENGINEERED_ELEMENT__ALLOCATIONS:
 				return ((InternalEList<?>)getAllocations()).basicRemove(otherEnd, msgs);
+			case EngineeringPackage.ENGINEERED_ELEMENT__PRINCIPLES:
+				return ((InternalEList<?>)getPrinciples()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -161,6 +176,8 @@ public abstract class EngineeredElementImpl extends NamedElementImpl implements 
 				return getExperts();
 			case EngineeringPackage.ENGINEERED_ELEMENT__ALLOCATIONS:
 				return getAllocations();
+			case EngineeringPackage.ENGINEERED_ELEMENT__PRINCIPLES:
+				return getPrinciples();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -190,6 +207,10 @@ public abstract class EngineeredElementImpl extends NamedElementImpl implements 
 				getAllocations().clear();
 				getAllocations().addAll((Collection<? extends Allocation>)newValue);
 				return;
+			case EngineeringPackage.ENGINEERED_ELEMENT__PRINCIPLES:
+				getPrinciples().clear();
+				getPrinciples().addAll((Collection<? extends Principle>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -214,6 +235,9 @@ public abstract class EngineeredElementImpl extends NamedElementImpl implements 
 			case EngineeringPackage.ENGINEERED_ELEMENT__ALLOCATIONS:
 				getAllocations().clear();
 				return;
+			case EngineeringPackage.ENGINEERED_ELEMENT__PRINCIPLES:
+				getPrinciples().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -234,6 +258,8 @@ public abstract class EngineeredElementImpl extends NamedElementImpl implements 
 				return !getExperts().isEmpty();
 			case EngineeringPackage.ENGINEERED_ELEMENT__ALLOCATIONS:
 				return !getAllocations().isEmpty();
+			case EngineeringPackage.ENGINEERED_ELEMENT__PRINCIPLES:
+				return !getPrinciples().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

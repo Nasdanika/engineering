@@ -2,6 +2,7 @@
  */
 package org.nasdanika.engineering.impl;
 
+import java.util.Collection;
 import java.util.Date;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
@@ -9,6 +10,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.nasdanika.engineering.Alignment;
 import org.nasdanika.engineering.Capacity;
 import org.nasdanika.engineering.Endeavor;
 import org.nasdanika.engineering.Engineer;
@@ -33,6 +35,7 @@ import org.nasdanika.engineering.Issue;
  *   <li>{@link org.nasdanika.engineering.impl.EngineeredCapabilityImpl#getStart <em>Start</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineeredCapabilityImpl#getEnd <em>End</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineeredCapabilityImpl#getCapacity <em>Capacity</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.EngineeredCapabilityImpl#getAligns <em>Aligns</em>}</li>
  * </ul>
  *
  * @generated
@@ -270,6 +273,17 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
+	public EList<Alignment> getAligns() {
+		return (EList<Alignment>)eDynamicGet(EngineeringPackage.ENGINEERED_CAPABILITY__ALIGNS, EngineeringPackage.Literals.ENGINEERED_CAPABILITY__ALIGNS, true, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case EngineeringPackage.ENGINEERED_CAPABILITY__ASSIGNEE:
@@ -295,6 +309,8 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 				return basicSetAssignee(null, msgs);
 			case EngineeringPackage.ENGINEERED_CAPABILITY__CAPACITY:
 				return ((InternalEList<?>)getCapacity()).basicRemove(otherEnd, msgs);
+			case EngineeringPackage.ENGINEERED_CAPABILITY__ALIGNS:
+				return ((InternalEList<?>)getAligns()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -324,6 +340,8 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 				return getEnd();
 			case EngineeringPackage.ENGINEERED_CAPABILITY__CAPACITY:
 				return getCapacity();
+			case EngineeringPackage.ENGINEERED_CAPABILITY__ALIGNS:
+				return getAligns();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -333,6 +351,7 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -347,6 +366,10 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 				return;
 			case EngineeringPackage.ENGINEERED_CAPABILITY__END:
 				setEnd((Date)newValue);
+				return;
+			case EngineeringPackage.ENGINEERED_CAPABILITY__ALIGNS:
+				getAligns().clear();
+				getAligns().addAll((Collection<? extends Alignment>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -371,6 +394,9 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 				return;
 			case EngineeringPackage.ENGINEERED_CAPABILITY__END:
 				setEnd(END_EDEFAULT);
+				return;
+			case EngineeringPackage.ENGINEERED_CAPABILITY__ALIGNS:
+				getAligns().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -400,6 +426,8 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 				return END_EDEFAULT == null ? getEnd() != null : !END_EDEFAULT.equals(getEnd());
 			case EngineeringPackage.ENGINEERED_CAPABILITY__CAPACITY:
 				return !getCapacity().isEmpty();
+			case EngineeringPackage.ENGINEERED_CAPABILITY__ALIGNS:
+				return !getAligns().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

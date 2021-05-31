@@ -25,6 +25,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.nasdanika.engineering.Engineer#getRate <em>Rate</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Engineer#getDesignations <em>Designations</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Engineer#getCapacity <em>Capacity</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.Engineer#getRepresents <em>Represents</em>}</li>
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getEngineer()
@@ -106,6 +107,7 @@ public interface Engineer extends Persona {
 	 * @return the value of the '<em>Personas</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getEngineer_Personas()
 	 * @model containment="true"
+	 *        annotation="urn:org.nasdanika homogenous='true'"
 	 * @generated
 	 */
 	EList<Persona> getPersonas();
@@ -205,5 +207,19 @@ public interface Engineer extends Persona {
 	 * @generated
 	 */
 	EList<Capacity> getCapacity();
+
+	/**
+	 * Returns the value of the '<em><b>Represents</b></em>' reference list.
+	 * The list contents are of type {@link org.nasdanika.engineering.Persona}.
+	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Persona#getRepresentatives <em>Representatives</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Represents</em>' reference list.
+	 * @see org.nasdanika.engineering.EngineeringPackage#getEngineer_Represents()
+	 * @see org.nasdanika.engineering.Persona#getRepresentatives
+	 * @model opposite="representatives" changeable="false" derived="true"
+	 * @generated
+	 */
+	EList<Persona> getRepresents();
 
 } // Engineer

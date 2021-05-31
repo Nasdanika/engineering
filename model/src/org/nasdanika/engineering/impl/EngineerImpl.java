@@ -41,6 +41,7 @@ import org.nasdanika.engineering.Persona;
  *   <li>{@link org.nasdanika.engineering.impl.EngineerImpl#getRate <em>Rate</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineerImpl#getDesignations <em>Designations</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineerImpl#getCapacity <em>Capacity</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.EngineerImpl#getRepresents <em>Represents</em>}</li>
  * </ul>
  *
  * @generated
@@ -215,6 +216,16 @@ public class EngineerImpl extends PersonaImpl implements Engineer {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public EList<Persona> getRepresents() {
+		return getReferrers(EngineeringPackage.Literals.PERSONA__REPRESENTATIVES);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -229,6 +240,8 @@ public class EngineerImpl extends PersonaImpl implements Engineer {
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getAssignments()).basicAdd(otherEnd, msgs);
 			case EngineeringPackage.ENGINEER__DESIGNATIONS:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getDesignations()).basicAdd(otherEnd, msgs);
+			case EngineeringPackage.ENGINEER__REPRESENTS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getRepresents()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -269,6 +282,8 @@ public class EngineerImpl extends PersonaImpl implements Engineer {
 				return ((InternalEList<?>)getDesignations()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.ENGINEER__CAPACITY:
 				return ((InternalEList<?>)getCapacity()).basicRemove(otherEnd, msgs);
+			case EngineeringPackage.ENGINEER__REPRESENTS:
+				return ((InternalEList<?>)getRepresents()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -305,6 +320,8 @@ public class EngineerImpl extends PersonaImpl implements Engineer {
 				return getDesignations();
 			case EngineeringPackage.ENGINEER__CAPACITY:
 				return getCapacity();
+			case EngineeringPackage.ENGINEER__REPRESENTS:
+				return getRepresents();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -421,6 +438,8 @@ public class EngineerImpl extends PersonaImpl implements Engineer {
 				return !getDesignations().isEmpty();
 			case EngineeringPackage.ENGINEER__CAPACITY:
 				return !getCapacity().isEmpty();
+			case EngineeringPackage.ENGINEER__REPRESENTS:
+				return !getRepresents().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

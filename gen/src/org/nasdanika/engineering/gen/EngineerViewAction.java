@@ -157,6 +157,12 @@ public class EngineerViewAction<T extends Engineer> extends PersonaViewAction<T>
 		if (feature == EngineeringPackage.Literals.ENGINEER__DESIGNATIONS) {
 			return false;
 		}
+		if (feature == EngineeringPackage.Literals.ENGINEER__PERSONAS) {
+			return role == FeatureRole.FEATURE_ACTIONS || role == FeatureRole.ELEMENT_ACTIONS;
+		}
+		if (feature == EngineeringPackage.Literals.ENGINEER__REPRESENTS) {
+			return role == FeatureRole.PROPERTY;
+		}
 		
 		return super.isFeatureInRole(feature, role);
 	}
@@ -231,6 +237,11 @@ public class EngineerViewAction<T extends Engineer> extends PersonaViewAction<T>
 			}
 		}
 		return ret;
+	}
+	
+	@Override
+	public boolean isInRole(String role) {
+		return super.isInRole(role);
 	}
 	
 	protected Collection<Action> capacityAction() {

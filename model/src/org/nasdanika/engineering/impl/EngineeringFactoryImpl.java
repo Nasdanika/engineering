@@ -11,6 +11,8 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 import org.nasdanika.engineering.Activity;
+import org.nasdanika.engineering.Aim;
+import org.nasdanika.engineering.Alignment;
 import org.nasdanika.engineering.Allocation;
 import org.nasdanika.engineering.Artifact;
 import org.nasdanika.engineering.Call;
@@ -23,6 +25,7 @@ import org.nasdanika.engineering.EngineeredCapability;
 import org.nasdanika.engineering.EngineeringFactory;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Feature;
+import org.nasdanika.engineering.Goal;
 import org.nasdanika.engineering.Increment;
 import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.IssueCategory;
@@ -31,6 +34,7 @@ import org.nasdanika.engineering.Journey;
 import org.nasdanika.engineering.Note;
 import org.nasdanika.engineering.Organization;
 import org.nasdanika.engineering.Persona;
+import org.nasdanika.engineering.Principle;
 import org.nasdanika.engineering.Product;
 import org.nasdanika.engineering.Release;
 import org.nasdanika.engineering.Transition;
@@ -102,6 +106,10 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 			case EngineeringPackage.DIRECTORY: return createDirectory();
 			case EngineeringPackage.CAPACITY: return createCapacity();
 			case EngineeringPackage.ALLOCATION: return createAllocation();
+			case EngineeringPackage.AIM: return createAim();
+			case EngineeringPackage.PRINCIPLE: return createPrinciple();
+			case EngineeringPackage.ALIGNMENT: return createAlignment();
+			case EngineeringPackage.GOAL: return createGoal();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -358,6 +366,50 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 	public Allocation createAllocation() {
 		AllocationImpl allocation = new AllocationImpl();
 		return allocation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Aim createAim() {
+		AimImpl aim = new AimImpl();
+		return aim;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Principle createPrinciple() {
+		PrincipleImpl principle = new PrincipleImpl();
+		return principle;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Alignment createAlignment() {
+		AlignmentImpl alignment = new AlignmentImpl();
+		return alignment;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Goal createGoal() {
+		GoalImpl goal = new GoalImpl();
+		return goal;
 	}
 
 	/**

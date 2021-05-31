@@ -1,11 +1,14 @@
 package org.nasdanika.engineering.gen;
 
+import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map.Entry;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.engineering.Allocation;
@@ -13,10 +16,17 @@ import org.nasdanika.engineering.EngineeredElement;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.IssueCategory;
+import org.nasdanika.engineering.Principle;
+import org.nasdanika.html.OrderedListType;
 import org.nasdanika.html.Tag;
 import org.nasdanika.html.TagName;
 import org.nasdanika.html.app.Action;
+import org.nasdanika.html.app.Label;
+import org.nasdanika.html.app.NavigationActionActivator;
+import org.nasdanika.html.app.SectionStyle;
 import org.nasdanika.html.app.ViewGenerator;
+import org.nasdanika.html.app.impl.PathNavigationActionActivator;
+import org.nasdanika.html.app.viewparts.ListOfActionsViewPart;
 import org.nasdanika.html.bootstrap.BootstrapFactory;
 import org.nasdanika.html.bootstrap.Color;
 import org.nasdanika.html.bootstrap.Table;
@@ -55,8 +65,7 @@ public class EngineeredElementViewAction<T extends EngineeredElement> extends Na
 		
 		if (issuesSection != null) {
 			children.add(issuesSection);
-		}
-		
+		}		
 		
 		List<Issue> allIssues = new ArrayList<>();
 		getSemanticElement().eAllContents().forEachRemaining(e -> {
@@ -107,6 +116,9 @@ public class EngineeredElementViewAction<T extends EngineeredElement> extends Na
 		if (feature == EngineeringPackage.Literals.ENGINEERED_ELEMENT__ALLOCATIONS) {
 			return role == FeatureRole.FEATURE_ACTIONS;
 		}
+		if (feature == EngineeringPackage.Literals.ENGINEERED_ELEMENT__PRINCIPLES) {
+			return role == FeatureRole.FEATURE_ACTIONS || role == FeatureRole.ELEMENT_ACTIONS;
+		}		
 		return super.isFeatureInRole(feature, role);
 	}
 	
@@ -153,8 +165,43 @@ public class EngineeredElementViewAction<T extends EngineeredElement> extends Na
 			allocationsSection.getRoles().add(Action.Role.SECTION);
 			return Collections.singleton(allocationsSection);
 		}
+		
+		if (feature == EngineeringPackage.Literals.ENGINEERED_ELEMENT__PRINCIPLES) {
+			EList<Principle> principles = getSemanticElement().getPrinciples();
+			if (principles.isEmpty()) {
+				return Collections.emptyList();
+			}
+			EStructuralFeatureViewActionImpl<T, EStructuralFeature> principlesSection = new EStructuralFeatureViewActionImpl<T, EStructuralFeature>(getSemanticElement(), feature) {
+				
+				@Override
+				public Object generate(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
+					ListOfActionsViewPart listOfPrinciples = new ListOfActionsViewPart(ViewAction.adaptToViewActionsNonNull(principles), null, true, 10, OrderedListType.ROTATE) {
+						@Override
+						protected Collection<Entry<Label, List<Action>>> getGroupedActions(ViewGenerator viewGenerator, Action currentAction) {
+							if (currentAction instanceof ViewAction) {
+								EObject se = ((ViewAction<?>) currentAction).getSemanticElement();
+								if (se instanceof Principle) {
+									return Collections.singleton(new AbstractMap.SimpleEntry<Label, List<Action>>(null, ViewAction.adaptToViewActionsNonNull(((Principle) se).getChildren())));
+								}
+							}
+							return super.getGroupedActions(viewGenerator, currentAction);
+						}
+					};
+					return viewGenerator.processViewPart(listOfPrinciples, progressMonitor);
+				}
+				
+			};
+			
+			principlesSection.getRoles().add(Action.Role.SECTION); 
+			principlesSection.setSectionStyle(SectionStyle.DEFAULT);
+			principlesSection.setText(featureLabelText(feature)); 		
+			principlesSection.setIcon(featureIcon(feature));
+			principlesSection.setDescription(featureDescription(feature));
+			principlesSection.setActivator(new PathNavigationActionActivator(principlesSection, ((NavigationActionActivator) getActivator()).getUrl(null), "#feature-" + feature.getName(), getMarker()));
+			return Collections.singleton(principlesSection);
+		}
 
 		return super.featureActions(feature);
 	}
-	
+		
 }
