@@ -27,6 +27,7 @@ import org.nasdanika.engineering.EngineeredCapability;
 import org.nasdanika.engineering.EngineeredElement;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Feature;
+import org.nasdanika.engineering.FeatureAppearance;
 import org.nasdanika.engineering.Forum;
 import org.nasdanika.engineering.Goal;
 import org.nasdanika.engineering.Increment;
@@ -36,6 +37,7 @@ import org.nasdanika.engineering.IssueStatus;
 import org.nasdanika.engineering.Journey;
 import org.nasdanika.engineering.Message;
 import org.nasdanika.engineering.ModelElement;
+import org.nasdanika.engineering.ModelElementAppearance;
 import org.nasdanika.engineering.NamedElement;
 import org.nasdanika.engineering.Note;
 import org.nasdanika.engineering.Organization;
@@ -186,6 +188,12 @@ public class EngineeringValidator extends EObjectValidator {
 				return validateMessage((Message)value, diagnostics, context);
 			case EngineeringPackage.TOPIC:
 				return validateTopic((Topic)value, diagnostics, context);
+			case EngineeringPackage.MODEL_ELEMENT_APPEARANCE:
+				return validateModelElementAppearance((ModelElementAppearance)value, diagnostics, context);
+			case EngineeringPackage.FEATURE_APPEARANCE_ENTRY:
+				return validateFeatureAppearanceEntry((Map.Entry<?, ?>)value, diagnostics, context);
+			case EngineeringPackage.FEATURE_APPEARANCE:
+				return validateFeatureAppearance((FeatureAppearance)value, diagnostics, context);
 			default:
 				return true;
 		}
@@ -856,6 +864,33 @@ public class EngineeringValidator extends EObjectValidator {
 	 */
 	public boolean validateTopic(Topic topic, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(topic, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateModelElementAppearance(ModelElementAppearance modelElementAppearance, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(modelElementAppearance, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateFeatureAppearanceEntry(Map.Entry<?, ?> featureAppearanceEntry, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint((EObject)featureAppearanceEntry, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateFeatureAppearance(FeatureAppearance featureAppearance, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(featureAppearance, diagnostics, context);
 	}
 
 	/**

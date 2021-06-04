@@ -1,6 +1,10 @@
 engineering-organization:
    name: Test
    path: test
+   appearance:
+     features:
+       issue-categories:
+         roles: context
    issue-categories:
       - path: test
         name: Test Category

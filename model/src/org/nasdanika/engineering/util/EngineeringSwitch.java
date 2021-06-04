@@ -2,6 +2,7 @@
  */
 package org.nasdanika.engineering.util;
 
+import java.util.Map;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -24,6 +25,7 @@ import org.nasdanika.engineering.EngineeredCapability;
 import org.nasdanika.engineering.EngineeredElement;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Feature;
+import org.nasdanika.engineering.FeatureAppearance;
 import org.nasdanika.engineering.Forum;
 import org.nasdanika.engineering.Goal;
 import org.nasdanika.engineering.Increment;
@@ -33,6 +35,7 @@ import org.nasdanika.engineering.IssueStatus;
 import org.nasdanika.engineering.Journey;
 import org.nasdanika.engineering.Message;
 import org.nasdanika.engineering.ModelElement;
+import org.nasdanika.engineering.ModelElementAppearance;
 import org.nasdanika.engineering.NamedElement;
 import org.nasdanika.engineering.Note;
 import org.nasdanika.engineering.Organization;
@@ -429,6 +432,24 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				if (result == null) result = caseNamedElement(topic);
 				if (result == null) result = caseModelElement(topic);
 				if (result == null) result = caseAdaptable(topic);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EngineeringPackage.MODEL_ELEMENT_APPEARANCE: {
+				ModelElementAppearance modelElementAppearance = (ModelElementAppearance)theEObject;
+				T result = caseModelElementAppearance(modelElementAppearance);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EngineeringPackage.FEATURE_APPEARANCE_ENTRY: {
+				@SuppressWarnings("unchecked") Map.Entry<String, FeatureAppearance> featureAppearanceEntry = (Map.Entry<String, FeatureAppearance>)theEObject;
+				T result = caseFeatureAppearanceEntry(featureAppearanceEntry);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EngineeringPackage.FEATURE_APPEARANCE: {
+				FeatureAppearance featureAppearance = (FeatureAppearance)theEObject;
+				T result = caseFeatureAppearance(featureAppearance);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -928,6 +949,51 @@ public class EngineeringSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseTopic(Topic object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Model Element Appearance</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Model Element Appearance</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseModelElementAppearance(ModelElementAppearance object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Feature Appearance Entry</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Feature Appearance Entry</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseFeatureAppearanceEntry(Map.Entry<String, FeatureAppearance> object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Feature Appearance</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Feature Appearance</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseFeatureAppearance(FeatureAppearance object) {
 		return null;
 	}
 

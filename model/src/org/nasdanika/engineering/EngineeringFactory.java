@@ -283,6 +283,24 @@ public interface EngineeringFactory extends EFactory {
 	Topic createTopic();
 
 	/**
+	 * Returns a new object of class '<em>Model Element Appearance</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Model Element Appearance</em>'.
+	 * @generated
+	 */
+	ModelElementAppearance createModelElementAppearance();
+
+	/**
+	 * Returns a new object of class '<em>Feature Appearance</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Feature Appearance</em>'.
+	 * @generated
+	 */
+	FeatureAppearance createFeatureAppearance();
+
+	/**
 	 * Returns a new object of class '<em>Message</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

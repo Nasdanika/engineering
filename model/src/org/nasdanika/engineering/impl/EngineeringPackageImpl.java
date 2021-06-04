@@ -2,6 +2,7 @@
  */
 package org.nasdanika.engineering.impl;
 
+import java.util.Map;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
@@ -28,6 +29,7 @@ import org.nasdanika.engineering.EngineeredElement;
 import org.nasdanika.engineering.EngineeringFactory;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Feature;
+import org.nasdanika.engineering.FeatureAppearance;
 import org.nasdanika.engineering.Forum;
 import org.nasdanika.engineering.Goal;
 import org.nasdanika.engineering.Increment;
@@ -37,6 +39,7 @@ import org.nasdanika.engineering.IssueStatus;
 import org.nasdanika.engineering.Journey;
 import org.nasdanika.engineering.Message;
 import org.nasdanika.engineering.ModelElement;
+import org.nasdanika.engineering.ModelElementAppearance;
 import org.nasdanika.engineering.NamedElement;
 import org.nasdanika.engineering.Note;
 import org.nasdanika.engineering.Organization;
@@ -291,6 +294,27 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass modelElementAppearanceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass featureAppearanceEntryEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass featureAppearanceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass messageEClass = null;
 
 	/**
@@ -442,6 +466,16 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	@Override
 	public EReference getModelElement_Resources() {
 		return (EReference)modelElementEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getModelElement_Appearance() {
+		return (EReference)modelElementEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -1800,6 +1834,76 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
+	public EClass getModelElementAppearance() {
+		return modelElementAppearanceEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getModelElementAppearance_Features() {
+		return (EReference)modelElementAppearanceEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getFeatureAppearanceEntry() {
+		return featureAppearanceEntryEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getFeatureAppearanceEntry_Key() {
+		return (EAttribute)featureAppearanceEntryEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getFeatureAppearanceEntry_Value() {
+		return (EReference)featureAppearanceEntryEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getFeatureAppearance() {
+		return featureAppearanceEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getFeatureAppearance_Roles() {
+		return (EAttribute)featureAppearanceEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getMessage() {
 		return messageEClass;
 	}
@@ -1862,6 +1966,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		createEAttribute(modelElementEClass, MODEL_ELEMENT__MARKDOWN_DESCRIPTION);
 		createEReference(modelElementEClass, MODEL_ELEMENT__ACTIONS);
 		createEReference(modelElementEClass, MODEL_ELEMENT__RESOURCES);
+		createEReference(modelElementEClass, MODEL_ELEMENT__APPEARANCE);
 
 		namedElementEClass = createEClass(NAMED_ELEMENT);
 		createEAttribute(namedElementEClass, NAMED_ELEMENT__NAME);
@@ -2032,6 +2137,16 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 
 		topicEClass = createEClass(TOPIC);
 		createEReference(topicEClass, TOPIC__MESSAGES);
+
+		modelElementAppearanceEClass = createEClass(MODEL_ELEMENT_APPEARANCE);
+		createEReference(modelElementAppearanceEClass, MODEL_ELEMENT_APPEARANCE__FEATURES);
+
+		featureAppearanceEntryEClass = createEClass(FEATURE_APPEARANCE_ENTRY);
+		createEAttribute(featureAppearanceEntryEClass, FEATURE_APPEARANCE_ENTRY__KEY);
+		createEReference(featureAppearanceEntryEClass, FEATURE_APPEARANCE_ENTRY__VALUE);
+
+		featureAppearanceEClass = createEClass(FEATURE_APPEARANCE);
+		createEAttribute(featureAppearanceEClass, FEATURE_APPEARANCE__ROLES);
 	}
 
 	/**
@@ -2107,6 +2222,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		initEAttribute(getModelElement_MarkdownDescription(), ecorePackage.getEString(), "markdownDescription", null, 0, 1, ModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getModelElement_Actions(), ecorePackage.getEObject(), null, "actions", null, 0, -1, ModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getModelElement_Resources(), this.getNamedElement(), null, "resources", null, 0, -1, ModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getModelElement_Appearance(), this.getModelElementAppearance(), null, "appearance", null, 0, 1, ModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(namedElementEClass, NamedElement.class, "NamedElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getNamedElement_Name(), ecorePackage.getEString(), "name", null, 0, 1, NamedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2278,6 +2394,16 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		initEClass(topicEClass, Topic.class, "Topic", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTopic_Messages(), this.getMessage(), null, "messages", null, 0, -1, Topic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(modelElementAppearanceEClass, ModelElementAppearance.class, "ModelElementAppearance", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getModelElementAppearance_Features(), this.getFeatureAppearanceEntry(), null, "features", null, 0, -1, ModelElementAppearance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(featureAppearanceEntryEClass, Map.Entry.class, "FeatureAppearanceEntry", !IS_ABSTRACT, !IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getFeatureAppearanceEntry_Key(), ecorePackage.getEString(), "key", null, 0, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getFeatureAppearanceEntry_Value(), this.getFeatureAppearance(), null, "value", null, 1, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(featureAppearanceEClass, FeatureAppearance.class, "FeatureAppearance", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getFeatureAppearance_Roles(), ecorePackage.getEString(), "roles", null, 0, -1, FeatureAppearance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		// Create resource
 		createResource(eNS_URI);
 
@@ -2315,6 +2441,12 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		   source,
 		   new String[] {
 			   "load-key", "path"
+		   });
+		addAnnotation
+		  (getModelElement_Appearance(),
+		   source,
+		   new String[] {
+			   "homogenous", "true"
 		   });
 		addAnnotation
 		  (namedElementEClass,
@@ -2695,6 +2827,18 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		   });
 		addAnnotation
 		  (getTopic_Messages(),
+		   source,
+		   new String[] {
+			   "homogenous", "true"
+		   });
+		addAnnotation
+		  (getModelElementAppearance_Features(),
+		   source,
+		   new String[] {
+			   "homogenous", "true"
+		   });
+		addAnnotation
+		  (getFeatureAppearanceEntry_Value(),
 		   source,
 		   new String[] {
 			   "homogenous", "true"

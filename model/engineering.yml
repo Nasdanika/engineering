@@ -97,6 +97,11 @@ engineering-module:
          Consider ``extends`` relationship between principles. E.g. module level principle extends a more generic organization level principle. Many-to-many relationship.   
      - name: YAML spec examples
        markdown-description: Add to documentation.             
+     - name: Documents and sections
+       markdown-description: |+2
+         Engineered elements, partial support of action configuration - section style. Content is displayed in the first nav, inherited info in the second. 
+         Other options are dialog, collapsible, and context action which calls super.doGenerate() - do not cache. Add support of resources and directories in the UI where to keep documents. 
+         Document extends section. Table of contents configuration (not component) - location (e.g. right navigation), style - list/table, title (optional), depth.              
          
      ### === Done === ###    
      - name: Start/end from Issue and Increment to Endeavor

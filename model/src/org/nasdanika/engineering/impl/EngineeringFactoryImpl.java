@@ -2,6 +2,7 @@
  */
 package org.nasdanika.engineering.impl;
 
+import java.util.Map;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -25,6 +26,7 @@ import org.nasdanika.engineering.EngineeredCapability;
 import org.nasdanika.engineering.EngineeringFactory;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Feature;
+import org.nasdanika.engineering.FeatureAppearance;
 import org.nasdanika.engineering.Forum;
 import org.nasdanika.engineering.Goal;
 import org.nasdanika.engineering.Increment;
@@ -33,6 +35,7 @@ import org.nasdanika.engineering.IssueCategory;
 import org.nasdanika.engineering.IssueStatus;
 import org.nasdanika.engineering.Journey;
 import org.nasdanika.engineering.Message;
+import org.nasdanika.engineering.ModelElementAppearance;
 import org.nasdanika.engineering.Note;
 import org.nasdanika.engineering.Organization;
 import org.nasdanika.engineering.Persona;
@@ -116,6 +119,9 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 			case EngineeringPackage.FORUM: return createForum();
 			case EngineeringPackage.MESSAGE: return createMessage();
 			case EngineeringPackage.TOPIC: return createTopic();
+			case EngineeringPackage.MODEL_ELEMENT_APPEARANCE: return createModelElementAppearance();
+			case EngineeringPackage.FEATURE_APPEARANCE_ENTRY: return (EObject)createFeatureAppearanceEntry();
+			case EngineeringPackage.FEATURE_APPEARANCE: return createFeatureAppearance();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -438,6 +444,38 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 	public Topic createTopic() {
 		TopicImpl topic = new TopicImpl();
 		return topic;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ModelElementAppearance createModelElementAppearance() {
+		ModelElementAppearanceImpl modelElementAppearance = new ModelElementAppearanceImpl();
+		return modelElementAppearance;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Map.Entry<String, FeatureAppearance> createFeatureAppearanceEntry() {
+		FeatureAppearanceEntryImpl featureAppearanceEntry = new FeatureAppearanceEntryImpl();
+		return featureAppearanceEntry;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public FeatureAppearance createFeatureAppearance() {
+		FeatureAppearanceImpl featureAppearance = new FeatureAppearanceImpl();
+		return featureAppearance;
 	}
 
 	/**

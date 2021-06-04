@@ -25,6 +25,7 @@ import org.nasdanika.common.persistence.Marked;
 import org.nasdanika.emf.EObjectAdaptable;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.ModelElement;
+import org.nasdanika.engineering.ModelElementAppearance;
 import org.nasdanika.engineering.NamedElement;
 
 /**
@@ -41,6 +42,7 @@ import org.nasdanika.engineering.NamedElement;
  *   <li>{@link org.nasdanika.engineering.impl.ModelElementImpl#getMarkdownDescription <em>Markdown Description</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.ModelElementImpl#getActions <em>Actions</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.ModelElementImpl#getResources <em>Resources</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.ModelElementImpl#getAppearance <em>Appearance</em>}</li>
  * </ul>
  *
  * @generated
@@ -250,12 +252,44 @@ public abstract class ModelElementImpl extends MinimalEObjectImpl.Container impl
 	 * @generated
 	 */
 	@Override
+	public ModelElementAppearance getAppearance() {
+		return (ModelElementAppearance)eDynamicGet(EngineeringPackage.MODEL_ELEMENT__APPEARANCE, EngineeringPackage.Literals.MODEL_ELEMENT__APPEARANCE, true, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetAppearance(ModelElementAppearance newAppearance, NotificationChain msgs) {
+		msgs = eDynamicInverseAdd((InternalEObject)newAppearance, EngineeringPackage.MODEL_ELEMENT__APPEARANCE, msgs);
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setAppearance(ModelElementAppearance newAppearance) {
+		eDynamicSet(EngineeringPackage.MODEL_ELEMENT__APPEARANCE, EngineeringPackage.Literals.MODEL_ELEMENT__APPEARANCE, newAppearance);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case EngineeringPackage.MODEL_ELEMENT__ACTIONS:
 				return ((InternalEList<?>)getActions()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.MODEL_ELEMENT__RESOURCES:
 				return ((InternalEList<?>)getResources()).basicRemove(otherEnd, msgs);
+			case EngineeringPackage.MODEL_ELEMENT__APPEARANCE:
+				return basicSetAppearance(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -280,6 +314,8 @@ public abstract class ModelElementImpl extends MinimalEObjectImpl.Container impl
 				return getActions();
 			case EngineeringPackage.MODEL_ELEMENT__RESOURCES:
 				return getResources();
+			case EngineeringPackage.MODEL_ELEMENT__APPEARANCE:
+				return getAppearance();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -310,6 +346,9 @@ public abstract class ModelElementImpl extends MinimalEObjectImpl.Container impl
 				getResources().clear();
 				getResources().addAll((Collection<? extends NamedElement>)newValue);
 				return;
+			case EngineeringPackage.MODEL_ELEMENT__APPEARANCE:
+				setAppearance((ModelElementAppearance)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -337,6 +376,9 @@ public abstract class ModelElementImpl extends MinimalEObjectImpl.Container impl
 			case EngineeringPackage.MODEL_ELEMENT__RESOURCES:
 				getResources().clear();
 				return;
+			case EngineeringPackage.MODEL_ELEMENT__APPEARANCE:
+				setAppearance((ModelElementAppearance)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -361,6 +403,8 @@ public abstract class ModelElementImpl extends MinimalEObjectImpl.Container impl
 				return !getActions().isEmpty();
 			case EngineeringPackage.MODEL_ELEMENT__RESOURCES:
 				return !getResources().isEmpty();
+			case EngineeringPackage.MODEL_ELEMENT__APPEARANCE:
+				return getAppearance() != null;
 		}
 		return super.eIsSet(featureID);
 	}

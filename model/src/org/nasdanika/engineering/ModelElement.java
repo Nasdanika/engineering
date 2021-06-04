@@ -22,6 +22,7 @@ import org.nasdanika.common.Adaptable;
  *   <li>{@link org.nasdanika.engineering.ModelElement#getMarkdownDescription <em>Markdown Description</em>}</li>
  *   <li>{@link org.nasdanika.engineering.ModelElement#getActions <em>Actions</em>}</li>
  *   <li>{@link org.nasdanika.engineering.ModelElement#getResources <em>Resources</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.ModelElement#getAppearance <em>Appearance</em>}</li>
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getModelElement()
@@ -149,5 +150,28 @@ public interface ModelElement extends EObject, Adaptable {
 	 * @generated
 	 */
 	EList<NamedElement> getResources();
+
+	/**
+	 * Returns the value of the '<em><b>Appearance</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Appearance</em>' containment reference.
+	 * @see #setAppearance(ModelElementAppearance)
+	 * @see org.nasdanika.engineering.EngineeringPackage#getModelElement_Appearance()
+	 * @model containment="true"
+	 *        annotation="urn:org.nasdanika homogenous='true'"
+	 * @generated
+	 */
+	ModelElementAppearance getAppearance();
+
+	/**
+	 * Sets the value of the '{@link org.nasdanika.engineering.ModelElement#getAppearance <em>Appearance</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Appearance</em>' containment reference.
+	 * @see #getAppearance()
+	 * @generated
+	 */
+	void setAppearance(ModelElementAppearance value);
 
 } // ModelElement
