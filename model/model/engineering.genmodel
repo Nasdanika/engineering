@@ -187,15 +187,28 @@
     <genClasses ecoreClass="engineering.ecore#//Topic">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//Topic/messages"/>
     </genClasses>
+    <genClasses ecoreClass="engineering.ecore#//EngineeringAppearance">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//EngineeringAppearance/modelElements"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="engineering.ecore#//Appearance">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Appearance/icon"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Appearance/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Appearance/markdownDescription"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Appearance/roles"/>
+    </genClasses>
     <genClasses ecoreClass="engineering.ecore#//ModelElementAppearance">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//ModelElementAppearance/features"/>
+    </genClasses>
+    <genClasses ecoreClass="engineering.ecore#//ModelElementAppearanceEntry">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//ModelElementAppearanceEntry/key"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//ModelElementAppearanceEntry/value"/>
     </genClasses>
     <genClasses ecoreClass="engineering.ecore#//FeatureAppearanceEntry">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//FeatureAppearanceEntry/key"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//FeatureAppearanceEntry/value"/>
     </genClasses>
     <genClasses ecoreClass="engineering.ecore#//FeatureAppearance">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//FeatureAppearance/roles"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//FeatureAppearance/category"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

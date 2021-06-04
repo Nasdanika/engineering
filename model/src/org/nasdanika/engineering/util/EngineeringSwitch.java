@@ -14,6 +14,7 @@ import org.nasdanika.engineering.Activity;
 import org.nasdanika.engineering.Aim;
 import org.nasdanika.engineering.Alignment;
 import org.nasdanika.engineering.Allocation;
+import org.nasdanika.engineering.Appearance;
 import org.nasdanika.engineering.Artifact;
 import org.nasdanika.engineering.Call;
 import org.nasdanika.engineering.Capability;
@@ -23,6 +24,7 @@ import org.nasdanika.engineering.Endeavor;
 import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeredCapability;
 import org.nasdanika.engineering.EngineeredElement;
+import org.nasdanika.engineering.EngineeringAppearance;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Feature;
 import org.nasdanika.engineering.FeatureAppearance;
@@ -435,9 +437,28 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case EngineeringPackage.ENGINEERING_APPEARANCE: {
+				EngineeringAppearance engineeringAppearance = (EngineeringAppearance)theEObject;
+				T result = caseEngineeringAppearance(engineeringAppearance);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EngineeringPackage.APPEARANCE: {
+				Appearance appearance = (Appearance)theEObject;
+				T result = caseAppearance(appearance);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case EngineeringPackage.MODEL_ELEMENT_APPEARANCE: {
 				ModelElementAppearance modelElementAppearance = (ModelElementAppearance)theEObject;
 				T result = caseModelElementAppearance(modelElementAppearance);
+				if (result == null) result = caseAppearance(modelElementAppearance);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EngineeringPackage.MODEL_ELEMENT_APPEARANCE_ENTRY: {
+				@SuppressWarnings("unchecked") Map.Entry<String, ModelElementAppearance> modelElementAppearanceEntry = (Map.Entry<String, ModelElementAppearance>)theEObject;
+				T result = caseModelElementAppearanceEntry(modelElementAppearanceEntry);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -450,6 +471,7 @@ public class EngineeringSwitch<T> extends Switch<T> {
 			case EngineeringPackage.FEATURE_APPEARANCE: {
 				FeatureAppearance featureAppearance = (FeatureAppearance)theEObject;
 				T result = caseFeatureAppearance(featureAppearance);
+				if (result == null) result = caseAppearance(featureAppearance);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -953,6 +975,36 @@ public class EngineeringSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Appearance</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Appearance</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseEngineeringAppearance(EngineeringAppearance object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Appearance</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Appearance</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAppearance(Appearance object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Model Element Appearance</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -964,6 +1016,21 @@ public class EngineeringSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseModelElementAppearance(ModelElementAppearance object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Model Element Appearance Entry</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Model Element Appearance Entry</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseModelElementAppearanceEntry(Map.Entry<String, ModelElementAppearance> object) {
 		return null;
 	}
 

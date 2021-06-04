@@ -17,6 +17,7 @@ import org.nasdanika.engineering.Activity;
 import org.nasdanika.engineering.Aim;
 import org.nasdanika.engineering.Alignment;
 import org.nasdanika.engineering.Allocation;
+import org.nasdanika.engineering.Appearance;
 import org.nasdanika.engineering.Artifact;
 import org.nasdanika.engineering.Call;
 import org.nasdanika.engineering.Capability;
@@ -26,6 +27,7 @@ import org.nasdanika.engineering.Endeavor;
 import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeredCapability;
 import org.nasdanika.engineering.EngineeredElement;
+import org.nasdanika.engineering.EngineeringAppearance;
 import org.nasdanika.engineering.EngineeringFactory;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Feature;
@@ -294,7 +296,28 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass engineeringAppearanceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass appearanceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass modelElementAppearanceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass modelElementAppearanceEntryEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1834,6 +1857,76 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
+	public EClass getEngineeringAppearance() {
+		return engineeringAppearanceEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getEngineeringAppearance_ModelElements() {
+		return (EReference)engineeringAppearanceEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getAppearance() {
+		return appearanceEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getAppearance_Icon() {
+		return (EAttribute)appearanceEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getAppearance_Description() {
+		return (EAttribute)appearanceEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getAppearance_MarkdownDescription() {
+		return (EAttribute)appearanceEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getAppearance_Roles() {
+		return (EAttribute)appearanceEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getModelElementAppearance() {
 		return modelElementAppearanceEClass;
 	}
@@ -1846,6 +1939,36 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	@Override
 	public EReference getModelElementAppearance_Features() {
 		return (EReference)modelElementAppearanceEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getModelElementAppearanceEntry() {
+		return modelElementAppearanceEntryEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getModelElementAppearanceEntry_Key() {
+		return (EAttribute)modelElementAppearanceEntryEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getModelElementAppearanceEntry_Value() {
+		return (EReference)modelElementAppearanceEntryEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1894,7 +2017,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EAttribute getFeatureAppearance_Roles() {
+	public EAttribute getFeatureAppearance_Category() {
 		return (EAttribute)featureAppearanceEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -2138,15 +2261,28 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		topicEClass = createEClass(TOPIC);
 		createEReference(topicEClass, TOPIC__MESSAGES);
 
+		engineeringAppearanceEClass = createEClass(ENGINEERING_APPEARANCE);
+		createEReference(engineeringAppearanceEClass, ENGINEERING_APPEARANCE__MODEL_ELEMENTS);
+
+		appearanceEClass = createEClass(APPEARANCE);
+		createEAttribute(appearanceEClass, APPEARANCE__ICON);
+		createEAttribute(appearanceEClass, APPEARANCE__DESCRIPTION);
+		createEAttribute(appearanceEClass, APPEARANCE__MARKDOWN_DESCRIPTION);
+		createEAttribute(appearanceEClass, APPEARANCE__ROLES);
+
 		modelElementAppearanceEClass = createEClass(MODEL_ELEMENT_APPEARANCE);
 		createEReference(modelElementAppearanceEClass, MODEL_ELEMENT_APPEARANCE__FEATURES);
+
+		modelElementAppearanceEntryEClass = createEClass(MODEL_ELEMENT_APPEARANCE_ENTRY);
+		createEAttribute(modelElementAppearanceEntryEClass, MODEL_ELEMENT_APPEARANCE_ENTRY__KEY);
+		createEReference(modelElementAppearanceEntryEClass, MODEL_ELEMENT_APPEARANCE_ENTRY__VALUE);
 
 		featureAppearanceEntryEClass = createEClass(FEATURE_APPEARANCE_ENTRY);
 		createEAttribute(featureAppearanceEntryEClass, FEATURE_APPEARANCE_ENTRY__KEY);
 		createEReference(featureAppearanceEntryEClass, FEATURE_APPEARANCE_ENTRY__VALUE);
 
 		featureAppearanceEClass = createEClass(FEATURE_APPEARANCE);
-		createEAttribute(featureAppearanceEClass, FEATURE_APPEARANCE__ROLES);
+		createEAttribute(featureAppearanceEClass, FEATURE_APPEARANCE__CATEGORY);
 	}
 
 	/**
@@ -2211,6 +2347,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		forumEClass.getESuperTypes().add(this.getNamedElement());
 		messageEClass.getESuperTypes().add(this.getNamedElement());
 		topicEClass.getESuperTypes().add(this.getMessage());
+		modelElementAppearanceEClass.getESuperTypes().add(this.getAppearance());
+		featureAppearanceEClass.getESuperTypes().add(this.getAppearance());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(adaptableEClass, Adaptable.class, "Adaptable", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
@@ -2394,15 +2532,28 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		initEClass(topicEClass, Topic.class, "Topic", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTopic_Messages(), this.getMessage(), null, "messages", null, 0, -1, Topic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(engineeringAppearanceEClass, EngineeringAppearance.class, "EngineeringAppearance", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getEngineeringAppearance_ModelElements(), this.getModelElementAppearanceEntry(), null, "modelElements", null, 0, -1, EngineeringAppearance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(appearanceEClass, Appearance.class, "Appearance", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getAppearance_Icon(), ecorePackage.getEString(), "icon", null, 0, 1, Appearance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAppearance_Description(), ecorePackage.getEString(), "description", null, 0, 1, Appearance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAppearance_MarkdownDescription(), ecorePackage.getEString(), "markdownDescription", null, 0, 1, Appearance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAppearance_Roles(), ecorePackage.getEString(), "roles", null, 0, -1, Appearance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(modelElementAppearanceEClass, ModelElementAppearance.class, "ModelElementAppearance", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getModelElementAppearance_Features(), this.getFeatureAppearanceEntry(), null, "features", null, 0, -1, ModelElementAppearance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(modelElementAppearanceEntryEClass, Map.Entry.class, "ModelElementAppearanceEntry", !IS_ABSTRACT, !IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getModelElementAppearanceEntry_Key(), ecorePackage.getEString(), "key", null, 0, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getModelElementAppearanceEntry_Value(), this.getModelElementAppearance(), null, "value", null, 1, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(featureAppearanceEntryEClass, Map.Entry.class, "FeatureAppearanceEntry", !IS_ABSTRACT, !IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getFeatureAppearanceEntry_Key(), ecorePackage.getEString(), "key", null, 0, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getFeatureAppearanceEntry_Value(), this.getFeatureAppearance(), null, "value", null, 1, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(featureAppearanceEClass, FeatureAppearance.class, "FeatureAppearance", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getFeatureAppearance_Roles(), ecorePackage.getEString(), "roles", null, 0, -1, FeatureAppearance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFeatureAppearance_Category(), ecorePackage.getEBoolean(), "category", null, 0, 1, FeatureAppearance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -2832,16 +2983,64 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 			   "homogenous", "true"
 		   });
 		addAnnotation
+		  (engineeringAppearanceEClass,
+		   source,
+		   new String[] {
+			   "documentation-reference", "doc/engineering-appearance.md"
+		   });
+		addAnnotation
+		  (getEngineeringAppearance_ModelElements(),
+		   source,
+		   new String[] {
+			   "homogenous", "true"
+		   });
+		addAnnotation
+		  (appearanceEClass,
+		   source,
+		   new String[] {
+			   "documentation-reference", "doc/appearance.md"
+		   });
+		addAnnotation
+		  (modelElementAppearanceEClass,
+		   source,
+		   new String[] {
+			   "documentation-reference", "doc/model-element-appearance.md"
+		   });
+		addAnnotation
 		  (getModelElementAppearance_Features(),
 		   source,
 		   new String[] {
 			   "homogenous", "true"
 		   });
 		addAnnotation
+		  (modelElementAppearanceEntryEClass,
+		   source,
+		   new String[] {
+			   "documentation-reference", "doc/model-element-appearance-entry.md"
+		   });
+		addAnnotation
+		  (getModelElementAppearanceEntry_Value(),
+		   source,
+		   new String[] {
+			   "homogenous", "true"
+		   });
+		addAnnotation
+		  (featureAppearanceEntryEClass,
+		   source,
+		   new String[] {
+			   "documentation-reference", "doc/feature-appearance-entry.md"
+		   });
+		addAnnotation
 		  (getFeatureAppearanceEntry_Value(),
 		   source,
 		   new String[] {
 			   "homogenous", "true"
+		   });
+		addAnnotation
+		  (featureAppearanceEClass,
+		   source,
+		   new String[] {
+			   "documentation-reference", "doc/feature-appearance.md"
 		   });
 	}
 
@@ -3524,6 +3723,72 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		   source,
 		   new String[] {
 			   "documentation", "Messages in this topic."
+		   });
+		addAnnotation
+		  (getEngineeringAppearance_ModelElements(),
+		   source,
+		   new String[] {
+			   "documentation", "Mapping of model element EClass names in kebab case to model element appearance.\nE.g. for ``IssueStatus`` appearance specification will look like:\n\n```yaml\nmodel-elements:\n    issue-status:\n        roles: context\n```\n"
+		   });
+		addAnnotation
+		  (getAppearance_Icon(),
+		   source,
+		   new String[] {
+			   "documentation", "Icon - image URL if contains slash (``/``). CSS class otherwise, e.g. ``fas fa-user``. "
+		   });
+		addAnnotation
+		  (getAppearance_Description(),
+		   source,
+		   new String[] {
+			   "documentation", "Description in HTML to show in the context help modal dialog."
+		   });
+		addAnnotation
+		  (getAppearance_MarkdownDescription(),
+		   source,
+		   new String[] {
+			   "documentation", "Description  in [Markdown](https://en.wikipedia.org/wiki/Markdown) to show in the context help modal dialog."
+		   });
+		addAnnotation
+		  (getAppearance_Roles(),
+		   source,
+		   new String[] {
+			   "documentation", "Roles of the containing element. \n\nAction role for model elements. One of:\n\n* ``navigation`` - Navigation actions are shown in the navigation panel as a list or as a tree. \n* ``context`` - Context actions are shown as a tree context menu and as a button toolbar in the content panel.\n* ``section`` - Section actions are shown as sections in the content panel. \n* ``content-right`` - Content right actions are shown in an adaptive navigation panel to the right of the action content.\n* ``content-left`` - Content left actions are shown in an adaptive  navigation panel to the left of the action content.\n\nFor features - feature role. One of:\n\n* ``property`` - Feature is shown in the properties table.\n* ``content`` - Feature is shown in the content. \n* ``element-actions`` - Child action for each feature element\n* ``element-actions-sorted`` - Child actions for feature elements sorted by text\n* ``feature-actions`` - Child actions for the feature, e.g. a section with a table of an action list.\n\nAction feature roles (the last three) may be followed by a slash (``/``) and then action role.\nFor example: ``feature-actions/context``.\n\nUse ``none`` role to hide feature or model element.\n\n\n"
+		   });
+		addAnnotation
+		  (getModelElementAppearance_Features(),
+		   source,
+		   new String[] {
+			   "documentation", "Mapping of feature names in kebab case to feature appearance.\nE.g. for ``issueCategories`` feature mapping specification will look like:\n\n```yaml\nfeatures:\n    issue-categories:\n        roles: context\n```\n"
+		   });
+		addAnnotation
+		  (getModelElementAppearanceEntry_Key(),
+		   source,
+		   new String[] {
+			   "documentation", "Model element EClass name in kebab case. E.g. ``issue-status`` for [IssueStatus](IssueStatus.html)."
+		   });
+		addAnnotation
+		  (getModelElementAppearanceEntry_Value(),
+		   source,
+		   new String[] {
+			   "documentation", "Model element appearance."
+		   });
+		addAnnotation
+		  (getFeatureAppearanceEntry_Key(),
+		   source,
+		   new String[] {
+			   "documentation", "Feature name in kebab case. E.g. ``issue-categories``."
+		   });
+		addAnnotation
+		  (getFeatureAppearanceEntry_Value(),
+		   source,
+		   new String[] {
+			   "documentation", "Feature appearance."
+		   });
+		addAnnotation
+		  (getFeatureAppearance_Category(),
+		   source,
+		   new String[] {
+			   "documentation", "If false feature element actions are not categorized, i.e. in the navigation tree they would appear as container children without an intermediary feature category node. It can be useful if the containing element has navigation children only of one type or they can be distinguished by an icon and as such a feature category is not necessary."
 		   });
 	}
 

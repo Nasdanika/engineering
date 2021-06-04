@@ -16,6 +16,7 @@ import org.nasdanika.engineering.Activity;
 import org.nasdanika.engineering.Aim;
 import org.nasdanika.engineering.Alignment;
 import org.nasdanika.engineering.Allocation;
+import org.nasdanika.engineering.Appearance;
 import org.nasdanika.engineering.Artifact;
 import org.nasdanika.engineering.Call;
 import org.nasdanika.engineering.Capability;
@@ -25,6 +26,7 @@ import org.nasdanika.engineering.Endeavor;
 import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeredCapability;
 import org.nasdanika.engineering.EngineeredElement;
+import org.nasdanika.engineering.EngineeringAppearance;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Feature;
 import org.nasdanika.engineering.FeatureAppearance;
@@ -241,8 +243,20 @@ public class EngineeringAdapterFactory extends AdapterFactoryImpl {
 				return createTopicAdapter();
 			}
 			@Override
+			public Adapter caseEngineeringAppearance(EngineeringAppearance object) {
+				return createEngineeringAppearanceAdapter();
+			}
+			@Override
+			public Adapter caseAppearance(Appearance object) {
+				return createAppearanceAdapter();
+			}
+			@Override
 			public Adapter caseModelElementAppearance(ModelElementAppearance object) {
 				return createModelElementAppearanceAdapter();
+			}
+			@Override
+			public Adapter caseModelElementAppearanceEntry(Map.Entry<String, ModelElementAppearance> object) {
+				return createModelElementAppearanceEntryAdapter();
 			}
 			@Override
 			public Adapter caseFeatureAppearanceEntry(Map.Entry<String, FeatureAppearance> object) {
@@ -735,6 +749,34 @@ public class EngineeringAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.EngineeringAppearance <em>Appearance</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.nasdanika.engineering.EngineeringAppearance
+	 * @generated
+	 */
+	public Adapter createEngineeringAppearanceAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.Appearance <em>Appearance</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.nasdanika.engineering.Appearance
+	 * @generated
+	 */
+	public Adapter createAppearanceAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.ModelElementAppearance <em>Model Element Appearance</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -745,6 +787,20 @@ public class EngineeringAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createModelElementAppearanceAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link java.util.Map.Entry <em>Model Element Appearance Entry</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see java.util.Map.Entry
+	 * @generated
+	 */
+	public Adapter createModelElementAppearanceEntryAdapter() {
 		return null;
 	}
 

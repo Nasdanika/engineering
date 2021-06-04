@@ -9,32 +9,35 @@ import org.eclipse.emf.common.util.EMap;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.nasdanika.engineering.EngineeringAppearance;
 import org.nasdanika.engineering.EngineeringPackage;
-import org.nasdanika.engineering.FeatureAppearance;
 import org.nasdanika.engineering.ModelElementAppearance;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Model Element Appearance</b></em>'.
+ * An implementation of the model object '<em><b>Appearance</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.nasdanika.engineering.impl.ModelElementAppearanceImpl#getFeatures <em>Features</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.EngineeringAppearanceImpl#getModelElements <em>Model Elements</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ModelElementAppearanceImpl extends AppearanceImpl implements ModelElementAppearance {
+public class EngineeringAppearanceImpl extends MinimalEObjectImpl.Container implements EngineeringAppearance {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ModelElementAppearanceImpl() {
+	protected EngineeringAppearanceImpl() {
 		super();
 	}
 
@@ -45,7 +48,17 @@ public class ModelElementAppearanceImpl extends AppearanceImpl implements ModelE
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return EngineeringPackage.Literals.MODEL_ELEMENT_APPEARANCE;
+		return EngineeringPackage.Literals.ENGINEERING_APPEARANCE;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected int eStaticFeatureCount() {
+		return 0;
 	}
 
 	/**
@@ -55,8 +68,8 @@ public class ModelElementAppearanceImpl extends AppearanceImpl implements ModelE
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public EMap<String, FeatureAppearance> getFeatures() {
-		return (EMap<String, FeatureAppearance>)eDynamicGet(EngineeringPackage.MODEL_ELEMENT_APPEARANCE__FEATURES, EngineeringPackage.Literals.MODEL_ELEMENT_APPEARANCE__FEATURES, true, true);
+	public EMap<String, ModelElementAppearance> getModelElements() {
+		return (EMap<String, ModelElementAppearance>)eDynamicGet(EngineeringPackage.ENGINEERING_APPEARANCE__MODEL_ELEMENTS, EngineeringPackage.Literals.ENGINEERING_APPEARANCE__MODEL_ELEMENTS, true, true);
 	}
 
 	/**
@@ -67,8 +80,8 @@ public class ModelElementAppearanceImpl extends AppearanceImpl implements ModelE
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case EngineeringPackage.MODEL_ELEMENT_APPEARANCE__FEATURES:
-				return ((InternalEList<?>)getFeatures()).basicRemove(otherEnd, msgs);
+			case EngineeringPackage.ENGINEERING_APPEARANCE__MODEL_ELEMENTS:
+				return ((InternalEList<?>)getModelElements()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -81,9 +94,9 @@ public class ModelElementAppearanceImpl extends AppearanceImpl implements ModelE
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EngineeringPackage.MODEL_ELEMENT_APPEARANCE__FEATURES:
-				if (coreType) return getFeatures();
-				else return getFeatures().map();
+			case EngineeringPackage.ENGINEERING_APPEARANCE__MODEL_ELEMENTS:
+				if (coreType) return getModelElements();
+				else return getModelElements().map();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -96,8 +109,8 @@ public class ModelElementAppearanceImpl extends AppearanceImpl implements ModelE
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EngineeringPackage.MODEL_ELEMENT_APPEARANCE__FEATURES:
-				((EStructuralFeature.Setting)getFeatures()).set(newValue);
+			case EngineeringPackage.ENGINEERING_APPEARANCE__MODEL_ELEMENTS:
+				((EStructuralFeature.Setting)getModelElements()).set(newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -111,8 +124,8 @@ public class ModelElementAppearanceImpl extends AppearanceImpl implements ModelE
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EngineeringPackage.MODEL_ELEMENT_APPEARANCE__FEATURES:
-				getFeatures().clear();
+			case EngineeringPackage.ENGINEERING_APPEARANCE__MODEL_ELEMENTS:
+				getModelElements().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -126,10 +139,10 @@ public class ModelElementAppearanceImpl extends AppearanceImpl implements ModelE
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EngineeringPackage.MODEL_ELEMENT_APPEARANCE__FEATURES:
-				return !getFeatures().isEmpty();
+			case EngineeringPackage.ENGINEERING_APPEARANCE__MODEL_ELEMENTS:
+				return !getModelElements().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //ModelElementAppearanceImpl
+} //EngineeringAppearanceImpl

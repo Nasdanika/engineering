@@ -2,14 +2,7 @@
  */
 package org.nasdanika.engineering.impl;
 
-import java.util.Collection;
-
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
-
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.FeatureAppearance;
 
@@ -21,12 +14,22 @@ import org.nasdanika.engineering.FeatureAppearance;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.nasdanika.engineering.impl.FeatureAppearanceImpl#getRoles <em>Roles</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.FeatureAppearanceImpl#isCategory <em>Category</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class FeatureAppearanceImpl extends MinimalEObjectImpl.Container implements FeatureAppearance {
+public class FeatureAppearanceImpl extends AppearanceImpl implements FeatureAppearance {
+	/**
+	 * The default value of the '{@link #isCategory() <em>Category</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isCategory()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean CATEGORY_EDEFAULT = false;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -52,8 +55,8 @@ public class FeatureAppearanceImpl extends MinimalEObjectImpl.Container implemen
 	 * @generated
 	 */
 	@Override
-	protected int eStaticFeatureCount() {
-		return 0;
+	public boolean isCategory() {
+		return (Boolean)eDynamicGet(EngineeringPackage.FEATURE_APPEARANCE__CATEGORY, EngineeringPackage.Literals.FEATURE_APPEARANCE__CATEGORY, true, true);
 	}
 
 	/**
@@ -61,10 +64,9 @@ public class FeatureAppearanceImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
-	public EList<String> getRoles() {
-		return (EList<String>)eDynamicGet(EngineeringPackage.FEATURE_APPEARANCE__ROLES, EngineeringPackage.Literals.FEATURE_APPEARANCE__ROLES, true, true);
+	public void setCategory(boolean newCategory) {
+		eDynamicSet(EngineeringPackage.FEATURE_APPEARANCE__CATEGORY, EngineeringPackage.Literals.FEATURE_APPEARANCE__CATEGORY, newCategory);
 	}
 
 	/**
@@ -75,8 +77,8 @@ public class FeatureAppearanceImpl extends MinimalEObjectImpl.Container implemen
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EngineeringPackage.FEATURE_APPEARANCE__ROLES:
-				return getRoles();
+			case EngineeringPackage.FEATURE_APPEARANCE__CATEGORY:
+				return isCategory();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -90,9 +92,8 @@ public class FeatureAppearanceImpl extends MinimalEObjectImpl.Container implemen
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EngineeringPackage.FEATURE_APPEARANCE__ROLES:
-				getRoles().clear();
-				getRoles().addAll((Collection<? extends String>)newValue);
+			case EngineeringPackage.FEATURE_APPEARANCE__CATEGORY:
+				setCategory((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -106,8 +107,8 @@ public class FeatureAppearanceImpl extends MinimalEObjectImpl.Container implemen
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EngineeringPackage.FEATURE_APPEARANCE__ROLES:
-				getRoles().clear();
+			case EngineeringPackage.FEATURE_APPEARANCE__CATEGORY:
+				setCategory(CATEGORY_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -121,8 +122,8 @@ public class FeatureAppearanceImpl extends MinimalEObjectImpl.Container implemen
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EngineeringPackage.FEATURE_APPEARANCE__ROLES:
-				return !getRoles().isEmpty();
+			case EngineeringPackage.FEATURE_APPEARANCE__CATEGORY:
+				return isCategory() != CATEGORY_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}

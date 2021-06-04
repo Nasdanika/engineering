@@ -2,10 +2,6 @@
  */
 package org.nasdanika.engineering;
 
-import org.eclipse.emf.common.util.EList;
-
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Feature Appearance</b></em>'.
@@ -15,24 +11,37 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.nasdanika.engineering.FeatureAppearance#getRoles <em>Roles</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.FeatureAppearance#isCategory <em>Category</em>}</li>
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getFeatureAppearance()
- * @model
+ * @model annotation="urn:org.nasdanika documentation-reference='doc/feature-appearance.md'"
  * @generated
  */
-public interface FeatureAppearance extends EObject {
+public interface FeatureAppearance extends Appearance {
 	/**
-	 * Returns the value of the '<em><b>Roles</b></em>' attribute list.
-	 * The list contents are of type {@link java.lang.String}.
+	 * Returns the value of the '<em><b>Category</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Roles</em>' attribute list.
-	 * @see org.nasdanika.engineering.EngineeringPackage#getFeatureAppearance_Roles()
+	 * <!-- begin-model-doc -->
+	 * If false feature element actions are not categorized, i.e. in the navigation tree they would appear as container children without an intermediary feature category node. It can be useful if the containing element has navigation children only of one type or they can be distinguished by an icon and as such a feature category is not necessary.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Category</em>' attribute.
+	 * @see #setCategory(boolean)
+	 * @see org.nasdanika.engineering.EngineeringPackage#getFeatureAppearance_Category()
 	 * @model
 	 * @generated
 	 */
-	EList<String> getRoles();
+	boolean isCategory();
+
+	/**
+	 * Sets the value of the '{@link org.nasdanika.engineering.FeatureAppearance#isCategory <em>Category</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Category</em>' attribute.
+	 * @see #isCategory()
+	 * @generated
+	 */
+	void setCategory(boolean value);
 
 } // FeatureAppearance

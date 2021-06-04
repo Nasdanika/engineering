@@ -944,6 +944,20 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EngineeringAppearance">
+    <eAnnotations source="urn:org.nasdanika">
+      <details key="documentation-reference" value="doc/engineering-appearance.md"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="modelElements" upperBound="-1"
+        eType="#//ModelElementAppearanceEntry" containment="true">
+      <eAnnotations source="urn:org.nasdanika">
+        <details key="homogenous" value="true"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Mapping of model element EClass names in kebab case to model element appearance.&#xA;E.g. for ``IssueStatus`` appearance specification will look like:&#xA;&#xA;```yaml&#xA;model-elements:&#xA;    issue-status:&#xA;        roles: context&#xA;```&#xA;"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Appearance" abstract="true">
     <eAnnotations source="urn:org.nasdanika">
       <details key="documentation-reference" value="doc/appearance.md"/>
@@ -966,7 +980,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="roles" upperBound="-1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Role of the containing element. &#xA;&#xA;Action role for model elements. One of:&#xA;&#xA;* ``navigation`` - Navigation actions are shown in the navigation panel as a list or as a tree. &#xA;* ``context`` - Context actions are shown as a tree context menu and as a button toolbar in the content panel.&#xA;* ``section`` - Section actions are shown as sections in the content panel. &#xA;* ``content-right`` - Content right actions are shown in an adaptive navigation panel to the right of the action content.&#xA;* ``content-left`` - Content left actions are shown in an adaptive  navigation panel to the left of the action content.&#xA;&#xA;For features - feature role. One of:&#xA;&#xA;* ``property`` - Feature is shown in the properties table.&#xA;* ``content`` - Feature is shown in the content. &#xA;* ``element-actions`` - Child action for each feature element&#xA;* ``element-actions-sorted`` - Child actions for feature elements sorted by text&#xA;* ``feature-actions`` - Child actions for the feature, e.g. a section with a table of an action list.&#xA;&#xA;Action feature roles (the last three) may be followed by a slash (``/`) and then action role.&#xA;For example: ``feature-actions/context``.&#xA;&#xA;&#xA;"/>
+        <details key="documentation" value="Roles of the containing element. &#xA;&#xA;Action role for model elements. One of:&#xA;&#xA;* ``navigation`` - Navigation actions are shown in the navigation panel as a list or as a tree. &#xA;* ``context`` - Context actions are shown as a tree context menu and as a button toolbar in the content panel.&#xA;* ``section`` - Section actions are shown as sections in the content panel. &#xA;* ``content-right`` - Content right actions are shown in an adaptive navigation panel to the right of the action content.&#xA;* ``content-left`` - Content left actions are shown in an adaptive  navigation panel to the left of the action content.&#xA;&#xA;For features - feature role. One of:&#xA;&#xA;* ``property`` - Feature is shown in the properties table.&#xA;* ``content`` - Feature is shown in the content. &#xA;* ``element-actions`` - Child action for each feature element&#xA;* ``element-actions-sorted`` - Child actions for feature elements sorted by text&#xA;* ``feature-actions`` - Child actions for the feature, e.g. a section with a table of an action list.&#xA;&#xA;Action feature roles (the last three) may be followed by a slash (``/``) and then action role.&#xA;For example: ``feature-actions/context``.&#xA;&#xA;Use ``none`` role to hide feature or model element.&#xA;&#xA;&#xA;"/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
@@ -981,6 +995,25 @@
       </eAnnotations>
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Mapping of feature names in kebab case to feature appearance.&#xA;E.g. for ``issueCategories`` feature mapping specification will look like:&#xA;&#xA;```yaml&#xA;features:&#xA;    issue-categories:&#xA;        roles: context&#xA;```&#xA;"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ModelElementAppearanceEntry" instanceClassName="java.util.Map$Entry">
+    <eAnnotations source="urn:org.nasdanika">
+      <details key="documentation-reference" value="doc/model-element-appearance-entry.md"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="key" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Model element EClass name in kebab case. E.g. ``issue-status`` for [IssueStatus](IssueStatus.html)."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" lowerBound="1" eType="#//ModelElementAppearance"
+        containment="true">
+      <eAnnotations source="urn:org.nasdanika">
+        <details key="homogenous" value="true"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Model element appearance."/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
@@ -1010,39 +1043,6 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="category" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="If false feature element actions are not categorized, i.e. in the navigation tree they would appear as container children without an intermediary feature category node. It can be useful if the containing element has navigation children only of one type or they can be distinguished by an icon and as such a feature category is not necessary."/>
-      </eAnnotations>
-    </eStructuralFeatures>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="EngineeringAppearance">
-    <eAnnotations source="urn:org.nasdanika">
-      <details key="documentation-reference" value="doc/engineering-appearance.md"/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="modelElements" upperBound="-1"
-        eType="#//ModelElementAppearanceEntry" containment="true">
-      <eAnnotations source="urn:org.nasdanika">
-        <details key="homogenous" value="true"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Mapping of model element EClass names in kebab case to model element appearance.&#xA;E.g. for ``IssueStatus`` appearance specification will look like:&#xA;&#xA;```yaml&#xA;model-elements:&#xA;    issue-status:&#xA;        roles: context&#xA;```&#xA;"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ModelElementAppearanceEntry" instanceClassName="java.util.Map$Entry">
-    <eAnnotations source="urn:org.nasdanika">
-      <details key="documentation-reference" value="doc/model-element-appearance-entry.md"/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="key" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Model element EClass name in kebab case. E.g. ``issue-status`` for [IssueStatus](IssueStatus.html)."/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="value" lowerBound="1" eType="#//ModelElementAppearance"
-        containment="true">
-      <eAnnotations source="urn:org.nasdanika">
-        <details key="homogenous" value="true"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Model element appearance."/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>

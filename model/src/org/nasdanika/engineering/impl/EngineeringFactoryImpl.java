@@ -23,6 +23,7 @@ import org.nasdanika.engineering.Directory;
 import org.nasdanika.engineering.Endeavor;
 import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeredCapability;
+import org.nasdanika.engineering.EngineeringAppearance;
 import org.nasdanika.engineering.EngineeringFactory;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Feature;
@@ -119,7 +120,9 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 			case EngineeringPackage.FORUM: return createForum();
 			case EngineeringPackage.MESSAGE: return createMessage();
 			case EngineeringPackage.TOPIC: return createTopic();
+			case EngineeringPackage.ENGINEERING_APPEARANCE: return createEngineeringAppearance();
 			case EngineeringPackage.MODEL_ELEMENT_APPEARANCE: return createModelElementAppearance();
+			case EngineeringPackage.MODEL_ELEMENT_APPEARANCE_ENTRY: return (EObject)createModelElementAppearanceEntry();
 			case EngineeringPackage.FEATURE_APPEARANCE_ENTRY: return (EObject)createFeatureAppearanceEntry();
 			case EngineeringPackage.FEATURE_APPEARANCE: return createFeatureAppearance();
 			default:
@@ -452,9 +455,30 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 	 * @generated
 	 */
 	@Override
+	public EngineeringAppearance createEngineeringAppearance() {
+		EngineeringAppearanceImpl engineeringAppearance = new EngineeringAppearanceImpl();
+		return engineeringAppearance;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public ModelElementAppearance createModelElementAppearance() {
 		ModelElementAppearanceImpl modelElementAppearance = new ModelElementAppearanceImpl();
 		return modelElementAppearance;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Map.Entry<String, ModelElementAppearance> createModelElementAppearanceEntry() {
+		ModelElementAppearanceEntryImpl modelElementAppearanceEntry = new ModelElementAppearanceEntryImpl();
+		return modelElementAppearanceEntry;
 	}
 
 	/**
