@@ -51,7 +51,7 @@ public class AimViewAction<T extends Aim> extends NamedElementViewAction<T> {
 			if (aligns.isEmpty()) {
 				return Collections.emptyList();
 			}
-			EStructuralFeatureViewActionImpl<T, EStructuralFeature> alignsFeatureAction = new EStructuralFeatureViewActionImpl<T, EStructuralFeature>(getSemanticElement(), feature) {
+			EStructuralFeatureViewActionImpl<T, EStructuralFeature, AimViewAction<T>> alignsFeatureAction = new EStructuralFeatureViewActionImpl<T, EStructuralFeature, AimViewAction<T>>(this, feature) {
 				
 				@Override
 				public Object generate(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
@@ -74,7 +74,7 @@ public class AimViewAction<T extends Aim> extends NamedElementViewAction<T> {
 			if (alignments.isEmpty()) {
 				return Collections.emptyList();
 			}
-			EStructuralFeatureViewActionImpl<T, EStructuralFeature> alignmentsFeatureAction = new EStructuralFeatureViewActionImpl<T, EStructuralFeature>(getSemanticElement(), feature) {
+			EStructuralFeatureViewActionImpl<T, EStructuralFeature, AimViewAction<T>> alignmentsFeatureAction = new EStructuralFeatureViewActionImpl<T, EStructuralFeature, AimViewAction<T>>(this, feature) {
 				
 				@Override
 				public Object generate(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {

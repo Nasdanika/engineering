@@ -11,7 +11,9 @@ import org.nasdanika.engineering.Message;
 import org.nasdanika.engineering.Topic;
 import org.nasdanika.html.Fragment;
 import org.nasdanika.html.app.Action;
+import org.nasdanika.html.app.NavigationActionActivator;
 import org.nasdanika.html.app.ViewGenerator;
+import org.nasdanika.html.app.impl.PathNavigationActionActivator;
 import org.nasdanika.html.bootstrap.Color;
 import org.nasdanika.html.bootstrap.Table;
 import org.nasdanika.html.emf.ViewAction;
@@ -79,7 +81,8 @@ public class ForumViewAction<T extends Forum> extends NamedElementViewAction<T> 
 				}				
 				
 			};
-			discussionAction.getRoles().add(Action.Role.SECTION);
+			discussionAction.getRoles().add(Action.Role.CONTEXT); // TODO - from discussion feature
+			discussionAction.setActivator(new PathNavigationActionActivator(discussionAction, ((NavigationActionActivator) getActivator()).getUrl(null), "discussion", getMarker()));
 			discussionAction.setText("Discussion");			
 			children.add(discussionAction);			
 		}

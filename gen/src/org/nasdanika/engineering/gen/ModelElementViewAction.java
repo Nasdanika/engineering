@@ -19,6 +19,8 @@ import java.util.stream.Collectors;
 import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.text.StringEscapeUtils;
 import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -35,10 +37,12 @@ import org.nasdanika.emf.EObjectAdaptable;
 import org.nasdanika.emf.EmfUtil;
 import org.nasdanika.engineering.Endeavor;
 import org.nasdanika.engineering.EngineeringPackage;
+import org.nasdanika.engineering.FeatureAppearance;
 import org.nasdanika.engineering.Increment;
 import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.IssueStatus;
 import org.nasdanika.engineering.ModelElement;
+import org.nasdanika.engineering.ModelElementAppearance;
 import org.nasdanika.engineering.Release;
 import org.nasdanika.html.Fragment;
 import org.nasdanika.html.app.Action;
@@ -125,6 +129,31 @@ public class ModelElementViewAction<T extends ModelElement> extends SimpleEObjec
 	}
 				
 	protected boolean isFeatureInRole(EStructuralFeature feature, FeatureRole role) {
+		ModelElementAppearance appearance = getSemanticElement().getAppearance();
+		if (appearance != null) {
+			FeatureAppearance featureAppearance = appearance.getFeatures().get(Util.camelToKebab(feature.getName()));
+			if (featureAppearance != null) {
+				if (!featureAppearance.getRoles().isEmpty()) {
+					return matchFeatureRole(role, featureAppearance);
+				}
+			}
+		}
+		
+		List<EClass> eClasses = new ArrayList<>();
+		eClasses.add(getSemanticElement().eClass());
+		eClasses.addAll(getSemanticElement().eClass().getEAllSuperTypes());
+		for (EClass eClass: eClasses) {
+			ModelElementAppearance classAppearance = factory.getAppearance(eClass);
+			if (classAppearance != null) {
+				FeatureAppearance featureAppearance = classAppearance.getFeatures().get(Util.camelToKebab(feature.getName()));
+				if (featureAppearance != null) {
+					if (!featureAppearance.getRoles().isEmpty()) {
+						return matchFeatureRole(role, featureAppearance);
+					}
+				}
+			}
+		}
+		
 		if (feature == EngineeringPackage.Literals.MODEL_ELEMENT__DESCRIPTION) {
 			return false;
 		}
@@ -142,6 +171,26 @@ public class ModelElementViewAction<T extends ModelElement> extends SimpleEObjec
 		}
 
 		return super.isFeatureInRole(feature, role);
+	}
+
+	protected boolean matchFeatureRole(FeatureRole role, FeatureAppearance featureAppearance) {
+		for (String featureRole: featureAppearance.getRoles()) {
+			switch (role) {
+			case CONTENT:
+				return "content".equals(featureRole);
+			case ELEMENT_ACTIONS:
+				return "element-actions".equals(featureRole) || featureRole.startsWith("element-actions/");
+			case ELEMENT_ACTIONS_SORTED:
+				return "element-actions-sorted".equals(featureRole) || featureRole.startsWith("element-actions-sorted/");
+			case FEATURE_ACTIONS:
+				return "feature-actions".equals(featureRole) || featureRole.startsWith("feature-actions/");
+			case PROPERTY:
+				return "property".equals(featureRole);
+			default:
+				throw new UnsupportedOperationException("Unsupported feature role: " + role);
+			}
+		}
+		return false;
 	}
 	
 	@Override
@@ -599,6 +648,75 @@ public class ModelElementViewAction<T extends ModelElement> extends SimpleEObjec
 			return true;
 		}
 		return false;
+	}
+	
+	@Override
+	public boolean isInRole(String role) {
+		ModelElementAppearance appearance = getSemanticElement().getAppearance();
+		if (appearance != null) {
+			EList<String> roles = appearance.getRoles();
+			if (!roles.isEmpty()) {
+				return roles.contains(role);
+			}
+		}
+		EObject container = getSemanticElement().eContainer();
+		if (container instanceof ModelElement) {
+			ModelElementAppearance cApp = ((ModelElement) container).getAppearance();
+			if (cApp != null) {
+				EReference containmentFeature = getSemanticElement().eContainmentFeature();
+				if (containmentFeature != null) {
+					FeatureAppearance featureAppearance = cApp.getFeatures().get(Util.camelToKebab(containmentFeature.getName()));
+					if (featureAppearance != null) {
+						for (String featureRole: featureAppearance.getRoles()) {
+							if (featureRole.equals("element-actions/" + role) || featureRole.equals("element-actions-sorted/" + role)) {
+								return true;
+							}
+						}
+					}
+				}
+			}			
+		}
+		
+		List<EClass> eClasses = new ArrayList<>();
+		eClasses.add(getSemanticElement().eClass());
+		eClasses.addAll(getSemanticElement().eClass().getEAllSuperTypes());
+		for (EClass eClass: eClasses) {
+			ModelElementAppearance classAppearance = factory.getAppearance(eClass);
+			if (classAppearance != null) {
+				EList<String> roles = classAppearance.getRoles();
+				if (!roles.isEmpty()) {
+					return roles.contains(role);
+				}				
+			}
+		}
+		
+		if (container instanceof ModelElement) {
+			List<EClass> cClasses = new ArrayList<>();
+			cClasses.add(container.eClass());
+			cClasses.addAll(container.eClass().getEAllSuperTypes());
+			for (EClass cClass: cClasses) {
+				ModelElementAppearance containerAppearance = factory.getAppearance(cClass);
+				if (containerAppearance != null) {
+					EReference containmentFeature = getSemanticElement().eContainmentFeature();
+					if (containmentFeature != null) {
+						FeatureAppearance featureAppearance = containerAppearance.getFeatures().get(Util.camelToKebab(containmentFeature.getName()));
+						if (featureAppearance != null) {
+							for (String featureRole: featureAppearance.getRoles()) {
+								if (featureRole.equals("element-actions/" + role) || featureRole.equals("element-actions-sorted/" + role)) {
+									return true;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		
+		return super.isInRole(role);
+	}
+	
+	public EngineeringViewActionAdapterFactory getFactory() {
+		return factory;
 	}
 	
 }

@@ -102,6 +102,16 @@ engineering-module:
          Engineered elements, partial support of action configuration - section style. Content is displayed in the first nav, inherited info in the second. 
          Other options are dialog, collapsible, and context action which calls super.doGenerate() - do not cache. Add support of resources and directories in the UI where to keep documents. 
          Document extends section. Table of contents configuration (not component) - location (e.g. right navigation), style - list/table, title (optional), depth.              
+     - name: Extract ModelElement, NamedElement, Appearance, ... to a common model
+       markdown-description: |+2
+         Including ViewAction classes. Also Document, Section, Reference, Link.  
+         The model should be a part of Core and Gen classes part of HTML. Would allow to relatively quickly build new models on top. 
+         Also extract activities, journeys (rename to flows as more generic) into a common model.
+         Consider dropping existing NCore and replace with with this new one. Keep original concrete classes in the engineering model as
+         sub-classes of the extracted classes for future extensibility and model spec compatibility.                
+     - name: Parent reference to Engineer
+       markdown-description: |+2
+         For bottom-up linking during generation of federated sites. Similar to bottom-up linking in Eclipse documentation.                
          
      ### === Done === ###    
      - name: Start/end from Issue and Increment to Endeavor

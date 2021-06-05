@@ -1,11 +1,15 @@
 package org.nasdanika.engineering.gen;
 
+import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.nasdanika.common.Context;
+import org.nasdanika.common.Util;
 import org.nasdanika.emf.ComposedAdapterFactory;
 import org.nasdanika.emf.FunctionAdapterFactory;
 import org.nasdanika.emf.InstanceAdapterFactory;
@@ -18,6 +22,8 @@ import org.nasdanika.engineering.Increment;
 import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.IssueCategory;
 import org.nasdanika.engineering.IssueStatus;
+import org.nasdanika.engineering.ModelElement;
+import org.nasdanika.engineering.ModelElementAppearance;
 import org.nasdanika.engineering.Organization;
 import org.nasdanika.engineering.Persona;
 import org.nasdanika.engineering.Principle;
@@ -176,6 +182,27 @@ public class EngineeringViewActionAdapterFactory extends ComposedAdapterFactory 
 	
 	public Map<EObject, Diagnostic> getDiagnosticMap() {
 		return diagnosticMap;
+	}
+	
+	/**
+	 * @return Chain of appearance mappings.
+	 */
+	protected List<Map<String, ModelElementAppearance>> getAppearance() {
+		return Collections.emptyList();		
+	}
+
+	/**
+	 * Override to customize appearance. 
+	 * @return Appearance for {@link ModelElement} {@link EClass}. 
+	 */
+	public ModelElementAppearance getAppearance(EClass eClass) {
+		for (Map<String, ModelElementAppearance> appearance: getAppearance()) {
+			ModelElementAppearance ret = appearance.get(Util.camelToKebab(eClass.getName()));
+			if (ret != null) {
+				return ret;
+			}
+		}
+		return null;
 	}
 	
 }
