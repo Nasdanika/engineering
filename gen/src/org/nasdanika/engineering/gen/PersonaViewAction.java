@@ -21,7 +21,6 @@ import org.nasdanika.html.app.SectionStyle;
 import org.nasdanika.html.app.ViewGenerator;
 import org.nasdanika.html.app.impl.PathNavigationActionActivator;
 import org.nasdanika.html.app.viewparts.ListOfActionsViewPart;
-import org.nasdanika.html.emf.EStructuralFeatureViewActionImpl;
 import org.nasdanika.html.emf.ViewAction;
 
 public class PersonaViewAction<T extends Persona> extends EngineeredElementViewAction<T> {
@@ -54,7 +53,7 @@ public class PersonaViewAction<T extends Persona> extends EngineeredElementViewA
 			if (goals.isEmpty()) {
 				return Collections.emptyList();
 			}
-			EStructuralFeatureViewActionImpl<T, EStructuralFeature> goalsSection = new EStructuralFeatureViewActionImpl<T, EStructuralFeature>(getSemanticElement(), feature) {
+			ModelElementFeatureViewAction<T, EStructuralFeature, PersonaViewAction<T>> goalsSection = new ModelElementFeatureViewAction<T, EStructuralFeature, PersonaViewAction<T>>(this, feature) {
 				
 				@Override
 				public Object generate(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {

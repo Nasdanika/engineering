@@ -1,0 +1,12 @@
+model-element:
+  features:
+    description:
+      roles: none
+    markdown-description:
+      roles: none
+    path: 
+      roles: none
+    name: 
+      roles: none
+    actions:
+      roles: none

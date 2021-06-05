@@ -13,7 +13,6 @@ import org.nasdanika.html.app.Action;
 import org.nasdanika.html.app.ViewGenerator;
 import org.nasdanika.html.bootstrap.Color;
 import org.nasdanika.html.bootstrap.Table;
-import org.nasdanika.html.emf.EStructuralFeatureViewActionImpl;
 import org.nasdanika.html.emf.ViewAction;
 
 /**
@@ -51,7 +50,7 @@ public class AimViewAction<T extends Aim> extends NamedElementViewAction<T> {
 			if (aligns.isEmpty()) {
 				return Collections.emptyList();
 			}
-			EStructuralFeatureViewActionImpl<T, EStructuralFeature, AimViewAction<T>> alignsFeatureAction = new EStructuralFeatureViewActionImpl<T, EStructuralFeature, AimViewAction<T>>(this, feature) {
+			ModelElementFeatureViewAction<T, EStructuralFeature, AimViewAction<T>> alignsFeatureAction = new ModelElementFeatureViewAction<T, EStructuralFeature, AimViewAction<T>>(this, feature) {
 				
 				@Override
 				public Object generate(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
@@ -74,7 +73,7 @@ public class AimViewAction<T extends Aim> extends NamedElementViewAction<T> {
 			if (alignments.isEmpty()) {
 				return Collections.emptyList();
 			}
-			EStructuralFeatureViewActionImpl<T, EStructuralFeature, AimViewAction<T>> alignmentsFeatureAction = new EStructuralFeatureViewActionImpl<T, EStructuralFeature, AimViewAction<T>>(this, feature) {
+			ModelElementFeatureViewAction<T, EStructuralFeature, AimViewAction<T>> alignmentsFeatureAction = new ModelElementFeatureViewAction<T, EStructuralFeature, AimViewAction<T>>(this, feature) {
 				
 				@Override
 				public Object generate(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {

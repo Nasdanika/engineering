@@ -14,7 +14,6 @@ import org.nasdanika.html.app.ViewGenerator;
 import org.nasdanika.html.bootstrap.BootstrapFactory;
 import org.nasdanika.html.bootstrap.Color;
 import org.nasdanika.html.bootstrap.Table;
-import org.nasdanika.html.emf.EStructuralFeatureViewActionImpl;
 import org.nasdanika.html.emf.ViewAction;
 
 public class IssueCategoryViewAction extends NamedElementViewAction<IssueCategory> {
@@ -50,7 +49,7 @@ public class IssueCategoryViewAction extends NamedElementViewAction<IssueCategor
 			if (allocations.isEmpty()) {
 				return Collections.emptyList();
 			}
-			EStructuralFeatureViewActionImpl<IssueCategory, EStructuralFeature> allocationsSection = new EStructuralFeatureViewActionImpl<IssueCategory, EStructuralFeature>(getSemanticElement(), feature) {
+			ModelElementFeatureViewAction<IssueCategory, EStructuralFeature, IssueCategoryViewAction> allocationsSection = new ModelElementFeatureViewAction<IssueCategory, EStructuralFeature, IssueCategoryViewAction>(this, feature) {
 				
 				@Override
 				public Object generate(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {

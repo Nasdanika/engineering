@@ -40,7 +40,6 @@ import org.nasdanika.html.bootstrap.BootstrapFactory;
 import org.nasdanika.html.bootstrap.Color;
 import org.nasdanika.html.bootstrap.RowContainer;
 import org.nasdanika.html.bootstrap.Table;
-import org.nasdanika.html.emf.EStructuralFeatureViewActionImpl;
 import org.nasdanika.html.emf.ViewAction;
 import org.nasdanika.html.emf.ViewActionImpl;
 
@@ -53,7 +52,7 @@ public class EngineerViewAction<T extends Engineer> extends PersonaViewAction<T>
 	@Override
 	protected Collection<Action> featureActions(EStructuralFeature feature) {
 		if (feature == EngineeringPackage.Literals.ENGINEER__ASSIGNMENTS) {
-			EStructuralFeatureViewActionImpl<T, EStructuralFeature> assignmentsAction = new EStructuralFeatureViewActionImpl<T, EStructuralFeature>(getSemanticElement(), feature);
+			ModelElementFeatureViewAction<T, EStructuralFeature, EngineerViewAction<T>> assignmentsAction = new ModelElementFeatureViewAction<T, EStructuralFeature, EngineerViewAction<T>>(this, feature);
 			assignmentsAction.getRoles().add(Action.Role.SECTION);
 			
 			ViewBuilder productHeaderBuilder = new ViewBuilder() {

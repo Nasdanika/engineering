@@ -20,7 +20,6 @@ import org.nasdanika.html.app.SectionStyle;
 import org.nasdanika.html.app.ViewGenerator;
 import org.nasdanika.html.app.impl.PathNavigationActionActivator;
 import org.nasdanika.html.app.viewparts.ListOfActionsViewPart;
-import org.nasdanika.html.emf.EStructuralFeatureViewActionImpl;
 import org.nasdanika.html.emf.ViewAction;
 
 /**
@@ -48,7 +47,7 @@ public class PrincipleViewAction extends AimViewAction<Principle> {
 			if (children.isEmpty()) {
 				return Collections.emptyList();
 			}
-			EStructuralFeatureViewActionImpl<Principle, EStructuralFeature> childrenSection = new EStructuralFeatureViewActionImpl<Principle, EStructuralFeature>(getSemanticElement(), feature) {
+			ModelElementFeatureViewAction<Principle, EStructuralFeature, PrincipleViewAction> childrenSection = new ModelElementFeatureViewAction<Principle, EStructuralFeature, PrincipleViewAction>(this, feature) {
 				
 				@Override
 				public Object generate(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {

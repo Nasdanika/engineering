@@ -30,7 +30,6 @@ import org.nasdanika.html.app.viewparts.ListOfActionsViewPart;
 import org.nasdanika.html.bootstrap.BootstrapFactory;
 import org.nasdanika.html.bootstrap.Color;
 import org.nasdanika.html.bootstrap.Table;
-import org.nasdanika.html.emf.EStructuralFeatureViewActionImpl;
 import org.nasdanika.html.emf.ViewAction;
 
 public class EngineeredElementViewAction<T extends EngineeredElement> extends ForumViewAction<T> {
@@ -129,7 +128,7 @@ public class EngineeredElementViewAction<T extends EngineeredElement> extends Fo
 			if (allocations.isEmpty()) {
 				return Collections.emptyList();
 			}
-			EStructuralFeatureViewActionImpl<T, EStructuralFeature> allocationsSection = new EStructuralFeatureViewActionImpl<T, EStructuralFeature>(getSemanticElement(), feature) {
+			ModelElementFeatureViewAction<T, EStructuralFeature, EngineeredElementViewAction<T>> allocationsSection = new ModelElementFeatureViewAction<T, EStructuralFeature, EngineeredElementViewAction<T>>(this, feature) {
 				
 				@Override
 				public Object generate(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
@@ -171,7 +170,7 @@ public class EngineeredElementViewAction<T extends EngineeredElement> extends Fo
 			if (principles.isEmpty()) {
 				return Collections.emptyList();
 			}
-			EStructuralFeatureViewActionImpl<T, EStructuralFeature> principlesSection = new EStructuralFeatureViewActionImpl<T, EStructuralFeature>(getSemanticElement(), feature) {
+			ModelElementFeatureViewAction<T, EStructuralFeature, EngineeredElementViewAction<T>> principlesSection = new ModelElementFeatureViewAction<T, EStructuralFeature, EngineeredElementViewAction<T>>(this, feature) {
 				
 				@Override
 				public Object generate(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
@@ -194,9 +193,6 @@ public class EngineeredElementViewAction<T extends EngineeredElement> extends Fo
 			
 			principlesSection.getRoles().add(Action.Role.SECTION); 
 			principlesSection.setSectionStyle(SectionStyle.DEFAULT);
-			principlesSection.setText(featureLabelText(feature)); 		
-			principlesSection.setIcon(featureIcon(feature));
-			principlesSection.setDescription(featureDescription(feature));
 			principlesSection.setActivator(new PathNavigationActionActivator(principlesSection, ((NavigationActionActivator) getActivator()).getUrl(null), "#feature-" + feature.getName(), getMarker()));
 			return Collections.singleton(principlesSection);
 		}

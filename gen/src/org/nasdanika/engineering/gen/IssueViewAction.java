@@ -17,7 +17,6 @@ import org.nasdanika.html.app.Action;
 import org.nasdanika.html.app.ViewBuilder;
 import org.nasdanika.html.app.ViewGenerator;
 import org.nasdanika.html.bootstrap.BootstrapElement;
-import org.nasdanika.html.emf.EStructuralFeatureViewActionImpl;
 import org.nasdanika.html.emf.HtmlEmfUtil;
 
 public class IssueViewAction extends EngineeredCapabilityViewAction<Issue> {
@@ -80,7 +79,7 @@ public class IssueViewAction extends EngineeredCapabilityViewAction<Issue> {
 			if (getSemanticElement().getNotes().isEmpty()) {
 				return Collections.emptyList();
 			}
-			EStructuralFeatureViewActionImpl<Issue, EStructuralFeature> notesAction = new EStructuralFeatureViewActionImpl<Issue, EStructuralFeature>(getSemanticElement(), feature) {
+			ModelElementFeatureViewAction<Issue, EStructuralFeature, IssueViewAction> notesAction = new ModelElementFeatureViewAction<Issue, EStructuralFeature, IssueViewAction>(this, feature) {
 				
 				@Override
 				public Object generate(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {

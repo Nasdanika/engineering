@@ -21,6 +21,7 @@ import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeredCapability;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.IssueCategory;
+import org.nasdanika.engineering.ModelElement;
 import org.nasdanika.html.Fragment;
 import org.nasdanika.html.Tag;
 import org.nasdanika.html.TagName;
@@ -29,7 +30,6 @@ import org.nasdanika.html.app.ViewGenerator;
 import org.nasdanika.html.bootstrap.BootstrapFactory;
 import org.nasdanika.html.bootstrap.Color;
 import org.nasdanika.html.bootstrap.Table;
-import org.nasdanika.html.emf.EStructuralFeatureViewActionImpl;
 import org.nasdanika.html.emf.ViewAction;
 
 public class EngineeredCapabilityViewAction<T extends EngineeredCapability> extends CapabilityViewAction<T> {
@@ -73,7 +73,7 @@ public class EngineeredCapabilityViewAction<T extends EngineeredCapability> exte
 			if (aligns.isEmpty()) {
 				return Collections.emptyList();
 			}
-			EStructuralFeatureViewActionImpl<T, EStructuralFeature> alignsFeatureAction = new EStructuralFeatureViewActionImpl<T, EStructuralFeature>(getSemanticElement(), feature) {
+			ModelElementFeatureViewAction<T, EStructuralFeature, EngineeredCapabilityViewAction<T>> alignsFeatureAction = new ModelElementFeatureViewAction<T, EStructuralFeature, EngineeredCapabilityViewAction<T>>(this, feature) {
 				
 				@Override
 				public Object generate(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
@@ -99,7 +99,8 @@ public class EngineeredCapabilityViewAction<T extends EngineeredCapability> exte
 		if (capacity.isEmpty()) {
 			return Collections.emptyList();
 		}
-		EStructuralFeatureViewActionImpl<Endeavor, EStructuralFeature> allocationsSection = new EStructuralFeatureViewActionImpl<Endeavor, EStructuralFeature>(endeavor, EngineeringPackage.Literals.ENDEAVOR__CAPACITY) {
+		ModelElementViewAction<ModelElement> endeavorViewAction = (ModelElementViewAction<ModelElement>) ViewAction.adaptToViewActionNonNull((ModelElement) endeavor);
+		ModelElementFeatureViewAction<ModelElement, EStructuralFeature, ModelElementViewAction<ModelElement>> allocationsSection = new ModelElementFeatureViewAction<ModelElement, EStructuralFeature, ModelElementViewAction<ModelElement>>(endeavorViewAction, EngineeringPackage.Literals.ENDEAVOR__CAPACITY) {
 			
 			@Override
 			public Object generate(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {

@@ -51,6 +51,7 @@ import org.nasdanika.html.app.NavigationActionActivator;
 import org.nasdanika.html.app.SectionStyle;
 import org.nasdanika.html.app.ViewBuilder;
 import org.nasdanika.html.app.ViewGenerator;
+import org.nasdanika.html.app.ViewPart;
 import org.nasdanika.html.app.impl.ActionImpl;
 import org.nasdanika.html.app.impl.PathNavigationActionActivator;
 import org.nasdanika.html.bootstrap.BootstrapFactory;
@@ -62,6 +63,7 @@ import org.nasdanika.html.bootstrap.Text.Alignment;
 import org.nasdanika.html.emf.HtmlEmfUtil;
 import org.nasdanika.html.emf.SimpleEObjectViewAction;
 import org.nasdanika.html.emf.ViewAction;
+import org.nasdanika.html.emf.SimpleEObjectViewAction.FeatureRole;
 
 /**
  * Base class for Core ViewAction adapters.
@@ -127,7 +129,8 @@ public class ModelElementViewAction<T extends ModelElement> extends SimpleEObjec
 		}
 		return ret.toString();
 	}
-				
+		
+	@Override
 	protected boolean isFeatureInRole(EStructuralFeature feature, FeatureRole role) {
 		ModelElementAppearance appearance = getSemanticElement().getAppearance();
 		if (appearance != null) {
@@ -717,6 +720,17 @@ public class ModelElementViewAction<T extends ModelElement> extends SimpleEObjec
 	
 	public EngineeringViewActionAdapterFactory getFactory() {
 		return factory;
+	}
+	
+	protected <F extends EStructuralFeature> ModelElementFeatureViewAction<T, F, ModelElementViewAction<T>> createFeatureViewAction(F feature, ViewPart contentPart) {
+		return new ModelElementFeatureViewAction<T, F, ModelElementViewAction<T>>(this, feature) {
+			
+			@Override
+			public Object generate(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
+				return contentPart.generate(viewGenerator, progressMonitor);
+			}
+			
+		};
 	}
 	
 }
