@@ -63,7 +63,6 @@ import org.nasdanika.html.bootstrap.Text.Alignment;
 import org.nasdanika.html.emf.HtmlEmfUtil;
 import org.nasdanika.html.emf.SimpleEObjectViewAction;
 import org.nasdanika.html.emf.ViewAction;
-import org.nasdanika.html.emf.SimpleEObjectViewAction.FeatureRole;
 
 /**
  * Base class for Core ViewAction adapters.
@@ -155,22 +154,6 @@ public class ModelElementViewAction<T extends ModelElement> extends SimpleEObjec
 					}
 				}
 			}
-		}
-		
-		if (feature == EngineeringPackage.Literals.MODEL_ELEMENT__DESCRIPTION) {
-			return false;
-		}
-		if (feature == EngineeringPackage.Literals.MODEL_ELEMENT__MARKDOWN_DESCRIPTION) {
-			return false;
-		}
-		if (feature == EngineeringPackage.Literals.MODEL_ELEMENT__PATH) {
-			return false;
-		}
-		if (feature == EngineeringPackage.Literals.NAMED_ELEMENT__NAME) {
-			return false;
-		}
-		if (feature == EngineeringPackage.Literals.MODEL_ELEMENT__ACTIONS) {
-			return false;
 		}
 
 		return super.isFeatureInRole(feature, role);

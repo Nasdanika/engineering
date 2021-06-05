@@ -1,5 +1,6 @@
 package org.nasdanika.engineering.gen;
 
+import java.net.URL;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -9,11 +10,16 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.nasdanika.common.Context;
+import org.nasdanika.common.NasdanikaException;
+import org.nasdanika.common.NullProgressMonitor;
 import org.nasdanika.common.Util;
+import org.nasdanika.common.persistence.MarkingYamlConstructor;
 import org.nasdanika.emf.ComposedAdapterFactory;
 import org.nasdanika.emf.FunctionAdapterFactory;
 import org.nasdanika.emf.InstanceAdapterFactory;
+import org.nasdanika.emf.persistence.EObjectLoader;
 import org.nasdanika.engineering.Engineer;
+import org.nasdanika.engineering.EngineeringAppearance;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Feature;
 import org.nasdanika.engineering.Forum;
@@ -32,6 +38,7 @@ import org.nasdanika.engineering.Release;
 import org.nasdanika.engineering.Topic;
 import org.nasdanika.html.app.Action;
 import org.nasdanika.html.emf.ViewAction;
+import org.yaml.snakeyaml.Yaml;
 
 /**
  * Provides adapters for the Engineering model elements.
@@ -187,8 +194,23 @@ public class EngineeringViewActionAdapterFactory extends ComposedAdapterFactory 
 	/**
 	 * @return Chain of appearance mappings.
 	 */
-	protected List<Map<String, ModelElementAppearance>> getAppearance() {
-		return Collections.emptyList();		
+	protected List<java.util.function.Function<String, ModelElementAppearance>> getAppearance() {
+		EObjectLoader loader = new EObjectLoader(EngineeringPackage.eINSTANCE);
+		URL defaultAppearanceURL = EngineeringViewActionAdapterFactory.class.getResource("default-appearance.yml");
+		Yaml yaml = MarkingYamlConstructor.createMarkingYaml(defaultAppearanceURL.toString());		
+		try {
+			EngineeringAppearance defaultAppearance = (EngineeringAppearance) loader.create(
+					loader, 
+					EngineeringPackage.Literals.ENGINEERING_APPEARANCE, 
+					yaml.load(defaultAppearanceURL.openStream()), 
+					defaultAppearanceURL, 
+					new NullProgressMonitor(), 
+					null, 
+					null);
+			return Collections.singletonList(defaultAppearance.getModelElements()::get);
+		} catch (Exception e) {
+			throw new NasdanikaException(e);
+		}
 	}
 
 	/**
@@ -196,8 +218,8 @@ public class EngineeringViewActionAdapterFactory extends ComposedAdapterFactory 
 	 * @return Appearance for {@link ModelElement} {@link EClass}. 
 	 */
 	public ModelElementAppearance getAppearance(EClass eClass) {
-		for (Map<String, ModelElementAppearance> appearance: getAppearance()) {
-			ModelElementAppearance ret = appearance.get(Util.camelToKebab(eClass.getName()));
+		for (java.util.function.Function<String, ModelElementAppearance> appearance: getAppearance()) {
+			ModelElementAppearance ret = appearance.apply(Util.camelToKebab(eClass.getName()));
 			if (ret != null) {
 				return ret;
 			}
