@@ -77,16 +77,4 @@ public class IssueCategoryViewAction extends NamedElementViewAction<IssueCategor
 		return super.featureActions(feature);
 	}
 	
-	@Override
-	protected boolean isFeatureInRole(EStructuralFeature feature, FeatureRole role) {
-		if (feature == EngineeringPackage.Literals.ISSUE_CATEGORY__ISSUES) {
-			return role == FeatureRole.FEATURE_ACTIONS;
-		}
-		if (feature == EngineeringPackage.Literals.ISSUE_CATEGORY__ALLOCATIONS) {
-			return role == FeatureRole.FEATURE_ACTIONS;
-		}
-
-		return super.isFeatureInRole(feature, role);
-	}
-	
 }

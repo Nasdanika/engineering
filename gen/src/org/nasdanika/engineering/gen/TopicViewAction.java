@@ -1,14 +1,15 @@
 package org.nasdanika.engineering.gen;
 
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.engineering.Engineer;
+import org.nasdanika.engineering.EngineeredElement;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Message;
 import org.nasdanika.engineering.Topic;
 import org.nasdanika.html.Fragment;
 import org.nasdanika.html.Tag;
 import org.nasdanika.html.TagName;
+import org.nasdanika.html.app.Action;
 import org.nasdanika.html.app.ViewGenerator;
 import org.nasdanika.html.bootstrap.Card;
 import org.nasdanika.html.emf.ViewAction;
@@ -22,19 +23,6 @@ public class TopicViewAction extends MessageViewAction<Topic> {
 	public TopicViewAction(Topic target, EngineeringViewActionAdapterFactory factory) {
 		super(target, factory);		
 	}	
-	
-	@Override
-	protected boolean isFeatureInRole(EStructuralFeature feature, FeatureRole role) {
-		if (feature == EngineeringPackage.Literals.TOPIC__MESSAGES) {
-			return false;
-		}		
-		return super.isFeatureInRole(feature, role);
-	}
-	
-	@Override
-	public boolean isInRole(String role) {
-		return false;
-	}
 	
 	@Override
 	protected Object doGenerate(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
@@ -59,5 +47,19 @@ public class TopicViewAction extends MessageViewAction<Topic> {
 		}
 		return ret;
 	}
+	
+	@Override
+	public Action getParent() {
+		Action parent = super.getParent();
+		if (getSemanticElement().eContainer() instanceof EngineeredElement) {
+			// Forum contained in an engieered element - parent should be a feature action.
+			Action discussionAction = parent.find(a -> a instanceof ModelElementFeatureViewAction && ((ModelElementFeatureViewAction<?,?,?>) a).getEStructuralFeature() == EngineeringPackage.Literals.FORUM__DISCUSSION);
+			if (discussionAction != null) {
+				return discussionAction;
+			}
+		}
+		return parent;
+	}
+	
 	
 }

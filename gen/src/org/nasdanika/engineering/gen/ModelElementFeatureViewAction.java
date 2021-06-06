@@ -1,11 +1,9 @@
 package org.nasdanika.engineering.gen;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.nasdanika.common.Util;
+import org.nasdanika.emf.EmfUtil;
 import org.nasdanika.engineering.FeatureAppearance;
 import org.nasdanika.engineering.ModelElement;
 import org.nasdanika.engineering.ModelElementAppearance;
@@ -54,10 +52,7 @@ public class ModelElementFeatureViewAction<T extends ModelElement, F extends ESt
 			}
 		}
 		
-		List<EClass> eClasses = new ArrayList<>();
-		eClasses.add(getSemanticElement().eClass());
-		eClasses.addAll(getSemanticElement().eClass().getEAllSuperTypes());
-		for (EClass eClass: eClasses) {
+		for (EClass eClass: EmfUtil.lineage(getSemanticElement().eClass())) {
 			ModelElementAppearance classAppearance = getSemanticElementViewAction().getFactory().getAppearance(eClass);
 			if (classAppearance != null) {
 				FeatureAppearance featureAppearance = classAppearance.getFeatures().get(Util.camelToKebab(getEStructuralFeature().getName()));

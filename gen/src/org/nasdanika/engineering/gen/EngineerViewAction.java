@@ -214,11 +214,6 @@ public class EngineerViewAction<T extends Engineer> extends PersonaViewAction<T>
 		return ret;
 	}
 	
-	@Override
-	public boolean isInRole(String role) {
-		return super.isInRole(role);
-	}
-	
 	protected Collection<Action> capacityAction() {
 		// Capacity action with endeavors grouping and capacity, designations, and issues for each endeavor.
 		

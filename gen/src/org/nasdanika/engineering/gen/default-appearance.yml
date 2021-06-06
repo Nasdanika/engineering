@@ -125,4 +125,32 @@ model-elements:
         roles: element-actions 
       represents:
         roles: property 
+  increment:
+    features:
+      issues:
+        roles: none
+      releases:
+        roles: feature-actions
+      children:
+        roles: element-actions
+      capacity:
+        roles: feature-actions
+      all-issues:
+        roles: none
+  issue-category:
+    features:
+      issues:
+        roles: feature-actions
+      allocations:
+        roles: feature-actions
+  issue-status:
+    features:
+      issues:
+        roles: feature-actions
+  topic:
+    roles: none
+    features:
+      messages:
+        roles: none
+        
       

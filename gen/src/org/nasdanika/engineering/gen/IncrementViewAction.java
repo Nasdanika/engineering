@@ -49,27 +49,6 @@ public class IncrementViewAction extends NamedElementViewAction<Increment> {
 	}
 	
 	@Override
-	protected boolean isFeatureInRole(EStructuralFeature feature, FeatureRole role) {
-		if (feature == EngineeringPackage.Literals.INCREMENT__ISSUES) {
-			return false;
-		}
-		if (feature == EngineeringPackage.Literals.INCREMENT__RELEASES) {
-			return role == FeatureRole.FEATURE_ACTIONS;
-		}
-		if (feature == EngineeringPackage.Literals.INCREMENT__CHILDREN) {
-			return role == FeatureRole.ELEMENT_ACTIONS;
-		}
-		if (feature == EngineeringPackage.Literals.ENDEAVOR__CAPACITY) {
-			return role == FeatureRole.FEATURE_ACTIONS;
-		}
-		if (feature == EngineeringPackage.Literals.ENDEAVOR__ALL_ISSUES) {
-			return false;
-		}
-		
-		return super.isFeatureInRole(feature, role);
-	}
-	
-	@Override
 	protected Object doGenerate(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
 		Fragment ret = (Fragment) super.doGenerate(viewGenerator, progressMonitor);
 		ret.content(incrementsTable(getSemanticElement().getChildren(), increment -> increment.getAllIssues(), true, viewGenerator, progressMonitor));

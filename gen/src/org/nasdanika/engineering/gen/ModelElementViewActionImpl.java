@@ -141,11 +141,8 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 				}
 			}
 		}
-		
-		List<EClass> eClasses = new ArrayList<>();
-		eClasses.add(getSemanticElement().eClass());
-		eClasses.addAll(getSemanticElement().eClass().getEAllSuperTypes());
-		for (EClass eClass: eClasses) {
+
+		for (EClass eClass: EmfUtil.lineage(getSemanticElement().eClass())) {
 			ModelElementAppearance classAppearance = factory.getAppearance(eClass);
 			if (classAppearance != null) {
 				FeatureAppearance featureAppearance = classAppearance.getFeatures().get(Util.camelToKebab(feature.getName()));
@@ -173,10 +170,7 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 			}
 		}
 		
-		List<EClass> eClasses = new ArrayList<>();
-		eClasses.add(getSemanticElement().eClass());
-		eClasses.addAll(getSemanticElement().eClass().getEAllSuperTypes());
-		for (EClass eClass: eClasses) {
+		for (EClass eClass: EmfUtil.lineage(getSemanticElement().eClass())) {
 			ModelElementAppearance classAppearance = factory.getAppearance(eClass);
 			if (classAppearance != null) {
 				FeatureAppearance featureAppearance = classAppearance.getFeatures().get(Util.camelToKebab(feature.getName()));
@@ -192,7 +186,7 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 		return super.featureCategory(feature);
 	}
 
-	protected boolean matchFeatureRole(FeatureRole role, FeatureAppearance featureAppearance) {
+	protected static boolean matchFeatureRole(FeatureRole role, FeatureAppearance featureAppearance) {
 		for (String featureRole: featureAppearance.getRoles()) {
 			if (role.LITERAL.equals(featureRole) || featureRole.startsWith(role.LITERAL + "/")) {
 				return true;
@@ -682,7 +676,7 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 					FeatureAppearance featureAppearance = cApp.getFeatures().get(Util.camelToKebab(containmentFeature.getName()));
 					if (featureAppearance != null) {
 						for (String featureRole: featureAppearance.getRoles()) {
-							if (featureRole.equals("element-actions/" + role) || featureRole.equals("element-actions-sorted/" + role)) {
+							if (featureRole.equals(FeatureRole.ELEMENT_ACTIONS.LITERAL + "/" + role) || featureRole.equals(FeatureRole.ELEMENT_ACTIONS_SORTED.LITERAL + "/" + role)) {
 								return true;
 							}
 						}
@@ -691,10 +685,7 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 			}			
 		}
 		
-		List<EClass> eClasses = new ArrayList<>();
-		eClasses.add(getSemanticElement().eClass());
-		eClasses.addAll(getSemanticElement().eClass().getEAllSuperTypes());
-		for (EClass eClass: eClasses) {
+		for (EClass eClass: EmfUtil.lineage(getSemanticElement().eClass())) {
 			ModelElementAppearance classAppearance = factory.getAppearance(eClass);
 			if (classAppearance != null) {
 				EList<String> roles = classAppearance.getRoles();
@@ -705,20 +696,24 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 		}
 		
 		if (container instanceof ModelElement) {
-			List<EClass> cClasses = new ArrayList<>();
-			cClasses.add(container.eClass());
-			cClasses.addAll(container.eClass().getEAllSuperTypes());
-			for (EClass cClass: cClasses) {
+			for (EClass cClass: EmfUtil.lineage(container.eClass())) {
 				ModelElementAppearance containerAppearance = factory.getAppearance(cClass);
 				if (containerAppearance != null) {
 					EReference containmentFeature = getSemanticElement().eContainmentFeature();
 					if (containmentFeature != null) {
 						FeatureAppearance featureAppearance = containerAppearance.getFeatures().get(Util.camelToKebab(containmentFeature.getName()));
 						if (featureAppearance != null) {
+							boolean specifiesElementActionsRoles = false;
 							for (String featureRole: featureAppearance.getRoles()) {
-								if (featureRole.equals("element-actions/" + role) || featureRole.equals("element-actions-sorted/" + role)) {
+								if (featureRole.equals(FeatureRole.ELEMENT_ACTIONS.LITERAL + "/" + role) || featureRole.equals(FeatureRole.ELEMENT_ACTIONS_SORTED.LITERAL + "/" + role)) {
 									return true;
 								}
+								if (featureRole.startsWith(FeatureRole.ELEMENT_ACTIONS.LITERAL + "/") || featureRole.startsWith(FeatureRole.ELEMENT_ACTIONS_SORTED.LITERAL + "/")) {
+									specifiesElementActionsRoles = true;
+								}
+							}
+							if (specifiesElementActionsRoles) {
+								return false;
 							}
 						}
 					}

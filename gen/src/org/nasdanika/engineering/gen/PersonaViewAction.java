@@ -68,10 +68,4 @@ public class PersonaViewAction<T extends Persona> extends EngineeredElementViewA
 		return super.featureActions(feature);
 	}
 	
-//	@Override
-//	public boolean isInRole(String role) {
-//		// Anonymous action, navigating from a persona list.
-//		return false;
-//	}
-	
 }

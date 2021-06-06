@@ -40,12 +40,4 @@ public class IssueStatusViewAction extends NamedElementViewAction<IssueStatus> {
 		return super.featureActions(feature);
 	}
 	
-	@Override
-	protected boolean isFeatureInRole(EStructuralFeature feature, FeatureRole role) {
-		if (feature == EngineeringPackage.Literals.ISSUE_STATUS__ISSUES) {
-			return role == FeatureRole.FEATURE_ACTIONS;
-		}
-		return super.isFeatureInRole(feature, role);
-	}
-	
 }
