@@ -48,20 +48,6 @@ public class EngineeredCapabilityViewAction<T extends EngineeredCapability> exte
 		}
 		return super.featureValue(feature, value, viewGenerator, progressMonitor);
 	}
-		
-	@Override
-	protected boolean isFeatureInRole(EStructuralFeature feature, FeatureRole role) {
-		if (feature == EngineeringPackage.Literals.ENDEAVOR__ALL_ISSUES) {
-			return false;
-		}
-		if (feature == EngineeringPackage.Literals.ENDEAVOR__CAPACITY) {
-			return role == FeatureRole.FEATURE_ACTIONS;
-		}
-		if (feature == EngineeringPackage.Literals.ENGINEERED_CAPABILITY__ALIGNS) {
-			return role == FeatureRole.FEATURE_ACTIONS;
-		}
-		return super.isFeatureInRole(feature, role);
-	}
 	
 	@Override
 	protected Collection<Action> featureActions(EStructuralFeature feature) {

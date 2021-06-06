@@ -11,7 +11,7 @@ package org.nasdanika.engineering;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.nasdanika.engineering.FeatureAppearance#isCategory <em>Category</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.FeatureAppearance#getCategory <em>Category</em>}</li>
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getFeatureAppearance()
@@ -27,21 +27,21 @@ public interface FeatureAppearance extends Appearance {
 	 * If false feature element actions are not categorized, i.e. in the navigation tree they would appear as container children without an intermediary feature category node. It can be useful if the containing element has navigation children only of one type or they can be distinguished by an icon and as such a feature category is not necessary.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Category</em>' attribute.
-	 * @see #setCategory(boolean)
+	 * @see #setCategory(Boolean)
 	 * @see org.nasdanika.engineering.EngineeringPackage#getFeatureAppearance_Category()
 	 * @model
 	 * @generated
 	 */
-	boolean isCategory();
+	Boolean getCategory();
 
 	/**
-	 * Sets the value of the '{@link org.nasdanika.engineering.FeatureAppearance#isCategory <em>Category</em>}' attribute.
+	 * Sets the value of the '{@link org.nasdanika.engineering.FeatureAppearance#getCategory <em>Category</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Category</em>' attribute.
-	 * @see #isCategory()
+	 * @see #getCategory()
 	 * @generated
 	 */
-	void setCategory(boolean value);
+	void setCategory(Boolean value);
 
 } // FeatureAppearance

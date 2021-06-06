@@ -2553,7 +2553,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		initEReference(getFeatureAppearanceEntry_Value(), this.getFeatureAppearance(), null, "value", null, 1, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(featureAppearanceEClass, FeatureAppearance.class, "FeatureAppearance", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getFeatureAppearance_Category(), ecorePackage.getEBoolean(), "category", null, 0, 1, FeatureAppearance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFeatureAppearance_Category(), ecorePackage.getEBooleanObject(), "category", null, 0, 1, FeatureAppearance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

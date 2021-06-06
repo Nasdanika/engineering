@@ -25,33 +25,39 @@ public class IssueViewAction extends EngineeredCapabilityViewAction<Issue> {
 		super(value, factory);
 	}
 	
-	@Override
-	public boolean isInRole(String role) {
-		if (getSemanticElement().eContainmentFeature() == EngineeringPackage.Literals.ENGINEERED_ELEMENT__ISSUES) {
-			return false; // Anonymous actions - rendered in a table.
+	protected Object generateNotes(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
+		Fragment ret = viewGenerator.getHTMLFactory().fragment();
+		for (Diagnostic diagnostic: getFeatureDiagnostic(EngineeringPackage.Literals.ISSUE__NOTES)) {
+			viewGenerator.getBootstrapFactory().alert(HtmlEmfUtil.getSeverityColor(diagnostic.getSeverity()), diagnostic.getMessage());
 		}
-		if (getSemanticElement().eContainmentFeature() == EngineeringPackage.Literals.ISSUE__CHILDREN) {
-			return false; // Anonymous actions - rendered in a table.
-		}
-		return super.isInRole(role);
-	}
-	
-	@Override
-	protected boolean isFeatureInRole(EStructuralFeature feature, FeatureRole role) {
-		if (feature == EngineeringPackage.Literals.ISSUE__RELEASES) {
-			return role == FeatureRole.PROPERTY;
-		}
-		if (feature == EngineeringPackage.Literals.ISSUE__CONTRIBUTES_TO) {
-			return role == FeatureRole.PROPERTY;
-		}
-		if (feature == EngineeringPackage.Literals.ISSUE__CHILDREN) {
-			return role == FeatureRole.FEATURE_ACTIONS || role == FeatureRole.ELEMENT_ACTIONS;
-		}
-		if (feature == EngineeringPackage.Literals.ISSUE__NOTES) {
-			return role == FeatureRole.FEATURE_ACTIONS;
-		}
-		return super.isFeatureInRole(feature, role);
-	}
+		
+		BiFunction<Note, ETypedElement, ViewBuilder> cellBuilderProvider = (note, dataSource) -> {
+			if (dataSource == EngineeringPackage.Literals.MODEL_ELEMENT__DESCRIPTION) {
+				return (target, vg, pm) -> {
+					((Container<?>) ((BootstrapElement<?,?>) target).toHTMLElement()).content(getModelElementDescription(note));
+				};
+			}
+			return null;
+		};
+		
+		ret.content(HtmlEmfUtil.table(
+				getSemanticElement().getNotes(), 
+				null,
+				null, 
+				cellBuilderProvider, 
+				viewGenerator, 
+				progressMonitor, 
+				EngineeringPackage.Literals.MODEL_ELEMENT__DESCRIPTION,
+				EngineeringPackage.Literals.NOTE__DATE,
+				EngineeringPackage.Literals.NOTE__AUTHOR,
+				EngineeringPackage.Literals.NOTE__STATUS,
+				EngineeringPackage.Literals.NOTE__EFFORT,
+				EngineeringPackage.Literals.NOTE__COST,
+				EngineeringPackage.Literals.NOTE__REMAINING_EFFORT,
+				EngineeringPackage.Literals.NOTE__REMAINING_COST));
+		
+		return ret;
+	}	
 	
 	@Override
 	protected Collection<Action> featureActions(EStructuralFeature feature) {
@@ -79,48 +85,7 @@ public class IssueViewAction extends EngineeredCapabilityViewAction<Issue> {
 			if (getSemanticElement().getNotes().isEmpty()) {
 				return Collections.emptyList();
 			}
-			ModelElementFeatureViewAction<Issue, EStructuralFeature, IssueViewAction> notesAction = new ModelElementFeatureViewAction<Issue, EStructuralFeature, IssueViewAction>(this, feature) {
-				
-				@Override
-				public Object generate(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
-					Fragment ret = viewGenerator.getHTMLFactory().fragment();
-					for (Diagnostic diagnostic: getFeatureDiagnostic(feature)) {
-						viewGenerator.getBootstrapFactory().alert(HtmlEmfUtil.getSeverityColor(diagnostic.getSeverity()), diagnostic.getMessage());
-					}
-					
-					BiFunction<Note, ETypedElement, ViewBuilder> cellBuilderProvider = (note, dataSource) -> {
-						if (dataSource == EngineeringPackage.Literals.MODEL_ELEMENT__DESCRIPTION) {
-							return (target, vg, pm) -> {
-								((Container<?>) ((BootstrapElement<?,?>) target).toHTMLElement()).content(getModelElementDescription(note));
-							};
-						}
-						return null;
-					};
-					
-					ret.content(HtmlEmfUtil.table(
-							getSemanticElement().getNotes(), 
-							null,
-							null, 
-							cellBuilderProvider, 
-							viewGenerator, 
-							progressMonitor, 
-							EngineeringPackage.Literals.MODEL_ELEMENT__DESCRIPTION,
-							EngineeringPackage.Literals.NOTE__DATE,
-							EngineeringPackage.Literals.NOTE__AUTHOR,
-							EngineeringPackage.Literals.NOTE__STATUS,
-							EngineeringPackage.Literals.NOTE__EFFORT,
-							EngineeringPackage.Literals.NOTE__COST,
-							EngineeringPackage.Literals.NOTE__REMAINING_EFFORT,
-							EngineeringPackage.Literals.NOTE__REMAINING_COST));
-					
-					return ret;
-				}
-				
-			};
-			notesAction.getRoles().add(Action.Role.SECTION);
-			notesAction.setText(featureLabelText(feature));
-			notesAction.setIcon(featureIcon(feature));
-			notesAction.setDescription(featureDescription(feature));
+			ModelElementFeatureViewAction<Issue, EStructuralFeature, ModelElementViewActionImpl<Issue>> notesAction = createFeatureViewAction(feature, this::generateNotes);
 			return Collections.singleton(notesAction);
 		}
 		return super.featureActions(feature);

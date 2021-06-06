@@ -15,17 +15,6 @@ public class FeatureViewAction extends EngineeredCapabilityViewAction<Feature> {
 	}
 	
 	@Override
-	protected boolean isFeatureInRole(EStructuralFeature feature, FeatureRole role) {
-		if (feature == EngineeringPackage.Literals.FEATURE__RELEASES) {
-			return role == FeatureRole.PROPERTY;
-		}
-		if (feature == EngineeringPackage.Literals.FEATURE__ISSUES) {
-			return role == FeatureRole.FEATURE_ACTIONS;
-		}
-		return super.isFeatureInRole(feature, role);
-	}
-	
-	@Override
 	protected Collection<Action> featureActions(EStructuralFeature feature) {
 		if (feature == EngineeringPackage.Literals.FEATURE__ISSUES) {
 			return Collections.singleton(endeavorsSection(

@@ -80,6 +80,13 @@ engineering-organization:
      - name: Low tech
        path: low-tech
        markdown-description: Use easily available technology to drive wide adoption.
+       appearance:
+         roles: navigation
+         icon: fas fa-user
+         features:
+           children:
+             icon: far fa-user
+             roles: element-actions/content-right 
        children:
          - name: YAML 
            path: yaml

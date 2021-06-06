@@ -25,23 +25,28 @@ public class AimViewAction<T extends Aim> extends NamedElementViewAction<T> {
 	protected AimViewAction(T target, EngineeringViewActionAdapterFactory factory) {
 		super(target, factory);		
 	}
-
-	@Override
-	protected boolean isFeatureInRole(EStructuralFeature feature, FeatureRole role) {
-		if (feature == EngineeringPackage.Literals.AIM__ALIGNMENTS) {
-			return role == FeatureRole.FEATURE_ACTIONS;
+	
+	protected Object generateAlignsTable(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
+		Table table = viewGenerator.getBootstrapFactory().table().bordered().striped();
+		table.header().headerRow("Aim", "Description").color(Color.INFO);
+		for (Alignment alignment: getSemanticElement().getAligns()) {
+			table.body().row(
+					viewGenerator.link(ViewAction.adaptToViewActionNonNull(alignment.getAim())),
+					getModelElementDescription(alignment));
 		}
-		if (feature == EngineeringPackage.Literals.AIM__ALIGNS) {
-			return role == FeatureRole.FEATURE_ACTIONS;
-		}
-		return super.isFeatureInRole(feature, role);
+		return table;
 	}
 	
-	@Override
-	public boolean isInRole(String role) {
-		// Anonymous action, navigating from a persona list.
-		return false;
-	}
+	protected Object generateAlignmentsTable(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
+		Table table = viewGenerator.getBootstrapFactory().table().bordered().striped();
+		table.header().headerRow("Source", "Description").color(Color.INFO);
+		for (Alignment alignment: getSemanticElement().getAlignments()) {
+			table.body().row(
+					viewGenerator.link(ViewAction.adaptToViewActionNonNull(alignment.eContainer())),
+					getModelElementDescription(alignment));
+		}
+		return table;
+	}				
 	
 	@Override
 	protected Collection<Action> featureActions(EStructuralFeature feature) {
@@ -50,46 +55,15 @@ public class AimViewAction<T extends Aim> extends NamedElementViewAction<T> {
 			if (aligns.isEmpty()) {
 				return Collections.emptyList();
 			}
-			ModelElementFeatureViewAction<T, EStructuralFeature, AimViewAction<T>> alignsFeatureAction = new ModelElementFeatureViewAction<T, EStructuralFeature, AimViewAction<T>>(this, feature) {
-				
-				@Override
-				public Object generate(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
-					Table table = viewGenerator.getBootstrapFactory().table().bordered().striped();
-					table.header().headerRow("Aim", "Description").color(Color.INFO);
-					for (Alignment alignment: aligns) {
-						table.body().row(
-								viewGenerator.link(ViewAction.adaptToViewActionNonNull(alignment.getAim())),
-								getModelElementDescription(alignment));
-					}
-					return table;
-				}				
-				
-			};
-			alignsFeatureAction.getRoles().add(Action.Role.SECTION);
-			return Collections.singleton(alignsFeatureAction);
+			
+			return Collections.singleton(createFeatureViewAction(feature, this::generateAlignsTable));			
 		}
 		if (feature == EngineeringPackage.Literals.AIM__ALIGNMENTS) {
 			EList<Alignment> alignments = getSemanticElement().getAlignments();
 			if (alignments.isEmpty()) {
 				return Collections.emptyList();
 			}
-			ModelElementFeatureViewAction<T, EStructuralFeature, AimViewAction<T>> alignmentsFeatureAction = new ModelElementFeatureViewAction<T, EStructuralFeature, AimViewAction<T>>(this, feature) {
-				
-				@Override
-				public Object generate(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
-					Table table = viewGenerator.getBootstrapFactory().table().bordered().striped();
-					table.header().headerRow("Source", "Description").color(Color.INFO);
-					for (Alignment alignment: alignments) {
-						table.body().row(
-								viewGenerator.link(ViewAction.adaptToViewActionNonNull(alignment.eContainer())),
-								getModelElementDescription(alignment));
-					}
-					return table;
-				}				
-				
-			};
-			alignmentsFeatureAction.getRoles().add(Action.Role.SECTION);
-			return Collections.singleton(alignmentsFeatureAction);
+			return Collections.singleton(createFeatureViewAction(feature, this::generateAlignmentsTable));			
 		}
 		return super.featureActions(feature);
 	}

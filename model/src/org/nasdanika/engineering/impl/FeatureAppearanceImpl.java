@@ -14,21 +14,21 @@ import org.nasdanika.engineering.FeatureAppearance;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.nasdanika.engineering.impl.FeatureAppearanceImpl#isCategory <em>Category</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.FeatureAppearanceImpl#getCategory <em>Category</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class FeatureAppearanceImpl extends AppearanceImpl implements FeatureAppearance {
 	/**
-	 * The default value of the '{@link #isCategory() <em>Category</em>}' attribute.
+	 * The default value of the '{@link #getCategory() <em>Category</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isCategory()
+	 * @see #getCategory()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean CATEGORY_EDEFAULT = false;
+	protected static final Boolean CATEGORY_EDEFAULT = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -55,7 +55,7 @@ public class FeatureAppearanceImpl extends AppearanceImpl implements FeatureAppe
 	 * @generated
 	 */
 	@Override
-	public boolean isCategory() {
+	public Boolean getCategory() {
 		return (Boolean)eDynamicGet(EngineeringPackage.FEATURE_APPEARANCE__CATEGORY, EngineeringPackage.Literals.FEATURE_APPEARANCE__CATEGORY, true, true);
 	}
 
@@ -65,7 +65,7 @@ public class FeatureAppearanceImpl extends AppearanceImpl implements FeatureAppe
 	 * @generated
 	 */
 	@Override
-	public void setCategory(boolean newCategory) {
+	public void setCategory(Boolean newCategory) {
 		eDynamicSet(EngineeringPackage.FEATURE_APPEARANCE__CATEGORY, EngineeringPackage.Literals.FEATURE_APPEARANCE__CATEGORY, newCategory);
 	}
 
@@ -78,7 +78,7 @@ public class FeatureAppearanceImpl extends AppearanceImpl implements FeatureAppe
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case EngineeringPackage.FEATURE_APPEARANCE__CATEGORY:
-				return isCategory();
+				return getCategory();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -123,7 +123,7 @@ public class FeatureAppearanceImpl extends AppearanceImpl implements FeatureAppe
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case EngineeringPackage.FEATURE_APPEARANCE__CATEGORY:
-				return isCategory() != CATEGORY_EDEFAULT;
+				return CATEGORY_EDEFAULT == null ? getCategory() != null : !CATEGORY_EDEFAULT.equals(getCategory());
 		}
 		return super.eIsSet(featureID);
 	}

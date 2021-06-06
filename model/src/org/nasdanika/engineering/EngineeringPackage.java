@@ -7662,11 +7662,11 @@ public interface EngineeringPackage extends EPackage {
 	EClass getFeatureAppearance();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.FeatureAppearance#isCategory <em>Category</em>}'.
+	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.FeatureAppearance#getCategory <em>Category</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Category</em>'.
-	 * @see org.nasdanika.engineering.FeatureAppearance#isCategory()
+	 * @see org.nasdanika.engineering.FeatureAppearance#getCategory()
 	 * @see #getFeatureAppearance()
 	 * @generated
 	 */

@@ -13,4 +13,59 @@ model-elements:
         roles: none
       appearance:
         roles: none
+  aim:
+    roles: none
+    features:
+      alignments:
+        roles: feature-actions/section        
+      aligns:
+        roles: feature-actions/section        
+  goal:
+    features:
+      children:
+        roles: 
+         - feature-actions/section
+         - element-actions        
+  principle:
+    features:
+      children:
+        roles: 
+         - feature-actions/section
+         - element-actions        
+  capability:
+    features:
+      required-by:
+        roles: feature-actions
+  endeavor:
+    features:
+      all-issues:
+        roles: none
+      capacity:
+        roles: feature-actions
+  engineered-capability:
+    features:
+      aligns:
+        roles: feature-actions
+  feature:
+    features:
+      releases:
+        roles: property
+      issues:
+        roles: feature-actions
+  engineered-element:
+    features:
+      issues:
+        roles: element-actions/none
+  issue:
+    features:
+      children: 
+        roles: 
+          - element-actions/none
+          - feature-actions
+      releases:
+        roles: property
+      contributes-to:
+        roles: property
+      notes: 
+        roles: feature-actions/section
       

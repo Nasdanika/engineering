@@ -47,6 +47,7 @@ import org.nasdanika.engineering.Release;
 import org.nasdanika.html.Fragment;
 import org.nasdanika.html.app.Action;
 import org.nasdanika.html.app.ActionActivator;
+import org.nasdanika.html.app.Label;
 import org.nasdanika.html.app.NavigationActionActivator;
 import org.nasdanika.html.app.SectionStyle;
 import org.nasdanika.html.app.ViewBuilder;
@@ -158,10 +159,44 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 
 		return super.isFeatureInRole(feature, role);
 	}
+	
+	@Override
+	public Label featureCategory(EStructuralFeature feature) {
+		ModelElementAppearance appearance = getSemanticElement().getAppearance();
+		if (appearance != null) {
+			FeatureAppearance featureAppearance = appearance.getFeatures().get(Util.camelToKebab(feature.getName()));
+			if (featureAppearance != null) {
+				Boolean categoryFlag = featureAppearance.getCategory();
+				if (categoryFlag != null) {
+					return categoryFlag ? super.featureCategory(feature) : null;
+				}
+			}
+		}
+		
+		List<EClass> eClasses = new ArrayList<>();
+		eClasses.add(getSemanticElement().eClass());
+		eClasses.addAll(getSemanticElement().eClass().getEAllSuperTypes());
+		for (EClass eClass: eClasses) {
+			ModelElementAppearance classAppearance = factory.getAppearance(eClass);
+			if (classAppearance != null) {
+				FeatureAppearance featureAppearance = classAppearance.getFeatures().get(Util.camelToKebab(feature.getName()));
+				if (featureAppearance !=  null) {
+					Boolean categoryFlag = featureAppearance.getCategory();
+					if (categoryFlag != null) {
+						return categoryFlag ? super.featureCategory(feature) : null;
+					}
+				}
+			}
+		}
+
+		return super.featureCategory(feature);
+	}
 
 	protected boolean matchFeatureRole(FeatureRole role, FeatureAppearance featureAppearance) {
 		for (String featureRole: featureAppearance.getRoles()) {
-			return role.LITERAL.equals(featureRole) || featureRole.startsWith(role.LITERAL + "/");
+			if (role.LITERAL.equals(featureRole) || featureRole.startsWith(role.LITERAL + "/")) {
+				return true;
+			};
 		}
 		return false;
 	}
@@ -621,6 +656,12 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 			return true;
 		}
 		return false;
+	}
+	
+	@Override
+	public Label getCategory() {
+		// TODO Auto-generated method stub
+		return super.getCategory();
 	}
 	
 	@Override

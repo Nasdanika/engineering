@@ -38,15 +38,5 @@ public class CapabilityViewAction<T extends Capability> extends NamedElementView
 		}
 		return super.featureActions(feature);
 	}
-	
-	@Override
-	protected boolean isFeatureInRole(EStructuralFeature feature, FeatureRole role) {
-		if (feature == EngineeringPackage.Literals.CAPABILITY__REQUIRED_BY) {
-			return role == FeatureRole.FEATURE_ACTIONS;
-		}
-
-		return super.isFeatureInRole(feature, role);
-	}
-	
 
 }

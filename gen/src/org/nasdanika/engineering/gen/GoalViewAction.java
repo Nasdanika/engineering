@@ -15,10 +15,8 @@ import org.nasdanika.engineering.Goal;
 import org.nasdanika.html.OrderedListType;
 import org.nasdanika.html.app.Action;
 import org.nasdanika.html.app.Label;
-import org.nasdanika.html.app.NavigationActionActivator;
 import org.nasdanika.html.app.SectionStyle;
 import org.nasdanika.html.app.ViewGenerator;
-import org.nasdanika.html.app.impl.PathNavigationActionActivator;
 import org.nasdanika.html.app.viewparts.ListOfActionsViewPart;
 import org.nasdanika.html.emf.ViewAction;
 
@@ -32,12 +30,20 @@ public class GoalViewAction extends AimViewAction<Goal> {
 		super(target, factory);		
 	}
 	
-	@Override
-	protected boolean isFeatureInRole(EStructuralFeature feature, FeatureRole role) {
-		if (feature == EngineeringPackage.Literals.GOAL__CHILDREN) {
-			return role == FeatureRole.FEATURE_ACTIONS || role == FeatureRole.ELEMENT_ACTIONS;
-		}
-		return super.isFeatureInRole(feature, role);
+	protected Object generateChildrenList(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
+		ListOfActionsViewPart childrenList = new ListOfActionsViewPart(ViewAction.adaptToViewActionsNonNull(getSemanticElement().getChildren()), null, true, 10, OrderedListType.ROTATE) {
+			@Override
+			protected Collection<Entry<Label, List<Action>>> getGroupedActions(ViewGenerator viewGenerator, Action currentAction) {
+				if (currentAction instanceof ViewAction) {
+					EObject se = ((ViewAction<?>) currentAction).getSemanticElement();
+					if (se instanceof Goal) {
+						return Collections.singleton(new AbstractMap.SimpleEntry<Label, List<Action>>(null, ViewAction.adaptToViewActionsNonNull(((Goal) se).getChildren())));
+					}
+				}
+				return super.getGroupedActions(viewGenerator, currentAction);
+			}
+		};
+		return viewGenerator.processViewPart(childrenList, progressMonitor);
 	}
 
 	@Override
@@ -47,33 +53,9 @@ public class GoalViewAction extends AimViewAction<Goal> {
 			if (children.isEmpty()) {
 				return Collections.emptyList();
 			}
-			ModelElementFeatureViewAction<Goal, EStructuralFeature, GoalViewAction> childrenSection = new ModelElementFeatureViewAction<Goal, EStructuralFeature, GoalViewAction>(this, feature) {
-				
-				@Override
-				public Object generate(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
-					ListOfActionsViewPart listOfPrinciples = new ListOfActionsViewPart(ViewAction.adaptToViewActionsNonNull(children), null, true, 10, OrderedListType.ROTATE) {
-						@Override
-						protected Collection<Entry<Label, List<Action>>> getGroupedActions(ViewGenerator viewGenerator, Action currentAction) {
-							if (currentAction instanceof ViewAction) {
-								EObject se = ((ViewAction<?>) currentAction).getSemanticElement();
-								if (se instanceof Goal) {
-									return Collections.singleton(new AbstractMap.SimpleEntry<Label, List<Action>>(null, ViewAction.adaptToViewActionsNonNull(((Goal) se).getChildren())));
-								}
-							}
-							return super.getGroupedActions(viewGenerator, currentAction);
-						}
-					};
-					return viewGenerator.processViewPart(listOfPrinciples, progressMonitor);
-				}
-				
-			};
-			
-			childrenSection.getRoles().add(Action.Role.SECTION); 
+			ModelElementFeatureViewAction<Goal, EStructuralFeature, ModelElementViewActionImpl<Goal>> childrenSection = createFeatureViewAction(feature, this::generateChildrenList);
 			childrenSection.setSectionStyle(SectionStyle.DEFAULT);
-			childrenSection.setText(featureLabelText(feature)); 		
-			childrenSection.setIcon(featureIcon(feature));
-			childrenSection.setDescription(featureDescription(feature));
-			childrenSection.setActivator(new PathNavigationActionActivator(childrenSection, ((NavigationActionActivator) getActivator()).getUrl(null), "#feature-" + feature.getName(), getMarker()));
+//			childrenSection.setActivator(new PathNavigationActionActivator(childrenSection, ((NavigationActionActivator) getActivator()).getUrl(null), "#feature-" + feature.getName(), getMarker()));
 			return Collections.singleton(childrenSection);
 		}
 		return super.featureActions(feature);
