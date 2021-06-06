@@ -20,7 +20,7 @@ import org.nasdanika.engineering.NamedElement;
  *
  * @param <T>
  */
-public class NamedElementViewAction<T extends NamedElement> extends ModelElementViewAction<T> {
+public class NamedElementViewAction<T extends NamedElement> extends ModelElementViewActionImpl<T> {
 			
 	protected NamedElementViewAction(T target, EngineeringViewActionAdapterFactory factory) {
 		super(target, factory);		

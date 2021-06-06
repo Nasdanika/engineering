@@ -10,6 +10,7 @@ import org.nasdanika.engineering.FeatureAppearance;
 import org.nasdanika.engineering.ModelElement;
 import org.nasdanika.engineering.ModelElementAppearance;
 import org.nasdanika.html.emf.EStructuralFeatureViewActionImpl;
+import org.nasdanika.html.emf.SimpleEObjectViewAction;
 
 /**
  * Handles appearance.
@@ -38,10 +39,10 @@ public class ModelElementFeatureViewAction<T extends ModelElement, F extends ESt
 				if (!featureAppearance.getRoles().isEmpty()) {
 					boolean hasFeatureActions = false;
 					for (String featureRole: featureAppearance.getRoles()) {
-						if (featureRole.equals("feature-actions/" + role)) {
+						if (featureRole.equals(SimpleEObjectViewAction.FeatureRole.FEATURE_ACTIONS.LITERAL + "/" + role)) {
 							return true;
 						}
-						if (featureRole.startsWith("feature-actions/")) {
+						if (featureRole.startsWith(SimpleEObjectViewAction.FeatureRole.FEATURE_ACTIONS.LITERAL + "/")) {
 							hasFeatureActions = true;
 						}
 					}
@@ -64,10 +65,10 @@ public class ModelElementFeatureViewAction<T extends ModelElement, F extends ESt
 					if (!featureAppearance.getRoles().isEmpty()) {
 						boolean hasFeatureActions = false;
 						for (String featureRole: featureAppearance.getRoles()) {
-							if (featureRole.equals("feature-actions/" + role)) {
+							if (featureRole.equals(SimpleEObjectViewAction.FeatureRole.FEATURE_ACTIONS.LITERAL + "/" + role)) {
 								return true;
 							}
-							if (featureRole.startsWith("feature-actions/")) {
+							if (featureRole.startsWith(SimpleEObjectViewAction.FeatureRole.FEATURE_ACTIONS.LITERAL + "/")) {
 								hasFeatureActions = true;
 							}
 						}

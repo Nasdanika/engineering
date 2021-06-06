@@ -74,7 +74,7 @@ public class EngineeredElementViewAction<T extends EngineeredElement> extends Fo
 		});
 		
 		if (!issues.equals(allIssues)) {
-			Action allIssuesSection = ModelElementViewAction.endeavorsSection(
+			Action allIssuesSection = ModelElementViewActionImpl.endeavorsSection(
 					allIssues, 
 					null,
 					"All Issues", 

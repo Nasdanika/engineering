@@ -12,6 +12,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.nasdanika.common.Context;
 import org.nasdanika.common.NasdanikaException;
 import org.nasdanika.common.NullProgressMonitor;
+import org.nasdanika.common.SupplierFactory;
 import org.nasdanika.common.Util;
 import org.nasdanika.common.persistence.MarkingYamlConstructor;
 import org.nasdanika.emf.ComposedAdapterFactory;
@@ -163,7 +164,29 @@ public class EngineeringViewActionAdapterFactory extends ComposedAdapterFactory 
 				EngineeringPackage.Literals.TOPIC, 
 				getViewActionClass(), 
 				this.getClass().getClassLoader(), 
-				obj -> new TopicViewAction(obj, this)));					
+				obj -> new TopicViewAction(obj, this)));			
+		
+		
+		// Loading default appearance
+		EObjectLoader loader = new EObjectLoader(EngineeringPackage.eINSTANCE);
+		URL defaultAppearanceURL = EngineeringViewActionAdapterFactory.class.getResource("default-appearance.yml");
+		Yaml yaml = MarkingYamlConstructor.createMarkingYaml(defaultAppearanceURL.toString());		
+		try {
+			NullProgressMonitor progressMonitor = new NullProgressMonitor();
+			Object asf = loader.create(
+					loader, 
+					EngineeringPackage.Literals.ENGINEERING_APPEARANCE, 
+					yaml.load(defaultAppearanceURL.openStream()), 
+					defaultAppearanceURL, 
+					progressMonitor, 
+					null, 
+					null);
+			SupplierFactory<EngineeringAppearance> appearanceSupplierFactory = Util.<EngineeringAppearance>asSupplierFactory(asf);
+			EngineeringAppearance defaultAppearance = Util.call(appearanceSupplierFactory.create(Context.EMPTY_CONTEXT), progressMonitor, null);
+			appearance = Collections.singletonList(defaultAppearance.getModelElements()::get);
+		} catch (Exception e) {
+			throw new NasdanikaException(e);
+		}
 		
 	}
 
@@ -191,26 +214,13 @@ public class EngineeringViewActionAdapterFactory extends ComposedAdapterFactory 
 		return diagnosticMap;
 	}
 	
+	private List<java.util.function.Function<String, ModelElementAppearance>> appearance;
+	
 	/**
 	 * @return Chain of appearance mappings.
 	 */
 	protected List<java.util.function.Function<String, ModelElementAppearance>> getAppearance() {
-		EObjectLoader loader = new EObjectLoader(EngineeringPackage.eINSTANCE);
-		URL defaultAppearanceURL = EngineeringViewActionAdapterFactory.class.getResource("default-appearance.yml");
-		Yaml yaml = MarkingYamlConstructor.createMarkingYaml(defaultAppearanceURL.toString());		
-		try {
-			EngineeringAppearance defaultAppearance = (EngineeringAppearance) loader.create(
-					loader, 
-					EngineeringPackage.Literals.ENGINEERING_APPEARANCE, 
-					yaml.load(defaultAppearanceURL.openStream()), 
-					defaultAppearanceURL, 
-					new NullProgressMonitor(), 
-					null, 
-					null);
-			return Collections.singletonList(defaultAppearance.getModelElements()::get);
-		} catch (Exception e) {
-			throw new NasdanikaException(e);
-		}
+		return appearance;
 	}
 
 	/**
