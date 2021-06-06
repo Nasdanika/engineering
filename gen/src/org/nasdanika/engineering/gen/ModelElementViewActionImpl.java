@@ -739,7 +739,12 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 			
 			@Override
 			public Object generate(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
-				return contentPart.generate(viewGenerator, progressMonitor);
+				return contentPart == null ? null : contentPart.generate(viewGenerator, progressMonitor);
+			}
+			
+			@Override
+			public boolean isEmpty() {
+				return contentPart == null;
 			}
 			
 		};

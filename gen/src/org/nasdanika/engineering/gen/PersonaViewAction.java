@@ -30,23 +30,6 @@ public class PersonaViewAction<T extends Persona> extends EngineeredElementViewA
 	}
 	
 	@Override
-	protected boolean isFeatureInRole(EStructuralFeature feature, FeatureRole role) {
-		if (feature == EngineeringPackage.Literals.PERSONA__REPRESENTATIVES) {
-			return role == FeatureRole.PROPERTY;
-		}
-		if (feature == EngineeringPackage.Literals.PERSONA__EXTENDS) {
-			return role == FeatureRole.PROPERTY;
-		}
-		if (feature == EngineeringPackage.Literals.PERSONA__EXTENSIONS) {
-			return role == FeatureRole.PROPERTY;
-		}
-		if (feature == EngineeringPackage.Literals.PERSONA__GOALS) {
-			return role == FeatureRole.FEATURE_ACTIONS || role == FeatureRole.ELEMENT_ACTIONS;
-		}		
-		return super.isFeatureInRole(feature, role);
-	}
-	
-	@Override
 	protected Collection<Action> featureActions(EStructuralFeature feature) {
 		if (feature == EngineeringPackage.Literals.PERSONA__GOALS) {
 			EList<Goal> goals = getSemanticElement().getGoals();

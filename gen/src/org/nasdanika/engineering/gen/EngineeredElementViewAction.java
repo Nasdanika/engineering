@@ -9,14 +9,17 @@ import java.util.Map.Entry;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.engineering.Allocation;
 import org.nasdanika.engineering.EngineeredElement;
 import org.nasdanika.engineering.EngineeringPackage;
+import org.nasdanika.engineering.Forum;
 import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.IssueCategory;
 import org.nasdanika.engineering.Principle;
+import org.nasdanika.engineering.Topic;
 import org.nasdanika.html.OrderedListType;
 import org.nasdanika.html.Tag;
 import org.nasdanika.html.TagName;
@@ -105,24 +108,39 @@ public class EngineeredElementViewAction<T extends EngineeredElement> extends Fo
 	}
 	
 	@Override
-	protected boolean isFeatureInRole(EStructuralFeature feature, FeatureRole role) {
-		if (feature == EngineeringPackage.Literals.ENGINEERED_ELEMENT__OWNERS) {
-			return role == FeatureRole.PROPERTY;
-		}
-		if (feature == EngineeringPackage.Literals.ENGINEERED_ELEMENT__ISSUES) {
-			return role == FeatureRole.ELEMENT_ACTIONS;
-		}
-		if (feature == EngineeringPackage.Literals.ENGINEERED_ELEMENT__ALLOCATIONS) {
-			return role == FeatureRole.FEATURE_ACTIONS;
-		}
-		if (feature == EngineeringPackage.Literals.ENGINEERED_ELEMENT__PRINCIPLES) {
-			return role == FeatureRole.FEATURE_ACTIONS || role == FeatureRole.ELEMENT_ACTIONS;
-		}		
-		return super.isFeatureInRole(feature, role);
-	}
-	
-	@Override
 	protected Collection<Action> featureActions(EStructuralFeature feature) {
+		if (feature == EngineeringPackage.Literals.FORUM__DISCUSSION) {
+			EList<Topic> topics = getSemanticElement().getTopics();
+			EList<Forum> forums = getSemanticElement().getDiscussion();
+			if (topics.isEmpty() && forums.isEmpty()) {
+				return Collections.emptyList();
+			}
+			
+			ModelElementFeatureViewAction<T, EReference, ModelElementViewActionImpl<T>> discussionAction = new ModelElementFeatureViewAction<T, EReference, ModelElementViewActionImpl<T>>(this, (EReference) feature) {
+				
+				@Override
+				public Object generate(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
+					return generateDiscussion(viewGenerator, progressMonitor);
+				}
+				
+				@Override
+				public boolean isEmpty() {
+					return false;
+				}
+				
+				@Override
+				public List<Action> getChildren() {
+					List<Action> children = new ArrayList<>();
+					children.addAll(ViewAction.adaptToViewActionsNonNull(forums));
+					children.addAll(ViewAction.adaptToViewActionsNonNull(topics));
+					return children;
+				}
+				
+			};
+			
+			return Collections.singleton(discussionAction);			
+		}
+		
 		if (feature == EngineeringPackage.Literals.ENGINEERED_ELEMENT__ALLOCATIONS) {
 			EList<Allocation> allocations = getSemanticElement().getAllocations();
 			if (allocations.isEmpty()) {
@@ -200,9 +218,4 @@ public class EngineeredElementViewAction<T extends EngineeredElement> extends Fo
 		return super.featureActions(feature);
 	}
 
-	@Override
-	public boolean isInRole(String role) {
-		return Action.Role.NAVIGATION.equals(role);
-	}
-		
 }

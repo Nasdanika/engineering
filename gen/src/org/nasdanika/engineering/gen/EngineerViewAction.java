@@ -141,33 +141,6 @@ public class EngineerViewAction<T extends Engineer> extends PersonaViewAction<T>
 
 		return super.featureActions(feature);
 	}
-	
-	@Override
-	protected boolean isFeatureInRole(EStructuralFeature feature, FeatureRole role) {
-		if (feature == EngineeringPackage.Literals.ENGINEER__ASSIGNMENTS) {
-			return role == FeatureRole.FEATURE_ACTIONS;
-		}
-		if (feature == EngineeringPackage.Literals.ENGINEER__INCREMENTS) {
-			return role == FeatureRole.ELEMENT_ACTIONS || role == FeatureRole.CONTENT;
-		}
-		if (feature == EngineeringPackage.Literals.ENGINEER__CAPACITY) {
-			return false;
-		}
-		if (feature == EngineeringPackage.Literals.ENGINEER__DESIGNATIONS) {
-			return false;
-		}
-		if (feature == EngineeringPackage.Literals.ENGINEER__MESSAGES) {
-			return false;
-		}
-		if (feature == EngineeringPackage.Literals.ENGINEER__PERSONAS) {
-			return role == FeatureRole.ELEMENT_ACTIONS;
-		}
-		if (feature == EngineeringPackage.Literals.ENGINEER__REPRESENTS) {
-			return role == FeatureRole.PROPERTY;
-		}
-		
-		return super.isFeatureInRole(feature, role);
-	}
 		
 	@Override
 	protected Object featureContent(EStructuralFeature feature, ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {

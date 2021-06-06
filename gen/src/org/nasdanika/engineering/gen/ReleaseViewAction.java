@@ -54,13 +54,5 @@ public class ReleaseViewAction extends EngineeredCapabilityViewAction<Release> {
 
 		return super.featureActions(feature);
 	}
-	
-	@Override
-	protected boolean isFeatureInRole(EStructuralFeature feature, FeatureRole role) {
-		if (feature == EngineeringPackage.Literals.RELEASE__ISSUES) {
-			return role == FeatureRole.FEATURE_ACTIONS;
-		}
-		return super.isFeatureInRole(feature, role);
-	}
 
 }

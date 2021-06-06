@@ -52,10 +52,6 @@ model-elements:
         roles: property
       issues:
         roles: feature-actions
-  engineered-element:
-    features:
-      issues:
-        roles: element-actions/none
   issue:
     features:
       children: 
@@ -68,4 +64,65 @@ model-elements:
         roles: property
       notes: 
         roles: feature-actions/section
+  release:
+    features:
+      issues: 
+        roles: feature-actions
+  forum:
+    features:
+      topics:
+        roles: element-actions/none
+      discussion:
+        roles: 
+          - element-actions/none
+  engineered-element:
+    roles: navigation
+    features:
+      issues:
+        roles: element-actions/none
+      discussion:
+        category: false
+        roles: feature-actions/context
+      owners:
+        roles: property
+      allocations:
+        roles: feature-actions
+      principles:
+        roles: 
+          - feature-actions
+          - element-actions
+  product:
+    features:
+      releases:
+        roles: element-actions
+  persona:
+    features:
+      representatives:
+        roles: property
+      extends:
+        roles: property
+      extensions:
+        roles: property
+      goals:
+        roles: 
+          - feature-actions
+          - element-actions
+  engineer:
+    features:
+      assignments:
+        roles: feature-actions
+      increments:
+        roles: 
+         - content
+         - element-actions
+      capacity:
+        roles: none 
+      designations:
+        roles: none 
+      messages:
+        roles: none 
+      personas:
+        roles: element-actions 
+      represents:
+        roles: property 
       
