@@ -20,6 +20,7 @@ import org.nasdanika.engineering.Call;
 import org.nasdanika.engineering.Capability;
 import org.nasdanika.engineering.Capacity;
 import org.nasdanika.engineering.Directory;
+import org.nasdanika.engineering.Document;
 import org.nasdanika.engineering.Endeavor;
 import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeredCapability;
@@ -45,6 +46,7 @@ import org.nasdanika.engineering.Persona;
 import org.nasdanika.engineering.Principle;
 import org.nasdanika.engineering.Product;
 import org.nasdanika.engineering.Release;
+import org.nasdanika.engineering.TableOfContents;
 import org.nasdanika.engineering.Topic;
 import org.nasdanika.engineering.Transition;
 
@@ -349,6 +351,8 @@ public class EngineeringSwitch<T> extends Switch<T> {
 			case EngineeringPackage.DIRECTORY: {
 				Directory directory = (Directory)theEObject;
 				T result = caseDirectory(directory);
+				if (result == null) result = caseEngineeredElement(directory);
+				if (result == null) result = caseForum(directory);
 				if (result == null) result = caseNamedElement(directory);
 				if (result == null) result = caseModelElement(directory);
 				if (result == null) result = caseAdaptable(directory);
@@ -472,6 +476,23 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				FeatureAppearance featureAppearance = (FeatureAppearance)theEObject;
 				T result = caseFeatureAppearance(featureAppearance);
 				if (result == null) result = caseAppearance(featureAppearance);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EngineeringPackage.DOCUMENT: {
+				Document document = (Document)theEObject;
+				T result = caseDocument(document);
+				if (result == null) result = caseEngineeredElement(document);
+				if (result == null) result = caseForum(document);
+				if (result == null) result = caseNamedElement(document);
+				if (result == null) result = caseModelElement(document);
+				if (result == null) result = caseAdaptable(document);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EngineeringPackage.TABLE_OF_CONTENTS: {
+				TableOfContents tableOfContents = (TableOfContents)theEObject;
+				T result = caseTableOfContents(tableOfContents);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1061,6 +1082,36 @@ public class EngineeringSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseFeatureAppearance(FeatureAppearance object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Document</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Document</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDocument(Document object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Table Of Contents</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Table Of Contents</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTableOfContents(TableOfContents object) {
 		return null;
 	}
 

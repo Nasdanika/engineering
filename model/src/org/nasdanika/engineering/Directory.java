@@ -20,7 +20,7 @@ import org.eclipse.emf.common.util.EList;
  * @model annotation="urn:org.nasdanika documentation-reference='doc/directory.md'"
  * @generated
  */
-public interface Directory extends NamedElement {
+public interface Directory extends EngineeredElement {
 	/**
 	 * Returns the value of the '<em><b>Elements</b></em>' containment reference list.
 	 * The list contents are of type {@link org.nasdanika.engineering.NamedElement}.

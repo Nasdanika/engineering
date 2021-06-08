@@ -22,6 +22,7 @@ import org.nasdanika.engineering.Call;
 import org.nasdanika.engineering.Capability;
 import org.nasdanika.engineering.Capacity;
 import org.nasdanika.engineering.Directory;
+import org.nasdanika.engineering.Document;
 import org.nasdanika.engineering.Endeavor;
 import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeredCapability;
@@ -47,6 +48,7 @@ import org.nasdanika.engineering.Persona;
 import org.nasdanika.engineering.Principle;
 import org.nasdanika.engineering.Product;
 import org.nasdanika.engineering.Release;
+import org.nasdanika.engineering.TableOfContents;
 import org.nasdanika.engineering.Topic;
 import org.nasdanika.engineering.Transition;
 
@@ -202,6 +204,10 @@ public class EngineeringValidator extends EObjectValidator {
 				return validateFeatureAppearanceEntry((Map.Entry<?, ?>)value, diagnostics, context);
 			case EngineeringPackage.FEATURE_APPEARANCE:
 				return validateFeatureAppearance((FeatureAppearance)value, diagnostics, context);
+			case EngineeringPackage.DOCUMENT:
+				return validateDocument((Document)value, diagnostics, context);
+			case EngineeringPackage.TABLE_OF_CONTENTS:
+				return validateTableOfContents((TableOfContents)value, diagnostics, context);
 			default:
 				return true;
 		}
@@ -799,7 +805,17 @@ public class EngineeringValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateDirectory(Directory directory, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(directory, diagnostics, context);
+		if (!validate_NoCircularContainment(directory, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(directory, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(directory, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(directory, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(directory, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(directory, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(directory, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(directory, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(directory, diagnostics, context);
+		if (result || diagnostics != null) result &= validateEngineeredElement_capacity(directory, diagnostics, context);
+		return result;
 	}
 
 	/**
@@ -926,6 +942,34 @@ public class EngineeringValidator extends EObjectValidator {
 	 */
 	public boolean validateFeatureAppearance(FeatureAppearance featureAppearance, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(featureAppearance, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateDocument(Document document, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(document, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(document, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(document, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(document, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(document, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(document, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(document, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(document, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(document, diagnostics, context);
+		if (result || diagnostics != null) result &= validateEngineeredElement_capacity(document, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateTableOfContents(TableOfContents tableOfContents, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(tableOfContents, diagnostics, context);
 	}
 
 	/**

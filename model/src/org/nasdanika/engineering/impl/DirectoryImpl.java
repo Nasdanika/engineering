@@ -30,7 +30,7 @@ import org.nasdanika.engineering.NamedElement;
  *
  * @generated
  */
-public class DirectoryImpl extends NamedElementImpl implements Directory {
+public class DirectoryImpl extends EngineeredElementImpl implements Directory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

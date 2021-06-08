@@ -4569,7 +4569,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DIRECTORY__URI = NAMED_ELEMENT__URI;
+	int DIRECTORY__URI = ENGINEERED_ELEMENT__URI;
 
 	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
@@ -4578,7 +4578,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DIRECTORY__PATH = NAMED_ELEMENT__PATH;
+	int DIRECTORY__PATH = ENGINEERED_ELEMENT__PATH;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -4587,7 +4587,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DIRECTORY__DESCRIPTION = NAMED_ELEMENT__DESCRIPTION;
+	int DIRECTORY__DESCRIPTION = ENGINEERED_ELEMENT__DESCRIPTION;
 
 	/**
 	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
@@ -4596,7 +4596,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DIRECTORY__MARKDOWN_DESCRIPTION = NAMED_ELEMENT__MARKDOWN_DESCRIPTION;
+	int DIRECTORY__MARKDOWN_DESCRIPTION = ENGINEERED_ELEMENT__MARKDOWN_DESCRIPTION;
 
 	/**
 	 * The feature id for the '<em><b>Actions</b></em>' containment reference list.
@@ -4605,7 +4605,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DIRECTORY__ACTIONS = NAMED_ELEMENT__ACTIONS;
+	int DIRECTORY__ACTIONS = ENGINEERED_ELEMENT__ACTIONS;
 
 	/**
 	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
@@ -4614,7 +4614,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DIRECTORY__RESOURCES = NAMED_ELEMENT__RESOURCES;
+	int DIRECTORY__RESOURCES = ENGINEERED_ELEMENT__RESOURCES;
 
 	/**
 	 * The feature id for the '<em><b>Appearance</b></em>' containment reference.
@@ -4623,7 +4623,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DIRECTORY__APPEARANCE = NAMED_ELEMENT__APPEARANCE;
+	int DIRECTORY__APPEARANCE = ENGINEERED_ELEMENT__APPEARANCE;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -4632,7 +4632,70 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DIRECTORY__NAME = NAMED_ELEMENT__NAME;
+	int DIRECTORY__NAME = ENGINEERED_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Discussion</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIRECTORY__DISCUSSION = ENGINEERED_ELEMENT__DISCUSSION;
+
+	/**
+	 * The feature id for the '<em><b>Topics</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIRECTORY__TOPICS = ENGINEERED_ELEMENT__TOPICS;
+
+	/**
+	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIRECTORY__ISSUES = ENGINEERED_ELEMENT__ISSUES;
+
+	/**
+	 * The feature id for the '<em><b>Owners</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIRECTORY__OWNERS = ENGINEERED_ELEMENT__OWNERS;
+
+	/**
+	 * The feature id for the '<em><b>Experts</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIRECTORY__EXPERTS = ENGINEERED_ELEMENT__EXPERTS;
+
+	/**
+	 * The feature id for the '<em><b>Allocations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIRECTORY__ALLOCATIONS = ENGINEERED_ELEMENT__ALLOCATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Principles</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIRECTORY__PRINCIPLES = ENGINEERED_ELEMENT__PRINCIPLES;
 
 	/**
 	 * The feature id for the '<em><b>Elements</b></em>' containment reference list.
@@ -4641,7 +4704,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DIRECTORY__ELEMENTS = NAMED_ELEMENT_FEATURE_COUNT + 0;
+	int DIRECTORY__ELEMENTS = ENGINEERED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Directory</em>' class.
@@ -4650,7 +4713,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DIRECTORY_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 1;
+	int DIRECTORY_FEATURE_COUNT = ENGINEERED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Directory</em>' class.
@@ -4659,7 +4722,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DIRECTORY_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
+	int DIRECTORY_OPERATION_COUNT = ENGINEERED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -5929,6 +5992,252 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int FEATURE_APPEARANCE_OPERATION_COUNT = APPEARANCE_OPERATION_COUNT + 0;
+
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.DocumentImpl <em>Document</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.DocumentImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getDocument()
+	 * @generated
+	 */
+	int DOCUMENT = 40;
+
+	/**
+	 * The feature id for the '<em><b>Uri</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT__URI = ENGINEERED_ELEMENT__URI;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT__PATH = ENGINEERED_ELEMENT__PATH;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT__DESCRIPTION = ENGINEERED_ELEMENT__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT__MARKDOWN_DESCRIPTION = ENGINEERED_ELEMENT__MARKDOWN_DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Actions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT__ACTIONS = ENGINEERED_ELEMENT__ACTIONS;
+
+	/**
+	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT__RESOURCES = ENGINEERED_ELEMENT__RESOURCES;
+
+	/**
+	 * The feature id for the '<em><b>Appearance</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT__APPEARANCE = ENGINEERED_ELEMENT__APPEARANCE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT__NAME = ENGINEERED_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Discussion</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT__DISCUSSION = ENGINEERED_ELEMENT__DISCUSSION;
+
+	/**
+	 * The feature id for the '<em><b>Topics</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT__TOPICS = ENGINEERED_ELEMENT__TOPICS;
+
+	/**
+	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT__ISSUES = ENGINEERED_ELEMENT__ISSUES;
+
+	/**
+	 * The feature id for the '<em><b>Owners</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT__OWNERS = ENGINEERED_ELEMENT__OWNERS;
+
+	/**
+	 * The feature id for the '<em><b>Experts</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT__EXPERTS = ENGINEERED_ELEMENT__EXPERTS;
+
+	/**
+	 * The feature id for the '<em><b>Allocations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT__ALLOCATIONS = ENGINEERED_ELEMENT__ALLOCATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Principles</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT__PRINCIPLES = ENGINEERED_ELEMENT__PRINCIPLES;
+
+	/**
+	 * The feature id for the '<em><b>Table Of Contents</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT__TABLE_OF_CONTENTS = ENGINEERED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Sections</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT__SECTIONS = ENGINEERED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Content</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT__CONTENT = ENGINEERED_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Markdown Content</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT__MARKDOWN_CONTENT = ENGINEERED_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the '<em>Document</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT_FEATURE_COUNT = ENGINEERED_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
+	 * The number of operations of the '<em>Document</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT_OPERATION_COUNT = ENGINEERED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.TableOfContentsImpl <em>Table Of Contents</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.TableOfContentsImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getTableOfContents()
+	 * @generated
+	 */
+	int TABLE_OF_CONTENTS = 41;
+
+	/**
+	 * The feature id for the '<em><b>Depth</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TABLE_OF_CONTENTS__DEPTH = 0;
+
+	/**
+	 * The feature id for the '<em><b>Tooltips</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TABLE_OF_CONTENTS__TOOLTIPS = 1;
+
+	/**
+	 * The number of structural features of the '<em>Table Of Contents</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TABLE_OF_CONTENTS_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>Table Of Contents</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TABLE_OF_CONTENTS_OPERATION_COUNT = 0;
 
 
 	/**
@@ -7673,6 +7982,92 @@ public interface EngineeringPackage extends EPackage {
 	EAttribute getFeatureAppearance_Category();
 
 	/**
+	 * Returns the meta object for class '{@link org.nasdanika.engineering.Document <em>Document</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Document</em>'.
+	 * @see org.nasdanika.engineering.Document
+	 * @generated
+	 */
+	EClass getDocument();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.nasdanika.engineering.Document#getTableOfContents <em>Table Of Contents</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Table Of Contents</em>'.
+	 * @see org.nasdanika.engineering.Document#getTableOfContents()
+	 * @see #getDocument()
+	 * @generated
+	 */
+	EReference getDocument_TableOfContents();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.nasdanika.engineering.Document#getSections <em>Sections</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Sections</em>'.
+	 * @see org.nasdanika.engineering.Document#getSections()
+	 * @see #getDocument()
+	 * @generated
+	 */
+	EReference getDocument_Sections();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Document#getContent <em>Content</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Content</em>'.
+	 * @see org.nasdanika.engineering.Document#getContent()
+	 * @see #getDocument()
+	 * @generated
+	 */
+	EAttribute getDocument_Content();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Document#getMarkdownContent <em>Markdown Content</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Markdown Content</em>'.
+	 * @see org.nasdanika.engineering.Document#getMarkdownContent()
+	 * @see #getDocument()
+	 * @generated
+	 */
+	EAttribute getDocument_MarkdownContent();
+
+	/**
+	 * Returns the meta object for class '{@link org.nasdanika.engineering.TableOfContents <em>Table Of Contents</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Table Of Contents</em>'.
+	 * @see org.nasdanika.engineering.TableOfContents
+	 * @generated
+	 */
+	EClass getTableOfContents();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.TableOfContents#getDepth <em>Depth</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Depth</em>'.
+	 * @see org.nasdanika.engineering.TableOfContents#getDepth()
+	 * @see #getTableOfContents()
+	 * @generated
+	 */
+	EAttribute getTableOfContents_Depth();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.TableOfContents#isTooltips <em>Tooltips</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Tooltips</em>'.
+	 * @see org.nasdanika.engineering.TableOfContents#isTooltips()
+	 * @see #getTableOfContents()
+	 * @generated
+	 */
+	EAttribute getTableOfContents_Tooltips();
+
+	/**
 	 * Returns the meta object for class '{@link org.nasdanika.engineering.Message <em>Message</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9092,6 +9487,74 @@ public interface EngineeringPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute FEATURE_APPEARANCE__CATEGORY = eINSTANCE.getFeatureAppearance_Category();
+
+		/**
+		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.DocumentImpl <em>Document</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.engineering.impl.DocumentImpl
+		 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getDocument()
+		 * @generated
+		 */
+		EClass DOCUMENT = eINSTANCE.getDocument();
+
+		/**
+		 * The meta object literal for the '<em><b>Table Of Contents</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOCUMENT__TABLE_OF_CONTENTS = eINSTANCE.getDocument_TableOfContents();
+
+		/**
+		 * The meta object literal for the '<em><b>Sections</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOCUMENT__SECTIONS = eINSTANCE.getDocument_Sections();
+
+		/**
+		 * The meta object literal for the '<em><b>Content</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DOCUMENT__CONTENT = eINSTANCE.getDocument_Content();
+
+		/**
+		 * The meta object literal for the '<em><b>Markdown Content</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DOCUMENT__MARKDOWN_CONTENT = eINSTANCE.getDocument_MarkdownContent();
+
+		/**
+		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.TableOfContentsImpl <em>Table Of Contents</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.engineering.impl.TableOfContentsImpl
+		 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getTableOfContents()
+		 * @generated
+		 */
+		EClass TABLE_OF_CONTENTS = eINSTANCE.getTableOfContents();
+
+		/**
+		 * The meta object literal for the '<em><b>Depth</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TABLE_OF_CONTENTS__DEPTH = eINSTANCE.getTableOfContents_Depth();
+
+		/**
+		 * The meta object literal for the '<em><b>Tooltips</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TABLE_OF_CONTENTS__TOOLTIPS = eINSTANCE.getTableOfContents_Tooltips();
 
 		/**
 		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.MessageImpl <em>Message</em>}' class.

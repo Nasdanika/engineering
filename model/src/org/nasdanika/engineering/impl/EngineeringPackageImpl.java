@@ -23,6 +23,7 @@ import org.nasdanika.engineering.Call;
 import org.nasdanika.engineering.Capability;
 import org.nasdanika.engineering.Capacity;
 import org.nasdanika.engineering.Directory;
+import org.nasdanika.engineering.Document;
 import org.nasdanika.engineering.Endeavor;
 import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeredCapability;
@@ -49,6 +50,7 @@ import org.nasdanika.engineering.Persona;
 import org.nasdanika.engineering.Principle;
 import org.nasdanika.engineering.Product;
 import org.nasdanika.engineering.Release;
+import org.nasdanika.engineering.TableOfContents;
 import org.nasdanika.engineering.Topic;
 import org.nasdanika.engineering.Transition;
 import org.nasdanika.engineering.util.EngineeringValidator;
@@ -332,6 +334,20 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	private EClass featureAppearanceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass documentEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass tableOfContentsEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2027,6 +2043,86 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
+	public EClass getDocument() {
+		return documentEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getDocument_TableOfContents() {
+		return (EReference)documentEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getDocument_Sections() {
+		return (EReference)documentEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getDocument_Content() {
+		return (EAttribute)documentEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getDocument_MarkdownContent() {
+		return (EAttribute)documentEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getTableOfContents() {
+		return tableOfContentsEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getTableOfContents_Depth() {
+		return (EAttribute)tableOfContentsEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getTableOfContents_Tooltips() {
+		return (EAttribute)tableOfContentsEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getMessage() {
 		return messageEClass;
 	}
@@ -2283,6 +2379,16 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 
 		featureAppearanceEClass = createEClass(FEATURE_APPEARANCE);
 		createEAttribute(featureAppearanceEClass, FEATURE_APPEARANCE__CATEGORY);
+
+		documentEClass = createEClass(DOCUMENT);
+		createEReference(documentEClass, DOCUMENT__TABLE_OF_CONTENTS);
+		createEReference(documentEClass, DOCUMENT__SECTIONS);
+		createEAttribute(documentEClass, DOCUMENT__CONTENT);
+		createEAttribute(documentEClass, DOCUMENT__MARKDOWN_CONTENT);
+
+		tableOfContentsEClass = createEClass(TABLE_OF_CONTENTS);
+		createEAttribute(tableOfContentsEClass, TABLE_OF_CONTENTS__DEPTH);
+		createEAttribute(tableOfContentsEClass, TABLE_OF_CONTENTS__TOOLTIPS);
 	}
 
 	/**
@@ -2337,7 +2443,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		transitionEClass.getESuperTypes().add(this.getNamedElement());
 		callEClass.getESuperTypes().add(this.getTransition());
 		artifactEClass.getESuperTypes().add(this.getEngineeredElement());
-		directoryEClass.getESuperTypes().add(this.getNamedElement());
+		directoryEClass.getESuperTypes().add(this.getEngineeredElement());
 		capacityEClass.getESuperTypes().add(this.getModelElement());
 		allocationEClass.getESuperTypes().add(this.getCapacity());
 		aimEClass.getESuperTypes().add(this.getNamedElement());
@@ -2349,6 +2455,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		topicEClass.getESuperTypes().add(this.getMessage());
 		modelElementAppearanceEClass.getESuperTypes().add(this.getAppearance());
 		featureAppearanceEClass.getESuperTypes().add(this.getAppearance());
+		documentEClass.getESuperTypes().add(this.getEngineeredElement());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(adaptableEClass, Adaptable.class, "Adaptable", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
@@ -2554,6 +2661,16 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 
 		initEClass(featureAppearanceEClass, FeatureAppearance.class, "FeatureAppearance", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getFeatureAppearance_Category(), ecorePackage.getEBooleanObject(), "category", null, 0, 1, FeatureAppearance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(documentEClass, Document.class, "Document", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getDocument_TableOfContents(), this.getTableOfContents(), null, "tableOfContents", null, 0, 1, Document.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDocument_Sections(), this.getDocument(), null, "sections", null, 0, -1, Document.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDocument_Content(), ecorePackage.getEString(), "content", null, 0, 1, Document.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDocument_MarkdownContent(), ecorePackage.getEString(), "markdownContent", null, 0, 1, Document.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(tableOfContentsEClass, TableOfContents.class, "TableOfContents", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getTableOfContents_Depth(), ecorePackage.getEInt(), "depth", "-1", 0, 1, TableOfContents.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTableOfContents_Tooltips(), ecorePackage.getEBoolean(), "tooltips", null, 0, 1, TableOfContents.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -3041,6 +3158,30 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		   source,
 		   new String[] {
 			   "documentation-reference", "doc/feature-appearance.md"
+		   });
+		addAnnotation
+		  (documentEClass,
+		   source,
+		   new String[] {
+			   "documentation-reference", "doc/document.md"
+		   });
+		addAnnotation
+		  (getDocument_TableOfContents(),
+		   source,
+		   new String[] {
+			   "homogenous", "true"
+		   });
+		addAnnotation
+		  (getDocument_Sections(),
+		   source,
+		   new String[] {
+			   "homogenous", "true"
+		   });
+		addAnnotation
+		  (tableOfContentsEClass,
+		   source,
+		   new String[] {
+			   "documentation-reference", "doc/table-of-contents.md"
 		   });
 	}
 
@@ -3789,6 +3930,30 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		   source,
 		   new String[] {
 			   "documentation", "If false feature element actions are not categorized, i.e. in the navigation tree they would appear as container children without an intermediary feature category node. It can be useful if the containing element has navigation children only of one type or they can be distinguished by an icon and as such a feature category is not necessary."
+		   });
+		addAnnotation
+		  (getDocument_TableOfContents(),
+		   source,
+		   new String[] {
+			   "documentation", "Document/section table of contents."
+		   });
+		addAnnotation
+		  (getDocument_Sections(),
+		   source,
+		   new String[] {
+			   "documentation", "Document sections which are also documents, i.e. sections can be nested."
+		   });
+		addAnnotation
+		  (getDocument_Content(),
+		   source,
+		   new String[] {
+			   "documentation", "Document/section content in HTML."
+		   });
+		addAnnotation
+		  (getDocument_MarkdownContent(),
+		   source,
+		   new String[] {
+			   "documentation", "Document/section content in [Markdown](https://en.wikipedia.org/wiki/Markdown)."
 		   });
 	}
 

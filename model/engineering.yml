@@ -13,8 +13,22 @@ engineering-module:
      - name: Contact methods, resolving by
        description: For example, engineer's e-mail(s) and resolving by mailto:<email> URI.  
      - name: OKR
-       markdown-description: |+2
-         Add support of [OKR](https://en.wikipedia.org/wiki/OKR). Engineer contains objectives. 
+       markdown-description: |+2              
+         Add support of [OKR](https://en.wikipedia.org/wiki/OKR). Endeavor contains objectives. 
+         Objectives reference Endeavor. E.g. month objectives, quarter objectives, release or feature objectives.
+         Objective may contain sub-objectives and may reference parent objective - mutually exclusive - contained objective cannot reference a parent.
+         Validations of objectives hierarchy, end of the contained objective endeavor shall be before the end of the containing objective endeavor.
+         
+         Objectives can contain key results. Both objectives and key results are Aims and endeavors can be aligned to them. Validation that aligned endeavors
+         end before the objective endeavor.
+         
+         Both objective and key result have ``weight`` with default value ``1`` and derived ``completion`` attributes. 
+         Completion for key results is computed as weighted completion of aligned endeavors. Maybe add weight to Alignment with default 1 and do not take total effort into
+         account. If there is a mix of sub-objectives and key results and alignments they are all objective contributors with weights. 
+         On the objective page show 3 tables - sub-objectives (children), key results, alignments.  
+          
+         ### Old notes 
+          
          Objectives can be nested and can reference a parent objective, e.g. Engineer's containing organization objective. Nested objective can't have parent reference.
          Objectives can reference increments. E.g. 2021 Q3 objective.
          Objectives may contain key results. Objectives and key results may have weight which determines how much they contribute to container/parent.
@@ -112,6 +126,29 @@ engineering-module:
      - name: Parent reference to Engineer
        markdown-description: |+2
          For bottom-up linking during generation of federated sites. Similar to bottom-up linking in Eclipse documentation.                
+     - name: Appearance icon and description
+       markdown-description: |+2
+         Implement support for icon and descriptions. Also section-style.                  
+     - name: Appearance view-action
+       markdown-description: |+2
+         ``viewAction``/``view-action`` - FQN of a class or static method which creates ViewAction's for model elements and features.
+         Static method name is separated from class name with ``::`` as in method references. Adapter factory takes appearance into account and for features ModelElementViewAction first
+         checks appearance before calling featureActions - i.e. customizations trump overrides. For features the factory method may return an array or a collection or an iterable or a stream.
+         For model elements method/constructor takes 2 arguments - target and factory. For features - also two arguments - semantic element view action and feature.
+         Document in appearance--view-action.md with examples. Consider an option with "Call" class as in org.nasdanika.exec.Call - class name is a default feature and then method, init, etc.
+         Maybe as an improvement - start just with class name and method name and ``::`` as a shortcut for specifying class and method name as one string.                  
+     - name: Persona avatar
+       markdown-description: |+2
+         Image URL or a class with URL being a default property and an option so specify height and width. Display in the properties table.                  
+     - name: Reference and Link
+       markdown-description: |+2
+         Named elements. Reference points to a model element in the resource set by URI. URI is the default feature. Name, description are "inherited" from the target if not set explicitly.
+         Referrers derived opposite reference to NamedElement.
+         Link points to URL, which is also a default property.                   
+     - name: Profiles
+       markdown-description: |+2
+         Nested. Contain context properties and appearance. Properties and apperance are inherited by child profiles.
+         Generation - utility methods to generate for a profile. Profiles reference to model element - included/excluded. A way to support multiple stakeholder views.                    
          
      ### === Done === ###    
      - name: Start/end from Issue and Increment to Endeavor

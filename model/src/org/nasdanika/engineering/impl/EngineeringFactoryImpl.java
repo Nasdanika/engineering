@@ -20,6 +20,7 @@ import org.nasdanika.engineering.Call;
 import org.nasdanika.engineering.Capability;
 import org.nasdanika.engineering.Capacity;
 import org.nasdanika.engineering.Directory;
+import org.nasdanika.engineering.Document;
 import org.nasdanika.engineering.Endeavor;
 import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeredCapability;
@@ -43,6 +44,7 @@ import org.nasdanika.engineering.Persona;
 import org.nasdanika.engineering.Principle;
 import org.nasdanika.engineering.Product;
 import org.nasdanika.engineering.Release;
+import org.nasdanika.engineering.TableOfContents;
 import org.nasdanika.engineering.Topic;
 import org.nasdanika.engineering.Transition;
 
@@ -125,6 +127,8 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 			case EngineeringPackage.MODEL_ELEMENT_APPEARANCE_ENTRY: return (EObject)createModelElementAppearanceEntry();
 			case EngineeringPackage.FEATURE_APPEARANCE_ENTRY: return (EObject)createFeatureAppearanceEntry();
 			case EngineeringPackage.FEATURE_APPEARANCE: return createFeatureAppearance();
+			case EngineeringPackage.DOCUMENT: return createDocument();
+			case EngineeringPackage.TABLE_OF_CONTENTS: return createTableOfContents();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -500,6 +504,28 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 	public FeatureAppearance createFeatureAppearance() {
 		FeatureAppearanceImpl featureAppearance = new FeatureAppearanceImpl();
 		return featureAppearance;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Document createDocument() {
+		DocumentImpl document = new DocumentImpl();
+		return document;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public TableOfContents createTableOfContents() {
+		TableOfContentsImpl tableOfContents = new TableOfContentsImpl();
+		return tableOfContents;
 	}
 
 	/**

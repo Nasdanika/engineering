@@ -210,5 +210,15 @@
     <genClasses ecoreClass="engineering.ecore#//FeatureAppearance">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//FeatureAppearance/category"/>
     </genClasses>
+    <genClasses ecoreClass="engineering.ecore#//Document">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//Document/tableOfContents"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//Document/sections"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Document/content"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Document/markdownContent"/>
+    </genClasses>
+    <genClasses ecoreClass="engineering.ecore#//TableOfContents">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//TableOfContents/depth"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//TableOfContents/tooltips"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

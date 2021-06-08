@@ -310,6 +310,24 @@ public interface EngineeringFactory extends EFactory {
 	FeatureAppearance createFeatureAppearance();
 
 	/**
+	 * Returns a new object of class '<em>Document</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Document</em>'.
+	 * @generated
+	 */
+	Document createDocument();
+
+	/**
+	 * Returns a new object of class '<em>Table Of Contents</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Table Of Contents</em>'.
+	 * @generated
+	 */
+	TableOfContents createTableOfContents();
+
+	/**
 	 * Returns a new object of class '<em>Message</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
