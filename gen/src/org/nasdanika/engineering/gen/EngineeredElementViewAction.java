@@ -25,10 +25,8 @@ import org.nasdanika.html.Tag;
 import org.nasdanika.html.TagName;
 import org.nasdanika.html.app.Action;
 import org.nasdanika.html.app.Label;
-import org.nasdanika.html.app.NavigationActionActivator;
 import org.nasdanika.html.app.SectionStyle;
 import org.nasdanika.html.app.ViewGenerator;
-import org.nasdanika.html.app.impl.PathNavigationActionActivator;
 import org.nasdanika.html.app.viewparts.ListOfActionsViewPart;
 import org.nasdanika.html.bootstrap.BootstrapFactory;
 import org.nasdanika.html.bootstrap.Color;
@@ -107,6 +105,51 @@ public class EngineeredElementViewAction<T extends EngineeredElement> extends Fo
 		return children;
 	}
 	
+	protected Object generateAllocationsTable(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
+		BootstrapFactory bootstrapFactory = viewGenerator.getBootstrapFactory();
+		Table table = bootstrapFactory.table().bordered().striped();
+		table.header().headerRow("Endeavor", "Engineer", "Category", "Effort", "Rate", "Funds").color(Color.INFO);
+		for (Allocation allocation: getSemanticElement().getAllocations()) {
+			Tag categoriesTag;
+			EList<IssueCategory> category = allocation.getCategory();
+			if (category.isEmpty()) {
+				categoriesTag = TagName.span.create();
+			} else if (category.size() == 1) {
+				categoriesTag = viewGenerator.link(ViewAction.adaptToViewActionNonNull(category.get(0)));							
+			} else {
+				categoriesTag = viewGenerator.getHTMLFactory().tag(TagName.ul);
+				for (Action ca: ViewAction.adaptToViewActionsNonNull(category)) {
+					categoriesTag.content(TagName.li.create(viewGenerator.link(ca)));
+				}
+			}
+			table.body().row(
+					viewGenerator.link(ViewAction.adaptToViewActionNonNull(allocation.getEndeavor())),
+					viewGenerator.link(ViewAction.adaptToViewActionNonNull(allocation.getEngineer())),
+					categoriesTag,
+					allocation.getEffort(),
+					allocation.getRate(),
+					allocation.getFunds()
+			);
+		}					
+		return table;
+	}	
+	
+	protected Object generateListOfPrinciples(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
+		ListOfActionsViewPart listOfPrinciples = new ListOfActionsViewPart(ViewAction.adaptToViewActionsNonNull(getSemanticElement().getPrinciples()), null, true, 10, OrderedListType.ROTATE) {
+			@Override
+			protected Collection<Entry<Label, List<Action>>> getGroupedActions(ViewGenerator viewGenerator, Action currentAction) {
+				if (currentAction instanceof ViewAction) {
+					EObject se = ((ViewAction<?>) currentAction).getSemanticElement();
+					if (se instanceof Principle) {
+						return Collections.singleton(new AbstractMap.SimpleEntry<Label, List<Action>>(null, ViewAction.adaptToViewActionsNonNull(((Principle) se).getChildren())));
+					}
+				}
+				return super.getGroupedActions(viewGenerator, currentAction);
+			}
+		};
+		return viewGenerator.processViewPart(listOfPrinciples, progressMonitor);
+	}
+	
 	@Override
 	protected Collection<Action> featureActions(EStructuralFeature feature) {
 		if (feature == EngineeringPackage.Literals.FORUM__DISCUSSION) {
@@ -146,41 +189,7 @@ public class EngineeredElementViewAction<T extends EngineeredElement> extends Fo
 			if (allocations.isEmpty()) {
 				return Collections.emptyList();
 			}
-			ModelElementFeatureViewAction<T, EStructuralFeature, EngineeredElementViewAction<T>> allocationsSection = new ModelElementFeatureViewAction<T, EStructuralFeature, EngineeredElementViewAction<T>>(this, feature) {
-				
-				@Override
-				public Object generate(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
-					BootstrapFactory bootstrapFactory = viewGenerator.getBootstrapFactory();
-					Table table = bootstrapFactory.table().bordered().striped();
-					table.header().headerRow("Endeavor", "Engineer", "Category", "Effort", "Rate", "Funds").color(Color.INFO);
-					for (Allocation allocation: allocations) {
-						Tag categoriesTag;
-						EList<IssueCategory> category = allocation.getCategory();
-						if (category.isEmpty()) {
-							categoriesTag = TagName.span.create();
-						} else if (category.size() == 1) {
-							categoriesTag = viewGenerator.link(ViewAction.adaptToViewActionNonNull(category.get(0)));							
-						} else {
-							categoriesTag = viewGenerator.getHTMLFactory().tag(TagName.ul);
-							for (Action ca: ViewAction.adaptToViewActionsNonNull(category)) {
-								categoriesTag.content(TagName.li.create(viewGenerator.link(ca)));
-							}
-						}
-						table.body().row(
-								viewGenerator.link(ViewAction.adaptToViewActionNonNull(allocation.getEndeavor())),
-								viewGenerator.link(ViewAction.adaptToViewActionNonNull(allocation.getEngineer())),
-								categoriesTag,
-								allocation.getEffort(),
-								allocation.getRate(),
-								allocation.getFunds()
-						);
-					}					
-					return table;
-				}				
-				
-			};
-			allocationsSection.getRoles().add(Action.Role.SECTION);
-			return Collections.singleton(allocationsSection);
+			return Collections.singleton(createFeatureViewAction(feature, this::generateAllocationsTable));
 		}
 		
 		if (feature == EngineeringPackage.Literals.ENGINEERED_ELEMENT__PRINCIPLES) {
@@ -188,30 +197,9 @@ public class EngineeredElementViewAction<T extends EngineeredElement> extends Fo
 			if (principles.isEmpty()) {
 				return Collections.emptyList();
 			}
-			ModelElementFeatureViewAction<T, EStructuralFeature, EngineeredElementViewAction<T>> principlesSection = new ModelElementFeatureViewAction<T, EStructuralFeature, EngineeredElementViewAction<T>>(this, feature) {
-				
-				@Override
-				public Object generate(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
-					ListOfActionsViewPart listOfPrinciples = new ListOfActionsViewPart(ViewAction.adaptToViewActionsNonNull(principles), null, true, 10, OrderedListType.ROTATE) {
-						@Override
-						protected Collection<Entry<Label, List<Action>>> getGroupedActions(ViewGenerator viewGenerator, Action currentAction) {
-							if (currentAction instanceof ViewAction) {
-								EObject se = ((ViewAction<?>) currentAction).getSemanticElement();
-								if (se instanceof Principle) {
-									return Collections.singleton(new AbstractMap.SimpleEntry<Label, List<Action>>(null, ViewAction.adaptToViewActionsNonNull(((Principle) se).getChildren())));
-								}
-							}
-							return super.getGroupedActions(viewGenerator, currentAction);
-						}
-					};
-					return viewGenerator.processViewPart(listOfPrinciples, progressMonitor);
-				}
-				
-			};
+			ModelElementFeatureViewAction<T, EStructuralFeature, ModelElementViewActionImpl<T>> principlesSection = createFeatureViewAction(feature, this::generateListOfPrinciples);
 			
-			principlesSection.getRoles().add(Action.Role.SECTION); 
 			principlesSection.setSectionStyle(SectionStyle.DEFAULT);
-			principlesSection.setActivator(new PathNavigationActionActivator(principlesSection, ((NavigationActionActivator) getActivator()).getUrl(null), "#feature-" + feature.getName(), getMarker()));
 			return Collections.singleton(principlesSection);
 		}
 

@@ -43,6 +43,7 @@ import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.IssueStatus;
 import org.nasdanika.engineering.ModelElement;
 import org.nasdanika.engineering.ModelElementAppearance;
+import org.nasdanika.engineering.NamedElement;
 import org.nasdanika.engineering.Release;
 import org.nasdanika.html.Fragment;
 import org.nasdanika.html.app.Action;
@@ -143,8 +144,7 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 		}
 
 		for (EClass eClass: EmfUtil.lineage(getSemanticElement().eClass())) {
-			ModelElementAppearance classAppearance = factory.getAppearance(eClass);
-			if (classAppearance != null) {
+			for (ModelElementAppearance classAppearance: factory.getAppearance(eClass)) {
 				FeatureAppearance featureAppearance = classAppearance.getFeatures().get(Util.camelToKebab(feature.getName()));
 				if (featureAppearance != null) {
 					if (!featureAppearance.getRoles().isEmpty()) {
@@ -171,8 +171,7 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 		}
 		
 		for (EClass eClass: EmfUtil.lineage(getSemanticElement().eClass())) {
-			ModelElementAppearance classAppearance = factory.getAppearance(eClass);
-			if (classAppearance != null) {
+			for (ModelElementAppearance classAppearance: factory.getAppearance(eClass)) {
 				FeatureAppearance featureAppearance = classAppearance.getFeatures().get(Util.camelToKebab(feature.getName()));
 				if (featureAppearance !=  null) {
 					Boolean categoryFlag = featureAppearance.getCategory();
@@ -684,21 +683,11 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 				}
 			}			
 		}
-		
-		for (EClass eClass: EmfUtil.lineage(getSemanticElement().eClass())) {
-			ModelElementAppearance classAppearance = factory.getAppearance(eClass);
-			if (classAppearance != null) {
-				EList<String> roles = classAppearance.getRoles();
-				if (!roles.isEmpty()) {
-					return roles.contains(role);
-				}				
-			}
-		}
-		
+
+		// Container-level defined role.
 		if (container instanceof ModelElement) {
 			for (EClass cClass: EmfUtil.lineage(container.eClass())) {
-				ModelElementAppearance containerAppearance = factory.getAppearance(cClass);
-				if (containerAppearance != null) {
+				for (ModelElementAppearance containerAppearance: factory.getAppearance(cClass)) {
 					EReference containmentFeature = getSemanticElement().eContainmentFeature();
 					if (containmentFeature != null) {
 						FeatureAppearance featureAppearance = containerAppearance.getFeatures().get(Util.camelToKebab(containmentFeature.getName()));
@@ -718,6 +707,16 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 						}
 					}
 				}
+			}
+		}
+		
+		// Own role.
+		for (EClass eClass: EmfUtil.lineage(getSemanticElement().eClass())) {
+			for (ModelElementAppearance classAppearance: factory.getAppearance(eClass)) {
+				EList<String> roles = classAppearance.getRoles();
+				if (!roles.isEmpty()) {
+					return roles.contains(role);
+				}				
 			}
 		}
 		
@@ -743,6 +742,28 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 			}
 			
 		};
+	}
+	
+	protected Object generateResourcesTable(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
+		Table table = viewGenerator.getBootstrapFactory().table().bordered().striped();
+		table.header().headerRow("Resource", "Description").color(Color.INFO);
+		for (NamedElement resource: getSemanticElement().getResources()) {
+			table.body().row(
+					viewGenerator.link(ViewAction.adaptToViewActionNonNull(resource)),
+					getModelElementDescription(resource));
+		}
+		return table;
+	}
+	
+	@Override
+	protected Collection<Action> featureActions(EStructuralFeature feature) {
+		if (feature == EngineeringPackage.Literals.MODEL_ELEMENT__RESOURCES) {
+			if (getSemanticElement().getResources().isEmpty()) {
+				return Collections.emptyList();
+			}
+			return Collections.singleton(createFeatureViewAction(feature, this::generateResourcesTable));
+		}
+		return super.featureActions(feature);
 	}
 	
 }

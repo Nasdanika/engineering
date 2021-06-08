@@ -1,6 +1,7 @@
 package org.nasdanika.engineering.gen;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -19,6 +20,8 @@ import org.nasdanika.emf.ComposedAdapterFactory;
 import org.nasdanika.emf.FunctionAdapterFactory;
 import org.nasdanika.emf.InstanceAdapterFactory;
 import org.nasdanika.emf.persistence.EObjectLoader;
+import org.nasdanika.engineering.Directory;
+import org.nasdanika.engineering.Document;
 import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeringAppearance;
 import org.nasdanika.engineering.EngineeringPackage;
@@ -166,24 +169,39 @@ public class EngineeringViewActionAdapterFactory extends ComposedAdapterFactory 
 				this.getClass().getClassLoader(), 
 				obj -> new TopicViewAction(obj, this)));			
 		
+		registerAdapterFactory(
+			new FunctionAdapterFactory<ViewAction<Document>, Document>(
+				EngineeringPackage.Literals.DOCUMENT, 
+				getViewActionClass(), 
+				this.getClass().getClassLoader(), 
+				obj -> new DocumentViewAction(obj, this)));			
 		
-		// Loading default appearance
+		registerAdapterFactory(
+			new FunctionAdapterFactory<ViewAction<Directory>, Directory>(
+				EngineeringPackage.Literals.DIRECTORY, 
+				getViewActionClass(), 
+				this.getClass().getClassLoader(), 
+				obj -> new DirectoryViewAction(obj, this)));			
+				
+		// Loading appearances from URL's
+		appearance = new ArrayList<>();
 		EObjectLoader loader = new EObjectLoader(EngineeringPackage.eINSTANCE);
-		URL defaultAppearanceURL = EngineeringViewActionAdapterFactory.class.getResource("default-appearance.yml");
-		Yaml yaml = MarkingYamlConstructor.createMarkingYaml(defaultAppearanceURL.toString());		
+		NullProgressMonitor progressMonitor = new NullProgressMonitor();
 		try {
-			NullProgressMonitor progressMonitor = new NullProgressMonitor();
-			Object asf = loader.create(
-					loader, 
-					EngineeringPackage.Literals.ENGINEERING_APPEARANCE, 
-					yaml.load(defaultAppearanceURL.openStream()), 
-					defaultAppearanceURL, 
-					progressMonitor, 
-					null, 
-					null);
-			SupplierFactory<EngineeringAppearance> appearanceSupplierFactory = Util.<EngineeringAppearance>asSupplierFactory(asf);
-			EngineeringAppearance defaultAppearance = Util.call(appearanceSupplierFactory.create(Context.EMPTY_CONTEXT), progressMonitor, null);
-			appearance = Collections.singletonList(defaultAppearance.getModelElements()::get);
+			for (URL appearanceURL: getAppearanceLocations()) {
+				Yaml yaml = MarkingYamlConstructor.createMarkingYaml(appearanceURL.toString());		
+					Object asf = loader.create(
+							loader, 
+							EngineeringPackage.Literals.ENGINEERING_APPEARANCE, 
+							yaml.load(appearanceURL.openStream()), 
+							appearanceURL, 
+							progressMonitor, 
+							null, 
+							null);
+					SupplierFactory<EngineeringAppearance> appearanceSupplierFactory = Util.<EngineeringAppearance>asSupplierFactory(asf);
+					EngineeringAppearance appearanceElement = Util.call(appearanceSupplierFactory.create(Context.EMPTY_CONTEXT), progressMonitor, null);
+					appearance.add(appearanceElement.getModelElements()::get);
+			}
 		} catch (Exception e) {
 			throw new NasdanikaException(e);
 		}
@@ -216,6 +234,10 @@ public class EngineeringViewActionAdapterFactory extends ComposedAdapterFactory 
 	
 	private List<java.util.function.Function<String, ModelElementAppearance>> appearance;
 	
+	protected List<URL> getAppearanceLocations() {
+		return Collections.singletonList(EngineeringViewActionAdapterFactory.class.getResource("default-appearance.yml"));
+	}
+	
 	/**
 	 * @return Chain of appearance mappings.
 	 */
@@ -225,16 +247,17 @@ public class EngineeringViewActionAdapterFactory extends ComposedAdapterFactory 
 
 	/**
 	 * Override to customize appearance. 
-	 * @return Appearance for {@link ModelElement} {@link EClass}. 
+	 * @return Appearance chain for {@link ModelElement} {@link EClass} 
 	 */
-	public ModelElementAppearance getAppearance(EClass eClass) {
+	public List<ModelElementAppearance> getAppearance(EClass eClass) {
+		List<ModelElementAppearance> ret = new ArrayList<>();
 		for (java.util.function.Function<String, ModelElementAppearance> appearance: getAppearance()) {
-			ModelElementAppearance ret = appearance.apply(Util.camelToKebab(eClass.getName()));
-			if (ret != null) {
-				return ret;
+			ModelElementAppearance mea = appearance.apply(Util.camelToKebab(eClass.getName()));
+			if (mea != null) {
+				ret.add(mea);
 			}
 		}
-		return null;
+		return ret;
 	}
 	
 }

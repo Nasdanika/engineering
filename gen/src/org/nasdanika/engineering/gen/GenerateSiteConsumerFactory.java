@@ -1,9 +1,12 @@
 package org.nasdanika.engineering.gen;
 
 import java.io.File;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
@@ -77,8 +80,19 @@ public class GenerateSiteConsumerFactory extends AbstractGenerateSiteConsumerFac
 			public String resolveResourcePath(Resource resource) {
 				return GenerateSiteConsumerFactory.this.resolveResourcePath(resource);
 			}
+
+			@Override
+			protected List<URL> getAppearanceLocations() {
+				List<URL> ret = new ArrayList<>(GenerateSiteConsumerFactory.this.getAppearanceLocations());
+				ret.addAll(super.getAppearanceLocations());
+				return ret;
+			}
 			
 		};
+	}
+	
+	protected List<URL> getAppearanceLocations() {
+		return Collections.emptyList();
 	}
 	
 	private Map<String, Resource> resourcePaths = new HashMap<>();

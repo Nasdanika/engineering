@@ -53,8 +53,7 @@ public class ModelElementFeatureViewAction<T extends ModelElement, F extends ESt
 		}
 		
 		for (EClass eClass: EmfUtil.lineage(getSemanticElement().eClass())) {
-			ModelElementAppearance classAppearance = getSemanticElementViewAction().getFactory().getAppearance(eClass);
-			if (classAppearance != null) {
+			for (ModelElementAppearance classAppearance: getSemanticElementViewAction().getFactory().getAppearance(eClass)) {
 				FeatureAppearance featureAppearance = classAppearance.getFeatures().get(Util.camelToKebab(getEStructuralFeature().getName()));
 				if (featureAppearance != null) {
 					if (!featureAppearance.getRoles().isEmpty()) {

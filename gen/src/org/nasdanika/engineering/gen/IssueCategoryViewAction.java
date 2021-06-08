@@ -21,6 +21,23 @@ public class IssueCategoryViewAction extends NamedElementViewAction<IssueCategor
 	public IssueCategoryViewAction(IssueCategory value, EngineeringViewActionAdapterFactory factory) {
 		super(value, factory);
 	}
+
+	protected Object generateAllocationsTable(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
+		BootstrapFactory bootstrapFactory = viewGenerator.getBootstrapFactory();
+		Table table = bootstrapFactory.table().bordered().striped();
+		table.header().headerRow("Endeavor", "Engineer", "Target", "Effort", "Rate", "Funds").color(Color.INFO);
+		for (Allocation allocation: getSemanticElement().getAllocations()) {
+			table.body().row(
+					viewGenerator.link(ViewAction.adaptToViewActionNonNull(allocation.getEndeavor())),
+					viewGenerator.link(ViewAction.adaptToViewActionNonNull(allocation.getEngineer())),
+					viewGenerator.link(ViewAction.adaptToViewActionNonNull(allocation.eContainer())),
+					allocation.getEffort(),
+					allocation.getRate(),
+					allocation.getFunds()
+			);
+		}					
+		return table;
+	}				
 	
 	@Override
 	protected Collection<Action> featureActions(EStructuralFeature feature) {
@@ -49,29 +66,7 @@ public class IssueCategoryViewAction extends NamedElementViewAction<IssueCategor
 			if (allocations.isEmpty()) {
 				return Collections.emptyList();
 			}
-			ModelElementFeatureViewAction<IssueCategory, EStructuralFeature, IssueCategoryViewAction> allocationsSection = new ModelElementFeatureViewAction<IssueCategory, EStructuralFeature, IssueCategoryViewAction>(this, feature) {
-				
-				@Override
-				public Object generate(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
-					BootstrapFactory bootstrapFactory = viewGenerator.getBootstrapFactory();
-					Table table = bootstrapFactory.table().bordered().striped();
-					table.header().headerRow("Endeavor", "Engineer", "Target", "Effort", "Rate", "Funds").color(Color.INFO);
-					for (Allocation allocation: allocations) {
-						table.body().row(
-								viewGenerator.link(ViewAction.adaptToViewActionNonNull(allocation.getEndeavor())),
-								viewGenerator.link(ViewAction.adaptToViewActionNonNull(allocation.getEngineer())),
-								viewGenerator.link(ViewAction.adaptToViewActionNonNull(allocation.eContainer())),
-								allocation.getEffort(),
-								allocation.getRate(),
-								allocation.getFunds()
-						);
-					}					
-					return table;
-				}				
-				
-			};
-			allocationsSection.getRoles().add(Action.Role.SECTION);
-			return Collections.singleton(allocationsSection);
+			return Collections.singleton(createFeatureViewAction(feature, this::generateAllocationsTable));
 		}
 
 		return super.featureActions(feature);

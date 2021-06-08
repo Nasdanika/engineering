@@ -13,6 +13,10 @@ model-elements:
         roles: none
       appearance:
         roles: none
+      resources:
+        roles: 
+         - feature-actions/section
+         - element-actions/none  
   aim:
     roles: none
     features:
@@ -45,7 +49,7 @@ model-elements:
   engineered-capability:
     features:
       aligns:
-        roles: feature-actions
+        roles: feature-actions/section
   feature:
     features:
       releases:
@@ -86,10 +90,10 @@ model-elements:
       owners:
         roles: property
       allocations:
-        roles: feature-actions
+        roles: feature-actions/section
       principles:
         roles: 
-          - feature-actions
+          - feature-actions/section
           - element-actions
   product:
     features:
@@ -105,7 +109,7 @@ model-elements:
         roles: property
       goals:
         roles: 
-          - feature-actions
+          - feature-actions/section
           - element-actions
   engineer:
     features:
@@ -142,7 +146,7 @@ model-elements:
       issues:
         roles: feature-actions
       allocations:
-        roles: feature-actions
+        roles: feature-actions/section
   issue-status:
     features:
       issues:
@@ -151,6 +155,18 @@ model-elements:
     roles: none
     features:
       messages:
+        roles: none
+  document:
+    roles: none
+    features:
+      table-of-contents:
+        roles: feature-actions/content-left      
+      sections:
+        category: false
+        roles: element-actions/section
+      content:
+        roles: none
+      markdown-content:
         roles: none
         
       
