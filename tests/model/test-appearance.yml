@@ -1,0 +1,8 @@
+model-elements:
+  engineered-element:
+    roles: content-right
+    features:
+      discussion:
+        category: true
+        roles: feature-actions/content-left
+      

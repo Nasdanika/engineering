@@ -174,4 +174,21 @@ engineering-organization:
              endeavor: test:modules/test/features/my-feature
              effort: 5  
              category: test:issue-categories/test
-             
+         resources:
+           - engineering-document: 
+               name: Test document
+               path: test-document
+               markdown-description: Document ``description``...
+               markdown-content: |+2
+                 Some content...
+               sections: 
+                 - name: Section 1
+                   path: section-1
+                   owners: test:engineers/pv
+                   markdown-content: Section 1 **content**. 
+                   table-of-contents: true
+                   discussion:
+                     - name: Found a typo
+                       path: typo 
+                       description: Some rant about a typo and how people are not well educated.
+                       

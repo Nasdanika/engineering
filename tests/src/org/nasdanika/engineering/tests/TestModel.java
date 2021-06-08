@@ -6,6 +6,8 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
@@ -40,6 +42,7 @@ import org.nasdanika.common.DiagnosticException;
 import org.nasdanika.common.DiagramGenerator;
 import org.nasdanika.common.MarkdownHelper;
 import org.nasdanika.common.MutableContext;
+import org.nasdanika.common.NasdanikaException;
 import org.nasdanika.common.PrintStreamProgressMonitor;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.common.Status;
@@ -201,6 +204,15 @@ public class TestModel {
 				
 				return ret;
 			}
+			
+//			@Override
+//			protected List<URL> getAppearanceLocations() {
+//				try {
+//					return Collections.singletonList(new File("model/test-appearance.yml").toURI().toURL());
+//				} catch (MalformedURLException e) {
+//					throw new NasdanikaException(e);
+//				}
+//			}
 			
 		};
 		
