@@ -346,6 +346,24 @@ public interface EngineeringFactory extends EFactory {
 	Link createLink();
 
 	/**
+	 * Returns a new object of class '<em>Key Result</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Key Result</em>'.
+	 * @generated
+	 */
+	KeyResult createKeyResult();
+
+	/**
+	 * Returns a new object of class '<em>Objective</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Objective</em>'.
+	 * @generated
+	 */
+	Objective createObjective();
+
+	/**
 	 * Returns a new object of class '<em>Message</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

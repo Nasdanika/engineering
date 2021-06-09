@@ -2,6 +2,7 @@
  */
 package org.nasdanika.engineering.impl;
 
+import java.util.Collection;
 import java.util.Date;
 
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -20,6 +21,7 @@ import org.nasdanika.engineering.Endeavor;
 import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Issue;
+import org.nasdanika.engineering.Objective;
 
 /**
  * <!-- begin-user-doc -->
@@ -37,6 +39,7 @@ import org.nasdanika.engineering.Issue;
  *   <li>{@link org.nasdanika.engineering.impl.EndeavorImpl#getStart <em>Start</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EndeavorImpl#getEnd <em>End</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EndeavorImpl#getCapacity <em>Capacity</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.EndeavorImpl#getObjectives <em>Objectives</em>}</li>
  * </ul>
  *
  * @generated
@@ -269,6 +272,17 @@ public class EndeavorImpl extends MinimalEObjectImpl.Container implements Endeav
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
+	public EList<Objective> getObjectives() {
+		return (EList<Objective>)eDynamicGet(EngineeringPackage.ENDEAVOR__OBJECTIVES, EngineeringPackage.Literals.ENDEAVOR__OBJECTIVES, true, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case EngineeringPackage.ENDEAVOR__ASSIGNEE:
@@ -294,6 +308,8 @@ public class EndeavorImpl extends MinimalEObjectImpl.Container implements Endeav
 				return basicSetAssignee(null, msgs);
 			case EngineeringPackage.ENDEAVOR__CAPACITY:
 				return ((InternalEList<?>)getCapacity()).basicRemove(otherEnd, msgs);
+			case EngineeringPackage.ENDEAVOR__OBJECTIVES:
+				return ((InternalEList<?>)getObjectives()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -323,6 +339,8 @@ public class EndeavorImpl extends MinimalEObjectImpl.Container implements Endeav
 				return getEnd();
 			case EngineeringPackage.ENDEAVOR__CAPACITY:
 				return getCapacity();
+			case EngineeringPackage.ENDEAVOR__OBJECTIVES:
+				return getObjectives();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -332,6 +350,7 @@ public class EndeavorImpl extends MinimalEObjectImpl.Container implements Endeav
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -346,6 +365,10 @@ public class EndeavorImpl extends MinimalEObjectImpl.Container implements Endeav
 				return;
 			case EngineeringPackage.ENDEAVOR__END:
 				setEnd((Date)newValue);
+				return;
+			case EngineeringPackage.ENDEAVOR__OBJECTIVES:
+				getObjectives().clear();
+				getObjectives().addAll((Collection<? extends Objective>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -370,6 +393,9 @@ public class EndeavorImpl extends MinimalEObjectImpl.Container implements Endeav
 				return;
 			case EngineeringPackage.ENDEAVOR__END:
 				setEnd(END_EDEFAULT);
+				return;
+			case EngineeringPackage.ENDEAVOR__OBJECTIVES:
+				getObjectives().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -399,6 +425,8 @@ public class EndeavorImpl extends MinimalEObjectImpl.Container implements Endeav
 				return END_EDEFAULT == null ? getEnd() != null : !END_EDEFAULT.equals(getEnd());
 			case EngineeringPackage.ENDEAVOR__CAPACITY:
 				return !getCapacity().isEmpty();
+			case EngineeringPackage.ENDEAVOR__OBJECTIVES:
+				return !getObjectives().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

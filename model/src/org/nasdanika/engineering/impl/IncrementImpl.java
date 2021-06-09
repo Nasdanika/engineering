@@ -20,6 +20,7 @@ import org.nasdanika.engineering.EngineeredElement;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Increment;
 import org.nasdanika.engineering.Issue;
+import org.nasdanika.engineering.Objective;
 import org.nasdanika.engineering.Release;
 
 /**
@@ -38,6 +39,7 @@ import org.nasdanika.engineering.Release;
  *   <li>{@link org.nasdanika.engineering.impl.IncrementImpl#getStart <em>Start</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IncrementImpl#getEnd <em>End</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IncrementImpl#getCapacity <em>Capacity</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.IncrementImpl#getObjectives <em>Objectives</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IncrementImpl#getChildren <em>Children</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IncrementImpl#getIssues <em>Issues</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IncrementImpl#getReleases <em>Releases</em>}</li>
@@ -243,6 +245,17 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public EList<Objective> getObjectives() {
+		return (EList<Objective>)eDynamicGet(EngineeringPackage.INCREMENT__OBJECTIVES, EngineeringPackage.Literals.ENDEAVOR__OBJECTIVES, true, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
 	@Override
@@ -271,6 +284,8 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 				return basicSetAssignee(null, msgs);
 			case EngineeringPackage.INCREMENT__CAPACITY:
 				return ((InternalEList<?>)getCapacity()).basicRemove(otherEnd, msgs);
+			case EngineeringPackage.INCREMENT__OBJECTIVES:
+				return ((InternalEList<?>)getObjectives()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.INCREMENT__CHILDREN:
 				return ((InternalEList<?>)getChildren()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.INCREMENT__ISSUES:
@@ -306,6 +321,8 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 				return getEnd();
 			case EngineeringPackage.INCREMENT__CAPACITY:
 				return getCapacity();
+			case EngineeringPackage.INCREMENT__OBJECTIVES:
+				return getObjectives();
 			case EngineeringPackage.INCREMENT__CHILDREN:
 				return getChildren();
 			case EngineeringPackage.INCREMENT__ISSUES:
@@ -337,6 +354,10 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 			case EngineeringPackage.INCREMENT__END:
 				setEnd((Date)newValue);
 				return;
+			case EngineeringPackage.INCREMENT__OBJECTIVES:
+				getObjectives().clear();
+				getObjectives().addAll((Collection<? extends Objective>)newValue);
+				return;
 			case EngineeringPackage.INCREMENT__CHILDREN:
 				getChildren().clear();
 				getChildren().addAll((Collection<? extends Increment>)newValue);
@@ -364,6 +385,9 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 				return;
 			case EngineeringPackage.INCREMENT__END:
 				setEnd(END_EDEFAULT);
+				return;
+			case EngineeringPackage.INCREMENT__OBJECTIVES:
+				getObjectives().clear();
 				return;
 			case EngineeringPackage.INCREMENT__CHILDREN:
 				getChildren().clear();
@@ -396,6 +420,8 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 				return END_EDEFAULT == null ? getEnd() != null : !END_EDEFAULT.equals(getEnd());
 			case EngineeringPackage.INCREMENT__CAPACITY:
 				return !getCapacity().isEmpty();
+			case EngineeringPackage.INCREMENT__OBJECTIVES:
+				return !getObjectives().isEmpty();
 			case EngineeringPackage.INCREMENT__CHILDREN:
 				return !getChildren().isEmpty();
 			case EngineeringPackage.INCREMENT__ISSUES:
@@ -423,6 +449,7 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 				case EngineeringPackage.INCREMENT__START: return EngineeringPackage.ENDEAVOR__START;
 				case EngineeringPackage.INCREMENT__END: return EngineeringPackage.ENDEAVOR__END;
 				case EngineeringPackage.INCREMENT__CAPACITY: return EngineeringPackage.ENDEAVOR__CAPACITY;
+				case EngineeringPackage.INCREMENT__OBJECTIVES: return EngineeringPackage.ENDEAVOR__OBJECTIVES;
 				default: return -1;
 			}
 		}
@@ -446,6 +473,7 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 				case EngineeringPackage.ENDEAVOR__START: return EngineeringPackage.INCREMENT__START;
 				case EngineeringPackage.ENDEAVOR__END: return EngineeringPackage.INCREMENT__END;
 				case EngineeringPackage.ENDEAVOR__CAPACITY: return EngineeringPackage.INCREMENT__CAPACITY;
+				case EngineeringPackage.ENDEAVOR__OBJECTIVES: return EngineeringPackage.INCREMENT__OBJECTIVES;
 				default: return -1;
 			}
 		}

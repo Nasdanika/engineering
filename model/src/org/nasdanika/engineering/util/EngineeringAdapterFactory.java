@@ -38,6 +38,7 @@ import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.IssueCategory;
 import org.nasdanika.engineering.IssueStatus;
 import org.nasdanika.engineering.Journey;
+import org.nasdanika.engineering.KeyResult;
 import org.nasdanika.engineering.Link;
 import org.nasdanika.engineering.Message;
 import org.nasdanika.engineering.ModelElement;
@@ -45,6 +46,7 @@ import org.nasdanika.engineering.ModelElementAppearance;
 import org.nasdanika.engineering.NamedElement;
 import org.nasdanika.engineering.NamedElementReference;
 import org.nasdanika.engineering.Note;
+import org.nasdanika.engineering.Objective;
 import org.nasdanika.engineering.Organization;
 import org.nasdanika.engineering.Persona;
 import org.nasdanika.engineering.Principle;
@@ -280,6 +282,14 @@ public class EngineeringAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseLink(Link object) {
 				return createLinkAdapter();
+			}
+			@Override
+			public Adapter caseKeyResult(KeyResult object) {
+				return createKeyResultAdapter();
+			}
+			@Override
+			public Adapter caseObjective(Objective object) {
+				return createObjectiveAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -886,6 +896,34 @@ public class EngineeringAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createLinkAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.KeyResult <em>Key Result</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.nasdanika.engineering.KeyResult
+	 * @generated
+	 */
+	public Adapter createKeyResultAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.Objective <em>Objective</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.nasdanika.engineering.Objective
+	 * @generated
+	 */
+	public Adapter createObjectiveAdapter() {
 		return null;
 	}
 

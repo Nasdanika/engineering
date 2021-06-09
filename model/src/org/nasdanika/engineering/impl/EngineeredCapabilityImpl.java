@@ -18,6 +18,7 @@ import org.nasdanika.engineering.EngineeredCapability;
 import org.nasdanika.engineering.EngineeredElement;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Issue;
+import org.nasdanika.engineering.Objective;
 
 /**
  * <!-- begin-user-doc -->
@@ -35,6 +36,7 @@ import org.nasdanika.engineering.Issue;
  *   <li>{@link org.nasdanika.engineering.impl.EngineeredCapabilityImpl#getStart <em>Start</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineeredCapabilityImpl#getEnd <em>End</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineeredCapabilityImpl#getCapacity <em>Capacity</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.EngineeredCapabilityImpl#getObjectives <em>Objectives</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineeredCapabilityImpl#getAligns <em>Aligns</em>}</li>
  * </ul>
  *
@@ -273,6 +275,17 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
+	public EList<Objective> getObjectives() {
+		return (EList<Objective>)eDynamicGet(EngineeringPackage.ENGINEERED_CAPABILITY__OBJECTIVES, EngineeringPackage.Literals.ENDEAVOR__OBJECTIVES, true, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public EList<Alignment> getAligns() {
 		return (EList<Alignment>)eDynamicGet(EngineeringPackage.ENGINEERED_CAPABILITY__ALIGNS, EngineeringPackage.Literals.ENGINEERED_CAPABILITY__ALIGNS, true, true);
 	}
@@ -309,6 +322,8 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 				return basicSetAssignee(null, msgs);
 			case EngineeringPackage.ENGINEERED_CAPABILITY__CAPACITY:
 				return ((InternalEList<?>)getCapacity()).basicRemove(otherEnd, msgs);
+			case EngineeringPackage.ENGINEERED_CAPABILITY__OBJECTIVES:
+				return ((InternalEList<?>)getObjectives()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.ENGINEERED_CAPABILITY__ALIGNS:
 				return ((InternalEList<?>)getAligns()).basicRemove(otherEnd, msgs);
 		}
@@ -340,6 +355,8 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 				return getEnd();
 			case EngineeringPackage.ENGINEERED_CAPABILITY__CAPACITY:
 				return getCapacity();
+			case EngineeringPackage.ENGINEERED_CAPABILITY__OBJECTIVES:
+				return getObjectives();
 			case EngineeringPackage.ENGINEERED_CAPABILITY__ALIGNS:
 				return getAligns();
 		}
@@ -366,6 +383,10 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 				return;
 			case EngineeringPackage.ENGINEERED_CAPABILITY__END:
 				setEnd((Date)newValue);
+				return;
+			case EngineeringPackage.ENGINEERED_CAPABILITY__OBJECTIVES:
+				getObjectives().clear();
+				getObjectives().addAll((Collection<? extends Objective>)newValue);
 				return;
 			case EngineeringPackage.ENGINEERED_CAPABILITY__ALIGNS:
 				getAligns().clear();
@@ -394,6 +415,9 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 				return;
 			case EngineeringPackage.ENGINEERED_CAPABILITY__END:
 				setEnd(END_EDEFAULT);
+				return;
+			case EngineeringPackage.ENGINEERED_CAPABILITY__OBJECTIVES:
+				getObjectives().clear();
 				return;
 			case EngineeringPackage.ENGINEERED_CAPABILITY__ALIGNS:
 				getAligns().clear();
@@ -426,6 +450,8 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 				return END_EDEFAULT == null ? getEnd() != null : !END_EDEFAULT.equals(getEnd());
 			case EngineeringPackage.ENGINEERED_CAPABILITY__CAPACITY:
 				return !getCapacity().isEmpty();
+			case EngineeringPackage.ENGINEERED_CAPABILITY__OBJECTIVES:
+				return !getObjectives().isEmpty();
 			case EngineeringPackage.ENGINEERED_CAPABILITY__ALIGNS:
 				return !getAligns().isEmpty();
 		}
@@ -449,6 +475,7 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 				case EngineeringPackage.ENGINEERED_CAPABILITY__START: return EngineeringPackage.ENDEAVOR__START;
 				case EngineeringPackage.ENGINEERED_CAPABILITY__END: return EngineeringPackage.ENDEAVOR__END;
 				case EngineeringPackage.ENGINEERED_CAPABILITY__CAPACITY: return EngineeringPackage.ENDEAVOR__CAPACITY;
+				case EngineeringPackage.ENGINEERED_CAPABILITY__OBJECTIVES: return EngineeringPackage.ENDEAVOR__OBJECTIVES;
 				default: return -1;
 			}
 		}
@@ -472,6 +499,7 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 				case EngineeringPackage.ENDEAVOR__START: return EngineeringPackage.ENGINEERED_CAPABILITY__START;
 				case EngineeringPackage.ENDEAVOR__END: return EngineeringPackage.ENGINEERED_CAPABILITY__END;
 				case EngineeringPackage.ENDEAVOR__CAPACITY: return EngineeringPackage.ENGINEERED_CAPABILITY__CAPACITY;
+				case EngineeringPackage.ENDEAVOR__OBJECTIVES: return EngineeringPackage.ENGINEERED_CAPABILITY__OBJECTIVES;
 				default: return -1;
 			}
 		}

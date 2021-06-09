@@ -13,6 +13,7 @@ package org.nasdanika.engineering;
  * </p>
  * <ul>
  *   <li>{@link org.nasdanika.engineering.Alignment#getAim <em>Aim</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.Alignment#getWeight <em>Weight</em>}</li>
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getAlignment()
@@ -47,5 +48,31 @@ public interface Alignment extends ModelElement {
 	 * @generated
 	 */
 	void setAim(Aim value);
+
+	/**
+	 * Returns the value of the '<em><b>Weight</b></em>' attribute.
+	 * The default value is <code>"1"</code>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Alignment weight can be used with [Objective](Objective.html) and [KeyResult](KeyResult.html) aims to indicate how much the containing endeavor contributes to completion of the aim.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Weight</em>' attribute.
+	 * @see #setWeight(double)
+	 * @see org.nasdanika.engineering.EngineeringPackage#getAlignment_Weight()
+	 * @model default="1"
+	 * @generated
+	 */
+	double getWeight();
+
+	/**
+	 * Sets the value of the '{@link org.nasdanika.engineering.Alignment#getWeight <em>Weight</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Weight</em>' attribute.
+	 * @see #getWeight()
+	 * @generated
+	 */
+	void setWeight(double value);
 
 } // Alignment

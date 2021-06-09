@@ -36,6 +36,7 @@ import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.IssueCategory;
 import org.nasdanika.engineering.IssueStatus;
 import org.nasdanika.engineering.Journey;
+import org.nasdanika.engineering.KeyResult;
 import org.nasdanika.engineering.Link;
 import org.nasdanika.engineering.Message;
 import org.nasdanika.engineering.ModelElement;
@@ -43,6 +44,7 @@ import org.nasdanika.engineering.ModelElementAppearance;
 import org.nasdanika.engineering.NamedElement;
 import org.nasdanika.engineering.NamedElementReference;
 import org.nasdanika.engineering.Note;
+import org.nasdanika.engineering.Objective;
 import org.nasdanika.engineering.Organization;
 import org.nasdanika.engineering.Persona;
 import org.nasdanika.engineering.Principle;
@@ -506,6 +508,27 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				if (result == null) result = caseNamedElement(link);
 				if (result == null) result = caseModelElement(link);
 				if (result == null) result = caseAdaptable(link);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EngineeringPackage.KEY_RESULT: {
+				KeyResult keyResult = (KeyResult)theEObject;
+				T result = caseKeyResult(keyResult);
+				if (result == null) result = caseAim(keyResult);
+				if (result == null) result = caseNamedElement(keyResult);
+				if (result == null) result = caseModelElement(keyResult);
+				if (result == null) result = caseAdaptable(keyResult);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EngineeringPackage.OBJECTIVE: {
+				Objective objective = (Objective)theEObject;
+				T result = caseObjective(objective);
+				if (result == null) result = caseKeyResult(objective);
+				if (result == null) result = caseAim(objective);
+				if (result == null) result = caseNamedElement(objective);
+				if (result == null) result = caseModelElement(objective);
+				if (result == null) result = caseAdaptable(objective);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1140,6 +1163,36 @@ public class EngineeringSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseLink(Link object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Key Result</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Key Result</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseKeyResult(KeyResult object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Objective</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Objective</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseObjective(Objective object) {
 		return null;
 	}
 

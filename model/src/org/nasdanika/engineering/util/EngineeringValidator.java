@@ -38,6 +38,7 @@ import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.IssueCategory;
 import org.nasdanika.engineering.IssueStatus;
 import org.nasdanika.engineering.Journey;
+import org.nasdanika.engineering.KeyResult;
 import org.nasdanika.engineering.Link;
 import org.nasdanika.engineering.Message;
 import org.nasdanika.engineering.ModelElement;
@@ -45,6 +46,7 @@ import org.nasdanika.engineering.ModelElementAppearance;
 import org.nasdanika.engineering.NamedElement;
 import org.nasdanika.engineering.NamedElementReference;
 import org.nasdanika.engineering.Note;
+import org.nasdanika.engineering.Objective;
 import org.nasdanika.engineering.Organization;
 import org.nasdanika.engineering.Persona;
 import org.nasdanika.engineering.Principle;
@@ -212,6 +214,10 @@ public class EngineeringValidator extends EObjectValidator {
 				return validateNamedElementReference((NamedElementReference)value, diagnostics, context);
 			case EngineeringPackage.LINK:
 				return validateLink((Link)value, diagnostics, context);
+			case EngineeringPackage.KEY_RESULT:
+				return validateKeyResult((KeyResult)value, diagnostics, context);
+			case EngineeringPackage.OBJECTIVE:
+				return validateObjective((Objective)value, diagnostics, context);
 			case EngineeringPackage.SECTION_STYLE:
 				return validateSectionStyle((SectionStyle)value, diagnostics, context);
 			default:
@@ -985,6 +991,24 @@ public class EngineeringValidator extends EObjectValidator {
 	 */
 	public boolean validateLink(Link link, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(link, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateKeyResult(KeyResult keyResult, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(keyResult, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateObjective(Objective objective, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(objective, diagnostics, context);
 	}
 
 	/**

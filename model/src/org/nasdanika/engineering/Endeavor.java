@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.nasdanika.engineering.Endeavor#getStart <em>Start</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Endeavor#getEnd <em>End</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Endeavor#getCapacity <em>Capacity</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.Endeavor#getObjectives <em>Objectives</em>}</li>
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getEndeavor()
@@ -192,5 +193,21 @@ public interface Endeavor extends EObject {
 	 * @generated
 	 */
 	EList<Capacity> getCapacity();
+
+	/**
+	 * Returns the value of the '<em><b>Objectives</b></em>' containment reference list.
+	 * The list contents are of type {@link org.nasdanika.engineering.Objective}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Assignee's objectives for this endeavor.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Objectives</em>' containment reference list.
+	 * @see org.nasdanika.engineering.EngineeringPackage#getEndeavor_Objectives()
+	 * @model containment="true"
+	 *        annotation="urn:org.nasdanika homogenous='true'"
+	 * @generated
+	 */
+	EList<Objective> getObjectives();
 
 } // Endeavor

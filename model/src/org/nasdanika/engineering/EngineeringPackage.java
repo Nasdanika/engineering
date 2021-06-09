@@ -360,13 +360,22 @@ public interface EngineeringPackage extends EPackage {
 	int ENDEAVOR__CAPACITY = 7;
 
 	/**
+	 * The feature id for the '<em><b>Objectives</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENDEAVOR__OBJECTIVES = 8;
+
+	/**
 	 * The number of structural features of the '<em>Endeavor</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENDEAVOR_FEATURE_COUNT = 8;
+	int ENDEAVOR_FEATURE_COUNT = 9;
 
 	/**
 	 * The number of operations of the '<em>Endeavor</em>' class.
@@ -602,13 +611,22 @@ public interface EngineeringPackage extends EPackage {
 	int INCREMENT__CAPACITY = NAMED_ELEMENT_FEATURE_COUNT + 7;
 
 	/**
+	 * The feature id for the '<em><b>Objectives</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INCREMENT__OBJECTIVES = NAMED_ELEMENT_FEATURE_COUNT + 8;
+
+	/**
 	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INCREMENT__CHILDREN = NAMED_ELEMENT_FEATURE_COUNT + 8;
+	int INCREMENT__CHILDREN = NAMED_ELEMENT_FEATURE_COUNT + 9;
 
 	/**
 	 * The feature id for the '<em><b>Issues</b></em>' reference list.
@@ -617,7 +635,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INCREMENT__ISSUES = NAMED_ELEMENT_FEATURE_COUNT + 9;
+	int INCREMENT__ISSUES = NAMED_ELEMENT_FEATURE_COUNT + 10;
 
 	/**
 	 * The feature id for the '<em><b>Releases</b></em>' reference list.
@@ -626,7 +644,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INCREMENT__RELEASES = NAMED_ELEMENT_FEATURE_COUNT + 10;
+	int INCREMENT__RELEASES = NAMED_ELEMENT_FEATURE_COUNT + 11;
 
 	/**
 	 * The number of structural features of the '<em>Increment</em>' class.
@@ -635,7 +653,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INCREMENT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 11;
+	int INCREMENT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 12;
 
 	/**
 	 * The number of operations of the '<em>Increment</em>' class.
@@ -1181,13 +1199,22 @@ public interface EngineeringPackage extends EPackage {
 	int ENGINEERED_CAPABILITY__CAPACITY = CAPABILITY_FEATURE_COUNT + 7;
 
 	/**
+	 * The feature id for the '<em><b>Objectives</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEERED_CAPABILITY__OBJECTIVES = CAPABILITY_FEATURE_COUNT + 8;
+
+	/**
 	 * The feature id for the '<em><b>Aligns</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEERED_CAPABILITY__ALIGNS = CAPABILITY_FEATURE_COUNT + 8;
+	int ENGINEERED_CAPABILITY__ALIGNS = CAPABILITY_FEATURE_COUNT + 9;
 
 	/**
 	 * The number of structural features of the '<em>Engineered Capability</em>' class.
@@ -1196,7 +1223,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEERED_CAPABILITY_FEATURE_COUNT = CAPABILITY_FEATURE_COUNT + 9;
+	int ENGINEERED_CAPABILITY_FEATURE_COUNT = CAPABILITY_FEATURE_COUNT + 10;
 
 	/**
 	 * The number of operations of the '<em>Engineered Capability</em>' class.
@@ -1438,6 +1465,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int ISSUE__CAPACITY = ENGINEERED_CAPABILITY__CAPACITY;
+
+	/**
+	 * The feature id for the '<em><b>Objectives</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE__OBJECTIVES = ENGINEERED_CAPABILITY__OBJECTIVES;
 
 	/**
 	 * The feature id for the '<em><b>Aligns</b></em>' containment reference list.
@@ -2602,13 +2638,22 @@ public interface EngineeringPackage extends EPackage {
 	int ENGINEER__MESSAGES = PERSONA_FEATURE_COUNT + 13;
 
 	/**
+	 * The feature id for the '<em><b>Objectives</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEER__OBJECTIVES = PERSONA_FEATURE_COUNT + 14;
+
+	/**
 	 * The number of structural features of the '<em>Engineer</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEER_FEATURE_COUNT = PERSONA_FEATURE_COUNT + 14;
+	int ENGINEER_FEATURE_COUNT = PERSONA_FEATURE_COUNT + 15;
 
 	/**
 	 * The number of operations of the '<em>Engineer</em>' class.
@@ -2924,6 +2969,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int ORGANIZATION__MESSAGES = ENGINEER__MESSAGES;
+
+	/**
+	 * The feature id for the '<em><b>Objectives</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANIZATION__OBJECTIVES = ENGINEER__OBJECTIVES;
 
 	/**
 	 * The feature id for the '<em><b>Engineers</b></em>' containment reference list.
@@ -3466,6 +3520,15 @@ public interface EngineeringPackage extends EPackage {
 	int RELEASE__CAPACITY = ENGINEERED_CAPABILITY__CAPACITY;
 
 	/**
+	 * The feature id for the '<em><b>Objectives</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RELEASE__OBJECTIVES = ENGINEERED_CAPABILITY__OBJECTIVES;
+
+	/**
 	 * The feature id for the '<em><b>Aligns</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3680,6 +3743,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int FEATURE__CAPACITY = ENGINEERED_CAPABILITY__CAPACITY;
+
+	/**
+	 * The feature id for the '<em><b>Objectives</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE__OBJECTIVES = ENGINEERED_CAPABILITY__OBJECTIVES;
 
 	/**
 	 * The feature id for the '<em><b>Aligns</b></em>' containment reference list.
@@ -5275,13 +5347,22 @@ public interface EngineeringPackage extends EPackage {
 	int ALIGNMENT__AIM = MODEL_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Weight</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ALIGNMENT__WEIGHT = MODEL_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Alignment</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ALIGNMENT_FEATURE_COUNT = MODEL_ELEMENT_FEATURE_COUNT + 1;
+	int ALIGNMENT_FEATURE_COUNT = MODEL_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Alignment</em>' class.
@@ -6440,6 +6521,332 @@ public interface EngineeringPackage extends EPackage {
 	int LINK_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.KeyResultImpl <em>Key Result</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.KeyResultImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getKeyResult()
+	 * @generated
+	 */
+	int KEY_RESULT = 43;
+
+	/**
+	 * The feature id for the '<em><b>Uri</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int KEY_RESULT__URI = AIM__URI;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int KEY_RESULT__PATH = AIM__PATH;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int KEY_RESULT__DESCRIPTION = AIM__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int KEY_RESULT__MARKDOWN_DESCRIPTION = AIM__MARKDOWN_DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Actions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int KEY_RESULT__ACTIONS = AIM__ACTIONS;
+
+	/**
+	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int KEY_RESULT__RESOURCES = AIM__RESOURCES;
+
+	/**
+	 * The feature id for the '<em><b>Appearance</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int KEY_RESULT__APPEARANCE = AIM__APPEARANCE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int KEY_RESULT__NAME = AIM__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Alignments</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int KEY_RESULT__ALIGNMENTS = AIM__ALIGNMENTS;
+
+	/**
+	 * The feature id for the '<em><b>Aligns</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int KEY_RESULT__ALIGNS = AIM__ALIGNS;
+
+	/**
+	 * The feature id for the '<em><b>Weight</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int KEY_RESULT__WEIGHT = AIM_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Completion</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int KEY_RESULT__COMPLETION = AIM_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Key Result</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int KEY_RESULT_FEATURE_COUNT = AIM_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Key Result</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int KEY_RESULT_OPERATION_COUNT = AIM_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.ObjectiveImpl <em>Objective</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.ObjectiveImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getObjective()
+	 * @generated
+	 */
+	int OBJECTIVE = 44;
+
+	/**
+	 * The feature id for the '<em><b>Uri</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBJECTIVE__URI = KEY_RESULT__URI;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBJECTIVE__PATH = KEY_RESULT__PATH;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBJECTIVE__DESCRIPTION = KEY_RESULT__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBJECTIVE__MARKDOWN_DESCRIPTION = KEY_RESULT__MARKDOWN_DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Actions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBJECTIVE__ACTIONS = KEY_RESULT__ACTIONS;
+
+	/**
+	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBJECTIVE__RESOURCES = KEY_RESULT__RESOURCES;
+
+	/**
+	 * The feature id for the '<em><b>Appearance</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBJECTIVE__APPEARANCE = KEY_RESULT__APPEARANCE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBJECTIVE__NAME = KEY_RESULT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Alignments</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBJECTIVE__ALIGNMENTS = KEY_RESULT__ALIGNMENTS;
+
+	/**
+	 * The feature id for the '<em><b>Aligns</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBJECTIVE__ALIGNS = KEY_RESULT__ALIGNS;
+
+	/**
+	 * The feature id for the '<em><b>Weight</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBJECTIVE__WEIGHT = KEY_RESULT__WEIGHT;
+
+	/**
+	 * The feature id for the '<em><b>Completion</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBJECTIVE__COMPLETION = KEY_RESULT__COMPLETION;
+
+	/**
+	 * The feature id for the '<em><b>Endeavor</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBJECTIVE__ENDEAVOR = KEY_RESULT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Key Results</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBJECTIVE__KEY_RESULTS = KEY_RESULT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBJECTIVE__CHILDREN = KEY_RESULT_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Parent</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBJECTIVE__PARENT = KEY_RESULT_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Linked Objectives</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBJECTIVE__LINKED_OBJECTIVES = KEY_RESULT_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Sub Objectives</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBJECTIVE__SUB_OBJECTIVES = KEY_RESULT_FEATURE_COUNT + 5;
+
+	/**
+	 * The number of structural features of the '<em>Objective</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBJECTIVE_FEATURE_COUNT = KEY_RESULT_FEATURE_COUNT + 6;
+
+	/**
+	 * The number of operations of the '<em>Objective</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBJECTIVE_OPERATION_COUNT = KEY_RESULT_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '<em>Section Style</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6447,7 +6854,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getSectionStyle()
 	 * @generated
 	 */
-	int SECTION_STYLE = 43;
+	int SECTION_STYLE = 45;
 
 
 	/**
@@ -6666,6 +7073,17 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getEndeavor_Capacity();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.nasdanika.engineering.Endeavor#getObjectives <em>Objectives</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Objectives</em>'.
+	 * @see org.nasdanika.engineering.Endeavor#getObjectives()
+	 * @see #getEndeavor()
+	 * @generated
+	 */
+	EReference getEndeavor_Objectives();
 
 	/**
 	 * Returns the meta object for class '{@link org.nasdanika.engineering.EngineeredElement <em>Engineered Element</em>}'.
@@ -6960,6 +7378,17 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getEngineer_Messages();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.nasdanika.engineering.Engineer#getObjectives <em>Objectives</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Objectives</em>'.
+	 * @see org.nasdanika.engineering.Engineer#getObjectives()
+	 * @see #getEngineer()
+	 * @generated
+	 */
+	EReference getEngineer_Objectives();
 
 	/**
 	 * Returns the meta object for class '{@link org.nasdanika.engineering.Organization <em>Organization</em>}'.
@@ -7929,6 +8358,17 @@ public interface EngineeringPackage extends EPackage {
 	EReference getAlignment_Aim();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Alignment#getWeight <em>Weight</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Weight</em>'.
+	 * @see org.nasdanika.engineering.Alignment#getWeight()
+	 * @see #getAlignment()
+	 * @generated
+	 */
+	EAttribute getAlignment_Weight();
+
+	/**
 	 * Returns the meta object for class '{@link org.nasdanika.engineering.Goal <em>Goal</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8266,6 +8706,114 @@ public interface EngineeringPackage extends EPackage {
 	EAttribute getLink_Target();
 
 	/**
+	 * Returns the meta object for class '{@link org.nasdanika.engineering.KeyResult <em>Key Result</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Key Result</em>'.
+	 * @see org.nasdanika.engineering.KeyResult
+	 * @generated
+	 */
+	EClass getKeyResult();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.KeyResult#getWeight <em>Weight</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Weight</em>'.
+	 * @see org.nasdanika.engineering.KeyResult#getWeight()
+	 * @see #getKeyResult()
+	 * @generated
+	 */
+	EAttribute getKeyResult_Weight();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.KeyResult#getCompletion <em>Completion</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Completion</em>'.
+	 * @see org.nasdanika.engineering.KeyResult#getCompletion()
+	 * @see #getKeyResult()
+	 * @generated
+	 */
+	EAttribute getKeyResult_Completion();
+
+	/**
+	 * Returns the meta object for class '{@link org.nasdanika.engineering.Objective <em>Objective</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Objective</em>'.
+	 * @see org.nasdanika.engineering.Objective
+	 * @generated
+	 */
+	EClass getObjective();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.nasdanika.engineering.Objective#getEndeavor <em>Endeavor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Endeavor</em>'.
+	 * @see org.nasdanika.engineering.Objective#getEndeavor()
+	 * @see #getObjective()
+	 * @generated
+	 */
+	EReference getObjective_Endeavor();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.nasdanika.engineering.Objective#getKeyResults <em>Key Results</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Key Results</em>'.
+	 * @see org.nasdanika.engineering.Objective#getKeyResults()
+	 * @see #getObjective()
+	 * @generated
+	 */
+	EReference getObjective_KeyResults();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.nasdanika.engineering.Objective#getChildren <em>Children</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Children</em>'.
+	 * @see org.nasdanika.engineering.Objective#getChildren()
+	 * @see #getObjective()
+	 * @generated
+	 */
+	EReference getObjective_Children();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.nasdanika.engineering.Objective#getParent <em>Parent</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Parent</em>'.
+	 * @see org.nasdanika.engineering.Objective#getParent()
+	 * @see #getObjective()
+	 * @generated
+	 */
+	EReference getObjective_Parent();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.Objective#getLinkedObjectives <em>Linked Objectives</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Linked Objectives</em>'.
+	 * @see org.nasdanika.engineering.Objective#getLinkedObjectives()
+	 * @see #getObjective()
+	 * @generated
+	 */
+	EReference getObjective_LinkedObjectives();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.Objective#getSubObjectives <em>Sub Objectives</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Sub Objectives</em>'.
+	 * @see org.nasdanika.engineering.Objective#getSubObjectives()
+	 * @see #getObjective()
+	 * @generated
+	 */
+	EReference getObjective_SubObjectives();
+
+	/**
 	 * Returns the meta object for the containment reference list '{@link org.nasdanika.engineering.Document#getSections <em>Sections</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8533,6 +9081,14 @@ public interface EngineeringPackage extends EPackage {
 		EReference ENDEAVOR__CAPACITY = eINSTANCE.getEndeavor_Capacity();
 
 		/**
+		 * The meta object literal for the '<em><b>Objectives</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ENDEAVOR__OBJECTIVES = eINSTANCE.getEndeavor_Objectives();
+
+		/**
 		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.EngineeredElementImpl <em>Engineered Element</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -8753,6 +9309,14 @@ public interface EngineeringPackage extends EPackage {
 		 * @generated
 		 */
 		EReference ENGINEER__MESSAGES = eINSTANCE.getEngineer_Messages();
+
+		/**
+		 * The meta object literal for the '<em><b>Objectives</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ENGINEER__OBJECTIVES = eINSTANCE.getEngineer_Objectives();
 
 		/**
 		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.OrganizationImpl <em>Organization</em>}' class.
@@ -9521,6 +10085,14 @@ public interface EngineeringPackage extends EPackage {
 		EReference ALIGNMENT__AIM = eINSTANCE.getAlignment_Aim();
 
 		/**
+		 * The meta object literal for the '<em><b>Weight</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ALIGNMENT__WEIGHT = eINSTANCE.getAlignment_Weight();
+
+		/**
 		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.GoalImpl <em>Goal</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -9791,6 +10363,90 @@ public interface EngineeringPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute LINK__TARGET = eINSTANCE.getLink_Target();
+
+		/**
+		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.KeyResultImpl <em>Key Result</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.engineering.impl.KeyResultImpl
+		 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getKeyResult()
+		 * @generated
+		 */
+		EClass KEY_RESULT = eINSTANCE.getKeyResult();
+
+		/**
+		 * The meta object literal for the '<em><b>Weight</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute KEY_RESULT__WEIGHT = eINSTANCE.getKeyResult_Weight();
+
+		/**
+		 * The meta object literal for the '<em><b>Completion</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute KEY_RESULT__COMPLETION = eINSTANCE.getKeyResult_Completion();
+
+		/**
+		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.ObjectiveImpl <em>Objective</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.engineering.impl.ObjectiveImpl
+		 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getObjective()
+		 * @generated
+		 */
+		EClass OBJECTIVE = eINSTANCE.getObjective();
+
+		/**
+		 * The meta object literal for the '<em><b>Endeavor</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference OBJECTIVE__ENDEAVOR = eINSTANCE.getObjective_Endeavor();
+
+		/**
+		 * The meta object literal for the '<em><b>Key Results</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference OBJECTIVE__KEY_RESULTS = eINSTANCE.getObjective_KeyResults();
+
+		/**
+		 * The meta object literal for the '<em><b>Children</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference OBJECTIVE__CHILDREN = eINSTANCE.getObjective_Children();
+
+		/**
+		 * The meta object literal for the '<em><b>Parent</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference OBJECTIVE__PARENT = eINSTANCE.getObjective_Parent();
+
+		/**
+		 * The meta object literal for the '<em><b>Linked Objectives</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference OBJECTIVE__LINKED_OBJECTIVES = eINSTANCE.getObjective_LinkedObjectives();
+
+		/**
+		 * The meta object literal for the '<em><b>Sub Objectives</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference OBJECTIVE__SUB_OBJECTIVES = eINSTANCE.getObjective_SubObjectives();
 
 		/**
 		 * The meta object literal for the '<em><b>Sections</b></em>' containment reference list feature.

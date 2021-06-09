@@ -31,6 +31,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Endeavor/start"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Endeavor/end"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference engineering.ecore#//Endeavor/capacity"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//Endeavor/objectives"/>
     </genClasses>
     <genClasses ecoreClass="engineering.ecore#//Increment">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//Increment/children"/>
@@ -101,6 +102,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//Engineer/capacity"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference engineering.ecore#//Engineer/represents"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference engineering.ecore#//Engineer/messages"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//Engineer/objectives"/>
     </genClasses>
     <genClasses ecoreClass="engineering.ecore#//Organization">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//Organization/engineers"/>
@@ -173,6 +175,7 @@
     </genClasses>
     <genClasses ecoreClass="engineering.ecore#//Alignment">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//Alignment/aim"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Alignment/weight"/>
     </genClasses>
     <genClasses ecoreClass="engineering.ecore#//Goal">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//Goal/children"/>
@@ -223,6 +226,18 @@
     </genClasses>
     <genClasses ecoreClass="engineering.ecore#//Link">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Link/target"/>
+    </genClasses>
+    <genClasses ecoreClass="engineering.ecore#//KeyResult">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//KeyResult/weight"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//KeyResult/completion"/>
+    </genClasses>
+    <genClasses ecoreClass="engineering.ecore#//Objective">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//Objective/endeavor"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//Objective/keyResults"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//Objective/children"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//Objective/parent"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//Objective/linkedObjectives"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//Objective/subObjectives"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

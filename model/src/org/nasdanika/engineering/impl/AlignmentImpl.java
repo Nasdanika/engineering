@@ -19,11 +19,22 @@ import org.nasdanika.engineering.EngineeringPackage;
  * </p>
  * <ul>
  *   <li>{@link org.nasdanika.engineering.impl.AlignmentImpl#getAim <em>Aim</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.AlignmentImpl#getWeight <em>Weight</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class AlignmentImpl extends ModelElementImpl implements Alignment {
+	/**
+	 * The default value of the '{@link #getWeight() <em>Weight</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWeight()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double WEIGHT_EDEFAULT = 1.0;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -88,6 +99,26 @@ public class AlignmentImpl extends ModelElementImpl implements Alignment {
 	 * @generated
 	 */
 	@Override
+	public double getWeight() {
+		return (Double)eDynamicGet(EngineeringPackage.ALIGNMENT__WEIGHT, EngineeringPackage.Literals.ALIGNMENT__WEIGHT, true, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setWeight(double newWeight) {
+		eDynamicSet(EngineeringPackage.ALIGNMENT__WEIGHT, EngineeringPackage.Literals.ALIGNMENT__WEIGHT, newWeight);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case EngineeringPackage.ALIGNMENT__AIM:
@@ -124,6 +155,8 @@ public class AlignmentImpl extends ModelElementImpl implements Alignment {
 			case EngineeringPackage.ALIGNMENT__AIM:
 				if (resolve) return getAim();
 				return basicGetAim();
+			case EngineeringPackage.ALIGNMENT__WEIGHT:
+				return getWeight();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -138,6 +171,9 @@ public class AlignmentImpl extends ModelElementImpl implements Alignment {
 		switch (featureID) {
 			case EngineeringPackage.ALIGNMENT__AIM:
 				setAim((Aim)newValue);
+				return;
+			case EngineeringPackage.ALIGNMENT__WEIGHT:
+				setWeight((Double)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -154,6 +190,9 @@ public class AlignmentImpl extends ModelElementImpl implements Alignment {
 			case EngineeringPackage.ALIGNMENT__AIM:
 				setAim((Aim)null);
 				return;
+			case EngineeringPackage.ALIGNMENT__WEIGHT:
+				setWeight(WEIGHT_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -168,6 +207,8 @@ public class AlignmentImpl extends ModelElementImpl implements Alignment {
 		switch (featureID) {
 			case EngineeringPackage.ALIGNMENT__AIM:
 				return basicGetAim() != null;
+			case EngineeringPackage.ALIGNMENT__WEIGHT:
+				return getWeight() != WEIGHT_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}

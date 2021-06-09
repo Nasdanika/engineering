@@ -41,6 +41,7 @@ import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.IssueCategory;
 import org.nasdanika.engineering.IssueStatus;
 import org.nasdanika.engineering.Journey;
+import org.nasdanika.engineering.KeyResult;
 import org.nasdanika.engineering.Link;
 import org.nasdanika.engineering.Message;
 import org.nasdanika.engineering.ModelElement;
@@ -48,6 +49,7 @@ import org.nasdanika.engineering.ModelElementAppearance;
 import org.nasdanika.engineering.NamedElement;
 import org.nasdanika.engineering.NamedElementReference;
 import org.nasdanika.engineering.Note;
+import org.nasdanika.engineering.Objective;
 import org.nasdanika.engineering.Organization;
 import org.nasdanika.engineering.Persona;
 import org.nasdanika.engineering.Principle;
@@ -364,6 +366,20 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass keyResultEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass objectiveEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EDataType sectionStyleEDataType = null;
 
 	/**
@@ -650,6 +666,16 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
+	public EReference getEndeavor_Objectives() {
+		return (EReference)endeavorEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getEngineeredElement() {
 		return engineeredElementEClass;
 	}
@@ -912,6 +938,16 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	@Override
 	public EReference getEngineer_Messages() {
 		return (EReference)engineerEClass.getEStructuralFeatures().get(13);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getEngineer_Objectives() {
+		return (EReference)engineerEClass.getEStructuralFeatures().get(14);
 	}
 
 	/**
@@ -1820,6 +1856,16 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
+	public EAttribute getAlignment_Weight() {
+		return (EAttribute)alignmentEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getGoal() {
 		return goalEClass;
 	}
@@ -2130,6 +2176,106 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
+	public EClass getKeyResult() {
+		return keyResultEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getKeyResult_Weight() {
+		return (EAttribute)keyResultEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getKeyResult_Completion() {
+		return (EAttribute)keyResultEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getObjective() {
+		return objectiveEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getObjective_Endeavor() {
+		return (EReference)objectiveEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getObjective_KeyResults() {
+		return (EReference)objectiveEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getObjective_Children() {
+		return (EReference)objectiveEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getObjective_Parent() {
+		return (EReference)objectiveEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getObjective_LinkedObjectives() {
+		return (EReference)objectiveEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getObjective_SubObjectives() {
+		return (EReference)objectiveEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EReference getDocument_Sections() {
 		return (EReference)documentEClass.getEStructuralFeatures().get(0);
 	}
@@ -2246,6 +2392,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		createEAttribute(endeavorEClass, ENDEAVOR__START);
 		createEAttribute(endeavorEClass, ENDEAVOR__END);
 		createEReference(endeavorEClass, ENDEAVOR__CAPACITY);
+		createEReference(endeavorEClass, ENDEAVOR__OBJECTIVES);
 
 		incrementEClass = createEClass(INCREMENT);
 		createEReference(incrementEClass, INCREMENT__CHILDREN);
@@ -2316,6 +2463,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		createEReference(engineerEClass, ENGINEER__CAPACITY);
 		createEReference(engineerEClass, ENGINEER__REPRESENTS);
 		createEReference(engineerEClass, ENGINEER__MESSAGES);
+		createEReference(engineerEClass, ENGINEER__OBJECTIVES);
 
 		organizationEClass = createEClass(ORGANIZATION);
 		createEReference(organizationEClass, ORGANIZATION__ENGINEERS);
@@ -2389,6 +2537,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 
 		alignmentEClass = createEClass(ALIGNMENT);
 		createEReference(alignmentEClass, ALIGNMENT__AIM);
+		createEAttribute(alignmentEClass, ALIGNMENT__WEIGHT);
 
 		goalEClass = createEClass(GOAL);
 		createEReference(goalEClass, GOAL__CHILDREN);
@@ -2439,6 +2588,18 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 
 		linkEClass = createEClass(LINK);
 		createEAttribute(linkEClass, LINK__TARGET);
+
+		keyResultEClass = createEClass(KEY_RESULT);
+		createEAttribute(keyResultEClass, KEY_RESULT__WEIGHT);
+		createEAttribute(keyResultEClass, KEY_RESULT__COMPLETION);
+
+		objectiveEClass = createEClass(OBJECTIVE);
+		createEReference(objectiveEClass, OBJECTIVE__ENDEAVOR);
+		createEReference(objectiveEClass, OBJECTIVE__KEY_RESULTS);
+		createEReference(objectiveEClass, OBJECTIVE__CHILDREN);
+		createEReference(objectiveEClass, OBJECTIVE__PARENT);
+		createEReference(objectiveEClass, OBJECTIVE__LINKED_OBJECTIVES);
+		createEReference(objectiveEClass, OBJECTIVE__SUB_OBJECTIVES);
 
 		// Create data types
 		sectionStyleEDataType = createEDataType(SECTION_STYLE);
@@ -2511,6 +2672,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		documentEClass.getESuperTypes().add(this.getEngineeredElement());
 		namedElementReferenceEClass.getESuperTypes().add(this.getNamedElement());
 		linkEClass.getESuperTypes().add(this.getNamedElement());
+		keyResultEClass.getESuperTypes().add(this.getAim());
+		objectiveEClass.getESuperTypes().add(this.getKeyResult());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(adaptableEClass, Adaptable.class, "Adaptable", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
@@ -2536,6 +2699,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		initEAttribute(getEndeavor_Start(), ecorePackage.getEDate(), "start", null, 0, 1, Endeavor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getEndeavor_End(), ecorePackage.getEDate(), "end", null, 0, 1, Endeavor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEndeavor_Capacity(), this.getCapacity(), this.getCapacity_Endeavor(), "capacity", null, 0, -1, Endeavor.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getEndeavor_Objectives(), this.getObjective(), null, "objectives", null, 0, -1, Endeavor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(incrementEClass, Increment.class, "Increment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getIncrement_Children(), this.getIncrement(), null, "children", null, 0, -1, Increment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2606,6 +2770,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		initEReference(getEngineer_Capacity(), this.getCapacity(), null, "capacity", null, 0, -1, Engineer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEngineer_Represents(), this.getPersona(), this.getPersona_Representatives(), "represents", null, 0, -1, Engineer.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getEngineer_Messages(), this.getMessage(), this.getMessage_Author(), "messages", null, 0, -1, Engineer.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getEngineer_Objectives(), this.getObjective(), null, "objectives", null, 0, -1, Engineer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(organizationEClass, Organization.class, "Organization", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getOrganization_Engineers(), this.getEngineer(), null, "engineers", null, 0, -1, Organization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2679,6 +2844,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 
 		initEClass(alignmentEClass, Alignment.class, "Alignment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getAlignment_Aim(), this.getAim(), this.getAim_Alignments(), "aim", null, 0, 1, Alignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAlignment_Weight(), ecorePackage.getEDouble(), "weight", "1", 0, 1, Alignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(goalEClass, Goal.class, "Goal", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getGoal_Children(), this.getGoal(), null, "children", null, 0, -1, Goal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2729,6 +2895,18 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 
 		initEClass(linkEClass, Link.class, "Link", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getLink_Target(), ecorePackage.getEString(), "target", null, 1, 1, Link.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(keyResultEClass, KeyResult.class, "KeyResult", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getKeyResult_Weight(), ecorePackage.getEDouble(), "weight", "1", 0, 1, KeyResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getKeyResult_Completion(), ecorePackage.getEDouble(), "completion", null, 0, 1, KeyResult.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+
+		initEClass(objectiveEClass, Objective.class, "Objective", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getObjective_Endeavor(), this.getEndeavor(), null, "endeavor", null, 0, 1, Objective.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getObjective_KeyResults(), this.getKeyResult(), null, "keyResults", null, 0, -1, Objective.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getObjective_Children(), this.getObjective(), null, "children", null, 0, -1, Objective.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getObjective_Parent(), this.getObjective(), this.getObjective_LinkedObjectives(), "parent", null, 0, 1, Objective.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getObjective_LinkedObjectives(), this.getObjective(), this.getObjective_Parent(), "linkedObjectives", null, 0, -1, Objective.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getObjective_SubObjectives(), this.getObjective(), null, "subObjectives", null, 0, -1, Objective.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		// Initialize data types
 		initEDataType(sectionStyleEDataType, SectionStyle.class, "SectionStyle", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
@@ -2788,6 +2966,12 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		   source,
 		   new String[] {
 			   "documentation-reference", "doc/endeavor.md"
+		   });
+		addAnnotation
+		  (getEndeavor_Objectives(),
+		   source,
+		   new String[] {
+			   "homogenous", "true"
 		   });
 		addAnnotation
 		  (incrementEClass,
@@ -2940,6 +3124,12 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		   });
 		addAnnotation
 		  (getEngineer_Capacity(),
+		   source,
+		   new String[] {
+			   "homogenous", "true"
+		   });
+		addAnnotation
+		  (getEngineer_Objectives(),
 		   source,
 		   new String[] {
 			   "homogenous", "true"
@@ -3256,6 +3446,30 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		   new String[] {
 			   "default-feature", "true"
 		   });
+		addAnnotation
+		  (keyResultEClass,
+		   source,
+		   new String[] {
+			   "documentation-reference", "doc/key-result.md"
+		   });
+		addAnnotation
+		  (objectiveEClass,
+		   source,
+		   new String[] {
+			   "documentation-reference", "doc/objective.md"
+		   });
+		addAnnotation
+		  (getObjective_KeyResults(),
+		   source,
+		   new String[] {
+			   "homogenous", "true"
+		   });
+		addAnnotation
+		  (getObjective_Children(),
+		   source,
+		   new String[] {
+			   "homogenous", "true"
+		   });
 	}
 
 	/**
@@ -3355,6 +3569,12 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		   source,
 		   new String[] {
 			   "documentation", "[Capacity](Capacity.html) or [Allocation](Allocation.html).  If an element is capacity that means that there is a capacity for an [engineer](Engineer.html) to work on this endeavor.  If an element is allocation that means that Engineer\'s capacity has been allocated to work on a particular [engineered element](EngineeredElement.html) [issues](Issue.html) in a particular [issue category](IssueCategory.html)."
+		   });
+		addAnnotation
+		  (getEndeavor_Objectives(),
+		   source,
+		   new String[] {
+			   "documentation", "Assignee\'s objectives for this endeavor."
 		   });
 		addAnnotation
 		  (getIncrement_Children(),
@@ -3681,6 +3901,12 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 			   "documentation", "Discussion messages authored by this engineer."
 		   });
 		addAnnotation
+		  (getEngineer_Objectives(),
+		   source,
+		   new String[] {
+			   "documentation", "Engineer\'s objectives for a particular [endeavor](Endeavor.html)"
+		   });
+		addAnnotation
 		  (getOrganization_Engineers(),
 		   source,
 		   new String[] {
@@ -3903,6 +4129,12 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 			   "documentation", "Aim to which the containing element, e.g. [endeavor](Endeavor.html) aligns."
 		   });
 		addAnnotation
+		  (getAlignment_Weight(),
+		   source,
+		   new String[] {
+			   "documentation", "Alignment weight can be used with [Objective](Objective.html) and [KeyResult](KeyResult.html) aims to indicate how much the containing endeavor contributes to completion of the aim."
+		   });
+		addAnnotation
 		  (getGoal_Children(),
 		   source,
 		   new String[] {
@@ -4039,6 +4271,54 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		   source,
 		   new String[] {
 			   "documentation", "Target URL"
+		   });
+		addAnnotation
+		  (getKeyResult_Weight(),
+		   source,
+		   new String[] {
+			   "documentation", "Indicates how much this key result or [objective](Objective.html) contributes to completion of the containing or parent objective."
+		   });
+		addAnnotation
+		  (getKeyResult_Completion(),
+		   source,
+		   new String[] {
+			   "documentation", "Number between 0 and 1. Computed from alignments for key results and for alignments, key results, and sub-objectives for [objectives](Objective.html)"
+		   });
+		addAnnotation
+		  (getObjective_Endeavor(),
+		   source,
+		   new String[] {
+			   "documentation", "Endeavor for which containing [engineer](Engineer.html) has this objective for. E.g. \"Achieve XYZ in Q2\". Objectives can also be contained in endeavors directly. In this case they are assumed to be objectives of the assignee."
+		   });
+		addAnnotation
+		  (getObjective_KeyResults(),
+		   source,
+		   new String[] {
+			   "documentation", "Key results for this objective."
+		   });
+		addAnnotation
+		  (getObjective_Children(),
+		   source,
+		   new String[] {
+			   "documentation", "Sub-objectives of this objective."
+		   });
+		addAnnotation
+		  (getObjective_Parent(),
+		   source,
+		   new String[] {
+			   "documentation", "Objective can be linked to a parent objective it is not already a child of objective, i.e. is contained by an [engineer](Engineer.html) or [endeavor](Endeavor.html)."
+		   });
+		addAnnotation
+		  (getObjective_LinkedObjectives(),
+		   source,
+		   new String[] {
+			   "documentation", "Objectives linked to this one via the ``parent`` reference."
+		   });
+		addAnnotation
+		  (getObjective_SubObjectives(),
+		   source,
+		   new String[] {
+			   "documentation", "A union of children and linked objectives."
 		   });
 	}
 

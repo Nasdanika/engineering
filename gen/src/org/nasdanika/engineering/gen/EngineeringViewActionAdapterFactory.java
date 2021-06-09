@@ -32,10 +32,12 @@ import org.nasdanika.engineering.Increment;
 import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.IssueCategory;
 import org.nasdanika.engineering.IssueStatus;
+import org.nasdanika.engineering.KeyResult;
 import org.nasdanika.engineering.Link;
 import org.nasdanika.engineering.ModelElement;
 import org.nasdanika.engineering.ModelElementAppearance;
 import org.nasdanika.engineering.NamedElementReference;
+import org.nasdanika.engineering.Objective;
 import org.nasdanika.engineering.Organization;
 import org.nasdanika.engineering.Persona;
 import org.nasdanika.engineering.Principle;
@@ -198,6 +200,20 @@ public class EngineeringViewActionAdapterFactory extends ComposedAdapterFactory 
 				getViewActionClass(), 
 				this.getClass().getClassLoader(), 
 				obj -> new LinkViewAction(obj, this)));			
+		
+		registerAdapterFactory(
+			new FunctionAdapterFactory<ViewAction<KeyResult>, KeyResult>(
+				EngineeringPackage.Literals.KEY_RESULT, 
+				getViewActionClass(), 
+				this.getClass().getClassLoader(), 
+				obj -> new KeyResultViewAction<KeyResult>(obj, this)));			
+		
+		registerAdapterFactory(
+			new FunctionAdapterFactory<ViewAction<Objective>, Objective>(
+				EngineeringPackage.Literals.OBJECTIVE, 
+				getViewActionClass(), 
+				this.getClass().getClassLoader(), 
+				obj -> new ObjectiveViewAction(obj, this)));			
 				
 		// Loading appearances from URL's
 		appearance = new ArrayList<>();

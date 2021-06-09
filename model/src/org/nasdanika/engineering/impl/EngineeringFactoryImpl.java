@@ -37,12 +37,14 @@ import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.IssueCategory;
 import org.nasdanika.engineering.IssueStatus;
 import org.nasdanika.engineering.Journey;
+import org.nasdanika.engineering.KeyResult;
 import org.nasdanika.engineering.Link;
 import org.nasdanika.engineering.Message;
 import org.nasdanika.engineering.ModelElementAppearance;
 import org.nasdanika.engineering.NamedElement;
 import org.nasdanika.engineering.NamedElementReference;
 import org.nasdanika.engineering.Note;
+import org.nasdanika.engineering.Objective;
 import org.nasdanika.engineering.Organization;
 import org.nasdanika.engineering.Persona;
 import org.nasdanika.engineering.Principle;
@@ -135,6 +137,8 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 			case EngineeringPackage.DOCUMENT: return createDocument();
 			case EngineeringPackage.NAMED_ELEMENT_REFERENCE: return createNamedElementReference();
 			case EngineeringPackage.LINK: return createLink();
+			case EngineeringPackage.KEY_RESULT: return createKeyResult();
+			case EngineeringPackage.OBJECTIVE: return createObjective();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -584,6 +588,28 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 	public Link createLink() {
 		LinkImpl link = new LinkImpl();
 		return link;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public KeyResult createKeyResult() {
+		KeyResultImpl keyResult = new KeyResultImpl();
+		return keyResult;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Objective createObjective() {
+		ObjectiveImpl objective = new ObjectiveImpl();
+		return objective;
 	}
 
 	/**
