@@ -31,7 +31,7 @@ public interface Link extends NamedElement {
 	 * @see #setTarget(String)
 	 * @see org.nasdanika.engineering.EngineeringPackage#getLink_Target()
 	 * @model required="true"
-	 *        annotation="urn:org.nasdanika default-property='true'"
+	 *        annotation="urn:org.nasdanika default-feature='true'"
 	 * @generated
 	 */
 	String getTarget();

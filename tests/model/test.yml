@@ -175,6 +175,13 @@ engineering-organization:
              effort: 5  
              category: test:issue-categories/test
          resources:
+           - engineering-named-element-reference: 
+               target: test:engineers/pv
+               description: The guy.
+           - engineering-link: 
+               target: https://www.eclipse.org/sirius/sirius-web.html
+               name: Sirius Web
+               description: Diagramming in the browser    
            - engineering-document: 
                name: Test document
                path: test-document

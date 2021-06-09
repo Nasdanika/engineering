@@ -40,6 +40,7 @@ import org.nasdanika.engineering.Journey;
 import org.nasdanika.engineering.Link;
 import org.nasdanika.engineering.Message;
 import org.nasdanika.engineering.ModelElementAppearance;
+import org.nasdanika.engineering.NamedElement;
 import org.nasdanika.engineering.NamedElementReference;
 import org.nasdanika.engineering.Note;
 import org.nasdanika.engineering.Organization;
@@ -95,6 +96,7 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
+			case EngineeringPackage.NAMED_ELEMENT: return createNamedElement();
 			case EngineeringPackage.ENDEAVOR: return createEndeavor();
 			case EngineeringPackage.INCREMENT: return createIncrement();
 			case EngineeringPackage.ISSUE_CATEGORY: return createIssueCategory();
@@ -166,6 +168,17 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NamedElement createNamedElement() {
+		NamedElementImpl namedElement = new NamedElementImpl();
+		return namedElement;
 	}
 
 	/**

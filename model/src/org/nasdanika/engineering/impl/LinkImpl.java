@@ -127,5 +127,11 @@ public class LinkImpl extends NamedElementImpl implements Link {
 		}
 		return super.eIsSet(featureID);
 	}
+	
+	@Override
+	public String getName() {
+		String name = super.getName();
+		return name == null ? getTarget() : name;
+	}
 
 } //LinkImpl

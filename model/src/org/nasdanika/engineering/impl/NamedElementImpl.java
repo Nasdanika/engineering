@@ -30,7 +30,7 @@ import org.nasdanika.engineering.NamedElement;
  *
  * @generated
  */
-public abstract class NamedElementImpl extends ModelElementImpl implements NamedElement {
+public class NamedElementImpl extends ModelElementImpl implements NamedElement {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->

@@ -53,7 +53,7 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="NamedElement" abstract="true" eSuperTypes="#//ModelElement">
+  <eClassifiers xsi:type="ecore:EClass" name="NamedElement" eSuperTypes="#//ModelElement">
     <eAnnotations source="urn:org.nasdanika">
       <details key="documentation-reference" value="doc/named-element.md"/>
     </eAnnotations>
@@ -1087,7 +1087,7 @@
         <details key="documentation" value="Reference target"/>
       </eAnnotations>
       <eAnnotations source="urn:org.nasdanika">
-        <details key="default-property" value="true"/>
+        <details key="default-feature" value="true"/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
@@ -1101,7 +1101,7 @@
         <details key="documentation" value="Target URL"/>
       </eAnnotations>
       <eAnnotations source="urn:org.nasdanika">
-        <details key="default-property" value="true"/>
+        <details key="default-feature" value="true"/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>

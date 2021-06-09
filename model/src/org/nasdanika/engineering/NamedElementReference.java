@@ -31,7 +31,7 @@ public interface NamedElementReference extends NamedElement {
 	 * @see #setTarget(NamedElement)
 	 * @see org.nasdanika.engineering.EngineeringPackage#getNamedElementReference_Target()
 	 * @model required="true"
-	 *        annotation="urn:org.nasdanika default-property='true'"
+	 *        annotation="urn:org.nasdanika default-feature='true'"
 	 * @generated
 	 */
 	NamedElement getTarget();

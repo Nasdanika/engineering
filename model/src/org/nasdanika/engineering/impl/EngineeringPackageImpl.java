@@ -2524,7 +2524,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		initEReference(getModelElement_Resources(), this.getNamedElement(), null, "resources", null, 0, -1, ModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getModelElement_Appearance(), this.getModelElementAppearance(), null, "appearance", null, 0, 1, ModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(namedElementEClass, NamedElement.class, "NamedElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(namedElementEClass, NamedElement.class, "NamedElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getNamedElement_Name(), ecorePackage.getEString(), "name", null, 0, 1, NamedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(endeavorEClass, Endeavor.class, "Endeavor", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -3242,7 +3242,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		  (getNamedElementReference_Target(),
 		   source,
 		   new String[] {
-			   "default-property", "true"
+			   "default-feature", "true"
 		   });
 		addAnnotation
 		  (linkEClass,
@@ -3254,7 +3254,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		  (getLink_Target(),
 		   source,
 		   new String[] {
-			   "default-property", "true"
+			   "default-feature", "true"
 		   });
 	}
 
