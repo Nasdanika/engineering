@@ -17,6 +17,7 @@ import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Increment;
 import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.IssueStatus;
+import org.nasdanika.engineering.Objective;
 import org.nasdanika.html.Fragment;
 import org.nasdanika.html.app.Action;
 import org.nasdanika.html.app.Label;
@@ -289,7 +290,58 @@ public class IncrementViewAction extends NamedElementViewAction<Increment> {
 					EngineeringPackage.Literals.ENDEAVOR__COMPLETION));			
 			
 		}
+		if (feature == EngineeringPackage.Literals.ENDEAVOR__OBJECTIVES) {
+			if (getSemanticElement().getObjectives().isEmpty()) {
+				return Collections.emptyList();
+			}
+			return Collections.singleton(createFeatureViewAction(feature, this::generateObjectivesTable));			
+		}
+		if (feature == EngineeringPackage.Literals.ENDEAVOR__LINKED_OBJECTIVES) {
+			if (getSemanticElement().getLinkedObjectives().isEmpty()) {
+				return Collections.emptyList();
+			}
+			return Collections.singleton(createFeatureViewAction(feature, this::generateLinkedObjectivesTable));			
+		}
+		if (feature == EngineeringPackage.Literals.ENDEAVOR__ALL_OBJECTIVES) {
+			if (getSemanticElement().getAllObjectives().isEmpty()) {
+				return Collections.emptyList();
+			}
+			return Collections.singleton(createFeatureViewAction(feature, this::generateAllObjectivesTable));			
+		}
 		return super.featureActions(feature);
 	}
+	
+	protected Object generateObjectivesTable(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
+		Table table = viewGenerator.getBootstrapFactory().table().bordered().striped();
+		table.header().headerRow("Objective", "Completion").color(Color.INFO);
+		for (Objective objective: getSemanticElement().getObjectives()) {
+			table.body().row(
+					viewGenerator.link(ViewAction.adaptToViewActionNonNull(objective)),
+					progressBar(objective.getCompletion(), viewGenerator));
+		}
+		return table;
+	}				
+	
+	protected Object generateLinkedObjectivesTable(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
+		Table table = viewGenerator.getBootstrapFactory().table().bordered().striped();
+		table.header().headerRow("Objective", "Completion").color(Color.INFO);
+		for (Objective objective: getSemanticElement().getLinkedObjectives()) {
+			table.body().row(
+					viewGenerator.link(ViewAction.adaptToViewActionNonNull(objective)),
+					progressBar(objective.getCompletion(), viewGenerator));
+		}
+		return table;
+	}				
+	
+	protected Object generateAllObjectivesTable(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
+		Table table = viewGenerator.getBootstrapFactory().table().bordered().striped();
+		table.header().headerRow("Objective", "Completion").color(Color.INFO);
+		for (Objective objective: getSemanticElement().getAllObjectives()) {
+			table.body().row(
+					viewGenerator.link(ViewAction.adaptToViewActionNonNull(objective)),
+					progressBar(objective.getCompletion(), viewGenerator));
+		}
+		return table;
+	}				
 
 }

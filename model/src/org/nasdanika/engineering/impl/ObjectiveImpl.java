@@ -81,6 +81,16 @@ public class ObjectiveImpl extends KeyResultImpl implements Objective {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetEndeavor(Endeavor newEndeavor, NotificationChain msgs) {
+		msgs = eDynamicInverseAdd((InternalEObject)newEndeavor, EngineeringPackage.OBJECTIVE__ENDEAVOR, msgs);
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public void setEndeavor(Endeavor newEndeavor) {
 		eDynamicSet(EngineeringPackage.OBJECTIVE__ENDEAVOR, EngineeringPackage.Literals.OBJECTIVE__ENDEAVOR, newEndeavor);
@@ -204,6 +214,11 @@ public class ObjectiveImpl extends KeyResultImpl implements Objective {
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+			case EngineeringPackage.OBJECTIVE__ENDEAVOR:
+				Endeavor endeavor = basicGetEndeavor();
+				if (endeavor != null)
+					msgs = ((InternalEObject)endeavor).eInverseRemove(this, EngineeringPackage.ENDEAVOR__LINKED_OBJECTIVES, Endeavor.class, msgs);
+				return basicSetEndeavor((Endeavor)otherEnd, msgs);
 			case EngineeringPackage.OBJECTIVE__PARENT:
 				Objective parent = basicGetParent();
 				if (parent != null)
@@ -223,6 +238,8 @@ public class ObjectiveImpl extends KeyResultImpl implements Objective {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+			case EngineeringPackage.OBJECTIVE__ENDEAVOR:
+				return basicSetEndeavor(null, msgs);
 			case EngineeringPackage.OBJECTIVE__KEY_RESULTS:
 				return ((InternalEList<?>)getKeyResults()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.OBJECTIVE__CHILDREN:

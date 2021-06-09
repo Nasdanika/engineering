@@ -3,12 +3,14 @@ package org.nasdanika.engineering.gen;
 import java.util.Collection;
 import java.util.Collections;
 
-import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.engineering.Aim;
 import org.nasdanika.engineering.Alignment;
+import org.nasdanika.engineering.Endeavor;
 import org.nasdanika.engineering.EngineeringPackage;
+import org.nasdanika.engineering.KeyResult;
 import org.nasdanika.html.app.Action;
 import org.nasdanika.html.app.ViewGenerator;
 import org.nasdanika.html.bootstrap.Color;
@@ -39,10 +41,18 @@ public class AimViewAction<T extends Aim> extends NamedElementViewAction<T> {
 	
 	protected Object generateAlignmentsTable(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
 		Table table = viewGenerator.getBootstrapFactory().table().bordered().striped();
-		table.header().headerRow("Source", "Description").color(Color.INFO);
+		table.header().headerRow("Source", "Completion", "Description").color(Color.INFO);
 		for (Alignment alignment: getSemanticElement().getAlignments()) {
+			Object progressBar = null;
+			EObject aContainer = alignment.eContainer();
+			if (aContainer instanceof Endeavor) {
+				progressBar = progressBar(((Endeavor) aContainer).getCompletion(), viewGenerator);
+			} else if (aContainer instanceof KeyResult) {
+				progressBar = progressBar(((KeyResult) aContainer).getCompletion(), viewGenerator);				
+			}
 			table.body().row(
-					viewGenerator.link(ViewAction.adaptToViewActionNonNull(alignment.eContainer())),
+					viewGenerator.link(ViewAction.adaptToViewActionNonNull(aContainer)),
+					progressBar,
 					getModelElementDescription(alignment));
 		}
 		return table;
@@ -51,22 +61,19 @@ public class AimViewAction<T extends Aim> extends NamedElementViewAction<T> {
 	@Override
 	protected Collection<Action> featureActions(EStructuralFeature feature) {
 		if (feature == EngineeringPackage.Literals.AIM__ALIGNS) {
-			EList<Alignment> aligns = getSemanticElement().getAligns();
-			if (aligns.isEmpty()) {
+			if (getSemanticElement().getAligns().isEmpty()) {
 				return Collections.emptyList();
 			}
 			
 			return Collections.singleton(createFeatureViewAction(feature, this::generateAlignsTable));			
 		}
 		if (feature == EngineeringPackage.Literals.AIM__ALIGNMENTS) {
-			EList<Alignment> alignments = getSemanticElement().getAlignments();
-			if (alignments.isEmpty()) {
+			if (getSemanticElement().getAlignments().isEmpty()) {
 				return Collections.emptyList();
 			}
 			return Collections.singleton(createFeatureViewAction(feature, this::generateAlignmentsTable));			
 		}
 		return super.featureActions(feature);
 	}
-	
-	
+		
 }

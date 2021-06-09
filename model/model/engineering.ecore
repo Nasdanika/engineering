@@ -124,6 +124,18 @@
         <details key="documentation" value="Assignee's objectives for this endeavor."/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="linkedObjectives" upperBound="-1"
+        eType="#//Objective" derived="true" eOpposite="#//Objective/endeavor">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Objectives defined under [Engineer](Engineer.html) for this endeavor."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="allObjectives" upperBound="-1"
+        eType="#//Objective" derived="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="All objectives for this endeavor - a union of objectives and linkedObjectives."/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Increment" eSuperTypes="#//NamedElement #//Endeavor">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
@@ -1150,7 +1162,8 @@
     <eAnnotations source="urn:org.nasdanika">
       <details key="documentation-reference" value="doc/objective.md"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="endeavor" eType="#//Endeavor">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="endeavor" eType="#//Endeavor"
+        eOpposite="#//Endeavor/linkedObjectives">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Endeavor for which containing [engineer](Engineer.html) has this objective for. E.g. &quot;Achieve XYZ in Q2&quot;. Objectives can also be contained in endeavors directly. In this case they are assumed to be objectives of the assignee."/>
       </eAnnotations>

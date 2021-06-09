@@ -787,4 +787,12 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 		return super.getSectionStyle();
 	}
 	
+	public static Object progressBar(double completion, ViewGenerator viewGenerator) {
+		if (completion != Double.NaN && completion > 0.001) {
+			return viewGenerator.getBootstrapFactory().progressBar((int) (100 * completion));
+		}
+		return null;
+	}
+	
+	
 }

@@ -149,6 +149,14 @@ engineering-module:
        markdown-description: |+2
          Nested. Contain context properties and appearance. Properties and apperance are inherited by child profiles.
          Generation - utility methods to generate for a profile. Profiles reference to model element - included/excluded. A way to support multiple stakeholder views.                    
+     - name: ModelElement digest and forum subscriptions
+       markdown-description: |+2
+         Introduce digest operation or derived attribute. Computed from non-derived set features by computing feature value digest and then creating a YAML map of feature name -> feature digest and doing SHA-256 to compute object digest.
+         For references - feature element digest is simply URI of the target.
+         Subscriptions at forum level - this way it would be possible to subscribe for engineered elements too. Subscription features - subscriber (engineer), frequency - daily, weekly, ..., whether it is recursive, 
+         maybe filter(s) in MongoDB way - RegEx if string, feature name to RegEx or match spec if map. Generation process or another process loads the model and then tree-iterates via subscriptions and sends notifications to 
+         the notification service. The service is responsible for keeping history of last time notifications and notify only if time period has passed and digest changed.                       
+     - name: Appearance - features to show in tables
          
      ### === Done === ###    
      - name: Start/end from Issue and Increment to Endeavor

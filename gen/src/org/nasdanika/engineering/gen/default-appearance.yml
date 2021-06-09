@@ -46,6 +46,12 @@ model-elements:
         roles: none
       capacity:
         roles: feature-actions
+      objectives:
+        roles: element-actions/none 
+      linked-objectives:
+        roles: none 
+      all-objectives:
+        roles: feature-actions/section 
   engineered-capability:
     features:
       aligns:
@@ -129,6 +135,10 @@ model-elements:
         roles: element-actions 
       represents:
         roles: property 
+      objectives:
+        roles:
+          - element-actions/none 
+          - feature-actions/section 
   increment:
     features:
       issues:
@@ -169,5 +179,19 @@ model-elements:
         roles: none
       markdown-content:
         roles: none
+  key-result:
+    section-style: DEFAULT
+  objective:
+    features:
+      key-results:
+        roles: 
+          - element-actions/none
+          - feature-actions/section
+      children:
+        roles: element-actions/none
+      linked-objectives:
+        roles: none
+      sub-objectives:
+        roles: feature-actions/section
         
       

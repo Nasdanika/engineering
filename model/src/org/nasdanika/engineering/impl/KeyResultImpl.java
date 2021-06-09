@@ -99,6 +99,11 @@ public class KeyResultImpl extends AimImpl implements KeyResult {
 				weightTotal += aWeight;
 				completionTotal += aWeight * ((Endeavor) aContainer).getCompletion();
 			}
+			if (aContainer instanceof KeyResult) {
+				double aWeight = alignment.getWeight();
+				weightTotal += aWeight;
+				completionTotal += aWeight * ((KeyResult) aContainer).getCompletion();
+			}
 		}
 		
 		return weightTotal == 0 ? 0 : completionTotal / weightTotal;

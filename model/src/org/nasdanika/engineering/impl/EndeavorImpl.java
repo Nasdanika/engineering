@@ -5,8 +5,10 @@ package org.nasdanika.engineering.impl;
 import java.util.Collection;
 import java.util.Date;
 
+import org.apache.pdfbox.pdmodel.PDPageTree;
 import org.eclipse.emf.common.notify.NotificationChain;
-
+import org.eclipse.emf.common.util.BasicEList;
+import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
@@ -15,7 +17,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.InternalEList;
-
+import org.nasdanika.emf.EmfUtil;
 import org.nasdanika.engineering.Capacity;
 import org.nasdanika.engineering.Endeavor;
 import org.nasdanika.engineering.Engineer;
@@ -40,6 +42,8 @@ import org.nasdanika.engineering.Objective;
  *   <li>{@link org.nasdanika.engineering.impl.EndeavorImpl#getEnd <em>End</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EndeavorImpl#getCapacity <em>Capacity</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EndeavorImpl#getObjectives <em>Objectives</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.EndeavorImpl#getLinkedObjectives <em>Linked Objectives</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.EndeavorImpl#getAllObjectives <em>All Objectives</em>}</li>
  * </ul>
  *
  * @generated
@@ -279,6 +283,28 @@ public class EndeavorImpl extends MinimalEObjectImpl.Container implements Endeav
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public EList<Objective> getLinkedObjectives() {
+		return EmfUtil.getReferrers(this, EngineeringPackage.Literals.OBJECTIVE__ENDEAVOR);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public EList<Objective> getAllObjectives() {
+		BasicEList<Objective> ret = ECollections.newBasicEList(getObjectives());
+		ret.addAll(getLinkedObjectives());
+		return ret;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -292,6 +318,8 @@ public class EndeavorImpl extends MinimalEObjectImpl.Container implements Endeav
 				return basicSetAssignee((Engineer)otherEnd, msgs);
 			case EngineeringPackage.ENDEAVOR__CAPACITY:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getCapacity()).basicAdd(otherEnd, msgs);
+			case EngineeringPackage.ENDEAVOR__LINKED_OBJECTIVES:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getLinkedObjectives()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -310,6 +338,8 @@ public class EndeavorImpl extends MinimalEObjectImpl.Container implements Endeav
 				return ((InternalEList<?>)getCapacity()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.ENDEAVOR__OBJECTIVES:
 				return ((InternalEList<?>)getObjectives()).basicRemove(otherEnd, msgs);
+			case EngineeringPackage.ENDEAVOR__LINKED_OBJECTIVES:
+				return ((InternalEList<?>)getLinkedObjectives()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -341,6 +371,10 @@ public class EndeavorImpl extends MinimalEObjectImpl.Container implements Endeav
 				return getCapacity();
 			case EngineeringPackage.ENDEAVOR__OBJECTIVES:
 				return getObjectives();
+			case EngineeringPackage.ENDEAVOR__LINKED_OBJECTIVES:
+				return getLinkedObjectives();
+			case EngineeringPackage.ENDEAVOR__ALL_OBJECTIVES:
+				return getAllObjectives();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -370,6 +404,14 @@ public class EndeavorImpl extends MinimalEObjectImpl.Container implements Endeav
 				getObjectives().clear();
 				getObjectives().addAll((Collection<? extends Objective>)newValue);
 				return;
+			case EngineeringPackage.ENDEAVOR__LINKED_OBJECTIVES:
+				getLinkedObjectives().clear();
+				getLinkedObjectives().addAll((Collection<? extends Objective>)newValue);
+				return;
+			case EngineeringPackage.ENDEAVOR__ALL_OBJECTIVES:
+				getAllObjectives().clear();
+				getAllObjectives().addAll((Collection<? extends Objective>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -396,6 +438,12 @@ public class EndeavorImpl extends MinimalEObjectImpl.Container implements Endeav
 				return;
 			case EngineeringPackage.ENDEAVOR__OBJECTIVES:
 				getObjectives().clear();
+				return;
+			case EngineeringPackage.ENDEAVOR__LINKED_OBJECTIVES:
+				getLinkedObjectives().clear();
+				return;
+			case EngineeringPackage.ENDEAVOR__ALL_OBJECTIVES:
+				getAllObjectives().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -427,6 +475,10 @@ public class EndeavorImpl extends MinimalEObjectImpl.Container implements Endeav
 				return !getCapacity().isEmpty();
 			case EngineeringPackage.ENDEAVOR__OBJECTIVES:
 				return !getObjectives().isEmpty();
+			case EngineeringPackage.ENDEAVOR__LINKED_OBJECTIVES:
+				return !getLinkedObjectives().isEmpty();
+			case EngineeringPackage.ENDEAVOR__ALL_OBJECTIVES:
+				return !getAllObjectives().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

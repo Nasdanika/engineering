@@ -23,6 +23,7 @@ import org.nasdanika.common.Util;
 import org.nasdanika.common.persistence.ConfigurationException;
 import org.nasdanika.common.persistence.Marked;
 import org.nasdanika.emf.EObjectAdaptable;
+import org.nasdanika.emf.EmfUtil;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.ModelElement;
 import org.nasdanika.engineering.ModelElementAppearance;
@@ -436,28 +437,8 @@ public abstract class ModelElementImpl extends MinimalEObjectImpl.Container impl
 		throw new ConfigurationException("Could not find " + type.getName() + " with uri " + uri, EObjectAdaptable.adaptTo(this, Marked.class));
 	}
 	
-	@SuppressWarnings("unchecked")
 	protected <T extends EObject> EList<T> getReferrers(EReference eReference) {
-		EList<T> ret = new BasicInternalEList<>(EObject.class);
-		Resource res = eResource(); 
-		if (res != null) {
-			ResourceSet rSet = res.getResourceSet();
-			TreeIterator<?> cit = rSet == null ? res.getAllContents() : rSet. getAllContents();
-			while (cit.hasNext()) {
-				Object next = cit.next(); 
-				if (eReference.getEContainingClass().isInstance(next)) {
-					Object value = ((EObject) next).eGet(eReference);
-					if (eReference.isMany()) {
-						if (((Collection<?>) value).contains(this)) {
-							ret.add((T) next);
-						}
-					} else if (value == this) {
-						ret.add((T) next);
-					}					
-				}
-			}
-		}
-		return ret;
+		return EmfUtil.getReferrers(this, eReference);
 	}
 	
 	@SuppressWarnings("unchecked")

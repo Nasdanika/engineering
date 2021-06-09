@@ -4,12 +4,24 @@
 	  <parent>
 	    <artifactId>parent</artifactId>
 	    <groupId>org.nasdanika.engineering</groupId>
-	    <version>2021.5.4</version>
+	    <version>2021.6.1</version>
 	    <relativePath>..</relativePath>
 	  </parent>
 	<artifactId>gen</artifactId>
 	<packaging>jar</packaging>
 	<name>Nasdanika Engineering Generation Adapters</name>
+
+	<build>
+	    <resources>
+	        <resource>
+	            <directory>src</directory>
+	            <includes>
+	            	<include>org/nasdanika/engineering/gen/default-appearance.yml</include>
+	            	<include>org/nasdanika/engineering/gen/*.md</include>
+	            </includes>
+	        </resource>
+	    </resources>	
+	</build>
 	
 	<dependencies>
 		<dependency>

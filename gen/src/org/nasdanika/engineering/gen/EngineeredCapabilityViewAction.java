@@ -22,6 +22,7 @@ import org.nasdanika.engineering.EngineeredCapability;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.IssueCategory;
 import org.nasdanika.engineering.ModelElement;
+import org.nasdanika.engineering.Objective;
 import org.nasdanika.html.Fragment;
 import org.nasdanika.html.Tag;
 import org.nasdanika.html.TagName;
@@ -41,14 +42,11 @@ public class EngineeredCapabilityViewAction<T extends EngineeredCapability> exte
 	@Override
 	protected Object featureValue(EStructuralFeature feature, Object value, ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
 		if (feature == EngineeringPackage.Literals.ENDEAVOR__COMPLETION) {
-			double completion = getSemanticElement().getCompletion();
-			if (completion != Double.NaN && completion > 0.001) {
-				return viewGenerator.getBootstrapFactory().progressBar((int) (100 * completion));
-			}			
+			return progressBar(getSemanticElement().getCompletion(), viewGenerator);			
 		}
 		return super.featureValue(feature, value, viewGenerator, progressMonitor);
 	}
-	
+
 	protected Object generateAlignsTable(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
 		Table table = viewGenerator.getBootstrapFactory().table().bordered().striped();
 		table.header().headerRow("Aim", "Description").color(Color.INFO);
@@ -72,6 +70,25 @@ public class EngineeredCapabilityViewAction<T extends EngineeredCapability> exte
 			}
 			return Collections.singleton(createFeatureViewAction(feature, this::generateAlignsTable));
 		}
+		if (feature == EngineeringPackage.Literals.ENDEAVOR__OBJECTIVES) {
+			if (getSemanticElement().getObjectives().isEmpty()) {
+				return Collections.emptyList();
+			}
+			return Collections.singleton(createFeatureViewAction(feature, this::generateObjectivesTable));			
+		}
+		if (feature == EngineeringPackage.Literals.ENDEAVOR__LINKED_OBJECTIVES) {
+			if (getSemanticElement().getLinkedObjectives().isEmpty()) {
+				return Collections.emptyList();
+			}
+			return Collections.singleton(createFeatureViewAction(feature, this::generateLinkedObjectivesTable));			
+		}
+		if (feature == EngineeringPackage.Literals.ENDEAVOR__ALL_OBJECTIVES) {
+			if (getSemanticElement().getAllObjectives().isEmpty()) {
+				return Collections.emptyList();
+			}
+			return Collections.singleton(createFeatureViewAction(feature, this::generateAllObjectivesTable));			
+		}
+				
 		return super.featureActions(feature);
 	}
 	
@@ -186,5 +203,38 @@ public class EngineeredCapabilityViewAction<T extends EngineeredCapability> exte
 		allocationsSection.getRoles().add(Action.Role.SECTION);
 		return Collections.singleton(allocationsSection);		
 	}	
+		
+	protected Object generateObjectivesTable(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
+		Table table = viewGenerator.getBootstrapFactory().table().bordered().striped();
+		table.header().headerRow("Objective", "Completion").color(Color.INFO);
+		for (Objective objective: getSemanticElement().getObjectives()) {
+			table.body().row(
+					viewGenerator.link(ViewAction.adaptToViewActionNonNull(objective)),
+					progressBar(objective.getCompletion(), viewGenerator));
+		}
+		return table;
+	}				
+	
+	protected Object generateLinkedObjectivesTable(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
+		Table table = viewGenerator.getBootstrapFactory().table().bordered().striped();
+		table.header().headerRow("Objective", "Completion").color(Color.INFO);
+		for (Objective objective: getSemanticElement().getLinkedObjectives()) {
+			table.body().row(
+					viewGenerator.link(ViewAction.adaptToViewActionNonNull(objective)),
+					progressBar(objective.getCompletion(), viewGenerator));
+		}
+		return table;
+	}				
+	
+	protected Object generateAllObjectivesTable(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
+		Table table = viewGenerator.getBootstrapFactory().table().bordered().striped();
+		table.header().headerRow("Objective", "Completion").color(Color.INFO);
+		for (Objective objective: getSemanticElement().getAllObjectives()) {
+			table.body().row(
+					viewGenerator.link(ViewAction.adaptToViewActionNonNull(objective)),
+					progressBar(objective.getCompletion(), viewGenerator));
+		}
+		return table;
+	}				
 	
 }

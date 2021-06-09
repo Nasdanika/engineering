@@ -5,6 +5,7 @@ package org.nasdanika.engineering.impl;
 import java.util.Collection;
 import java.util.Date;
 import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -37,6 +38,8 @@ import org.nasdanika.engineering.Objective;
  *   <li>{@link org.nasdanika.engineering.impl.EngineeredCapabilityImpl#getEnd <em>End</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineeredCapabilityImpl#getCapacity <em>Capacity</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineeredCapabilityImpl#getObjectives <em>Objectives</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.EngineeredCapabilityImpl#getLinkedObjectives <em>Linked Objectives</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.EngineeredCapabilityImpl#getAllObjectives <em>All Objectives</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineeredCapabilityImpl#getAligns <em>Aligns</em>}</li>
  * </ul>
  *
@@ -282,6 +285,28 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public EList<Objective> getLinkedObjectives() {
+		return getReferrers(EngineeringPackage.Literals.OBJECTIVE__ENDEAVOR);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public EList<Objective> getAllObjectives() {
+		EList<Objective> ret = ECollections.newBasicEList(getObjectives());
+		ret.addAll(getLinkedObjectives());
+		return ret;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -306,6 +331,8 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 				return basicSetAssignee((Engineer)otherEnd, msgs);
 			case EngineeringPackage.ENGINEERED_CAPABILITY__CAPACITY:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getCapacity()).basicAdd(otherEnd, msgs);
+			case EngineeringPackage.ENGINEERED_CAPABILITY__LINKED_OBJECTIVES:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getLinkedObjectives()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -324,6 +351,8 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 				return ((InternalEList<?>)getCapacity()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.ENGINEERED_CAPABILITY__OBJECTIVES:
 				return ((InternalEList<?>)getObjectives()).basicRemove(otherEnd, msgs);
+			case EngineeringPackage.ENGINEERED_CAPABILITY__LINKED_OBJECTIVES:
+				return ((InternalEList<?>)getLinkedObjectives()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.ENGINEERED_CAPABILITY__ALIGNS:
 				return ((InternalEList<?>)getAligns()).basicRemove(otherEnd, msgs);
 		}
@@ -357,6 +386,10 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 				return getCapacity();
 			case EngineeringPackage.ENGINEERED_CAPABILITY__OBJECTIVES:
 				return getObjectives();
+			case EngineeringPackage.ENGINEERED_CAPABILITY__LINKED_OBJECTIVES:
+				return getLinkedObjectives();
+			case EngineeringPackage.ENGINEERED_CAPABILITY__ALL_OBJECTIVES:
+				return getAllObjectives();
 			case EngineeringPackage.ENGINEERED_CAPABILITY__ALIGNS:
 				return getAligns();
 		}
@@ -388,6 +421,14 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 				getObjectives().clear();
 				getObjectives().addAll((Collection<? extends Objective>)newValue);
 				return;
+			case EngineeringPackage.ENGINEERED_CAPABILITY__LINKED_OBJECTIVES:
+				getLinkedObjectives().clear();
+				getLinkedObjectives().addAll((Collection<? extends Objective>)newValue);
+				return;
+			case EngineeringPackage.ENGINEERED_CAPABILITY__ALL_OBJECTIVES:
+				getAllObjectives().clear();
+				getAllObjectives().addAll((Collection<? extends Objective>)newValue);
+				return;
 			case EngineeringPackage.ENGINEERED_CAPABILITY__ALIGNS:
 				getAligns().clear();
 				getAligns().addAll((Collection<? extends Alignment>)newValue);
@@ -418,6 +459,12 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 				return;
 			case EngineeringPackage.ENGINEERED_CAPABILITY__OBJECTIVES:
 				getObjectives().clear();
+				return;
+			case EngineeringPackage.ENGINEERED_CAPABILITY__LINKED_OBJECTIVES:
+				getLinkedObjectives().clear();
+				return;
+			case EngineeringPackage.ENGINEERED_CAPABILITY__ALL_OBJECTIVES:
+				getAllObjectives().clear();
 				return;
 			case EngineeringPackage.ENGINEERED_CAPABILITY__ALIGNS:
 				getAligns().clear();
@@ -452,6 +499,10 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 				return !getCapacity().isEmpty();
 			case EngineeringPackage.ENGINEERED_CAPABILITY__OBJECTIVES:
 				return !getObjectives().isEmpty();
+			case EngineeringPackage.ENGINEERED_CAPABILITY__LINKED_OBJECTIVES:
+				return !getLinkedObjectives().isEmpty();
+			case EngineeringPackage.ENGINEERED_CAPABILITY__ALL_OBJECTIVES:
+				return !getAllObjectives().isEmpty();
 			case EngineeringPackage.ENGINEERED_CAPABILITY__ALIGNS:
 				return !getAligns().isEmpty();
 		}
@@ -476,6 +527,8 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 				case EngineeringPackage.ENGINEERED_CAPABILITY__END: return EngineeringPackage.ENDEAVOR__END;
 				case EngineeringPackage.ENGINEERED_CAPABILITY__CAPACITY: return EngineeringPackage.ENDEAVOR__CAPACITY;
 				case EngineeringPackage.ENGINEERED_CAPABILITY__OBJECTIVES: return EngineeringPackage.ENDEAVOR__OBJECTIVES;
+				case EngineeringPackage.ENGINEERED_CAPABILITY__LINKED_OBJECTIVES: return EngineeringPackage.ENDEAVOR__LINKED_OBJECTIVES;
+				case EngineeringPackage.ENGINEERED_CAPABILITY__ALL_OBJECTIVES: return EngineeringPackage.ENDEAVOR__ALL_OBJECTIVES;
 				default: return -1;
 			}
 		}
@@ -500,6 +553,8 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 				case EngineeringPackage.ENDEAVOR__END: return EngineeringPackage.ENGINEERED_CAPABILITY__END;
 				case EngineeringPackage.ENDEAVOR__CAPACITY: return EngineeringPackage.ENGINEERED_CAPABILITY__CAPACITY;
 				case EngineeringPackage.ENDEAVOR__OBJECTIVES: return EngineeringPackage.ENGINEERED_CAPABILITY__OBJECTIVES;
+				case EngineeringPackage.ENDEAVOR__LINKED_OBJECTIVES: return EngineeringPackage.ENGINEERED_CAPABILITY__LINKED_OBJECTIVES;
+				case EngineeringPackage.ENDEAVOR__ALL_OBJECTIVES: return EngineeringPackage.ENGINEERED_CAPABILITY__ALL_OBJECTIVES;
 				default: return -1;
 			}
 		}

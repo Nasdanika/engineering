@@ -27,6 +27,7 @@ import org.nasdanika.engineering.Increment;
 import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.IssueCategory;
 import org.nasdanika.engineering.NamedElement;
+import org.nasdanika.engineering.Objective;
 import org.nasdanika.engineering.Release;
 import org.nasdanika.html.Fragment;
 import org.nasdanika.html.HTMLFactory;
@@ -126,21 +127,29 @@ public class EngineerViewAction<T extends Engineer> extends PersonaViewAction<T>
 			assignmentsAction.setSectionStyle(assignmentsAction.getSectionChildren().size() > 1 ? SectionStyle.CARD_PILL : SectionStyle.DEFAULT);
 			return assignmentsAction.getSectionChildren().isEmpty() ? Collections.emptyList() : Collections.singleton(assignmentsAction);
 		}
-		
-		// Single action for capacity and designations on which list by endeavor capacity and designations.
-		
-		if (feature == EngineeringPackage.Literals.ENGINEER__CAPACITY) {
-			// TODO
-			return Collections.emptyList();
-		}
-		
-		if (feature == EngineeringPackage.Literals.ENGINEER__DESIGNATIONS) {
-			// TODO
-			return Collections.emptyList();
-		}
 
+		if (feature == EngineeringPackage.Literals.ENGINEER__OBJECTIVES) {
+			if (getSemanticElement().getObjectives().isEmpty()) {
+				return Collections.emptyList();
+			}
+			return Collections.singleton(createFeatureViewAction(feature, this::generateObjectivesTable));			
+		}		
+		
 		return super.featureActions(feature);
 	}
+	
+	protected Object generateObjectivesTable(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
+		Table table = viewGenerator.getBootstrapFactory().table().bordered().striped();
+		table.header().headerRow("Objective", "Endeavor", "Completion").color(Color.INFO);
+		for (Objective objective: getSemanticElement().getObjectives()) {
+			Endeavor endeavor = objective.getEndeavor();
+			table.body().row(
+					viewGenerator.link(ViewAction.adaptToViewActionNonNull(objective)),
+					endeavor == null ? null : viewGenerator.link(ViewAction.adaptToViewActionNonNull(endeavor)),
+					progressBar(objective.getCompletion(), viewGenerator));
+		}
+		return table;
+	}					
 		
 	@Override
 	protected Object featureContent(EStructuralFeature feature, ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {

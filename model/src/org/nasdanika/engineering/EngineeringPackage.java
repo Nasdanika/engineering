@@ -369,13 +369,31 @@ public interface EngineeringPackage extends EPackage {
 	int ENDEAVOR__OBJECTIVES = 8;
 
 	/**
+	 * The feature id for the '<em><b>Linked Objectives</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENDEAVOR__LINKED_OBJECTIVES = 9;
+
+	/**
+	 * The feature id for the '<em><b>All Objectives</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENDEAVOR__ALL_OBJECTIVES = 10;
+
+	/**
 	 * The number of structural features of the '<em>Endeavor</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENDEAVOR_FEATURE_COUNT = 9;
+	int ENDEAVOR_FEATURE_COUNT = 11;
 
 	/**
 	 * The number of operations of the '<em>Endeavor</em>' class.
@@ -620,13 +638,31 @@ public interface EngineeringPackage extends EPackage {
 	int INCREMENT__OBJECTIVES = NAMED_ELEMENT_FEATURE_COUNT + 8;
 
 	/**
+	 * The feature id for the '<em><b>Linked Objectives</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INCREMENT__LINKED_OBJECTIVES = NAMED_ELEMENT_FEATURE_COUNT + 9;
+
+	/**
+	 * The feature id for the '<em><b>All Objectives</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INCREMENT__ALL_OBJECTIVES = NAMED_ELEMENT_FEATURE_COUNT + 10;
+
+	/**
 	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INCREMENT__CHILDREN = NAMED_ELEMENT_FEATURE_COUNT + 9;
+	int INCREMENT__CHILDREN = NAMED_ELEMENT_FEATURE_COUNT + 11;
 
 	/**
 	 * The feature id for the '<em><b>Issues</b></em>' reference list.
@@ -635,7 +671,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INCREMENT__ISSUES = NAMED_ELEMENT_FEATURE_COUNT + 10;
+	int INCREMENT__ISSUES = NAMED_ELEMENT_FEATURE_COUNT + 12;
 
 	/**
 	 * The feature id for the '<em><b>Releases</b></em>' reference list.
@@ -644,7 +680,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INCREMENT__RELEASES = NAMED_ELEMENT_FEATURE_COUNT + 11;
+	int INCREMENT__RELEASES = NAMED_ELEMENT_FEATURE_COUNT + 13;
 
 	/**
 	 * The number of structural features of the '<em>Increment</em>' class.
@@ -653,7 +689,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INCREMENT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 12;
+	int INCREMENT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 14;
 
 	/**
 	 * The number of operations of the '<em>Increment</em>' class.
@@ -1208,13 +1244,31 @@ public interface EngineeringPackage extends EPackage {
 	int ENGINEERED_CAPABILITY__OBJECTIVES = CAPABILITY_FEATURE_COUNT + 8;
 
 	/**
+	 * The feature id for the '<em><b>Linked Objectives</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEERED_CAPABILITY__LINKED_OBJECTIVES = CAPABILITY_FEATURE_COUNT + 9;
+
+	/**
+	 * The feature id for the '<em><b>All Objectives</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEERED_CAPABILITY__ALL_OBJECTIVES = CAPABILITY_FEATURE_COUNT + 10;
+
+	/**
 	 * The feature id for the '<em><b>Aligns</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEERED_CAPABILITY__ALIGNS = CAPABILITY_FEATURE_COUNT + 9;
+	int ENGINEERED_CAPABILITY__ALIGNS = CAPABILITY_FEATURE_COUNT + 11;
 
 	/**
 	 * The number of structural features of the '<em>Engineered Capability</em>' class.
@@ -1223,7 +1277,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEERED_CAPABILITY_FEATURE_COUNT = CAPABILITY_FEATURE_COUNT + 10;
+	int ENGINEERED_CAPABILITY_FEATURE_COUNT = CAPABILITY_FEATURE_COUNT + 12;
 
 	/**
 	 * The number of operations of the '<em>Engineered Capability</em>' class.
@@ -1474,6 +1528,24 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int ISSUE__OBJECTIVES = ENGINEERED_CAPABILITY__OBJECTIVES;
+
+	/**
+	 * The feature id for the '<em><b>Linked Objectives</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE__LINKED_OBJECTIVES = ENGINEERED_CAPABILITY__LINKED_OBJECTIVES;
+
+	/**
+	 * The feature id for the '<em><b>All Objectives</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE__ALL_OBJECTIVES = ENGINEERED_CAPABILITY__ALL_OBJECTIVES;
 
 	/**
 	 * The feature id for the '<em><b>Aligns</b></em>' containment reference list.
@@ -3529,6 +3601,24 @@ public interface EngineeringPackage extends EPackage {
 	int RELEASE__OBJECTIVES = ENGINEERED_CAPABILITY__OBJECTIVES;
 
 	/**
+	 * The feature id for the '<em><b>Linked Objectives</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RELEASE__LINKED_OBJECTIVES = ENGINEERED_CAPABILITY__LINKED_OBJECTIVES;
+
+	/**
+	 * The feature id for the '<em><b>All Objectives</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RELEASE__ALL_OBJECTIVES = ENGINEERED_CAPABILITY__ALL_OBJECTIVES;
+
+	/**
 	 * The feature id for the '<em><b>Aligns</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3752,6 +3842,24 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int FEATURE__OBJECTIVES = ENGINEERED_CAPABILITY__OBJECTIVES;
+
+	/**
+	 * The feature id for the '<em><b>Linked Objectives</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE__LINKED_OBJECTIVES = ENGINEERED_CAPABILITY__LINKED_OBJECTIVES;
+
+	/**
+	 * The feature id for the '<em><b>All Objectives</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE__ALL_OBJECTIVES = ENGINEERED_CAPABILITY__ALL_OBJECTIVES;
 
 	/**
 	 * The feature id for the '<em><b>Aligns</b></em>' containment reference list.
@@ -7086,6 +7194,28 @@ public interface EngineeringPackage extends EPackage {
 	EReference getEndeavor_Objectives();
 
 	/**
+	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.Endeavor#getLinkedObjectives <em>Linked Objectives</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Linked Objectives</em>'.
+	 * @see org.nasdanika.engineering.Endeavor#getLinkedObjectives()
+	 * @see #getEndeavor()
+	 * @generated
+	 */
+	EReference getEndeavor_LinkedObjectives();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.Endeavor#getAllObjectives <em>All Objectives</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>All Objectives</em>'.
+	 * @see org.nasdanika.engineering.Endeavor#getAllObjectives()
+	 * @see #getEndeavor()
+	 * @generated
+	 */
+	EReference getEndeavor_AllObjectives();
+
+	/**
 	 * Returns the meta object for class '{@link org.nasdanika.engineering.EngineeredElement <em>Engineered Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9087,6 +9217,22 @@ public interface EngineeringPackage extends EPackage {
 		 * @generated
 		 */
 		EReference ENDEAVOR__OBJECTIVES = eINSTANCE.getEndeavor_Objectives();
+
+		/**
+		 * The meta object literal for the '<em><b>Linked Objectives</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ENDEAVOR__LINKED_OBJECTIVES = eINSTANCE.getEndeavor_LinkedObjectives();
+
+		/**
+		 * The meta object literal for the '<em><b>All Objectives</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ENDEAVOR__ALL_OBJECTIVES = eINSTANCE.getEndeavor_AllObjectives();
 
 		/**
 		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.EngineeredElementImpl <em>Engineered Element</em>}' class.

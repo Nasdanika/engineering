@@ -361,7 +361,7 @@ public class TestModel {
 		Object actionFactory = loader.loadYaml(new File("model\\nasdanika\\doc-site.yml"), progressMonitor);
 		Action action = Util.call(Util.<Action>asSupplierFactory(actionFactory).create(context), progressMonitor, null);
 		
-		FileSystemContainer output = new FileSystemContainer(new File("..\\docs"));
+		FileSystemContainer output = new FileSystemContainer(new File("target\\site")); // ..\\docs - output without "documentation"?
 		BiFunction<String, InputStream, String> decoder = Util.INPUT_STREAM_TO_STRING_DECODER;
 		BiFunction<String, Object, InputStream> encoder = Util.OBJECT_TO_INPUT_STREAM_ENCODER;
 		Container<String> container = output.stateAdapter().adapt(decoder, encoder);

@@ -28,6 +28,7 @@ import org.eclipse.emf.common.util.EList;
 public interface Objective extends KeyResult {
 	/**
 	 * Returns the value of the '<em><b>Endeavor</b></em>' reference.
+	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Endeavor#getLinkedObjectives <em>Linked Objectives</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -36,7 +37,8 @@ public interface Objective extends KeyResult {
 	 * @return the value of the '<em>Endeavor</em>' reference.
 	 * @see #setEndeavor(Endeavor)
 	 * @see org.nasdanika.engineering.EngineeringPackage#getObjective_Endeavor()
-	 * @model
+	 * @see org.nasdanika.engineering.Endeavor#getLinkedObjectives
+	 * @model opposite="linkedObjectives"
 	 * @generated
 	 */
 	Endeavor getEndeavor();

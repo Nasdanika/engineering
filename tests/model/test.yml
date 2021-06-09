@@ -1,6 +1,6 @@
 engineering-organization:
    name: Test
-   path: test
+   path: test   
    appearance:
      features:
        issue-categories:
@@ -23,6 +23,12 @@ engineering-organization:
         name: 2021
         start: 1/1/2021
         end: 12/31/2021
+        objectives:
+          - name: Test objective for 2021
+            path: to-2021
+            key-results:
+              - name: Key result 1 for 2021
+                path: kr-1                
         children:
            - path: q2
              name: Q2
@@ -72,7 +78,14 @@ engineering-organization:
    engineers:
      - engineering-engineer:
          name: Pavel
-         path: pv          
+         path: pv    
+         objectives:
+           - name: Pavel's objective for 2021
+             aligns: test:increments/2021/objectives/to-2021/key-results/kr-1
+             endeavor: test:increments/2021             
+             children: 
+               - name: Pavel's objective for Q2 2021
+                 endeavor: test:increments/2021/children/q2                                                  
          capacity:
            - endeavor: test:increments/2021/children/q2/children/jun
              effort: 50
@@ -132,7 +145,8 @@ engineering-organization:
            - name: Issue 3         
              effort: 10
              contributes-to: test:modules/test/features/my-feature
-             assignee: test:engineers/pv                 
+             assignee: test:engineers/pv
+             aligns: test:increments/2021/objectives/to-2021/key-results/kr-1                              
              children:
                - name: Issue 3.1         
                  effort: 7

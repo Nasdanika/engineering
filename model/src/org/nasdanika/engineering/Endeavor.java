@@ -24,6 +24,8 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.nasdanika.engineering.Endeavor#getEnd <em>End</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Endeavor#getCapacity <em>Capacity</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Endeavor#getObjectives <em>Objectives</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.Endeavor#getLinkedObjectives <em>Linked Objectives</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.Endeavor#getAllObjectives <em>All Objectives</em>}</li>
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getEndeavor()
@@ -209,5 +211,37 @@ public interface Endeavor extends EObject {
 	 * @generated
 	 */
 	EList<Objective> getObjectives();
+
+	/**
+	 * Returns the value of the '<em><b>Linked Objectives</b></em>' reference list.
+	 * The list contents are of type {@link org.nasdanika.engineering.Objective}.
+	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Objective#getEndeavor <em>Endeavor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Objectives defined under [Engineer](Engineer.html) for this endeavor.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Linked Objectives</em>' reference list.
+	 * @see org.nasdanika.engineering.EngineeringPackage#getEndeavor_LinkedObjectives()
+	 * @see org.nasdanika.engineering.Objective#getEndeavor
+	 * @model opposite="endeavor" derived="true"
+	 * @generated
+	 */
+	EList<Objective> getLinkedObjectives();
+
+	/**
+	 * Returns the value of the '<em><b>All Objectives</b></em>' reference list.
+	 * The list contents are of type {@link org.nasdanika.engineering.Objective}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * All objectives for this endeavor - a union of objectives and linkedObjectives.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>All Objectives</em>' reference list.
+	 * @see org.nasdanika.engineering.EngineeringPackage#getEndeavor_AllObjectives()
+	 * @model derived="true"
+	 * @generated
+	 */
+	EList<Objective> getAllObjectives();
 
 } // Endeavor

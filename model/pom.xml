@@ -4,7 +4,7 @@
 	  <parent>
 	    <artifactId>parent</artifactId>
 	    <groupId>org.nasdanika.engineering</groupId>
-	    <version>2021.5.4</version>
+	    <version>2021.6.1</version>
 	    <relativePath>..</relativePath>
 	  </parent>
 	<artifactId>model</artifactId>
@@ -31,12 +31,10 @@
 			<artifactId>emf</artifactId>
 			<version>${core.version}</version>
 		</dependency>
-		<!-- 
 		<dependency>
-			<groupId>org.nasdanika.html.app</groupId>
-			<artifactId>emf</artifactId>
+			<groupId>org.nasdanika.html</groupId>
+			<artifactId>app</artifactId>
 			<version>${html.version}</version>
 		</dependency>
- 		-->		
 	</dependencies>
 </project>
