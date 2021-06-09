@@ -319,13 +319,22 @@ public interface EngineeringFactory extends EFactory {
 	Document createDocument();
 
 	/**
-	 * Returns a new object of class '<em>Table Of Contents</em>'.
+	 * Returns a new object of class '<em>Named Element Reference</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Table Of Contents</em>'.
+	 * @return a new object of class '<em>Named Element Reference</em>'.
 	 * @generated
 	 */
-	TableOfContents createTableOfContents();
+	NamedElementReference createNamedElementReference();
+
+	/**
+	 * Returns a new object of class '<em>Link</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Link</em>'.
+	 * @generated
+	 */
+	Link createLink();
 
 	/**
 	 * Returns a new object of class '<em>Message</em>'.

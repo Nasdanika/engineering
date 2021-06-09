@@ -31,5 +31,12 @@
 			<artifactId>emf</artifactId>
 			<version>${core.version}</version>
 		</dependency>
+		<!-- 
+		<dependency>
+			<groupId>org.nasdanika.html.app</groupId>
+			<artifactId>emf</artifactId>
+			<version>${html.version}</version>
+		</dependency>
+ 		-->		
 	</dependencies>
 </project>

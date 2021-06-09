@@ -8,6 +8,7 @@
   <foreignModel>engineering.ecore</foreignModel>
   <genPackages prefix="Engineering" basePackage="org.nasdanika" disposableProviderFactory="true"
       ecorePackage="engineering.ecore#/">
+    <genDataTypes ecoreDataType="engineering.ecore#//SectionStyle"/>
     <genClasses image="false" ecoreClass="engineering.ecore#//Adaptable"/>
     <genClasses image="false" ecoreClass="engineering.ecore#//ModelElement">
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//ModelElement/uri"/>
@@ -195,6 +196,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Appearance/description"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Appearance/markdownDescription"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Appearance/roles"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Appearance/sectionStyle"/>
     </genClasses>
     <genClasses ecoreClass="engineering.ecore#//ModelElementAppearance">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//ModelElementAppearance/features"/>
@@ -211,14 +213,16 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//FeatureAppearance/category"/>
     </genClasses>
     <genClasses ecoreClass="engineering.ecore#//Document">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//Document/tableOfContents"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//Document/sections"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Document/content"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Document/markdownContent"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute engineering.ecore#//Document/tableOfContents"/>
     </genClasses>
-    <genClasses ecoreClass="engineering.ecore#//TableOfContents">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//TableOfContents/depth"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//TableOfContents/tooltips"/>
+    <genClasses ecoreClass="engineering.ecore#//NamedElementReference">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//NamedElementReference/target"/>
+    </genClasses>
+    <genClasses ecoreClass="engineering.ecore#//Link">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Link/target"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

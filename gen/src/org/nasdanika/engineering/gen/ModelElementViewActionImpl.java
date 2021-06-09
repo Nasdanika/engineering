@@ -126,7 +126,7 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 		if (!Util.isBlank(markdownDescription)) {
 			String markdown = context.interpolateToString(markdownDescription);
 			MarkdownHelper markdownHelper = context.computingContext().get(MarkdownHelper.class, MarkdownHelper.INSTANCE);
-			ret.append(markdownHelper.markdownToHtml(markdown));
+			ret.append("<div class=\"markdown-body\">").append(markdownHelper.markdownToHtml(markdown)).append("</div>");
 		}
 		return ret.toString();
 	}
@@ -764,6 +764,27 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 			return Collections.singleton(createFeatureViewAction(feature, this::generateResourcesTable));
 		}
 		return super.featureActions(feature);
+	}
+	
+	@Override
+	public SectionStyle getSectionStyle() {
+		ModelElementAppearance appearance = getSemanticElement().getAppearance();
+		if (appearance != null) {
+			SectionStyle sectionStyle = appearance.getSectionStyle();
+			if (sectionStyle != null) {
+				return sectionStyle;
+			}
+		}
+		
+		for (EClass eClass: EmfUtil.lineage(getSemanticElement().eClass())) {
+			for (ModelElementAppearance classAppearance: factory.getAppearance(eClass)) {
+				SectionStyle sectionStyle = classAppearance.getSectionStyle();
+				if (sectionStyle != null) {
+					return sectionStyle;
+				}
+			}
+		}
+		return super.getSectionStyle();
 	}
 	
 }

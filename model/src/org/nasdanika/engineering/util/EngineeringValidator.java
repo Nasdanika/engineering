@@ -38,19 +38,21 @@ import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.IssueCategory;
 import org.nasdanika.engineering.IssueStatus;
 import org.nasdanika.engineering.Journey;
+import org.nasdanika.engineering.Link;
 import org.nasdanika.engineering.Message;
 import org.nasdanika.engineering.ModelElement;
 import org.nasdanika.engineering.ModelElementAppearance;
 import org.nasdanika.engineering.NamedElement;
+import org.nasdanika.engineering.NamedElementReference;
 import org.nasdanika.engineering.Note;
 import org.nasdanika.engineering.Organization;
 import org.nasdanika.engineering.Persona;
 import org.nasdanika.engineering.Principle;
 import org.nasdanika.engineering.Product;
 import org.nasdanika.engineering.Release;
-import org.nasdanika.engineering.TableOfContents;
 import org.nasdanika.engineering.Topic;
 import org.nasdanika.engineering.Transition;
+import org.nasdanika.html.app.SectionStyle;
 
 /**
  * <!-- begin-user-doc -->
@@ -206,8 +208,12 @@ public class EngineeringValidator extends EObjectValidator {
 				return validateFeatureAppearance((FeatureAppearance)value, diagnostics, context);
 			case EngineeringPackage.DOCUMENT:
 				return validateDocument((Document)value, diagnostics, context);
-			case EngineeringPackage.TABLE_OF_CONTENTS:
-				return validateTableOfContents((TableOfContents)value, diagnostics, context);
+			case EngineeringPackage.NAMED_ELEMENT_REFERENCE:
+				return validateNamedElementReference((NamedElementReference)value, diagnostics, context);
+			case EngineeringPackage.LINK:
+				return validateLink((Link)value, diagnostics, context);
+			case EngineeringPackage.SECTION_STYLE:
+				return validateSectionStyle((SectionStyle)value, diagnostics, context);
 			default:
 				return true;
 		}
@@ -968,8 +974,26 @@ public class EngineeringValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateTableOfContents(TableOfContents tableOfContents, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(tableOfContents, diagnostics, context);
+	public boolean validateNamedElementReference(NamedElementReference namedElementReference, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(namedElementReference, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateLink(Link link, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(link, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateSectionStyle(SectionStyle sectionStyle, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return true;
 	}
 
 	/**

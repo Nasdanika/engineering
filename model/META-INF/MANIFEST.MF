@@ -14,7 +14,8 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
  org.nasdanika.ncore;visibility:=reexport,
  org.eclipse.emf.ecore.xmi;bundle-version="2.15.0";visibility:=reexport,
- org.apache.commons.codec;bundle-version="1.14.0"
+ org.apache.commons.codec;bundle-version="1.14.0",
+ org.nasdanika.html.app;bundle-version="2021.3.0"
 Bundle-ActivationPolicy: lazy
 Automatic-Module-Name: org.nasdanika.engineering
 Bundle-Activator: org.nasdanika.engineering.util.Activator

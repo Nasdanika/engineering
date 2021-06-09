@@ -113,7 +113,7 @@ engineering-module:
        markdown-description: Add to documentation.             
      - name: Documents and sections
        markdown-description: |+2
-         Engineered elements, partial support of action configuration - section style. Content is displayed in the first nav, inherited info in the second. 
+         Engineered elements, partial support of action configuration - section style, section role - e.g. a section can be shown as context action or on the content panels - left or right. Category support too. Content is displayed in the first nav, inherited info in the second. 
          Other options are dialog, collapsible, and context action which calls super.doGenerate() - do not cache. Add support of resources and directories in the UI where to keep documents. 
          Document extends section. Table of contents configuration (not component) - location (e.g. right navigation), style - list/table, title (optional), depth.              
      - name: Extract ModelElement, NamedElement, Appearance, ... to a common model

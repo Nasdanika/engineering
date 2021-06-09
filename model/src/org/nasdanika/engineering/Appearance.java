@@ -5,6 +5,7 @@ package org.nasdanika.engineering;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
+import org.nasdanika.html.app.SectionStyle;
 
 /**
  * <!-- begin-user-doc -->
@@ -19,6 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.nasdanika.engineering.Appearance#getDescription <em>Description</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Appearance#getMarkdownDescription <em>Markdown Description</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Appearance#getRoles <em>Roles</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.Appearance#getSectionStyle <em>Section Style</em>}</li>
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getAppearance()
@@ -140,5 +142,27 @@ public interface Appearance extends EObject {
 	 * @generated
 	 */
 	EList<String> getRoles();
+
+	/**
+	 * Returns the value of the '<em><b>Section Style</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Section Style</em>' attribute.
+	 * @see #setSectionStyle(SectionStyle)
+	 * @see org.nasdanika.engineering.EngineeringPackage#getAppearance_SectionStyle()
+	 * @model dataType="org.nasdanika.engineering.SectionStyle"
+	 * @generated
+	 */
+	SectionStyle getSectionStyle();
+
+	/**
+	 * Sets the value of the '{@link org.nasdanika.engineering.Appearance#getSectionStyle <em>Section Style</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Section Style</em>' attribute.
+	 * @see #getSectionStyle()
+	 * @generated
+	 */
+	void setSectionStyle(SectionStyle value);
 
 } // Appearance

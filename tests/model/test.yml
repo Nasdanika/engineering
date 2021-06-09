@@ -178,6 +178,7 @@ engineering-organization:
            - engineering-document: 
                name: Test document
                path: test-document
+               table-of-contents: true
                markdown-description: Document ``description``...
                markdown-content: |+2
                  Some content...

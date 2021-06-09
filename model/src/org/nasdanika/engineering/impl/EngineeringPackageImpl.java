@@ -5,6 +5,7 @@ package org.nasdanika.engineering.impl;
 import java.util.Map;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -40,20 +41,22 @@ import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.IssueCategory;
 import org.nasdanika.engineering.IssueStatus;
 import org.nasdanika.engineering.Journey;
+import org.nasdanika.engineering.Link;
 import org.nasdanika.engineering.Message;
 import org.nasdanika.engineering.ModelElement;
 import org.nasdanika.engineering.ModelElementAppearance;
 import org.nasdanika.engineering.NamedElement;
+import org.nasdanika.engineering.NamedElementReference;
 import org.nasdanika.engineering.Note;
 import org.nasdanika.engineering.Organization;
 import org.nasdanika.engineering.Persona;
 import org.nasdanika.engineering.Principle;
 import org.nasdanika.engineering.Product;
 import org.nasdanika.engineering.Release;
-import org.nasdanika.engineering.TableOfContents;
 import org.nasdanika.engineering.Topic;
 import org.nasdanika.engineering.Transition;
 import org.nasdanika.engineering.util.EngineeringValidator;
+import org.nasdanika.html.app.SectionStyle;
 
 /**
  * <!-- begin-user-doc -->
@@ -347,7 +350,21 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass tableOfContentsEClass = null;
+	private EClass namedElementReferenceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass linkEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType sectionStyleEDataType = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1943,6 +1960,16 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
+	public EAttribute getAppearance_SectionStyle() {
+		return (EAttribute)appearanceEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getModelElementAppearance() {
 		return modelElementAppearanceEClass;
 	}
@@ -2053,37 +2080,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EReference getDocument_TableOfContents() {
-		return (EReference)documentEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getDocument_Sections() {
-		return (EReference)documentEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getDocument_Content() {
-		return (EAttribute)documentEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getDocument_MarkdownContent() {
+	public EAttribute getDocument_TableOfContents() {
 		return (EAttribute)documentEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -2093,8 +2090,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EClass getTableOfContents() {
-		return tableOfContentsEClass;
+	public EClass getNamedElementReference() {
+		return namedElementReferenceEClass;
 	}
 
 	/**
@@ -2103,8 +2100,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EAttribute getTableOfContents_Depth() {
-		return (EAttribute)tableOfContentsEClass.getEStructuralFeatures().get(0);
+	public EReference getNamedElementReference_Target() {
+		return (EReference)namedElementReferenceEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -2113,8 +2110,58 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EAttribute getTableOfContents_Tooltips() {
-		return (EAttribute)tableOfContentsEClass.getEStructuralFeatures().get(1);
+	public EClass getLink() {
+		return linkEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getLink_Target() {
+		return (EAttribute)linkEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getDocument_Sections() {
+		return (EReference)documentEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getDocument_Content() {
+		return (EAttribute)documentEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getDocument_MarkdownContent() {
+		return (EAttribute)documentEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EDataType getSectionStyle() {
+		return sectionStyleEDataType;
 	}
 
 	/**
@@ -2365,6 +2412,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		createEAttribute(appearanceEClass, APPEARANCE__DESCRIPTION);
 		createEAttribute(appearanceEClass, APPEARANCE__MARKDOWN_DESCRIPTION);
 		createEAttribute(appearanceEClass, APPEARANCE__ROLES);
+		createEAttribute(appearanceEClass, APPEARANCE__SECTION_STYLE);
 
 		modelElementAppearanceEClass = createEClass(MODEL_ELEMENT_APPEARANCE);
 		createEReference(modelElementAppearanceEClass, MODEL_ELEMENT_APPEARANCE__FEATURES);
@@ -2381,14 +2429,19 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		createEAttribute(featureAppearanceEClass, FEATURE_APPEARANCE__CATEGORY);
 
 		documentEClass = createEClass(DOCUMENT);
-		createEReference(documentEClass, DOCUMENT__TABLE_OF_CONTENTS);
 		createEReference(documentEClass, DOCUMENT__SECTIONS);
 		createEAttribute(documentEClass, DOCUMENT__CONTENT);
 		createEAttribute(documentEClass, DOCUMENT__MARKDOWN_CONTENT);
+		createEAttribute(documentEClass, DOCUMENT__TABLE_OF_CONTENTS);
 
-		tableOfContentsEClass = createEClass(TABLE_OF_CONTENTS);
-		createEAttribute(tableOfContentsEClass, TABLE_OF_CONTENTS__DEPTH);
-		createEAttribute(tableOfContentsEClass, TABLE_OF_CONTENTS__TOOLTIPS);
+		namedElementReferenceEClass = createEClass(NAMED_ELEMENT_REFERENCE);
+		createEReference(namedElementReferenceEClass, NAMED_ELEMENT_REFERENCE__TARGET);
+
+		linkEClass = createEClass(LINK);
+		createEAttribute(linkEClass, LINK__TARGET);
+
+		// Create data types
+		sectionStyleEDataType = createEDataType(SECTION_STYLE);
 	}
 
 	/**
@@ -2456,6 +2509,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		modelElementAppearanceEClass.getESuperTypes().add(this.getAppearance());
 		featureAppearanceEClass.getESuperTypes().add(this.getAppearance());
 		documentEClass.getESuperTypes().add(this.getEngineeredElement());
+		namedElementReferenceEClass.getESuperTypes().add(this.getNamedElement());
+		linkEClass.getESuperTypes().add(this.getNamedElement());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(adaptableEClass, Adaptable.class, "Adaptable", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
@@ -2647,6 +2702,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		initEAttribute(getAppearance_Description(), ecorePackage.getEString(), "description", null, 0, 1, Appearance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAppearance_MarkdownDescription(), ecorePackage.getEString(), "markdownDescription", null, 0, 1, Appearance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAppearance_Roles(), ecorePackage.getEString(), "roles", null, 0, -1, Appearance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAppearance_SectionStyle(), this.getSectionStyle(), "sectionStyle", null, 0, 1, Appearance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(modelElementAppearanceEClass, ModelElementAppearance.class, "ModelElementAppearance", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getModelElementAppearance_Features(), this.getFeatureAppearanceEntry(), null, "features", null, 0, -1, ModelElementAppearance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2663,14 +2719,19 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		initEAttribute(getFeatureAppearance_Category(), ecorePackage.getEBooleanObject(), "category", null, 0, 1, FeatureAppearance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(documentEClass, Document.class, "Document", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getDocument_TableOfContents(), this.getTableOfContents(), null, "tableOfContents", null, 0, 1, Document.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDocument_Sections(), this.getDocument(), null, "sections", null, 0, -1, Document.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDocument_Content(), ecorePackage.getEString(), "content", null, 0, 1, Document.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDocument_MarkdownContent(), ecorePackage.getEString(), "markdownContent", null, 0, 1, Document.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDocument_TableOfContents(), ecorePackage.getEBoolean(), "tableOfContents", null, 0, 1, Document.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(tableOfContentsEClass, TableOfContents.class, "TableOfContents", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getTableOfContents_Depth(), ecorePackage.getEInt(), "depth", "-1", 0, 1, TableOfContents.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTableOfContents_Tooltips(), ecorePackage.getEBoolean(), "tooltips", null, 0, 1, TableOfContents.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(namedElementReferenceEClass, NamedElementReference.class, "NamedElementReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getNamedElementReference_Target(), this.getNamedElement(), null, "target", null, 1, 1, NamedElementReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(linkEClass, Link.class, "Link", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getLink_Target(), ecorePackage.getEString(), "target", null, 1, 1, Link.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		// Initialize data types
+		initEDataType(sectionStyleEDataType, SectionStyle.class, "SectionStyle", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -3166,22 +3227,34 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 			   "documentation-reference", "doc/document.md"
 		   });
 		addAnnotation
-		  (getDocument_TableOfContents(),
-		   source,
-		   new String[] {
-			   "homogenous", "true"
-		   });
-		addAnnotation
 		  (getDocument_Sections(),
 		   source,
 		   new String[] {
 			   "homogenous", "true"
 		   });
 		addAnnotation
-		  (tableOfContentsEClass,
+		  (namedElementReferenceEClass,
 		   source,
 		   new String[] {
-			   "documentation-reference", "doc/table-of-contents.md"
+			   "documentation-reference", "doc/named-element-reference.md"
+		   });
+		addAnnotation
+		  (getNamedElementReference_Target(),
+		   source,
+		   new String[] {
+			   "default-property", "true"
+		   });
+		addAnnotation
+		  (linkEClass,
+		   source,
+		   new String[] {
+			   "documentation-reference", "doc/link.md"
+		   });
+		addAnnotation
+		  (getLink_Target(),
+		   source,
+		   new String[] {
+			   "default-property", "true"
 		   });
 	}
 
@@ -3932,12 +4005,6 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 			   "documentation", "If false feature element actions are not categorized, i.e. in the navigation tree they would appear as container children without an intermediary feature category node. It can be useful if the containing element has navigation children only of one type or they can be distinguished by an icon and as such a feature category is not necessary."
 		   });
 		addAnnotation
-		  (getDocument_TableOfContents(),
-		   source,
-		   new String[] {
-			   "documentation", "Document/section table of contents."
-		   });
-		addAnnotation
 		  (getDocument_Sections(),
 		   source,
 		   new String[] {
@@ -3954,6 +4021,24 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		   source,
 		   new String[] {
 			   "documentation", "Document/section content in [Markdown](https://en.wikipedia.org/wiki/Markdown)."
+		   });
+		addAnnotation
+		  (getDocument_TableOfContents(),
+		   source,
+		   new String[] {
+			   "documentation", "A table of contents is generated if this attribute is set to true. Table of contents placement can be customized via appearance."
+		   });
+		addAnnotation
+		  (getNamedElementReference_Target(),
+		   source,
+		   new String[] {
+			   "documentation", "Reference target"
+		   });
+		addAnnotation
+		  (getLink_Target(),
+		   source,
+		   new String[] {
+			   "documentation", "Target URL"
 		   });
 	}
 

@@ -4,6 +4,7 @@ package org.nasdanika.engineering;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -5738,13 +5739,22 @@ public interface EngineeringPackage extends EPackage {
 	int APPEARANCE__ROLES = 3;
 
 	/**
+	 * The feature id for the '<em><b>Section Style</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int APPEARANCE__SECTION_STYLE = 4;
+
+	/**
 	 * The number of structural features of the '<em>Appearance</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int APPEARANCE_FEATURE_COUNT = 4;
+	int APPEARANCE_FEATURE_COUNT = 5;
 
 	/**
 	 * The number of operations of the '<em>Appearance</em>' class.
@@ -5800,6 +5810,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int MODEL_ELEMENT_APPEARANCE__ROLES = APPEARANCE__ROLES;
+
+	/**
+	 * The feature id for the '<em><b>Section Style</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL_ELEMENT_APPEARANCE__SECTION_STYLE = APPEARANCE__SECTION_STYLE;
 
 	/**
 	 * The feature id for the '<em><b>Features</b></em>' map.
@@ -5965,6 +5984,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int FEATURE_APPEARANCE__ROLES = APPEARANCE__ROLES;
+
+	/**
+	 * The feature id for the '<em><b>Section Style</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_APPEARANCE__SECTION_STYLE = APPEARANCE__SECTION_STYLE;
 
 	/**
 	 * The feature id for the '<em><b>Category</b></em>' attribute.
@@ -6140,22 +6168,13 @@ public interface EngineeringPackage extends EPackage {
 	int DOCUMENT__PRINCIPLES = ENGINEERED_ELEMENT__PRINCIPLES;
 
 	/**
-	 * The feature id for the '<em><b>Table Of Contents</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DOCUMENT__TABLE_OF_CONTENTS = ENGINEERED_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
 	 * The feature id for the '<em><b>Sections</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DOCUMENT__SECTIONS = ENGINEERED_ELEMENT_FEATURE_COUNT + 1;
+	int DOCUMENT__SECTIONS = ENGINEERED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Content</b></em>' attribute.
@@ -6164,7 +6183,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DOCUMENT__CONTENT = ENGINEERED_ELEMENT_FEATURE_COUNT + 2;
+	int DOCUMENT__CONTENT = ENGINEERED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Markdown Content</b></em>' attribute.
@@ -6173,7 +6192,16 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DOCUMENT__MARKDOWN_CONTENT = ENGINEERED_ELEMENT_FEATURE_COUNT + 3;
+	int DOCUMENT__MARKDOWN_CONTENT = ENGINEERED_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Table Of Contents</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT__TABLE_OF_CONTENTS = ENGINEERED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Document</em>' class.
@@ -6194,50 +6222,232 @@ public interface EngineeringPackage extends EPackage {
 	int DOCUMENT_OPERATION_COUNT = ENGINEERED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.TableOfContentsImpl <em>Table Of Contents</em>}' class.
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.NamedElementReferenceImpl <em>Named Element Reference</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.TableOfContentsImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getTableOfContents()
+	 * @see org.nasdanika.engineering.impl.NamedElementReferenceImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getNamedElementReference()
 	 * @generated
 	 */
-	int TABLE_OF_CONTENTS = 41;
+	int NAMED_ELEMENT_REFERENCE = 41;
 
 	/**
-	 * The feature id for the '<em><b>Depth</b></em>' attribute.
+	 * The feature id for the '<em><b>Uri</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TABLE_OF_CONTENTS__DEPTH = 0;
+	int NAMED_ELEMENT_REFERENCE__URI = NAMED_ELEMENT__URI;
 
 	/**
-	 * The feature id for the '<em><b>Tooltips</b></em>' attribute.
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TABLE_OF_CONTENTS__TOOLTIPS = 1;
+	int NAMED_ELEMENT_REFERENCE__PATH = NAMED_ELEMENT__PATH;
 
 	/**
-	 * The number of structural features of the '<em>Table Of Contents</em>' class.
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TABLE_OF_CONTENTS_FEATURE_COUNT = 2;
+	int NAMED_ELEMENT_REFERENCE__DESCRIPTION = NAMED_ELEMENT__DESCRIPTION;
 
 	/**
-	 * The number of operations of the '<em>Table Of Contents</em>' class.
+	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TABLE_OF_CONTENTS_OPERATION_COUNT = 0;
+	int NAMED_ELEMENT_REFERENCE__MARKDOWN_DESCRIPTION = NAMED_ELEMENT__MARKDOWN_DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Actions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NAMED_ELEMENT_REFERENCE__ACTIONS = NAMED_ELEMENT__ACTIONS;
+
+	/**
+	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NAMED_ELEMENT_REFERENCE__RESOURCES = NAMED_ELEMENT__RESOURCES;
+
+	/**
+	 * The feature id for the '<em><b>Appearance</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NAMED_ELEMENT_REFERENCE__APPEARANCE = NAMED_ELEMENT__APPEARANCE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NAMED_ELEMENT_REFERENCE__NAME = NAMED_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Target</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NAMED_ELEMENT_REFERENCE__TARGET = NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Named Element Reference</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NAMED_ELEMENT_REFERENCE_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Named Element Reference</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NAMED_ELEMENT_REFERENCE_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.LinkImpl <em>Link</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.LinkImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getLink()
+	 * @generated
+	 */
+	int LINK = 42;
+
+	/**
+	 * The feature id for the '<em><b>Uri</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINK__URI = NAMED_ELEMENT__URI;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINK__PATH = NAMED_ELEMENT__PATH;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINK__DESCRIPTION = NAMED_ELEMENT__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINK__MARKDOWN_DESCRIPTION = NAMED_ELEMENT__MARKDOWN_DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Actions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINK__ACTIONS = NAMED_ELEMENT__ACTIONS;
+
+	/**
+	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINK__RESOURCES = NAMED_ELEMENT__RESOURCES;
+
+	/**
+	 * The feature id for the '<em><b>Appearance</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINK__APPEARANCE = NAMED_ELEMENT__APPEARANCE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINK__NAME = NAMED_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Target</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINK__TARGET = NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Link</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINK_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Link</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINK_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '<em>Section Style</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.html.app.SectionStyle
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getSectionStyle()
+	 * @generated
+	 */
+	int SECTION_STYLE = 43;
 
 
 	/**
@@ -7868,6 +8078,17 @@ public interface EngineeringPackage extends EPackage {
 	EAttribute getAppearance_Roles();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Appearance#getSectionStyle <em>Section Style</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Section Style</em>'.
+	 * @see org.nasdanika.engineering.Appearance#getSectionStyle()
+	 * @see #getAppearance()
+	 * @generated
+	 */
+	EAttribute getAppearance_SectionStyle();
+
+	/**
 	 * Returns the meta object for class '{@link org.nasdanika.engineering.ModelElementAppearance <em>Model Element Appearance</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7992,15 +8213,57 @@ public interface EngineeringPackage extends EPackage {
 	EClass getDocument();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.nasdanika.engineering.Document#getTableOfContents <em>Table Of Contents</em>}'.
+	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Document#isTableOfContents <em>Table Of Contents</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Table Of Contents</em>'.
-	 * @see org.nasdanika.engineering.Document#getTableOfContents()
+	 * @return the meta object for the attribute '<em>Table Of Contents</em>'.
+	 * @see org.nasdanika.engineering.Document#isTableOfContents()
 	 * @see #getDocument()
 	 * @generated
 	 */
-	EReference getDocument_TableOfContents();
+	EAttribute getDocument_TableOfContents();
+
+	/**
+	 * Returns the meta object for class '{@link org.nasdanika.engineering.NamedElementReference <em>Named Element Reference</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Named Element Reference</em>'.
+	 * @see org.nasdanika.engineering.NamedElementReference
+	 * @generated
+	 */
+	EClass getNamedElementReference();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.nasdanika.engineering.NamedElementReference#getTarget <em>Target</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Target</em>'.
+	 * @see org.nasdanika.engineering.NamedElementReference#getTarget()
+	 * @see #getNamedElementReference()
+	 * @generated
+	 */
+	EReference getNamedElementReference_Target();
+
+	/**
+	 * Returns the meta object for class '{@link org.nasdanika.engineering.Link <em>Link</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Link</em>'.
+	 * @see org.nasdanika.engineering.Link
+	 * @generated
+	 */
+	EClass getLink();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Link#getTarget <em>Target</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Target</em>'.
+	 * @see org.nasdanika.engineering.Link#getTarget()
+	 * @see #getLink()
+	 * @generated
+	 */
+	EAttribute getLink_Target();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link org.nasdanika.engineering.Document#getSections <em>Sections</em>}'.
@@ -8036,36 +8299,15 @@ public interface EngineeringPackage extends EPackage {
 	EAttribute getDocument_MarkdownContent();
 
 	/**
-	 * Returns the meta object for class '{@link org.nasdanika.engineering.TableOfContents <em>Table Of Contents</em>}'.
+	 * Returns the meta object for data type '{@link org.nasdanika.html.app.SectionStyle <em>Section Style</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Table Of Contents</em>'.
-	 * @see org.nasdanika.engineering.TableOfContents
+	 * @return the meta object for data type '<em>Section Style</em>'.
+	 * @see org.nasdanika.html.app.SectionStyle
+	 * @model instanceClass="org.nasdanika.html.app.SectionStyle"
 	 * @generated
 	 */
-	EClass getTableOfContents();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.TableOfContents#getDepth <em>Depth</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Depth</em>'.
-	 * @see org.nasdanika.engineering.TableOfContents#getDepth()
-	 * @see #getTableOfContents()
-	 * @generated
-	 */
-	EAttribute getTableOfContents_Depth();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.TableOfContents#isTooltips <em>Tooltips</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Tooltips</em>'.
-	 * @see org.nasdanika.engineering.TableOfContents#isTooltips()
-	 * @see #getTableOfContents()
-	 * @generated
-	 */
-	EAttribute getTableOfContents_Tooltips();
+	EDataType getSectionStyle();
 
 	/**
 	 * Returns the meta object for class '{@link org.nasdanika.engineering.Message <em>Message</em>}'.
@@ -9401,6 +9643,14 @@ public interface EngineeringPackage extends EPackage {
 		EAttribute APPEARANCE__ROLES = eINSTANCE.getAppearance_Roles();
 
 		/**
+		 * The meta object literal for the '<em><b>Section Style</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute APPEARANCE__SECTION_STYLE = eINSTANCE.getAppearance_SectionStyle();
+
+		/**
 		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.ModelElementAppearanceImpl <em>Model Element Appearance</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -9499,12 +9749,48 @@ public interface EngineeringPackage extends EPackage {
 		EClass DOCUMENT = eINSTANCE.getDocument();
 
 		/**
-		 * The meta object literal for the '<em><b>Table Of Contents</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Table Of Contents</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference DOCUMENT__TABLE_OF_CONTENTS = eINSTANCE.getDocument_TableOfContents();
+		EAttribute DOCUMENT__TABLE_OF_CONTENTS = eINSTANCE.getDocument_TableOfContents();
+
+		/**
+		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.NamedElementReferenceImpl <em>Named Element Reference</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.engineering.impl.NamedElementReferenceImpl
+		 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getNamedElementReference()
+		 * @generated
+		 */
+		EClass NAMED_ELEMENT_REFERENCE = eINSTANCE.getNamedElementReference();
+
+		/**
+		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference NAMED_ELEMENT_REFERENCE__TARGET = eINSTANCE.getNamedElementReference_Target();
+
+		/**
+		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.LinkImpl <em>Link</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.engineering.impl.LinkImpl
+		 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getLink()
+		 * @generated
+		 */
+		EClass LINK = eINSTANCE.getLink();
+
+		/**
+		 * The meta object literal for the '<em><b>Target</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LINK__TARGET = eINSTANCE.getLink_Target();
 
 		/**
 		 * The meta object literal for the '<em><b>Sections</b></em>' containment reference list feature.
@@ -9531,30 +9817,14 @@ public interface EngineeringPackage extends EPackage {
 		EAttribute DOCUMENT__MARKDOWN_CONTENT = eINSTANCE.getDocument_MarkdownContent();
 
 		/**
-		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.TableOfContentsImpl <em>Table Of Contents</em>}' class.
+		 * The meta object literal for the '<em>Section Style</em>' data type.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.nasdanika.engineering.impl.TableOfContentsImpl
-		 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getTableOfContents()
+		 * @see org.nasdanika.html.app.SectionStyle
+		 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getSectionStyle()
 		 * @generated
 		 */
-		EClass TABLE_OF_CONTENTS = eINSTANCE.getTableOfContents();
-
-		/**
-		 * The meta object literal for the '<em><b>Depth</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute TABLE_OF_CONTENTS__DEPTH = eINSTANCE.getTableOfContents_Depth();
-
-		/**
-		 * The meta object literal for the '<em><b>Tooltips</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute TABLE_OF_CONTENTS__TOOLTIPS = eINSTANCE.getTableOfContents_Tooltips();
+		EDataType SECTION_STYLE = eINSTANCE.getSectionStyle();
 
 		/**
 		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.MessageImpl <em>Message</em>}' class.

@@ -12,6 +12,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.nasdanika.engineering.Appearance;
 import org.nasdanika.engineering.EngineeringPackage;
+import org.nasdanika.html.app.SectionStyle;
 
 /**
  * <!-- begin-user-doc -->
@@ -25,6 +26,7 @@ import org.nasdanika.engineering.EngineeringPackage;
  *   <li>{@link org.nasdanika.engineering.impl.AppearanceImpl#getDescription <em>Description</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.AppearanceImpl#getMarkdownDescription <em>Markdown Description</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.AppearanceImpl#getRoles <em>Roles</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.AppearanceImpl#getSectionStyle <em>Section Style</em>}</li>
  * </ul>
  *
  * @generated
@@ -59,6 +61,16 @@ public abstract class AppearanceImpl extends MinimalEObjectImpl.Container implem
 	 * @ordered
 	 */
 	protected static final String MARKDOWN_DESCRIPTION_EDEFAULT = null;
+
+	/**
+	 * The default value of the '{@link #getSectionStyle() <em>Section Style</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSectionStyle()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final SectionStyle SECTION_STYLE_EDEFAULT = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -166,6 +178,26 @@ public abstract class AppearanceImpl extends MinimalEObjectImpl.Container implem
 	 * @generated
 	 */
 	@Override
+	public SectionStyle getSectionStyle() {
+		return (SectionStyle)eDynamicGet(EngineeringPackage.APPEARANCE__SECTION_STYLE, EngineeringPackage.Literals.APPEARANCE__SECTION_STYLE, true, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setSectionStyle(SectionStyle newSectionStyle) {
+		eDynamicSet(EngineeringPackage.APPEARANCE__SECTION_STYLE, EngineeringPackage.Literals.APPEARANCE__SECTION_STYLE, newSectionStyle);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case EngineeringPackage.APPEARANCE__ICON:
@@ -176,6 +208,8 @@ public abstract class AppearanceImpl extends MinimalEObjectImpl.Container implem
 				return getMarkdownDescription();
 			case EngineeringPackage.APPEARANCE__ROLES:
 				return getRoles();
+			case EngineeringPackage.APPEARANCE__SECTION_STYLE:
+				return getSectionStyle();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -202,6 +236,9 @@ public abstract class AppearanceImpl extends MinimalEObjectImpl.Container implem
 				getRoles().clear();
 				getRoles().addAll((Collection<? extends String>)newValue);
 				return;
+			case EngineeringPackage.APPEARANCE__SECTION_STYLE:
+				setSectionStyle((SectionStyle)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -226,6 +263,9 @@ public abstract class AppearanceImpl extends MinimalEObjectImpl.Container implem
 			case EngineeringPackage.APPEARANCE__ROLES:
 				getRoles().clear();
 				return;
+			case EngineeringPackage.APPEARANCE__SECTION_STYLE:
+				setSectionStyle(SECTION_STYLE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -246,6 +286,8 @@ public abstract class AppearanceImpl extends MinimalEObjectImpl.Container implem
 				return MARKDOWN_DESCRIPTION_EDEFAULT == null ? getMarkdownDescription() != null : !MARKDOWN_DESCRIPTION_EDEFAULT.equals(getMarkdownDescription());
 			case EngineeringPackage.APPEARANCE__ROLES:
 				return !getRoles().isEmpty();
+			case EngineeringPackage.APPEARANCE__SECTION_STYLE:
+				return SECTION_STYLE_EDEFAULT == null ? getSectionStyle() != null : !SECTION_STYLE_EDEFAULT.equals(getSectionStyle());
 		}
 		return super.eIsSet(featureID);
 	}

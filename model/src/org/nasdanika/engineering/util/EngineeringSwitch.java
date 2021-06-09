@@ -36,17 +36,18 @@ import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.IssueCategory;
 import org.nasdanika.engineering.IssueStatus;
 import org.nasdanika.engineering.Journey;
+import org.nasdanika.engineering.Link;
 import org.nasdanika.engineering.Message;
 import org.nasdanika.engineering.ModelElement;
 import org.nasdanika.engineering.ModelElementAppearance;
 import org.nasdanika.engineering.NamedElement;
+import org.nasdanika.engineering.NamedElementReference;
 import org.nasdanika.engineering.Note;
 import org.nasdanika.engineering.Organization;
 import org.nasdanika.engineering.Persona;
 import org.nasdanika.engineering.Principle;
 import org.nasdanika.engineering.Product;
 import org.nasdanika.engineering.Release;
-import org.nasdanika.engineering.TableOfContents;
 import org.nasdanika.engineering.Topic;
 import org.nasdanika.engineering.Transition;
 
@@ -490,9 +491,21 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case EngineeringPackage.TABLE_OF_CONTENTS: {
-				TableOfContents tableOfContents = (TableOfContents)theEObject;
-				T result = caseTableOfContents(tableOfContents);
+			case EngineeringPackage.NAMED_ELEMENT_REFERENCE: {
+				NamedElementReference namedElementReference = (NamedElementReference)theEObject;
+				T result = caseNamedElementReference(namedElementReference);
+				if (result == null) result = caseNamedElement(namedElementReference);
+				if (result == null) result = caseModelElement(namedElementReference);
+				if (result == null) result = caseAdaptable(namedElementReference);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EngineeringPackage.LINK: {
+				Link link = (Link)theEObject;
+				T result = caseLink(link);
+				if (result == null) result = caseNamedElement(link);
+				if (result == null) result = caseModelElement(link);
+				if (result == null) result = caseAdaptable(link);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1101,17 +1114,32 @@ public class EngineeringSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Table Of Contents</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Named Element Reference</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Table Of Contents</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Named Element Reference</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseTableOfContents(TableOfContents object) {
+	public T caseNamedElementReference(NamedElementReference object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Link</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Link</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLink(Link object) {
 		return null;
 	}
 
