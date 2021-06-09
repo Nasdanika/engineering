@@ -1,6 +1,30 @@
 engineering-organization:
    name: Test
    path: test   
+   discussion:
+     - name: New and noteworthy
+       path: new
+       description: New things.
+       topics:
+         - name: New cool stuff!
+           author: test:engineers/pv            
+           markdown-description: So new and so cool!
+           date: 2021/6/10                                   
+           messages:
+             - name: Doesn't work
+               markdown-description: Sucks big time.
+               author: test:engineers/pv
+               date: 2021/6/11            
+   topics:
+     - name: When XYZ?
+       author: test:engineers/pv            
+       markdown-description: "``When``???"
+       date: 2021/6/10                                   
+       messages:
+         - name: When...
+           markdown-description: So, when?
+           author: test:engineers/pv
+           date: 2021/6/11            
    appearance:
      features:
        issue-categories:
@@ -129,7 +153,8 @@ engineering-organization:
          features: 
            - name: My feature
              path: my-feature  
-             releases: test:modules/test/releases/1/0                     
+             releases: test:modules/test/releases/1/0    
+             assignee: test:engineers/pv                              
          issues:
            - name: Issue 1         
              effort: 10
