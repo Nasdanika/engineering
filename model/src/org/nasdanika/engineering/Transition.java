@@ -50,7 +50,7 @@ public interface Transition extends NamedElement {
 
 	/**
 	 * Returns the value of the '<em><b>Payload</b></em>' reference list.
-	 * The list contents are of type {@link org.nasdanika.engineering.Artifact}.
+	 * The list contents are of type {@link org.nasdanika.engineering.NamedElement}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -61,6 +61,6 @@ public interface Transition extends NamedElement {
 	 * @model
 	 * @generated
 	 */
-	EList<Artifact> getPayload();
+	EList<NamedElement> getPayload();
 
 } // Transition

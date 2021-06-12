@@ -7,10 +7,9 @@ import java.util.Collection;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-
-import org.nasdanika.engineering.Artifact;
 import org.nasdanika.engineering.Call;
 import org.nasdanika.engineering.EngineeringPackage;
+import org.nasdanika.engineering.NamedElement;
 
 /**
  * <!-- begin-user-doc -->
@@ -52,8 +51,8 @@ public class CallImpl extends TransitionImpl implements Call {
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public EList<Artifact> getResponse() {
-		return (EList<Artifact>)eDynamicGet(EngineeringPackage.CALL__RESPONSE, EngineeringPackage.Literals.CALL__RESPONSE, true, true);
+	public EList<NamedElement> getResponse() {
+		return (EList<NamedElement>)eDynamicGet(EngineeringPackage.CALL__RESPONSE, EngineeringPackage.Literals.CALL__RESPONSE, true, true);
 	}
 
 	/**
@@ -81,7 +80,7 @@ public class CallImpl extends TransitionImpl implements Call {
 		switch (featureID) {
 			case EngineeringPackage.CALL__RESPONSE:
 				getResponse().clear();
-				getResponse().addAll((Collection<? extends Artifact>)newValue);
+				getResponse().addAll((Collection<? extends NamedElement>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

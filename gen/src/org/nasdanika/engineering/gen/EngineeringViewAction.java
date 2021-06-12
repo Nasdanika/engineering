@@ -59,7 +59,7 @@ public class EngineeringViewAction extends ActionImpl {
 				EngineeringPackage.Literals.ISSUE__TARGET,
 				EngineeringPackage.Literals.ENDEAVOR__ASSIGNEE,
 				EngineeringPackage.Literals.ISSUE__STATUS,
-				EngineeringPackage.Literals.ISSUE__CATEGORY,				
+				EngineeringPackage.Literals.ISSUE__CATEGORIES,				
 				EngineeringPackage.Literals.ISSUE__EFFORT,
 				EngineeringPackage.Literals.ISSUE__COST,
 				EngineeringPackage.Literals.ENDEAVOR__BENEFIT,

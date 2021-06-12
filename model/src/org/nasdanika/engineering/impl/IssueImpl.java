@@ -41,7 +41,7 @@ import org.nasdanika.engineering.Release;
  *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getIncrement <em>Increment</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getContributesTo <em>Contributes To</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getNotes <em>Notes</em>}</li>
- *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getCategory <em>Category</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getCategories <em>Categories</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getTarget <em>Target</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getStatus <em>Status</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#isWorkable <em>Workable</em>}</li>
@@ -449,38 +449,10 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
-	public IssueCategory getCategory() {
-		return (IssueCategory)eDynamicGet(EngineeringPackage.ISSUE__CATEGORY, EngineeringPackage.Literals.ISSUE__CATEGORY, true, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public IssueCategory basicGetCategory() {
-		return (IssueCategory)eDynamicGet(EngineeringPackage.ISSUE__CATEGORY, EngineeringPackage.Literals.ISSUE__CATEGORY, false, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetCategory(IssueCategory newCategory, NotificationChain msgs) {
-		msgs = eDynamicInverseAdd((InternalEObject)newCategory, EngineeringPackage.ISSUE__CATEGORY, msgs);
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setCategory(IssueCategory newCategory) {
-		eDynamicSet(EngineeringPackage.ISSUE__CATEGORY, EngineeringPackage.Literals.ISSUE__CATEGORY, newCategory);
+	public EList<IssueCategory> getCategories() {
+		return (EList<IssueCategory>)eDynamicGet(EngineeringPackage.ISSUE__CATEGORIES, EngineeringPackage.Literals.ISSUE__CATEGORIES, true, true);
 	}
 
 	/**
@@ -527,11 +499,8 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 				return basicSetIncrement((Increment)otherEnd, msgs);
 			case EngineeringPackage.ISSUE__CONTRIBUTES_TO:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getContributesTo()).basicAdd(otherEnd, msgs);
-			case EngineeringPackage.ISSUE__CATEGORY:
-				IssueCategory category = basicGetCategory();
-				if (category != null)
-					msgs = ((InternalEObject)category).eInverseRemove(this, EngineeringPackage.ISSUE_CATEGORY__ISSUES, IssueCategory.class, msgs);
-				return basicSetCategory((IssueCategory)otherEnd, msgs);
+			case EngineeringPackage.ISSUE__CATEGORIES:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getCategories()).basicAdd(otherEnd, msgs);
 			case EngineeringPackage.ISSUE__STATUS:
 				IssueStatus status = basicGetStatus();
 				if (status != null)
@@ -561,8 +530,8 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 				return ((InternalEList<?>)getContributesTo()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.ISSUE__NOTES:
 				return ((InternalEList<?>)getNotes()).basicRemove(otherEnd, msgs);
-			case EngineeringPackage.ISSUE__CATEGORY:
-				return basicSetCategory(null, msgs);
+			case EngineeringPackage.ISSUE__CATEGORIES:
+				return ((InternalEList<?>)getCategories()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.ISSUE__STATUS:
 				return basicSetStatus(null, msgs);
 			case EngineeringPackage.ISSUE__RELEASES:
@@ -590,9 +559,8 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 				return getContributesTo();
 			case EngineeringPackage.ISSUE__NOTES:
 				return getNotes();
-			case EngineeringPackage.ISSUE__CATEGORY:
-				if (resolve) return getCategory();
-				return basicGetCategory();
+			case EngineeringPackage.ISSUE__CATEGORIES:
+				return getCategories();
 			case EngineeringPackage.ISSUE__TARGET:
 				if (resolve) return getTarget();
 				return basicGetTarget();
@@ -643,8 +611,9 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 				getNotes().clear();
 				getNotes().addAll((Collection<? extends Note>)newValue);
 				return;
-			case EngineeringPackage.ISSUE__CATEGORY:
-				setCategory((IssueCategory)newValue);
+			case EngineeringPackage.ISSUE__CATEGORIES:
+				getCategories().clear();
+				getCategories().addAll((Collection<? extends IssueCategory>)newValue);
 				return;
 			case EngineeringPackage.ISSUE__STATUS:
 				setStatus((IssueStatus)newValue);
@@ -686,8 +655,8 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 			case EngineeringPackage.ISSUE__NOTES:
 				getNotes().clear();
 				return;
-			case EngineeringPackage.ISSUE__CATEGORY:
-				setCategory((IssueCategory)null);
+			case EngineeringPackage.ISSUE__CATEGORIES:
+				getCategories().clear();
 				return;
 			case EngineeringPackage.ISSUE__STATUS:
 				setStatus((IssueStatus)null);
@@ -723,8 +692,8 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 				return !getContributesTo().isEmpty();
 			case EngineeringPackage.ISSUE__NOTES:
 				return !getNotes().isEmpty();
-			case EngineeringPackage.ISSUE__CATEGORY:
-				return basicGetCategory() != null;
+			case EngineeringPackage.ISSUE__CATEGORIES:
+				return !getCategories().isEmpty();
 			case EngineeringPackage.ISSUE__TARGET:
 				return basicGetTarget() != null;
 			case EngineeringPackage.ISSUE__STATUS:

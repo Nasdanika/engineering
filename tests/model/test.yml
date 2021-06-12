@@ -27,8 +27,8 @@ engineering-organization:
            date: 2021/6/11            
    appearance:
      features:
-       issue-categories:
-         roles: context
+       issue-statuses:
+         roles: element-actions/context                       
    issue-categories:
       - path: test
         name: Test Category
@@ -119,10 +119,10 @@ engineering-organization:
        markdown-description: Use easily available technology to drive wide adoption.
        appearance:
          roles: navigation
-         icon: fas fa-user
+         # icon: fas fa-user
          features:
            children:
-             icon: far fa-user
+             # icon: far fa-user
              roles: element-actions/content-right 
        children:
          - name: YAML 
@@ -226,16 +226,45 @@ engineering-organization:
                path: test-document
                table-of-contents: true
                markdown-description: Document ``description``...
-               markdown-content: |+2
-                 Some content...
+               markdown-content:
+                exec-resource: lorem-ipsum.md 
                sections: 
                  - name: Section 1
                    path: section-1
                    owners: test:engineers/pv
-                   markdown-content: Section 1 **content**. 
-                   table-of-contents: true
+                   markdown-content: 
+                     exec-resource: lorem-ipsum.md 
                    discussion:
                      - name: Found a typo
                        path: typo 
                        description: Some rant about a typo and how people are not well educated.
+                   issues:
+                     - name: Section-level issue
+                       path: section-level-issue
+                       description: Test.         
+                 - name: Section 2
+                   path: section-2
+                   markdown-content: 
+                     exec-resource: lorem-ipsum.md 
+                 - name: Section 3
+                   path: section-3
+                   markdown-content: 
+                     exec-resource: lorem-ipsum.md
+                   sections: 
+                    - name: Section 3.1
+                      path: section-3-1
+                      markdown-content: 
+                        exec-resource: lorem-ipsum.md 
+                    - name: Section 3.2
+                      path: section-3-2
+                      markdown-content: 
+                        exec-resource: lorem-ipsum.md 
+                    - name: Section 3.3
+                      path: section-3-3
+                      markdown-content: 
+                        exec-resource: lorem-ipsum.md 
+                 - name: Section 4
+                   path: section-4
+                   markdown-content: 
+                     exec-resource: lorem-ipsum.md 
                        

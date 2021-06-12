@@ -202,15 +202,6 @@ public interface EngineeringFactory extends EFactory {
 	Note createNote();
 
 	/**
-	 * Returns a new object of class '<em>Artifact</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Artifact</em>'.
-	 * @generated
-	 */
-	Artifact createArtifact();
-
-	/**
 	 * Returns a new object of class '<em>Directory</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

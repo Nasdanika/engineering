@@ -17,7 +17,6 @@ import org.nasdanika.engineering.Aim;
 import org.nasdanika.engineering.Alignment;
 import org.nasdanika.engineering.Allocation;
 import org.nasdanika.engineering.Appearance;
-import org.nasdanika.engineering.Artifact;
 import org.nasdanika.engineering.Call;
 import org.nasdanika.engineering.Capability;
 import org.nasdanika.engineering.Capacity;
@@ -202,10 +201,6 @@ public class EngineeringAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseCall(Call object) {
 				return createCallAdapter();
-			}
-			@Override
-			public Adapter caseArtifact(Artifact object) {
-				return createArtifactAdapter();
 			}
 			@Override
 			public Adapter caseDirectory(Directory object) {
@@ -630,20 +625,6 @@ public class EngineeringAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createNoteAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.Artifact <em>Artifact</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.engineering.Artifact
-	 * @generated
-	 */
-	public Adapter createArtifactAdapter() {
 		return null;
 	}
 

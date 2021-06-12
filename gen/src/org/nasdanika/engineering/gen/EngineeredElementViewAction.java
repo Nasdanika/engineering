@@ -54,7 +54,7 @@ public class EngineeredElementViewAction<T extends EngineeredElement> extends Fo
 				EngineeringPackage.Literals.ENDEAVOR__START,
 				EngineeringPackage.Literals.ENDEAVOR__END,
 				EngineeringPackage.Literals.ISSUE__STATUS,
-				EngineeringPackage.Literals.ISSUE__CATEGORY,				
+				EngineeringPackage.Literals.ISSUE__CATEGORIES,				
 				EngineeringPackage.Literals.ENDEAVOR__ASSIGNEE,				
 				EngineeringPackage.Literals.ISSUE__EFFORT,
 				EngineeringPackage.Literals.ISSUE__COST,
@@ -89,7 +89,7 @@ public class EngineeredElementViewAction<T extends EngineeredElement> extends Fo
 					EngineeringPackage.Literals.ISSUE__TARGET,
 					EngineeringPackage.Literals.ENDEAVOR__ASSIGNEE,
 					EngineeringPackage.Literals.ISSUE__STATUS,
-					EngineeringPackage.Literals.ISSUE__CATEGORY,				
+					EngineeringPackage.Literals.ISSUE__CATEGORIES,				
 					EngineeringPackage.Literals.ISSUE__EFFORT,
 					EngineeringPackage.Literals.ISSUE__COST,
 					EngineeringPackage.Literals.ENDEAVOR__BENEFIT,
@@ -111,16 +111,11 @@ public class EngineeredElementViewAction<T extends EngineeredElement> extends Fo
 		table.header().headerRow("Endeavor", "Engineer", "Category", "Effort", "Rate", "Funds").color(Color.INFO);
 		for (Allocation allocation: getSemanticElement().getAllocations()) {
 			Tag categoriesTag;
-			EList<IssueCategory> category = allocation.getCategory();
-			if (category.isEmpty()) {
+			IssueCategory category = allocation.getCategory();
+			if (category == null) {
 				categoriesTag = TagName.span.create();
-			} else if (category.size() == 1) {
-				categoriesTag = viewGenerator.link(ViewAction.adaptToViewActionNonNull(category.get(0)));							
 			} else {
-				categoriesTag = viewGenerator.getHTMLFactory().tag(TagName.ul);
-				for (Action ca: ViewAction.adaptToViewActionsNonNull(category)) {
-					categoriesTag.content(TagName.li.create(viewGenerator.link(ca)));
-				}
+				categoriesTag = viewGenerator.link(ViewAction.adaptToViewActionNonNull(category));							
 			}
 			table.body().row(
 					viewGenerator.link(ViewAction.adaptToViewActionNonNull(allocation.getEndeavor())),

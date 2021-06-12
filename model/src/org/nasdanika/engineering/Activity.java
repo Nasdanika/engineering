@@ -101,7 +101,7 @@ public interface Activity extends EngineeredElement {
 
 	/**
 	 * Returns the value of the '<em><b>Requirements</b></em>' reference list.
-	 * The list contents are of type {@link org.nasdanika.engineering.Artifact}.
+	 * The list contents are of type {@link org.nasdanika.engineering.NamedElement}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -112,11 +112,11 @@ public interface Activity extends EngineeredElement {
 	 * @model
 	 * @generated
 	 */
-	EList<Artifact> getRequirements();
+	EList<NamedElement> getRequirements();
 
 	/**
 	 * Returns the value of the '<em><b>Deliverables</b></em>' reference list.
-	 * The list contents are of type {@link org.nasdanika.engineering.Artifact}.
+	 * The list contents are of type {@link org.nasdanika.engineering.NamedElement}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -127,7 +127,7 @@ public interface Activity extends EngineeredElement {
 	 * @model
 	 * @generated
 	 */
-	EList<Artifact> getDeliverables();
+	EList<NamedElement> getDeliverables();
 
 	/**
 	 * Returns the value of the '<em><b>Calls</b></em>' containment reference list.

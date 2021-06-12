@@ -1,8 +1,10 @@
 package org.nasdanika.engineering.gen;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.Predicate;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -13,8 +15,11 @@ import org.nasdanika.common.Util;
 import org.nasdanika.engineering.Document;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.html.Fragment;
+import org.nasdanika.html.Tag;
+import org.nasdanika.html.TagName;
 import org.nasdanika.html.app.Action;
 import org.nasdanika.html.app.ActionActivator;
+import org.nasdanika.html.app.MutableAction;
 import org.nasdanika.html.app.NavigationActionActivator;
 import org.nasdanika.html.app.ViewGenerator;
 import org.nasdanika.html.app.impl.ActionImpl;
@@ -22,6 +27,8 @@ import org.nasdanika.html.app.impl.PathNavigationActionActivator;
 import org.nasdanika.html.app.viewparts.AdaptiveNavigationPanelViewPart;
 import org.nasdanika.html.app.viewparts.AdaptiveNavigationPanelViewPart.Style;
 import org.nasdanika.html.bootstrap.Card;
+import org.nasdanika.html.emf.EStructuralFeatureViewAction;
+import org.nasdanika.html.emf.ViewAction;
 
 public class DocumentViewAction extends EngineeredElementViewAction<Document> {
 
@@ -40,9 +47,27 @@ public class DocumentViewAction extends EngineeredElementViewAction<Document> {
 		}
 		Card ret = viewGenerator.getBootstrapFactory().card();
 		ret.getHeader().toHTMLElement().content("Contents");
-		AdaptiveNavigationPanelViewPart contentsPanel = new AdaptiveNavigationPanelViewPart(sectionChildren, this, Action.Role.SECTION, Style.AUTO);
-		ret.getBody().toHTMLElement().content(contentsPanel.generate(viewGenerator, progressMonitor));
+		
+		ret.getBody().toHTMLElement().content(sectionsList(this, viewGenerator));
 		return ret;
+	}
+	
+	private Tag sectionsList(Action docAction, ViewGenerator viewGenerator) {
+		List<Action> sectionChildren = docAction.getSectionChildren();
+		if (sectionChildren.isEmpty()) {
+			return null;
+		}
+		Tag ul = viewGenerator.getHTMLFactory().tag(TagName.ul);
+		for (Action sc: sectionChildren) {
+			Tag li = viewGenerator.getHTMLFactory().tag(TagName.li);
+			ul.content(li);
+			li.content(viewGenerator.link(sc));
+			Tag sl = sectionsList(sc, viewGenerator);
+			if (sl != null) {
+				li.content(sl);
+			}
+		}
+		return ul;
 	}
 	
 	protected Object generateInfo(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
@@ -87,7 +112,27 @@ public class DocumentViewAction extends EngineeredElementViewAction<Document> {
 	
 	@Override
 	protected List<Action> collectChildren() {
-		List<Action> ret = super.collectChildren();
+		List<Action> inheritedChildren = super.collectChildren();
+		
+		List<Action> ret = new ArrayList<>();
+		Predicate<Action> documentChildrenPredicate = c -> {
+			if (c instanceof EStructuralFeatureViewAction) {
+				EStructuralFeatureViewAction<?, ?> sfa = (EStructuralFeatureViewAction<?, ?>) c;
+				EStructuralFeature feature = sfa.getEStructuralFeature();
+				return feature == EngineeringPackage.Literals.FORUM__DISCUSSION
+						|| feature == EngineeringPackage.Literals.DOCUMENT__SECTIONS
+						|| feature == EngineeringPackage.Literals.DOCUMENT__TABLE_OF_CONTENTS;
+				
+			} 
+			
+			if (c instanceof ViewAction) {
+				return DocumentViewAction.this.getSemanticElement().getSections().contains(((ViewAction<?>) c).getSemanticElement());
+			}
+			
+			return false;
+		}; 
+		
+		inheritedChildren.stream().filter(documentChildrenPredicate).forEach(ret::add);
 		
 		ActionImpl infoAction = new ActionImpl() {
 			
@@ -102,6 +147,15 @@ public class DocumentViewAction extends EngineeredElementViewAction<Document> {
 			}
 			
 		};
+		
+		inheritedChildren.stream().filter(documentChildrenPredicate.negate()).forEach(action -> {
+			if (action.isInRole(Action.Role.SECTION)) {
+				infoAction.getChildren().add(action);				
+			} else if (action instanceof MutableAction) {
+				infoAction.getChildren().add(action);
+				((MutableAction) action).setParent(infoAction);
+			}
+		});
 		
 		infoAction.setText("Info");
 		infoAction.getRoles().add(Action.Role.CONTEXT);

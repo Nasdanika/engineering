@@ -4,8 +4,6 @@ package org.nasdanika.engineering.impl;
 
 import java.util.Collection;
 import java.util.Date;
-
-import org.apache.pdfbox.pdmodel.PDPageTree;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.ECollections;

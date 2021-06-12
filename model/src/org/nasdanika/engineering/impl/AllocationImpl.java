@@ -2,13 +2,11 @@
  */
 package org.nasdanika.engineering.impl;
 
-import java.util.Collection;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.util.InternalEList;
 import org.nasdanika.engineering.Allocation;
 import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeredElement;
@@ -104,8 +102,37 @@ public class AllocationImpl extends CapacityImpl implements Allocation {
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public EList<IssueCategory> getCategory() {
-		return (EList<IssueCategory>)eDynamicGet(EngineeringPackage.ALLOCATION__CATEGORY, EngineeringPackage.Literals.ALLOCATION__CATEGORY, true, true);
+	public IssueCategory getCategory() {
+		return (IssueCategory)eDynamicGet(EngineeringPackage.ALLOCATION__CATEGORY, EngineeringPackage.Literals.ALLOCATION__CATEGORY, true, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public IssueCategory basicGetCategory() {
+		return (IssueCategory)eDynamicGet(EngineeringPackage.ALLOCATION__CATEGORY, EngineeringPackage.Literals.ALLOCATION__CATEGORY, false, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetCategory(IssueCategory newCategory, NotificationChain msgs) {
+		msgs = eDynamicInverseAdd((InternalEObject)newCategory, EngineeringPackage.ALLOCATION__CATEGORY, msgs);
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setCategory(IssueCategory newCategory) {
+		eDynamicSet(EngineeringPackage.ALLOCATION__CATEGORY, EngineeringPackage.Literals.ALLOCATION__CATEGORY, newCategory);
 	}
 
 	/**
@@ -123,7 +150,10 @@ public class AllocationImpl extends CapacityImpl implements Allocation {
 					msgs = ((InternalEObject)engineer).eInverseRemove(this, EngineeringPackage.ENGINEER__DESIGNATIONS, Engineer.class, msgs);
 				return basicSetEngineer((Engineer)otherEnd, msgs);
 			case EngineeringPackage.ALLOCATION__CATEGORY:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getCategory()).basicAdd(otherEnd, msgs);
+				IssueCategory category = basicGetCategory();
+				if (category != null)
+					msgs = ((InternalEObject)category).eInverseRemove(this, EngineeringPackage.ISSUE_CATEGORY__ALLOCATIONS, IssueCategory.class, msgs);
+				return basicSetCategory((IssueCategory)otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -139,7 +169,7 @@ public class AllocationImpl extends CapacityImpl implements Allocation {
 			case EngineeringPackage.ALLOCATION__ENGINEER:
 				return basicSetEngineer(null, msgs);
 			case EngineeringPackage.ALLOCATION__CATEGORY:
-				return ((InternalEList<?>)getCategory()).basicRemove(otherEnd, msgs);
+				return basicSetCategory(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -156,7 +186,8 @@ public class AllocationImpl extends CapacityImpl implements Allocation {
 				if (resolve) return getEngineer();
 				return basicGetEngineer();
 			case EngineeringPackage.ALLOCATION__CATEGORY:
-				return getCategory();
+				if (resolve) return getCategory();
+				return basicGetCategory();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -174,8 +205,7 @@ public class AllocationImpl extends CapacityImpl implements Allocation {
 				setEngineer((Engineer)newValue);
 				return;
 			case EngineeringPackage.ALLOCATION__CATEGORY:
-				getCategory().clear();
-				getCategory().addAll((Collection<? extends IssueCategory>)newValue);
+				setCategory((IssueCategory)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -193,7 +223,7 @@ public class AllocationImpl extends CapacityImpl implements Allocation {
 				setEngineer((Engineer)null);
 				return;
 			case EngineeringPackage.ALLOCATION__CATEGORY:
-				getCategory().clear();
+				setCategory((IssueCategory)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -222,7 +252,7 @@ public class AllocationImpl extends CapacityImpl implements Allocation {
 			case EngineeringPackage.ALLOCATION__ENGINEER:
 				return basicGetEngineer() != null;
 			case EngineeringPackage.ALLOCATION__CATEGORY:
-				return !getCategory().isEmpty();
+				return basicGetCategory() != null;
 		}
 		return super.eIsSet(featureID);
 	}

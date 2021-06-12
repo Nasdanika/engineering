@@ -99,7 +99,7 @@ public class IssueCategoryImpl extends NamedElementImpl implements IssueCategory
 	 */
 	@Override
 	public EList<Issue> getIssues() {
-		return getReferrers(EngineeringPackage.Literals.ISSUE__CATEGORY);
+		return getReferrers(EngineeringPackage.Literals.ISSUE__CATEGORIES);
 	}
 
 	/**

@@ -16,7 +16,6 @@ import org.nasdanika.engineering.Activity;
 import org.nasdanika.engineering.Aim;
 import org.nasdanika.engineering.Alignment;
 import org.nasdanika.engineering.Allocation;
-import org.nasdanika.engineering.Artifact;
 import org.nasdanika.engineering.Call;
 import org.nasdanika.engineering.Capability;
 import org.nasdanika.engineering.Capacity;
@@ -118,7 +117,6 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 			case EngineeringPackage.JOURNEY: return createJourney();
 			case EngineeringPackage.TRANSITION: return createTransition();
 			case EngineeringPackage.CALL: return createCall();
-			case EngineeringPackage.ARTIFACT: return createArtifact();
 			case EngineeringPackage.DIRECTORY: return createDirectory();
 			case EngineeringPackage.CAPACITY: return createCapacity();
 			case EngineeringPackage.ALLOCATION: return createAllocation();
@@ -392,17 +390,6 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 	public Note createNote() {
 		NoteImpl note = new NoteImpl();
 		return note;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Artifact createArtifact() {
-		ArtifactImpl artifact = new ArtifactImpl();
-		return artifact;
 	}
 
 	/**

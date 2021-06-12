@@ -211,6 +211,8 @@ engineering-module:
        markdown-description: Sections with tables. Increment total capacity and utilization.       
      - name: Includes reference to releases and maybe features
        markdown-description: includes/partOf. For composite releases. Requires/requiredBy to Engineered Capability or introduce CompositeEngineeredCapability.       
+     - name: none literal to icon
+       markdown-description: Suppresses inherited icon.       
 
 #### Done ####
 

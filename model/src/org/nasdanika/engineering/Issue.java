@@ -18,7 +18,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.nasdanika.engineering.Issue#getIncrement <em>Increment</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Issue#getContributesTo <em>Contributes To</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Issue#getNotes <em>Notes</em>}</li>
- *   <li>{@link org.nasdanika.engineering.Issue#getCategory <em>Category</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.Issue#getCategories <em>Categories</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Issue#getTarget <em>Target</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Issue#getStatus <em>Status</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Issue#isWorkable <em>Workable</em>}</li>
@@ -268,32 +268,22 @@ public interface Issue extends EngineeredCapability {
 	EList<Note> getNotes();
 
 	/**
-	 * Returns the value of the '<em><b>Category</b></em>' reference.
+	 * Returns the value of the '<em><b>Categories</b></em>' reference list.
+	 * The list contents are of type {@link org.nasdanika.engineering.IssueCategory}.
 	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.IssueCategory#getIssues <em>Issues</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Issue category.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Category</em>' reference.
-	 * @see #setCategory(IssueCategory)
-	 * @see org.nasdanika.engineering.EngineeringPackage#getIssue_Category()
+	 * @return the value of the '<em>Categories</em>' reference list.
+	 * @see org.nasdanika.engineering.EngineeringPackage#getIssue_Categories()
 	 * @see org.nasdanika.engineering.IssueCategory#getIssues
 	 * @model opposite="issues"
 	 *        annotation="urn:org.nasdanika homogenous='true'"
 	 * @generated
 	 */
-	IssueCategory getCategory();
-
-	/**
-	 * Sets the value of the '{@link org.nasdanika.engineering.Issue#getCategory <em>Category</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Category</em>' reference.
-	 * @see #getCategory()
-	 * @generated
-	 */
-	void setCategory(IssueCategory value);
+	EList<IssueCategory> getCategories();
 
 	/**
 	 * Returns the value of the '<em><b>Target</b></em>' reference.

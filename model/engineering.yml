@@ -157,6 +157,14 @@ engineering-module:
          maybe filter(s) in MongoDB way - RegEx if string, feature name to RegEx or match spec if map. Generation process or another process loads the model and then tree-iterates via subscriptions and sends notifications to 
          the notification service. The service is responsible for keeping history of last time notifications and notify only if time period has passed and digest changed.                       
      - name: Appearance - features to show in tables
+     - name: ModelElement tags
+       markdown-description: |+2
+         Property class - value (multi-string, default feature), description and markdown description. PropertyEntry class - String key, Property value.
+         EMap tags at ModelElement level. Possible use - aliasing. Maybe name ``properties`` and use wider, e.g. to customize behavior.
+         Render as a table in a feature action.                       
+     - name: Icons
+       markdown-description: |+2
+         Icons for all or most model elements. Perhaps buy from Icons8 or Shutterstock (~$10 per icon) or Iconfinder ($2-3 per icon) or some other service.                       
          
      ### === Done === ###    
      - name: Start/end from Issue and Increment to Endeavor

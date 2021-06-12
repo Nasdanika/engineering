@@ -52,7 +52,7 @@ public interface IssueCategory extends NamedElement {
 	/**
 	 * Returns the value of the '<em><b>Issues</b></em>' reference list.
 	 * The list contents are of type {@link org.nasdanika.engineering.Issue}.
-	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Issue#getCategory <em>Category</em>}'.
+	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Issue#getCategories <em>Categories</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -60,8 +60,8 @@ public interface IssueCategory extends NamedElement {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Issues</em>' reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getIssueCategory_Issues()
-	 * @see org.nasdanika.engineering.Issue#getCategory
-	 * @model opposite="category" changeable="false" derived="true"
+	 * @see org.nasdanika.engineering.Issue#getCategories
+	 * @model opposite="categories" changeable="false" derived="true"
 	 * @generated
 	 */
 	EList<Issue> getIssues();

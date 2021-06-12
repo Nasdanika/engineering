@@ -14,10 +14,10 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.nasdanika.engineering.Activity;
-import org.nasdanika.engineering.Artifact;
 import org.nasdanika.engineering.Call;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Feature;
+import org.nasdanika.engineering.NamedElement;
 import org.nasdanika.engineering.Persona;
 import org.nasdanika.engineering.Transition;
 
@@ -119,8 +119,8 @@ public class ActivityImpl extends EngineeredElementImpl implements Activity {
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public EList<Artifact> getRequirements() {
-		return (EList<Artifact>)eDynamicGet(EngineeringPackage.ACTIVITY__REQUIREMENTS, EngineeringPackage.Literals.ACTIVITY__REQUIREMENTS, true, true);
+	public EList<NamedElement> getRequirements() {
+		return (EList<NamedElement>)eDynamicGet(EngineeringPackage.ACTIVITY__REQUIREMENTS, EngineeringPackage.Literals.ACTIVITY__REQUIREMENTS, true, true);
 	}
 
 	/**
@@ -130,8 +130,8 @@ public class ActivityImpl extends EngineeredElementImpl implements Activity {
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public EList<Artifact> getDeliverables() {
-		return (EList<Artifact>)eDynamicGet(EngineeringPackage.ACTIVITY__DELIVERABLES, EngineeringPackage.Literals.ACTIVITY__DELIVERABLES, true, true);
+	public EList<NamedElement> getDeliverables() {
+		return (EList<NamedElement>)eDynamicGet(EngineeringPackage.ACTIVITY__DELIVERABLES, EngineeringPackage.Literals.ACTIVITY__DELIVERABLES, true, true);
 	}
 
 	/**
@@ -237,11 +237,11 @@ public class ActivityImpl extends EngineeredElementImpl implements Activity {
 				return;
 			case EngineeringPackage.ACTIVITY__REQUIREMENTS:
 				getRequirements().clear();
-				getRequirements().addAll((Collection<? extends Artifact>)newValue);
+				getRequirements().addAll((Collection<? extends NamedElement>)newValue);
 				return;
 			case EngineeringPackage.ACTIVITY__DELIVERABLES:
 				getDeliverables().clear();
-				getDeliverables().addAll((Collection<? extends Artifact>)newValue);
+				getDeliverables().addAll((Collection<? extends NamedElement>)newValue);
 				return;
 			case EngineeringPackage.ACTIVITY__CALLS:
 				getCalls().clear();

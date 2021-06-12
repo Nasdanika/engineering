@@ -23,7 +23,7 @@ import org.eclipse.emf.common.util.EList;
 public interface Call extends Transition {
 	/**
 	 * Returns the value of the '<em><b>Response</b></em>' reference list.
-	 * The list contents are of type {@link org.nasdanika.engineering.Artifact}.
+	 * The list contents are of type {@link org.nasdanika.engineering.NamedElement}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -34,6 +34,6 @@ public interface Call extends Transition {
 	 * @model
 	 * @generated
 	 */
-	EList<Artifact> getResponse();
+	EList<NamedElement> getResponse();
 
 } // Call

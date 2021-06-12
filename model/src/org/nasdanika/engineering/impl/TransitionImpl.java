@@ -8,8 +8,8 @@ import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.nasdanika.engineering.Activity;
-import org.nasdanika.engineering.Artifact;
 import org.nasdanika.engineering.EngineeringPackage;
+import org.nasdanika.engineering.NamedElement;
 import org.nasdanika.engineering.Transition;
 
 /**
@@ -82,8 +82,8 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public EList<Artifact> getPayload() {
-		return (EList<Artifact>)eDynamicGet(EngineeringPackage.TRANSITION__PAYLOAD, EngineeringPackage.Literals.TRANSITION__PAYLOAD, true, true);
+	public EList<NamedElement> getPayload() {
+		return (EList<NamedElement>)eDynamicGet(EngineeringPackage.TRANSITION__PAYLOAD, EngineeringPackage.Literals.TRANSITION__PAYLOAD, true, true);
 	}
 
 	/**
@@ -117,7 +117,7 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 				return;
 			case EngineeringPackage.TRANSITION__PAYLOAD:
 				getPayload().clear();
-				getPayload().addAll((Collection<? extends Artifact>)newValue);
+				getPayload().addAll((Collection<? extends NamedElement>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

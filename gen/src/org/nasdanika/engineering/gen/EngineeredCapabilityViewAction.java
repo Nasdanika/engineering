@@ -160,16 +160,11 @@ public class EngineeredCapabilityViewAction<T extends EngineeredCapability> exte
 				table.header().headerRow("Target", "Category", "Effort", "Rate", "Funds").color(Color.INFO);
 				for (Allocation eae: ea) {
 					Tag categoriesTag;
-					EList<IssueCategory> category = eae.getCategory();
-					if (category.isEmpty()) {
+					IssueCategory category = eae.getCategory();
+					if (category == null) {
 						categoriesTag = TagName.span.create();
-					} else if (category.size() == 1) {
-						categoriesTag = viewGenerator.link(ViewAction.adaptToViewActionNonNull(category.get(0)));							
 					} else {
-						categoriesTag = viewGenerator.getHTMLFactory().tag(TagName.ul);
-						for (Action ca: ViewAction.adaptToViewActionsNonNull(category)) {
-							categoriesTag.content(TagName.li.create(viewGenerator.link(ca)));
-						}
+						categoriesTag = viewGenerator.link(ViewAction.adaptToViewActionNonNull(category));							
 					}
 					table.body().row(
 							viewGenerator.link(ViewAction.adaptToViewActionNonNull(eae.eContainer())),

@@ -17,7 +17,6 @@ import org.nasdanika.engineering.Aim;
 import org.nasdanika.engineering.Alignment;
 import org.nasdanika.engineering.Allocation;
 import org.nasdanika.engineering.Appearance;
-import org.nasdanika.engineering.Artifact;
 import org.nasdanika.engineering.Call;
 import org.nasdanika.engineering.Capability;
 import org.nasdanika.engineering.Capacity;
@@ -174,8 +173,6 @@ public class EngineeringValidator extends EObjectValidator {
 				return validateTransition((Transition)value, diagnostics, context);
 			case EngineeringPackage.CALL:
 				return validateCall((Call)value, diagnostics, context);
-			case EngineeringPackage.ARTIFACT:
-				return validateArtifact((Artifact)value, diagnostics, context);
 			case EngineeringPackage.DIRECTORY:
 				return validateDirectory((Directory)value, diagnostics, context);
 			case EngineeringPackage.CAPACITY:
@@ -790,25 +787,6 @@ public class EngineeringValidator extends EObjectValidator {
 	 */
 	public boolean validateCall(Call call, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(call, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateArtifact(Artifact artifact, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		if (!validate_NoCircularContainment(artifact, diagnostics, context)) return false;
-		boolean result = validate_EveryMultiplicityConforms(artifact, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(artifact, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(artifact, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(artifact, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryProxyResolves(artifact, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_UniqueID(artifact, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryKeyUnique(artifact, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(artifact, diagnostics, context);
-		if (result || diagnostics != null) result &= validateEngineeredElement_capacity(artifact, diagnostics, context);
-		return result;
 	}
 
 	/**

@@ -1602,13 +1602,13 @@ public interface EngineeringPackage extends EPackage {
 	int ISSUE__NOTES = ENGINEERED_CAPABILITY_FEATURE_COUNT + 4;
 
 	/**
-	 * The feature id for the '<em><b>Category</b></em>' reference.
+	 * The feature id for the '<em><b>Categories</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ISSUE__CATEGORY = ENGINEERED_CAPABILITY_FEATURE_COUNT + 5;
+	int ISSUE__CATEGORIES = ENGINEERED_CAPABILITY_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Target</b></em>' reference.
@@ -1855,16 +1855,6 @@ public interface EngineeringPackage extends EPackage {
 	int NOTE_OPERATION_COUNT = MODEL_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.ArtifactImpl <em>Artifact</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.ArtifactImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getArtifact()
-	 * @generated
-	 */
-	int ARTIFACT = 23;
-
-	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.DirectoryImpl <em>Directory</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1872,7 +1862,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getDirectory()
 	 * @generated
 	 */
-	int DIRECTORY = 24;
+	int DIRECTORY = 23;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.CapacityImpl <em>Capacity</em>}' class.
@@ -1882,7 +1872,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getCapacity()
 	 * @generated
 	 */
-	int CAPACITY = 25;
+	int CAPACITY = 24;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.AllocationImpl <em>Allocation</em>}' class.
@@ -1892,7 +1882,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getAllocation()
 	 * @generated
 	 */
-	int ALLOCATION = 26;
+	int ALLOCATION = 25;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.AimImpl <em>Aim</em>}' class.
@@ -1902,7 +1892,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getAim()
 	 * @generated
 	 */
-	int AIM = 27;
+	int AIM = 26;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.PrincipleImpl <em>Principle</em>}' class.
@@ -1912,7 +1902,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getPrinciple()
 	 * @generated
 	 */
-	int PRINCIPLE = 28;
+	int PRINCIPLE = 27;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.AlignmentImpl <em>Alignment</em>}' class.
@@ -1922,7 +1912,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getAlignment()
 	 * @generated
 	 */
-	int ALIGNMENT = 29;
+	int ALIGNMENT = 28;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.GoalImpl <em>Goal</em>}' class.
@@ -1932,7 +1922,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getGoal()
 	 * @generated
 	 */
-	int GOAL = 30;
+	int GOAL = 29;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.ForumImpl <em>Forum</em>}' class.
@@ -1942,7 +1932,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getForum()
 	 * @generated
 	 */
-	int FORUM = 31;
+	int FORUM = 30;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -4597,159 +4587,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ARTIFACT__URI = ENGINEERED_ELEMENT__URI;
-
-	/**
-	 * The feature id for the '<em><b>Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ARTIFACT__PATH = ENGINEERED_ELEMENT__PATH;
-
-	/**
-	 * The feature id for the '<em><b>Description</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ARTIFACT__DESCRIPTION = ENGINEERED_ELEMENT__DESCRIPTION;
-
-	/**
-	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ARTIFACT__MARKDOWN_DESCRIPTION = ENGINEERED_ELEMENT__MARKDOWN_DESCRIPTION;
-
-	/**
-	 * The feature id for the '<em><b>Actions</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ARTIFACT__ACTIONS = ENGINEERED_ELEMENT__ACTIONS;
-
-	/**
-	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ARTIFACT__RESOURCES = ENGINEERED_ELEMENT__RESOURCES;
-
-	/**
-	 * The feature id for the '<em><b>Appearance</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ARTIFACT__APPEARANCE = ENGINEERED_ELEMENT__APPEARANCE;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ARTIFACT__NAME = ENGINEERED_ELEMENT__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Discussion</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ARTIFACT__DISCUSSION = ENGINEERED_ELEMENT__DISCUSSION;
-
-	/**
-	 * The feature id for the '<em><b>Topics</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ARTIFACT__TOPICS = ENGINEERED_ELEMENT__TOPICS;
-
-	/**
-	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ARTIFACT__ISSUES = ENGINEERED_ELEMENT__ISSUES;
-
-	/**
-	 * The feature id for the '<em><b>Owners</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ARTIFACT__OWNERS = ENGINEERED_ELEMENT__OWNERS;
-
-	/**
-	 * The feature id for the '<em><b>Experts</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ARTIFACT__EXPERTS = ENGINEERED_ELEMENT__EXPERTS;
-
-	/**
-	 * The feature id for the '<em><b>Allocations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ARTIFACT__ALLOCATIONS = ENGINEERED_ELEMENT__ALLOCATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Principles</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ARTIFACT__PRINCIPLES = ENGINEERED_ELEMENT__PRINCIPLES;
-
-	/**
-	 * The number of structural features of the '<em>Artifact</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ARTIFACT_FEATURE_COUNT = ENGINEERED_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of operations of the '<em>Artifact</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ARTIFACT_OPERATION_COUNT = ENGINEERED_ELEMENT_OPERATION_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Uri</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
 	int DIRECTORY__URI = ENGINEERED_ELEMENT__URI;
 
 	/**
@@ -5131,7 +4968,7 @@ public interface EngineeringPackage extends EPackage {
 	int ALLOCATION__ENGINEER = CAPACITY_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Category</b></em>' reference list.
+	 * The feature id for the '<em><b>Category</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -5606,7 +5443,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getTopic()
 	 * @generated
 	 */
-	int TOPIC = 33;
+	int TOPIC = 32;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.MessageImpl <em>Message</em>}' class.
@@ -5616,7 +5453,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getMessage()
 	 * @generated
 	 */
-	int MESSAGE = 32;
+	int MESSAGE = 31;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -5852,7 +5689,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getEngineeringAppearance()
 	 * @generated
 	 */
-	int ENGINEERING_APPEARANCE = 34;
+	int ENGINEERING_APPEARANCE = 33;
 
 	/**
 	 * The feature id for the '<em><b>Model Elements</b></em>' map.
@@ -5889,7 +5726,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getAppearance()
 	 * @generated
 	 */
-	int APPEARANCE = 35;
+	int APPEARANCE = 34;
 
 	/**
 	 * The feature id for the '<em><b>Icon</b></em>' attribute.
@@ -5962,7 +5799,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getModelElementAppearance()
 	 * @generated
 	 */
-	int MODEL_ELEMENT_APPEARANCE = 36;
+	int MODEL_ELEMENT_APPEARANCE = 35;
 
 	/**
 	 * The feature id for the '<em><b>Icon</b></em>' attribute.
@@ -6044,7 +5881,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getModelElementAppearanceEntry()
 	 * @generated
 	 */
-	int MODEL_ELEMENT_APPEARANCE_ENTRY = 37;
+	int MODEL_ELEMENT_APPEARANCE_ENTRY = 36;
 
 	/**
 	 * The feature id for the '<em><b>Key</b></em>' attribute.
@@ -6090,7 +5927,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getFeatureAppearanceEntry()
 	 * @generated
 	 */
-	int FEATURE_APPEARANCE_ENTRY = 38;
+	int FEATURE_APPEARANCE_ENTRY = 37;
 
 	/**
 	 * The feature id for the '<em><b>Key</b></em>' attribute.
@@ -6136,7 +5973,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getFeatureAppearance()
 	 * @generated
 	 */
-	int FEATURE_APPEARANCE = 39;
+	int FEATURE_APPEARANCE = 38;
 
 	/**
 	 * The feature id for the '<em><b>Icon</b></em>' attribute.
@@ -6219,7 +6056,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getDocument()
 	 * @generated
 	 */
-	int DOCUMENT = 40;
+	int DOCUMENT = 39;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -6418,7 +6255,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getNamedElementReference()
 	 * @generated
 	 */
-	int NAMED_ELEMENT_REFERENCE = 41;
+	int NAMED_ELEMENT_REFERENCE = 40;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -6527,7 +6364,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getLink()
 	 * @generated
 	 */
-	int LINK = 42;
+	int LINK = 41;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -6636,7 +6473,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getKeyResult()
 	 * @generated
 	 */
-	int KEY_RESULT = 43;
+	int KEY_RESULT = 42;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -6772,7 +6609,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getObjective()
 	 * @generated
 	 */
-	int OBJECTIVE = 44;
+	int OBJECTIVE = 43;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -6962,7 +6799,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getSectionStyle()
 	 * @generated
 	 */
-	int SECTION_STYLE = 45;
+	int SECTION_STYLE = 44;
 
 
 	/**
@@ -8188,15 +8025,15 @@ public interface EngineeringPackage extends EPackage {
 	EReference getIssue_Notes();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.nasdanika.engineering.Issue#getCategory <em>Category</em>}'.
+	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.Issue#getCategories <em>Categories</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Category</em>'.
-	 * @see org.nasdanika.engineering.Issue#getCategory()
+	 * @return the meta object for the reference list '<em>Categories</em>'.
+	 * @see org.nasdanika.engineering.Issue#getCategories()
 	 * @see #getIssue()
 	 * @generated
 	 */
-	EReference getIssue_Category();
+	EReference getIssue_Categories();
 
 	/**
 	 * Returns the meta object for the reference '{@link org.nasdanika.engineering.Issue#getTarget <em>Target</em>}'.
@@ -8297,16 +8134,6 @@ public interface EngineeringPackage extends EPackage {
 	EReference getNote_Status();
 
 	/**
-	 * Returns the meta object for class '{@link org.nasdanika.engineering.Artifact <em>Artifact</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Artifact</em>'.
-	 * @see org.nasdanika.engineering.Artifact
-	 * @generated
-	 */
-	EClass getArtifact();
-
-	/**
 	 * Returns the meta object for class '{@link org.nasdanika.engineering.Directory <em>Directory</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8403,10 +8230,10 @@ public interface EngineeringPackage extends EPackage {
 	EReference getAllocation_Engineer();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.Allocation#getCategory <em>Category</em>}'.
+	 * Returns the meta object for the reference '{@link org.nasdanika.engineering.Allocation#getCategory <em>Category</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Category</em>'.
+	 * @return the meta object for the reference '<em>Category</em>'.
 	 * @see org.nasdanika.engineering.Allocation#getCategory()
 	 * @see #getAllocation()
 	 * @generated
@@ -9991,12 +9818,12 @@ public interface EngineeringPackage extends EPackage {
 		EReference ISSUE__NOTES = eINSTANCE.getIssue_Notes();
 
 		/**
-		 * The meta object literal for the '<em><b>Category</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Categories</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference ISSUE__CATEGORY = eINSTANCE.getIssue_Category();
+		EReference ISSUE__CATEGORIES = eINSTANCE.getIssue_Categories();
 
 		/**
 		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
@@ -10071,16 +9898,6 @@ public interface EngineeringPackage extends EPackage {
 		 * @generated
 		 */
 		EReference NOTE__STATUS = eINSTANCE.getNote_Status();
-
-		/**
-		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.ArtifactImpl <em>Artifact</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.nasdanika.engineering.impl.ArtifactImpl
-		 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getArtifact()
-		 * @generated
-		 */
-		EClass ARTIFACT = eINSTANCE.getArtifact();
 
 		/**
 		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.DirectoryImpl <em>Directory</em>}' class.
@@ -10161,7 +9978,7 @@ public interface EngineeringPackage extends EPackage {
 		EReference ALLOCATION__ENGINEER = eINSTANCE.getAllocation_Engineer();
 
 		/**
-		 * The meta object literal for the '<em><b>Category</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Category</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

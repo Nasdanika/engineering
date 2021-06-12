@@ -11,7 +11,6 @@ import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.nasdanika.common.ProgressMonitor;
@@ -116,7 +115,7 @@ public class EngineerViewAction<T extends Engineer> extends PersonaViewAction<T>
 					EngineeringPackage.Literals.ENDEAVOR__END,
 					EngineeringPackage.Literals.ISSUE__TARGET,
 					EngineeringPackage.Literals.ISSUE__STATUS,
-					EngineeringPackage.Literals.ISSUE__CATEGORY,				
+					EngineeringPackage.Literals.ISSUE__CATEGORIES,				
 					EngineeringPackage.Literals.ISSUE__EFFORT,
 					EngineeringPackage.Literals.ISSUE__COST,
 					EngineeringPackage.Literals.ENDEAVOR__BENEFIT,
@@ -301,16 +300,11 @@ public class EngineerViewAction<T extends Engineer> extends PersonaViewAction<T>
 						table.header().headerRow("Target", "Category", "Effort", "Rate", "Funds").color(Color.INFO);
 						for (Allocation eae: ea) {
 							Tag categoriesTag;
-							EList<IssueCategory> category = eae.getCategory();
-							if (category.isEmpty()) {
+							IssueCategory category = eae.getCategory();
+							if (category == null) {
 								categoriesTag = TagName.span.create();
-							} else if (category.size() == 1) {
-								categoriesTag = viewGenerator.link(ViewAction.adaptToViewActionNonNull(category.get(0)));							
 							} else {
-								categoriesTag = viewGenerator.getHTMLFactory().tag(TagName.ul);
-								for (Action ca: ViewAction.adaptToViewActionsNonNull(category)) {
-									categoriesTag.content(TagName.li.create(viewGenerator.link(ca)));
-								}
+								categoriesTag = viewGenerator.link(ViewAction.adaptToViewActionNonNull(category));							
 							}
 							table.body().row(
 									viewGenerator.link(ViewAction.adaptToViewActionNonNull(eae.eContainer())),
@@ -353,7 +347,7 @@ public class EngineerViewAction<T extends Engineer> extends PersonaViewAction<T>
 								EngineeringPackage.Literals.ENDEAVOR__END,
 								EngineeringPackage.Literals.ISSUE__TARGET,
 								EngineeringPackage.Literals.ISSUE__STATUS,
-								EngineeringPackage.Literals.ISSUE__CATEGORY,				
+								EngineeringPackage.Literals.ISSUE__CATEGORIES,				
 								EngineeringPackage.Literals.ISSUE__EFFORT,
 								EngineeringPackage.Literals.ISSUE__COST,
 								EngineeringPackage.Literals.ENDEAVOR__BENEFIT,

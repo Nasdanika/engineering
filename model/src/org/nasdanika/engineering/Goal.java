@@ -18,7 +18,7 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getGoal()
- * @model annotation="urn:org.nasdanika documentation-reference='doc/goal.md'"
+ * @model annotation="urn:org.nasdanika documentation-reference='doc/goal.md' icon='fas fa-bullseye'"
  * @generated
  */
 public interface Goal extends Aim {

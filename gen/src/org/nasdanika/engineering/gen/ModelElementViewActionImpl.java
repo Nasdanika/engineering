@@ -21,6 +21,7 @@ import org.apache.commons.text.StringEscapeUtils;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -674,9 +675,16 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 				if (containmentFeature != null) {
 					FeatureAppearance featureAppearance = cApp.getFeatures().get(Util.camelToKebab(containmentFeature.getName()));
 					if (featureAppearance != null) {
+						boolean specifiesElementActionsRoles = false;
 						for (String featureRole: featureAppearance.getRoles()) {
 							if (featureRole.equals(FeatureRole.ELEMENT_ACTIONS.LITERAL + "/" + role) || featureRole.equals(FeatureRole.ELEMENT_ACTIONS_SORTED.LITERAL + "/" + role)) {
 								return true;
+							}
+							if (featureRole.startsWith(FeatureRole.ELEMENT_ACTIONS.LITERAL + "/") || featureRole.startsWith(FeatureRole.ELEMENT_ACTIONS_SORTED.LITERAL + "/")) {
+								specifiesElementActionsRoles = true;
+							}
+							if (specifiesElementActionsRoles) {
+								return false;
 							}
 						}
 					}
@@ -794,5 +802,78 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 		return null;
 	}
 	
+	@Override
+	public String getIcon() {
+		ModelElementAppearance appearance = getSemanticElement().getAppearance();
+		if (appearance != null) {
+			String icon = appearance.getIcon();
+			if (!Util.isBlank(icon)) {
+				return filterIcon(icon);
+			}
+		}
+		
+		for (EClass eClass: EmfUtil.lineage(getSemanticElement().eClass())) {
+			for (ModelElementAppearance classAppearance: factory.getAppearance(eClass)) {
+				String icon = classAppearance.getIcon();
+				if (!Util.isBlank(icon)) {
+					return filterIcon(icon);
+				}
+			}
+		}
+		
+		return super.getIcon();
+	}
+	
+	public static final String NONE = "none";
+	
+	/**
+	 * This method returns null if icon is none
+	 * @param icon
+	 * @return
+	 */
+	protected String filterIcon(String icon) {
+		return NONE.equals(icon) ? null : icon;
+	}
+	
+	@Override
+	public String featureIcon(EStructuralFeature feature) {
+		ModelElementAppearance appearance = getSemanticElement().getAppearance();
+		if (appearance != null) {
+			FeatureAppearance featureAppearance = appearance.getFeatures().get(Util.camelToKebab(feature.getName()));
+			if (featureAppearance != null) {
+				String icon = featureAppearance.getIcon();
+				if (!Util.isBlank(icon)) {
+					return filterIcon(icon);
+				}
+			}
+		}
+				
+		for (EClass eClass: EmfUtil.lineage(getSemanticElement().eClass())) {
+			for (ModelElementAppearance classAppearance: factory.getAppearance(eClass)) {
+				FeatureAppearance featureAppearance = classAppearance.getFeatures().get(Util.camelToKebab(feature.getName()));
+				if (featureAppearance !=  null) {
+					String icon = featureAppearance.getIcon();
+					if (!Util.isBlank(icon)) {
+						return filterIcon(icon);
+					}
+				}
+			}
+		}
+		
+		// Lineage of feature type
+		EClassifier featureType = feature.getEType();
+		if (featureType instanceof EClass) {
+			for (EClass eClass: EmfUtil.lineage((EClass) featureType)) {
+				for (ModelElementAppearance classAppearance: factory.getAppearance(eClass)) {
+					String icon = classAppearance.getIcon();
+					if (!Util.isBlank(icon)) {
+						return filterIcon(icon);
+					}
+				}
+			}
+		}
+
+		return super.featureIcon(feature);
+	}
 	
 }
