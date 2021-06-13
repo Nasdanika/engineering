@@ -34,7 +34,7 @@ public interface Appearance extends EObject {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Icon - image URL if contains slash (``/``). CSS class otherwise, e.g. ``fas fa-user``. 
+	 * Icon - image URL if contains slash (``/``). CSS class otherwise, e.g. ``fas fa-user``.  ``none`` to suppress the icon.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Icon</em>' attribute.
 	 * @see #setIcon(String)

@@ -4188,7 +4188,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		  (getAppearance_Icon(),
 		   source,
 		   new String[] {
-			   "documentation", "Icon - image URL if contains slash (``/``). CSS class otherwise, e.g. ``fas fa-user``. "
+			   "documentation", "Icon - image URL if contains slash (``/``). CSS class otherwise, e.g. ``fas fa-user``.  ``none`` to suppress the icon."
 		   });
 		addAnnotation
 		  (getAppearance_Description(),
