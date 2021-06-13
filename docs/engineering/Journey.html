@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cerulean/bootstrap.min.css" id="nsd-bootstrap-theme-stylesheet"/>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"></script><title>Journey</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/line-awesome/1.3.0/line-awesome/css/line-awesome.min.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.3.11/themes/default/style.min.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.3.11/jstree.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/4.0.0/github-markdown.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/default.min.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<script>
+	$(document).ready( function() {
+	    $('.nsd-app-header').addClass('bg-dark');
+	    $('.nsd-app-header .nav-link').addClass('text-light');
+	    $('.nsd-root-action').addClass(['display-4', 'text-light']);
+	
+	    $('.nsd-app-navbar').addClass(['bg-light', 'p-0']);
+	
+	    $('.nsd-app-navigation-panel').addClass(['col-auto', 'border-right', 'border-light', 'pb-1']); 
+	    $('.nsd-app-content-panel').addClass(['col', 'p-1']);
+	    $('.nsd-app-footer').addClass(['bg-dark', 'text-light', 'text-center']);
+	    $('.nsd-app-footer .nsd-footer-action').addClass(['font-italic', 'text-light']);
+	});
+</script>
+
+<style>
+	.nsd-label-icon {
+	    height:0.8em;
+	    margin-bottom:0.2em;
+	    margin-right:0.3em;
+	}
+	.nsd-app-content-row {
+	    min-height: 25rem;
+	}
+	.nsd-root-action {
+	    text-decoration: none;
+	}
+	@media print {
+	  div.nsd-app-navigation-panel {
+	    display: none;
+	  }
+	}
+</style></head>
+  <body>
+    <div class="container-fluid nsd-app-container border mt-1">
+      <div class="row">
+        <div class="nsd-app-header col bg-primary">
+          <a data-nsd-action="a9e842e9-2223-4c97-bd7e-5bb44a0e26bd" href="../../index.html" class="nsd-action nsd-root-action">Nasdanika</a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="nsd-app-navbar bg-light text-dark col">
+          <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a data-nsd-action="6dac558a-fbda-4efd-b2c5-3def6dcb1c59" href="../index.html" class="nsd-action navbar-brand">
+              <span class="fas fa-book nsd-label-icon"></span>Engineering</a>
+            <button type="button" data-toggle="collapse" data-target="#nsd-s" class="navbar-toggler">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div id="nsd-s" class="collapse navbar-collapse">
+              <ul class="navbar-nav"></ul>
+            </div>
+          </nav>
+        </div>
+      </div>
+      <div style="min-height:30em" class="row nsd-app-content-row">
+        <div class="nsd-app-navigation-panel col-auto">
+          <div class="card mt-1">
+            <div class="list-group list-group-flush">
+              <a href="../engineering-demo/index.html" class="list-group-item list-group-action">
+                <span class="fas fa-book-reader nsd-label-icon"></span>User Guide</a>
+            </div>
+          </div>
+          <div class="card mt-1">
+            <div class="card-header">
+              <a data-nsd-action="e6a2e8ab-b45b-4dce-ad9c-c1a0f8422ab8" href="package-summary.html" class="nsd-action">
+                <span title="Nasdanika Engineering model aims to provide support of an engineering practice - designing and building something complex in a series of steps over a period of time. ">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EPackage.gif" class="nsd-label-icon"/>Engineering</span>
+              </a>
+            </div>
+            <div class="list-group list-group-flush">
+              <a href="Activity.html" class="list-group-item list-group-action">
+                <span title="Activity is an element of a Journey. ">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Activity</span>
+              </a>
+              <a href="Adaptable.html" class="list-group-item list-group-action">
+                <img src="https://www.nasdanika.org/resources/images/ecore/EInterface.gif" class="nsd-label-icon"/>Adaptable</a>
+              <a href="Aim.html" class="list-group-item list-group-action">
+                <span title="Aim is the base class for things to which engineered capabilities and other aims can be aligned. ">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Aim</span>
+              </a>
+              <a href="Alignment.html" class="list-group-item list-group-action">
+                <span title="An association class between aims and engineered capabilities. ">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Alignment</span>
+              </a>
+              <a href="Allocation.html" class="list-group-item list-group-action">
+                <span title="Allocation of engineer&rsquo;s capacity to spend on a particular engineered element and issue category on a particular endeavor. ">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Allocation</span>
+              </a>
+              <a href="Appearance.html" class="list-group-item list-group-action">
+                <span title="Appearance allows to customize HTML UI generation process. ">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Appearance</span>
+              </a>
+              <a href="Call.html" class="list-group-item list-group-action">
+                <span title="TODO&hellip;">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Call</span>
+              </a>
+              <a href="Capability.html" class="list-group-item list-group-action">
+                <span title="TODO&hellip;">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Capability</span>
+              </a>
+              <a href="Capacity.html" class="list-group-item list-group-action">
+                <span title="Capacity is contained under Engineer and defines how much total effort or funds the containing engineer has to spend on a particular endeavor. ">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Capacity</span>
+              </a>
+              <a href="Directory.html" class="list-group-item list-group-action">
+                <span title="TODO&hellip;">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Directory</span>
+              </a>
+              <a href="Document.html" class="list-group-item list-group-action">
+                <span title="TODO&hellip;">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Document</span>
+              </a>
+              <a href="Endeavor.html" class="list-group-item list-group-action">
+                <span title="TODO&hellip;">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Endeavor</span>
+              </a>
+              <a href="Engineer.html" class="list-group-item list-group-action">
+                <span title="TODO&hellip;">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Engineer</span>
+              </a>
+              <a href="EngineeredCapability.html" class="list-group-item list-group-action">
+                <span title="TODO&hellip;">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>EngineeredCapability</span>
+              </a>
+              <a href="EngineeredElement.html" class="list-group-item list-group-action">
+                <span title="TODO&hellip;">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>EngineeredElement</span>
+              </a>
+              <a href="EngineeringAppearance.html" class="list-group-item list-group-action">
+                <span title="TODO&hellip;">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>EngineeringAppearance</span>
+              </a>
+              <a href="Feature.html" class="list-group-item list-group-action">
+                <span title="TODO&hellip;">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Feature</span>
+              </a>
+              <a href="FeatureAppearance.html" class="list-group-item list-group-action">
+                <span title="TODO&hellip;">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>FeatureAppearance</span>
+              </a>
+              <a href="FeatureAppearanceEntry.html" class="list-group-item list-group-action">
+                <span title="TODO&hellip;">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>FeatureAppearanceEntry</span>
+              </a>
+              <a href="Forum.html" class="list-group-item list-group-action">
+                <span title="TODO&hellip;">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Forum</span>
+              </a>
+              <a href="Goal.html" class="list-group-item list-group-action">
+                <span title="TODO&hellip;">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Goal</span>
+              </a>
+              <a href="Increment.html" class="list-group-item list-group-action">
+                <span title="TODO&hellip;">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Increment</span>
+              </a>
+              <a href="Issue.html" class="list-group-item list-group-action">
+                <span title="assignees - roles (planning), members (execution). ">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Issue</span>
+              </a>
+              <a href="IssueCategory.html" class="list-group-item list-group-action">
+                <span title="TODO&hellip;">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>IssueCategory</span>
+              </a>
+              <a href="IssueStatus.html" class="list-group-item list-group-action">
+                <span title="TODO&hellip;">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>IssueStatus</span>
+              </a>
+              <a href="" class="list-group-item list-group-action active">
+                <span title="TODO&hellip;">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Journey</span>
+              </a>
+              <a href="KeyResult.html" class="list-group-item list-group-action">
+                <span title="TODO&hellip;">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>KeyResult</span>
+              </a>
+              <a href="Link.html" class="list-group-item list-group-action">
+                <span title="TODO&hellip;">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Link</span>
+              </a>
+              <a href="Message.html" class="list-group-item list-group-action">
+                <span title="TODO&hellip;">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Message</span>
+              </a>
+              <a href="ModelElement.html" class="list-group-item list-group-action">
+                <span title="TODO&hellip;">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>ModelElement</span>
+              </a>
+              <a href="ModelElementAppearance.html" class="list-group-item list-group-action">
+                <span title="TODO&hellip;">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>ModelElementAppearance</span>
+              </a>
+              <a href="ModelElementAppearanceEntry.html" class="list-group-item list-group-action">
+                <span title="TODO&hellip;">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>ModelElementAppearanceEntry</span>
+              </a>
+              <a href="Module.html" class="list-group-item list-group-action">
+                <span title="TODO&hellip;">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Module</span>
+              </a>
+              <a href="NamedElement.html" class="list-group-item list-group-action">
+                <span title="TODO&hellip;">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>NamedElement</span>
+              </a>
+              <a href="NamedElementReference.html" class="list-group-item list-group-action">
+                <span title="TODO&hellip;">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>NamedElementReference</span>
+              </a>
+              <a href="Note.html" class="list-group-item list-group-action">
+                <span title="TODO&hellip;">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Note</span>
+              </a>
+              <a href="Objective.html" class="list-group-item list-group-action">
+                <span title="TODO&hellip;">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Objective</span>
+              </a>
+              <a href="Organization.html" class="list-group-item list-group-action">
+                <span title="TODO&hellip;">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Organization</span>
+              </a>
+              <a href="Persona.html" class="list-group-item list-group-action">
+                <span title="TODO&hellip;">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Persona</span>
+              </a>
+              <a href="Principle.html" class="list-group-item list-group-action">
+                <span title="Principles are general rules and guidelines, intended to be enduring and seldom amended, that inform and support the way in which an organization sets about fulfilling its mission. ">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Principle</span>
+              </a>
+              <a href="Product.html" class="list-group-item list-group-action">
+                <span title="TODO&hellip;">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Product</span>
+              </a>
+              <a href="Release.html" class="list-group-item list-group-action">
+                <span title="TODO&hellip;">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Release</span>
+              </a>
+              <a href="SectionStyle.html" class="list-group-item list-group-action">
+                <img src="https://www.nasdanika.org/resources/images/ecore/EDataType.gif" class="nsd-label-icon"/>SectionStyle</a>
+              <a href="Topic.html" class="list-group-item list-group-action">
+                <span title="TODO&hellip;">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Topic</span>
+              </a>
+              <a href="Transition.html" class="list-group-item list-group-action">
+                <span title="TODO&hellip;">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Transition</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="nsd-app-content-panel border-left col">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col nsd-app-content-panel-breadcrumb">
+                <nav aria-label="breadcrumb" class="mt-1">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                      <a data-nsd-action="e6a2e8ab-b45b-4dce-ad9c-c1a0f8422ab8" href="package-summary.html" class="nsd-action">
+                        <span title="Nasdanika Engineering model aims to provide support of an engineering practice - designing and building something complex in a series of steps over a period of time. ">
+                          <img src="https://www.nasdanika.org/resources/images/ecore/EPackage.gif" class="nsd-label-icon"/>Engineering</span>
+                      </a>
+                    </li>
+                    <li class="breadcrumb-item active">
+                      <span data-nsd-action="EClass-engineering-Journey" class="nsd-action">
+                        <span title="TODO&hellip;">
+                          <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Journey</span>
+                      </span>
+                    </li>
+                  </ol>
+                </nav>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col nsd-app-content-panel-header-col">
+                <h2 data-nsd-action="EClass-engineering-Journey" class="nsd-action nsd-app-content-panel-header">
+                  <span title="TODO&hellip;">
+                    <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Journey</span>
+                </h2>
+              </div>
+            </div>
+            <div class="row nsd-app-content-panel-body-row">
+              <div class="col nsd-app-content-panel-body"><div class="markdown-body"><p>TODO&hellip;</p>
+</div><img src="data:image/png;base64, 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" usemap="#plantuml_map_d53c1fb9-dad0-424b-ba91-c43e0d506377"/>
+<map id="plantuml_map_d53c1fb9-dad0-424b-ba91-c43e0d506377" name="plantuml_map_d53c1fb9-dad0-424b-ba91-c43e0d506377">
+<area shape="rect" id="id1" href="" title="TODO…" alt="" coords="127,42,225,111"/>
+<area shape="rect" id="id2" href="Activity.html" title="Activity is an element of a Journey. " alt="" coords="105,190,259,342"/>
+</map>
+
+<h3>Supertypes</h3>
+<ul>
+  <li><a href="Activity.html">Activity</a></li>
+</ul>
+<h3>Load specification</h3>
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr class="bg-secondary">
+      <th>Key</th>
+      <th>Type</th>
+      <th>Homogenous</th>
+      <th>Strict containment</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="text-monospace">actions</td>
+      <td>EObject</td>
+      <td class="text-center"></td>
+      <td class="text-center"></td>
+      <td><p>HTML actions to be mounted under the element action in generated site.</p>
+</td>
+    </tr>
+    <tr>
+      <td class="text-monospace">activities</td>
+      <td><a href="Activity.html">Activity</a></td>
+      <td class="text-center"></td>
+      <td class="text-center"></td>
+      <td><p>Journey activities.</p>
+</td>
+    </tr>
+    <tr>
+      <td class="text-monospace">activity-type</td>
+      <td>EString</td>
+      <td class="text-center"></td>
+      <td class="text-center"></td>
+      <td><p>Pseudo-activity (stereo)type. One of:</p>
+<ul>
+<li>choice</li>
+<li>fork</li>
+<li>join</li>
+<li>entryPoint</li>
+<li>exitPoint</li>
+<li>inputPin</li>
+<li>outputPin</li>
+<li>expansionInput</li>
+<li>expansionOutput</li>
+<li>end</li>
+</ul>
+<p>Pseudo-activities name is not shown on the diagram, they are not clickable, and they are not listed as journey children.</p>
+<p>See <a href="https://plantuml.com/state-diagram">PlantUML State Diagram</a> for more details.</p>
+</td>
+    </tr>
+    <tr>
+      <td class="text-monospace">allocations</td>
+      <td><a href="Allocation.html">Allocation</a></td>
+      <td class="text-center">true</td>
+      <td class="text-center"></td>
+      <td><p>Allocations of <a href="Engineer.html">engineer</a>&rsquo;s <a href="Capacity.html">capacity</a> to work on this engineered element <a href="Issue.html">issues</a> for a particular <a href="Endeavor.html">endeavor</a> and <a href="IssueCategory.html">issue category</a>.</p>
+</td>
+    </tr>
+    <tr>
+      <td class="text-monospace">appearance</td>
+      <td><a href="ModelElementAppearance.html">ModelElementAppearance</a></td>
+      <td class="text-center">true</td>
+      <td class="text-center"></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td class="text-monospace">calls</td>
+      <td><a href="Call.html">Call</a></td>
+      <td class="text-center"></td>
+      <td class="text-center"></td>
+      <td><p>Calls to other activities.</p>
+</td>
+    </tr>
+    <tr>
+      <td class="text-monospace">deliverables</td>
+      <td><a href="NamedElement.html">NamedElement</a></td>
+      <td class="text-center"></td>
+      <td class="text-center"></td>
+      <td><p>Output artifacts of the activity.</p>
+</td>
+    </tr>
+    <tr>
+      <td class="text-monospace">description</td>
+      <td>EString</td>
+      <td class="text-center"></td>
+      <td class="text-center"></td>
+      <td><p>Description in HTML.</p>
+</td>
+    </tr>
+    <tr>
+      <td class="text-monospace">discussion</td>
+      <td><a href="Forum.html">Forum</a></td>
+      <td class="text-center">true</td>
+      <td class="text-center"></td>
+      <td><p>Sub-forums.</p>
+</td>
+    </tr>
+    <tr>
+      <td class="text-monospace">experts</td>
+      <td><a href="Engineer.html">Engineer</a></td>
+      <td class="text-center"></td>
+      <td class="text-center"></td>
+      <td><p>Experts have expertise with the element, but no authority. E.g. they can help others with using the element, but cannot make changes in the element without owners&rsquo; approval.</p>
+</td>
+    </tr>
+    <tr>
+      <td class="text-monospace">features</td>
+      <td><a href="Feature.html">Feature</a></td>
+      <td class="text-center"></td>
+      <td class="text-center"></td>
+      <td><p>Product features used by this activity.</p>
+</td>
+    </tr>
+    <tr>
+      <td class="text-monospace">issues</td>
+      <td><a href="Issue.html">Issue</a></td>
+      <td class="text-center">true</td>
+      <td class="text-center"></td>
+      <td><p>Issues (work items) for this element.</p>
+</td>
+    </tr>
+    <tr>
+      <td class="text-monospace">markdown-description</td>
+      <td>EString</td>
+      <td class="text-center"></td>
+      <td class="text-center"></td>
+      <td><p>Description in <a href="https://en.wikipedia.org/wiki/Markdown">Markdown</a>.</p>
+</td>
+    </tr>
+    <tr>
+      <td class="text-monospace">name</td>
+      <td>EString</td>
+      <td class="text-center"></td>
+      <td class="text-center"></td>
+      <td><p>Element name.</p>
+</td>
+    </tr>
+    <tr>
+      <td class="text-monospace">outputs</td>
+      <td><a href="Transition.html">Transition</a></td>
+      <td class="text-center"></td>
+      <td class="text-center"></td>
+      <td><p>Activity outbound transitions to other activities.</p>
+</td>
+    </tr>
+    <tr>
+      <td class="text-monospace">owners</td>
+      <td><a href="Engineer.html">Engineer</a></td>
+      <td class="text-center"></td>
+      <td class="text-center"></td>
+      <td><p>Element owners have both expertise and authority over the element.</p>
+</td>
+    </tr>
+    <tr>
+      <td class="text-monospace">partition</td>
+      <td>EBoolean</td>
+      <td class="text-center"></td>
+      <td class="text-center"></td>
+      <td><p>If true, journey is visualized as a composite state on its parent journey diagram. If false, it is visualized as a simple state.</p>
+</td>
+    </tr>
+    <tr>
+      <td class="text-monospace">path</td>
+      <td>EString</td>
+      <td class="text-center"></td>
+      <td class="text-center"></td>
+      <td><p>Element&rsquo;s path to form full element URI and URL. Shall be unique in the containing collection. If blank, derived from element&rsquo;s position in the collection. For named elements is derived from element name. Element URL is formed by adding <code>.html</code> extension to the path if the model element&rsquo;s EClass doesn&rsquo;t have containment references and as such the element may not have children, and by adding <code>/index.html</code> otherwise.</p>
+</td>
+    </tr>
+    <tr>
+      <td class="text-monospace">personas</td>
+      <td><a href="Persona.html">Persona</a></td>
+      <td class="text-center"></td>
+      <td class="text-center"></td>
+      <td><p>Personas performing this activity.</p>
+</td>
+    </tr>
+    <tr>
+      <td class="text-monospace">principles</td>
+      <td><a href="Principle.html">Principle</a></td>
+      <td class="text-center">true</td>
+      <td class="text-center"></td>
+      <td><p>Principles associated with this element to support decision making.</p>
+</td>
+    </tr>
+    <tr>
+      <td class="text-monospace">requirements</td>
+      <td><a href="NamedElement.html">NamedElement</a></td>
+      <td class="text-center"></td>
+      <td class="text-center"></td>
+      <td><p>Input artifacts required to start working on this activity.</p>
+</td>
+    </tr>
+    <tr>
+      <td class="text-monospace">resources</td>
+      <td><a href="NamedElement.html">NamedElement</a></td>
+      <td class="text-center"></td>
+      <td class="text-center"></td>
+      <td><p>Resources associated with the element, e.g. documentation.</p>
+</td>
+    </tr>
+    <tr>
+      <td class="text-monospace">topics</td>
+      <td><a href="Topic.html">Topic</a></td>
+      <td class="text-center">true</td>
+      <td class="text-center"></td>
+      <td><p>Discussion topics in this forum.</p>
+</td>
+    </tr>
+  </tbody>
+</table>
+                <div>
+                  <H3>Members</H3>
+                  <ul>
+                    <li>
+                      <span>Attributes</span>
+                      <ul>
+                        <li>
+                          <a data-nsd-action="engineering-Journey-EAttribute-partition" href="#EAttribute-partition" class="nsd-action">
+                            <span title="If true, journey is visualized as a composite state on its parent journey diagram. ">
+                              <img src="https://www.nasdanika.org/resources/images/ecore/EAttribute.gif" class="nsd-label-icon"/>partition : EBoolean</span>
+                          </a> - If true, journey is visualized as a composite state on its parent journey diagram. </li>
+                      </ul>
+                    </li>
+                    <li>
+                      <span>References</span>
+                      <ul>
+                        <li>
+                          <a data-nsd-action="engineering-Journey-EReference-activities" href="#EReference-activities" class="nsd-action">
+                            <span title="Journey activities.">
+                              <img src="https://www.nasdanika.org/resources/images/ecore/EReference.gif" class="nsd-label-icon"/>activities : Activity*</span>
+                          </a> - Journey activities.</li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+                <a name="attributes"></a>
+                <H3>Attributes</H3>
+                <div>
+                  <a name="EAttribute-partition"></a>
+                  <H4 data-nsd-action="engineering-Journey-EAttribute-partition" class="nsd-action">
+                    <span title="If true, journey is visualized as a composite state on its parent journey diagram. ">
+                      <img src="https://www.nasdanika.org/resources/images/ecore/EAttribute.gif" class="nsd-label-icon"/>partition : EBoolean</span>
+                  </H4><div class="markdown-body"><p>If true, journey is visualized as a composite state on its parent journey diagram. If false, it is visualized as a simple state.</p>
+</div>
+<table style="width:auto" class="table">
+  <tr>
+    <th>Type</th>
+    <td>EBoolean</td>
+  </tr>
+  <tr>
+    <th>Cardinality</th>
+    <td>0..1</td>
+  </tr>
+  <tr>
+    <th>Changeable</th>
+    <td>true</td>
+  </tr>
+  <tr>
+    <th>Derived</th>
+    <td>false</td>
+  </tr>
+</table></div>
+                <a name="references"></a>
+                <H3>References</H3>
+                <div>
+                  <a name="EReference-activities"></a>
+                  <H4 data-nsd-action="engineering-Journey-EReference-activities" class="nsd-action">
+                    <span title="Journey activities.">
+                      <img src="https://www.nasdanika.org/resources/images/ecore/EReference.gif" class="nsd-label-icon"/>activities : Activity*</span>
+                  </H4><div class="markdown-body"><p>Journey activities.</p>
+</div>
+<table style="width:auto" class="table">
+  <tr>
+    <th>Type</th>
+    <td><a href="Activity.html">Activity</a></td>
+  </tr>
+  <tr>
+    <th>Cardinality</th>
+    <td><B>0..*</B></td>
+  </tr>
+  <tr>
+    <th>Changeable</th>
+    <td>true</td>
+  </tr>
+  <tr>
+    <th>Derived</th>
+    <td>false</td>
+  </tr>
+</table></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

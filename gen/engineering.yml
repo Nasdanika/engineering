@@ -1,7 +1,6 @@
 engineering-module:
    name: Gen
    path: gen
-   experts: pavel:this
    issues:
    
        ### 2021.5.0 ###
@@ -73,6 +72,7 @@ engineering-module:
        description: In engineered capability - release, feature, issue. Show in properties. Along with effective benefit, cost, etc. Kinda duplicate.  
        increment: nasdanika:increments/2021/children/q2/children/may
        releases: nasdanika:modules/engineering/releases/2021/5/0
+       categories: nasdanika:issue-categories/good-first-issue       
        effort: 4 
        notes:
          - date: 2021/05/12
@@ -91,7 +91,6 @@ engineering-module:
            markdown-description: Notes work. Need to add effectiveStatus derived from issue status if it is set and last note status otherwise.
            effort: 1
            remaining-effort: 1
-           author: pavel:this
            status: nasdanika:issue-statuses/in-progress
          - date: 2021/05/11
            markdown-description: Default status (if not set) is computed from the last note with set status or from the first status in ancestor engineer if there are notes with status.
@@ -213,6 +212,12 @@ engineering-module:
        markdown-description: includes/partOf. For composite releases. Requires/requiredBy to Engineered Capability or introduce CompositeEngineeredCapability.       
      - name: none literal to icon
        markdown-description: Suppresses inherited icon.       
+     - name: Engineers feature action
+       markdown-description: Table with engineer name and stats - owns, expert, number of issues, number of messages.       
+     - name: Issue statuses feature action
+       markdown-description: Table with status name, description, and number of issues in the status.       
+     - name: Issue categories feature action
+       markdown-description: Table with category name, description, and number of issues in the category.       
 
 #### Done ####
 

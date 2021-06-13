@@ -1,0 +1,21 @@
+# GCB Developer Experience Information Center Documentation.
+# See https://nasdanika.org/builds/develop/doc/reference/knowledge-base/html/app/factories/index.html for configuration reference
+app-action:
+   text: Nasdanika
+   href: ../index.html   
+   children:
+      - app-action:
+         text: Engineering
+         icon: fas fa-book
+         href: engineering/index.html
+         content: 
+           - component-list-of-contents: 
+               tooltip: true
+         children:
+           - app-action:
+              text: User Guide
+              icon: fas fa-book-reader
+              href: engineering-demo/index.html
+           # TODO - link to the User Guide in Demo                
+           - app-action-reference: ../target/model-doc/engineering.genmodel.yml
+               
