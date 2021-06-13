@@ -213,7 +213,9 @@ engineering-module:
      - name: none literal to icon
        markdown-description: Suppresses inherited icon.       
      - name: Engineers feature action
-       markdown-description: Table with engineer name and stats - owns, expert, number of issues, number of messages.       
+       markdown-description: |+2
+         Table with engineer name and stats - owns, expert, number of issues, number of messages.
+         Provisions for additional stats - context service. E.g. number of commits.       
      - name: Issue statuses feature action
        markdown-description: Table with status name, description, and number of issues in the status.       
      - name: Issue categories feature action
