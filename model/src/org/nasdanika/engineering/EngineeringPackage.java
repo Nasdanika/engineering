@@ -3870,7 +3870,7 @@ public interface EngineeringPackage extends EPackage {
 	int FEATURE__RELEASES = ENGINEERED_CAPABILITY_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Activities</b></em>' reference list.
+	 * The feature id for the '<em><b>Activities</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -3888,13 +3888,22 @@ public interface EngineeringPackage extends EPackage {
 	int FEATURE__ISSUES = ENGINEERED_CAPABILITY_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Uses</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE__USES = ENGINEERED_CAPABILITY_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Feature</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FEATURE_FEATURE_COUNT = ENGINEERED_CAPABILITY_FEATURE_COUNT + 3;
+	int FEATURE_FEATURE_COUNT = ENGINEERED_CAPABILITY_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of operations of the '<em>Feature</em>' class.
@@ -7689,10 +7698,10 @@ public interface EngineeringPackage extends EPackage {
 	EReference getFeature_Releases();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.Feature#getActivities <em>Activities</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.nasdanika.engineering.Feature#getActivities <em>Activities</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Activities</em>'.
+	 * @return the meta object for the containment reference list '<em>Activities</em>'.
 	 * @see org.nasdanika.engineering.Feature#getActivities()
 	 * @see #getFeature()
 	 * @generated
@@ -7709,6 +7718,17 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getFeature_Issues();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.Feature#getUses <em>Uses</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Uses</em>'.
+	 * @see org.nasdanika.engineering.Feature#getUses()
+	 * @see #getFeature()
+	 * @generated
+	 */
+	EReference getFeature_Uses();
 
 	/**
 	 * Returns the meta object for class '{@link org.nasdanika.engineering.Activity <em>Activity</em>}'.
@@ -9560,7 +9580,7 @@ public interface EngineeringPackage extends EPackage {
 		EReference FEATURE__RELEASES = eINSTANCE.getFeature_Releases();
 
 		/**
-		 * The meta object literal for the '<em><b>Activities</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Activities</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -9574,6 +9594,14 @@ public interface EngineeringPackage extends EPackage {
 		 * @generated
 		 */
 		EReference FEATURE__ISSUES = eINSTANCE.getFeature_Issues();
+
+		/**
+		 * The meta object literal for the '<em><b>Uses</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference FEATURE__USES = eINSTANCE.getFeature_Uses();
 
 		/**
 		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.ActivityImpl <em>Activity</em>}' class.

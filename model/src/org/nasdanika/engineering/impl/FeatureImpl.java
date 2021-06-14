@@ -29,6 +29,7 @@ import org.nasdanika.engineering.Release;
  *   <li>{@link org.nasdanika.engineering.impl.FeatureImpl#getReleases <em>Releases</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.FeatureImpl#getActivities <em>Activities</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.FeatureImpl#getIssues <em>Issues</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.FeatureImpl#getUses <em>Uses</em>}</li>
  * </ul>
  *
  * @generated
@@ -88,6 +89,16 @@ public class FeatureImpl extends EngineeredCapabilityImpl implements Feature {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public EList<Activity> getUses() {
+		return getReferrers(EngineeringPackage.Literals.ACTIVITY__FEATURES);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -98,6 +109,8 @@ public class FeatureImpl extends EngineeredCapabilityImpl implements Feature {
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getReleases()).basicAdd(otherEnd, msgs);
 			case EngineeringPackage.FEATURE__ISSUES:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getIssues()).basicAdd(otherEnd, msgs);
+			case EngineeringPackage.FEATURE__USES:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getUses()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -112,8 +125,12 @@ public class FeatureImpl extends EngineeredCapabilityImpl implements Feature {
 		switch (featureID) {
 			case EngineeringPackage.FEATURE__RELEASES:
 				return ((InternalEList<?>)getReleases()).basicRemove(otherEnd, msgs);
+			case EngineeringPackage.FEATURE__ACTIVITIES:
+				return ((InternalEList<?>)getActivities()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.FEATURE__ISSUES:
 				return ((InternalEList<?>)getIssues()).basicRemove(otherEnd, msgs);
+			case EngineeringPackage.FEATURE__USES:
+				return ((InternalEList<?>)getUses()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -132,6 +149,8 @@ public class FeatureImpl extends EngineeredCapabilityImpl implements Feature {
 				return getActivities();
 			case EngineeringPackage.FEATURE__ISSUES:
 				return getIssues();
+			case EngineeringPackage.FEATURE__USES:
+				return getUses();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -189,6 +208,8 @@ public class FeatureImpl extends EngineeredCapabilityImpl implements Feature {
 				return !getActivities().isEmpty();
 			case EngineeringPackage.FEATURE__ISSUES:
 				return !getIssues().isEmpty();
+			case EngineeringPackage.FEATURE__USES:
+				return !getUses().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

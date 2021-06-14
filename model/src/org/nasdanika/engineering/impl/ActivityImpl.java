@@ -167,6 +167,8 @@ public class ActivityImpl extends EngineeredElementImpl implements Activity {
 		switch (featureID) {
 			case EngineeringPackage.ACTIVITY__PERSONAS:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getPersonas()).basicAdd(otherEnd, msgs);
+			case EngineeringPackage.ACTIVITY__FEATURES:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getFeatures()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -185,6 +187,8 @@ public class ActivityImpl extends EngineeredElementImpl implements Activity {
 				return ((InternalEList<?>)getOutputs()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.ACTIVITY__CALLS:
 				return ((InternalEList<?>)getCalls()).basicRemove(otherEnd, msgs);
+			case EngineeringPackage.ACTIVITY__FEATURES:
+				return ((InternalEList<?>)getFeatures()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}

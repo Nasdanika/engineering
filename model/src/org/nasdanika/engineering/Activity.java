@@ -147,6 +147,7 @@ public interface Activity extends EngineeredElement {
 	/**
 	 * Returns the value of the '<em><b>Features</b></em>' reference list.
 	 * The list contents are of type {@link org.nasdanika.engineering.Feature}.
+	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Feature#getUses <em>Uses</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -154,7 +155,8 @@ public interface Activity extends EngineeredElement {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Features</em>' reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getActivity_Features()
-	 * @model
+	 * @see org.nasdanika.engineering.Feature#getUses
+	 * @model opposite="uses"
 	 * @generated
 	 */
 	EList<Feature> getFeatures();

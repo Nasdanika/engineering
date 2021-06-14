@@ -43,7 +43,7 @@ Context children of the principal action are displayed in the navigation bar on 
 Navigation children of the principal action are displayed recursively in the navigation panel. On this page it is a list of documentation actions.
 * Active action - any action in the hierarchy which is currently "active", i.e. its content is displayed in the content panel and it is shown as active/selected in the navigation panel or navigation bar. On this page ``Appearance`` is the active action - it is selected in the navigation tree and your are reading its content. Active action path is displayed in the [breadcrumb](https://getbootstrap.com/docs/4.5/components/breadcrumb/).
     * Context children of the active action are displayed in in the active action navigation bar to the right of the action title.
-    * Section children are displayed as page sections with their context children displayed in section navigation bars to the right of section titles (for paragraph section style).
+    * Section children are displayed as page sections with their context children displayed in section navigation bars to the right of section titles (for paragraph [section style](SectionStyle.html)).
     * Content left children are displayed in the left content navigation panel.
     * Content right children are displayed in the right content navigation panel.   
 
@@ -125,7 +125,7 @@ Section children of the active action.
 
 ###### Content left navigation panel 
 
-Adaptive navigation panel displaying ``content left`` children of the active action. Section content left and right panels are supported for the paragraph section style. 
+Adaptive navigation panel displaying ``content left`` children of the active action. Section content left and right panels are supported for the paragraph [section style](SectionStyle.html). 
 Support for other section styles will be added in the future releases.
 
 ###### Content right navigation panel

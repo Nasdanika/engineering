@@ -1,3 +1,5 @@
+the action of working artfully to bring something about.
+
 Nasdanika Engineering model aims to provide support of an engineering practice - designing and building something complex in a series of steps over a period of time.
 The model is rather large, but it doesn't have to be used in its entirety and may be consumed gradually as you mature your engineering practice.
 Put a stake in the familiar ground and expand.

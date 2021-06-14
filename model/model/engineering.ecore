@@ -695,15 +695,21 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="activities" upperBound="-1"
-        eType="#//Activity" derived="true">
+        eType="#//Activity" containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Activities using this feature."/>
+        <details key="documentation" value="Activities exemplifying use of the feature. These activities may be [journeys](Journey.html) and may be referenced from journeys."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="issues" upperBound="-1"
         eType="#//Issue" changeable="false" derived="true" eOpposite="#//Issue/contributesTo">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Issues contributing to this feature."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="uses" upperBound="-1" eType="#//Activity"
+        changeable="false" derived="true" eOpposite="#//Activity/features">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Activities using this feature."/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
@@ -747,7 +753,7 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="features" upperBound="-1"
-        eType="#//Feature">
+        eType="#//Feature" eOpposite="#//Feature/uses">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Product features used by this activity."/>
       </eAnnotations>

@@ -17,6 +17,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.nasdanika.engineering.Feature#getReleases <em>Releases</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Feature#getActivities <em>Activities</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Feature#getIssues <em>Issues</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.Feature#getUses <em>Uses</em>}</li>
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getFeature()
@@ -42,16 +43,16 @@ public interface Feature extends EngineeredCapability {
 	EList<Release> getReleases();
 
 	/**
-	 * Returns the value of the '<em><b>Activities</b></em>' reference list.
+	 * Returns the value of the '<em><b>Activities</b></em>' containment reference list.
 	 * The list contents are of type {@link org.nasdanika.engineering.Activity}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Activities using this feature.
+	 * Activities exemplifying use of the feature. These activities may be [journeys](Journey.html) and may be referenced from journeys.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Activities</em>' reference list.
+	 * @return the value of the '<em>Activities</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getFeature_Activities()
-	 * @model derived="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<Activity> getActivities();
@@ -72,5 +73,22 @@ public interface Feature extends EngineeredCapability {
 	 * @generated
 	 */
 	EList<Issue> getIssues();
+
+	/**
+	 * Returns the value of the '<em><b>Uses</b></em>' reference list.
+	 * The list contents are of type {@link org.nasdanika.engineering.Activity}.
+	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Activity#getFeatures <em>Features</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Activities using this feature.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Uses</em>' reference list.
+	 * @see org.nasdanika.engineering.EngineeringPackage#getFeature_Uses()
+	 * @see org.nasdanika.engineering.Activity#getFeatures
+	 * @model opposite="features" changeable="false" derived="true"
+	 * @generated
+	 */
+	EList<Activity> getUses();
 
 } // Feature
