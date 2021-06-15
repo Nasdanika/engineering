@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.nasdanika.emf.EmfUtil;
+import org.nasdanika.engineering.Alignment;
 import org.nasdanika.engineering.Capacity;
 import org.nasdanika.engineering.Endeavor;
 import org.nasdanika.engineering.Engineer;
@@ -31,6 +32,7 @@ import org.nasdanika.engineering.Objective;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link org.nasdanika.engineering.impl.EndeavorImpl#getAligns <em>Aligns</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EndeavorImpl#getCompletion <em>Completion</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EndeavorImpl#getBenefit <em>Benefit</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EndeavorImpl#getTotalCost <em>Total Cost</em>}</li>
@@ -124,6 +126,17 @@ public class EndeavorImpl extends MinimalEObjectImpl.Container implements Endeav
 	@Override
 	protected int eStaticFeatureCount() {
 		return 0;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public EList<Alignment> getAligns() {
+		return (EList<Alignment>)eDynamicGet(EngineeringPackage.ENDEAVOR__ALIGNS, EngineeringPackage.Literals.ALIGNABLE__ALIGNS, true, true);
 	}
 
 	/**
@@ -330,6 +343,8 @@ public class EndeavorImpl extends MinimalEObjectImpl.Container implements Endeav
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+			case EngineeringPackage.ENDEAVOR__ALIGNS:
+				return ((InternalEList<?>)getAligns()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.ENDEAVOR__ASSIGNEE:
 				return basicSetAssignee(null, msgs);
 			case EngineeringPackage.ENDEAVOR__CAPACITY:
@@ -350,6 +365,8 @@ public class EndeavorImpl extends MinimalEObjectImpl.Container implements Endeav
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case EngineeringPackage.ENDEAVOR__ALIGNS:
+				return getAligns();
 			case EngineeringPackage.ENDEAVOR__COMPLETION:
 				return getCompletion();
 			case EngineeringPackage.ENDEAVOR__BENEFIT:
@@ -386,6 +403,10 @@ public class EndeavorImpl extends MinimalEObjectImpl.Container implements Endeav
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case EngineeringPackage.ENDEAVOR__ALIGNS:
+				getAligns().clear();
+				getAligns().addAll((Collection<? extends Alignment>)newValue);
+				return;
 			case EngineeringPackage.ENDEAVOR__BENEFIT:
 				setBenefit((Double)newValue);
 				return;
@@ -422,6 +443,9 @@ public class EndeavorImpl extends MinimalEObjectImpl.Container implements Endeav
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case EngineeringPackage.ENDEAVOR__ALIGNS:
+				getAligns().clear();
+				return;
 			case EngineeringPackage.ENDEAVOR__BENEFIT:
 				setBenefit(BENEFIT_EDEFAULT);
 				return;
@@ -455,6 +479,8 @@ public class EndeavorImpl extends MinimalEObjectImpl.Container implements Endeav
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case EngineeringPackage.ENDEAVOR__ALIGNS:
+				return !getAligns().isEmpty();
 			case EngineeringPackage.ENDEAVOR__COMPLETION:
 				return getCompletion() != COMPLETION_EDEFAULT;
 			case EngineeringPackage.ENDEAVOR__BENEFIT:

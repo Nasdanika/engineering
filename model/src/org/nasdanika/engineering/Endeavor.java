@@ -4,7 +4,6 @@ package org.nasdanika.engineering;
 
 import java.util.Date;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -33,7 +32,7 @@ import org.eclipse.emf.ecore.EObject;
  *        annotation="urn:org.nasdanika documentation-reference='doc/endeavor.md'"
  * @generated
  */
-public interface Endeavor extends EObject {
+public interface Endeavor extends Alignable {
 	/**
 	 * Returns the value of the '<em><b>Completion</b></em>' attribute.
 	 * <!-- begin-user-doc -->

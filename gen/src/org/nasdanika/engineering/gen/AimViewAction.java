@@ -60,7 +60,7 @@ public class AimViewAction<T extends Aim> extends NamedElementViewAction<T> {
 	
 	@Override
 	protected Collection<Action> featureActions(EStructuralFeature feature) {
-		if (feature == EngineeringPackage.Literals.AIM__ALIGNS) {
+		if (feature == EngineeringPackage.Literals.ALIGNABLE__ALIGNS) {
 			if (getSemanticElement().getAligns().isEmpty()) {
 				return Collections.emptyList();
 			}

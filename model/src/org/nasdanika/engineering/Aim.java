@@ -14,14 +14,13 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link org.nasdanika.engineering.Aim#getAlignments <em>Alignments</em>}</li>
- *   <li>{@link org.nasdanika.engineering.Aim#getAligns <em>Aligns</em>}</li>
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getAim()
  * @model annotation="urn:org.nasdanika documentation-reference='doc/aim.md'"
  * @generated
  */
-public interface Aim extends NamedElement {
+public interface Aim extends NamedElement, Alignable {
 	/**
 	 * Returns the value of the '<em><b>Alignments</b></em>' reference list.
 	 * The list contents are of type {@link org.nasdanika.engineering.Alignment}.
@@ -38,21 +37,5 @@ public interface Aim extends NamedElement {
 	 * @generated
 	 */
 	EList<Alignment> getAlignments();
-
-	/**
-	 * Returns the value of the '<em><b>Aligns</b></em>' containment reference list.
-	 * The list contents are of type {@link org.nasdanika.engineering.Alignment}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Higher level aims to which this aim aligns. E.g. a module level principle may align to organization pirinciples.
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Aligns</em>' containment reference list.
-	 * @see org.nasdanika.engineering.EngineeringPackage#getAim_Aligns()
-	 * @model containment="true"
-	 *        annotation="urn:org.nasdanika homogenous='true' strict-containment='true'"
-	 * @generated
-	 */
-	EList<Alignment> getAligns();
 
 } // Aim

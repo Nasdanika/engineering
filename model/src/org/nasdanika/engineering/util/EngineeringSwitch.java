@@ -12,6 +12,7 @@ import org.nasdanika.common.Adaptable;
 
 import org.nasdanika.engineering.Activity;
 import org.nasdanika.engineering.Aim;
+import org.nasdanika.engineering.Alignable;
 import org.nasdanika.engineering.Alignment;
 import org.nasdanika.engineering.Allocation;
 import org.nasdanika.engineering.Appearance;
@@ -133,6 +134,7 @@ public class EngineeringSwitch<T> extends Switch<T> {
 			case EngineeringPackage.ENDEAVOR: {
 				Endeavor endeavor = (Endeavor)theEObject;
 				T result = caseEndeavor(endeavor);
+				if (result == null) result = caseAlignable(endeavor);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -142,6 +144,7 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				if (result == null) result = caseNamedElement(increment);
 				if (result == null) result = caseEndeavor(increment);
 				if (result == null) result = caseModelElement(increment);
+				if (result == null) result = caseAlignable(increment);
 				if (result == null) result = caseAdaptable(increment);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -171,6 +174,7 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				if (result == null) result = caseCapability(issue);
 				if (result == null) result = caseEndeavor(issue);
 				if (result == null) result = caseNamedElement(issue);
+				if (result == null) result = caseAlignable(issue);
 				if (result == null) result = caseModelElement(issue);
 				if (result == null) result = caseAdaptable(issue);
 				if (result == null) result = defaultCase(theEObject);
@@ -268,6 +272,7 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				if (result == null) result = caseCapability(engineeredCapability);
 				if (result == null) result = caseEndeavor(engineeredCapability);
 				if (result == null) result = caseNamedElement(engineeredCapability);
+				if (result == null) result = caseAlignable(engineeredCapability);
 				if (result == null) result = caseModelElement(engineeredCapability);
 				if (result == null) result = caseAdaptable(engineeredCapability);
 				if (result == null) result = defaultCase(theEObject);
@@ -280,6 +285,7 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				if (result == null) result = caseCapability(release);
 				if (result == null) result = caseEndeavor(release);
 				if (result == null) result = caseNamedElement(release);
+				if (result == null) result = caseAlignable(release);
 				if (result == null) result = caseModelElement(release);
 				if (result == null) result = caseAdaptable(release);
 				if (result == null) result = defaultCase(theEObject);
@@ -292,6 +298,7 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				if (result == null) result = caseCapability(feature);
 				if (result == null) result = caseEndeavor(feature);
 				if (result == null) result = caseNamedElement(feature);
+				if (result == null) result = caseAlignable(feature);
 				if (result == null) result = caseModelElement(feature);
 				if (result == null) result = caseAdaptable(feature);
 				if (result == null) result = defaultCase(theEObject);
@@ -367,10 +374,17 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case EngineeringPackage.ALIGNABLE: {
+				Alignable alignable = (Alignable)theEObject;
+				T result = caseAlignable(alignable);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case EngineeringPackage.AIM: {
 				Aim aim = (Aim)theEObject;
 				T result = caseAim(aim);
 				if (result == null) result = caseNamedElement(aim);
+				if (result == null) result = caseAlignable(aim);
 				if (result == null) result = caseModelElement(aim);
 				if (result == null) result = caseAdaptable(aim);
 				if (result == null) result = defaultCase(theEObject);
@@ -381,6 +395,7 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				T result = casePrinciple(principle);
 				if (result == null) result = caseAim(principle);
 				if (result == null) result = caseNamedElement(principle);
+				if (result == null) result = caseAlignable(principle);
 				if (result == null) result = caseModelElement(principle);
 				if (result == null) result = caseAdaptable(principle);
 				if (result == null) result = defaultCase(theEObject);
@@ -399,6 +414,7 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				T result = caseGoal(goal);
 				if (result == null) result = caseAim(goal);
 				if (result == null) result = caseNamedElement(goal);
+				if (result == null) result = caseAlignable(goal);
 				if (result == null) result = caseModelElement(goal);
 				if (result == null) result = caseAdaptable(goal);
 				if (result == null) result = defaultCase(theEObject);
@@ -504,6 +520,7 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				T result = caseKeyResult(keyResult);
 				if (result == null) result = caseAim(keyResult);
 				if (result == null) result = caseNamedElement(keyResult);
+				if (result == null) result = caseAlignable(keyResult);
 				if (result == null) result = caseModelElement(keyResult);
 				if (result == null) result = caseAdaptable(keyResult);
 				if (result == null) result = defaultCase(theEObject);
@@ -515,6 +532,7 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				if (result == null) result = caseKeyResult(objective);
 				if (result == null) result = caseAim(objective);
 				if (result == null) result = caseNamedElement(objective);
+				if (result == null) result = caseAlignable(objective);
 				if (result == null) result = caseModelElement(objective);
 				if (result == null) result = caseAdaptable(objective);
 				if (result == null) result = defaultCase(theEObject);
@@ -911,6 +929,21 @@ public class EngineeringSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseAllocation(Allocation object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Alignable</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Alignable</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAlignable(Alignable object) {
 		return null;
 	}
 

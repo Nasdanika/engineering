@@ -167,6 +167,26 @@ engineering-module:
      - name: Appearance - feature order
        markdown-description: |+2
          Ability to specify feature order. E.g. that increments are shown after modules.                       
+     - name: Decision
+       markdown-description: |+2
+         Extends Aim and EngineeredElement. Effective dates - start, end. I.e. it takes effort to make a decision, it can be made in a series of endeavors, e.g. conducting POC's. 
+         It is owned by an engineer and may have experts. It may be aligned to other aims. And other aims and endeavors can be aligned to the decision.
+         Later on - multi-criteria decisions with criteria and alternatives and other things.
+         Extends capability too - issues and other decisions can require it - decision chaining. Resolution and markdown resolution attributes in addition to description.
+         Decision may be considered to be an endeavor. If decided so - update endeavor descripton. Decision is an engineered capability, but can't extend it because it would inherit ``aligns`` from both engineered capability and aim.
+         Validation of decision effective dates - derived decision effective dates shall be within effective dates of decisions it is based on.
+         Decision shall also have status - simply reuse issue status? Would need rejected and superceded statuses in this case.
+         Or decision is a special case of issue? If so, introduce "Alignable" class with both Aim and EngineeredCapability extending it. This way decision is an issue which extends Aim.  
+         Make Endeavor alignable instead of Engineered capability? E.g. a quarter can be aligned to addressing technical debt. 
+         Superceded and supercedes references. The superceding decision references the superceded. Superceded reference is derived. Many to many - one decision may supercede multiple and a decision may be superceded by several decisions.
+         Even if one of them is rejected the superceded decision is still superceded if any of superceding is effective - done and within the effective dates range.
+         Premises/Entailments reference (not needed - requires/requiredBy will do). Entailments is a derived reference.                        
+     - name: Visualizations of aims and alignments
+       markdown-description: Including decision chains.
+     - name: Resource uploading during generation.
+       markdown-description: |+2
+         Duplicate, just to make sure - ``resource`` token replacer if there is ResourceManager service - takes URI of the resource relative to the YAML spec, uploads it somewhere (or writes to the output directory)
+         and returns a URL relative to the generated page.
          
      ### === Done === ###    
      - name: Start/end from Issue and Increment to Endeavor

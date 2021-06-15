@@ -16,6 +16,7 @@ import org.nasdanika.common.Adaptable;
 
 import org.nasdanika.engineering.Activity;
 import org.nasdanika.engineering.Aim;
+import org.nasdanika.engineering.Alignable;
 import org.nasdanika.engineering.Alignment;
 import org.nasdanika.engineering.Allocation;
 import org.nasdanika.engineering.Appearance;
@@ -247,6 +248,13 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	private EClass allocationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass alignableEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1088,16 +1096,6 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EReference getEngineeredCapability_Aligns() {
-		return (EReference)engineeredCapabilityEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EClass getIncrement() {
 		return incrementEClass;
 	}
@@ -1798,6 +1796,26 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
+	public EClass getAlignable() {
+		return alignableEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getAlignable_Aligns() {
+		return (EReference)alignableEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getAim() {
 		return aimEClass;
 	}
@@ -1810,16 +1828,6 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	@Override
 	public EReference getAim_Alignments() {
 		return (EReference)aimEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getAim_Aligns() {
-		return (EReference)aimEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -2495,7 +2503,6 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		createEAttribute(capabilityEClass, CAPABILITY__AVAILABLE);
 
 		engineeredCapabilityEClass = createEClass(ENGINEERED_CAPABILITY);
-		createEReference(engineeredCapabilityEClass, ENGINEERED_CAPABILITY__ALIGNS);
 
 		releaseEClass = createEClass(RELEASE);
 		createEReference(releaseEClass, RELEASE__INCREMENT);
@@ -2541,9 +2548,11 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		createEReference(allocationEClass, ALLOCATION__ENGINEER);
 		createEReference(allocationEClass, ALLOCATION__CATEGORY);
 
+		alignableEClass = createEClass(ALIGNABLE);
+		createEReference(alignableEClass, ALIGNABLE__ALIGNS);
+
 		aimEClass = createEClass(AIM);
 		createEReference(aimEClass, AIM__ALIGNMENTS);
-		createEReference(aimEClass, AIM__ALIGNS);
 
 		principleEClass = createEClass(PRINCIPLE);
 		createEReference(principleEClass, PRINCIPLE__CHILDREN);
@@ -2648,6 +2657,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		// Add supertypes to classes
 		modelElementEClass.getESuperTypes().add(this.getAdaptable());
 		namedElementEClass.getESuperTypes().add(this.getModelElement());
+		endeavorEClass.getESuperTypes().add(this.getAlignable());
 		incrementEClass.getESuperTypes().add(this.getNamedElement());
 		incrementEClass.getESuperTypes().add(this.getEndeavor());
 		issueCategoryEClass.getESuperTypes().add(this.getNamedElement());
@@ -2673,6 +2683,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		capacityEClass.getESuperTypes().add(this.getModelElement());
 		allocationEClass.getESuperTypes().add(this.getCapacity());
 		aimEClass.getESuperTypes().add(this.getNamedElement());
+		aimEClass.getESuperTypes().add(this.getAlignable());
 		principleEClass.getESuperTypes().add(this.getAim());
 		alignmentEClass.getESuperTypes().add(this.getModelElement());
 		goalEClass.getESuperTypes().add(this.getAim());
@@ -2802,7 +2813,6 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		initEAttribute(getCapability_Available(), ecorePackage.getEBoolean(), "available", null, 0, 1, Capability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(engineeredCapabilityEClass, EngineeredCapability.class, "EngineeredCapability", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getEngineeredCapability_Aligns(), this.getAlignment(), null, "aligns", null, 0, -1, EngineeredCapability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(releaseEClass, Release.class, "Release", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getRelease_Increment(), this.getIncrement(), this.getIncrement_Releases(), "increment", null, 0, 1, Release.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2848,9 +2858,11 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		initEReference(getAllocation_Engineer(), this.getEngineer(), this.getEngineer_Designations(), "engineer", null, 1, 1, Allocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAllocation_Category(), this.getIssueCategory(), this.getIssueCategory_Allocations(), "category", null, 0, 1, Allocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(alignableEClass, Alignable.class, "Alignable", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getAlignable_Aligns(), this.getAlignment(), null, "aligns", null, 0, -1, Alignable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(aimEClass, Aim.class, "Aim", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getAim_Alignments(), this.getAlignment(), this.getAlignment_Aim(), "alignments", null, 0, -1, Aim.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEReference(getAim_Aligns(), this.getAlignment(), null, "aligns", null, 0, -1, Aim.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(principleEClass, Principle.class, "Principle", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getPrinciple_Children(), this.getPrinciple(), null, "children", null, 0, -1, Principle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3206,13 +3218,6 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 			   "documentation-reference", "doc/engineered-capability.md"
 		   });
 		addAnnotation
-		  (getEngineeredCapability_Aligns(),
-		   source,
-		   new String[] {
-			   "homogenous", "true",
-			   "strict-containment", "true"
-		   });
-		addAnnotation
 		  (releaseEClass,
 		   source,
 		   new String[] {
@@ -3273,17 +3278,23 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 			   "documentation-reference", "doc/allocation.md"
 		   });
 		addAnnotation
-		  (aimEClass,
+		  (alignableEClass,
 		   source,
 		   new String[] {
-			   "documentation-reference", "doc/aim.md"
+			   "documentation-reference", "doc/alignable.md"
 		   });
 		addAnnotation
-		  (getAim_Aligns(),
+		  (getAlignable_Aligns(),
 		   source,
 		   new String[] {
 			   "homogenous", "true",
 			   "strict-containment", "true"
+		   });
+		addAnnotation
+		  (aimEClass,
+		   source,
+		   new String[] {
+			   "documentation-reference", "doc/aim.md"
 		   });
 		addAnnotation
 		  (principleEClass,
@@ -3969,12 +3980,6 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 			   "documentation", "Indicates that this capability is available and [issues](Issue.html) which require it are workable, unless they have other unavailable requirements."
 		   });
 		addAnnotation
-		  (getEngineeredCapability_Aligns(),
-		   source,
-		   new String[] {
-			   "documentation", "Engineered capability can be aligned to [aims](Aim.html) such as [persona](Persona.html) [goals](Goal.html) or [principles](Principle.html) to support decision making and prioritization."
-		   });
-		addAnnotation
 		  (getRelease_Increment(),
 		   source,
 		   new String[] {
@@ -4131,16 +4136,16 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 			   "documentation", "Optional issue category for this allocation. E.g. a allocation can be made to \"Documentation\" or \"Test coverage\" categories."
 		   });
 		addAnnotation
+		  (getAlignable_Aligns(),
+		   source,
+		   new String[] {
+			   "documentation", "Aims to which this alignable aligns. E.g. a module level principle may align to organization pirinciples."
+		   });
+		addAnnotation
 		  (getAim_Alignments(),
 		   source,
 		   new String[] {
 			   "documentation", "Alignments to this aim. "
-		   });
-		addAnnotation
-		  (getAim_Aligns(),
-		   source,
-		   new String[] {
-			   "documentation", "Higher level aims to which this aim aligns. E.g. a module level principle may align to organization pirinciples."
 		   });
 		addAnnotation
 		  (getPrinciple_Children(),

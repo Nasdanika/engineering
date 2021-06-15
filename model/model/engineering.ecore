@@ -63,7 +63,7 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Endeavor">
+  <eClassifiers xsi:type="ecore:EClass" name="Endeavor" eSuperTypes="#//Alignable">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
       <details key="constraints" value="start_end capacity"/>
     </eAnnotations>
@@ -647,16 +647,6 @@
     <eAnnotations source="urn:org.nasdanika">
       <details key="documentation-reference" value="doc/engineered-capability.md"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="aligns" upperBound="-1"
-        eType="#//Alignment" containment="true">
-      <eAnnotations source="urn:org.nasdanika">
-        <details key="homogenous" value="true"/>
-        <details key="strict-containment" value="true"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Engineered capability can be aligned to [aims](Aim.html) such as [persona](Persona.html) [goals](Goal.html) or [principles](Principle.html) to support decision making and prioritization."/>
-      </eAnnotations>
-    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Release" eSuperTypes="#//EngineeredCapability">
     <eAnnotations source="urn:org.nasdanika">
@@ -860,16 +850,10 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Aim" eSuperTypes="#//NamedElement">
+  <eClassifiers xsi:type="ecore:EClass" name="Alignable" abstract="true" interface="true">
     <eAnnotations source="urn:org.nasdanika">
-      <details key="documentation-reference" value="doc/aim.md"/>
+      <details key="documentation-reference" value="doc/alignable.md"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="alignments" upperBound="-1"
-        eType="#//Alignment" derived="true" eOpposite="#//Alignment/aim">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Alignments to this aim. "/>
-      </eAnnotations>
-    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="aligns" upperBound="-1"
         eType="#//Alignment" containment="true">
       <eAnnotations source="urn:org.nasdanika">
@@ -877,7 +861,18 @@
         <details key="strict-containment" value="true"/>
       </eAnnotations>
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Higher level aims to which this aim aligns. E.g. a module level principle may align to organization pirinciples."/>
+        <details key="documentation" value="Aims to which this alignable aligns. E.g. a module level principle may align to organization pirinciples."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Aim" eSuperTypes="#//NamedElement #//Alignable">
+    <eAnnotations source="urn:org.nasdanika">
+      <details key="documentation-reference" value="doc/aim.md"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="alignments" upperBound="-1"
+        eType="#//Alignment" derived="true" eOpposite="#//Alignment/aim">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Alignments to this aim. "/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>

@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.nasdanika.engineering.Alignable;
 import org.nasdanika.engineering.Alignment;
 import org.nasdanika.engineering.Capacity;
 import org.nasdanika.engineering.Endeavor;
@@ -29,6 +30,7 @@ import org.nasdanika.engineering.Objective;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link org.nasdanika.engineering.impl.EngineeredCapabilityImpl#getAligns <em>Aligns</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineeredCapabilityImpl#getCompletion <em>Completion</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineeredCapabilityImpl#getBenefit <em>Benefit</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineeredCapabilityImpl#getTotalCost <em>Total Cost</em>}</li>
@@ -40,7 +42,6 @@ import org.nasdanika.engineering.Objective;
  *   <li>{@link org.nasdanika.engineering.impl.EngineeredCapabilityImpl#getObjectives <em>Objectives</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineeredCapabilityImpl#getLinkedObjectives <em>Linked Objectives</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineeredCapabilityImpl#getAllObjectives <em>All Objectives</em>}</li>
- *   <li>{@link org.nasdanika.engineering.impl.EngineeredCapabilityImpl#getAligns <em>Aligns</em>}</li>
  * </ul>
  *
  * @generated
@@ -312,7 +313,7 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 	@SuppressWarnings("unchecked")
 	@Override
 	public EList<Alignment> getAligns() {
-		return (EList<Alignment>)eDynamicGet(EngineeringPackage.ENGINEERED_CAPABILITY__ALIGNS, EngineeringPackage.Literals.ENGINEERED_CAPABILITY__ALIGNS, true, true);
+		return (EList<Alignment>)eDynamicGet(EngineeringPackage.ENGINEERED_CAPABILITY__ALIGNS, EngineeringPackage.Literals.ALIGNABLE__ALIGNS, true, true);
 	}
 
 	/**
@@ -345,6 +346,8 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+			case EngineeringPackage.ENGINEERED_CAPABILITY__ALIGNS:
+				return ((InternalEList<?>)getAligns()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.ENGINEERED_CAPABILITY__ASSIGNEE:
 				return basicSetAssignee(null, msgs);
 			case EngineeringPackage.ENGINEERED_CAPABILITY__CAPACITY:
@@ -353,8 +356,6 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 				return ((InternalEList<?>)getObjectives()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.ENGINEERED_CAPABILITY__LINKED_OBJECTIVES:
 				return ((InternalEList<?>)getLinkedObjectives()).basicRemove(otherEnd, msgs);
-			case EngineeringPackage.ENGINEERED_CAPABILITY__ALIGNS:
-				return ((InternalEList<?>)getAligns()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -367,6 +368,8 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case EngineeringPackage.ENGINEERED_CAPABILITY__ALIGNS:
+				return getAligns();
 			case EngineeringPackage.ENGINEERED_CAPABILITY__COMPLETION:
 				return getCompletion();
 			case EngineeringPackage.ENGINEERED_CAPABILITY__BENEFIT:
@@ -390,8 +393,6 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 				return getLinkedObjectives();
 			case EngineeringPackage.ENGINEERED_CAPABILITY__ALL_OBJECTIVES:
 				return getAllObjectives();
-			case EngineeringPackage.ENGINEERED_CAPABILITY__ALIGNS:
-				return getAligns();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -405,6 +406,10 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case EngineeringPackage.ENGINEERED_CAPABILITY__ALIGNS:
+				getAligns().clear();
+				getAligns().addAll((Collection<? extends Alignment>)newValue);
+				return;
 			case EngineeringPackage.ENGINEERED_CAPABILITY__BENEFIT:
 				setBenefit((Double)newValue);
 				return;
@@ -429,10 +434,6 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 				getAllObjectives().clear();
 				getAllObjectives().addAll((Collection<? extends Objective>)newValue);
 				return;
-			case EngineeringPackage.ENGINEERED_CAPABILITY__ALIGNS:
-				getAligns().clear();
-				getAligns().addAll((Collection<? extends Alignment>)newValue);
-				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -445,6 +446,9 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case EngineeringPackage.ENGINEERED_CAPABILITY__ALIGNS:
+				getAligns().clear();
+				return;
 			case EngineeringPackage.ENGINEERED_CAPABILITY__BENEFIT:
 				setBenefit(BENEFIT_EDEFAULT);
 				return;
@@ -466,9 +470,6 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 			case EngineeringPackage.ENGINEERED_CAPABILITY__ALL_OBJECTIVES:
 				getAllObjectives().clear();
 				return;
-			case EngineeringPackage.ENGINEERED_CAPABILITY__ALIGNS:
-				getAligns().clear();
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -481,6 +482,8 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case EngineeringPackage.ENGINEERED_CAPABILITY__ALIGNS:
+				return !getAligns().isEmpty();
 			case EngineeringPackage.ENGINEERED_CAPABILITY__COMPLETION:
 				return getCompletion() != COMPLETION_EDEFAULT;
 			case EngineeringPackage.ENGINEERED_CAPABILITY__BENEFIT:
@@ -503,8 +506,6 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 				return !getLinkedObjectives().isEmpty();
 			case EngineeringPackage.ENGINEERED_CAPABILITY__ALL_OBJECTIVES:
 				return !getAllObjectives().isEmpty();
-			case EngineeringPackage.ENGINEERED_CAPABILITY__ALIGNS:
-				return !getAligns().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -516,6 +517,12 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 	 */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == Alignable.class) {
+			switch (derivedFeatureID) {
+				case EngineeringPackage.ENGINEERED_CAPABILITY__ALIGNS: return EngineeringPackage.ALIGNABLE__ALIGNS;
+				default: return -1;
+			}
+		}
 		if (baseClass == Endeavor.class) {
 			switch (derivedFeatureID) {
 				case EngineeringPackage.ENGINEERED_CAPABILITY__COMPLETION: return EngineeringPackage.ENDEAVOR__COMPLETION;
@@ -542,6 +549,12 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 	 */
 	@Override
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == Alignable.class) {
+			switch (baseFeatureID) {
+				case EngineeringPackage.ALIGNABLE__ALIGNS: return EngineeringPackage.ENGINEERED_CAPABILITY__ALIGNS;
+				default: return -1;
+			}
+		}
 		if (baseClass == Endeavor.class) {
 			switch (baseFeatureID) {
 				case EngineeringPackage.ENDEAVOR__COMPLETION: return EngineeringPackage.ENGINEERED_CAPABILITY__COMPLETION;

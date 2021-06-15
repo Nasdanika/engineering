@@ -14,6 +14,7 @@ import org.nasdanika.common.Adaptable;
 
 import org.nasdanika.engineering.Activity;
 import org.nasdanika.engineering.Aim;
+import org.nasdanika.engineering.Alignable;
 import org.nasdanika.engineering.Alignment;
 import org.nasdanika.engineering.Allocation;
 import org.nasdanika.engineering.Appearance;
@@ -213,6 +214,10 @@ public class EngineeringAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseAllocation(Allocation object) {
 				return createAllocationAdapter();
+			}
+			@Override
+			public Adapter caseAlignable(Alignable object) {
+				return createAlignableAdapter();
 			}
 			@Override
 			public Adapter caseAim(Aim object) {
@@ -667,6 +672,20 @@ public class EngineeringAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createAllocationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.Alignable <em>Alignable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.nasdanika.engineering.Alignable
+	 * @generated
+	 */
+	public Adapter createAlignableAdapter() {
 		return null;
 	}
 

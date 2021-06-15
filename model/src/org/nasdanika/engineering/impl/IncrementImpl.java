@@ -14,6 +14,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.nasdanika.engineering.Alignable;
+import org.nasdanika.engineering.Alignment;
 import org.nasdanika.engineering.Capacity;
 import org.nasdanika.engineering.Endeavor;
 import org.nasdanika.engineering.Engineer;
@@ -32,6 +34,7 @@ import org.nasdanika.engineering.Release;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link org.nasdanika.engineering.impl.IncrementImpl#getAligns <em>Aligns</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IncrementImpl#getCompletion <em>Completion</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IncrementImpl#getBenefit <em>Benefit</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IncrementImpl#getTotalCost <em>Total Cost</em>}</li>
@@ -118,6 +121,17 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 	@Override
 	protected EClass eStaticClass() {
 		return EngineeringPackage.Literals.INCREMENT;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public EList<Alignment> getAligns() {
+		return (EList<Alignment>)eDynamicGet(EngineeringPackage.INCREMENT__ALIGNS, EngineeringPackage.Literals.ALIGNABLE__ALIGNS, true, true);
 	}
 
 	/**
@@ -307,6 +321,8 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+			case EngineeringPackage.INCREMENT__ALIGNS:
+				return ((InternalEList<?>)getAligns()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.INCREMENT__ASSIGNEE:
 				return basicSetAssignee(null, msgs);
 			case EngineeringPackage.INCREMENT__CAPACITY:
@@ -333,6 +349,8 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case EngineeringPackage.INCREMENT__ALIGNS:
+				return getAligns();
 			case EngineeringPackage.INCREMENT__COMPLETION:
 				return getCompletion();
 			case EngineeringPackage.INCREMENT__BENEFIT:
@@ -375,6 +393,10 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case EngineeringPackage.INCREMENT__ALIGNS:
+				getAligns().clear();
+				getAligns().addAll((Collection<? extends Alignment>)newValue);
+				return;
 			case EngineeringPackage.INCREMENT__BENEFIT:
 				setBenefit((Double)newValue);
 				return;
@@ -415,6 +437,9 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case EngineeringPackage.INCREMENT__ALIGNS:
+				getAligns().clear();
+				return;
 			case EngineeringPackage.INCREMENT__BENEFIT:
 				setBenefit(BENEFIT_EDEFAULT);
 				return;
@@ -451,6 +476,8 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case EngineeringPackage.INCREMENT__ALIGNS:
+				return !getAligns().isEmpty();
 			case EngineeringPackage.INCREMENT__COMPLETION:
 				return getCompletion() != COMPLETION_EDEFAULT;
 			case EngineeringPackage.INCREMENT__BENEFIT:
@@ -490,6 +517,12 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 	 */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == Alignable.class) {
+			switch (derivedFeatureID) {
+				case EngineeringPackage.INCREMENT__ALIGNS: return EngineeringPackage.ALIGNABLE__ALIGNS;
+				default: return -1;
+			}
+		}
 		if (baseClass == Endeavor.class) {
 			switch (derivedFeatureID) {
 				case EngineeringPackage.INCREMENT__COMPLETION: return EngineeringPackage.ENDEAVOR__COMPLETION;
@@ -516,6 +549,12 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 	 */
 	@Override
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == Alignable.class) {
+			switch (baseFeatureID) {
+				case EngineeringPackage.ALIGNABLE__ALIGNS: return EngineeringPackage.INCREMENT__ALIGNS;
+				default: return -1;
+			}
+		}
 		if (baseClass == Endeavor.class) {
 			switch (baseFeatureID) {
 				case EngineeringPackage.ENDEAVOR__COMPLETION: return EngineeringPackage.INCREMENT__COMPLETION;

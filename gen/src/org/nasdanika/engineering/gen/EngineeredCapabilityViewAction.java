@@ -63,7 +63,7 @@ public class EngineeredCapabilityViewAction<T extends EngineeredCapability> exte
 		if (feature == EngineeringPackage.Literals.ENDEAVOR__CAPACITY) {
 			return endeavorCapacityFeatureActions(getSemanticElement());
 		}
-		if (feature == EngineeringPackage.Literals.ENGINEERED_CAPABILITY__ALIGNS) {
+		if (feature == EngineeringPackage.Literals.ALIGNABLE__ALIGNS) {
 			EList<Alignment> aligns = getSemanticElement().getAligns();
 			if (aligns.isEmpty()) {
 				return Collections.emptyList();

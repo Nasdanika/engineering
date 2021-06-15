@@ -278,6 +278,43 @@ public interface EngineeringPackage extends EPackage {
 	int NAMED_ELEMENT_OPERATION_COUNT = MODEL_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.Alignable <em>Alignable</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.Alignable
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getAlignable()
+	 * @generated
+	 */
+	int ALIGNABLE = 26;
+
+	/**
+	 * The feature id for the '<em><b>Aligns</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ALIGNABLE__ALIGNS = 0;
+
+	/**
+	 * The number of structural features of the '<em>Alignable</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ALIGNABLE_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Alignable</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ALIGNABLE_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.EndeavorImpl <em>Endeavor</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -288,13 +325,22 @@ public interface EngineeringPackage extends EPackage {
 	int ENDEAVOR = 3;
 
 	/**
+	 * The feature id for the '<em><b>Aligns</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENDEAVOR__ALIGNS = ALIGNABLE__ALIGNS;
+
+	/**
 	 * The feature id for the '<em><b>Completion</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENDEAVOR__COMPLETION = 0;
+	int ENDEAVOR__COMPLETION = ALIGNABLE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Benefit</b></em>' attribute.
@@ -303,7 +349,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENDEAVOR__BENEFIT = 1;
+	int ENDEAVOR__BENEFIT = ALIGNABLE_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Total Cost</b></em>' attribute.
@@ -312,7 +358,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENDEAVOR__TOTAL_COST = 2;
+	int ENDEAVOR__TOTAL_COST = ALIGNABLE_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Assignee</b></em>' reference.
@@ -321,7 +367,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENDEAVOR__ASSIGNEE = 3;
+	int ENDEAVOR__ASSIGNEE = ALIGNABLE_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>All Issues</b></em>' reference list.
@@ -330,7 +376,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENDEAVOR__ALL_ISSUES = 4;
+	int ENDEAVOR__ALL_ISSUES = ALIGNABLE_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Start</b></em>' attribute.
@@ -339,7 +385,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENDEAVOR__START = 5;
+	int ENDEAVOR__START = ALIGNABLE_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>End</b></em>' attribute.
@@ -348,7 +394,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENDEAVOR__END = 6;
+	int ENDEAVOR__END = ALIGNABLE_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Capacity</b></em>' reference list.
@@ -357,7 +403,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENDEAVOR__CAPACITY = 7;
+	int ENDEAVOR__CAPACITY = ALIGNABLE_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Objectives</b></em>' containment reference list.
@@ -366,7 +412,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENDEAVOR__OBJECTIVES = 8;
+	int ENDEAVOR__OBJECTIVES = ALIGNABLE_FEATURE_COUNT + 8;
 
 	/**
 	 * The feature id for the '<em><b>Linked Objectives</b></em>' reference list.
@@ -375,7 +421,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENDEAVOR__LINKED_OBJECTIVES = 9;
+	int ENDEAVOR__LINKED_OBJECTIVES = ALIGNABLE_FEATURE_COUNT + 9;
 
 	/**
 	 * The feature id for the '<em><b>All Objectives</b></em>' reference list.
@@ -384,7 +430,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENDEAVOR__ALL_OBJECTIVES = 10;
+	int ENDEAVOR__ALL_OBJECTIVES = ALIGNABLE_FEATURE_COUNT + 10;
 
 	/**
 	 * The number of structural features of the '<em>Endeavor</em>' class.
@@ -393,7 +439,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENDEAVOR_FEATURE_COUNT = 11;
+	int ENDEAVOR_FEATURE_COUNT = ALIGNABLE_FEATURE_COUNT + 11;
 
 	/**
 	 * The number of operations of the '<em>Endeavor</em>' class.
@@ -402,7 +448,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENDEAVOR_OPERATION_COUNT = 0;
+	int ENDEAVOR_OPERATION_COUNT = ALIGNABLE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.EngineeredElementImpl <em>Engineered Element</em>}' class.
@@ -557,13 +603,22 @@ public interface EngineeringPackage extends EPackage {
 	int INCREMENT__NAME = NAMED_ELEMENT__NAME;
 
 	/**
+	 * The feature id for the '<em><b>Aligns</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INCREMENT__ALIGNS = NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
 	 * The feature id for the '<em><b>Completion</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INCREMENT__COMPLETION = NAMED_ELEMENT_FEATURE_COUNT + 0;
+	int INCREMENT__COMPLETION = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Benefit</b></em>' attribute.
@@ -572,7 +627,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INCREMENT__BENEFIT = NAMED_ELEMENT_FEATURE_COUNT + 1;
+	int INCREMENT__BENEFIT = NAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Total Cost</b></em>' attribute.
@@ -581,7 +636,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INCREMENT__TOTAL_COST = NAMED_ELEMENT_FEATURE_COUNT + 2;
+	int INCREMENT__TOTAL_COST = NAMED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Assignee</b></em>' reference.
@@ -590,7 +645,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INCREMENT__ASSIGNEE = NAMED_ELEMENT_FEATURE_COUNT + 3;
+	int INCREMENT__ASSIGNEE = NAMED_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>All Issues</b></em>' reference list.
@@ -599,7 +654,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INCREMENT__ALL_ISSUES = NAMED_ELEMENT_FEATURE_COUNT + 4;
+	int INCREMENT__ALL_ISSUES = NAMED_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Start</b></em>' attribute.
@@ -608,7 +663,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INCREMENT__START = NAMED_ELEMENT_FEATURE_COUNT + 5;
+	int INCREMENT__START = NAMED_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>End</b></em>' attribute.
@@ -617,7 +672,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INCREMENT__END = NAMED_ELEMENT_FEATURE_COUNT + 6;
+	int INCREMENT__END = NAMED_ELEMENT_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Capacity</b></em>' reference list.
@@ -626,7 +681,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INCREMENT__CAPACITY = NAMED_ELEMENT_FEATURE_COUNT + 7;
+	int INCREMENT__CAPACITY = NAMED_ELEMENT_FEATURE_COUNT + 8;
 
 	/**
 	 * The feature id for the '<em><b>Objectives</b></em>' containment reference list.
@@ -635,7 +690,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INCREMENT__OBJECTIVES = NAMED_ELEMENT_FEATURE_COUNT + 8;
+	int INCREMENT__OBJECTIVES = NAMED_ELEMENT_FEATURE_COUNT + 9;
 
 	/**
 	 * The feature id for the '<em><b>Linked Objectives</b></em>' reference list.
@@ -644,7 +699,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INCREMENT__LINKED_OBJECTIVES = NAMED_ELEMENT_FEATURE_COUNT + 9;
+	int INCREMENT__LINKED_OBJECTIVES = NAMED_ELEMENT_FEATURE_COUNT + 10;
 
 	/**
 	 * The feature id for the '<em><b>All Objectives</b></em>' reference list.
@@ -653,7 +708,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INCREMENT__ALL_OBJECTIVES = NAMED_ELEMENT_FEATURE_COUNT + 10;
+	int INCREMENT__ALL_OBJECTIVES = NAMED_ELEMENT_FEATURE_COUNT + 11;
 
 	/**
 	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
@@ -662,7 +717,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INCREMENT__CHILDREN = NAMED_ELEMENT_FEATURE_COUNT + 11;
+	int INCREMENT__CHILDREN = NAMED_ELEMENT_FEATURE_COUNT + 12;
 
 	/**
 	 * The feature id for the '<em><b>Issues</b></em>' reference list.
@@ -671,7 +726,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INCREMENT__ISSUES = NAMED_ELEMENT_FEATURE_COUNT + 12;
+	int INCREMENT__ISSUES = NAMED_ELEMENT_FEATURE_COUNT + 13;
 
 	/**
 	 * The feature id for the '<em><b>Releases</b></em>' reference list.
@@ -680,7 +735,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INCREMENT__RELEASES = NAMED_ELEMENT_FEATURE_COUNT + 13;
+	int INCREMENT__RELEASES = NAMED_ELEMENT_FEATURE_COUNT + 14;
 
 	/**
 	 * The number of structural features of the '<em>Increment</em>' class.
@@ -689,7 +744,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INCREMENT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 14;
+	int INCREMENT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 15;
 
 	/**
 	 * The number of operations of the '<em>Increment</em>' class.
@@ -1163,13 +1218,22 @@ public interface EngineeringPackage extends EPackage {
 	int ENGINEERED_CAPABILITY__AVAILABLE = CAPABILITY__AVAILABLE;
 
 	/**
+	 * The feature id for the '<em><b>Aligns</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEERED_CAPABILITY__ALIGNS = CAPABILITY_FEATURE_COUNT + 0;
+
+	/**
 	 * The feature id for the '<em><b>Completion</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEERED_CAPABILITY__COMPLETION = CAPABILITY_FEATURE_COUNT + 0;
+	int ENGINEERED_CAPABILITY__COMPLETION = CAPABILITY_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Benefit</b></em>' attribute.
@@ -1178,7 +1242,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEERED_CAPABILITY__BENEFIT = CAPABILITY_FEATURE_COUNT + 1;
+	int ENGINEERED_CAPABILITY__BENEFIT = CAPABILITY_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Total Cost</b></em>' attribute.
@@ -1187,7 +1251,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEERED_CAPABILITY__TOTAL_COST = CAPABILITY_FEATURE_COUNT + 2;
+	int ENGINEERED_CAPABILITY__TOTAL_COST = CAPABILITY_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Assignee</b></em>' reference.
@@ -1196,7 +1260,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEERED_CAPABILITY__ASSIGNEE = CAPABILITY_FEATURE_COUNT + 3;
+	int ENGINEERED_CAPABILITY__ASSIGNEE = CAPABILITY_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>All Issues</b></em>' reference list.
@@ -1205,7 +1269,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEERED_CAPABILITY__ALL_ISSUES = CAPABILITY_FEATURE_COUNT + 4;
+	int ENGINEERED_CAPABILITY__ALL_ISSUES = CAPABILITY_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Start</b></em>' attribute.
@@ -1214,7 +1278,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEERED_CAPABILITY__START = CAPABILITY_FEATURE_COUNT + 5;
+	int ENGINEERED_CAPABILITY__START = CAPABILITY_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>End</b></em>' attribute.
@@ -1223,7 +1287,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEERED_CAPABILITY__END = CAPABILITY_FEATURE_COUNT + 6;
+	int ENGINEERED_CAPABILITY__END = CAPABILITY_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Capacity</b></em>' reference list.
@@ -1232,7 +1296,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEERED_CAPABILITY__CAPACITY = CAPABILITY_FEATURE_COUNT + 7;
+	int ENGINEERED_CAPABILITY__CAPACITY = CAPABILITY_FEATURE_COUNT + 8;
 
 	/**
 	 * The feature id for the '<em><b>Objectives</b></em>' containment reference list.
@@ -1241,7 +1305,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEERED_CAPABILITY__OBJECTIVES = CAPABILITY_FEATURE_COUNT + 8;
+	int ENGINEERED_CAPABILITY__OBJECTIVES = CAPABILITY_FEATURE_COUNT + 9;
 
 	/**
 	 * The feature id for the '<em><b>Linked Objectives</b></em>' reference list.
@@ -1250,7 +1314,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEERED_CAPABILITY__LINKED_OBJECTIVES = CAPABILITY_FEATURE_COUNT + 9;
+	int ENGINEERED_CAPABILITY__LINKED_OBJECTIVES = CAPABILITY_FEATURE_COUNT + 10;
 
 	/**
 	 * The feature id for the '<em><b>All Objectives</b></em>' reference list.
@@ -1259,16 +1323,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEERED_CAPABILITY__ALL_OBJECTIVES = CAPABILITY_FEATURE_COUNT + 10;
-
-	/**
-	 * The feature id for the '<em><b>Aligns</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENGINEERED_CAPABILITY__ALIGNS = CAPABILITY_FEATURE_COUNT + 11;
+	int ENGINEERED_CAPABILITY__ALL_OBJECTIVES = CAPABILITY_FEATURE_COUNT + 11;
 
 	/**
 	 * The number of structural features of the '<em>Engineered Capability</em>' class.
@@ -1449,6 +1504,15 @@ public interface EngineeringPackage extends EPackage {
 	int ISSUE__AVAILABLE = ENGINEERED_CAPABILITY__AVAILABLE;
 
 	/**
+	 * The feature id for the '<em><b>Aligns</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE__ALIGNS = ENGINEERED_CAPABILITY__ALIGNS;
+
+	/**
 	 * The feature id for the '<em><b>Completion</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1546,15 +1610,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int ISSUE__ALL_OBJECTIVES = ENGINEERED_CAPABILITY__ALL_OBJECTIVES;
-
-	/**
-	 * The feature id for the '<em><b>Aligns</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ISSUE__ALIGNS = ENGINEERED_CAPABILITY__ALIGNS;
 
 	/**
 	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
@@ -1892,7 +1947,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getAim()
 	 * @generated
 	 */
-	int AIM = 26;
+	int AIM = 27;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.PrincipleImpl <em>Principle</em>}' class.
@@ -1902,7 +1957,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getPrinciple()
 	 * @generated
 	 */
-	int PRINCIPLE = 27;
+	int PRINCIPLE = 28;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.AlignmentImpl <em>Alignment</em>}' class.
@@ -1912,7 +1967,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getAlignment()
 	 * @generated
 	 */
-	int ALIGNMENT = 28;
+	int ALIGNMENT = 29;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.GoalImpl <em>Goal</em>}' class.
@@ -1922,7 +1977,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getGoal()
 	 * @generated
 	 */
-	int GOAL = 29;
+	int GOAL = 30;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.ForumImpl <em>Forum</em>}' class.
@@ -1932,7 +1987,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getForum()
 	 * @generated
 	 */
-	int FORUM = 30;
+	int FORUM = 31;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -3510,6 +3565,15 @@ public interface EngineeringPackage extends EPackage {
 	int RELEASE__AVAILABLE = ENGINEERED_CAPABILITY__AVAILABLE;
 
 	/**
+	 * The feature id for the '<em><b>Aligns</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RELEASE__ALIGNS = ENGINEERED_CAPABILITY__ALIGNS;
+
+	/**
 	 * The feature id for the '<em><b>Completion</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3607,15 +3671,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int RELEASE__ALL_OBJECTIVES = ENGINEERED_CAPABILITY__ALL_OBJECTIVES;
-
-	/**
-	 * The feature id for the '<em><b>Aligns</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RELEASE__ALIGNS = ENGINEERED_CAPABILITY__ALIGNS;
 
 	/**
 	 * The feature id for the '<em><b>Increment</b></em>' reference.
@@ -3753,6 +3808,15 @@ public interface EngineeringPackage extends EPackage {
 	int FEATURE__AVAILABLE = ENGINEERED_CAPABILITY__AVAILABLE;
 
 	/**
+	 * The feature id for the '<em><b>Aligns</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE__ALIGNS = ENGINEERED_CAPABILITY__ALIGNS;
+
+	/**
 	 * The feature id for the '<em><b>Completion</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3850,15 +3914,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int FEATURE__ALL_OBJECTIVES = ENGINEERED_CAPABILITY__ALL_OBJECTIVES;
-
-	/**
-	 * The feature id for the '<em><b>Aligns</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FEATURE__ALIGNS = ENGINEERED_CAPABILITY__ALIGNS;
 
 	/**
 	 * The feature id for the '<em><b>Releases</b></em>' reference list.
@@ -5076,22 +5131,22 @@ public interface EngineeringPackage extends EPackage {
 	int AIM__NAME = NAMED_ELEMENT__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Alignments</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AIM__ALIGNMENTS = NAMED_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
 	 * The feature id for the '<em><b>Aligns</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int AIM__ALIGNS = NAMED_ELEMENT_FEATURE_COUNT + 1;
+	int AIM__ALIGNS = NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Alignments</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AIM__ALIGNMENTS = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Aim</em>' class.
@@ -5184,15 +5239,6 @@ public interface EngineeringPackage extends EPackage {
 	int PRINCIPLE__NAME = AIM__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Alignments</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PRINCIPLE__ALIGNMENTS = AIM__ALIGNMENTS;
-
-	/**
 	 * The feature id for the '<em><b>Aligns</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5200,6 +5246,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int PRINCIPLE__ALIGNS = AIM__ALIGNS;
+
+	/**
+	 * The feature id for the '<em><b>Alignments</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRINCIPLE__ALIGNMENTS = AIM__ALIGNMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
@@ -5400,15 +5455,6 @@ public interface EngineeringPackage extends EPackage {
 	int GOAL__NAME = AIM__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Alignments</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GOAL__ALIGNMENTS = AIM__ALIGNMENTS;
-
-	/**
 	 * The feature id for the '<em><b>Aligns</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5416,6 +5462,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int GOAL__ALIGNS = AIM__ALIGNS;
+
+	/**
+	 * The feature id for the '<em><b>Alignments</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GOAL__ALIGNMENTS = AIM__ALIGNMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
@@ -5452,7 +5507,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getTopic()
 	 * @generated
 	 */
-	int TOPIC = 32;
+	int TOPIC = 33;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.MessageImpl <em>Message</em>}' class.
@@ -5462,7 +5517,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getMessage()
 	 * @generated
 	 */
-	int MESSAGE = 31;
+	int MESSAGE = 32;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -5698,7 +5753,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getEngineeringAppearance()
 	 * @generated
 	 */
-	int ENGINEERING_APPEARANCE = 33;
+	int ENGINEERING_APPEARANCE = 34;
 
 	/**
 	 * The feature id for the '<em><b>Model Elements</b></em>' map.
@@ -5735,7 +5790,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getAppearance()
 	 * @generated
 	 */
-	int APPEARANCE = 34;
+	int APPEARANCE = 35;
 
 	/**
 	 * The feature id for the '<em><b>Icon</b></em>' attribute.
@@ -5808,7 +5863,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getModelElementAppearance()
 	 * @generated
 	 */
-	int MODEL_ELEMENT_APPEARANCE = 35;
+	int MODEL_ELEMENT_APPEARANCE = 36;
 
 	/**
 	 * The feature id for the '<em><b>Icon</b></em>' attribute.
@@ -5890,7 +5945,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getModelElementAppearanceEntry()
 	 * @generated
 	 */
-	int MODEL_ELEMENT_APPEARANCE_ENTRY = 36;
+	int MODEL_ELEMENT_APPEARANCE_ENTRY = 37;
 
 	/**
 	 * The feature id for the '<em><b>Key</b></em>' attribute.
@@ -5936,7 +5991,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getFeatureAppearanceEntry()
 	 * @generated
 	 */
-	int FEATURE_APPEARANCE_ENTRY = 37;
+	int FEATURE_APPEARANCE_ENTRY = 38;
 
 	/**
 	 * The feature id for the '<em><b>Key</b></em>' attribute.
@@ -5982,7 +6037,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getFeatureAppearance()
 	 * @generated
 	 */
-	int FEATURE_APPEARANCE = 38;
+	int FEATURE_APPEARANCE = 39;
 
 	/**
 	 * The feature id for the '<em><b>Icon</b></em>' attribute.
@@ -6065,7 +6120,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getDocument()
 	 * @generated
 	 */
-	int DOCUMENT = 39;
+	int DOCUMENT = 40;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -6264,7 +6319,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getNamedElementReference()
 	 * @generated
 	 */
-	int NAMED_ELEMENT_REFERENCE = 40;
+	int NAMED_ELEMENT_REFERENCE = 41;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -6373,7 +6428,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getLink()
 	 * @generated
 	 */
-	int LINK = 41;
+	int LINK = 42;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -6482,7 +6537,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getKeyResult()
 	 * @generated
 	 */
-	int KEY_RESULT = 42;
+	int KEY_RESULT = 43;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -6557,15 +6612,6 @@ public interface EngineeringPackage extends EPackage {
 	int KEY_RESULT__NAME = AIM__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Alignments</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int KEY_RESULT__ALIGNMENTS = AIM__ALIGNMENTS;
-
-	/**
 	 * The feature id for the '<em><b>Aligns</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6573,6 +6619,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int KEY_RESULT__ALIGNS = AIM__ALIGNS;
+
+	/**
+	 * The feature id for the '<em><b>Alignments</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int KEY_RESULT__ALIGNMENTS = AIM__ALIGNMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Weight</b></em>' attribute.
@@ -6618,7 +6673,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getObjective()
 	 * @generated
 	 */
-	int OBJECTIVE = 43;
+	int OBJECTIVE = 44;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -6693,15 +6748,6 @@ public interface EngineeringPackage extends EPackage {
 	int OBJECTIVE__NAME = KEY_RESULT__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Alignments</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OBJECTIVE__ALIGNMENTS = KEY_RESULT__ALIGNMENTS;
-
-	/**
 	 * The feature id for the '<em><b>Aligns</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6709,6 +6755,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int OBJECTIVE__ALIGNS = KEY_RESULT__ALIGNS;
+
+	/**
+	 * The feature id for the '<em><b>Alignments</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBJECTIVE__ALIGNMENTS = KEY_RESULT__ALIGNMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Weight</b></em>' attribute.
@@ -6808,7 +6863,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getSectionStyle()
 	 * @generated
 	 */
-	int SECTION_STYLE = 44;
+	int SECTION_STYLE = 45;
 
 
 	/**
@@ -7492,17 +7547,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getEngineeredCapability();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.nasdanika.engineering.EngineeredCapability#getAligns <em>Aligns</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Aligns</em>'.
-	 * @see org.nasdanika.engineering.EngineeredCapability#getAligns()
-	 * @see #getEngineeredCapability()
-	 * @generated
-	 */
-	EReference getEngineeredCapability_Aligns();
 
 	/**
 	 * Returns the meta object for class '{@link org.nasdanika.engineering.Increment <em>Increment</em>}'.
@@ -8261,6 +8305,27 @@ public interface EngineeringPackage extends EPackage {
 	EReference getAllocation_Category();
 
 	/**
+	 * Returns the meta object for class '{@link org.nasdanika.engineering.Alignable <em>Alignable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Alignable</em>'.
+	 * @see org.nasdanika.engineering.Alignable
+	 * @generated
+	 */
+	EClass getAlignable();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.nasdanika.engineering.Alignable#getAligns <em>Aligns</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Aligns</em>'.
+	 * @see org.nasdanika.engineering.Alignable#getAligns()
+	 * @see #getAlignable()
+	 * @generated
+	 */
+	EReference getAlignable_Aligns();
+
+	/**
 	 * Returns the meta object for class '{@link org.nasdanika.engineering.Aim <em>Aim</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8280,17 +8345,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getAim_Alignments();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.nasdanika.engineering.Aim#getAligns <em>Aligns</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Aligns</em>'.
-	 * @see org.nasdanika.engineering.Aim#getAligns()
-	 * @see #getAim()
-	 * @generated
-	 */
-	EReference getAim_Aligns();
 
 	/**
 	 * Returns the meta object for class '{@link org.nasdanika.engineering.Principle <em>Principle</em>}'.
@@ -9418,14 +9472,6 @@ public interface EngineeringPackage extends EPackage {
 		EClass ENGINEERED_CAPABILITY = eINSTANCE.getEngineeredCapability();
 
 		/**
-		 * The meta object literal for the '<em><b>Aligns</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ENGINEERED_CAPABILITY__ALIGNS = eINSTANCE.getEngineeredCapability_Aligns();
-
-		/**
 		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.IncrementImpl <em>Increment</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -10014,6 +10060,24 @@ public interface EngineeringPackage extends EPackage {
 		EReference ALLOCATION__CATEGORY = eINSTANCE.getAllocation_Category();
 
 		/**
+		 * The meta object literal for the '{@link org.nasdanika.engineering.Alignable <em>Alignable</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.engineering.Alignable
+		 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getAlignable()
+		 * @generated
+		 */
+		EClass ALIGNABLE = eINSTANCE.getAlignable();
+
+		/**
+		 * The meta object literal for the '<em><b>Aligns</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ALIGNABLE__ALIGNS = eINSTANCE.getAlignable_Aligns();
+
+		/**
 		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.AimImpl <em>Aim</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -10030,14 +10094,6 @@ public interface EngineeringPackage extends EPackage {
 		 * @generated
 		 */
 		EReference AIM__ALIGNMENTS = eINSTANCE.getAim_Alignments();
-
-		/**
-		 * The meta object literal for the '<em><b>Aligns</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference AIM__ALIGNS = eINSTANCE.getAim_Aligns();
 
 		/**
 		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.PrincipleImpl <em>Principle</em>}' class.

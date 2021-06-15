@@ -14,6 +14,7 @@ import org.nasdanika.common.Context;
 import org.nasdanika.emf.DiagnosticHelper;
 import org.nasdanika.engineering.Activity;
 import org.nasdanika.engineering.Aim;
+import org.nasdanika.engineering.Alignable;
 import org.nasdanika.engineering.Alignment;
 import org.nasdanika.engineering.Allocation;
 import org.nasdanika.engineering.Appearance;
@@ -179,6 +180,8 @@ public class EngineeringValidator extends EObjectValidator {
 				return validateCapacity((Capacity)value, diagnostics, context);
 			case EngineeringPackage.ALLOCATION:
 				return validateAllocation((Allocation)value, diagnostics, context);
+			case EngineeringPackage.ALIGNABLE:
+				return validateAlignable((Alignable)value, diagnostics, context);
 			case EngineeringPackage.AIM:
 				return validateAim((Aim)value, diagnostics, context);
 			case EngineeringPackage.PRINCIPLE:
@@ -824,6 +827,15 @@ public class EngineeringValidator extends EObjectValidator {
 	 */
 	public boolean validateAllocation(Allocation allocation, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(allocation, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateAlignable(Alignable alignable, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(alignable, diagnostics, context);
 	}
 
 	/**

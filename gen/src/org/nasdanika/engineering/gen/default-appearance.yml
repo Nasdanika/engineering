@@ -23,12 +23,14 @@ model-elements:
     features:
       modules:
         icon: fas fa-cubes
+  alignable:
+    features:        
+      aligns:
+        roles: feature-actions/section        
   aim:
     roles: none
     features:
       alignments:
-        roles: feature-actions/section        
-      aligns:
         roles: feature-actions/section        
   goal:
     features:
@@ -59,10 +61,6 @@ model-elements:
         roles: none 
       all-objectives:
         roles: feature-actions/section 
-  engineered-capability:
-    features:
-      aligns:
-        roles: feature-actions/section
   feature:
     icon: fas fa-cog
     features:
