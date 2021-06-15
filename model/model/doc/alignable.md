@@ -1,0 +1,1 @@
+Something that can be aligned to [aims](Aim.html) by [alignments](Alignment.html) - aims or [endeavors](Endeavor.html).

@@ -241,5 +241,12 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//Objective/linkedObjectives"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//Objective/subObjectives"/>
     </genClasses>
+    <genClasses ecoreClass="engineering.ecore#//Decision">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Decision/effectiveStart"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Decision/effectiveEnd"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//Decision/supercedes"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference engineering.ecore#//Decision/supercededBy"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Decision/resolution"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

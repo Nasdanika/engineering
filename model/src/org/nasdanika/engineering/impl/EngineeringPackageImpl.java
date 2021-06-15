@@ -23,6 +23,7 @@ import org.nasdanika.engineering.Appearance;
 import org.nasdanika.engineering.Call;
 import org.nasdanika.engineering.Capability;
 import org.nasdanika.engineering.Capacity;
+import org.nasdanika.engineering.Decision;
 import org.nasdanika.engineering.Directory;
 import org.nasdanika.engineering.Document;
 import org.nasdanika.engineering.Endeavor;
@@ -374,6 +375,13 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	private EClass objectiveEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass decisionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2296,6 +2304,66 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
+	public EClass getDecision() {
+		return decisionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getDecision_EffectiveStart() {
+		return (EAttribute)decisionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getDecision_EffectiveEnd() {
+		return (EAttribute)decisionEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getDecision_Supercedes() {
+		return (EReference)decisionEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getDecision_SupercededBy() {
+		return (EReference)decisionEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getDecision_Resolution() {
+		return (EAttribute)decisionEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EReference getDocument_Sections() {
 		return (EReference)documentEClass.getEStructuralFeatures().get(0);
 	}
@@ -2623,6 +2691,13 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		createEReference(objectiveEClass, OBJECTIVE__LINKED_OBJECTIVES);
 		createEReference(objectiveEClass, OBJECTIVE__SUB_OBJECTIVES);
 
+		decisionEClass = createEClass(DECISION);
+		createEAttribute(decisionEClass, DECISION__EFFECTIVE_START);
+		createEAttribute(decisionEClass, DECISION__EFFECTIVE_END);
+		createEReference(decisionEClass, DECISION__SUPERCEDES);
+		createEReference(decisionEClass, DECISION__SUPERCEDED_BY);
+		createEAttribute(decisionEClass, DECISION__RESOLUTION);
+
 		// Create data types
 		sectionStyleEDataType = createEDataType(SECTION_STYLE);
 	}
@@ -2697,6 +2772,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		linkEClass.getESuperTypes().add(this.getNamedElement());
 		keyResultEClass.getESuperTypes().add(this.getAim());
 		objectiveEClass.getESuperTypes().add(this.getKeyResult());
+		decisionEClass.getESuperTypes().add(this.getIssue());
+		decisionEClass.getESuperTypes().add(this.getAim());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(adaptableEClass, Adaptable.class, "Adaptable", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
@@ -2932,6 +3009,13 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		initEReference(getObjective_Parent(), this.getObjective(), this.getObjective_LinkedObjectives(), "parent", null, 0, 1, Objective.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getObjective_LinkedObjectives(), this.getObjective(), this.getObjective_Parent(), "linkedObjectives", null, 0, -1, Objective.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getObjective_SubObjectives(), this.getObjective(), null, "subObjectives", null, 0, -1, Objective.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+
+		initEClass(decisionEClass, Decision.class, "Decision", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getDecision_EffectiveStart(), ecorePackage.getEDate(), "effectiveStart", null, 0, 1, Decision.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDecision_EffectiveEnd(), ecorePackage.getEDate(), "effectiveEnd", null, 0, 1, Decision.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDecision_Supercedes(), this.getDecision(), this.getDecision_SupercededBy(), "supercedes", null, 0, -1, Decision.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDecision_SupercededBy(), this.getDecision(), this.getDecision_Supercedes(), "supercededBy", null, 0, -1, Decision.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDecision_Resolution(), ecorePackage.getEString(), "resolution", null, 0, 1, Decision.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize data types
 		initEDataType(sectionStyleEDataType, SectionStyle.class, "SectionStyle", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
@@ -3488,6 +3572,12 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		   source,
 		   new String[] {
 			   "homogenous", "true"
+		   });
+		addAnnotation
+		  (decisionEClass,
+		   source,
+		   new String[] {
+			   "documentation-reference", "doc/decision.md"
 		   });
 	}
 
@@ -4350,6 +4440,36 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		   source,
 		   new String[] {
 			   "documentation", "A union of children and linked objectives."
+		   });
+		addAnnotation
+		  (getDecision_EffectiveStart(),
+		   source,
+		   new String[] {
+			   "documentation", "Date when this decision goes into effect once it is available (done). If not set, decision goes into effect once it is in a done status."
+		   });
+		addAnnotation
+		  (getDecision_EffectiveEnd(),
+		   source,
+		   new String[] {
+			   "documentation", "Date when decision stops being in effect if it was in effect before. If not set, the decision is effective indefinitely if it is in a done status."
+		   });
+		addAnnotation
+		  (getDecision_Supercedes(),
+		   source,
+		   new String[] {
+			   "documentation", "Decisions which this decision supercedes once (if ever) it goes into effect."
+		   });
+		addAnnotation
+		  (getDecision_SupercededBy(),
+		   source,
+		   new String[] {
+			   "documentation", "Decisions which (will) supercede this decision when (if ever) they are effective."
+		   });
+		addAnnotation
+		  (getDecision_Resolution(),
+		   source,
+		   new String[] {
+			   "documentation", "Documentation of what has been decided (decision process outcome)."
 		   });
 	}
 

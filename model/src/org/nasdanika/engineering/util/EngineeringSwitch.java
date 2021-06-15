@@ -19,6 +19,7 @@ import org.nasdanika.engineering.Appearance;
 import org.nasdanika.engineering.Call;
 import org.nasdanika.engineering.Capability;
 import org.nasdanika.engineering.Capacity;
+import org.nasdanika.engineering.Decision;
 import org.nasdanika.engineering.Directory;
 import org.nasdanika.engineering.Document;
 import org.nasdanika.engineering.Endeavor;
@@ -535,6 +536,21 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				if (result == null) result = caseAlignable(objective);
 				if (result == null) result = caseModelElement(objective);
 				if (result == null) result = caseAdaptable(objective);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EngineeringPackage.DECISION: {
+				Decision decision = (Decision)theEObject;
+				T result = caseDecision(decision);
+				if (result == null) result = caseIssue(decision);
+				if (result == null) result = caseAim(decision);
+				if (result == null) result = caseEngineeredCapability(decision);
+				if (result == null) result = caseCapability(decision);
+				if (result == null) result = caseEndeavor(decision);
+				if (result == null) result = caseNamedElement(decision);
+				if (result == null) result = caseAlignable(decision);
+				if (result == null) result = caseModelElement(decision);
+				if (result == null) result = caseAdaptable(decision);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1199,6 +1215,21 @@ public class EngineeringSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseObjective(Objective object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Decision</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Decision</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDecision(Decision object) {
 		return null;
 	}
 

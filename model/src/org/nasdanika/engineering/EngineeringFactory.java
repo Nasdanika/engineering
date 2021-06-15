@@ -355,6 +355,15 @@ public interface EngineeringFactory extends EFactory {
 	Objective createObjective();
 
 	/**
+	 * Returns a new object of class '<em>Decision</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Decision</em>'.
+	 * @generated
+	 */
+	Decision createDecision();
+
+	/**
 	 * Returns a new object of class '<em>Message</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

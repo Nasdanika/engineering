@@ -20,6 +20,7 @@ import org.nasdanika.emf.ComposedAdapterFactory;
 import org.nasdanika.emf.FunctionAdapterFactory;
 import org.nasdanika.emf.InstanceAdapterFactory;
 import org.nasdanika.emf.persistence.EObjectLoader;
+import org.nasdanika.engineering.Decision;
 import org.nasdanika.engineering.Directory;
 import org.nasdanika.engineering.Document;
 import org.nasdanika.engineering.Engineer;
@@ -214,6 +215,13 @@ public class EngineeringViewActionAdapterFactory extends ComposedAdapterFactory 
 				getViewActionClass(), 
 				this.getClass().getClassLoader(), 
 				obj -> new ObjectiveViewAction(obj, this)));			
+		
+		registerAdapterFactory(
+			new FunctionAdapterFactory<ViewAction<Decision>, Decision>(
+				EngineeringPackage.Literals.DECISION, 
+				getViewActionClass(), 
+				this.getClass().getClassLoader(), 
+				obj -> new DecisionViewAction(obj, this)));			
 				
 		// Loading appearances from URL's
 		appearance = new ArrayList<>();

@@ -19,6 +19,7 @@ import org.nasdanika.engineering.Allocation;
 import org.nasdanika.engineering.Call;
 import org.nasdanika.engineering.Capability;
 import org.nasdanika.engineering.Capacity;
+import org.nasdanika.engineering.Decision;
 import org.nasdanika.engineering.Directory;
 import org.nasdanika.engineering.Document;
 import org.nasdanika.engineering.Endeavor;
@@ -137,6 +138,7 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 			case EngineeringPackage.LINK: return createLink();
 			case EngineeringPackage.KEY_RESULT: return createKeyResult();
 			case EngineeringPackage.OBJECTIVE: return createObjective();
+			case EngineeringPackage.DECISION: return createDecision();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -597,6 +599,17 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 	public Objective createObjective() {
 		ObjectiveImpl objective = new ObjectiveImpl();
 		return objective;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Decision createDecision() {
+		DecisionImpl decision = new DecisionImpl();
+		return decision;
 	}
 
 	/**

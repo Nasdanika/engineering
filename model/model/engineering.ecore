@@ -1202,4 +1202,36 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Decision" eSuperTypes="#//Issue #//Aim">
+    <eAnnotations source="urn:org.nasdanika">
+      <details key="documentation-reference" value="doc/decision.md"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="effectiveStart" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Date when this decision goes into effect once it is available (done). If not set, decision goes into effect once it is in a done status."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="effectiveEnd" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Date when decision stops being in effect if it was in effect before. If not set, the decision is effective indefinitely if it is in a done status."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="supercedes" upperBound="-1"
+        eType="#//Decision" eOpposite="#//Decision/supercededBy">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Decisions which this decision supercedes once (if ever) it goes into effect."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="supercededBy" upperBound="-1"
+        eType="#//Decision" changeable="false" derived="true" eOpposite="#//Decision/supercedes">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Decisions which (will) supercede this decision when (if ever) they are effective."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="resolution" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Documentation of what has been decided (decision process outcome)."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
 </ecore:EPackage>

@@ -21,6 +21,7 @@ import org.nasdanika.engineering.Appearance;
 import org.nasdanika.engineering.Call;
 import org.nasdanika.engineering.Capability;
 import org.nasdanika.engineering.Capacity;
+import org.nasdanika.engineering.Decision;
 import org.nasdanika.engineering.Directory;
 import org.nasdanika.engineering.Document;
 import org.nasdanika.engineering.Endeavor;
@@ -218,6 +219,8 @@ public class EngineeringValidator extends EObjectValidator {
 				return validateKeyResult((KeyResult)value, diagnostics, context);
 			case EngineeringPackage.OBJECTIVE:
 				return validateObjective((Objective)value, diagnostics, context);
+			case EngineeringPackage.DECISION:
+				return validateDecision((Decision)value, diagnostics, context);
 			case EngineeringPackage.SECTION_STYLE:
 				return validateSectionStyle((SectionStyle)value, diagnostics, context);
 			default:
@@ -999,6 +1002,27 @@ public class EngineeringValidator extends EObjectValidator {
 	 */
 	public boolean validateObjective(Objective objective, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(objective, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateDecision(Decision decision, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(decision, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(decision, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(decision, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(decision, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(decision, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(decision, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(decision, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(decision, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(decision, diagnostics, context);
+		if (result || diagnostics != null) result &= validateEndeavor_start_end(decision, diagnostics, context);
+		if (result || diagnostics != null) result &= validateEndeavor_capacity(decision, diagnostics, context);
+		if (result || diagnostics != null) result &= validateIssue_increment(decision, diagnostics, context);
+		return result;
 	}
 
 	/**

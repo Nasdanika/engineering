@@ -19,9 +19,9 @@ import org.nasdanika.html.app.ViewGenerator;
 import org.nasdanika.html.bootstrap.BootstrapElement;
 import org.nasdanika.html.emf.HtmlEmfUtil;
 
-public class IssueViewAction extends EngineeredCapabilityViewAction<Issue> {
+public class IssueViewAction<T extends Issue> extends EngineeredCapabilityViewAction<T> {
 	
-	protected IssueViewAction(Issue value, EngineeringViewActionAdapterFactory factory) {
+	protected IssueViewAction(T value, EngineeringViewActionAdapterFactory factory) {
 		super(value, factory);
 	}
 	
@@ -85,7 +85,7 @@ public class IssueViewAction extends EngineeredCapabilityViewAction<Issue> {
 			if (getSemanticElement().getNotes().isEmpty()) {
 				return Collections.emptyList();
 			}
-			ModelElementFeatureViewAction<Issue, EStructuralFeature, ModelElementViewActionImpl<Issue>> notesAction = createFeatureViewAction(feature, this::generateNotes);
+			ModelElementFeatureViewAction<T, EStructuralFeature, ModelElementViewActionImpl<T>> notesAction = createFeatureViewAction(feature, this::generateNotes);
 			return Collections.singleton(notesAction);
 		}
 		return super.featureActions(feature);

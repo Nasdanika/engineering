@@ -6856,6 +6856,412 @@ public interface EngineeringPackage extends EPackage {
 	int OBJECTIVE_OPERATION_COUNT = KEY_RESULT_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.DecisionImpl <em>Decision</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.DecisionImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getDecision()
+	 * @generated
+	 */
+	int DECISION = 45;
+
+	/**
+	 * The feature id for the '<em><b>Uri</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DECISION__URI = ISSUE__URI;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DECISION__PATH = ISSUE__PATH;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DECISION__DESCRIPTION = ISSUE__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DECISION__MARKDOWN_DESCRIPTION = ISSUE__MARKDOWN_DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Actions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DECISION__ACTIONS = ISSUE__ACTIONS;
+
+	/**
+	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DECISION__RESOURCES = ISSUE__RESOURCES;
+
+	/**
+	 * The feature id for the '<em><b>Appearance</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DECISION__APPEARANCE = ISSUE__APPEARANCE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DECISION__NAME = ISSUE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Required By</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DECISION__REQUIRED_BY = ISSUE__REQUIRED_BY;
+
+	/**
+	 * The feature id for the '<em><b>Available</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DECISION__AVAILABLE = ISSUE__AVAILABLE;
+
+	/**
+	 * The feature id for the '<em><b>Aligns</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DECISION__ALIGNS = ISSUE__ALIGNS;
+
+	/**
+	 * The feature id for the '<em><b>Completion</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DECISION__COMPLETION = ISSUE__COMPLETION;
+
+	/**
+	 * The feature id for the '<em><b>Benefit</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DECISION__BENEFIT = ISSUE__BENEFIT;
+
+	/**
+	 * The feature id for the '<em><b>Total Cost</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DECISION__TOTAL_COST = ISSUE__TOTAL_COST;
+
+	/**
+	 * The feature id for the '<em><b>Assignee</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DECISION__ASSIGNEE = ISSUE__ASSIGNEE;
+
+	/**
+	 * The feature id for the '<em><b>All Issues</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DECISION__ALL_ISSUES = ISSUE__ALL_ISSUES;
+
+	/**
+	 * The feature id for the '<em><b>Start</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DECISION__START = ISSUE__START;
+
+	/**
+	 * The feature id for the '<em><b>End</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DECISION__END = ISSUE__END;
+
+	/**
+	 * The feature id for the '<em><b>Capacity</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DECISION__CAPACITY = ISSUE__CAPACITY;
+
+	/**
+	 * The feature id for the '<em><b>Objectives</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DECISION__OBJECTIVES = ISSUE__OBJECTIVES;
+
+	/**
+	 * The feature id for the '<em><b>Linked Objectives</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DECISION__LINKED_OBJECTIVES = ISSUE__LINKED_OBJECTIVES;
+
+	/**
+	 * The feature id for the '<em><b>All Objectives</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DECISION__ALL_OBJECTIVES = ISSUE__ALL_OBJECTIVES;
+
+	/**
+	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DECISION__CHILDREN = ISSUE__CHILDREN;
+
+	/**
+	 * The feature id for the '<em><b>Requires</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DECISION__REQUIRES = ISSUE__REQUIRES;
+
+	/**
+	 * The feature id for the '<em><b>Increment</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DECISION__INCREMENT = ISSUE__INCREMENT;
+
+	/**
+	 * The feature id for the '<em><b>Contributes To</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DECISION__CONTRIBUTES_TO = ISSUE__CONTRIBUTES_TO;
+
+	/**
+	 * The feature id for the '<em><b>Notes</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DECISION__NOTES = ISSUE__NOTES;
+
+	/**
+	 * The feature id for the '<em><b>Categories</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DECISION__CATEGORIES = ISSUE__CATEGORIES;
+
+	/**
+	 * The feature id for the '<em><b>Target</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DECISION__TARGET = ISSUE__TARGET;
+
+	/**
+	 * The feature id for the '<em><b>Status</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DECISION__STATUS = ISSUE__STATUS;
+
+	/**
+	 * The feature id for the '<em><b>Workable</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DECISION__WORKABLE = ISSUE__WORKABLE;
+
+	/**
+	 * The feature id for the '<em><b>Releases</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DECISION__RELEASES = ISSUE__RELEASES;
+
+	/**
+	 * The feature id for the '<em><b>Effort</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DECISION__EFFORT = ISSUE__EFFORT;
+
+	/**
+	 * The feature id for the '<em><b>Cost</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DECISION__COST = ISSUE__COST;
+
+	/**
+	 * The feature id for the '<em><b>Remaining Effort</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DECISION__REMAINING_EFFORT = ISSUE__REMAINING_EFFORT;
+
+	/**
+	 * The feature id for the '<em><b>Remaining Cost</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DECISION__REMAINING_COST = ISSUE__REMAINING_COST;
+
+	/**
+	 * The feature id for the '<em><b>Alignments</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DECISION__ALIGNMENTS = ISSUE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Effective Start</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DECISION__EFFECTIVE_START = ISSUE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Effective End</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DECISION__EFFECTIVE_END = ISSUE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Supercedes</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DECISION__SUPERCEDES = ISSUE_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Superceded By</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DECISION__SUPERCEDED_BY = ISSUE_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Resolution</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DECISION__RESOLUTION = ISSUE_FEATURE_COUNT + 5;
+
+	/**
+	 * The number of structural features of the '<em>Decision</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DECISION_FEATURE_COUNT = ISSUE_FEATURE_COUNT + 6;
+
+	/**
+	 * The number of operations of the '<em>Decision</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DECISION_OPERATION_COUNT = ISSUE_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '<em>Section Style</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6863,7 +7269,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getSectionStyle()
 	 * @generated
 	 */
-	int SECTION_STYLE = 45;
+	int SECTION_STYLE = 46;
 
 
 	/**
@@ -8845,6 +9251,71 @@ public interface EngineeringPackage extends EPackage {
 	EReference getObjective_SubObjectives();
 
 	/**
+	 * Returns the meta object for class '{@link org.nasdanika.engineering.Decision <em>Decision</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Decision</em>'.
+	 * @see org.nasdanika.engineering.Decision
+	 * @generated
+	 */
+	EClass getDecision();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Decision#getEffectiveStart <em>Effective Start</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Effective Start</em>'.
+	 * @see org.nasdanika.engineering.Decision#getEffectiveStart()
+	 * @see #getDecision()
+	 * @generated
+	 */
+	EAttribute getDecision_EffectiveStart();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Decision#getEffectiveEnd <em>Effective End</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Effective End</em>'.
+	 * @see org.nasdanika.engineering.Decision#getEffectiveEnd()
+	 * @see #getDecision()
+	 * @generated
+	 */
+	EAttribute getDecision_EffectiveEnd();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.Decision#getSupercedes <em>Supercedes</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Supercedes</em>'.
+	 * @see org.nasdanika.engineering.Decision#getSupercedes()
+	 * @see #getDecision()
+	 * @generated
+	 */
+	EReference getDecision_Supercedes();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.Decision#getSupercededBy <em>Superceded By</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Superceded By</em>'.
+	 * @see org.nasdanika.engineering.Decision#getSupercededBy()
+	 * @see #getDecision()
+	 * @generated
+	 */
+	EReference getDecision_SupercededBy();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Decision#getResolution <em>Resolution</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Resolution</em>'.
+	 * @see org.nasdanika.engineering.Decision#getResolution()
+	 * @see #getDecision()
+	 * @generated
+	 */
+	EAttribute getDecision_Resolution();
+
+	/**
 	 * Returns the meta object for the containment reference list '{@link org.nasdanika.engineering.Document#getSections <em>Sections</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -10494,6 +10965,56 @@ public interface EngineeringPackage extends EPackage {
 		 * @generated
 		 */
 		EReference OBJECTIVE__SUB_OBJECTIVES = eINSTANCE.getObjective_SubObjectives();
+
+		/**
+		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.DecisionImpl <em>Decision</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.engineering.impl.DecisionImpl
+		 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getDecision()
+		 * @generated
+		 */
+		EClass DECISION = eINSTANCE.getDecision();
+
+		/**
+		 * The meta object literal for the '<em><b>Effective Start</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DECISION__EFFECTIVE_START = eINSTANCE.getDecision_EffectiveStart();
+
+		/**
+		 * The meta object literal for the '<em><b>Effective End</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DECISION__EFFECTIVE_END = eINSTANCE.getDecision_EffectiveEnd();
+
+		/**
+		 * The meta object literal for the '<em><b>Supercedes</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DECISION__SUPERCEDES = eINSTANCE.getDecision_Supercedes();
+
+		/**
+		 * The meta object literal for the '<em><b>Superceded By</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DECISION__SUPERCEDED_BY = eINSTANCE.getDecision_SupercededBy();
+
+		/**
+		 * The meta object literal for the '<em><b>Resolution</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DECISION__RESOLUTION = eINSTANCE.getDecision_Resolution();
 
 		/**
 		 * The meta object literal for the '<em><b>Sections</b></em>' containment reference list feature.
