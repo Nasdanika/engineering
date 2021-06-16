@@ -220,6 +220,8 @@ engineering-module:
        markdown-description: Table with status name, description, and number of issues in the status.       
      - name: Issue categories feature action
        markdown-description: Table with category name, description, and number of issues in the category.       
+     - name: Sliding navigation panel
+       markdown-description: Ability to hide if it takes too much real estate and then bring back. Navigation toggle context action with just an icon.       
 
 #### Done ####
 
