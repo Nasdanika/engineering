@@ -83,7 +83,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//EngineeredElement/principles"/>
     </genClasses>
     <genClasses ecoreClass="engineering.ecore#//Persona">
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference engineering.ecore#//Persona/activities"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference engineering.ecore#//Persona/journeyElements"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//Persona/goals"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//Persona/representatives"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//Persona/extends"/>
@@ -132,26 +132,6 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//Feature/activities"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference engineering.ecore#//Feature/issues"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference engineering.ecore#//Feature/uses"/>
-    </genClasses>
-    <genClasses ecoreClass="engineering.ecore#//Activity">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//Activity/personas"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//Activity/outputs"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Activity/activityType"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//Activity/requirements"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//Activity/deliverables"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//Activity/calls"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//Activity/features"/>
-    </genClasses>
-    <genClasses ecoreClass="engineering.ecore#//Journey">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//Journey/activities"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Journey/partition"/>
-    </genClasses>
-    <genClasses ecoreClass="engineering.ecore#//Transition">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//Transition/target"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//Transition/payload"/>
-    </genClasses>
-    <genClasses ecoreClass="engineering.ecore#//Call">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//Call/response"/>
     </genClasses>
     <genClasses ecoreClass="engineering.ecore#//Directory">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//Directory/elements"/>
@@ -248,5 +228,57 @@
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference engineering.ecore#//Decision/supercededBy"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Decision/resolution"/>
     </genClasses>
+    <genClasses ecoreClass="engineering.ecore#//JourneyElement">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//JourneyElement/inputs"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//JourneyElement/outputs"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//JourneyElement/calls"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//JourneyElement/invocations"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//JourneyElement/requirements"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//JourneyElement/deliverables"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//JourneyElement/personas"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference engineering.ecore#//JourneyElement/allOutputs"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference engineering.ecore#//JourneyElement/allInputs"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference engineering.ecore#//JourneyElement/allCalls"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference engineering.ecore#//JourneyElement/allInvocations"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference engineering.ecore#//JourneyElement/overrides"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference engineering.ecore#//JourneyElement/overridenBy"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//JourneyElement/modifiers"/>
+    </genClasses>
+    <genClasses ecoreClass="engineering.ecore#//Activity">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//Activity/features"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference engineering.ecore#//Activity/services"/>
+    </genClasses>
+    <genClasses ecoreClass="engineering.ecore#//Service">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//Service/target"/>
+    </genClasses>
+    <genClasses ecoreClass="engineering.ecore#//Transition">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//Transition/target"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//Transition/payload"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Transition/suppress"/>
+    </genClasses>
+    <genClasses ecoreClass="engineering.ecore#//Call">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//Call/response"/>
+    </genClasses>
+    <genClasses ecoreClass="engineering.ecore#//Journey">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//Journey/elements"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//Journey/extends"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference engineering.ecore#//Journey/extensions"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference engineering.ecore#//Journey/root"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference engineering.ecore#//Journey/allElements"/>
+    </genClasses>
+    <genClasses ecoreClass="engineering.ecore#//PseudoState">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//PseudoState/type"/>
+    </genClasses>
+    <genClasses ecoreClass="engineering.ecore#//Choice"/>
+    <genClasses ecoreClass="engineering.ecore#//End"/>
+    <genClasses ecoreClass="engineering.ecore#//EntryPoint"/>
+    <genClasses ecoreClass="engineering.ecore#//ExitPoint"/>
+    <genClasses ecoreClass="engineering.ecore#//ExpansionInput"/>
+    <genClasses ecoreClass="engineering.ecore#//ExpansionOutput"/>
+    <genClasses ecoreClass="engineering.ecore#//Fork"/>
+    <genClasses ecoreClass="engineering.ecore#//InputPin"/>
+    <genClasses ecoreClass="engineering.ecore#//Join"/>
+    <genClasses ecoreClass="engineering.ecore#//OutputPin"/>
+    <genClasses ecoreClass="engineering.ecore#//Start"/>
   </genPackages>
 </genmodel:GenModel>
