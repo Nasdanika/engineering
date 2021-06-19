@@ -14,7 +14,7 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.nasdanika.engineering.Persona#getActivities <em>Activities</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.Persona#getJourneyElements <em>Journey Elements</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Persona#getGoals <em>Goals</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Persona#getRepresentatives <em>Representatives</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Persona#getExtends <em>Extends</em>}</li>
@@ -28,21 +28,21 @@ import org.eclipse.emf.common.util.EList;
 public interface Persona extends EngineeredElement {
 
 	/**
-	 * Returns the value of the '<em><b>Activities</b></em>' reference list.
-	 * The list contents are of type {@link org.nasdanika.engineering.Activity}.
-	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Activity#getPersonas <em>Personas</em>}'.
+	 * Returns the value of the '<em><b>Journey Elements</b></em>' reference list.
+	 * The list contents are of type {@link org.nasdanika.engineering.JourneyElement}.
+	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.JourneyElement#getPersonas <em>Personas</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Persona activities which demonstrate use of [product](Product.html) [features](Feature.html).
+	 * Derived opposite to journey element personas reference - [activities](Activity.html) performed by this persona which use [product](Product.html) [features](Feature.html) and [services](Service.html) which this persona uses.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Activities</em>' reference list.
-	 * @see org.nasdanika.engineering.EngineeringPackage#getPersona_Activities()
-	 * @see org.nasdanika.engineering.Activity#getPersonas
+	 * @return the value of the '<em>Journey Elements</em>' reference list.
+	 * @see org.nasdanika.engineering.EngineeringPackage#getPersona_JourneyElements()
+	 * @see org.nasdanika.engineering.JourneyElement#getPersonas
 	 * @model opposite="personas" changeable="false" derived="true"
 	 * @generated
 	 */
-	EList<Activity> getActivities();
+	EList<JourneyElement> getJourneyElements();
 
 	/**
 	 * Returns the value of the '<em><b>Goals</b></em>' containment reference list.

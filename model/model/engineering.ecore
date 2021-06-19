@@ -1146,7 +1146,7 @@
       <details key="documentation-reference" value="doc/journey-element.md"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="final override suppress suppressAndOverride abstract"/>
+      <details key="constraints" value="final override suppress suppressAndOverride"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="inputs" eType="#//Transition"
         derived="true">
@@ -1254,8 +1254,11 @@
     <eAnnotations source="urn:org.nasdanika">
       <details key="documentation-reference" value="doc/service.md"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//Activity"
-        eOpposite="#//Activity/services">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="abstract"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+        eType="#//Activity" eOpposite="#//Activity/services">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Target activity of the service."/>
       </eAnnotations>

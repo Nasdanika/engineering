@@ -4,6 +4,7 @@ package org.nasdanika.engineering.util;
 
 import java.util.Date;
 import java.util.Map;
+
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EObject;
@@ -21,24 +22,34 @@ import org.nasdanika.engineering.Appearance;
 import org.nasdanika.engineering.Call;
 import org.nasdanika.engineering.Capability;
 import org.nasdanika.engineering.Capacity;
+import org.nasdanika.engineering.Choice;
 import org.nasdanika.engineering.Decision;
 import org.nasdanika.engineering.Directory;
 import org.nasdanika.engineering.Document;
+import org.nasdanika.engineering.End;
 import org.nasdanika.engineering.Endeavor;
 import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeredCapability;
 import org.nasdanika.engineering.EngineeredElement;
 import org.nasdanika.engineering.EngineeringAppearance;
 import org.nasdanika.engineering.EngineeringPackage;
+import org.nasdanika.engineering.EntryPoint;
+import org.nasdanika.engineering.ExitPoint;
+import org.nasdanika.engineering.ExpansionInput;
+import org.nasdanika.engineering.ExpansionOutput;
 import org.nasdanika.engineering.Feature;
 import org.nasdanika.engineering.FeatureAppearance;
+import org.nasdanika.engineering.Fork;
 import org.nasdanika.engineering.Forum;
 import org.nasdanika.engineering.Goal;
 import org.nasdanika.engineering.Increment;
+import org.nasdanika.engineering.InputPin;
 import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.IssueCategory;
 import org.nasdanika.engineering.IssueStatus;
+import org.nasdanika.engineering.Join;
 import org.nasdanika.engineering.Journey;
+import org.nasdanika.engineering.JourneyElement;
 import org.nasdanika.engineering.KeyResult;
 import org.nasdanika.engineering.Link;
 import org.nasdanika.engineering.Message;
@@ -49,10 +60,14 @@ import org.nasdanika.engineering.NamedElementReference;
 import org.nasdanika.engineering.Note;
 import org.nasdanika.engineering.Objective;
 import org.nasdanika.engineering.Organization;
+import org.nasdanika.engineering.OutputPin;
 import org.nasdanika.engineering.Persona;
 import org.nasdanika.engineering.Principle;
 import org.nasdanika.engineering.Product;
+import org.nasdanika.engineering.PseudoState;
 import org.nasdanika.engineering.Release;
+import org.nasdanika.engineering.Service;
+import org.nasdanika.engineering.Start;
 import org.nasdanika.engineering.Topic;
 import org.nasdanika.engineering.Transition;
 import org.nasdanika.html.app.SectionStyle;
@@ -167,14 +182,6 @@ public class EngineeringValidator extends EObjectValidator {
 				return validateRelease((Release)value, diagnostics, context);
 			case EngineeringPackage.FEATURE:
 				return validateFeature((Feature)value, diagnostics, context);
-			case EngineeringPackage.ACTIVITY:
-				return validateActivity((Activity)value, diagnostics, context);
-			case EngineeringPackage.JOURNEY:
-				return validateJourney((Journey)value, diagnostics, context);
-			case EngineeringPackage.TRANSITION:
-				return validateTransition((Transition)value, diagnostics, context);
-			case EngineeringPackage.CALL:
-				return validateCall((Call)value, diagnostics, context);
 			case EngineeringPackage.DIRECTORY:
 				return validateDirectory((Directory)value, diagnostics, context);
 			case EngineeringPackage.CAPACITY:
@@ -221,6 +228,42 @@ public class EngineeringValidator extends EObjectValidator {
 				return validateObjective((Objective)value, diagnostics, context);
 			case EngineeringPackage.DECISION:
 				return validateDecision((Decision)value, diagnostics, context);
+			case EngineeringPackage.JOURNEY_ELEMENT:
+				return validateJourneyElement((JourneyElement)value, diagnostics, context);
+			case EngineeringPackage.ACTIVITY:
+				return validateActivity((Activity)value, diagnostics, context);
+			case EngineeringPackage.SERVICE:
+				return validateService((Service)value, diagnostics, context);
+			case EngineeringPackage.TRANSITION:
+				return validateTransition((Transition)value, diagnostics, context);
+			case EngineeringPackage.CALL:
+				return validateCall((Call)value, diagnostics, context);
+			case EngineeringPackage.JOURNEY:
+				return validateJourney((Journey)value, diagnostics, context);
+			case EngineeringPackage.PSEUDO_STATE:
+				return validatePseudoState((PseudoState)value, diagnostics, context);
+			case EngineeringPackage.CHOICE:
+				return validateChoice((Choice)value, diagnostics, context);
+			case EngineeringPackage.END:
+				return validateEnd((End)value, diagnostics, context);
+			case EngineeringPackage.ENTRY_POINT:
+				return validateEntryPoint((EntryPoint)value, diagnostics, context);
+			case EngineeringPackage.EXIT_POINT:
+				return validateExitPoint((ExitPoint)value, diagnostics, context);
+			case EngineeringPackage.EXPANSION_INPUT:
+				return validateExpansionInput((ExpansionInput)value, diagnostics, context);
+			case EngineeringPackage.EXPANSION_OUTPUT:
+				return validateExpansionOutput((ExpansionOutput)value, diagnostics, context);
+			case EngineeringPackage.FORK:
+				return validateFork((Fork)value, diagnostics, context);
+			case EngineeringPackage.INPUT_PIN:
+				return validateInputPin((InputPin)value, diagnostics, context);
+			case EngineeringPackage.JOIN:
+				return validateJoin((Join)value, diagnostics, context);
+			case EngineeringPackage.OUTPUT_PIN:
+				return validateOutputPin((OutputPin)value, diagnostics, context);
+			case EngineeringPackage.START:
+				return validateStart((Start)value, diagnostics, context);
 			case EngineeringPackage.SECTION_STYLE:
 				return validateSectionStyle((SectionStyle)value, diagnostics, context);
 			default:
@@ -755,7 +798,56 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(activity, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(activity, diagnostics, context);
 		if (result || diagnostics != null) result &= validateEngineeredElement_capacity(activity, diagnostics, context);
+		if (result || diagnostics != null) result &= validateJourneyElement_final(activity, diagnostics, context);
+		if (result || diagnostics != null) result &= validateJourneyElement_override(activity, diagnostics, context);
+		if (result || diagnostics != null) result &= validateJourneyElement_suppress(activity, diagnostics, context);
+		if (result || diagnostics != null) result &= validateJourneyElement_suppressAndOverride(activity, diagnostics, context);
 		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateService(Service service, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(service, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(service, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(service, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(service, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(service, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(service, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(service, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(service, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(service, diagnostics, context);
+		if (result || diagnostics != null) result &= validateEngineeredElement_capacity(service, diagnostics, context);
+		if (result || diagnostics != null) result &= validateJourneyElement_final(service, diagnostics, context);
+		if (result || diagnostics != null) result &= validateJourneyElement_override(service, diagnostics, context);
+		if (result || diagnostics != null) result &= validateJourneyElement_suppress(service, diagnostics, context);
+		if (result || diagnostics != null) result &= validateJourneyElement_suppressAndOverride(service, diagnostics, context);
+		if (result || diagnostics != null) result &= validateService_abstract(service, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * Validates the abstract constraint of '<em>Service</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean validateService_abstract(Service service, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (diagnostics != null) {
+			DiagnosticHelper helper = new DiagnosticHelper(diagnostics, DIAGNOSTIC_SOURCE, 0, service);
+			if (!service.getModifiers().contains(JourneyElement.ABSTRACT)) {
+				Activity target = service.getTarget();
+				if (target != null && target.getModifiers().contains(JourneyElement.ABSTRACT)) {
+					helper.error("Concrete service references an abstract activity", EngineeringPackage.Literals.SERVICE__TARGET);
+				}
+			}
+			
+			return helper.isSuccess();
+		}
+		return true;
 	}
 
 	/**
@@ -774,7 +866,460 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(journey, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(journey, diagnostics, context);
 		if (result || diagnostics != null) result &= validateEngineeredElement_capacity(journey, diagnostics, context);
+		if (result || diagnostics != null) result &= validateJourney_final(journey, diagnostics, context);
+		if (result || diagnostics != null) result &= validateJourneyElement_override(journey, diagnostics, context);
+		if (result || diagnostics != null) result &= validateJourneyElement_suppress(journey, diagnostics, context);
+		if (result || diagnostics != null) result &= validateJourneyElement_suppressAndOverride(journey, diagnostics, context);
+		if (result || diagnostics != null) result &= validateJourney_abstract(journey, diagnostics, context);
 		return result;
+	}
+
+	/**
+	 * Validates the final constraint of '<em>Journey</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean validateJourney_final(Journey journey, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (diagnostics != null) {
+			DiagnosticHelper helper = new DiagnosticHelper(diagnostics, DIAGNOSTIC_SOURCE, 0, journey);
+			Journey base = journey.getExtends();
+			if (base != null && base.getModifiers().contains(JourneyElement.FINAL)) {
+				helper.error("Final journey cannot be extended", EngineeringPackage.Literals.JOURNEY__EXTENDS);
+			}
+			
+			return validateJourneyElement_final(journey, diagnostics, context) && helper.isSuccess();
+		}
+		return validateJourneyElement_final(journey, diagnostics, context);
+	}
+
+	/**
+	 * Validates the abstract constraint of '<em>Journey</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean validateJourney_abstract(Journey journey, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (diagnostics != null && !journey.getModifiers().contains(JourneyElement.ABSTRACT)) {
+			DiagnosticHelper helper = new DiagnosticHelper(diagnostics, DIAGNOSTIC_SOURCE, 0, journey);
+			for (JourneyElement je: journey.getAllElements()) {
+				if (je.getModifiers().contains(JourneyElement.ABSTRACT)) {
+					helper.error("Abstract element in a concrete journey: " + je.getUri());
+				}
+			}
+			
+			return helper.isSuccess();
+		}
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validatePseudoState(PseudoState pseudoState, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(pseudoState, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(pseudoState, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(pseudoState, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(pseudoState, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(pseudoState, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(pseudoState, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(pseudoState, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(pseudoState, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(pseudoState, diagnostics, context);
+		if (result || diagnostics != null) result &= validateEngineeredElement_capacity(pseudoState, diagnostics, context);
+		if (result || diagnostics != null) result &= validateJourneyElement_final(pseudoState, diagnostics, context);
+		if (result || diagnostics != null) result &= validateJourneyElement_override(pseudoState, diagnostics, context);
+		if (result || diagnostics != null) result &= validateJourneyElement_suppress(pseudoState, diagnostics, context);
+		if (result || diagnostics != null) result &= validateJourneyElement_suppressAndOverride(pseudoState, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateChoice(Choice choice, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(choice, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(choice, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(choice, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(choice, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(choice, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(choice, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(choice, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(choice, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(choice, diagnostics, context);
+		if (result || diagnostics != null) result &= validateEngineeredElement_capacity(choice, diagnostics, context);
+		if (result || diagnostics != null) result &= validateJourneyElement_final(choice, diagnostics, context);
+		if (result || diagnostics != null) result &= validateJourneyElement_override(choice, diagnostics, context);
+		if (result || diagnostics != null) result &= validateJourneyElement_suppress(choice, diagnostics, context);
+		if (result || diagnostics != null) result &= validateJourneyElement_suppressAndOverride(choice, diagnostics, context);
+		if (result || diagnostics != null) result &= validateChoice_multipleChoices(choice, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * Validates the multipleChoices constraint of '<em>Choice</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean validateChoice_multipleChoices(Choice choice, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (diagnostics != null) {
+			DiagnosticHelper helper = new DiagnosticHelper(diagnostics, DIAGNOSTIC_SOURCE, 0, choice);
+			if (choice.getAllOutputs().size() + choice.getAllCalls().size() < 2) {
+				helper.warning("There should be multiple choices");
+			};
+			
+			return helper.isSuccess();
+		}
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateEnd(End end, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(end, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(end, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(end, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(end, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(end, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(end, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(end, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(end, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(end, diagnostics, context);
+		if (result || diagnostics != null) result &= validateEngineeredElement_capacity(end, diagnostics, context);
+		if (result || diagnostics != null) result &= validateJourneyElement_final(end, diagnostics, context);
+		if (result || diagnostics != null) result &= validateJourneyElement_override(end, diagnostics, context);
+		if (result || diagnostics != null) result &= validateJourneyElement_suppress(end, diagnostics, context);
+		if (result || diagnostics != null) result &= validateJourneyElement_suppressAndOverride(end, diagnostics, context);
+		if (result || diagnostics != null) result &= validateEnd_noOutputs(end, diagnostics, context);
+		if (result || diagnostics != null) result &= validateEnd_noCalls(end, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * Validates the noOutputs constraint of '<em>End</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean validateEnd_noOutputs(End end, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (diagnostics != null) {
+			DiagnosticHelper helper = new DiagnosticHelper(diagnostics, DIAGNOSTIC_SOURCE, 0, end);
+			if (!end.getAllOutputs().isEmpty()) {
+				helper.error("End cannot have outputs", EngineeringPackage.Literals.JOURNEY_ELEMENT__ALL_OUTPUTS);
+			};
+			
+			return helper.isSuccess();
+		}
+		return true;
+	}
+
+	/**
+	 * Validates the noCalls constraint of '<em>End</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean validateEnd_noCalls(End end, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (diagnostics != null) {
+			DiagnosticHelper helper = new DiagnosticHelper(diagnostics, DIAGNOSTIC_SOURCE, 0, end);
+			if (!end.getAllCalls().isEmpty()) {
+				helper.error("End cannot have calls", EngineeringPackage.Literals.JOURNEY_ELEMENT__ALL_CALLS);
+			};
+			
+			return helper.isSuccess();
+		}
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateEntryPoint(EntryPoint entryPoint, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(entryPoint, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(entryPoint, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(entryPoint, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(entryPoint, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(entryPoint, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(entryPoint, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(entryPoint, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(entryPoint, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(entryPoint, diagnostics, context);
+		if (result || diagnostics != null) result &= validateEngineeredElement_capacity(entryPoint, diagnostics, context);
+		if (result || diagnostics != null) result &= validateJourneyElement_final(entryPoint, diagnostics, context);
+		if (result || diagnostics != null) result &= validateJourneyElement_override(entryPoint, diagnostics, context);
+		if (result || diagnostics != null) result &= validateJourneyElement_suppress(entryPoint, diagnostics, context);
+		if (result || diagnostics != null) result &= validateJourneyElement_suppressAndOverride(entryPoint, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateExitPoint(ExitPoint exitPoint, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(exitPoint, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(exitPoint, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(exitPoint, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(exitPoint, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(exitPoint, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(exitPoint, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(exitPoint, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(exitPoint, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(exitPoint, diagnostics, context);
+		if (result || diagnostics != null) result &= validateEngineeredElement_capacity(exitPoint, diagnostics, context);
+		if (result || diagnostics != null) result &= validateJourneyElement_final(exitPoint, diagnostics, context);
+		if (result || diagnostics != null) result &= validateJourneyElement_override(exitPoint, diagnostics, context);
+		if (result || diagnostics != null) result &= validateJourneyElement_suppress(exitPoint, diagnostics, context);
+		if (result || diagnostics != null) result &= validateJourneyElement_suppressAndOverride(exitPoint, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateExpansionInput(ExpansionInput expansionInput, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(expansionInput, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(expansionInput, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(expansionInput, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(expansionInput, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(expansionInput, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(expansionInput, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(expansionInput, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(expansionInput, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(expansionInput, diagnostics, context);
+		if (result || diagnostics != null) result &= validateEngineeredElement_capacity(expansionInput, diagnostics, context);
+		if (result || diagnostics != null) result &= validateJourneyElement_final(expansionInput, diagnostics, context);
+		if (result || diagnostics != null) result &= validateJourneyElement_override(expansionInput, diagnostics, context);
+		if (result || diagnostics != null) result &= validateJourneyElement_suppress(expansionInput, diagnostics, context);
+		if (result || diagnostics != null) result &= validateJourneyElement_suppressAndOverride(expansionInput, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateExpansionOutput(ExpansionOutput expansionOutput, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(expansionOutput, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(expansionOutput, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(expansionOutput, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(expansionOutput, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(expansionOutput, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(expansionOutput, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(expansionOutput, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(expansionOutput, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(expansionOutput, diagnostics, context);
+		if (result || diagnostics != null) result &= validateEngineeredElement_capacity(expansionOutput, diagnostics, context);
+		if (result || diagnostics != null) result &= validateJourneyElement_final(expansionOutput, diagnostics, context);
+		if (result || diagnostics != null) result &= validateJourneyElement_override(expansionOutput, diagnostics, context);
+		if (result || diagnostics != null) result &= validateJourneyElement_suppress(expansionOutput, diagnostics, context);
+		if (result || diagnostics != null) result &= validateJourneyElement_suppressAndOverride(expansionOutput, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateFork(Fork fork, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(fork, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(fork, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(fork, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(fork, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(fork, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(fork, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(fork, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(fork, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(fork, diagnostics, context);
+		if (result || diagnostics != null) result &= validateEngineeredElement_capacity(fork, diagnostics, context);
+		if (result || diagnostics != null) result &= validateJourneyElement_final(fork, diagnostics, context);
+		if (result || diagnostics != null) result &= validateJourneyElement_override(fork, diagnostics, context);
+		if (result || diagnostics != null) result &= validateJourneyElement_suppress(fork, diagnostics, context);
+		if (result || diagnostics != null) result &= validateJourneyElement_suppressAndOverride(fork, diagnostics, context);
+		if (result || diagnostics != null) result &= validateFork_multipleBranches(fork, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * Validates the multipleBranches constraint of '<em>Fork</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean validateFork_multipleBranches(Fork fork, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (diagnostics != null) {
+			DiagnosticHelper helper = new DiagnosticHelper(diagnostics, DIAGNOSTIC_SOURCE, 0, fork);
+			if (fork.getAllOutputs().size() + fork.getAllCalls().size() < 2) {
+				helper.warning("There should be multiple branches");
+			};
+			
+			return helper.isSuccess();
+		}
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateInputPin(InputPin inputPin, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(inputPin, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(inputPin, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(inputPin, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(inputPin, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(inputPin, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(inputPin, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(inputPin, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(inputPin, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(inputPin, diagnostics, context);
+		if (result || diagnostics != null) result &= validateEngineeredElement_capacity(inputPin, diagnostics, context);
+		if (result || diagnostics != null) result &= validateJourneyElement_final(inputPin, diagnostics, context);
+		if (result || diagnostics != null) result &= validateJourneyElement_override(inputPin, diagnostics, context);
+		if (result || diagnostics != null) result &= validateJourneyElement_suppress(inputPin, diagnostics, context);
+		if (result || diagnostics != null) result &= validateJourneyElement_suppressAndOverride(inputPin, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateJoin(Join join, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(join, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(join, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(join, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(join, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(join, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(join, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(join, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(join, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(join, diagnostics, context);
+		if (result || diagnostics != null) result &= validateEngineeredElement_capacity(join, diagnostics, context);
+		if (result || diagnostics != null) result &= validateJourneyElement_final(join, diagnostics, context);
+		if (result || diagnostics != null) result &= validateJourneyElement_override(join, diagnostics, context);
+		if (result || diagnostics != null) result &= validateJourneyElement_suppress(join, diagnostics, context);
+		if (result || diagnostics != null) result &= validateJourneyElement_suppressAndOverride(join, diagnostics, context);
+		if (result || diagnostics != null) result &= validateJoin_multipleBranches(join, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * Validates the multipleBranches constraint of '<em>Join</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean validateJoin_multipleBranches(Join join, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (diagnostics != null) {
+			DiagnosticHelper helper = new DiagnosticHelper(diagnostics, DIAGNOSTIC_SOURCE, 0, join);
+			if (join.getAllInputs().size() + join.getAllInvocations().size() < 2) {
+				helper.warning("There should be multiple branches to merge");
+			};
+			
+			return helper.isSuccess();
+		}
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateOutputPin(OutputPin outputPin, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(outputPin, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(outputPin, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(outputPin, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(outputPin, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(outputPin, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(outputPin, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(outputPin, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(outputPin, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(outputPin, diagnostics, context);
+		if (result || diagnostics != null) result &= validateEngineeredElement_capacity(outputPin, diagnostics, context);
+		if (result || diagnostics != null) result &= validateJourneyElement_final(outputPin, diagnostics, context);
+		if (result || diagnostics != null) result &= validateJourneyElement_override(outputPin, diagnostics, context);
+		if (result || diagnostics != null) result &= validateJourneyElement_suppress(outputPin, diagnostics, context);
+		if (result || diagnostics != null) result &= validateJourneyElement_suppressAndOverride(outputPin, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateStart(Start start, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(start, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(start, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(start, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(start, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(start, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(start, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(start, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(start, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(start, diagnostics, context);
+		if (result || diagnostics != null) result &= validateEngineeredElement_capacity(start, diagnostics, context);
+		if (result || diagnostics != null) result &= validateJourneyElement_final(start, diagnostics, context);
+		if (result || diagnostics != null) result &= validateJourneyElement_override(start, diagnostics, context);
+		if (result || diagnostics != null) result &= validateJourneyElement_suppress(start, diagnostics, context);
+		if (result || diagnostics != null) result &= validateJourneyElement_suppressAndOverride(start, diagnostics, context);
+		if (result || diagnostics != null) result &= validateStart_noInputs(start, diagnostics, context);
+		if (result || diagnostics != null) result &= validateStart_noInvocations(start, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * Validates the noInputs constraint of '<em>Start</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean validateStart_noInputs(Start start, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (diagnostics != null) {
+			DiagnosticHelper helper = new DiagnosticHelper(diagnostics, DIAGNOSTIC_SOURCE, 0, start);
+			if (!start.getAllInputs().isEmpty()) {
+				helper.error("Start cannot have inputs", EngineeringPackage.Literals.JOURNEY_ELEMENT__ALL_INPUTS);
+			};
+			
+			return helper.isSuccess();
+		}
+		return true;
+	}
+
+	/**
+	 * Validates the noInvocations constraint of '<em>Start</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean validateStart_noInvocations(Start start, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (diagnostics != null) {
+			DiagnosticHelper helper = new DiagnosticHelper(diagnostics, DIAGNOSTIC_SOURCE, 0, start);
+			if (!start.getAllInvocations().isEmpty()) {
+				helper.error("Start cannot have invocations", EngineeringPackage.Literals.JOURNEY_ELEMENT__ALL_INVOCATIONS);
+			};
+			
+			return helper.isSuccess();
+		}
+		return true;
 	}
 
 	/**
@@ -1023,6 +1568,102 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validateEndeavor_capacity(decision, diagnostics, context);
 		if (result || diagnostics != null) result &= validateIssue_increment(decision, diagnostics, context);
 		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateJourneyElement(JourneyElement journeyElement, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(journeyElement, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(journeyElement, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(journeyElement, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(journeyElement, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(journeyElement, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(journeyElement, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(journeyElement, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(journeyElement, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(journeyElement, diagnostics, context);
+		if (result || diagnostics != null) result &= validateEngineeredElement_capacity(journeyElement, diagnostics, context);
+		if (result || diagnostics != null) result &= validateJourneyElement_final(journeyElement, diagnostics, context);
+		if (result || diagnostics != null) result &= validateJourneyElement_override(journeyElement, diagnostics, context);
+		if (result || diagnostics != null) result &= validateJourneyElement_suppress(journeyElement, diagnostics, context);
+		if (result || diagnostics != null) result &= validateJourneyElement_suppressAndOverride(journeyElement, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * Validates the final constraint of '<em>Journey Element</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean validateJourneyElement_final(JourneyElement journeyElement, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (diagnostics != null) {
+			DiagnosticHelper helper = new DiagnosticHelper(diagnostics, DIAGNOSTIC_SOURCE, 0, journeyElement);
+			JourneyElement overrides = journeyElement.getOverrides();
+			if (overrides != null && overrides.getModifiers().contains(JourneyElement.FINAL)) {
+				helper.error("Final elements cannot be overriden", EngineeringPackage.Literals.JOURNEY_ELEMENT__OVERRIDES);
+			}
+			
+			if (journeyElement.getModifiers().contains(JourneyElement.FINAL)) {
+				helper.error("Journey element is both final and abstract", EngineeringPackage.Literals.JOURNEY_ELEMENT__MODIFIERS);
+			}
+			return helper.isSuccess();
+		}
+		return true;
+	}
+
+	/**
+	 * Validates the override constraint of '<em>Journey Element</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean validateJourneyElement_override(JourneyElement journeyElement, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (diagnostics != null && journeyElement.getModifiers().contains(JourneyElement.OVERRIDE)) {
+			JourneyElement overrides = journeyElement.getOverrides();
+			if (overrides == null) {
+				DiagnosticHelper helper = new DiagnosticHelper(diagnostics, DIAGNOSTIC_SOURCE, 0, journeyElement);
+				helper.error("Element with 'override' modifier must override an inherited element with the same path", EngineeringPackage.Literals.JOURNEY_ELEMENT__MODIFIERS);
+				return helper.isSuccess();
+			}
+		}
+		return true;
+	}
+
+	/**
+	 * Validates the suppress constraint of '<em>Journey Element</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean validateJourneyElement_suppress(JourneyElement journeyElement, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (diagnostics != null && journeyElement.getModifiers().contains(JourneyElement.SUPPRESS)) {
+			JourneyElement overrides = journeyElement.getOverrides();
+			if (overrides == null) {
+				DiagnosticHelper helper = new DiagnosticHelper(diagnostics, DIAGNOSTIC_SOURCE, 0, journeyElement);
+				helper.error("Element with 'suppress' modifier must suppress an inherited element with the same path", EngineeringPackage.Literals.JOURNEY_ELEMENT__MODIFIERS);
+				return helper.isSuccess();
+			}
+		}
+		return true;
+	}
+
+	/**
+	 * Validates the suppressAndOverride constraint of '<em>Journey Element</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean validateJourneyElement_suppressAndOverride(JourneyElement journeyElement, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (diagnostics != null && journeyElement.getModifiers().contains(JourneyElement.SUPPRESS) && journeyElement.getModifiers().contains(JourneyElement.OVERRIDE)) {
+			DiagnosticHelper helper = new DiagnosticHelper(diagnostics, DIAGNOSTIC_SOURCE, 0, journeyElement);
+			helper.error("'override' and 'suppress' modifiers are mutually exclusive", EngineeringPackage.Literals.JOURNEY_ELEMENT__MODIFIERS);
+			return helper.isSuccess();
+		}
+		return true;
 	}
 
 	/**

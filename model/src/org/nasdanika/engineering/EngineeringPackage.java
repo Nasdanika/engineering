@@ -285,7 +285,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getAlignable()
 	 * @generated
 	 */
-	int ALIGNABLE = 26;
+	int ALIGNABLE = 22;
 
 	/**
 	 * The feature id for the '<em><b>Aligns</b></em>' containment reference list.
@@ -1371,7 +1371,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getActivity()
 	 * @generated
 	 */
-	int ACTIVITY = 19;
+	int ACTIVITY = 43;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.JourneyImpl <em>Journey</em>}' class.
@@ -1381,7 +1381,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getJourney()
 	 * @generated
 	 */
-	int JOURNEY = 20;
+	int JOURNEY = 47;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.TransitionImpl <em>Transition</em>}' class.
@@ -1391,7 +1391,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getTransition()
 	 * @generated
 	 */
-	int TRANSITION = 21;
+	int TRANSITION = 45;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.CallImpl <em>Call</em>}' class.
@@ -1401,7 +1401,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getCall()
 	 * @generated
 	 */
-	int CALL = 22;
+	int CALL = 46;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.IssueImpl <em>Issue</em>}' class.
@@ -1917,7 +1917,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getDirectory()
 	 * @generated
 	 */
-	int DIRECTORY = 23;
+	int DIRECTORY = 19;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.CapacityImpl <em>Capacity</em>}' class.
@@ -1927,7 +1927,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getCapacity()
 	 * @generated
 	 */
-	int CAPACITY = 24;
+	int CAPACITY = 20;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.AllocationImpl <em>Allocation</em>}' class.
@@ -1937,7 +1937,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getAllocation()
 	 * @generated
 	 */
-	int ALLOCATION = 25;
+	int ALLOCATION = 21;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.AimImpl <em>Aim</em>}' class.
@@ -1947,7 +1947,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getAim()
 	 * @generated
 	 */
-	int AIM = 27;
+	int AIM = 23;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.PrincipleImpl <em>Principle</em>}' class.
@@ -1957,7 +1957,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getPrinciple()
 	 * @generated
 	 */
-	int PRINCIPLE = 28;
+	int PRINCIPLE = 24;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.AlignmentImpl <em>Alignment</em>}' class.
@@ -1967,7 +1967,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getAlignment()
 	 * @generated
 	 */
-	int ALIGNMENT = 29;
+	int ALIGNMENT = 25;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.GoalImpl <em>Goal</em>}' class.
@@ -1977,7 +1977,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getGoal()
 	 * @generated
 	 */
-	int GOAL = 30;
+	int GOAL = 26;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.ForumImpl <em>Forum</em>}' class.
@@ -1987,7 +1987,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getForum()
 	 * @generated
 	 */
-	int FORUM = 31;
+	int FORUM = 27;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -2386,13 +2386,13 @@ public interface EngineeringPackage extends EPackage {
 	int PERSONA__PRINCIPLES = ENGINEERED_ELEMENT__PRINCIPLES;
 
 	/**
-	 * The feature id for the '<em><b>Activities</b></em>' reference list.
+	 * The feature id for the '<em><b>Journey Elements</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PERSONA__ACTIVITIES = ENGINEERED_ELEMENT_FEATURE_COUNT + 0;
+	int PERSONA__JOURNEY_ELEMENTS = ENGINEERED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Goals</b></em>' containment reference list.
@@ -2584,13 +2584,13 @@ public interface EngineeringPackage extends EPackage {
 	int ENGINEER__PRINCIPLES = PERSONA__PRINCIPLES;
 
 	/**
-	 * The feature id for the '<em><b>Activities</b></em>' reference list.
+	 * The feature id for the '<em><b>Journey Elements</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEER__ACTIVITIES = PERSONA__ACTIVITIES;
+	int ENGINEER__JOURNEY_ELEMENTS = PERSONA__JOURNEY_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Goals</b></em>' containment reference list.
@@ -2917,13 +2917,13 @@ public interface EngineeringPackage extends EPackage {
 	int ORGANIZATION__PRINCIPLES = ENGINEER__PRINCIPLES;
 
 	/**
-	 * The feature id for the '<em><b>Activities</b></em>' reference list.
+	 * The feature id for the '<em><b>Journey Elements</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ORGANIZATION__ACTIVITIES = ENGINEER__ACTIVITIES;
+	int ORGANIZATION__JOURNEY_ELEMENTS = ENGINEER__JOURNEY_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Goals</b></em>' containment reference list.
@@ -3970,679 +3970,134 @@ public interface EngineeringPackage extends EPackage {
 	int FEATURE_OPERATION_COUNT = ENGINEERED_CAPABILITY_OPERATION_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Uri</b></em>' attribute.
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.ServiceImpl <em>Service</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.ServiceImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getService()
 	 * @generated
-	 * @ordered
 	 */
-	int ACTIVITY__URI = ENGINEERED_ELEMENT__URI;
+	int SERVICE = 44;
 
 	/**
-	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.PseudoStateImpl <em>Pseudo State</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.PseudoStateImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getPseudoState()
 	 * @generated
-	 * @ordered
 	 */
-	int ACTIVITY__PATH = ENGINEERED_ELEMENT__PATH;
+	int PSEUDO_STATE = 48;
 
 	/**
-	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.ChoiceImpl <em>Choice</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.ChoiceImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getChoice()
 	 * @generated
-	 * @ordered
 	 */
-	int ACTIVITY__DESCRIPTION = ENGINEERED_ELEMENT__DESCRIPTION;
+	int CHOICE = 49;
 
 	/**
-	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.EndImpl <em>End</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.EndImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getEnd()
 	 * @generated
-	 * @ordered
 	 */
-	int ACTIVITY__MARKDOWN_DESCRIPTION = ENGINEERED_ELEMENT__MARKDOWN_DESCRIPTION;
+	int END = 50;
 
 	/**
-	 * The feature id for the '<em><b>Actions</b></em>' containment reference list.
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.EntryPointImpl <em>Entry Point</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.EntryPointImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getEntryPoint()
 	 * @generated
-	 * @ordered
 	 */
-	int ACTIVITY__ACTIONS = ENGINEERED_ELEMENT__ACTIONS;
+	int ENTRY_POINT = 51;
 
 	/**
-	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.ExitPointImpl <em>Exit Point</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.ExitPointImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getExitPoint()
 	 * @generated
-	 * @ordered
 	 */
-	int ACTIVITY__RESOURCES = ENGINEERED_ELEMENT__RESOURCES;
+	int EXIT_POINT = 52;
 
 	/**
-	 * The feature id for the '<em><b>Appearance</b></em>' containment reference.
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.ExpansionInputImpl <em>Expansion Input</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.ExpansionInputImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getExpansionInput()
 	 * @generated
-	 * @ordered
 	 */
-	int ACTIVITY__APPEARANCE = ENGINEERED_ELEMENT__APPEARANCE;
+	int EXPANSION_INPUT = 53;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.ExpansionOutputImpl <em>Expansion Output</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.ExpansionOutputImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getExpansionOutput()
 	 * @generated
-	 * @ordered
 	 */
-	int ACTIVITY__NAME = ENGINEERED_ELEMENT__NAME;
+	int EXPANSION_OUTPUT = 54;
 
 	/**
-	 * The feature id for the '<em><b>Discussion</b></em>' containment reference list.
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.ForkImpl <em>Fork</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.ForkImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getFork()
 	 * @generated
-	 * @ordered
 	 */
-	int ACTIVITY__DISCUSSION = ENGINEERED_ELEMENT__DISCUSSION;
+	int FORK = 55;
 
 	/**
-	 * The feature id for the '<em><b>Topics</b></em>' containment reference list.
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.InputPinImpl <em>Input Pin</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.InputPinImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getInputPin()
 	 * @generated
-	 * @ordered
 	 */
-	int ACTIVITY__TOPICS = ENGINEERED_ELEMENT__TOPICS;
+	int INPUT_PIN = 56;
 
 	/**
-	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.JoinImpl <em>Join</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.JoinImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getJoin()
 	 * @generated
-	 * @ordered
 	 */
-	int ACTIVITY__ISSUES = ENGINEERED_ELEMENT__ISSUES;
+	int JOIN = 57;
 
 	/**
-	 * The feature id for the '<em><b>Owners</b></em>' reference list.
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.OutputPinImpl <em>Output Pin</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.OutputPinImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getOutputPin()
 	 * @generated
-	 * @ordered
 	 */
-	int ACTIVITY__OWNERS = ENGINEERED_ELEMENT__OWNERS;
+	int OUTPUT_PIN = 58;
 
 	/**
-	 * The feature id for the '<em><b>Experts</b></em>' reference list.
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.StartImpl <em>Start</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.StartImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getStart()
 	 * @generated
-	 * @ordered
 	 */
-	int ACTIVITY__EXPERTS = ENGINEERED_ELEMENT__EXPERTS;
-
-	/**
-	 * The feature id for the '<em><b>Allocations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__ALLOCATIONS = ENGINEERED_ELEMENT__ALLOCATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Principles</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__PRINCIPLES = ENGINEERED_ELEMENT__PRINCIPLES;
-
-	/**
-	 * The feature id for the '<em><b>Personas</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__PERSONAS = ENGINEERED_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Outputs</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__OUTPUTS = ENGINEERED_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Activity Type</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__ACTIVITY_TYPE = ENGINEERED_ELEMENT_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Requirements</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__REQUIREMENTS = ENGINEERED_ELEMENT_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>Deliverables</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__DELIVERABLES = ENGINEERED_ELEMENT_FEATURE_COUNT + 4;
-
-	/**
-	 * The feature id for the '<em><b>Calls</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__CALLS = ENGINEERED_ELEMENT_FEATURE_COUNT + 5;
-
-	/**
-	 * The feature id for the '<em><b>Features</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__FEATURES = ENGINEERED_ELEMENT_FEATURE_COUNT + 6;
-
-	/**
-	 * The number of structural features of the '<em>Activity</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY_FEATURE_COUNT = ENGINEERED_ELEMENT_FEATURE_COUNT + 7;
-
-	/**
-	 * The number of operations of the '<em>Activity</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY_OPERATION_COUNT = ENGINEERED_ELEMENT_OPERATION_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Uri</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JOURNEY__URI = ACTIVITY__URI;
-
-	/**
-	 * The feature id for the '<em><b>Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JOURNEY__PATH = ACTIVITY__PATH;
-
-	/**
-	 * The feature id for the '<em><b>Description</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JOURNEY__DESCRIPTION = ACTIVITY__DESCRIPTION;
-
-	/**
-	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JOURNEY__MARKDOWN_DESCRIPTION = ACTIVITY__MARKDOWN_DESCRIPTION;
-
-	/**
-	 * The feature id for the '<em><b>Actions</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JOURNEY__ACTIONS = ACTIVITY__ACTIONS;
-
-	/**
-	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JOURNEY__RESOURCES = ACTIVITY__RESOURCES;
-
-	/**
-	 * The feature id for the '<em><b>Appearance</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JOURNEY__APPEARANCE = ACTIVITY__APPEARANCE;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JOURNEY__NAME = ACTIVITY__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Discussion</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JOURNEY__DISCUSSION = ACTIVITY__DISCUSSION;
-
-	/**
-	 * The feature id for the '<em><b>Topics</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JOURNEY__TOPICS = ACTIVITY__TOPICS;
-
-	/**
-	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JOURNEY__ISSUES = ACTIVITY__ISSUES;
-
-	/**
-	 * The feature id for the '<em><b>Owners</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JOURNEY__OWNERS = ACTIVITY__OWNERS;
-
-	/**
-	 * The feature id for the '<em><b>Experts</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JOURNEY__EXPERTS = ACTIVITY__EXPERTS;
-
-	/**
-	 * The feature id for the '<em><b>Allocations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JOURNEY__ALLOCATIONS = ACTIVITY__ALLOCATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Principles</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JOURNEY__PRINCIPLES = ACTIVITY__PRINCIPLES;
-
-	/**
-	 * The feature id for the '<em><b>Personas</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JOURNEY__PERSONAS = ACTIVITY__PERSONAS;
-
-	/**
-	 * The feature id for the '<em><b>Outputs</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JOURNEY__OUTPUTS = ACTIVITY__OUTPUTS;
-
-	/**
-	 * The feature id for the '<em><b>Activity Type</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JOURNEY__ACTIVITY_TYPE = ACTIVITY__ACTIVITY_TYPE;
-
-	/**
-	 * The feature id for the '<em><b>Requirements</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JOURNEY__REQUIREMENTS = ACTIVITY__REQUIREMENTS;
-
-	/**
-	 * The feature id for the '<em><b>Deliverables</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JOURNEY__DELIVERABLES = ACTIVITY__DELIVERABLES;
-
-	/**
-	 * The feature id for the '<em><b>Calls</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JOURNEY__CALLS = ACTIVITY__CALLS;
-
-	/**
-	 * The feature id for the '<em><b>Features</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JOURNEY__FEATURES = ACTIVITY__FEATURES;
-
-	/**
-	 * The feature id for the '<em><b>Activities</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JOURNEY__ACTIVITIES = ACTIVITY_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Partition</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JOURNEY__PARTITION = ACTIVITY_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of structural features of the '<em>Journey</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JOURNEY_FEATURE_COUNT = ACTIVITY_FEATURE_COUNT + 2;
-
-	/**
-	 * The number of operations of the '<em>Journey</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JOURNEY_OPERATION_COUNT = ACTIVITY_OPERATION_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Uri</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRANSITION__URI = NAMED_ELEMENT__URI;
-
-	/**
-	 * The feature id for the '<em><b>Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRANSITION__PATH = NAMED_ELEMENT__PATH;
-
-	/**
-	 * The feature id for the '<em><b>Description</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRANSITION__DESCRIPTION = NAMED_ELEMENT__DESCRIPTION;
-
-	/**
-	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRANSITION__MARKDOWN_DESCRIPTION = NAMED_ELEMENT__MARKDOWN_DESCRIPTION;
-
-	/**
-	 * The feature id for the '<em><b>Actions</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRANSITION__ACTIONS = NAMED_ELEMENT__ACTIONS;
-
-	/**
-	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRANSITION__RESOURCES = NAMED_ELEMENT__RESOURCES;
-
-	/**
-	 * The feature id for the '<em><b>Appearance</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRANSITION__APPEARANCE = NAMED_ELEMENT__APPEARANCE;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRANSITION__NAME = NAMED_ELEMENT__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Target</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRANSITION__TARGET = NAMED_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Payload</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRANSITION__PAYLOAD = NAMED_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of structural features of the '<em>Transition</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRANSITION_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 2;
-
-	/**
-	 * The number of operations of the '<em>Transition</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRANSITION_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Uri</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CALL__URI = TRANSITION__URI;
-
-	/**
-	 * The feature id for the '<em><b>Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CALL__PATH = TRANSITION__PATH;
-
-	/**
-	 * The feature id for the '<em><b>Description</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CALL__DESCRIPTION = TRANSITION__DESCRIPTION;
-
-	/**
-	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CALL__MARKDOWN_DESCRIPTION = TRANSITION__MARKDOWN_DESCRIPTION;
-
-	/**
-	 * The feature id for the '<em><b>Actions</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CALL__ACTIONS = TRANSITION__ACTIONS;
-
-	/**
-	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CALL__RESOURCES = TRANSITION__RESOURCES;
-
-	/**
-	 * The feature id for the '<em><b>Appearance</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CALL__APPEARANCE = TRANSITION__APPEARANCE;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CALL__NAME = TRANSITION__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Target</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CALL__TARGET = TRANSITION__TARGET;
-
-	/**
-	 * The feature id for the '<em><b>Payload</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CALL__PAYLOAD = TRANSITION__PAYLOAD;
-
-	/**
-	 * The feature id for the '<em><b>Response</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CALL__RESPONSE = TRANSITION_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Call</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CALL_FEATURE_COUNT = TRANSITION_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of operations of the '<em>Call</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CALL_OPERATION_COUNT = TRANSITION_OPERATION_COUNT + 0;
+	int START = 59;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -5507,7 +4962,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getTopic()
 	 * @generated
 	 */
-	int TOPIC = 33;
+	int TOPIC = 29;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.MessageImpl <em>Message</em>}' class.
@@ -5517,7 +4972,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getMessage()
 	 * @generated
 	 */
-	int MESSAGE = 32;
+	int MESSAGE = 28;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -5753,7 +5208,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getEngineeringAppearance()
 	 * @generated
 	 */
-	int ENGINEERING_APPEARANCE = 34;
+	int ENGINEERING_APPEARANCE = 30;
 
 	/**
 	 * The feature id for the '<em><b>Model Elements</b></em>' map.
@@ -5790,7 +5245,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getAppearance()
 	 * @generated
 	 */
-	int APPEARANCE = 35;
+	int APPEARANCE = 31;
 
 	/**
 	 * The feature id for the '<em><b>Icon</b></em>' attribute.
@@ -5863,7 +5318,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getModelElementAppearance()
 	 * @generated
 	 */
-	int MODEL_ELEMENT_APPEARANCE = 36;
+	int MODEL_ELEMENT_APPEARANCE = 32;
 
 	/**
 	 * The feature id for the '<em><b>Icon</b></em>' attribute.
@@ -5945,7 +5400,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getModelElementAppearanceEntry()
 	 * @generated
 	 */
-	int MODEL_ELEMENT_APPEARANCE_ENTRY = 37;
+	int MODEL_ELEMENT_APPEARANCE_ENTRY = 33;
 
 	/**
 	 * The feature id for the '<em><b>Key</b></em>' attribute.
@@ -5991,7 +5446,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getFeatureAppearanceEntry()
 	 * @generated
 	 */
-	int FEATURE_APPEARANCE_ENTRY = 38;
+	int FEATURE_APPEARANCE_ENTRY = 34;
 
 	/**
 	 * The feature id for the '<em><b>Key</b></em>' attribute.
@@ -6037,7 +5492,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getFeatureAppearance()
 	 * @generated
 	 */
-	int FEATURE_APPEARANCE = 39;
+	int FEATURE_APPEARANCE = 35;
 
 	/**
 	 * The feature id for the '<em><b>Icon</b></em>' attribute.
@@ -6120,7 +5575,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getDocument()
 	 * @generated
 	 */
-	int DOCUMENT = 40;
+	int DOCUMENT = 36;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -6319,7 +5774,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getNamedElementReference()
 	 * @generated
 	 */
-	int NAMED_ELEMENT_REFERENCE = 41;
+	int NAMED_ELEMENT_REFERENCE = 37;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -6428,7 +5883,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getLink()
 	 * @generated
 	 */
-	int LINK = 42;
+	int LINK = 38;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -6537,7 +5992,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getKeyResult()
 	 * @generated
 	 */
-	int KEY_RESULT = 43;
+	int KEY_RESULT = 39;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -6673,7 +6128,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getObjective()
 	 * @generated
 	 */
-	int OBJECTIVE = 44;
+	int OBJECTIVE = 40;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -6863,7 +6318,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getDecision()
 	 * @generated
 	 */
-	int DECISION = 45;
+	int DECISION = 41;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -7262,6 +6717,4921 @@ public interface EngineeringPackage extends EPackage {
 	int DECISION_OPERATION_COUNT = ISSUE_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.JourneyElementImpl <em>Journey Element</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.JourneyElementImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getJourneyElement()
+	 * @generated
+	 */
+	int JOURNEY_ELEMENT = 42;
+
+	/**
+	 * The feature id for the '<em><b>Uri</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY_ELEMENT__URI = ENGINEERED_ELEMENT__URI;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY_ELEMENT__PATH = ENGINEERED_ELEMENT__PATH;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY_ELEMENT__DESCRIPTION = ENGINEERED_ELEMENT__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY_ELEMENT__MARKDOWN_DESCRIPTION = ENGINEERED_ELEMENT__MARKDOWN_DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Actions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY_ELEMENT__ACTIONS = ENGINEERED_ELEMENT__ACTIONS;
+
+	/**
+	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY_ELEMENT__RESOURCES = ENGINEERED_ELEMENT__RESOURCES;
+
+	/**
+	 * The feature id for the '<em><b>Appearance</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY_ELEMENT__APPEARANCE = ENGINEERED_ELEMENT__APPEARANCE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY_ELEMENT__NAME = ENGINEERED_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Discussion</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY_ELEMENT__DISCUSSION = ENGINEERED_ELEMENT__DISCUSSION;
+
+	/**
+	 * The feature id for the '<em><b>Topics</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY_ELEMENT__TOPICS = ENGINEERED_ELEMENT__TOPICS;
+
+	/**
+	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY_ELEMENT__ISSUES = ENGINEERED_ELEMENT__ISSUES;
+
+	/**
+	 * The feature id for the '<em><b>Owners</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY_ELEMENT__OWNERS = ENGINEERED_ELEMENT__OWNERS;
+
+	/**
+	 * The feature id for the '<em><b>Experts</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY_ELEMENT__EXPERTS = ENGINEERED_ELEMENT__EXPERTS;
+
+	/**
+	 * The feature id for the '<em><b>Allocations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY_ELEMENT__ALLOCATIONS = ENGINEERED_ELEMENT__ALLOCATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Principles</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY_ELEMENT__PRINCIPLES = ENGINEERED_ELEMENT__PRINCIPLES;
+
+	/**
+	 * The feature id for the '<em><b>Inputs</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY_ELEMENT__INPUTS = ENGINEERED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Outputs</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY_ELEMENT__OUTPUTS = ENGINEERED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Calls</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY_ELEMENT__CALLS = ENGINEERED_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Invocations</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY_ELEMENT__INVOCATIONS = ENGINEERED_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Requirements</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY_ELEMENT__REQUIREMENTS = ENGINEERED_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Deliverables</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY_ELEMENT__DELIVERABLES = ENGINEERED_ELEMENT_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>Personas</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY_ELEMENT__PERSONAS = ENGINEERED_ELEMENT_FEATURE_COUNT + 6;
+
+	/**
+	 * The feature id for the '<em><b>All Outputs</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY_ELEMENT__ALL_OUTPUTS = ENGINEERED_ELEMENT_FEATURE_COUNT + 7;
+
+	/**
+	 * The feature id for the '<em><b>All Inputs</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY_ELEMENT__ALL_INPUTS = ENGINEERED_ELEMENT_FEATURE_COUNT + 8;
+
+	/**
+	 * The feature id for the '<em><b>All Calls</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY_ELEMENT__ALL_CALLS = ENGINEERED_ELEMENT_FEATURE_COUNT + 9;
+
+	/**
+	 * The feature id for the '<em><b>All Invocations</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY_ELEMENT__ALL_INVOCATIONS = ENGINEERED_ELEMENT_FEATURE_COUNT + 10;
+
+	/**
+	 * The feature id for the '<em><b>Overrides</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY_ELEMENT__OVERRIDES = ENGINEERED_ELEMENT_FEATURE_COUNT + 11;
+
+	/**
+	 * The feature id for the '<em><b>Overriden By</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY_ELEMENT__OVERRIDEN_BY = ENGINEERED_ELEMENT_FEATURE_COUNT + 12;
+
+	/**
+	 * The feature id for the '<em><b>Modifiers</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY_ELEMENT__MODIFIERS = ENGINEERED_ELEMENT_FEATURE_COUNT + 13;
+
+	/**
+	 * The number of structural features of the '<em>Journey Element</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY_ELEMENT_FEATURE_COUNT = ENGINEERED_ELEMENT_FEATURE_COUNT + 14;
+
+	/**
+	 * The number of operations of the '<em>Journey Element</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY_ELEMENT_OPERATION_COUNT = ENGINEERED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Uri</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__URI = JOURNEY_ELEMENT__URI;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__PATH = JOURNEY_ELEMENT__PATH;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__DESCRIPTION = JOURNEY_ELEMENT__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__MARKDOWN_DESCRIPTION = JOURNEY_ELEMENT__MARKDOWN_DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Actions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__ACTIONS = JOURNEY_ELEMENT__ACTIONS;
+
+	/**
+	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__RESOURCES = JOURNEY_ELEMENT__RESOURCES;
+
+	/**
+	 * The feature id for the '<em><b>Appearance</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__APPEARANCE = JOURNEY_ELEMENT__APPEARANCE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__NAME = JOURNEY_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Discussion</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__DISCUSSION = JOURNEY_ELEMENT__DISCUSSION;
+
+	/**
+	 * The feature id for the '<em><b>Topics</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__TOPICS = JOURNEY_ELEMENT__TOPICS;
+
+	/**
+	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__ISSUES = JOURNEY_ELEMENT__ISSUES;
+
+	/**
+	 * The feature id for the '<em><b>Owners</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__OWNERS = JOURNEY_ELEMENT__OWNERS;
+
+	/**
+	 * The feature id for the '<em><b>Experts</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__EXPERTS = JOURNEY_ELEMENT__EXPERTS;
+
+	/**
+	 * The feature id for the '<em><b>Allocations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__ALLOCATIONS = JOURNEY_ELEMENT__ALLOCATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Principles</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__PRINCIPLES = JOURNEY_ELEMENT__PRINCIPLES;
+
+	/**
+	 * The feature id for the '<em><b>Inputs</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__INPUTS = JOURNEY_ELEMENT__INPUTS;
+
+	/**
+	 * The feature id for the '<em><b>Outputs</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__OUTPUTS = JOURNEY_ELEMENT__OUTPUTS;
+
+	/**
+	 * The feature id for the '<em><b>Calls</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__CALLS = JOURNEY_ELEMENT__CALLS;
+
+	/**
+	 * The feature id for the '<em><b>Invocations</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__INVOCATIONS = JOURNEY_ELEMENT__INVOCATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Requirements</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__REQUIREMENTS = JOURNEY_ELEMENT__REQUIREMENTS;
+
+	/**
+	 * The feature id for the '<em><b>Deliverables</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__DELIVERABLES = JOURNEY_ELEMENT__DELIVERABLES;
+
+	/**
+	 * The feature id for the '<em><b>Personas</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__PERSONAS = JOURNEY_ELEMENT__PERSONAS;
+
+	/**
+	 * The feature id for the '<em><b>All Outputs</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__ALL_OUTPUTS = JOURNEY_ELEMENT__ALL_OUTPUTS;
+
+	/**
+	 * The feature id for the '<em><b>All Inputs</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__ALL_INPUTS = JOURNEY_ELEMENT__ALL_INPUTS;
+
+	/**
+	 * The feature id for the '<em><b>All Calls</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__ALL_CALLS = JOURNEY_ELEMENT__ALL_CALLS;
+
+	/**
+	 * The feature id for the '<em><b>All Invocations</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__ALL_INVOCATIONS = JOURNEY_ELEMENT__ALL_INVOCATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Overrides</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__OVERRIDES = JOURNEY_ELEMENT__OVERRIDES;
+
+	/**
+	 * The feature id for the '<em><b>Overriden By</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__OVERRIDEN_BY = JOURNEY_ELEMENT__OVERRIDEN_BY;
+
+	/**
+	 * The feature id for the '<em><b>Modifiers</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__MODIFIERS = JOURNEY_ELEMENT__MODIFIERS;
+
+	/**
+	 * The feature id for the '<em><b>Features</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__FEATURES = JOURNEY_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Services</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__SERVICES = JOURNEY_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Activity</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY_FEATURE_COUNT = JOURNEY_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Activity</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY_OPERATION_COUNT = JOURNEY_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Uri</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE__URI = JOURNEY_ELEMENT__URI;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE__PATH = JOURNEY_ELEMENT__PATH;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE__DESCRIPTION = JOURNEY_ELEMENT__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE__MARKDOWN_DESCRIPTION = JOURNEY_ELEMENT__MARKDOWN_DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Actions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE__ACTIONS = JOURNEY_ELEMENT__ACTIONS;
+
+	/**
+	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE__RESOURCES = JOURNEY_ELEMENT__RESOURCES;
+
+	/**
+	 * The feature id for the '<em><b>Appearance</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE__APPEARANCE = JOURNEY_ELEMENT__APPEARANCE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE__NAME = JOURNEY_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Discussion</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE__DISCUSSION = JOURNEY_ELEMENT__DISCUSSION;
+
+	/**
+	 * The feature id for the '<em><b>Topics</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE__TOPICS = JOURNEY_ELEMENT__TOPICS;
+
+	/**
+	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE__ISSUES = JOURNEY_ELEMENT__ISSUES;
+
+	/**
+	 * The feature id for the '<em><b>Owners</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE__OWNERS = JOURNEY_ELEMENT__OWNERS;
+
+	/**
+	 * The feature id for the '<em><b>Experts</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE__EXPERTS = JOURNEY_ELEMENT__EXPERTS;
+
+	/**
+	 * The feature id for the '<em><b>Allocations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE__ALLOCATIONS = JOURNEY_ELEMENT__ALLOCATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Principles</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE__PRINCIPLES = JOURNEY_ELEMENT__PRINCIPLES;
+
+	/**
+	 * The feature id for the '<em><b>Inputs</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE__INPUTS = JOURNEY_ELEMENT__INPUTS;
+
+	/**
+	 * The feature id for the '<em><b>Outputs</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE__OUTPUTS = JOURNEY_ELEMENT__OUTPUTS;
+
+	/**
+	 * The feature id for the '<em><b>Calls</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE__CALLS = JOURNEY_ELEMENT__CALLS;
+
+	/**
+	 * The feature id for the '<em><b>Invocations</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE__INVOCATIONS = JOURNEY_ELEMENT__INVOCATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Requirements</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE__REQUIREMENTS = JOURNEY_ELEMENT__REQUIREMENTS;
+
+	/**
+	 * The feature id for the '<em><b>Deliverables</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE__DELIVERABLES = JOURNEY_ELEMENT__DELIVERABLES;
+
+	/**
+	 * The feature id for the '<em><b>Personas</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE__PERSONAS = JOURNEY_ELEMENT__PERSONAS;
+
+	/**
+	 * The feature id for the '<em><b>All Outputs</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE__ALL_OUTPUTS = JOURNEY_ELEMENT__ALL_OUTPUTS;
+
+	/**
+	 * The feature id for the '<em><b>All Inputs</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE__ALL_INPUTS = JOURNEY_ELEMENT__ALL_INPUTS;
+
+	/**
+	 * The feature id for the '<em><b>All Calls</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE__ALL_CALLS = JOURNEY_ELEMENT__ALL_CALLS;
+
+	/**
+	 * The feature id for the '<em><b>All Invocations</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE__ALL_INVOCATIONS = JOURNEY_ELEMENT__ALL_INVOCATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Overrides</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE__OVERRIDES = JOURNEY_ELEMENT__OVERRIDES;
+
+	/**
+	 * The feature id for the '<em><b>Overriden By</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE__OVERRIDEN_BY = JOURNEY_ELEMENT__OVERRIDEN_BY;
+
+	/**
+	 * The feature id for the '<em><b>Modifiers</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE__MODIFIERS = JOURNEY_ELEMENT__MODIFIERS;
+
+	/**
+	 * The feature id for the '<em><b>Target</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE__TARGET = JOURNEY_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Service</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE_FEATURE_COUNT = JOURNEY_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Service</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE_OPERATION_COUNT = JOURNEY_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Uri</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION__URI = NAMED_ELEMENT__URI;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION__PATH = NAMED_ELEMENT__PATH;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION__DESCRIPTION = NAMED_ELEMENT__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION__MARKDOWN_DESCRIPTION = NAMED_ELEMENT__MARKDOWN_DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Actions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION__ACTIONS = NAMED_ELEMENT__ACTIONS;
+
+	/**
+	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION__RESOURCES = NAMED_ELEMENT__RESOURCES;
+
+	/**
+	 * The feature id for the '<em><b>Appearance</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION__APPEARANCE = NAMED_ELEMENT__APPEARANCE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION__NAME = NAMED_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Target</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION__TARGET = NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Payload</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION__PAYLOAD = NAMED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Suppress</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION__SUPPRESS = NAMED_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Transition</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of operations of the '<em>Transition</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Uri</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL__URI = TRANSITION__URI;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL__PATH = TRANSITION__PATH;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL__DESCRIPTION = TRANSITION__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL__MARKDOWN_DESCRIPTION = TRANSITION__MARKDOWN_DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Actions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL__ACTIONS = TRANSITION__ACTIONS;
+
+	/**
+	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL__RESOURCES = TRANSITION__RESOURCES;
+
+	/**
+	 * The feature id for the '<em><b>Appearance</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL__APPEARANCE = TRANSITION__APPEARANCE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL__NAME = TRANSITION__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Target</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL__TARGET = TRANSITION__TARGET;
+
+	/**
+	 * The feature id for the '<em><b>Payload</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL__PAYLOAD = TRANSITION__PAYLOAD;
+
+	/**
+	 * The feature id for the '<em><b>Suppress</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL__SUPPRESS = TRANSITION__SUPPRESS;
+
+	/**
+	 * The feature id for the '<em><b>Response</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL__RESPONSE = TRANSITION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Call</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL_FEATURE_COUNT = TRANSITION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Call</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL_OPERATION_COUNT = TRANSITION_OPERATION_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Uri</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY__URI = ACTIVITY__URI;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY__PATH = ACTIVITY__PATH;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY__DESCRIPTION = ACTIVITY__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY__MARKDOWN_DESCRIPTION = ACTIVITY__MARKDOWN_DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Actions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY__ACTIONS = ACTIVITY__ACTIONS;
+
+	/**
+	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY__RESOURCES = ACTIVITY__RESOURCES;
+
+	/**
+	 * The feature id for the '<em><b>Appearance</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY__APPEARANCE = ACTIVITY__APPEARANCE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY__NAME = ACTIVITY__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Discussion</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY__DISCUSSION = ACTIVITY__DISCUSSION;
+
+	/**
+	 * The feature id for the '<em><b>Topics</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY__TOPICS = ACTIVITY__TOPICS;
+
+	/**
+	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY__ISSUES = ACTIVITY__ISSUES;
+
+	/**
+	 * The feature id for the '<em><b>Owners</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY__OWNERS = ACTIVITY__OWNERS;
+
+	/**
+	 * The feature id for the '<em><b>Experts</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY__EXPERTS = ACTIVITY__EXPERTS;
+
+	/**
+	 * The feature id for the '<em><b>Allocations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY__ALLOCATIONS = ACTIVITY__ALLOCATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Principles</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY__PRINCIPLES = ACTIVITY__PRINCIPLES;
+
+	/**
+	 * The feature id for the '<em><b>Inputs</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY__INPUTS = ACTIVITY__INPUTS;
+
+	/**
+	 * The feature id for the '<em><b>Outputs</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY__OUTPUTS = ACTIVITY__OUTPUTS;
+
+	/**
+	 * The feature id for the '<em><b>Calls</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY__CALLS = ACTIVITY__CALLS;
+
+	/**
+	 * The feature id for the '<em><b>Invocations</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY__INVOCATIONS = ACTIVITY__INVOCATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Requirements</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY__REQUIREMENTS = ACTIVITY__REQUIREMENTS;
+
+	/**
+	 * The feature id for the '<em><b>Deliverables</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY__DELIVERABLES = ACTIVITY__DELIVERABLES;
+
+	/**
+	 * The feature id for the '<em><b>Personas</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY__PERSONAS = ACTIVITY__PERSONAS;
+
+	/**
+	 * The feature id for the '<em><b>All Outputs</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY__ALL_OUTPUTS = ACTIVITY__ALL_OUTPUTS;
+
+	/**
+	 * The feature id for the '<em><b>All Inputs</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY__ALL_INPUTS = ACTIVITY__ALL_INPUTS;
+
+	/**
+	 * The feature id for the '<em><b>All Calls</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY__ALL_CALLS = ACTIVITY__ALL_CALLS;
+
+	/**
+	 * The feature id for the '<em><b>All Invocations</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY__ALL_INVOCATIONS = ACTIVITY__ALL_INVOCATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Overrides</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY__OVERRIDES = ACTIVITY__OVERRIDES;
+
+	/**
+	 * The feature id for the '<em><b>Overriden By</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY__OVERRIDEN_BY = ACTIVITY__OVERRIDEN_BY;
+
+	/**
+	 * The feature id for the '<em><b>Modifiers</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY__MODIFIERS = ACTIVITY__MODIFIERS;
+
+	/**
+	 * The feature id for the '<em><b>Features</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY__FEATURES = ACTIVITY__FEATURES;
+
+	/**
+	 * The feature id for the '<em><b>Services</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY__SERVICES = ACTIVITY__SERVICES;
+
+	/**
+	 * The feature id for the '<em><b>Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY__ELEMENTS = ACTIVITY_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Extends</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY__EXTENDS = ACTIVITY_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Extensions</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY__EXTENSIONS = ACTIVITY_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Root</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY__ROOT = ACTIVITY_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>All Elements</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY__ALL_ELEMENTS = ACTIVITY_FEATURE_COUNT + 4;
+
+	/**
+	 * The number of structural features of the '<em>Journey</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY_FEATURE_COUNT = ACTIVITY_FEATURE_COUNT + 5;
+
+	/**
+	 * The number of operations of the '<em>Journey</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY_OPERATION_COUNT = ACTIVITY_OPERATION_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Uri</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PSEUDO_STATE__URI = JOURNEY_ELEMENT__URI;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PSEUDO_STATE__PATH = JOURNEY_ELEMENT__PATH;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PSEUDO_STATE__DESCRIPTION = JOURNEY_ELEMENT__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PSEUDO_STATE__MARKDOWN_DESCRIPTION = JOURNEY_ELEMENT__MARKDOWN_DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Actions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PSEUDO_STATE__ACTIONS = JOURNEY_ELEMENT__ACTIONS;
+
+	/**
+	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PSEUDO_STATE__RESOURCES = JOURNEY_ELEMENT__RESOURCES;
+
+	/**
+	 * The feature id for the '<em><b>Appearance</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PSEUDO_STATE__APPEARANCE = JOURNEY_ELEMENT__APPEARANCE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PSEUDO_STATE__NAME = JOURNEY_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Discussion</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PSEUDO_STATE__DISCUSSION = JOURNEY_ELEMENT__DISCUSSION;
+
+	/**
+	 * The feature id for the '<em><b>Topics</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PSEUDO_STATE__TOPICS = JOURNEY_ELEMENT__TOPICS;
+
+	/**
+	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PSEUDO_STATE__ISSUES = JOURNEY_ELEMENT__ISSUES;
+
+	/**
+	 * The feature id for the '<em><b>Owners</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PSEUDO_STATE__OWNERS = JOURNEY_ELEMENT__OWNERS;
+
+	/**
+	 * The feature id for the '<em><b>Experts</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PSEUDO_STATE__EXPERTS = JOURNEY_ELEMENT__EXPERTS;
+
+	/**
+	 * The feature id for the '<em><b>Allocations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PSEUDO_STATE__ALLOCATIONS = JOURNEY_ELEMENT__ALLOCATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Principles</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PSEUDO_STATE__PRINCIPLES = JOURNEY_ELEMENT__PRINCIPLES;
+
+	/**
+	 * The feature id for the '<em><b>Inputs</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PSEUDO_STATE__INPUTS = JOURNEY_ELEMENT__INPUTS;
+
+	/**
+	 * The feature id for the '<em><b>Outputs</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PSEUDO_STATE__OUTPUTS = JOURNEY_ELEMENT__OUTPUTS;
+
+	/**
+	 * The feature id for the '<em><b>Calls</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PSEUDO_STATE__CALLS = JOURNEY_ELEMENT__CALLS;
+
+	/**
+	 * The feature id for the '<em><b>Invocations</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PSEUDO_STATE__INVOCATIONS = JOURNEY_ELEMENT__INVOCATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Requirements</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PSEUDO_STATE__REQUIREMENTS = JOURNEY_ELEMENT__REQUIREMENTS;
+
+	/**
+	 * The feature id for the '<em><b>Deliverables</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PSEUDO_STATE__DELIVERABLES = JOURNEY_ELEMENT__DELIVERABLES;
+
+	/**
+	 * The feature id for the '<em><b>Personas</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PSEUDO_STATE__PERSONAS = JOURNEY_ELEMENT__PERSONAS;
+
+	/**
+	 * The feature id for the '<em><b>All Outputs</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PSEUDO_STATE__ALL_OUTPUTS = JOURNEY_ELEMENT__ALL_OUTPUTS;
+
+	/**
+	 * The feature id for the '<em><b>All Inputs</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PSEUDO_STATE__ALL_INPUTS = JOURNEY_ELEMENT__ALL_INPUTS;
+
+	/**
+	 * The feature id for the '<em><b>All Calls</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PSEUDO_STATE__ALL_CALLS = JOURNEY_ELEMENT__ALL_CALLS;
+
+	/**
+	 * The feature id for the '<em><b>All Invocations</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PSEUDO_STATE__ALL_INVOCATIONS = JOURNEY_ELEMENT__ALL_INVOCATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Overrides</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PSEUDO_STATE__OVERRIDES = JOURNEY_ELEMENT__OVERRIDES;
+
+	/**
+	 * The feature id for the '<em><b>Overriden By</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PSEUDO_STATE__OVERRIDEN_BY = JOURNEY_ELEMENT__OVERRIDEN_BY;
+
+	/**
+	 * The feature id for the '<em><b>Modifiers</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PSEUDO_STATE__MODIFIERS = JOURNEY_ELEMENT__MODIFIERS;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PSEUDO_STATE__TYPE = JOURNEY_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Pseudo State</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PSEUDO_STATE_FEATURE_COUNT = JOURNEY_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Pseudo State</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PSEUDO_STATE_OPERATION_COUNT = JOURNEY_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Uri</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHOICE__URI = PSEUDO_STATE__URI;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHOICE__PATH = PSEUDO_STATE__PATH;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHOICE__DESCRIPTION = PSEUDO_STATE__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHOICE__MARKDOWN_DESCRIPTION = PSEUDO_STATE__MARKDOWN_DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Actions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHOICE__ACTIONS = PSEUDO_STATE__ACTIONS;
+
+	/**
+	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHOICE__RESOURCES = PSEUDO_STATE__RESOURCES;
+
+	/**
+	 * The feature id for the '<em><b>Appearance</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHOICE__APPEARANCE = PSEUDO_STATE__APPEARANCE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHOICE__NAME = PSEUDO_STATE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Discussion</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHOICE__DISCUSSION = PSEUDO_STATE__DISCUSSION;
+
+	/**
+	 * The feature id for the '<em><b>Topics</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHOICE__TOPICS = PSEUDO_STATE__TOPICS;
+
+	/**
+	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHOICE__ISSUES = PSEUDO_STATE__ISSUES;
+
+	/**
+	 * The feature id for the '<em><b>Owners</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHOICE__OWNERS = PSEUDO_STATE__OWNERS;
+
+	/**
+	 * The feature id for the '<em><b>Experts</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHOICE__EXPERTS = PSEUDO_STATE__EXPERTS;
+
+	/**
+	 * The feature id for the '<em><b>Allocations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHOICE__ALLOCATIONS = PSEUDO_STATE__ALLOCATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Principles</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHOICE__PRINCIPLES = PSEUDO_STATE__PRINCIPLES;
+
+	/**
+	 * The feature id for the '<em><b>Inputs</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHOICE__INPUTS = PSEUDO_STATE__INPUTS;
+
+	/**
+	 * The feature id for the '<em><b>Outputs</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHOICE__OUTPUTS = PSEUDO_STATE__OUTPUTS;
+
+	/**
+	 * The feature id for the '<em><b>Calls</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHOICE__CALLS = PSEUDO_STATE__CALLS;
+
+	/**
+	 * The feature id for the '<em><b>Invocations</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHOICE__INVOCATIONS = PSEUDO_STATE__INVOCATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Requirements</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHOICE__REQUIREMENTS = PSEUDO_STATE__REQUIREMENTS;
+
+	/**
+	 * The feature id for the '<em><b>Deliverables</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHOICE__DELIVERABLES = PSEUDO_STATE__DELIVERABLES;
+
+	/**
+	 * The feature id for the '<em><b>Personas</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHOICE__PERSONAS = PSEUDO_STATE__PERSONAS;
+
+	/**
+	 * The feature id for the '<em><b>All Outputs</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHOICE__ALL_OUTPUTS = PSEUDO_STATE__ALL_OUTPUTS;
+
+	/**
+	 * The feature id for the '<em><b>All Inputs</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHOICE__ALL_INPUTS = PSEUDO_STATE__ALL_INPUTS;
+
+	/**
+	 * The feature id for the '<em><b>All Calls</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHOICE__ALL_CALLS = PSEUDO_STATE__ALL_CALLS;
+
+	/**
+	 * The feature id for the '<em><b>All Invocations</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHOICE__ALL_INVOCATIONS = PSEUDO_STATE__ALL_INVOCATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Overrides</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHOICE__OVERRIDES = PSEUDO_STATE__OVERRIDES;
+
+	/**
+	 * The feature id for the '<em><b>Overriden By</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHOICE__OVERRIDEN_BY = PSEUDO_STATE__OVERRIDEN_BY;
+
+	/**
+	 * The feature id for the '<em><b>Modifiers</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHOICE__MODIFIERS = PSEUDO_STATE__MODIFIERS;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHOICE__TYPE = PSEUDO_STATE__TYPE;
+
+	/**
+	 * The number of structural features of the '<em>Choice</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHOICE_FEATURE_COUNT = PSEUDO_STATE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Choice</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHOICE_OPERATION_COUNT = PSEUDO_STATE_OPERATION_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Uri</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int END__URI = PSEUDO_STATE__URI;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int END__PATH = PSEUDO_STATE__PATH;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int END__DESCRIPTION = PSEUDO_STATE__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int END__MARKDOWN_DESCRIPTION = PSEUDO_STATE__MARKDOWN_DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Actions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int END__ACTIONS = PSEUDO_STATE__ACTIONS;
+
+	/**
+	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int END__RESOURCES = PSEUDO_STATE__RESOURCES;
+
+	/**
+	 * The feature id for the '<em><b>Appearance</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int END__APPEARANCE = PSEUDO_STATE__APPEARANCE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int END__NAME = PSEUDO_STATE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Discussion</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int END__DISCUSSION = PSEUDO_STATE__DISCUSSION;
+
+	/**
+	 * The feature id for the '<em><b>Topics</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int END__TOPICS = PSEUDO_STATE__TOPICS;
+
+	/**
+	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int END__ISSUES = PSEUDO_STATE__ISSUES;
+
+	/**
+	 * The feature id for the '<em><b>Owners</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int END__OWNERS = PSEUDO_STATE__OWNERS;
+
+	/**
+	 * The feature id for the '<em><b>Experts</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int END__EXPERTS = PSEUDO_STATE__EXPERTS;
+
+	/**
+	 * The feature id for the '<em><b>Allocations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int END__ALLOCATIONS = PSEUDO_STATE__ALLOCATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Principles</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int END__PRINCIPLES = PSEUDO_STATE__PRINCIPLES;
+
+	/**
+	 * The feature id for the '<em><b>Inputs</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int END__INPUTS = PSEUDO_STATE__INPUTS;
+
+	/**
+	 * The feature id for the '<em><b>Outputs</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int END__OUTPUTS = PSEUDO_STATE__OUTPUTS;
+
+	/**
+	 * The feature id for the '<em><b>Calls</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int END__CALLS = PSEUDO_STATE__CALLS;
+
+	/**
+	 * The feature id for the '<em><b>Invocations</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int END__INVOCATIONS = PSEUDO_STATE__INVOCATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Requirements</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int END__REQUIREMENTS = PSEUDO_STATE__REQUIREMENTS;
+
+	/**
+	 * The feature id for the '<em><b>Deliverables</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int END__DELIVERABLES = PSEUDO_STATE__DELIVERABLES;
+
+	/**
+	 * The feature id for the '<em><b>Personas</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int END__PERSONAS = PSEUDO_STATE__PERSONAS;
+
+	/**
+	 * The feature id for the '<em><b>All Outputs</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int END__ALL_OUTPUTS = PSEUDO_STATE__ALL_OUTPUTS;
+
+	/**
+	 * The feature id for the '<em><b>All Inputs</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int END__ALL_INPUTS = PSEUDO_STATE__ALL_INPUTS;
+
+	/**
+	 * The feature id for the '<em><b>All Calls</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int END__ALL_CALLS = PSEUDO_STATE__ALL_CALLS;
+
+	/**
+	 * The feature id for the '<em><b>All Invocations</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int END__ALL_INVOCATIONS = PSEUDO_STATE__ALL_INVOCATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Overrides</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int END__OVERRIDES = PSEUDO_STATE__OVERRIDES;
+
+	/**
+	 * The feature id for the '<em><b>Overriden By</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int END__OVERRIDEN_BY = PSEUDO_STATE__OVERRIDEN_BY;
+
+	/**
+	 * The feature id for the '<em><b>Modifiers</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int END__MODIFIERS = PSEUDO_STATE__MODIFIERS;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int END__TYPE = PSEUDO_STATE__TYPE;
+
+	/**
+	 * The number of structural features of the '<em>End</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int END_FEATURE_COUNT = PSEUDO_STATE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>End</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int END_OPERATION_COUNT = PSEUDO_STATE_OPERATION_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Uri</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY_POINT__URI = PSEUDO_STATE__URI;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY_POINT__PATH = PSEUDO_STATE__PATH;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY_POINT__DESCRIPTION = PSEUDO_STATE__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY_POINT__MARKDOWN_DESCRIPTION = PSEUDO_STATE__MARKDOWN_DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Actions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY_POINT__ACTIONS = PSEUDO_STATE__ACTIONS;
+
+	/**
+	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY_POINT__RESOURCES = PSEUDO_STATE__RESOURCES;
+
+	/**
+	 * The feature id for the '<em><b>Appearance</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY_POINT__APPEARANCE = PSEUDO_STATE__APPEARANCE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY_POINT__NAME = PSEUDO_STATE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Discussion</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY_POINT__DISCUSSION = PSEUDO_STATE__DISCUSSION;
+
+	/**
+	 * The feature id for the '<em><b>Topics</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY_POINT__TOPICS = PSEUDO_STATE__TOPICS;
+
+	/**
+	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY_POINT__ISSUES = PSEUDO_STATE__ISSUES;
+
+	/**
+	 * The feature id for the '<em><b>Owners</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY_POINT__OWNERS = PSEUDO_STATE__OWNERS;
+
+	/**
+	 * The feature id for the '<em><b>Experts</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY_POINT__EXPERTS = PSEUDO_STATE__EXPERTS;
+
+	/**
+	 * The feature id for the '<em><b>Allocations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY_POINT__ALLOCATIONS = PSEUDO_STATE__ALLOCATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Principles</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY_POINT__PRINCIPLES = PSEUDO_STATE__PRINCIPLES;
+
+	/**
+	 * The feature id for the '<em><b>Inputs</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY_POINT__INPUTS = PSEUDO_STATE__INPUTS;
+
+	/**
+	 * The feature id for the '<em><b>Outputs</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY_POINT__OUTPUTS = PSEUDO_STATE__OUTPUTS;
+
+	/**
+	 * The feature id for the '<em><b>Calls</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY_POINT__CALLS = PSEUDO_STATE__CALLS;
+
+	/**
+	 * The feature id for the '<em><b>Invocations</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY_POINT__INVOCATIONS = PSEUDO_STATE__INVOCATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Requirements</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY_POINT__REQUIREMENTS = PSEUDO_STATE__REQUIREMENTS;
+
+	/**
+	 * The feature id for the '<em><b>Deliverables</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY_POINT__DELIVERABLES = PSEUDO_STATE__DELIVERABLES;
+
+	/**
+	 * The feature id for the '<em><b>Personas</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY_POINT__PERSONAS = PSEUDO_STATE__PERSONAS;
+
+	/**
+	 * The feature id for the '<em><b>All Outputs</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY_POINT__ALL_OUTPUTS = PSEUDO_STATE__ALL_OUTPUTS;
+
+	/**
+	 * The feature id for the '<em><b>All Inputs</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY_POINT__ALL_INPUTS = PSEUDO_STATE__ALL_INPUTS;
+
+	/**
+	 * The feature id for the '<em><b>All Calls</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY_POINT__ALL_CALLS = PSEUDO_STATE__ALL_CALLS;
+
+	/**
+	 * The feature id for the '<em><b>All Invocations</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY_POINT__ALL_INVOCATIONS = PSEUDO_STATE__ALL_INVOCATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Overrides</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY_POINT__OVERRIDES = PSEUDO_STATE__OVERRIDES;
+
+	/**
+	 * The feature id for the '<em><b>Overriden By</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY_POINT__OVERRIDEN_BY = PSEUDO_STATE__OVERRIDEN_BY;
+
+	/**
+	 * The feature id for the '<em><b>Modifiers</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY_POINT__MODIFIERS = PSEUDO_STATE__MODIFIERS;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY_POINT__TYPE = PSEUDO_STATE__TYPE;
+
+	/**
+	 * The number of structural features of the '<em>Entry Point</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY_POINT_FEATURE_COUNT = PSEUDO_STATE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Entry Point</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY_POINT_OPERATION_COUNT = PSEUDO_STATE_OPERATION_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Uri</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_POINT__URI = PSEUDO_STATE__URI;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_POINT__PATH = PSEUDO_STATE__PATH;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_POINT__DESCRIPTION = PSEUDO_STATE__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_POINT__MARKDOWN_DESCRIPTION = PSEUDO_STATE__MARKDOWN_DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Actions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_POINT__ACTIONS = PSEUDO_STATE__ACTIONS;
+
+	/**
+	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_POINT__RESOURCES = PSEUDO_STATE__RESOURCES;
+
+	/**
+	 * The feature id for the '<em><b>Appearance</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_POINT__APPEARANCE = PSEUDO_STATE__APPEARANCE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_POINT__NAME = PSEUDO_STATE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Discussion</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_POINT__DISCUSSION = PSEUDO_STATE__DISCUSSION;
+
+	/**
+	 * The feature id for the '<em><b>Topics</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_POINT__TOPICS = PSEUDO_STATE__TOPICS;
+
+	/**
+	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_POINT__ISSUES = PSEUDO_STATE__ISSUES;
+
+	/**
+	 * The feature id for the '<em><b>Owners</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_POINT__OWNERS = PSEUDO_STATE__OWNERS;
+
+	/**
+	 * The feature id for the '<em><b>Experts</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_POINT__EXPERTS = PSEUDO_STATE__EXPERTS;
+
+	/**
+	 * The feature id for the '<em><b>Allocations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_POINT__ALLOCATIONS = PSEUDO_STATE__ALLOCATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Principles</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_POINT__PRINCIPLES = PSEUDO_STATE__PRINCIPLES;
+
+	/**
+	 * The feature id for the '<em><b>Inputs</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_POINT__INPUTS = PSEUDO_STATE__INPUTS;
+
+	/**
+	 * The feature id for the '<em><b>Outputs</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_POINT__OUTPUTS = PSEUDO_STATE__OUTPUTS;
+
+	/**
+	 * The feature id for the '<em><b>Calls</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_POINT__CALLS = PSEUDO_STATE__CALLS;
+
+	/**
+	 * The feature id for the '<em><b>Invocations</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_POINT__INVOCATIONS = PSEUDO_STATE__INVOCATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Requirements</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_POINT__REQUIREMENTS = PSEUDO_STATE__REQUIREMENTS;
+
+	/**
+	 * The feature id for the '<em><b>Deliverables</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_POINT__DELIVERABLES = PSEUDO_STATE__DELIVERABLES;
+
+	/**
+	 * The feature id for the '<em><b>Personas</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_POINT__PERSONAS = PSEUDO_STATE__PERSONAS;
+
+	/**
+	 * The feature id for the '<em><b>All Outputs</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_POINT__ALL_OUTPUTS = PSEUDO_STATE__ALL_OUTPUTS;
+
+	/**
+	 * The feature id for the '<em><b>All Inputs</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_POINT__ALL_INPUTS = PSEUDO_STATE__ALL_INPUTS;
+
+	/**
+	 * The feature id for the '<em><b>All Calls</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_POINT__ALL_CALLS = PSEUDO_STATE__ALL_CALLS;
+
+	/**
+	 * The feature id for the '<em><b>All Invocations</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_POINT__ALL_INVOCATIONS = PSEUDO_STATE__ALL_INVOCATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Overrides</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_POINT__OVERRIDES = PSEUDO_STATE__OVERRIDES;
+
+	/**
+	 * The feature id for the '<em><b>Overriden By</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_POINT__OVERRIDEN_BY = PSEUDO_STATE__OVERRIDEN_BY;
+
+	/**
+	 * The feature id for the '<em><b>Modifiers</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_POINT__MODIFIERS = PSEUDO_STATE__MODIFIERS;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_POINT__TYPE = PSEUDO_STATE__TYPE;
+
+	/**
+	 * The number of structural features of the '<em>Exit Point</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_POINT_FEATURE_COUNT = PSEUDO_STATE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Exit Point</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_POINT_OPERATION_COUNT = PSEUDO_STATE_OPERATION_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Uri</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_INPUT__URI = PSEUDO_STATE__URI;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_INPUT__PATH = PSEUDO_STATE__PATH;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_INPUT__DESCRIPTION = PSEUDO_STATE__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_INPUT__MARKDOWN_DESCRIPTION = PSEUDO_STATE__MARKDOWN_DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Actions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_INPUT__ACTIONS = PSEUDO_STATE__ACTIONS;
+
+	/**
+	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_INPUT__RESOURCES = PSEUDO_STATE__RESOURCES;
+
+	/**
+	 * The feature id for the '<em><b>Appearance</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_INPUT__APPEARANCE = PSEUDO_STATE__APPEARANCE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_INPUT__NAME = PSEUDO_STATE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Discussion</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_INPUT__DISCUSSION = PSEUDO_STATE__DISCUSSION;
+
+	/**
+	 * The feature id for the '<em><b>Topics</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_INPUT__TOPICS = PSEUDO_STATE__TOPICS;
+
+	/**
+	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_INPUT__ISSUES = PSEUDO_STATE__ISSUES;
+
+	/**
+	 * The feature id for the '<em><b>Owners</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_INPUT__OWNERS = PSEUDO_STATE__OWNERS;
+
+	/**
+	 * The feature id for the '<em><b>Experts</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_INPUT__EXPERTS = PSEUDO_STATE__EXPERTS;
+
+	/**
+	 * The feature id for the '<em><b>Allocations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_INPUT__ALLOCATIONS = PSEUDO_STATE__ALLOCATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Principles</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_INPUT__PRINCIPLES = PSEUDO_STATE__PRINCIPLES;
+
+	/**
+	 * The feature id for the '<em><b>Inputs</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_INPUT__INPUTS = PSEUDO_STATE__INPUTS;
+
+	/**
+	 * The feature id for the '<em><b>Outputs</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_INPUT__OUTPUTS = PSEUDO_STATE__OUTPUTS;
+
+	/**
+	 * The feature id for the '<em><b>Calls</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_INPUT__CALLS = PSEUDO_STATE__CALLS;
+
+	/**
+	 * The feature id for the '<em><b>Invocations</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_INPUT__INVOCATIONS = PSEUDO_STATE__INVOCATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Requirements</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_INPUT__REQUIREMENTS = PSEUDO_STATE__REQUIREMENTS;
+
+	/**
+	 * The feature id for the '<em><b>Deliverables</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_INPUT__DELIVERABLES = PSEUDO_STATE__DELIVERABLES;
+
+	/**
+	 * The feature id for the '<em><b>Personas</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_INPUT__PERSONAS = PSEUDO_STATE__PERSONAS;
+
+	/**
+	 * The feature id for the '<em><b>All Outputs</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_INPUT__ALL_OUTPUTS = PSEUDO_STATE__ALL_OUTPUTS;
+
+	/**
+	 * The feature id for the '<em><b>All Inputs</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_INPUT__ALL_INPUTS = PSEUDO_STATE__ALL_INPUTS;
+
+	/**
+	 * The feature id for the '<em><b>All Calls</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_INPUT__ALL_CALLS = PSEUDO_STATE__ALL_CALLS;
+
+	/**
+	 * The feature id for the '<em><b>All Invocations</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_INPUT__ALL_INVOCATIONS = PSEUDO_STATE__ALL_INVOCATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Overrides</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_INPUT__OVERRIDES = PSEUDO_STATE__OVERRIDES;
+
+	/**
+	 * The feature id for the '<em><b>Overriden By</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_INPUT__OVERRIDEN_BY = PSEUDO_STATE__OVERRIDEN_BY;
+
+	/**
+	 * The feature id for the '<em><b>Modifiers</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_INPUT__MODIFIERS = PSEUDO_STATE__MODIFIERS;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_INPUT__TYPE = PSEUDO_STATE__TYPE;
+
+	/**
+	 * The number of structural features of the '<em>Expansion Input</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_INPUT_FEATURE_COUNT = PSEUDO_STATE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Expansion Input</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_INPUT_OPERATION_COUNT = PSEUDO_STATE_OPERATION_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Uri</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_OUTPUT__URI = PSEUDO_STATE__URI;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_OUTPUT__PATH = PSEUDO_STATE__PATH;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_OUTPUT__DESCRIPTION = PSEUDO_STATE__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_OUTPUT__MARKDOWN_DESCRIPTION = PSEUDO_STATE__MARKDOWN_DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Actions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_OUTPUT__ACTIONS = PSEUDO_STATE__ACTIONS;
+
+	/**
+	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_OUTPUT__RESOURCES = PSEUDO_STATE__RESOURCES;
+
+	/**
+	 * The feature id for the '<em><b>Appearance</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_OUTPUT__APPEARANCE = PSEUDO_STATE__APPEARANCE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_OUTPUT__NAME = PSEUDO_STATE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Discussion</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_OUTPUT__DISCUSSION = PSEUDO_STATE__DISCUSSION;
+
+	/**
+	 * The feature id for the '<em><b>Topics</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_OUTPUT__TOPICS = PSEUDO_STATE__TOPICS;
+
+	/**
+	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_OUTPUT__ISSUES = PSEUDO_STATE__ISSUES;
+
+	/**
+	 * The feature id for the '<em><b>Owners</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_OUTPUT__OWNERS = PSEUDO_STATE__OWNERS;
+
+	/**
+	 * The feature id for the '<em><b>Experts</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_OUTPUT__EXPERTS = PSEUDO_STATE__EXPERTS;
+
+	/**
+	 * The feature id for the '<em><b>Allocations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_OUTPUT__ALLOCATIONS = PSEUDO_STATE__ALLOCATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Principles</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_OUTPUT__PRINCIPLES = PSEUDO_STATE__PRINCIPLES;
+
+	/**
+	 * The feature id for the '<em><b>Inputs</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_OUTPUT__INPUTS = PSEUDO_STATE__INPUTS;
+
+	/**
+	 * The feature id for the '<em><b>Outputs</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_OUTPUT__OUTPUTS = PSEUDO_STATE__OUTPUTS;
+
+	/**
+	 * The feature id for the '<em><b>Calls</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_OUTPUT__CALLS = PSEUDO_STATE__CALLS;
+
+	/**
+	 * The feature id for the '<em><b>Invocations</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_OUTPUT__INVOCATIONS = PSEUDO_STATE__INVOCATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Requirements</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_OUTPUT__REQUIREMENTS = PSEUDO_STATE__REQUIREMENTS;
+
+	/**
+	 * The feature id for the '<em><b>Deliverables</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_OUTPUT__DELIVERABLES = PSEUDO_STATE__DELIVERABLES;
+
+	/**
+	 * The feature id for the '<em><b>Personas</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_OUTPUT__PERSONAS = PSEUDO_STATE__PERSONAS;
+
+	/**
+	 * The feature id for the '<em><b>All Outputs</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_OUTPUT__ALL_OUTPUTS = PSEUDO_STATE__ALL_OUTPUTS;
+
+	/**
+	 * The feature id for the '<em><b>All Inputs</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_OUTPUT__ALL_INPUTS = PSEUDO_STATE__ALL_INPUTS;
+
+	/**
+	 * The feature id for the '<em><b>All Calls</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_OUTPUT__ALL_CALLS = PSEUDO_STATE__ALL_CALLS;
+
+	/**
+	 * The feature id for the '<em><b>All Invocations</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_OUTPUT__ALL_INVOCATIONS = PSEUDO_STATE__ALL_INVOCATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Overrides</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_OUTPUT__OVERRIDES = PSEUDO_STATE__OVERRIDES;
+
+	/**
+	 * The feature id for the '<em><b>Overriden By</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_OUTPUT__OVERRIDEN_BY = PSEUDO_STATE__OVERRIDEN_BY;
+
+	/**
+	 * The feature id for the '<em><b>Modifiers</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_OUTPUT__MODIFIERS = PSEUDO_STATE__MODIFIERS;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_OUTPUT__TYPE = PSEUDO_STATE__TYPE;
+
+	/**
+	 * The number of structural features of the '<em>Expansion Output</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_OUTPUT_FEATURE_COUNT = PSEUDO_STATE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Expansion Output</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_OUTPUT_OPERATION_COUNT = PSEUDO_STATE_OPERATION_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Uri</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORK__URI = PSEUDO_STATE__URI;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORK__PATH = PSEUDO_STATE__PATH;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORK__DESCRIPTION = PSEUDO_STATE__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORK__MARKDOWN_DESCRIPTION = PSEUDO_STATE__MARKDOWN_DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Actions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORK__ACTIONS = PSEUDO_STATE__ACTIONS;
+
+	/**
+	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORK__RESOURCES = PSEUDO_STATE__RESOURCES;
+
+	/**
+	 * The feature id for the '<em><b>Appearance</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORK__APPEARANCE = PSEUDO_STATE__APPEARANCE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORK__NAME = PSEUDO_STATE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Discussion</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORK__DISCUSSION = PSEUDO_STATE__DISCUSSION;
+
+	/**
+	 * The feature id for the '<em><b>Topics</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORK__TOPICS = PSEUDO_STATE__TOPICS;
+
+	/**
+	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORK__ISSUES = PSEUDO_STATE__ISSUES;
+
+	/**
+	 * The feature id for the '<em><b>Owners</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORK__OWNERS = PSEUDO_STATE__OWNERS;
+
+	/**
+	 * The feature id for the '<em><b>Experts</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORK__EXPERTS = PSEUDO_STATE__EXPERTS;
+
+	/**
+	 * The feature id for the '<em><b>Allocations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORK__ALLOCATIONS = PSEUDO_STATE__ALLOCATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Principles</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORK__PRINCIPLES = PSEUDO_STATE__PRINCIPLES;
+
+	/**
+	 * The feature id for the '<em><b>Inputs</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORK__INPUTS = PSEUDO_STATE__INPUTS;
+
+	/**
+	 * The feature id for the '<em><b>Outputs</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORK__OUTPUTS = PSEUDO_STATE__OUTPUTS;
+
+	/**
+	 * The feature id for the '<em><b>Calls</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORK__CALLS = PSEUDO_STATE__CALLS;
+
+	/**
+	 * The feature id for the '<em><b>Invocations</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORK__INVOCATIONS = PSEUDO_STATE__INVOCATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Requirements</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORK__REQUIREMENTS = PSEUDO_STATE__REQUIREMENTS;
+
+	/**
+	 * The feature id for the '<em><b>Deliverables</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORK__DELIVERABLES = PSEUDO_STATE__DELIVERABLES;
+
+	/**
+	 * The feature id for the '<em><b>Personas</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORK__PERSONAS = PSEUDO_STATE__PERSONAS;
+
+	/**
+	 * The feature id for the '<em><b>All Outputs</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORK__ALL_OUTPUTS = PSEUDO_STATE__ALL_OUTPUTS;
+
+	/**
+	 * The feature id for the '<em><b>All Inputs</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORK__ALL_INPUTS = PSEUDO_STATE__ALL_INPUTS;
+
+	/**
+	 * The feature id for the '<em><b>All Calls</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORK__ALL_CALLS = PSEUDO_STATE__ALL_CALLS;
+
+	/**
+	 * The feature id for the '<em><b>All Invocations</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORK__ALL_INVOCATIONS = PSEUDO_STATE__ALL_INVOCATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Overrides</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORK__OVERRIDES = PSEUDO_STATE__OVERRIDES;
+
+	/**
+	 * The feature id for the '<em><b>Overriden By</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORK__OVERRIDEN_BY = PSEUDO_STATE__OVERRIDEN_BY;
+
+	/**
+	 * The feature id for the '<em><b>Modifiers</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORK__MODIFIERS = PSEUDO_STATE__MODIFIERS;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORK__TYPE = PSEUDO_STATE__TYPE;
+
+	/**
+	 * The number of structural features of the '<em>Fork</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORK_FEATURE_COUNT = PSEUDO_STATE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Fork</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORK_OPERATION_COUNT = PSEUDO_STATE_OPERATION_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Uri</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_PIN__URI = PSEUDO_STATE__URI;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_PIN__PATH = PSEUDO_STATE__PATH;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_PIN__DESCRIPTION = PSEUDO_STATE__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_PIN__MARKDOWN_DESCRIPTION = PSEUDO_STATE__MARKDOWN_DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Actions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_PIN__ACTIONS = PSEUDO_STATE__ACTIONS;
+
+	/**
+	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_PIN__RESOURCES = PSEUDO_STATE__RESOURCES;
+
+	/**
+	 * The feature id for the '<em><b>Appearance</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_PIN__APPEARANCE = PSEUDO_STATE__APPEARANCE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_PIN__NAME = PSEUDO_STATE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Discussion</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_PIN__DISCUSSION = PSEUDO_STATE__DISCUSSION;
+
+	/**
+	 * The feature id for the '<em><b>Topics</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_PIN__TOPICS = PSEUDO_STATE__TOPICS;
+
+	/**
+	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_PIN__ISSUES = PSEUDO_STATE__ISSUES;
+
+	/**
+	 * The feature id for the '<em><b>Owners</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_PIN__OWNERS = PSEUDO_STATE__OWNERS;
+
+	/**
+	 * The feature id for the '<em><b>Experts</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_PIN__EXPERTS = PSEUDO_STATE__EXPERTS;
+
+	/**
+	 * The feature id for the '<em><b>Allocations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_PIN__ALLOCATIONS = PSEUDO_STATE__ALLOCATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Principles</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_PIN__PRINCIPLES = PSEUDO_STATE__PRINCIPLES;
+
+	/**
+	 * The feature id for the '<em><b>Inputs</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_PIN__INPUTS = PSEUDO_STATE__INPUTS;
+
+	/**
+	 * The feature id for the '<em><b>Outputs</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_PIN__OUTPUTS = PSEUDO_STATE__OUTPUTS;
+
+	/**
+	 * The feature id for the '<em><b>Calls</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_PIN__CALLS = PSEUDO_STATE__CALLS;
+
+	/**
+	 * The feature id for the '<em><b>Invocations</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_PIN__INVOCATIONS = PSEUDO_STATE__INVOCATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Requirements</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_PIN__REQUIREMENTS = PSEUDO_STATE__REQUIREMENTS;
+
+	/**
+	 * The feature id for the '<em><b>Deliverables</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_PIN__DELIVERABLES = PSEUDO_STATE__DELIVERABLES;
+
+	/**
+	 * The feature id for the '<em><b>Personas</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_PIN__PERSONAS = PSEUDO_STATE__PERSONAS;
+
+	/**
+	 * The feature id for the '<em><b>All Outputs</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_PIN__ALL_OUTPUTS = PSEUDO_STATE__ALL_OUTPUTS;
+
+	/**
+	 * The feature id for the '<em><b>All Inputs</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_PIN__ALL_INPUTS = PSEUDO_STATE__ALL_INPUTS;
+
+	/**
+	 * The feature id for the '<em><b>All Calls</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_PIN__ALL_CALLS = PSEUDO_STATE__ALL_CALLS;
+
+	/**
+	 * The feature id for the '<em><b>All Invocations</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_PIN__ALL_INVOCATIONS = PSEUDO_STATE__ALL_INVOCATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Overrides</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_PIN__OVERRIDES = PSEUDO_STATE__OVERRIDES;
+
+	/**
+	 * The feature id for the '<em><b>Overriden By</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_PIN__OVERRIDEN_BY = PSEUDO_STATE__OVERRIDEN_BY;
+
+	/**
+	 * The feature id for the '<em><b>Modifiers</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_PIN__MODIFIERS = PSEUDO_STATE__MODIFIERS;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_PIN__TYPE = PSEUDO_STATE__TYPE;
+
+	/**
+	 * The number of structural features of the '<em>Input Pin</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_PIN_FEATURE_COUNT = PSEUDO_STATE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Input Pin</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_PIN_OPERATION_COUNT = PSEUDO_STATE_OPERATION_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Uri</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN__URI = PSEUDO_STATE__URI;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN__PATH = PSEUDO_STATE__PATH;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN__DESCRIPTION = PSEUDO_STATE__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN__MARKDOWN_DESCRIPTION = PSEUDO_STATE__MARKDOWN_DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Actions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN__ACTIONS = PSEUDO_STATE__ACTIONS;
+
+	/**
+	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN__RESOURCES = PSEUDO_STATE__RESOURCES;
+
+	/**
+	 * The feature id for the '<em><b>Appearance</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN__APPEARANCE = PSEUDO_STATE__APPEARANCE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN__NAME = PSEUDO_STATE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Discussion</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN__DISCUSSION = PSEUDO_STATE__DISCUSSION;
+
+	/**
+	 * The feature id for the '<em><b>Topics</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN__TOPICS = PSEUDO_STATE__TOPICS;
+
+	/**
+	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN__ISSUES = PSEUDO_STATE__ISSUES;
+
+	/**
+	 * The feature id for the '<em><b>Owners</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN__OWNERS = PSEUDO_STATE__OWNERS;
+
+	/**
+	 * The feature id for the '<em><b>Experts</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN__EXPERTS = PSEUDO_STATE__EXPERTS;
+
+	/**
+	 * The feature id for the '<em><b>Allocations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN__ALLOCATIONS = PSEUDO_STATE__ALLOCATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Principles</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN__PRINCIPLES = PSEUDO_STATE__PRINCIPLES;
+
+	/**
+	 * The feature id for the '<em><b>Inputs</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN__INPUTS = PSEUDO_STATE__INPUTS;
+
+	/**
+	 * The feature id for the '<em><b>Outputs</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN__OUTPUTS = PSEUDO_STATE__OUTPUTS;
+
+	/**
+	 * The feature id for the '<em><b>Calls</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN__CALLS = PSEUDO_STATE__CALLS;
+
+	/**
+	 * The feature id for the '<em><b>Invocations</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN__INVOCATIONS = PSEUDO_STATE__INVOCATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Requirements</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN__REQUIREMENTS = PSEUDO_STATE__REQUIREMENTS;
+
+	/**
+	 * The feature id for the '<em><b>Deliverables</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN__DELIVERABLES = PSEUDO_STATE__DELIVERABLES;
+
+	/**
+	 * The feature id for the '<em><b>Personas</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN__PERSONAS = PSEUDO_STATE__PERSONAS;
+
+	/**
+	 * The feature id for the '<em><b>All Outputs</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN__ALL_OUTPUTS = PSEUDO_STATE__ALL_OUTPUTS;
+
+	/**
+	 * The feature id for the '<em><b>All Inputs</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN__ALL_INPUTS = PSEUDO_STATE__ALL_INPUTS;
+
+	/**
+	 * The feature id for the '<em><b>All Calls</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN__ALL_CALLS = PSEUDO_STATE__ALL_CALLS;
+
+	/**
+	 * The feature id for the '<em><b>All Invocations</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN__ALL_INVOCATIONS = PSEUDO_STATE__ALL_INVOCATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Overrides</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN__OVERRIDES = PSEUDO_STATE__OVERRIDES;
+
+	/**
+	 * The feature id for the '<em><b>Overriden By</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN__OVERRIDEN_BY = PSEUDO_STATE__OVERRIDEN_BY;
+
+	/**
+	 * The feature id for the '<em><b>Modifiers</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN__MODIFIERS = PSEUDO_STATE__MODIFIERS;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN__TYPE = PSEUDO_STATE__TYPE;
+
+	/**
+	 * The number of structural features of the '<em>Join</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN_FEATURE_COUNT = PSEUDO_STATE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Join</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN_OPERATION_COUNT = PSEUDO_STATE_OPERATION_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Uri</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTPUT_PIN__URI = PSEUDO_STATE__URI;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTPUT_PIN__PATH = PSEUDO_STATE__PATH;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTPUT_PIN__DESCRIPTION = PSEUDO_STATE__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTPUT_PIN__MARKDOWN_DESCRIPTION = PSEUDO_STATE__MARKDOWN_DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Actions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTPUT_PIN__ACTIONS = PSEUDO_STATE__ACTIONS;
+
+	/**
+	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTPUT_PIN__RESOURCES = PSEUDO_STATE__RESOURCES;
+
+	/**
+	 * The feature id for the '<em><b>Appearance</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTPUT_PIN__APPEARANCE = PSEUDO_STATE__APPEARANCE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTPUT_PIN__NAME = PSEUDO_STATE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Discussion</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTPUT_PIN__DISCUSSION = PSEUDO_STATE__DISCUSSION;
+
+	/**
+	 * The feature id for the '<em><b>Topics</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTPUT_PIN__TOPICS = PSEUDO_STATE__TOPICS;
+
+	/**
+	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTPUT_PIN__ISSUES = PSEUDO_STATE__ISSUES;
+
+	/**
+	 * The feature id for the '<em><b>Owners</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTPUT_PIN__OWNERS = PSEUDO_STATE__OWNERS;
+
+	/**
+	 * The feature id for the '<em><b>Experts</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTPUT_PIN__EXPERTS = PSEUDO_STATE__EXPERTS;
+
+	/**
+	 * The feature id for the '<em><b>Allocations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTPUT_PIN__ALLOCATIONS = PSEUDO_STATE__ALLOCATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Principles</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTPUT_PIN__PRINCIPLES = PSEUDO_STATE__PRINCIPLES;
+
+	/**
+	 * The feature id for the '<em><b>Inputs</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTPUT_PIN__INPUTS = PSEUDO_STATE__INPUTS;
+
+	/**
+	 * The feature id for the '<em><b>Outputs</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTPUT_PIN__OUTPUTS = PSEUDO_STATE__OUTPUTS;
+
+	/**
+	 * The feature id for the '<em><b>Calls</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTPUT_PIN__CALLS = PSEUDO_STATE__CALLS;
+
+	/**
+	 * The feature id for the '<em><b>Invocations</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTPUT_PIN__INVOCATIONS = PSEUDO_STATE__INVOCATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Requirements</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTPUT_PIN__REQUIREMENTS = PSEUDO_STATE__REQUIREMENTS;
+
+	/**
+	 * The feature id for the '<em><b>Deliverables</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTPUT_PIN__DELIVERABLES = PSEUDO_STATE__DELIVERABLES;
+
+	/**
+	 * The feature id for the '<em><b>Personas</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTPUT_PIN__PERSONAS = PSEUDO_STATE__PERSONAS;
+
+	/**
+	 * The feature id for the '<em><b>All Outputs</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTPUT_PIN__ALL_OUTPUTS = PSEUDO_STATE__ALL_OUTPUTS;
+
+	/**
+	 * The feature id for the '<em><b>All Inputs</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTPUT_PIN__ALL_INPUTS = PSEUDO_STATE__ALL_INPUTS;
+
+	/**
+	 * The feature id for the '<em><b>All Calls</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTPUT_PIN__ALL_CALLS = PSEUDO_STATE__ALL_CALLS;
+
+	/**
+	 * The feature id for the '<em><b>All Invocations</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTPUT_PIN__ALL_INVOCATIONS = PSEUDO_STATE__ALL_INVOCATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Overrides</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTPUT_PIN__OVERRIDES = PSEUDO_STATE__OVERRIDES;
+
+	/**
+	 * The feature id for the '<em><b>Overriden By</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTPUT_PIN__OVERRIDEN_BY = PSEUDO_STATE__OVERRIDEN_BY;
+
+	/**
+	 * The feature id for the '<em><b>Modifiers</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTPUT_PIN__MODIFIERS = PSEUDO_STATE__MODIFIERS;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTPUT_PIN__TYPE = PSEUDO_STATE__TYPE;
+
+	/**
+	 * The number of structural features of the '<em>Output Pin</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTPUT_PIN_FEATURE_COUNT = PSEUDO_STATE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Output Pin</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTPUT_PIN_OPERATION_COUNT = PSEUDO_STATE_OPERATION_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Uri</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int START__URI = PSEUDO_STATE__URI;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int START__PATH = PSEUDO_STATE__PATH;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int START__DESCRIPTION = PSEUDO_STATE__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int START__MARKDOWN_DESCRIPTION = PSEUDO_STATE__MARKDOWN_DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Actions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int START__ACTIONS = PSEUDO_STATE__ACTIONS;
+
+	/**
+	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int START__RESOURCES = PSEUDO_STATE__RESOURCES;
+
+	/**
+	 * The feature id for the '<em><b>Appearance</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int START__APPEARANCE = PSEUDO_STATE__APPEARANCE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int START__NAME = PSEUDO_STATE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Discussion</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int START__DISCUSSION = PSEUDO_STATE__DISCUSSION;
+
+	/**
+	 * The feature id for the '<em><b>Topics</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int START__TOPICS = PSEUDO_STATE__TOPICS;
+
+	/**
+	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int START__ISSUES = PSEUDO_STATE__ISSUES;
+
+	/**
+	 * The feature id for the '<em><b>Owners</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int START__OWNERS = PSEUDO_STATE__OWNERS;
+
+	/**
+	 * The feature id for the '<em><b>Experts</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int START__EXPERTS = PSEUDO_STATE__EXPERTS;
+
+	/**
+	 * The feature id for the '<em><b>Allocations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int START__ALLOCATIONS = PSEUDO_STATE__ALLOCATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Principles</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int START__PRINCIPLES = PSEUDO_STATE__PRINCIPLES;
+
+	/**
+	 * The feature id for the '<em><b>Inputs</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int START__INPUTS = PSEUDO_STATE__INPUTS;
+
+	/**
+	 * The feature id for the '<em><b>Outputs</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int START__OUTPUTS = PSEUDO_STATE__OUTPUTS;
+
+	/**
+	 * The feature id for the '<em><b>Calls</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int START__CALLS = PSEUDO_STATE__CALLS;
+
+	/**
+	 * The feature id for the '<em><b>Invocations</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int START__INVOCATIONS = PSEUDO_STATE__INVOCATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Requirements</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int START__REQUIREMENTS = PSEUDO_STATE__REQUIREMENTS;
+
+	/**
+	 * The feature id for the '<em><b>Deliverables</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int START__DELIVERABLES = PSEUDO_STATE__DELIVERABLES;
+
+	/**
+	 * The feature id for the '<em><b>Personas</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int START__PERSONAS = PSEUDO_STATE__PERSONAS;
+
+	/**
+	 * The feature id for the '<em><b>All Outputs</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int START__ALL_OUTPUTS = PSEUDO_STATE__ALL_OUTPUTS;
+
+	/**
+	 * The feature id for the '<em><b>All Inputs</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int START__ALL_INPUTS = PSEUDO_STATE__ALL_INPUTS;
+
+	/**
+	 * The feature id for the '<em><b>All Calls</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int START__ALL_CALLS = PSEUDO_STATE__ALL_CALLS;
+
+	/**
+	 * The feature id for the '<em><b>All Invocations</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int START__ALL_INVOCATIONS = PSEUDO_STATE__ALL_INVOCATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Overrides</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int START__OVERRIDES = PSEUDO_STATE__OVERRIDES;
+
+	/**
+	 * The feature id for the '<em><b>Overriden By</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int START__OVERRIDEN_BY = PSEUDO_STATE__OVERRIDEN_BY;
+
+	/**
+	 * The feature id for the '<em><b>Modifiers</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int START__MODIFIERS = PSEUDO_STATE__MODIFIERS;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int START__TYPE = PSEUDO_STATE__TYPE;
+
+	/**
+	 * The number of structural features of the '<em>Start</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int START_FEATURE_COUNT = PSEUDO_STATE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Start</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int START_OPERATION_COUNT = PSEUDO_STATE_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '<em>Section Style</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7269,7 +11639,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getSectionStyle()
 	 * @generated
 	 */
-	int SECTION_STYLE = 46;
+	int SECTION_STYLE = 60;
 
 
 	/**
@@ -7598,15 +11968,15 @@ public interface EngineeringPackage extends EPackage {
 	EClass getPersona();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.Persona#getActivities <em>Activities</em>}'.
+	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.Persona#getJourneyElements <em>Journey Elements</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Activities</em>'.
-	 * @see org.nasdanika.engineering.Persona#getActivities()
+	 * @return the meta object for the reference list '<em>Journey Elements</em>'.
+	 * @see org.nasdanika.engineering.Persona#getJourneyElements()
 	 * @see #getPersona()
 	 * @generated
 	 */
-	EReference getPersona_Activities();
+	EReference getPersona_JourneyElements();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link org.nasdanika.engineering.Persona#getGoals <em>Goals</em>}'.
@@ -8191,72 +12561,6 @@ public interface EngineeringPackage extends EPackage {
 	EClass getActivity();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.Activity#getPersonas <em>Personas</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Personas</em>'.
-	 * @see org.nasdanika.engineering.Activity#getPersonas()
-	 * @see #getActivity()
-	 * @generated
-	 */
-	EReference getActivity_Personas();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.nasdanika.engineering.Activity#getOutputs <em>Outputs</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Outputs</em>'.
-	 * @see org.nasdanika.engineering.Activity#getOutputs()
-	 * @see #getActivity()
-	 * @generated
-	 */
-	EReference getActivity_Outputs();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Activity#getActivityType <em>Activity Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Activity Type</em>'.
-	 * @see org.nasdanika.engineering.Activity#getActivityType()
-	 * @see #getActivity()
-	 * @generated
-	 */
-	EAttribute getActivity_ActivityType();
-
-	/**
-	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.Activity#getRequirements <em>Requirements</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Requirements</em>'.
-	 * @see org.nasdanika.engineering.Activity#getRequirements()
-	 * @see #getActivity()
-	 * @generated
-	 */
-	EReference getActivity_Requirements();
-
-	/**
-	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.Activity#getDeliverables <em>Deliverables</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Deliverables</em>'.
-	 * @see org.nasdanika.engineering.Activity#getDeliverables()
-	 * @see #getActivity()
-	 * @generated
-	 */
-	EReference getActivity_Deliverables();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.nasdanika.engineering.Activity#getCalls <em>Calls</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Calls</em>'.
-	 * @see org.nasdanika.engineering.Activity#getCalls()
-	 * @see #getActivity()
-	 * @generated
-	 */
-	EReference getActivity_Calls();
-
-	/**
 	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.Activity#getFeatures <em>Features</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8266,6 +12570,38 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getActivity_Features();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.Activity#getServices <em>Services</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Services</em>'.
+	 * @see org.nasdanika.engineering.Activity#getServices()
+	 * @see #getActivity()
+	 * @generated
+	 */
+	EReference getActivity_Services();
+
+	/**
+	 * Returns the meta object for class '{@link org.nasdanika.engineering.Service <em>Service</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Service</em>'.
+	 * @see org.nasdanika.engineering.Service
+	 * @generated
+	 */
+	EClass getService();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.nasdanika.engineering.Service#getTarget <em>Target</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Target</em>'.
+	 * @see org.nasdanika.engineering.Service#getTarget()
+	 * @see #getService()
+	 * @generated
+	 */
+	EReference getService_Target();
 
 	/**
 	 * Returns the meta object for class '{@link org.nasdanika.engineering.Journey <em>Journey</em>}'.
@@ -8278,26 +12614,190 @@ public interface EngineeringPackage extends EPackage {
 	EClass getJourney();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.nasdanika.engineering.Journey#getActivities <em>Activities</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.nasdanika.engineering.Journey#getElements <em>Elements</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Activities</em>'.
-	 * @see org.nasdanika.engineering.Journey#getActivities()
+	 * @return the meta object for the containment reference list '<em>Elements</em>'.
+	 * @see org.nasdanika.engineering.Journey#getElements()
 	 * @see #getJourney()
 	 * @generated
 	 */
-	EReference getJourney_Activities();
+	EReference getJourney_Elements();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Journey#isPartition <em>Partition</em>}'.
+	 * Returns the meta object for the reference '{@link org.nasdanika.engineering.Journey#getExtends <em>Extends</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Partition</em>'.
-	 * @see org.nasdanika.engineering.Journey#isPartition()
+	 * @return the meta object for the reference '<em>Extends</em>'.
+	 * @see org.nasdanika.engineering.Journey#getExtends()
 	 * @see #getJourney()
 	 * @generated
 	 */
-	EAttribute getJourney_Partition();
+	EReference getJourney_Extends();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.Journey#getExtensions <em>Extensions</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Extensions</em>'.
+	 * @see org.nasdanika.engineering.Journey#getExtensions()
+	 * @see #getJourney()
+	 * @generated
+	 */
+	EReference getJourney_Extensions();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.nasdanika.engineering.Journey#getRoot <em>Root</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Root</em>'.
+	 * @see org.nasdanika.engineering.Journey#getRoot()
+	 * @see #getJourney()
+	 * @generated
+	 */
+	EReference getJourney_Root();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.Journey#getAllElements <em>All Elements</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>All Elements</em>'.
+	 * @see org.nasdanika.engineering.Journey#getAllElements()
+	 * @see #getJourney()
+	 * @generated
+	 */
+	EReference getJourney_AllElements();
+
+	/**
+	 * Returns the meta object for class '{@link org.nasdanika.engineering.PseudoState <em>Pseudo State</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Pseudo State</em>'.
+	 * @see org.nasdanika.engineering.PseudoState
+	 * @generated
+	 */
+	EClass getPseudoState();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.PseudoState#getType <em>Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Type</em>'.
+	 * @see org.nasdanika.engineering.PseudoState#getType()
+	 * @see #getPseudoState()
+	 * @generated
+	 */
+	EAttribute getPseudoState_Type();
+
+	/**
+	 * Returns the meta object for class '{@link org.nasdanika.engineering.Choice <em>Choice</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Choice</em>'.
+	 * @see org.nasdanika.engineering.Choice
+	 * @generated
+	 */
+	EClass getChoice();
+
+	/**
+	 * Returns the meta object for class '{@link org.nasdanika.engineering.End <em>End</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>End</em>'.
+	 * @see org.nasdanika.engineering.End
+	 * @generated
+	 */
+	EClass getEnd();
+
+	/**
+	 * Returns the meta object for class '{@link org.nasdanika.engineering.EntryPoint <em>Entry Point</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Entry Point</em>'.
+	 * @see org.nasdanika.engineering.EntryPoint
+	 * @generated
+	 */
+	EClass getEntryPoint();
+
+	/**
+	 * Returns the meta object for class '{@link org.nasdanika.engineering.ExitPoint <em>Exit Point</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Exit Point</em>'.
+	 * @see org.nasdanika.engineering.ExitPoint
+	 * @generated
+	 */
+	EClass getExitPoint();
+
+	/**
+	 * Returns the meta object for class '{@link org.nasdanika.engineering.ExpansionInput <em>Expansion Input</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Expansion Input</em>'.
+	 * @see org.nasdanika.engineering.ExpansionInput
+	 * @generated
+	 */
+	EClass getExpansionInput();
+
+	/**
+	 * Returns the meta object for class '{@link org.nasdanika.engineering.ExpansionOutput <em>Expansion Output</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Expansion Output</em>'.
+	 * @see org.nasdanika.engineering.ExpansionOutput
+	 * @generated
+	 */
+	EClass getExpansionOutput();
+
+	/**
+	 * Returns the meta object for class '{@link org.nasdanika.engineering.Fork <em>Fork</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Fork</em>'.
+	 * @see org.nasdanika.engineering.Fork
+	 * @generated
+	 */
+	EClass getFork();
+
+	/**
+	 * Returns the meta object for class '{@link org.nasdanika.engineering.InputPin <em>Input Pin</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Input Pin</em>'.
+	 * @see org.nasdanika.engineering.InputPin
+	 * @generated
+	 */
+	EClass getInputPin();
+
+	/**
+	 * Returns the meta object for class '{@link org.nasdanika.engineering.Join <em>Join</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Join</em>'.
+	 * @see org.nasdanika.engineering.Join
+	 * @generated
+	 */
+	EClass getJoin();
+
+	/**
+	 * Returns the meta object for class '{@link org.nasdanika.engineering.OutputPin <em>Output Pin</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Output Pin</em>'.
+	 * @see org.nasdanika.engineering.OutputPin
+	 * @generated
+	 */
+	EClass getOutputPin();
+
+	/**
+	 * Returns the meta object for class '{@link org.nasdanika.engineering.Start <em>Start</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Start</em>'.
+	 * @see org.nasdanika.engineering.Start
+	 * @generated
+	 */
+	EClass getStart();
 
 	/**
 	 * Returns the meta object for class '{@link org.nasdanika.engineering.Transition <em>Transition</em>}'.
@@ -8330,6 +12830,17 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getTransition_Payload();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Transition#isSuppress <em>Suppress</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Suppress</em>'.
+	 * @see org.nasdanika.engineering.Transition#isSuppress()
+	 * @see #getTransition()
+	 * @generated
+	 */
+	EAttribute getTransition_Suppress();
 
 	/**
 	 * Returns the meta object for class '{@link org.nasdanika.engineering.Call <em>Call</em>}'.
@@ -9316,6 +13827,170 @@ public interface EngineeringPackage extends EPackage {
 	EAttribute getDecision_Resolution();
 
 	/**
+	 * Returns the meta object for class '{@link org.nasdanika.engineering.JourneyElement <em>Journey Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Journey Element</em>'.
+	 * @see org.nasdanika.engineering.JourneyElement
+	 * @generated
+	 */
+	EClass getJourneyElement();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.nasdanika.engineering.JourneyElement#getInputs <em>Inputs</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Inputs</em>'.
+	 * @see org.nasdanika.engineering.JourneyElement#getInputs()
+	 * @see #getJourneyElement()
+	 * @generated
+	 */
+	EReference getJourneyElement_Inputs();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.nasdanika.engineering.JourneyElement#getOutputs <em>Outputs</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Outputs</em>'.
+	 * @see org.nasdanika.engineering.JourneyElement#getOutputs()
+	 * @see #getJourneyElement()
+	 * @generated
+	 */
+	EReference getJourneyElement_Outputs();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.nasdanika.engineering.JourneyElement#getCalls <em>Calls</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Calls</em>'.
+	 * @see org.nasdanika.engineering.JourneyElement#getCalls()
+	 * @see #getJourneyElement()
+	 * @generated
+	 */
+	EReference getJourneyElement_Calls();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.nasdanika.engineering.JourneyElement#getInvocations <em>Invocations</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Invocations</em>'.
+	 * @see org.nasdanika.engineering.JourneyElement#getInvocations()
+	 * @see #getJourneyElement()
+	 * @generated
+	 */
+	EReference getJourneyElement_Invocations();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.JourneyElement#getRequirements <em>Requirements</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Requirements</em>'.
+	 * @see org.nasdanika.engineering.JourneyElement#getRequirements()
+	 * @see #getJourneyElement()
+	 * @generated
+	 */
+	EReference getJourneyElement_Requirements();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.JourneyElement#getDeliverables <em>Deliverables</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Deliverables</em>'.
+	 * @see org.nasdanika.engineering.JourneyElement#getDeliverables()
+	 * @see #getJourneyElement()
+	 * @generated
+	 */
+	EReference getJourneyElement_Deliverables();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.JourneyElement#getPersonas <em>Personas</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Personas</em>'.
+	 * @see org.nasdanika.engineering.JourneyElement#getPersonas()
+	 * @see #getJourneyElement()
+	 * @generated
+	 */
+	EReference getJourneyElement_Personas();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.JourneyElement#getAllOutputs <em>All Outputs</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>All Outputs</em>'.
+	 * @see org.nasdanika.engineering.JourneyElement#getAllOutputs()
+	 * @see #getJourneyElement()
+	 * @generated
+	 */
+	EReference getJourneyElement_AllOutputs();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.JourneyElement#getAllInputs <em>All Inputs</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>All Inputs</em>'.
+	 * @see org.nasdanika.engineering.JourneyElement#getAllInputs()
+	 * @see #getJourneyElement()
+	 * @generated
+	 */
+	EReference getJourneyElement_AllInputs();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.JourneyElement#getAllCalls <em>All Calls</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>All Calls</em>'.
+	 * @see org.nasdanika.engineering.JourneyElement#getAllCalls()
+	 * @see #getJourneyElement()
+	 * @generated
+	 */
+	EReference getJourneyElement_AllCalls();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.JourneyElement#getAllInvocations <em>All Invocations</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>All Invocations</em>'.
+	 * @see org.nasdanika.engineering.JourneyElement#getAllInvocations()
+	 * @see #getJourneyElement()
+	 * @generated
+	 */
+	EReference getJourneyElement_AllInvocations();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.nasdanika.engineering.JourneyElement#getOverrides <em>Overrides</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Overrides</em>'.
+	 * @see org.nasdanika.engineering.JourneyElement#getOverrides()
+	 * @see #getJourneyElement()
+	 * @generated
+	 */
+	EReference getJourneyElement_Overrides();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.JourneyElement#getOverridenBy <em>Overriden By</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Overriden By</em>'.
+	 * @see org.nasdanika.engineering.JourneyElement#getOverridenBy()
+	 * @see #getJourneyElement()
+	 * @generated
+	 */
+	EReference getJourneyElement_OverridenBy();
+
+	/**
+	 * Returns the meta object for the attribute list '{@link org.nasdanika.engineering.JourneyElement#getModifiers <em>Modifiers</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Modifiers</em>'.
+	 * @see org.nasdanika.engineering.JourneyElement#getModifiers()
+	 * @see #getJourneyElement()
+	 * @generated
+	 */
+	EAttribute getJourneyElement_Modifiers();
+
+	/**
 	 * Returns the meta object for the containment reference list '{@link org.nasdanika.engineering.Document#getSections <em>Sections</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9667,12 +14342,12 @@ public interface EngineeringPackage extends EPackage {
 		EClass PERSONA = eINSTANCE.getPersona();
 
 		/**
-		 * The meta object literal for the '<em><b>Activities</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Journey Elements</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference PERSONA__ACTIVITIES = eINSTANCE.getPersona_Activities();
+		EReference PERSONA__JOURNEY_ELEMENTS = eINSTANCE.getPersona_JourneyElements();
 
 		/**
 		 * The meta object literal for the '<em><b>Goals</b></em>' containment reference list feature.
@@ -10131,60 +14806,38 @@ public interface EngineeringPackage extends EPackage {
 		EClass ACTIVITY = eINSTANCE.getActivity();
 
 		/**
-		 * The meta object literal for the '<em><b>Personas</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ACTIVITY__PERSONAS = eINSTANCE.getActivity_Personas();
-
-		/**
-		 * The meta object literal for the '<em><b>Outputs</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ACTIVITY__OUTPUTS = eINSTANCE.getActivity_Outputs();
-
-		/**
-		 * The meta object literal for the '<em><b>Activity Type</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ACTIVITY__ACTIVITY_TYPE = eINSTANCE.getActivity_ActivityType();
-
-		/**
-		 * The meta object literal for the '<em><b>Requirements</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ACTIVITY__REQUIREMENTS = eINSTANCE.getActivity_Requirements();
-
-		/**
-		 * The meta object literal for the '<em><b>Deliverables</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ACTIVITY__DELIVERABLES = eINSTANCE.getActivity_Deliverables();
-
-		/**
-		 * The meta object literal for the '<em><b>Calls</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ACTIVITY__CALLS = eINSTANCE.getActivity_Calls();
-
-		/**
 		 * The meta object literal for the '<em><b>Features</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EReference ACTIVITY__FEATURES = eINSTANCE.getActivity_Features();
+
+		/**
+		 * The meta object literal for the '<em><b>Services</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ACTIVITY__SERVICES = eINSTANCE.getActivity_Services();
+
+		/**
+		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.ServiceImpl <em>Service</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.engineering.impl.ServiceImpl
+		 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getService()
+		 * @generated
+		 */
+		EClass SERVICE = eINSTANCE.getService();
+
+		/**
+		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SERVICE__TARGET = eINSTANCE.getService_Target();
 
 		/**
 		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.JourneyImpl <em>Journey</em>}' class.
@@ -10197,20 +14850,172 @@ public interface EngineeringPackage extends EPackage {
 		EClass JOURNEY = eINSTANCE.getJourney();
 
 		/**
-		 * The meta object literal for the '<em><b>Activities</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Elements</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference JOURNEY__ACTIVITIES = eINSTANCE.getJourney_Activities();
+		EReference JOURNEY__ELEMENTS = eINSTANCE.getJourney_Elements();
 
 		/**
-		 * The meta object literal for the '<em><b>Partition</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Extends</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute JOURNEY__PARTITION = eINSTANCE.getJourney_Partition();
+		EReference JOURNEY__EXTENDS = eINSTANCE.getJourney_Extends();
+
+		/**
+		 * The meta object literal for the '<em><b>Extensions</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference JOURNEY__EXTENSIONS = eINSTANCE.getJourney_Extensions();
+
+		/**
+		 * The meta object literal for the '<em><b>Root</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference JOURNEY__ROOT = eINSTANCE.getJourney_Root();
+
+		/**
+		 * The meta object literal for the '<em><b>All Elements</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference JOURNEY__ALL_ELEMENTS = eINSTANCE.getJourney_AllElements();
+
+		/**
+		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.PseudoStateImpl <em>Pseudo State</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.engineering.impl.PseudoStateImpl
+		 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getPseudoState()
+		 * @generated
+		 */
+		EClass PSEUDO_STATE = eINSTANCE.getPseudoState();
+
+		/**
+		 * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PSEUDO_STATE__TYPE = eINSTANCE.getPseudoState_Type();
+
+		/**
+		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.ChoiceImpl <em>Choice</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.engineering.impl.ChoiceImpl
+		 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getChoice()
+		 * @generated
+		 */
+		EClass CHOICE = eINSTANCE.getChoice();
+
+		/**
+		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.EndImpl <em>End</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.engineering.impl.EndImpl
+		 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getEnd()
+		 * @generated
+		 */
+		EClass END = eINSTANCE.getEnd();
+
+		/**
+		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.EntryPointImpl <em>Entry Point</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.engineering.impl.EntryPointImpl
+		 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getEntryPoint()
+		 * @generated
+		 */
+		EClass ENTRY_POINT = eINSTANCE.getEntryPoint();
+
+		/**
+		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.ExitPointImpl <em>Exit Point</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.engineering.impl.ExitPointImpl
+		 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getExitPoint()
+		 * @generated
+		 */
+		EClass EXIT_POINT = eINSTANCE.getExitPoint();
+
+		/**
+		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.ExpansionInputImpl <em>Expansion Input</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.engineering.impl.ExpansionInputImpl
+		 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getExpansionInput()
+		 * @generated
+		 */
+		EClass EXPANSION_INPUT = eINSTANCE.getExpansionInput();
+
+		/**
+		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.ExpansionOutputImpl <em>Expansion Output</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.engineering.impl.ExpansionOutputImpl
+		 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getExpansionOutput()
+		 * @generated
+		 */
+		EClass EXPANSION_OUTPUT = eINSTANCE.getExpansionOutput();
+
+		/**
+		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.ForkImpl <em>Fork</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.engineering.impl.ForkImpl
+		 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getFork()
+		 * @generated
+		 */
+		EClass FORK = eINSTANCE.getFork();
+
+		/**
+		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.InputPinImpl <em>Input Pin</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.engineering.impl.InputPinImpl
+		 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getInputPin()
+		 * @generated
+		 */
+		EClass INPUT_PIN = eINSTANCE.getInputPin();
+
+		/**
+		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.JoinImpl <em>Join</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.engineering.impl.JoinImpl
+		 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getJoin()
+		 * @generated
+		 */
+		EClass JOIN = eINSTANCE.getJoin();
+
+		/**
+		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.OutputPinImpl <em>Output Pin</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.engineering.impl.OutputPinImpl
+		 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getOutputPin()
+		 * @generated
+		 */
+		EClass OUTPUT_PIN = eINSTANCE.getOutputPin();
+
+		/**
+		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.StartImpl <em>Start</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.engineering.impl.StartImpl
+		 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getStart()
+		 * @generated
+		 */
+		EClass START = eINSTANCE.getStart();
 
 		/**
 		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.TransitionImpl <em>Transition</em>}' class.
@@ -10237,6 +15042,14 @@ public interface EngineeringPackage extends EPackage {
 		 * @generated
 		 */
 		EReference TRANSITION__PAYLOAD = eINSTANCE.getTransition_Payload();
+
+		/**
+		 * The meta object literal for the '<em><b>Suppress</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TRANSITION__SUPPRESS = eINSTANCE.getTransition_Suppress();
 
 		/**
 		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.CallImpl <em>Call</em>}' class.
@@ -11015,6 +15828,128 @@ public interface EngineeringPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute DECISION__RESOLUTION = eINSTANCE.getDecision_Resolution();
+
+		/**
+		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.JourneyElementImpl <em>Journey Element</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.engineering.impl.JourneyElementImpl
+		 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getJourneyElement()
+		 * @generated
+		 */
+		EClass JOURNEY_ELEMENT = eINSTANCE.getJourneyElement();
+
+		/**
+		 * The meta object literal for the '<em><b>Inputs</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference JOURNEY_ELEMENT__INPUTS = eINSTANCE.getJourneyElement_Inputs();
+
+		/**
+		 * The meta object literal for the '<em><b>Outputs</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference JOURNEY_ELEMENT__OUTPUTS = eINSTANCE.getJourneyElement_Outputs();
+
+		/**
+		 * The meta object literal for the '<em><b>Calls</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference JOURNEY_ELEMENT__CALLS = eINSTANCE.getJourneyElement_Calls();
+
+		/**
+		 * The meta object literal for the '<em><b>Invocations</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference JOURNEY_ELEMENT__INVOCATIONS = eINSTANCE.getJourneyElement_Invocations();
+
+		/**
+		 * The meta object literal for the '<em><b>Requirements</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference JOURNEY_ELEMENT__REQUIREMENTS = eINSTANCE.getJourneyElement_Requirements();
+
+		/**
+		 * The meta object literal for the '<em><b>Deliverables</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference JOURNEY_ELEMENT__DELIVERABLES = eINSTANCE.getJourneyElement_Deliverables();
+
+		/**
+		 * The meta object literal for the '<em><b>Personas</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference JOURNEY_ELEMENT__PERSONAS = eINSTANCE.getJourneyElement_Personas();
+
+		/**
+		 * The meta object literal for the '<em><b>All Outputs</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference JOURNEY_ELEMENT__ALL_OUTPUTS = eINSTANCE.getJourneyElement_AllOutputs();
+
+		/**
+		 * The meta object literal for the '<em><b>All Inputs</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference JOURNEY_ELEMENT__ALL_INPUTS = eINSTANCE.getJourneyElement_AllInputs();
+
+		/**
+		 * The meta object literal for the '<em><b>All Calls</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference JOURNEY_ELEMENT__ALL_CALLS = eINSTANCE.getJourneyElement_AllCalls();
+
+		/**
+		 * The meta object literal for the '<em><b>All Invocations</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference JOURNEY_ELEMENT__ALL_INVOCATIONS = eINSTANCE.getJourneyElement_AllInvocations();
+
+		/**
+		 * The meta object literal for the '<em><b>Overrides</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference JOURNEY_ELEMENT__OVERRIDES = eINSTANCE.getJourneyElement_Overrides();
+
+		/**
+		 * The meta object literal for the '<em><b>Overriden By</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference JOURNEY_ELEMENT__OVERRIDEN_BY = eINSTANCE.getJourneyElement_OverridenBy();
+
+		/**
+		 * The meta object literal for the '<em><b>Modifiers</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute JOURNEY_ELEMENT__MODIFIERS = eINSTANCE.getJourneyElement_Modifiers();
 
 		/**
 		 * The meta object literal for the '<em><b>Sections</b></em>' containment reference list feature.
