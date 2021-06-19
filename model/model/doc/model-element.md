@@ -1,4 +1,4 @@
-Model element is the root class for all other root classes. 
+Model element is the root class for all other model classes. 
 
 It has ``path`` attribute which is used to compute model element's ``uri`` and also model element's URL in the UI.
 

@@ -183,10 +183,29 @@ engineering-module:
          Premises/Entailments reference (not needed - requires/requiredBy will do). Entailments is a derived reference.                        
      - name: Visualizations of aims and alignments
        markdown-description: Including decision chains.
-     - name: Resource uploading during generation.
+     - name: ModelElement sections, TOC depth
+       markdown-description: Move sections from Document to ModelElement. Change tableOfContents to tableOfContentsDepth int and also move to ModelElement.
+     - name: Absolute URL's in path AS-IS
+       markdown-description: |+2
+         Recognize absolute URL's/URI's (those starting with schema) in path and use AS-IS. For activator - also use AS-IS, i.e. do not use containment path, but relativize.
+         Needed for site federation - ability to create "proxy" model elements. E.g. an organization would create proxies for its departments and departments would create
+         proxies for sub-departments and may also create a proxy for the root action - in this case there would be no need in the root action - it can be null.  
+     - name: Resource uploading during generation
        markdown-description: |+2
          Duplicate, just to make sure - ``resource`` token replacer if there is ResourceManager service - takes URI of the resource relative to the YAML spec, uploads it somewhere (or writes to the output directory)
          and returns a URL relative to the generated page.
+     - name: Conditional appearance
+       markdown-description: |+2
+         Extends Apperance and has condition attribute which is JavaScript evaluated with the semantic element available in binding as well as context.
+         Appearance has a containment reference of conditional appearances - kinda cascading styles. Matched top-down - if parent matches then children are evaluated.
+         Applied bottom-up first match. E.g. the first match which has icon key would define the icon. Values can contain interpolation tokens, e.g. issue icon can be taken from its status icon.
+     - name: Contact methods, notifications of validations and escalations.
+       markdown-description: |+2
+         Introduce contact methods from Party. Also, introduce a notification interface - something with boolean notify(Notification) - to adapt contact methods to in 
+         order to send notifications. For e-mails the notification will be converted to a JavaMail message, a session of whatever service will be obtained from the context,
+         and the message will be sent. For escalations - a week (should be configurable) before endeavor becomes an overdue - notification the assignee, Info status,
+         when it becomes an overdue - notification to the assignee and the owner of the containing engineer and the engineer itself - warning. A week later - error and also to the next level of the hierarchy.
+         Escalate to the next level every week. Can be done by something like a Jenkins or CircleCI scheduled jobs. Aggregate and group by severity.
          
      ### === Done === ###    
      - name: Start/end from Issue and Increment to Endeavor
