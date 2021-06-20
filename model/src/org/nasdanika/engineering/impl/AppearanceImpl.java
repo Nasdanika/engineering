@@ -22,6 +22,7 @@ import org.nasdanika.html.app.SectionStyle;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link org.nasdanika.engineering.impl.AppearanceImpl#getLabel <em>Label</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.AppearanceImpl#getIcon <em>Icon</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.AppearanceImpl#getDescription <em>Description</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.AppearanceImpl#getMarkdownDescription <em>Markdown Description</em>}</li>
@@ -32,6 +33,16 @@ import org.nasdanika.html.app.SectionStyle;
  * @generated
  */
 public abstract class AppearanceImpl extends MinimalEObjectImpl.Container implements Appearance {
+	/**
+	 * The default value of the '{@link #getLabel() <em>Label</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLabel()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String LABEL_EDEFAULT = null;
+
 	/**
 	 * The default value of the '{@link #getIcon() <em>Icon</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -99,6 +110,26 @@ public abstract class AppearanceImpl extends MinimalEObjectImpl.Container implem
 	@Override
 	protected int eStaticFeatureCount() {
 		return 0;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String getLabel() {
+		return (String)eDynamicGet(EngineeringPackage.APPEARANCE__LABEL, EngineeringPackage.Literals.APPEARANCE__LABEL, true, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setLabel(String newLabel) {
+		eDynamicSet(EngineeringPackage.APPEARANCE__LABEL, EngineeringPackage.Literals.APPEARANCE__LABEL, newLabel);
 	}
 
 	/**
@@ -200,6 +231,8 @@ public abstract class AppearanceImpl extends MinimalEObjectImpl.Container implem
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case EngineeringPackage.APPEARANCE__LABEL:
+				return getLabel();
 			case EngineeringPackage.APPEARANCE__ICON:
 				return getIcon();
 			case EngineeringPackage.APPEARANCE__DESCRIPTION:
@@ -223,6 +256,9 @@ public abstract class AppearanceImpl extends MinimalEObjectImpl.Container implem
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case EngineeringPackage.APPEARANCE__LABEL:
+				setLabel((String)newValue);
+				return;
 			case EngineeringPackage.APPEARANCE__ICON:
 				setIcon((String)newValue);
 				return;
@@ -251,6 +287,9 @@ public abstract class AppearanceImpl extends MinimalEObjectImpl.Container implem
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case EngineeringPackage.APPEARANCE__LABEL:
+				setLabel(LABEL_EDEFAULT);
+				return;
 			case EngineeringPackage.APPEARANCE__ICON:
 				setIcon(ICON_EDEFAULT);
 				return;
@@ -278,6 +317,8 @@ public abstract class AppearanceImpl extends MinimalEObjectImpl.Container implem
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case EngineeringPackage.APPEARANCE__LABEL:
+				return LABEL_EDEFAULT == null ? getLabel() != null : !LABEL_EDEFAULT.equals(getLabel());
 			case EngineeringPackage.APPEARANCE__ICON:
 				return ICON_EDEFAULT == null ? getIcon() != null : !ICON_EDEFAULT.equals(getIcon());
 			case EngineeringPackage.APPEARANCE__DESCRIPTION:

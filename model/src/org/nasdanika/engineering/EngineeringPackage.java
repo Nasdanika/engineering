@@ -5248,13 +5248,22 @@ public interface EngineeringPackage extends EPackage {
 	int APPEARANCE = 31;
 
 	/**
+	 * The feature id for the '<em><b>Label</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int APPEARANCE__LABEL = 0;
+
+	/**
 	 * The feature id for the '<em><b>Icon</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int APPEARANCE__ICON = 0;
+	int APPEARANCE__ICON = 1;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -5263,7 +5272,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int APPEARANCE__DESCRIPTION = 1;
+	int APPEARANCE__DESCRIPTION = 2;
 
 	/**
 	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
@@ -5272,7 +5281,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int APPEARANCE__MARKDOWN_DESCRIPTION = 2;
+	int APPEARANCE__MARKDOWN_DESCRIPTION = 3;
 
 	/**
 	 * The feature id for the '<em><b>Roles</b></em>' attribute list.
@@ -5281,7 +5290,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int APPEARANCE__ROLES = 3;
+	int APPEARANCE__ROLES = 4;
 
 	/**
 	 * The feature id for the '<em><b>Section Style</b></em>' attribute.
@@ -5290,7 +5299,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int APPEARANCE__SECTION_STYLE = 4;
+	int APPEARANCE__SECTION_STYLE = 5;
 
 	/**
 	 * The number of structural features of the '<em>Appearance</em>' class.
@@ -5299,7 +5308,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int APPEARANCE_FEATURE_COUNT = 5;
+	int APPEARANCE_FEATURE_COUNT = 6;
 
 	/**
 	 * The number of operations of the '<em>Appearance</em>' class.
@@ -5319,6 +5328,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 */
 	int MODEL_ELEMENT_APPEARANCE = 32;
+
+	/**
+	 * The feature id for the '<em><b>Label</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL_ELEMENT_APPEARANCE__LABEL = APPEARANCE__LABEL;
 
 	/**
 	 * The feature id for the '<em><b>Icon</b></em>' attribute.
@@ -5493,6 +5511,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 */
 	int FEATURE_APPEARANCE = 35;
+
+	/**
+	 * The feature id for the '<em><b>Label</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_APPEARANCE__LABEL = APPEARANCE__LABEL;
 
 	/**
 	 * The feature id for the '<em><b>Icon</b></em>' attribute.
@@ -13451,6 +13478,17 @@ public interface EngineeringPackage extends EPackage {
 	EClass getAppearance();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Appearance#getLabel <em>Label</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Label</em>'.
+	 * @see org.nasdanika.engineering.Appearance#getLabel()
+	 * @see #getAppearance()
+	 * @generated
+	 */
+	EAttribute getAppearance_Label();
+
+	/**
 	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Appearance#getIcon <em>Icon</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -15549,6 +15587,14 @@ public interface EngineeringPackage extends EPackage {
 		 * @generated
 		 */
 		EClass APPEARANCE = eINSTANCE.getAppearance();
+
+		/**
+		 * The meta object literal for the '<em><b>Label</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute APPEARANCE__LABEL = eINSTANCE.getAppearance_Label();
 
 		/**
 		 * The meta object literal for the '<em><b>Icon</b></em>' attribute feature.

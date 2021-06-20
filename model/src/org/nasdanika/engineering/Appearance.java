@@ -16,6 +16,7 @@ import org.nasdanika.html.app.SectionStyle;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link org.nasdanika.engineering.Appearance#getLabel <em>Label</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Appearance#getIcon <em>Icon</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Appearance#getDescription <em>Description</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Appearance#getMarkdownDescription <em>Markdown Description</em>}</li>
@@ -29,6 +30,31 @@ import org.nasdanika.html.app.SectionStyle;
  * @generated
  */
 public interface Appearance extends EObject {
+	/**
+	 * Returns the value of the '<em><b>Label</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Custom text.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Label</em>' attribute.
+	 * @see #setLabel(String)
+	 * @see org.nasdanika.engineering.EngineeringPackage#getAppearance_Label()
+	 * @model
+	 * @generated
+	 */
+	String getLabel();
+
+	/**
+	 * Sets the value of the '{@link org.nasdanika.engineering.Appearance#getLabel <em>Label</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Label</em>' attribute.
+	 * @see #getLabel()
+	 * @generated
+	 */
+	void setLabel(String value);
+
 	/**
 	 * Returns the value of the '<em><b>Icon</b></em>' attribute.
 	 * <!-- begin-user-doc -->

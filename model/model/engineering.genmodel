@@ -177,6 +177,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//EngineeringAppearance/modelElements"/>
     </genClasses>
     <genClasses image="false" ecoreClass="engineering.ecore#//Appearance">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Appearance/label"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Appearance/icon"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Appearance/description"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Appearance/markdownDescription"/>

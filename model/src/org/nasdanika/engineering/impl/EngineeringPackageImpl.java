@@ -2256,7 +2256,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EAttribute getAppearance_Icon() {
+	public EAttribute getAppearance_Label() {
 		return (EAttribute)appearanceEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -2266,7 +2266,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EAttribute getAppearance_Description() {
+	public EAttribute getAppearance_Icon() {
 		return (EAttribute)appearanceEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -2276,7 +2276,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EAttribute getAppearance_MarkdownDescription() {
+	public EAttribute getAppearance_Description() {
 		return (EAttribute)appearanceEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -2286,7 +2286,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EAttribute getAppearance_Roles() {
+	public EAttribute getAppearance_MarkdownDescription() {
 		return (EAttribute)appearanceEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -2296,8 +2296,18 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EAttribute getAppearance_SectionStyle() {
+	public EAttribute getAppearance_Roles() {
 		return (EAttribute)appearanceEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getAppearance_SectionStyle() {
+		return (EAttribute)appearanceEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -3039,6 +3049,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		createEReference(engineeringAppearanceEClass, ENGINEERING_APPEARANCE__MODEL_ELEMENTS);
 
 		appearanceEClass = createEClass(APPEARANCE);
+		createEAttribute(appearanceEClass, APPEARANCE__LABEL);
 		createEAttribute(appearanceEClass, APPEARANCE__ICON);
 		createEAttribute(appearanceEClass, APPEARANCE__DESCRIPTION);
 		createEAttribute(appearanceEClass, APPEARANCE__MARKDOWN_DESCRIPTION);
@@ -3416,6 +3427,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		initEReference(getEngineeringAppearance_ModelElements(), this.getModelElementAppearanceEntry(), null, "modelElements", null, 0, -1, EngineeringAppearance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(appearanceEClass, Appearance.class, "Appearance", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getAppearance_Label(), ecorePackage.getEString(), "label", null, 0, 1, Appearance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAppearance_Icon(), ecorePackage.getEString(), "icon", null, 0, 1, Appearance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAppearance_Description(), ecorePackage.getEString(), "description", null, 0, 1, Appearance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAppearance_MarkdownDescription(), ecorePackage.getEString(), "markdownDescription", null, 0, 1, Appearance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -4829,6 +4841,12 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		   source,
 		   new String[] {
 			   "documentation", "Mapping of model element EClass names in kebab case to model element appearance.\nE.g. for ``IssueStatus`` appearance specification will look like:\n\n```yaml\nmodel-elements:\n    issue-status:\n        roles: context\n```\n"
+		   });
+		addAnnotation
+		  (getAppearance_Label(),
+		   source,
+		   new String[] {
+			   "documentation", "Custom text."
 		   });
 		addAnnotation
 		  (getAppearance_Icon(),
