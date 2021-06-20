@@ -164,6 +164,9 @@ public class JourneyElementImpl extends EngineeredElementImpl implements Journey
 	 */
 	@Override
 	public EList<Transition> getAllOutputs() {
+		if (getModifiers().contains(SUPPRESS)) {
+			return ECollections.emptyEList();
+		}
 		EList<Transition> ret = ECollections.newBasicEList();
 		Map<String,Transition> outputsTable = new LinkedHashMap<>();
 		JourneyElement overrides = getOverrides(); 
@@ -181,7 +184,7 @@ public class JourneyElementImpl extends EngineeredElementImpl implements Journey
 			String outputPath = output.getPath(); 
 			if (Util.isBlank(outputPath)) { 
 				ret.add(output);
-			} else if (output.isSuppress()) { 
+			} else if (output.isSuppress() || output.getTarget().getModifiers().contains(SUPPRESS)) { 
 				outputsTable.remove(outputPath) ;
 			} else {
 				outputsTable.put(outputPath, output);
@@ -208,6 +211,9 @@ public class JourneyElementImpl extends EngineeredElementImpl implements Journey
 	 */
 	@Override
 	public EList<Call> getAllCalls() {
+		if (getModifiers().contains(SUPPRESS)) {
+			return ECollections.emptyEList();
+		}
 		EList<Call> ret = ECollections.newBasicEList();
 		Map<String,Call> callsTable = new LinkedHashMap<>();
 		JourneyElement overrides = getOverrides(); 
@@ -225,7 +231,7 @@ public class JourneyElementImpl extends EngineeredElementImpl implements Journey
 			String callPath = call.getPath(); 
 			if (Util.isBlank(callPath)) { 
 				ret.add(call);
-			} else if (call.isSuppress()) {
+			} else if (call.isSuppress() || call.getTarget().getModifiers().contains(SUPPRESS)) {
 				callsTable.remove(callPath);
 			} else {
 				callsTable.put(callPath, call);
