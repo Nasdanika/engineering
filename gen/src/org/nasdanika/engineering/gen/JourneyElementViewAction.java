@@ -195,7 +195,6 @@ public class JourneyElementViewAction<T extends JourneyElement> extends Engineer
 		StringBuilder ret = new StringBuilder();
 		if (getSemanticElement().eContainer() instanceof Journey) {
 			String base = ((NavigationActionActivator) getActivator()).getUrl(null);
-			
 			Collection<JourneyElement> diagramElements = new HashSet<>();
 			collectRelatedElements(getSemanticElement(), diagramElements);
 			EList<Persona> semanticElementPersonas = getSemanticElement().getPersonas();
@@ -204,36 +203,7 @@ public class JourneyElementViewAction<T extends JourneyElement> extends Engineer
 				List<Persona> personas = pe.getKey();
 				boolean isPersonasPartition = !personas.isEmpty() && !personas.equals(semanticElementPersonas);
 				if (isPersonasPartition) {
-					// Personas partition
-					ret.append("state ");
-					
-					Iterator<Persona> pit = personas.iterator();
-					while (pit.hasNext()) {
-						Persona persona = pit.next();
-						String pRef = ((NavigationActionActivator) ViewAction.adaptToViewActionNonNull(persona).getActivator()).getUrl(base);
-						String pDescr = diagramDescription(persona);
-						if (Util.isBlank(pRef) && Util.isBlank(pDescr)) {
-							ret.append(persona.getName());
-						} else {
-							ret
-								.append("[[")
-								.append(pRef)
-								.append(pDescr)
-								.append(" ")
-								.append(persona.getName())
-								.append("]]");
-						}
-						if (pit.hasNext()) {
-							ret.append(", ");
-						}
-					}
-					
-					ret
-						.append("\" as ")
-						.append(diagramId(personas))
-						.append(" #E0E0FF ##blue")
-						.append(" {")
-						.append(System.lineSeparator());
+					ret.append(personasPartitionStart(personas, base));
 				}
 				
 				for (JourneyElement journeyElement: pe.getValue()) {
@@ -241,29 +211,7 @@ public class JourneyElementViewAction<T extends JourneyElement> extends Engineer
 						 continue;
 					 }
 				
-					ret.append("state ");
-					String jeName = journeyElement.getName();
-					if (!Util.isBlank(jeName)) {
-						 ret
-						 	.append("\"")
-						 	.append(wrap(jeName))
-						 	.append("\" as ");
-					}
-					ret.append(diagramId(journeyElement));
-				
-					if (journeyElement instanceof PseudoState) {
-						ret.append("<<").append(((PseudoState) journeyElement).getType()).append(">>");
-					} else {
-						String ref = ((NavigationActionActivator) ViewAction.adaptToViewActionNonNull(journeyElement).getActivator()).getUrl(base); 
-						String refAndDescription = ref + diagramDescription(journeyElement); 
-						if (!Util.isBlank(refAndDescription)) {
-							ret.append(" [[").append(refAndDescription).append("]]");
-						}
-					}
-					if (journeyElement != getSemanticElement()) {
-						ret.append(" #DDDDDD");
-					}
-					ret.append(System.lineSeparator());
+					ret.append(journeyElementState(journeyElement, base, journeyElement != getSemanticElement()));
 				}
 				if (isPersonasPartition) {
 					ret.append("}").append(System.lineSeparator());
@@ -300,6 +248,72 @@ public class JourneyElementViewAction<T extends JourneyElement> extends Engineer
 				}
 			}
 		}
+		return ret.toString();
+	}
+
+	protected String journeyElementState(JourneyElement journeyElement, String base, boolean isSurroundingElement) {
+		StringBuilder ret = new StringBuilder("state ");
+		String jeName = journeyElement.getName();
+		if (!Util.isBlank(jeName)) {
+			 ret
+			 	.append("\"")
+			 	.append(wrap(jeName))
+			 	.append("\" as ");
+		}
+		ret.append(diagramId(journeyElement));
+
+		if (journeyElement instanceof PseudoState) {
+			ret.append("<<").append(((PseudoState) journeyElement).getType()).append(">>");
+		} else {
+			String ref = ((NavigationActionActivator) ViewAction.adaptToViewActionNonNull(journeyElement).getActivator()).getUrl(base); 
+			String refAndDescription = ref + diagramDescription(journeyElement); 
+			if (!Util.isBlank(refAndDescription)) {
+				ret.append(" [[").append(refAndDescription).append("]]");
+			}
+		}
+		if (isSurroundingElement) {
+			ret.append(" #DDDDDD");
+		}
+		if (journeyElement.getModifiers().contains(JourneyElement.ABSTRACT)) {
+			ret.append(" ##[dashed])");
+		} else if (journeyElement.getModifiers().contains(JourneyElement.FINAL)) {
+			ret.append(" ##[bold]");
+		}
+		ret.append(System.lineSeparator());
+		return ret.toString();
+	}
+
+	protected String personasPartitionStart(List<Persona> personas, String base) {
+		StringBuilder ret = new StringBuilder("state ");
+		
+		Iterator<Persona> pit = personas.iterator();
+		while (pit.hasNext()) {
+			Persona persona = pit.next();
+			String pRef = ((NavigationActionActivator) ViewAction.adaptToViewActionNonNull(persona).getActivator()).getUrl(base);
+			String pDescr = diagramDescription(persona);
+			if (Util.isBlank(pRef) && Util.isBlank(pDescr)) {
+				ret.append(persona.getName());
+			} else {
+				ret
+					.append("[[")
+					.append(pRef)
+					.append(pDescr)
+					.append(" ")
+					.append(persona.getName())
+					.append("]]");
+			}
+			if (pit.hasNext()) {
+				ret.append(", ");
+			}
+		}
+		
+		ret
+			.append("\" as ")
+			.append(diagramId(personas))
+			.append(" #E0E0FF ##blue")
+			.append(" {")
+			.append(System.lineSeparator());
+		
 		return ret.toString();
 	}
 	
