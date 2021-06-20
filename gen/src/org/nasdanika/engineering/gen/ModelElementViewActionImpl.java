@@ -824,6 +824,27 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 		return super.getIcon();
 	}
 	
+	@Override
+	public String getText() {
+		ModelElementAppearance appearance = getSemanticElement().getAppearance();
+		if (appearance != null) {
+			String label = appearance.getLabel();
+			if (!Util.isBlank(label)) {
+				return label;
+			}
+		}
+		
+//		for (EClass eClass: EmfUtil.lineage(getSemanticElement().eClass())) {
+//			for (ModelElementAppearance classAppearance: factory.getAppearance(eClass)) {
+//				String label = classAppearance.getLabel();
+//				if (!Util.isBlank(label)) {
+//					return label;
+//				}
+//			}
+//		}
+		return super.getText();
+	}
+	
 	public static final String NONE = "none";
 	
 	/**
@@ -874,6 +895,56 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 		}
 
 		return super.featureIcon(feature);
+	}
+	
+	@Override
+	public String featureLabelText(EStructuralFeature feature) {
+		ModelElementAppearance appearance = getSemanticElement().getAppearance();
+		if (appearance != null) {
+			FeatureAppearance featureAppearance = appearance.getFeatures().get(Util.camelToKebab(feature.getName()));
+			if (featureAppearance != null) {
+				String label = featureAppearance.getLabel();
+				if (!Util.isBlank(label)) {
+					return label;
+				}
+			}
+		}
+				
+		for (EClass eClass: EmfUtil.lineage(getSemanticElement().eClass())) {
+			for (ModelElementAppearance classAppearance: factory.getAppearance(eClass)) {
+				FeatureAppearance featureAppearance = classAppearance.getFeatures().get(Util.camelToKebab(feature.getName()));
+				if (featureAppearance !=  null) {
+					String label = featureAppearance.getLabel();
+					if (!Util.isBlank(label)) {
+						return label;
+					}
+				}
+			}
+		}
+		
+		// Lineage of feature type
+		EClassifier featureType = feature.getEType();
+		if (featureType instanceof EClass) {
+			for (EClass eClass: EmfUtil.lineage((EClass) featureType)) {
+				for (ModelElementAppearance classAppearance: factory.getAppearance(eClass)) {
+					String label = classAppearance.getLabel();
+					if (!Util.isBlank(label)) {
+						return label;
+					}
+				}
+			}
+		}
+
+		return super.featureLabelText(feature);
+	}
+	
+	protected String diagramDescription(ModelElement modelElement) {
+		String description = getModelElementDescription(modelElement);
+		if (Util.isBlank(description)) {
+			return "";
+		}
+		String tooltip = Util.firstPlainTextSentence(description, 30, 100);
+		return Util.isBlank(tooltip) ? "" : "{" + tooltip + "}";
 	}
 	
 }

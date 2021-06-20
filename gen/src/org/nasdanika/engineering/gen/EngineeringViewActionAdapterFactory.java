@@ -20,6 +20,7 @@ import org.nasdanika.emf.ComposedAdapterFactory;
 import org.nasdanika.emf.FunctionAdapterFactory;
 import org.nasdanika.emf.InstanceAdapterFactory;
 import org.nasdanika.emf.persistence.EObjectLoader;
+import org.nasdanika.engineering.Activity;
 import org.nasdanika.engineering.Decision;
 import org.nasdanika.engineering.Directory;
 import org.nasdanika.engineering.Document;
@@ -33,6 +34,7 @@ import org.nasdanika.engineering.Increment;
 import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.IssueCategory;
 import org.nasdanika.engineering.IssueStatus;
+import org.nasdanika.engineering.Journey;
 import org.nasdanika.engineering.KeyResult;
 import org.nasdanika.engineering.Link;
 import org.nasdanika.engineering.ModelElement;
@@ -44,6 +46,7 @@ import org.nasdanika.engineering.Persona;
 import org.nasdanika.engineering.Principle;
 import org.nasdanika.engineering.Product;
 import org.nasdanika.engineering.Release;
+import org.nasdanika.engineering.Service;
 import org.nasdanika.engineering.Topic;
 import org.nasdanika.html.app.Action;
 import org.nasdanika.html.emf.ViewAction;
@@ -222,6 +225,27 @@ public class EngineeringViewActionAdapterFactory extends ComposedAdapterFactory 
 				getViewActionClass(), 
 				this.getClass().getClassLoader(), 
 				obj -> new DecisionViewAction(obj, this)));			
+		
+		registerAdapterFactory(
+			new FunctionAdapterFactory<ViewAction<Activity>, Activity>(
+				EngineeringPackage.Literals.ACTIVITY, 
+				getViewActionClass(), 
+				this.getClass().getClassLoader(), 
+				obj -> new ActivityViewAction(obj, this)));			
+		
+		registerAdapterFactory(
+			new FunctionAdapterFactory<ViewAction<Service>, Service>(
+				EngineeringPackage.Literals.SERVICE, 
+				getViewActionClass(), 
+				this.getClass().getClassLoader(), 
+				obj -> new ServiceViewAction(obj, this)));			
+		
+		registerAdapterFactory(
+			new FunctionAdapterFactory<ViewAction<Journey>, Journey>(
+				EngineeringPackage.Literals.JOURNEY, 
+				getViewActionClass(), 
+				this.getClass().getClassLoader(), 
+				obj -> new JourneyViewAction(obj, this)));			
 				
 		// Loading appearances from URL's
 		appearance = new ArrayList<>();

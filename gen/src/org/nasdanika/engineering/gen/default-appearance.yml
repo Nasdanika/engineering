@@ -60,6 +60,7 @@ model-elements:
       linked-objectives:
         roles: none 
       all-objectives:
+        label: Objectives
         roles: feature-actions/section 
   feature:
     icon: fas fa-cog
@@ -211,5 +212,39 @@ model-elements:
         roles: none
       sub-objectives:
         roles: feature-actions/section
-        
+  journey-element:
+    features:
+      outputs:
+        roles: none
+      calls:
+        roles: none
+      inputs:
+        roles: none
+      invocations:
+        roles: none  
+      all-outputs:
+        label: Outputs
+        icon: fas fa-sign-out-alt
+      all-calls:
+        label: Calls
+      all-invocations:
+        label: Invocations
+      all-inputs:
+        label: Inputs
+        icon: fas fa-sign-in-alt
+  journey:
+    features:
+      elements:
+        category: false
+        roles: element-actions/none
+  transition:
+    features:
+      payload:
+        category: false
+        roles: element-actions/none
+  call:
+    features:
+      response:
+        category: false
+        roles: element-actions/none
       
