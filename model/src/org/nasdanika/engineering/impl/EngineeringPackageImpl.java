@@ -3457,10 +3457,10 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		initEAttribute(getDecision_Resolution(), ecorePackage.getEString(), "resolution", null, 0, 1, Decision.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(journeyElementEClass, JourneyElement.class, "JourneyElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getJourneyElement_Inputs(), this.getTransition(), null, "inputs", null, 0, 1, JourneyElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getJourneyElement_Inputs(), this.getTransition(), null, "inputs", null, 0, -1, JourneyElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getJourneyElement_Outputs(), this.getTransition(), null, "outputs", null, 0, -1, JourneyElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getJourneyElement_Calls(), this.getCall(), null, "calls", null, 0, -1, JourneyElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getJourneyElement_Invocations(), this.getCall(), null, "invocations", null, 0, 1, JourneyElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getJourneyElement_Invocations(), this.getCall(), null, "invocations", null, 0, -1, JourneyElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getJourneyElement_Requirements(), this.getNamedElement(), null, "requirements", null, 0, -1, JourneyElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getJourneyElement_Deliverables(), this.getNamedElement(), null, "deliverables", null, 0, -1, JourneyElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getJourneyElement_Personas(), this.getPersona(), this.getPersona_JourneyElements(), "personas", null, 0, -1, JourneyElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3528,10 +3528,10 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		// Create annotations
 		// urn:org.nasdanika
 		createUrnorgAnnotations();
-		// http://www.eclipse.org/emf/2002/GenModel
-		createGenModelAnnotations();
 		// http://www.eclipse.org/emf/2002/Ecore
 		createEcoreAnnotations();
+		// http://www.eclipse.org/emf/2002/GenModel
+		createGenModelAnnotations();
 	}
 
 	/**
@@ -5157,6 +5157,12 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 */
 	protected void createEcoreAnnotations() {
 		String source = "http://www.eclipse.org/emf/2002/Ecore";
+		addAnnotation
+		  (modelElementEClass,
+		   source,
+		   new String[] {
+			   "constraints", "path"
+		   });
 		addAnnotation
 		  (endeavorEClass,
 		   source,

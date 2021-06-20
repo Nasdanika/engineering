@@ -6862,7 +6862,7 @@ public interface EngineeringPackage extends EPackage {
 	int JOURNEY_ELEMENT__PRINCIPLES = ENGINEERED_ELEMENT__PRINCIPLES;
 
 	/**
-	 * The feature id for the '<em><b>Inputs</b></em>' reference.
+	 * The feature id for the '<em><b>Inputs</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -6889,7 +6889,7 @@ public interface EngineeringPackage extends EPackage {
 	int JOURNEY_ELEMENT__CALLS = ENGINEERED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Invocations</b></em>' reference.
+	 * The feature id for the '<em><b>Invocations</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -7141,7 +7141,7 @@ public interface EngineeringPackage extends EPackage {
 	int ACTIVITY__PRINCIPLES = JOURNEY_ELEMENT__PRINCIPLES;
 
 	/**
-	 * The feature id for the '<em><b>Inputs</b></em>' reference.
+	 * The feature id for the '<em><b>Inputs</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -7168,7 +7168,7 @@ public interface EngineeringPackage extends EPackage {
 	int ACTIVITY__CALLS = JOURNEY_ELEMENT__CALLS;
 
 	/**
-	 * The feature id for the '<em><b>Invocations</b></em>' reference.
+	 * The feature id for the '<em><b>Invocations</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -7438,7 +7438,7 @@ public interface EngineeringPackage extends EPackage {
 	int SERVICE__PRINCIPLES = JOURNEY_ELEMENT__PRINCIPLES;
 
 	/**
-	 * The feature id for the '<em><b>Inputs</b></em>' reference.
+	 * The feature id for the '<em><b>Inputs</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -7465,7 +7465,7 @@ public interface EngineeringPackage extends EPackage {
 	int SERVICE__CALLS = JOURNEY_ELEMENT__CALLS;
 
 	/**
-	 * The feature id for the '<em><b>Invocations</b></em>' reference.
+	 * The feature id for the '<em><b>Invocations</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -7969,7 +7969,7 @@ public interface EngineeringPackage extends EPackage {
 	int JOURNEY__PRINCIPLES = ACTIVITY__PRINCIPLES;
 
 	/**
-	 * The feature id for the '<em><b>Inputs</b></em>' reference.
+	 * The feature id for the '<em><b>Inputs</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -7996,7 +7996,7 @@ public interface EngineeringPackage extends EPackage {
 	int JOURNEY__CALLS = ACTIVITY__CALLS;
 
 	/**
-	 * The feature id for the '<em><b>Invocations</b></em>' reference.
+	 * The feature id for the '<em><b>Invocations</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -8311,7 +8311,7 @@ public interface EngineeringPackage extends EPackage {
 	int PSEUDO_STATE__PRINCIPLES = JOURNEY_ELEMENT__PRINCIPLES;
 
 	/**
-	 * The feature id for the '<em><b>Inputs</b></em>' reference.
+	 * The feature id for the '<em><b>Inputs</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -8338,7 +8338,7 @@ public interface EngineeringPackage extends EPackage {
 	int PSEUDO_STATE__CALLS = JOURNEY_ELEMENT__CALLS;
 
 	/**
-	 * The feature id for the '<em><b>Invocations</b></em>' reference.
+	 * The feature id for the '<em><b>Invocations</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -8599,7 +8599,7 @@ public interface EngineeringPackage extends EPackage {
 	int CHOICE__PRINCIPLES = PSEUDO_STATE__PRINCIPLES;
 
 	/**
-	 * The feature id for the '<em><b>Inputs</b></em>' reference.
+	 * The feature id for the '<em><b>Inputs</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -8626,7 +8626,7 @@ public interface EngineeringPackage extends EPackage {
 	int CHOICE__CALLS = PSEUDO_STATE__CALLS;
 
 	/**
-	 * The feature id for the '<em><b>Invocations</b></em>' reference.
+	 * The feature id for the '<em><b>Invocations</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -8887,7 +8887,7 @@ public interface EngineeringPackage extends EPackage {
 	int END__PRINCIPLES = PSEUDO_STATE__PRINCIPLES;
 
 	/**
-	 * The feature id for the '<em><b>Inputs</b></em>' reference.
+	 * The feature id for the '<em><b>Inputs</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -8914,7 +8914,7 @@ public interface EngineeringPackage extends EPackage {
 	int END__CALLS = PSEUDO_STATE__CALLS;
 
 	/**
-	 * The feature id for the '<em><b>Invocations</b></em>' reference.
+	 * The feature id for the '<em><b>Invocations</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -9175,7 +9175,7 @@ public interface EngineeringPackage extends EPackage {
 	int ENTRY_POINT__PRINCIPLES = PSEUDO_STATE__PRINCIPLES;
 
 	/**
-	 * The feature id for the '<em><b>Inputs</b></em>' reference.
+	 * The feature id for the '<em><b>Inputs</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -9202,7 +9202,7 @@ public interface EngineeringPackage extends EPackage {
 	int ENTRY_POINT__CALLS = PSEUDO_STATE__CALLS;
 
 	/**
-	 * The feature id for the '<em><b>Invocations</b></em>' reference.
+	 * The feature id for the '<em><b>Invocations</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -9463,7 +9463,7 @@ public interface EngineeringPackage extends EPackage {
 	int EXIT_POINT__PRINCIPLES = PSEUDO_STATE__PRINCIPLES;
 
 	/**
-	 * The feature id for the '<em><b>Inputs</b></em>' reference.
+	 * The feature id for the '<em><b>Inputs</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -9490,7 +9490,7 @@ public interface EngineeringPackage extends EPackage {
 	int EXIT_POINT__CALLS = PSEUDO_STATE__CALLS;
 
 	/**
-	 * The feature id for the '<em><b>Invocations</b></em>' reference.
+	 * The feature id for the '<em><b>Invocations</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -9751,7 +9751,7 @@ public interface EngineeringPackage extends EPackage {
 	int EXPANSION_INPUT__PRINCIPLES = PSEUDO_STATE__PRINCIPLES;
 
 	/**
-	 * The feature id for the '<em><b>Inputs</b></em>' reference.
+	 * The feature id for the '<em><b>Inputs</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -9778,7 +9778,7 @@ public interface EngineeringPackage extends EPackage {
 	int EXPANSION_INPUT__CALLS = PSEUDO_STATE__CALLS;
 
 	/**
-	 * The feature id for the '<em><b>Invocations</b></em>' reference.
+	 * The feature id for the '<em><b>Invocations</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -10039,7 +10039,7 @@ public interface EngineeringPackage extends EPackage {
 	int EXPANSION_OUTPUT__PRINCIPLES = PSEUDO_STATE__PRINCIPLES;
 
 	/**
-	 * The feature id for the '<em><b>Inputs</b></em>' reference.
+	 * The feature id for the '<em><b>Inputs</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -10066,7 +10066,7 @@ public interface EngineeringPackage extends EPackage {
 	int EXPANSION_OUTPUT__CALLS = PSEUDO_STATE__CALLS;
 
 	/**
-	 * The feature id for the '<em><b>Invocations</b></em>' reference.
+	 * The feature id for the '<em><b>Invocations</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -10327,7 +10327,7 @@ public interface EngineeringPackage extends EPackage {
 	int FORK__PRINCIPLES = PSEUDO_STATE__PRINCIPLES;
 
 	/**
-	 * The feature id for the '<em><b>Inputs</b></em>' reference.
+	 * The feature id for the '<em><b>Inputs</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -10354,7 +10354,7 @@ public interface EngineeringPackage extends EPackage {
 	int FORK__CALLS = PSEUDO_STATE__CALLS;
 
 	/**
-	 * The feature id for the '<em><b>Invocations</b></em>' reference.
+	 * The feature id for the '<em><b>Invocations</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -10615,7 +10615,7 @@ public interface EngineeringPackage extends EPackage {
 	int INPUT_PIN__PRINCIPLES = PSEUDO_STATE__PRINCIPLES;
 
 	/**
-	 * The feature id for the '<em><b>Inputs</b></em>' reference.
+	 * The feature id for the '<em><b>Inputs</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -10642,7 +10642,7 @@ public interface EngineeringPackage extends EPackage {
 	int INPUT_PIN__CALLS = PSEUDO_STATE__CALLS;
 
 	/**
-	 * The feature id for the '<em><b>Invocations</b></em>' reference.
+	 * The feature id for the '<em><b>Invocations</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -10903,7 +10903,7 @@ public interface EngineeringPackage extends EPackage {
 	int JOIN__PRINCIPLES = PSEUDO_STATE__PRINCIPLES;
 
 	/**
-	 * The feature id for the '<em><b>Inputs</b></em>' reference.
+	 * The feature id for the '<em><b>Inputs</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -10930,7 +10930,7 @@ public interface EngineeringPackage extends EPackage {
 	int JOIN__CALLS = PSEUDO_STATE__CALLS;
 
 	/**
-	 * The feature id for the '<em><b>Invocations</b></em>' reference.
+	 * The feature id for the '<em><b>Invocations</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -11191,7 +11191,7 @@ public interface EngineeringPackage extends EPackage {
 	int OUTPUT_PIN__PRINCIPLES = PSEUDO_STATE__PRINCIPLES;
 
 	/**
-	 * The feature id for the '<em><b>Inputs</b></em>' reference.
+	 * The feature id for the '<em><b>Inputs</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -11218,7 +11218,7 @@ public interface EngineeringPackage extends EPackage {
 	int OUTPUT_PIN__CALLS = PSEUDO_STATE__CALLS;
 
 	/**
-	 * The feature id for the '<em><b>Invocations</b></em>' reference.
+	 * The feature id for the '<em><b>Invocations</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -11479,7 +11479,7 @@ public interface EngineeringPackage extends EPackage {
 	int START__PRINCIPLES = PSEUDO_STATE__PRINCIPLES;
 
 	/**
-	 * The feature id for the '<em><b>Inputs</b></em>' reference.
+	 * The feature id for the '<em><b>Inputs</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -11506,7 +11506,7 @@ public interface EngineeringPackage extends EPackage {
 	int START__CALLS = PSEUDO_STATE__CALLS;
 
 	/**
-	 * The feature id for the '<em><b>Invocations</b></em>' reference.
+	 * The feature id for the '<em><b>Invocations</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -13837,10 +13837,10 @@ public interface EngineeringPackage extends EPackage {
 	EClass getJourneyElement();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.nasdanika.engineering.JourneyElement#getInputs <em>Inputs</em>}'.
+	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.JourneyElement#getInputs <em>Inputs</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Inputs</em>'.
+	 * @return the meta object for the reference list '<em>Inputs</em>'.
 	 * @see org.nasdanika.engineering.JourneyElement#getInputs()
 	 * @see #getJourneyElement()
 	 * @generated
@@ -13870,10 +13870,10 @@ public interface EngineeringPackage extends EPackage {
 	EReference getJourneyElement_Calls();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.nasdanika.engineering.JourneyElement#getInvocations <em>Invocations</em>}'.
+	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.JourneyElement#getInvocations <em>Invocations</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Invocations</em>'.
+	 * @return the meta object for the reference list '<em>Invocations</em>'.
 	 * @see org.nasdanika.engineering.JourneyElement#getInvocations()
 	 * @see #getJourneyElement()
 	 * @generated
@@ -15840,7 +15840,7 @@ public interface EngineeringPackage extends EPackage {
 		EClass JOURNEY_ELEMENT = eINSTANCE.getJourneyElement();
 
 		/**
-		 * The meta object literal for the '<em><b>Inputs</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Inputs</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -15864,7 +15864,7 @@ public interface EngineeringPackage extends EPackage {
 		EReference JOURNEY_ELEMENT__CALLS = eINSTANCE.getJourneyElement_Calls();
 
 		/**
-		 * The meta object literal for the '<em><b>Invocations</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Invocations</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

@@ -2,6 +2,7 @@
  */
 package org.nasdanika.engineering.util;
 
+import java.util.Collection;
 import java.util.Date;
 import java.util.Map;
 
@@ -9,6 +10,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.util.EObjectValidator;
 import org.nasdanika.common.Adaptable;
 import org.nasdanika.common.Context;
@@ -71,6 +73,7 @@ import org.nasdanika.engineering.Start;
 import org.nasdanika.engineering.Topic;
 import org.nasdanika.engineering.Transition;
 import org.nasdanika.html.app.SectionStyle;
+import org.nasdanika.html.app.impl.Util;
 
 /**
  * <!-- begin-user-doc -->
@@ -286,7 +289,48 @@ public class EngineeringValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateModelElement(ModelElement modelElement, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(modelElement, diagnostics, context);
+		if (!validate_NoCircularContainment(modelElement, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(modelElement, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(modelElement, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(modelElement, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(modelElement, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(modelElement, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(modelElement, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(modelElement, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(modelElement, diagnostics, context);
+		if (result || diagnostics != null) result &= validateModelElement_path(modelElement, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * Validates the path constraint of '<em>Model Element</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean validateModelElement_path(ModelElement modelElement, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (diagnostics != null) {
+			String path = modelElement.getPath();
+			if (!Util.isBlank(path)) {
+				EReference cf = modelElement.eContainmentFeature();
+				if (cf != null && cf.isMany()) {
+					EObject c = modelElement.eContainer();
+					if (c != null) {
+						Object cfv = c.eGet(cf);
+						if (cfv instanceof Collection) {
+							DiagnosticHelper helper = new DiagnosticHelper(diagnostics, DIAGNOSTIC_SOURCE, 0, modelElement);
+							for (Object e: (Collection<?>) cfv) {
+								if (e != modelElement && e instanceof ModelElement && path.equals(((ModelElement) e).getPath())) {
+									helper.error("Duplicate path in the containing collection: " + path);									
+								}
+							}
+							return helper.isSuccess();
+						}
+					}
+				}
+			}
+		}
+		return true;
 	}
 
 	/**
@@ -295,7 +339,17 @@ public class EngineeringValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateNamedElement(NamedElement namedElement, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(namedElement, diagnostics, context);
+		if (!validate_NoCircularContainment(namedElement, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(namedElement, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(namedElement, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(namedElement, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(namedElement, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(namedElement, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(namedElement, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(namedElement, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(namedElement, diagnostics, context);
+		if (result || diagnostics != null) result &= validateModelElement_path(namedElement, diagnostics, context);
+		return result;
 	}
 
 	/**
@@ -437,6 +491,7 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_UniqueID(increment, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(increment, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(increment, diagnostics, context);
+		if (result || diagnostics != null) result &= validateModelElement_path(increment, diagnostics, context);
 		if (result || diagnostics != null) result &= validateEndeavor_start_end(increment, diagnostics, context);
 		if (result || diagnostics != null) result &= validateEndeavor_capacity(increment, diagnostics, context);
 		if (result || diagnostics != null) result &= validateIncrement_nesting(increment, diagnostics, context);
@@ -466,7 +521,17 @@ public class EngineeringValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateIssueCategory(IssueCategory issueCategory, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(issueCategory, diagnostics, context);
+		if (!validate_NoCircularContainment(issueCategory, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(issueCategory, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(issueCategory, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(issueCategory, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(issueCategory, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(issueCategory, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(issueCategory, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(issueCategory, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(issueCategory, diagnostics, context);
+		if (result || diagnostics != null) result &= validateModelElement_path(issueCategory, diagnostics, context);
+		return result;
 	}
 
 	/**
@@ -475,7 +540,17 @@ public class EngineeringValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateIssueStatus(IssueStatus issueStatus, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(issueStatus, diagnostics, context);
+		if (!validate_NoCircularContainment(issueStatus, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(issueStatus, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(issueStatus, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(issueStatus, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(issueStatus, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(issueStatus, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(issueStatus, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(issueStatus, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(issueStatus, diagnostics, context);
+		if (result || diagnostics != null) result &= validateModelElement_path(issueStatus, diagnostics, context);
+		return result;
 	}
 
 	/**
@@ -493,6 +568,7 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_UniqueID(issue, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(issue, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(issue, diagnostics, context);
+		if (result || diagnostics != null) result &= validateModelElement_path(issue, diagnostics, context);
 		if (result || diagnostics != null) result &= validateEndeavor_start_end(issue, diagnostics, context);
 		if (result || diagnostics != null) result &= validateEndeavor_capacity(issue, diagnostics, context);
 		if (result || diagnostics != null) result &= validateIssue_increment(issue, diagnostics, context);
@@ -529,7 +605,17 @@ public class EngineeringValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateNote(Note note, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(note, diagnostics, context);
+		if (!validate_NoCircularContainment(note, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(note, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(note, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(note, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(note, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(note, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(note, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(note, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(note, diagnostics, context);
+		if (result || diagnostics != null) result &= validateModelElement_path(note, diagnostics, context);
+		return result;
 	}
 
 	/**
@@ -547,6 +633,7 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_UniqueID(engineeredElement, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(engineeredElement, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(engineeredElement, diagnostics, context);
+		if (result || diagnostics != null) result &= validateModelElement_path(engineeredElement, diagnostics, context);
 		if (result || diagnostics != null) result &= validateEngineeredElement_capacity(engineeredElement, diagnostics, context);
 		return result;
 	}
@@ -586,6 +673,7 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_UniqueID(persona, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(persona, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(persona, diagnostics, context);
+		if (result || diagnostics != null) result &= validateModelElement_path(persona, diagnostics, context);
 		if (result || diagnostics != null) result &= validateEngineeredElement_capacity(persona, diagnostics, context);
 		return result;
 	}
@@ -605,6 +693,7 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_UniqueID(engineer, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(engineer, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(engineer, diagnostics, context);
+		if (result || diagnostics != null) result &= validateModelElement_path(engineer, diagnostics, context);
 		if (result || diagnostics != null) result &= validateEngineer_capacity(engineer, diagnostics, context);
 		return result;
 	}
@@ -646,6 +735,7 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_UniqueID(organization, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(organization, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(organization, diagnostics, context);
+		if (result || diagnostics != null) result &= validateModelElement_path(organization, diagnostics, context);
 		if (result || diagnostics != null) result &= validateEngineer_capacity(organization, diagnostics, context);
 		return result;
 	}
@@ -665,6 +755,7 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_UniqueID(module, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(module, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(module, diagnostics, context);
+		if (result || diagnostics != null) result &= validateModelElement_path(module, diagnostics, context);
 		if (result || diagnostics != null) result &= validateEngineeredElement_capacity(module, diagnostics, context);
 		return result;
 	}
@@ -684,6 +775,7 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_UniqueID(product, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(product, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(product, diagnostics, context);
+		if (result || diagnostics != null) result &= validateModelElement_path(product, diagnostics, context);
 		if (result || diagnostics != null) result &= validateEngineeredElement_capacity(product, diagnostics, context);
 		return result;
 	}
@@ -694,7 +786,17 @@ public class EngineeringValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateCapability(Capability capability, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(capability, diagnostics, context);
+		if (!validate_NoCircularContainment(capability, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(capability, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(capability, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(capability, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(capability, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(capability, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(capability, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(capability, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(capability, diagnostics, context);
+		if (result || diagnostics != null) result &= validateModelElement_path(capability, diagnostics, context);
+		return result;
 	}
 
 	/**
@@ -712,6 +814,7 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_UniqueID(engineeredCapability, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(engineeredCapability, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(engineeredCapability, diagnostics, context);
+		if (result || diagnostics != null) result &= validateModelElement_path(engineeredCapability, diagnostics, context);
 		if (result || diagnostics != null) result &= validateEndeavor_start_end(engineeredCapability, diagnostics, context);
 		if (result || diagnostics != null) result &= validateEndeavor_capacity(engineeredCapability, diagnostics, context);
 		return result;
@@ -732,6 +835,7 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_UniqueID(release, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(release, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(release, diagnostics, context);
+		if (result || diagnostics != null) result &= validateModelElement_path(release, diagnostics, context);
 		if (result || diagnostics != null) result &= validateEndeavor_start_end(release, diagnostics, context);
 		if (result || diagnostics != null) result &= validateEndeavor_capacity(release, diagnostics, context);
 		if (result || diagnostics != null) result &= validateRelease_increment(release, diagnostics, context);
@@ -777,6 +881,7 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_UniqueID(feature, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(feature, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(feature, diagnostics, context);
+		if (result || diagnostics != null) result &= validateModelElement_path(feature, diagnostics, context);
 		if (result || diagnostics != null) result &= validateEndeavor_start_end(feature, diagnostics, context);
 		if (result || diagnostics != null) result &= validateEndeavor_capacity(feature, diagnostics, context);
 		return result;
@@ -797,6 +902,7 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_UniqueID(activity, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(activity, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(activity, diagnostics, context);
+		if (result || diagnostics != null) result &= validateModelElement_path(activity, diagnostics, context);
 		if (result || diagnostics != null) result &= validateEngineeredElement_capacity(activity, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourneyElement_final(activity, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourneyElement_override(activity, diagnostics, context);
@@ -820,6 +926,7 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_UniqueID(service, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(service, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(service, diagnostics, context);
+		if (result || diagnostics != null) result &= validateModelElement_path(service, diagnostics, context);
 		if (result || diagnostics != null) result &= validateEngineeredElement_capacity(service, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourneyElement_final(service, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourneyElement_override(service, diagnostics, context);
@@ -865,6 +972,7 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_UniqueID(journey, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(journey, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(journey, diagnostics, context);
+		if (result || diagnostics != null) result &= validateModelElement_path(journey, diagnostics, context);
 		if (result || diagnostics != null) result &= validateEngineeredElement_capacity(journey, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourney_final(journey, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourneyElement_override(journey, diagnostics, context);
@@ -928,6 +1036,7 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_UniqueID(pseudoState, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(pseudoState, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(pseudoState, diagnostics, context);
+		if (result || diagnostics != null) result &= validateModelElement_path(pseudoState, diagnostics, context);
 		if (result || diagnostics != null) result &= validateEngineeredElement_capacity(pseudoState, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourneyElement_final(pseudoState, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourneyElement_override(pseudoState, diagnostics, context);
@@ -951,6 +1060,7 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_UniqueID(choice, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(choice, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(choice, diagnostics, context);
+		if (result || diagnostics != null) result &= validateModelElement_path(choice, diagnostics, context);
 		if (result || diagnostics != null) result &= validateEngineeredElement_capacity(choice, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourneyElement_final(choice, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourneyElement_override(choice, diagnostics, context);
@@ -993,6 +1103,7 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_UniqueID(end, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(end, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(end, diagnostics, context);
+		if (result || diagnostics != null) result &= validateModelElement_path(end, diagnostics, context);
 		if (result || diagnostics != null) result &= validateEngineeredElement_capacity(end, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourneyElement_final(end, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourneyElement_override(end, diagnostics, context);
@@ -1054,6 +1165,7 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_UniqueID(entryPoint, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(entryPoint, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(entryPoint, diagnostics, context);
+		if (result || diagnostics != null) result &= validateModelElement_path(entryPoint, diagnostics, context);
 		if (result || diagnostics != null) result &= validateEngineeredElement_capacity(entryPoint, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourneyElement_final(entryPoint, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourneyElement_override(entryPoint, diagnostics, context);
@@ -1077,6 +1189,7 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_UniqueID(exitPoint, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(exitPoint, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(exitPoint, diagnostics, context);
+		if (result || diagnostics != null) result &= validateModelElement_path(exitPoint, diagnostics, context);
 		if (result || diagnostics != null) result &= validateEngineeredElement_capacity(exitPoint, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourneyElement_final(exitPoint, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourneyElement_override(exitPoint, diagnostics, context);
@@ -1100,6 +1213,7 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_UniqueID(expansionInput, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(expansionInput, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(expansionInput, diagnostics, context);
+		if (result || diagnostics != null) result &= validateModelElement_path(expansionInput, diagnostics, context);
 		if (result || diagnostics != null) result &= validateEngineeredElement_capacity(expansionInput, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourneyElement_final(expansionInput, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourneyElement_override(expansionInput, diagnostics, context);
@@ -1123,6 +1237,7 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_UniqueID(expansionOutput, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(expansionOutput, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(expansionOutput, diagnostics, context);
+		if (result || diagnostics != null) result &= validateModelElement_path(expansionOutput, diagnostics, context);
 		if (result || diagnostics != null) result &= validateEngineeredElement_capacity(expansionOutput, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourneyElement_final(expansionOutput, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourneyElement_override(expansionOutput, diagnostics, context);
@@ -1146,6 +1261,7 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_UniqueID(fork, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(fork, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(fork, diagnostics, context);
+		if (result || diagnostics != null) result &= validateModelElement_path(fork, diagnostics, context);
 		if (result || diagnostics != null) result &= validateEngineeredElement_capacity(fork, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourneyElement_final(fork, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourneyElement_override(fork, diagnostics, context);
@@ -1188,6 +1304,7 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_UniqueID(inputPin, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(inputPin, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(inputPin, diagnostics, context);
+		if (result || diagnostics != null) result &= validateModelElement_path(inputPin, diagnostics, context);
 		if (result || diagnostics != null) result &= validateEngineeredElement_capacity(inputPin, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourneyElement_final(inputPin, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourneyElement_override(inputPin, diagnostics, context);
@@ -1211,6 +1328,7 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_UniqueID(join, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(join, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(join, diagnostics, context);
+		if (result || diagnostics != null) result &= validateModelElement_path(join, diagnostics, context);
 		if (result || diagnostics != null) result &= validateEngineeredElement_capacity(join, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourneyElement_final(join, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourneyElement_override(join, diagnostics, context);
@@ -1253,6 +1371,7 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_UniqueID(outputPin, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(outputPin, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(outputPin, diagnostics, context);
+		if (result || diagnostics != null) result &= validateModelElement_path(outputPin, diagnostics, context);
 		if (result || diagnostics != null) result &= validateEngineeredElement_capacity(outputPin, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourneyElement_final(outputPin, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourneyElement_override(outputPin, diagnostics, context);
@@ -1276,6 +1395,7 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_UniqueID(start, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(start, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(start, diagnostics, context);
+		if (result || diagnostics != null) result &= validateModelElement_path(start, diagnostics, context);
 		if (result || diagnostics != null) result &= validateEngineeredElement_capacity(start, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourneyElement_final(start, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourneyElement_override(start, diagnostics, context);
@@ -1328,7 +1448,17 @@ public class EngineeringValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateTransition(Transition transition, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(transition, diagnostics, context);
+		if (!validate_NoCircularContainment(transition, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(transition, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(transition, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(transition, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(transition, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(transition, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(transition, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(transition, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(transition, diagnostics, context);
+		if (result || diagnostics != null) result &= validateModelElement_path(transition, diagnostics, context);
+		return result;
 	}
 
 	/**
@@ -1337,7 +1467,17 @@ public class EngineeringValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateCall(Call call, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(call, diagnostics, context);
+		if (!validate_NoCircularContainment(call, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(call, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(call, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(call, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(call, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(call, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(call, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(call, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(call, diagnostics, context);
+		if (result || diagnostics != null) result &= validateModelElement_path(call, diagnostics, context);
+		return result;
 	}
 
 	/**
@@ -1355,6 +1495,7 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_UniqueID(directory, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(directory, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(directory, diagnostics, context);
+		if (result || diagnostics != null) result &= validateModelElement_path(directory, diagnostics, context);
 		if (result || diagnostics != null) result &= validateEngineeredElement_capacity(directory, diagnostics, context);
 		return result;
 	}
@@ -1365,7 +1506,17 @@ public class EngineeringValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateCapacity(Capacity capacity, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(capacity, diagnostics, context);
+		if (!validate_NoCircularContainment(capacity, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(capacity, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(capacity, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(capacity, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(capacity, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(capacity, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(capacity, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(capacity, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(capacity, diagnostics, context);
+		if (result || diagnostics != null) result &= validateModelElement_path(capacity, diagnostics, context);
+		return result;
 	}
 
 	/**
@@ -1374,7 +1525,17 @@ public class EngineeringValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateAllocation(Allocation allocation, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(allocation, diagnostics, context);
+		if (!validate_NoCircularContainment(allocation, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(allocation, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(allocation, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(allocation, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(allocation, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(allocation, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(allocation, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(allocation, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(allocation, diagnostics, context);
+		if (result || diagnostics != null) result &= validateModelElement_path(allocation, diagnostics, context);
+		return result;
 	}
 
 	/**
@@ -1392,7 +1553,17 @@ public class EngineeringValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateAim(Aim aim, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(aim, diagnostics, context);
+		if (!validate_NoCircularContainment(aim, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(aim, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(aim, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(aim, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(aim, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(aim, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(aim, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(aim, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(aim, diagnostics, context);
+		if (result || diagnostics != null) result &= validateModelElement_path(aim, diagnostics, context);
+		return result;
 	}
 
 	/**
@@ -1401,7 +1572,17 @@ public class EngineeringValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validatePrinciple(Principle principle, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(principle, diagnostics, context);
+		if (!validate_NoCircularContainment(principle, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(principle, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(principle, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(principle, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(principle, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(principle, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(principle, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(principle, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(principle, diagnostics, context);
+		if (result || diagnostics != null) result &= validateModelElement_path(principle, diagnostics, context);
+		return result;
 	}
 
 	/**
@@ -1410,7 +1591,17 @@ public class EngineeringValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateAlignment(Alignment alignment, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(alignment, diagnostics, context);
+		if (!validate_NoCircularContainment(alignment, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(alignment, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(alignment, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(alignment, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(alignment, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(alignment, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(alignment, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(alignment, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(alignment, diagnostics, context);
+		if (result || diagnostics != null) result &= validateModelElement_path(alignment, diagnostics, context);
+		return result;
 	}
 
 	/**
@@ -1419,7 +1610,17 @@ public class EngineeringValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateGoal(Goal goal, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(goal, diagnostics, context);
+		if (!validate_NoCircularContainment(goal, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(goal, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(goal, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(goal, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(goal, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(goal, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(goal, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(goal, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(goal, diagnostics, context);
+		if (result || diagnostics != null) result &= validateModelElement_path(goal, diagnostics, context);
+		return result;
 	}
 
 	/**
@@ -1428,7 +1629,17 @@ public class EngineeringValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateForum(Forum forum, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(forum, diagnostics, context);
+		if (!validate_NoCircularContainment(forum, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(forum, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(forum, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(forum, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(forum, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(forum, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(forum, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(forum, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(forum, diagnostics, context);
+		if (result || diagnostics != null) result &= validateModelElement_path(forum, diagnostics, context);
+		return result;
 	}
 
 	/**
@@ -1437,7 +1648,17 @@ public class EngineeringValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateTopic(Topic topic, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(topic, diagnostics, context);
+		if (!validate_NoCircularContainment(topic, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(topic, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(topic, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(topic, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(topic, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(topic, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(topic, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(topic, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(topic, diagnostics, context);
+		if (result || diagnostics != null) result &= validateModelElement_path(topic, diagnostics, context);
+		return result;
 	}
 
 	/**
@@ -1509,6 +1730,7 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_UniqueID(document, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(document, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(document, diagnostics, context);
+		if (result || diagnostics != null) result &= validateModelElement_path(document, diagnostics, context);
 		if (result || diagnostics != null) result &= validateEngineeredElement_capacity(document, diagnostics, context);
 		return result;
 	}
@@ -1519,7 +1741,17 @@ public class EngineeringValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateNamedElementReference(NamedElementReference namedElementReference, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(namedElementReference, diagnostics, context);
+		if (!validate_NoCircularContainment(namedElementReference, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(namedElementReference, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(namedElementReference, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(namedElementReference, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(namedElementReference, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(namedElementReference, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(namedElementReference, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(namedElementReference, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(namedElementReference, diagnostics, context);
+		if (result || diagnostics != null) result &= validateModelElement_path(namedElementReference, diagnostics, context);
+		return result;
 	}
 
 	/**
@@ -1528,7 +1760,17 @@ public class EngineeringValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateLink(Link link, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(link, diagnostics, context);
+		if (!validate_NoCircularContainment(link, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(link, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(link, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(link, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(link, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(link, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(link, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(link, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(link, diagnostics, context);
+		if (result || diagnostics != null) result &= validateModelElement_path(link, diagnostics, context);
+		return result;
 	}
 
 	/**
@@ -1537,7 +1779,17 @@ public class EngineeringValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateKeyResult(KeyResult keyResult, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(keyResult, diagnostics, context);
+		if (!validate_NoCircularContainment(keyResult, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(keyResult, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(keyResult, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(keyResult, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(keyResult, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(keyResult, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(keyResult, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(keyResult, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(keyResult, diagnostics, context);
+		if (result || diagnostics != null) result &= validateModelElement_path(keyResult, diagnostics, context);
+		return result;
 	}
 
 	/**
@@ -1546,7 +1798,17 @@ public class EngineeringValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateObjective(Objective objective, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(objective, diagnostics, context);
+		if (!validate_NoCircularContainment(objective, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(objective, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(objective, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(objective, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(objective, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(objective, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(objective, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(objective, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(objective, diagnostics, context);
+		if (result || diagnostics != null) result &= validateModelElement_path(objective, diagnostics, context);
+		return result;
 	}
 
 	/**
@@ -1564,6 +1826,7 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_UniqueID(decision, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(decision, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(decision, diagnostics, context);
+		if (result || diagnostics != null) result &= validateModelElement_path(decision, diagnostics, context);
 		if (result || diagnostics != null) result &= validateEndeavor_start_end(decision, diagnostics, context);
 		if (result || diagnostics != null) result &= validateEndeavor_capacity(decision, diagnostics, context);
 		if (result || diagnostics != null) result &= validateIssue_increment(decision, diagnostics, context);
@@ -1585,6 +1848,7 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_UniqueID(journeyElement, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(journeyElement, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(journeyElement, diagnostics, context);
+		if (result || diagnostics != null) result &= validateModelElement_path(journeyElement, diagnostics, context);
 		if (result || diagnostics != null) result &= validateEngineeredElement_capacity(journeyElement, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourneyElement_final(journeyElement, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourneyElement_override(journeyElement, diagnostics, context);
@@ -1681,7 +1945,17 @@ public class EngineeringValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateMessage(Message message, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(message, diagnostics, context);
+		if (!validate_NoCircularContainment(message, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(message, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(message, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(message, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(message, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(message, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(message, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(message, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(message, diagnostics, context);
+		if (result || diagnostics != null) result &= validateModelElement_path(message, diagnostics, context);
+		return result;
 	}
 
 	/**

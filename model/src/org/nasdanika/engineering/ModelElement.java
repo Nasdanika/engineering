@@ -28,6 +28,7 @@ import org.nasdanika.common.Adaptable;
  * @see org.nasdanika.engineering.EngineeringPackage#getModelElement()
  * @model abstract="true" superTypes="org.nasdanika.engineering.Adaptable"
  *        annotation="urn:org.nasdanika documentation-reference='doc/model-element.md'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='path'"
  * @generated
  */
 public interface ModelElement extends EObject, Adaptable {
