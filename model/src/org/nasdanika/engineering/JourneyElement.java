@@ -47,29 +47,19 @@ public interface JourneyElement extends EngineeredElement {
 	public static final String VERTICAL = "vertical";
 	
 	/**
-	 * Returns the value of the '<em><b>Inputs</b></em>' reference.
+	 * Returns the value of the '<em><b>Inputs</b></em>' reference list.
+	 * The list contents are of type {@link org.nasdanika.engineering.Transition}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Transitions which have this journey element as its target. Derived opposite to outputs.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Inputs</em>' reference.
-	 * @see #setInputs(Transition)
+	 * @return the value of the '<em>Inputs</em>' reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getJourneyElement_Inputs()
 	 * @model derived="true"
 	 * @generated
 	 */
-	Transition getInputs();
-
-	/**
-	 * Sets the value of the '{@link org.nasdanika.engineering.JourneyElement#getInputs <em>Inputs</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Inputs</em>' reference.
-	 * @see #getInputs()
-	 * @generated
-	 */
-	void setInputs(Transition value);
+	EList<Transition> getInputs();
 
 	/**
 	 * Returns the value of the '<em><b>Outputs</b></em>' containment reference list.
@@ -102,29 +92,19 @@ public interface JourneyElement extends EngineeredElement {
 	EList<Call> getCalls();
 
 	/**
-	 * Returns the value of the '<em><b>Invocations</b></em>' reference.
+	 * Returns the value of the '<em><b>Invocations</b></em>' reference list.
+	 * The list contents are of type {@link org.nasdanika.engineering.Call}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Calls which have this journey element as its target. Derived opposite to calls.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Invocations</em>' reference.
-	 * @see #setInvocations(Call)
+	 * @return the value of the '<em>Invocations</em>' reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getJourneyElement_Invocations()
 	 * @model derived="true"
 	 * @generated
 	 */
-	Call getInvocations();
-
-	/**
-	 * Sets the value of the '{@link org.nasdanika.engineering.JourneyElement#getInvocations <em>Invocations</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Invocations</em>' reference.
-	 * @see #getInvocations()
-	 * @generated
-	 */
-	void setInvocations(Call value);
+	EList<Call> getInvocations();
 
 	/**
 	 * Returns the value of the '<em><b>Requirements</b></em>' reference list.
