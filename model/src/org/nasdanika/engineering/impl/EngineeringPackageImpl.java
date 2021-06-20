@@ -23,9 +23,11 @@ import org.nasdanika.engineering.Appearance;
 import org.nasdanika.engineering.Call;
 import org.nasdanika.engineering.Capability;
 import org.nasdanika.engineering.Capacity;
+import org.nasdanika.engineering.Choice;
 import org.nasdanika.engineering.Decision;
 import org.nasdanika.engineering.Directory;
 import org.nasdanika.engineering.Document;
+import org.nasdanika.engineering.End;
 import org.nasdanika.engineering.Endeavor;
 import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeredCapability;
@@ -33,15 +35,23 @@ import org.nasdanika.engineering.EngineeredElement;
 import org.nasdanika.engineering.EngineeringAppearance;
 import org.nasdanika.engineering.EngineeringFactory;
 import org.nasdanika.engineering.EngineeringPackage;
+import org.nasdanika.engineering.EntryPoint;
+import org.nasdanika.engineering.ExitPoint;
+import org.nasdanika.engineering.ExpansionInput;
+import org.nasdanika.engineering.ExpansionOutput;
 import org.nasdanika.engineering.Feature;
 import org.nasdanika.engineering.FeatureAppearance;
+import org.nasdanika.engineering.Fork;
 import org.nasdanika.engineering.Forum;
 import org.nasdanika.engineering.Goal;
 import org.nasdanika.engineering.Increment;
+import org.nasdanika.engineering.InputPin;
 import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.IssueCategory;
 import org.nasdanika.engineering.IssueStatus;
+import org.nasdanika.engineering.Join;
 import org.nasdanika.engineering.Journey;
+import org.nasdanika.engineering.JourneyElement;
 import org.nasdanika.engineering.KeyResult;
 import org.nasdanika.engineering.Link;
 import org.nasdanika.engineering.Message;
@@ -52,10 +62,14 @@ import org.nasdanika.engineering.NamedElementReference;
 import org.nasdanika.engineering.Note;
 import org.nasdanika.engineering.Objective;
 import org.nasdanika.engineering.Organization;
+import org.nasdanika.engineering.OutputPin;
 import org.nasdanika.engineering.Persona;
 import org.nasdanika.engineering.Principle;
 import org.nasdanika.engineering.Product;
+import org.nasdanika.engineering.PseudoState;
 import org.nasdanika.engineering.Release;
+import org.nasdanika.engineering.Service;
+import org.nasdanika.engineering.Start;
 import org.nasdanika.engineering.Topic;
 import org.nasdanika.engineering.Transition;
 import org.nasdanika.engineering.util.EngineeringValidator;
@@ -199,7 +213,98 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass serviceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass journeyEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass pseudoStateEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass choiceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass endEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass entryPointEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass exitPointEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass expansionInputEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass expansionOutputEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass forkEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass inputPinEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass joinEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass outputPinEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass startEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -382,6 +487,13 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	private EClass decisionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass journeyElementEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -774,7 +886,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EReference getPersona_Activities() {
+	public EReference getPersona_JourneyElements() {
 		return (EReference)personaEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -1324,7 +1436,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EReference getActivity_Personas() {
+	public EReference getActivity_Features() {
 		return (EReference)activityEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -1334,7 +1446,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EReference getActivity_Outputs() {
+	public EReference getActivity_Services() {
 		return (EReference)activityEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -1344,8 +1456,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EAttribute getActivity_ActivityType() {
-		return (EAttribute)activityEClass.getEStructuralFeatures().get(2);
+	public EClass getService() {
+		return serviceEClass;
 	}
 
 	/**
@@ -1354,38 +1466,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EReference getActivity_Requirements() {
-		return (EReference)activityEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getActivity_Deliverables() {
-		return (EReference)activityEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getActivity_Calls() {
-		return (EReference)activityEClass.getEStructuralFeatures().get(5);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getActivity_Features() {
-		return (EReference)activityEClass.getEStructuralFeatures().get(6);
+	public EReference getService_Target() {
+		return (EReference)serviceEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1404,7 +1486,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EReference getJourney_Activities() {
+	public EReference getJourney_Elements() {
 		return (EReference)journeyEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -1414,8 +1496,168 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EAttribute getJourney_Partition() {
-		return (EAttribute)journeyEClass.getEStructuralFeatures().get(1);
+	public EReference getJourney_Extends() {
+		return (EReference)journeyEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getJourney_Extensions() {
+		return (EReference)journeyEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getJourney_Root() {
+		return (EReference)journeyEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getJourney_AllElements() {
+		return (EReference)journeyEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getPseudoState() {
+		return pseudoStateEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getPseudoState_Type() {
+		return (EAttribute)pseudoStateEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getChoice() {
+		return choiceEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getEnd() {
+		return endEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getEntryPoint() {
+		return entryPointEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getExitPoint() {
+		return exitPointEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getExpansionInput() {
+		return expansionInputEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getExpansionOutput() {
+		return expansionOutputEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getFork() {
+		return forkEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getInputPin() {
+		return inputPinEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getJoin() {
+		return joinEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getOutputPin() {
+		return outputPinEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getStart() {
+		return startEClass;
 	}
 
 	/**
@@ -1446,6 +1688,16 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	@Override
 	public EReference getTransition_Payload() {
 		return (EReference)transitionEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getTransition_Suppress() {
+		return (EAttribute)transitionEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -2364,6 +2616,156 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
+	public EClass getJourneyElement() {
+		return journeyElementEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getJourneyElement_Inputs() {
+		return (EReference)journeyElementEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getJourneyElement_Outputs() {
+		return (EReference)journeyElementEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getJourneyElement_Calls() {
+		return (EReference)journeyElementEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getJourneyElement_Invocations() {
+		return (EReference)journeyElementEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getJourneyElement_Requirements() {
+		return (EReference)journeyElementEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getJourneyElement_Deliverables() {
+		return (EReference)journeyElementEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getJourneyElement_Personas() {
+		return (EReference)journeyElementEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getJourneyElement_AllOutputs() {
+		return (EReference)journeyElementEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getJourneyElement_AllInputs() {
+		return (EReference)journeyElementEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getJourneyElement_AllCalls() {
+		return (EReference)journeyElementEClass.getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getJourneyElement_AllInvocations() {
+		return (EReference)journeyElementEClass.getEStructuralFeatures().get(10);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getJourneyElement_Overrides() {
+		return (EReference)journeyElementEClass.getEStructuralFeatures().get(11);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getJourneyElement_OverridenBy() {
+		return (EReference)journeyElementEClass.getEStructuralFeatures().get(12);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getJourneyElement_Modifiers() {
+		return (EAttribute)journeyElementEClass.getEStructuralFeatures().get(13);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EReference getDocument_Sections() {
 		return (EReference)documentEClass.getEStructuralFeatures().get(0);
 	}
@@ -2532,7 +2934,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		createEReference(engineeredElementEClass, ENGINEERED_ELEMENT__PRINCIPLES);
 
 		personaEClass = createEClass(PERSONA);
-		createEReference(personaEClass, PERSONA__ACTIVITIES);
+		createEReference(personaEClass, PERSONA__JOURNEY_ELEMENTS);
 		createEReference(personaEClass, PERSONA__GOALS);
 		createEReference(personaEClass, PERSONA__REPRESENTATIVES);
 		createEReference(personaEClass, PERSONA__EXTENDS);
@@ -2582,26 +2984,6 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		createEReference(featureEClass, FEATURE__ACTIVITIES);
 		createEReference(featureEClass, FEATURE__ISSUES);
 		createEReference(featureEClass, FEATURE__USES);
-
-		activityEClass = createEClass(ACTIVITY);
-		createEReference(activityEClass, ACTIVITY__PERSONAS);
-		createEReference(activityEClass, ACTIVITY__OUTPUTS);
-		createEAttribute(activityEClass, ACTIVITY__ACTIVITY_TYPE);
-		createEReference(activityEClass, ACTIVITY__REQUIREMENTS);
-		createEReference(activityEClass, ACTIVITY__DELIVERABLES);
-		createEReference(activityEClass, ACTIVITY__CALLS);
-		createEReference(activityEClass, ACTIVITY__FEATURES);
-
-		journeyEClass = createEClass(JOURNEY);
-		createEReference(journeyEClass, JOURNEY__ACTIVITIES);
-		createEAttribute(journeyEClass, JOURNEY__PARTITION);
-
-		transitionEClass = createEClass(TRANSITION);
-		createEReference(transitionEClass, TRANSITION__TARGET);
-		createEReference(transitionEClass, TRANSITION__PAYLOAD);
-
-		callEClass = createEClass(CALL);
-		createEReference(callEClass, CALL__RESPONSE);
 
 		directoryEClass = createEClass(DIRECTORY);
 		createEReference(directoryEClass, DIRECTORY__ELEMENTS);
@@ -2698,6 +3080,69 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		createEReference(decisionEClass, DECISION__SUPERCEDED_BY);
 		createEAttribute(decisionEClass, DECISION__RESOLUTION);
 
+		journeyElementEClass = createEClass(JOURNEY_ELEMENT);
+		createEReference(journeyElementEClass, JOURNEY_ELEMENT__INPUTS);
+		createEReference(journeyElementEClass, JOURNEY_ELEMENT__OUTPUTS);
+		createEReference(journeyElementEClass, JOURNEY_ELEMENT__CALLS);
+		createEReference(journeyElementEClass, JOURNEY_ELEMENT__INVOCATIONS);
+		createEReference(journeyElementEClass, JOURNEY_ELEMENT__REQUIREMENTS);
+		createEReference(journeyElementEClass, JOURNEY_ELEMENT__DELIVERABLES);
+		createEReference(journeyElementEClass, JOURNEY_ELEMENT__PERSONAS);
+		createEReference(journeyElementEClass, JOURNEY_ELEMENT__ALL_OUTPUTS);
+		createEReference(journeyElementEClass, JOURNEY_ELEMENT__ALL_INPUTS);
+		createEReference(journeyElementEClass, JOURNEY_ELEMENT__ALL_CALLS);
+		createEReference(journeyElementEClass, JOURNEY_ELEMENT__ALL_INVOCATIONS);
+		createEReference(journeyElementEClass, JOURNEY_ELEMENT__OVERRIDES);
+		createEReference(journeyElementEClass, JOURNEY_ELEMENT__OVERRIDEN_BY);
+		createEAttribute(journeyElementEClass, JOURNEY_ELEMENT__MODIFIERS);
+
+		activityEClass = createEClass(ACTIVITY);
+		createEReference(activityEClass, ACTIVITY__FEATURES);
+		createEReference(activityEClass, ACTIVITY__SERVICES);
+
+		serviceEClass = createEClass(SERVICE);
+		createEReference(serviceEClass, SERVICE__TARGET);
+
+		transitionEClass = createEClass(TRANSITION);
+		createEReference(transitionEClass, TRANSITION__TARGET);
+		createEReference(transitionEClass, TRANSITION__PAYLOAD);
+		createEAttribute(transitionEClass, TRANSITION__SUPPRESS);
+
+		callEClass = createEClass(CALL);
+		createEReference(callEClass, CALL__RESPONSE);
+
+		journeyEClass = createEClass(JOURNEY);
+		createEReference(journeyEClass, JOURNEY__ELEMENTS);
+		createEReference(journeyEClass, JOURNEY__EXTENDS);
+		createEReference(journeyEClass, JOURNEY__EXTENSIONS);
+		createEReference(journeyEClass, JOURNEY__ROOT);
+		createEReference(journeyEClass, JOURNEY__ALL_ELEMENTS);
+
+		pseudoStateEClass = createEClass(PSEUDO_STATE);
+		createEAttribute(pseudoStateEClass, PSEUDO_STATE__TYPE);
+
+		choiceEClass = createEClass(CHOICE);
+
+		endEClass = createEClass(END);
+
+		entryPointEClass = createEClass(ENTRY_POINT);
+
+		exitPointEClass = createEClass(EXIT_POINT);
+
+		expansionInputEClass = createEClass(EXPANSION_INPUT);
+
+		expansionOutputEClass = createEClass(EXPANSION_OUTPUT);
+
+		forkEClass = createEClass(FORK);
+
+		inputPinEClass = createEClass(INPUT_PIN);
+
+		joinEClass = createEClass(JOIN);
+
+		outputPinEClass = createEClass(OUTPUT_PIN);
+
+		startEClass = createEClass(START);
+
 		// Create data types
 		sectionStyleEDataType = createEDataType(SECTION_STYLE);
 	}
@@ -2750,10 +3195,6 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		engineeredCapabilityEClass.getESuperTypes().add(this.getEndeavor());
 		releaseEClass.getESuperTypes().add(this.getEngineeredCapability());
 		featureEClass.getESuperTypes().add(this.getEngineeredCapability());
-		activityEClass.getESuperTypes().add(this.getEngineeredElement());
-		journeyEClass.getESuperTypes().add(this.getActivity());
-		transitionEClass.getESuperTypes().add(this.getNamedElement());
-		callEClass.getESuperTypes().add(this.getTransition());
 		directoryEClass.getESuperTypes().add(this.getEngineeredElement());
 		capacityEClass.getESuperTypes().add(this.getModelElement());
 		allocationEClass.getESuperTypes().add(this.getCapacity());
@@ -2774,6 +3215,24 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		objectiveEClass.getESuperTypes().add(this.getKeyResult());
 		decisionEClass.getESuperTypes().add(this.getIssue());
 		decisionEClass.getESuperTypes().add(this.getAim());
+		journeyElementEClass.getESuperTypes().add(this.getEngineeredElement());
+		activityEClass.getESuperTypes().add(this.getJourneyElement());
+		serviceEClass.getESuperTypes().add(this.getJourneyElement());
+		transitionEClass.getESuperTypes().add(this.getNamedElement());
+		callEClass.getESuperTypes().add(this.getTransition());
+		journeyEClass.getESuperTypes().add(this.getActivity());
+		pseudoStateEClass.getESuperTypes().add(this.getJourneyElement());
+		choiceEClass.getESuperTypes().add(this.getPseudoState());
+		endEClass.getESuperTypes().add(this.getPseudoState());
+		entryPointEClass.getESuperTypes().add(this.getPseudoState());
+		exitPointEClass.getESuperTypes().add(this.getPseudoState());
+		expansionInputEClass.getESuperTypes().add(this.getPseudoState());
+		expansionOutputEClass.getESuperTypes().add(this.getPseudoState());
+		forkEClass.getESuperTypes().add(this.getPseudoState());
+		inputPinEClass.getESuperTypes().add(this.getPseudoState());
+		joinEClass.getESuperTypes().add(this.getPseudoState());
+		outputPinEClass.getESuperTypes().add(this.getPseudoState());
+		startEClass.getESuperTypes().add(this.getPseudoState());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(adaptableEClass, Adaptable.class, "Adaptable", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
@@ -2851,7 +3310,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		initEReference(getEngineeredElement_Principles(), this.getPrinciple(), null, "principles", null, 0, -1, EngineeredElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(personaEClass, Persona.class, "Persona", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getPersona_Activities(), this.getActivity(), this.getActivity_Personas(), "activities", null, 0, -1, Persona.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getPersona_JourneyElements(), this.getJourneyElement(), this.getJourneyElement_Personas(), "journeyElements", null, 0, -1, Persona.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getPersona_Goals(), this.getGoal(), null, "goals", null, 0, -1, Persona.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPersona_Representatives(), this.getEngineer(), this.getEngineer_Represents(), "representatives", null, 0, -1, Persona.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPersona_Extends(), this.getPersona(), this.getPersona_Extensions(), "extends", null, 0, -1, Persona.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2901,26 +3360,6 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		initEReference(getFeature_Activities(), this.getActivity(), null, "activities", null, 0, -1, Feature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getFeature_Issues(), this.getIssue(), this.getIssue_ContributesTo(), "issues", null, 0, -1, Feature.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getFeature_Uses(), this.getActivity(), this.getActivity_Features(), "uses", null, 0, -1, Feature.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-
-		initEClass(activityEClass, Activity.class, "Activity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getActivity_Personas(), this.getPersona(), this.getPersona_Activities(), "personas", null, 0, -1, Activity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getActivity_Outputs(), this.getTransition(), null, "outputs", null, 0, -1, Activity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getActivity_ActivityType(), ecorePackage.getEString(), "activityType", null, 0, 1, Activity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getActivity_Requirements(), this.getNamedElement(), null, "requirements", null, 0, -1, Activity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getActivity_Deliverables(), this.getNamedElement(), null, "deliverables", null, 0, -1, Activity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getActivity_Calls(), this.getCall(), null, "calls", null, 0, -1, Activity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getActivity_Features(), this.getFeature(), this.getFeature_Uses(), "features", null, 0, -1, Activity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(journeyEClass, Journey.class, "Journey", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getJourney_Activities(), this.getActivity(), null, "activities", null, 0, -1, Journey.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getJourney_Partition(), ecorePackage.getEBoolean(), "partition", null, 0, 1, Journey.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(transitionEClass, Transition.class, "Transition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getTransition_Target(), this.getActivity(), null, "target", null, 1, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTransition_Payload(), this.getNamedElement(), null, "payload", null, 0, -1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(callEClass, Call.class, "Call", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getCall_Response(), this.getNamedElement(), null, "response", null, 0, -1, Call.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(directoryEClass, Directory.class, "Directory", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDirectory_Elements(), this.getNamedElement(), null, "elements", null, 0, -1, Directory.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3016,6 +3455,69 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		initEReference(getDecision_Supercedes(), this.getDecision(), this.getDecision_SupercededBy(), "supercedes", null, 0, -1, Decision.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDecision_SupercededBy(), this.getDecision(), this.getDecision_Supercedes(), "supercededBy", null, 0, -1, Decision.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDecision_Resolution(), ecorePackage.getEString(), "resolution", null, 0, 1, Decision.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(journeyElementEClass, JourneyElement.class, "JourneyElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getJourneyElement_Inputs(), this.getTransition(), null, "inputs", null, 0, 1, JourneyElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getJourneyElement_Outputs(), this.getTransition(), null, "outputs", null, 0, -1, JourneyElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getJourneyElement_Calls(), this.getCall(), null, "calls", null, 0, -1, JourneyElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getJourneyElement_Invocations(), this.getCall(), null, "invocations", null, 0, 1, JourneyElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getJourneyElement_Requirements(), this.getNamedElement(), null, "requirements", null, 0, -1, JourneyElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getJourneyElement_Deliverables(), this.getNamedElement(), null, "deliverables", null, 0, -1, JourneyElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getJourneyElement_Personas(), this.getPersona(), this.getPersona_JourneyElements(), "personas", null, 0, -1, JourneyElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getJourneyElement_AllOutputs(), this.getTransition(), null, "allOutputs", null, 0, -1, JourneyElement.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getJourneyElement_AllInputs(), this.getTransition(), null, "allInputs", null, 0, -1, JourneyElement.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getJourneyElement_AllCalls(), this.getCall(), null, "allCalls", null, 0, -1, JourneyElement.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getJourneyElement_AllInvocations(), this.getCall(), null, "allInvocations", null, 0, -1, JourneyElement.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getJourneyElement_Overrides(), this.getJourneyElement(), this.getJourneyElement_OverridenBy(), "overrides", null, 0, 1, JourneyElement.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getJourneyElement_OverridenBy(), this.getJourneyElement(), this.getJourneyElement_Overrides(), "overridenBy", null, 0, -1, JourneyElement.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEAttribute(getJourneyElement_Modifiers(), ecorePackage.getEString(), "modifiers", null, 0, -1, JourneyElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(activityEClass, Activity.class, "Activity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getActivity_Features(), this.getFeature(), this.getFeature_Uses(), "features", null, 0, -1, Activity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getActivity_Services(), this.getService(), this.getService_Target(), "services", null, 0, -1, Activity.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+
+		initEClass(serviceEClass, Service.class, "Service", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getService_Target(), this.getActivity(), this.getActivity_Services(), "target", null, 1, 1, Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(transitionEClass, Transition.class, "Transition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getTransition_Target(), this.getJourneyElement(), null, "target", null, 1, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTransition_Payload(), this.getNamedElement(), null, "payload", null, 0, -1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTransition_Suppress(), ecorePackage.getEBoolean(), "suppress", null, 0, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(callEClass, Call.class, "Call", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getCall_Response(), this.getNamedElement(), null, "response", null, 0, -1, Call.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(journeyEClass, Journey.class, "Journey", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getJourney_Elements(), this.getJourneyElement(), null, "elements", null, 0, -1, Journey.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getJourney_Extends(), this.getJourney(), this.getJourney_Extensions(), "extends", null, 0, 1, Journey.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getJourney_Extensions(), this.getJourney(), this.getJourney_Extends(), "extensions", null, 0, -1, Journey.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getJourney_Root(), this.getJourney(), null, "root", null, 0, 1, Journey.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getJourney_AllElements(), this.getJourneyElement(), null, "allElements", null, 0, -1, Journey.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+
+		initEClass(pseudoStateEClass, PseudoState.class, "PseudoState", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getPseudoState_Type(), ecorePackage.getEString(), "type", null, 0, 1, PseudoState.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+
+		initEClass(choiceEClass, Choice.class, "Choice", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(endEClass, End.class, "End", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(entryPointEClass, EntryPoint.class, "EntryPoint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(exitPointEClass, ExitPoint.class, "ExitPoint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(expansionInputEClass, ExpansionInput.class, "ExpansionInput", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(expansionOutputEClass, ExpansionOutput.class, "ExpansionOutput", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(forkEClass, Fork.class, "Fork", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(inputPinEClass, InputPin.class, "InputPin", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(joinEClass, Join.class, "Join", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(outputPinEClass, OutputPin.class, "OutputPin", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(startEClass, Start.class, "Start", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Initialize data types
 		initEDataType(sectionStyleEDataType, SectionStyle.class, "SectionStyle", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
@@ -3314,36 +3816,6 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 			   "documentation-reference", "doc/feature.md"
 		   });
 		addAnnotation
-		  (activityEClass,
-		   source,
-		   new String[] {
-			   "documentation-reference", "doc/activity.md"
-		   });
-		addAnnotation
-		  (journeyEClass,
-		   source,
-		   new String[] {
-			   "documentation-reference", "doc/journey.md"
-		   });
-		addAnnotation
-		  (transitionEClass,
-		   source,
-		   new String[] {
-			   "documentation-reference", "doc/transition.md"
-		   });
-		addAnnotation
-		  (getTransition_Target(),
-		   source,
-		   new String[] {
-			   "default-feature", "true"
-		   });
-		addAnnotation
-		  (callEClass,
-		   source,
-		   new String[] {
-			   "documentation-reference", "doc/call.md"
-		   });
-		addAnnotation
 		  (directoryEClass,
 		   source,
 		   new String[] {
@@ -3578,6 +4050,120 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		   source,
 		   new String[] {
 			   "documentation-reference", "doc/decision.md"
+		   });
+		addAnnotation
+		  (journeyElementEClass,
+		   source,
+		   new String[] {
+			   "documentation-reference", "doc/journey-element.md"
+		   });
+		addAnnotation
+		  (activityEClass,
+		   source,
+		   new String[] {
+			   "documentation-reference", "doc/activity.md"
+		   });
+		addAnnotation
+		  (serviceEClass,
+		   source,
+		   new String[] {
+			   "documentation-reference", "doc/service.md"
+		   });
+		addAnnotation
+		  (transitionEClass,
+		   source,
+		   new String[] {
+			   "documentation-reference", "doc/transition.md"
+		   });
+		addAnnotation
+		  (getTransition_Target(),
+		   source,
+		   new String[] {
+			   "default-feature", "true"
+		   });
+		addAnnotation
+		  (callEClass,
+		   source,
+		   new String[] {
+			   "documentation-reference", "doc/call.md"
+		   });
+		addAnnotation
+		  (journeyEClass,
+		   source,
+		   new String[] {
+			   "documentation-reference", "doc/journey.md"
+		   });
+		addAnnotation
+		  (pseudoStateEClass,
+		   source,
+		   new String[] {
+			   "documentation-reference", "doc/pseudo-state.md"
+		   });
+		addAnnotation
+		  (choiceEClass,
+		   source,
+		   new String[] {
+			   "documentation-reference", "doc/choice.md"
+		   });
+		addAnnotation
+		  (endEClass,
+		   source,
+		   new String[] {
+			   "documentation-reference", "doc/end.md"
+		   });
+		addAnnotation
+		  (entryPointEClass,
+		   source,
+		   new String[] {
+			   "documentation-reference", "doc/entry-point.md"
+		   });
+		addAnnotation
+		  (exitPointEClass,
+		   source,
+		   new String[] {
+			   "documentation-reference", "doc/exit-point.md"
+		   });
+		addAnnotation
+		  (expansionInputEClass,
+		   source,
+		   new String[] {
+			   "documentation-reference", "doc/expansion-input.md"
+		   });
+		addAnnotation
+		  (expansionOutputEClass,
+		   source,
+		   new String[] {
+			   "documentation-reference", "doc/expansion-output.md"
+		   });
+		addAnnotation
+		  (forkEClass,
+		   source,
+		   new String[] {
+			   "documentation-reference", "doc/fork.md"
+		   });
+		addAnnotation
+		  (inputPinEClass,
+		   source,
+		   new String[] {
+			   "documentation-reference", "doc/input-pin.md"
+		   });
+		addAnnotation
+		  (joinEClass,
+		   source,
+		   new String[] {
+			   "documentation-reference", "doc/join.md"
+		   });
+		addAnnotation
+		  (outputPinEClass,
+		   source,
+		   new String[] {
+			   "documentation-reference", "doc/output-pin.md"
+		   });
+		addAnnotation
+		  (startEClass,
+		   source,
+		   new String[] {
+			   "documentation-reference", "doc/start.md"
 		   });
 	}
 
@@ -3908,10 +4494,10 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 			   "documentation", "Principles associated with this element to support decision making."
 		   });
 		addAnnotation
-		  (getPersona_Activities(),
+		  (getPersona_JourneyElements(),
 		   source,
 		   new String[] {
-			   "documentation", "Persona activities which demonstrate use of [product](Product.html) [features](Feature.html)."
+			   "documentation", "Derived opposite to journey element personas reference - [activities](Activity.html) performed by this persona which use [product](Product.html) [features](Feature.html) and [services](Service.html) which this persona uses."
 		   });
 		addAnnotation
 		  (getPersona_Goals(),
@@ -4110,78 +4696,6 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		   source,
 		   new String[] {
 			   "documentation", "Activities using this feature."
-		   });
-		addAnnotation
-		  (getActivity_Personas(),
-		   source,
-		   new String[] {
-			   "documentation", "Personas performing this activity."
-		   });
-		addAnnotation
-		  (getActivity_Outputs(),
-		   source,
-		   new String[] {
-			   "documentation", "Activity outbound transitions to other activities."
-		   });
-		addAnnotation
-		  (getActivity_ActivityType(),
-		   source,
-		   new String[] {
-			   "documentation", "Pseudo-activity (stereo)type. One of:\n\n* choice\n* fork\n* join\n* entryPoint\n* exitPoint\n* inputPin\n* outputPin\n* expansionInput\n* expansionOutput\n* end\n\nPseudo-activities name is not shown on the diagram, they are not clickable, and they are not listed as journey children.\n\nSee [PlantUML State Diagram](https://plantuml.com/state-diagram) for more details."
-		   });
-		addAnnotation
-		  (getActivity_Requirements(),
-		   source,
-		   new String[] {
-			   "documentation", "Input artifacts required to start working on this activity."
-		   });
-		addAnnotation
-		  (getActivity_Deliverables(),
-		   source,
-		   new String[] {
-			   "documentation", "Output artifacts of the activity."
-		   });
-		addAnnotation
-		  (getActivity_Calls(),
-		   source,
-		   new String[] {
-			   "documentation", "Calls to other activities."
-		   });
-		addAnnotation
-		  (getActivity_Features(),
-		   source,
-		   new String[] {
-			   "documentation", "Product features used by this activity."
-		   });
-		addAnnotation
-		  (getJourney_Activities(),
-		   source,
-		   new String[] {
-			   "documentation", "Journey activities."
-		   });
-		addAnnotation
-		  (getJourney_Partition(),
-		   source,
-		   new String[] {
-			   "documentation", "If true, journey is visualized as a composite state on its parent journey diagram. If false, it is visualized as a simple state."
-		   });
-		addAnnotation
-		  (getTransition_Target(),
-		   source,
-		   new String[] {
-			   "documentation", "Transition target activity."
-		   });
-		addAnnotation
-		  (getTransition_Payload(),
-		   source,
-		   new String[] {
-			   "documentation", "Artifacts passed from source to target activity."
-		   });
-		addAnnotation
-		  (getCall_Response(),
-		   source,
-		   new String[] {
-			   "documentation", "Response artifacts passed back from the target to the source activity."
 		   });
 		addAnnotation
 		  (getDirectory_Elements(),
@@ -4471,6 +4985,168 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		   new String[] {
 			   "documentation", "Documentation of what has been decided (decision process outcome)."
 		   });
+		addAnnotation
+		  (getJourneyElement_Inputs(),
+		   source,
+		   new String[] {
+			   "documentation", "Transitions which have this journey element as its target. Derived opposite to outputs."
+		   });
+		addAnnotation
+		  (getJourneyElement_Outputs(),
+		   source,
+		   new String[] {
+			   "documentation", "Activity outbound transitions to other activities."
+		   });
+		addAnnotation
+		  (getJourneyElement_Calls(),
+		   source,
+		   new String[] {
+			   "documentation", "Calls to other activities."
+		   });
+		addAnnotation
+		  (getJourneyElement_Invocations(),
+		   source,
+		   new String[] {
+			   "documentation", "Calls which have this journey element as its target. Derived opposite to calls."
+		   });
+		addAnnotation
+		  (getJourneyElement_Requirements(),
+		   source,
+		   new String[] {
+			   "documentation", "Input artifacts required to start working on this activity."
+		   });
+		addAnnotation
+		  (getJourneyElement_Deliverables(),
+		   source,
+		   new String[] {
+			   "documentation", "Output artifacts of the activity."
+		   });
+		addAnnotation
+		  (getJourneyElement_Personas(),
+		   source,
+		   new String[] {
+			   "documentation", "Personas performing this journey element if it is an activity. Applies to all journey elements in order to group them into persona partitions."
+		   });
+		addAnnotation
+		  (getJourneyElement_AllOutputs(),
+		   source,
+		   new String[] {
+			   "documentation", "Includes own outputs and outputs inherited from the base journey of the containing journey. This element outputs override inherited outputs with the same path."
+		   });
+		addAnnotation
+		  (getJourneyElement_AllInputs(),
+		   source,
+		   new String[] {
+			   "documentation", "Derived opposite to allOutputs."
+		   });
+		addAnnotation
+		  (getJourneyElement_AllCalls(),
+		   source,
+		   new String[] {
+			   "documentation", "Includes own calls and calls inherited from the base journey of the containing journey. This element calls override inherited calls with the same path."
+		   });
+		addAnnotation
+		  (getJourneyElement_AllInvocations(),
+		   source,
+		   new String[] {
+			   "documentation", "Derived opposite to allCalls."
+		   });
+		addAnnotation
+		  (getJourneyElement_Overrides(),
+		   source,
+		   new String[] {
+			   "documentation", "A journey element which is overriden by this element. "
+		   });
+		addAnnotation
+		  (getJourneyElement_OverridenBy(),
+		   source,
+		   new String[] {
+			   "documentation", "Elements of the extension journeys which override this element."
+		   });
+		addAnnotation
+		  (getJourneyElement_Modifiers(),
+		   source,
+		   new String[] {
+			   "documentation", "A collection of boolean flags:\n\n* ``abstract`` - Specifies that this journey element is abstract. For journeys it means that they contain abstract elements and must be extended to become concrete. If a journey contains abstract elements and does not have abstract modifier, it is diagnosed as an error. If concrete journeys extend abstract journeys they must override (implement) all abstract elements.\n* ``explicit-end`` - Applies to [journeys](Journey.html). Specifies that the [end](End.html) [pseudo-state](PseudoState.html) shall not be inferred by finding journey elements with no outputs. End will either be explicitly specified or the diagram will not have an end pseudo-state.\n* ``explicit-start`` - Applies to journeys. Specifies that the [start](Start.html) pseudo-state shall not be inferred by finding journey elements with no inputs. Start will either be explicitly specified or the diagram will not have a start pseudo-state.\n* ``final`` - Specifies that this journey element cannot be overriden in journeys extending this journey. Overriding a final elemen will be diagnosed as an error. For example, in an organization some processes can be defined as journeys at higher levels of the orgnization and extended at lower levels. ``final`` modifier allows to specify what can be extended and what cannot. Specifying a top-level journey as final indicates that it cannot have extensions.\n* ``optional`` - Specifies that this journey element is optional. Optional elements have different apperance on diagrams.\n* ``override`` - Specifies that this journey element overrides an element in one of extended journeys. If this modifier is present and overrides reference is null, then it results in a diagnostic error.\n* ``partition`` - Applies to journeys and specifies that the journey shall be rendered as a partition on a digarm.\n* ``suppress`` - Specifies that this element supprresses its overriden element, i.e. removes it from the list of journey elements.\n* ``vertical`` - Specifies that journey element direction top-down instead of the default left-to-right.\n"
+		   });
+		addAnnotation
+		  (getActivity_Features(),
+		   source,
+		   new String[] {
+			   "documentation", "Product features used by this activity."
+		   });
+		addAnnotation
+		  (getActivity_Services(),
+		   source,
+		   new String[] {
+			   "documentation", "Derived opposite to Service target."
+		   });
+		addAnnotation
+		  (getService_Target(),
+		   source,
+		   new String[] {
+			   "documentation", "Target activity of the service."
+		   });
+		addAnnotation
+		  (getTransition_Target(),
+		   source,
+		   new String[] {
+			   "documentation", "Transition\'s target journey element."
+		   });
+		addAnnotation
+		  (getTransition_Payload(),
+		   source,
+		   new String[] {
+			   "documentation", "Artifacts passed from source to target activity."
+		   });
+		addAnnotation
+		  (getTransition_Suppress(),
+		   source,
+		   new String[] {
+			   "documentation", "Can be used in journeys extending other journeys to remove the inherited transition from the list of outputs/call. Transitions to supprressed journey elements are automatically supppressed."
+		   });
+		addAnnotation
+		  (getCall_Response(),
+		   source,
+		   new String[] {
+			   "documentation", "Response artifacts passed back from the target to the source activity."
+		   });
+		addAnnotation
+		  (getJourney_Elements(),
+		   source,
+		   new String[] {
+			   "documentation", "Elements of this journey."
+		   });
+		addAnnotation
+		  (getJourney_Extends(),
+		   source,
+		   new String[] {
+			   "documentation", "Journey can  extend another journey and inherit its elements. Inherited elements can be overriden or suppressed."
+		   });
+		addAnnotation
+		  (getJourney_Extensions(),
+		   source,
+		   new String[] {
+			   "documentation", "Journeys extending this journey."
+		   });
+		addAnnotation
+		  (getJourney_Root(),
+		   source,
+		   new String[] {
+			   "documentation", "Root of this journey inheritance hierarchy."
+		   });
+		addAnnotation
+		  (getJourney_AllElements(),
+		   source,
+		   new String[] {
+			   "documentation", "Own and inherited elements."
+		   });
+		addAnnotation
+		  (getPseudoState_Type(),
+		   source,
+		   new String[] {
+			   "documentation", "Pseudo-state type provided by concrete sub-classes."
+		   });
 	}
 
 	/**
@@ -4516,6 +5192,54 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		   source,
 		   new String[] {
 			   "constraints", "increment"
+		   });
+		addAnnotation
+		  (journeyElementEClass,
+		   source,
+		   new String[] {
+			   "constraints", "final override suppress suppressAndOverride"
+		   });
+		addAnnotation
+		  (serviceEClass,
+		   source,
+		   new String[] {
+			   "constraints", "abstract"
+		   });
+		addAnnotation
+		  (journeyEClass,
+		   source,
+		   new String[] {
+			   "constraints", "final abstract"
+		   });
+		addAnnotation
+		  (choiceEClass,
+		   source,
+		   new String[] {
+			   "constraints", "multipleChoices"
+		   });
+		addAnnotation
+		  (endEClass,
+		   source,
+		   new String[] {
+			   "constraints", "noOutputs noCalls"
+		   });
+		addAnnotation
+		  (forkEClass,
+		   source,
+		   new String[] {
+			   "constraints", "multipleBranches"
+		   });
+		addAnnotation
+		  (joinEClass,
+		   source,
+		   new String[] {
+			   "constraints", "multipleBranches"
+		   });
+		addAnnotation
+		  (startEClass,
+		   source,
+		   new String[] {
+			   "constraints", "noInputs noInvocations"
 		   });
 	}
 
