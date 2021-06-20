@@ -255,6 +255,7 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//Transition/target"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//Transition/payload"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Transition/suppress"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Transition/targetId"/>
     </genClasses>
     <genClasses ecoreClass="engineering.ecore#//Call">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//Call/response"/>

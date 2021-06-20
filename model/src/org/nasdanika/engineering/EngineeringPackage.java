@@ -7690,13 +7690,22 @@ public interface EngineeringPackage extends EPackage {
 	int TRANSITION__SUPPRESS = NAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Target Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION__TARGET_ID = NAMED_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Transition</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSITION_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 3;
+	int TRANSITION_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of operations of the '<em>Transition</em>' class.
@@ -7805,6 +7814,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int CALL__SUPPRESS = TRANSITION__SUPPRESS;
+
+	/**
+	 * The feature id for the '<em><b>Target Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL__TARGET_ID = TRANSITION__TARGET_ID;
 
 	/**
 	 * The feature id for the '<em><b>Response</b></em>' reference list.
@@ -12843,6 +12861,17 @@ public interface EngineeringPackage extends EPackage {
 	EAttribute getTransition_Suppress();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Transition#getTargetId <em>Target Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Target Id</em>'.
+	 * @see org.nasdanika.engineering.Transition#getTargetId()
+	 * @see #getTransition()
+	 * @generated
+	 */
+	EAttribute getTransition_TargetId();
+
+	/**
 	 * Returns the meta object for class '{@link org.nasdanika.engineering.Call <em>Call</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -15050,6 +15079,14 @@ public interface EngineeringPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute TRANSITION__SUPPRESS = eINSTANCE.getTransition_Suppress();
+
+		/**
+		 * The meta object literal for the '<em><b>Target Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TRANSITION__TARGET_ID = eINSTANCE.getTransition_TargetId();
 
 		/**
 		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.CallImpl <em>Call</em>}' class.

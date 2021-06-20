@@ -1706,6 +1706,16 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
+	public EAttribute getTransition_TargetId() {
+		return (EAttribute)transitionEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getCall() {
 		return callEClass;
 	}
@@ -3107,6 +3117,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		createEReference(transitionEClass, TRANSITION__TARGET);
 		createEReference(transitionEClass, TRANSITION__PAYLOAD);
 		createEAttribute(transitionEClass, TRANSITION__SUPPRESS);
+		createEAttribute(transitionEClass, TRANSITION__TARGET_ID);
 
 		callEClass = createEClass(CALL);
 		createEReference(callEClass, CALL__RESPONSE);
@@ -3480,9 +3491,10 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		initEReference(getService_Target(), this.getActivity(), this.getActivity_Services(), "target", null, 1, 1, Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(transitionEClass, Transition.class, "Transition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getTransition_Target(), this.getJourneyElement(), null, "target", null, 1, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTransition_Target(), this.getJourneyElement(), null, "target", null, 0, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getTransition_Payload(), this.getNamedElement(), null, "payload", null, 0, -1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTransition_Suppress(), ecorePackage.getEBoolean(), "suppress", null, 0, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTransition_TargetId(), ecorePackage.getEString(), "targetId", null, 1, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(callEClass, Call.class, "Call", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getCall_Response(), this.getNamedElement(), null, "response", null, 0, -1, Call.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -4080,6 +4092,13 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		   source,
 		   new String[] {
 			   "default-feature", "true"
+		   });
+		addAnnotation
+		  (getTransition_TargetId(),
+		   source,
+		   new String[] {
+			   "default-feature", "true",
+			   "load-key", "target"
 		   });
 		addAnnotation
 		  (callEClass,
@@ -5106,6 +5125,12 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 			   "documentation", "Can be used in journeys extending other journeys to remove the inherited transition from the list of outputs/call. Transitions to supprressed journey elements are automatically supppressed."
 		   });
 		addAnnotation
+		  (getTransition_TargetId(),
+		   source,
+		   new String[] {
+			   "documentation", "Relative path to the target [journey element](JourneyElement.html). May contain ``..`` to navigate to the parent [journey](Journey.html) - i.e. the journey which contains the journey containing the element which contains this transition. May contain ``/`` to navigate to nested journeys. Treated as URI if contains ``:``."
+		   });
+		addAnnotation
 		  (getCall_Response(),
 		   source,
 		   new String[] {
@@ -5210,6 +5235,12 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		   source,
 		   new String[] {
 			   "constraints", "abstract"
+		   });
+		addAnnotation
+		  (transitionEClass,
+		   source,
+		   new String[] {
+			   "constraints", "target"
 		   });
 		addAnnotation
 		  (journeyEClass,
