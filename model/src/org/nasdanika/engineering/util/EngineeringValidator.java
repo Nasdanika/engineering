@@ -1458,7 +1458,26 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(transition, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(transition, diagnostics, context);
 		if (result || diagnostics != null) result &= validateModelElement_path(transition, diagnostics, context);
+		if (result || diagnostics != null) result &= validateTransition_target(transition, diagnostics, context);
 		return result;
+	}
+
+	/**
+	 * Validates the target constraint of '<em>Transition</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean validateTransition_target(Transition transition, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (diagnostics != null) {
+			DiagnosticHelper helper = new DiagnosticHelper(diagnostics, DIAGNOSTIC_SOURCE, 0, transition);
+			if (transition.getTarget() == null) {
+				helper.error("Transition target cannot be resolved: " + transition.getTargetId());
+			};
+			
+			return helper.isSuccess();
+		}
+		return true;
 	}
 
 	/**
@@ -1477,6 +1496,7 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(call, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(call, diagnostics, context);
 		if (result || diagnostics != null) result &= validateModelElement_path(call, diagnostics, context);
+		if (result || diagnostics != null) result &= validateTransition_target(call, diagnostics, context);
 		return result;
 	}
 
