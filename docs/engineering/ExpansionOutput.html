@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"></script><title>NamedElementReference</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"></script><title>ExpansionOutput</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/line-awesome/1.3.0/line-awesome/css/line-awesome.min.css"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.3.11/themes/default/style.min.css"/>
@@ -61,10 +61,10 @@
           <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a data-nsd-action="d13220e8-e692-487f-916e-8bfd06d1ad41" href="../index.html" class="nsd-action navbar-brand">
               <span class="fas fa-book nsd-label-icon"></span>Engineering</a>
-            <button type="button" data-toggle="collapse" data-target="#nsd-1d" class="navbar-toggler">
+            <button type="button" data-toggle="collapse" data-target="#nsd-q" class="navbar-toggler">
               <span class="navbar-toggler-icon"></span>
             </button>
-            <div id="nsd-1d" class="collapse navbar-collapse">
+            <div id="nsd-q" class="collapse navbar-collapse">
               <ul class="navbar-nav"></ul>
             </div>
           </nav>
@@ -176,7 +176,7 @@
                 <span title="Expansion input is a pseudo-state which can be used instead of partition start pseudo-state to indicate that the partition journey input is a collection and the journey is executed for each element in the collection.">
                   <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>ExpansionInput</span>
               </a>
-              <a href="ExpansionOutput.html" class="list-group-item list-group-action">
+              <a href="" class="list-group-item list-group-action active">
                 <span title="Expansion output is a pseudo-state which can be used instead of partition end pseudo-state to indicate that the partition journey output is a collection and the output transitions are executed for each element in the collection.">
                   <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>ExpansionOutput</span>
               </a>
@@ -268,7 +268,7 @@
                 <span title="Named element, as the name suggests, is a base class for model elements with a name.">
                   <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>NamedElement</span>
               </a>
-              <a href="" class="list-group-item list-group-action active">
+              <a href="NamedElementReference.html" class="list-group-item list-group-action">
                 <span title="References a named element. ">
                   <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>NamedElementReference</span>
               </a>
@@ -342,9 +342,9 @@
                       </a>
                     </li>
                     <li class="breadcrumb-item active">
-                      <span data-nsd-action="EClass-engineering-NamedElementReference" class="nsd-action">
-                        <span title="References a named element. ">
-                          <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>NamedElementReference</span>
+                      <span data-nsd-action="EClass-engineering-ExpansionOutput" class="nsd-action">
+                        <span title="Expansion output is a pseudo-state which can be used instead of partition end pseudo-state to indicate that the partition journey output is a collection and the output transitions are executed for each element in the collection.">
+                          <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>ExpansionOutput</span>
                       </span>
                     </li>
                   </ol>
@@ -353,29 +353,23 @@
             </div>
             <div class="row">
               <div class="col nsd-app-content-panel-header-col">
-                <h2 data-nsd-action="EClass-engineering-NamedElementReference" class="nsd-action nsd-app-content-panel-header">
-                  <span title="References a named element. ">
-                    <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>NamedElementReference</span>
+                <h2 data-nsd-action="EClass-engineering-ExpansionOutput" class="nsd-action nsd-app-content-panel-header">
+                  <span title="Expansion output is a pseudo-state which can be used instead of partition end pseudo-state to indicate that the partition journey output is a collection and the output transitions are executed for each element in the collection.">
+                    <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>ExpansionOutput</span>
                 </h2>
               </div>
             </div>
             <div class="row nsd-app-content-panel-body-row">
-              <div class="col nsd-app-content-panel-body"><div class="markdown-body"><p>References a <a href="NamedElement.html">named element</a>. Being a named element can be used as a:</p>
-<ul>
-<li><a href="ModelElement.html#EReference-resources">Model element resource</a>,</li>
-<li><a href="Activity.html">Activity</a> requirements and deliverables.</li>
-<li><a href="Transition.html#EReference-payload">Transition payload</a> and <a href="Call.html#EReference-response">call response</a>.</li>
-</ul>
-<p>For example, coding guidelines can be defined as a document resource at the organization level and be referenced as a deliverable of a coding activity, i.e. code must comply with documented guidelines.</p>
-</div><img src="data:image/png;base64, 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" usemap="#plantuml_map_168bb89e-5379-4dab-8b0c-e807649c3d3e"/>
-<map id="plantuml_map_168bb89e-5379-4dab-8b0c-e807649c3d3e" name="plantuml_map_168bb89e-5379-4dab-8b0c-e807649c3d3e">
-<area shape="rect" id="id1" href="NamedElement.html" title="Named element, as the name suggests, is a base class for model elements with a name." alt="" coords="108,176,227,245"/>
-<area shape="rect" id="id2" href="" title="References a named element. " alt="" coords="94,42,270,98"/>
+              <div class="col nsd-app-content-panel-body"><div class="markdown-body"><p>Expansion output is a <a href="PseudoState.html">pseudo-state</a> which can be used instead of partition <a href="End.html">end</a> pseudo-state to indicate that the partition <a href="Journey.html">journey</a> output is a collection and the output <a href="Transition.html">transitions</a> are executed for each element in the collection.</p>
+</div><img src="data:image/png;base64, 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" usemap="#plantuml_map_38ba65b8-ea0e-4530-9f0a-e4f59a6cb350"/>
+<map id="plantuml_map_38ba65b8-ea0e-4530-9f0a-e4f59a6cb350" name="plantuml_map_38ba65b8-ea0e-4530-9f0a-e4f59a6cb350">
+<area shape="rect" id="id1" href="" title="Expansion output is a pseudo-state which can be used instead of partition end pseudo-state to indicate that the partition journey output is a collection and the output transitions are executed for each element in the collection." alt="" coords="119,172,245,228"/>
+<area shape="rect" id="id2" href="PseudoState.html" title="A pseudo-state is a base class for transient journey elements in the journey graph." alt="" coords="130,42,233,111"/>
 </map>
 
 <h3>Supertypes</h3>
 <ul>
-  <li><a href="NamedElement.html">NamedElement</a></li>
+  <li><a href="PseudoState.html">PseudoState</a></li>
 </ul>
 <h3>Load specification</h3>
 <table class="table table-bordered table-striped">
@@ -398,6 +392,14 @@
 </td>
     </tr>
     <tr>
+      <td class="text-monospace">allocations</td>
+      <td><a href="Allocation.html">Allocation</a></td>
+      <td class="text-center">true</td>
+      <td class="text-center"></td>
+      <td><p>Allocations of <a href="Engineer.html">engineer</a>&rsquo;s <a href="Capacity.html">capacity</a> to work on this engineered element <a href="Issue.html">issues</a> for a particular <a href="Endeavor.html">endeavor</a> and <a href="IssueCategory.html">issue category</a>.</p>
+</td>
+    </tr>
+    <tr>
       <td class="text-monospace">appearance</td>
       <td><a href="ModelElementAppearance.html">ModelElementAppearance</a></td>
       <td class="text-center">true</td>
@@ -405,11 +407,67 @@
       <td></td>
     </tr>
     <tr>
+      <td class="text-monospace">calls</td>
+      <td><a href="Call.html">Call</a></td>
+      <td class="text-center"></td>
+      <td class="text-center"></td>
+      <td><p>Calls to other activities.</p>
+</td>
+    </tr>
+    <tr>
+      <td class="text-monospace">deliverables</td>
+      <td><a href="NamedElement.html">NamedElement</a></td>
+      <td class="text-center"></td>
+      <td class="text-center"></td>
+      <td><p>Output artifacts of the activity.</p>
+</td>
+    </tr>
+    <tr>
       <td class="text-monospace">description</td>
       <td>EString</td>
       <td class="text-center"></td>
       <td class="text-center"></td>
       <td><p>Description in HTML.</p>
+</td>
+    </tr>
+    <tr>
+      <td class="text-monospace">discussion</td>
+      <td><a href="Forum.html">Forum</a></td>
+      <td class="text-center">true</td>
+      <td class="text-center"></td>
+      <td><p>Sub-forums.</p>
+</td>
+    </tr>
+    <tr>
+      <td class="text-monospace">experts</td>
+      <td><a href="Engineer.html">Engineer</a></td>
+      <td class="text-center"></td>
+      <td class="text-center"></td>
+      <td><p>Experts have expertise with the element, but no authority. E.g. they can help others with using the element, but cannot make changes in the element without owners&rsquo; approval.</p>
+</td>
+    </tr>
+    <tr>
+      <td class="text-monospace">inputs</td>
+      <td><a href="Transition.html">Transition</a></td>
+      <td class="text-center"></td>
+      <td class="text-center"></td>
+      <td><p>Transitions which have this journey element as its target. Derived opposite to outputs.</p>
+</td>
+    </tr>
+    <tr>
+      <td class="text-monospace">invocations</td>
+      <td><a href="Call.html">Call</a></td>
+      <td class="text-center"></td>
+      <td class="text-center"></td>
+      <td><p>Calls which have this journey element as its target. Derived opposite to calls.</p>
+</td>
+    </tr>
+    <tr>
+      <td class="text-monospace">issues</td>
+      <td><a href="Issue.html">Issue</a></td>
+      <td class="text-center">true</td>
+      <td class="text-center"></td>
+      <td><p>Issues (work items) for this element.</p>
 </td>
     </tr>
     <tr>
@@ -421,11 +479,46 @@
 </td>
     </tr>
     <tr>
+      <td class="text-monospace">modifiers</td>
+      <td>EString</td>
+      <td class="text-center"></td>
+      <td class="text-center"></td>
+      <td><p>A collection of boolean flags:</p>
+<ul>
+<li><code>abstract</code> - Specifies that this journey element is abstract. For journeys it means that they contain abstract elements and must be extended to become concrete. If a journey contains abstract elements and does not have abstract modifier, it is diagnosed as an error. If concrete journeys extend abstract journeys they must override (implement) all abstract elements.</li>
+<li><code>explicit-end</code> - Applies to <a href="Journey.html">journeys</a>. Specifies that the <a href="End.html">end</a> <a href="PseudoState.html">pseudo-state</a> shall not be inferred by finding journey elements with no outputs. End will either be explicitly specified or the diagram will not have an end pseudo-state.</li>
+<li><code>explicit-start</code> - Applies to journeys. Specifies that the <a href="Start.html">start</a> pseudo-state shall not be inferred by finding journey elements with no inputs. Start will either be explicitly specified or the diagram will not have a start pseudo-state.</li>
+<li><code>final</code> - Specifies that this journey element cannot be overriden in journeys extending this journey. Overriding a final elemen will be diagnosed as an error. For example, in an organization some processes can be defined as journeys at higher levels of the orgnization and extended at lower levels. <code>final</code> modifier allows to specify what can be extended and what cannot. Specifying a top-level journey as final indicates that it cannot have extensions.</li>
+<li><code>optional</code> - Specifies that this journey element is optional. Optional elements have different apperance on diagrams.</li>
+<li><code>override</code> - Specifies that this journey element overrides an element in one of extended journeys. If this modifier is present and overrides reference is null, then it results in a diagnostic error.</li>
+<li><code>partition</code> - Applies to journeys and specifies that the journey shall be rendered as a partition on a digarm.</li>
+<li><code>suppress</code> - Specifies that this element supprresses its overriden element, i.e. removes it from the list of journey elements.</li>
+<li><code>vertical</code> - Specifies that journey element direction top-down instead of the default left-to-right.</li>
+</ul>
+</td>
+    </tr>
+    <tr>
       <td class="text-monospace">name</td>
       <td>EString</td>
       <td class="text-center"></td>
       <td class="text-center"></td>
       <td><p>Element name.</p>
+</td>
+    </tr>
+    <tr>
+      <td class="text-monospace">outputs</td>
+      <td><a href="Transition.html">Transition</a></td>
+      <td class="text-center"></td>
+      <td class="text-center"></td>
+      <td><p>Activity outbound transitions to other activities.</p>
+</td>
+    </tr>
+    <tr>
+      <td class="text-monospace">owners</td>
+      <td><a href="Engineer.html">Engineer</a></td>
+      <td class="text-center"></td>
+      <td class="text-center"></td>
+      <td><p>Element owners have both expertise and authority over the element.</p>
 </td>
     </tr>
     <tr>
@@ -437,6 +530,30 @@
 </td>
     </tr>
     <tr>
+      <td class="text-monospace">personas</td>
+      <td><a href="Persona.html">Persona</a></td>
+      <td class="text-center"></td>
+      <td class="text-center"></td>
+      <td><p>Personas performing this journey element if it is an activity. Applies to all journey elements in order to group them into persona partitions.</p>
+</td>
+    </tr>
+    <tr>
+      <td class="text-monospace">principles</td>
+      <td><a href="Principle.html">Principle</a></td>
+      <td class="text-center">true</td>
+      <td class="text-center"></td>
+      <td><p>Principles associated with this element to support decision making.</p>
+</td>
+    </tr>
+    <tr>
+      <td class="text-monospace">requirements</td>
+      <td><a href="NamedElement.html">NamedElement</a></td>
+      <td class="text-center"></td>
+      <td class="text-center"></td>
+      <td><p>Input artifacts required to start working on this activity.</p>
+</td>
+    </tr>
+    <tr>
       <td class="text-monospace">resources</td>
       <td><a href="NamedElement.html">NamedElement</a></td>
       <td class="text-center"></td>
@@ -445,57 +562,15 @@
 </td>
     </tr>
     <tr>
-      <td class="text-monospace font-weight-bold">target</td>
-      <td><a href="NamedElement.html">NamedElement</a></td>
+      <td class="text-monospace">topics</td>
+      <td><a href="Topic.html">Topic</a></td>
+      <td class="text-center">true</td>
       <td class="text-center"></td>
-      <td class="text-center"></td>
-      <td><p>Reference target</p>
+      <td><p>Discussion topics in this forum.</p>
 </td>
     </tr>
   </tbody>
-</table>
-                <div>
-                  <H3>Members</H3>
-                  <ul>
-                    <li>
-                      <span>References</span>
-                      <ul>
-                        <li>
-                          <a data-nsd-action="engineering-NamedElementReference-EReference-target" href="#EReference-target" class="nsd-action">
-                            <span title="Reference target">
-                              <img src="https://www.nasdanika.org/resources/images/ecore/EReference.gif" class="nsd-label-icon"/>target : NamedElement</span>
-                          </a> - Reference target</li>
-                      </ul>
-                    </li>
-                  </ul>
-                </div>
-                <a name="references"></a>
-                <H3>References</H3>
-                <div>
-                  <a name="EReference-target"></a>
-                  <H4 data-nsd-action="engineering-NamedElementReference-EReference-target" class="nsd-action">
-                    <span title="Reference target">
-                      <img src="https://www.nasdanika.org/resources/images/ecore/EReference.gif" class="nsd-label-icon"/>target : NamedElement</span>
-                  </H4><div class="markdown-body"><p>Reference target</p>
-</div>
-<table style="width:auto" class="table">
-  <tr>
-    <th>Type</th>
-    <td><a href="NamedElement.html">NamedElement</a></td>
-  </tr>
-  <tr>
-    <th>Cardinality</th>
-    <td>1</td>
-  </tr>
-  <tr>
-    <th>Changeable</th>
-    <td>true</td>
-  </tr>
-  <tr>
-    <th>Derived</th>
-    <td>false</td>
-  </tr>
-</table></div></div>
+</table></div>
             </div>
           </div>
         </div>

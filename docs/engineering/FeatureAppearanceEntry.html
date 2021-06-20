@@ -53,18 +53,18 @@
     <div class="container-fluid nsd-app-container border mt-1">
       <div class="row">
         <div class="nsd-app-header col bg-primary">
-          <a data-nsd-action="5ba90e39-3a11-4753-a8ab-fd69d744a51d" href="../../index.html" class="nsd-action nsd-root-action">Nasdanika</a>
+          <a data-nsd-action="bc555c43-a693-4708-8b0f-9b2f417cd561" href="../../index.html" class="nsd-action nsd-root-action">Nasdanika</a>
         </div>
       </div>
       <div class="row">
         <div class="nsd-app-navbar bg-light text-dark col">
           <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a data-nsd-action="eb6eee28-1c0a-40ac-b20f-fb20c9714bb3" href="../index.html" class="nsd-action navbar-brand">
+            <a data-nsd-action="d13220e8-e692-487f-916e-8bfd06d1ad41" href="../index.html" class="nsd-action navbar-brand">
               <span class="fas fa-book nsd-label-icon"></span>Engineering</a>
-            <button type="button" data-toggle="collapse" data-target="#nsd-n" class="navbar-toggler">
+            <button type="button" data-toggle="collapse" data-target="#nsd-t" class="navbar-toggler">
               <span class="navbar-toggler-icon"></span>
             </button>
-            <div id="nsd-n" class="collapse navbar-collapse">
+            <div id="nsd-t" class="collapse navbar-collapse">
               <ul class="navbar-nav"></ul>
             </div>
           </nav>
@@ -80,7 +80,7 @@
           </div>
           <div class="card mt-1">
             <div class="card-header">
-              <a data-nsd-action="c87f38d4-beae-4fd5-9ff9-caea406151cb" href="package-summary.html" class="nsd-action">
+              <a data-nsd-action="5c7c447d-945c-49a5-842e-37e74be92342" href="package-summary.html" class="nsd-action">
                 <span title="the action of working artfully to bring something about. ">
                   <img src="https://www.nasdanika.org/resources/images/ecore/EPackage.gif" class="nsd-label-icon"/>Engineering</span>
               </a>
@@ -124,6 +124,10 @@
                 <span title="Capacity is contained under Engineer and defines how much total effort or funds the containing engineer has to spend on a particular endeavor. ">
                   <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Capacity</span>
               </a>
+              <a href="Choice.html" class="list-group-item list-group-action">
+                <span title="Choice is a conditional pseudo-state.">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Choice</span>
+              </a>
               <a href="Decision.html" class="list-group-item list-group-action">
                 <span title="Decision is an issue, which is also an aim, i.e. endeavors, such as issues, and other aims such as other decisions may be aligned to it. ">
                   <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Decision</span>
@@ -135,6 +139,10 @@
               <a href="Document.html" class="list-group-item list-group-action">
                 <span title="Document may contain content, table of contents, and other documents as sections. ">
                   <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Document</span>
+              </a>
+              <a href="End.html" class="list-group-item list-group-action">
+                <span title="End is a final pseudo-state with only inputs and no outputs indicating completion of a journey. ">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>End</span>
               </a>
               <a href="Endeavor.html" class="list-group-item list-group-action">
                 <span title="Endeavor is a base class for things which take time, effort, and money to achieve some benefit - increments, and engineered capabilities - issues, features, and releases. ">
@@ -156,6 +164,22 @@
                 <span title="Engineering appearance is a map of engineering element class names in kebab case to model element appearance. ">
                   <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>EngineeringAppearance</span>
               </a>
+              <a href="EntryPoint.html" class="list-group-item list-group-action">
+                <span title="Entry point is a pseudo-state displayed as a circle on the border of the containing partition journey through which transitions enter the journey. ">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>EntryPoint</span>
+              </a>
+              <a href="ExitPoint.html" class="list-group-item list-group-action">
+                <span title="Exit point is a pseudo-state displayed as a crossed circle on the border of the containing partition journey through which transitions leave the journey. ">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>ExitPoint</span>
+              </a>
+              <a href="ExpansionInput.html" class="list-group-item list-group-action">
+                <span title="Expansion input is a pseudo-state which can be used instead of partition start pseudo-state to indicate that the partition journey input is a collection and the journey is executed for each element in the collection.">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>ExpansionInput</span>
+              </a>
+              <a href="ExpansionOutput.html" class="list-group-item list-group-action">
+                <span title="Expansion output is a pseudo-state which can be used instead of partition end pseudo-state to indicate that the partition journey output is a collection and the output transitions are executed for each element in the collection.">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>ExpansionOutput</span>
+              </a>
               <a href="Feature.html" class="list-group-item list-group-action">
                 <span title="Feature is a unit of consumption of product functionality. ">
                   <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Feature</span>
@@ -167,6 +191,10 @@
               <a href="" class="list-group-item list-group-action active">
                 <span title="An EMap entry class to support feature name to feature appearance mapping.">
                   <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>FeatureAppearanceEntry</span>
+              </a>
+              <a href="Fork.html" class="list-group-item list-group-action">
+                <span title="Fork is a pseudo-state which splits journey elements execution into parallel branches. ">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Fork</span>
               </a>
               <a href="Forum.html" class="list-group-item list-group-action">
                 <span title="Discussion forum which can contain sub-forums and discussion topics. ">
@@ -180,6 +208,10 @@
                 <span title="Increment is a period of time to plan releases and schedule issues for. ">
                   <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Increment</span>
               </a>
+              <a href="InputPin.html" class="list-group-item list-group-action">
+                <span title="Input is a pseudo-state displayed as a square on the border of the containing parition journey through which calls initiate the journey. ">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>InputPin</span>
+              </a>
               <a href="Issue.html" class="list-group-item list-group-action">
                 <span title="Issue is a unit of work to accomplish to achieve a desired outcome on its containing engineered element, e.g.: New functionality in a module, New or refined persona goals, New skills acquired by an engineer, Improved organization processes. ">
                   <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Issue</span>
@@ -192,9 +224,17 @@
                 <span title="Issue status, e.g. Open, In Progress, Done. ">
                   <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>IssueStatus</span>
               </a>
+              <a href="Join.html" class="list-group-item list-group-action">
+                <span title="Join is a pseudo-state which merges journey parallel execution branches. ">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Join</span>
+              </a>
               <a href="Journey.html" class="list-group-item list-group-action">
-                <span title="Journey is a composite activity.">
+                <span title="Journey is a composite activity. ">
                   <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Journey</span>
+              </a>
+              <a href="JourneyElement.html" class="list-group-item list-group-action">
+                <span title="Journey element is a source and target of transitions and calls. ">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>JourneyElement</span>
               </a>
               <a href="KeyResult.html" class="list-group-item list-group-action">
                 <span title="Key results are specific measures used to track achievement of their containing objective. ">
@@ -244,6 +284,10 @@
                 <span title="Organization is an engineer which can contain other engineers, and organizations as such. ">
                   <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Organization</span>
               </a>
+              <a href="OutputPin.html" class="list-group-item list-group-action">
+                <span title="Output pin is a pseudo-state displayed as a square on the border of the containing partition journey through which calls are made to other journey elements.">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>OutputPin</span>
+              </a>
               <a href="Persona.html" class="list-group-item list-group-action">
                 <span title="Personas represent represent the different types of consumers of products and services. ">
                   <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Persona</span>
@@ -256,12 +300,24 @@
                 <span title="Product is an object or a system made available for consumer use. ">
                   <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Product</span>
               </a>
+              <a href="PseudoState.html" class="list-group-item list-group-action">
+                <span title="A pseudo-state is a base class for transient journey elements in the journey graph.">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>PseudoState</span>
+              </a>
               <a href="Release.html" class="list-group-item list-group-action">
                 <span title="Release is a unit of delivering product features to its consumers. ">
                   <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Release</span>
               </a>
               <a href="SectionStyle.html" class="list-group-item list-group-action">
                 <img src="https://www.nasdanika.org/resources/images/ecore/EDataType.gif" class="nsd-label-icon"/>SectionStyle</a>
+              <a href="Service.html" class="list-group-item list-group-action">
+                <span title="Service is a reference to a shared activity used in multiple journeys. ">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Service</span>
+              </a>
+              <a href="Start.html" class="list-group-item list-group-action">
+                <span title="Start is an initial pseudo-state with only outputs and no inputs indicating start of a journey. ">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Start</span>
+              </a>
               <a href="Topic.html" class="list-group-item list-group-action">
                 <span title="Topic is a group of related messages in a forum. ">
                   <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Topic</span>
@@ -280,7 +336,7 @@
                 <nav aria-label="breadcrumb" class="mt-1">
                   <ol class="breadcrumb">
                     <li class="breadcrumb-item">
-                      <a data-nsd-action="c87f38d4-beae-4fd5-9ff9-caea406151cb" href="package-summary.html" class="nsd-action">
+                      <a data-nsd-action="5c7c447d-945c-49a5-842e-37e74be92342" href="package-summary.html" class="nsd-action">
                         <span title="the action of working artfully to bring something about. ">
                           <img src="https://www.nasdanika.org/resources/images/ecore/EPackage.gif" class="nsd-label-icon"/>Engineering</span>
                       </a>
