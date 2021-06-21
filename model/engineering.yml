@@ -212,6 +212,8 @@ engineering-module:
          and the message will be sent. For escalations - a week (should be configurable) before endeavor becomes an overdue - notification the assignee, Info status,
          when it becomes an overdue - notification to the assignee and the owner of the containing engineer and the engineer itself - warning. A week later - error and also to the next level of the hierarchy.
          Escalate to the next level every week. Can be done by something like a Jenkins or CircleCI scheduled jobs. Aggregate and group by severity.
+     - name: Relative dates
+       markdown-description: E.g. ``${start} + 2 weeks``. Usable for templates. Look at how https://plantuml.com/gantt-diagram does it. 
          
      ### === Done === ###    
      - name: Start/end from Issue and Increment to Endeavor
