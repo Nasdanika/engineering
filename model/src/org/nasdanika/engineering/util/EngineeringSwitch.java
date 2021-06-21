@@ -167,7 +167,9 @@ public class EngineeringSwitch<T> extends Switch<T> {
 			case EngineeringPackage.ISSUE_CATEGORY: {
 				IssueCategory issueCategory = (IssueCategory)theEObject;
 				T result = caseIssueCategory(issueCategory);
+				if (result == null) result = caseAim(issueCategory);
 				if (result == null) result = caseNamedElement(issueCategory);
+				if (result == null) result = caseAlignable(issueCategory);
 				if (result == null) result = caseModelElement(issueCategory);
 				if (result == null) result = caseAdaptable(issueCategory);
 				if (result == null) result = defaultCase(theEObject);

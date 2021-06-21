@@ -23,7 +23,7 @@ import org.eclipse.emf.common.util.EList;
  * @model annotation="urn:org.nasdanika documentation-reference='doc/issue-category.md'"
  * @generated
  */
-public interface IssueCategory extends NamedElement {
+public interface IssueCategory extends Aim {
 	/**
 	 * Returns the value of the '<em><b>Weight</b></em>' attribute.
 	 * <!-- begin-user-doc -->

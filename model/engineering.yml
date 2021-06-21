@@ -183,8 +183,14 @@ engineering-module:
          Premises/Entailments reference (not needed - requires/requiredBy will do). Entailments is a derived reference.                        
      - name: Visualizations of aims and alignments
        markdown-description: Including decision chains.
-     - name: ModelElement sections, TOC depth
-       markdown-description: Move sections from Document to ModelElement. Change tableOfContents to tableOfContentsDepth int and also move to ModelElement.
+     - name: ModelElement sections, TOC depth, role, and style
+       markdown-description: |+2
+         Move sections from Document to ModelElement. Re-introduce TableOfContents class with ``depth`` default property with value -1 (unlimited).
+         ``table-of-contents`` homogenous strict containment reference in ModelElement. Additional attributes - role and style - map (properties).
+         E.g. to be able to specify ``max-width`` in case of a floating card.
+     - name: Style to Appearance
+       markdown-description: |+2
+         Contemplate adding style map to Appearance. How would it be applied? If present, wrap whatever is returned from generate into a DIV and then cascade from all styles - model element, containment feature, lineage?
      - name: Absolute URL's in path AS-IS
        markdown-description: |+2
          Recognize absolute URL's/URI's (those starting with schema) in path and use AS-IS. For activator - also use AS-IS, i.e. do not use containment path, but relativize.

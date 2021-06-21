@@ -16,7 +16,7 @@ import org.nasdanika.html.bootstrap.Color;
 import org.nasdanika.html.bootstrap.Table;
 import org.nasdanika.html.emf.ViewAction;
 
-public class IssueCategoryViewAction extends NamedElementViewAction<IssueCategory> {
+public class IssueCategoryViewAction extends AimViewAction<IssueCategory> {
 		
 	public IssueCategoryViewAction(IssueCategory value, EngineeringViewActionAdapterFactory factory) {
 		super(value, factory);

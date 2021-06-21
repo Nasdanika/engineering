@@ -3202,7 +3202,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		endeavorEClass.getESuperTypes().add(this.getAlignable());
 		incrementEClass.getESuperTypes().add(this.getNamedElement());
 		incrementEClass.getESuperTypes().add(this.getEndeavor());
-		issueCategoryEClass.getESuperTypes().add(this.getNamedElement());
+		issueCategoryEClass.getESuperTypes().add(this.getAim());
 		issueStatusEClass.getESuperTypes().add(this.getNamedElement());
 		issueEClass.getESuperTypes().add(this.getEngineeredCapability());
 		noteEClass.getESuperTypes().add(this.getModelElement());

@@ -766,132 +766,6 @@ public interface EngineeringPackage extends EPackage {
 	int ISSUE_CATEGORY = 5;
 
 	/**
-	 * The feature id for the '<em><b>Uri</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ISSUE_CATEGORY__URI = NAMED_ELEMENT__URI;
-
-	/**
-	 * The feature id for the '<em><b>Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ISSUE_CATEGORY__PATH = NAMED_ELEMENT__PATH;
-
-	/**
-	 * The feature id for the '<em><b>Description</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ISSUE_CATEGORY__DESCRIPTION = NAMED_ELEMENT__DESCRIPTION;
-
-	/**
-	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ISSUE_CATEGORY__MARKDOWN_DESCRIPTION = NAMED_ELEMENT__MARKDOWN_DESCRIPTION;
-
-	/**
-	 * The feature id for the '<em><b>Actions</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ISSUE_CATEGORY__ACTIONS = NAMED_ELEMENT__ACTIONS;
-
-	/**
-	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ISSUE_CATEGORY__RESOURCES = NAMED_ELEMENT__RESOURCES;
-
-	/**
-	 * The feature id for the '<em><b>Appearance</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ISSUE_CATEGORY__APPEARANCE = NAMED_ELEMENT__APPEARANCE;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ISSUE_CATEGORY__NAME = NAMED_ELEMENT__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Weight</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ISSUE_CATEGORY__WEIGHT = NAMED_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Issues</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ISSUE_CATEGORY__ISSUES = NAMED_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Cumulative</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ISSUE_CATEGORY__CUMULATIVE = NAMED_ELEMENT_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Allocations</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ISSUE_CATEGORY__ALLOCATIONS = NAMED_ELEMENT_FEATURE_COUNT + 3;
-
-	/**
-	 * The number of structural features of the '<em>Issue Category</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ISSUE_CATEGORY_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 4;
-
-	/**
-	 * The number of operations of the '<em>Issue Category</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ISSUE_CATEGORY_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.IssueStatusImpl <em>Issue Status</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -900,6 +774,558 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 */
 	int ISSUE_STATUS = 6;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.EngineeredCapabilityImpl <em>Engineered Capability</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.EngineeredCapabilityImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getEngineeredCapability()
+	 * @generated
+	 */
+	int ENGINEERED_CAPABILITY = 16;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.ReleaseImpl <em>Release</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.ReleaseImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getRelease()
+	 * @generated
+	 */
+	int RELEASE = 17;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.FeatureImpl <em>Feature</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.FeatureImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getFeature()
+	 * @generated
+	 */
+	int FEATURE = 18;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.ActivityImpl <em>Activity</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.ActivityImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getActivity()
+	 * @generated
+	 */
+	int ACTIVITY = 43;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.JourneyImpl <em>Journey</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.JourneyImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getJourney()
+	 * @generated
+	 */
+	int JOURNEY = 47;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.TransitionImpl <em>Transition</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.TransitionImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getTransition()
+	 * @generated
+	 */
+	int TRANSITION = 45;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.CallImpl <em>Call</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.CallImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getCall()
+	 * @generated
+	 */
+	int CALL = 46;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.IssueImpl <em>Issue</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.IssueImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getIssue()
+	 * @generated
+	 */
+	int ISSUE = 7;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.NoteImpl <em>Note</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.NoteImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getNote()
+	 * @generated
+	 */
+	int NOTE = 8;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.DirectoryImpl <em>Directory</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.DirectoryImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getDirectory()
+	 * @generated
+	 */
+	int DIRECTORY = 19;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.CapacityImpl <em>Capacity</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.CapacityImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getCapacity()
+	 * @generated
+	 */
+	int CAPACITY = 20;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.AllocationImpl <em>Allocation</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.AllocationImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getAllocation()
+	 * @generated
+	 */
+	int ALLOCATION = 21;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.AimImpl <em>Aim</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.AimImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getAim()
+	 * @generated
+	 */
+	int AIM = 23;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.PrincipleImpl <em>Principle</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.PrincipleImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getPrinciple()
+	 * @generated
+	 */
+	int PRINCIPLE = 24;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.AlignmentImpl <em>Alignment</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.AlignmentImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getAlignment()
+	 * @generated
+	 */
+	int ALIGNMENT = 25;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.GoalImpl <em>Goal</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.GoalImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getGoal()
+	 * @generated
+	 */
+	int GOAL = 26;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.ForumImpl <em>Forum</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.ForumImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getForum()
+	 * @generated
+	 */
+	int FORUM = 27;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.ServiceImpl <em>Service</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.ServiceImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getService()
+	 * @generated
+	 */
+	int SERVICE = 44;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.PseudoStateImpl <em>Pseudo State</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.PseudoStateImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getPseudoState()
+	 * @generated
+	 */
+	int PSEUDO_STATE = 48;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.ChoiceImpl <em>Choice</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.ChoiceImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getChoice()
+	 * @generated
+	 */
+	int CHOICE = 49;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.EndImpl <em>End</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.EndImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getEnd()
+	 * @generated
+	 */
+	int END = 50;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.EntryPointImpl <em>Entry Point</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.EntryPointImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getEntryPoint()
+	 * @generated
+	 */
+	int ENTRY_POINT = 51;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.ExitPointImpl <em>Exit Point</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.ExitPointImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getExitPoint()
+	 * @generated
+	 */
+	int EXIT_POINT = 52;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.ExpansionInputImpl <em>Expansion Input</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.ExpansionInputImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getExpansionInput()
+	 * @generated
+	 */
+	int EXPANSION_INPUT = 53;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.ExpansionOutputImpl <em>Expansion Output</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.ExpansionOutputImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getExpansionOutput()
+	 * @generated
+	 */
+	int EXPANSION_OUTPUT = 54;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.ForkImpl <em>Fork</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.ForkImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getFork()
+	 * @generated
+	 */
+	int FORK = 55;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.InputPinImpl <em>Input Pin</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.InputPinImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getInputPin()
+	 * @generated
+	 */
+	int INPUT_PIN = 56;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.JoinImpl <em>Join</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.JoinImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getJoin()
+	 * @generated
+	 */
+	int JOIN = 57;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.OutputPinImpl <em>Output Pin</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.OutputPinImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getOutputPin()
+	 * @generated
+	 */
+	int OUTPUT_PIN = 58;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.StartImpl <em>Start</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.StartImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getStart()
+	 * @generated
+	 */
+	int START = 59;
+
+	/**
+	 * The feature id for the '<em><b>Uri</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AIM__URI = NAMED_ELEMENT__URI;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AIM__PATH = NAMED_ELEMENT__PATH;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AIM__DESCRIPTION = NAMED_ELEMENT__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AIM__MARKDOWN_DESCRIPTION = NAMED_ELEMENT__MARKDOWN_DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Actions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AIM__ACTIONS = NAMED_ELEMENT__ACTIONS;
+
+	/**
+	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AIM__RESOURCES = NAMED_ELEMENT__RESOURCES;
+
+	/**
+	 * The feature id for the '<em><b>Appearance</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AIM__APPEARANCE = NAMED_ELEMENT__APPEARANCE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AIM__NAME = NAMED_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Aligns</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AIM__ALIGNS = NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Alignments</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AIM__ALIGNMENTS = NAMED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Aim</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AIM_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Aim</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AIM_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Uri</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE_CATEGORY__URI = AIM__URI;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE_CATEGORY__PATH = AIM__PATH;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE_CATEGORY__DESCRIPTION = AIM__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE_CATEGORY__MARKDOWN_DESCRIPTION = AIM__MARKDOWN_DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Actions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE_CATEGORY__ACTIONS = AIM__ACTIONS;
+
+	/**
+	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE_CATEGORY__RESOURCES = AIM__RESOURCES;
+
+	/**
+	 * The feature id for the '<em><b>Appearance</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE_CATEGORY__APPEARANCE = AIM__APPEARANCE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE_CATEGORY__NAME = AIM__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Aligns</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE_CATEGORY__ALIGNS = AIM__ALIGNS;
+
+	/**
+	 * The feature id for the '<em><b>Alignments</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE_CATEGORY__ALIGNMENTS = AIM__ALIGNMENTS;
+
+	/**
+	 * The feature id for the '<em><b>Weight</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE_CATEGORY__WEIGHT = AIM_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Issues</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE_CATEGORY__ISSUES = AIM_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Cumulative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE_CATEGORY__CUMULATIVE = AIM_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Allocations</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE_CATEGORY__ALLOCATIONS = AIM_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the '<em>Issue Category</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE_CATEGORY_FEATURE_COUNT = AIM_FEATURE_COUNT + 4;
+
+	/**
+	 * The number of operations of the '<em>Issue Category</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE_CATEGORY_OPERATION_COUNT = AIM_OPERATION_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -1118,16 +1544,6 @@ public interface EngineeringPackage extends EPackage {
 	int CAPABILITY_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.EngineeredCapabilityImpl <em>Engineered Capability</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.EngineeredCapabilityImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getEngineeredCapability()
-	 * @generated
-	 */
-	int ENGINEERED_CAPABILITY = 16;
-
-	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1342,76 +1758,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int ENGINEERED_CAPABILITY_OPERATION_COUNT = CAPABILITY_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.ReleaseImpl <em>Release</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.ReleaseImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getRelease()
-	 * @generated
-	 */
-	int RELEASE = 17;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.FeatureImpl <em>Feature</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.FeatureImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getFeature()
-	 * @generated
-	 */
-	int FEATURE = 18;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.ActivityImpl <em>Activity</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.ActivityImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getActivity()
-	 * @generated
-	 */
-	int ACTIVITY = 43;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.JourneyImpl <em>Journey</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.JourneyImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getJourney()
-	 * @generated
-	 */
-	int JOURNEY = 47;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.TransitionImpl <em>Transition</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.TransitionImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getTransition()
-	 * @generated
-	 */
-	int TRANSITION = 45;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.CallImpl <em>Call</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.CallImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getCall()
-	 * @generated
-	 */
-	int CALL = 46;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.IssueImpl <em>Issue</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.IssueImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getIssue()
-	 * @generated
-	 */
-	int ISSUE = 7;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -1756,16 +2102,6 @@ public interface EngineeringPackage extends EPackage {
 	int ISSUE_OPERATION_COUNT = ENGINEERED_CAPABILITY_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.NoteImpl <em>Note</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.NoteImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getNote()
-	 * @generated
-	 */
-	int NOTE = 8;
-
-	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1908,86 +2244,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int NOTE_OPERATION_COUNT = MODEL_ELEMENT_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.DirectoryImpl <em>Directory</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.DirectoryImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getDirectory()
-	 * @generated
-	 */
-	int DIRECTORY = 19;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.CapacityImpl <em>Capacity</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.CapacityImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getCapacity()
-	 * @generated
-	 */
-	int CAPACITY = 20;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.AllocationImpl <em>Allocation</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.AllocationImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getAllocation()
-	 * @generated
-	 */
-	int ALLOCATION = 21;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.AimImpl <em>Aim</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.AimImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getAim()
-	 * @generated
-	 */
-	int AIM = 23;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.PrincipleImpl <em>Principle</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.PrincipleImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getPrinciple()
-	 * @generated
-	 */
-	int PRINCIPLE = 24;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.AlignmentImpl <em>Alignment</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.AlignmentImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getAlignment()
-	 * @generated
-	 */
-	int ALIGNMENT = 25;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.GoalImpl <em>Goal</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.GoalImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getGoal()
-	 * @generated
-	 */
-	int GOAL = 26;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.ForumImpl <em>Forum</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.ForumImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getForum()
-	 * @generated
-	 */
-	int FORUM = 27;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -3970,136 +4226,6 @@ public interface EngineeringPackage extends EPackage {
 	int FEATURE_OPERATION_COUNT = ENGINEERED_CAPABILITY_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.ServiceImpl <em>Service</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.ServiceImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getService()
-	 * @generated
-	 */
-	int SERVICE = 44;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.PseudoStateImpl <em>Pseudo State</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.PseudoStateImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getPseudoState()
-	 * @generated
-	 */
-	int PSEUDO_STATE = 48;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.ChoiceImpl <em>Choice</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.ChoiceImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getChoice()
-	 * @generated
-	 */
-	int CHOICE = 49;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.EndImpl <em>End</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.EndImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getEnd()
-	 * @generated
-	 */
-	int END = 50;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.EntryPointImpl <em>Entry Point</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.EntryPointImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getEntryPoint()
-	 * @generated
-	 */
-	int ENTRY_POINT = 51;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.ExitPointImpl <em>Exit Point</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.ExitPointImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getExitPoint()
-	 * @generated
-	 */
-	int EXIT_POINT = 52;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.ExpansionInputImpl <em>Expansion Input</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.ExpansionInputImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getExpansionInput()
-	 * @generated
-	 */
-	int EXPANSION_INPUT = 53;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.ExpansionOutputImpl <em>Expansion Output</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.ExpansionOutputImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getExpansionOutput()
-	 * @generated
-	 */
-	int EXPANSION_OUTPUT = 54;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.ForkImpl <em>Fork</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.ForkImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getFork()
-	 * @generated
-	 */
-	int FORK = 55;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.InputPinImpl <em>Input Pin</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.InputPinImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getInputPin()
-	 * @generated
-	 */
-	int INPUT_PIN = 56;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.JoinImpl <em>Join</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.JoinImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getJoin()
-	 * @generated
-	 */
-	int JOIN = 57;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.OutputPinImpl <em>Output Pin</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.OutputPinImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getOutputPin()
-	 * @generated
-	 */
-	int OUTPUT_PIN = 58;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.StartImpl <em>Start</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.StartImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getStart()
-	 * @generated
-	 */
-	int START = 59;
-
-	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4512,114 +4638,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int ALLOCATION_OPERATION_COUNT = CAPACITY_OPERATION_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Uri</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AIM__URI = NAMED_ELEMENT__URI;
-
-	/**
-	 * The feature id for the '<em><b>Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AIM__PATH = NAMED_ELEMENT__PATH;
-
-	/**
-	 * The feature id for the '<em><b>Description</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AIM__DESCRIPTION = NAMED_ELEMENT__DESCRIPTION;
-
-	/**
-	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AIM__MARKDOWN_DESCRIPTION = NAMED_ELEMENT__MARKDOWN_DESCRIPTION;
-
-	/**
-	 * The feature id for the '<em><b>Actions</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AIM__ACTIONS = NAMED_ELEMENT__ACTIONS;
-
-	/**
-	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AIM__RESOURCES = NAMED_ELEMENT__RESOURCES;
-
-	/**
-	 * The feature id for the '<em><b>Appearance</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AIM__APPEARANCE = NAMED_ELEMENT__APPEARANCE;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AIM__NAME = NAMED_ELEMENT__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Aligns</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AIM__ALIGNS = NAMED_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Alignments</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AIM__ALIGNMENTS = NAMED_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of structural features of the '<em>Aim</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AIM_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 2;
-
-	/**
-	 * The number of operations of the '<em>Aim</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AIM_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.

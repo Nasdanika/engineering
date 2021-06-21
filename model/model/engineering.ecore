@@ -170,7 +170,7 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="IssueCategory" eSuperTypes="#//NamedElement">
+  <eClassifiers xsi:type="ecore:EClass" name="IssueCategory" eSuperTypes="#//Aim">
     <eAnnotations source="urn:org.nasdanika">
       <details key="documentation-reference" value="doc/issue-category.md"/>
     </eAnnotations>

@@ -32,7 +32,7 @@ import org.nasdanika.engineering.IssueCategory;
  *
  * @generated
  */
-public class IssueCategoryImpl extends NamedElementImpl implements IssueCategory {
+public class IssueCategoryImpl extends AimImpl implements IssueCategory {
 	/**
 	 * The default value of the '{@link #getWeight() <em>Weight</em>}' attribute.
 	 * <!-- begin-user-doc -->
