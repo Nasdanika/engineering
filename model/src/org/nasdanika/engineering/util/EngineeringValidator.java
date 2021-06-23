@@ -2,6 +2,7 @@
  */
 package org.nasdanika.engineering.util;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -9,6 +10,8 @@ import java.util.Map;
 
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.ECollections;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -1024,6 +1027,66 @@ public class EngineeringValidator extends EObjectValidator {
 		return true;
 	}
 	
+	/**
+	 * 
+	 * @param journey
+	 * @param diagnostics
+	 * @param context
+	 * @generated NOT
+	 * @return
+	 */
+	public boolean validateJourney_elements(Journey journey, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (diagnostics != null) {
+			DiagnosticHelper helper = new DiagnosticHelper(diagnostics, DIAGNOSTIC_SOURCE, 0, journey);
+			EList<Journey> journeyPath = ECollections.singletonEList(journey);
+			validateJourneyElements(journeyPath, helper, context);
+			return helper.isSuccess();
+		}
+		return true;		
+	}	
+
+	private void validateJourneyElements(EList<Journey> journeyPath, DiagnosticHelper helper, Map<Object, Object> context) {
+		for (JourneyElement je: journeyPath.get(journeyPath.size() - 1).getAllElements()) {
+			if (je instanceof Journey) {
+				EList<Journey> jjPath = ECollections.newBasicEList(journeyPath);
+				jjPath.add((Journey) je);
+				validateJourneyElements(jjPath, helper, context);
+			} else if (je instanceof Transition) {
+				validateTransitionTarget(journeyPath, helper, (Transition) je, context);
+			} else if (je instanceof End) {
+				validateEndNoOutputs(journeyPath, helper, (End) je, context);
+				validateEndNoCalls(journeyPath, helper, (End) je, context);
+			} else if (je instanceof Start) {
+				validateStartNoInputs(journeyPath, helper, (Start) je, context);
+				validateStartNoInvocations(journeyPath, helper, (Start) je, context);
+			} else if (je instanceof Fork) {
+				validateForkMultipleBranches(journeyPath, helper, (Fork) je, context);
+			} else if (je instanceof Join) {
+				validateJoinMultipleBranches(journeyPath, helper, (Join) je, context);
+			} 
+		}	
+	}
+	
+	/**
+	 * String representation of the journey path excluding the first journey.
+	 * @param journeyPath
+	 * @return
+	 */
+	private static String journeyPath(EList<Journey> journeyPath) {
+		if (journeyPath.size() < 2) {
+			return "";		
+		}
+		
+		StringBuilder ret = new StringBuilder("[");
+		for (int i = 1; i < journeyPath.size(); ++i) {
+			if (i > 1) {
+				ret.append("/");
+			}
+			ret.append(journeyPath.get(i).getPath());
+		}
+		ret.append("] ");
+		return ret.toString();
+	}
 
 	/**
 	 * Validates the target constraint of '<em>Transition</em>'.
@@ -1031,35 +1094,22 @@ public class EngineeringValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public boolean validateTransition_target(Transition transition, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		if (diagnostics != null) {
-			DiagnosticHelper helper = new DiagnosticHelper(diagnostics, DIAGNOSTIC_SOURCE, 0, transition);
-			if (transition.getTarget() == null) {
-				helper.error("Transition target cannot be resolved: " + transition.getTargetId());
-			};
-			
-			return helper.isSuccess();
+	private void validateTransitionTarget(EList<Journey> journeyPath, DiagnosticHelper helper, Transition transition, Map<Object, Object> context) {
+		if (transition.getTarget(journeyPath) == null) {
+			helper.error(journeyPath(journeyPath) + "Transition target cannot be resolved: " + transition.getTarget());
 		}
-		return true;
 	}
 	
-
 	/**
 	 * Validates the noOutputs constraint of '<em>End</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public boolean validateEnd_noOutputs(End end, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		if (diagnostics != null) {
-			DiagnosticHelper helper = new DiagnosticHelper(diagnostics, DIAGNOSTIC_SOURCE, 0, end);
-			if (!end.getAllOutputs().isEmpty()) {
-				helper.error("End cannot have outputs", EngineeringPackage.Literals.JOURNEY_ELEMENT__ALL_OUTPUTS);
-			};
-			
-			return helper.isSuccess();
+	private void validateEndNoOutputs(EList<Journey> journeyPath, DiagnosticHelper helper, End end, Map<Object, Object> context) {
+		if (!end.getAllOutputs(journeyPath).isEmpty()) {
+			helper.error(journeyPath(journeyPath) + "End cannot have outputs");
 		}
-		return true;
 	}
 
 	/**
@@ -1068,16 +1118,10 @@ public class EngineeringValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public boolean validateEnd_noCalls(End end, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		if (diagnostics != null) {
-			DiagnosticHelper helper = new DiagnosticHelper(diagnostics, DIAGNOSTIC_SOURCE, 0, end);
-			if (!end.getAllCalls().isEmpty()) {
-				helper.error("End cannot have calls", EngineeringPackage.Literals.JOURNEY_ELEMENT__ALL_CALLS);
-			};
-			
-			return helper.isSuccess();
+	private void validateEndNoCalls(EList<Journey> journeyPath, DiagnosticHelper helper, End end, Map<Object, Object> context) {
+		if (!end.getAllCalls(journeyPath).isEmpty()) {
+			helper.error(journeyPath(journeyPath) + "End cannot have calls");
 		}
-		return true;
 	}
 
 	/**
@@ -1086,22 +1130,11 @@ public class EngineeringValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public boolean validateFork_multipleBranches(Fork fork, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		if (diagnostics != null) {
-			DiagnosticHelper helper = new DiagnosticHelper(diagnostics, DIAGNOSTIC_SOURCE, 0, fork);
-			if (fork.getAllOutputs().size() + fork.getAllCalls().size() < 2) {
-				helper.warning("There should be multiple branches");
-			};
-			
-			return helper.isSuccess();
+	private void validateForkMultipleBranches(EList<Journey> journeyPath, DiagnosticHelper helper, Fork fork, Map<Object, Object> context) {
+		if (fork.getAllOutputs(journeyPath).size() + fork.getAllCalls(journeyPath).size() < 2) {
+			helper.warning(journeyPath(journeyPath) + "There should be multiple branches");
 		}
-		return true;
 	}
-	
-
-	public boolean validateJourney_transitionTargets(Journey journey, DiagnosticChain diagnostics, Map<Object, Object> context) {
-	}	
-	
 
 	/**
 	 * Validates the noInputs constraint of '<em>Start</em>'.
@@ -1109,16 +1142,10 @@ public class EngineeringValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public boolean validateStart_noInputs(Start start, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		if (diagnostics != null) {
-			DiagnosticHelper helper = new DiagnosticHelper(diagnostics, DIAGNOSTIC_SOURCE, 0, start);
-			if (!start.getAllInputs().isEmpty()) {
-				helper.error("Start cannot have inputs", EngineeringPackage.Literals.JOURNEY_ELEMENT__ALL_INPUTS);
-			};
-			
-			return helper.isSuccess();
+	private void validateStartNoInputs(EList<Journey> journeyPath, DiagnosticHelper helper, Start start, Map<Object, Object> context) {
+		if (!start.getAllInputs(journeyPath).isEmpty()) {
+			helper.error(journeyPath(journeyPath) + "Start cannot have inputs");
 		}
-		return true;
 	}
 
 	/**
@@ -1127,16 +1154,10 @@ public class EngineeringValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public boolean validateStart_noInvocations(Start start, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		if (diagnostics != null) {
-			DiagnosticHelper helper = new DiagnosticHelper(diagnostics, DIAGNOSTIC_SOURCE, 0, start);
-			if (!start.getAllInvocations().isEmpty()) {
-				helper.error("Start cannot have invocations", EngineeringPackage.Literals.JOURNEY_ELEMENT__ALL_INVOCATIONS);
-			};
-			
-			return helper.isSuccess();
+	private void validateStartNoInvocations(EList<Journey> journeyPath, DiagnosticHelper helper, Start start, Map<Object, Object> context) {
+		if (!start.getAllInvocations(journeyPath).isEmpty()) {
+			helper.error(journeyPath(journeyPath) + "Start cannot have invocations");
 		}
-		return true;
 	}
 
 	/**
@@ -1145,47 +1166,12 @@ public class EngineeringValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public boolean validateJoin_multipleBranches(Join join, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		if (diagnostics != null) {
-			DiagnosticHelper helper = new DiagnosticHelper(diagnostics, DIAGNOSTIC_SOURCE, 0, join);
-			if (join.getAllInputs().size() + join.getAllInvocations().size() < 2) {
-				helper.warning("There should be multiple branches to merge");
-			};
-			
-			return helper.isSuccess();
+	private void validateJoinMultipleBranches(EList<Journey> journeyPath, DiagnosticHelper helper, Join join, Map<Object, Object> context) {
+		if (join.getAllInputs(journeyPath).size() + join.getAllInvocations(journeyPath).size() < 2) {
+			helper.warning(journeyPath(journeyPath) + "There should be multiple branches to merge");
 		}
-		return true;
 	}
 	
-
-	/**
-	 * Validates the transitionTargets constraint of '<em>Journey</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public boolean validateJourney_transitionTargets(List<Journey> journeyPath, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		// TODO implement the constraint
-		// -> specify the condition that violates the constraint
-		// -> verify the diagnostic details, including severity, code, and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics.add
-					(createDiagnostic
-						(Diagnostic.ERROR,
-						 DIAGNOSTIC_SOURCE,
-						 0,
-						 "_UI_GenericConstraint_diagnostic",
-						 new Object[] { "transitionTargets", getObjectLabel(journey, context) },
-						 new Object[] { journey },
-						 context));
-			}
-			return false;
-		}
-		return true;
-	}
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
