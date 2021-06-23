@@ -214,6 +214,16 @@ engineering-module:
          Escalate to the next level every week. Can be done by something like a Jenkins or CircleCI scheduled jobs. Aggregate and group by severity.
      - name: Relative dates
        markdown-description: E.g. ``${start} + 2 weeks``. Usable for templates. Look at how https://plantuml.com/gantt-diagram does it. 
+     - name: Issue severity and priority
+       markdown-description: |+2
+         Document the difference, add to tables. Appearance - feature section with a summary table. 
+         Think about some approach to control that say a codebase with show-stopper severity issues cannot be merged to some branches - e.g. it should stay in ``develop``.
+         Provide a mapping of issue severity URI's to diagnostic statuses - context service - if such mapping is found, validation of an not done issue in that severity would result in a diagnostic with
+         respective severity. E.g. show-stopper to ERROR in ``develop`` and to FAIL in ``master``, i.e. site generation would fail in ``master`` if there are showstoppers.    
+     - name: Key results initiatives
+       markdown-description: |+2
+         Containment reference for issues. Take into account in completion calculations. Another way to track execution.
+         Include in allIssues. Show on the key result page. Appearance - element-actions/none, ...           
          
      ### === Done === ###    
      - name: Start/end from Issue and Increment to Endeavor

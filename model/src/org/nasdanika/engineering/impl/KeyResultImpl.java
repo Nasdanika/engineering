@@ -2,11 +2,17 @@
  */
 package org.nasdanika.engineering.impl;
 
+import java.util.Collection;
+import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.util.InternalEList;
 import org.nasdanika.engineering.Alignment;
 import org.nasdanika.engineering.Endeavor;
 import org.nasdanika.engineering.EngineeringPackage;
+import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.KeyResult;
 
 /**
@@ -19,6 +25,7 @@ import org.nasdanika.engineering.KeyResult;
  * <ul>
  *   <li>{@link org.nasdanika.engineering.impl.KeyResultImpl#getWeight <em>Weight</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.KeyResultImpl#getCompletion <em>Completion</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.KeyResultImpl#getInitiatives <em>Initiatives</em>}</li>
  * </ul>
  *
  * @generated
@@ -114,6 +121,31 @@ public class KeyResultImpl extends AimImpl implements KeyResult {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public EList<Issue> getInitiatives() {
+		return (EList<Issue>)eDynamicGet(EngineeringPackage.KEY_RESULT__INITIATIVES, EngineeringPackage.Literals.KEY_RESULT__INITIATIVES, true, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case EngineeringPackage.KEY_RESULT__INITIATIVES:
+				return ((InternalEList<?>)getInitiatives()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -121,6 +153,8 @@ public class KeyResultImpl extends AimImpl implements KeyResult {
 				return getWeight();
 			case EngineeringPackage.KEY_RESULT__COMPLETION:
 				return getCompletion();
+			case EngineeringPackage.KEY_RESULT__INITIATIVES:
+				return getInitiatives();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -130,11 +164,16 @@ public class KeyResultImpl extends AimImpl implements KeyResult {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case EngineeringPackage.KEY_RESULT__WEIGHT:
 				setWeight((Double)newValue);
+				return;
+			case EngineeringPackage.KEY_RESULT__INITIATIVES:
+				getInitiatives().clear();
+				getInitiatives().addAll((Collection<? extends Issue>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -150,6 +189,9 @@ public class KeyResultImpl extends AimImpl implements KeyResult {
 		switch (featureID) {
 			case EngineeringPackage.KEY_RESULT__WEIGHT:
 				setWeight(WEIGHT_EDEFAULT);
+				return;
+			case EngineeringPackage.KEY_RESULT__INITIATIVES:
+				getInitiatives().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -167,6 +209,8 @@ public class KeyResultImpl extends AimImpl implements KeyResult {
 				return getWeight() != WEIGHT_EDEFAULT;
 			case EngineeringPackage.KEY_RESULT__COMPLETION:
 				return getCompletion() != COMPLETION_EDEFAULT;
+			case EngineeringPackage.KEY_RESULT__INITIATIVES:
+				return !getInitiatives().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

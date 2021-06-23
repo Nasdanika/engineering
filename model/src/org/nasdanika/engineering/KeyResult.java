@@ -2,6 +2,8 @@
  */
 package org.nasdanika.engineering;
 
+import org.eclipse.emf.common.util.EList;
+
 
 /**
  * <!-- begin-user-doc -->
@@ -14,6 +16,7 @@ package org.nasdanika.engineering;
  * <ul>
  *   <li>{@link org.nasdanika.engineering.KeyResult#getWeight <em>Weight</em>}</li>
  *   <li>{@link org.nasdanika.engineering.KeyResult#getCompletion <em>Completion</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.KeyResult#getInitiatives <em>Initiatives</em>}</li>
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getKeyResult()
@@ -60,5 +63,21 @@ public interface KeyResult extends Aim {
 	 * @generated
 	 */
 	double getCompletion();
+
+	/**
+	 * Returns the value of the '<em><b>Initiatives</b></em>' containment reference list.
+	 * The list contents are of type {@link org.nasdanika.engineering.Issue}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * What needs to be done to achieve the containing Key Result.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Initiatives</em>' containment reference list.
+	 * @see org.nasdanika.engineering.EngineeringPackage#getKeyResult_Initiatives()
+	 * @model containment="true"
+	 *        annotation="urn:org.nasdanika homogenous='true'"
+	 * @generated
+	 */
+	EList<Issue> getInitiatives();
 
 } // KeyResult

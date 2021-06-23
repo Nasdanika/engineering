@@ -13,32 +13,53 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.nasdanika.engineering.Transition#getTarget <em>Target</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Transition#getPayload <em>Payload</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Transition#isSuppress <em>Suppress</em>}</li>
- *   <li>{@link org.nasdanika.engineering.Transition#getTargetId <em>Target Id</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.Transition#getTarget <em>Target</em>}</li>
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getTransition()
  * @model annotation="urn:org.nasdanika documentation-reference='doc/transition.md'"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='target'"
  * @generated
  */
 public interface Transition extends NamedElement {
 	/**
-	 * Returns the value of the '<em><b>Target</b></em>' reference.
+	 * Returns the value of the '<em><b>Target</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Transition's target journey element.
+	 * Relative path to the target [journey element](JourneyElement.html). May contain ``..`` to navigate to the parent [journey](Journey.html) - i.e. the journey which contains the journey containing the element which contains this transition. May contain ``/`` to navigate to nested journeys. Treated as URI if contains ``:``.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Target</em>' reference.
+	 * @return the value of the '<em>Target</em>' attribute.
+	 * @see #setTarget(String)
 	 * @see org.nasdanika.engineering.EngineeringPackage#getTransition_Target()
-	 * @model changeable="false" derived="true"
+	 * @model required="true"
 	 *        annotation="urn:org.nasdanika default-feature='true'"
 	 * @generated
 	 */
-	JourneyElement getTarget();
+	String getTarget();
+
+	/**
+	 * Sets the value of the '{@link org.nasdanika.engineering.Transition#getTarget <em>Target</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Target</em>' attribute.
+	 * @see #getTarget()
+	 * @generated
+	 */
+	void setTarget(String value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Resolves transition's target journey element for a given journey.
+	 * @param journeyPath Journey nesting path to resolve target element for. May be different from the containment path in the case of nested journeys of extended journeys.
+	 * <!-- end-model-doc -->
+	 * @model journeyPathRequired="true" journeyPathMany="true"
+	 * @generated
+	 */
+	JourneyElement getTarget(EList<Journey> journeyPath);
 
 	/**
 	 * Returns the value of the '<em><b>Payload</b></em>' reference list.
@@ -79,31 +100,5 @@ public interface Transition extends NamedElement {
 	 * @generated
 	 */
 	void setSuppress(boolean value);
-
-	/**
-	 * Returns the value of the '<em><b>Target Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Relative path to the target [journey element](JourneyElement.html). May contain ``..`` to navigate to the parent [journey](Journey.html) - i.e. the journey which contains the journey containing the element which contains this transition. May contain ``/`` to navigate to nested journeys. Treated as URI if contains ``:``.
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Target Id</em>' attribute.
-	 * @see #setTargetId(String)
-	 * @see org.nasdanika.engineering.EngineeringPackage#getTransition_TargetId()
-	 * @model required="true"
-	 *        annotation="urn:org.nasdanika default-feature='true' load-key='target'"
-	 * @generated
-	 */
-	String getTargetId();
-
-	/**
-	 * Sets the value of the '{@link org.nasdanika.engineering.Transition#getTargetId <em>Target Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Target Id</em>' attribute.
-	 * @see #getTargetId()
-	 * @generated
-	 */
-	void setTargetId(String value);
 
 } // Transition

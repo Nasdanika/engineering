@@ -5,6 +5,7 @@ package org.nasdanika.engineering;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -6148,13 +6149,22 @@ public interface EngineeringPackage extends EPackage {
 	int KEY_RESULT__COMPLETION = AIM_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Initiatives</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int KEY_RESULT__INITIATIVES = AIM_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Key Result</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int KEY_RESULT_FEATURE_COUNT = AIM_FEATURE_COUNT + 2;
+	int KEY_RESULT_FEATURE_COUNT = AIM_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>Key Result</em>' class.
@@ -6282,6 +6292,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int OBJECTIVE__COMPLETION = KEY_RESULT__COMPLETION;
+
+	/**
+	 * The feature id for the '<em><b>Initiatives</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBJECTIVE__INITIATIVES = KEY_RESULT__INITIATIVES;
 
 	/**
 	 * The feature id for the '<em><b>Endeavor</b></em>' reference.
@@ -6907,22 +6926,13 @@ public interface EngineeringPackage extends EPackage {
 	int JOURNEY_ELEMENT__PRINCIPLES = ENGINEERED_ELEMENT__PRINCIPLES;
 
 	/**
-	 * The feature id for the '<em><b>Inputs</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JOURNEY_ELEMENT__INPUTS = ENGINEERED_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
 	 * The feature id for the '<em><b>Outputs</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JOURNEY_ELEMENT__OUTPUTS = ENGINEERED_ELEMENT_FEATURE_COUNT + 1;
+	int JOURNEY_ELEMENT__OUTPUTS = ENGINEERED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Calls</b></em>' containment reference list.
@@ -6931,16 +6941,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JOURNEY_ELEMENT__CALLS = ENGINEERED_ELEMENT_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Invocations</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JOURNEY_ELEMENT__INVOCATIONS = ENGINEERED_ELEMENT_FEATURE_COUNT + 3;
+	int JOURNEY_ELEMENT__CALLS = ENGINEERED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Requirements</b></em>' reference list.
@@ -6949,7 +6950,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JOURNEY_ELEMENT__REQUIREMENTS = ENGINEERED_ELEMENT_FEATURE_COUNT + 4;
+	int JOURNEY_ELEMENT__REQUIREMENTS = ENGINEERED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Deliverables</b></em>' reference list.
@@ -6958,7 +6959,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JOURNEY_ELEMENT__DELIVERABLES = ENGINEERED_ELEMENT_FEATURE_COUNT + 5;
+	int JOURNEY_ELEMENT__DELIVERABLES = ENGINEERED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Personas</b></em>' reference list.
@@ -6967,43 +6968,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JOURNEY_ELEMENT__PERSONAS = ENGINEERED_ELEMENT_FEATURE_COUNT + 6;
-
-	/**
-	 * The feature id for the '<em><b>All Outputs</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JOURNEY_ELEMENT__ALL_OUTPUTS = ENGINEERED_ELEMENT_FEATURE_COUNT + 7;
-
-	/**
-	 * The feature id for the '<em><b>All Inputs</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JOURNEY_ELEMENT__ALL_INPUTS = ENGINEERED_ELEMENT_FEATURE_COUNT + 8;
-
-	/**
-	 * The feature id for the '<em><b>All Calls</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JOURNEY_ELEMENT__ALL_CALLS = ENGINEERED_ELEMENT_FEATURE_COUNT + 9;
-
-	/**
-	 * The feature id for the '<em><b>All Invocations</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JOURNEY_ELEMENT__ALL_INVOCATIONS = ENGINEERED_ELEMENT_FEATURE_COUNT + 10;
+	int JOURNEY_ELEMENT__PERSONAS = ENGINEERED_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Overrides</b></em>' reference.
@@ -7012,7 +6977,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JOURNEY_ELEMENT__OVERRIDES = ENGINEERED_ELEMENT_FEATURE_COUNT + 11;
+	int JOURNEY_ELEMENT__OVERRIDES = ENGINEERED_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Overriden By</b></em>' reference list.
@@ -7021,7 +6986,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JOURNEY_ELEMENT__OVERRIDEN_BY = ENGINEERED_ELEMENT_FEATURE_COUNT + 12;
+	int JOURNEY_ELEMENT__OVERRIDEN_BY = ENGINEERED_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Modifiers</b></em>' attribute list.
@@ -7030,7 +6995,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JOURNEY_ELEMENT__MODIFIERS = ENGINEERED_ELEMENT_FEATURE_COUNT + 13;
+	int JOURNEY_ELEMENT__MODIFIERS = ENGINEERED_ELEMENT_FEATURE_COUNT + 7;
 
 	/**
 	 * The number of structural features of the '<em>Journey Element</em>' class.
@@ -7039,7 +7004,61 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JOURNEY_ELEMENT_FEATURE_COUNT = ENGINEERED_ELEMENT_FEATURE_COUNT + 14;
+	int JOURNEY_ELEMENT_FEATURE_COUNT = ENGINEERED_ELEMENT_FEATURE_COUNT + 8;
+
+	/**
+	 * The operation id for the '<em>Get Inputs</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY_ELEMENT___GET_INPUTS__ELIST = ENGINEERED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Get Invocations</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY_ELEMENT___GET_INVOCATIONS__ELIST = ENGINEERED_ELEMENT_OPERATION_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Get All Inputs</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY_ELEMENT___GET_ALL_INPUTS__ELIST = ENGINEERED_ELEMENT_OPERATION_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Get All Invocations</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY_ELEMENT___GET_ALL_INVOCATIONS__ELIST = ENGINEERED_ELEMENT_OPERATION_COUNT + 3;
+
+	/**
+	 * The operation id for the '<em>Get All Outputs</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY_ELEMENT___GET_ALL_OUTPUTS__ELIST = ENGINEERED_ELEMENT_OPERATION_COUNT + 4;
+
+	/**
+	 * The operation id for the '<em>Get All Calls</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY_ELEMENT___GET_ALL_CALLS__ELIST = ENGINEERED_ELEMENT_OPERATION_COUNT + 5;
 
 	/**
 	 * The number of operations of the '<em>Journey Element</em>' class.
@@ -7048,7 +7067,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JOURNEY_ELEMENT_OPERATION_COUNT = ENGINEERED_ELEMENT_OPERATION_COUNT + 0;
+	int JOURNEY_ELEMENT_OPERATION_COUNT = ENGINEERED_ELEMENT_OPERATION_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -7186,15 +7205,6 @@ public interface EngineeringPackage extends EPackage {
 	int ACTIVITY__PRINCIPLES = JOURNEY_ELEMENT__PRINCIPLES;
 
 	/**
-	 * The feature id for the '<em><b>Inputs</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__INPUTS = JOURNEY_ELEMENT__INPUTS;
-
-	/**
 	 * The feature id for the '<em><b>Outputs</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7211,15 +7221,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int ACTIVITY__CALLS = JOURNEY_ELEMENT__CALLS;
-
-	/**
-	 * The feature id for the '<em><b>Invocations</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__INVOCATIONS = JOURNEY_ELEMENT__INVOCATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Requirements</b></em>' reference list.
@@ -7247,42 +7248,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int ACTIVITY__PERSONAS = JOURNEY_ELEMENT__PERSONAS;
-
-	/**
-	 * The feature id for the '<em><b>All Outputs</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__ALL_OUTPUTS = JOURNEY_ELEMENT__ALL_OUTPUTS;
-
-	/**
-	 * The feature id for the '<em><b>All Inputs</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__ALL_INPUTS = JOURNEY_ELEMENT__ALL_INPUTS;
-
-	/**
-	 * The feature id for the '<em><b>All Calls</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__ALL_CALLS = JOURNEY_ELEMENT__ALL_CALLS;
-
-	/**
-	 * The feature id for the '<em><b>All Invocations</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__ALL_INVOCATIONS = JOURNEY_ELEMENT__ALL_INVOCATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Overrides</b></em>' reference.
@@ -7337,6 +7302,60 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int ACTIVITY_FEATURE_COUNT = JOURNEY_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Get Inputs</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY___GET_INPUTS__ELIST = JOURNEY_ELEMENT___GET_INPUTS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get Invocations</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY___GET_INVOCATIONS__ELIST = JOURNEY_ELEMENT___GET_INVOCATIONS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get All Inputs</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY___GET_ALL_INPUTS__ELIST = JOURNEY_ELEMENT___GET_ALL_INPUTS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get All Invocations</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY___GET_ALL_INVOCATIONS__ELIST = JOURNEY_ELEMENT___GET_ALL_INVOCATIONS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get All Outputs</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY___GET_ALL_OUTPUTS__ELIST = JOURNEY_ELEMENT___GET_ALL_OUTPUTS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get All Calls</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY___GET_ALL_CALLS__ELIST = JOURNEY_ELEMENT___GET_ALL_CALLS__ELIST;
 
 	/**
 	 * The number of operations of the '<em>Activity</em>' class.
@@ -7483,15 +7502,6 @@ public interface EngineeringPackage extends EPackage {
 	int SERVICE__PRINCIPLES = JOURNEY_ELEMENT__PRINCIPLES;
 
 	/**
-	 * The feature id for the '<em><b>Inputs</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SERVICE__INPUTS = JOURNEY_ELEMENT__INPUTS;
-
-	/**
 	 * The feature id for the '<em><b>Outputs</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7508,15 +7518,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int SERVICE__CALLS = JOURNEY_ELEMENT__CALLS;
-
-	/**
-	 * The feature id for the '<em><b>Invocations</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SERVICE__INVOCATIONS = JOURNEY_ELEMENT__INVOCATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Requirements</b></em>' reference list.
@@ -7544,42 +7545,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int SERVICE__PERSONAS = JOURNEY_ELEMENT__PERSONAS;
-
-	/**
-	 * The feature id for the '<em><b>All Outputs</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SERVICE__ALL_OUTPUTS = JOURNEY_ELEMENT__ALL_OUTPUTS;
-
-	/**
-	 * The feature id for the '<em><b>All Inputs</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SERVICE__ALL_INPUTS = JOURNEY_ELEMENT__ALL_INPUTS;
-
-	/**
-	 * The feature id for the '<em><b>All Calls</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SERVICE__ALL_CALLS = JOURNEY_ELEMENT__ALL_CALLS;
-
-	/**
-	 * The feature id for the '<em><b>All Invocations</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SERVICE__ALL_INVOCATIONS = JOURNEY_ELEMENT__ALL_INVOCATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Overrides</b></em>' reference.
@@ -7625,6 +7590,60 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int SERVICE_FEATURE_COUNT = JOURNEY_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Get Inputs</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE___GET_INPUTS__ELIST = JOURNEY_ELEMENT___GET_INPUTS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get Invocations</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE___GET_INVOCATIONS__ELIST = JOURNEY_ELEMENT___GET_INVOCATIONS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get All Inputs</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE___GET_ALL_INPUTS__ELIST = JOURNEY_ELEMENT___GET_ALL_INPUTS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get All Invocations</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE___GET_ALL_INVOCATIONS__ELIST = JOURNEY_ELEMENT___GET_ALL_INVOCATIONS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get All Outputs</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE___GET_ALL_OUTPUTS__ELIST = JOURNEY_ELEMENT___GET_ALL_OUTPUTS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get All Calls</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE___GET_ALL_CALLS__ELIST = JOURNEY_ELEMENT___GET_ALL_CALLS__ELIST;
 
 	/**
 	 * The number of operations of the '<em>Service</em>' class.
@@ -7708,22 +7727,13 @@ public interface EngineeringPackage extends EPackage {
 	int TRANSITION__NAME = NAMED_ELEMENT__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Target</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRANSITION__TARGET = NAMED_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
 	 * The feature id for the '<em><b>Payload</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSITION__PAYLOAD = NAMED_ELEMENT_FEATURE_COUNT + 1;
+	int TRANSITION__PAYLOAD = NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Suppress</b></em>' attribute.
@@ -7732,16 +7742,16 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSITION__SUPPRESS = NAMED_ELEMENT_FEATURE_COUNT + 2;
+	int TRANSITION__SUPPRESS = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Target Id</b></em>' attribute.
+	 * The feature id for the '<em><b>Target</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSITION__TARGET_ID = NAMED_ELEMENT_FEATURE_COUNT + 3;
+	int TRANSITION__TARGET = NAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Transition</em>' class.
@@ -7750,7 +7760,16 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSITION_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 4;
+	int TRANSITION_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
+	 * The operation id for the '<em>Get Target</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION___GET_TARGET__ELIST = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>Transition</em>' class.
@@ -7759,7 +7778,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSITION_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
+	int TRANSITION_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -7834,15 +7853,6 @@ public interface EngineeringPackage extends EPackage {
 	int CALL__NAME = TRANSITION__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Target</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CALL__TARGET = TRANSITION__TARGET;
-
-	/**
 	 * The feature id for the '<em><b>Payload</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7861,13 +7871,13 @@ public interface EngineeringPackage extends EPackage {
 	int CALL__SUPPRESS = TRANSITION__SUPPRESS;
 
 	/**
-	 * The feature id for the '<em><b>Target Id</b></em>' attribute.
+	 * The feature id for the '<em><b>Target</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CALL__TARGET_ID = TRANSITION__TARGET_ID;
+	int CALL__TARGET = TRANSITION__TARGET;
 
 	/**
 	 * The feature id for the '<em><b>Response</b></em>' reference list.
@@ -7886,6 +7896,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int CALL_FEATURE_COUNT = TRANSITION_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Get Target</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL___GET_TARGET__ELIST = TRANSITION___GET_TARGET__ELIST;
 
 	/**
 	 * The number of operations of the '<em>Call</em>' class.
@@ -8032,15 +8051,6 @@ public interface EngineeringPackage extends EPackage {
 	int JOURNEY__PRINCIPLES = ACTIVITY__PRINCIPLES;
 
 	/**
-	 * The feature id for the '<em><b>Inputs</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JOURNEY__INPUTS = ACTIVITY__INPUTS;
-
-	/**
 	 * The feature id for the '<em><b>Outputs</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8057,15 +8067,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int JOURNEY__CALLS = ACTIVITY__CALLS;
-
-	/**
-	 * The feature id for the '<em><b>Invocations</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JOURNEY__INVOCATIONS = ACTIVITY__INVOCATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Requirements</b></em>' reference list.
@@ -8093,42 +8094,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int JOURNEY__PERSONAS = ACTIVITY__PERSONAS;
-
-	/**
-	 * The feature id for the '<em><b>All Outputs</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JOURNEY__ALL_OUTPUTS = ACTIVITY__ALL_OUTPUTS;
-
-	/**
-	 * The feature id for the '<em><b>All Inputs</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JOURNEY__ALL_INPUTS = ACTIVITY__ALL_INPUTS;
-
-	/**
-	 * The feature id for the '<em><b>All Calls</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JOURNEY__ALL_CALLS = ACTIVITY__ALL_CALLS;
-
-	/**
-	 * The feature id for the '<em><b>All Invocations</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JOURNEY__ALL_INVOCATIONS = ACTIVITY__ALL_INVOCATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Overrides</b></em>' reference.
@@ -8228,6 +8193,60 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int JOURNEY_FEATURE_COUNT = ACTIVITY_FEATURE_COUNT + 5;
+
+	/**
+	 * The operation id for the '<em>Get Inputs</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY___GET_INPUTS__ELIST = ACTIVITY___GET_INPUTS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get Invocations</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY___GET_INVOCATIONS__ELIST = ACTIVITY___GET_INVOCATIONS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get All Inputs</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY___GET_ALL_INPUTS__ELIST = ACTIVITY___GET_ALL_INPUTS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get All Invocations</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY___GET_ALL_INVOCATIONS__ELIST = ACTIVITY___GET_ALL_INVOCATIONS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get All Outputs</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY___GET_ALL_OUTPUTS__ELIST = ACTIVITY___GET_ALL_OUTPUTS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get All Calls</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY___GET_ALL_CALLS__ELIST = ACTIVITY___GET_ALL_CALLS__ELIST;
 
 	/**
 	 * The number of operations of the '<em>Journey</em>' class.
@@ -8374,15 +8393,6 @@ public interface EngineeringPackage extends EPackage {
 	int PSEUDO_STATE__PRINCIPLES = JOURNEY_ELEMENT__PRINCIPLES;
 
 	/**
-	 * The feature id for the '<em><b>Inputs</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PSEUDO_STATE__INPUTS = JOURNEY_ELEMENT__INPUTS;
-
-	/**
 	 * The feature id for the '<em><b>Outputs</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8399,15 +8409,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int PSEUDO_STATE__CALLS = JOURNEY_ELEMENT__CALLS;
-
-	/**
-	 * The feature id for the '<em><b>Invocations</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PSEUDO_STATE__INVOCATIONS = JOURNEY_ELEMENT__INVOCATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Requirements</b></em>' reference list.
@@ -8435,42 +8436,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int PSEUDO_STATE__PERSONAS = JOURNEY_ELEMENT__PERSONAS;
-
-	/**
-	 * The feature id for the '<em><b>All Outputs</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PSEUDO_STATE__ALL_OUTPUTS = JOURNEY_ELEMENT__ALL_OUTPUTS;
-
-	/**
-	 * The feature id for the '<em><b>All Inputs</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PSEUDO_STATE__ALL_INPUTS = JOURNEY_ELEMENT__ALL_INPUTS;
-
-	/**
-	 * The feature id for the '<em><b>All Calls</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PSEUDO_STATE__ALL_CALLS = JOURNEY_ELEMENT__ALL_CALLS;
-
-	/**
-	 * The feature id for the '<em><b>All Invocations</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PSEUDO_STATE__ALL_INVOCATIONS = JOURNEY_ELEMENT__ALL_INVOCATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Overrides</b></em>' reference.
@@ -8516,6 +8481,60 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int PSEUDO_STATE_FEATURE_COUNT = JOURNEY_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Get Inputs</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PSEUDO_STATE___GET_INPUTS__ELIST = JOURNEY_ELEMENT___GET_INPUTS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get Invocations</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PSEUDO_STATE___GET_INVOCATIONS__ELIST = JOURNEY_ELEMENT___GET_INVOCATIONS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get All Inputs</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PSEUDO_STATE___GET_ALL_INPUTS__ELIST = JOURNEY_ELEMENT___GET_ALL_INPUTS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get All Invocations</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PSEUDO_STATE___GET_ALL_INVOCATIONS__ELIST = JOURNEY_ELEMENT___GET_ALL_INVOCATIONS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get All Outputs</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PSEUDO_STATE___GET_ALL_OUTPUTS__ELIST = JOURNEY_ELEMENT___GET_ALL_OUTPUTS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get All Calls</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PSEUDO_STATE___GET_ALL_CALLS__ELIST = JOURNEY_ELEMENT___GET_ALL_CALLS__ELIST;
 
 	/**
 	 * The number of operations of the '<em>Pseudo State</em>' class.
@@ -8662,15 +8681,6 @@ public interface EngineeringPackage extends EPackage {
 	int CHOICE__PRINCIPLES = PSEUDO_STATE__PRINCIPLES;
 
 	/**
-	 * The feature id for the '<em><b>Inputs</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CHOICE__INPUTS = PSEUDO_STATE__INPUTS;
-
-	/**
 	 * The feature id for the '<em><b>Outputs</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8687,15 +8697,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int CHOICE__CALLS = PSEUDO_STATE__CALLS;
-
-	/**
-	 * The feature id for the '<em><b>Invocations</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CHOICE__INVOCATIONS = PSEUDO_STATE__INVOCATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Requirements</b></em>' reference list.
@@ -8723,42 +8724,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int CHOICE__PERSONAS = PSEUDO_STATE__PERSONAS;
-
-	/**
-	 * The feature id for the '<em><b>All Outputs</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CHOICE__ALL_OUTPUTS = PSEUDO_STATE__ALL_OUTPUTS;
-
-	/**
-	 * The feature id for the '<em><b>All Inputs</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CHOICE__ALL_INPUTS = PSEUDO_STATE__ALL_INPUTS;
-
-	/**
-	 * The feature id for the '<em><b>All Calls</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CHOICE__ALL_CALLS = PSEUDO_STATE__ALL_CALLS;
-
-	/**
-	 * The feature id for the '<em><b>All Invocations</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CHOICE__ALL_INVOCATIONS = PSEUDO_STATE__ALL_INVOCATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Overrides</b></em>' reference.
@@ -8804,6 +8769,60 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int CHOICE_FEATURE_COUNT = PSEUDO_STATE_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Get Inputs</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHOICE___GET_INPUTS__ELIST = PSEUDO_STATE___GET_INPUTS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get Invocations</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHOICE___GET_INVOCATIONS__ELIST = PSEUDO_STATE___GET_INVOCATIONS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get All Inputs</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHOICE___GET_ALL_INPUTS__ELIST = PSEUDO_STATE___GET_ALL_INPUTS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get All Invocations</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHOICE___GET_ALL_INVOCATIONS__ELIST = PSEUDO_STATE___GET_ALL_INVOCATIONS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get All Outputs</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHOICE___GET_ALL_OUTPUTS__ELIST = PSEUDO_STATE___GET_ALL_OUTPUTS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get All Calls</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHOICE___GET_ALL_CALLS__ELIST = PSEUDO_STATE___GET_ALL_CALLS__ELIST;
 
 	/**
 	 * The number of operations of the '<em>Choice</em>' class.
@@ -8950,15 +8969,6 @@ public interface EngineeringPackage extends EPackage {
 	int END__PRINCIPLES = PSEUDO_STATE__PRINCIPLES;
 
 	/**
-	 * The feature id for the '<em><b>Inputs</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int END__INPUTS = PSEUDO_STATE__INPUTS;
-
-	/**
 	 * The feature id for the '<em><b>Outputs</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8975,15 +8985,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int END__CALLS = PSEUDO_STATE__CALLS;
-
-	/**
-	 * The feature id for the '<em><b>Invocations</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int END__INVOCATIONS = PSEUDO_STATE__INVOCATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Requirements</b></em>' reference list.
@@ -9011,42 +9012,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int END__PERSONAS = PSEUDO_STATE__PERSONAS;
-
-	/**
-	 * The feature id for the '<em><b>All Outputs</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int END__ALL_OUTPUTS = PSEUDO_STATE__ALL_OUTPUTS;
-
-	/**
-	 * The feature id for the '<em><b>All Inputs</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int END__ALL_INPUTS = PSEUDO_STATE__ALL_INPUTS;
-
-	/**
-	 * The feature id for the '<em><b>All Calls</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int END__ALL_CALLS = PSEUDO_STATE__ALL_CALLS;
-
-	/**
-	 * The feature id for the '<em><b>All Invocations</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int END__ALL_INVOCATIONS = PSEUDO_STATE__ALL_INVOCATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Overrides</b></em>' reference.
@@ -9092,6 +9057,60 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int END_FEATURE_COUNT = PSEUDO_STATE_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Get Inputs</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int END___GET_INPUTS__ELIST = PSEUDO_STATE___GET_INPUTS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get Invocations</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int END___GET_INVOCATIONS__ELIST = PSEUDO_STATE___GET_INVOCATIONS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get All Inputs</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int END___GET_ALL_INPUTS__ELIST = PSEUDO_STATE___GET_ALL_INPUTS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get All Invocations</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int END___GET_ALL_INVOCATIONS__ELIST = PSEUDO_STATE___GET_ALL_INVOCATIONS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get All Outputs</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int END___GET_ALL_OUTPUTS__ELIST = PSEUDO_STATE___GET_ALL_OUTPUTS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get All Calls</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int END___GET_ALL_CALLS__ELIST = PSEUDO_STATE___GET_ALL_CALLS__ELIST;
 
 	/**
 	 * The number of operations of the '<em>End</em>' class.
@@ -9238,15 +9257,6 @@ public interface EngineeringPackage extends EPackage {
 	int ENTRY_POINT__PRINCIPLES = PSEUDO_STATE__PRINCIPLES;
 
 	/**
-	 * The feature id for the '<em><b>Inputs</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENTRY_POINT__INPUTS = PSEUDO_STATE__INPUTS;
-
-	/**
 	 * The feature id for the '<em><b>Outputs</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9263,15 +9273,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int ENTRY_POINT__CALLS = PSEUDO_STATE__CALLS;
-
-	/**
-	 * The feature id for the '<em><b>Invocations</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENTRY_POINT__INVOCATIONS = PSEUDO_STATE__INVOCATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Requirements</b></em>' reference list.
@@ -9299,42 +9300,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int ENTRY_POINT__PERSONAS = PSEUDO_STATE__PERSONAS;
-
-	/**
-	 * The feature id for the '<em><b>All Outputs</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENTRY_POINT__ALL_OUTPUTS = PSEUDO_STATE__ALL_OUTPUTS;
-
-	/**
-	 * The feature id for the '<em><b>All Inputs</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENTRY_POINT__ALL_INPUTS = PSEUDO_STATE__ALL_INPUTS;
-
-	/**
-	 * The feature id for the '<em><b>All Calls</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENTRY_POINT__ALL_CALLS = PSEUDO_STATE__ALL_CALLS;
-
-	/**
-	 * The feature id for the '<em><b>All Invocations</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENTRY_POINT__ALL_INVOCATIONS = PSEUDO_STATE__ALL_INVOCATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Overrides</b></em>' reference.
@@ -9380,6 +9345,60 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int ENTRY_POINT_FEATURE_COUNT = PSEUDO_STATE_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Get Inputs</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY_POINT___GET_INPUTS__ELIST = PSEUDO_STATE___GET_INPUTS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get Invocations</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY_POINT___GET_INVOCATIONS__ELIST = PSEUDO_STATE___GET_INVOCATIONS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get All Inputs</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY_POINT___GET_ALL_INPUTS__ELIST = PSEUDO_STATE___GET_ALL_INPUTS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get All Invocations</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY_POINT___GET_ALL_INVOCATIONS__ELIST = PSEUDO_STATE___GET_ALL_INVOCATIONS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get All Outputs</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY_POINT___GET_ALL_OUTPUTS__ELIST = PSEUDO_STATE___GET_ALL_OUTPUTS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get All Calls</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY_POINT___GET_ALL_CALLS__ELIST = PSEUDO_STATE___GET_ALL_CALLS__ELIST;
 
 	/**
 	 * The number of operations of the '<em>Entry Point</em>' class.
@@ -9526,15 +9545,6 @@ public interface EngineeringPackage extends EPackage {
 	int EXIT_POINT__PRINCIPLES = PSEUDO_STATE__PRINCIPLES;
 
 	/**
-	 * The feature id for the '<em><b>Inputs</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXIT_POINT__INPUTS = PSEUDO_STATE__INPUTS;
-
-	/**
 	 * The feature id for the '<em><b>Outputs</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9551,15 +9561,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int EXIT_POINT__CALLS = PSEUDO_STATE__CALLS;
-
-	/**
-	 * The feature id for the '<em><b>Invocations</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXIT_POINT__INVOCATIONS = PSEUDO_STATE__INVOCATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Requirements</b></em>' reference list.
@@ -9587,42 +9588,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int EXIT_POINT__PERSONAS = PSEUDO_STATE__PERSONAS;
-
-	/**
-	 * The feature id for the '<em><b>All Outputs</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXIT_POINT__ALL_OUTPUTS = PSEUDO_STATE__ALL_OUTPUTS;
-
-	/**
-	 * The feature id for the '<em><b>All Inputs</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXIT_POINT__ALL_INPUTS = PSEUDO_STATE__ALL_INPUTS;
-
-	/**
-	 * The feature id for the '<em><b>All Calls</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXIT_POINT__ALL_CALLS = PSEUDO_STATE__ALL_CALLS;
-
-	/**
-	 * The feature id for the '<em><b>All Invocations</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXIT_POINT__ALL_INVOCATIONS = PSEUDO_STATE__ALL_INVOCATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Overrides</b></em>' reference.
@@ -9668,6 +9633,60 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int EXIT_POINT_FEATURE_COUNT = PSEUDO_STATE_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Get Inputs</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_POINT___GET_INPUTS__ELIST = PSEUDO_STATE___GET_INPUTS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get Invocations</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_POINT___GET_INVOCATIONS__ELIST = PSEUDO_STATE___GET_INVOCATIONS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get All Inputs</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_POINT___GET_ALL_INPUTS__ELIST = PSEUDO_STATE___GET_ALL_INPUTS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get All Invocations</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_POINT___GET_ALL_INVOCATIONS__ELIST = PSEUDO_STATE___GET_ALL_INVOCATIONS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get All Outputs</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_POINT___GET_ALL_OUTPUTS__ELIST = PSEUDO_STATE___GET_ALL_OUTPUTS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get All Calls</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_POINT___GET_ALL_CALLS__ELIST = PSEUDO_STATE___GET_ALL_CALLS__ELIST;
 
 	/**
 	 * The number of operations of the '<em>Exit Point</em>' class.
@@ -9814,15 +9833,6 @@ public interface EngineeringPackage extends EPackage {
 	int EXPANSION_INPUT__PRINCIPLES = PSEUDO_STATE__PRINCIPLES;
 
 	/**
-	 * The feature id for the '<em><b>Inputs</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_INPUT__INPUTS = PSEUDO_STATE__INPUTS;
-
-	/**
 	 * The feature id for the '<em><b>Outputs</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9839,15 +9849,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int EXPANSION_INPUT__CALLS = PSEUDO_STATE__CALLS;
-
-	/**
-	 * The feature id for the '<em><b>Invocations</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_INPUT__INVOCATIONS = PSEUDO_STATE__INVOCATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Requirements</b></em>' reference list.
@@ -9875,42 +9876,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int EXPANSION_INPUT__PERSONAS = PSEUDO_STATE__PERSONAS;
-
-	/**
-	 * The feature id for the '<em><b>All Outputs</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_INPUT__ALL_OUTPUTS = PSEUDO_STATE__ALL_OUTPUTS;
-
-	/**
-	 * The feature id for the '<em><b>All Inputs</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_INPUT__ALL_INPUTS = PSEUDO_STATE__ALL_INPUTS;
-
-	/**
-	 * The feature id for the '<em><b>All Calls</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_INPUT__ALL_CALLS = PSEUDO_STATE__ALL_CALLS;
-
-	/**
-	 * The feature id for the '<em><b>All Invocations</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_INPUT__ALL_INVOCATIONS = PSEUDO_STATE__ALL_INVOCATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Overrides</b></em>' reference.
@@ -9956,6 +9921,60 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int EXPANSION_INPUT_FEATURE_COUNT = PSEUDO_STATE_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Get Inputs</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_INPUT___GET_INPUTS__ELIST = PSEUDO_STATE___GET_INPUTS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get Invocations</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_INPUT___GET_INVOCATIONS__ELIST = PSEUDO_STATE___GET_INVOCATIONS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get All Inputs</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_INPUT___GET_ALL_INPUTS__ELIST = PSEUDO_STATE___GET_ALL_INPUTS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get All Invocations</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_INPUT___GET_ALL_INVOCATIONS__ELIST = PSEUDO_STATE___GET_ALL_INVOCATIONS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get All Outputs</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_INPUT___GET_ALL_OUTPUTS__ELIST = PSEUDO_STATE___GET_ALL_OUTPUTS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get All Calls</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_INPUT___GET_ALL_CALLS__ELIST = PSEUDO_STATE___GET_ALL_CALLS__ELIST;
 
 	/**
 	 * The number of operations of the '<em>Expansion Input</em>' class.
@@ -10102,15 +10121,6 @@ public interface EngineeringPackage extends EPackage {
 	int EXPANSION_OUTPUT__PRINCIPLES = PSEUDO_STATE__PRINCIPLES;
 
 	/**
-	 * The feature id for the '<em><b>Inputs</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_OUTPUT__INPUTS = PSEUDO_STATE__INPUTS;
-
-	/**
 	 * The feature id for the '<em><b>Outputs</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -10127,15 +10137,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int EXPANSION_OUTPUT__CALLS = PSEUDO_STATE__CALLS;
-
-	/**
-	 * The feature id for the '<em><b>Invocations</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_OUTPUT__INVOCATIONS = PSEUDO_STATE__INVOCATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Requirements</b></em>' reference list.
@@ -10163,42 +10164,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int EXPANSION_OUTPUT__PERSONAS = PSEUDO_STATE__PERSONAS;
-
-	/**
-	 * The feature id for the '<em><b>All Outputs</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_OUTPUT__ALL_OUTPUTS = PSEUDO_STATE__ALL_OUTPUTS;
-
-	/**
-	 * The feature id for the '<em><b>All Inputs</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_OUTPUT__ALL_INPUTS = PSEUDO_STATE__ALL_INPUTS;
-
-	/**
-	 * The feature id for the '<em><b>All Calls</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_OUTPUT__ALL_CALLS = PSEUDO_STATE__ALL_CALLS;
-
-	/**
-	 * The feature id for the '<em><b>All Invocations</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPANSION_OUTPUT__ALL_INVOCATIONS = PSEUDO_STATE__ALL_INVOCATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Overrides</b></em>' reference.
@@ -10244,6 +10209,60 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int EXPANSION_OUTPUT_FEATURE_COUNT = PSEUDO_STATE_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Get Inputs</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_OUTPUT___GET_INPUTS__ELIST = PSEUDO_STATE___GET_INPUTS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get Invocations</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_OUTPUT___GET_INVOCATIONS__ELIST = PSEUDO_STATE___GET_INVOCATIONS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get All Inputs</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_OUTPUT___GET_ALL_INPUTS__ELIST = PSEUDO_STATE___GET_ALL_INPUTS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get All Invocations</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_OUTPUT___GET_ALL_INVOCATIONS__ELIST = PSEUDO_STATE___GET_ALL_INVOCATIONS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get All Outputs</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_OUTPUT___GET_ALL_OUTPUTS__ELIST = PSEUDO_STATE___GET_ALL_OUTPUTS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get All Calls</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_OUTPUT___GET_ALL_CALLS__ELIST = PSEUDO_STATE___GET_ALL_CALLS__ELIST;
 
 	/**
 	 * The number of operations of the '<em>Expansion Output</em>' class.
@@ -10390,15 +10409,6 @@ public interface EngineeringPackage extends EPackage {
 	int FORK__PRINCIPLES = PSEUDO_STATE__PRINCIPLES;
 
 	/**
-	 * The feature id for the '<em><b>Inputs</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FORK__INPUTS = PSEUDO_STATE__INPUTS;
-
-	/**
 	 * The feature id for the '<em><b>Outputs</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -10415,15 +10425,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int FORK__CALLS = PSEUDO_STATE__CALLS;
-
-	/**
-	 * The feature id for the '<em><b>Invocations</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FORK__INVOCATIONS = PSEUDO_STATE__INVOCATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Requirements</b></em>' reference list.
@@ -10451,42 +10452,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int FORK__PERSONAS = PSEUDO_STATE__PERSONAS;
-
-	/**
-	 * The feature id for the '<em><b>All Outputs</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FORK__ALL_OUTPUTS = PSEUDO_STATE__ALL_OUTPUTS;
-
-	/**
-	 * The feature id for the '<em><b>All Inputs</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FORK__ALL_INPUTS = PSEUDO_STATE__ALL_INPUTS;
-
-	/**
-	 * The feature id for the '<em><b>All Calls</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FORK__ALL_CALLS = PSEUDO_STATE__ALL_CALLS;
-
-	/**
-	 * The feature id for the '<em><b>All Invocations</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FORK__ALL_INVOCATIONS = PSEUDO_STATE__ALL_INVOCATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Overrides</b></em>' reference.
@@ -10532,6 +10497,60 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int FORK_FEATURE_COUNT = PSEUDO_STATE_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Get Inputs</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORK___GET_INPUTS__ELIST = PSEUDO_STATE___GET_INPUTS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get Invocations</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORK___GET_INVOCATIONS__ELIST = PSEUDO_STATE___GET_INVOCATIONS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get All Inputs</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORK___GET_ALL_INPUTS__ELIST = PSEUDO_STATE___GET_ALL_INPUTS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get All Invocations</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORK___GET_ALL_INVOCATIONS__ELIST = PSEUDO_STATE___GET_ALL_INVOCATIONS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get All Outputs</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORK___GET_ALL_OUTPUTS__ELIST = PSEUDO_STATE___GET_ALL_OUTPUTS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get All Calls</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORK___GET_ALL_CALLS__ELIST = PSEUDO_STATE___GET_ALL_CALLS__ELIST;
 
 	/**
 	 * The number of operations of the '<em>Fork</em>' class.
@@ -10678,15 +10697,6 @@ public interface EngineeringPackage extends EPackage {
 	int INPUT_PIN__PRINCIPLES = PSEUDO_STATE__PRINCIPLES;
 
 	/**
-	 * The feature id for the '<em><b>Inputs</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INPUT_PIN__INPUTS = PSEUDO_STATE__INPUTS;
-
-	/**
 	 * The feature id for the '<em><b>Outputs</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -10703,15 +10713,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int INPUT_PIN__CALLS = PSEUDO_STATE__CALLS;
-
-	/**
-	 * The feature id for the '<em><b>Invocations</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INPUT_PIN__INVOCATIONS = PSEUDO_STATE__INVOCATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Requirements</b></em>' reference list.
@@ -10739,42 +10740,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int INPUT_PIN__PERSONAS = PSEUDO_STATE__PERSONAS;
-
-	/**
-	 * The feature id for the '<em><b>All Outputs</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INPUT_PIN__ALL_OUTPUTS = PSEUDO_STATE__ALL_OUTPUTS;
-
-	/**
-	 * The feature id for the '<em><b>All Inputs</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INPUT_PIN__ALL_INPUTS = PSEUDO_STATE__ALL_INPUTS;
-
-	/**
-	 * The feature id for the '<em><b>All Calls</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INPUT_PIN__ALL_CALLS = PSEUDO_STATE__ALL_CALLS;
-
-	/**
-	 * The feature id for the '<em><b>All Invocations</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INPUT_PIN__ALL_INVOCATIONS = PSEUDO_STATE__ALL_INVOCATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Overrides</b></em>' reference.
@@ -10820,6 +10785,60 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int INPUT_PIN_FEATURE_COUNT = PSEUDO_STATE_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Get Inputs</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_PIN___GET_INPUTS__ELIST = PSEUDO_STATE___GET_INPUTS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get Invocations</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_PIN___GET_INVOCATIONS__ELIST = PSEUDO_STATE___GET_INVOCATIONS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get All Inputs</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_PIN___GET_ALL_INPUTS__ELIST = PSEUDO_STATE___GET_ALL_INPUTS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get All Invocations</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_PIN___GET_ALL_INVOCATIONS__ELIST = PSEUDO_STATE___GET_ALL_INVOCATIONS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get All Outputs</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_PIN___GET_ALL_OUTPUTS__ELIST = PSEUDO_STATE___GET_ALL_OUTPUTS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get All Calls</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_PIN___GET_ALL_CALLS__ELIST = PSEUDO_STATE___GET_ALL_CALLS__ELIST;
 
 	/**
 	 * The number of operations of the '<em>Input Pin</em>' class.
@@ -10966,15 +10985,6 @@ public interface EngineeringPackage extends EPackage {
 	int JOIN__PRINCIPLES = PSEUDO_STATE__PRINCIPLES;
 
 	/**
-	 * The feature id for the '<em><b>Inputs</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JOIN__INPUTS = PSEUDO_STATE__INPUTS;
-
-	/**
 	 * The feature id for the '<em><b>Outputs</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -10991,15 +11001,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int JOIN__CALLS = PSEUDO_STATE__CALLS;
-
-	/**
-	 * The feature id for the '<em><b>Invocations</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JOIN__INVOCATIONS = PSEUDO_STATE__INVOCATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Requirements</b></em>' reference list.
@@ -11027,42 +11028,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int JOIN__PERSONAS = PSEUDO_STATE__PERSONAS;
-
-	/**
-	 * The feature id for the '<em><b>All Outputs</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JOIN__ALL_OUTPUTS = PSEUDO_STATE__ALL_OUTPUTS;
-
-	/**
-	 * The feature id for the '<em><b>All Inputs</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JOIN__ALL_INPUTS = PSEUDO_STATE__ALL_INPUTS;
-
-	/**
-	 * The feature id for the '<em><b>All Calls</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JOIN__ALL_CALLS = PSEUDO_STATE__ALL_CALLS;
-
-	/**
-	 * The feature id for the '<em><b>All Invocations</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JOIN__ALL_INVOCATIONS = PSEUDO_STATE__ALL_INVOCATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Overrides</b></em>' reference.
@@ -11108,6 +11073,60 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int JOIN_FEATURE_COUNT = PSEUDO_STATE_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Get Inputs</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN___GET_INPUTS__ELIST = PSEUDO_STATE___GET_INPUTS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get Invocations</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN___GET_INVOCATIONS__ELIST = PSEUDO_STATE___GET_INVOCATIONS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get All Inputs</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN___GET_ALL_INPUTS__ELIST = PSEUDO_STATE___GET_ALL_INPUTS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get All Invocations</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN___GET_ALL_INVOCATIONS__ELIST = PSEUDO_STATE___GET_ALL_INVOCATIONS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get All Outputs</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN___GET_ALL_OUTPUTS__ELIST = PSEUDO_STATE___GET_ALL_OUTPUTS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get All Calls</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN___GET_ALL_CALLS__ELIST = PSEUDO_STATE___GET_ALL_CALLS__ELIST;
 
 	/**
 	 * The number of operations of the '<em>Join</em>' class.
@@ -11254,15 +11273,6 @@ public interface EngineeringPackage extends EPackage {
 	int OUTPUT_PIN__PRINCIPLES = PSEUDO_STATE__PRINCIPLES;
 
 	/**
-	 * The feature id for the '<em><b>Inputs</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OUTPUT_PIN__INPUTS = PSEUDO_STATE__INPUTS;
-
-	/**
 	 * The feature id for the '<em><b>Outputs</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -11279,15 +11289,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int OUTPUT_PIN__CALLS = PSEUDO_STATE__CALLS;
-
-	/**
-	 * The feature id for the '<em><b>Invocations</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OUTPUT_PIN__INVOCATIONS = PSEUDO_STATE__INVOCATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Requirements</b></em>' reference list.
@@ -11315,42 +11316,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int OUTPUT_PIN__PERSONAS = PSEUDO_STATE__PERSONAS;
-
-	/**
-	 * The feature id for the '<em><b>All Outputs</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OUTPUT_PIN__ALL_OUTPUTS = PSEUDO_STATE__ALL_OUTPUTS;
-
-	/**
-	 * The feature id for the '<em><b>All Inputs</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OUTPUT_PIN__ALL_INPUTS = PSEUDO_STATE__ALL_INPUTS;
-
-	/**
-	 * The feature id for the '<em><b>All Calls</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OUTPUT_PIN__ALL_CALLS = PSEUDO_STATE__ALL_CALLS;
-
-	/**
-	 * The feature id for the '<em><b>All Invocations</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OUTPUT_PIN__ALL_INVOCATIONS = PSEUDO_STATE__ALL_INVOCATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Overrides</b></em>' reference.
@@ -11396,6 +11361,60 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int OUTPUT_PIN_FEATURE_COUNT = PSEUDO_STATE_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Get Inputs</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTPUT_PIN___GET_INPUTS__ELIST = PSEUDO_STATE___GET_INPUTS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get Invocations</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTPUT_PIN___GET_INVOCATIONS__ELIST = PSEUDO_STATE___GET_INVOCATIONS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get All Inputs</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTPUT_PIN___GET_ALL_INPUTS__ELIST = PSEUDO_STATE___GET_ALL_INPUTS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get All Invocations</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTPUT_PIN___GET_ALL_INVOCATIONS__ELIST = PSEUDO_STATE___GET_ALL_INVOCATIONS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get All Outputs</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTPUT_PIN___GET_ALL_OUTPUTS__ELIST = PSEUDO_STATE___GET_ALL_OUTPUTS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get All Calls</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTPUT_PIN___GET_ALL_CALLS__ELIST = PSEUDO_STATE___GET_ALL_CALLS__ELIST;
 
 	/**
 	 * The number of operations of the '<em>Output Pin</em>' class.
@@ -11542,15 +11561,6 @@ public interface EngineeringPackage extends EPackage {
 	int START__PRINCIPLES = PSEUDO_STATE__PRINCIPLES;
 
 	/**
-	 * The feature id for the '<em><b>Inputs</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int START__INPUTS = PSEUDO_STATE__INPUTS;
-
-	/**
 	 * The feature id for the '<em><b>Outputs</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -11567,15 +11577,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int START__CALLS = PSEUDO_STATE__CALLS;
-
-	/**
-	 * The feature id for the '<em><b>Invocations</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int START__INVOCATIONS = PSEUDO_STATE__INVOCATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Requirements</b></em>' reference list.
@@ -11603,42 +11604,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int START__PERSONAS = PSEUDO_STATE__PERSONAS;
-
-	/**
-	 * The feature id for the '<em><b>All Outputs</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int START__ALL_OUTPUTS = PSEUDO_STATE__ALL_OUTPUTS;
-
-	/**
-	 * The feature id for the '<em><b>All Inputs</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int START__ALL_INPUTS = PSEUDO_STATE__ALL_INPUTS;
-
-	/**
-	 * The feature id for the '<em><b>All Calls</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int START__ALL_CALLS = PSEUDO_STATE__ALL_CALLS;
-
-	/**
-	 * The feature id for the '<em><b>All Invocations</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int START__ALL_INVOCATIONS = PSEUDO_STATE__ALL_INVOCATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Overrides</b></em>' reference.
@@ -11684,6 +11649,60 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int START_FEATURE_COUNT = PSEUDO_STATE_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Get Inputs</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int START___GET_INPUTS__ELIST = PSEUDO_STATE___GET_INPUTS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get Invocations</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int START___GET_INVOCATIONS__ELIST = PSEUDO_STATE___GET_INVOCATIONS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get All Inputs</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int START___GET_ALL_INPUTS__ELIST = PSEUDO_STATE___GET_ALL_INPUTS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get All Invocations</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int START___GET_ALL_INVOCATIONS__ELIST = PSEUDO_STATE___GET_ALL_INVOCATIONS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get All Outputs</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int START___GET_ALL_OUTPUTS__ELIST = PSEUDO_STATE___GET_ALL_OUTPUTS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Get All Calls</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int START___GET_ALL_CALLS__ELIST = PSEUDO_STATE___GET_ALL_CALLS__ELIST;
 
 	/**
 	 * The number of operations of the '<em>Start</em>' class.
@@ -12873,15 +12892,25 @@ public interface EngineeringPackage extends EPackage {
 	EClass getTransition();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.nasdanika.engineering.Transition#getTarget <em>Target</em>}'.
+	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Transition#getTarget <em>Target</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Target</em>'.
+	 * @return the meta object for the attribute '<em>Target</em>'.
 	 * @see org.nasdanika.engineering.Transition#getTarget()
 	 * @see #getTransition()
 	 * @generated
 	 */
-	EReference getTransition_Target();
+	EAttribute getTransition_Target();
+
+	/**
+	 * Returns the meta object for the '{@link org.nasdanika.engineering.Transition#getTarget(org.eclipse.emf.common.util.EList) <em>Get Target</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Target</em>' operation.
+	 * @see org.nasdanika.engineering.Transition#getTarget(org.eclipse.emf.common.util.EList)
+	 * @generated
+	 */
+	EOperation getTransition__GetTarget__EList();
 
 	/**
 	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.Transition#getPayload <em>Payload</em>}'.
@@ -12904,17 +12933,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getTransition_Suppress();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Transition#getTargetId <em>Target Id</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Target Id</em>'.
-	 * @see org.nasdanika.engineering.Transition#getTargetId()
-	 * @see #getTransition()
-	 * @generated
-	 */
-	EAttribute getTransition_TargetId();
 
 	/**
 	 * Returns the meta object for class '{@link org.nasdanika.engineering.Call <em>Call</em>}'.
@@ -13771,6 +13789,17 @@ public interface EngineeringPackage extends EPackage {
 	EAttribute getKeyResult_Completion();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link org.nasdanika.engineering.KeyResult#getInitiatives <em>Initiatives</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Initiatives</em>'.
+	 * @see org.nasdanika.engineering.KeyResult#getInitiatives()
+	 * @see #getKeyResult()
+	 * @generated
+	 */
+	EReference getKeyResult_Initiatives();
+
+	/**
 	 * Returns the meta object for class '{@link org.nasdanika.engineering.Objective <em>Objective</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -13922,17 +13951,6 @@ public interface EngineeringPackage extends EPackage {
 	EClass getJourneyElement();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.JourneyElement#getInputs <em>Inputs</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Inputs</em>'.
-	 * @see org.nasdanika.engineering.JourneyElement#getInputs()
-	 * @see #getJourneyElement()
-	 * @generated
-	 */
-	EReference getJourneyElement_Inputs();
-
-	/**
 	 * Returns the meta object for the containment reference list '{@link org.nasdanika.engineering.JourneyElement#getOutputs <em>Outputs</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -13953,17 +13971,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getJourneyElement_Calls();
-
-	/**
-	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.JourneyElement#getInvocations <em>Invocations</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Invocations</em>'.
-	 * @see org.nasdanika.engineering.JourneyElement#getInvocations()
-	 * @see #getJourneyElement()
-	 * @generated
-	 */
-	EReference getJourneyElement_Invocations();
 
 	/**
 	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.JourneyElement#getRequirements <em>Requirements</em>}'.
@@ -13999,50 +14006,6 @@ public interface EngineeringPackage extends EPackage {
 	EReference getJourneyElement_Personas();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.JourneyElement#getAllOutputs <em>All Outputs</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>All Outputs</em>'.
-	 * @see org.nasdanika.engineering.JourneyElement#getAllOutputs()
-	 * @see #getJourneyElement()
-	 * @generated
-	 */
-	EReference getJourneyElement_AllOutputs();
-
-	/**
-	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.JourneyElement#getAllInputs <em>All Inputs</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>All Inputs</em>'.
-	 * @see org.nasdanika.engineering.JourneyElement#getAllInputs()
-	 * @see #getJourneyElement()
-	 * @generated
-	 */
-	EReference getJourneyElement_AllInputs();
-
-	/**
-	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.JourneyElement#getAllCalls <em>All Calls</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>All Calls</em>'.
-	 * @see org.nasdanika.engineering.JourneyElement#getAllCalls()
-	 * @see #getJourneyElement()
-	 * @generated
-	 */
-	EReference getJourneyElement_AllCalls();
-
-	/**
-	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.JourneyElement#getAllInvocations <em>All Invocations</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>All Invocations</em>'.
-	 * @see org.nasdanika.engineering.JourneyElement#getAllInvocations()
-	 * @see #getJourneyElement()
-	 * @generated
-	 */
-	EReference getJourneyElement_AllInvocations();
-
-	/**
 	 * Returns the meta object for the reference '{@link org.nasdanika.engineering.JourneyElement#getOverrides <em>Overrides</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -14074,6 +14037,66 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getJourneyElement_Modifiers();
+
+	/**
+	 * Returns the meta object for the '{@link org.nasdanika.engineering.JourneyElement#getInputs(org.eclipse.emf.common.util.EList) <em>Get Inputs</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Inputs</em>' operation.
+	 * @see org.nasdanika.engineering.JourneyElement#getInputs(org.eclipse.emf.common.util.EList)
+	 * @generated
+	 */
+	EOperation getJourneyElement__GetInputs__EList();
+
+	/**
+	 * Returns the meta object for the '{@link org.nasdanika.engineering.JourneyElement#getInvocations(org.eclipse.emf.common.util.EList) <em>Get Invocations</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Invocations</em>' operation.
+	 * @see org.nasdanika.engineering.JourneyElement#getInvocations(org.eclipse.emf.common.util.EList)
+	 * @generated
+	 */
+	EOperation getJourneyElement__GetInvocations__EList();
+
+	/**
+	 * Returns the meta object for the '{@link org.nasdanika.engineering.JourneyElement#getAllInputs(org.eclipse.emf.common.util.EList) <em>Get All Inputs</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get All Inputs</em>' operation.
+	 * @see org.nasdanika.engineering.JourneyElement#getAllInputs(org.eclipse.emf.common.util.EList)
+	 * @generated
+	 */
+	EOperation getJourneyElement__GetAllInputs__EList();
+
+	/**
+	 * Returns the meta object for the '{@link org.nasdanika.engineering.JourneyElement#getAllInvocations(org.eclipse.emf.common.util.EList) <em>Get All Invocations</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get All Invocations</em>' operation.
+	 * @see org.nasdanika.engineering.JourneyElement#getAllInvocations(org.eclipse.emf.common.util.EList)
+	 * @generated
+	 */
+	EOperation getJourneyElement__GetAllInvocations__EList();
+
+	/**
+	 * Returns the meta object for the '{@link org.nasdanika.engineering.JourneyElement#getAllOutputs(org.eclipse.emf.common.util.EList) <em>Get All Outputs</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get All Outputs</em>' operation.
+	 * @see org.nasdanika.engineering.JourneyElement#getAllOutputs(org.eclipse.emf.common.util.EList)
+	 * @generated
+	 */
+	EOperation getJourneyElement__GetAllOutputs__EList();
+
+	/**
+	 * Returns the meta object for the '{@link org.nasdanika.engineering.JourneyElement#getAllCalls(org.eclipse.emf.common.util.EList) <em>Get All Calls</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get All Calls</em>' operation.
+	 * @see org.nasdanika.engineering.JourneyElement#getAllCalls(org.eclipse.emf.common.util.EList)
+	 * @generated
+	 */
+	EOperation getJourneyElement__GetAllCalls__EList();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link org.nasdanika.engineering.Document#getSections <em>Sections</em>}'.
@@ -15113,12 +15136,20 @@ public interface EngineeringPackage extends EPackage {
 		EClass TRANSITION = eINSTANCE.getTransition();
 
 		/**
-		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Target</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference TRANSITION__TARGET = eINSTANCE.getTransition_Target();
+		EAttribute TRANSITION__TARGET = eINSTANCE.getTransition_Target();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Target</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation TRANSITION___GET_TARGET__ELIST = eINSTANCE.getTransition__GetTarget__EList();
 
 		/**
 		 * The meta object literal for the '<em><b>Payload</b></em>' reference list feature.
@@ -15135,14 +15166,6 @@ public interface EngineeringPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute TRANSITION__SUPPRESS = eINSTANCE.getTransition_Suppress();
-
-		/**
-		 * The meta object literal for the '<em><b>Target Id</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute TRANSITION__TARGET_ID = eINSTANCE.getTransition_TargetId();
 
 		/**
 		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.CallImpl <em>Call</em>}' class.
@@ -15823,6 +15846,14 @@ public interface EngineeringPackage extends EPackage {
 		EAttribute KEY_RESULT__COMPLETION = eINSTANCE.getKeyResult_Completion();
 
 		/**
+		 * The meta object literal for the '<em><b>Initiatives</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference KEY_RESULT__INITIATIVES = eINSTANCE.getKeyResult_Initiatives();
+
+		/**
 		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.ObjectiveImpl <em>Objective</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -15941,14 +15972,6 @@ public interface EngineeringPackage extends EPackage {
 		EClass JOURNEY_ELEMENT = eINSTANCE.getJourneyElement();
 
 		/**
-		 * The meta object literal for the '<em><b>Inputs</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference JOURNEY_ELEMENT__INPUTS = eINSTANCE.getJourneyElement_Inputs();
-
-		/**
 		 * The meta object literal for the '<em><b>Outputs</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -15963,14 +15986,6 @@ public interface EngineeringPackage extends EPackage {
 		 * @generated
 		 */
 		EReference JOURNEY_ELEMENT__CALLS = eINSTANCE.getJourneyElement_Calls();
-
-		/**
-		 * The meta object literal for the '<em><b>Invocations</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference JOURNEY_ELEMENT__INVOCATIONS = eINSTANCE.getJourneyElement_Invocations();
 
 		/**
 		 * The meta object literal for the '<em><b>Requirements</b></em>' reference list feature.
@@ -15997,38 +16012,6 @@ public interface EngineeringPackage extends EPackage {
 		EReference JOURNEY_ELEMENT__PERSONAS = eINSTANCE.getJourneyElement_Personas();
 
 		/**
-		 * The meta object literal for the '<em><b>All Outputs</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference JOURNEY_ELEMENT__ALL_OUTPUTS = eINSTANCE.getJourneyElement_AllOutputs();
-
-		/**
-		 * The meta object literal for the '<em><b>All Inputs</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference JOURNEY_ELEMENT__ALL_INPUTS = eINSTANCE.getJourneyElement_AllInputs();
-
-		/**
-		 * The meta object literal for the '<em><b>All Calls</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference JOURNEY_ELEMENT__ALL_CALLS = eINSTANCE.getJourneyElement_AllCalls();
-
-		/**
-		 * The meta object literal for the '<em><b>All Invocations</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference JOURNEY_ELEMENT__ALL_INVOCATIONS = eINSTANCE.getJourneyElement_AllInvocations();
-
-		/**
 		 * The meta object literal for the '<em><b>Overrides</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -16051,6 +16034,54 @@ public interface EngineeringPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute JOURNEY_ELEMENT__MODIFIERS = eINSTANCE.getJourneyElement_Modifiers();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Inputs</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation JOURNEY_ELEMENT___GET_INPUTS__ELIST = eINSTANCE.getJourneyElement__GetInputs__EList();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Invocations</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation JOURNEY_ELEMENT___GET_INVOCATIONS__ELIST = eINSTANCE.getJourneyElement__GetInvocations__EList();
+
+		/**
+		 * The meta object literal for the '<em><b>Get All Inputs</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation JOURNEY_ELEMENT___GET_ALL_INPUTS__ELIST = eINSTANCE.getJourneyElement__GetAllInputs__EList();
+
+		/**
+		 * The meta object literal for the '<em><b>Get All Invocations</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation JOURNEY_ELEMENT___GET_ALL_INVOCATIONS__ELIST = eINSTANCE.getJourneyElement__GetAllInvocations__EList();
+
+		/**
+		 * The meta object literal for the '<em><b>Get All Outputs</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation JOURNEY_ELEMENT___GET_ALL_OUTPUTS__ELIST = eINSTANCE.getJourneyElement__GetAllOutputs__EList();
+
+		/**
+		 * The meta object literal for the '<em><b>Get All Calls</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation JOURNEY_ELEMENT___GET_ALL_CALLS__ELIST = eINSTANCE.getJourneyElement__GetAllCalls__EList();
 
 		/**
 		 * The meta object literal for the '<em><b>Sections</b></em>' containment reference list feature.

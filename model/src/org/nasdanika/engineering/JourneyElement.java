@@ -13,17 +13,11 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.nasdanika.engineering.JourneyElement#getInputs <em>Inputs</em>}</li>
  *   <li>{@link org.nasdanika.engineering.JourneyElement#getOutputs <em>Outputs</em>}</li>
  *   <li>{@link org.nasdanika.engineering.JourneyElement#getCalls <em>Calls</em>}</li>
- *   <li>{@link org.nasdanika.engineering.JourneyElement#getInvocations <em>Invocations</em>}</li>
  *   <li>{@link org.nasdanika.engineering.JourneyElement#getRequirements <em>Requirements</em>}</li>
  *   <li>{@link org.nasdanika.engineering.JourneyElement#getDeliverables <em>Deliverables</em>}</li>
  *   <li>{@link org.nasdanika.engineering.JourneyElement#getPersonas <em>Personas</em>}</li>
- *   <li>{@link org.nasdanika.engineering.JourneyElement#getAllOutputs <em>All Outputs</em>}</li>
- *   <li>{@link org.nasdanika.engineering.JourneyElement#getAllInputs <em>All Inputs</em>}</li>
- *   <li>{@link org.nasdanika.engineering.JourneyElement#getAllCalls <em>All Calls</em>}</li>
- *   <li>{@link org.nasdanika.engineering.JourneyElement#getAllInvocations <em>All Invocations</em>}</li>
  *   <li>{@link org.nasdanika.engineering.JourneyElement#getOverrides <em>Overrides</em>}</li>
  *   <li>{@link org.nasdanika.engineering.JourneyElement#getOverridenBy <em>Overriden By</em>}</li>
  *   <li>{@link org.nasdanika.engineering.JourneyElement#getModifiers <em>Modifiers</em>}</li>
@@ -46,21 +40,6 @@ public interface JourneyElement extends EngineeredElement {
 	public static final String SUPPRESS = "suppress";
 	public static final String VERTICAL = "vertical";
 	
-	/**
-	 * Returns the value of the '<em><b>Inputs</b></em>' reference list.
-	 * The list contents are of type {@link org.nasdanika.engineering.Transition}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Transitions which have this journey element as its target. Derived opposite to outputs.
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Inputs</em>' reference list.
-	 * @see org.nasdanika.engineering.EngineeringPackage#getJourneyElement_Inputs()
-	 * @model derived="true"
-	 * @generated
-	 */
-	EList<Transition> getInputs();
-
 	/**
 	 * Returns the value of the '<em><b>Outputs</b></em>' containment reference list.
 	 * The list contents are of type {@link org.nasdanika.engineering.Transition}.
@@ -90,21 +69,6 @@ public interface JourneyElement extends EngineeredElement {
 	 * @generated
 	 */
 	EList<Call> getCalls();
-
-	/**
-	 * Returns the value of the '<em><b>Invocations</b></em>' reference list.
-	 * The list contents are of type {@link org.nasdanika.engineering.Call}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Calls which have this journey element as its target. Derived opposite to calls.
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Invocations</em>' reference list.
-	 * @see org.nasdanika.engineering.EngineeringPackage#getJourneyElement_Invocations()
-	 * @model derived="true"
-	 * @generated
-	 */
-	EList<Call> getInvocations();
 
 	/**
 	 * Returns the value of the '<em><b>Requirements</b></em>' reference list.
@@ -152,66 +116,6 @@ public interface JourneyElement extends EngineeredElement {
 	 * @generated
 	 */
 	EList<Persona> getPersonas();
-
-	/**
-	 * Returns the value of the '<em><b>All Outputs</b></em>' reference list.
-	 * The list contents are of type {@link org.nasdanika.engineering.Transition}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Includes own outputs and outputs inherited from the base journey of the containing journey. This element outputs override inherited outputs with the same path.
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>All Outputs</em>' reference list.
-	 * @see org.nasdanika.engineering.EngineeringPackage#getJourneyElement_AllOutputs()
-	 * @model changeable="false" derived="true"
-	 * @generated
-	 */
-	EList<Transition> getAllOutputs();
-
-	/**
-	 * Returns the value of the '<em><b>All Inputs</b></em>' reference list.
-	 * The list contents are of type {@link org.nasdanika.engineering.Transition}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Derived opposite to allOutputs.
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>All Inputs</em>' reference list.
-	 * @see org.nasdanika.engineering.EngineeringPackage#getJourneyElement_AllInputs()
-	 * @model changeable="false" derived="true"
-	 * @generated
-	 */
-	EList<Transition> getAllInputs();
-
-	/**
-	 * Returns the value of the '<em><b>All Calls</b></em>' reference list.
-	 * The list contents are of type {@link org.nasdanika.engineering.Call}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Includes own calls and calls inherited from the base journey of the containing journey. This element calls override inherited calls with the same path.
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>All Calls</em>' reference list.
-	 * @see org.nasdanika.engineering.EngineeringPackage#getJourneyElement_AllCalls()
-	 * @model changeable="false" derived="true"
-	 * @generated
-	 */
-	EList<Call> getAllCalls();
-
-	/**
-	 * Returns the value of the '<em><b>All Invocations</b></em>' reference list.
-	 * The list contents are of type {@link org.nasdanika.engineering.Call}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Derived opposite to allCalls.
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>All Invocations</em>' reference list.
-	 * @see org.nasdanika.engineering.EngineeringPackage#getJourneyElement_AllInvocations()
-	 * @model changeable="false" derived="true"
-	 * @generated
-	 */
-	EList<Call> getAllInvocations();
 
 	/**
 	 * Returns the value of the '<em><b>Overrides</b></em>' reference.
@@ -271,5 +175,77 @@ public interface JourneyElement extends EngineeredElement {
 	 * @generated
 	 */
 	EList<String> getModifiers();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Transitions which have this journey element as its target in a given journey path. 
+	 * @param journeyPath Journey nesting path to resolve transitions target elements. May be different from the containment path in the case of nested journeys of extended journeys.
+	 * <!-- end-model-doc -->
+	 * @model journeyPathRequired="true" journeyPathMany="true"
+	 * @generated
+	 */
+	EList<Transition> getInputs(EList<Journey> journeyPath);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Calls which have this journey element as its target in a given journey path. 
+	 * @param journeyPath Journey nesting path to resolve calls target elements. May be different from the containment path in the case of nested journeys of extended journeys.
+	 * <!-- end-model-doc -->
+	 * @model journeyPathRequired="true" journeyPathMany="true"
+	 * @generated
+	 */
+	EList<Call> getInvocations(EList<Journey> journeyPath);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Opposite to all outputs, i.e. all inbound transitions, in a given journey path.
+	 * @param journeyPath Journey nesting path to resolve transitions target elements. May be different from the containment path in the case of nested journeys of extended journeys.
+	 * <!-- end-model-doc -->
+	 * @model journeyPathRequired="true" journeyPathMany="true"
+	 * @generated
+	 */
+	EList<Transition> getAllInputs(EList<Journey> journeyPath);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Opposite to all calls, i.e. all incoming calls, in a given journey path.
+	 * @param journeyPath Journey nesting path to resolve calls target elements. May be different from the containment path in the case of nested journeys of extended journeys.
+	 * <!-- end-model-doc -->
+	 * @model journeyPathRequired="true" journeyPathMany="true"
+	 * @generated
+	 */
+	EList<Call> getAllInvocations(EList<Journey> journeyPath);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Includes own outputs and outputs inherited from the base journey of the containing journey. This element outputs override inherited outputs with the same path.
+	 * @param journeyPath Journey nesting path to resolve transitions target elements. May be different from the containment path in the case of nested journeys of extended journeys.
+	 * <!-- end-model-doc -->
+	 * @model journeyPathRequired="true" journeyPathMany="true"
+	 * @generated
+	 */
+	EList<Transition> getAllOutputs(EList<Journey> journeyPath);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Includes own calls and calls inherited from the base journey of the containing journey. This element calls override inherited calls with the same path.
+	 * @param journeyPath Journey nesting path to resolve calls target elements. May be different from the containment path in the case of nested journeys of extended journeys.
+	 * <!-- end-model-doc -->
+	 * @model journeyPathRequired="true" journeyPathMany="true"
+	 * @generated
+	 */
+	EList<Call> getAllCalls(EList<Journey> journeyPath);
 
 } // JourneyElement

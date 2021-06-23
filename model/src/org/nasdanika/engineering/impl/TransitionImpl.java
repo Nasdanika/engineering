@@ -2,7 +2,11 @@
  */
 package org.nasdanika.engineering.impl;
 
+import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
@@ -23,10 +27,9 @@ import org.nasdanika.html.app.impl.Util;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.nasdanika.engineering.impl.TransitionImpl#getTarget <em>Target</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.TransitionImpl#getPayload <em>Payload</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.TransitionImpl#isSuppress <em>Suppress</em>}</li>
- *   <li>{@link org.nasdanika.engineering.impl.TransitionImpl#getTargetId <em>Target Id</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.TransitionImpl#getTarget <em>Target</em>}</li>
  * </ul>
  *
  * @generated
@@ -43,14 +46,14 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 	protected static final boolean SUPPRESS_EDEFAULT = false;
 
 	/**
-	 * The default value of the '{@link #getTargetId() <em>Target Id</em>}' attribute.
+	 * The default value of the '{@link #getTarget() <em>Target</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTargetId()
+	 * @see #getTarget()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String TARGET_ID_EDEFAULT = null;
+	protected static final String TARGET_EDEFAULT = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -74,64 +77,76 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	@Override
-	public JourneyElement getTarget() {
-		String tid = getTargetId();
-		if (Util.isBlank(tid)) {
-			return null;
-		}
-		EObject c = eContainer();
-		if (c != null) {
-			EObject cc = c.eContainer();
-			if (cc instanceof Journey) {
-				return resolve((Journey) cc, tid);
-			}
-		}
-		return null;		
+	public void setTarget(String newTarget) {
+		eDynamicSet(EngineeringPackage.TRANSITION__TARGET, EngineeringPackage.Literals.TRANSITION__TARGET, newTarget);
 	}
-	
-	private static JourneyElement resolve(Journey journey, String path) { 
-		int colonIdx = path.indexOf(":");
-		int slashIdx = path.indexOf('/');
-		if (colonIdx > 0 && (slashIdx == -1 || colonIdx < slashIdx)) { // URI
-			return (JourneyElement) journey.eResource().getResourceSet().getEObject(URI.createURI(path), true);
-		}
-		if (slashIdx == - 1) {
-			if ("..".equals(path)) { 
-				if (journey == null) { 
-					return null;
-				}
-				EObject c = journey.eContainer();
-				if (c instanceof Journey) { 
-					return (JourneyElement) c;
-				}
-				return null;
-			}
-			for (JourneyElement journeyElement: journey.getAllElements()) {
-				if (path.equals(journeyElement.getPath())) {
-					return journeyElement;
-				}
-			}
-			return null;
-		}
-		JourneyElement firstSegment = resolve(journey, path.substring(0, slashIdx)); 
-		if (firstSegment instanceof Journey) {
-			return resolve((Journey) firstSegment, path.substring(slashIdx + 1));
-		}
-		return null;
-	}
-	
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
-	public JourneyElement basicGetTarget() {
-		return (JourneyElement)eDynamicGet(EngineeringPackage.TRANSITION__TARGET, EngineeringPackage.Literals.TRANSITION__TARGET, false, true);
+	@Override
+	public JourneyElement getTarget(EList<Journey> journeyPath) {
+		String tid = getTarget();
+		if (Util.isBlank(tid)) {
+			return null;
+		}
+		@SuppressWarnings({ "unchecked", "rawtypes" })
+		List<JourneyElement> rPath = resolve((List) journeyPath, tid);
+		return rPath.isEmpty() ? null : rPath.get(rPath.size() - 1);
 	}
+
+	/**
+	 * Resolves a {@link JourneyElement} by its path and the journey path.
+	 * @param contextPath Nesting path of journey elements. In the case of no journey inheritance - the containment path.
+	 * @param path Journey element path.
+	 * @return
+	 */
+	private static List<JourneyElement> resolve(List<JourneyElement> contextPath, String path) {
+		if (contextPath.isEmpty()) {
+			return contextPath;
+		}
+		int colonIdx = path.indexOf(":");
+		int slashIdx = path.indexOf('/');
+		JourneyElement lastElement = contextPath.get(contextPath.size() - 1);
+		if (colonIdx > 0 && (slashIdx == -1 || colonIdx < slashIdx)) { // URI
+			JourneyElement result = (JourneyElement) lastElement.eResource().getResourceSet().getEObject(URI.createURI(path), true);
+			List<JourneyElement> ret = new ArrayList<>(contextPath);
+			ret.add(result);
+			return ret;
+		}
+		if (slashIdx == - 1) {
+			if ("..".equals(path)) {
+				if (contextPath.size() == 1) {
+					EObject c = lastElement.eContainer();
+					if (c instanceof Journey) { 
+						return Collections.singletonList((JourneyElement) c);
+					}
+					return Collections.emptyList();
+				}
+				List<JourneyElement> ret = new ArrayList<>(contextPath);
+				ret.remove(ret.size() - 1);
+				return ret;
+			}
+			if (lastElement instanceof Journey) {
+				for (JourneyElement journeyElement: ((Journey) lastElement).getAllElements()) {
+					if (path.equals(journeyElement.getPath())) {
+						List<JourneyElement> ret = new ArrayList<>(contextPath);
+						ret.add(journeyElement);					
+						return ret;
+					}
+				}
+			}
+			return Collections.emptyList();
+		}
+		List<JourneyElement> firstSegmentPath = resolve(contextPath, path.substring(0, slashIdx)); 
+		return resolve(firstSegmentPath, path.substring(slashIdx + 1));
+	}
+	
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -170,18 +185,8 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 	 * @generated
 	 */
 	@Override
-	public String getTargetId() {
-		return (String)eDynamicGet(EngineeringPackage.TRANSITION__TARGET_ID, EngineeringPackage.Literals.TRANSITION__TARGET_ID, true, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setTargetId(String newTargetId) {
-		eDynamicSet(EngineeringPackage.TRANSITION__TARGET_ID, EngineeringPackage.Literals.TRANSITION__TARGET_ID, newTargetId);
+	public String getTarget() {
+		return (String)eDynamicGet(EngineeringPackage.TRANSITION__TARGET, EngineeringPackage.Literals.TRANSITION__TARGET, true, true);
 	}
 
 	/**
@@ -192,15 +197,12 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EngineeringPackage.TRANSITION__TARGET:
-				if (resolve) return getTarget();
-				return basicGetTarget();
 			case EngineeringPackage.TRANSITION__PAYLOAD:
 				return getPayload();
 			case EngineeringPackage.TRANSITION__SUPPRESS:
 				return isSuppress();
-			case EngineeringPackage.TRANSITION__TARGET_ID:
-				return getTargetId();
+			case EngineeringPackage.TRANSITION__TARGET:
+				return getTarget();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -221,8 +223,8 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 			case EngineeringPackage.TRANSITION__SUPPRESS:
 				setSuppress((Boolean)newValue);
 				return;
-			case EngineeringPackage.TRANSITION__TARGET_ID:
-				setTargetId((String)newValue);
+			case EngineeringPackage.TRANSITION__TARGET:
+				setTarget((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -242,8 +244,8 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 			case EngineeringPackage.TRANSITION__SUPPRESS:
 				setSuppress(SUPPRESS_EDEFAULT);
 				return;
-			case EngineeringPackage.TRANSITION__TARGET_ID:
-				setTargetId(TARGET_ID_EDEFAULT);
+			case EngineeringPackage.TRANSITION__TARGET:
+				setTarget(TARGET_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -257,16 +259,29 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EngineeringPackage.TRANSITION__TARGET:
-				return basicGetTarget() != null;
 			case EngineeringPackage.TRANSITION__PAYLOAD:
 				return !getPayload().isEmpty();
 			case EngineeringPackage.TRANSITION__SUPPRESS:
 				return isSuppress() != SUPPRESS_EDEFAULT;
-			case EngineeringPackage.TRANSITION__TARGET_ID:
-				return TARGET_ID_EDEFAULT == null ? getTargetId() != null : !TARGET_ID_EDEFAULT.equals(getTargetId());
+			case EngineeringPackage.TRANSITION__TARGET:
+				return TARGET_EDEFAULT == null ? getTarget() != null : !TARGET_EDEFAULT.equals(getTarget());
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	@SuppressWarnings("unchecked")
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case EngineeringPackage.TRANSITION___GET_TARGET__ELIST:
+				return getTarget((EList<Journey>)arguments.get(0));
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 } //TransitionImpl

@@ -83,6 +83,7 @@ Token | Description | Example
 ``base-uri`` | A relative path to the root of hte site without a trailing slash |  ``[Root](${{{base-uri}}}/index.html)``
 ``doc-uri`` | A relative path to the root of the documentation site with a trailing slash. This token is available only if the generation context has ``doc-uri`` property. | ``[Model Element](${{{doc-uri}}}engineering/ModelElement.html)``
 ``embedded-image/<image type>/<image URL> [<caption>]`` | Reads an image from the URL resolved relative to the model resource URL. Encodes as an embedded image. If there is a caption separated from the URL by a space, then the image is wrapped into a table with the caption below the image. | ``${{{embedded-image/png/logo.png}}}``, ``${{{embedded-image/png/my-screenshot.png Screenshot description}}}``
+``embedded-image-data/<image type>/<image URL>]`` | Reads an image from the URL resolved relative to the model resource URL. Encodes as an embedded image data - the ``src`` attribute. Can be used to include images in markdown without HTML blocks. | ``![logo](${{{embedded-image-data/png/logo.png}}})````
 ``include/<resource URL>`` | Reads, interpolates, and includes a resource at the URL resolved relative to the model resource URL. | ``${{{include/report.html}}}``
 ``include-markdown/<resource URL>`` | Reads a resource at the URL resolved relative to the model resource URL. Renders Markdown to HTML. Interpolates and includes. | ``${{{include-markdown/report.md}}}``
 
