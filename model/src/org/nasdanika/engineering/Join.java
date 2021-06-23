@@ -11,7 +11,6 @@ package org.nasdanika.engineering;
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getJoin()
  * @model annotation="urn:org.nasdanika documentation-reference='doc/join.md'"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='multipleBranches'"
  * @generated
  */
 public interface Join extends PseudoState {

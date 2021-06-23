@@ -11,7 +11,6 @@ package org.nasdanika.engineering;
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getStart()
  * @model annotation="urn:org.nasdanika documentation-reference='doc/start.md'"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='noInputs noInvocations'"
  * @generated
  */
 public interface Start extends PseudoState {

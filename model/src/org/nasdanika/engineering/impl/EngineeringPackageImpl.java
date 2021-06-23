@@ -5332,37 +5332,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		  (journeyEClass,
 		   source,
 		   new String[] {
-			   "constraints", "final abstract transitionTargets"
-		   });
-		addAnnotation
-		  (choiceEClass,
-		   source,
-		   new String[] {
-			   "constraints", "multipleChoices"
-		   });
-		addAnnotation
-		  (endEClass,
-		   source,
-		   new String[] {
-			   "constraints", "noOutputs noCalls"
-		   });
-		addAnnotation
-		  (forkEClass,
-		   source,
-		   new String[] {
-			   "constraints", "multipleBranches"
-		   });
-		addAnnotation
-		  (joinEClass,
-		   source,
-		   new String[] {
-			   "constraints", "multipleBranches"
-		   });
-		addAnnotation
-		  (startEClass,
-		   source,
-		   new String[] {
-			   "constraints", "noInputs noInvocations"
+			   "constraints", "final abstract elements"
 		   });
 	}
 

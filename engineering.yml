@@ -17,4 +17,7 @@ engineering-product:
       - model/engineering.yml
       - gen/engineering.yml
    issues:
-      - name: Maven plugin for site generation. Explicit source base property, later support jGit origin.   
+      - name: Maven plugin for site generationengineering.yml
+        description: Explicit source base property, later support jGit origin.   
+      - name: Eclipse builder
+        description: On save or explicit.

@@ -2,13 +2,9 @@
  */
 package org.nasdanika.engineering.util;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
-import java.util.List;
 import java.util.Map;
-
-import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
@@ -984,7 +980,7 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validateJourneyElement_suppress(journey, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourneyElement_suppressAndOverride(journey, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourney_abstract(journey, diagnostics, context);
-		if (result || diagnostics != null) result &= validateJourney_transitionTargets(journey, diagnostics, context);
+		if (result || diagnostics != null) result &= validateJourney_elements(journey, diagnostics, context);
 		return result;
 	}
 
@@ -1063,6 +1059,8 @@ public class EngineeringValidator extends EObjectValidator {
 				validateForkMultipleBranches(journeyPath, helper, (Fork) je, context);
 			} else if (je instanceof Join) {
 				validateJoinMultipleBranches(journeyPath, helper, (Join) je, context);
+			} else if (je instanceof Choice) {
+				validateChoiceMultipleChoices(journeyPath, helper, (Choice) je, context);
 			} 
 		}	
 	}
@@ -1087,6 +1085,19 @@ public class EngineeringValidator extends EObjectValidator {
 		ret.append("] ");
 		return ret.toString();
 	}
+	
+	/**
+	 * Validates the multipleChoices constraint of '<em>Choice</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	private void validateChoiceMultipleChoices(EList<Journey> journeyPath, DiagnosticHelper helper, Choice choice, Map<Object, Object> context) {
+		if (choice.getAllOutputs(journeyPath).size() + choice.getAllCalls(journeyPath).size() < 2) {
+			helper.warning(journeyPath(journeyPath) + "There should be multiple choices");
+		}
+	}
+	
 
 	/**
 	 * Validates the target constraint of '<em>Transition</em>'.
@@ -1217,26 +1228,7 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validateJourneyElement_override(choice, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourneyElement_suppress(choice, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourneyElement_suppressAndOverride(choice, diagnostics, context);
-		if (result || diagnostics != null) result &= validateChoice_multipleChoices(choice, diagnostics, context);
 		return result;
-	}
-
-	/**
-	 * Validates the multipleChoices constraint of '<em>Choice</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public boolean validateChoice_multipleChoices(Choice choice, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		if (diagnostics != null) {
-			DiagnosticHelper helper = new DiagnosticHelper(diagnostics, DIAGNOSTIC_SOURCE, 0, choice);
-			if (choice.getAllOutputs().size() + choice.getAllCalls().size() < 2) {
-				helper.warning("There should be multiple choices");
-			};
-			
-			return helper.isSuccess();
-		}
-		return true;
 	}
 
 	/**
@@ -1260,8 +1252,6 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validateJourneyElement_override(end, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourneyElement_suppress(end, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourneyElement_suppressAndOverride(end, diagnostics, context);
-		if (result || diagnostics != null) result &= validateEnd_noOutputs(end, diagnostics, context);
-		if (result || diagnostics != null) result &= validateEnd_noCalls(end, diagnostics, context);
 		return result;
 	}
 
@@ -1382,7 +1372,6 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validateJourneyElement_override(fork, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourneyElement_suppress(fork, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourneyElement_suppressAndOverride(fork, diagnostics, context);
-		if (result || diagnostics != null) result &= validateFork_multipleBranches(fork, diagnostics, context);
 		return result;
 	}
 
@@ -1431,7 +1420,6 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validateJourneyElement_override(join, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourneyElement_suppress(join, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourneyElement_suppressAndOverride(join, diagnostics, context);
-		if (result || diagnostics != null) result &= validateJoin_multipleBranches(join, diagnostics, context);
 		return result;
 	}
 
@@ -1480,8 +1468,6 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validateJourneyElement_override(start, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourneyElement_suppress(start, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourneyElement_suppressAndOverride(start, diagnostics, context);
-		if (result || diagnostics != null) result &= validateStart_noInputs(start, diagnostics, context);
-		if (result || diagnostics != null) result &= validateStart_noInvocations(start, diagnostics, context);
 		return result;
 	}
 

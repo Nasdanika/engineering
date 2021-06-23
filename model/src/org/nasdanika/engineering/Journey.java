@@ -22,7 +22,7 @@ import org.eclipse.emf.common.util.EList;
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getJourney()
  * @model annotation="urn:org.nasdanika documentation-reference='doc/journey.md'"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='final abstract transitionTargets'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='final abstract elements'"
  * @generated
  */
 public interface Journey extends Activity {

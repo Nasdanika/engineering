@@ -37,7 +37,7 @@ engineering-module:
        increment: nasdanika:increments/2021/children/q2/children/may
        releases: nasdanika:modules/engineering/releases/2021/5/0
        status: nasdanika:issue-statuses/done
-       path: no-sort
+       path: diagrams-link-token-replacement
        effort: 1 
      - name: Experts reference
        description: Have expertise, but not authority.
@@ -222,6 +222,11 @@ engineering-module:
        markdown-description: Table with category name, description, and number of issues in the category.       
      - name: Sliding navigation panel
        markdown-description: Ability to hide if it takes too much real estate and then bring back. Navigation toggle context action with just an icon.       
+     - name: Journey Elements getting default values from the overriden element
+       markdown-description: |+2
+         If a journey element or transition overrides another element and some feature is not set then its default value should be taken the overriden element.
+         See if it can be done "in bulk" by overriding eDynamicGet(). Do it for attributes and maybe some references. Or maybe better handle at the UI level by
+         overriding featureValue() for references - a tricky part, and at the model level for attributes.         
 
 #### Done ####
 
