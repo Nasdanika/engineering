@@ -131,11 +131,8 @@ public class JourneyViewAction extends ActivityViewAction<Journey> {
 							.append(diagramId(journeyElement))
 							.append(" #FEFECE ");
 
-						if (journeyElement.getModifiers().contains(JourneyElement.ABSTRACT)) {
-							ret.append(" ##[dashed])");
-						} else if (journeyElement.getModifiers().contains(JourneyElement.FINAL)) {
-							ret.append(" ##[bold]");
-						}
+						ret.append(styleBorder(journeyElement));
+
 						ret
 							.append(" {")
 							.append(System.lineSeparator())

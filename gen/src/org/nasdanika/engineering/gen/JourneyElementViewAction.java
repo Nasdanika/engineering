@@ -274,12 +274,26 @@ public class JourneyElementViewAction<T extends JourneyElement> extends Engineer
 		if (isSurroundingElement) {
 			ret.append(" #DDDDDD");
 		}
+		ret.append(styleBorder(journeyElement));
+		ret.append(System.lineSeparator());
+		return ret.toString();
+	}
+
+	protected String styleBorder(JourneyElement journeyElement) {
+		StringBuilder ret = new StringBuilder();
 		if (journeyElement.getModifiers().contains(JourneyElement.ABSTRACT)) {
 			ret.append(" ##[dashed])");
+			if (journeyElement.getModifiers().contains(JourneyElement.OPTIONAL)) {
+				ret.append("grey");			
+			}
 		} else if (journeyElement.getModifiers().contains(JourneyElement.FINAL)) {
 			ret.append(" ##[bold]");
+			if (journeyElement.getModifiers().contains(JourneyElement.OPTIONAL)) {
+				ret.append("grey");			
+			}
+		} else if (journeyElement.getModifiers().contains(JourneyElement.OPTIONAL)) {
+			ret.append(" ##grey");			
 		}
-		ret.append(System.lineSeparator());
 		return ret.toString();
 	}
 
