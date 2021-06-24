@@ -5,15 +5,18 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Map.Entry;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
+import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.ETypedElement;
 import org.nasdanika.common.Util;
+import org.nasdanika.emf.EObjectAdaptable;
 import org.nasdanika.emf.EmfUtil;
 import org.nasdanika.engineering.Activity;
 import org.nasdanika.engineering.Call;
@@ -29,8 +32,15 @@ import org.nasdanika.html.app.NavigationActionActivator;
 
 public class JourneyViewAction extends ActivityViewAction<Journey> {
 
+	/**
+	 * Journey path plus this view's journey.
+	 */
+	private EList<Journey> elementsJourneyPath;
+
 	public JourneyViewAction(EList<Journey> journeyPath, Journey value, EngineeringViewActionAdapterFactory factory) {
 		super(journeyPath, value, factory);
+		elementsJourneyPath = ECollections.newBasicEList(journeyPath);
+		elementsJourneyPath.add(value);
 	}
 	
 	@Override
@@ -53,6 +63,18 @@ public class JourneyViewAction extends ActivityViewAction<Journey> {
 		}
 		return super.childrenActions(member);
 	}
+	
+	/**
+	 * Adapts via JourneyElementViewActionProvider
+	 * @param <J>
+	 * @param <V>
+	 * @param journeyElement
+	 */
+	protected JourneyElementViewAction<?> adaptToViewAction(JourneyElement journeyElement) {
+		@SuppressWarnings("unchecked")
+		JourneyElementViewActionProvider<JourneyElementViewAction<?>> tvap = Objects.requireNonNull(EObjectAdaptable.adaptTo(journeyElement, JourneyElementViewActionProvider.class));
+		return Objects.requireNonNull(tvap.apply(elementsJourneyPath));
+	}
 
 	@Override
 	protected String generatePlantUMLText() {
@@ -60,9 +82,9 @@ public class JourneyViewAction extends ActivityViewAction<Journey> {
 		StringBuilder ret = new StringBuilder(generateJourneyElementsText(getSemanticElement(), ((NavigationActionActivator) getActivator()).getUrl(null), accumulator));
 
 		for (JourneyElement journeyElement: accumulator) {
-			EList<Transition> outputs = journeyElement.getAllOutputs(journeyPath); 
+			EList<Transition> outputs = journeyElement.getAllOutputs(elementsJourneyPath); 
 			for (Transition output: outputs) {
-				JourneyElement targetElement = output.getTarget(journeyPath);
+				JourneyElement targetElement = output.getTarget(elementsJourneyPath);
 				if (accumulator.contains(targetElement) && !siblings(journeyElement, targetElement)) { 
 					ret
 						.append(diagramId(journeyElement))
@@ -76,8 +98,8 @@ public class JourneyViewAction extends ActivityViewAction<Journey> {
 				}
 			}
 			
-			for (Call call: journeyElement.getAllCalls(journeyPath)) {
-				JourneyElement targetElement = call.getTarget(journeyPath);
+			for (Call call: journeyElement.getAllCalls(elementsJourneyPath)) {
+				JourneyElement targetElement = call.getTarget(elementsJourneyPath);
 				if (accumulator.contains(targetElement) && !siblings(journeyElement, targetElement)) { 
 					ret
 						.append(diagramId(journeyElement))
@@ -123,14 +145,14 @@ public class JourneyViewAction extends ActivityViewAction<Journey> {
 		Map<List<Persona>, List<JourneyElement>> personaElements = EmfUtil.groupBy(journeyElements, EngineeringPackage.Literals.JOURNEY_ELEMENT__PERSONAS);
 		for (Entry<List<Persona>, List<JourneyElement>> pe: personaElements.entrySet()) { 
 			List<Persona> personas = pe.getKey();
-			boolean isPersonasPartition = !personas.isEmpty() && !personas.equals(journeyPersonas);
+			boolean isPersonasPartition = personas != null && !personas.isEmpty() && !personas.equals(journeyPersonas);
 			if (isPersonasPartition) {
 				// Personas partition
 				ret.append(personasPartitionStart(personas, base));
 			}
 			
 			for (JourneyElement journeyElement: pe.getValue()) {
-				 if (journeyElement instanceof Start) { 
+				 if (journeyElement == null || journeyElement instanceof Start) { 
 					 continue;
 				 }
 				 
@@ -166,12 +188,12 @@ public class JourneyViewAction extends ActivityViewAction<Journey> {
 
 		Collection<JourneyElement> finalElements = new HashSet<>(); 
 		for (JourneyElement journeyElement: journeyElements) {
-			EList<Transition> outputs = journeyElement.getAllOutputs(journeyPath);
-			if (outputs.isEmpty() && journeyElement.getAllInvocations(journeyPath).isEmpty()) { 
+			EList<Transition> outputs = journeyElement.getAllOutputs(elementsJourneyPath);
+			if (outputs.isEmpty() && journeyElement.getAllInvocations(elementsJourneyPath).isEmpty()) { 
 				finalElements.add(journeyElement);
 			}
 			for (Transition output: outputs) {
-				JourneyElement targetElement = output.getTarget(journeyPath); 
+				JourneyElement targetElement = output.getTarget(elementsJourneyPath); 
 				if (journeyElements.contains(targetElement)) { 
 					initialElements.remove(targetElement); 
 					ret	
@@ -185,8 +207,8 @@ public class JourneyViewAction extends ActivityViewAction<Journey> {
 					ret.append(System.lineSeparator());
 				}
 			}
-			for (Call call: journeyElement.getAllCalls(journeyPath)) {
-				JourneyElement targetElement = call.getTarget(journeyPath); 
+			for (Call call: journeyElement.getAllCalls(elementsJourneyPath)) {
+				JourneyElement targetElement = call.getTarget(elementsJourneyPath); 
 				if (journeyElements.contains(targetElement)) { 
 					initialElements.remove(targetElement); 
 					ret.append(diagramId(journeyElement))
@@ -212,6 +234,6 @@ public class JourneyViewAction extends ActivityViewAction<Journey> {
 			}
 		}
 		return ret.toString();
-	}	
+	}
 	
 }
