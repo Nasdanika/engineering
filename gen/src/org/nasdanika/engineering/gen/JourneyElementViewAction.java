@@ -51,7 +51,7 @@ public class JourneyElementViewAction<T extends JourneyElement> extends Engineer
 
 	protected JourneyElementViewAction(EList<Journey> journeyPath, T value, EngineeringViewActionAdapterFactory factory) {
 		super(value, factory);
-		this.journeyPath = journeyPath;
+		this.journeyPath = journeyPath;		
 	}
 	
 	@Override
@@ -234,13 +234,13 @@ public class JourneyElementViewAction<T extends JourneyElement> extends Engineer
 			Map<List<Persona>, List<JourneyElement>> personaElements = EmfUtil.groupBy(diagramElements, EngineeringPackage.Literals.JOURNEY_ELEMENT__PERSONAS);
 			for (Entry<List<Persona>, List<JourneyElement>> pe: personaElements.entrySet()) { 
 				List<Persona> personas = pe.getKey();
-				boolean isPersonasPartition = !personas.isEmpty() && !personas.equals(semanticElementPersonas);
+				boolean isPersonasPartition = personas != null && !personas.isEmpty() && !personas.equals(semanticElementPersonas);
 				if (isPersonasPartition) {
 					ret.append(personasPartitionStart(personas, base));
 				}
 				
 				for (JourneyElement journeyElement: pe.getValue()) {
-					 if (journeyElement instanceof Start) { 
+					 if (journeyElement == null || journeyElement instanceof Start) { 
 						 continue;
 					 }
 				
@@ -315,7 +315,7 @@ public class JourneyElementViewAction<T extends JourneyElement> extends Engineer
 	protected String styleBorder(JourneyElement journeyElement) {
 		StringBuilder ret = new StringBuilder();
 		if (journeyElement.getModifiers().contains(JourneyElement.ABSTRACT)) {
-			ret.append(" ##[dashed])");
+			ret.append(" ##[dashed]");
 			if (journeyElement.getModifiers().contains(JourneyElement.OPTIONAL)) {
 				ret.append("grey");			
 			}
@@ -379,7 +379,7 @@ public class JourneyElementViewAction<T extends JourneyElement> extends Engineer
 	}
 
 	private void collectRelatedElements(JourneyElement journeyElement, Collection<JourneyElement> accumulator) { 
-		if (accumulator.add(journeyElement)) {
+		if (journeyElement != null && accumulator.add(journeyElement)) {
 			for (Transition input: journeyElement.getAllInputs(journeyPath)) {
 				JourneyElement target = (JourneyElement) input.eContainer(); 
 				if (target instanceof PseudoState) {

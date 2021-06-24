@@ -6,8 +6,10 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.ECollections;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -36,6 +38,7 @@ import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.IssueCategory;
 import org.nasdanika.engineering.IssueStatus;
 import org.nasdanika.engineering.Journey;
+import org.nasdanika.engineering.JourneyElement;
 import org.nasdanika.engineering.KeyResult;
 import org.nasdanika.engineering.Link;
 import org.nasdanika.engineering.ModelElement;
@@ -232,21 +235,21 @@ public class EngineeringViewActionAdapterFactory extends ComposedAdapterFactory 
 				EngineeringPackage.Literals.ACTIVITY, 
 				getViewActionClass(), 
 				this.getClass().getClassLoader(), 
-				obj -> new ActivityViewAction<Activity>(ECollections.<Journey>emptyEList(), obj, this)));			
+				obj -> new ActivityViewAction<Activity>(containmentJourneyPath(obj), obj, this)));			
 		
 		registerAdapterFactory(
 			new FunctionAdapterFactory<ViewAction<Service>, Service>(
 				EngineeringPackage.Literals.SERVICE, 
 				getViewActionClass(), 
 				this.getClass().getClassLoader(), 
-				obj -> new ServiceViewAction(ECollections.<Journey>emptyEList(), obj, this)));			
+				obj -> new ServiceViewAction(containmentJourneyPath(obj), obj, this)));			
 		
 		registerAdapterFactory(
 			new FunctionAdapterFactory<ViewAction<Journey>, Journey>(
 				EngineeringPackage.Literals.JOURNEY, 
 				getViewActionClass(), 
 				this.getClass().getClassLoader(), 
-				obj -> new JourneyViewAction(ECollections.<Journey>emptyEList(), obj, this)));
+				obj -> new JourneyViewAction(containmentJourneyPath(obj), obj, this)));
 
 		// Providers		
 		registerAdapterFactory(
@@ -291,8 +294,16 @@ public class EngineeringViewActionAdapterFactory extends ComposedAdapterFactory 
 			}
 		} catch (Exception e) {
 			throw new NasdanikaException(e);
+		}		
+	}
+	
+	private static EList<Journey> containmentJourneyPath(JourneyElement journeyElement) {
+		BasicEList<Journey> journeyPath = ECollections.newBasicEList();
+		for (EObject ancestor = journeyElement.eContainer(); ancestor instanceof Journey; ancestor = ancestor.eContainer()) {
+			journeyPath.add((Journey) ancestor);
 		}
-		
+		ECollections.reverse(journeyPath);
+		return journeyPath;
 	}
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
