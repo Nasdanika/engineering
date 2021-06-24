@@ -4133,6 +4133,20 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 			   "documentation-reference", "doc/journey-element.md"
 		   });
 		addAnnotation
+		  (getJourneyElement_Outputs(),
+		   source,
+		   new String[] {
+			   "homogenous", "true",
+			   "strict-containment", "true"
+		   });
+		addAnnotation
+		  (getJourneyElement_Calls(),
+		   source,
+		   new String[] {
+			   "homogenous", "true",
+			   "strict-containment", "true"
+		   });
+		addAnnotation
 		  (activityEClass,
 		   source,
 		   new String[] {

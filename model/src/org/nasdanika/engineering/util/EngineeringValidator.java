@@ -1070,7 +1070,7 @@ public class EngineeringValidator extends EObjectValidator {
 	 * @param journeyPath
 	 * @return
 	 */
-	private static String journeyPath(EList<Journey> journeyPath) {
+	public static String journeyPath(EList<Journey> journeyPath) {
 		if (journeyPath.size() < 2) {
 			return "";		
 		}
@@ -1900,7 +1900,7 @@ public class EngineeringValidator extends EObjectValidator {
 				helper.error("Final elements cannot be overriden", EngineeringPackage.Literals.JOURNEY_ELEMENT__OVERRIDES);
 			}
 			
-			if (journeyElement.getModifiers().contains(JourneyElement.FINAL)) {
+			if (journeyElement.getModifiers().contains(JourneyElement.FINAL) && journeyElement.getModifiers().contains(JourneyElement.ABSTRACT)) {
 				helper.error("Journey element is both final and abstract", EngineeringPackage.Literals.JOURNEY_ELEMENT__MODIFIERS);
 			}
 			return helper.isSuccess();

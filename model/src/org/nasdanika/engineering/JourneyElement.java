@@ -51,6 +51,7 @@ public interface JourneyElement extends EngineeredElement {
 	 * @return the value of the '<em>Outputs</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getJourneyElement_Outputs()
 	 * @model containment="true"
+	 *        annotation="urn:org.nasdanika homogenous='true' strict-containment='true'"
 	 * @generated
 	 */
 	EList<Transition> getOutputs();
@@ -66,6 +67,7 @@ public interface JourneyElement extends EngineeredElement {
 	 * @return the value of the '<em>Calls</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getJourneyElement_Calls()
 	 * @model containment="true"
+	 *        annotation="urn:org.nasdanika homogenous='true' strict-containment='true'"
 	 * @generated
 	 */
 	EList<Call> getCalls();

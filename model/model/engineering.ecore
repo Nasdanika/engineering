@@ -1239,11 +1239,19 @@
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Activity outbound transitions to other activities."/>
       </eAnnotations>
+      <eAnnotations source="urn:org.nasdanika">
+        <details key="homogenous" value="true"/>
+        <details key="strict-containment" value="true"/>
+      </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="calls" upperBound="-1"
         eType="#//Call" containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Calls to other activities."/>
+      </eAnnotations>
+      <eAnnotations source="urn:org.nasdanika">
+        <details key="homogenous" value="true"/>
+        <details key="strict-containment" value="true"/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="requirements" upperBound="-1"

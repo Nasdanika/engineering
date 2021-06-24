@@ -8,15 +8,20 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
+import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.nasdanika.common.persistence.ConfigurationException;
+import org.nasdanika.common.persistence.Marked;
+import org.nasdanika.emf.EObjectAdaptable;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Journey;
 import org.nasdanika.engineering.JourneyElement;
 import org.nasdanika.engineering.NamedElement;
 import org.nasdanika.engineering.Transition;
+import org.nasdanika.engineering.util.EngineeringValidator;
 import org.nasdanika.html.app.impl.Util;
 
 /**
@@ -93,11 +98,15 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 	public JourneyElement getTarget(EList<Journey> journeyPath) {
 		String tid = getTarget();
 		if (Util.isBlank(tid)) {
-			return null;
+			throw new ConfigurationException("Transition target is not set", EObjectAdaptable.adaptTo(this, Marked.class));
 		}
+		
 		@SuppressWarnings({ "unchecked", "rawtypes" })
 		List<JourneyElement> rPath = resolve((List) journeyPath, tid);
-		return rPath.isEmpty() ? null : rPath.get(rPath.size() - 1);
+		if (rPath.isEmpty()) {
+			throw new ConfigurationException("Cannot resolve transition target '" + tid + " in journey path " + EngineeringValidator.journeyPath(journeyPath), EObjectAdaptable.adaptTo(this, Marked.class));
+		}
+		return rPath.get(rPath.size() - 1);
 	}
 
 	/**
@@ -110,6 +119,7 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 		if (contextPath.isEmpty()) {
 			return contextPath;
 		}
+		
 		int colonIdx = path.indexOf(":");
 		int slashIdx = path.indexOf('/');
 		JourneyElement lastElement = contextPath.get(contextPath.size() - 1);
