@@ -12,6 +12,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.ETypedElement;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.common.Util;
@@ -50,9 +51,9 @@ public class EngineerViewAction<T extends Engineer> extends PersonaViewAction<T>
 	}
 	
 	@Override
-	protected Collection<Action> featureActions(EStructuralFeature feature) {
-		if (feature == EngineeringPackage.Literals.ENGINEER__ASSIGNMENTS) {
-			ModelElementFeatureViewAction<T, EStructuralFeature, EngineerViewAction<T>> assignmentsAction = new ModelElementFeatureViewAction<T, EStructuralFeature, EngineerViewAction<T>>(this, feature);
+	protected Collection<Action> memberActions(ETypedElement member) {
+		if (member == EngineeringPackage.Literals.ENGINEER__ASSIGNMENTS) {
+			ModelElementFeatureViewAction<T, EStructuralFeature, EngineerViewAction<T>> assignmentsAction = new ModelElementFeatureViewAction<T, EStructuralFeature, EngineerViewAction<T>>(this, (EStructuralFeature) member);
 			assignmentsAction.getRoles().add(Action.Role.SECTION);
 			
 			ViewBuilder productHeaderBuilder = new ViewBuilder() {
@@ -69,7 +70,7 @@ public class EngineerViewAction<T extends Engineer> extends PersonaViewAction<T>
 					e -> e == EcorePackage.Literals.EOBJECT___ECONTAINER ? productHeaderBuilder : null,
 					"Releases", 
 					"assignments-releases", 
-					getFeatureDiagnostic(feature),
+					getFeatureDiagnostic((EStructuralFeature) member),
 					EcorePackage.Literals.EOBJECT___ECONTAINER,
 					EngineeringPackage.Literals.NAMED_ELEMENT__NAME,
 					EngineeringPackage.Literals.ENDEAVOR__START,
@@ -83,7 +84,7 @@ public class EngineerViewAction<T extends Engineer> extends PersonaViewAction<T>
 					null,
 					"Features", 
 					"assignments-features", 
-					getFeatureDiagnostic(feature),
+					getFeatureDiagnostic((EStructuralFeature) member),
 					EngineeringPackage.Literals.NAMED_ELEMENT__NAME,
 					EngineeringPackage.Literals.ENDEAVOR__START,
 					EngineeringPackage.Literals.ENDEAVOR__END,
@@ -96,7 +97,7 @@ public class EngineerViewAction<T extends Engineer> extends PersonaViewAction<T>
 					null,
 					"Increments", 
 					"assignments-increments", 
-					getFeatureDiagnostic(feature),
+					getFeatureDiagnostic((EStructuralFeature) member),
 					EngineeringPackage.Literals.NAMED_ELEMENT__NAME,
 					EngineeringPackage.Literals.ENDEAVOR__START,
 					EngineeringPackage.Literals.ENDEAVOR__END,
@@ -109,7 +110,7 @@ public class EngineerViewAction<T extends Engineer> extends PersonaViewAction<T>
 					null,
 					"Issues", 
 					"assignments-issues", 
-					getFeatureDiagnostic(feature),
+					getFeatureDiagnostic((EStructuralFeature) member),
 					EngineeringPackage.Literals.NAMED_ELEMENT__NAME,
 					EngineeringPackage.Literals.ENDEAVOR__START,
 					EngineeringPackage.Literals.ENDEAVOR__END,
@@ -127,14 +128,14 @@ public class EngineerViewAction<T extends Engineer> extends PersonaViewAction<T>
 			return assignmentsAction.getSectionChildren().isEmpty() ? Collections.emptyList() : Collections.singleton(assignmentsAction);
 		}
 
-		if (feature == EngineeringPackage.Literals.ENGINEER__OBJECTIVES) {
+		if (member == EngineeringPackage.Literals.ENGINEER__OBJECTIVES) {
 			if (getSemanticElement().getObjectives().isEmpty()) {
 				return Collections.emptyList();
 			}
-			return Collections.singleton(createFeatureViewAction(feature, this::generateObjectivesTable));			
+			return Collections.singleton(createFeatureViewAction((EStructuralFeature) member, this::generateObjectivesTable));			
 		}		
 		
-		return super.featureActions(feature);
+		return super.memberActions(member);
 	}
 	
 	protected Object generateObjectivesTable(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
@@ -151,8 +152,8 @@ public class EngineerViewAction<T extends Engineer> extends PersonaViewAction<T>
 	}					
 		
 	@Override
-	protected Object featureContent(EStructuralFeature feature, ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
-		if (feature == EngineeringPackage.Literals.ENGINEER__INCREMENTS) {
+	protected Object memberContent(ETypedElement member, ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
+		if (member == EngineeringPackage.Literals.ENGINEER__INCREMENTS) {
 			Collection<Issue> scheduledIssues = new ArrayList<>();
 			getSemanticElement().getIncrements().forEach(i -> collectAllIncrementIssues(i, scheduledIssues));
 			if (scheduledIssues.isEmpty()) {
@@ -160,12 +161,12 @@ public class EngineerViewAction<T extends Engineer> extends PersonaViewAction<T>
 			}
 			HTMLFactory htmlFactory = viewGenerator.getHTMLFactory();
 			int headerLevel = viewGenerator.get(SectionStyle.HEADER_LEVEL, Integer.class, 3);
-			Fragment ret = htmlFactory.fragment(htmlFactory.tag("h" + headerLevel, Util.nameToLabel(feature.getName())));
+			Fragment ret = htmlFactory.fragment(htmlFactory.tag("h" + headerLevel, Util.nameToLabel(member.getName())));
 			Function<Increment, Collection<Issue>> issueSource = in -> scheduledIssues.stream().filter(is -> is.getIncrement() == in).collect(Collectors.toList());
 			ret.content(IncrementViewAction.incrementsTable(getSemanticElement().getIncrements(), issueSource, true, viewGenerator, progressMonitor));
 			return ret.toString();
 		}
-		return super.featureContent(feature, viewGenerator, progressMonitor);
+		return super.memberContent(member, viewGenerator, progressMonitor);
 	}
 	
 	private void collectAllIncrementIssues(Increment increment, Collection<Issue> collector) {

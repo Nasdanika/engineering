@@ -5,6 +5,7 @@ import java.util.Collections;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.ETypedElement;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.engineering.Allocation;
 import org.nasdanika.engineering.EngineeringPackage;
@@ -40,14 +41,14 @@ public class IssueCategoryViewAction extends AimViewAction<IssueCategory> {
 	}				
 	
 	@Override
-	protected Collection<Action> featureActions(EStructuralFeature feature) {
-		if (feature == EngineeringPackage.Literals.ISSUE_CATEGORY__ISSUES) {
+	protected Collection<Action> memberActions(ETypedElement member) {
+		if (member == EngineeringPackage.Literals.ISSUE_CATEGORY__ISSUES) {
 			return Collections.singleton(endeavorsSection(
 					getSemanticElement().getIssues(), 
 					null,
 					"Issues", 
 					"Issues", 
-					getFeatureDiagnostic(feature),					
+					getFeatureDiagnostic((EStructuralFeature) member),					
 					EngineeringPackage.Literals.NAMED_ELEMENT__NAME,
 					EngineeringPackage.Literals.ENDEAVOR__START,
 					EngineeringPackage.Literals.ENDEAVOR__END,
@@ -61,15 +62,15 @@ public class IssueCategoryViewAction extends AimViewAction<IssueCategory> {
 					EngineeringPackage.Literals.ISSUE__REMAINING_COST,
 					EngineeringPackage.Literals.ENDEAVOR__COMPLETION));
 		}
-		if (feature == EngineeringPackage.Literals.ISSUE_CATEGORY__ALLOCATIONS) {
+		if (member == EngineeringPackage.Literals.ISSUE_CATEGORY__ALLOCATIONS) {
 			EList<Allocation> allocations = getSemanticElement().getAllocations();
 			if (allocations.isEmpty()) {
 				return Collections.emptyList();
 			}
-			return Collections.singleton(createFeatureViewAction(feature, this::generateAllocationsTable));
+			return Collections.singleton(createFeatureViewAction((EStructuralFeature) member, this::generateAllocationsTable));
 		}
 
-		return super.featureActions(feature);
+		return super.memberActions(member);
 	}
 	
 }

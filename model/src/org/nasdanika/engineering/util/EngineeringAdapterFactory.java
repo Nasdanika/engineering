@@ -37,7 +37,7 @@ import org.nasdanika.engineering.ExitPoint;
 import org.nasdanika.engineering.ExpansionInput;
 import org.nasdanika.engineering.ExpansionOutput;
 import org.nasdanika.engineering.Feature;
-import org.nasdanika.engineering.FeatureAppearance;
+import org.nasdanika.engineering.MemberAppearance;
 import org.nasdanika.engineering.Fork;
 import org.nasdanika.engineering.Forum;
 import org.nasdanika.engineering.Goal;
@@ -263,12 +263,12 @@ public class EngineeringAdapterFactory extends AdapterFactoryImpl {
 				return createModelElementAppearanceEntryAdapter();
 			}
 			@Override
-			public Adapter caseFeatureAppearanceEntry(Map.Entry<String, FeatureAppearance> object) {
-				return createFeatureAppearanceEntryAdapter();
+			public Adapter caseMemberAppearanceEntry(Map.Entry<String, MemberAppearance> object) {
+				return createMemberAppearanceEntryAdapter();
 			}
 			@Override
-			public Adapter caseFeatureAppearance(FeatureAppearance object) {
-				return createFeatureAppearanceAdapter();
+			public Adapter caseMemberAppearance(MemberAppearance object) {
+				return createMemberAppearanceAdapter();
 			}
 			@Override
 			public Adapter caseDocument(Document object) {
@@ -1087,7 +1087,7 @@ public class EngineeringAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link java.util.Map.Entry <em>Feature Appearance Entry</em>}'.
+	 * Creates a new adapter for an object of class '{@link java.util.Map.Entry <em>Member Appearance Entry</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
@@ -1096,21 +1096,21 @@ public class EngineeringAdapterFactory extends AdapterFactoryImpl {
 	 * @see java.util.Map.Entry
 	 * @generated
 	 */
-	public Adapter createFeatureAppearanceEntryAdapter() {
+	public Adapter createMemberAppearanceEntryAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.FeatureAppearance <em>Feature Appearance</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.MemberAppearance <em>Member Appearance</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.nasdanika.engineering.FeatureAppearance
+	 * @see org.nasdanika.engineering.MemberAppearance
 	 * @generated
 	 */
-	public Adapter createFeatureAppearanceAdapter() {
+	public Adapter createMemberAppearanceAdapter() {
 		return null;
 	}
 

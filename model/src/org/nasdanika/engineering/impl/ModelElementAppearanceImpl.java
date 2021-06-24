@@ -12,7 +12,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.nasdanika.engineering.EngineeringPackage;
-import org.nasdanika.engineering.FeatureAppearance;
+import org.nasdanika.engineering.MemberAppearance;
 import org.nasdanika.engineering.ModelElementAppearance;
 
 /**
@@ -24,6 +24,7 @@ import org.nasdanika.engineering.ModelElementAppearance;
  * </p>
  * <ul>
  *   <li>{@link org.nasdanika.engineering.impl.ModelElementAppearanceImpl#getFeatures <em>Features</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.ModelElementAppearanceImpl#getOperations <em>Operations</em>}</li>
  * </ul>
  *
  * @generated
@@ -55,8 +56,19 @@ public class ModelElementAppearanceImpl extends AppearanceImpl implements ModelE
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public EMap<String, FeatureAppearance> getFeatures() {
-		return (EMap<String, FeatureAppearance>)eDynamicGet(EngineeringPackage.MODEL_ELEMENT_APPEARANCE__FEATURES, EngineeringPackage.Literals.MODEL_ELEMENT_APPEARANCE__FEATURES, true, true);
+	public EMap<String, MemberAppearance> getFeatures() {
+		return (EMap<String, MemberAppearance>)eDynamicGet(EngineeringPackage.MODEL_ELEMENT_APPEARANCE__FEATURES, EngineeringPackage.Literals.MODEL_ELEMENT_APPEARANCE__FEATURES, true, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public EMap<String, MemberAppearance> getOperations() {
+		return (EMap<String, MemberAppearance>)eDynamicGet(EngineeringPackage.MODEL_ELEMENT_APPEARANCE__OPERATIONS, EngineeringPackage.Literals.MODEL_ELEMENT_APPEARANCE__OPERATIONS, true, true);
 	}
 
 	/**
@@ -69,6 +81,8 @@ public class ModelElementAppearanceImpl extends AppearanceImpl implements ModelE
 		switch (featureID) {
 			case EngineeringPackage.MODEL_ELEMENT_APPEARANCE__FEATURES:
 				return ((InternalEList<?>)getFeatures()).basicRemove(otherEnd, msgs);
+			case EngineeringPackage.MODEL_ELEMENT_APPEARANCE__OPERATIONS:
+				return ((InternalEList<?>)getOperations()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -84,6 +98,9 @@ public class ModelElementAppearanceImpl extends AppearanceImpl implements ModelE
 			case EngineeringPackage.MODEL_ELEMENT_APPEARANCE__FEATURES:
 				if (coreType) return getFeatures();
 				else return getFeatures().map();
+			case EngineeringPackage.MODEL_ELEMENT_APPEARANCE__OPERATIONS:
+				if (coreType) return getOperations();
+				else return getOperations().map();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -98,6 +115,9 @@ public class ModelElementAppearanceImpl extends AppearanceImpl implements ModelE
 		switch (featureID) {
 			case EngineeringPackage.MODEL_ELEMENT_APPEARANCE__FEATURES:
 				((EStructuralFeature.Setting)getFeatures()).set(newValue);
+				return;
+			case EngineeringPackage.MODEL_ELEMENT_APPEARANCE__OPERATIONS:
+				((EStructuralFeature.Setting)getOperations()).set(newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -114,6 +134,9 @@ public class ModelElementAppearanceImpl extends AppearanceImpl implements ModelE
 			case EngineeringPackage.MODEL_ELEMENT_APPEARANCE__FEATURES:
 				getFeatures().clear();
 				return;
+			case EngineeringPackage.MODEL_ELEMENT_APPEARANCE__OPERATIONS:
+				getOperations().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -128,6 +151,8 @@ public class ModelElementAppearanceImpl extends AppearanceImpl implements ModelE
 		switch (featureID) {
 			case EngineeringPackage.MODEL_ELEMENT_APPEARANCE__FEATURES:
 				return !getFeatures().isEmpty();
+			case EngineeringPackage.MODEL_ELEMENT_APPEARANCE__OPERATIONS:
+				return !getOperations().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

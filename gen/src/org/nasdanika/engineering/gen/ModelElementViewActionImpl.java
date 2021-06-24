@@ -23,6 +23,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.ETypedElement;
@@ -38,10 +39,10 @@ import org.nasdanika.emf.EObjectAdaptable;
 import org.nasdanika.emf.EmfUtil;
 import org.nasdanika.engineering.Endeavor;
 import org.nasdanika.engineering.EngineeringPackage;
-import org.nasdanika.engineering.FeatureAppearance;
 import org.nasdanika.engineering.Increment;
 import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.IssueStatus;
+import org.nasdanika.engineering.MemberAppearance;
 import org.nasdanika.engineering.ModelElement;
 import org.nasdanika.engineering.ModelElementAppearance;
 import org.nasdanika.engineering.NamedElement;
@@ -107,8 +108,8 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 	 * Sorts features
 	 */
 	@Override
-	protected List<EStructuralFeature> getFeatures() {
-		return super.getFeatures().stream().sorted((Comparator<? super EStructuralFeature>) (a, b) -> featureLabelText(a).compareTo(featureLabelText(b))).collect(Collectors.toList());
+	protected List<ETypedElement> getMembers() {
+		return super.getMembers().stream().sorted((Comparator<? super ETypedElement>) (a, b) -> memberLabelText(a).compareTo(memberLabelText(b))).collect(Collectors.toList());
 	}
 	
 	/**
@@ -133,62 +134,62 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 	}
 		
 	@Override
-	protected boolean isFeatureInRole(EStructuralFeature feature, FeatureRole role) {
+	protected boolean isMemberInRole(ETypedElement member, MemberRole role) {
 		ModelElementAppearance appearance = getSemanticElement().getAppearance();
 		if (appearance != null) {
-			FeatureAppearance featureAppearance = appearance.getFeatures().get(Util.camelToKebab(feature.getName()));
-			if (featureAppearance != null) {
-				if (!featureAppearance.getRoles().isEmpty()) {
-					return matchFeatureRole(role, featureAppearance);
+			MemberAppearance memberAppearance = (member instanceof EStructuralFeature ? appearance.getFeatures() : appearance.getOperations()).get(Util.camelToKebab(member.getName()));
+			if (memberAppearance != null) {
+				if (!memberAppearance.getRoles().isEmpty()) {
+					return matchMemberRole(role, memberAppearance);
 				}
 			}
 		}
 
 		for (EClass eClass: EmfUtil.lineage(getSemanticElement().eClass())) {
 			for (ModelElementAppearance classAppearance: factory.getAppearance(eClass)) {
-				FeatureAppearance featureAppearance = classAppearance.getFeatures().get(Util.camelToKebab(feature.getName()));
-				if (featureAppearance != null) {
-					if (!featureAppearance.getRoles().isEmpty()) {
-						return matchFeatureRole(role, featureAppearance);
+				MemberAppearance memberAppearance = (member instanceof EStructuralFeature ? classAppearance.getFeatures() : classAppearance.getOperations()).get(Util.camelToKebab(member.getName()));
+				if (memberAppearance != null) {
+					if (!memberAppearance.getRoles().isEmpty()) {
+						return matchMemberRole(role, memberAppearance);
 					}
 				}
 			}
 		}
 
-		return super.isFeatureInRole(feature, role);
+		return super.isMemberInRole(member, role);
 	}
 	
 	@Override
-	public Label featureCategory(EStructuralFeature feature) {
+	public Label memberCategory(ETypedElement member) {
 		ModelElementAppearance appearance = getSemanticElement().getAppearance();
 		if (appearance != null) {
-			FeatureAppearance featureAppearance = appearance.getFeatures().get(Util.camelToKebab(feature.getName()));
-			if (featureAppearance != null) {
-				Boolean categoryFlag = featureAppearance.getCategory();
+			MemberAppearance memberAppearance = (member instanceof EStructuralFeature ? appearance.getFeatures() : appearance.getOperations()).get(Util.camelToKebab(member.getName()));
+			if (memberAppearance != null) {
+				Boolean categoryFlag = memberAppearance.getCategory();
 				if (categoryFlag != null) {
-					return categoryFlag ? super.featureCategory(feature) : null;
+					return categoryFlag ? super.memberCategory(member) : null;
 				}
 			}
 		}
 		
 		for (EClass eClass: EmfUtil.lineage(getSemanticElement().eClass())) {
 			for (ModelElementAppearance classAppearance: factory.getAppearance(eClass)) {
-				FeatureAppearance featureAppearance = classAppearance.getFeatures().get(Util.camelToKebab(feature.getName()));
-				if (featureAppearance !=  null) {
-					Boolean categoryFlag = featureAppearance.getCategory();
+				MemberAppearance memberAppearance = (member instanceof EStructuralFeature ? classAppearance.getFeatures() : classAppearance.getOperations()).get(Util.camelToKebab(member.getName()));
+				if (memberAppearance !=  null) {
+					Boolean categoryFlag = memberAppearance.getCategory();
 					if (categoryFlag != null) {
-						return categoryFlag ? super.featureCategory(feature) : null;
+						return categoryFlag ? super.memberCategory(member) : null;
 					}
 				}
 			}
 		}
 
-		return super.featureCategory(feature);
+		return super.memberCategory(member);
 	}
 
-	protected static boolean matchFeatureRole(FeatureRole role, FeatureAppearance featureAppearance) {
-		for (String featureRole: featureAppearance.getRoles()) {
-			if (role.LITERAL.equals(featureRole) || featureRole.startsWith(role.LITERAL + "/")) {
+	protected static boolean matchMemberRole(MemberRole role, MemberAppearance memberAppearance) {
+		for (String memberRole: memberAppearance.getRoles()) {
+			if (role.LITERAL.equals(memberRole) || memberRole.startsWith(role.LITERAL + "/")) {
 				return true;
 			};
 		}
@@ -639,7 +640,7 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 				}
 				Cell featureCell = diagnosticRow.cell();
 				if (data.size() > 1 && data.get(1) instanceof EStructuralFeature) {
-					featureCell.toHTMLElement().content(viewGenerator.label(featureLabel((EStructuralFeature) data.get(1))));
+					featureCell.toHTMLElement().content(viewGenerator.label(memberLabel((EStructuralFeature) data.get(1))));
 				}			
 				diagnosticRow.cell(StringEscapeUtils.escapeHtml4(diagnostic.getMessage()));
 				
@@ -673,14 +674,14 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 			if (cApp != null) {
 				EReference containmentFeature = getSemanticElement().eContainmentFeature();
 				if (containmentFeature != null) {
-					FeatureAppearance featureAppearance = cApp.getFeatures().get(Util.camelToKebab(containmentFeature.getName()));
+					MemberAppearance featureAppearance = cApp.getFeatures().get(Util.camelToKebab(containmentFeature.getName()));
 					if (featureAppearance != null) {
 						boolean specifiesElementActionsRoles = false;
 						for (String featureRole: featureAppearance.getRoles()) {
-							if (featureRole.equals(FeatureRole.ELEMENT_ACTIONS.LITERAL + "/" + role) || featureRole.equals(FeatureRole.ELEMENT_ACTIONS_SORTED.LITERAL + "/" + role)) {
+							if (featureRole.equals(MemberRole.ELEMENT_ACTIONS.LITERAL + "/" + role) || featureRole.equals(MemberRole.ELEMENT_ACTIONS_SORTED.LITERAL + "/" + role)) {
 								return true;
 							}
-							if (featureRole.startsWith(FeatureRole.ELEMENT_ACTIONS.LITERAL + "/") || featureRole.startsWith(FeatureRole.ELEMENT_ACTIONS_SORTED.LITERAL + "/")) {
+							if (featureRole.startsWith(MemberRole.ELEMENT_ACTIONS.LITERAL + "/") || featureRole.startsWith(MemberRole.ELEMENT_ACTIONS_SORTED.LITERAL + "/")) {
 								specifiesElementActionsRoles = true;
 							}
 							if (specifiesElementActionsRoles) {
@@ -698,14 +699,14 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 				for (ModelElementAppearance containerAppearance: factory.getAppearance(cClass)) {
 					EReference containmentFeature = getSemanticElement().eContainmentFeature();
 					if (containmentFeature != null) {
-						FeatureAppearance featureAppearance = containerAppearance.getFeatures().get(Util.camelToKebab(containmentFeature.getName()));
+						MemberAppearance featureAppearance = containerAppearance.getFeatures().get(Util.camelToKebab(containmentFeature.getName()));
 						if (featureAppearance != null) {
 							boolean specifiesElementActionsRoles = false;
 							for (String featureRole: featureAppearance.getRoles()) {
-								if (featureRole.equals(FeatureRole.ELEMENT_ACTIONS.LITERAL + "/" + role) || featureRole.equals(FeatureRole.ELEMENT_ACTIONS_SORTED.LITERAL + "/" + role)) {
+								if (featureRole.equals(MemberRole.ELEMENT_ACTIONS.LITERAL + "/" + role) || featureRole.equals(MemberRole.ELEMENT_ACTIONS_SORTED.LITERAL + "/" + role)) {
 									return true;
 								}
-								if (featureRole.startsWith(FeatureRole.ELEMENT_ACTIONS.LITERAL + "/") || featureRole.startsWith(FeatureRole.ELEMENT_ACTIONS_SORTED.LITERAL + "/")) {
+								if (featureRole.startsWith(MemberRole.ELEMENT_ACTIONS.LITERAL + "/") || featureRole.startsWith(MemberRole.ELEMENT_ACTIONS_SORTED.LITERAL + "/")) {
 									specifiesElementActionsRoles = true;
 								}
 							}
@@ -752,6 +753,22 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 		};
 	}
 	
+	protected ModelElementOperationViewAction<T, ModelElementViewActionImpl<T>> createOperationViewAction(EOperation operation, ViewPart contentPart) {
+		return new ModelElementOperationViewAction<T, ModelElementViewActionImpl<T>>(this, operation) {
+			
+			@Override
+			public Object generate(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
+				return contentPart == null ? null : contentPart.generate(viewGenerator, progressMonitor);
+			}
+			
+			@Override
+			public boolean isEmpty() {
+				return contentPart == null;
+			}
+			
+		};
+	}
+	
 	protected Object generateResourcesTable(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
 		Table table = viewGenerator.getBootstrapFactory().table().bordered().striped();
 		table.header().headerRow("Resource", "Description").color(Color.INFO);
@@ -764,14 +781,14 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 	}
 	
 	@Override
-	protected Collection<Action> featureActions(EStructuralFeature feature) {
-		if (feature == EngineeringPackage.Literals.MODEL_ELEMENT__RESOURCES) {
+	protected Collection<Action> memberActions(ETypedElement member) {
+		if (member == EngineeringPackage.Literals.MODEL_ELEMENT__RESOURCES) {
 			if (getSemanticElement().getResources().isEmpty()) {
 				return Collections.emptyList();
 			}
-			return Collections.singleton(createFeatureViewAction(feature, this::generateResourcesTable));
+			return Collections.singleton(createFeatureViewAction((EStructuralFeature) member, this::generateResourcesTable));
 		}
-		return super.featureActions(feature);
+		return super.memberActions(member);
 	}
 	
 	@Override
@@ -857,12 +874,12 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 	}
 	
 	@Override
-	public String featureIcon(EStructuralFeature feature) {
+	public String memberIcon(ETypedElement member) {
 		ModelElementAppearance appearance = getSemanticElement().getAppearance();
 		if (appearance != null) {
-			FeatureAppearance featureAppearance = appearance.getFeatures().get(Util.camelToKebab(feature.getName()));
-			if (featureAppearance != null) {
-				String icon = featureAppearance.getIcon();
+			MemberAppearance memberAppearance = (member instanceof EStructuralFeature ? appearance.getFeatures() : appearance.getOperations()).get(Util.camelToKebab(member.getName()));
+			if (memberAppearance != null) {
+				String icon = memberAppearance.getIcon();
 				if (!Util.isBlank(icon)) {
 					return filterIcon(icon);
 				}
@@ -871,20 +888,20 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 				
 		for (EClass eClass: EmfUtil.lineage(getSemanticElement().eClass())) {
 			for (ModelElementAppearance classAppearance: factory.getAppearance(eClass)) {
-				FeatureAppearance featureAppearance = classAppearance.getFeatures().get(Util.camelToKebab(feature.getName()));
-				if (featureAppearance !=  null) {
-					String icon = featureAppearance.getIcon();
+				MemberAppearance memberAppearance = (member instanceof EStructuralFeature ? classAppearance.getFeatures() : classAppearance.getOperations()).get(Util.camelToKebab(member.getName()));
+				if (memberAppearance !=  null) {
+					String icon = memberAppearance.getIcon();
 					if (!Util.isBlank(icon)) {
 						return filterIcon(icon);
 					}
 				}
 			}
 		}
-		
-		// Lineage of feature type
-		EClassifier featureType = feature.getEType();
-		if (featureType instanceof EClass) {
-			for (EClass eClass: EmfUtil.lineage((EClass) featureType)) {
+			
+		// Lineage of member type
+		EClassifier memberType = member.getEType();
+		if (memberType instanceof EClass) {
+			for (EClass eClass: EmfUtil.lineage((EClass) memberType)) {
 				for (ModelElementAppearance classAppearance: factory.getAppearance(eClass)) {
 					String icon = classAppearance.getIcon();
 					if (!Util.isBlank(icon)) {
@@ -894,16 +911,16 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 			}
 		}
 
-		return super.featureIcon(feature);
+		return super.memberIcon(member);
 	}
 	
 	@Override
-	public String featureLabelText(EStructuralFeature feature) {
+	public String memberLabelText(ETypedElement member) {
 		ModelElementAppearance appearance = getSemanticElement().getAppearance();
 		if (appearance != null) {
-			FeatureAppearance featureAppearance = appearance.getFeatures().get(Util.camelToKebab(feature.getName()));
-			if (featureAppearance != null) {
-				String label = featureAppearance.getLabel();
+			MemberAppearance memberAppearance = (member instanceof EStructuralFeature ? appearance.getFeatures() : appearance.getOperations()).get(Util.camelToKebab(member.getName()));
+			if (memberAppearance != null) {
+				String label = memberAppearance.getLabel();
 				if (!Util.isBlank(label)) {
 					return label;
 				}
@@ -912,9 +929,9 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 				
 		for (EClass eClass: EmfUtil.lineage(getSemanticElement().eClass())) {
 			for (ModelElementAppearance classAppearance: factory.getAppearance(eClass)) {
-				FeatureAppearance featureAppearance = classAppearance.getFeatures().get(Util.camelToKebab(feature.getName()));
-				if (featureAppearance !=  null) {
-					String label = featureAppearance.getLabel();
+				MemberAppearance memberAppearance = (member instanceof EStructuralFeature ? classAppearance.getFeatures() : classAppearance.getOperations()).get(Util.camelToKebab(member.getName()));
+				if (memberAppearance !=  null) {
+					String label = memberAppearance.getLabel();
 					if (!Util.isBlank(label)) {
 						return label;
 					}
@@ -922,10 +939,10 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 			}
 		}
 		
-		// Lineage of feature type
-		EClassifier featureType = feature.getEType();
-		if (featureType instanceof EClass) {
-			for (EClass eClass: EmfUtil.lineage((EClass) featureType)) {
+		// Lineage of member type
+		EClassifier memberType = member.getEType();
+		if (memberType instanceof EClass) {
+			for (EClass eClass: EmfUtil.lineage((EClass) memberType)) {
 				for (ModelElementAppearance classAppearance: factory.getAppearance(eClass)) {
 					String label = classAppearance.getLabel();
 					if (!Util.isBlank(label)) {
@@ -935,7 +952,7 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 			}
 		}
 
-		return super.featureLabelText(feature);
+		return super.memberLabelText(member);
 	}
 	
 	protected String diagramDescription(ModelElement modelElement) {

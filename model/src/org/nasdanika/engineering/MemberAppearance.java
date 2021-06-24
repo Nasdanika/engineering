@@ -11,14 +11,14 @@ package org.nasdanika.engineering;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.nasdanika.engineering.FeatureAppearance#getCategory <em>Category</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.MemberAppearance#getCategory <em>Category</em>}</li>
  * </ul>
  *
- * @see org.nasdanika.engineering.EngineeringPackage#getFeatureAppearance()
- * @model annotation="urn:org.nasdanika documentation-reference='doc/feature-appearance.md'"
+ * @see org.nasdanika.engineering.EngineeringPackage#getMemberAppearance()
+ * @model annotation="urn:org.nasdanika documentation-reference='doc/member-appearance.md'"
  * @generated
  */
-public interface FeatureAppearance extends Appearance {
+public interface MemberAppearance extends Appearance {
 	/**
 	 * Returns the value of the '<em><b>Category</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -28,14 +28,14 @@ public interface FeatureAppearance extends Appearance {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Category</em>' attribute.
 	 * @see #setCategory(Boolean)
-	 * @see org.nasdanika.engineering.EngineeringPackage#getFeatureAppearance_Category()
+	 * @see org.nasdanika.engineering.EngineeringPackage#getMemberAppearance_Category()
 	 * @model
 	 * @generated
 	 */
 	Boolean getCategory();
 
 	/**
-	 * Sets the value of the '{@link org.nasdanika.engineering.FeatureAppearance#getCategory <em>Category</em>}' attribute.
+	 * Sets the value of the '{@link org.nasdanika.engineering.MemberAppearance#getCategory <em>Category</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Category</em>' attribute.

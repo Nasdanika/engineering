@@ -418,13 +418,13 @@ public interface EngineeringFactory extends EFactory {
 	ModelElementAppearance createModelElementAppearance();
 
 	/**
-	 * Returns a new object of class '<em>Feature Appearance</em>'.
+	 * Returns a new object of class '<em>Member Appearance</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Feature Appearance</em>'.
+	 * @return a new object of class '<em>Member Appearance</em>'.
 	 * @generated
 	 */
-	FeatureAppearance createFeatureAppearance();
+	MemberAppearance createMemberAppearance();
 
 	/**
 	 * Returns a new object of class '<em>Document</em>'.

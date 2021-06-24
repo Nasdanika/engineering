@@ -5,6 +5,7 @@ import java.util.Collections;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.ETypedElement;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.engineering.Aim;
 import org.nasdanika.engineering.Alignment;
@@ -59,21 +60,21 @@ public class AimViewAction<T extends Aim> extends NamedElementViewAction<T> {
 	}				
 	
 	@Override
-	protected Collection<Action> featureActions(EStructuralFeature feature) {
-		if (feature == EngineeringPackage.Literals.ALIGNABLE__ALIGNS) {
+	protected Collection<Action> memberActions(ETypedElement member) {
+		if (member == EngineeringPackage.Literals.ALIGNABLE__ALIGNS) {
 			if (getSemanticElement().getAligns().isEmpty()) {
 				return Collections.emptyList();
 			}
 			
-			return Collections.singleton(createFeatureViewAction(feature, this::generateAlignsTable));			
+			return Collections.singleton(createFeatureViewAction((EStructuralFeature) member, this::generateAlignsTable));			
 		}
-		if (feature == EngineeringPackage.Literals.AIM__ALIGNMENTS) {
+		if (member == EngineeringPackage.Literals.AIM__ALIGNMENTS) {
 			if (getSemanticElement().getAlignments().isEmpty()) {
 				return Collections.emptyList();
 			}
-			return Collections.singleton(createFeatureViewAction(feature, this::generateAlignmentsTable));			
+			return Collections.singleton(createFeatureViewAction((EStructuralFeature) member, this::generateAlignmentsTable));			
 		}
-		return super.featureActions(feature);
+		return super.memberActions(member);
 	}
 		
 }

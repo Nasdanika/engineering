@@ -9,6 +9,7 @@ import java.util.Map.Entry;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.ETypedElement;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Goal;
@@ -28,13 +29,13 @@ public class PersonaViewAction<T extends Persona> extends EngineeredElementViewA
 	}
 	
 	protected Object generateListOfGoals(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
-		ListOfActionsViewPart listOfGoals = new ListOfActionsViewPart(ViewAction.adaptToViewActionsNonNull(getSemanticElement().getGoals()), null, true, 10, OrderedListType.ROTATE) {
+		ListOfActionsViewPart listOfGoals = new ListOfActionsViewPart(adaptMemberElementsToViewActionsNonNull(EngineeringPackage.Literals.PERSONA__GOALS, getSemanticElement().getGoals()), null, true, 10, OrderedListType.ROTATE) {
 			@Override
 			protected Collection<Entry<Label, List<Action>>> getGroupedActions(ViewGenerator viewGenerator, Action currentAction) {
 				if (currentAction instanceof ViewAction) {
 					EObject se = ((ViewAction<?>) currentAction).getSemanticElement();
 					if (se instanceof Goal) {
-						return Collections.singleton(new AbstractMap.SimpleEntry<Label, List<Action>>(null, ViewAction.adaptToViewActionsNonNull(((Goal) se).getChildren())));
+						return Collections.singleton(new AbstractMap.SimpleEntry<Label, List<Action>>(null, adaptMemberElementsToViewActionsNonNull(EngineeringPackage.Literals.GOAL__CHILDREN, ((Goal) se).getChildren())));
 					}
 				}
 				return super.getGroupedActions(viewGenerator, currentAction);
@@ -44,18 +45,18 @@ public class PersonaViewAction<T extends Persona> extends EngineeredElementViewA
 	}
 	
 	@Override
-	protected Collection<Action> featureActions(EStructuralFeature feature) {
-		if (feature == EngineeringPackage.Literals.PERSONA__GOALS) {
+	protected Collection<Action> memberActions(ETypedElement member) {
+		if (member == EngineeringPackage.Literals.PERSONA__GOALS) {
 			EList<Goal> goals = getSemanticElement().getGoals();
 			if (goals.isEmpty()) {
 				return Collections.emptyList();
 			}
-			ModelElementFeatureViewAction<T, EStructuralFeature, ModelElementViewActionImpl<T>> goalsSection = createFeatureViewAction(feature, this::generateListOfGoals);
+			ModelElementFeatureViewAction<T, EStructuralFeature, ModelElementViewActionImpl<T>> goalsSection = createFeatureViewAction((EStructuralFeature) member, this::generateListOfGoals);
 			
 			goalsSection.setSectionStyle(SectionStyle.DEFAULT);
 			return Collections.singleton(goalsSection);
 		}
-		return super.featureActions(feature);
+		return super.memberActions(member);
 	}
 	
 }

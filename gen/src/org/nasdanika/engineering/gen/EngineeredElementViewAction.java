@@ -11,6 +11,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.ETypedElement;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.engineering.Allocation;
 import org.nasdanika.engineering.EngineeredElement;
@@ -130,13 +131,13 @@ public class EngineeredElementViewAction<T extends EngineeredElement> extends Fo
 	}	
 	
 	protected Object generateListOfPrinciples(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
-		ListOfActionsViewPart listOfPrinciples = new ListOfActionsViewPart(ViewAction.adaptToViewActionsNonNull(getSemanticElement().getPrinciples()), null, true, 10, OrderedListType.ROTATE) {
+		ListOfActionsViewPart listOfPrinciples = new ListOfActionsViewPart(adaptMemberElementsToViewActionsNonNull(EngineeringPackage.Literals.ENGINEERED_ELEMENT__PRINCIPLES, getSemanticElement().getPrinciples()), null, true, 10, OrderedListType.ROTATE) {
 			@Override
 			protected Collection<Entry<Label, List<Action>>> getGroupedActions(ViewGenerator viewGenerator, Action currentAction) {
 				if (currentAction instanceof ViewAction) {
 					EObject se = ((ViewAction<?>) currentAction).getSemanticElement();
 					if (se instanceof Principle) {
-						return Collections.singleton(new AbstractMap.SimpleEntry<Label, List<Action>>(null, ViewAction.adaptToViewActionsNonNull(((Principle) se).getChildren())));
+						return Collections.singleton(new AbstractMap.SimpleEntry<Label, List<Action>>(null, adaptMemberElementsToViewActionsNonNull(EngineeringPackage.Literals.ENGINEERED_ELEMENT__PRINCIPLES, ((Principle) se).getChildren())));
 					}
 				}
 				return super.getGroupedActions(viewGenerator, currentAction);
@@ -146,15 +147,15 @@ public class EngineeredElementViewAction<T extends EngineeredElement> extends Fo
 	}
 	
 	@Override
-	protected Collection<Action> featureActions(EStructuralFeature feature) {
-		if (feature == EngineeringPackage.Literals.FORUM__DISCUSSION) {
+	protected Collection<Action> memberActions(ETypedElement member) {
+		if (member == EngineeringPackage.Literals.FORUM__DISCUSSION) {
 			EList<Topic> topics = getSemanticElement().getTopics();
 			EList<Forum> forums = getSemanticElement().getDiscussion();
 			if (topics.isEmpty() && forums.isEmpty()) {
 				return Collections.emptyList();
 			}
 			
-			ModelElementFeatureViewAction<T, EReference, ModelElementViewActionImpl<T>> discussionAction = new ModelElementFeatureViewAction<T, EReference, ModelElementViewActionImpl<T>>(this, (EReference) feature) {
+			ModelElementFeatureViewAction<T, EReference, ModelElementViewActionImpl<T>> discussionAction = new ModelElementFeatureViewAction<T, EReference, ModelElementViewActionImpl<T>>(this, (EReference) member) {
 				
 				@Override
 				public Object generate(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
@@ -169,8 +170,8 @@ public class EngineeredElementViewAction<T extends EngineeredElement> extends Fo
 				@Override
 				public List<Action> getChildren() {
 					List<Action> children = new ArrayList<>();
-					children.addAll(ViewAction.adaptToViewActionsNonNull(forums));
-					children.addAll(ViewAction.adaptToViewActionsNonNull(topics));
+					children.addAll(adaptMemberElementsToViewActionsNonNull(EngineeringPackage.Literals.FORUM__DISCUSSION, forums));
+					children.addAll(adaptMemberElementsToViewActionsNonNull(EngineeringPackage.Literals.FORUM__TOPICS, topics));
 					return children;
 				}
 				
@@ -179,26 +180,26 @@ public class EngineeredElementViewAction<T extends EngineeredElement> extends Fo
 			return Collections.singleton(discussionAction);			
 		}
 		
-		if (feature == EngineeringPackage.Literals.ENGINEERED_ELEMENT__ALLOCATIONS) {
+		if (member == EngineeringPackage.Literals.ENGINEERED_ELEMENT__ALLOCATIONS) {
 			EList<Allocation> allocations = getSemanticElement().getAllocations();
 			if (allocations.isEmpty()) {
 				return Collections.emptyList();
 			}
-			return Collections.singleton(createFeatureViewAction(feature, this::generateAllocationsTable));
+			return Collections.singleton(createFeatureViewAction((EStructuralFeature) member, this::generateAllocationsTable));
 		}
 		
-		if (feature == EngineeringPackage.Literals.ENGINEERED_ELEMENT__PRINCIPLES) {
+		if (member == EngineeringPackage.Literals.ENGINEERED_ELEMENT__PRINCIPLES) {
 			EList<Principle> principles = getSemanticElement().getPrinciples();
 			if (principles.isEmpty()) {
 				return Collections.emptyList();
 			}
-			ModelElementFeatureViewAction<T, EStructuralFeature, ModelElementViewActionImpl<T>> principlesSection = createFeatureViewAction(feature, this::generateListOfPrinciples);
+			ModelElementFeatureViewAction<T, EStructuralFeature, ModelElementViewActionImpl<T>> principlesSection = createFeatureViewAction((EStructuralFeature) member, this::generateListOfPrinciples);
 			
 			principlesSection.setSectionStyle(SectionStyle.DEFAULT);
 			return Collections.singleton(principlesSection);
 		}
 
-		return super.featureActions(feature);
+		return super.memberActions(member);
 	}
 
 }

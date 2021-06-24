@@ -53,7 +53,7 @@ public class TopicViewAction extends MessageViewAction<Topic> {
 		Action parent = super.getParent();
 		if (getSemanticElement().eContainer() instanceof EngineeredElement) {
 			// Forum contained in an engieered element - parent should be a feature action.
-			Action discussionAction = parent.find(a -> a instanceof ModelElementFeatureViewAction && ((ModelElementFeatureViewAction<?,?,?>) a).getEStructuralFeature() == EngineeringPackage.Literals.FORUM__DISCUSSION);
+			Action discussionAction = parent.find(a -> a instanceof ModelElementFeatureViewAction && ((ModelElementFeatureViewAction<?,?,?>) a).getETypedElement() == EngineeringPackage.Literals.FORUM__DISCUSSION);
 			if (discussionAction != null) {
 				return discussionAction;
 			}

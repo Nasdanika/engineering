@@ -4,7 +4,7 @@ package org.nasdanika.engineering.impl;
 
 import org.eclipse.emf.ecore.EClass;
 import org.nasdanika.engineering.EngineeringPackage;
-import org.nasdanika.engineering.FeatureAppearance;
+import org.nasdanika.engineering.MemberAppearance;
 
 /**
  * <!-- begin-user-doc -->
@@ -14,12 +14,12 @@ import org.nasdanika.engineering.FeatureAppearance;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.nasdanika.engineering.impl.FeatureAppearanceImpl#getCategory <em>Category</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.MemberAppearanceImpl#getCategory <em>Category</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class FeatureAppearanceImpl extends AppearanceImpl implements FeatureAppearance {
+public class MemberAppearanceImpl extends AppearanceImpl implements MemberAppearance {
 	/**
 	 * The default value of the '{@link #getCategory() <em>Category</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -35,7 +35,7 @@ public class FeatureAppearanceImpl extends AppearanceImpl implements FeatureAppe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected FeatureAppearanceImpl() {
+	protected MemberAppearanceImpl() {
 		super();
 	}
 
@@ -46,7 +46,7 @@ public class FeatureAppearanceImpl extends AppearanceImpl implements FeatureAppe
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return EngineeringPackage.Literals.FEATURE_APPEARANCE;
+		return EngineeringPackage.Literals.MEMBER_APPEARANCE;
 	}
 
 	/**
@@ -56,7 +56,7 @@ public class FeatureAppearanceImpl extends AppearanceImpl implements FeatureAppe
 	 */
 	@Override
 	public Boolean getCategory() {
-		return (Boolean)eDynamicGet(EngineeringPackage.FEATURE_APPEARANCE__CATEGORY, EngineeringPackage.Literals.FEATURE_APPEARANCE__CATEGORY, true, true);
+		return (Boolean)eDynamicGet(EngineeringPackage.MEMBER_APPEARANCE__CATEGORY, EngineeringPackage.Literals.MEMBER_APPEARANCE__CATEGORY, true, true);
 	}
 
 	/**
@@ -66,7 +66,7 @@ public class FeatureAppearanceImpl extends AppearanceImpl implements FeatureAppe
 	 */
 	@Override
 	public void setCategory(Boolean newCategory) {
-		eDynamicSet(EngineeringPackage.FEATURE_APPEARANCE__CATEGORY, EngineeringPackage.Literals.FEATURE_APPEARANCE__CATEGORY, newCategory);
+		eDynamicSet(EngineeringPackage.MEMBER_APPEARANCE__CATEGORY, EngineeringPackage.Literals.MEMBER_APPEARANCE__CATEGORY, newCategory);
 	}
 
 	/**
@@ -77,7 +77,7 @@ public class FeatureAppearanceImpl extends AppearanceImpl implements FeatureAppe
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EngineeringPackage.FEATURE_APPEARANCE__CATEGORY:
+			case EngineeringPackage.MEMBER_APPEARANCE__CATEGORY:
 				return getCategory();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -92,7 +92,7 @@ public class FeatureAppearanceImpl extends AppearanceImpl implements FeatureAppe
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EngineeringPackage.FEATURE_APPEARANCE__CATEGORY:
+			case EngineeringPackage.MEMBER_APPEARANCE__CATEGORY:
 				setCategory((Boolean)newValue);
 				return;
 		}
@@ -107,7 +107,7 @@ public class FeatureAppearanceImpl extends AppearanceImpl implements FeatureAppe
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EngineeringPackage.FEATURE_APPEARANCE__CATEGORY:
+			case EngineeringPackage.MEMBER_APPEARANCE__CATEGORY:
 				setCategory(CATEGORY_EDEFAULT);
 				return;
 		}
@@ -122,7 +122,7 @@ public class FeatureAppearanceImpl extends AppearanceImpl implements FeatureAppe
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EngineeringPackage.FEATURE_APPEARANCE__CATEGORY:
+			case EngineeringPackage.MEMBER_APPEARANCE__CATEGORY:
 				return CATEGORY_EDEFAULT == null ? getCategory() != null : !CATEGORY_EDEFAULT.equals(getCategory());
 		}
 		return super.eIsSet(featureID);

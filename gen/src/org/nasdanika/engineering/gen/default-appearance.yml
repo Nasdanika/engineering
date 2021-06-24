@@ -16,7 +16,7 @@ model-elements:
       resources:
         icon: fas fa-book
         roles: 
-         - feature-actions/section
+         - actions/section
          - element-actions/none  
   module:
     icon: fas fa-cube
@@ -26,66 +26,66 @@ model-elements:
   alignable:
     features:        
       aligns:
-        roles: feature-actions/section        
+        roles: actions/section        
   aim:
     roles: none
     features:
       alignments:
-        roles: feature-actions/section        
+        roles: actions/section        
   goal:
     features:
       children:
         roles: 
-         - feature-actions/section
+         - actions/section
          - element-actions        
   principle:
     icon: fas fa-gavel
     features:
       children:
         roles: 
-         - feature-actions/section
+         - actions/section
          - element-actions        
   capability:
     features:
       required-by:
-        roles: feature-actions
+        roles: actions
   endeavor:
     features:
       all-issues:
         roles: none
       capacity:
-        roles: feature-actions
+        roles: actions
       objectives:
         roles: element-actions/none 
       linked-objectives:
         roles: none 
       all-objectives:
         label: Objectives
-        roles: feature-actions/section 
+        roles: actions/section 
   feature:
     icon: fas fa-cog
     features:
       releases:
         roles: property
       issues:
-        roles: feature-actions
+        roles: actions
   issue:
     features:
       children: 
         roles: 
           - element-actions/none
-          - feature-actions
+          - actions
       releases:
         roles: property
       contributes-to:
         roles: property
       notes: 
-        roles: feature-actions/section
+        roles: actions/section
   release:
     icon: fas fa-truck
     features:
       issues: 
-        roles: feature-actions
+        roles: actions
       features:
         icon: fas fa-cogs
   forum:
@@ -103,14 +103,14 @@ model-elements:
         roles: element-actions/none
       discussion:
         category: false
-        roles: feature-actions/context
+        roles: actions/context
       owners:
         roles: property
       allocations:
-        roles: feature-actions/section
+        roles: actions/section
       principles:
         roles: 
-          - feature-actions/section
+          - actions/section
           - element-actions
   product:
     icon: fas fa-box
@@ -130,12 +130,12 @@ model-elements:
         roles: property
       goals:
         roles: 
-          - feature-actions/section
+          - actions/section
           - element-actions
   engineer:
     features:
       assignments:
-        roles: feature-actions
+        roles: actions
       increments:
         roles: 
          - content
@@ -153,7 +153,7 @@ model-elements:
       objectives:
         roles:
           - element-actions/none 
-          - feature-actions/section 
+          - actions/section 
       modules:
         icon: fas fa-cubes
   increment:
@@ -161,23 +161,23 @@ model-elements:
       issues:
         roles: none
       releases:
-        roles: feature-actions
+        roles: actions
       children:
         roles: element-actions
       capacity:
-        roles: feature-actions
+        roles: actions
       all-issues:
         roles: none
   issue-category:
     features:
       issues:
-        roles: feature-actions
+        roles: actions
       allocations:
-        roles: feature-actions/section
+        roles: actions/section
   issue-status:
     features:
       issues:
-        roles: feature-actions
+        roles: actions
   topic:
     roles: none
     features:
@@ -188,7 +188,7 @@ model-elements:
     section-style: DEFAULT
     features:
       table-of-contents:
-        roles: feature-actions/content-right
+        roles: actions/content-right
       sections:
         category: false
         roles: element-actions/section
@@ -205,13 +205,13 @@ model-elements:
       key-results:
         roles: 
           - element-actions/none
-          - feature-actions/section
+          - actions/section
       children:
         roles: element-actions/none
       linked-objectives:
         roles: none
       sub-objectives:
-        roles: feature-actions/section
+        roles: actions/section
   journey-element:
     features:
       outputs:

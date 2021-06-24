@@ -224,6 +224,10 @@ engineering-module:
        markdown-description: |+2
          Containment reference for issues. Take into account in completion calculations. Another way to track execution.
          Include in allIssues. Show on the key result page. Appearance - element-actions/none, ...           
+     - name: Extend feature things to TypedElement to support operations
+       markdown-description: |+2
+         Operation apperance similar to feature appearance, ViewActions which invoke operations. featureIcon, label, ... How to handle operations in appearance.
+         Another option is a parallel structure with OPERATION_ROLE etc. - a bit of duplication, but should not break existing stuff...
          
      ### === Done === ###    
      - name: Start/end from Issue and Increment to Endeavor

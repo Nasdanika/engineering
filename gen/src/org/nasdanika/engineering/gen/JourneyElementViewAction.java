@@ -10,16 +10,20 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Objects;
 
 import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.text.StringEscapeUtils;
 import org.apache.commons.text.WordUtils;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EOperation;
+import org.eclipse.emf.ecore.ETypedElement;
 import org.nasdanika.common.DiagramGenerator;
 import org.nasdanika.common.NasdanikaException;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.common.Util;
+import org.nasdanika.emf.EObjectAdaptable;
 import org.nasdanika.emf.EmfUtil;
 import org.nasdanika.engineering.Call;
 import org.nasdanika.engineering.EngineeringPackage;
@@ -38,23 +42,36 @@ import org.nasdanika.html.bootstrap.BootstrapFactory;
 import org.nasdanika.html.bootstrap.Color;
 import org.nasdanika.html.bootstrap.RowContainer.Row;
 import org.nasdanika.html.bootstrap.Table;
+import org.nasdanika.html.emf.EOperationViewActionImpl;
 import org.nasdanika.html.emf.ViewAction;
 
 public class JourneyElementViewAction<T extends JourneyElement> extends EngineeredElementViewAction<T> {
 
-	protected JourneyElementViewAction(T value, EngineeringViewActionAdapterFactory factory) {
+	protected EList<Journey> journeyPath;
+
+	protected JourneyElementViewAction(EList<Journey> journeyPath, T value, EngineeringViewActionAdapterFactory factory) {
 		super(value, factory);
+		this.journeyPath = journeyPath;
 	}
 	
 	@Override
 	public Action getParent() {
-		Action parent = super.getParent();
+		Action parent = super.getParent();		
+		EObject eContainer = getSemanticElement().eContainer();
+		if (eContainer != null) {
+			JourneyElementViewActionProvider<?> jevap = EObjectAdaptable.adaptTo(eContainer, JourneyElementViewActionProvider.class);
+			if (jevap != null) {
+				parent = jevap.apply(journeyPath);
+			}
+		}
+		
+//		777 TODO
 		EList<Persona> personas = getSemanticElement().getPersonas();
 		if (personas.isEmpty()) {
 			return parent;
 		}
 		StringBuilder idBuilder = new StringBuilder(parent.getId().toString()).append("-element-personas--");
-		for (Action pva: ViewAction.adaptToViewActionsNonNull(personas)) {
+		for (Action pva: adaptMemberElementsToViewActionsNonNull(EngineeringPackage.Literals.JOURNEY_ELEMENT__PERSONAS, personas)) {
 			idBuilder.append(pva.getId()).append("-");
 		}
 		Action ret = parent.findById(idBuilder.toString());
@@ -65,30 +82,46 @@ public class JourneyElementViewAction<T extends JourneyElement> extends Engineer
 		BootstrapFactory bootstrapFactory = viewGenerator.getBootstrapFactory();
 		Table ret = bootstrapFactory.table().bordered().striped();
 		ret.header().headerRow("Target", "Name", "Description", "Payload").color(Color.INFO); 
-		for (Transition output: getSemanticElement().getAllOutputs()) {
-			Row outputRow = ret.body().row();
-			ViewAction<?> targetAction = ViewAction.adaptToViewActionNonNull(output.getTarget()); 
+		for (Transition output: getSemanticElement().getAllOutputs(journeyPath)) {
+			Row outputRow = ret.body().row();			
+			ViewAction<?> targetAction = adaptTargetToViewAction(output); 
 			outputRow.cell(viewGenerator.link(targetAction)); 
 			outputRow.cell(StringEscapeUtils.escapeHtml4(output.getName())); 
 			outputRow.cell(getModelElementDescription(output));
-			outputRow.cell(ViewAction.listOfViewActions(output.getPayload(), null, true, false, 1));
+			outputRow.cell(listOfMemberElementsViewActions(EngineeringPackage.Literals.TRANSITION__PAYLOAD, output.getPayload(), null, true, false, 1));
 		}
 		return ret;
+	}
+
+	/**
+	 * Adapts via JourneyElementViewActionProvider
+	 * @param <J>
+	 * @param <V>
+	 * @param journeyElement
+	 */
+	protected JourneyElementViewAction<?> adaptToViewAction(JourneyElement journeyElement) {
+		@SuppressWarnings("unchecked")
+		JourneyElementViewActionProvider<JourneyElementViewAction<?>> tvap = Objects.requireNonNull(EObjectAdaptable.adaptTo(journeyElement, JourneyElementViewActionProvider.class));
+		return Objects.requireNonNull(tvap.apply(journeyPath));
+	}
+	
+	protected JourneyElementViewAction<?> adaptTargetToViewAction(Transition transition) {
+		JourneyElement target = Objects.requireNonNull(transition.getTarget(journeyPath));
+		return adaptToViewAction(target);
 	}
 	
 	protected Table generateCallsTable(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) { 
 		BootstrapFactory bootstrapFactory = viewGenerator.getBootstrapFactory();
 		Table ret = bootstrapFactory.table().bordered().striped();
 		ret.header().headerRow("Target", "Name", "Description", "Request", "Response").color(Color.INFO); 
-		for (Call call: getSemanticElement().getAllCalls()) {
+		for (Call call: getSemanticElement().getAllCalls(journeyPath)) {
 			Row callRow = ret.body().row();
-			JourneyElement target = call.getTarget();
-			ViewAction<?> targetAction = ViewAction.adaptToViewActionNonNull(target); 
+			ViewAction<?> targetAction = adaptTargetToViewAction(call); 
 			callRow.cell(viewGenerator.link(targetAction)); 
 			callRow.cell(StringEscapeUtils.escapeHtml4(call.getName())); 
 			callRow.cell(getModelElementDescription(call));
-			callRow.cell(ViewAction.listOfViewActions(call.getPayload(), null, true, false, 1));
-			callRow.cell(ViewAction.listOfViewActions(call.getResponse(), null, true, false, 1));
+			callRow.cell(listOfMemberElementsViewActions(EngineeringPackage.Literals.TRANSITION__PAYLOAD, call.getPayload(), null, true, false, 1));
+			callRow.cell(listOfMemberElementsViewActions(EngineeringPackage.Literals.CALL__RESPONSE, call.getResponse(), null, true, false, 1));
 		}
 		return ret;
 	}
@@ -97,13 +130,13 @@ public class JourneyElementViewAction<T extends JourneyElement> extends Engineer
 		BootstrapFactory bootstrapFactory = viewGenerator.getBootstrapFactory();
 		Table ret = bootstrapFactory.table().bordered().striped();
 		ret.header().headerRow("Source", "Name", "Description", "Payload").color(Color.INFO); 
-		for (Transition input: getSemanticElement().getAllInputs()) {
+		for (Transition input: getSemanticElement().getAllInputs(journeyPath)) {
 			Row inputRow = ret.body().row();
-			ViewAction<?> targetAction = ViewAction.adaptToViewActionNonNull(input.eContainer()); 
+			ViewAction<?> targetAction = adaptToViewAction((JourneyElement) input.eContainer()); 
 			inputRow.cell(viewGenerator.link(targetAction)); 
 			inputRow.cell(StringEscapeUtils.escapeHtml4(input.getName())); 
 			inputRow.cell(getModelElementDescription(input));
-			inputRow.cell(ViewAction.listOfViewActions(input.getPayload(), null, true, false, 1));
+			inputRow.cell(listOfMemberElementsViewActions(EngineeringPackage.Literals.TRANSITION__PAYLOAD, input.getPayload(), null, true, false, 1));
 		}
 		return ret;
 	}
@@ -112,65 +145,65 @@ public class JourneyElementViewAction<T extends JourneyElement> extends Engineer
 		BootstrapFactory bootstrapFactory = viewGenerator.getBootstrapFactory();
 		Table ret = bootstrapFactory.table().bordered().striped();
 		ret.header().headerRow("Source", "Name", "Description", "Request", "Response").color(Color.INFO); 
-		for (Call call: getSemanticElement().getAllInvocations()) {
+		for (Call call: getSemanticElement().getAllInvocations(journeyPath)) {
 			Row outputRow = ret.body().row();
-			ViewAction<?> targetAction = ViewAction.adaptToViewActionNonNull(call.eContainer()); 
+			ViewAction<?> targetAction = adaptToViewAction((JourneyElement) call.eContainer()); 
 			outputRow.cell(viewGenerator.link(targetAction)); 
 			outputRow.cell(StringEscapeUtils.escapeHtml4(call.getName())); 
 			outputRow.cell(getModelElementDescription(call));
-			outputRow.cell(ViewAction.listOfViewActions(call.getPayload(), null, true, false, 1));
-			outputRow.cell(ViewAction.listOfViewActions(call.getResponse(), null, true, false, 1));
+			outputRow.cell(listOfMemberElementsViewActions(EngineeringPackage.Literals.TRANSITION__PAYLOAD, call.getPayload(), null, true, false, 1));
+			outputRow.cell(listOfMemberElementsViewActions(EngineeringPackage.Literals.CALL__RESPONSE, call.getResponse(), null, true, false, 1));
 		}
 		return ret;
 	}
 
 	@Override
-	protected Collection<Action> featureActions(EStructuralFeature feature) {
-		 if (feature == EngineeringPackage.Literals.JOURNEY_ELEMENT__ALL_OUTPUTS) {		
-			 List<Transition> outputs = getSemanticElement().getAllOutputs();
+	protected Collection<Action> memberActions(ETypedElement member) {
+		 if (member == EngineeringPackage.Literals.JOURNEY_ELEMENT___GET_ALL_OUTPUTS__ELIST) {		
+			 List<Transition> outputs = getSemanticElement().getAllOutputs(journeyPath);
 			 if (outputs.isEmpty()) {
 				 return Collections.emptyList() ;
 			 }
 			 
-			 ModelElementFeatureViewAction<T, EStructuralFeature, ModelElementViewActionImpl<T>> outputsSection = createFeatureViewAction(feature, this::generateOutputsTable);			 
+			 EOperationViewActionImpl<T, ModelElementViewActionImpl<T>> outputsSection = createOperationViewAction((EOperation) member, this::generateOutputsTable);			 
 			 outputsSection.setActivator(new PathNavigationActionActivator(outputsSection, ((NavigationActionActivator) getActivator()).getUrl(null), "#outputs", getMarker()));
 			 return Collections.singleton(outputsSection);
 		 }
 		 
-		 if (feature == EngineeringPackage.Literals.JOURNEY_ELEMENT__ALL_CALLS) {		
-			 List<Call> calls = getSemanticElement().getAllCalls();
+		 if (member == EngineeringPackage.Literals.JOURNEY_ELEMENT___GET_ALL_CALLS__ELIST) {		
+			 List<Call> calls = getSemanticElement().getAllCalls(journeyPath);
 			 if (calls.isEmpty()) {
 				 return Collections.emptyList() ;
 			 }
 			 
-			 ModelElementFeatureViewAction<T, EStructuralFeature, ModelElementViewActionImpl<T>> outputsSection = createFeatureViewAction(feature, this::generateCallsTable);			 
+			 EOperationViewActionImpl<T, ModelElementViewActionImpl<T>> outputsSection = createOperationViewAction((EOperation) member, this::generateCallsTable);			 
 			 outputsSection.setActivator(new PathNavigationActionActivator(outputsSection, ((NavigationActionActivator) getActivator()).getUrl(null), "#calls", getMarker()));
 			 return Collections.singleton(outputsSection);
 		 }
 		 
-		 if (feature == EngineeringPackage.Literals.JOURNEY_ELEMENT__ALL_INPUTS) {		
-			 List<Transition> inputs = getSemanticElement().getAllInputs();
+		 if (member == EngineeringPackage.Literals.JOURNEY_ELEMENT___GET_ALL_INPUTS__ELIST) {		
+			 List<Transition> inputs = getSemanticElement().getAllInputs(journeyPath);
 			 if (inputs.isEmpty()) {
 				 return Collections.emptyList() ;
 			 }
 			 
-			 ModelElementFeatureViewAction<T, EStructuralFeature, ModelElementViewActionImpl<T>> outputsSection = createFeatureViewAction(feature, this::generateInputsTable);			 
+			 EOperationViewActionImpl<T, ModelElementViewActionImpl<T>> outputsSection = createOperationViewAction((EOperation) member, this::generateInputsTable);			 
 			 outputsSection.setActivator(new PathNavigationActionActivator(outputsSection, ((NavigationActionActivator) getActivator()).getUrl(null), "#inputs", getMarker()));
 			 return Collections.singleton(outputsSection);
 		 }
 		 
-		 if (feature == EngineeringPackage.Literals.JOURNEY_ELEMENT__ALL_INVOCATIONS) {		
-			 List<Call> invocations = getSemanticElement().getAllInvocations();
+		 if (member == EngineeringPackage.Literals.JOURNEY_ELEMENT___GET_ALL_INVOCATIONS__ELIST) {		
+			 List<Call> invocations = getSemanticElement().getAllInvocations(journeyPath);
 			 if (invocations.isEmpty()) {
 				 return Collections.emptyList() ;
 			 }
 			 
-			 ModelElementFeatureViewAction<T, EStructuralFeature, ModelElementViewActionImpl<T>> outputsSection = createFeatureViewAction(feature, this::generateInvocationsTable);			 
+			 EOperationViewActionImpl<T, ModelElementViewActionImpl<T>> outputsSection = createOperationViewAction((EOperation) member, this::generateInvocationsTable);			 
 			 outputsSection.setActivator(new PathNavigationActionActivator(outputsSection, ((NavigationActionActivator) getActivator()).getUrl(null), "#invocations", getMarker()));
 			 return Collections.singleton(outputsSection);
 		 }
 		 
-		 return super.featureActions(feature);
+		 return super.memberActions(member);
 	}
 
 	@Override
@@ -219,8 +252,8 @@ public class JourneyElementViewAction<T extends JourneyElement> extends Engineer
 			}
 	
 			for (JourneyElement diagramElement: diagramElements) { 
-				for (Transition output: diagramElement.getAllOutputs()) {
-					JourneyElement targetElement = output.getTarget(); 
+				for (Transition output: diagramElement.getAllOutputs(journeyPath)) {
+					JourneyElement targetElement = output.getTarget(journeyPath); 
 					if (diagramElements.contains(targetElement)) {
 						 ret.append(diagramId(diagramElement))
 						 .append(" --> ")
@@ -233,8 +266,8 @@ public class JourneyElementViewAction<T extends JourneyElement> extends Engineer
 					}
 				}
 			
-				for (Call call: diagramElement.getAllCalls()) {
-					JourneyElement targetElement = call.getTarget(); 
+				for (Call call: diagramElement.getAllCalls(journeyPath)) {
+					JourneyElement targetElement = call.getTarget(journeyPath); 
 					if (diagramElements.contains(targetElement)) { 
 						ret
 							.append (diagramId(diagramElement))
@@ -265,7 +298,7 @@ public class JourneyElementViewAction<T extends JourneyElement> extends Engineer
 		if (journeyElement instanceof PseudoState) {
 			ret.append("<<").append(((PseudoState) journeyElement).getType()).append(">>");
 		} else {
-			String ref = ((NavigationActionActivator) ViewAction.adaptToViewActionNonNull(journeyElement).getActivator()).getUrl(base); 
+			String ref = ((NavigationActionActivator) adaptToViewAction(journeyElement).getActivator()).getUrl(base); 
 			String refAndDescription = ref + diagramDescription(journeyElement); 
 			if (!Util.isBlank(refAndDescription)) {
 				ret.append(" [[").append(refAndDescription).append("]]");
@@ -345,9 +378,9 @@ public class JourneyElementViewAction<T extends JourneyElement> extends Engineer
 		return (-b + Math.sqrt(b*b - 4 * a * c)) / (2 * a);
 	}
 
-	private static void collectRelatedElements(JourneyElement journeyElement, Collection<JourneyElement> accumulator) { 
+	private void collectRelatedElements(JourneyElement journeyElement, Collection<JourneyElement> accumulator) { 
 		if (accumulator.add(journeyElement)) {
-			for (Transition input: journeyElement.getAllInputs()) {
+			for (Transition input: journeyElement.getAllInputs(journeyPath)) {
 				JourneyElement target = (JourneyElement) input.eContainer(); 
 				if (target instanceof PseudoState) {
 					collectRelatedElements(target, accumulator);
@@ -356,8 +389,8 @@ public class JourneyElementViewAction<T extends JourneyElement> extends Engineer
 				}
 			}
 
-			for (Transition output: journeyElement.getAllOutputs()) {
-				JourneyElement target = output.getTarget(); 
+			for (Transition output: journeyElement.getAllOutputs(journeyPath)) {
+				JourneyElement target = output.getTarget(journeyPath); 
 				if (target instanceof PseudoState) {
 					collectRelatedElements(target, accumulator);
 				} else {
@@ -365,7 +398,7 @@ public class JourneyElementViewAction<T extends JourneyElement> extends Engineer
 				}
 			}
 
-			for (Call invocation: journeyElement.getAllInvocations()) {
+			for (Call invocation: journeyElement.getAllInvocations(journeyPath)) {
 				JourneyElement target = (JourneyElement) invocation.eContainer(); 
 				if (target instanceof PseudoState) {
 					collectRelatedElements(target, accumulator);
@@ -374,8 +407,8 @@ public class JourneyElementViewAction<T extends JourneyElement> extends Engineer
 				}
 			}
 
-			for (Call call: journeyElement.getAllCalls()) {
-				JourneyElement target = call.getTarget(); 
+			for (Call call: journeyElement.getAllCalls(journeyPath)) {
+				JourneyElement target = call.getTarget(journeyPath); 
 				if (target instanceof PseudoState) {
 					collectRelatedElements(target, accumulator);
 				} else {

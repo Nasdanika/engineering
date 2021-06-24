@@ -35,7 +35,7 @@ import org.nasdanika.engineering.ExitPoint;
 import org.nasdanika.engineering.ExpansionInput;
 import org.nasdanika.engineering.ExpansionOutput;
 import org.nasdanika.engineering.Feature;
-import org.nasdanika.engineering.FeatureAppearance;
+import org.nasdanika.engineering.MemberAppearance;
 import org.nasdanika.engineering.Fork;
 import org.nasdanika.engineering.Forum;
 import org.nasdanika.engineering.Goal;
@@ -448,16 +448,16 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case EngineeringPackage.FEATURE_APPEARANCE_ENTRY: {
-				@SuppressWarnings("unchecked") Map.Entry<String, FeatureAppearance> featureAppearanceEntry = (Map.Entry<String, FeatureAppearance>)theEObject;
-				T result = caseFeatureAppearanceEntry(featureAppearanceEntry);
+			case EngineeringPackage.MEMBER_APPEARANCE_ENTRY: {
+				@SuppressWarnings("unchecked") Map.Entry<String, MemberAppearance> memberAppearanceEntry = (Map.Entry<String, MemberAppearance>)theEObject;
+				T result = caseMemberAppearanceEntry(memberAppearanceEntry);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case EngineeringPackage.FEATURE_APPEARANCE: {
-				FeatureAppearance featureAppearance = (FeatureAppearance)theEObject;
-				T result = caseFeatureAppearance(featureAppearance);
-				if (result == null) result = caseAppearance(featureAppearance);
+			case EngineeringPackage.MEMBER_APPEARANCE: {
+				MemberAppearance memberAppearance = (MemberAppearance)theEObject;
+				T result = caseMemberAppearance(memberAppearance);
+				if (result == null) result = caseAppearance(memberAppearance);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1505,32 +1505,32 @@ public class EngineeringSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Feature Appearance Entry</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Member Appearance Entry</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Feature Appearance Entry</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Member Appearance Entry</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseFeatureAppearanceEntry(Map.Entry<String, FeatureAppearance> object) {
+	public T caseMemberAppearanceEntry(Map.Entry<String, MemberAppearance> object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Feature Appearance</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Member Appearance</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Feature Appearance</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Member Appearance</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseFeatureAppearance(FeatureAppearance object) {
+	public T caseMemberAppearance(MemberAppearance object) {
 		return null;
 	}
 

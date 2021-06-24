@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.Collections;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.ETypedElement;
 import org.nasdanika.engineering.Capability;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.html.app.Action;
@@ -15,14 +16,14 @@ public class CapabilityViewAction<T extends Capability> extends NamedElementView
 	}
 	
 	@Override
-	protected Collection<Action> featureActions(EStructuralFeature feature) {
-		if (feature == EngineeringPackage.Literals.CAPABILITY__REQUIRED_BY) {
+	protected Collection<Action> memberActions(ETypedElement member) {
+		if (member == EngineeringPackage.Literals.CAPABILITY__REQUIRED_BY) {
 			return Collections.singleton(endeavorsSection(
 					getSemanticElement().getRequiredBy(), 
 					null,
 					"Required By", 
 					"required-by", 
-					getFeatureDiagnostic(feature),
+					getFeatureDiagnostic((EStructuralFeature) member),
 					EngineeringPackage.Literals.NAMED_ELEMENT__NAME,
 					EngineeringPackage.Literals.ENDEAVOR__START,
 					EngineeringPackage.Literals.ENDEAVOR__END,
@@ -36,7 +37,7 @@ public class CapabilityViewAction<T extends Capability> extends NamedElementView
 					EngineeringPackage.Literals.ISSUE__REMAINING_COST,
 					EngineeringPackage.Literals.ENDEAVOR__COMPLETION));
 		}
-		return super.featureActions(feature);
+		return super.memberActions(member);
 	}
 
 }

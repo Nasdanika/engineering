@@ -35,7 +35,7 @@ import org.nasdanika.engineering.ExitPoint;
 import org.nasdanika.engineering.ExpansionInput;
 import org.nasdanika.engineering.ExpansionOutput;
 import org.nasdanika.engineering.Feature;
-import org.nasdanika.engineering.FeatureAppearance;
+import org.nasdanika.engineering.MemberAppearance;
 import org.nasdanika.engineering.Fork;
 import org.nasdanika.engineering.Forum;
 import org.nasdanika.engineering.Goal;
@@ -141,8 +141,8 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 			case EngineeringPackage.ENGINEERING_APPEARANCE: return createEngineeringAppearance();
 			case EngineeringPackage.MODEL_ELEMENT_APPEARANCE: return createModelElementAppearance();
 			case EngineeringPackage.MODEL_ELEMENT_APPEARANCE_ENTRY: return (EObject)createModelElementAppearanceEntry();
-			case EngineeringPackage.FEATURE_APPEARANCE_ENTRY: return (EObject)createFeatureAppearanceEntry();
-			case EngineeringPackage.FEATURE_APPEARANCE: return createFeatureAppearance();
+			case EngineeringPackage.MEMBER_APPEARANCE_ENTRY: return (EObject)createMemberAppearanceEntry();
+			case EngineeringPackage.MEMBER_APPEARANCE: return createMemberAppearance();
 			case EngineeringPackage.DOCUMENT: return createDocument();
 			case EngineeringPackage.NAMED_ELEMENT_REFERENCE: return createNamedElementReference();
 			case EngineeringPackage.LINK: return createLink();
@@ -701,9 +701,9 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Map.Entry<String, FeatureAppearance> createFeatureAppearanceEntry() {
-		FeatureAppearanceEntryImpl featureAppearanceEntry = new FeatureAppearanceEntryImpl();
-		return featureAppearanceEntry;
+	public Map.Entry<String, MemberAppearance> createMemberAppearanceEntry() {
+		MemberAppearanceEntryImpl memberAppearanceEntry = new MemberAppearanceEntryImpl();
+		return memberAppearanceEntry;
 	}
 
 	/**
@@ -712,9 +712,9 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 	 * @generated
 	 */
 	@Override
-	public FeatureAppearance createFeatureAppearance() {
-		FeatureAppearanceImpl featureAppearance = new FeatureAppearanceImpl();
-		return featureAppearance;
+	public MemberAppearance createMemberAppearance() {
+		MemberAppearanceImpl memberAppearance = new MemberAppearanceImpl();
+		return memberAppearance;
 	}
 
 	/**

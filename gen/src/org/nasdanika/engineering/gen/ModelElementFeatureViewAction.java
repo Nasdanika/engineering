@@ -4,7 +4,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.nasdanika.common.Util;
 import org.nasdanika.emf.EmfUtil;
-import org.nasdanika.engineering.FeatureAppearance;
+import org.nasdanika.engineering.MemberAppearance;
 import org.nasdanika.engineering.ModelElement;
 import org.nasdanika.engineering.ModelElementAppearance;
 import org.nasdanika.html.emf.EStructuralFeatureViewActionImpl;
@@ -32,15 +32,15 @@ public class ModelElementFeatureViewAction<T extends ModelElement, F extends ESt
 	public boolean isInRole(String role) {
 		ModelElementAppearance appearance = getSemanticElement().getAppearance();
 		if (appearance != null) {
-			FeatureAppearance featureAppearance = appearance.getFeatures().get(Util.camelToKebab(getEStructuralFeature().getName()));
+			MemberAppearance featureAppearance = appearance.getFeatures().get(Util.camelToKebab(getETypedElement().getName()));
 			if (featureAppearance != null) {
 				if (!featureAppearance.getRoles().isEmpty()) {
 					boolean hasFeatureActions = false;
 					for (String featureRole: featureAppearance.getRoles()) {
-						if (featureRole.equals(SimpleEObjectViewAction.FeatureRole.FEATURE_ACTIONS.LITERAL + "/" + role)) {
+						if (featureRole.equals(SimpleEObjectViewAction.MemberRole.ACTIONS.LITERAL + "/" + role)) {
 							return true;
 						}
-						if (featureRole.startsWith(SimpleEObjectViewAction.FeatureRole.FEATURE_ACTIONS.LITERAL + "/")) {
+						if (featureRole.startsWith(SimpleEObjectViewAction.MemberRole.ACTIONS.LITERAL + "/")) {
 							hasFeatureActions = true;
 						}
 					}
@@ -54,15 +54,15 @@ public class ModelElementFeatureViewAction<T extends ModelElement, F extends ESt
 		
 		for (EClass eClass: EmfUtil.lineage(getSemanticElement().eClass())) {
 			for (ModelElementAppearance classAppearance: getSemanticElementViewAction().getFactory().getAppearance(eClass)) {
-				FeatureAppearance featureAppearance = classAppearance.getFeatures().get(Util.camelToKebab(getEStructuralFeature().getName()));
+				MemberAppearance featureAppearance = classAppearance.getFeatures().get(Util.camelToKebab(getETypedElement().getName()));
 				if (featureAppearance != null) {
 					if (!featureAppearance.getRoles().isEmpty()) {
 						boolean hasFeatureActions = false;
 						for (String featureRole: featureAppearance.getRoles()) {
-							if (featureRole.equals(SimpleEObjectViewAction.FeatureRole.FEATURE_ACTIONS.LITERAL + "/" + role)) {
+							if (featureRole.equals(SimpleEObjectViewAction.MemberRole.ACTIONS.LITERAL + "/" + role)) {
 								return true;
 							}
-							if (featureRole.startsWith(SimpleEObjectViewAction.FeatureRole.FEATURE_ACTIONS.LITERAL + "/")) {
+							if (featureRole.startsWith(SimpleEObjectViewAction.MemberRole.ACTIONS.LITERAL + "/")) {
 								hasFeatureActions = true;
 							}
 						}

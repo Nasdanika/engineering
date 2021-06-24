@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -112,7 +113,7 @@ public class EngineeringViewActionAdapterFactory extends ComposedAdapterFactory 
 				EngineeringPackage.Literals.ISSUE, 
 				getViewActionClass(), 
 				this.getClass().getClassLoader(), 
-				obj -> new IssueViewAction(obj, this)));					
+				obj -> new IssueViewAction<Issue>(obj, this)));					
 		
 		registerAdapterFactory(
 			new FunctionAdapterFactory<ViewAction<Increment>, Increment>(
@@ -231,21 +232,43 @@ public class EngineeringViewActionAdapterFactory extends ComposedAdapterFactory 
 				EngineeringPackage.Literals.ACTIVITY, 
 				getViewActionClass(), 
 				this.getClass().getClassLoader(), 
-				obj -> new ActivityViewAction(obj, this)));			
+				obj -> new ActivityViewAction<Activity>(ECollections.<Journey>emptyEList(), obj, this)));			
 		
 		registerAdapterFactory(
 			new FunctionAdapterFactory<ViewAction<Service>, Service>(
 				EngineeringPackage.Literals.SERVICE, 
 				getViewActionClass(), 
 				this.getClass().getClassLoader(), 
-				obj -> new ServiceViewAction(obj, this)));			
+				obj -> new ServiceViewAction(ECollections.<Journey>emptyEList(), obj, this)));			
 		
 		registerAdapterFactory(
 			new FunctionAdapterFactory<ViewAction<Journey>, Journey>(
 				EngineeringPackage.Literals.JOURNEY, 
 				getViewActionClass(), 
 				this.getClass().getClassLoader(), 
-				obj -> new JourneyViewAction(obj, this)));			
+				obj -> new JourneyViewAction(ECollections.<Journey>emptyEList(), obj, this)));
+
+		// Providers		
+		registerAdapterFactory(
+			new FunctionAdapterFactory<JourneyElementViewActionProvider<ActivityViewAction<Activity>>, Activity>(
+				EngineeringPackage.Literals.ACTIVITY, 
+				getJourneyElementViewActionProviderClass(), 
+				this.getClass().getClassLoader(), 
+				obj -> journeyPath -> new ActivityViewAction<Activity>(journeyPath, obj, this)));			
+		
+		registerAdapterFactory(
+				new FunctionAdapterFactory<JourneyElementViewActionProvider<ServiceViewAction>, Service>(
+					EngineeringPackage.Literals.SERVICE, 
+					getJourneyElementViewActionProviderClass(), 
+					this.getClass().getClassLoader(), 
+					obj -> journeyPath -> new ServiceViewAction(journeyPath, obj, this)));			
+		
+		registerAdapterFactory(
+				new FunctionAdapterFactory<JourneyElementViewActionProvider<JourneyViewAction>, Journey>(
+					EngineeringPackage.Literals.JOURNEY, 
+					getJourneyElementViewActionProviderClass(), 
+					this.getClass().getClassLoader(), 
+					obj -> journeyPath -> new JourneyViewAction(journeyPath, obj, this)));			
 				
 		// Loading appearances from URL's
 		appearance = new ArrayList<>();
@@ -275,6 +298,11 @@ public class EngineeringViewActionAdapterFactory extends ComposedAdapterFactory 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	protected <T extends EObject> Class<ViewAction<T>> getViewActionClass() {
 		return (Class) ViewAction.class;
+	}
+
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	protected <T extends JourneyElementViewAction<?>> Class<JourneyElementViewActionProvider<T>> getJourneyElementViewActionProviderClass() {
+		return (Class) JourneyElementViewActionProvider.class;
 	}
 	
 	/**

@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.ETypedElement;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.common.Util;
 import org.nasdanika.engineering.Alignment;
@@ -40,11 +41,11 @@ public class EngineeredCapabilityViewAction<T extends EngineeredCapability> exte
 	}
 	
 	@Override
-	protected Object featureValue(EStructuralFeature feature, Object value, ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
+	protected Object memberValue(ETypedElement feature, Object value, ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
 		if (feature == EngineeringPackage.Literals.ENDEAVOR__COMPLETION) {
 			return progressBar(getSemanticElement().getCompletion(), viewGenerator);			
 		}
-		return super.featureValue(feature, value, viewGenerator, progressMonitor);
+		return super.memberValue(feature, value, viewGenerator, progressMonitor);
 	}
 
 	protected Object generateAlignsTable(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
@@ -59,37 +60,37 @@ public class EngineeredCapabilityViewAction<T extends EngineeredCapability> exte
 	}					
 	
 	@Override
-	protected Collection<Action> featureActions(EStructuralFeature feature) {
-		if (feature == EngineeringPackage.Literals.ENDEAVOR__CAPACITY) {
+	protected Collection<Action> memberActions(ETypedElement member) {
+		if (member == EngineeringPackage.Literals.ENDEAVOR__CAPACITY) {
 			return endeavorCapacityFeatureActions(getSemanticElement());
 		}
-		if (feature == EngineeringPackage.Literals.ALIGNABLE__ALIGNS) {
+		if (member == EngineeringPackage.Literals.ALIGNABLE__ALIGNS) {
 			EList<Alignment> aligns = getSemanticElement().getAligns();
 			if (aligns.isEmpty()) {
 				return Collections.emptyList();
 			}
-			return Collections.singleton(createFeatureViewAction(feature, this::generateAlignsTable));
+			return Collections.singleton(createFeatureViewAction((EStructuralFeature) member, this::generateAlignsTable));
 		}
-		if (feature == EngineeringPackage.Literals.ENDEAVOR__OBJECTIVES) {
+		if (member == EngineeringPackage.Literals.ENDEAVOR__OBJECTIVES) {
 			if (getSemanticElement().getObjectives().isEmpty()) {
 				return Collections.emptyList();
 			}
-			return Collections.singleton(createFeatureViewAction(feature, this::generateObjectivesTable));			
+			return Collections.singleton(createFeatureViewAction((EStructuralFeature) member, this::generateObjectivesTable));			
 		}
-		if (feature == EngineeringPackage.Literals.ENDEAVOR__LINKED_OBJECTIVES) {
+		if (member == EngineeringPackage.Literals.ENDEAVOR__LINKED_OBJECTIVES) {
 			if (getSemanticElement().getLinkedObjectives().isEmpty()) {
 				return Collections.emptyList();
 			}
-			return Collections.singleton(createFeatureViewAction(feature, this::generateLinkedObjectivesTable));			
+			return Collections.singleton(createFeatureViewAction((EStructuralFeature) member, this::generateLinkedObjectivesTable));			
 		}
-		if (feature == EngineeringPackage.Literals.ENDEAVOR__ALL_OBJECTIVES) {
+		if (member == EngineeringPackage.Literals.ENDEAVOR__ALL_OBJECTIVES) {
 			if (getSemanticElement().getAllObjectives().isEmpty()) {
 				return Collections.emptyList();
 			}
-			return Collections.singleton(createFeatureViewAction(feature, this::generateAllObjectivesTable));			
+			return Collections.singleton(createFeatureViewAction((EStructuralFeature) member, this::generateAllObjectivesTable));			
 		}
 				
-		return super.featureActions(feature);
+		return super.memberActions(member);
 	}
 	
 	public static Object generateCapacityAndAllocationTables(List<Capacity> capacity, ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {

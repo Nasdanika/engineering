@@ -60,14 +60,14 @@ public class IssueViewAction<T extends Issue> extends EngineeredCapabilityViewAc
 	}	
 	
 	@Override
-	protected Collection<Action> featureActions(EStructuralFeature feature) {
-		if (feature == EngineeringPackage.Literals.ISSUE__CHILDREN) {
+	protected Collection<Action> memberActions(ETypedElement member) {
+		if (member == EngineeringPackage.Literals.ISSUE__CHILDREN) {
 			return Collections.singleton(endeavorsSection(
 					getSemanticElement().getChildren(), 
 					null,
 					"Children", 
 					"children", 
-					getFeatureDiagnostic(feature),
+					getFeatureDiagnostic((EStructuralFeature) member),
 					EngineeringPackage.Literals.NAMED_ELEMENT__NAME,
 					EngineeringPackage.Literals.ENDEAVOR__START,
 					EngineeringPackage.Literals.ENDEAVOR__END,
@@ -81,14 +81,14 @@ public class IssueViewAction<T extends Issue> extends EngineeredCapabilityViewAc
 					EngineeringPackage.Literals.ISSUE__REMAINING_COST,
 					EngineeringPackage.Literals.ENDEAVOR__COMPLETION));
 		}
-		if (feature == EngineeringPackage.Literals.ISSUE__NOTES) {
+		if (member == EngineeringPackage.Literals.ISSUE__NOTES) {
 			if (getSemanticElement().getNotes().isEmpty()) {
 				return Collections.emptyList();
 			}
-			ModelElementFeatureViewAction<T, EStructuralFeature, ModelElementViewActionImpl<T>> notesAction = createFeatureViewAction(feature, this::generateNotes);
+			ModelElementFeatureViewAction<T, EStructuralFeature, ModelElementViewActionImpl<T>> notesAction = createFeatureViewAction((EStructuralFeature) member, this::generateNotes);
 			return Collections.singleton(notesAction);
 		}
-		return super.featureActions(feature);
+		return super.memberActions(member);
 	}
 
 }

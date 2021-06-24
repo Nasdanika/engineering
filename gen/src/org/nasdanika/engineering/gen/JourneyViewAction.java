@@ -1,6 +1,7 @@
 package org.nasdanika.engineering.gen;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -10,7 +11,8 @@ import java.util.stream.Collectors;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.ETypedElement;
 import org.nasdanika.common.Util;
 import org.nasdanika.emf.EmfUtil;
 import org.nasdanika.engineering.Activity;
@@ -22,21 +24,34 @@ import org.nasdanika.engineering.Persona;
 import org.nasdanika.engineering.Service;
 import org.nasdanika.engineering.Start;
 import org.nasdanika.engineering.Transition;
+import org.nasdanika.html.app.Action;
 import org.nasdanika.html.app.NavigationActionActivator;
 
 public class JourneyViewAction extends ActivityViewAction<Journey> {
 
-	protected JourneyViewAction(Journey value, EngineeringViewActionAdapterFactory factory) {
-		super(value, factory);
+	public JourneyViewAction(EList<Journey> journeyPath, Journey value, EngineeringViewActionAdapterFactory factory) {
+		super(journeyPath, value, factory);
 	}
 	
 	@Override
-	protected Collection<EObject> referenceValue(EStructuralFeature feature) { 
-		if (feature == EngineeringPackage.Literals.JOURNEY__ALL_ELEMENTS) {
+	protected Collection<EObject> referenceValue(EReference reference) { 
+		if (reference == EngineeringPackage.Literals.JOURNEY__ALL_ELEMENTS) {
 			Predicate<EObject> predicate = je -> !Util.isBlank(((JourneyElement) je).getName()) && (je instanceof Activity || je instanceof Service);
-			return super.referenceValue(feature).stream().filter(predicate).collect(Collectors.toList());
+			return super.referenceValue(reference).stream().filter(predicate).collect(Collectors.toList());
 		}
-		return super.referenceValue(feature);
+		return super.referenceValue(reference);
+	}
+	
+	@Override
+	protected Collection<Action> childrenActions(ETypedElement member) {
+		if (member == EngineeringPackage.Literals.JOURNEY__ALL_ELEMENTS) {
+			Collection<EObject> referenceValue = referenceValue((EReference) member);
+			if (referenceValue == null) {
+				return Collections.emptyList();
+			}
+			return referenceValue.stream().map(e -> adaptToViewAction((JourneyElement) e)).collect(Collectors.toList());
+		}
+		return super.childrenActions(member);
 	}
 
 	@Override
@@ -45,9 +60,9 @@ public class JourneyViewAction extends ActivityViewAction<Journey> {
 		StringBuilder ret = new StringBuilder(generateJourneyElementsText(getSemanticElement(), ((NavigationActionActivator) getActivator()).getUrl(null), accumulator));
 
 		for (JourneyElement journeyElement: accumulator) {
-			EList<Transition> outputs = journeyElement.getAllOutputs(); 
+			EList<Transition> outputs = journeyElement.getAllOutputs(journeyPath); 
 			for (Transition output: outputs) {
-				JourneyElement targetElement = output.getTarget();
+				JourneyElement targetElement = output.getTarget(journeyPath);
 				if (accumulator.contains(targetElement) && !siblings(journeyElement, targetElement)) { 
 					ret
 						.append(diagramId(journeyElement))
@@ -61,8 +76,8 @@ public class JourneyViewAction extends ActivityViewAction<Journey> {
 				}
 			}
 			
-			for (Call call: journeyElement.getAllCalls()) {
-				JourneyElement targetElement = call.getTarget();
+			for (Call call: journeyElement.getAllCalls(journeyPath)) {
+				JourneyElement targetElement = call.getTarget(journeyPath);
 				if (accumulator.contains(targetElement) && !siblings(journeyElement, targetElement)) { 
 					ret
 						.append(diagramId(journeyElement))
@@ -151,12 +166,12 @@ public class JourneyViewAction extends ActivityViewAction<Journey> {
 
 		Collection<JourneyElement> finalElements = new HashSet<>(); 
 		for (JourneyElement journeyElement: journeyElements) {
-			EList<Transition> outputs = journeyElement.getAllOutputs();
-			if (outputs.isEmpty() && journeyElement.getAllInvocations() .isEmpty()) { 
+			EList<Transition> outputs = journeyElement.getAllOutputs(journeyPath);
+			if (outputs.isEmpty() && journeyElement.getAllInvocations(journeyPath).isEmpty()) { 
 				finalElements.add(journeyElement);
 			}
 			for (Transition output: outputs) {
-				JourneyElement targetElement = output.getTarget(); 
+				JourneyElement targetElement = output.getTarget(journeyPath); 
 				if (journeyElements.contains(targetElement)) { 
 					initialElements.remove(targetElement); 
 					ret	
@@ -170,8 +185,8 @@ public class JourneyViewAction extends ActivityViewAction<Journey> {
 					ret.append(System.lineSeparator());
 				}
 			}
-			for (Call call: journeyElement.getAllCalls()) {
-				JourneyElement targetElement = call.getTarget(); 
+			for (Call call: journeyElement.getAllCalls(journeyPath)) {
+				JourneyElement targetElement = call.getTarget(journeyPath); 
 				if (journeyElements.contains(targetElement)) { 
 					initialElements.remove(targetElement); 
 					ret.append(diagramId(journeyElement))

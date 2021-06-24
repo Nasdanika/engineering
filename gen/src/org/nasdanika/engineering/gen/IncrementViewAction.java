@@ -9,6 +9,7 @@ import java.util.Map;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.ETypedElement;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.emf.EmfUtil;
@@ -94,7 +95,7 @@ public class IncrementViewAction extends NamedElementViewAction<Increment> {
 				
 				@Override
 				public List<Action> getChildren() {
-					return ViewAction.adaptToViewActionsNonNull(issues);
+					return adaptMemberElementsToViewActionsNonNull(EngineeringPackage.Literals.INCREMENT__ISSUES, issues);
 				}
 			};
 			
@@ -108,14 +109,14 @@ public class IncrementViewAction extends NamedElementViewAction<Increment> {
 	}
 
 	@Override
-	protected Object featureValue(EStructuralFeature feature, Object value, ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
-		if (feature == EngineeringPackage.Literals.ENDEAVOR__COMPLETION) {
+	protected Object memberValue(ETypedElement member, Object value, ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
+		if (member == EngineeringPackage.Literals.ENDEAVOR__COMPLETION) {
 			double completion = getSemanticElement().getCompletion();
 			if (completion != Double.NaN && completion > 0.001) {
 				return viewGenerator.getBootstrapFactory().progressBar((int) (100 * completion));
 			}			
 		}
-		return super.featureValue(feature, value, viewGenerator, progressMonitor);
+		return super.memberValue(member, value, viewGenerator, progressMonitor);
 	}
 	
 	public static <E extends Endeavor> Table incrementsTable(
@@ -261,11 +262,11 @@ public class IncrementViewAction extends NamedElementViewAction<Increment> {
 	}
 	
 	@Override
-	protected Collection<Action> featureActions(EStructuralFeature feature) {
-		if (feature == EngineeringPackage.Literals.ENDEAVOR__CAPACITY) {
+	protected Collection<Action> memberActions(ETypedElement member) {
+		if (member == EngineeringPackage.Literals.ENDEAVOR__CAPACITY) {
 			return EngineeredCapabilityViewAction.endeavorCapacityFeatureActions(getSemanticElement());
 		}
-		if (feature == EngineeringPackage.Literals.INCREMENT__RELEASES) {
+		if (member == EngineeringPackage.Literals.INCREMENT__RELEASES) {
 			ViewBuilder productHeaderBuilder = new ViewBuilder() {
 
 				@Override
@@ -280,7 +281,7 @@ public class IncrementViewAction extends NamedElementViewAction<Increment> {
 					e -> e == EcorePackage.Literals.EOBJECT___ECONTAINER ? productHeaderBuilder : null,
 					"Releases", 
 					"releases", 
-					getFeatureDiagnostic(feature),
+					getFeatureDiagnostic((EStructuralFeature) member),
 					EcorePackage.Literals.EOBJECT___ECONTAINER,					
 					EngineeringPackage.Literals.NAMED_ELEMENT__NAME,
 					EngineeringPackage.Literals.ENDEAVOR__START,
@@ -290,25 +291,25 @@ public class IncrementViewAction extends NamedElementViewAction<Increment> {
 					EngineeringPackage.Literals.ENDEAVOR__COMPLETION));			
 			
 		}
-		if (feature == EngineeringPackage.Literals.ENDEAVOR__OBJECTIVES) {
+		if (member == EngineeringPackage.Literals.ENDEAVOR__OBJECTIVES) {
 			if (getSemanticElement().getObjectives().isEmpty()) {
 				return Collections.emptyList();
 			}
-			return Collections.singleton(createFeatureViewAction(feature, this::generateObjectivesTable));			
+			return Collections.singleton(createFeatureViewAction((EStructuralFeature) member, this::generateObjectivesTable));			
 		}
-		if (feature == EngineeringPackage.Literals.ENDEAVOR__LINKED_OBJECTIVES) {
+		if (member == EngineeringPackage.Literals.ENDEAVOR__LINKED_OBJECTIVES) {
 			if (getSemanticElement().getLinkedObjectives().isEmpty()) {
 				return Collections.emptyList();
 			}
-			return Collections.singleton(createFeatureViewAction(feature, this::generateLinkedObjectivesTable));			
+			return Collections.singleton(createFeatureViewAction((EStructuralFeature) member, this::generateLinkedObjectivesTable));			
 		}
-		if (feature == EngineeringPackage.Literals.ENDEAVOR__ALL_OBJECTIVES) {
+		if (member == EngineeringPackage.Literals.ENDEAVOR__ALL_OBJECTIVES) {
 			if (getSemanticElement().getAllObjectives().isEmpty()) {
 				return Collections.emptyList();
 			}
-			return Collections.singleton(createFeatureViewAction(feature, this::generateAllObjectivesTable));			
+			return Collections.singleton(createFeatureViewAction((EStructuralFeature) member, this::generateAllObjectivesTable));			
 		}
-		return super.featureActions(feature);
+		return super.memberActions(member);
 	}
 	
 	protected Object generateObjectivesTable(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {

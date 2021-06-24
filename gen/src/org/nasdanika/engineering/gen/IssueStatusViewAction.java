@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.Collections;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.ETypedElement;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.IssueStatus;
 import org.nasdanika.html.app.Action;
@@ -15,14 +16,14 @@ public class IssueStatusViewAction extends NamedElementViewAction<IssueStatus> {
 	}
 		
 	@Override
-	protected Collection<Action> featureActions(EStructuralFeature feature) {
-		if (feature == EngineeringPackage.Literals.ISSUE_STATUS__ISSUES) {
+	protected Collection<Action> memberActions(ETypedElement member) {
+		if (member == EngineeringPackage.Literals.ISSUE_STATUS__ISSUES) {
 			return Collections.singleton(endeavorsSection(
 					getSemanticElement().getIssues(), 
 					null,
 					"Issues", 
 					"Issues", 
-					getFeatureDiagnostic(feature),					
+					getFeatureDiagnostic((EStructuralFeature) member),					
 					EngineeringPackage.Literals.NAMED_ELEMENT__NAME,
 					EngineeringPackage.Literals.ENDEAVOR__START,
 					EngineeringPackage.Literals.ENDEAVOR__END,
@@ -37,7 +38,7 @@ public class IssueStatusViewAction extends NamedElementViewAction<IssueStatus> {
 					EngineeringPackage.Literals.ENDEAVOR__COMPLETION));
 		}
 
-		return super.featureActions(feature);
+		return super.memberActions(member);
 	}
 	
 }

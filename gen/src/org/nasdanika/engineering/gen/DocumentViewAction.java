@@ -8,6 +8,7 @@ import java.util.function.Predicate;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.ETypedElement;
 import org.nasdanika.common.Context;
 import org.nasdanika.common.MarkdownHelper;
 import org.nasdanika.common.ProgressMonitor;
@@ -24,8 +25,6 @@ import org.nasdanika.html.app.NavigationActionActivator;
 import org.nasdanika.html.app.ViewGenerator;
 import org.nasdanika.html.app.impl.ActionImpl;
 import org.nasdanika.html.app.impl.PathNavigationActionActivator;
-import org.nasdanika.html.app.viewparts.AdaptiveNavigationPanelViewPart;
-import org.nasdanika.html.app.viewparts.AdaptiveNavigationPanelViewPart.Style;
 import org.nasdanika.html.bootstrap.Card;
 import org.nasdanika.html.emf.EStructuralFeatureViewAction;
 import org.nasdanika.html.emf.ViewAction;
@@ -100,14 +99,14 @@ public class DocumentViewAction extends EngineeredElementViewAction<Document> {
 	}
 	
 	@Override
-	protected Collection<Action> featureActions(EStructuralFeature feature) {
-		if (feature == EngineeringPackage.Literals.DOCUMENT__TABLE_OF_CONTENTS) {
+	protected Collection<Action> memberActions(ETypedElement member) {
+		if (member == EngineeringPackage.Literals.DOCUMENT__TABLE_OF_CONTENTS) {
 			if (!getSemanticElement().isTableOfContents() || tocAction.isInRole(Action.Role.SECTION)) { // Section is a special case.
 				return Collections.emptyList(); 
 			}
 			return Collections.singleton(tocAction);
 		}
-		return super.featureActions(feature);
+		return super.memberActions(member);
 	}
 	
 	@Override
@@ -118,7 +117,7 @@ public class DocumentViewAction extends EngineeredElementViewAction<Document> {
 		Predicate<Action> documentChildrenPredicate = c -> {
 			if (c instanceof EStructuralFeatureViewAction) {
 				EStructuralFeatureViewAction<?, ?> sfa = (EStructuralFeatureViewAction<?, ?>) c;
-				EStructuralFeature feature = sfa.getEStructuralFeature();
+				EStructuralFeature feature = sfa.getETypedElement();
 				return feature == EngineeringPackage.Literals.FORUM__DISCUSSION
 						|| feature == EngineeringPackage.Literals.DOCUMENT__SECTIONS
 						|| feature == EngineeringPackage.Literals.DOCUMENT__TABLE_OF_CONTENTS;

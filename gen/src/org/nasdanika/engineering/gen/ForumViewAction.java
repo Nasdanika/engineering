@@ -85,7 +85,7 @@ public class ForumViewAction<T extends Forum> extends NamedElementViewAction<T> 
 		Action parent = super.getParent();
 		if (!(getSemanticElement() instanceof EngineeredElement) && getSemanticElement().eContainer() instanceof EngineeredElement && getSemanticElement().eContainmentFeature() == EngineeringPackage.Literals.FORUM__DISCUSSION) {
 			// Forum contained in an engieered element - parent should be a feature action.
-			Action discussionAction = parent.find(a -> a instanceof ModelElementFeatureViewAction && ((ModelElementFeatureViewAction<?,?,?>) a).getEStructuralFeature() == EngineeringPackage.Literals.FORUM__DISCUSSION);
+			Action discussionAction = parent.find(a -> a instanceof ModelElementFeatureViewAction && ((ModelElementFeatureViewAction<?,?,?>) a).getETypedElement() == EngineeringPackage.Literals.FORUM__DISCUSSION);
 			if (discussionAction != null) {
 				return discussionAction;
 			}

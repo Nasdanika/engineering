@@ -146,16 +146,16 @@ public interface Appearance extends EObject {
 	 * * ``content-right`` - Content right actions are shown in an adaptive navigation panel to the right of the action content.
 	 * * ``content-left`` - Content left actions are shown in an adaptive  navigation panel to the left of the action content.
 	 * 
-	 * For features - feature role. One of:
+	 * For members (features and operations) - member role. One of:
 	 * 
-	 * * ``property`` - Feature is shown in the properties table.
-	 * * ``content`` - Feature is shown in the content. 
-	 * * ``element-actions`` - Child action for each feature element
-	 * * ``element-actions-sorted`` - Child actions for feature elements sorted by text
-	 * * ``feature-actions`` - Child actions for the feature, e.g. a section with a table of an action list.
+	 * * ``actions`` - Child actions for a member, e.g. a section with a table of an action list.
+	 * * ``content`` - Feature value or operation result is shown in the content. 
+	 * * ``element-actions`` - Child action for each feature or operation result element
+	 * * ``element-actions-sorted`` - Child actions for member elements sorted by text
+	 * * ``property`` - Member value/result is shown in the properties table.
 	 * 
-	 * Action feature roles (the last three) may be followed by a slash (``/``) and then action role.
-	 * For example: ``feature-actions/context``.
+	 * Action member roles (``acitons``, ``element-actions``, and ``element-actions-sorted``) may be followed by a slash (``/``) and then action role.
+	 * For example: ``actions/context``.
 	 * 
 	 * Use ``none`` role to hide feature or model element.
 	 * 

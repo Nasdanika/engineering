@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.Collections;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.ETypedElement;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.KeyResult;
@@ -69,33 +70,33 @@ public class ObjectiveViewAction extends KeyResultViewAction<Objective> {
 	}				
 	
 	@Override
-	protected Collection<Action> featureActions(EStructuralFeature feature) {
-		if (feature == EngineeringPackage.Literals.OBJECTIVE__KEY_RESULTS) {
+	protected Collection<Action> memberActions(ETypedElement member) {
+		if (member == EngineeringPackage.Literals.OBJECTIVE__KEY_RESULTS) {
 			if (getSemanticElement().getKeyResults().isEmpty()) {
 				return Collections.emptyList();
 			}
 			
-			return Collections.singleton(createFeatureViewAction(feature, this::generateKeyResultsTable));			
+			return Collections.singleton(createFeatureViewAction((EStructuralFeature) member, this::generateKeyResultsTable));			
 		}
-		if (feature == EngineeringPackage.Literals.OBJECTIVE__CHILDREN) {
+		if (member == EngineeringPackage.Literals.OBJECTIVE__CHILDREN) {
 			if (getSemanticElement().getChildren().isEmpty()) {
 				return Collections.emptyList();
 			}
-			return Collections.singleton(createFeatureViewAction(feature, this::generateChildrenTable));			
+			return Collections.singleton(createFeatureViewAction((EStructuralFeature) member, this::generateChildrenTable));			
 		}
-		if (feature == EngineeringPackage.Literals.OBJECTIVE__LINKED_OBJECTIVES) {
+		if (member == EngineeringPackage.Literals.OBJECTIVE__LINKED_OBJECTIVES) {
 			if (getSemanticElement().getLinkedObjectives().isEmpty()) {
 				return Collections.emptyList();
 			}
-			return Collections.singleton(createFeatureViewAction(feature, this::generateLinkedObjectivesTable));			
+			return Collections.singleton(createFeatureViewAction((EStructuralFeature) member, this::generateLinkedObjectivesTable));			
 		}
-		if (feature == EngineeringPackage.Literals.OBJECTIVE__SUB_OBJECTIVES) {
+		if (member == EngineeringPackage.Literals.OBJECTIVE__SUB_OBJECTIVES) {
 			if (getSemanticElement().getSubObjectives().isEmpty()) {
 				return Collections.emptyList();
 			}
-			return Collections.singleton(createFeatureViewAction(feature, this::generateSubObjectivesTable));			
+			return Collections.singleton(createFeatureViewAction((EStructuralFeature) member, this::generateSubObjectivesTable));			
 		}
-		return super.featureActions(feature);
+		return super.memberActions(member);
 	}
 	
 }

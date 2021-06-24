@@ -41,7 +41,7 @@ import org.nasdanika.engineering.ExitPoint;
 import org.nasdanika.engineering.ExpansionInput;
 import org.nasdanika.engineering.ExpansionOutput;
 import org.nasdanika.engineering.Feature;
-import org.nasdanika.engineering.FeatureAppearance;
+import org.nasdanika.engineering.MemberAppearance;
 import org.nasdanika.engineering.Fork;
 import org.nasdanika.engineering.Forum;
 import org.nasdanika.engineering.Goal;
@@ -216,10 +216,10 @@ public class EngineeringValidator extends EObjectValidator {
 				return validateModelElementAppearance((ModelElementAppearance)value, diagnostics, context);
 			case EngineeringPackage.MODEL_ELEMENT_APPEARANCE_ENTRY:
 				return validateModelElementAppearanceEntry((Map.Entry<?, ?>)value, diagnostics, context);
-			case EngineeringPackage.FEATURE_APPEARANCE_ENTRY:
-				return validateFeatureAppearanceEntry((Map.Entry<?, ?>)value, diagnostics, context);
-			case EngineeringPackage.FEATURE_APPEARANCE:
-				return validateFeatureAppearance((FeatureAppearance)value, diagnostics, context);
+			case EngineeringPackage.MEMBER_APPEARANCE_ENTRY:
+				return validateMemberAppearanceEntry((Map.Entry<?, ?>)value, diagnostics, context);
+			case EngineeringPackage.MEMBER_APPEARANCE:
+				return validateMemberAppearance((MemberAppearance)value, diagnostics, context);
 			case EngineeringPackage.DOCUMENT:
 				return validateDocument((Document)value, diagnostics, context);
 			case EngineeringPackage.NAMED_ELEMENT_REFERENCE:
@@ -1731,8 +1731,8 @@ public class EngineeringValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateFeatureAppearanceEntry(Map.Entry<?, ?> featureAppearanceEntry, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint((EObject)featureAppearanceEntry, diagnostics, context);
+	public boolean validateMemberAppearanceEntry(Map.Entry<?, ?> memberAppearanceEntry, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint((EObject)memberAppearanceEntry, diagnostics, context);
 	}
 
 	/**
@@ -1740,8 +1740,8 @@ public class EngineeringValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateFeatureAppearance(FeatureAppearance featureAppearance, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(featureAppearance, diagnostics, context);
+	public boolean validateMemberAppearance(MemberAppearance memberAppearance, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(memberAppearance, diagnostics, context);
 	}
 
 	/**
