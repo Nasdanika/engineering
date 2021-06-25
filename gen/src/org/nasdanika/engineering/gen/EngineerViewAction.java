@@ -371,6 +371,6 @@ public class EngineerViewAction<T extends Engineer> extends PersonaViewAction<T>
 		capacitySection.getRoles().add(Action.Role.SECTION);
 		capacitySection.setText("Capacity");
 		return Collections.singleton(capacitySection);		
-	}	
-	
+	}
+			
 }
