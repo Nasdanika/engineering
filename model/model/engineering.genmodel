@@ -197,9 +197,14 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Appearance/roles"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Appearance/sectionStyle"/>
     </genClasses>
+    <genClasses ecoreClass="engineering.ecore#//AppearanceEntry">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//AppearanceEntry/key"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//AppearanceEntry/value"/>
+    </genClasses>
     <genClasses ecoreClass="engineering.ecore#//ModelElementAppearance">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//ModelElementAppearance/features"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//ModelElementAppearance/operations"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//ModelElementAppearance/actions"/>
     </genClasses>
     <genClasses ecoreClass="engineering.ecore#//ModelElementAppearanceEntry">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//ModelElementAppearanceEntry/key"/>

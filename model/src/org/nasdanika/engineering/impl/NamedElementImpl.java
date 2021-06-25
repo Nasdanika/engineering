@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.apache.commons.codec.binary.Hex;
+import org.apache.commons.lang3.StringUtils;
 import org.eclipse.emf.ecore.EClass;
 import org.nasdanika.common.Util;
 import org.nasdanika.common.persistence.ConfigurationException;
@@ -63,11 +64,24 @@ public class NamedElementImpl extends ModelElementImpl implements NamedElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public String getName() {
-		return (String)eDynamicGet(EngineeringPackage.NAMED_ELEMENT__NAME, EngineeringPackage.Literals.NAMED_ELEMENT__NAME, true, true);
+		String name = (String)eDynamicGet(EngineeringPackage.NAMED_ELEMENT__NAME, EngineeringPackage.Literals.NAMED_ELEMENT__NAME, true, true);
+		// Deriving name from path
+		if (name == null) {
+			String path = getPath();
+			if (!Util.isBlank(path)) {
+				String[] cca = path.split("-");
+				cca[0] = StringUtils.capitalize(cca[0]);
+				for (int i=1; i<cca.length; ++i) {
+					cca[i] = cca[i].toLowerCase();
+				}
+				return StringUtils.join(cca, " ");				
+			}
+		}
+		return name;
 	}
 
 	/**

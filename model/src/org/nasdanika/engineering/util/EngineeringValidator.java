@@ -217,6 +217,8 @@ public class EngineeringValidator extends EObjectValidator {
 				return validateEngineeringAppearance((EngineeringAppearance)value, diagnostics, context);
 			case EngineeringPackage.APPEARANCE:
 				return validateAppearance((Appearance)value, diagnostics, context);
+			case EngineeringPackage.APPEARANCE_ENTRY:
+				return validateAppearanceEntry((Map.Entry<?, ?>)value, diagnostics, context);
 			case EngineeringPackage.MODEL_ELEMENT_APPEARANCE:
 				return validateModelElementAppearance((ModelElementAppearance)value, diagnostics, context);
 			case EngineeringPackage.MODEL_ELEMENT_APPEARANCE_ENTRY:
@@ -1046,7 +1048,8 @@ public class EngineeringValidator extends EObjectValidator {
 	public boolean validateJourney_elements(Journey journey, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		if (diagnostics != null) {
 			DiagnosticHelper helper = new DiagnosticHelper(diagnostics, DIAGNOSTIC_SOURCE, 0, journey);
-			EList<Journey> journeyPath = ECollections.singletonEList(journey);
+			EList<Journey> journeyPath = ECollections.newBasicEList(journey.getContainmentJourneyPath());
+			journeyPath.add(journey);
 			validateJourneyElements(journeyPath, helper, context);
 			return helper.isSuccess();
 		}
@@ -1055,12 +1058,18 @@ public class EngineeringValidator extends EObjectValidator {
 
 	private void validateJourneyElements(EList<Journey> journeyPath, DiagnosticHelper helper, Map<Object, Object> context) {
 		for (JourneyElement je: journeyPath.get(journeyPath.size() - 1).getAllElements()) {
+			for (Transition transition: je.getAllOutputs(journeyPath)) {
+				validateTransitionTarget(journeyPath, helper, je, transition, context);				
+			}
+			
+			for (Call call: je.getAllCalls(journeyPath)) {
+				validateTransitionTarget(journeyPath, helper, je, call, context);				
+			}			
+			
 			if (je instanceof Journey) {
 				EList<Journey> jjPath = ECollections.newBasicEList(journeyPath);
 				jjPath.add((Journey) je);
 				validateJourneyElements(jjPath, helper, context);
-			} else if (je instanceof Transition) {
-				validateTransitionTarget(journeyPath, helper, (Transition) je, context);
 			} else if (je instanceof End) {
 				validateEndNoOutputs(journeyPath, helper, (End) je, context);
 				validateEndNoCalls(journeyPath, helper, (End) je, context);
@@ -1117,9 +1126,9 @@ public class EngineeringValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	private void validateTransitionTarget(EList<Journey> journeyPath, DiagnosticHelper helper, Transition transition, Map<Object, Object> context) {
+	private void validateTransitionTarget(EList<Journey> journeyPath, DiagnosticHelper helper, JourneyElement journeyElement, Transition transition, Map<Object, Object> context) {
 		if (transition.getTarget(journeyPath) == null) {
-			helper.error(journeyPath(journeyPath) + "Transition target cannot be resolved: " + transition.getTarget());
+			helper.error(journeyPath(journeyPath) + transition.eClass().getName() + " target of " + journeyElement.eClass().getName() + " '" + journeyElement.getName() + "' cannot be resolved: " + transition.getTarget());
 		}
 	}
 	
@@ -1718,6 +1727,15 @@ public class EngineeringValidator extends EObjectValidator {
 	 */
 	public boolean validateAppearance(Appearance appearance, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(appearance, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateAppearanceEntry(Map.Entry<?, ?> appearanceEntry, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint((EObject)appearanceEntry, diagnostics, context);
 	}
 
 	/**

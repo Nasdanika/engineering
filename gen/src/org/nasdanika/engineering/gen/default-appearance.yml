@@ -17,9 +17,9 @@ model-elements:
         icon: fas fa-book
         roles: 
          - actions/section
-         - element-actions/none
+         - elements/none
       sections:
-        roles: element-actions/section
+        roles: elements/section
   table-of-contents:
     roles: none
   module:
@@ -41,14 +41,14 @@ model-elements:
       children:
         roles: 
          - actions/section
-         - element-actions        
+         - elements        
   principle:
     icon: fas fa-gavel
     features:
       children:
         roles: 
          - actions/section
-         - element-actions        
+         - elements        
   capability:
     features:
       required-by:
@@ -60,7 +60,7 @@ model-elements:
       capacity:
         roles: actions
       objectives:
-        roles: element-actions/none 
+        roles: elements/none 
       linked-objectives:
         roles: none 
       all-objectives:
@@ -77,7 +77,7 @@ model-elements:
     features:
       children: 
         roles: 
-          - element-actions/none
+          - elements/none
           - actions
       releases:
         roles: property
@@ -96,17 +96,17 @@ model-elements:
   forum:
     features:
       topics:
-        roles: element-actions/none
+        roles: elements/none
       discussion:
         icon: far fa-comments
         roles: 
-          - element-actions/none
+          - elements/none
   engineered-element:
     roles: navigation
     features:
       issues:
         roles: 
-         - element-actions/none
+         - elements/none
          - actions/section
       all-issues:
         roles: 
@@ -121,13 +121,13 @@ model-elements:
       principles:
         roles: 
           - actions/section
-          - element-actions
+          - elements
   product:
     icon: fas fa-box
     features:
       releases:
         icon: fas fa-shipping-fast
-        roles: element-actions
+        roles: elements
       features:
         icon: fa fa-cogs
   persona:
@@ -141,15 +141,15 @@ model-elements:
       goals:
         roles: 
           - actions/section
-          - element-actions
+          - elements
   engineer:
     features:
       assignments:
         roles: actions
       increments:
         roles: 
-         - content
-         - element-actions
+         - actions/content
+         - elements
       capacity:
         roles: none 
       designations:
@@ -157,12 +157,12 @@ model-elements:
       messages:
         roles: none 
       personas:
-        roles: element-actions 
+        roles: elements 
       represents:
         roles: property 
       objectives:
         roles:
-          - element-actions/none 
+          - elements/none 
           - actions/section 
       modules:
         icon: fas fa-cubes
@@ -173,7 +173,7 @@ model-elements:
       releases:
         roles: actions/section
       children:
-        roles: element-actions
+        roles: elements
       capacity:
         roles: actions
       all-issues:
@@ -199,7 +199,7 @@ model-elements:
     features:
       sections:
         category: false
-        roles: element-actions/section
+        roles: elements/section
       content:
         roles: none
       markdown-content:
@@ -212,10 +212,10 @@ model-elements:
     features:
       key-results:
         roles: 
-          - element-actions/none
+          - elements/none
           - actions/section
       children:
-        roles: element-actions/none
+        roles: elements/none
       linked-objectives:
         roles: none
       sub-objectives:
@@ -229,31 +229,36 @@ model-elements:
       inputs:
         roles: none
       invocations:
-        roles: none  
-      all-outputs:
+        roles: none
+    operations:  
+      get-all-outputs:
         label: Outputs
         icon: fas fa-sign-out-alt
-      all-calls:
+        roles: actions/section
+      get-all-calls:
         label: Calls
-      all-invocations:
+        roles: actions/section
+      get-all-invocations:
         label: Invocations
-      all-inputs:
+        roles: actions/section
+      get-all-inputs:
         label: Inputs
         icon: fas fa-sign-in-alt
+        roles: actions/section
   journey:
     features:
       elements:
         roles: none
       all-elements:
-        roles: element-actions/none
+        roles: elements/none
   transition:
     features:
       payload:
         category: false
-        roles: element-actions/none
+        roles: elements/none
   call:
     features:
       response:
         category: false
-        roles: element-actions/none
+        roles: elements/none
       

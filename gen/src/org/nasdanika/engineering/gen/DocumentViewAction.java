@@ -24,6 +24,7 @@ import org.nasdanika.html.emf.ViewAction;
 
 public class DocumentViewAction extends EngineeredElementViewAction<Document> {
 
+
 	protected DocumentViewAction(Document value, EngineeringViewActionAdapterFactory factory) {
 		super(value, factory);
 	}
@@ -38,7 +39,7 @@ public class DocumentViewAction extends EngineeredElementViewAction<Document> {
 		TableOfContents toc = getSemanticElement().getTableOfContents();
 		if (toc != null && !Util.isBlank(toc.getRole())) {
 			switch (toc.getRole()) {
-			case "content":
+			case CONTENT_ROLE:
 				ret.content(generateFragmentOfContents(viewGenerator, progressMonitor));
 				break;
 			case Action.Role.FLOAT_LEFT:

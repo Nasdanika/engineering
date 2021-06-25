@@ -113,5 +113,5 @@ public interface Journey extends Activity {
 	 * @generated
 	 */
 	EList<JourneyElement> getAllElements();
-
+	
 } // Journey

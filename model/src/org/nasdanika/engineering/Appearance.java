@@ -25,8 +25,7 @@ import org.nasdanika.html.app.SectionStyle;
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getAppearance()
- * @model abstract="true"
- *        annotation="urn:org.nasdanika documentation-reference='doc/appearance.md'"
+ * @model annotation="urn:org.nasdanika documentation-reference='doc/appearance.md'"
  * @generated
  */
 public interface Appearance extends EObject {
@@ -146,15 +145,16 @@ public interface Appearance extends EObject {
 	 * * ``content-right`` - Content right actions are shown in an adaptive navigation panel to the right of the action content.
 	 * * ``content-left`` - Content left actions are shown in an adaptive  navigation panel to the left of the action content.
 	 * 
-	 * For members (features and operations) - member role. One of:
+	 * For members (features and operations) and actions - member/action role. One of:
 	 * 
 	 * * ``actions`` - Child actions for a member, e.g. a section with a table of an action list.
 	 * * ``content`` - Feature value or operation result is shown in the content. 
-	 * * ``element-actions`` - Child action for each feature or operation result element
-	 * * ``element-actions-sorted`` - Child actions for member elements sorted by text
+	 * * ``elements`` - Child action for each feature or operation result element
+	 * * ``elements-sorted`` - Child actions for member elements sorted by text
+	 * * ``head`` - Feature value or operation result is shown in the content head - above description and sections. 
 	 * * ``property`` - Member value/result is shown in the properties table.
 	 * 
-	 * Action member roles (``acitons``, ``element-actions``, and ``element-actions-sorted``) may be followed by a slash (``/``) and then action role.
+	 * Action member roles (``acitons``, ``elements``, and ``elements-sorted``) may be followed by a slash (``/``) and then action role.
 	 * For example: ``actions/context``.
 	 * 
 	 * Use ``none`` role to hide feature or model element.

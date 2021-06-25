@@ -32,7 +32,7 @@ import org.nasdanika.html.app.SectionStyle;
  *
  * @generated
  */
-public abstract class AppearanceImpl extends MinimalEObjectImpl.Container implements Appearance {
+public class AppearanceImpl extends MinimalEObjectImpl.Container implements Appearance {
 	/**
 	 * The default value of the '{@link #getLabel() <em>Label</em>}' attribute.
 	 * <!-- begin-user-doc -->

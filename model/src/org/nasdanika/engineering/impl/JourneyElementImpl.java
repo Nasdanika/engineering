@@ -558,5 +558,20 @@ public class JourneyElementImpl extends EngineeredElementImpl implements Journey
 		}
 		return super.eInvoke(operationID, arguments);
 	}
+	
+	/**
+	 * Inheriting name if blank
+	 */
+	@Override
+	public String getName() {
+		String name = super.getName();
+		if (Util.isBlank(name)) {
+			JourneyElement overrides = getOverrides();
+			if (overrides != null) {
+				return overrides.getName();
+			}
+		}
+		return name;
+	}
 
 } //JourneyElementImpl

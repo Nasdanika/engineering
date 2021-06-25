@@ -418,6 +418,15 @@ public interface EngineeringFactory extends EFactory {
 	EngineeringAppearance createEngineeringAppearance();
 
 	/**
+	 * Returns a new object of class '<em>Appearance</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Appearance</em>'.
+	 * @generated
+	 */
+	Appearance createAppearance();
+
+	/**
 	 * Returns a new object of class '<em>Model Element Appearance</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

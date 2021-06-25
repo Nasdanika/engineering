@@ -20,7 +20,6 @@ import org.nasdanika.engineering.Journey;
 import org.nasdanika.engineering.JourneyElement;
 import org.nasdanika.engineering.NamedElement;
 import org.nasdanika.engineering.Transition;
-import org.nasdanika.engineering.util.EngineeringValidator;
 import org.nasdanika.html.app.impl.Util;
 
 /**
@@ -102,10 +101,7 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 		
 		@SuppressWarnings({ "unchecked", "rawtypes" })
 		List<JourneyElement> rPath = resolve((List) journeyPath, tid);
-		if (rPath.isEmpty()) {
-			throw new ConfigurationException("Cannot resolve transition target '" + tid + " in journey path " + EngineeringValidator.journeyPath(journeyPath), EObjectAdaptable.adaptTo(this, Marked.class));
-		}
-		return rPath.get(rPath.size() - 1);
+		return rPath.isEmpty() ? null : rPath.get(rPath.size() - 1);
 	}
 
 	/**

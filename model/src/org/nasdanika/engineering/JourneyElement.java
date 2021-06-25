@@ -2,7 +2,10 @@
  */
 package org.nasdanika.engineering;
 
+import org.eclipse.emf.common.util.BasicEList;
+import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -249,5 +252,19 @@ public interface JourneyElement extends EngineeredElement {
 	 * @generated
 	 */
 	EList<Call> getAllCalls(EList<Journey> journeyPath);
+	
+	default EList<Journey> getContainmentJourneyPath() {
+		BasicEList<Journey> journeyPath = ECollections.newBasicEList();
+		EObject jec = eContainer();
+		if (jec instanceof Journey) {
+			Journey jjec = (Journey) jec;
+			journeyPath.addAll(jjec.getContainmentJourneyPath());
+			journeyPath.add(jjec);
+		}
+		return journeyPath;
+	}
+
+	
+
 
 } // JourneyElement

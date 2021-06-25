@@ -896,7 +896,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getActivity()
 	 * @generated
 	 */
-	int ACTIVITY = 44;
+	int ACTIVITY = 45;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.JourneyImpl <em>Journey</em>}' class.
@@ -906,7 +906,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getJourney()
 	 * @generated
 	 */
-	int JOURNEY = 48;
+	int JOURNEY = 49;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.TransitionImpl <em>Transition</em>}' class.
@@ -916,7 +916,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getTransition()
 	 * @generated
 	 */
-	int TRANSITION = 46;
+	int TRANSITION = 47;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.CallImpl <em>Call</em>}' class.
@@ -926,7 +926,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getCall()
 	 * @generated
 	 */
-	int CALL = 47;
+	int CALL = 48;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.IssueImpl <em>Issue</em>}' class.
@@ -1036,7 +1036,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getService()
 	 * @generated
 	 */
-	int SERVICE = 45;
+	int SERVICE = 46;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.PseudoStateImpl <em>Pseudo State</em>}' class.
@@ -1046,7 +1046,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getPseudoState()
 	 * @generated
 	 */
-	int PSEUDO_STATE = 49;
+	int PSEUDO_STATE = 50;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.ChoiceImpl <em>Choice</em>}' class.
@@ -1056,7 +1056,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getChoice()
 	 * @generated
 	 */
-	int CHOICE = 50;
+	int CHOICE = 51;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.EndImpl <em>End</em>}' class.
@@ -1066,7 +1066,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getEnd()
 	 * @generated
 	 */
-	int END = 51;
+	int END = 52;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.EntryPointImpl <em>Entry Point</em>}' class.
@@ -1076,7 +1076,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getEntryPoint()
 	 * @generated
 	 */
-	int ENTRY_POINT = 52;
+	int ENTRY_POINT = 53;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.ExitPointImpl <em>Exit Point</em>}' class.
@@ -1086,7 +1086,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getExitPoint()
 	 * @generated
 	 */
-	int EXIT_POINT = 53;
+	int EXIT_POINT = 54;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.ExpansionInputImpl <em>Expansion Input</em>}' class.
@@ -1096,7 +1096,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getExpansionInput()
 	 * @generated
 	 */
-	int EXPANSION_INPUT = 54;
+	int EXPANSION_INPUT = 55;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.ExpansionOutputImpl <em>Expansion Output</em>}' class.
@@ -1106,7 +1106,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getExpansionOutput()
 	 * @generated
 	 */
-	int EXPANSION_OUTPUT = 55;
+	int EXPANSION_OUTPUT = 56;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.ForkImpl <em>Fork</em>}' class.
@@ -1116,7 +1116,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getFork()
 	 * @generated
 	 */
-	int FORK = 56;
+	int FORK = 57;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.InputPinImpl <em>Input Pin</em>}' class.
@@ -1126,7 +1126,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getInputPin()
 	 * @generated
 	 */
-	int INPUT_PIN = 57;
+	int INPUT_PIN = 58;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.JoinImpl <em>Join</em>}' class.
@@ -1136,7 +1136,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getJoin()
 	 * @generated
 	 */
-	int JOIN = 58;
+	int JOIN = 59;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.OutputPinImpl <em>Output Pin</em>}' class.
@@ -1146,7 +1146,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getOutputPin()
 	 * @generated
 	 */
-	int OUTPUT_PIN = 59;
+	int OUTPUT_PIN = 60;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.StartImpl <em>Start</em>}' class.
@@ -1156,7 +1156,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getStart()
 	 * @generated
 	 */
-	int START = 60;
+	int START = 61;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -2727,7 +2727,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getModelElementAppearance()
 	 * @generated
 	 */
-	int MODEL_ELEMENT_APPEARANCE = 34;
+	int MODEL_ELEMENT_APPEARANCE = 35;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.ModelElementAppearanceEntryImpl <em>Model Element Appearance Entry</em>}' class.
@@ -2737,7 +2737,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getModelElementAppearanceEntry()
 	 * @generated
 	 */
-	int MODEL_ELEMENT_APPEARANCE_ENTRY = 35;
+	int MODEL_ELEMENT_APPEARANCE_ENTRY = 36;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.MemberAppearanceEntryImpl <em>Member Appearance Entry</em>}' class.
@@ -2747,7 +2747,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getMemberAppearanceEntry()
 	 * @generated
 	 */
-	int MEMBER_APPEARANCE_ENTRY = 36;
+	int MEMBER_APPEARANCE_ENTRY = 37;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.MemberAppearanceImpl <em>Member Appearance</em>}' class.
@@ -2757,7 +2757,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getMemberAppearance()
 	 * @generated
 	 */
-	int MEMBER_APPEARANCE = 37;
+	int MEMBER_APPEARANCE = 38;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.DocumentImpl <em>Document</em>}' class.
@@ -5974,6 +5974,52 @@ public interface EngineeringPackage extends EPackage {
 	int APPEARANCE_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.AppearanceEntryImpl <em>Appearance Entry</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.AppearanceEntryImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getAppearanceEntry()
+	 * @generated
+	 */
+	int APPEARANCE_ENTRY = 34;
+
+	/**
+	 * The feature id for the '<em><b>Key</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int APPEARANCE_ENTRY__KEY = 0;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int APPEARANCE_ENTRY__VALUE = 1;
+
+	/**
+	 * The number of structural features of the '<em>Appearance Entry</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int APPEARANCE_ENTRY_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>Appearance Entry</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int APPEARANCE_ENTRY_OPERATION_COUNT = 0;
+
+	/**
 	 * The feature id for the '<em><b>Label</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6046,13 +6092,22 @@ public interface EngineeringPackage extends EPackage {
 	int MODEL_ELEMENT_APPEARANCE__OPERATIONS = APPEARANCE_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Actions</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL_ELEMENT_APPEARANCE__ACTIONS = APPEARANCE_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Model Element Appearance</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_ELEMENT_APPEARANCE_FEATURE_COUNT = APPEARANCE_FEATURE_COUNT + 2;
+	int MODEL_ELEMENT_APPEARANCE_FEATURE_COUNT = APPEARANCE_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>Model Element Appearance</em>' class.
@@ -6224,7 +6279,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getNamedElementReference()
 	 * @generated
 	 */
-	int NAMED_ELEMENT_REFERENCE = 38;
+	int NAMED_ELEMENT_REFERENCE = 39;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -6342,7 +6397,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getLink()
 	 * @generated
 	 */
-	int LINK = 39;
+	int LINK = 40;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -6460,7 +6515,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getKeyResult()
 	 * @generated
 	 */
-	int KEY_RESULT = 40;
+	int KEY_RESULT = 41;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -6614,7 +6669,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getObjective()
 	 * @generated
 	 */
-	int OBJECTIVE = 41;
+	int OBJECTIVE = 42;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -6822,7 +6877,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getDecision()
 	 * @generated
 	 */
-	int DECISION = 42;
+	int DECISION = 43;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -7237,7 +7292,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getJourneyElement()
 	 * @generated
 	 */
-	int JOURNEY_ELEMENT = 43;
+	int JOURNEY_ELEMENT = 44;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -12476,7 +12531,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getSectionStyle()
 	 * @generated
 	 */
-	int SECTION_STYLE = 61;
+	int SECTION_STYLE = 62;
 
 
 	/**
@@ -14422,6 +14477,42 @@ public interface EngineeringPackage extends EPackage {
 	EAttribute getAppearance_SectionStyle();
 
 	/**
+	 * Returns the meta object for class '{@link java.util.Map.Entry <em>Appearance Entry</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Appearance Entry</em>'.
+	 * @see java.util.Map.Entry
+	 * @model keyDataType="org.eclipse.emf.ecore.EString"
+	 *        valueType="org.nasdanika.engineering.Appearance" valueContainment="true" valueRequired="true"
+	 *        valueAnnotation="urn:org.nasdanika homogenous='true'"
+	 *        annotation="urn:org.nasdanika documentation-reference='doc/appearance-entry.md'"
+	 * @generated
+	 */
+	EClass getAppearanceEntry();
+
+	/**
+	 * Returns the meta object for the attribute '{@link java.util.Map.Entry <em>Key</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Key</em>'.
+	 * @see java.util.Map.Entry
+	 * @see #getAppearanceEntry()
+	 * @generated
+	 */
+	EAttribute getAppearanceEntry_Key();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link java.util.Map.Entry <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Value</em>'.
+	 * @see java.util.Map.Entry
+	 * @see #getAppearanceEntry()
+	 * @generated
+	 */
+	EReference getAppearanceEntry_Value();
+
+	/**
 	 * Returns the meta object for class '{@link org.nasdanika.engineering.ModelElementAppearance <em>Model Element Appearance</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -14452,6 +14543,17 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getModelElementAppearance_Operations();
+
+	/**
+	 * Returns the meta object for the map '{@link org.nasdanika.engineering.ModelElementAppearance#getActions <em>Actions</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the map '<em>Actions</em>'.
+	 * @see org.nasdanika.engineering.ModelElementAppearance#getActions()
+	 * @see #getModelElementAppearance()
+	 * @generated
+	 */
+	EReference getModelElementAppearance_Actions();
 
 	/**
 	 * Returns the meta object for class '{@link java.util.Map.Entry <em>Model Element Appearance Entry</em>}'.
@@ -14969,6 +15071,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @return the meta object for data type '<em>Section Style</em>'.
 	 * @see org.nasdanika.html.app.SectionStyle
 	 * @model instanceClass="org.nasdanika.html.app.SectionStyle"
+	 *        annotation="urn:org.nasdanika documentation-reference='doc/section-style.md'"
 	 * @generated
 	 */
 	EDataType getSectionStyle();
@@ -16575,6 +16678,32 @@ public interface EngineeringPackage extends EPackage {
 		EAttribute APPEARANCE__SECTION_STYLE = eINSTANCE.getAppearance_SectionStyle();
 
 		/**
+		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.AppearanceEntryImpl <em>Appearance Entry</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.engineering.impl.AppearanceEntryImpl
+		 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getAppearanceEntry()
+		 * @generated
+		 */
+		EClass APPEARANCE_ENTRY = eINSTANCE.getAppearanceEntry();
+
+		/**
+		 * The meta object literal for the '<em><b>Key</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute APPEARANCE_ENTRY__KEY = eINSTANCE.getAppearanceEntry_Key();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference APPEARANCE_ENTRY__VALUE = eINSTANCE.getAppearanceEntry_Value();
+
+		/**
 		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.ModelElementAppearanceImpl <em>Model Element Appearance</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -16599,6 +16728,14 @@ public interface EngineeringPackage extends EPackage {
 		 * @generated
 		 */
 		EReference MODEL_ELEMENT_APPEARANCE__OPERATIONS = eINSTANCE.getModelElementAppearance_Operations();
+
+		/**
+		 * The meta object literal for the '<em><b>Actions</b></em>' map feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MODEL_ELEMENT_APPEARANCE__ACTIONS = eINSTANCE.getModelElementAppearance_Actions();
 
 		/**
 		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.ModelElementAppearanceEntryImpl <em>Model Element Appearance Entry</em>}' class.

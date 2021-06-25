@@ -85,7 +85,7 @@ public class JourneyViewAction extends ActivityViewAction<Journey> {
 			EList<Transition> outputs = journeyElement.getAllOutputs(elementsJourneyPath); 
 			for (Transition output: outputs) {
 				JourneyElement targetElement = output.getTarget(elementsJourneyPath);
-				if (accumulator.contains(targetElement) && !siblings(journeyElement, targetElement)) { 
+				if (targetElement != null && accumulator.contains(targetElement) && !siblings(journeyElement, targetElement)) { 
 					ret
 						.append(diagramId(journeyElement))
 						.append(" --> ")
@@ -100,7 +100,7 @@ public class JourneyViewAction extends ActivityViewAction<Journey> {
 			
 			for (Call call: journeyElement.getAllCalls(elementsJourneyPath)) {
 				JourneyElement targetElement = call.getTarget(elementsJourneyPath);
-				if (accumulator.contains(targetElement) && !siblings(journeyElement, targetElement)) { 
+				if (targetElement != null && accumulator.contains(targetElement) && !siblings(journeyElement, targetElement)) { 
 					ret
 						.append(diagramId(journeyElement))
 						.append(" -left[#black]-> ")
@@ -193,8 +193,8 @@ public class JourneyViewAction extends ActivityViewAction<Journey> {
 				finalElements.add(journeyElement);
 			}
 			for (Transition output: outputs) {
-				JourneyElement targetElement = output.getTarget(elementsJourneyPath); 
-				if (journeyElements.contains(targetElement)) { 
+				JourneyElement targetElement = output.getTarget(elementsJourneyPath);
+				if (targetElement != null && journeyElements.contains(targetElement)) { 
 					initialElements.remove(targetElement); 
 					ret	
 						.append(diagramId(journeyElement))
@@ -209,7 +209,7 @@ public class JourneyViewAction extends ActivityViewAction<Journey> {
 			}
 			for (Call call: journeyElement.getAllCalls(elementsJourneyPath)) {
 				JourneyElement targetElement = call.getTarget(elementsJourneyPath); 
-				if (journeyElements.contains(targetElement)) { 
+				if (targetElement != null && journeyElements.contains(targetElement)) { 
 					initialElements.remove(targetElement); 
 					ret.append(diagramId(journeyElement))
 					.append(" -right[#black]-> ")

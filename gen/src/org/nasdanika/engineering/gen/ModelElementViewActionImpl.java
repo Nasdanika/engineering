@@ -38,6 +38,7 @@ import org.nasdanika.common.Util;
 import org.nasdanika.common.persistence.Marker;
 import org.nasdanika.emf.EObjectAdaptable;
 import org.nasdanika.emf.EmfUtil;
+import org.nasdanika.engineering.Appearance;
 import org.nasdanika.engineering.Endeavor;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Increment;
@@ -110,17 +111,19 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 	
 	@Override
 	protected Object generateHead(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
+		Fragment ret = (Fragment) super.generateHead(viewGenerator, progressMonitor);
 		TableOfContents toc = getSemanticElement().getTableOfContents();
 		if (toc != null && !Util.isBlank(toc.getRole())) {
 			switch (toc.getRole()) {
-			case "content":
-				return generateFragmentOfContents(viewGenerator, progressMonitor);
+			case CONTENT_ROLE:
+				ret.content(generateFragmentOfContents(viewGenerator, progressMonitor));
+				break;
 			case Action.Role.FLOAT_LEFT:
 			case Action.Role.FLOAT_RIGHT:
-				return generateTableOfContents(viewGenerator, progressMonitor);
+				ret.content(generateTableOfContents(viewGenerator, progressMonitor));
 			}
 		}
-		return super.generateHead(viewGenerator, progressMonitor);
+		return ret;
 	}
 	
 	protected Action createTableOfContentsAction() {
@@ -403,8 +406,7 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 		
 		return false;
 	}
-	
-	
+		
 	@Override
 	public Label memberCategory(ETypedElement member) {
 		ModelElementAppearance appearance = getSemanticElement().getAppearance();
@@ -833,7 +835,22 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 	protected static boolean matchSeverity(Diagnostic diagnostic) {
 		return diagnostic.getSeverity() == Diagnostic.ERROR ||diagnostic.getSeverity() == Diagnostic.WARNING;
 	}
-		
+	
+	protected boolean hasDiagnosticSummary() {
+		Map<EObject, Diagnostic> diagnosticMap = factory.getDiagnosticMap();
+		if (diagnosticMap == null || diagnosticMap.isEmpty()) {
+			return false;
+		}
+		for (Entry<EObject, Diagnostic> de: diagnosticMap.entrySet()) {
+			if (EcoreUtil.isAncestor(getSemanticElement(), de.getKey())) {
+				if (matchSeverity(de.getValue())) {
+					return true;
+				}
+			}
+		}
+		return false;		
+	}
+	
 	@Override
 	protected Object diagnosticSummary(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
 		Map<EObject, Diagnostic> diagnosticMap = factory.getDiagnosticMap();
@@ -850,7 +867,6 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 				if (diagnosticRow(de.getValue(), table, 0, viewGenerator)) {
 					hasDiagnostic = true;
 				}
-				
 			}
 		}
 		return hasDiagnostic ? "<h3>Diagnostic</h3>" + table : null;
@@ -933,10 +949,10 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 					if (featureAppearance != null) {
 						boolean specifiesElementActionsRoles = false;
 						for (String featureRole: featureAppearance.getRoles()) {
-							if (featureRole.equals(MemberRole.ELEMENT_ACTIONS.LITERAL + "/" + role) || featureRole.equals(MemberRole.ELEMENT_ACTIONS_SORTED.LITERAL + "/" + role)) {
+							if (featureRole.equals(MemberRole.ELEMENTS.LITERAL + "/" + role) || featureRole.equals(MemberRole.ELEMENTS_SORTED.LITERAL + "/" + role)) {
 								return true;
 							}
-							if (featureRole.startsWith(MemberRole.ELEMENT_ACTIONS.LITERAL + "/") || featureRole.startsWith(MemberRole.ELEMENT_ACTIONS_SORTED.LITERAL + "/")) {
+							if (featureRole.startsWith(MemberRole.ELEMENTS.LITERAL + "/") || featureRole.startsWith(MemberRole.ELEMENTS_SORTED.LITERAL + "/")) {
 								specifiesElementActionsRoles = true;
 							}
 							if (specifiesElementActionsRoles) {
@@ -958,10 +974,10 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 						if (featureAppearance != null) {
 							boolean specifiesElementActionsRoles = false;
 							for (String featureRole: featureAppearance.getRoles()) {
-								if (featureRole.equals(MemberRole.ELEMENT_ACTIONS.LITERAL + "/" + role) || featureRole.equals(MemberRole.ELEMENT_ACTIONS_SORTED.LITERAL + "/" + role)) {
+								if (featureRole.equals(MemberRole.ELEMENTS.LITERAL + "/" + role) || featureRole.equals(MemberRole.ELEMENTS_SORTED.LITERAL + "/" + role)) {
 									return true;
 								}
-								if (featureRole.startsWith(MemberRole.ELEMENT_ACTIONS.LITERAL + "/") || featureRole.startsWith(MemberRole.ELEMENT_ACTIONS_SORTED.LITERAL + "/")) {
+								if (featureRole.startsWith(MemberRole.ELEMENTS.LITERAL + "/") || featureRole.startsWith(MemberRole.ELEMENTS_SORTED.LITERAL + "/")) {
 									specifiesElementActionsRoles = true;
 								}
 							}
@@ -1005,6 +1021,11 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 				return contentPart == null;
 			}
 			
+			@Override
+			public boolean isInRole(String role) {
+				return isMemberActionInRole(feature, role);
+			}
+			
 		};
 	}
 	
@@ -1019,6 +1040,11 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 			@Override
 			public boolean isEmpty() {
 				return contentPart == null;
+			}
+			
+			@Override
+			public boolean isInRole(String role) {
+				return isMemberActionInRole(operation, role);
 			}
 			
 		};
@@ -1131,8 +1157,9 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 	@Override
 	public String memberIcon(ETypedElement member) {
 		ModelElementAppearance appearance = getSemanticElement().getAppearance();
+		String memberKey = Util.camelToKebab(member.getName());
 		if (appearance != null) {
-			MemberAppearance memberAppearance = (member instanceof EStructuralFeature ? appearance.getFeatures() : appearance.getOperations()).get(Util.camelToKebab(member.getName()));
+			MemberAppearance memberAppearance = (member instanceof EStructuralFeature ? appearance.getFeatures() : appearance.getOperations()).get(memberKey);
 			if (memberAppearance != null) {
 				String icon = memberAppearance.getIcon();
 				if (!Util.isBlank(icon)) {
@@ -1143,7 +1170,7 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 				
 		for (EClass eClass: EmfUtil.lineage(getSemanticElement().eClass())) {
 			for (ModelElementAppearance classAppearance: factory.getAppearance(eClass)) {
-				MemberAppearance memberAppearance = (member instanceof EStructuralFeature ? classAppearance.getFeatures() : classAppearance.getOperations()).get(Util.camelToKebab(member.getName()));
+				MemberAppearance memberAppearance = (member instanceof EStructuralFeature ? classAppearance.getFeatures() : classAppearance.getOperations()).get(memberKey);
 				if (memberAppearance !=  null) {
 					String icon = memberAppearance.getIcon();
 					if (!Util.isBlank(icon)) {
@@ -1172,8 +1199,9 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 	@Override
 	public String memberLabelText(ETypedElement member) {
 		ModelElementAppearance appearance = getSemanticElement().getAppearance();
+		String memberKey = Util.camelToKebab(member.getName());
 		if (appearance != null) {
-			MemberAppearance memberAppearance = (member instanceof EStructuralFeature ? appearance.getFeatures() : appearance.getOperations()).get(Util.camelToKebab(member.getName()));
+			MemberAppearance memberAppearance = (member instanceof EStructuralFeature ? appearance.getFeatures() : appearance.getOperations()).get(memberKey);
 			if (memberAppearance != null) {
 				String label = memberAppearance.getLabel();
 				if (!Util.isBlank(label)) {
@@ -1184,7 +1212,7 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 				
 		for (EClass eClass: EmfUtil.lineage(getSemanticElement().eClass())) {
 			for (ModelElementAppearance classAppearance: factory.getAppearance(eClass)) {
-				MemberAppearance memberAppearance = (member instanceof EStructuralFeature ? classAppearance.getFeatures() : classAppearance.getOperations()).get(Util.camelToKebab(member.getName()));
+				MemberAppearance memberAppearance = (member instanceof EStructuralFeature ? classAppearance.getFeatures() : classAppearance.getOperations()).get(memberKey);
 				if (memberAppearance !=  null) {
 					String label = memberAppearance.getLabel();
 					if (!Util.isBlank(label)) {
@@ -1217,6 +1245,119 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 		}
 		String tooltip = Util.firstPlainTextSentence(description, 30, 100);
 		return Util.isBlank(tooltip) ? "" : "{" + tooltip + "}";
-	}		
+	}
+
+	// --- UI actions customization.
 	
+	/**
+	 * Role for member action
+	 * @param role
+	 * @return
+	 */
+	@Override
+	protected boolean isActionInRole(String action, String role, String... defaultRoles) {		
+		if (DIAGNOSTIC_SUMMARY_ACTION.equals(action) && !hasDiagnosticSummary()) {
+			return false;
+		}		
+		
+		ModelElementAppearance appearance = getSemanticElement().getAppearance();
+		if (appearance != null) {
+			Appearance actionAppearance = appearance.getActions().get(action);
+			if (actionAppearance != null) {
+				if (!actionAppearance.getRoles().isEmpty()) {
+					boolean hasActionRoles = false;
+					for (String actionRole: actionAppearance.getRoles()) {
+						if (actionRole.equals(role)) {
+							return true;
+						}
+						hasActionRoles = true;
+					}
+					
+					if (hasActionRoles) {
+						return false;
+					}
+				}
+			}
+		}
+		
+		for (EClass eClass: EmfUtil.lineage(getSemanticElement().eClass())) {
+			for (ModelElementAppearance classAppearance: getFactory().getAppearance(eClass)) {
+				Appearance actionAppearance = classAppearance.getActions().get(action);
+				if (actionAppearance != null) {
+					if (!actionAppearance.getRoles().isEmpty()) {
+						boolean hasActionRoles = false;
+						for (String actionRole: actionAppearance.getRoles()) {
+							if (actionRole.equals(role)) {
+								return true;
+							}
+							hasActionRoles = true;
+						}
+						
+						if (hasActionRoles) {
+							return false;
+						}
+					}
+				}
+			}
+		}
+		
+		return super.isActionInRole(action, role, defaultRoles);
+	}
+	
+	@Override
+	protected String actionIcon(String action, String defaultValue) {
+		ModelElementAppearance appearance = getSemanticElement().getAppearance();
+		if (appearance != null) {
+			Appearance actionAppearance = appearance.getActions().get(action);
+			if (actionAppearance != null) {
+				String icon = actionAppearance.getIcon();
+				if (!Util.isBlank(icon)) {
+					return filterIcon(icon);
+				}
+			}
+		}
+				
+		for (EClass eClass: EmfUtil.lineage(getSemanticElement().eClass())) {
+			for (ModelElementAppearance classAppearance: factory.getAppearance(eClass)) {
+				Appearance actionAppearance = classAppearance.getActions().get(action);
+				if (actionAppearance !=  null) {
+					String icon = actionAppearance.getIcon();
+					if (!Util.isBlank(icon)) {
+						return filterIcon(icon);
+					}
+				}
+			}
+		}
+
+		return super.actionIcon(action, defaultValue);
+	}
+
+	@Override
+	protected String actionText(String action, String defaultValue) {
+		ModelElementAppearance appearance = getSemanticElement().getAppearance();
+		if (appearance != null) {
+			Appearance actionAppearance = appearance.getActions().get(action);
+			if (actionAppearance != null) {
+				String label = actionAppearance.getLabel();
+				if (!Util.isBlank(label)) {
+					return label;
+				}
+			}
+		}
+				
+		for (EClass eClass: EmfUtil.lineage(getSemanticElement().eClass())) {
+			for (ModelElementAppearance classAppearance: factory.getAppearance(eClass)) {
+				Appearance actionAppearance = classAppearance.getActions().get(action);
+				if (actionAppearance !=  null) {
+					String label = actionAppearance.getLabel();
+					if (!Util.isBlank(label)) {
+						return label;
+					}
+				}
+			}
+		}
+
+		return super.actionText(action, defaultValue);
+	}
+			
 }

@@ -34,6 +34,7 @@ import org.nasdanika.engineering.Persona;
 import org.nasdanika.engineering.PseudoState;
 import org.nasdanika.engineering.Start;
 import org.nasdanika.engineering.Transition;
+import org.nasdanika.html.Fragment;
 import org.nasdanika.html.app.Action;
 import org.nasdanika.html.app.NavigationActionActivator;
 import org.nasdanika.html.app.ViewGenerator;
@@ -87,7 +88,7 @@ public class JourneyElementViewAction<T extends JourneyElement> extends Engineer
 		for (Transition output: getSemanticElement().getAllOutputs(journeyPath)) {
 			Row outputRow = ret.body().row();			
 			ViewAction<?> targetAction = adaptTargetToViewAction(output); 
-			outputRow.cell(viewGenerator.link(targetAction)); 
+			outputRow.cell(targetAction == null ? bootstrapFactory.alert(Color.DANGER, "Unresolved output target: " + output.getTarget()) : viewGenerator.link(targetAction)); 
 			outputRow.cell(StringEscapeUtils.escapeHtml4(output.getName())); 
 			outputRow.cell(getModelElementDescription(output));
 			outputRow.cell(listOfMemberElementsViewActions(EngineeringPackage.Literals.TRANSITION__PAYLOAD, output.getPayload(), null, true, false, 1));
@@ -108,9 +109,13 @@ public class JourneyElementViewAction<T extends JourneyElement> extends Engineer
 	}
 	
 	protected JourneyElementViewAction<?> adaptTargetToViewAction(Transition transition) {
-		JourneyElement target = Objects.requireNonNull(transition.getTarget(journeyPath));
-		return adaptToViewAction(target);
+		JourneyElement target = transition.getTarget(journeyPath);
+		return target == null ? null : adaptToViewAction(target);
 	}
+
+//	protected String targetNotFoundMessage(Transition transition) {
+//		return "Target '" + transition.getTarget() + "' not found in journey path " + EngineeringValidator.journeyPath(journeyPath) + " at " + getMarker();
+//	}
 	
 	protected Table generateCallsTable(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) { 
 		BootstrapFactory bootstrapFactory = viewGenerator.getBootstrapFactory();
@@ -119,7 +124,7 @@ public class JourneyElementViewAction<T extends JourneyElement> extends Engineer
 		for (Call call: getSemanticElement().getAllCalls(journeyPath)) {
 			Row callRow = ret.body().row();
 			ViewAction<?> targetAction = adaptTargetToViewAction(call); 
-			callRow.cell(viewGenerator.link(targetAction)); 
+			callRow.cell(targetAction == null ? bootstrapFactory.alert(Color.DANGER, "Unresolved call target: " + call.getTarget()) : viewGenerator.link(targetAction)); 
 			callRow.cell(StringEscapeUtils.escapeHtml4(call.getName())); 
 			callRow.cell(getModelElementDescription(call));
 			callRow.cell(listOfMemberElementsViewActions(EngineeringPackage.Literals.TRANSITION__PAYLOAD, call.getPayload(), null, true, false, 1));
@@ -210,7 +215,9 @@ public class JourneyElementViewAction<T extends JourneyElement> extends Engineer
 	
 	@Override
 	protected Object generateHead(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
-		return viewGenerator.getHTMLFactory().fragment(super.generateHead(viewGenerator, progressMonitor), generateDiagram());
+		Fragment ret = (Fragment) super.generateHead(viewGenerator, progressMonitor);
+		ret.content(generateDiagram());
+		return ret;
 	}
 
 	protected Object generateDiagram() {
@@ -260,7 +267,7 @@ public class JourneyElementViewAction<T extends JourneyElement> extends Engineer
 			for (JourneyElement diagramElement: diagramElements) { 
 				for (Transition output: diagramElement.getAllOutputs(journeyPath)) {
 					JourneyElement targetElement = output.getTarget(journeyPath); 
-					if (diagramElements.contains(targetElement)) {
+					if (targetElement != null && diagramElements.contains(targetElement)) {
 						 ret.append(diagramId(diagramElement))
 						 .append(" --> ")
 						 .append(diagramId(targetElement));
@@ -274,7 +281,7 @@ public class JourneyElementViewAction<T extends JourneyElement> extends Engineer
 			
 				for (Call call: diagramElement.getAllCalls(journeyPath)) {
 					JourneyElement targetElement = call.getTarget(journeyPath); 
-					if (diagramElements.contains(targetElement)) { 
+					if (targetElement != null && diagramElements.contains(targetElement)) { 
 						ret
 							.append (diagramId(diagramElement))
 							.append(" -right[#black]-> ")
@@ -413,7 +420,7 @@ public class JourneyElementViewAction<T extends JourneyElement> extends Engineer
 				JourneyElement target = output.getTarget(journeyPath); 
 				if (target instanceof PseudoState) {
 					collectRelatedElements(target, accumulator);
-				} else {
+				} else if (target != null) {
 					accumulator.add(target);
 				}
 			}
@@ -422,7 +429,7 @@ public class JourneyElementViewAction<T extends JourneyElement> extends Engineer
 				JourneyElement target = (JourneyElement) invocation.eContainer(); 
 				if (target instanceof PseudoState) {
 					collectRelatedElements(target, accumulator);
-				} else {
+				} else if (target != null) {
 					accumulator.add(resolve(target));
 				}
 			}
@@ -431,7 +438,7 @@ public class JourneyElementViewAction<T extends JourneyElement> extends Engineer
 				JourneyElement target = call.getTarget(journeyPath); 
 				if (target instanceof PseudoState) {
 					collectRelatedElements(target, accumulator);
-				} else {
+				} else if (target != null) {
 					accumulator.add(target);
 				}
 			}

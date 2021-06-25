@@ -31,7 +31,6 @@ import org.nasdanika.engineering.NamedElement;
 import org.nasdanika.engineering.Objective;
 import org.nasdanika.engineering.Release;
 import org.nasdanika.html.Fragment;
-import org.nasdanika.html.HTMLFactory;
 import org.nasdanika.html.Tag;
 import org.nasdanika.html.TagName;
 import org.nasdanika.html.app.Action;
@@ -139,7 +138,12 @@ public class EngineerViewAction<T extends Engineer> extends PersonaViewAction<T>
 				return Collections.emptyList();
 			}
 			return Collections.singleton(createFeatureViewAction((EStructuralFeature) member, this::generateObjectivesTable));			
-		}		
+		}	
+		
+		if (member == EngineeringPackage.Literals.ENGINEER__INCREMENTS) {
+			ModelElementFeatureViewAction<T, EStructuralFeature, ModelElementViewActionImpl<T>> incrementsAction = createFeatureViewAction((EStructuralFeature) member, this::incrementsSummary);
+			return Collections.singleton(incrementsAction);
+		}
 		
 		return super.memberActions(member);
 	}
@@ -157,22 +161,14 @@ public class EngineerViewAction<T extends Engineer> extends PersonaViewAction<T>
 		return table;
 	}					
 		
-	@Override
-	protected Object memberContent(ETypedElement member, ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
-		if (member == EngineeringPackage.Literals.ENGINEER__INCREMENTS) {
-			Collection<Issue> scheduledIssues = new ArrayList<>();
-			getSemanticElement().getIncrements().forEach(i -> collectAllIncrementIssues(i, scheduledIssues));
-			if (scheduledIssues.isEmpty()) {
-				return null;
-			}
-			HTMLFactory htmlFactory = viewGenerator.getHTMLFactory();
-			int headerLevel = viewGenerator.get(SectionStyle.HEADER_LEVEL, Integer.class, 3);
-			Fragment ret = htmlFactory.fragment(htmlFactory.tag("h" + headerLevel, Util.nameToLabel(member.getName())));
-			Function<Increment, Collection<Issue>> issueSource = in -> scheduledIssues.stream().filter(is -> is.getIncrement() == in).collect(Collectors.toList());
-			ret.content(IncrementViewAction.incrementsTable(getSemanticElement().getIncrements(), issueSource, true, viewGenerator, progressMonitor));
-			return ret.toString();
+	protected Object incrementsSummary(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
+		Collection<Issue> scheduledIssues = new ArrayList<>();
+		getSemanticElement().getIncrements().forEach(i -> collectAllIncrementIssues(i, scheduledIssues));
+		if (scheduledIssues.isEmpty()) {
+			return null;
 		}
-		return super.memberContent(member, viewGenerator, progressMonitor);
+		Function<Increment, Collection<Issue>> issueSource = in -> scheduledIssues.stream().filter(is -> is.getIncrement() == in).collect(Collectors.toList());
+		return IncrementViewAction.incrementsTable(getSemanticElement().getIncrements(), issueSource, true, viewGenerator, progressMonitor);
 	}
 	
 	private void collectAllIncrementIssues(Increment increment, Collection<Issue> collector) {
