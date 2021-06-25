@@ -11,6 +11,7 @@ import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.ETypedElement;
 import org.eclipse.emf.ecore.EcorePackage;
@@ -65,12 +66,14 @@ public class EngineerViewAction<T extends Engineer> extends PersonaViewAction<T>
 				
 			};
 			
-			assignmentsAction.getChildren().add(endeavorsSection(
+			Collection<Diagnostic> featureDiagnostic = getFeatureDiagnostic((EStructuralFeature) member);
+			assignmentsAction.getChildren().add(endeavorsAction(
 					getSemanticElement().getAssignments().stream().filter(e -> e instanceof Release && !e.getAllIssues().isEmpty()).collect(Collectors.toList()), 
 					e -> e == EcorePackage.Literals.EOBJECT___ECONTAINER ? productHeaderBuilder : null,
 					"Releases", 
 					"assignments-releases", 
-					getFeatureDiagnostic((EStructuralFeature) member),
+					featureDiagnostic,
+					null,
 					EcorePackage.Literals.EOBJECT___ECONTAINER,
 					EngineeringPackage.Literals.NAMED_ELEMENT__NAME,
 					EngineeringPackage.Literals.ENDEAVOR__START,
@@ -79,12 +82,13 @@ public class EngineerViewAction<T extends Engineer> extends PersonaViewAction<T>
 					EngineeringPackage.Literals.ENDEAVOR__TOTAL_COST,					
 					EngineeringPackage.Literals.ENDEAVOR__COMPLETION));			
 			
-			assignmentsAction.getChildren().add(endeavorsSection(
+			assignmentsAction.getChildren().add(endeavorsAction(
 					getSemanticElement().getAssignments().stream().filter(e -> e instanceof Feature && !e.getAllIssues().isEmpty()).collect(Collectors.toList()), 
 					null,
 					"Features", 
 					"assignments-features", 
-					getFeatureDiagnostic((EStructuralFeature) member),
+					featureDiagnostic,
+					null,
 					EngineeringPackage.Literals.NAMED_ELEMENT__NAME,
 					EngineeringPackage.Literals.ENDEAVOR__START,
 					EngineeringPackage.Literals.ENDEAVOR__END,
@@ -92,12 +96,13 @@ public class EngineerViewAction<T extends Engineer> extends PersonaViewAction<T>
 					EngineeringPackage.Literals.ENDEAVOR__TOTAL_COST,					
 					EngineeringPackage.Literals.ENDEAVOR__COMPLETION));			
 			
-			assignmentsAction.getChildren().add(endeavorsSection(
+			assignmentsAction.getChildren().add(endeavorsAction(
 					getSemanticElement().getAssignments().stream().filter(e -> e instanceof Increment && !e.getAllIssues().isEmpty()).collect(Collectors.toList()), 
 					null,
 					"Increments", 
 					"assignments-increments", 
-					getFeatureDiagnostic((EStructuralFeature) member),
+					featureDiagnostic,
+					null,
 					EngineeringPackage.Literals.NAMED_ELEMENT__NAME,
 					EngineeringPackage.Literals.ENDEAVOR__START,
 					EngineeringPackage.Literals.ENDEAVOR__END,
@@ -105,12 +110,13 @@ public class EngineerViewAction<T extends Engineer> extends PersonaViewAction<T>
 					EngineeringPackage.Literals.ENDEAVOR__TOTAL_COST,					
 					EngineeringPackage.Literals.ENDEAVOR__COMPLETION));			
 			
-			assignmentsAction.getChildren().add(endeavorsSection(
+			assignmentsAction.getChildren().add(endeavorsAction(
 					getSemanticElement().getAssignments().stream().filter(e -> e instanceof Issue).collect(Collectors.toList()), 
 					null,
 					"Issues", 
 					"assignments-issues", 
-					getFeatureDiagnostic((EStructuralFeature) member),
+					featureDiagnostic,
+					null,
 					EngineeringPackage.Literals.NAMED_ELEMENT__NAME,
 					EngineeringPackage.Literals.ENDEAVOR__START,
 					EngineeringPackage.Literals.ENDEAVOR__END,

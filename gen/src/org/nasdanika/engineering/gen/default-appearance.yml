@@ -17,7 +17,11 @@ model-elements:
         icon: fas fa-book
         roles: 
          - actions/section
-         - element-actions/none  
+         - element-actions/none
+      sections:
+        roles: element-actions/section
+  table-of-contents:
+    roles: none
   module:
     icon: fas fa-cube
     features:
@@ -48,7 +52,7 @@ model-elements:
   capability:
     features:
       required-by:
-        roles: actions
+        roles: actions/section
   endeavor:
     features:
       all-issues:
@@ -68,7 +72,7 @@ model-elements:
       releases:
         roles: property
       issues:
-        roles: actions
+        roles: actions/section
   issue:
     features:
       children: 
@@ -85,9 +89,10 @@ model-elements:
     icon: fas fa-truck
     features:
       issues: 
-        roles: actions
+        roles: actions/section
       features:
         icon: fas fa-cogs
+        roles: actions/section
   forum:
     features:
       topics:
@@ -100,7 +105,12 @@ model-elements:
     roles: navigation
     features:
       issues:
-        roles: element-actions/none
+        roles: 
+         - element-actions/none
+         - actions/section
+      all-issues:
+        roles: 
+         - actions/section
       discussion:
         category: false
         roles: actions/context
@@ -161,7 +171,7 @@ model-elements:
       issues:
         roles: none
       releases:
-        roles: actions
+        roles: actions/section
       children:
         roles: element-actions
       capacity:
@@ -171,13 +181,13 @@ model-elements:
   issue-category:
     features:
       issues:
-        roles: actions
+        roles: actions/section
       allocations:
         roles: actions/section
   issue-status:
     features:
       issues:
-        roles: actions
+        roles: actions/section
   topic:
     roles: none
     features:
@@ -235,7 +245,8 @@ model-elements:
   journey:
     features:
       elements:
-        category: false
+        roles: none
+      all-elements:
         roles: element-actions/none
   transition:
     features:

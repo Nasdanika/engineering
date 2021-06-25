@@ -15,8 +15,8 @@ import java.util.Objects;
 import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.text.StringEscapeUtils;
 import org.apache.commons.text.WordUtils;
+import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.ETypedElement;
 import org.nasdanika.common.DiagramGenerator;
@@ -56,12 +56,14 @@ public class JourneyElementViewAction<T extends JourneyElement> extends Engineer
 	
 	@Override
 	public Action getParent() {
-		Action parent = super.getParent();		
-		EObject eContainer = getSemanticElement().eContainer();
-		if (eContainer != null) {
-			JourneyElementViewActionProvider<?> jevap = EObjectAdaptable.adaptTo(eContainer, JourneyElementViewActionProvider.class);
+		Action parent = super.getParent();
+		if (!journeyPath.isEmpty()) {
+			Journey semanticParent = journeyPath.get(journeyPath.size() - 1);
+			JourneyElementViewActionProvider<?> jevap = EObjectAdaptable.adaptTo(semanticParent, JourneyElementViewActionProvider.class);
 			if (jevap != null) {
-				parent = jevap.apply(journeyPath);
+				EList<Journey> semanticParentJourneyPath = ECollections.newBasicEList(journeyPath);
+				semanticParentJourneyPath.remove(semanticParentJourneyPath.size() - 1);				
+				parent = jevap.apply(semanticParentJourneyPath);
 			}
 		}
 		
@@ -205,8 +207,12 @@ public class JourneyElementViewAction<T extends JourneyElement> extends Engineer
 		 
 		 return super.memberActions(member);
 	}
-
+	
 	@Override
+	protected Object generateHead(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
+		return viewGenerator.getHTMLFactory().fragment(super.generateHead(viewGenerator, progressMonitor), generateDiagram());
+	}
+
 	protected Object generateDiagram() {
 		String spec = generatePlantUMLText(); 
 		if (Util.isBlank(spec)) {
@@ -377,6 +383,20 @@ public class JourneyElementViewAction<T extends JourneyElement> extends Engineer
 	private static double quadraticRoot(double a, double b, double c) { 
 		return (-b + Math.sqrt(b*b - 4 * a * c)) / (2 * a);
 	}
+	
+	private JourneyElement resolve(JourneyElement journeyElement) {
+		String jePath = journeyElement.getPath();
+		if (journeyPath.isEmpty() || Util.isBlank(jePath)) {
+			return journeyElement;
+		}
+		Journey lastJourney = journeyPath.get(journeyPath.size() - 1);
+		for (JourneyElement lje: lastJourney.getAllElements()) {
+			if (jePath.equals(lje.getPath())) {
+				return lje;
+			}
+		}
+		return journeyElement;
+	}
 
 	private void collectRelatedElements(JourneyElement journeyElement, Collection<JourneyElement> accumulator) { 
 		if (journeyElement != null && accumulator.add(journeyElement)) {
@@ -384,8 +404,8 @@ public class JourneyElementViewAction<T extends JourneyElement> extends Engineer
 				JourneyElement target = (JourneyElement) input.eContainer(); 
 				if (target instanceof PseudoState) {
 					collectRelatedElements(target, accumulator);
-				} else {
-					accumulator.add(target) ;
+				} else {					
+					accumulator.add(resolve(target));
 				}
 			}
 
@@ -403,7 +423,7 @@ public class JourneyElementViewAction<T extends JourneyElement> extends Engineer
 				if (target instanceof PseudoState) {
 					collectRelatedElements(target, accumulator);
 				} else {
-					accumulator.add(target);
+					accumulator.add(resolve(target));
 				}
 			}
 

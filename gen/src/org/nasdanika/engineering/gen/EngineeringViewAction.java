@@ -45,7 +45,7 @@ public class EngineeringViewAction extends ActionImpl {
 			}
 		});
 		
-		Action assignmentSection = ModelElementViewActionImpl.endeavorsSection(
+		Action assignmentSection = ModelElementViewActionImpl.endeavorsAction(
 				issues, 
 				null,
 				"Issues", 
@@ -53,6 +53,7 @@ public class EngineeringViewAction extends ActionImpl {
 				null,
 				getActivator(),
 				Collections.emptyList(),
+				null,
 				EngineeringPackage.Literals.NAMED_ELEMENT__NAME,
 				EngineeringPackage.Literals.ENDEAVOR__START,
 				EngineeringPackage.Literals.ENDEAVOR__END,

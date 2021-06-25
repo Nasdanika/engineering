@@ -14,6 +14,7 @@ import java.util.Map.Entry;
 import java.util.Objects;
 import java.util.function.BiFunction;
 import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import org.apache.commons.codec.binary.Hex;
@@ -47,7 +48,11 @@ import org.nasdanika.engineering.ModelElement;
 import org.nasdanika.engineering.ModelElementAppearance;
 import org.nasdanika.engineering.NamedElement;
 import org.nasdanika.engineering.Release;
+import org.nasdanika.engineering.TableOfContents;
 import org.nasdanika.html.Fragment;
+import org.nasdanika.html.HTMLFactory;
+import org.nasdanika.html.Tag;
+import org.nasdanika.html.TagName;
 import org.nasdanika.html.app.Action;
 import org.nasdanika.html.app.ActionActivator;
 import org.nasdanika.html.app.Label;
@@ -58,10 +63,14 @@ import org.nasdanika.html.app.ViewGenerator;
 import org.nasdanika.html.app.ViewPart;
 import org.nasdanika.html.app.impl.ActionImpl;
 import org.nasdanika.html.app.impl.PathNavigationActionActivator;
+import org.nasdanika.html.bootstrap.ActionGroup;
 import org.nasdanika.html.bootstrap.BootstrapFactory;
+import org.nasdanika.html.bootstrap.Breakpoint;
+import org.nasdanika.html.bootstrap.Card;
 import org.nasdanika.html.bootstrap.Color;
 import org.nasdanika.html.bootstrap.RowContainer.Row;
 import org.nasdanika.html.bootstrap.RowContainer.Row.Cell;
+import org.nasdanika.html.bootstrap.Size;
 import org.nasdanika.html.bootstrap.Table;
 import org.nasdanika.html.bootstrap.Text.Alignment;
 import org.nasdanika.html.emf.HtmlEmfUtil;
@@ -100,9 +109,184 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 	}
 	
 	@Override
+	protected Object generateHead(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
+		TableOfContents toc = getSemanticElement().getTableOfContents();
+		if (toc != null && !Util.isBlank(toc.getRole())) {
+			switch (toc.getRole()) {
+			case "content":
+				return generateFragmentOfContents(viewGenerator, progressMonitor);
+			case Action.Role.FLOAT_LEFT:
+			case Action.Role.FLOAT_RIGHT:
+				return generateTableOfContents(viewGenerator, progressMonitor);
+			}
+		}
+		return super.generateHead(viewGenerator, progressMonitor);
+	}
+	
+	protected Action createTableOfContentsAction() {
+		TableOfContents toc = getSemanticElement().getTableOfContents();
+		if (toc != null && (Action.Role.CONTENT_LEFT.equals(toc.getRole()) || Action.Role.CONTENT_RIGHT.equals(toc.getRole()))) {
+			ActionImpl tocAction = new ActionImpl() {
+				
+				@Override
+				public Object generate(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
+					return ModelElementViewActionImpl.this.generateCardOfContents(viewGenerator, progressMonitor);
+				}
+				
+				@Override
+				public boolean isEmpty() {
+					return false;
+				}
+				
+			};
+			
+			tocAction.getRoles().add(toc.getRole());
+			tocAction.setActivator(ActionActivator.INLINE_ACTIVATOR);
+			return tocAction;
+		}
+		return null;
+	}
+
+	@Override
+	protected List<Action> collectChildren() {
+		Action tocAction = createTableOfContentsAction();
+		if (tocAction == null) {
+			return super.collectChildren();
+		}
+		ArrayList<Action> children = new ArrayList<>();
+		children.add(tocAction);
+		children.addAll(super.collectChildren());
+		return children;
+	}
+	
+	@Override
 	protected String getTargetDescription() {
 		return getModelElementDescription(getSemanticElement());
 	}
+	
+	protected Card generateCardOfContents(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
+		TableOfContents toc = getSemanticElement().getTableOfContents();
+		if (toc == null) {
+			return null;
+		}
+		
+		List<Action> sectionChildren = getSectionChildren();
+		if (sectionChildren.isEmpty()) {
+			return null;
+		}
+		Card ret = viewGenerator.getBootstrapFactory().card();
+		ret.margin().top(Breakpoint.DEFAULT, Size.S1);
+		if (!Util.isBlank(toc.getHeader())) {
+			ret.getHeader().toHTMLElement().content(toc.getHeader());
+		}
+		
+		if (toc.getDepth() == 1) {
+			ActionGroup actionGroup = viewGenerator.getBootstrapFactory().actionGroup(true);
+			for (Action sc: sectionChildren) {
+				viewGenerator.add(actionGroup, sc, false);
+			}
+			ret.toHTMLElement().content(actionGroup);
+		} else {
+			ret.getBody().toHTMLElement().content(sectionsList(this, viewGenerator, toc.getDepth()));
+		}
+		return ret;
+	}
+	
+	/**
+	 * Table with a header, if present, 
+	 * @param viewGenerator
+	 * @param progressMonitor
+	 * @return
+	 */
+	protected Table generateTableOfContents(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
+		TableOfContents toc = getSemanticElement().getTableOfContents();
+		if (toc == null) {
+			return null;
+		}
+		
+		List<Action> sectionChildren = getSectionChildren();
+		if (sectionChildren.isEmpty()) {
+			return null;
+		}
+		
+		BootstrapFactory bootstrapFactory = viewGenerator.get(BootstrapFactory.class, BootstrapFactory.INSTANCE);
+		Table ret = bootstrapFactory.table(); 
+		ret.toHTMLElement().style().width( "auto").style("border-radius", "3px");
+		if (Action.Role.FLOAT_LEFT.equals(toc.getRole())) {
+			ret.margin().right(Breakpoint.DEFAULT, Size.S1);
+			ret._float().left();
+		} else if (Action.Role.FLOAT_RIGHT.equals(toc.getRole())) {
+			ret.margin().left(Breakpoint.DEFAULT, Size.S1);
+			ret._float().right();
+		}
+
+		ret.margin().top(Breakpoint.DEFAULT, Size.S1);
+		ret.margin().bottom(Breakpoint.DEFAULT, Size.S1);
+		
+		ret.padding().all(Breakpoint.DEFAULT, Size.S1);
+		
+		ret.border(Color.SECONDARY);
+		if (!Util.isBlank(toc.getHeader())) {
+			ret.header().headerRow().header(toc.getHeader()).color(Color.SECONDARY); 			
+		}
+		
+		if (toc.getDepth() == 1) {
+			for (Action sc: sectionChildren) {
+				ret.body().row(viewGenerator.link(sc));
+			}
+		} else {
+			ret.body().row(sectionsList(this, viewGenerator, toc.getDepth()));
+		}
+		return ret;
+	}
+	
+	/**
+	 * Header and a list of contents.
+	 * @param viewGenerator
+	 * @param progressMonitor
+	 * @return
+	 */
+	protected Fragment generateFragmentOfContents(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
+		TableOfContents toc = getSemanticElement().getTableOfContents();
+		if (toc == null) {
+			return null;
+		}
+		
+		List<Action> sectionChildren = getSectionChildren();
+		if (sectionChildren.isEmpty()) {
+			return null;
+		}
+		
+		HTMLFactory htmlFactory = viewGenerator.getHTMLFactory();
+		Fragment ret = htmlFactory.fragment();
+		if (!Util.isBlank(toc.getHeader())) {
+			int headerLevel = viewGenerator.get(SectionStyle.HEADER_LEVEL, Integer.class, 3);
+			ret.content(htmlFactory.tag("H"+headerLevel, toc.getHeader()));
+		}
+		
+		ret.content(sectionsList(this, viewGenerator, toc.getDepth()));
+		return ret;
+	}
+	
+	protected static Tag sectionsList(Action action, ViewGenerator viewGenerator, int depth) {		
+		List<Action> sectionChildren = action.getSectionChildren();
+		if (sectionChildren.isEmpty()) {
+			return null;
+		}
+		Tag ul = viewGenerator.getHTMLFactory().tag(TagName.ul);
+		for (Action sc: sectionChildren) {
+			Tag li = viewGenerator.getHTMLFactory().tag(TagName.li);
+			ul.content(li);
+			li.content(viewGenerator.link(sc));
+			if (depth != 1) {
+				Tag sl = sectionsList(sc, viewGenerator, depth - 1);
+				if (sl != null) {
+					li.content(sl);
+				}
+			}
+		}
+		return ul;
+	}	
 	
 	/**
 	 * Sorts features
@@ -136,8 +320,9 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 	@Override
 	protected boolean isMemberInRole(ETypedElement member, MemberRole role) {
 		ModelElementAppearance appearance = getSemanticElement().getAppearance();
+		String memberKey = Util.camelToKebab(member.getName());
 		if (appearance != null) {
-			MemberAppearance memberAppearance = (member instanceof EStructuralFeature ? appearance.getFeatures() : appearance.getOperations()).get(Util.camelToKebab(member.getName()));
+			MemberAppearance memberAppearance = (member instanceof EStructuralFeature ? appearance.getFeatures() : appearance.getOperations()).get(memberKey);
 			if (memberAppearance != null) {
 				if (!memberAppearance.getRoles().isEmpty()) {
 					return matchMemberRole(role, memberAppearance);
@@ -147,7 +332,7 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 
 		for (EClass eClass: EmfUtil.lineage(getSemanticElement().eClass())) {
 			for (ModelElementAppearance classAppearance: factory.getAppearance(eClass)) {
-				MemberAppearance memberAppearance = (member instanceof EStructuralFeature ? classAppearance.getFeatures() : classAppearance.getOperations()).get(Util.camelToKebab(member.getName()));
+				MemberAppearance memberAppearance = (member instanceof EStructuralFeature ? classAppearance.getFeatures() : classAppearance.getOperations()).get(memberKey);
 				if (memberAppearance != null) {
 					if (!memberAppearance.getRoles().isEmpty()) {
 						return matchMemberRole(role, memberAppearance);
@@ -156,8 +341,80 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 			}
 		}
 
+		EClassifier memberType = member.getEType();
+		if (memberType instanceof EClass) {
+			for (EClass eClass: EmfUtil.lineage((EClass) memberType)) {
+				for (ModelElementAppearance typeAppearance: factory.getAppearance(eClass)) {
+					if (!typeAppearance.getRoles().isEmpty()) {
+						for (String typeRole: typeAppearance.getRoles()) {
+							if (role.LITERAL.equals(typeRole)) {
+								return true;
+							}
+						}
+						return false;						
+					}
+				}
+			}
+		}
+
 		return super.isMemberInRole(member, role);
 	}
+	
+	/**
+	 * Role for member action
+	 * @param role
+	 * @return
+	 */
+	protected boolean isMemberActionInRole(ETypedElement member, String role) {
+		ModelElementAppearance appearance = getSemanticElement().getAppearance();
+		String memberKey = Util.camelToKebab(member.getName());
+		if (appearance != null) {
+			MemberAppearance memberAppearance = (member instanceof EStructuralFeature ? appearance.getFeatures() : appearance.getOperations()).get(memberKey);
+			if (memberAppearance != null) {
+				if (!memberAppearance.getRoles().isEmpty()) {
+					boolean hasMemberActions = false;
+					for (String memberRole: memberAppearance.getRoles()) {
+						if (memberRole.equals(SimpleEObjectViewAction.MemberRole.ACTIONS.LITERAL + "/" + role)) {
+							return true;
+						}
+						if (memberRole.startsWith(SimpleEObjectViewAction.MemberRole.ACTIONS.LITERAL + "/")) {
+							hasMemberActions = true;
+						}
+					}
+					
+					if (hasMemberActions) {
+						return false;
+					}
+				}
+			}
+		}
+		
+		for (EClass eClass: EmfUtil.lineage(getSemanticElement().eClass())) {
+			for (ModelElementAppearance classAppearance: getFactory().getAppearance(eClass)) {
+				MemberAppearance memberAppearance = (member instanceof EStructuralFeature ? classAppearance.getFeatures() : classAppearance.getOperations()).get(memberKey);
+				if (memberAppearance != null) {
+					if (!memberAppearance.getRoles().isEmpty()) {
+						boolean hasMemberActions = false;
+						for (String operatoinRole: memberAppearance.getRoles()) {
+							if (operatoinRole.equals(SimpleEObjectViewAction.MemberRole.ACTIONS.LITERAL + "/" + role)) {
+								return true;
+							}
+							if (operatoinRole.startsWith(SimpleEObjectViewAction.MemberRole.ACTIONS.LITERAL + "/")) {
+								hasMemberActions = true;
+							}
+						}
+						
+						if (hasMemberActions) {
+							return false;
+						}
+					}
+				}
+			}
+		}
+		
+		return false;
+	}
+	
 	
 	@Override
 	public Label memberCategory(ETypedElement member) {
@@ -191,16 +448,9 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 		for (String memberRole: memberAppearance.getRoles()) {
 			if (role.LITERAL.equals(memberRole) || memberRole.startsWith(role.LITERAL + "/")) {
 				return true;
-			};
+			}
 		}
 		return false;
-	}
-	
-	@Override
-	protected List<Action> collectChildren() {
-		List<Action> children = super.collectChildren();
-		children.addAll(HtmlEmfUtil.adaptToActionNonNull(getSemanticElement().getActions()));		
-		return children;
 	}
 	
 	@Override
@@ -318,21 +568,22 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 	}
 		
 	/**
-	 * If issues collection is not empty creates a section action with issues grouped into increments with 
+	 * If issues collection is not empty creates an action with issues grouped into increments with 
 	 * specified features in the issue table. 
 	 * @param endeavors
 	 * @param features
 	 * @return
 	 */
-	public <E extends Endeavor> Action endeavorsSection(
+	public <E extends Endeavor> Action endeavorsAction(
 			Collection<E> endeavors, 
 			Function<ETypedElement, ViewBuilder> headerBuilderProvider,
 			String text, 
 			String id, 
 			Collection<Diagnostic> diagnostic,
+			Predicate<String> isInRolePredicate,			
 			ETypedElement... dataSources) {
 		
-		return endeavorsSection(endeavors, headerBuilderProvider, text, id, getMarker(), getActivator(), diagnostic, dataSources);
+		return endeavorsAction(endeavors, headerBuilderProvider, text, id, getMarker(), getActivator(), diagnostic, isInRolePredicate, dataSources);
 	}
 	
 	private static Increment rootIncrement(Increment increment) {
@@ -346,13 +597,13 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 	}
 	
 	/**
-	 * If issues collection is not empty creates a section action with issues grouped into increments with 
+	 * If issues collection is not empty creates an action with issues grouped into increments with 
 	 * specified features in the issue table. 
 	 * @param endeavors
 	 * @param features
 	 * @return
 	 */
-	public static <E extends Endeavor> Action endeavorsSection(
+	public static <E extends Endeavor> Action endeavorsAction(
 			Collection<E> endeavors, 
 			Function<ETypedElement, ViewBuilder> headerBuilderProvider,			
 			String text, 
@@ -360,6 +611,7 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 			Marker marker, 
 			ActionActivator activator,
 			Collection<Diagnostic> diagnostic,
+			Predicate<String> isInRolePredicate,
 			ETypedElement... dataSources) {
 		
 		if (endeavors.isEmpty()) {
@@ -383,6 +635,11 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 				}
 				return null;
 			}			
+			
+			@Override
+			public boolean isEmpty() {
+				return false;
+			}
 			
 			@Override
 			public Object generate(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
@@ -457,12 +714,21 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 				incrementSection.setActivator(new PathNavigationActionActivator(incrementSection, ((NavigationActionActivator) getActivator()).getUrl(null), "#" + id + "-" + incrementValueObject.hashCode(), marker));
 				return incrementSection; 					
 			}
+			
+			@Override
+			public boolean isInRole(String role) {				
+				return isInRolePredicate == null ? super.isInRole(role) : isInRolePredicate.test(role);
+			}
 		};
 		
 		endeavorsSection.getRoles().add(Action.Role.SECTION); 
 		endeavorsSection.setSectionStyle(SectionStyle.DEFAULT);
-		endeavorsSection.setText(text); 			
-		endeavorsSection.setActivator(new PathNavigationActionActivator(endeavorsSection, ((NavigationActionActivator) activator).getUrl(null), "#" + id, marker));
+		endeavorsSection.setText(text); 		
+		if (endeavorsSection.isInRole(Action.Role.SECTION)) {
+			endeavorsSection.setActivator(new PathNavigationActionActivator(endeavorsSection, ((NavigationActionActivator) activator).getUrl(null), "#" + id, marker));
+		} else {
+			endeavorsSection.setActivator(new PathNavigationActionActivator(endeavorsSection, ((NavigationActionActivator) activator).getUrl(null), id + ".html", marker));			
+		}
 
 		return endeavorsSection;
 	}
@@ -962,6 +1228,6 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 		}
 		String tooltip = Util.firstPlainTextSentence(description, 30, 100);
 		return Util.isBlank(tooltip) ? "" : "{" + tooltip + "}";
-	}
+	}		
 	
 }

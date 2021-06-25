@@ -276,12 +276,13 @@ public class IncrementViewAction extends NamedElementViewAction<Increment> {
 				
 			};
 			
-			return Collections.singleton(endeavorsSection(
+			return Collections.singleton(endeavorsAction(
 					getSemanticElement().getReleases(), 
 					e -> e == EcorePackage.Literals.EOBJECT___ECONTAINER ? productHeaderBuilder : null,
 					"Releases", 
 					"releases", 
 					getFeatureDiagnostic((EStructuralFeature) member),
+					role -> isMemberActionInRole(member, role),
 					EcorePackage.Literals.EOBJECT___ECONTAINER,					
 					EngineeringPackage.Literals.NAMED_ELEMENT__NAME,
 					EngineeringPackage.Literals.ENDEAVOR__START,

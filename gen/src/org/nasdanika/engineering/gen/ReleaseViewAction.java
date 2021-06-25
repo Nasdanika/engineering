@@ -18,12 +18,13 @@ public class ReleaseViewAction extends EngineeredCapabilityViewAction<Release> {
 	@Override
 	protected Collection<Action> memberActions(ETypedElement member) {
 		if (member == EngineeringPackage.Literals.RELEASE__FEATURES) {
-			return Collections.singleton(endeavorsSection(
+			return Collections.singleton(endeavorsAction(
 					getSemanticElement().getFeatures(), 
 					null,
 					"Features", 
 					"features", 
 					getFeatureDiagnostic((EStructuralFeature) member),
+					role -> isMemberActionInRole(member, role),
 					EngineeringPackage.Literals.NAMED_ELEMENT__NAME,
 					EngineeringPackage.Literals.ENDEAVOR__START,
 					EngineeringPackage.Literals.ENDEAVOR__END,
@@ -32,12 +33,13 @@ public class ReleaseViewAction extends EngineeredCapabilityViewAction<Release> {
 					EngineeringPackage.Literals.ENDEAVOR__COMPLETION));			
 		}
 		if (member == EngineeringPackage.Literals.RELEASE__ISSUES) {
-			return Collections.singleton(endeavorsSection(
+			return Collections.singleton(endeavorsAction(
 					getSemanticElement().getIssues(), 
 					null,
 					"Issues", 
 					"issues", 
 					getFeatureDiagnostic((EStructuralFeature) member),
+					role -> isMemberActionInRole(member, role),
 					EngineeringPackage.Literals.NAMED_ELEMENT__NAME,
 					EngineeringPackage.Literals.ENDEAVOR__START,
 					EngineeringPackage.Literals.ENDEAVOR__END,

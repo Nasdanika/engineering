@@ -62,12 +62,13 @@ public class IssueViewAction<T extends Issue> extends EngineeredCapabilityViewAc
 	@Override
 	protected Collection<Action> memberActions(ETypedElement member) {
 		if (member == EngineeringPackage.Literals.ISSUE__CHILDREN) {
-			return Collections.singleton(endeavorsSection(
+			return Collections.singleton(endeavorsAction(
 					getSemanticElement().getChildren(), 
 					null,
 					"Children", 
 					"children", 
 					getFeatureDiagnostic((EStructuralFeature) member),
+					role -> isMemberActionInRole(member, role),
 					EngineeringPackage.Literals.NAMED_ELEMENT__NAME,
 					EngineeringPackage.Literals.ENDEAVOR__START,
 					EngineeringPackage.Literals.ENDEAVOR__END,

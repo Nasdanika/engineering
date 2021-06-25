@@ -39,73 +39,7 @@ public class EngineeredElementViewAction<T extends EngineeredElement> extends Fo
 	protected EngineeredElementViewAction(T value, EngineeringViewActionAdapterFactory factory) {
 		super(value, factory);
 	}
-	
-	@Override
-	protected List<Action> collectChildren() {
-		List<Action> children = super.collectChildren();
 		
-		EList<Issue> issues = getSemanticElement().getIssues();
-		Action issuesSection = endeavorsSection(
-				issues, 
-				null,
-				"Issues", 
-				"issues", 
-				getFeatureDiagnostic(EngineeringPackage.Literals.ENGINEERED_ELEMENT__ISSUES),
-				EngineeringPackage.Literals.NAMED_ELEMENT__NAME,
-				EngineeringPackage.Literals.ENDEAVOR__START,
-				EngineeringPackage.Literals.ENDEAVOR__END,
-				EngineeringPackage.Literals.ISSUE__STATUS,
-				EngineeringPackage.Literals.ISSUE__CATEGORIES,				
-				EngineeringPackage.Literals.ENDEAVOR__ASSIGNEE,				
-				EngineeringPackage.Literals.ISSUE__EFFORT,
-				EngineeringPackage.Literals.ISSUE__COST,
-				EngineeringPackage.Literals.ENDEAVOR__BENEFIT,
-				EngineeringPackage.Literals.ISSUE__REMAINING_EFFORT,
-				EngineeringPackage.Literals.ISSUE__REMAINING_COST,
-				EngineeringPackage.Literals.ENDEAVOR__COMPLETION);
-		
-		if (issuesSection != null) {
-			children.add(issuesSection);
-		}		
-		
-		List<Issue> allIssues = new ArrayList<>();
-		getSemanticElement().eAllContents().forEachRemaining(e -> {
-			if (e instanceof Issue) {
-				allIssues.add((Issue) e);
-			}
-		});
-		
-		if (!issues.equals(allIssues)) {
-			Action allIssuesSection = ModelElementViewActionImpl.endeavorsSection(
-					allIssues, 
-					null,
-					"All Issues", 
-					"all-issues", 
-					null,
-					getActivator(),
-					Collections.emptyList(),
-					EngineeringPackage.Literals.NAMED_ELEMENT__NAME,
-					EngineeringPackage.Literals.ENDEAVOR__START,
-					EngineeringPackage.Literals.ENDEAVOR__END,
-					EngineeringPackage.Literals.ISSUE__TARGET,
-					EngineeringPackage.Literals.ENDEAVOR__ASSIGNEE,
-					EngineeringPackage.Literals.ISSUE__STATUS,
-					EngineeringPackage.Literals.ISSUE__CATEGORIES,				
-					EngineeringPackage.Literals.ISSUE__EFFORT,
-					EngineeringPackage.Literals.ISSUE__COST,
-					EngineeringPackage.Literals.ENDEAVOR__BENEFIT,
-					EngineeringPackage.Literals.ISSUE__REMAINING_EFFORT,
-					EngineeringPackage.Literals.ISSUE__REMAINING_COST,
-					EngineeringPackage.Literals.ENDEAVOR__COMPLETION);
-			
-			if (allIssuesSection != null) {
-				children.add(allIssuesSection);
-			}
-		}
-				
-		return children;
-	}
-	
 	protected Object generateAllocationsTable(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
 		BootstrapFactory bootstrapFactory = viewGenerator.getBootstrapFactory();
 		Table table = bootstrapFactory.table().bordered().striped();
@@ -198,6 +132,67 @@ public class EngineeredElementViewAction<T extends EngineeredElement> extends Fo
 			principlesSection.setSectionStyle(SectionStyle.DEFAULT);
 			return Collections.singleton(principlesSection);
 		}
+		
+		if (member == EngineeringPackage.Literals.ENGINEERED_ELEMENT__ISSUES) {
+			EList<Issue> issues = getSemanticElement().getIssues();
+			if (issues.isEmpty()) {
+				return Collections.emptyList();
+			}
+			Action issuesAction = endeavorsAction(
+					issues, 
+					null,
+					"Issues", 
+					"issues", 
+					getFeatureDiagnostic((EStructuralFeature) member),
+					role -> isMemberActionInRole(member, role),
+					EngineeringPackage.Literals.NAMED_ELEMENT__NAME,
+					EngineeringPackage.Literals.ENDEAVOR__START,
+					EngineeringPackage.Literals.ENDEAVOR__END,
+					EngineeringPackage.Literals.ISSUE__STATUS,
+					EngineeringPackage.Literals.ISSUE__CATEGORIES,				
+					EngineeringPackage.Literals.ENDEAVOR__ASSIGNEE,				
+					EngineeringPackage.Literals.ISSUE__EFFORT,
+					EngineeringPackage.Literals.ISSUE__COST,
+					EngineeringPackage.Literals.ENDEAVOR__BENEFIT,
+					EngineeringPackage.Literals.ISSUE__REMAINING_EFFORT,
+					EngineeringPackage.Literals.ISSUE__REMAINING_COST,
+					EngineeringPackage.Literals.ENDEAVOR__COMPLETION);
+			
+			return Collections.singleton(issuesAction);
+		}
+		
+		if (member == EngineeringPackage.Literals.ENGINEERED_ELEMENT__ALL_ISSUES) {
+			EList<Issue> issues = getSemanticElement().getIssues();
+			EList<Issue> allIssues = getSemanticElement().getAllIssues();
+			if (allIssues.isEmpty() || allIssues.equals(issues)) {
+				return Collections.emptyList();
+			}
+			Action allIssuesAction = ModelElementViewActionImpl.endeavorsAction(
+					allIssues, 
+					null,
+					"All Issues", 
+					"all-issues", 
+					null,
+					getActivator(),
+					Collections.emptyList(),
+					role -> isMemberActionInRole(member, role),
+					EngineeringPackage.Literals.NAMED_ELEMENT__NAME,
+					EngineeringPackage.Literals.ENDEAVOR__START,
+					EngineeringPackage.Literals.ENDEAVOR__END,
+					EngineeringPackage.Literals.ISSUE__TARGET,
+					EngineeringPackage.Literals.ENDEAVOR__ASSIGNEE,
+					EngineeringPackage.Literals.ISSUE__STATUS,
+					EngineeringPackage.Literals.ISSUE__CATEGORIES,				
+					EngineeringPackage.Literals.ISSUE__EFFORT,
+					EngineeringPackage.Literals.ISSUE__COST,
+					EngineeringPackage.Literals.ENDEAVOR__BENEFIT,
+					EngineeringPackage.Literals.ISSUE__REMAINING_EFFORT,
+					EngineeringPackage.Literals.ISSUE__REMAINING_COST,
+					EngineeringPackage.Literals.ENDEAVOR__COMPLETION);
+			
+			return Collections.singleton(allIssuesAction);
+		}
+
 
 		return super.memberActions(member);
 	}

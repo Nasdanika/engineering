@@ -18,12 +18,13 @@ public class FeatureViewAction extends EngineeredCapabilityViewAction<Feature> {
 	@Override
 	protected Collection<Action> memberActions(ETypedElement member) {
 		if (member == EngineeringPackage.Literals.FEATURE__ISSUES) {
-			return Collections.singleton(endeavorsSection(
+			return Collections.singleton(endeavorsAction(
 					getSemanticElement().getIssues(), 
 					null,
 					"Issues", 
 					"issues", 
 					getFeatureDiagnostic((EStructuralFeature) member),					
+					role -> isMemberActionInRole(member, role),
 					EngineeringPackage.Literals.NAMED_ELEMENT__NAME,
 					EngineeringPackage.Literals.ENDEAVOR__START,
 					EngineeringPackage.Literals.ENDEAVOR__END,

@@ -18,12 +18,13 @@ public class CapabilityViewAction<T extends Capability> extends NamedElementView
 	@Override
 	protected Collection<Action> memberActions(ETypedElement member) {
 		if (member == EngineeringPackage.Literals.CAPABILITY__REQUIRED_BY) {
-			return Collections.singleton(endeavorsSection(
+			return Collections.singleton(endeavorsAction(
 					getSemanticElement().getRequiredBy(), 
 					null,
 					"Required By", 
 					"required-by", 
 					getFeatureDiagnostic((EStructuralFeature) member),
+					role -> isMemberActionInRole(member, role),
 					EngineeringPackage.Literals.NAMED_ELEMENT__NAME,
 					EngineeringPackage.Literals.ENDEAVOR__START,
 					EngineeringPackage.Literals.ENDEAVOR__END,

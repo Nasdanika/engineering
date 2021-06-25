@@ -1,23 +1,18 @@
 package org.nasdanika.engineering.gen;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 import java.util.function.Predicate;
 
-import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.ETypedElement;
 import org.nasdanika.common.Context;
 import org.nasdanika.common.MarkdownHelper;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.common.Util;
 import org.nasdanika.engineering.Document;
 import org.nasdanika.engineering.EngineeringPackage;
+import org.nasdanika.engineering.TableOfContents;
 import org.nasdanika.html.Fragment;
-import org.nasdanika.html.Tag;
-import org.nasdanika.html.TagName;
 import org.nasdanika.html.app.Action;
 import org.nasdanika.html.app.ActionActivator;
 import org.nasdanika.html.app.MutableAction;
@@ -25,48 +20,34 @@ import org.nasdanika.html.app.NavigationActionActivator;
 import org.nasdanika.html.app.ViewGenerator;
 import org.nasdanika.html.app.impl.ActionImpl;
 import org.nasdanika.html.app.impl.PathNavigationActionActivator;
-import org.nasdanika.html.bootstrap.Card;
 import org.nasdanika.html.emf.EStructuralFeatureViewAction;
 import org.nasdanika.html.emf.ViewAction;
 
 public class DocumentViewAction extends EngineeredElementViewAction<Document> {
 
-	private ModelElementFeatureViewAction<Document, EAttribute, ModelElementViewActionImpl<Document>> tocAction;
+	private ActionImpl tocAction;
 
 	protected DocumentViewAction(Document value, EngineeringViewActionAdapterFactory factory) {
 		super(value, factory);
-		tocAction = createFeatureViewAction(EngineeringPackage.Literals.DOCUMENT__TABLE_OF_CONTENTS, this::generatePanelOfContents);
-		tocAction.setActivator(ActionActivator.INLINE_ACTIVATOR);
-	}
-	
-	protected Object generatePanelOfContents(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
-		List<Action> sectionChildren = getSectionChildren();
-		if (sectionChildren.isEmpty()) {
-			return null;
+		TableOfContents toc = getSemanticElement().getTableOfContents();
+		if (toc != null && (Action.Role.CONTENT_LEFT.equals(toc.getRole()) || Action.Role.CONTENT_RIGHT.equals(toc.getRole()))) {
+			tocAction = new ActionImpl() {
+				
+				@Override
+				public Object generate(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
+					return DocumentViewAction.this.generateCardOfContents(viewGenerator, progressMonitor);
+				}
+				
+				@Override
+				public boolean isEmpty() {
+					return false;
+				}
+				
+			};
+			
+			tocAction.getRoles().add(toc.getRole());
+			tocAction.setActivator(ActionActivator.INLINE_ACTIVATOR);
 		}
-		Card ret = viewGenerator.getBootstrapFactory().card();
-		ret.getHeader().toHTMLElement().content("Contents");
-		
-		ret.getBody().toHTMLElement().content(sectionsList(this, viewGenerator));
-		return ret;
-	}
-	
-	private Tag sectionsList(Action docAction, ViewGenerator viewGenerator) {
-		List<Action> sectionChildren = docAction.getSectionChildren();
-		if (sectionChildren.isEmpty()) {
-			return null;
-		}
-		Tag ul = viewGenerator.getHTMLFactory().tag(TagName.ul);
-		for (Action sc: sectionChildren) {
-			Tag li = viewGenerator.getHTMLFactory().tag(TagName.li);
-			ul.content(li);
-			li.content(viewGenerator.link(sc));
-			Tag sl = sectionsList(sc, viewGenerator);
-			if (sl != null) {
-				li.content(sl);
-			}
-		}
-		return ul;
 	}
 	
 	protected Object generateInfo(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
@@ -76,8 +57,17 @@ public class DocumentViewAction extends EngineeredElementViewAction<Document> {
 	@Override
 	protected Object doGenerate(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
 		Fragment ret = viewGenerator.getHTMLFactory().fragment();
-		if (getSemanticElement().isTableOfContents() && tocAction.isInRole(Action.Role.SECTION) && !getSectionChildren().isEmpty()) {
-			ret.content(generatePanelOfContents(viewGenerator, progressMonitor));
+		TableOfContents toc = getSemanticElement().getTableOfContents();
+		if (toc != null && !Util.isBlank(toc.getRole())) {
+			switch (toc.getRole()) {
+			case "content":
+				ret.content(generateFragmentOfContents(viewGenerator, progressMonitor));
+				break;
+			case Action.Role.FLOAT_LEFT:
+			case Action.Role.FLOAT_RIGHT:
+				ret.content(generateTableOfContents(viewGenerator, progressMonitor));
+				break;
+			}
 		}
 		String content = getSemanticElement().getContent();
 		Context context = getContext();
@@ -97,16 +87,13 @@ public class DocumentViewAction extends EngineeredElementViewAction<Document> {
 	protected boolean isCacheContent() {
 		return false;
 	}
-	
+
+	/**
+	 * Suppressing table of contents in description.
+	 */
 	@Override
-	protected Collection<Action> memberActions(ETypedElement member) {
-		if (member == EngineeringPackage.Literals.DOCUMENT__TABLE_OF_CONTENTS) {
-			if (!getSemanticElement().isTableOfContents() || tocAction.isInRole(Action.Role.SECTION)) { // Section is a special case.
-				return Collections.emptyList(); 
-			}
-			return Collections.singleton(tocAction);
-		}
-		return super.memberActions(member);
+	protected Object generateHead(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
+		return null;
 	}
 	
 	@Override
@@ -114,13 +101,17 @@ public class DocumentViewAction extends EngineeredElementViewAction<Document> {
 		List<Action> inheritedChildren = super.collectChildren();
 		
 		List<Action> ret = new ArrayList<>();
+		if (tocAction != null) {
+			ret.add(tocAction);
+		}
+		
 		Predicate<Action> documentChildrenPredicate = c -> {
 			if (c instanceof EStructuralFeatureViewAction) {
 				EStructuralFeatureViewAction<?, ?> sfa = (EStructuralFeatureViewAction<?, ?>) c;
 				EStructuralFeature feature = sfa.getETypedElement();
 				return feature == EngineeringPackage.Literals.FORUM__DISCUSSION
-						|| feature == EngineeringPackage.Literals.DOCUMENT__SECTIONS
-						|| feature == EngineeringPackage.Literals.DOCUMENT__TABLE_OF_CONTENTS;
+						|| feature == EngineeringPackage.Literals.MODEL_ELEMENT__SECTIONS
+						|| feature == EngineeringPackage.Literals.MODEL_ELEMENT__TABLE_OF_CONTENTS;
 				
 			} 
 			

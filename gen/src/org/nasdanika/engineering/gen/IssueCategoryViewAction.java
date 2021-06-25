@@ -43,12 +43,13 @@ public class IssueCategoryViewAction extends AimViewAction<IssueCategory> {
 	@Override
 	protected Collection<Action> memberActions(ETypedElement member) {
 		if (member == EngineeringPackage.Literals.ISSUE_CATEGORY__ISSUES) {
-			return Collections.singleton(endeavorsSection(
+			return Collections.singleton(endeavorsAction(
 					getSemanticElement().getIssues(), 
 					null,
 					"Issues", 
 					"Issues", 
 					getFeatureDiagnostic((EStructuralFeature) member),					
+					role -> isMemberActionInRole(member, role),
 					EngineeringPackage.Literals.NAMED_ELEMENT__NAME,
 					EngineeringPackage.Literals.ENDEAVOR__START,
 					EngineeringPackage.Literals.ENDEAVOR__END,
