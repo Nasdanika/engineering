@@ -14,7 +14,6 @@ import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.TableOfContents;
 import org.nasdanika.html.Fragment;
 import org.nasdanika.html.app.Action;
-import org.nasdanika.html.app.ActionActivator;
 import org.nasdanika.html.app.MutableAction;
 import org.nasdanika.html.app.NavigationActionActivator;
 import org.nasdanika.html.app.ViewGenerator;
@@ -25,29 +24,8 @@ import org.nasdanika.html.emf.ViewAction;
 
 public class DocumentViewAction extends EngineeredElementViewAction<Document> {
 
-	private ActionImpl tocAction;
-
 	protected DocumentViewAction(Document value, EngineeringViewActionAdapterFactory factory) {
 		super(value, factory);
-		TableOfContents toc = getSemanticElement().getTableOfContents();
-		if (toc != null && (Action.Role.CONTENT_LEFT.equals(toc.getRole()) || Action.Role.CONTENT_RIGHT.equals(toc.getRole()))) {
-			tocAction = new ActionImpl() {
-				
-				@Override
-				public Object generate(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
-					return DocumentViewAction.this.generateCardOfContents(viewGenerator, progressMonitor);
-				}
-				
-				@Override
-				public boolean isEmpty() {
-					return false;
-				}
-				
-			};
-			
-			tocAction.getRoles().add(toc.getRole());
-			tocAction.setActivator(ActionActivator.INLINE_ACTIVATOR);
-		}
 	}
 	
 	protected Object generateInfo(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
@@ -101,18 +79,14 @@ public class DocumentViewAction extends EngineeredElementViewAction<Document> {
 		List<Action> inheritedChildren = super.collectChildren();
 		
 		List<Action> ret = new ArrayList<>();
-		if (tocAction != null) {
-			ret.add(tocAction);
-		}
 		
 		Predicate<Action> documentChildrenPredicate = c -> {
 			if (c instanceof EStructuralFeatureViewAction) {
 				EStructuralFeatureViewAction<?, ?> sfa = (EStructuralFeatureViewAction<?, ?>) c;
 				EStructuralFeature feature = sfa.getETypedElement();
-				return feature == EngineeringPackage.Literals.FORUM__DISCUSSION
-						|| feature == EngineeringPackage.Literals.MODEL_ELEMENT__SECTIONS
-						|| feature == EngineeringPackage.Literals.MODEL_ELEMENT__TABLE_OF_CONTENTS;
-				
+				return feature == EngineeringPackage.Literals.FORUM__DISCUSSION	
+						|| feature == EngineeringPackage.Literals.MODEL_ELEMENT__SECTIONS 
+						|| feature == EngineeringPackage.Literals.MODEL_ELEMENT__TABLE_OF_CONTENTS;				
 			} 
 			
 			if (c instanceof ViewAction) {

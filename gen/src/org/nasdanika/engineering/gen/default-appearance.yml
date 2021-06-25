@@ -197,8 +197,6 @@ model-elements:
     roles: none
     section-style: DEFAULT
     features:
-      table-of-contents:
-        roles: actions/content-right
       sections:
         category: false
         roles: element-actions/section

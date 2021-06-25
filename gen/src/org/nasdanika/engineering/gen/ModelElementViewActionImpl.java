@@ -126,7 +126,7 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 	protected Action createTableOfContentsAction() {
 		TableOfContents toc = getSemanticElement().getTableOfContents();
 		if (toc != null && (Action.Role.CONTENT_LEFT.equals(toc.getRole()) || Action.Role.CONTENT_RIGHT.equals(toc.getRole()))) {
-			ActionImpl tocAction = new ActionImpl() {
+			ActionImpl tocAction = new ModelElementFeatureViewAction<T, EStructuralFeature, ModelElementViewAction<T>>(getSemanticElement(), EngineeringPackage.Literals.MODEL_ELEMENT__TABLE_OF_CONTENTS) {
 				
 				@Override
 				public Object generate(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
@@ -138,9 +138,13 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 					return false;
 				}
 				
+				@Override
+				public boolean isInRole(String role) {
+					return !Util.isBlank(toc.getRole()) && toc.getRole().equals(role);
+				}
+				
 			};
 			
-			tocAction.getRoles().add(toc.getRole());
 			tocAction.setActivator(ActionActivator.INLINE_ACTIVATOR);
 			return tocAction;
 		}
@@ -365,6 +369,7 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 	 * @param role
 	 * @return
 	 */
+	@Override
 	protected boolean isMemberActionInRole(ETypedElement member, String role) {
 		ModelElementAppearance appearance = getSemanticElement().getAppearance();
 		String memberKey = Util.camelToKebab(member.getName());
@@ -621,7 +626,7 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 		Map<IncrementValueObject, List<E>> increments = Util.groupBy(endeavors, IncrementValueObject::from);
 		boolean backlogOnly = increments.size() == 1 && increments.keySet().iterator().next() == null;
 		
-		ActionImpl endeavorsSection = new ActionImpl() {
+		ActionImpl endeavorsAction = new ActionImpl() {
 			
 			private Increment getIncrement(Endeavor endeavor) {
 				if (endeavor instanceof Increment) {
@@ -721,16 +726,16 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 			}
 		};
 		
-		endeavorsSection.getRoles().add(Action.Role.SECTION); 
-		endeavorsSection.setSectionStyle(SectionStyle.DEFAULT);
-		endeavorsSection.setText(text); 		
-		if (endeavorsSection.isInRole(Action.Role.SECTION)) {
-			endeavorsSection.setActivator(new PathNavigationActionActivator(endeavorsSection, ((NavigationActionActivator) activator).getUrl(null), "#" + id, marker));
+		endeavorsAction.getRoles().add(Action.Role.SECTION); 
+		endeavorsAction.setSectionStyle(SectionStyle.DEFAULT);
+		endeavorsAction.setText(text); 		
+		if (endeavorsAction.isInRole(Action.Role.SECTION)) {
+			endeavorsAction.setActivator(new PathNavigationActionActivator(endeavorsAction, ((NavigationActionActivator) activator).getUrl(null), "#" + id, marker));
 		} else {
-			endeavorsSection.setActivator(new PathNavigationActionActivator(endeavorsSection, ((NavigationActionActivator) activator).getUrl(null), id + ".html", marker));			
+			endeavorsAction.setActivator(new PathNavigationActionActivator(endeavorsAction, ((NavigationActionActivator) activator).getUrl(null), id + ".html", marker));			
 		}
 
-		return endeavorsSection;
+		return endeavorsAction;
 	}
 	
 	public static Object issueStatusSummaryTable(Collection<Issue> issues, ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
