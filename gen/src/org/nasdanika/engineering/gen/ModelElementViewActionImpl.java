@@ -345,22 +345,6 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 			}
 		}
 
-		EClassifier memberType = member.getEType();
-		if (memberType instanceof EClass) {
-			for (EClass eClass: EmfUtil.lineage((EClass) memberType)) {
-				for (ModelElementAppearance typeAppearance: factory.getAppearance(eClass)) {
-					if (!typeAppearance.getRoles().isEmpty()) {
-						for (String typeRole: typeAppearance.getRoles()) {
-							if (role.LITERAL.equals(typeRole)) {
-								return true;
-							}
-						}
-						return false;						
-					}
-				}
-			}
-		}
-
 		return super.isMemberInRole(member, role);
 	}
 	
@@ -1224,7 +1208,7 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 		}
 
 		return super.memberLabelText(member);
-	}
+	}		
 	
 	protected String diagramDescription(ModelElement modelElement) {
 		String description = getModelElementDescription(modelElement);
