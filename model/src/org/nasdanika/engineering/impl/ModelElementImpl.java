@@ -131,6 +131,10 @@ public abstract class ModelElementImpl extends MinimalEObjectImpl.Container impl
 	@Override
 	public String getUri() {
 		String path = getPath();
+		if (!Util.isBlank(path) && path.indexOf(':') > 1) {
+			// Treating as absolute URI
+			return path;
+		}
 		if (!Util.isBlank(path) && path.startsWith("/")) {
 			int idx = path.indexOf("/", 1);
 			if (idx == -1) {
