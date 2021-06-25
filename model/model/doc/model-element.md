@@ -290,4 +290,13 @@ Diagram:
 ** Complete innovate phase
 ```
 
+#### Sections and Table of Contents
+
+Long description can be broken down into multiple [sections](Document.html). 
+If you use sections you can define a [table of contents](TableOfContents.html).
+Note that in order for the table of contents links work [section-style](SectionStyle.html) shall be set to ``DEFAULT``.
+
+
+
+
 ---

@@ -1070,7 +1070,11 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EDataType" name="SectionStyle" instanceClassName="org.nasdanika.html.app.SectionStyle"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="SectionStyle" instanceClassName="org.nasdanika.html.app.SectionStyle">
+    <eAnnotations source="urn:org.nasdanika">
+      <details key="documentation-reference" value="doc/section-style.md"/>
+    </eAnnotations>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NamedElementReference" eSuperTypes="#//NamedElement">
     <eAnnotations source="urn:org.nasdanika">
       <details key="documentation-reference" value="doc/named-element-reference.md"/>
