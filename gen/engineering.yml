@@ -227,6 +227,8 @@ engineering-module:
          If a journey element or transition overrides another element and some feature is not set then its default value should be taken the overriden element.
          See if it can be done "in bulk" by overriding eDynamicGet(). Do it for attributes and maybe some references. Or maybe better handle at the UI level by
          overriding featureValue() for references - a tricky part, and at the model level for attributes.         
+     - name: Component dependency diagrams
+       markdown-description: Once representations are supported. Depth - both in and out.
 
 #### Done ####
 
