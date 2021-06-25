@@ -125,7 +125,56 @@ Alice -> Bob: Authentication Request
 Bob --> Alice: Authentication Response
 ```
 
+###### UML Component
+
+Component diagram with links to component pages.
+
+
+Fenced block:
+
+	```uml
+    package Core {
+       component Common [[https://docs.nasdanika.org/modules/core/modules/common/index.html]]
+    }
+    
+    package HTML {
+       component HTML as html [[https://docs.nasdanika.org/modules/html/modules/html/index.html]]
+       [html] ..> [Common]
+    }
+	```
+	
+Diagram:
+
+```uml
+package Core {
+   component Common [[https://docs.nasdanika.org/modules/core/modules/common/index.html]]
+}
+
+package HTML {
+   component HTML as html [[https://docs.nasdanika.org/modules/html/modules/html/index.html]]
+   [html] ..> [Common]
+}
+```
+
 ##### Wireframe
+
+Fenced block:
+
+	```wireframe
+	{
+	  Just plain text
+	  [This is my button]
+	  ()  Unchecked radio
+	  (X) Checked radio
+	  []  Unchecked box
+	  [X] Checked box
+	  "Enter text here   "
+	  ^This is a droplist^
+	}
+	```
+
+
+Diagram:
 
 ```wireframe
 {
@@ -142,8 +191,23 @@ Bob --> Alice: Authentication Response
 
 ##### Gantt
 
+Fenced block:
+
+	```gantt
+	[Prototype design] lasts 15 days and links to [[https://docs.nasdanika.org/index.html]]
+	[Test prototype] lasts 10 days
+	-- All example --
+	[Task 1 (1 day)] lasts 1 day
+	[T2 (5 days)] lasts 5 days
+	[T3 (1 week)] lasts 1 week
+	[T4 (1 week and 4 days)] lasts 1 week and 4 days
+	[T5 (2 weeks)] lasts 2 weeks
+	```
+
+Diagram:
+
 ```gantt
-[Prototype design] lasts 15 days
+[Prototype design] lasts 15 days and links to [[https://docs.nasdanika.org/index.html]]
 [Test prototype] lasts 10 days
 -- All example --
 [Task 1 (1 day)] lasts 1 day
@@ -155,9 +219,28 @@ Bob --> Alice: Authentication Response
 
 ##### Mind Map
 
+Fenced block:
+
+	```mindmap
+	* Debian
+	** [[https://ubuntu.com/ Ubuntu]]
+	*** Linux Mint
+	*** Kubuntu
+	*** Lubuntu
+	*** KDE Neon
+	** LMDE
+	** SolydXK
+	** SteamOS
+	** Raspbian with a very long name
+	*** <s>Raspmbc</s> => OSMC
+	*** <s>Raspyfi</s> => Volumio
+	```
+
+Diagram:
+
 ```mindmap
 * Debian
-** Ubuntu
+** [[https://ubuntu.com/ Ubuntu]]
 *** Linux Mint
 *** Kubuntu
 *** Lubuntu
@@ -172,8 +255,29 @@ Bob --> Alice: Authentication Response
 
 ##### WBS
 
+WBS elements can have links. This type of diagram can also be used to display organization structure.
+
+	```wbs
+	* [[https://docs.nasdanika.org/index.html Business Process Modelling WBS]]
+	** Launch the project
+	*** Complete Stakeholder Research
+	*** Initial Implementation Plan
+	** Design phase
+	*** Model of AsIs Processes Completed
+	**** Model of AsIs Processes Completed1
+	**** Model of AsIs Processes Completed2
+	*** Measure AsIs performance metrics
+	*** Identify Quick Wins
+	** Complete innovate phase
+	```
+
+Fenced block:
+
+
+Diagram:
+
 ```wbs
-* Business Process Modelling WBS
+* [[https://docs.nasdanika.org/index.html Business Process Modelling WBS]]
 ** Launch the project
 *** Complete Stakeholder Research
 *** Initial Implementation Plan
