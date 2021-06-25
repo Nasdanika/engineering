@@ -24,10 +24,12 @@ import org.nasdanika.common.persistence.ConfigurationException;
 import org.nasdanika.common.persistence.Marked;
 import org.nasdanika.emf.EObjectAdaptable;
 import org.nasdanika.emf.EmfUtil;
+import org.nasdanika.engineering.Document;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.ModelElement;
 import org.nasdanika.engineering.ModelElementAppearance;
 import org.nasdanika.engineering.NamedElement;
+import org.nasdanika.engineering.TableOfContents;
 
 /**
  * <!-- begin-user-doc -->
@@ -41,9 +43,10 @@ import org.nasdanika.engineering.NamedElement;
  *   <li>{@link org.nasdanika.engineering.impl.ModelElementImpl#getPath <em>Path</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.ModelElementImpl#getDescription <em>Description</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.ModelElementImpl#getMarkdownDescription <em>Markdown Description</em>}</li>
- *   <li>{@link org.nasdanika.engineering.impl.ModelElementImpl#getActions <em>Actions</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.ModelElementImpl#getResources <em>Resources</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.ModelElementImpl#getAppearance <em>Appearance</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.ModelElementImpl#getTableOfContents <em>Table Of Contents</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.ModelElementImpl#getSections <em>Sections</em>}</li>
  * </ul>
  *
  * @generated
@@ -232,17 +235,6 @@ public abstract class ModelElementImpl extends MinimalEObjectImpl.Container impl
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public EList<EObject> getActions() {
-		return (EList<EObject>)eDynamicGet(EngineeringPackage.MODEL_ELEMENT__ACTIONS, EngineeringPackage.Literals.MODEL_ELEMENT__ACTIONS, true, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@SuppressWarnings("unchecked")
-	@Override
 	public EList<NamedElement> getResources() {
 		return (EList<NamedElement>)eDynamicGet(EngineeringPackage.MODEL_ELEMENT__RESOURCES, EngineeringPackage.Literals.MODEL_ELEMENT__RESOURCES, true, true);
 	}
@@ -283,14 +275,57 @@ public abstract class ModelElementImpl extends MinimalEObjectImpl.Container impl
 	 * @generated
 	 */
 	@Override
+	public TableOfContents getTableOfContents() {
+		return (TableOfContents)eDynamicGet(EngineeringPackage.MODEL_ELEMENT__TABLE_OF_CONTENTS, EngineeringPackage.Literals.MODEL_ELEMENT__TABLE_OF_CONTENTS, true, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetTableOfContents(TableOfContents newTableOfContents, NotificationChain msgs) {
+		msgs = eDynamicInverseAdd((InternalEObject)newTableOfContents, EngineeringPackage.MODEL_ELEMENT__TABLE_OF_CONTENTS, msgs);
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setTableOfContents(TableOfContents newTableOfContents) {
+		eDynamicSet(EngineeringPackage.MODEL_ELEMENT__TABLE_OF_CONTENTS, EngineeringPackage.Literals.MODEL_ELEMENT__TABLE_OF_CONTENTS, newTableOfContents);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public EList<Document> getSections() {
+		return (EList<Document>)eDynamicGet(EngineeringPackage.MODEL_ELEMENT__SECTIONS, EngineeringPackage.Literals.MODEL_ELEMENT__SECTIONS, true, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case EngineeringPackage.MODEL_ELEMENT__ACTIONS:
-				return ((InternalEList<?>)getActions()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.MODEL_ELEMENT__RESOURCES:
 				return ((InternalEList<?>)getResources()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.MODEL_ELEMENT__APPEARANCE:
 				return basicSetAppearance(null, msgs);
+			case EngineeringPackage.MODEL_ELEMENT__TABLE_OF_CONTENTS:
+				return basicSetTableOfContents(null, msgs);
+			case EngineeringPackage.MODEL_ELEMENT__SECTIONS:
+				return ((InternalEList<?>)getSections()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -311,12 +346,14 @@ public abstract class ModelElementImpl extends MinimalEObjectImpl.Container impl
 				return getDescription();
 			case EngineeringPackage.MODEL_ELEMENT__MARKDOWN_DESCRIPTION:
 				return getMarkdownDescription();
-			case EngineeringPackage.MODEL_ELEMENT__ACTIONS:
-				return getActions();
 			case EngineeringPackage.MODEL_ELEMENT__RESOURCES:
 				return getResources();
 			case EngineeringPackage.MODEL_ELEMENT__APPEARANCE:
 				return getAppearance();
+			case EngineeringPackage.MODEL_ELEMENT__TABLE_OF_CONTENTS:
+				return getTableOfContents();
+			case EngineeringPackage.MODEL_ELEMENT__SECTIONS:
+				return getSections();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -339,16 +376,19 @@ public abstract class ModelElementImpl extends MinimalEObjectImpl.Container impl
 			case EngineeringPackage.MODEL_ELEMENT__MARKDOWN_DESCRIPTION:
 				setMarkdownDescription((String)newValue);
 				return;
-			case EngineeringPackage.MODEL_ELEMENT__ACTIONS:
-				getActions().clear();
-				getActions().addAll((Collection<? extends EObject>)newValue);
-				return;
 			case EngineeringPackage.MODEL_ELEMENT__RESOURCES:
 				getResources().clear();
 				getResources().addAll((Collection<? extends NamedElement>)newValue);
 				return;
 			case EngineeringPackage.MODEL_ELEMENT__APPEARANCE:
 				setAppearance((ModelElementAppearance)newValue);
+				return;
+			case EngineeringPackage.MODEL_ELEMENT__TABLE_OF_CONTENTS:
+				setTableOfContents((TableOfContents)newValue);
+				return;
+			case EngineeringPackage.MODEL_ELEMENT__SECTIONS:
+				getSections().clear();
+				getSections().addAll((Collection<? extends Document>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -371,14 +411,17 @@ public abstract class ModelElementImpl extends MinimalEObjectImpl.Container impl
 			case EngineeringPackage.MODEL_ELEMENT__MARKDOWN_DESCRIPTION:
 				setMarkdownDescription(MARKDOWN_DESCRIPTION_EDEFAULT);
 				return;
-			case EngineeringPackage.MODEL_ELEMENT__ACTIONS:
-				getActions().clear();
-				return;
 			case EngineeringPackage.MODEL_ELEMENT__RESOURCES:
 				getResources().clear();
 				return;
 			case EngineeringPackage.MODEL_ELEMENT__APPEARANCE:
 				setAppearance((ModelElementAppearance)null);
+				return;
+			case EngineeringPackage.MODEL_ELEMENT__TABLE_OF_CONTENTS:
+				setTableOfContents((TableOfContents)null);
+				return;
+			case EngineeringPackage.MODEL_ELEMENT__SECTIONS:
+				getSections().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -400,12 +443,14 @@ public abstract class ModelElementImpl extends MinimalEObjectImpl.Container impl
 				return DESCRIPTION_EDEFAULT == null ? getDescription() != null : !DESCRIPTION_EDEFAULT.equals(getDescription());
 			case EngineeringPackage.MODEL_ELEMENT__MARKDOWN_DESCRIPTION:
 				return MARKDOWN_DESCRIPTION_EDEFAULT == null ? getMarkdownDescription() != null : !MARKDOWN_DESCRIPTION_EDEFAULT.equals(getMarkdownDescription());
-			case EngineeringPackage.MODEL_ELEMENT__ACTIONS:
-				return !getActions().isEmpty();
 			case EngineeringPackage.MODEL_ELEMENT__RESOURCES:
 				return !getResources().isEmpty();
 			case EngineeringPackage.MODEL_ELEMENT__APPEARANCE:
 				return getAppearance() != null;
+			case EngineeringPackage.MODEL_ELEMENT__TABLE_OF_CONTENTS:
+				return getTableOfContents() != null;
+			case EngineeringPackage.MODEL_ELEMENT__SECTIONS:
+				return !getSections().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

@@ -67,6 +67,7 @@ import org.nasdanika.engineering.PseudoState;
 import org.nasdanika.engineering.Release;
 import org.nasdanika.engineering.Service;
 import org.nasdanika.engineering.Start;
+import org.nasdanika.engineering.TableOfContents;
 import org.nasdanika.engineering.Topic;
 import org.nasdanika.engineering.Transition;
 
@@ -135,6 +136,10 @@ public class EngineeringAdapterFactory extends AdapterFactoryImpl {
 				return createModelElementAdapter();
 			}
 			@Override
+			public Adapter caseTableOfContents(TableOfContents object) {
+				return createTableOfContentsAdapter();
+			}
+			@Override
 			public Adapter caseNamedElement(NamedElement object) {
 				return createNamedElementAdapter();
 			}
@@ -165,6 +170,10 @@ public class EngineeringAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseEngineeredElement(EngineeredElement object) {
 				return createEngineeredElementAdapter();
+			}
+			@Override
+			public Adapter caseDocument(Document object) {
+				return createDocumentAdapter();
 			}
 			@Override
 			public Adapter casePersona(Persona object) {
@@ -269,10 +278,6 @@ public class EngineeringAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseMemberAppearance(MemberAppearance object) {
 				return createMemberAppearanceAdapter();
-			}
-			@Override
-			public Adapter caseDocument(Document object) {
-				return createDocumentAdapter();
 			}
 			@Override
 			public Adapter caseNamedElementReference(NamedElementReference object) {
@@ -411,6 +416,20 @@ public class EngineeringAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createModelElementAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.TableOfContents <em>Table Of Contents</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.nasdanika.engineering.TableOfContents
+	 * @generated
+	 */
+	public Adapter createTableOfContentsAdapter() {
 		return null;
 	}
 

@@ -37,12 +37,6 @@
         <details key="documentation" value="Description in [Markdown](https://en.wikipedia.org/wiki/Markdown)."/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="actions" upperBound="-1"
-        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject" containment="true">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="HTML actions to be mounted under the element action in generated site."/>
-      </eAnnotations>
-    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="resources" upperBound="-1"
         eType="#//NamedElement" containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -53,6 +47,45 @@
         containment="true">
       <eAnnotations source="urn:org.nasdanika">
         <details key="homogenous" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tableOfContents" eType="#//TableOfContents"
+        containment="true">
+      <eAnnotations source="urn:org.nasdanika">
+        <details key="homogenous" value="true"/>
+        <details key="strict-containment" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sections" upperBound="-1"
+        eType="#//Document" containment="true">
+      <eAnnotations source="urn:org.nasdanika">
+        <details key="homogenous" value="true"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Sections for model element descriptions. In documents sections apply to the document content, i.e. document descriptions cannot have sections. Sections can be nested."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TableOfContents">
+    <eAnnotations source="urn:org.nasdanika">
+      <details key="documentation-reference" value="doc/table-of-contents.md"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="role" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Table of contents role defines where it is positioned on the page. &#xA;See [Appearance](Appearance.html) for details regarding page parts.&#xA;One of the following:&#xA;&#xA;* ``content`` - in the content panel, before the document/section text.&#xA;* ``content-left`` - Left content panel.&#xA;* ``content-right`` - Right content panel.&#xA;* ``float-left`` - Floats to the left. Diferent from ``content-left`` which takes the entire column.&#xA;* ``float-right`` - Floats to the right. Different from ``content-right`` which takes the entire column.&#xA;"/>
+      </eAnnotations>
+      <eAnnotations source="urn:org.nasdanika">
+        <details key="default-feature" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="depth" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Table of contents depth. Zero (default) means unlimited depth."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="header" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Table of contents header, e.g. ``Contents``. No header by default."/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
@@ -410,6 +443,27 @@
         <details key="documentation" value="Principles associated with this element to support decision making."/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="allIssues" upperBound="-1"
+        eType="#//Issue" changeable="false" derived="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Issues (work items) for this element."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Document" eSuperTypes="#//EngineeredElement">
+    <eAnnotations source="urn:org.nasdanika">
+      <details key="documentation-reference" value="doc/document.md"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="content" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Document/section content in HTML."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="markdownContent" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Document/section content in [Markdown](https://en.wikipedia.org/wiki/Markdown)."/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Persona" eSuperTypes="#//EngineeredElement">
     <eAnnotations source="urn:org.nasdanika">
@@ -592,6 +646,18 @@
         eType="#//Module" containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Sub-modules of this module."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dependencies" upperBound="-1"
+        eType="#//Module" eOpposite="#//Module/dependants">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Modules which this module depends on."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dependants" upperBound="-1"
+        eType="#//Module" changeable="false" derived="true" eOpposite="#//Module/dependencies">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Derived opposite to dependencies - modules which depend on this module."/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
@@ -1001,35 +1067,6 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="category" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="If false feature element actions are not categorized, i.e. in the navigation tree they would appear as container children without an intermediary feature category node. It can be useful if the containing element has navigation children only of one type or they can be distinguished by an icon and as such a feature category is not necessary."/>
-      </eAnnotations>
-    </eStructuralFeatures>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Document" eSuperTypes="#//EngineeredElement">
-    <eAnnotations source="urn:org.nasdanika">
-      <details key="documentation-reference" value="doc/document.md"/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="sections" upperBound="-1"
-        eType="#//Document" containment="true">
-      <eAnnotations source="urn:org.nasdanika">
-        <details key="homogenous" value="true"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Document sections which are also documents, i.e. sections can be nested."/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="content" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Document/section content in HTML."/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="markdownContent" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Document/section content in [Markdown](https://en.wikipedia.org/wiki/Markdown)."/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tableOfContents" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="A table of contents is generated if this attribute is set to true. Table of contents placement can be customized via appearance."/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>

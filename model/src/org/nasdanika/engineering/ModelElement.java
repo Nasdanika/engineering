@@ -20,9 +20,10 @@ import org.nasdanika.common.Adaptable;
  *   <li>{@link org.nasdanika.engineering.ModelElement#getPath <em>Path</em>}</li>
  *   <li>{@link org.nasdanika.engineering.ModelElement#getDescription <em>Description</em>}</li>
  *   <li>{@link org.nasdanika.engineering.ModelElement#getMarkdownDescription <em>Markdown Description</em>}</li>
- *   <li>{@link org.nasdanika.engineering.ModelElement#getActions <em>Actions</em>}</li>
  *   <li>{@link org.nasdanika.engineering.ModelElement#getResources <em>Resources</em>}</li>
  *   <li>{@link org.nasdanika.engineering.ModelElement#getAppearance <em>Appearance</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.ModelElement#getTableOfContents <em>Table Of Contents</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.ModelElement#getSections <em>Sections</em>}</li>
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getModelElement()
@@ -123,21 +124,6 @@ public interface ModelElement extends EObject, Adaptable {
 	void setMarkdownDescription(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Actions</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.emf.ecore.EObject}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * HTML actions to be mounted under the element action in generated site.
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Actions</em>' containment reference list.
-	 * @see org.nasdanika.engineering.EngineeringPackage#getModelElement_Actions()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<EObject> getActions();
-
-	/**
 	 * Returns the value of the '<em><b>Resources</b></em>' containment reference list.
 	 * The list contents are of type {@link org.nasdanika.engineering.NamedElement}.
 	 * <!-- begin-user-doc -->
@@ -174,5 +160,44 @@ public interface ModelElement extends EObject, Adaptable {
 	 * @generated
 	 */
 	void setAppearance(ModelElementAppearance value);
+
+	/**
+	 * Returns the value of the '<em><b>Table Of Contents</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Table Of Contents</em>' containment reference.
+	 * @see #setTableOfContents(TableOfContents)
+	 * @see org.nasdanika.engineering.EngineeringPackage#getModelElement_TableOfContents()
+	 * @model containment="true"
+	 *        annotation="urn:org.nasdanika homogenous='true' strict-containment='true'"
+	 * @generated
+	 */
+	TableOfContents getTableOfContents();
+
+	/**
+	 * Sets the value of the '{@link org.nasdanika.engineering.ModelElement#getTableOfContents <em>Table Of Contents</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Table Of Contents</em>' containment reference.
+	 * @see #getTableOfContents()
+	 * @generated
+	 */
+	void setTableOfContents(TableOfContents value);
+
+	/**
+	 * Returns the value of the '<em><b>Sections</b></em>' containment reference list.
+	 * The list contents are of type {@link org.nasdanika.engineering.Document}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Sections for model element descriptions. In documents sections apply to the document content, i.e. document descriptions cannot have sections. Sections can be nested.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Sections</em>' containment reference list.
+	 * @see org.nasdanika.engineering.EngineeringPackage#getModelElement_Sections()
+	 * @model containment="true"
+	 *        annotation="urn:org.nasdanika homogenous='true'"
+	 * @generated
+	 */
+	EList<Document> getSections();
 
 } // ModelElement

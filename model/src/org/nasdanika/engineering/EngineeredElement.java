@@ -18,6 +18,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.nasdanika.engineering.EngineeredElement#getExperts <em>Experts</em>}</li>
  *   <li>{@link org.nasdanika.engineering.EngineeredElement#getAllocations <em>Allocations</em>}</li>
  *   <li>{@link org.nasdanika.engineering.EngineeredElement#getPrinciples <em>Principles</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.EngineeredElement#getAllIssues <em>All Issues</em>}</li>
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getEngineeredElement()
@@ -108,5 +109,20 @@ public interface EngineeredElement extends Forum {
 	 * @generated
 	 */
 	EList<Principle> getPrinciples();
+
+	/**
+	 * Returns the value of the '<em><b>All Issues</b></em>' reference list.
+	 * The list contents are of type {@link org.nasdanika.engineering.Issue}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Issues (work items) for this element.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>All Issues</em>' reference list.
+	 * @see org.nasdanika.engineering.EngineeringPackage#getEngineeredElement_AllIssues()
+	 * @model changeable="false" derived="true"
+	 * @generated
+	 */
+	EList<Issue> getAllIssues();
 
 } // EngineeredElement

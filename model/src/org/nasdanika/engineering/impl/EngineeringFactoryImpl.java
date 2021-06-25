@@ -64,6 +64,7 @@ import org.nasdanika.engineering.PseudoState;
 import org.nasdanika.engineering.Release;
 import org.nasdanika.engineering.Service;
 import org.nasdanika.engineering.Start;
+import org.nasdanika.engineering.TableOfContents;
 import org.nasdanika.engineering.Topic;
 import org.nasdanika.engineering.Transition;
 import org.nasdanika.html.app.SectionStyle;
@@ -112,6 +113,7 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
+			case EngineeringPackage.TABLE_OF_CONTENTS: return createTableOfContents();
 			case EngineeringPackage.NAMED_ELEMENT: return createNamedElement();
 			case EngineeringPackage.ENDEAVOR: return createEndeavor();
 			case EngineeringPackage.INCREMENT: return createIncrement();
@@ -119,6 +121,7 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 			case EngineeringPackage.ISSUE_STATUS: return createIssueStatus();
 			case EngineeringPackage.ISSUE: return createIssue();
 			case EngineeringPackage.NOTE: return createNote();
+			case EngineeringPackage.DOCUMENT: return createDocument();
 			case EngineeringPackage.PERSONA: return createPersona();
 			case EngineeringPackage.ENGINEER: return createEngineer();
 			case EngineeringPackage.ORGANIZATION: return createOrganization();
@@ -143,7 +146,6 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 			case EngineeringPackage.MODEL_ELEMENT_APPEARANCE_ENTRY: return (EObject)createModelElementAppearanceEntry();
 			case EngineeringPackage.MEMBER_APPEARANCE_ENTRY: return (EObject)createMemberAppearanceEntry();
 			case EngineeringPackage.MEMBER_APPEARANCE: return createMemberAppearance();
-			case EngineeringPackage.DOCUMENT: return createDocument();
 			case EngineeringPackage.NAMED_ELEMENT_REFERENCE: return createNamedElementReference();
 			case EngineeringPackage.LINK: return createLink();
 			case EngineeringPackage.KEY_RESULT: return createKeyResult();
@@ -200,6 +202,17 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public TableOfContents createTableOfContents() {
+		TableOfContentsImpl tableOfContents = new TableOfContentsImpl();
+		return tableOfContents;
 	}
 
 	/**

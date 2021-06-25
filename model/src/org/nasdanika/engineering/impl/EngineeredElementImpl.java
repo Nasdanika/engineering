@@ -31,6 +31,7 @@ import org.nasdanika.engineering.Principle;
  *   <li>{@link org.nasdanika.engineering.impl.EngineeredElementImpl#getExperts <em>Experts</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineeredElementImpl#getAllocations <em>Allocations</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineeredElementImpl#getPrinciples <em>Principles</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.EngineeredElementImpl#getAllIssues <em>All Issues</em>}</li>
  * </ul>
  *
  * @generated
@@ -124,6 +125,22 @@ public abstract class EngineeredElementImpl extends ForumImpl implements Enginee
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public EList<Issue> getAllIssues() {
+		EList<Issue> allIssues = ECollections.newBasicEList();
+		eAllContents().forEachRemaining(e -> {
+			if (e instanceof Issue) {
+				allIssues.add((Issue) e);
+			}
+		});
+		return allIssues;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -178,6 +195,8 @@ public abstract class EngineeredElementImpl extends ForumImpl implements Enginee
 				return getAllocations();
 			case EngineeringPackage.ENGINEERED_ELEMENT__PRINCIPLES:
 				return getPrinciples();
+			case EngineeringPackage.ENGINEERED_ELEMENT__ALL_ISSUES:
+				return getAllIssues();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -260,6 +279,8 @@ public abstract class EngineeredElementImpl extends ForumImpl implements Enginee
 				return !getAllocations().isEmpty();
 			case EngineeringPackage.ENGINEERED_ELEMENT__PRINCIPLES:
 				return !getPrinciples().isEmpty();
+			case EngineeringPackage.ENGINEERED_ELEMENT__ALL_ISSUES:
+				return !getAllIssues().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

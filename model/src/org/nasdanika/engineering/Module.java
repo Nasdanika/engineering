@@ -14,6 +14,8 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link org.nasdanika.engineering.Module#getModules <em>Modules</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.Module#getDependencies <em>Dependencies</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.Module#getDependants <em>Dependants</em>}</li>
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getModule()
@@ -35,5 +37,39 @@ public interface Module extends EngineeredElement {
 	 * @generated
 	 */
 	EList<Module> getModules();
+
+	/**
+	 * Returns the value of the '<em><b>Dependencies</b></em>' reference list.
+	 * The list contents are of type {@link org.nasdanika.engineering.Module}.
+	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Module#getDependants <em>Dependants</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Modules which this module depends on.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Dependencies</em>' reference list.
+	 * @see org.nasdanika.engineering.EngineeringPackage#getModule_Dependencies()
+	 * @see org.nasdanika.engineering.Module#getDependants
+	 * @model opposite="dependants"
+	 * @generated
+	 */
+	EList<Module> getDependencies();
+
+	/**
+	 * Returns the value of the '<em><b>Dependants</b></em>' reference list.
+	 * The list contents are of type {@link org.nasdanika.engineering.Module}.
+	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Module#getDependencies <em>Dependencies</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Derived opposite to dependencies - modules which depend on this module.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Dependants</em>' reference list.
+	 * @see org.nasdanika.engineering.EngineeringPackage#getModule_Dependants()
+	 * @see org.nasdanika.engineering.Module#getDependencies
+	 * @model opposite="dependencies" changeable="false" derived="true"
+	 * @generated
+	 */
+	EList<Module> getDependants();
 
 } // Module

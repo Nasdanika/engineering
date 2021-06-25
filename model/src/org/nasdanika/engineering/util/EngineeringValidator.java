@@ -71,6 +71,7 @@ import org.nasdanika.engineering.PseudoState;
 import org.nasdanika.engineering.Release;
 import org.nasdanika.engineering.Service;
 import org.nasdanika.engineering.Start;
+import org.nasdanika.engineering.TableOfContents;
 import org.nasdanika.engineering.Topic;
 import org.nasdanika.engineering.Transition;
 import org.nasdanika.html.app.SectionStyle;
@@ -152,6 +153,8 @@ public class EngineeringValidator extends EObjectValidator {
 				return validateAdaptable((Adaptable)value, diagnostics, context);
 			case EngineeringPackage.MODEL_ELEMENT:
 				return validateModelElement((ModelElement)value, diagnostics, context);
+			case EngineeringPackage.TABLE_OF_CONTENTS:
+				return validateTableOfContents((TableOfContents)value, diagnostics, context);
 			case EngineeringPackage.NAMED_ELEMENT:
 				return validateNamedElement((NamedElement)value, diagnostics, context);
 			case EngineeringPackage.ENDEAVOR:
@@ -168,6 +171,8 @@ public class EngineeringValidator extends EObjectValidator {
 				return validateNote((Note)value, diagnostics, context);
 			case EngineeringPackage.ENGINEERED_ELEMENT:
 				return validateEngineeredElement((EngineeredElement)value, diagnostics, context);
+			case EngineeringPackage.DOCUMENT:
+				return validateDocument((Document)value, diagnostics, context);
 			case EngineeringPackage.PERSONA:
 				return validatePersona((Persona)value, diagnostics, context);
 			case EngineeringPackage.ENGINEER:
@@ -220,8 +225,6 @@ public class EngineeringValidator extends EObjectValidator {
 				return validateMemberAppearanceEntry((Map.Entry<?, ?>)value, diagnostics, context);
 			case EngineeringPackage.MEMBER_APPEARANCE:
 				return validateMemberAppearance((MemberAppearance)value, diagnostics, context);
-			case EngineeringPackage.DOCUMENT:
-				return validateDocument((Document)value, diagnostics, context);
 			case EngineeringPackage.NAMED_ELEMENT_REFERENCE:
 				return validateNamedElementReference((NamedElementReference)value, diagnostics, context);
 			case EngineeringPackage.LINK:
@@ -332,6 +335,15 @@ public class EngineeringValidator extends EObjectValidator {
 			}
 		}
 		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateTableOfContents(TableOfContents tableOfContents, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(tableOfContents, diagnostics, context);
 	}
 
 	/**
