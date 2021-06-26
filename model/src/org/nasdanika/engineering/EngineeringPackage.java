@@ -3708,13 +3708,31 @@ public interface EngineeringPackage extends EPackage {
 	int ENGINEER__ISSUE_STATUSES = PERSONA_FEATURE_COUNT + 8;
 
 	/**
+	 * The feature id for the '<em><b>Issue Priorities</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEER__ISSUE_PRIORITIES = PERSONA_FEATURE_COUNT + 9;
+
+	/**
+	 * The feature id for the '<em><b>Issue Severities</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEER__ISSUE_SEVERITIES = PERSONA_FEATURE_COUNT + 10;
+
+	/**
 	 * The feature id for the '<em><b>Rate</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEER__RATE = PERSONA_FEATURE_COUNT + 9;
+	int ENGINEER__RATE = PERSONA_FEATURE_COUNT + 11;
 
 	/**
 	 * The feature id for the '<em><b>Designations</b></em>' reference list.
@@ -3723,7 +3741,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEER__DESIGNATIONS = PERSONA_FEATURE_COUNT + 10;
+	int ENGINEER__DESIGNATIONS = PERSONA_FEATURE_COUNT + 12;
 
 	/**
 	 * The feature id for the '<em><b>Capacity</b></em>' containment reference list.
@@ -3732,7 +3750,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEER__CAPACITY = PERSONA_FEATURE_COUNT + 11;
+	int ENGINEER__CAPACITY = PERSONA_FEATURE_COUNT + 13;
 
 	/**
 	 * The feature id for the '<em><b>Represents</b></em>' reference list.
@@ -3741,7 +3759,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEER__REPRESENTS = PERSONA_FEATURE_COUNT + 12;
+	int ENGINEER__REPRESENTS = PERSONA_FEATURE_COUNT + 14;
 
 	/**
 	 * The feature id for the '<em><b>Messages</b></em>' reference list.
@@ -3750,7 +3768,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEER__MESSAGES = PERSONA_FEATURE_COUNT + 13;
+	int ENGINEER__MESSAGES = PERSONA_FEATURE_COUNT + 15;
 
 	/**
 	 * The feature id for the '<em><b>Objectives</b></em>' containment reference list.
@@ -3759,7 +3777,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEER__OBJECTIVES = PERSONA_FEATURE_COUNT + 14;
+	int ENGINEER__OBJECTIVES = PERSONA_FEATURE_COUNT + 16;
 
 	/**
 	 * The number of structural features of the '<em>Engineer</em>' class.
@@ -3768,7 +3786,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEER_FEATURE_COUNT = PERSONA_FEATURE_COUNT + 15;
+	int ENGINEER_FEATURE_COUNT = PERSONA_FEATURE_COUNT + 17;
 
 	/**
 	 * The number of operations of the '<em>Engineer</em>' class.
@@ -4057,6 +4075,24 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int ORGANIZATION__ISSUE_STATUSES = ENGINEER__ISSUE_STATUSES;
+
+	/**
+	 * The feature id for the '<em><b>Issue Priorities</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANIZATION__ISSUE_PRIORITIES = ENGINEER__ISSUE_PRIORITIES;
+
+	/**
+	 * The feature id for the '<em><b>Issue Severities</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANIZATION__ISSUE_SEVERITIES = ENGINEER__ISSUE_SEVERITIES;
 
 	/**
 	 * The feature id for the '<em><b>Rate</b></em>' attribute.
@@ -13505,6 +13541,28 @@ public interface EngineeringPackage extends EPackage {
 	EReference getEngineer_IssueStatuses();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link org.nasdanika.engineering.Engineer#getIssuePriorities <em>Issue Priorities</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Issue Priorities</em>'.
+	 * @see org.nasdanika.engineering.Engineer#getIssuePriorities()
+	 * @see #getEngineer()
+	 * @generated
+	 */
+	EReference getEngineer_IssuePriorities();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.nasdanika.engineering.Engineer#getIssueSeverities <em>Issue Severities</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Issue Severities</em>'.
+	 * @see org.nasdanika.engineering.Engineer#getIssueSeverities()
+	 * @see #getEngineer()
+	 * @generated
+	 */
+	EReference getEngineer_IssueSeverities();
+
+	/**
 	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Engineer#getRate <em>Rate</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -16044,6 +16102,22 @@ public interface EngineeringPackage extends EPackage {
 		 * @generated
 		 */
 		EReference ENGINEER__ISSUE_STATUSES = eINSTANCE.getEngineer_IssueStatuses();
+
+		/**
+		 * The meta object literal for the '<em><b>Issue Priorities</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ENGINEER__ISSUE_PRIORITIES = eINSTANCE.getEngineer_IssuePriorities();
+
+		/**
+		 * The meta object literal for the '<em><b>Issue Severities</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ENGINEER__ISSUE_SEVERITIES = eINSTANCE.getEngineer_IssueSeverities();
 
 		/**
 		 * The meta object literal for the '<em><b>Rate</b></em>' attribute feature.

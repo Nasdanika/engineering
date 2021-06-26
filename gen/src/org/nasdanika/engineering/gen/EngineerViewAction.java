@@ -27,6 +27,9 @@ import org.nasdanika.engineering.Feature;
 import org.nasdanika.engineering.Increment;
 import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.IssueCategory;
+import org.nasdanika.engineering.IssuePriority;
+import org.nasdanika.engineering.IssueSeverity;
+import org.nasdanika.engineering.IssueStatus;
 import org.nasdanika.engineering.NamedElement;
 import org.nasdanika.engineering.Objective;
 import org.nasdanika.engineering.Release;
@@ -147,7 +150,79 @@ public class EngineerViewAction<T extends Engineer> extends PersonaViewAction<T>
 			return Collections.singleton(incrementsAction);
 		}
 		
+		if (member == EngineeringPackage.Literals.ENGINEER__ISSUE_PRIORITIES) {
+			if (getSemanticElement().getIssuePriorities().isEmpty()) {
+				return Collections.emptyList();
+			}
+			return Collections.singleton(createFeatureViewAction((EStructuralFeature) member, this::generateIssuePrioritiesTable));
+		}
+		
+		if (member == EngineeringPackage.Literals.ENGINEER__ISSUE_SEVERITIES) {
+			if (getSemanticElement().getIssueSeverities().isEmpty()) {
+				return Collections.emptyList();
+			}
+			return Collections.singleton(createFeatureViewAction((EStructuralFeature) member, this::generateIssueSeveritiesTable));
+		}
+		
+		if (member == EngineeringPackage.Literals.ENGINEER__ISSUE_STATUSES) {
+			if (getSemanticElement().getIssueStatuses().isEmpty()) {
+				return Collections.emptyList();
+			}
+			return Collections.singleton(createFeatureViewAction((EStructuralFeature) member, this::generateIssueStatusesTable));
+		}
+		
+		if (member == EngineeringPackage.Literals.ENGINEER__ISSUE_CATEGORIES) {
+			if (getSemanticElement().getIssueCategories().isEmpty()) {
+				return Collections.emptyList();
+			}
+			return Collections.singleton(createFeatureViewAction((EStructuralFeature) member, this::generateIssueCategoriesTable));
+		}
+		
 		return super.memberActions(member);
+	}
+	
+	protected Object generateIssuePrioritiesTable(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
+		Table table = viewGenerator.getBootstrapFactory().table().bordered().striped();
+		table.header().headerRow("Priority", "Issues").color(Color.INFO);
+		for (IssuePriority issuePriority: getSemanticElement().getIssuePriorities()) {
+			table.body().row(
+					viewGenerator.link(ViewAction.adaptToViewActionNonNull(issuePriority)),
+					issuePriority.getIssues().size());
+		}
+		return table;
+	}
+	
+	protected Object generateIssueSeveritiesTable(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
+		Table table = viewGenerator.getBootstrapFactory().table().bordered().striped();
+		table.header().headerRow("Severity", "Issues").color(Color.INFO);
+		for (IssueSeverity issueSeverity: getSemanticElement().getIssueSeverities()) {
+			table.body().row(
+					viewGenerator.link(ViewAction.adaptToViewActionNonNull(issueSeverity)),
+					issueSeverity.getIssues().size());
+		}
+		return table;
+	}
+	
+	protected Object generateIssueStatusesTable(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
+		Table table = viewGenerator.getBootstrapFactory().table().bordered().striped();
+		table.header().headerRow("Status", "Issues").color(Color.INFO);
+		for (IssueStatus issueStatus: getSemanticElement().getIssueStatuses()) {
+			table.body().row(
+					viewGenerator.link(ViewAction.adaptToViewActionNonNull(issueStatus)),
+					issueStatus.getIssues().size());
+		}
+		return table;
+	}
+	
+	protected Object generateIssueCategoriesTable(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
+		Table table = viewGenerator.getBootstrapFactory().table().bordered().striped();
+		table.header().headerRow("Category", "Issues").color(Color.INFO);
+		for (IssueCategory issueCategory: getSemanticElement().getIssueCategories()) {
+			table.body().row(
+					viewGenerator.link(ViewAction.adaptToViewActionNonNull(issueCategory)),
+					issueCategory.getIssues().size());
+		}
+		return table;
 	}
 	
 	protected Object generateObjectivesTable(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {

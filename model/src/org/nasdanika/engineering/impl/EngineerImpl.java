@@ -18,6 +18,8 @@ import org.nasdanika.engineering.EngineeredElement;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Increment;
 import org.nasdanika.engineering.IssueCategory;
+import org.nasdanika.engineering.IssuePriority;
+import org.nasdanika.engineering.IssueSeverity;
 import org.nasdanika.engineering.IssueStatus;
 import org.nasdanika.engineering.Message;
 import org.nasdanika.engineering.Objective;
@@ -40,6 +42,8 @@ import org.nasdanika.engineering.Persona;
  *   <li>{@link org.nasdanika.engineering.impl.EngineerImpl#getAssignments <em>Assignments</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineerImpl#getIssueCategories <em>Issue Categories</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineerImpl#getIssueStatuses <em>Issue Statuses</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.EngineerImpl#getIssuePriorities <em>Issue Priorities</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.EngineerImpl#getIssueSeverities <em>Issue Severities</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineerImpl#getRate <em>Rate</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineerImpl#getDesignations <em>Designations</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineerImpl#getCapacity <em>Capacity</em>}</li>
@@ -181,6 +185,28 @@ public class EngineerImpl extends PersonaImpl implements Engineer {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public EList<IssuePriority> getIssuePriorities() {
+		return (EList<IssuePriority>)eDynamicGet(EngineeringPackage.ENGINEER__ISSUE_PRIORITIES, EngineeringPackage.Literals.ENGINEER__ISSUE_PRIORITIES, true, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public EList<IssueSeverity> getIssueSeverities() {
+		return (EList<IssueSeverity>)eDynamicGet(EngineeringPackage.ENGINEER__ISSUE_SEVERITIES, EngineeringPackage.Literals.ENGINEER__ISSUE_SEVERITIES, true, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public double getRate() {
 		return (Double)eDynamicGet(EngineeringPackage.ENGINEER__RATE, EngineeringPackage.Literals.ENGINEER__RATE, true, true);
@@ -305,6 +331,10 @@ public class EngineerImpl extends PersonaImpl implements Engineer {
 				return ((InternalEList<?>)getIssueCategories()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.ENGINEER__ISSUE_STATUSES:
 				return ((InternalEList<?>)getIssueStatuses()).basicRemove(otherEnd, msgs);
+			case EngineeringPackage.ENGINEER__ISSUE_PRIORITIES:
+				return ((InternalEList<?>)getIssuePriorities()).basicRemove(otherEnd, msgs);
+			case EngineeringPackage.ENGINEER__ISSUE_SEVERITIES:
+				return ((InternalEList<?>)getIssueSeverities()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.ENGINEER__DESIGNATIONS:
 				return ((InternalEList<?>)getDesignations()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.ENGINEER__CAPACITY:
@@ -345,6 +375,10 @@ public class EngineerImpl extends PersonaImpl implements Engineer {
 				return getIssueCategories();
 			case EngineeringPackage.ENGINEER__ISSUE_STATUSES:
 				return getIssueStatuses();
+			case EngineeringPackage.ENGINEER__ISSUE_PRIORITIES:
+				return getIssuePriorities();
+			case EngineeringPackage.ENGINEER__ISSUE_SEVERITIES:
+				return getIssueSeverities();
 			case EngineeringPackage.ENGINEER__RATE:
 				return getRate();
 			case EngineeringPackage.ENGINEER__DESIGNATIONS:
@@ -394,6 +428,14 @@ public class EngineerImpl extends PersonaImpl implements Engineer {
 				getIssueStatuses().clear();
 				getIssueStatuses().addAll((Collection<? extends IssueStatus>)newValue);
 				return;
+			case EngineeringPackage.ENGINEER__ISSUE_PRIORITIES:
+				getIssuePriorities().clear();
+				getIssuePriorities().addAll((Collection<? extends IssuePriority>)newValue);
+				return;
+			case EngineeringPackage.ENGINEER__ISSUE_SEVERITIES:
+				getIssueSeverities().clear();
+				getIssueSeverities().addAll((Collection<? extends IssueSeverity>)newValue);
+				return;
 			case EngineeringPackage.ENGINEER__RATE:
 				setRate((Double)newValue);
 				return;
@@ -435,6 +477,12 @@ public class EngineerImpl extends PersonaImpl implements Engineer {
 			case EngineeringPackage.ENGINEER__ISSUE_STATUSES:
 				getIssueStatuses().clear();
 				return;
+			case EngineeringPackage.ENGINEER__ISSUE_PRIORITIES:
+				getIssuePriorities().clear();
+				return;
+			case EngineeringPackage.ENGINEER__ISSUE_SEVERITIES:
+				getIssueSeverities().clear();
+				return;
 			case EngineeringPackage.ENGINEER__RATE:
 				setRate(RATE_EDEFAULT);
 				return;
@@ -474,6 +522,10 @@ public class EngineerImpl extends PersonaImpl implements Engineer {
 				return !getIssueCategories().isEmpty();
 			case EngineeringPackage.ENGINEER__ISSUE_STATUSES:
 				return !getIssueStatuses().isEmpty();
+			case EngineeringPackage.ENGINEER__ISSUE_PRIORITIES:
+				return !getIssuePriorities().isEmpty();
+			case EngineeringPackage.ENGINEER__ISSUE_SEVERITIES:
+				return !getIssueSeverities().isEmpty();
 			case EngineeringPackage.ENGINEER__RATE:
 				return getRate() != RATE_EDEFAULT;
 			case EngineeringPackage.ENGINEER__DESIGNATIONS:

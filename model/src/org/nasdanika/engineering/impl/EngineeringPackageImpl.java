@@ -1126,8 +1126,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EAttribute getEngineer_Rate() {
-		return (EAttribute)engineerEClass.getEStructuralFeatures().get(9);
+	public EReference getEngineer_IssuePriorities() {
+		return (EReference)engineerEClass.getEStructuralFeatures().get(9);
 	}
 
 	/**
@@ -1136,7 +1136,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EReference getEngineer_Designations() {
+	public EReference getEngineer_IssueSeverities() {
 		return (EReference)engineerEClass.getEStructuralFeatures().get(10);
 	}
 
@@ -1146,8 +1146,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EReference getEngineer_Capacity() {
-		return (EReference)engineerEClass.getEStructuralFeatures().get(11);
+	public EAttribute getEngineer_Rate() {
+		return (EAttribute)engineerEClass.getEStructuralFeatures().get(11);
 	}
 
 	/**
@@ -1156,7 +1156,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EReference getEngineer_Represents() {
+	public EReference getEngineer_Designations() {
 		return (EReference)engineerEClass.getEStructuralFeatures().get(12);
 	}
 
@@ -1166,7 +1166,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EReference getEngineer_Messages() {
+	public EReference getEngineer_Capacity() {
 		return (EReference)engineerEClass.getEStructuralFeatures().get(13);
 	}
 
@@ -1176,8 +1176,28 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EReference getEngineer_Objectives() {
+	public EReference getEngineer_Represents() {
 		return (EReference)engineerEClass.getEStructuralFeatures().get(14);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getEngineer_Messages() {
+		return (EReference)engineerEClass.getEStructuralFeatures().get(15);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getEngineer_Objectives() {
+		return (EReference)engineerEClass.getEStructuralFeatures().get(16);
 	}
 
 	/**
@@ -3209,6 +3229,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		createEReference(engineerEClass, ENGINEER__ASSIGNMENTS);
 		createEReference(engineerEClass, ENGINEER__ISSUE_CATEGORIES);
 		createEReference(engineerEClass, ENGINEER__ISSUE_STATUSES);
+		createEReference(engineerEClass, ENGINEER__ISSUE_PRIORITIES);
+		createEReference(engineerEClass, ENGINEER__ISSUE_SEVERITIES);
 		createEAttribute(engineerEClass, ENGINEER__RATE);
 		createEReference(engineerEClass, ENGINEER__DESIGNATIONS);
 		createEReference(engineerEClass, ENGINEER__CAPACITY);
@@ -3612,6 +3634,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		initEReference(getEngineer_Assignments(), this.getEndeavor(), this.getEndeavor_Assignee(), "assignments", null, 0, -1, Engineer.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getEngineer_IssueCategories(), this.getIssueCategory(), null, "issueCategories", null, 0, -1, Engineer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEngineer_IssueStatuses(), this.getIssueStatus(), null, "issueStatuses", null, 0, -1, Engineer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEngineer_IssuePriorities(), this.getIssuePriority(), null, "issuePriorities", null, 0, -1, Engineer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEngineer_IssueSeverities(), this.getIssueSeverity(), null, "issueSeverities", null, 0, -1, Engineer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getEngineer_Rate(), ecorePackage.getEDouble(), "rate", "1", 0, 1, Engineer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEngineer_Designations(), this.getAllocation(), this.getAllocation_Engineer(), "designations", null, 0, -1, Engineer.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getEngineer_Capacity(), this.getCapacity(), null, "capacity", null, 0, -1, Engineer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -4091,6 +4115,20 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		   });
 		addAnnotation
 		  (getEngineer_IssueStatuses(),
+		   source,
+		   new String[] {
+			   "homogenous", "true",
+			   "strict-containment", "true"
+		   });
+		addAnnotation
+		  (getEngineer_IssuePriorities(),
+		   source,
+		   new String[] {
+			   "homogenous", "true",
+			   "strict-containment", "true"
+		   });
+		addAnnotation
+		  (getEngineer_IssueSeverities(),
 		   source,
 		   new String[] {
 			   "homogenous", "true",
@@ -5037,6 +5075,18 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		   source,
 		   new String[] {
 			   "documentation", "Issue statuses are defined under engineer/[organization](Organization.html)."
+		   });
+		addAnnotation
+		  (getEngineer_IssuePriorities(),
+		   source,
+		   new String[] {
+			   "documentation", "Issue priorities are defined under engineer/[organization](Organization.html)."
+		   });
+		addAnnotation
+		  (getEngineer_IssueSeverities(),
+		   source,
+		   new String[] {
+			   "documentation", "Issue severities are defined under engineer/[organization](Organization.html)."
 		   });
 		addAnnotation
 		  (getEngineer_Rate(),

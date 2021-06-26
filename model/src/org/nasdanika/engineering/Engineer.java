@@ -22,6 +22,8 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.nasdanika.engineering.Engineer#getAssignments <em>Assignments</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Engineer#getIssueCategories <em>Issue Categories</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Engineer#getIssueStatuses <em>Issue Statuses</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.Engineer#getIssuePriorities <em>Issue Priorities</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.Engineer#getIssueSeverities <em>Issue Severities</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Engineer#getRate <em>Rate</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Engineer#getDesignations <em>Designations</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Engineer#getCapacity <em>Capacity</em>}</li>
@@ -180,6 +182,38 @@ public interface Engineer extends Persona {
 	 * @generated
 	 */
 	EList<IssueStatus> getIssueStatuses();
+
+	/**
+	 * Returns the value of the '<em><b>Issue Priorities</b></em>' containment reference list.
+	 * The list contents are of type {@link org.nasdanika.engineering.IssuePriority}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Issue priorities are defined under engineer/[organization](Organization.html).
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Issue Priorities</em>' containment reference list.
+	 * @see org.nasdanika.engineering.EngineeringPackage#getEngineer_IssuePriorities()
+	 * @model containment="true"
+	 *        annotation="urn:org.nasdanika homogenous='true' strict-containment='true'"
+	 * @generated
+	 */
+	EList<IssuePriority> getIssuePriorities();
+
+	/**
+	 * Returns the value of the '<em><b>Issue Severities</b></em>' containment reference list.
+	 * The list contents are of type {@link org.nasdanika.engineering.IssueSeverity}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Issue severities are defined under engineer/[organization](Organization.html).
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Issue Severities</em>' containment reference list.
+	 * @see org.nasdanika.engineering.EngineeringPackage#getEngineer_IssueSeverities()
+	 * @model containment="true"
+	 *        annotation="urn:org.nasdanika homogenous='true' strict-containment='true'"
+	 * @generated
+	 */
+	EList<IssueSeverity> getIssueSeverities();
 
 	/**
 	 * Returns the value of the '<em><b>Rate</b></em>' attribute.
