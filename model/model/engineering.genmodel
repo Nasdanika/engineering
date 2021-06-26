@@ -249,7 +249,7 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//JourneyElement/requirements"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//JourneyElement/deliverables"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//JourneyElement/personas"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference engineering.ecore#//JourneyElement/overrides"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference engineering.ecore#//JourneyElement/overrides.1"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference engineering.ecore#//JourneyElement/overridenBy"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//JourneyElement/modifiers"/>
       <genOperations ecoreOperation="engineering.ecore#//JourneyElement/getInputs">
@@ -269,6 +269,9 @@
       </genOperations>
       <genOperations ecoreOperation="engineering.ecore#//JourneyElement/getAllCalls">
         <genParameters ecoreParameter="engineering.ecore#//JourneyElement/getAllCalls/journeyPath"/>
+      </genOperations>
+      <genOperations ecoreOperation="engineering.ecore#//JourneyElement/overrides">
+        <genParameters ecoreParameter="engineering.ecore#//JourneyElement/overrides/journeyElement"/>
       </genOperations>
     </genClasses>
     <genClasses ecoreClass="engineering.ecore#//Activity">

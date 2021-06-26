@@ -3,7 +3,6 @@
 package org.nasdanika.engineering.impl;
 
 import org.eclipse.emf.ecore.EClass;
-
 import org.nasdanika.engineering.End;
 import org.nasdanika.engineering.EngineeringPackage;
 

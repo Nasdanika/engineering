@@ -7583,13 +7583,22 @@ public interface EngineeringPackage extends EPackage {
 	int JOURNEY_ELEMENT___GET_ALL_CALLS__ELIST = ENGINEERED_ELEMENT_OPERATION_COUNT + 5;
 
 	/**
+	 * The operation id for the '<em>Overrides</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY_ELEMENT___OVERRIDES__JOURNEYELEMENT = ENGINEERED_ELEMENT_OPERATION_COUNT + 6;
+
+	/**
 	 * The number of operations of the '<em>Journey Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JOURNEY_ELEMENT_OPERATION_COUNT = ENGINEERED_ELEMENT_OPERATION_COUNT + 6;
+	int JOURNEY_ELEMENT_OPERATION_COUNT = ENGINEERED_ELEMENT_OPERATION_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -7898,6 +7907,15 @@ public interface EngineeringPackage extends EPackage {
 	int ACTIVITY___GET_ALL_CALLS__ELIST = JOURNEY_ELEMENT___GET_ALL_CALLS__ELIST;
 
 	/**
+	 * The operation id for the '<em>Overrides</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY___OVERRIDES__JOURNEYELEMENT = JOURNEY_ELEMENT___OVERRIDES__JOURNEYELEMENT;
+
+	/**
 	 * The number of operations of the '<em>Activity</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8202,6 +8220,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int SERVICE___GET_ALL_CALLS__ELIST = JOURNEY_ELEMENT___GET_ALL_CALLS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Overrides</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE___OVERRIDES__JOURNEYELEMENT = JOURNEY_ELEMENT___OVERRIDES__JOURNEYELEMENT;
 
 	/**
 	 * The number of operations of the '<em>Service</em>' class.
@@ -8843,6 +8870,15 @@ public interface EngineeringPackage extends EPackage {
 	int JOURNEY___GET_ALL_CALLS__ELIST = ACTIVITY___GET_ALL_CALLS__ELIST;
 
 	/**
+	 * The operation id for the '<em>Overrides</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY___OVERRIDES__JOURNEYELEMENT = ACTIVITY___OVERRIDES__JOURNEYELEMENT;
+
+	/**
 	 * The number of operations of the '<em>Journey</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9147,6 +9183,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int PSEUDO_STATE___GET_ALL_CALLS__ELIST = JOURNEY_ELEMENT___GET_ALL_CALLS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Overrides</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PSEUDO_STATE___OVERRIDES__JOURNEYELEMENT = JOURNEY_ELEMENT___OVERRIDES__JOURNEYELEMENT;
 
 	/**
 	 * The number of operations of the '<em>Pseudo State</em>' class.
@@ -9455,6 +9500,15 @@ public interface EngineeringPackage extends EPackage {
 	int CHOICE___GET_ALL_CALLS__ELIST = PSEUDO_STATE___GET_ALL_CALLS__ELIST;
 
 	/**
+	 * The operation id for the '<em>Overrides</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHOICE___OVERRIDES__JOURNEYELEMENT = PSEUDO_STATE___OVERRIDES__JOURNEYELEMENT;
+
+	/**
 	 * The number of operations of the '<em>Choice</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9759,6 +9813,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int END___GET_ALL_CALLS__ELIST = PSEUDO_STATE___GET_ALL_CALLS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Overrides</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int END___OVERRIDES__JOURNEYELEMENT = PSEUDO_STATE___OVERRIDES__JOURNEYELEMENT;
 
 	/**
 	 * The number of operations of the '<em>End</em>' class.
@@ -10067,6 +10130,15 @@ public interface EngineeringPackage extends EPackage {
 	int ENTRY_POINT___GET_ALL_CALLS__ELIST = PSEUDO_STATE___GET_ALL_CALLS__ELIST;
 
 	/**
+	 * The operation id for the '<em>Overrides</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY_POINT___OVERRIDES__JOURNEYELEMENT = PSEUDO_STATE___OVERRIDES__JOURNEYELEMENT;
+
+	/**
 	 * The number of operations of the '<em>Entry Point</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -10371,6 +10443,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int EXIT_POINT___GET_ALL_CALLS__ELIST = PSEUDO_STATE___GET_ALL_CALLS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Overrides</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_POINT___OVERRIDES__JOURNEYELEMENT = PSEUDO_STATE___OVERRIDES__JOURNEYELEMENT;
 
 	/**
 	 * The number of operations of the '<em>Exit Point</em>' class.
@@ -10679,6 +10760,15 @@ public interface EngineeringPackage extends EPackage {
 	int EXPANSION_INPUT___GET_ALL_CALLS__ELIST = PSEUDO_STATE___GET_ALL_CALLS__ELIST;
 
 	/**
+	 * The operation id for the '<em>Overrides</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_INPUT___OVERRIDES__JOURNEYELEMENT = PSEUDO_STATE___OVERRIDES__JOURNEYELEMENT;
+
+	/**
 	 * The number of operations of the '<em>Expansion Input</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -10983,6 +11073,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int EXPANSION_OUTPUT___GET_ALL_CALLS__ELIST = PSEUDO_STATE___GET_ALL_CALLS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Overrides</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_OUTPUT___OVERRIDES__JOURNEYELEMENT = PSEUDO_STATE___OVERRIDES__JOURNEYELEMENT;
 
 	/**
 	 * The number of operations of the '<em>Expansion Output</em>' class.
@@ -11291,6 +11390,15 @@ public interface EngineeringPackage extends EPackage {
 	int FORK___GET_ALL_CALLS__ELIST = PSEUDO_STATE___GET_ALL_CALLS__ELIST;
 
 	/**
+	 * The operation id for the '<em>Overrides</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORK___OVERRIDES__JOURNEYELEMENT = PSEUDO_STATE___OVERRIDES__JOURNEYELEMENT;
+
+	/**
 	 * The number of operations of the '<em>Fork</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -11595,6 +11703,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int INPUT_PIN___GET_ALL_CALLS__ELIST = PSEUDO_STATE___GET_ALL_CALLS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Overrides</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_PIN___OVERRIDES__JOURNEYELEMENT = PSEUDO_STATE___OVERRIDES__JOURNEYELEMENT;
 
 	/**
 	 * The number of operations of the '<em>Input Pin</em>' class.
@@ -11903,6 +12020,15 @@ public interface EngineeringPackage extends EPackage {
 	int JOIN___GET_ALL_CALLS__ELIST = PSEUDO_STATE___GET_ALL_CALLS__ELIST;
 
 	/**
+	 * The operation id for the '<em>Overrides</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN___OVERRIDES__JOURNEYELEMENT = PSEUDO_STATE___OVERRIDES__JOURNEYELEMENT;
+
+	/**
 	 * The number of operations of the '<em>Join</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -12209,6 +12335,15 @@ public interface EngineeringPackage extends EPackage {
 	int OUTPUT_PIN___GET_ALL_CALLS__ELIST = PSEUDO_STATE___GET_ALL_CALLS__ELIST;
 
 	/**
+	 * The operation id for the '<em>Overrides</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTPUT_PIN___OVERRIDES__JOURNEYELEMENT = PSEUDO_STATE___OVERRIDES__JOURNEYELEMENT;
+
+	/**
 	 * The number of operations of the '<em>Output Pin</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -12513,6 +12648,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int START___GET_ALL_CALLS__ELIST = PSEUDO_STATE___GET_ALL_CALLS__ELIST;
+
+	/**
+	 * The operation id for the '<em>Overrides</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int START___OVERRIDES__JOURNEYELEMENT = PSEUDO_STATE___OVERRIDES__JOURNEYELEMENT;
 
 	/**
 	 * The number of operations of the '<em>Start</em>' class.
@@ -15043,6 +15187,16 @@ public interface EngineeringPackage extends EPackage {
 	EOperation getJourneyElement__GetAllCalls__EList();
 
 	/**
+	 * Returns the meta object for the '{@link org.nasdanika.engineering.JourneyElement#overrides(org.nasdanika.engineering.JourneyElement) <em>Overrides</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Overrides</em>' operation.
+	 * @see org.nasdanika.engineering.JourneyElement#overrides(org.nasdanika.engineering.JourneyElement)
+	 * @generated
+	 */
+	EOperation getJourneyElement__Overrides__JourneyElement();
+
+	/**
 	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Document#getContent <em>Content</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -17116,6 +17270,14 @@ public interface EngineeringPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation JOURNEY_ELEMENT___GET_ALL_CALLS__ELIST = eINSTANCE.getJourneyElement__GetAllCalls__EList();
+
+		/**
+		 * The meta object literal for the '<em><b>Overrides</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation JOURNEY_ELEMENT___OVERRIDES__JOURNEYELEMENT = eINSTANCE.getJourneyElement__Overrides__JourneyElement();
 
 		/**
 		 * The meta object literal for the '<em><b>Content</b></em>' attribute feature.

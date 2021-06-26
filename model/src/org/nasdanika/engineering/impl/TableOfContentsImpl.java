@@ -3,9 +3,7 @@
 package org.nasdanika.engineering.impl;
 
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.TableOfContents;
 

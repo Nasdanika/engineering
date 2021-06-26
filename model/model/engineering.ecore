@@ -1303,6 +1303,12 @@
         </eAnnotations>
       </eParameters>
     </eOperations>
+    <eOperations name="overrides" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Returns ``true`` if this journey element directly or transitively overrided the argument journey element."/>
+      </eAnnotations>
+      <eParameters name="journeyElement" eType="#//JourneyElement"/>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="outputs" upperBound="-1"
         eType="#//Transition" containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -1348,7 +1354,7 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="overridenBy" upperBound="-1"
-        eType="#//JourneyElement" changeable="false" derived="true" eOpposite="#//JourneyElement/overrides">
+        eType="#//JourneyElement" changeable="false" derived="true" eOpposite="#//JourneyElement/overrides.1">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Elements of the extension journeys which override this element."/>
       </eAnnotations>

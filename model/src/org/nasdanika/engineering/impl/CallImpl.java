@@ -5,7 +5,6 @@ package org.nasdanika.engineering.impl;
 import java.util.Collection;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.nasdanika.engineering.Call;
 import org.nasdanika.engineering.EngineeringPackage;

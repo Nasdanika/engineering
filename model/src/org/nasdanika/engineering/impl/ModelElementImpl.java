@@ -507,4 +507,14 @@ public abstract class ModelElementImpl extends MinimalEObjectImpl.Container impl
 		return ret;
 	}
 
+	@Override
+	public String toString() {
+		StringBuilder ret = new StringBuilder(super.toString()).append(" [");
+		String path = getPath();
+		if (!Util.isBlank(path)) {
+			ret.append("path = ").append(path);
+		}
+		return ret.append("]").toString();
+	}
+
 } //ModelElementImpl

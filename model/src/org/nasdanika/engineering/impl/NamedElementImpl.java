@@ -166,5 +166,5 @@ public class NamedElementImpl extends ModelElementImpl implements NamedElement {
 		}
 		return super.getDefaultPath();
 	}
-
+	
 } //NamedElementImpl

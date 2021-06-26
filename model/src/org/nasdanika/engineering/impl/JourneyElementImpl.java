@@ -6,16 +6,14 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.function.BiConsumer;
 
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.BasicInternalEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.nasdanika.engineering.Call;
@@ -194,21 +192,13 @@ public class JourneyElementImpl extends EngineeredElementImpl implements Journey
 	@Override
 	public EList<Transition> getInputs(EList<Journey> journeyPath) {
 		EList<Transition> ret = new BasicInternalEList<>(EObject.class);
-		Resource res = eResource(); 
-		if (res != null) {
-			ResourceSet rSet = res.getResourceSet();
-			TreeIterator<?> cit = rSet == null ? res.getAllContents() : rSet. getAllContents();
-			while (cit.hasNext()) {
-				Object next = cit.next(); 
-				if (next instanceof JourneyElement) {
-					for (Transition output: ((JourneyElement) next).getOutputs()) {
-						if (output.getTarget(journeyPath) == this) {
-							ret.add(output);
-						}
-					}
+		traverseAllElements(journeyPath, (jp, je) -> {
+			for (Transition output: je.getOutputs()) {
+				if (output.getTarget(jp) == this) {
+					ret.add(output);
 				}
-			}
-		}
+			}			
+		});
 		return ret;
 	}
 
@@ -220,21 +210,13 @@ public class JourneyElementImpl extends EngineeredElementImpl implements Journey
 	@Override
 	public EList<Call> getInvocations(EList<Journey> journeyPath) {
 		EList<Call> ret = new BasicInternalEList<>(EObject.class);
-		Resource res = eResource(); 
-		if (res != null) {
-			ResourceSet rSet = res.getResourceSet();
-			TreeIterator<?> cit = rSet == null ? res.getAllContents() : rSet. getAllContents();
-			while (cit.hasNext()) {
-				Object next = cit.next(); 
-				if (next instanceof JourneyElement) {
-					for (Call call: ((JourneyElement) next).getCalls()) {
-						if (call.getTarget(journeyPath) == this) {
-							ret.add(call);
-						}
-					}
+		traverseAllElements(journeyPath, (jp, je) -> {
+			for (Call call: je.getCalls()) {
+				if (call.getTarget(jp) == this) {
+					ret.add(call);
 				}
-			}
-		}
+			}			
+		});
 		return ret;
 	}
 
@@ -246,22 +228,38 @@ public class JourneyElementImpl extends EngineeredElementImpl implements Journey
 	@Override
 	public EList<Transition> getAllInputs(EList<Journey> journeyPath) {
 		EList<Transition> ret = new BasicInternalEList<>(EObject.class);
-		Resource res = eResource(); 
-		if (res != null) {
-			ResourceSet rSet = res.getResourceSet();
-			TreeIterator<?> cit = rSet == null ? res.getAllContents() : rSet. getAllContents();
-			while (cit.hasNext()) {
-				Object next = cit.next(); 
-				if (next instanceof JourneyElement) {
-					for (Transition output: ((JourneyElement) next).getAllOutputs(journeyPath)) {
-						if (output.getTarget(journeyPath) == this) {
-							ret.add(output);
-						}
-					}
+		traverseAllElements(journeyPath, (jp, je) -> {
+			for (Transition output: je.getAllOutputs(jp)) {
+				if (output.getTarget(jp) == this) {
+					ret.add(output);
 				}
+			}			
+		});
+		return ret;
+	}
+	
+	/**
+	 * For each journey in the journey path traverses all elements recursively and passes the journey and journey element to {@link BiConsumer}.
+	 * @param journeyPath
+	 * @param consumer
+	 */
+	public static void traverseAllElements(EList<Journey> journeyPath, BiConsumer<EList<Journey>,JourneyElement> consumer) {
+		EList<Journey> subPath = ECollections.newBasicEList();
+		for (Journey journey: journeyPath) {
+			traverseAllElements(journey, subPath, consumer);
+			subPath.add(journey);
+		}		
+	}
+	
+	private static void traverseAllElements(Journey journey, EList<Journey> journeyPath, BiConsumer<EList<Journey>,JourneyElement> consumer) {
+		EList<Journey> subPath = ECollections.newBasicEList(journeyPath);
+		subPath.add(journey);
+		for (JourneyElement je: journey.getAllElements()) {
+			consumer.accept(subPath, je);
+			if (je instanceof Journey) {
+				traverseAllElements((Journey) je, subPath, consumer);
 			}
 		}
-		return ret;
 	}
 
 	/**
@@ -272,22 +270,29 @@ public class JourneyElementImpl extends EngineeredElementImpl implements Journey
 	@Override
 	public EList<Call> getAllInvocations(EList<Journey> journeyPath) {
 		EList<Call> ret = new BasicInternalEList<>(EObject.class);
-		Resource res = eResource(); 
-		if (res != null) {
-			ResourceSet rSet = res.getResourceSet();
-			TreeIterator<?> cit = rSet == null ? res.getAllContents() : rSet. getAllContents();
-			while (cit.hasNext()) {
-				Object next = cit.next(); 
-				if (next instanceof JourneyElement) {
-					for (Call call: ((JourneyElement) next).getAllCalls(journeyPath)) {
-						if (call.getTarget(journeyPath) == this) {
-							ret.add(call);
-						}
-					}
+		traverseAllElements(journeyPath, (jp, je) -> {
+			for (Call call: je.getAllCalls(jp)) {
+				if (call.getTarget(jp) == this) {
+					ret.add(call);
 				}
-			}
-		}
+			}			
+		});
 		return ret;
+	}
+	
+	/**
+	 * Transition key is a path prefixed with p- or target prefixed with t-,
+	 * if path is blank. If t is blank, which is an error, null is returned.
+	 * @param transition
+	 * @return
+	 */
+	private static String transitionKey(Transition transition) {
+		String path = transition.getPath();
+		if (Util.isBlank(path)) {
+			String target = transition.getTarget();
+			return Util.isBlank(target) ? null : "t-" + target;
+		}
+		return "p-" + path;
 	}
 
 	/**
@@ -305,23 +310,23 @@ public class JourneyElementImpl extends EngineeredElementImpl implements Journey
 		JourneyElement overrides = getOverrides(); 
 		if (overrides != null) {
 			for (Transition output: overrides.getAllOutputs(journeyPath)) {
-				String outputPath = output.getPath(); 
-				if (Util.isBlank(outputPath)) {
+				String outputKey = transitionKey(output); 
+				if (Util.isBlank(outputKey)) {
 					ret.add(output);
 				} else {
-					outputsTable.put(outputPath, output);
+					outputsTable.put(outputKey, output);
 				}
 			}
 		}
 		for (Transition output: getOutputs()) {
-			String outputPath = output.getPath();
+			String outputKey = transitionKey(output);
 			JourneyElement target = output.getTarget(journeyPath);
-			if (Util.isBlank(outputPath)) { 
+			if (Util.isBlank(outputKey)) { 
 				ret.add(output);
 			} else if (output.isSuppress() || target == null || target.getModifiers().contains(SUPPRESS)) { 
-				outputsTable.remove(outputPath) ;
+				outputsTable.remove(outputKey) ;
 			} else {
-				outputsTable.put(outputPath, output);
+				outputsTable.put(outputKey, output);
 			}
 		}
 		ret.addAll(outputsTable.values());
@@ -343,27 +348,38 @@ public class JourneyElementImpl extends EngineeredElementImpl implements Journey
 		JourneyElement overrides = getOverrides(); 
 		if (overrides != null) {
 			for (Call call: overrides.getAllCalls(journeyPath)) {
-				String callPath = call.getPath(); 
-				if (Util.isBlank(callPath)) { 
+				String callKey = transitionKey(call); 
+				if (Util.isBlank(callKey)) { 
 					ret.add(call);
 				} else {
-					callsTable.put(callPath, call);
+					callsTable.put(callKey, call);
 				}
 			}
 		}
 		for (Call call: getCalls()) {
-			String callPath = call.getPath(); 
+			String callKey = transitionKey(call); 
 			JourneyElement target = call.getTarget(journeyPath);
-			if (Util.isBlank(callPath)) { 
+			if (Util.isBlank(callKey)) { 
 				ret.add(call);
 			} else if (call.isSuppress() || target == null || target.getModifiers().contains(SUPPRESS)) {
-				callsTable.remove(callPath);
+				callsTable.remove(callKey);
 			} else {
-				callsTable.put(callPath, call);
+				callsTable.put(callKey, call);
 			}
 		}
 		ret.addAll(callsTable.values()); 
 		return ret;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public boolean overrides(JourneyElement journeyElement) {
+		JourneyElement overrides = getOverrides();
+		return overrides != null && (overrides == journeyElement || overrides.overrides(journeyElement));
 	}
 
 	/**
@@ -555,6 +571,8 @@ public class JourneyElementImpl extends EngineeredElementImpl implements Journey
 				return getAllOutputs((EList<Journey>)arguments.get(0));
 			case EngineeringPackage.JOURNEY_ELEMENT___GET_ALL_CALLS__ELIST:
 				return getAllCalls((EList<Journey>)arguments.get(0));
+			case EngineeringPackage.JOURNEY_ELEMENT___OVERRIDES__JOURNEYELEMENT:
+				return overrides((JourneyElement)arguments.get(0));
 		}
 		return super.eInvoke(operationID, arguments);
 	}

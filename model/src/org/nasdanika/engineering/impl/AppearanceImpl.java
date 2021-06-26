@@ -5,11 +5,8 @@ package org.nasdanika.engineering.impl;
 import java.util.Collection;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.nasdanika.engineering.Appearance;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.html.app.SectionStyle;

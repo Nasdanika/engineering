@@ -253,6 +253,17 @@ public interface JourneyElement extends EngineeredElement {
 	 */
 	EList<Call> getAllCalls(EList<Journey> journeyPath);
 	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Returns ``true`` if this journey element directly or transitively overrided the argument journey element.
+	 * <!-- end-model-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean overrides(JourneyElement journeyElement);
+
 	default EList<Journey> getContainmentJourneyPath() {
 		BasicEList<Journey> journeyPath = ECollections.newBasicEList();
 		EObject jec = eContainer();

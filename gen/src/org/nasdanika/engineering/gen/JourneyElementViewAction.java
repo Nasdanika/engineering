@@ -34,6 +34,7 @@ import org.nasdanika.engineering.Persona;
 import org.nasdanika.engineering.PseudoState;
 import org.nasdanika.engineering.Start;
 import org.nasdanika.engineering.Transition;
+import org.nasdanika.engineering.impl.JourneyElementImpl;
 import org.nasdanika.html.Fragment;
 import org.nasdanika.html.app.Action;
 import org.nasdanika.html.app.NavigationActionActivator;
@@ -139,7 +140,14 @@ public class JourneyElementViewAction<T extends JourneyElement> extends Engineer
 		ret.header().headerRow("Source", "Name", "Description", "Payload").color(Color.INFO); 
 		for (Transition input: getSemanticElement().getAllInputs(journeyPath)) {
 			Row inputRow = ret.body().row();
-			ViewAction<?> targetAction = adaptToViewAction((JourneyElement) input.eContainer()); 
+			JourneyElement baseSource = (JourneyElement) input.eContainer();
+			JourneyElement[] realSource = { baseSource };
+			JourneyElementImpl.traverseAllElements(journeyPath, (jp, je) -> {
+				if (je.overrides(realSource[0])) {
+					realSource[0] = je;
+				}
+			});
+			ViewAction<?> targetAction = adaptToViewAction(realSource[0]); 
 			inputRow.cell(viewGenerator.link(targetAction)); 
 			inputRow.cell(StringEscapeUtils.escapeHtml4(input.getName())); 
 			inputRow.cell(getModelElementDescription(input));
@@ -154,7 +162,14 @@ public class JourneyElementViewAction<T extends JourneyElement> extends Engineer
 		ret.header().headerRow("Source", "Name", "Description", "Request", "Response").color(Color.INFO); 
 		for (Call call: getSemanticElement().getAllInvocations(journeyPath)) {
 			Row outputRow = ret.body().row();
-			ViewAction<?> targetAction = adaptToViewAction((JourneyElement) call.eContainer()); 
+			JourneyElement baseSource = (JourneyElement) call.eContainer();
+			JourneyElement[] realSource = { baseSource };
+			JourneyElementImpl.traverseAllElements(journeyPath, (jp, je) -> {
+				if (je.overrides(realSource[0])) {
+					realSource[0] = je;
+				}
+			});
+			ViewAction<?> targetAction = adaptToViewAction(realSource[0]); 
 			outputRow.cell(viewGenerator.link(targetAction)); 
 			outputRow.cell(StringEscapeUtils.escapeHtml4(call.getName())); 
 			outputRow.cell(getModelElementDescription(call));

@@ -4,6 +4,7 @@ package org.nasdanika.engineering.impl;
 
 import java.util.Collection;
 import java.util.Date;
+
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;

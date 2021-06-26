@@ -3,18 +3,16 @@
 package org.nasdanika.engineering.impl;
 
 import java.util.Map;
+
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-
 import org.nasdanika.common.Adaptable;
-
 import org.nasdanika.engineering.Activity;
 import org.nasdanika.engineering.Aim;
 import org.nasdanika.engineering.Alignable;
@@ -41,7 +39,6 @@ import org.nasdanika.engineering.ExitPoint;
 import org.nasdanika.engineering.ExpansionInput;
 import org.nasdanika.engineering.ExpansionOutput;
 import org.nasdanika.engineering.Feature;
-import org.nasdanika.engineering.MemberAppearance;
 import org.nasdanika.engineering.Fork;
 import org.nasdanika.engineering.Forum;
 import org.nasdanika.engineering.Goal;
@@ -55,6 +52,7 @@ import org.nasdanika.engineering.Journey;
 import org.nasdanika.engineering.JourneyElement;
 import org.nasdanika.engineering.KeyResult;
 import org.nasdanika.engineering.Link;
+import org.nasdanika.engineering.MemberAppearance;
 import org.nasdanika.engineering.Message;
 import org.nasdanika.engineering.ModelElement;
 import org.nasdanika.engineering.ModelElementAppearance;
@@ -2932,6 +2930,16 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
+	public EOperation getJourneyElement__Overrides__JourneyElement() {
+		return journeyElementEClass.getEOperations().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EAttribute getDocument_Content() {
 		return (EAttribute)documentEClass.getEStructuralFeatures().get(0);
 	}
@@ -3266,6 +3274,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		createEOperation(journeyElementEClass, JOURNEY_ELEMENT___GET_ALL_INVOCATIONS__ELIST);
 		createEOperation(journeyElementEClass, JOURNEY_ELEMENT___GET_ALL_OUTPUTS__ELIST);
 		createEOperation(journeyElementEClass, JOURNEY_ELEMENT___GET_ALL_CALLS__ELIST);
+		createEOperation(journeyElementEClass, JOURNEY_ELEMENT___OVERRIDES__JOURNEYELEMENT);
 
 		activityEClass = createEClass(ACTIVITY);
 		createEReference(activityEClass, ACTIVITY__FEATURES);
@@ -3670,6 +3679,9 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 
 		op = initEOperation(getJourneyElement__GetAllCalls__EList(), this.getCall(), "getAllCalls", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getJourney(), "journeyPath", 1, -1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getJourneyElement__Overrides__JourneyElement(), ecorePackage.getEBoolean(), "overrides", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getJourneyElement(), "journeyElement", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(activityEClass, Activity.class, "Activity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getActivity_Features(), this.getFeature(), this.getFeature_Uses(), "features", null, 0, -1, Activity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -5387,6 +5399,12 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		   source,
 		   new String[] {
 			   "documentation", "Journey nesting path to resolve calls target elements. May be different from the containment path in the case of nested journeys of extended journeys."
+		   });
+		addAnnotation
+		  (getJourneyElement__Overrides__JourneyElement(),
+		   source,
+		   new String[] {
+			   "documentation", "Returns ``true`` if this journey element directly or transitively overrided the argument journey element."
 		   });
 		addAnnotation
 		  (getJourneyElement_Outputs(),

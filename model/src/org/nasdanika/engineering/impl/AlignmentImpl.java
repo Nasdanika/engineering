@@ -4,7 +4,6 @@ package org.nasdanika.engineering.impl;
 
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.InternalEObject;
 import org.nasdanika.engineering.Aim;
 import org.nasdanika.engineering.Alignment;
