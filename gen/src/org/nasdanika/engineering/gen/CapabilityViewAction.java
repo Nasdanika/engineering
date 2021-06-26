@@ -30,6 +30,8 @@ public class CapabilityViewAction<T extends Capability> extends NamedElementView
 					EngineeringPackage.Literals.ENDEAVOR__END,
 					EngineeringPackage.Literals.ENDEAVOR__ASSIGNEE,
 					EngineeringPackage.Literals.ISSUE__STATUS,
+					EngineeringPackage.Literals.ISSUE__PRIORITY,
+					EngineeringPackage.Literals.ISSUE__SEVERITY,
 					EngineeringPackage.Literals.ISSUE__CATEGORIES,				
 					EngineeringPackage.Literals.ISSUE__EFFORT,
 					EngineeringPackage.Literals.ISSUE__COST,

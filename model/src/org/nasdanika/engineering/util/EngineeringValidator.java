@@ -49,6 +49,8 @@ import org.nasdanika.engineering.Increment;
 import org.nasdanika.engineering.InputPin;
 import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.IssueCategory;
+import org.nasdanika.engineering.IssuePriority;
+import org.nasdanika.engineering.IssueSeverity;
 import org.nasdanika.engineering.IssueStatus;
 import org.nasdanika.engineering.Join;
 import org.nasdanika.engineering.Journey;
@@ -165,6 +167,10 @@ public class EngineeringValidator extends EObjectValidator {
 				return validateIssueCategory((IssueCategory)value, diagnostics, context);
 			case EngineeringPackage.ISSUE_STATUS:
 				return validateIssueStatus((IssueStatus)value, diagnostics, context);
+			case EngineeringPackage.ISSUE_PRIORITY:
+				return validateIssuePriority((IssuePriority)value, diagnostics, context);
+			case EngineeringPackage.ISSUE_SEVERITY:
+				return validateIssueSeverity((IssueSeverity)value, diagnostics, context);
 			case EngineeringPackage.ISSUE:
 				return validateIssue((Issue)value, diagnostics, context);
 			case EngineeringPackage.NOTE:
@@ -565,6 +571,44 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(issueStatus, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(issueStatus, diagnostics, context);
 		if (result || diagnostics != null) result &= validateModelElement_path(issueStatus, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateIssuePriority(IssuePriority issuePriority, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(issuePriority, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(issuePriority, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(issuePriority, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(issuePriority, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(issuePriority, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(issuePriority, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(issuePriority, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(issuePriority, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(issuePriority, diagnostics, context);
+		if (result || diagnostics != null) result &= validateModelElement_path(issuePriority, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateIssueSeverity(IssueSeverity issueSeverity, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(issueSeverity, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(issueSeverity, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(issueSeverity, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(issueSeverity, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(issueSeverity, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(issueSeverity, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(issueSeverity, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(issueSeverity, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(issueSeverity, diagnostics, context);
+		if (result || diagnostics != null) result &= validateModelElement_path(issueSeverity, diagnostics, context);
 		return result;
 	}
 

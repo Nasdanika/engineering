@@ -33,6 +33,8 @@ import org.nasdanika.engineering.Goal;
 import org.nasdanika.engineering.Increment;
 import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.IssueCategory;
+import org.nasdanika.engineering.IssuePriority;
+import org.nasdanika.engineering.IssueSeverity;
 import org.nasdanika.engineering.IssueStatus;
 import org.nasdanika.engineering.Journey;
 import org.nasdanika.engineering.KeyResult;
@@ -134,6 +136,20 @@ public class EngineeringViewActionAdapterFactory extends ComposedAdapterFactory 
 				getViewActionClass(), 
 				this.getClass().getClassLoader(), 
 				obj -> new IssueStatusViewAction(obj, this)));					
+		
+		registerAdapterFactory(
+			new FunctionAdapterFactory<ViewAction<IssuePriority>, IssuePriority>(
+				EngineeringPackage.Literals.ISSUE_PRIORITY, 
+				getViewActionClass(), 
+				this.getClass().getClassLoader(), 
+				obj -> new IssuePriorityViewAction(obj, this)));					
+		
+		registerAdapterFactory(
+			new FunctionAdapterFactory<ViewAction<IssueSeverity>, IssueSeverity>(
+				EngineeringPackage.Literals.ISSUE_SEVERITY, 
+				getViewActionClass(), 
+				this.getClass().getClassLoader(), 
+				obj -> new IssueSeverityViewAction(obj, this)));					
 		
 		registerAdapterFactory(
 			new FunctionAdapterFactory<ViewAction<Release>, Release>(

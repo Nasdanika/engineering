@@ -23,6 +23,8 @@ import org.nasdanika.engineering.Feature;
 import org.nasdanika.engineering.Increment;
 import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.IssueCategory;
+import org.nasdanika.engineering.IssuePriority;
+import org.nasdanika.engineering.IssueSeverity;
 import org.nasdanika.engineering.IssueStatus;
 import org.nasdanika.engineering.Note;
 import org.nasdanika.engineering.Release;
@@ -49,6 +51,8 @@ import org.nasdanika.engineering.Release;
  *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getCost <em>Cost</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getRemainingEffort <em>Remaining Effort</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getRemainingCost <em>Remaining Cost</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getPriority <em>Priority</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getSeverity <em>Severity</em>}</li>
  * </ul>
  *
  * @generated
@@ -403,6 +407,84 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 		return ret;
 	}
 	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public IssuePriority getPriority() {
+		return (IssuePriority)eDynamicGet(EngineeringPackage.ISSUE__PRIORITY, EngineeringPackage.Literals.ISSUE__PRIORITY, true, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public IssuePriority basicGetPriority() {
+		return (IssuePriority)eDynamicGet(EngineeringPackage.ISSUE__PRIORITY, EngineeringPackage.Literals.ISSUE__PRIORITY, false, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetPriority(IssuePriority newPriority, NotificationChain msgs) {
+		msgs = eDynamicInverseAdd((InternalEObject)newPriority, EngineeringPackage.ISSUE__PRIORITY, msgs);
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setPriority(IssuePriority newPriority) {
+		eDynamicSet(EngineeringPackage.ISSUE__PRIORITY, EngineeringPackage.Literals.ISSUE__PRIORITY, newPriority);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public IssueSeverity getSeverity() {
+		return (IssueSeverity)eDynamicGet(EngineeringPackage.ISSUE__SEVERITY, EngineeringPackage.Literals.ISSUE__SEVERITY, true, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public IssueSeverity basicGetSeverity() {
+		return (IssueSeverity)eDynamicGet(EngineeringPackage.ISSUE__SEVERITY, EngineeringPackage.Literals.ISSUE__SEVERITY, false, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetSeverity(IssueSeverity newSeverity, NotificationChain msgs) {
+		msgs = eDynamicInverseAdd((InternalEObject)newSeverity, EngineeringPackage.ISSUE__SEVERITY, msgs);
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setSeverity(IssueSeverity newSeverity) {
+		eDynamicSet(EngineeringPackage.ISSUE__SEVERITY, EngineeringPackage.Literals.ISSUE__SEVERITY, newSeverity);
+	}
+
 	@Override
 	public double getCompletion() {
 		IssueStatus status = getStatus();
@@ -507,6 +589,16 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 				return basicSetStatus((IssueStatus)otherEnd, msgs);
 			case EngineeringPackage.ISSUE__RELEASES:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getReleases()).basicAdd(otherEnd, msgs);
+			case EngineeringPackage.ISSUE__PRIORITY:
+				IssuePriority priority = basicGetPriority();
+				if (priority != null)
+					msgs = ((InternalEObject)priority).eInverseRemove(this, EngineeringPackage.ISSUE_PRIORITY__ISSUES, IssuePriority.class, msgs);
+				return basicSetPriority((IssuePriority)otherEnd, msgs);
+			case EngineeringPackage.ISSUE__SEVERITY:
+				IssueSeverity severity = basicGetSeverity();
+				if (severity != null)
+					msgs = ((InternalEObject)severity).eInverseRemove(this, EngineeringPackage.ISSUE_SEVERITY__ISSUES, IssueSeverity.class, msgs);
+				return basicSetSeverity((IssueSeverity)otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -535,6 +627,10 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 				return basicSetStatus(null, msgs);
 			case EngineeringPackage.ISSUE__RELEASES:
 				return ((InternalEList<?>)getReleases()).basicRemove(otherEnd, msgs);
+			case EngineeringPackage.ISSUE__PRIORITY:
+				return basicSetPriority(null, msgs);
+			case EngineeringPackage.ISSUE__SEVERITY:
+				return basicSetSeverity(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -578,6 +674,12 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 				return getRemainingEffort();
 			case EngineeringPackage.ISSUE__REMAINING_COST:
 				return getRemainingCost();
+			case EngineeringPackage.ISSUE__PRIORITY:
+				if (resolve) return getPriority();
+				return basicGetPriority();
+			case EngineeringPackage.ISSUE__SEVERITY:
+				if (resolve) return getSeverity();
+				return basicGetSeverity();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -627,6 +729,12 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 			case EngineeringPackage.ISSUE__COST:
 				setCost((Double)newValue);
 				return;
+			case EngineeringPackage.ISSUE__PRIORITY:
+				setPriority((IssuePriority)newValue);
+				return;
+			case EngineeringPackage.ISSUE__SEVERITY:
+				setSeverity((IssueSeverity)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -669,6 +777,12 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 			case EngineeringPackage.ISSUE__COST:
 				setCost(COST_EDEFAULT);
 				return;
+			case EngineeringPackage.ISSUE__PRIORITY:
+				setPriority((IssuePriority)null);
+				return;
+			case EngineeringPackage.ISSUE__SEVERITY:
+				setSeverity((IssueSeverity)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -709,6 +823,10 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 				return getRemainingEffort() != REMAINING_EFFORT_EDEFAULT;
 			case EngineeringPackage.ISSUE__REMAINING_COST:
 				return getRemainingCost() != REMAINING_COST_EDEFAULT;
+			case EngineeringPackage.ISSUE__PRIORITY:
+				return basicGetPriority() != null;
+			case EngineeringPackage.ISSUE__SEVERITY:
+				return basicGetSeverity() != null;
 		}
 		return super.eIsSet(featureID);
 	}

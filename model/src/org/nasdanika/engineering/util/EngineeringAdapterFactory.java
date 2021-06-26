@@ -45,6 +45,8 @@ import org.nasdanika.engineering.Increment;
 import org.nasdanika.engineering.InputPin;
 import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.IssueCategory;
+import org.nasdanika.engineering.IssuePriority;
+import org.nasdanika.engineering.IssueSeverity;
 import org.nasdanika.engineering.IssueStatus;
 import org.nasdanika.engineering.Join;
 import org.nasdanika.engineering.Journey;
@@ -158,6 +160,14 @@ public class EngineeringAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseIssueStatus(IssueStatus object) {
 				return createIssueStatusAdapter();
+			}
+			@Override
+			public Adapter caseIssuePriority(IssuePriority object) {
+				return createIssuePriorityAdapter();
+			}
+			@Override
+			public Adapter caseIssueSeverity(IssueSeverity object) {
+				return createIssueSeverityAdapter();
 			}
 			@Override
 			public Adapter caseIssue(Issue object) {
@@ -616,6 +626,34 @@ public class EngineeringAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createIssueStatusAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.IssuePriority <em>Issue Priority</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.nasdanika.engineering.IssuePriority
+	 * @generated
+	 */
+	public Adapter createIssuePriorityAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.IssueSeverity <em>Issue Severity</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.nasdanika.engineering.IssueSeverity
+	 * @generated
+	 */
+	public Adapter createIssueSeverityAdapter() {
 		return null;
 	}
 

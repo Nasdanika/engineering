@@ -246,6 +246,28 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IssuePriority" eSuperTypes="#//NamedElement">
+    <eAnnotations source="urn:org.nasdanika">
+      <details key="documentation-reference" value="doc/issue-priority.md"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="issues" upperBound="-1"
+        eType="#//Issue" changeable="false" derived="true" eOpposite="#//Issue/priority">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Issues in this priority"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IssueSeverity" eSuperTypes="#//NamedElement">
+    <eAnnotations source="urn:org.nasdanika">
+      <details key="documentation-reference" value="doc/issue-severity.md"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="issues" upperBound="-1"
+        eType="#//Issue" changeable="false" derived="true" eOpposite="#//Issue/severity">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Issues in this severity."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Issue" eSuperTypes="#//EngineeredCapability">
     <eAnnotations source="urn:org.nasdanika">
       <details key="documentation-reference" value="doc/issue.md"/>
@@ -351,6 +373,24 @@
         changeable="false" derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Remaining cost is computed from issue cost and [notes](Note.html) cost or remaining cost."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="priority" eType="#//IssuePriority"
+        eOpposite="#//IssuePriority/issues">
+      <eAnnotations source="urn:org.nasdanika">
+        <details key="homogenous" value="true"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Issue status."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="severity" eType="#//IssueSeverity"
+        eOpposite="#//IssueSeverity/issues">
+      <eAnnotations source="urn:org.nasdanika">
+        <details key="homogenous" value="true"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Issue status."/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>

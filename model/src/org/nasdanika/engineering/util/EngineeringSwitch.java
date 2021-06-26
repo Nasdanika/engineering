@@ -43,6 +43,8 @@ import org.nasdanika.engineering.Increment;
 import org.nasdanika.engineering.InputPin;
 import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.IssueCategory;
+import org.nasdanika.engineering.IssuePriority;
+import org.nasdanika.engineering.IssueSeverity;
 import org.nasdanika.engineering.IssueStatus;
 import org.nasdanika.engineering.Join;
 import org.nasdanika.engineering.Journey;
@@ -188,6 +190,24 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				if (result == null) result = caseNamedElement(issueStatus);
 				if (result == null) result = caseModelElement(issueStatus);
 				if (result == null) result = caseAdaptable(issueStatus);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EngineeringPackage.ISSUE_PRIORITY: {
+				IssuePriority issuePriority = (IssuePriority)theEObject;
+				T result = caseIssuePriority(issuePriority);
+				if (result == null) result = caseNamedElement(issuePriority);
+				if (result == null) result = caseModelElement(issuePriority);
+				if (result == null) result = caseAdaptable(issuePriority);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EngineeringPackage.ISSUE_SEVERITY: {
+				IssueSeverity issueSeverity = (IssueSeverity)theEObject;
+				T result = caseIssueSeverity(issueSeverity);
+				if (result == null) result = caseNamedElement(issueSeverity);
+				if (result == null) result = caseModelElement(issueSeverity);
+				if (result == null) result = caseAdaptable(issueSeverity);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1004,6 +1024,36 @@ public class EngineeringSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseIssueStatus(IssueStatus object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Issue Priority</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Issue Priority</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseIssuePriority(IssuePriority object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Issue Severity</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Issue Severity</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseIssueSeverity(IssueSeverity object) {
 		return null;
 	}
 

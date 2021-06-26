@@ -80,6 +80,8 @@ public class IncrementViewAction extends NamedElementViewAction<Increment> {
 							EngineeringPackage.Literals.ENDEAVOR__START,
 							EngineeringPackage.Literals.ENDEAVOR__END,
 							EngineeringPackage.Literals.ISSUE__STATUS,
+							EngineeringPackage.Literals.ISSUE__PRIORITY,
+							EngineeringPackage.Literals.ISSUE__SEVERITY,
 							EngineeringPackage.Literals.ISSUE__TARGET,
 							EngineeringPackage.Literals.ISSUE__CATEGORIES,				
 							EngineeringPackage.Literals.ENDEAVOR__ASSIGNEE,				

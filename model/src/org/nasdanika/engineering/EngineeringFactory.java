@@ -139,6 +139,24 @@ public interface EngineeringFactory extends EFactory {
 	IssueStatus createIssueStatus();
 
 	/**
+	 * Returns a new object of class '<em>Issue Priority</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Issue Priority</em>'.
+	 * @generated
+	 */
+	IssuePriority createIssuePriority();
+
+	/**
+	 * Returns a new object of class '<em>Issue Severity</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Issue Severity</em>'.
+	 * @generated
+	 */
+	IssueSeverity createIssueSeverity();
+
+	/**
 	 * Returns a new object of class '<em>Release</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -28,6 +28,8 @@ public class IssueStatusViewAction extends NamedElementViewAction<IssueStatus> {
 					EngineeringPackage.Literals.NAMED_ELEMENT__NAME,
 					EngineeringPackage.Literals.ENDEAVOR__START,
 					EngineeringPackage.Literals.ENDEAVOR__END,
+					EngineeringPackage.Literals.ISSUE__PRIORITY,
+					EngineeringPackage.Literals.ISSUE__SEVERITY,
 					EngineeringPackage.Literals.ISSUE__CATEGORIES,
 					EngineeringPackage.Literals.ISSUE__TARGET,
 					EngineeringPackage.Literals.ENDEAVOR__ASSIGNEE,				

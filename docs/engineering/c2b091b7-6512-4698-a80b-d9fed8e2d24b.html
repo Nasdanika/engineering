@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cerulean/bootstrap.min.css" id="nsd-bootstrap-theme-stylesheet"/>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"></script><title>journeyPath : Journey*</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/line-awesome/1.3.0/line-awesome/css/line-awesome.min.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.3.11/themes/default/style.min.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.3.11/jstree.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/4.0.0/github-markdown.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/default.min.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<script>
+	$(document).ready( function() {
+	    $('.nsd-app-header').addClass('bg-dark');
+	    $('.nsd-app-header .nav-link').addClass('text-light');
+	    $('.nsd-root-action').addClass(['display-4', 'text-light']);
+	
+	    $('.nsd-app-navbar').addClass(['bg-light', 'p-0']);
+	
+	    $('.nsd-app-navigation-panel').addClass(['col-auto', 'border-right', 'border-light', 'pb-1']); 
+	    $('.nsd-app-content-panel').addClass(['col', 'p-1']);
+	    $('.nsd-app-footer').addClass(['bg-dark', 'text-light', 'text-center']);
+	    $('.nsd-app-footer .nsd-footer-action').addClass(['font-italic', 'text-light']);
+	});
+</script>
+
+<style>
+	.nsd-label-icon {
+	    height:0.8em;
+	    margin-bottom:0.2em;
+	    margin-right:0.3em;
+	}
+	.nsd-app-content-row {
+	    min-height: 25rem;
+	}
+	.nsd-root-action {
+	    text-decoration: none;
+	}
+	@media print {
+	  div.nsd-app-navigation-panel {
+	    display: none;
+	  }
+	}
+</style></head>
+  <body>
+    <div class="container-fluid nsd-app-container border mt-1">
+      <div class="row">
+        <div class="nsd-app-header col bg-primary">
+          <a data-nsd-action="80312f17-4e25-4474-895b-7471e92c31c3" href="../../index.html" class="nsd-action nsd-root-action">Nasdanika</a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="nsd-app-navbar bg-light text-dark col">
+          <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a data-nsd-action="464b7978-cb5d-4b15-bdd8-d9b2c307719c" href="../index.html" class="nsd-action navbar-brand">
+              <span class="fas fa-book nsd-label-icon"></span>Engineering</a>
+            <button type="button" data-toggle="collapse" data-target="#nsd-23" class="navbar-toggler">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div id="nsd-23" class="collapse navbar-collapse">
+              <ul class="navbar-nav"></ul>
+            </div>
+          </nav>
+        </div>
+      </div>
+      <div style="min-height:30em" class="row nsd-app-content-row">
+        <div class="nsd-app-navigation-panel col-auto">
+          <div class="card mt-1">
+            <div class="list-group list-group-flush">
+              <a href="https://docs.nasdanika.org/engineering-demo/resources/user-guide/index.html" class="list-group-item list-group-action">
+                <span class="fas fa-book-reader nsd-label-icon"></span>User Guide</a>
+            </div>
+          </div>
+          <div class="card mt-1">
+            <div class="card-header">
+              <a data-nsd-action="e3bd2edf-6590-47bc-b2eb-4e819439ae03" href="package-summary.html" class="nsd-action">
+                <span title="the action of working artfully to bring something about. ">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EPackage.gif" class="nsd-label-icon"/>Engineering</span>
+              </a>
+            </div>
+            <div class="list-group list-group-flush">
+              <a href="Activity.html" class="list-group-item list-group-action">
+                <span title="Activity is an element of a Journey. ">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Activity</span>
+              </a>
+              <a href="Adaptable.html" class="list-group-item list-group-action">
+                <img src="https://www.nasdanika.org/resources/images/ecore/EInterface.gif" class="nsd-label-icon"/>Adaptable</a>
+              <a href="Aim.html" class="list-group-item list-group-action">
+                <span title="Aim is the base class for things to which engineered capabilities and other aims can be aligned. ">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Aim</span>
+              </a>
+              <a href="Alignable.html" class="list-group-item list-group-action">
+                <span title="Something that can be aligned to aims by alignments - aims or endeavors.">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EInterface.gif" class="nsd-label-icon"/>Alignable</span>
+              </a>
+              <a href="Alignment.html" class="list-group-item list-group-action">
+                <span title="An association class between aims and engineered capabilities. ">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Alignment</span>
+              </a>
+              <a href="Allocation.html" class="list-group-item list-group-action">
+                <span title="Allocation of engineer&rsquo;s capacity to spend on a particular engineered element and issue category on a particular endeavor. ">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Allocation</span>
+              </a>
+              <a href="Appearance.html" class="list-group-item list-group-action">
+                <span title="Appearance allows to customize HTML UI generation process. ">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Appearance</span>
+              </a>
+              <a href="AppearanceEntry.html" class="list-group-item list-group-action">
+                <span title="An EMap entry class to UI action name to model element appearance mapping.">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>AppearanceEntry</span>
+              </a>
+              <a href="Call.html" class="list-group-item list-group-action">
+                <span title="Call is a specialization of transition which has blocking &ldquo;request-reply&rdquo; semantics where the calling activity waits for a response from callee. ">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Call</span>
+              </a>
+              <a href="Capability.html" class="list-group-item list-group-action">
+                <span title="Capability is something that can be required by an issue to start working on it. ">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Capability</span>
+              </a>
+              <a href="Capacity.html" class="list-group-item list-group-action">
+                <span title="Capacity is contained under Engineer and defines how much total effort or funds the containing engineer has to spend on a particular endeavor. ">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Capacity</span>
+              </a>
+              <a href="Choice.html" class="list-group-item list-group-action">
+                <span title="Choice is a conditional pseudo-state.">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Choice</span>
+              </a>
+              <a href="Decision.html" class="list-group-item list-group-action">
+                <span title="Decision is an issue, which is also an aim, i.e. endeavors, such as issues, and other aims such as other decisions may be aligned to it. ">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Decision</span>
+              </a>
+              <a href="Directory.html" class="list-group-item list-group-action">
+                <span title="Directory is a container of named elements, e.g. documents, links, or other directories. ">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Directory</span>
+              </a>
+              <a href="Document.html" class="list-group-item list-group-action">
+                <span title="Document may contain content, table of contents, and other documents as sections. ">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Document</span>
+              </a>
+              <a href="End.html" class="list-group-item list-group-action">
+                <span title="End is a final pseudo-state with only inputs and no outputs indicating completion of a journey. ">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>End</span>
+              </a>
+              <a href="Endeavor.html" class="list-group-item list-group-action">
+                <span title="Endeavor is a base class for things which take time, effort, and money to achieve some benefit - increments, and engineered capabilities - issues, features, and releases. ">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Endeavor</span>
+              </a>
+              <a href="Engineer.html" class="list-group-item list-group-action">
+                <span title="Engineers are entities, people or organizations, owning engineered elements and working on endeavors, e.g. issues. ">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Engineer</span>
+              </a>
+              <a href="EngineeredCapability.html" class="list-group-item list-group-action">
+                <span title="Engineered capability extends both endeavor and capability and is a base class for issue, feature, and release. ">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>EngineeredCapability</span>
+              </a>
+              <a href="EngineeredElement.html" class="list-group-item list-group-action">
+                <span title="Engineered element is something that is &ldquo;brought about&rdquo; by engineers working on issues associated with the engineered element. ">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>EngineeredElement</span>
+              </a>
+              <a href="EngineeringAppearance.html" class="list-group-item list-group-action">
+                <span title="Engineering appearance is a map of engineering element class names in kebab case to model element appearance. ">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>EngineeringAppearance</span>
+              </a>
+              <a href="EntryPoint.html" class="list-group-item list-group-action">
+                <span title="Entry point is a pseudo-state displayed as a circle on the border of the containing partition journey through which transitions enter the journey. ">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>EntryPoint</span>
+              </a>
+              <a href="ExitPoint.html" class="list-group-item list-group-action">
+                <span title="Exit point is a pseudo-state displayed as a crossed circle on the border of the containing partition journey through which transitions leave the journey. ">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>ExitPoint</span>
+              </a>
+              <a href="ExpansionInput.html" class="list-group-item list-group-action">
+                <span title="Expansion input is a pseudo-state which can be used instead of partition start pseudo-state to indicate that the partition journey input is a collection and the journey is executed for each element in the collection.">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>ExpansionInput</span>
+              </a>
+              <a href="ExpansionOutput.html" class="list-group-item list-group-action">
+                <span title="Expansion output is a pseudo-state which can be used instead of partition end pseudo-state to indicate that the partition journey output is a collection and the output transitions are executed for each element in the collection.">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>ExpansionOutput</span>
+              </a>
+              <a href="Feature.html" class="list-group-item list-group-action">
+                <span title="Feature is a unit of consumption of product functionality. ">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Feature</span>
+              </a>
+              <a href="Fork.html" class="list-group-item list-group-action">
+                <span title="Fork is a pseudo-state which splits journey elements execution into parallel branches. ">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Fork</span>
+              </a>
+              <a href="Forum.html" class="list-group-item list-group-action">
+                <span title="Discussion forum which can contain sub-forums and discussion topics. ">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Forum</span>
+              </a>
+              <a href="Goal.html" class="list-group-item list-group-action">
+                <span title="Goal is an aim defined under a persona and its sub-types - engineer and organization. ">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Goal</span>
+              </a>
+              <a href="Increment.html" class="list-group-item list-group-action">
+                <span title="Increment is a period of time to plan releases and schedule issues for. ">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Increment</span>
+              </a>
+              <a href="InputPin.html" class="list-group-item list-group-action">
+                <span title="Input is a pseudo-state displayed as a square on the border of the containing parition journey through which calls initiate the journey. ">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>InputPin</span>
+              </a>
+              <a href="Issue.html" class="list-group-item list-group-action">
+                <span title="Issue is a unit of work to accomplish to achieve a desired outcome on its containing engineered element, e.g.: New functionality in a module, New or refined persona goals, New skills acquired by an engineer, Improved organization processes. ">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Issue</span>
+              </a>
+              <a href="IssueCategory.html" class="list-group-item list-group-action">
+                <span title="A mechanism for grouping/tagging issues. ">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>IssueCategory</span>
+              </a>
+              <a href="IssuePriority.html" class="list-group-item list-group-action">
+                <span title="Issue priority, e.g. Low, Medium, High. ">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>IssuePriority</span>
+              </a>
+              <a href="IssueSeverity.html" class="list-group-item list-group-action">
+                <span title="Issue severity, e.g. Feature, Minor, Major, Crash. ">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>IssueSeverity</span>
+              </a>
+              <a href="IssueStatus.html" class="list-group-item list-group-action">
+                <span title="Issue status, e.g. Open, In Progress, Done. ">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>IssueStatus</span>
+              </a>
+              <a href="Join.html" class="list-group-item list-group-action">
+                <span title="Join is a pseudo-state which merges journey parallel execution branches. ">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Join</span>
+              </a>
+              <a href="Journey.html" class="list-group-item list-group-action">
+                <span title="Journey is a composite activity. ">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Journey</span>
+              </a>
+              <a href="JourneyElement.html" class="list-group-item list-group-action">
+                <span title="Journey element is a source and target of transitions and calls. ">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>JourneyElement</span>
+              </a>
+              <a href="KeyResult.html" class="list-group-item list-group-action">
+                <span title="Key Results are specific measures used to track achievement of their containing objective. ">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>KeyResult</span>
+              </a>
+              <a href="Link.html" class="list-group-item list-group-action">
+                <span title="Link to an external URL. ">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Link</span>
+              </a>
+              <a href="MemberAppearance.html" class="list-group-item list-group-action">
+                <span title="Member appearance defines how a structural feature or an operation is shown in the UI. ">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>MemberAppearance</span>
+              </a>
+              <a href="MemberAppearanceEntry.html" class="list-group-item list-group-action">
+                <span title="An EMap entry class to support feature or operation name to member appearance mapping.">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>MemberAppearanceEntry</span>
+              </a>
+              <a href="Message.html" class="list-group-item list-group-action">
+                <span title="A message in a discussion topic authored by an engineer on a specific date.">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Message</span>
+              </a>
+              <a href="ModelElement.html" class="list-group-item list-group-action">
+                <span title="Model element is the root class for all other model classes. ">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>ModelElement</span>
+              </a>
+              <a href="ModelElementAppearance.html" class="list-group-item list-group-action">
+                <span title="Model element appearance defines how a model element is shown in the UI. ">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>ModelElementAppearance</span>
+              </a>
+              <a href="ModelElementAppearanceEntry.html" class="list-group-item list-group-action">
+                <span title="An EMap entry class to support model element class name to model element appearance mapping.">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>ModelElementAppearanceEntry</span>
+              </a>
+              <a href="Module.html" class="list-group-item list-group-action">
+                <span title="Module is a part of product or another module. ">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Module</span>
+              </a>
+              <a href="NamedElement.html" class="list-group-item list-group-action">
+                <span title="Named element, as the name suggests, is a base class for model elements with a name.">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>NamedElement</span>
+              </a>
+              <a href="NamedElementReference.html" class="list-group-item list-group-action">
+                <span title="References a named element. ">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>NamedElementReference</span>
+              </a>
+              <a href="Note.html" class="list-group-item list-group-action">
+                <span title="Note is used to track issue progress as well as to discuss issue implementation. ">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Note</span>
+              </a>
+              <a href="Objective.html" class="list-group-item list-group-action">
+                <span title="Objective is something that should be achieved as part of endeavor such as an increment or a release. ">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Objective</span>
+              </a>
+              <a href="Organization.html" class="list-group-item list-group-action">
+                <span title="Organization is an engineer which can contain other engineers, and organizations as such. ">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Organization</span>
+              </a>
+              <a href="OutputPin.html" class="list-group-item list-group-action">
+                <span title="Output pin is a pseudo-state displayed as a square on the border of the containing partition journey through which calls are made to other journey elements.">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>OutputPin</span>
+              </a>
+              <a href="Persona.html" class="list-group-item list-group-action">
+                <span title="Personas represent represent the different types of consumers of products and services. ">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Persona</span>
+              </a>
+              <a href="Principle.html" class="list-group-item list-group-action">
+                <span title="Principles are general rules and guidelines, intended to be enduring and seldom amended, that inform and support the way in which an engineer or an organization sets about achieving its goals or addressing goals of their consumers modeled as personas...">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Principle</span>
+              </a>
+              <a href="Product.html" class="list-group-item list-group-action">
+                <span title="Product is an object or a system made available for consumer use. ">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Product</span>
+              </a>
+              <a href="PseudoState.html" class="list-group-item list-group-action">
+                <span title="A pseudo-state is a base class for transient journey elements in the journey graph.">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>PseudoState</span>
+              </a>
+              <a href="Release.html" class="list-group-item list-group-action">
+                <span title="Release is a unit of delivering product features to its consumers. ">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Release</span>
+              </a>
+              <a href="SectionStyle.html" class="list-group-item list-group-action">
+                <span title="Defines how sections are rendered. ">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EDataType.gif" class="nsd-label-icon"/>SectionStyle</span>
+              </a>
+              <a href="Service.html" class="list-group-item list-group-action">
+                <span title="Service is a reference to a shared activity used in multiple journeys. ">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Service</span>
+              </a>
+              <a href="Start.html" class="list-group-item list-group-action">
+                <span title="Start is an initial pseudo-state with only outputs and no inputs indicating start of a journey. ">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Start</span>
+              </a>
+              <a href="TableOfContents.html" class="list-group-item list-group-action">
+                <span title="Table of Contents configuration - role, depth, header. ">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>TableOfContents</span>
+              </a>
+              <a href="Topic.html" class="list-group-item list-group-action">
+                <span title="Topic is a group of related messages in a forum. ">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Topic</span>
+              </a>
+              <a href="Transition.html" class="list-group-item list-group-action active">
+                <span title="Transition connects two journey elements, e.g. activities and is navigated when execution of the source element is completed and execution of the target element shall begin. ">
+                  <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Transition</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="nsd-app-content-panel border-left col">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col nsd-app-content-panel-breadcrumb">
+                <nav aria-label="breadcrumb" class="mt-1">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                      <a data-nsd-action="e3bd2edf-6590-47bc-b2eb-4e819439ae03" href="package-summary.html" class="nsd-action">
+                        <span title="the action of working artfully to bring something about. ">
+                          <img src="https://www.nasdanika.org/resources/images/ecore/EPackage.gif" class="nsd-label-icon"/>Engineering</span>
+                      </a>
+                    </li>
+                    <li class="breadcrumb-item active">
+                      <span data-nsd-action="EClass-engineering-Transition" class="nsd-action">
+                        <span title="Transition connects two journey elements, e.g. activities and is navigated when execution of the source element is completed and execution of the target element shall begin. ">
+                          <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Transition</span>
+                      </span>
+                    </li>
+                  </ol>
+                </nav>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col nsd-app-content-panel-header-col">
+                <h2 data-nsd-action="EClass-engineering-Transition" class="nsd-action nsd-app-content-panel-header">
+                  <span title="Transition connects two journey elements, e.g. activities and is navigated when execution of the source element is completed and execution of the target element shall begin. ">
+                    <img src="https://www.nasdanika.org/resources/images/ecore/EClass.gif" class="nsd-label-icon"/>Transition</span>
+                </h2>
+              </div>
+            </div>
+            <div class="row nsd-app-content-panel-body-row">
+              <div class="col nsd-app-content-panel-body"><div class="markdown-body"><p>Transition connects two <a href="Journey.html">journey</a> elements, e.g. <a href="Activity.html">activities</a> and is navigated when execution of the source element is completed and execution of the target element shall begin.</p>
+<p>Transition may define payload - what the source shall pass along the transition to the element. For example, a transition from &ldquo;Business Analysis&rdquo; to &ldquo;Design&rdquo; may have &ldquo;Requirements Document&rdquo; as its payload.</p>
+</div><img src="data:image/png;base64, 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" usemap="#plantuml_map_6cb76aea-4934-42ea-a337-7e74f19f2ed3"/>
+<map id="plantuml_map_6cb76aea-4934-42ea-a337-7e74f19f2ed3" name="plantuml_map_6cb76aea-4934-42ea-a337-7e74f19f2ed3">
+<area shape="rect" id="id1" href="Call.html" title="Call is a specialization of transition which has blocking “request-reply” semantics where the calling activity waits for a response from callee. " alt="" coords="32,477,86,533"/>
+<area shape="rect" id="id2" href="Journey.html" title="Journey is a composite activity. " alt="" coords="407,477,482,533"/>
+<area shape="rect" id="id3" href="NamedElement.html" title="Named element, as the name suggests, is a base class for model elements with a name." alt="" coords="243,611,362,680"/>
+<area shape="rect" id="id4" href="" title="Transition connects two journey elements, e.g. activities and is navigated when execution of the source element is completed and execution of the target element shall begin. " alt="" coords="236,42,480,139"/>
+<area shape="rect" id="id5" href="JourneyElement.html" title="Journey element is a source and target of transitions and calls. " alt="" coords="184,218,450,398"/>
+</map>
+
+<h3>Supertypes</h3>
+<ul>
+  <li><a href="NamedElement.html">NamedElement</a></li>
+</ul>
+<h3>Subtypes</h3>
+<ul>
+  <li><a href="Call.html">Call</a></li>
+</ul>
+<h3>Referrers</h3>
+<ul>
+  <li><a href="JourneyElement.html">JourneyElement</a></li>
+</ul>
+<h3>Uses</h3>
+<ul>
+  <li><a href="JourneyElement.html">JourneyElement</a></li>
+</ul>
+<h3>Load specification</h3>
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr class="bg-secondary">
+      <th>Key</th>
+      <th>Type</th>
+      <th>Homogenous</th>
+      <th>Strict containment</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="text-monospace">appearance</td>
+      <td><a href="ModelElementAppearance.html">ModelElementAppearance</a></td>
+      <td class="text-center">true</td>
+      <td class="text-center"></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td class="text-monospace">description</td>
+      <td>EString</td>
+      <td class="text-center"></td>
+      <td class="text-center"></td>
+      <td><p>Description in HTML.</p>
+</td>
+    </tr>
+    <tr>
+      <td class="text-monospace">markdown-description</td>
+      <td>EString</td>
+      <td class="text-center"></td>
+      <td class="text-center"></td>
+      <td><p>Description in <a href="https://en.wikipedia.org/wiki/Markdown">Markdown</a>.</p>
+</td>
+    </tr>
+    <tr>
+      <td class="text-monospace">name</td>
+      <td>EString</td>
+      <td class="text-center"></td>
+      <td class="text-center"></td>
+      <td><p>Element name.</p>
+</td>
+    </tr>
+    <tr>
+      <td class="text-monospace">path</td>
+      <td>EString</td>
+      <td class="text-center"></td>
+      <td class="text-center"></td>
+      <td><p>Element&rsquo;s path to form full element URI and URL. Shall be unique in the containing collection. If blank, derived from element&rsquo;s position in the collection. For named elements is derived from element name. Element URL is formed by adding <code>.html</code> extension to the path if the model element&rsquo;s EClass doesn&rsquo;t have containment references and as such the element may not have children, and by adding <code>/index.html</code> otherwise.</p>
+</td>
+    </tr>
+    <tr>
+      <td class="text-monospace">payload</td>
+      <td><a href="NamedElement.html">NamedElement</a></td>
+      <td class="text-center"></td>
+      <td class="text-center"></td>
+      <td><p>Artifacts passed from source to target activity.</p>
+</td>
+    </tr>
+    <tr>
+      <td class="text-monospace">resources</td>
+      <td><a href="NamedElement.html">NamedElement</a></td>
+      <td class="text-center"></td>
+      <td class="text-center"></td>
+      <td><p>Resources associated with the element, e.g. documentation.</p>
+</td>
+    </tr>
+    <tr>
+      <td class="text-monospace">sections</td>
+      <td><a href="Document.html">Document</a></td>
+      <td class="text-center">true</td>
+      <td class="text-center"></td>
+      <td><p>Sections for model element descriptions. In documents sections apply to the document content, i.e. document descriptions cannot have sections. Sections can be nested.</p>
+</td>
+    </tr>
+    <tr>
+      <td class="text-monospace">suppress</td>
+      <td>EBoolean</td>
+      <td class="text-center"></td>
+      <td class="text-center"></td>
+      <td><p>Can be used in journeys extending other journeys to remove the inherited transition from the list of outputs/call. Transitions to supprressed journey elements are automatically supppressed.</p>
+</td>
+    </tr>
+    <tr>
+      <td class="text-monospace">table-of-contents</td>
+      <td><a href="TableOfContents.html">TableOfContents</a></td>
+      <td class="text-center">true</td>
+      <td class="text-center">true</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td class="text-monospace font-weight-bold">target</td>
+      <td>EString</td>
+      <td class="text-center"></td>
+      <td class="text-center"></td>
+      <td><p>Relative path to the target <a href="JourneyElement.html">journey element</a>. May contain <code>..</code> to navigate to the parent <a href="Journey.html">journey</a> - i.e. the journey which contains the journey containing the element which contains this transition. May contain <code>/</code> to navigate to nested journeys. Treated as URI if contains <code>:</code>.</p>
+</td>
+    </tr>
+  </tbody>
+</table>
+                <div>
+                  <H3>Members</H3>
+                  <ul>
+                    <li>
+                      <span>Attributes</span>
+                      <ul>
+                        <li>
+                          <a data-nsd-action="engineering-Transition-EAttribute-suppress" href="Transition.html#EAttribute-suppress" class="nsd-action">
+                            <span title="Can be used in journeys extending other journeys to remove the inherited transition from the list of outputs/call. ">
+                              <img src="https://www.nasdanika.org/resources/images/ecore/EAttribute.gif" class="nsd-label-icon"/>suppress : EBoolean</span>
+                          </a> - Can be used in journeys extending other journeys to remove the inherited transition from the list of outputs/call. </li>
+                        <li>
+                          <a data-nsd-action="engineering-Transition-EAttribute-target" href="Transition.html#EAttribute-target" class="nsd-action">
+                            <span title="Relative path to the target journey element. ">
+                              <img src="https://www.nasdanika.org/resources/images/ecore/EAttribute.gif" class="nsd-label-icon"/>target : EString</span>
+                          </a> - Relative path to the target journey element. </li>
+                      </ul>
+                    </li>
+                    <li>
+                      <span>References</span>
+                      <ul>
+                        <li>
+                          <a data-nsd-action="engineering-Transition-EReference-payload" href="Transition.html#EReference-payload" class="nsd-action">
+                            <span title="Artifacts passed from source to target activity.">
+                              <img src="https://www.nasdanika.org/resources/images/ecore/EReference.gif" class="nsd-label-icon"/>payload : NamedElement*</span>
+                          </a> - Artifacts passed from source to target activity.</li>
+                      </ul>
+                    </li>
+                    <li>
+                      <span>Operations</span>
+                      <ul>
+                        <li>
+                          <a data-nsd-action="engineering-Transition-EOperation-getTarget-8cce7eac10f48ffa06be9881a39536e6b5a71424813869c57d7da54a59ce9aa9" href="Transition.html#EOperation-getTarget-8cce7eac10f48ffa06be9881a39536e6b5a71424813869c57d7da54a59ce9aa9" class="nsd-action">
+                            <span title="Resolves transition&rsquo;s target journey element for a given journey.">
+                              <img src="https://www.nasdanika.org/resources/images/ecore/EOperation.gif" class="nsd-label-icon"/>getTarget : JourneyElement</span>
+                          </a> - Resolves transition’s target journey element for a given journey.
+                          <ul>
+                            <li>
+                              <span>Parameters</span>
+                              <ul>
+                                <li>
+                                  <a data-nsd-action="c2b091b7-6512-4698-a80b-d9fed8e2d24b" href="" class="nsd-action">
+                                    <span title="Journey nesting path to resolve target element for. ">
+                                      <img src="https://www.nasdanika.org/resources/images/ecore/EParameter.gif" class="nsd-label-icon"/>journeyPath : Journey*</span>
+                                  </a> - Journey nesting path to resolve target element for. </li>
+                              </ul>
+                            </li>
+                          </ul></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+                <a name="attributes"></a>
+                <H3>Attributes</H3>
+                <div>
+                  <a name="EAttribute-suppress"></a>
+                  <H4 data-nsd-action="engineering-Transition-EAttribute-suppress" class="nsd-action">
+                    <span title="Can be used in journeys extending other journeys to remove the inherited transition from the list of outputs/call. ">
+                      <img src="https://www.nasdanika.org/resources/images/ecore/EAttribute.gif" class="nsd-label-icon"/>suppress : EBoolean</span>
+                  </H4><div class="markdown-body"><p>Can be used in journeys extending other journeys to remove the inherited transition from the list of outputs/call. Transitions to supprressed journey elements are automatically supppressed.</p>
+</div>
+<table style="width:auto" class="table">
+  <tr>
+    <th>Type</th>
+    <td>EBoolean</td>
+  </tr>
+  <tr>
+    <th>Cardinality</th>
+    <td>0..1</td>
+  </tr>
+  <tr>
+    <th>Changeable</th>
+    <td>true</td>
+  </tr>
+  <tr>
+    <th>Derived</th>
+    <td>false</td>
+  </tr>
+</table></div>
+                <div>
+                  <a name="EAttribute-target"></a>
+                  <H4 data-nsd-action="engineering-Transition-EAttribute-target" class="nsd-action">
+                    <span title="Relative path to the target journey element. ">
+                      <img src="https://www.nasdanika.org/resources/images/ecore/EAttribute.gif" class="nsd-label-icon"/>target : EString</span>
+                  </H4><div class="markdown-body"><p>Relative path to the target <a href="JourneyElement.html">journey element</a>. May contain <code>..</code> to navigate to the parent <a href="Journey.html">journey</a> - i.e. the journey which contains the journey containing the element which contains this transition. May contain <code>/</code> to navigate to nested journeys. Treated as URI if contains <code>:</code>.</p>
+</div>
+<table style="width:auto" class="table">
+  <tr>
+    <th>Type</th>
+    <td>EString</td>
+  </tr>
+  <tr>
+    <th>Cardinality</th>
+    <td>1</td>
+  </tr>
+  <tr>
+    <th>Changeable</th>
+    <td>true</td>
+  </tr>
+  <tr>
+    <th>Derived</th>
+    <td>false</td>
+  </tr>
+</table></div>
+                <a name="references"></a>
+                <H3>References</H3>
+                <div>
+                  <a name="EReference-payload"></a>
+                  <H4 data-nsd-action="engineering-Transition-EReference-payload" class="nsd-action">
+                    <span title="Artifacts passed from source to target activity.">
+                      <img src="https://www.nasdanika.org/resources/images/ecore/EReference.gif" class="nsd-label-icon"/>payload : NamedElement*</span>
+                  </H4><div class="markdown-body"><p>Artifacts passed from source to target activity.</p>
+</div>
+<table style="width:auto" class="table">
+  <tr>
+    <th>Type</th>
+    <td><a href="NamedElement.html">NamedElement</a></td>
+  </tr>
+  <tr>
+    <th>Cardinality</th>
+    <td>0..*</td>
+  </tr>
+  <tr>
+    <th>Changeable</th>
+    <td>true</td>
+  </tr>
+  <tr>
+    <th>Derived</th>
+    <td>false</td>
+  </tr>
+</table></div>
+                <a name="operations"></a>
+                <H3>Operations</H3>
+                <div>
+                  <a name="EOperation-getTarget-8cce7eac10f48ffa06be9881a39536e6b5a71424813869c57d7da54a59ce9aa9"></a>
+                  <H4 data-nsd-action="engineering-Transition-EOperation-getTarget-8cce7eac10f48ffa06be9881a39536e6b5a71424813869c57d7da54a59ce9aa9" class="nsd-action">
+                    <span title="Resolves transition&rsquo;s target journey element for a given journey.">
+                      <img src="https://www.nasdanika.org/resources/images/ecore/EOperation.gif" class="nsd-label-icon"/>getTarget : JourneyElement</span>
+                  </H4><div class="markdown-body"><p>Resolves transition&rsquo;s target journey element for a given journey.</p>
+</div>
+<table style="width:auto" class="table">
+  <tr>
+    <th>Type</th>
+    <td><a href="JourneyElement.html">JourneyElement</a></td>
+  </tr>
+  <tr>
+    <th>Cardinality</th>
+    <td>0..1</td>
+  </tr>
+</table>
+                  <a name="89d2246a-0c34-4465-ac81-afc1d87f205e"></a>
+                  <H5>Parameters</H5>
+                  <div>
+                    <a name="c2b091b7-6512-4698-a80b-d9fed8e2d24b"></a>
+                    <H6 data-nsd-action="c2b091b7-6512-4698-a80b-d9fed8e2d24b" class="nsd-action">
+                      <span title="Journey nesting path to resolve target element for. ">
+                        <img src="https://www.nasdanika.org/resources/images/ecore/EParameter.gif" class="nsd-label-icon"/>journeyPath : Journey*</span>
+                    </H6><div class="markdown-body"><p>Journey nesting path to resolve target element for. May be different from the containment path in the case of nested journeys of extended journeys.</p>
+</div>
+<table style="width:auto" class="table">
+  <tr>
+    <th>Type</th>
+    <td><a href="Journey.html">Journey</a></td>
+  </tr>
+  <tr>
+    <th>Cardinality</th>
+    <td>1..*</td>
+  </tr>
+</table></div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

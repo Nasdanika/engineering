@@ -46,6 +46,8 @@ import org.nasdanika.engineering.Increment;
 import org.nasdanika.engineering.InputPin;
 import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.IssueCategory;
+import org.nasdanika.engineering.IssuePriority;
+import org.nasdanika.engineering.IssueSeverity;
 import org.nasdanika.engineering.IssueStatus;
 import org.nasdanika.engineering.Join;
 import org.nasdanika.engineering.Journey;
@@ -193,6 +195,20 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	private EClass issueStatusEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass issuePriorityEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass issueSeverityEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1430,6 +1446,46 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
+	public EClass getIssuePriority() {
+		return issuePriorityEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getIssuePriority_Issues() {
+		return (EReference)issuePriorityEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getIssueSeverity() {
+		return issueSeverityEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getIssueSeverity_Issues() {
+		return (EReference)issueSeverityEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getRelease() {
 		return releaseEClass;
 	}
@@ -1942,6 +1998,26 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	@Override
 	public EAttribute getIssue_RemainingCost() {
 		return (EAttribute)issueEClass.getEStructuralFeatures().get(13);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getIssue_Priority() {
+		return (EReference)issueEClass.getEStructuralFeatures().get(14);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getIssue_Severity() {
+		return (EReference)issueEClass.getEStructuralFeatures().get(15);
 	}
 
 	/**
@@ -3071,6 +3147,12 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		createEReference(issueStatusEClass, ISSUE_STATUS__ISSUES);
 		createEAttribute(issueStatusEClass, ISSUE_STATUS__DONE);
 
+		issuePriorityEClass = createEClass(ISSUE_PRIORITY);
+		createEReference(issuePriorityEClass, ISSUE_PRIORITY__ISSUES);
+
+		issueSeverityEClass = createEClass(ISSUE_SEVERITY);
+		createEReference(issueSeverityEClass, ISSUE_SEVERITY__ISSUES);
+
 		issueEClass = createEClass(ISSUE);
 		createEReference(issueEClass, ISSUE__CHILDREN);
 		createEReference(issueEClass, ISSUE__REQUIRES);
@@ -3086,6 +3168,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		createEAttribute(issueEClass, ISSUE__COST);
 		createEAttribute(issueEClass, ISSUE__REMAINING_EFFORT);
 		createEAttribute(issueEClass, ISSUE__REMAINING_COST);
+		createEReference(issueEClass, ISSUE__PRIORITY);
+		createEReference(issueEClass, ISSUE__SEVERITY);
 
 		noteEClass = createEClass(NOTE);
 		createEReference(noteEClass, NOTE__AUTHOR);
@@ -3363,6 +3447,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		incrementEClass.getESuperTypes().add(this.getEndeavor());
 		issueCategoryEClass.getESuperTypes().add(this.getAim());
 		issueStatusEClass.getESuperTypes().add(this.getNamedElement());
+		issuePriorityEClass.getESuperTypes().add(this.getNamedElement());
+		issueSeverityEClass.getESuperTypes().add(this.getNamedElement());
 		issueEClass.getESuperTypes().add(this.getEngineeredCapability());
 		noteEClass.getESuperTypes().add(this.getModelElement());
 		engineeredElementEClass.getESuperTypes().add(this.getForum());
@@ -3464,6 +3550,12 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		initEReference(getIssueStatus_Issues(), this.getIssue(), this.getIssue_Status(), "issues", null, 0, -1, IssueStatus.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEAttribute(getIssueStatus_Done(), ecorePackage.getEBoolean(), "done", null, 0, 1, IssueStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(issuePriorityEClass, IssuePriority.class, "IssuePriority", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getIssuePriority_Issues(), this.getIssue(), this.getIssue_Priority(), "issues", null, 0, -1, IssuePriority.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+
+		initEClass(issueSeverityEClass, IssueSeverity.class, "IssueSeverity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getIssueSeverity_Issues(), this.getIssue(), this.getIssue_Severity(), "issues", null, 0, -1, IssueSeverity.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+
 		initEClass(issueEClass, Issue.class, "Issue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getIssue_Children(), this.getIssue(), null, "children", null, 0, -1, Issue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getIssue_Requires(), this.getCapability(), this.getCapability_RequiredBy(), "requires", null, 0, -1, Issue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3479,6 +3571,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		initEAttribute(getIssue_Cost(), ecorePackage.getEDouble(), "cost", null, 0, 1, Issue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getIssue_RemainingEffort(), ecorePackage.getEDouble(), "remainingEffort", null, 0, 1, Issue.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEAttribute(getIssue_RemainingCost(), ecorePackage.getEDouble(), "remainingCost", null, 0, 1, Issue.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getIssue_Priority(), this.getIssuePriority(), this.getIssuePriority_Issues(), "priority", null, 0, 1, Issue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getIssue_Severity(), this.getIssueSeverity(), this.getIssueSeverity_Issues(), "severity", null, 0, 1, Issue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(noteEClass, Note.class, "Note", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getNote_Author(), this.getEngineer(), null, "author", null, 0, 1, Note.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3849,6 +3943,18 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 			   "documentation-reference", "doc/issue-status.md"
 		   });
 		addAnnotation
+		  (issuePriorityEClass,
+		   source,
+		   new String[] {
+			   "documentation-reference", "doc/issue-priority.md"
+		   });
+		addAnnotation
+		  (issueSeverityEClass,
+		   source,
+		   new String[] {
+			   "documentation-reference", "doc/issue-severity.md"
+		   });
+		addAnnotation
 		  (issueEClass,
 		   source,
 		   new String[] {
@@ -3886,6 +3992,18 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		   });
 		addAnnotation
 		  (getIssue_Releases(),
+		   source,
+		   new String[] {
+			   "homogenous", "true"
+		   });
+		addAnnotation
+		  (getIssue_Priority(),
+		   source,
+		   new String[] {
+			   "homogenous", "true"
+		   });
+		addAnnotation
+		  (getIssue_Severity(),
 		   source,
 		   new String[] {
 			   "homogenous", "true"
@@ -4639,6 +4757,18 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 			   "documentation", "If ``true``, indicates that the issue in this status is successfully completed and issues requiring is are now workable. Issue can be completed (completion = 1), but not done, e.g. it can be cancelled."
 		   });
 		addAnnotation
+		  (getIssuePriority_Issues(),
+		   source,
+		   new String[] {
+			   "documentation", "Issues in this priority"
+		   });
+		addAnnotation
+		  (getIssueSeverity_Issues(),
+		   source,
+		   new String[] {
+			   "documentation", "Issues in this severity."
+		   });
+		addAnnotation
 		  (getIssue_Children(),
 		   source,
 		   new String[] {
@@ -4721,6 +4851,18 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		   source,
 		   new String[] {
 			   "documentation", "Remaining cost is computed from issue cost and [notes](Note.html) cost or remaining cost."
+		   });
+		addAnnotation
+		  (getIssue_Priority(),
+		   source,
+		   new String[] {
+			   "documentation", "Issue status."
+		   });
+		addAnnotation
+		  (getIssue_Severity(),
+		   source,
+		   new String[] {
+			   "documentation", "Issue status."
 		   });
 		addAnnotation
 		  (getNote_Author(),

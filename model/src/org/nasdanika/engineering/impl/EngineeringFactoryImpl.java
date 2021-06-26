@@ -41,6 +41,8 @@ import org.nasdanika.engineering.Increment;
 import org.nasdanika.engineering.InputPin;
 import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.IssueCategory;
+import org.nasdanika.engineering.IssuePriority;
+import org.nasdanika.engineering.IssueSeverity;
 import org.nasdanika.engineering.IssueStatus;
 import org.nasdanika.engineering.Join;
 import org.nasdanika.engineering.Journey;
@@ -118,6 +120,8 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 			case EngineeringPackage.INCREMENT: return createIncrement();
 			case EngineeringPackage.ISSUE_CATEGORY: return createIssueCategory();
 			case EngineeringPackage.ISSUE_STATUS: return createIssueStatus();
+			case EngineeringPackage.ISSUE_PRIORITY: return createIssuePriority();
+			case EngineeringPackage.ISSUE_SEVERITY: return createIssueSeverity();
 			case EngineeringPackage.ISSUE: return createIssue();
 			case EngineeringPackage.NOTE: return createNote();
 			case EngineeringPackage.DOCUMENT: return createDocument();
@@ -346,6 +350,28 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 	public IssueStatus createIssueStatus() {
 		IssueStatusImpl issueStatus = new IssueStatusImpl();
 		return issueStatus;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public IssuePriority createIssuePriority() {
+		IssuePriorityImpl issuePriority = new IssuePriorityImpl();
+		return issuePriority;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public IssueSeverity createIssueSeverity() {
+		IssueSeverityImpl issueSeverity = new IssueSeverityImpl();
+		return issueSeverity;
 	}
 
 	/**

@@ -1,0 +1,2 @@
+[Issue](Issue.html) priority, e.g. ``Low``, ``Medium``, ``High``. 
+Issue priority defines the order in which issues shall be worked on. Higher priority workable issues shall be worked on before lower priority issues.

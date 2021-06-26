@@ -27,6 +27,8 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.nasdanika.engineering.Issue#getCost <em>Cost</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Issue#getRemainingEffort <em>Remaining Effort</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Issue#getRemainingCost <em>Remaining Cost</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.Issue#getPriority <em>Priority</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.Issue#getSeverity <em>Severity</em>}</li>
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getIssue()
@@ -250,6 +252,62 @@ public interface Issue extends EngineeredCapability {
 	 * @generated
 	 */
 	double getRemainingCost();
+
+	/**
+	 * Returns the value of the '<em><b>Priority</b></em>' reference.
+	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.IssuePriority#getIssues <em>Issues</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Issue status.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Priority</em>' reference.
+	 * @see #setPriority(IssuePriority)
+	 * @see org.nasdanika.engineering.EngineeringPackage#getIssue_Priority()
+	 * @see org.nasdanika.engineering.IssuePriority#getIssues
+	 * @model opposite="issues"
+	 *        annotation="urn:org.nasdanika homogenous='true'"
+	 * @generated
+	 */
+	IssuePriority getPriority();
+
+	/**
+	 * Sets the value of the '{@link org.nasdanika.engineering.Issue#getPriority <em>Priority</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Priority</em>' reference.
+	 * @see #getPriority()
+	 * @generated
+	 */
+	void setPriority(IssuePriority value);
+
+	/**
+	 * Returns the value of the '<em><b>Severity</b></em>' reference.
+	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.IssueSeverity#getIssues <em>Issues</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Issue status.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Severity</em>' reference.
+	 * @see #setSeverity(IssueSeverity)
+	 * @see org.nasdanika.engineering.EngineeringPackage#getIssue_Severity()
+	 * @see org.nasdanika.engineering.IssueSeverity#getIssues
+	 * @model opposite="issues"
+	 *        annotation="urn:org.nasdanika homogenous='true'"
+	 * @generated
+	 */
+	IssueSeverity getSeverity();
+
+	/**
+	 * Sets the value of the '{@link org.nasdanika.engineering.Issue#getSeverity <em>Severity</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Severity</em>' reference.
+	 * @see #getSeverity()
+	 * @generated
+	 */
+	void setSeverity(IssueSeverity value);
 
 	/**
 	 * Returns the value of the '<em><b>Notes</b></em>' containment reference list.
