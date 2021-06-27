@@ -851,6 +851,73 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 		return false;		
 	}
 	
+	protected int getDiagnosticSeverity() {
+		Map<EObject, Diagnostic> diagnosticMap = factory.getDiagnosticMap();
+		int ret = Diagnostic.OK;
+		if (diagnosticMap == null || diagnosticMap.isEmpty()) {
+			return ret;
+		}
+		for (Entry<EObject, Diagnostic> de: diagnosticMap.entrySet()) {
+			if (EcoreUtil.isAncestor(getSemanticElement(), de.getKey())) {
+				Diagnostic diagnostic = de.getValue();
+				if (matchSeverity(diagnostic)) {
+					int severity = diagnostic.getSeverity();
+					if (severity == Diagnostic.ERROR) {
+						return severity;
+					}
+					if (ret < severity) {
+						ret = severity;
+					}
+				}
+			}
+		}
+		return ret;		
+	}	
+	
+	protected int getDiagnosticCount() {
+		Map<EObject, Diagnostic> diagnosticMap = factory.getDiagnosticMap();
+		int ret = 0;
+		if (diagnosticMap == null || diagnosticMap.isEmpty()) {
+			return 0;
+		}
+		for (Entry<EObject, Diagnostic> de: diagnosticMap.entrySet()) {
+			if (EcoreUtil.isAncestor(getSemanticElement(), de.getKey())) {
+				ret += getDiagnosticCount(de.getValue());
+			}
+		}
+		return ret;		
+	}	
+	
+	protected int getDiagnosticCount(Diagnostic diagnostic) {
+		int ret = 0;
+		if (matchSeverity(diagnostic)) {
+			if (diagnostic.getChildren().isEmpty()) {
+				++ret;
+			} else for (Diagnostic child: diagnostic.getChildren()) {
+				ret += getDiagnosticCount(child);
+			}			
+		}
+		return ret;
+	}
+	
+	@Override
+	protected ActionImpl createDiagnosticSummaryAction() {
+		ActionImpl ret = super.createDiagnosticSummaryAction();
+		int severity = getDiagnosticSeverity();
+		if (severity == Diagnostic.ERROR) {
+			ret.setColor(Color.DANGER);
+		} else if (severity == Diagnostic.WARNING) {
+			ret.setColor(Color.WARNING);
+		}
+		
+		int diagnosticCount = getDiagnosticCount();
+		if (diagnosticCount > 0) {
+			ret.setNotification(String.valueOf(diagnosticCount));
+		}
+		
+		return ret;
+	};
+	
 	@Override
 	protected Object diagnosticSummary(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
 		Map<EObject, Diagnostic> diagnosticMap = factory.getDiagnosticMap();
@@ -922,12 +989,6 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 			return true;
 		}
 		return false;
-	}
-	
-	@Override
-	public Label getCategory() {
-		// TODO Auto-generated method stub
-		return super.getCategory();
 	}
 	
 	@Override
