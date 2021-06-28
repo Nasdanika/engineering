@@ -915,6 +915,10 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 			ret.setNotification(String.valueOf(diagnosticCount));
 		}
 		
+		if (!hasDiagnosticSummary()) {
+			ret.setActivator(null);
+		}
+		
 		return ret;
 	};
 	

@@ -229,6 +229,8 @@ engineering-module:
          overriding featureValue() for references - a tricky part, and at the model level for attributes.         
      - name: Component dependency diagrams
        markdown-description: Once representations are supported. Depth - both in and out.
+     - name: Resource uploading
+       markdown-description: Maybe a duplicate. ${resource/<resource url>} - stores to resource manager and returns a relative URL. E.g. for PDF's, sources, etc.
 
 #### Done ####
 

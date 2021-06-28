@@ -90,6 +90,10 @@ public class DocumentViewAction extends EngineeredElementViewAction<Document> {
 						|| feature == EngineeringPackage.Literals.MODEL_ELEMENT__TABLE_OF_CONTENTS;				
 			} 
 			
+			if (c.isInRole(HEAD_ROLE) || c.isInRole(CONTENT_ROLE)) {
+				return false;
+			}
+			
 			if (c instanceof ViewAction) {
 				return DocumentViewAction.this.getSemanticElement().getSections().contains(((ViewAction<?>) c).getSemanticElement());
 			}
@@ -103,7 +107,17 @@ public class DocumentViewAction extends EngineeredElementViewAction<Document> {
 			
 			@Override
 			public Object generate(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
-				return generateInfo(viewGenerator, progressMonitor);
+				Fragment ret = viewGenerator.getHTMLFactory().fragment();
+				
+				for (Action action: getChildren()) {
+					if (action.isInRole(HEAD_ROLE) || action.isInRole(CONTENT_ROLE)) {
+						ret.content(action.generate(viewGenerator, progressMonitor));
+					}
+				}
+				
+				ret.content(generateInfo(viewGenerator, progressMonitor));
+
+				return ret;
 			}
 			
 			@Override
@@ -114,7 +128,7 @@ public class DocumentViewAction extends EngineeredElementViewAction<Document> {
 		};
 		
 		inheritedChildren.stream().filter(documentChildrenPredicate.negate()).forEach(action -> {
-			if (action.isInRole(Action.Role.SECTION)) {
+			if (action.isInRole(Action.Role.SECTION) || action.isInRole(HEAD_ROLE) || action.isInRole(CONTENT_ROLE)) {
 				infoAction.getChildren().add(action);				
 			} else if (action instanceof MutableAction) {
 				infoAction.getChildren().add(action);

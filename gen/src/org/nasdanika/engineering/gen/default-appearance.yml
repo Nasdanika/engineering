@@ -20,6 +20,11 @@ model-elements:
          - elements/none
       sections:
         roles: elements/section
+    actions:
+      diagnostic-summary: 
+        roles: head
+      properties-table:
+        roles: head    
   table-of-contents:
     roles: none
   module:

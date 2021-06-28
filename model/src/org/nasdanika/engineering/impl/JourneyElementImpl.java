@@ -194,7 +194,7 @@ public class JourneyElementImpl extends EngineeredElementImpl implements Journey
 		EList<Transition> ret = new BasicInternalEList<>(EObject.class);
 		traverseAllElements(journeyPath, (jp, je) -> {
 			for (Transition output: je.getOutputs()) {
-				if (output.getTarget(jp) == this) {
+				if (output.getTarget(jp) == this && !ret.contains(output)) {
 					ret.add(output);
 				}
 			}			
@@ -212,7 +212,7 @@ public class JourneyElementImpl extends EngineeredElementImpl implements Journey
 		EList<Call> ret = new BasicInternalEList<>(EObject.class);
 		traverseAllElements(journeyPath, (jp, je) -> {
 			for (Call call: je.getCalls()) {
-				if (call.getTarget(jp) == this) {
+				if (call.getTarget(jp) == this && !ret.contains(call)) {
 					ret.add(call);
 				}
 			}			
@@ -230,7 +230,7 @@ public class JourneyElementImpl extends EngineeredElementImpl implements Journey
 		EList<Transition> ret = new BasicInternalEList<>(EObject.class);
 		traverseAllElements(journeyPath, (jp, je) -> {
 			for (Transition output: je.getAllOutputs(jp)) {
-				if (output.getTarget(jp) == this) {
+				if (output.getTarget(jp) == this && !ret.contains(output)) {
 					ret.add(output);
 				}
 			}			
@@ -272,7 +272,7 @@ public class JourneyElementImpl extends EngineeredElementImpl implements Journey
 		EList<Call> ret = new BasicInternalEList<>(EObject.class);
 		traverseAllElements(journeyPath, (jp, je) -> {
 			for (Call call: je.getAllCalls(jp)) {
-				if (call.getTarget(jp) == this) {
+				if (call.getTarget(jp) == this && !ret.contains(call)) {
 					ret.add(call);
 				}
 			}			

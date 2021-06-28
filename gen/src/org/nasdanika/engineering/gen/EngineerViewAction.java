@@ -146,6 +146,9 @@ public class EngineerViewAction<T extends Engineer> extends PersonaViewAction<T>
 		}	
 		
 		if (member == EngineeringPackage.Literals.ENGINEER__INCREMENTS) {
+			if (getSemanticElement().getIncrements().isEmpty()) {
+				return Collections.emptyList();				
+			}
 			ModelElementFeatureViewAction<T, EStructuralFeature, ModelElementViewActionImpl<T>> incrementsAction = createFeatureViewAction((EStructuralFeature) member, this::incrementsSummary);
 			return Collections.singleton(incrementsAction);
 		}
