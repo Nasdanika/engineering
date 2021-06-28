@@ -12,9 +12,10 @@ Issue(s) can:
 * Contribute to [features](Feature.html),
 * Have zero or more [issue categories](IssueCategory.html) 
 * Be in one [issue status](IssueStatus.html),
+* Have [priority](IssuePriority.html) and [severity](IssueSeverity.html),
 * Be organized in a hierarchy ([WBS](https://en.wikipedia.org/wiki/Work_breakdown_structure)),
 * Require [capabilities](Capability.html) to become workable, e.g. another issue to be completed, or a release to be available.
 * Be [aligned](Alignment.html) to [aims](Aim.html), e.g [principles](Priciple.html) or [key results](KeyResult.html) of [objectives](Objective.html),
 * Specify effort and cost required to be completed. 
 
-Issue progress is tracked using [notes](Note.html). Notes are also used for discussions and tracking of decisions.
+Issue progress is tracked using [notes](Note.html). Notes are also used for discussions and tracking of issue-related decisions.

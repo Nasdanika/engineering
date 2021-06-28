@@ -1424,5 +1424,15 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 
 		return super.actionText(action, defaultValue);
 	}
+
+	@Override
+	public String memberDescription(ETypedElement member) {
+		return Util.isBlank(getContext().getString(SimpleEObjectViewAction.DOC_URI)) ? null : super.memberDescription(member);
+	}
+
+	@Override
+	public String getDescription() {
+		return Util.isBlank(getContext().getString(SimpleEObjectViewAction.DOC_URI)) ? null : super.getDescription();
+	}
 			
 }
