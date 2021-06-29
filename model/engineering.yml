@@ -232,6 +232,10 @@ engineering-module:
        markdown-description: |+2
          Document.extends reference to another document. ModelElement.allSections derived reference returns sections by defult.
          Overridden in JourneyElement and Document. Modifiers similar to journey element. Abstract documents have italic header.         
+     - name: Document inheritance
+       markdown-description: |+2
+         Document.extends reference to another document. ModelElement.allSections derived reference returns sections by defult.
+         Overridden in JourneyElement and Document. Modifiers similar to journey element. Abstract documents have italic header.         
          
      ### === Done === ###    
      - name: Start/end from Issue and Increment to Endeavor

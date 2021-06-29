@@ -231,6 +231,14 @@ engineering-module:
        markdown-description: Once representations are supported. Depth - both in and out.
      - name: Resource uploading
        markdown-description: Maybe a duplicate. ${resource/<resource url>} - stores to resource manager and returns a relative URL. E.g. for PDF's, sources, etc.
+     - name: Icons for model elements to default-appearance
+       markdown-description: Document, link, reference, ...
+     - name: Actions reference - EObject or ModelElement?
+       markdown-description: Or resources is enough?
+     - name: Properties
+       markdown-description: |+2
+         Property, property entry. Properties at the model element. allProperties similar to allSections - Map collects taking inheritance (for jouney elements and documents) and
+         containment (for all elements) into consideration. Usage - interpolation tokens - call in createContext(). E.g. inherit section text, but interpolate with tokens for this journey/document. 
 
 #### Done ####
 
