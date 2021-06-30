@@ -1,6 +1,8 @@
 engineering-product:
    name: Engineering
    path: engineering
+   representations:
+     - representation-component-diagram: true
    releases:
       - name: 2021.4.4
         path: 2021/4/4
