@@ -65,6 +65,12 @@
         <details key="documentation" value="Sections for model element descriptions. In documents sections apply to the document content, i.e. document descriptions cannot have sections. Sections can be nested."/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="representations" upperBound="-1"
+        eType="#//NamedElement" containment="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Pluggable representations of a model element, e.g. a component diagram for engineers and modules."/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TableOfContents">
     <eAnnotations source="urn:org.nasdanika">
@@ -1013,9 +1019,9 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="EngineeringAppearance">
+  <eClassifiers xsi:type="ecore:EClass" name="PackageAppearance">
     <eAnnotations source="urn:org.nasdanika">
-      <details key="documentation-reference" value="doc/engineering-appearance.md"/>
+      <details key="documentation-reference" value="doc/package-appearance.md"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="modelElements" upperBound="-1"
         eType="#//ModelElementAppearanceEntry" containment="true">
@@ -1024,6 +1030,34 @@
       </eAnnotations>
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Mapping of model element EClass names in kebab case to model element appearance.&#xA;E.g. for ``IssueStatus`` appearance specification will look like:&#xA;&#xA;```yaml&#xA;model-elements:&#xA;    issue-status:&#xA;        roles: context&#xA;```&#xA;"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="subPackages" upperBound="-1"
+        eType="#//PackageAppearanceEntry" containment="true">
+      <eAnnotations source="urn:org.nasdanika">
+        <details key="homogenous" value="true"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Mapping of model element EClass names in kebab case to model element appearance.&#xA;E.g. for ``IssueStatus`` appearance specification will look like:&#xA;&#xA;```yaml&#xA;model-elements:&#xA;    issue-status:&#xA;        roles: context&#xA;```&#xA;"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PackageAppearanceEntry" instanceClassName="java.util.Map$Entry">
+    <eAnnotations source="urn:org.nasdanika">
+      <details key="documentation-reference" value="doc/package-appearance-entry.md"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="key" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Model element EClass name in kebab case. E.g. ``issue-status`` for [IssueStatus](IssueStatus.html)."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" lowerBound="1" eType="#//PackageAppearance"
+        containment="true">
+      <eAnnotations source="urn:org.nasdanika">
+        <details key="homogenous" value="true"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Model element appearance."/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
@@ -1607,4 +1641,28 @@
       <details key="documentation-reference" value="doc/start.md"/>
     </eAnnotations>
   </eClassifiers>
+  <eSubpackages name="representation" nsURI="urn:org.nasdanika.engineering.representation"
+      nsPrefix="org.nasdanika.engineering.representation">
+    <eAnnotations source="urn:org.nasdanika">
+      <details key="documentation-reference" value="doc/representation/package-summary.md"/>
+    </eAnnotations>
+    <eClassifiers xsi:type="ecore:EClass" name="ComponentDiagram" eSuperTypes="#//NamedElement">
+      <eAnnotations source="urn:org.nasdanika">
+        <details key="documentation-reference" value="doc/representation/component-diagram.md"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+        <details key="constraints" value="container"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="depthOut" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Depth of outbound dependencies - what this module or module contained in the engineer depends on. Zero means unlimited."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="depthIn" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Depth of inbound dependencies - which modules depend on this module or module contained in this engineer. Zero means unlimited."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+  </eSubpackages>
 </ecore:EPackage>

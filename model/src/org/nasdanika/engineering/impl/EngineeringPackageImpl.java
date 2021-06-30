@@ -31,7 +31,7 @@ import org.nasdanika.engineering.Endeavor;
 import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeredCapability;
 import org.nasdanika.engineering.EngineeredElement;
-import org.nasdanika.engineering.EngineeringAppearance;
+import org.nasdanika.engineering.PackageAppearance;
 import org.nasdanika.engineering.EngineeringFactory;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.EntryPoint;
@@ -74,6 +74,8 @@ import org.nasdanika.engineering.Start;
 import org.nasdanika.engineering.TableOfContents;
 import org.nasdanika.engineering.Topic;
 import org.nasdanika.engineering.Transition;
+import org.nasdanika.engineering.representation.RepresentationPackage;
+import org.nasdanika.engineering.representation.impl.RepresentationPackageImpl;
 import org.nasdanika.engineering.util.EngineeringValidator;
 import org.nasdanika.html.app.SectionStyle;
 
@@ -432,7 +434,14 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass engineeringAppearanceEClass = null;
+	private EClass packageAppearanceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass packageAppearanceEntryEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -586,11 +595,17 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 
 		isInited = true;
 
+		// Obtain or create and register interdependencies
+		Object registeredPackage = EPackage.Registry.INSTANCE.getEPackage(RepresentationPackage.eNS_URI);
+		RepresentationPackageImpl theRepresentationPackage = (RepresentationPackageImpl)(registeredPackage instanceof RepresentationPackageImpl ? registeredPackage : RepresentationPackage.eINSTANCE);
+
 		// Create package meta-data objects
 		theEngineeringPackage.createPackageContents();
+		theRepresentationPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theEngineeringPackage.initializePackageContents();
+		theRepresentationPackage.initializePackageContents();
 
 		// Register package validator
 		EValidator.Registry.INSTANCE.put
@@ -708,6 +723,16 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	@Override
 	public EReference getModelElement_Sections() {
 		return (EReference)modelElementEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getModelElement_Representations() {
+		return (EReference)modelElementEClass.getEStructuralFeatures().get(8);
 	}
 
 	/**
@@ -2416,8 +2441,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EClass getEngineeringAppearance() {
-		return engineeringAppearanceEClass;
+	public EClass getPackageAppearance() {
+		return packageAppearanceEClass;
 	}
 
 	/**
@@ -2426,8 +2451,48 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EReference getEngineeringAppearance_ModelElements() {
-		return (EReference)engineeringAppearanceEClass.getEStructuralFeatures().get(0);
+	public EReference getPackageAppearance_ModelElements() {
+		return (EReference)packageAppearanceEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getPackageAppearance_SubPackages() {
+		return (EReference)packageAppearanceEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getPackageAppearanceEntry() {
+		return packageAppearanceEntryEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getPackageAppearanceEntry_Key() {
+		return (EAttribute)packageAppearanceEntryEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getPackageAppearanceEntry_Value() {
+		return (EReference)packageAppearanceEntryEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -3130,6 +3195,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		createEReference(modelElementEClass, MODEL_ELEMENT__APPEARANCE);
 		createEReference(modelElementEClass, MODEL_ELEMENT__TABLE_OF_CONTENTS);
 		createEReference(modelElementEClass, MODEL_ELEMENT__SECTIONS);
+		createEReference(modelElementEClass, MODEL_ELEMENT__REPRESENTATIONS);
 
 		tableOfContentsEClass = createEClass(TABLE_OF_CONTENTS);
 		createEAttribute(tableOfContentsEClass, TABLE_OF_CONTENTS__ROLE);
@@ -3308,8 +3374,13 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		topicEClass = createEClass(TOPIC);
 		createEReference(topicEClass, TOPIC__MESSAGES);
 
-		engineeringAppearanceEClass = createEClass(ENGINEERING_APPEARANCE);
-		createEReference(engineeringAppearanceEClass, ENGINEERING_APPEARANCE__MODEL_ELEMENTS);
+		packageAppearanceEClass = createEClass(PACKAGE_APPEARANCE);
+		createEReference(packageAppearanceEClass, PACKAGE_APPEARANCE__MODEL_ELEMENTS);
+		createEReference(packageAppearanceEClass, PACKAGE_APPEARANCE__SUB_PACKAGES);
+
+		packageAppearanceEntryEClass = createEClass(PACKAGE_APPEARANCE_ENTRY);
+		createEAttribute(packageAppearanceEntryEClass, PACKAGE_APPEARANCE_ENTRY__KEY);
+		createEReference(packageAppearanceEntryEClass, PACKAGE_APPEARANCE_ENTRY__VALUE);
 
 		appearanceEClass = createEClass(APPEARANCE);
 		createEAttribute(appearanceEClass, APPEARANCE__LABEL);
@@ -3457,6 +3528,12 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		setNsPrefix(eNS_PREFIX);
 		setNsURI(eNS_URI);
 
+		// Obtain other dependent packages
+		RepresentationPackage theRepresentationPackage = (RepresentationPackage)EPackage.Registry.INSTANCE.getEPackage(RepresentationPackage.eNS_URI);
+
+		// Add subpackages
+		getESubpackages().add(theRepresentationPackage);
+
 		// Create type parameters
 
 		// Set bounds for type parameters
@@ -3535,6 +3612,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		initEReference(getModelElement_Appearance(), this.getModelElementAppearance(), null, "appearance", null, 0, 1, ModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getModelElement_TableOfContents(), this.getTableOfContents(), null, "tableOfContents", null, 0, 1, ModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getModelElement_Sections(), this.getDocument(), null, "sections", null, 0, -1, ModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getModelElement_Representations(), this.getNamedElement(), null, "representations", null, 0, -1, ModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(tableOfContentsEClass, TableOfContents.class, "TableOfContents", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTableOfContents_Role(), ecorePackage.getEString(), "role", null, 0, 1, TableOfContents.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3713,8 +3791,13 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		initEClass(topicEClass, Topic.class, "Topic", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTopic_Messages(), this.getMessage(), null, "messages", null, 0, -1, Topic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(engineeringAppearanceEClass, EngineeringAppearance.class, "EngineeringAppearance", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getEngineeringAppearance_ModelElements(), this.getModelElementAppearanceEntry(), null, "modelElements", null, 0, -1, EngineeringAppearance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(packageAppearanceEClass, PackageAppearance.class, "PackageAppearance", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getPackageAppearance_ModelElements(), this.getModelElementAppearanceEntry(), null, "modelElements", null, 0, -1, PackageAppearance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPackageAppearance_SubPackages(), this.getPackageAppearanceEntry(), null, "subPackages", null, 0, -1, PackageAppearance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(packageAppearanceEntryEClass, Map.Entry.class, "PackageAppearanceEntry", !IS_ABSTRACT, !IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getPackageAppearanceEntry_Key(), ecorePackage.getEString(), "key", null, 0, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPackageAppearanceEntry_Value(), this.getPackageAppearance(), null, "value", null, 1, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(appearanceEClass, Appearance.class, "Appearance", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getAppearance_Label(), ecorePackage.getEString(), "label", null, 0, 1, Appearance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -4327,13 +4410,31 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 			   "homogenous", "true"
 		   });
 		addAnnotation
-		  (engineeringAppearanceEClass,
+		  (packageAppearanceEClass,
 		   source,
 		   new String[] {
-			   "documentation-reference", "doc/engineering-appearance.md"
+			   "documentation-reference", "doc/package-appearance.md"
 		   });
 		addAnnotation
-		  (getEngineeringAppearance_ModelElements(),
+		  (getPackageAppearance_ModelElements(),
+		   source,
+		   new String[] {
+			   "homogenous", "true"
+		   });
+		addAnnotation
+		  (getPackageAppearance_SubPackages(),
+		   source,
+		   new String[] {
+			   "homogenous", "true"
+		   });
+		addAnnotation
+		  (packageAppearanceEntryEClass,
+		   source,
+		   new String[] {
+			   "documentation-reference", "doc/package-appearance-entry.md"
+		   });
+		addAnnotation
+		  (getPackageAppearanceEntry_Value(),
 		   source,
 		   new String[] {
 			   "homogenous", "true"
@@ -4649,6 +4750,12 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		   source,
 		   new String[] {
 			   "documentation", "Sections for model element descriptions. In documents sections apply to the document content, i.e. document descriptions cannot have sections. Sections can be nested."
+		   });
+		addAnnotation
+		  (getModelElement_Representations(),
+		   source,
+		   new String[] {
+			   "documentation", "Pluggable representations of a model element, e.g. a component diagram for engineers and modules."
 		   });
 		addAnnotation
 		  (getTableOfContents_Role(),
@@ -5329,10 +5436,28 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 			   "documentation", "Messages in this topic."
 		   });
 		addAnnotation
-		  (getEngineeringAppearance_ModelElements(),
+		  (getPackageAppearance_ModelElements(),
 		   source,
 		   new String[] {
 			   "documentation", "Mapping of model element EClass names in kebab case to model element appearance.\nE.g. for ``IssueStatus`` appearance specification will look like:\n\n```yaml\nmodel-elements:\n    issue-status:\n        roles: context\n```\n"
+		   });
+		addAnnotation
+		  (getPackageAppearance_SubPackages(),
+		   source,
+		   new String[] {
+			   "documentation", "Mapping of model element EClass names in kebab case to model element appearance.\nE.g. for ``IssueStatus`` appearance specification will look like:\n\n```yaml\nmodel-elements:\n    issue-status:\n        roles: context\n```\n"
+		   });
+		addAnnotation
+		  (getPackageAppearanceEntry_Key(),
+		   source,
+		   new String[] {
+			   "documentation", "Model element EClass name in kebab case. E.g. ``issue-status`` for [IssueStatus](IssueStatus.html)."
+		   });
+		addAnnotation
+		  (getPackageAppearanceEntry_Value(),
+		   source,
+		   new String[] {
+			   "documentation", "Model element appearance."
 		   });
 		addAnnotation
 		  (getAppearance_Label(),

@@ -19,6 +19,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//ModelElement/appearance"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//ModelElement/tableOfContents"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//ModelElement/sections"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//ModelElement/representations"/>
     </genClasses>
     <genClasses ecoreClass="engineering.ecore#//TableOfContents">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//TableOfContents/role"/>
@@ -196,8 +197,13 @@
     <genClasses ecoreClass="engineering.ecore#//Topic">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//Topic/messages"/>
     </genClasses>
-    <genClasses ecoreClass="engineering.ecore#//EngineeringAppearance">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//EngineeringAppearance/modelElements"/>
+    <genClasses ecoreClass="engineering.ecore#//PackageAppearance">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//PackageAppearance/modelElements"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//PackageAppearance/subPackages"/>
+    </genClasses>
+    <genClasses ecoreClass="engineering.ecore#//PackageAppearanceEntry">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//PackageAppearanceEntry/key"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//PackageAppearanceEntry/value"/>
     </genClasses>
     <genClasses image="false" ecoreClass="engineering.ecore#//Appearance">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Appearance/label"/>
@@ -323,5 +329,11 @@
     <genClasses ecoreClass="engineering.ecore#//Join"/>
     <genClasses ecoreClass="engineering.ecore#//OutputPin"/>
     <genClasses ecoreClass="engineering.ecore#//Start"/>
+    <nestedGenPackages prefix="Representation" disposableProviderFactory="true" ecorePackage="engineering.ecore#//representation">
+      <genClasses ecoreClass="engineering.ecore#//representation/ComponentDiagram">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//representation/ComponentDiagram/depthOut"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//representation/ComponentDiagram/depthIn"/>
+      </genClasses>
+    </nestedGenPackages>
   </genPackages>
 </genmodel:GenModel>

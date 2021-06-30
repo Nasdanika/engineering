@@ -14,4 +14,12 @@
             genModel="model/engineering.genmodel"/>
    </extension>
 
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated engineering -->
+      <package
+            uri="urn:org.nasdanika.engineering.representation"
+            class="org.nasdanika.engineering.representation.RepresentationPackage"
+            genModel="model/engineering.genmodel"/>
+   </extension>
+
 </plugin>

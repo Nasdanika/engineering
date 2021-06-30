@@ -30,7 +30,7 @@ import org.nasdanika.engineering.Endeavor;
 import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeredCapability;
 import org.nasdanika.engineering.EngineeredElement;
-import org.nasdanika.engineering.EngineeringAppearance;
+import org.nasdanika.engineering.PackageAppearance;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.EntryPoint;
 import org.nasdanika.engineering.ExitPoint;
@@ -266,8 +266,12 @@ public class EngineeringAdapterFactory extends AdapterFactoryImpl {
 				return createTopicAdapter();
 			}
 			@Override
-			public Adapter caseEngineeringAppearance(EngineeringAppearance object) {
-				return createEngineeringAppearanceAdapter();
+			public Adapter casePackageAppearance(PackageAppearance object) {
+				return createPackageAppearanceAdapter();
+			}
+			@Override
+			public Adapter casePackageAppearanceEntry(Map.Entry<String, PackageAppearance> object) {
+				return createPackageAppearanceEntryAdapter();
 			}
 			@Override
 			public Adapter caseAppearance(Appearance object) {
@@ -1092,16 +1096,30 @@ public class EngineeringAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.EngineeringAppearance <em>Appearance</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.PackageAppearance <em>Package Appearance</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.nasdanika.engineering.EngineeringAppearance
+	 * @see org.nasdanika.engineering.PackageAppearance
 	 * @generated
 	 */
-	public Adapter createEngineeringAppearanceAdapter() {
+	public Adapter createPackageAppearanceAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link java.util.Map.Entry <em>Package Appearance Entry</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see java.util.Map.Entry
+	 * @generated
+	 */
+	public Adapter createPackageAppearanceEntryAdapter() {
 		return null;
 	}
 

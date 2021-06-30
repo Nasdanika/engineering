@@ -24,6 +24,7 @@ import org.nasdanika.common.Adaptable;
  *   <li>{@link org.nasdanika.engineering.ModelElement#getAppearance <em>Appearance</em>}</li>
  *   <li>{@link org.nasdanika.engineering.ModelElement#getTableOfContents <em>Table Of Contents</em>}</li>
  *   <li>{@link org.nasdanika.engineering.ModelElement#getSections <em>Sections</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.ModelElement#getRepresentations <em>Representations</em>}</li>
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getModelElement()
@@ -199,5 +200,20 @@ public interface ModelElement extends EObject, Adaptable {
 	 * @generated
 	 */
 	EList<Document> getSections();
+
+	/**
+	 * Returns the value of the '<em><b>Representations</b></em>' containment reference list.
+	 * The list contents are of type {@link org.nasdanika.engineering.NamedElement}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Pluggable representations of a model element, e.g. a component diagram for engineers and modules.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Representations</em>' containment reference list.
+	 * @see org.nasdanika.engineering.EngineeringPackage#getModelElement_Representations()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<NamedElement> getRepresentations();
 
 } // ModelElement

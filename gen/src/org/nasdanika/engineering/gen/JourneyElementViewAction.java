@@ -1,8 +1,5 @@
 package org.nasdanika.engineering.gen;
 
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -12,7 +9,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Objects;
 
-import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.text.StringEscapeUtils;
 import org.apache.commons.text.WordUtils;
 import org.eclipse.emf.common.util.ECollections;
@@ -457,17 +453,6 @@ public class JourneyElementViewAction<T extends JourneyElement> extends Engineer
 					accumulator.add(target);
 				}
 			}
-		}
-	}
-	
-	static String diagramId(ModelElement modelElement) { 
-		if (modelElement instanceof Start) { 
-			return "[*]";
-		}
-		try {
-			return Hex.encodeHexString(MessageDigest.getInstance("SHA-256").digest(modelElement.getUri().getBytes(StandardCharsets.UTF_8))); 
-		} catch (NoSuchAlgorithmException e) { 
-			throw new NasdanikaException(e);
 		}
 	}
 

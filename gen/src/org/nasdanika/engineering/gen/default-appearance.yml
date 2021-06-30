@@ -32,6 +32,10 @@ model-elements:
     features:
       modules:
         icon: fas fa-cubes
+      dependencies:
+        roles: actions/section
+      dependants:
+        roles: actions/section   
   alignable:
     features:        
       aligns:
@@ -266,4 +270,11 @@ model-elements:
       response:
         category: false
         roles: elements/none
-      
+sub-packages:
+  representation:
+    model-elements:
+      component-diagram:
+        roles: head
+        actions:
+          properties-table:
+            roles: none      

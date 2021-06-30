@@ -20,6 +20,7 @@ import org.nasdanika.common.resources.BinaryEntityContainer;
 import org.nasdanika.common.resources.Container;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.ModelElement;
+import org.nasdanika.engineering.representation.RepresentationPackage;
 import org.nasdanika.html.app.Action;
 import org.nasdanika.html.app.Application;
 import org.nasdanika.html.app.impl.PathNavigationActionActivator;
@@ -146,6 +147,7 @@ public class GenerateSiteConsumerFactory extends AbstractGenerateSiteConsumerFac
 		Collection<EPackage> ret = new ArrayList<>(); 
 		ret.add(EngineeringPackage.eINSTANCE);
 		ret.add(AppPackage.eINSTANCE);		
+		ret.add(RepresentationPackage.eINSTANCE);
 		return ret;
 	}
 		

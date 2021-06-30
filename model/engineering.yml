@@ -1,6 +1,11 @@
 engineering-module:
    name: Model
    path: model
+   representations:
+     - representation-component-diagram: true
+   dependencies:
+     - nasdanika:modules/html/modules/app
+     - nasdanika:modules/core/modules/emf
    issues:
      - name: Validation of duplicate paths in containing collection and duplicate URI's                         
      - name: Support of objectives and key results                         
@@ -236,6 +241,9 @@ engineering-module:
        markdown-description: |+2
          Document.extends reference to another document. ModelElement.allSections derived reference returns sections by defult.
          Overridden in JourneyElement and Document. Modifiers similar to journey element. Abstract documents have italic header.         
+     - name: Flow package
+       markdown-description: |+2
+         journey elements. update references in docs. Generation sub-package.         
          
      ### === Done === ###    
      - name: Start/end from Issue and Increment to Endeavor

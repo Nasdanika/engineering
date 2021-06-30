@@ -49,6 +49,7 @@ import org.nasdanika.engineering.ModelElement;
 import org.nasdanika.engineering.ModelElementAppearance;
 import org.nasdanika.engineering.NamedElement;
 import org.nasdanika.engineering.Release;
+import org.nasdanika.engineering.Start;
 import org.nasdanika.engineering.TableOfContents;
 import org.nasdanika.html.Fragment;
 import org.nasdanika.html.HTMLFactory;
@@ -1434,5 +1435,16 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 	public String getDescription() {
 		return Util.isBlank(getContext().getString(SimpleEObjectViewAction.DOC_URI)) ? null : super.getDescription();
 	}
-			
+		
+	protected static String diagramId(ModelElement modelElement) { 
+		if (modelElement instanceof Start) { 
+			return "[*]";
+		}
+		try {
+			return Hex.encodeHexString(MessageDigest.getInstance("SHA-256").digest(modelElement.getUri().getBytes(StandardCharsets.UTF_8))); 
+		} catch (NoSuchAlgorithmException e) { 
+			throw new NasdanikaException(e);
+		}
+	}
+				
 }

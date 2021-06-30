@@ -28,7 +28,7 @@ import org.nasdanika.engineering.Endeavor;
 import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeredCapability;
 import org.nasdanika.engineering.EngineeredElement;
-import org.nasdanika.engineering.EngineeringAppearance;
+import org.nasdanika.engineering.PackageAppearance;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.EntryPoint;
 import org.nasdanika.engineering.ExitPoint;
@@ -461,9 +461,15 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case EngineeringPackage.ENGINEERING_APPEARANCE: {
-				EngineeringAppearance engineeringAppearance = (EngineeringAppearance)theEObject;
-				T result = caseEngineeringAppearance(engineeringAppearance);
+			case EngineeringPackage.PACKAGE_APPEARANCE: {
+				PackageAppearance packageAppearance = (PackageAppearance)theEObject;
+				T result = casePackageAppearance(packageAppearance);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EngineeringPackage.PACKAGE_APPEARANCE_ENTRY: {
+				@SuppressWarnings("unchecked") Map.Entry<String, PackageAppearance> packageAppearanceEntry = (Map.Entry<String, PackageAppearance>)theEObject;
+				T result = casePackageAppearanceEntry(packageAppearanceEntry);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1523,17 +1529,32 @@ public class EngineeringSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Appearance</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Package Appearance</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Appearance</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Package Appearance</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseEngineeringAppearance(EngineeringAppearance object) {
+	public T casePackageAppearance(PackageAppearance object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Package Appearance Entry</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Package Appearance Entry</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casePackageAppearanceEntry(Map.Entry<String, PackageAppearance> object) {
 		return null;
 	}
 

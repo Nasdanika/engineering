@@ -34,7 +34,7 @@ import org.nasdanika.engineering.Endeavor;
 import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeredCapability;
 import org.nasdanika.engineering.EngineeredElement;
-import org.nasdanika.engineering.EngineeringAppearance;
+import org.nasdanika.engineering.PackageAppearance;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.EntryPoint;
 import org.nasdanika.engineering.ExitPoint;
@@ -219,8 +219,10 @@ public class EngineeringValidator extends EObjectValidator {
 				return validateMessage((Message)value, diagnostics, context);
 			case EngineeringPackage.TOPIC:
 				return validateTopic((Topic)value, diagnostics, context);
-			case EngineeringPackage.ENGINEERING_APPEARANCE:
-				return validateEngineeringAppearance((EngineeringAppearance)value, diagnostics, context);
+			case EngineeringPackage.PACKAGE_APPEARANCE:
+				return validatePackageAppearance((PackageAppearance)value, diagnostics, context);
+			case EngineeringPackage.PACKAGE_APPEARANCE_ENTRY:
+				return validatePackageAppearanceEntry((Map.Entry<?, ?>)value, diagnostics, context);
 			case EngineeringPackage.APPEARANCE:
 				return validateAppearance((Appearance)value, diagnostics, context);
 			case EngineeringPackage.APPEARANCE_ENTRY:
@@ -1760,8 +1762,17 @@ public class EngineeringValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateEngineeringAppearance(EngineeringAppearance engineeringAppearance, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(engineeringAppearance, diagnostics, context);
+	public boolean validatePackageAppearance(PackageAppearance packageAppearance, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(packageAppearance, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validatePackageAppearanceEntry(Map.Entry<?, ?> packageAppearanceEntry, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint((EObject)packageAppearanceEntry, diagnostics, context);
 	}
 
 	/**

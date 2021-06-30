@@ -47,6 +47,7 @@ import org.nasdanika.engineering.TableOfContents;
  *   <li>{@link org.nasdanika.engineering.impl.ModelElementImpl#getAppearance <em>Appearance</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.ModelElementImpl#getTableOfContents <em>Table Of Contents</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.ModelElementImpl#getSections <em>Sections</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.ModelElementImpl#getRepresentations <em>Representations</em>}</li>
  * </ul>
  *
  * @generated
@@ -319,6 +320,17 @@ public abstract class ModelElementImpl extends MinimalEObjectImpl.Container impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public EList<NamedElement> getRepresentations() {
+		return (EList<NamedElement>)eDynamicGet(EngineeringPackage.MODEL_ELEMENT__REPRESENTATIONS, EngineeringPackage.Literals.MODEL_ELEMENT__REPRESENTATIONS, true, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -330,6 +342,8 @@ public abstract class ModelElementImpl extends MinimalEObjectImpl.Container impl
 				return basicSetTableOfContents(null, msgs);
 			case EngineeringPackage.MODEL_ELEMENT__SECTIONS:
 				return ((InternalEList<?>)getSections()).basicRemove(otherEnd, msgs);
+			case EngineeringPackage.MODEL_ELEMENT__REPRESENTATIONS:
+				return ((InternalEList<?>)getRepresentations()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -358,6 +372,8 @@ public abstract class ModelElementImpl extends MinimalEObjectImpl.Container impl
 				return getTableOfContents();
 			case EngineeringPackage.MODEL_ELEMENT__SECTIONS:
 				return getSections();
+			case EngineeringPackage.MODEL_ELEMENT__REPRESENTATIONS:
+				return getRepresentations();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -394,6 +410,10 @@ public abstract class ModelElementImpl extends MinimalEObjectImpl.Container impl
 				getSections().clear();
 				getSections().addAll((Collection<? extends Document>)newValue);
 				return;
+			case EngineeringPackage.MODEL_ELEMENT__REPRESENTATIONS:
+				getRepresentations().clear();
+				getRepresentations().addAll((Collection<? extends NamedElement>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -427,6 +447,9 @@ public abstract class ModelElementImpl extends MinimalEObjectImpl.Container impl
 			case EngineeringPackage.MODEL_ELEMENT__SECTIONS:
 				getSections().clear();
 				return;
+			case EngineeringPackage.MODEL_ELEMENT__REPRESENTATIONS:
+				getRepresentations().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -455,6 +478,8 @@ public abstract class ModelElementImpl extends MinimalEObjectImpl.Container impl
 				return getTableOfContents() != null;
 			case EngineeringPackage.MODEL_ELEMENT__SECTIONS:
 				return !getSections().isEmpty();
+			case EngineeringPackage.MODEL_ELEMENT__REPRESENTATIONS:
+				return !getRepresentations().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

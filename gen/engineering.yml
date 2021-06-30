@@ -1,6 +1,11 @@
 engineering-module:
    name: Gen
    path: gen
+   representations:
+     - representation-component-diagram: true
+   dependencies:
+     - nasdanika:modules/engineering/modules/model
+     - nasdanika:modules/html/modules/emf     
    issues:
    
        ### 2021.5.0 ###

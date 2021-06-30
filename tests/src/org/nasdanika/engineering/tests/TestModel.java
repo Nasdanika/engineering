@@ -159,8 +159,8 @@ public class TestModel {
 		BiFunction<String, Object, InputStream> encoder = Util.OBJECT_TO_INPUT_STREAM_ENCODER;
 		Container<String> container = output.stateAdapter().adapt(decoder, encoder);
 
-		String resourceName = "org/nasdanika/html/app/templates/cerulean/dark-fluid.yml";
-		BootstrapContainerApplicationSupplierFactory applicationSupplierFactory = (BootstrapContainerApplicationSupplierFactory) loader.loadYaml(getClass().getClassLoader().getResource(resourceName), progressMonitor);
+		String resourceName = "cerulean/dark-fluid.yml";
+		BootstrapContainerApplicationSupplierFactory applicationSupplierFactory = (BootstrapContainerApplicationSupplierFactory) loader.loadYaml(getClass().getResource(resourceName), progressMonitor);
 		
 		writeAction(
 				action, 

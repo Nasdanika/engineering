@@ -427,13 +427,13 @@ public interface EngineeringFactory extends EFactory {
 	Topic createTopic();
 
 	/**
-	 * Returns a new object of class '<em>Appearance</em>'.
+	 * Returns a new object of class '<em>Package Appearance</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Appearance</em>'.
+	 * @return a new object of class '<em>Package Appearance</em>'.
 	 * @generated
 	 */
-	EngineeringAppearance createEngineeringAppearance();
+	PackageAppearance createPackageAppearance();
 
 	/**
 	 * Returns a new object of class '<em>Appearance</em>'.

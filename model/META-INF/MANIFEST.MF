@@ -9,6 +9,9 @@ Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.nasdanika.engineering,
  org.nasdanika.engineering.impl,
+ org.nasdanika.engineering.representation,
+ org.nasdanika.engineering.representation.impl,
+ org.nasdanika.engineering.representation.util,
  org.nasdanika.engineering.util
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,

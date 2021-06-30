@@ -9,7 +9,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.nasdanika.engineering.EngineeringAppearance;
+import org.nasdanika.engineering.PackageAppearance;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.ModelElementAppearance;
 
@@ -21,18 +21,19 @@ import org.nasdanika.engineering.ModelElementAppearance;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.nasdanika.engineering.impl.EngineeringAppearanceImpl#getModelElements <em>Model Elements</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.PackageAppearanceImpl#getModelElements <em>Model Elements</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.PackageAppearanceImpl#getSubPackages <em>Sub Packages</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class EngineeringAppearanceImpl extends MinimalEObjectImpl.Container implements EngineeringAppearance {
+public class PackageAppearanceImpl extends MinimalEObjectImpl.Container implements PackageAppearance {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected EngineeringAppearanceImpl() {
+	protected PackageAppearanceImpl() {
 		super();
 	}
 
@@ -43,7 +44,7 @@ public class EngineeringAppearanceImpl extends MinimalEObjectImpl.Container impl
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return EngineeringPackage.Literals.ENGINEERING_APPEARANCE;
+		return EngineeringPackage.Literals.PACKAGE_APPEARANCE;
 	}
 
 	/**
@@ -64,7 +65,18 @@ public class EngineeringAppearanceImpl extends MinimalEObjectImpl.Container impl
 	@SuppressWarnings("unchecked")
 	@Override
 	public EMap<String, ModelElementAppearance> getModelElements() {
-		return (EMap<String, ModelElementAppearance>)eDynamicGet(EngineeringPackage.ENGINEERING_APPEARANCE__MODEL_ELEMENTS, EngineeringPackage.Literals.ENGINEERING_APPEARANCE__MODEL_ELEMENTS, true, true);
+		return (EMap<String, ModelElementAppearance>)eDynamicGet(EngineeringPackage.PACKAGE_APPEARANCE__MODEL_ELEMENTS, EngineeringPackage.Literals.PACKAGE_APPEARANCE__MODEL_ELEMENTS, true, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public EMap<String, PackageAppearance> getSubPackages() {
+		return (EMap<String, PackageAppearance>)eDynamicGet(EngineeringPackage.PACKAGE_APPEARANCE__SUB_PACKAGES, EngineeringPackage.Literals.PACKAGE_APPEARANCE__SUB_PACKAGES, true, true);
 	}
 
 	/**
@@ -75,8 +87,10 @@ public class EngineeringAppearanceImpl extends MinimalEObjectImpl.Container impl
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case EngineeringPackage.ENGINEERING_APPEARANCE__MODEL_ELEMENTS:
+			case EngineeringPackage.PACKAGE_APPEARANCE__MODEL_ELEMENTS:
 				return ((InternalEList<?>)getModelElements()).basicRemove(otherEnd, msgs);
+			case EngineeringPackage.PACKAGE_APPEARANCE__SUB_PACKAGES:
+				return ((InternalEList<?>)getSubPackages()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -89,9 +103,12 @@ public class EngineeringAppearanceImpl extends MinimalEObjectImpl.Container impl
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EngineeringPackage.ENGINEERING_APPEARANCE__MODEL_ELEMENTS:
+			case EngineeringPackage.PACKAGE_APPEARANCE__MODEL_ELEMENTS:
 				if (coreType) return getModelElements();
 				else return getModelElements().map();
+			case EngineeringPackage.PACKAGE_APPEARANCE__SUB_PACKAGES:
+				if (coreType) return getSubPackages();
+				else return getSubPackages().map();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -104,8 +121,11 @@ public class EngineeringAppearanceImpl extends MinimalEObjectImpl.Container impl
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EngineeringPackage.ENGINEERING_APPEARANCE__MODEL_ELEMENTS:
+			case EngineeringPackage.PACKAGE_APPEARANCE__MODEL_ELEMENTS:
 				((EStructuralFeature.Setting)getModelElements()).set(newValue);
+				return;
+			case EngineeringPackage.PACKAGE_APPEARANCE__SUB_PACKAGES:
+				((EStructuralFeature.Setting)getSubPackages()).set(newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -119,8 +139,11 @@ public class EngineeringAppearanceImpl extends MinimalEObjectImpl.Container impl
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EngineeringPackage.ENGINEERING_APPEARANCE__MODEL_ELEMENTS:
+			case EngineeringPackage.PACKAGE_APPEARANCE__MODEL_ELEMENTS:
 				getModelElements().clear();
+				return;
+			case EngineeringPackage.PACKAGE_APPEARANCE__SUB_PACKAGES:
+				getSubPackages().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -134,10 +157,12 @@ public class EngineeringAppearanceImpl extends MinimalEObjectImpl.Container impl
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EngineeringPackage.ENGINEERING_APPEARANCE__MODEL_ELEMENTS:
+			case EngineeringPackage.PACKAGE_APPEARANCE__MODEL_ELEMENTS:
 				return !getModelElements().isEmpty();
+			case EngineeringPackage.PACKAGE_APPEARANCE__SUB_PACKAGES:
+				return !getSubPackages().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //EngineeringAppearanceImpl
+} //PackageAppearanceImpl

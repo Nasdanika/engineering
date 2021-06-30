@@ -26,7 +26,7 @@ import org.nasdanika.engineering.End;
 import org.nasdanika.engineering.Endeavor;
 import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeredCapability;
-import org.nasdanika.engineering.EngineeringAppearance;
+import org.nasdanika.engineering.PackageAppearance;
 import org.nasdanika.engineering.EngineeringFactory;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.EntryPoint;
@@ -144,7 +144,8 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 			case EngineeringPackage.FORUM: return createForum();
 			case EngineeringPackage.MESSAGE: return createMessage();
 			case EngineeringPackage.TOPIC: return createTopic();
-			case EngineeringPackage.ENGINEERING_APPEARANCE: return createEngineeringAppearance();
+			case EngineeringPackage.PACKAGE_APPEARANCE: return createPackageAppearance();
+			case EngineeringPackage.PACKAGE_APPEARANCE_ENTRY: return (EObject)createPackageAppearanceEntry();
 			case EngineeringPackage.APPEARANCE: return createAppearance();
 			case EngineeringPackage.APPEARANCE_ENTRY: return (EObject)createAppearanceEntry();
 			case EngineeringPackage.MODEL_ELEMENT_APPEARANCE: return createModelElementAppearance();
@@ -710,9 +711,19 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 	 * @generated
 	 */
 	@Override
-	public EngineeringAppearance createEngineeringAppearance() {
-		EngineeringAppearanceImpl engineeringAppearance = new EngineeringAppearanceImpl();
-		return engineeringAppearance;
+	public PackageAppearance createPackageAppearance() {
+		PackageAppearanceImpl packageAppearance = new PackageAppearanceImpl();
+		return packageAppearance;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Map.Entry<String, PackageAppearance> createPackageAppearanceEntry() {
+		PackageAppearanceEntryImpl packageAppearanceEntry = new PackageAppearanceEntryImpl();
+		return packageAppearanceEntry;
 	}
 
 	/**

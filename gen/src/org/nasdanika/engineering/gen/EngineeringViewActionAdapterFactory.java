@@ -3,12 +3,14 @@ package org.nasdanika.engineering.gen;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.nasdanika.common.Context;
 import org.nasdanika.common.NasdanikaException;
@@ -25,7 +27,6 @@ import org.nasdanika.engineering.Decision;
 import org.nasdanika.engineering.Directory;
 import org.nasdanika.engineering.Document;
 import org.nasdanika.engineering.Engineer;
-import org.nasdanika.engineering.EngineeringAppearance;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Feature;
 import org.nasdanika.engineering.Forum;
@@ -44,12 +45,16 @@ import org.nasdanika.engineering.ModelElementAppearance;
 import org.nasdanika.engineering.NamedElementReference;
 import org.nasdanika.engineering.Objective;
 import org.nasdanika.engineering.Organization;
+import org.nasdanika.engineering.PackageAppearance;
 import org.nasdanika.engineering.Persona;
 import org.nasdanika.engineering.Principle;
 import org.nasdanika.engineering.Product;
 import org.nasdanika.engineering.Release;
 import org.nasdanika.engineering.Service;
 import org.nasdanika.engineering.Topic;
+import org.nasdanika.engineering.gen.representation.ComponentDiagramViewAction;
+import org.nasdanika.engineering.representation.ComponentDiagram;
+import org.nasdanika.engineering.representation.RepresentationPackage;
 import org.nasdanika.html.app.Action;
 import org.nasdanika.html.emf.ViewAction;
 import org.yaml.snakeyaml.Yaml;
@@ -285,8 +290,18 @@ public class EngineeringViewActionAdapterFactory extends ComposedAdapterFactory 
 					this.getClass().getClassLoader(), 
 					obj -> journeyPath -> new JourneyViewAction(journeyPath, obj, this)));			
 				
+		// --- Representations ---
+		
+		registerAdapterFactory(
+				new FunctionAdapterFactory<ViewAction<ComponentDiagram>, ComponentDiagram>(
+					RepresentationPackage.Literals.COMPONENT_DIAGRAM, 
+					getViewActionClass(), 
+					this.getClass().getClassLoader(), 
+					obj -> new ComponentDiagramViewAction(obj, this)));			
+		
+				
 		// Loading appearances from URL's
-		appearance = new ArrayList<>();
+		appearanceMap = new HashMap<>();
 		EObjectLoader loader = new EObjectLoader(EngineeringPackage.eINSTANCE);
 		NullProgressMonitor progressMonitor = new NullProgressMonitor();
 		try {
@@ -294,21 +309,33 @@ public class EngineeringViewActionAdapterFactory extends ComposedAdapterFactory 
 				Yaml yaml = MarkingYamlConstructor.createMarkingYaml(appearanceURL.toString());		
 					Object asf = loader.create(
 							loader, 
-							EngineeringPackage.Literals.ENGINEERING_APPEARANCE, 
+							EngineeringPackage.Literals.PACKAGE_APPEARANCE, 
 							yaml.load(appearanceURL.openStream()), 
 							appearanceURL, 
 							progressMonitor, 
 							null, 
 							null);
-					SupplierFactory<EngineeringAppearance> appearanceSupplierFactory = Util.<EngineeringAppearance>asSupplierFactory(asf);
-					EngineeringAppearance appearanceElement = Util.call(appearanceSupplierFactory.create(Context.EMPTY_CONTEXT), progressMonitor, null);
-					appearance.add(appearanceElement.getModelElements()::get);
+					SupplierFactory<PackageAppearance> appearanceSupplierFactory = Util.<PackageAppearance>asSupplierFactory(asf);
+					PackageAppearance appearanceElement = Util.call(appearanceSupplierFactory.create(Context.EMPTY_CONTEXT), progressMonitor, null);
+					addAppearance(EngineeringPackage.eINSTANCE, appearanceElement);
 			}
 		} catch (Exception e) {
 			throw new NasdanikaException(e);
 		}		
 	}
 	
+	private void addAppearance(EPackage ePackage, PackageAppearance appearanceElement) {
+		List<java.util.function.Function<String, ModelElementAppearance>> appearance = new ArrayList<>();
+		appearance.add(appearanceElement.getModelElements()::get);
+		appearanceMap.put(ePackage, appearance);
+		for (EPackage subPackage: ePackage.getESubpackages()) {
+			PackageAppearance subAppearance = appearanceElement.getSubPackages().get(Util.camelToKebab(subPackage.getName()));
+			if (subAppearance != null) {
+				addAppearance(subPackage, subAppearance);
+			}
+		}
+	}
+
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	protected <T extends EObject> Class<ViewAction<T>> getViewActionClass() {
 		return (Class) ViewAction.class;
@@ -338,7 +365,10 @@ public class EngineeringViewActionAdapterFactory extends ComposedAdapterFactory 
 		return diagnosticMap;
 	}
 	
-	private List<java.util.function.Function<String, ModelElementAppearance>> appearance;
+	/**
+	 * Map of EPackage namespace URI to appearance list.
+	 */
+	private Map<EPackage, List<java.util.function.Function<String, ModelElementAppearance>>> appearanceMap;
 	
 	protected List<URL> getAppearanceLocations() {
 		return Collections.singletonList(EngineeringViewActionAdapterFactory.class.getResource("default-appearance.yml"));
@@ -347,17 +377,17 @@ public class EngineeringViewActionAdapterFactory extends ComposedAdapterFactory 
 	/**
 	 * @return Chain of appearance mappings.
 	 */
-	protected List<java.util.function.Function<String, ModelElementAppearance>> getAppearance() {
-		return appearance;
+	protected java.util.function.Function<EPackage, List<java.util.function.Function<String, ModelElementAppearance>>> getAppearance() {
+		return appearanceMap::get;
 	}
-
+	
 	/**
 	 * Override to customize appearance. 
 	 * @return Appearance chain for {@link ModelElement} {@link EClass} 
 	 */
-	public List<ModelElementAppearance> getAppearance(EClass eClass) {
-		List<ModelElementAppearance> ret = new ArrayList<>();
-		for (java.util.function.Function<String, ModelElementAppearance> appearance: getAppearance()) {
+	public List<ModelElementAppearance> getAppearance(EClass eClass) {		
+		List<ModelElementAppearance> ret = new ArrayList<>();		
+		for (java.util.function.Function<String, ModelElementAppearance> appearance: getAppearance().apply(eClass.getEPackage())) {
 			ModelElementAppearance mea = appearance.apply(Util.camelToKebab(eClass.getName()));
 			if (mea != null) {
 				ret.add(mea);
