@@ -3,6 +3,7 @@
 package org.nasdanika.engineering;
 
 import org.eclipse.emf.common.util.EList;
+import org.nasdanika.engineering.flow.JourneyElement;
 
 
 /**
@@ -29,8 +30,8 @@ public interface Persona extends EngineeredElement {
 
 	/**
 	 * Returns the value of the '<em><b>Journey Elements</b></em>' reference list.
-	 * The list contents are of type {@link org.nasdanika.engineering.JourneyElement}.
-	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.JourneyElement#getPersonas <em>Personas</em>}'.
+	 * The list contents are of type {@link org.nasdanika.engineering.flow.JourneyElement}.
+	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.flow.JourneyElement#getPersonas <em>Personas</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -38,7 +39,7 @@ public interface Persona extends EngineeredElement {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Journey Elements</em>' reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getPersona_JourneyElements()
-	 * @see org.nasdanika.engineering.JourneyElement#getPersonas
+	 * @see org.nasdanika.engineering.flow.JourneyElement#getPersonas
 	 * @model opposite="personas" changeable="false" derived="true"
 	 * @generated
 	 */

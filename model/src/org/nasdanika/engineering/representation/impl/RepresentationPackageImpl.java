@@ -11,6 +11,8 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.nasdanika.engineering.EngineeringPackage;
 
+import org.nasdanika.engineering.flow.FlowPackage;
+import org.nasdanika.engineering.flow.impl.FlowPackageImpl;
 import org.nasdanika.engineering.impl.EngineeringPackageImpl;
 
 import org.nasdanika.engineering.representation.ComponentDiagram;
@@ -82,14 +84,18 @@ public class RepresentationPackageImpl extends EPackageImpl implements Represent
 		// Obtain or create and register interdependencies
 		Object registeredPackage = EPackage.Registry.INSTANCE.getEPackage(EngineeringPackage.eNS_URI);
 		EngineeringPackageImpl theEngineeringPackage = (EngineeringPackageImpl)(registeredPackage instanceof EngineeringPackageImpl ? registeredPackage : EngineeringPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(FlowPackage.eNS_URI);
+		FlowPackageImpl theFlowPackage = (FlowPackageImpl)(registeredPackage instanceof FlowPackageImpl ? registeredPackage : FlowPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theRepresentationPackage.createPackageContents();
 		theEngineeringPackage.createPackageContents();
+		theFlowPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theRepresentationPackage.initializePackageContents();
 		theEngineeringPackage.initializePackageContents();
+		theFlowPackage.initializePackageContents();
 
 		// Register package validator
 		EValidator.Registry.INSTANCE.put

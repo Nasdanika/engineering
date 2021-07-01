@@ -22,4 +22,12 @@
             genModel="model/engineering.genmodel"/>
    </extension>
 
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated engineering -->
+      <package
+            uri="urn:org.nasdanika.engineering.flow"
+            class="org.nasdanika.engineering.flow.FlowPackage"
+            genModel="model/engineering.genmodel"/>
+   </extension>
+
 </plugin>

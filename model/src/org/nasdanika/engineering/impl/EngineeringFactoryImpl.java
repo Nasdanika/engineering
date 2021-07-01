@@ -10,43 +10,30 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import org.nasdanika.engineering.Activity;
 import org.nasdanika.engineering.Aim;
 import org.nasdanika.engineering.Alignment;
 import org.nasdanika.engineering.Allocation;
 import org.nasdanika.engineering.Appearance;
-import org.nasdanika.engineering.Call;
 import org.nasdanika.engineering.Capability;
 import org.nasdanika.engineering.Capacity;
-import org.nasdanika.engineering.Choice;
 import org.nasdanika.engineering.Decision;
 import org.nasdanika.engineering.Directory;
 import org.nasdanika.engineering.Document;
-import org.nasdanika.engineering.End;
 import org.nasdanika.engineering.Endeavor;
 import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeredCapability;
 import org.nasdanika.engineering.PackageAppearance;
 import org.nasdanika.engineering.EngineeringFactory;
 import org.nasdanika.engineering.EngineeringPackage;
-import org.nasdanika.engineering.EntryPoint;
-import org.nasdanika.engineering.ExitPoint;
-import org.nasdanika.engineering.ExpansionInput;
-import org.nasdanika.engineering.ExpansionOutput;
 import org.nasdanika.engineering.Feature;
-import org.nasdanika.engineering.Fork;
 import org.nasdanika.engineering.Forum;
 import org.nasdanika.engineering.Goal;
 import org.nasdanika.engineering.Increment;
-import org.nasdanika.engineering.InputPin;
 import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.IssueCategory;
 import org.nasdanika.engineering.IssuePriority;
 import org.nasdanika.engineering.IssueSeverity;
 import org.nasdanika.engineering.IssueStatus;
-import org.nasdanika.engineering.Join;
-import org.nasdanika.engineering.Journey;
-import org.nasdanika.engineering.JourneyElement;
 import org.nasdanika.engineering.KeyResult;
 import org.nasdanika.engineering.Link;
 import org.nasdanika.engineering.MemberAppearance;
@@ -57,17 +44,12 @@ import org.nasdanika.engineering.NamedElementReference;
 import org.nasdanika.engineering.Note;
 import org.nasdanika.engineering.Objective;
 import org.nasdanika.engineering.Organization;
-import org.nasdanika.engineering.OutputPin;
 import org.nasdanika.engineering.Persona;
 import org.nasdanika.engineering.Principle;
 import org.nasdanika.engineering.Product;
-import org.nasdanika.engineering.PseudoState;
 import org.nasdanika.engineering.Release;
-import org.nasdanika.engineering.Service;
-import org.nasdanika.engineering.Start;
 import org.nasdanika.engineering.TableOfContents;
 import org.nasdanika.engineering.Topic;
-import org.nasdanika.engineering.Transition;
 import org.nasdanika.html.app.SectionStyle;
 
 /**
@@ -157,24 +139,6 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 			case EngineeringPackage.KEY_RESULT: return createKeyResult();
 			case EngineeringPackage.OBJECTIVE: return createObjective();
 			case EngineeringPackage.DECISION: return createDecision();
-			case EngineeringPackage.JOURNEY_ELEMENT: return createJourneyElement();
-			case EngineeringPackage.ACTIVITY: return createActivity();
-			case EngineeringPackage.SERVICE: return createService();
-			case EngineeringPackage.TRANSITION: return createTransition();
-			case EngineeringPackage.CALL: return createCall();
-			case EngineeringPackage.JOURNEY: return createJourney();
-			case EngineeringPackage.PSEUDO_STATE: return createPseudoState();
-			case EngineeringPackage.CHOICE: return createChoice();
-			case EngineeringPackage.END: return createEnd();
-			case EngineeringPackage.ENTRY_POINT: return createEntryPoint();
-			case EngineeringPackage.EXIT_POINT: return createExitPoint();
-			case EngineeringPackage.EXPANSION_INPUT: return createExpansionInput();
-			case EngineeringPackage.EXPANSION_OUTPUT: return createExpansionOutput();
-			case EngineeringPackage.FORK: return createFork();
-			case EngineeringPackage.INPUT_PIN: return createInputPin();
-			case EngineeringPackage.JOIN: return createJoin();
-			case EngineeringPackage.OUTPUT_PIN: return createOutputPin();
-			case EngineeringPackage.START: return createStart();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -395,193 +359,6 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 	public Feature createFeature() {
 		FeatureImpl feature = new FeatureImpl();
 		return feature;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Activity createActivity() {
-		ActivityImpl activity = new ActivityImpl();
-		return activity;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Service createService() {
-		ServiceImpl service = new ServiceImpl();
-		return service;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Journey createJourney() {
-		JourneyImpl journey = new JourneyImpl();
-		return journey;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public PseudoState createPseudoState() {
-		PseudoStateImpl pseudoState = new PseudoStateImpl();
-		return pseudoState;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Choice createChoice() {
-		ChoiceImpl choice = new ChoiceImpl();
-		return choice;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public End createEnd() {
-		EndImpl end = new EndImpl();
-		return end;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EntryPoint createEntryPoint() {
-		EntryPointImpl entryPoint = new EntryPointImpl();
-		return entryPoint;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public ExitPoint createExitPoint() {
-		ExitPointImpl exitPoint = new ExitPointImpl();
-		return exitPoint;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public ExpansionInput createExpansionInput() {
-		ExpansionInputImpl expansionInput = new ExpansionInputImpl();
-		return expansionInput;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public ExpansionOutput createExpansionOutput() {
-		ExpansionOutputImpl expansionOutput = new ExpansionOutputImpl();
-		return expansionOutput;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Fork createFork() {
-		ForkImpl fork = new ForkImpl();
-		return fork;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public InputPin createInputPin() {
-		InputPinImpl inputPin = new InputPinImpl();
-		return inputPin;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Join createJoin() {
-		JoinImpl join = new JoinImpl();
-		return join;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public OutputPin createOutputPin() {
-		OutputPinImpl outputPin = new OutputPinImpl();
-		return outputPin;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Start createStart() {
-		StartImpl start = new StartImpl();
-		return start;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Transition createTransition() {
-		TransitionImpl transition = new TransitionImpl();
-		return transition;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Call createCall() {
-		CallImpl call = new CallImpl();
-		return call;
 	}
 
 	/**
@@ -853,17 +630,6 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 	public Decision createDecision() {
 		DecisionImpl decision = new DecisionImpl();
 		return decision;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public JourneyElement createJourneyElement() {
-		JourneyElementImpl journeyElement = new JourneyElementImpl();
-		return journeyElement;
 	}
 
 	/**

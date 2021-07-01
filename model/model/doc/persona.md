@@ -1,7 +1,7 @@
 Personas represent represent the different types of consumers of [products](Product.html) and [services](Engineer.htlm#EReference-services).
 
 Personas may have [goals](Goal.html) and form an inheritance hierarchy using ``extends`` reference.
-Personas also may define [activities](Activity.html) or [journeys](Journey.html) describing how they interact with services and product [features](Feature.html).
+Personas also may define [activities](flow/Activity.html) or [journeys](flow/Journey.html) describing how they interact with services and product [features](Feature.html).
 
 Personas may also have [engineers](Engineer.html) serving as persona representatives and helping the persona owner to refine the persona definition.
 

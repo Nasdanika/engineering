@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
 
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EClass;
@@ -22,7 +23,6 @@ import org.nasdanika.emf.ComposedAdapterFactory;
 import org.nasdanika.emf.FunctionAdapterFactory;
 import org.nasdanika.emf.InstanceAdapterFactory;
 import org.nasdanika.emf.persistence.EObjectLoader;
-import org.nasdanika.engineering.Activity;
 import org.nasdanika.engineering.Decision;
 import org.nasdanika.engineering.Directory;
 import org.nasdanika.engineering.Document;
@@ -37,7 +37,6 @@ import org.nasdanika.engineering.IssueCategory;
 import org.nasdanika.engineering.IssuePriority;
 import org.nasdanika.engineering.IssueSeverity;
 import org.nasdanika.engineering.IssueStatus;
-import org.nasdanika.engineering.Journey;
 import org.nasdanika.engineering.KeyResult;
 import org.nasdanika.engineering.Link;
 import org.nasdanika.engineering.ModelElement;
@@ -50,8 +49,15 @@ import org.nasdanika.engineering.Persona;
 import org.nasdanika.engineering.Principle;
 import org.nasdanika.engineering.Product;
 import org.nasdanika.engineering.Release;
-import org.nasdanika.engineering.Service;
 import org.nasdanika.engineering.Topic;
+import org.nasdanika.engineering.flow.Activity;
+import org.nasdanika.engineering.flow.FlowPackage;
+import org.nasdanika.engineering.flow.Journey;
+import org.nasdanika.engineering.flow.Service;
+import org.nasdanika.engineering.gen.flow.ActivityViewAction;
+import org.nasdanika.engineering.gen.flow.JourneyElementViewAction;
+import org.nasdanika.engineering.gen.flow.JourneyViewAction;
+import org.nasdanika.engineering.gen.flow.ServiceViewAction;
 import org.nasdanika.engineering.gen.representation.ComponentDiagramViewAction;
 import org.nasdanika.engineering.representation.ComponentDiagram;
 import org.nasdanika.engineering.representation.RepresentationPackage;
@@ -249,21 +255,21 @@ public class EngineeringViewActionAdapterFactory extends ComposedAdapterFactory 
 		
 		registerAdapterFactory(
 			new FunctionAdapterFactory<ViewAction<Activity>, Activity>(
-				EngineeringPackage.Literals.ACTIVITY, 
+				FlowPackage.Literals.ACTIVITY, 
 				getViewActionClass(), 
 				this.getClass().getClassLoader(), 
 				obj -> new ActivityViewAction<Activity>(obj.getContainmentJourneyPath(), obj, this)));			
 		
 		registerAdapterFactory(
 			new FunctionAdapterFactory<ViewAction<Service>, Service>(
-				EngineeringPackage.Literals.SERVICE, 
+				FlowPackage.Literals.SERVICE, 
 				getViewActionClass(), 
 				this.getClass().getClassLoader(), 
 				obj -> new ServiceViewAction(obj.getContainmentJourneyPath(), obj, this)));			
 		
 		registerAdapterFactory(
 			new FunctionAdapterFactory<ViewAction<Journey>, Journey>(
-				EngineeringPackage.Literals.JOURNEY, 
+				FlowPackage.Literals.JOURNEY, 
 				getViewActionClass(), 
 				this.getClass().getClassLoader(), 
 				obj -> new JourneyViewAction(obj.getContainmentJourneyPath(), obj, this)));
@@ -271,24 +277,24 @@ public class EngineeringViewActionAdapterFactory extends ComposedAdapterFactory 
 		// Providers		
 		registerAdapterFactory(
 			new FunctionAdapterFactory<JourneyElementViewActionProvider<ActivityViewAction<Activity>>, Activity>(
-				EngineeringPackage.Literals.ACTIVITY, 
+				FlowPackage.Literals.ACTIVITY, 
 				getJourneyElementViewActionProviderClass(), 
 				this.getClass().getClassLoader(), 
 				obj -> journeyPath -> new ActivityViewAction<Activity>(journeyPath, obj, this)));			
 		
 		registerAdapterFactory(
-				new FunctionAdapterFactory<JourneyElementViewActionProvider<ServiceViewAction>, Service>(
-					EngineeringPackage.Literals.SERVICE, 
-					getJourneyElementViewActionProviderClass(), 
-					this.getClass().getClassLoader(), 
-					obj -> journeyPath -> new ServiceViewAction(journeyPath, obj, this)));			
+			new FunctionAdapterFactory<JourneyElementViewActionProvider<ServiceViewAction>, Service>(
+				FlowPackage.Literals.SERVICE, 
+				getJourneyElementViewActionProviderClass(), 
+				this.getClass().getClassLoader(), 
+				obj -> journeyPath -> new ServiceViewAction(journeyPath, obj, this)));			
 		
 		registerAdapterFactory(
-				new FunctionAdapterFactory<JourneyElementViewActionProvider<JourneyViewAction>, Journey>(
-					EngineeringPackage.Literals.JOURNEY, 
-					getJourneyElementViewActionProviderClass(), 
-					this.getClass().getClassLoader(), 
-					obj -> journeyPath -> new JourneyViewAction(journeyPath, obj, this)));			
+			new FunctionAdapterFactory<JourneyElementViewActionProvider<JourneyViewAction>, Journey>(
+				FlowPackage.Literals.JOURNEY, 
+				getJourneyElementViewActionProviderClass(), 
+				this.getClass().getClassLoader(), 
+				obj -> journeyPath -> new JourneyViewAction(journeyPath, obj, this)));			
 				
 		// --- Representations ---
 		
@@ -387,10 +393,13 @@ public class EngineeringViewActionAdapterFactory extends ComposedAdapterFactory 
 	 */
 	public List<ModelElementAppearance> getAppearance(EClass eClass) {		
 		List<ModelElementAppearance> ret = new ArrayList<>();		
-		for (java.util.function.Function<String, ModelElementAppearance> appearance: getAppearance().apply(eClass.getEPackage())) {
-			ModelElementAppearance mea = appearance.apply(Util.camelToKebab(eClass.getName()));
-			if (mea != null) {
-				ret.add(mea);
+		List<Function<String, ModelElementAppearance>> packageAppearance = getAppearance().apply(eClass.getEPackage());
+		if (packageAppearance != null) {
+			for (java.util.function.Function<String, ModelElementAppearance> appearance: packageAppearance) {
+				ModelElementAppearance mea = appearance.apply(Util.camelToKebab(eClass.getName()));
+				if (mea != null) {
+					ret.add(mea);
+				}
 			}
 		}
 		return ret;

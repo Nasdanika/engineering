@@ -3,6 +3,7 @@
 package org.nasdanika.engineering;
 
 import org.eclipse.emf.common.util.EList;
+import org.nasdanika.engineering.flow.Activity;
 
 /**
  * <!-- begin-user-doc -->
@@ -105,7 +106,7 @@ public interface Engineer extends Persona {
 
 	/**
 	 * Returns the value of the '<em><b>Services</b></em>' containment reference list.
-	 * The list contents are of type {@link org.nasdanika.engineering.Activity}.
+	 * The list contents are of type {@link org.nasdanika.engineering.flow.Activity}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->

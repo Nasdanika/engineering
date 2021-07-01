@@ -20,6 +20,7 @@ import org.nasdanika.common.resources.BinaryEntityContainer;
 import org.nasdanika.common.resources.Container;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.ModelElement;
+import org.nasdanika.engineering.flow.FlowPackage;
 import org.nasdanika.engineering.representation.RepresentationPackage;
 import org.nasdanika.html.app.Action;
 import org.nasdanika.html.app.Application;
@@ -148,6 +149,7 @@ public class GenerateSiteConsumerFactory extends AbstractGenerateSiteConsumerFac
 		ret.add(EngineeringPackage.eINSTANCE);
 		ret.add(AppPackage.eINSTANCE);		
 		ret.add(RepresentationPackage.eINSTANCE);
+		ret.add(FlowPackage.eINSTANCE);
 		return ret;
 	}
 		

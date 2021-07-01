@@ -12,8 +12,9 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Goal;
-import org.nasdanika.engineering.JourneyElement;
 import org.nasdanika.engineering.Persona;
+import org.nasdanika.engineering.flow.FlowPackage;
+import org.nasdanika.engineering.flow.JourneyElement;
 
 /**
  * <!-- begin-user-doc -->
@@ -59,7 +60,7 @@ public class PersonaImpl extends EngineeredElementImpl implements Persona {
 	 */
 	@Override
 	public EList<JourneyElement> getJourneyElements() {
-		return getReferrers(EngineeringPackage.Literals.JOURNEY_ELEMENT__PERSONAS);
+		return getReferrers(FlowPackage.Literals.JOURNEY_ELEMENT__PERSONAS);
 	}
 
 	/**

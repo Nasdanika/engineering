@@ -7,7 +7,7 @@ For example:
 * Software [Module](Module.html) source code can be modified to add new functionality.
 * [Document](Document.html) can be updated by adding new sections or elaborating existing content.
 * [Directory](Directory.html) can be populated with resources.
-* [Organization](Organization.html) can improve its efficiency by formally defining its services as [activities](Activity.html) and [journeys](Journey.html).
+* [Organization](Organization.html) can improve its efficiency by formally defining its services as [activities](flow/Activity.html) and [journeys](flow/Journey.html).
 
 Engineered element may have owning engineers, who have authority over the element, and expert engineers, who know how to use the element, but do not have authority.
 E.g. a software library can be owned by a team of engineers and have experts who use the library in their solutions.

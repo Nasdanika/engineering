@@ -96,7 +96,7 @@ In the latter case the value is treated as a value of the default feature, as in
           - b
 ``` 
 
-``outputs`` is a [journey element](JourneyElement.html) homogenous reference with strict containment and ``target`` is Transition's default feature. 
+``outputs`` is a [journey element](flow/JourneyElement.html) homogenous reference with strict containment and ``target`` is Transition's default feature. 
 Therefore, ``b`` is treated as a value of ``target``. 
 
 Default features are shown in bold in load specifications.
@@ -155,8 +155,8 @@ can improve its processes.
 Behavior classes are used to represent things to be done on the structure or external entities to achieve goals.
 They are subdivided into two sub-categories:
 
-* **What** - specifies what needs to be done, e.g. "Create a Customer Profile microservice". It may specify how it needs to be done or may reference the existing **How**, e.g. "Create a new microservice" [journey](Journey.html).
-" **How** - specifies how a particular task shall be carried out. 
+* **What** - specifies what needs to be done, e.g. "Create a Customer Profile microservice". It may specify how it needs to be done or may reference the existing **How**, e.g. "Create a new microservice" [journey](flow/Journey.html).
+* **How** - specifies how a particular task shall be carried out. 
 
 #### What
 
@@ -182,20 +182,20 @@ In your models you would use subclasses of the above two classes:
 The **How** means what is traditionally User Guides and Cookbooks - step-by-step instructions. 
 With Nasdanika Engineering you can create such step-by-step guides as [documents](Document.html) with multiple sections.
 
-However, there is another way, you may choose what is most appropriate in a given situation and even combine the two.
+However, there is another way and you may choose what is most appropriate in a given situation and even combine the two.
 
 Humans are image processors, not text processors. So if your instructions are not single level linear, i.e. there are
 steps and sub-steps and also conditional logic, chances are that if presented visually these instructions would
 be easier to follow.
 
-Nasdanika Engineering has a number of classes which can be used to create visual representations of (work)flows.
+Nasdanika Engineering has a number of classes which can be used to create visual representations of (work)[flows](flow/package-summary.html).
 Because they can be used to capture scenarios of how [personas](Persona.html) use products and services provided 
-by an engineer or an organization, they are called [journeys](Journey.html).
+by an engineer or an organization, they are called [journeys](flow/Journey.html).
 
-A journey is a directed graph of [journey elements](JourneyElement.html) - [activities](Activity.html), nested journeys, [services](Service.html),
+A journey is a directed graph of [journey elements](flow/JourneyElement.html) - [activities](flow/Activity.html), nested journeys, [services](flow/Service.html),
 and [pseudo-states](PseudoState.html).
 
-Journey elements can [transition](Transition.html) control from one another and also [call](Call.html) one another.
+Journey elements can [transition](flow/Transition.html) control from one another and also [call](flow/Call.html) one another.
 
 Because journey elements inherit from ModelElement, they can have documentation sections to benefit from a combination of 
 non-linear and linear knowledge representation.

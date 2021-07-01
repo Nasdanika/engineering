@@ -25,10 +25,10 @@ Then, subsequently, a [feature](Feature.html) "Cloud microservice code generator
 
 Engineers may contain [modules](Module.html). E.g. a team may contain libraries developed by the team and then ownership of these libraries may be assigned to team members.
 
-Engineers may also provide services - shared [activities](Activity.html) used by other engineers or personas. For example, a performance testing team may provide a testing service used by
+Engineers may also provide services - shared [activities](flow/Activity.html) used by other engineers or personas. For example, a performance testing team may provide a testing service used by
 development teams to performance test modules they own. 
 
-Services may be defined as [journeys](Journey.html) leveraging services provided by other engineers. 
+Services may be defined as [journeys](flow/Journey.html) leveraging services provided by other engineers. 
 For example, the performance team's service "Performance test an application" may use a service "Provision cloud environment" provided by the cloud infrastructure team.
 
 And, finally, engineers may post [messages](Message.html) to [topics](Topic.html) of [discussion forums](Forum.html).

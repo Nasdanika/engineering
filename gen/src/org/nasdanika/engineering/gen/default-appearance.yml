@@ -229,47 +229,6 @@ model-elements:
         roles: none
       sub-objectives:
         roles: actions/section
-  journey-element:
-    features:
-      outputs:
-        roles: none
-      calls:
-        roles: none
-      inputs:
-        roles: none
-      invocations:
-        roles: none
-    operations:  
-      get-all-outputs:
-        label: Outputs
-        icon: fas fa-sign-out-alt
-        roles: actions/section
-      get-all-calls:
-        label: Calls
-        roles: actions/section
-      get-all-invocations:
-        label: Invocations
-        roles: actions/section
-      get-all-inputs:
-        label: Inputs
-        icon: fas fa-sign-in-alt
-        roles: actions/section
-  journey:
-    features:
-      elements:
-        roles: none
-      all-elements:
-        roles: elements/none
-  transition:
-    features:
-      payload:
-        category: false
-        roles: elements/none
-  call:
-    features:
-      response:
-        category: false
-        roles: elements/none
 sub-packages:
   representation:
     model-elements:
@@ -278,3 +237,47 @@ sub-packages:
         actions:
           properties-table:
             roles: none      
+  flow:
+    model-elements:
+      transition:
+        features:
+          payload:
+            category: false
+            roles: elements/none
+      call:
+        features:
+          response:
+            category: false
+            roles: elements/none
+      journey-element:
+        features:
+          outputs:
+            roles: none
+          calls:
+            roles: none
+          inputs:
+            roles: none
+          invocations:
+            roles: none
+        operations:  
+          get-all-outputs:
+            label: Outputs
+            icon: fas fa-sign-out-alt
+            roles: actions/section
+          get-all-calls:
+            label: Calls
+            roles: actions/section
+          get-all-invocations:
+            label: Invocations
+            roles: actions/section
+          get-all-inputs:
+            label: Inputs
+            icon: fas fa-sign-in-alt
+            roles: actions/section
+      journey:
+        features:
+          elements:
+            roles: none
+          all-elements:
+            roles: elements/none
+                        

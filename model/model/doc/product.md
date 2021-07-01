@@ -3,4 +3,4 @@ Product addresses [persona](Persona.html) [goals](Goal.html) via its [features](
 
 Product may have multiple [releases](Releases.html). 
 
-It can also contain [activities](Activity.html) and [journeys](Journey.html) demonstrating how to use the product and its features.
+It can also contain [activities](flow/Activity.html) and [journeys](flow/Journey.html) demonstrating how to use the product and its features.
