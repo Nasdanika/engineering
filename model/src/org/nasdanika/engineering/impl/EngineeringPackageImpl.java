@@ -2,6 +2,7 @@
  */
 package org.nasdanika.engineering.impl;
 
+import java.time.Duration;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EAttribute;
@@ -27,8 +28,10 @@ import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeredCapability;
 import org.nasdanika.engineering.EngineeredElement;
 import org.nasdanika.engineering.PackageAppearance;
+import org.nasdanika.engineering.Period;
 import org.nasdanika.engineering.EngineeringFactory;
 import org.nasdanika.engineering.EngineeringPackage;
+import org.nasdanika.engineering.Event;
 import org.nasdanika.engineering.Feature;
 import org.nasdanika.engineering.Forum;
 import org.nasdanika.engineering.Goal;
@@ -54,6 +57,7 @@ import org.nasdanika.engineering.Principle;
 import org.nasdanika.engineering.Product;
 import org.nasdanika.engineering.Release;
 import org.nasdanika.engineering.TableOfContents;
+import org.nasdanika.engineering.Temporal;
 import org.nasdanika.engineering.Topic;
 import org.nasdanika.engineering.flow.FlowPackage;
 import org.nasdanika.engineering.flow.impl.FlowPackageImpl;
@@ -95,7 +99,28 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass temporalEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass periodEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass namedElementEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass eventEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -396,6 +421,13 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EDataType durationEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EDataType sectionStyleEDataType = null;
 
 	/**
@@ -642,6 +674,86 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
+	public EClass getTemporal() {
+		return temporalEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getTemporal_Instant() {
+		return (EAttribute)temporalEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getTemporal_Base() {
+		return (EReference)temporalEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getTemporal_Offset() {
+		return (EAttribute)temporalEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getPeriod() {
+		return periodEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getPeriod_Start() {
+		return (EReference)periodEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getPeriod_End() {
+		return (EReference)periodEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getPeriod_Duration() {
+		return (EAttribute)periodEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getNamedElement() {
 		return namedElementEClass;
 	}
@@ -654,6 +766,16 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	@Override
 	public EAttribute getNamedElement_Name() {
 		return (EAttribute)namedElementEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getEvent() {
+		return eventEClass;
 	}
 
 	/**
@@ -722,28 +844,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EAttribute getEndeavor_Start() {
-		return (EAttribute)endeavorEClass.getEStructuralFeatures().get(5);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getEndeavor_End() {
-		return (EAttribute)endeavorEClass.getEStructuralFeatures().get(6);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EReference getEndeavor_Capacity() {
-		return (EReference)endeavorEClass.getEStructuralFeatures().get(7);
+		return (EReference)endeavorEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -753,7 +855,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 */
 	@Override
 	public EReference getEndeavor_Objectives() {
-		return (EReference)endeavorEClass.getEStructuralFeatures().get(8);
+		return (EReference)endeavorEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -763,7 +865,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 */
 	@Override
 	public EReference getEndeavor_LinkedObjectives() {
-		return (EReference)endeavorEClass.getEStructuralFeatures().get(9);
+		return (EReference)endeavorEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
@@ -773,7 +875,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 */
 	@Override
 	public EReference getEndeavor_AllObjectives() {
-		return (EReference)endeavorEClass.getEStructuralFeatures().get(10);
+		return (EReference)endeavorEClass.getEStructuralFeatures().get(8);
 	}
 
 	/**
@@ -2492,6 +2594,16 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
+	public EDataType getDuration() {
+		return durationEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EAttribute getDocument_Content() {
 		return (EAttribute)documentEClass.getEStructuralFeatures().get(0);
 	}
@@ -2593,8 +2705,20 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		createEAttribute(tableOfContentsEClass, TABLE_OF_CONTENTS__DEPTH);
 		createEAttribute(tableOfContentsEClass, TABLE_OF_CONTENTS__HEADER);
 
+		temporalEClass = createEClass(TEMPORAL);
+		createEAttribute(temporalEClass, TEMPORAL__INSTANT);
+		createEReference(temporalEClass, TEMPORAL__BASE);
+		createEAttribute(temporalEClass, TEMPORAL__OFFSET);
+
+		periodEClass = createEClass(PERIOD);
+		createEReference(periodEClass, PERIOD__START);
+		createEReference(periodEClass, PERIOD__END);
+		createEAttribute(periodEClass, PERIOD__DURATION);
+
 		namedElementEClass = createEClass(NAMED_ELEMENT);
 		createEAttribute(namedElementEClass, NAMED_ELEMENT__NAME);
+
+		eventEClass = createEClass(EVENT);
 
 		endeavorEClass = createEClass(ENDEAVOR);
 		createEAttribute(endeavorEClass, ENDEAVOR__COMPLETION);
@@ -2602,8 +2726,6 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		createEAttribute(endeavorEClass, ENDEAVOR__TOTAL_COST);
 		createEReference(endeavorEClass, ENDEAVOR__ASSIGNEE);
 		createEReference(endeavorEClass, ENDEAVOR__ALL_ISSUES);
-		createEAttribute(endeavorEClass, ENDEAVOR__START);
-		createEAttribute(endeavorEClass, ENDEAVOR__END);
 		createEReference(endeavorEClass, ENDEAVOR__CAPACITY);
 		createEReference(endeavorEClass, ENDEAVOR__OBJECTIVES);
 		createEReference(endeavorEClass, ENDEAVOR__LINKED_OBJECTIVES);
@@ -2828,6 +2950,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		createEAttribute(decisionEClass, DECISION__RESOLUTION);
 
 		// Create data types
+		durationEDataType = createEDataType(DURATION);
 		sectionStyleEDataType = createEDataType(SECTION_STYLE);
 	}
 
@@ -2868,7 +2991,12 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 
 		// Add supertypes to classes
 		modelElementEClass.getESuperTypes().add(this.getAdaptable());
+		temporalEClass.getESuperTypes().add(this.getModelElement());
+		periodEClass.getESuperTypes().add(this.getModelElement());
 		namedElementEClass.getESuperTypes().add(this.getModelElement());
+		eventEClass.getESuperTypes().add(this.getNamedElement());
+		eventEClass.getESuperTypes().add(this.getTemporal());
+		endeavorEClass.getESuperTypes().add(this.getPeriod());
 		endeavorEClass.getESuperTypes().add(this.getAlignable());
 		incrementEClass.getESuperTypes().add(this.getNamedElement());
 		incrementEClass.getESuperTypes().add(this.getEndeavor());
@@ -2879,6 +3007,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		issueEClass.getESuperTypes().add(this.getEngineeredCapability());
 		noteEClass.getESuperTypes().add(this.getModelElement());
 		engineeredElementEClass.getESuperTypes().add(this.getForum());
+		engineeredElementEClass.getESuperTypes().add(this.getPeriod());
 		documentEClass.getESuperTypes().add(this.getEngineeredElement());
 		personaEClass.getESuperTypes().add(this.getEngineeredElement());
 		engineerEClass.getESuperTypes().add(this.getPersona());
@@ -2886,6 +3015,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		moduleEClass.getESuperTypes().add(this.getEngineeredElement());
 		productEClass.getESuperTypes().add(this.getModule());
 		capabilityEClass.getESuperTypes().add(this.getNamedElement());
+		capabilityEClass.getESuperTypes().add(this.getPeriod());
 		engineeredCapabilityEClass.getESuperTypes().add(this.getCapability());
 		engineeredCapabilityEClass.getESuperTypes().add(this.getEndeavor());
 		releaseEClass.getESuperTypes().add(this.getEngineeredCapability());
@@ -2929,8 +3059,20 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		initEAttribute(getTableOfContents_Depth(), ecorePackage.getEInt(), "depth", null, 0, 1, TableOfContents.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTableOfContents_Header(), ecorePackage.getEString(), "header", null, 0, 1, TableOfContents.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(temporalEClass, Temporal.class, "Temporal", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getTemporal_Instant(), ecorePackage.getEDate(), "instant", null, 0, 1, Temporal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTemporal_Base(), this.getTemporal(), null, "base", null, 0, 1, Temporal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTemporal_Offset(), this.getDuration(), "offset", null, 0, 1, Temporal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(periodEClass, Period.class, "Period", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getPeriod_Start(), this.getTemporal(), null, "start", null, 0, 1, Period.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPeriod_End(), this.getTemporal(), null, "end", null, 0, 1, Period.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPeriod_Duration(), this.getDuration(), "duration", null, 0, 1, Period.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(namedElementEClass, NamedElement.class, "NamedElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getNamedElement_Name(), ecorePackage.getEString(), "name", null, 0, 1, NamedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(eventEClass, Event.class, "Event", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(endeavorEClass, Endeavor.class, "Endeavor", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getEndeavor_Completion(), ecorePackage.getEDouble(), "completion", null, 0, 1, Endeavor.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
@@ -2938,8 +3080,6 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		initEAttribute(getEndeavor_TotalCost(), ecorePackage.getEDouble(), "totalCost", null, 0, 1, Endeavor.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getEndeavor_Assignee(), this.getEngineer(), this.getEngineer_Assignments(), "assignee", null, 0, 1, Endeavor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEndeavor_AllIssues(), this.getIssue(), null, "allIssues", null, 0, -1, Endeavor.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEAttribute(getEndeavor_Start(), ecorePackage.getEDate(), "start", null, 0, 1, Endeavor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getEndeavor_End(), ecorePackage.getEDate(), "end", null, 0, 1, Endeavor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEndeavor_Capacity(), this.getCapacity(), this.getCapacity_Endeavor(), "capacity", null, 0, -1, Endeavor.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getEndeavor_Objectives(), this.getObjective(), null, "objectives", null, 0, -1, Endeavor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEndeavor_LinkedObjectives(), this.getObjective(), this.getObjective_Endeavor(), "linkedObjectives", null, 0, -1, Endeavor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
@@ -3164,6 +3304,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		initEAttribute(getDecision_Resolution(), ecorePackage.getEString(), "resolution", null, 0, 1, Decision.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize data types
+		initEDataType(durationEDataType, Duration.class, "Duration", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(sectionStyleEDataType, SectionStyle.class, "SectionStyle", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
@@ -3236,10 +3377,67 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 			   "default-feature", "true"
 		   });
 		addAnnotation
+		  (temporalEClass,
+		   source,
+		   new String[] {
+			   "documentation-reference", "doc/temporal.md"
+		   });
+		addAnnotation
+		  (getTemporal_Instant(),
+		   source,
+		   new String[] {
+			   "default-feature", "true",
+			   "exclusive-with", "base offset"
+		   });
+		addAnnotation
+		  (getTemporal_Base(),
+		   source,
+		   new String[] {
+			   "exclusive-with", "instant"
+		   });
+		addAnnotation
+		  (periodEClass,
+		   source,
+		   new String[] {
+			   "documentation-reference", "doc/period.md"
+		   });
+		addAnnotation
+		  (getPeriod_Start(),
+		   source,
+		   new String[] {
+			   "homogenous", "true",
+			   "strict-containment", "true"
+		   });
+		addAnnotation
+		  (getPeriod_End(),
+		   source,
+		   new String[] {
+			   "exclusive-with", "duration",
+			   "homogenous", "true",
+			   "strict-containment", "true"
+		   });
+		addAnnotation
+		  (getPeriod_End(),
+		   source,
+		   new String[] {
+		   });
+		addAnnotation
+		  (getPeriod_Duration(),
+		   source,
+		   new String[] {
+			   "exclusive-with", "end"
+		   });
+		addAnnotation
 		  (namedElementEClass,
 		   source,
 		   new String[] {
 			   "documentation-reference", "doc/named-element.md"
+		   });
+		addAnnotation
+		  (eventEClass,
+		   source,
+		   new String[] {
+			   "documentation-reference", "doc/event.md"
 		   });
 		addAnnotation
 		  (endeavorEClass,
@@ -3877,6 +4075,48 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 			   "documentation", "Table of contents header, e.g. ``Contents``. No header by default."
 		   });
 		addAnnotation
+		  (durationEDataType,
+		   source,
+		   new String[] {
+			   "documentation", "[Duration](https://docs.oracle.com/javase/8/docs/api/java/time/Duration.html) is an amount of time in the [ISO-8601 Duration format](https://en.wikipedia.org/wiki/ISO_8601#Duration). Supports days and smaller units. Weeks, months and years are not supported. Example: ``P28DT10H``."
+		   });
+		addAnnotation
+		  (getTemporal_Instant(),
+		   source,
+		   new String[] {
+			   "documentation", "An absolute point on the time-line. E.g. ``2021/07/04``."
+		   });
+		addAnnotation
+		  (getTemporal_Base(),
+		   source,
+		   new String[] {
+			   "documentation", "Base of this temporal."
+		   });
+		addAnnotation
+		  (getTemporal_Offset(),
+		   source,
+		   new String[] {
+			   "documentation", "Time offset from the base in [ISO-8601 durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) format. \n\nExamples:\n\n* ``P1H`` for one hour later.\n* ``-P20D`` or ``P-20D`` for 20 days before. Can be null (zero), e.g. if one [period](Period.html) starts right after another period ends."
+		   });
+		addAnnotation
+		  (getPeriod_Start(),
+		   source,
+		   new String[] {
+			   "documentation", "Period start."
+		   });
+		addAnnotation
+		  (getPeriod_End(),
+		   source,
+		   new String[] {
+			   "documentation", "Base of this temporal."
+		   });
+		addAnnotation
+		  (getPeriod_Duration(),
+		   source,
+		   new String[] {
+			   "documentation", "Positive period duration in [ISO-8601 durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) format. E.g. ``P1M`` for one month or ``P20D`` for 20 days."
+		   });
+		addAnnotation
 		  (getNamedElement_Name(),
 		   source,
 		   new String[] {
@@ -3911,18 +4151,6 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		   source,
 		   new String[] {
 			   "documentation", "Issues scheduled to work on in this increment directly or indirectly via [releases](Release.html) and [features](Feature.html)."
-		   });
-		addAnnotation
-		  (getEndeavor_Start(),
-		   source,
-		   new String[] {
-			   "documentation", "Endeavor start date. Default value can be derived for complex endeavors such as [issues](Issue.html) with children, [releases](Release.html), and [features](Feature.html)."
-		   });
-		addAnnotation
-		  (getEndeavor_End(),
-		   source,
-		   new String[] {
-			   "documentation", "Endeavor end date. Default value can be derived for complex endeavors such as [issues](Issue.html) with children, [releases](Release.html), and [features](Feature.html)."
 		   });
 		addAnnotation
 		  (getEndeavor_Capacity(),

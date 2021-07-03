@@ -244,6 +244,8 @@ engineering-module:
      - name: Flow package
        markdown-description: |+2
          journey elements. update references in docs. Generation sub-package.         
+     - name: Table Of Contents - an option to include headers from markdown
+       description: Leverage com.vladsch.flexmark.ext.toc.TocExtension
          
      ### === Done === ###    
      - name: Start/end from Issue and Increment to Endeavor

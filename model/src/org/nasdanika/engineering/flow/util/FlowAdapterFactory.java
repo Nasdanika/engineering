@@ -16,6 +16,7 @@ import org.nasdanika.engineering.Forum;
 import org.nasdanika.engineering.ModelElement;
 import org.nasdanika.engineering.NamedElement;
 
+import org.nasdanika.engineering.Period;
 import org.nasdanika.engineering.flow.*;
 
 /**
@@ -161,6 +162,10 @@ public class FlowAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseForum(Forum object) {
 				return createForumAdapter();
+			}
+			@Override
+			public Adapter casePeriod(Period object) {
+				return createPeriodAdapter();
 			}
 			@Override
 			public Adapter caseEngineeredElement(EngineeredElement object) {
@@ -491,6 +496,20 @@ public class FlowAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createForumAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.Period <em>Period</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.nasdanika.engineering.Period
+	 * @generated
+	 */
+	public Adapter createPeriodAdapter() {
 		return null;
 	}
 

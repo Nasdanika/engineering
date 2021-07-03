@@ -2,6 +2,7 @@
  */
 package org.nasdanika.engineering.impl;
 
+import java.time.Duration;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EClass;
@@ -23,8 +24,10 @@ import org.nasdanika.engineering.Endeavor;
 import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeredCapability;
 import org.nasdanika.engineering.PackageAppearance;
+import org.nasdanika.engineering.Period;
 import org.nasdanika.engineering.EngineeringFactory;
 import org.nasdanika.engineering.EngineeringPackage;
+import org.nasdanika.engineering.Event;
 import org.nasdanika.engineering.Feature;
 import org.nasdanika.engineering.Forum;
 import org.nasdanika.engineering.Goal;
@@ -49,6 +52,7 @@ import org.nasdanika.engineering.Principle;
 import org.nasdanika.engineering.Product;
 import org.nasdanika.engineering.Release;
 import org.nasdanika.engineering.TableOfContents;
+import org.nasdanika.engineering.Temporal;
 import org.nasdanika.engineering.Topic;
 import org.nasdanika.html.app.SectionStyle;
 
@@ -97,7 +101,10 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case EngineeringPackage.TABLE_OF_CONTENTS: return createTableOfContents();
+			case EngineeringPackage.TEMPORAL: return createTemporal();
+			case EngineeringPackage.PERIOD: return createPeriod();
 			case EngineeringPackage.NAMED_ELEMENT: return createNamedElement();
+			case EngineeringPackage.EVENT: return createEvent();
 			case EngineeringPackage.ENDEAVOR: return createEndeavor();
 			case EngineeringPackage.INCREMENT: return createIncrement();
 			case EngineeringPackage.ISSUE_CATEGORY: return createIssueCategory();
@@ -152,6 +159,8 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
+			case EngineeringPackage.DURATION:
+				return createDurationFromString(eDataType, initialValue);
 			case EngineeringPackage.SECTION_STYLE:
 				return createSectionStyleFromString(eDataType, initialValue);
 			default:
@@ -167,6 +176,8 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
+			case EngineeringPackage.DURATION:
+				return convertDurationToString(eDataType, instanceValue);
 			case EngineeringPackage.SECTION_STYLE:
 				return convertSectionStyleToString(eDataType, instanceValue);
 			default:
@@ -191,9 +202,42 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 	 * @generated
 	 */
 	@Override
+	public Temporal createTemporal() {
+		TemporalImpl temporal = new TemporalImpl();
+		return temporal;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Period createPeriod() {
+		PeriodImpl period = new PeriodImpl();
+		return period;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NamedElement createNamedElement() {
 		NamedElementImpl namedElement = new NamedElementImpl();
 		return namedElement;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Event createEvent() {
+		EventImpl event = new EventImpl();
+		return event;
 	}
 
 	/**
@@ -630,6 +674,24 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 	public Decision createDecision() {
 		DecisionImpl decision = new DecisionImpl();
 		return decision;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Duration createDurationFromString(EDataType eDataType, String initialValue) {
+		return (Duration)super.createFromString(eDataType, initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertDurationToString(EDataType eDataType, Object instanceValue) {
+		return super.convertToString(eDataType, instanceValue);
 	}
 
 	/**

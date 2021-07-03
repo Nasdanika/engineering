@@ -31,6 +31,7 @@ import org.eclipse.emf.ecore.ETypedElement;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.nasdanika.common.Context;
+import org.nasdanika.common.ContextSupplier;
 import org.nasdanika.common.MarkdownHelper;
 import org.nasdanika.common.NasdanikaException;
 import org.nasdanika.common.ProgressMonitor;
@@ -169,7 +170,7 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 	
 	@Override
 	protected String getTargetDescription() {
-		return getModelElementDescription(getSemanticElement());
+		return getModelElementDescription(getSemanticElement(), getContext());
 	}
 	
 	protected Card generateCardOfContents(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
@@ -309,10 +310,9 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 	 * @param modelElement
 	 * @return
 	 */
-	protected String getModelElementDescription(ModelElement modelElement) {
+	protected static String getModelElementDescription(ModelElement modelElement, Context context) {
 		StringBuilder ret = new StringBuilder();
 		String description = modelElement.getDescription();
-		Context context = getContext();
 		if (!Util.isBlank(description)) {
 			ret.append(context.interpolateToString(description));		
 		}
@@ -1120,9 +1120,11 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 		Table table = viewGenerator.getBootstrapFactory().table().bordered().striped();
 		table.header().headerRow("Resource", "Description").color(Color.INFO);
 		for (NamedElement resource: getSemanticElement().getResources()) {
+			ViewAction<NamedElement> rva = ViewAction.adaptToViewActionNonNull(resource);
+			Context rc = ((ContextSupplier) rva).getContext();
 			table.body().row(
-					viewGenerator.link(ViewAction.adaptToViewActionNonNull(resource)),
-					getModelElementDescription(resource));
+					viewGenerator.link(rva),
+					getModelElementDescription(resource, rc));
 		}
 		return table;
 	}
@@ -1305,7 +1307,8 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 	}		
 	
 	protected String diagramDescription(ModelElement modelElement) {
-		String description = getModelElementDescription(modelElement);
+		ViewAction<ModelElement> va = ViewAction.adaptToViewActionNonNull(modelElement);
+		String description = getModelElementDescription(modelElement, (va instanceof ContextSupplier ? ((ContextSupplier) va) : this).getContext());
 		if (Util.isBlank(description)) {
 			return "";
 		}

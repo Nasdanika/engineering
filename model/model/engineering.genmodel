@@ -8,6 +8,7 @@
   <foreignModel>engineering.ecore</foreignModel>
   <genPackages prefix="Engineering" basePackage="org.nasdanika" disposableProviderFactory="true"
       ecorePackage="engineering.ecore#/">
+    <genDataTypes ecoreDataType="engineering.ecore#//Duration"/>
     <genDataTypes ecoreDataType="engineering.ecore#//SectionStyle"/>
     <genClasses image="false" ecoreClass="engineering.ecore#//Adaptable"/>
     <genClasses image="false" ecoreClass="engineering.ecore#//ModelElement">
@@ -26,17 +27,26 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//TableOfContents/depth"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//TableOfContents/header"/>
     </genClasses>
+    <genClasses ecoreClass="engineering.ecore#//Temporal">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Temporal/instant"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//Temporal/base"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Temporal/offset"/>
+    </genClasses>
+    <genClasses ecoreClass="engineering.ecore#//Period">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//Period/start"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//Period/end"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Period/duration"/>
+    </genClasses>
     <genClasses image="false" ecoreClass="engineering.ecore#//NamedElement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//NamedElement/name"/>
     </genClasses>
+    <genClasses ecoreClass="engineering.ecore#//Event"/>
     <genClasses image="false" ecoreClass="engineering.ecore#//Endeavor">
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Endeavor/completion"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Endeavor/benefit"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Endeavor/totalCost"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//Endeavor/assignee"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference engineering.ecore#//Endeavor/allIssues"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Endeavor/start"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Endeavor/end"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference engineering.ecore#//Endeavor/capacity"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//Endeavor/objectives"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//Endeavor/linkedObjectives"/>
@@ -314,6 +324,7 @@
             ecoreFeature="ecore:EReference engineering.ecore#//flow/Transition/payload"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//flow/Transition/suppress"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//flow/Transition/target"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//flow/Transition/lag"/>
         <genOperations ecoreOperation="engineering.ecore#//flow/Transition/getTarget">
           <genParameters ecoreParameter="engineering.ecore#//flow/Transition/getTarget/journeyPath"/>
         </genOperations>

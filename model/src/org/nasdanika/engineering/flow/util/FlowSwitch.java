@@ -14,6 +14,7 @@ import org.nasdanika.engineering.Forum;
 import org.nasdanika.engineering.ModelElement;
 import org.nasdanika.engineering.NamedElement;
 
+import org.nasdanika.engineering.Period;
 import org.nasdanika.engineering.flow.*;
 
 /**
@@ -78,6 +79,7 @@ public class FlowSwitch<T> extends Switch<T> {
 				T result = caseJourneyElement(journeyElement);
 				if (result == null) result = caseEngineeredElement(journeyElement);
 				if (result == null) result = caseForum(journeyElement);
+				if (result == null) result = casePeriod(journeyElement);
 				if (result == null) result = caseNamedElement(journeyElement);
 				if (result == null) result = caseModelElement(journeyElement);
 				if (result == null) result = caseAdaptable(journeyElement);
@@ -90,6 +92,7 @@ public class FlowSwitch<T> extends Switch<T> {
 				if (result == null) result = caseJourneyElement(activity);
 				if (result == null) result = caseEngineeredElement(activity);
 				if (result == null) result = caseForum(activity);
+				if (result == null) result = casePeriod(activity);
 				if (result == null) result = caseNamedElement(activity);
 				if (result == null) result = caseModelElement(activity);
 				if (result == null) result = caseAdaptable(activity);
@@ -102,6 +105,7 @@ public class FlowSwitch<T> extends Switch<T> {
 				if (result == null) result = caseJourneyElement(service);
 				if (result == null) result = caseEngineeredElement(service);
 				if (result == null) result = caseForum(service);
+				if (result == null) result = casePeriod(service);
 				if (result == null) result = caseNamedElement(service);
 				if (result == null) result = caseModelElement(service);
 				if (result == null) result = caseAdaptable(service);
@@ -134,6 +138,7 @@ public class FlowSwitch<T> extends Switch<T> {
 				if (result == null) result = caseJourneyElement(journey);
 				if (result == null) result = caseEngineeredElement(journey);
 				if (result == null) result = caseForum(journey);
+				if (result == null) result = casePeriod(journey);
 				if (result == null) result = caseNamedElement(journey);
 				if (result == null) result = caseModelElement(journey);
 				if (result == null) result = caseAdaptable(journey);
@@ -146,6 +151,7 @@ public class FlowSwitch<T> extends Switch<T> {
 				if (result == null) result = caseJourneyElement(pseudoState);
 				if (result == null) result = caseEngineeredElement(pseudoState);
 				if (result == null) result = caseForum(pseudoState);
+				if (result == null) result = casePeriod(pseudoState);
 				if (result == null) result = caseNamedElement(pseudoState);
 				if (result == null) result = caseModelElement(pseudoState);
 				if (result == null) result = caseAdaptable(pseudoState);
@@ -159,6 +165,7 @@ public class FlowSwitch<T> extends Switch<T> {
 				if (result == null) result = caseJourneyElement(choice);
 				if (result == null) result = caseEngineeredElement(choice);
 				if (result == null) result = caseForum(choice);
+				if (result == null) result = casePeriod(choice);
 				if (result == null) result = caseNamedElement(choice);
 				if (result == null) result = caseModelElement(choice);
 				if (result == null) result = caseAdaptable(choice);
@@ -172,6 +179,7 @@ public class FlowSwitch<T> extends Switch<T> {
 				if (result == null) result = caseJourneyElement(end);
 				if (result == null) result = caseEngineeredElement(end);
 				if (result == null) result = caseForum(end);
+				if (result == null) result = casePeriod(end);
 				if (result == null) result = caseNamedElement(end);
 				if (result == null) result = caseModelElement(end);
 				if (result == null) result = caseAdaptable(end);
@@ -185,6 +193,7 @@ public class FlowSwitch<T> extends Switch<T> {
 				if (result == null) result = caseJourneyElement(entryPoint);
 				if (result == null) result = caseEngineeredElement(entryPoint);
 				if (result == null) result = caseForum(entryPoint);
+				if (result == null) result = casePeriod(entryPoint);
 				if (result == null) result = caseNamedElement(entryPoint);
 				if (result == null) result = caseModelElement(entryPoint);
 				if (result == null) result = caseAdaptable(entryPoint);
@@ -198,6 +207,7 @@ public class FlowSwitch<T> extends Switch<T> {
 				if (result == null) result = caseJourneyElement(exitPoint);
 				if (result == null) result = caseEngineeredElement(exitPoint);
 				if (result == null) result = caseForum(exitPoint);
+				if (result == null) result = casePeriod(exitPoint);
 				if (result == null) result = caseNamedElement(exitPoint);
 				if (result == null) result = caseModelElement(exitPoint);
 				if (result == null) result = caseAdaptable(exitPoint);
@@ -211,6 +221,7 @@ public class FlowSwitch<T> extends Switch<T> {
 				if (result == null) result = caseJourneyElement(expansionInput);
 				if (result == null) result = caseEngineeredElement(expansionInput);
 				if (result == null) result = caseForum(expansionInput);
+				if (result == null) result = casePeriod(expansionInput);
 				if (result == null) result = caseNamedElement(expansionInput);
 				if (result == null) result = caseModelElement(expansionInput);
 				if (result == null) result = caseAdaptable(expansionInput);
@@ -224,6 +235,7 @@ public class FlowSwitch<T> extends Switch<T> {
 				if (result == null) result = caseJourneyElement(expansionOutput);
 				if (result == null) result = caseEngineeredElement(expansionOutput);
 				if (result == null) result = caseForum(expansionOutput);
+				if (result == null) result = casePeriod(expansionOutput);
 				if (result == null) result = caseNamedElement(expansionOutput);
 				if (result == null) result = caseModelElement(expansionOutput);
 				if (result == null) result = caseAdaptable(expansionOutput);
@@ -237,6 +249,7 @@ public class FlowSwitch<T> extends Switch<T> {
 				if (result == null) result = caseJourneyElement(fork);
 				if (result == null) result = caseEngineeredElement(fork);
 				if (result == null) result = caseForum(fork);
+				if (result == null) result = casePeriod(fork);
 				if (result == null) result = caseNamedElement(fork);
 				if (result == null) result = caseModelElement(fork);
 				if (result == null) result = caseAdaptable(fork);
@@ -250,6 +263,7 @@ public class FlowSwitch<T> extends Switch<T> {
 				if (result == null) result = caseJourneyElement(inputPin);
 				if (result == null) result = caseEngineeredElement(inputPin);
 				if (result == null) result = caseForum(inputPin);
+				if (result == null) result = casePeriod(inputPin);
 				if (result == null) result = caseNamedElement(inputPin);
 				if (result == null) result = caseModelElement(inputPin);
 				if (result == null) result = caseAdaptable(inputPin);
@@ -263,6 +277,7 @@ public class FlowSwitch<T> extends Switch<T> {
 				if (result == null) result = caseJourneyElement(join);
 				if (result == null) result = caseEngineeredElement(join);
 				if (result == null) result = caseForum(join);
+				if (result == null) result = casePeriod(join);
 				if (result == null) result = caseNamedElement(join);
 				if (result == null) result = caseModelElement(join);
 				if (result == null) result = caseAdaptable(join);
@@ -276,6 +291,7 @@ public class FlowSwitch<T> extends Switch<T> {
 				if (result == null) result = caseJourneyElement(outputPin);
 				if (result == null) result = caseEngineeredElement(outputPin);
 				if (result == null) result = caseForum(outputPin);
+				if (result == null) result = casePeriod(outputPin);
 				if (result == null) result = caseNamedElement(outputPin);
 				if (result == null) result = caseModelElement(outputPin);
 				if (result == null) result = caseAdaptable(outputPin);
@@ -289,6 +305,7 @@ public class FlowSwitch<T> extends Switch<T> {
 				if (result == null) result = caseJourneyElement(start);
 				if (result == null) result = caseEngineeredElement(start);
 				if (result == null) result = caseForum(start);
+				if (result == null) result = casePeriod(start);
 				if (result == null) result = caseNamedElement(start);
 				if (result == null) result = caseModelElement(start);
 				if (result == null) result = caseAdaptable(start);
@@ -626,6 +643,21 @@ public class FlowSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseForum(Forum object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Period</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Period</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casePeriod(Period object) {
 		return null;
 	}
 

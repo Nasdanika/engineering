@@ -22,7 +22,7 @@ import org.eclipse.emf.common.util.EList;
  * @model annotation="urn:org.nasdanika documentation-reference='doc/capability.md'"
  * @generated
  */
-public interface Capability extends NamedElement {
+public interface Capability extends NamedElement, Period {
 
 	/**
 	 * Returns the value of the '<em><b>Required By</b></em>' reference list.

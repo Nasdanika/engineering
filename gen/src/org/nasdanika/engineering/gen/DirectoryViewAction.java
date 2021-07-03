@@ -2,6 +2,7 @@ package org.nasdanika.engineering.gen;
 
 import java.util.List;
 
+import org.nasdanika.common.ContextSupplier;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.engineering.Directory;
 import org.nasdanika.engineering.NamedElement;
@@ -25,9 +26,10 @@ public class DirectoryViewAction extends EngineeredElementViewAction<Directory> 
 		Table table = viewGenerator.getBootstrapFactory().table().bordered().striped();
 		table.header().headerRow("Resource", "Description").color(Color.INFO);
 		for (NamedElement element: getSemanticElement().getElements()) {
+			ViewAction<NamedElement> eva = ViewAction.adaptToViewActionNonNull(element);
 			table.body().row(
-					viewGenerator.link(ViewAction.adaptToViewActionNonNull(element)),
-					getModelElementDescription(element));
+					viewGenerator.link(eva),
+					getModelElementDescription(element, (eva instanceof ContextSupplier ? (ContextSupplier) eva : this).getContext()));
 		}
 		return table;
 	}

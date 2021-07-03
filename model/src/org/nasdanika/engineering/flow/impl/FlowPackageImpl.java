@@ -512,6 +512,16 @@ public class FlowPackageImpl extends EPackageImpl implements FlowPackage {
 	 * @generated
 	 */
 	@Override
+	public EAttribute getTransition_Lag() {
+		return (EAttribute)transitionEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EOperation getTransition__GetTarget__EList() {
 		return transitionEClass.getEOperations().get(0);
 	}
@@ -783,6 +793,7 @@ public class FlowPackageImpl extends EPackageImpl implements FlowPackage {
 		createEReference(transitionEClass, TRANSITION__PAYLOAD);
 		createEAttribute(transitionEClass, TRANSITION__SUPPRESS);
 		createEAttribute(transitionEClass, TRANSITION__TARGET);
+		createEAttribute(transitionEClass, TRANSITION__LAG);
 		createEOperation(transitionEClass, TRANSITION___GET_TARGET__ELIST);
 
 		callEClass = createEClass(CALL);
@@ -914,6 +925,7 @@ public class FlowPackageImpl extends EPackageImpl implements FlowPackage {
 		initEReference(getTransition_Payload(), theEngineeringPackage.getNamedElement(), null, "payload", null, 0, -1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTransition_Suppress(), ecorePackage.getEBoolean(), "suppress", null, 0, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTransition_Target(), ecorePackage.getEString(), "target", null, 1, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTransition_Lag(), theEngineeringPackage.getDuration(), "lag", null, 0, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		op = initEOperation(getTransition__GetTarget__EList(), this.getJourneyElement(), "getTarget", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getJourney(), "journeyPath", 1, -1, IS_UNIQUE, IS_ORDERED);
@@ -970,6 +982,12 @@ public class FlowPackageImpl extends EPackageImpl implements FlowPackage {
 	 */
 	protected void createUrnorgAnnotations() {
 		String source = "urn:org.nasdanika";
+		addAnnotation
+		  (this,
+		   source,
+		   new String[] {
+			   "documentation-reference", "doc/flow/package-summary.md"
+		   });
 		addAnnotation
 		  (journeyElementEClass,
 		   source,
@@ -1309,6 +1327,12 @@ public class FlowPackageImpl extends EPackageImpl implements FlowPackage {
 		   source,
 		   new String[] {
 			   "documentation", "Relative path to the target [journey element](JourneyElement.html). May contain ``..`` to navigate to the parent [journey](Journey.html) - i.e. the journey which contains the journey containing the element which contains this transition. May contain ``/`` to navigate to nested journeys. Treated as URI if contains ``:``."
+		   });
+		addAnnotation
+		  (getTransition_Lag(),
+		   source,
+		   new String[] {
+			   "documentation", "Duration of time between source journey element completion and starting the target journey element. Journey element durations and transitions lag can be used to compute start of journey elements relative to the journey start."
 		   });
 		addAnnotation
 		  (getCall_Response(),

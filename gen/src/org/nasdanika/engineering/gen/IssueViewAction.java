@@ -34,7 +34,7 @@ public class IssueViewAction<T extends Issue> extends EngineeredCapabilityViewAc
 		BiFunction<Note, ETypedElement, ViewBuilder> cellBuilderProvider = (note, dataSource) -> {
 			if (dataSource == EngineeringPackage.Literals.MODEL_ELEMENT__DESCRIPTION) {
 				return (target, vg, pm) -> {
-					((Container<?>) ((BootstrapElement<?,?>) target).toHTMLElement()).content(getModelElementDescription(note));
+					((Container<?>) ((BootstrapElement<?,?>) target).toHTMLElement()).content(getModelElementDescription(note, getContext()));
 				};
 			}
 			return null;

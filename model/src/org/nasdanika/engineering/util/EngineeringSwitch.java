@@ -24,7 +24,9 @@ import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeredCapability;
 import org.nasdanika.engineering.EngineeredElement;
 import org.nasdanika.engineering.PackageAppearance;
+import org.nasdanika.engineering.Period;
 import org.nasdanika.engineering.EngineeringPackage;
+import org.nasdanika.engineering.Event;
 import org.nasdanika.engineering.Feature;
 import org.nasdanika.engineering.MemberAppearance;
 import org.nasdanika.engineering.Forum;
@@ -50,6 +52,7 @@ import org.nasdanika.engineering.Principle;
 import org.nasdanika.engineering.Product;
 import org.nasdanika.engineering.Release;
 import org.nasdanika.engineering.TableOfContents;
+import org.nasdanika.engineering.Temporal;
 import org.nasdanika.engineering.Topic;
 
 /**
@@ -128,6 +131,22 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case EngineeringPackage.TEMPORAL: {
+				Temporal temporal = (Temporal)theEObject;
+				T result = caseTemporal(temporal);
+				if (result == null) result = caseModelElement(temporal);
+				if (result == null) result = caseAdaptable(temporal);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EngineeringPackage.PERIOD: {
+				Period period = (Period)theEObject;
+				T result = casePeriod(period);
+				if (result == null) result = caseModelElement(period);
+				if (result == null) result = caseAdaptable(period);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case EngineeringPackage.NAMED_ELEMENT: {
 				NamedElement namedElement = (NamedElement)theEObject;
 				T result = caseNamedElement(namedElement);
@@ -136,10 +155,23 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case EngineeringPackage.EVENT: {
+				Event event = (Event)theEObject;
+				T result = caseEvent(event);
+				if (result == null) result = caseNamedElement(event);
+				if (result == null) result = caseTemporal(event);
+				if (result == null) result = caseModelElement(event);
+				if (result == null) result = caseAdaptable(event);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case EngineeringPackage.ENDEAVOR: {
 				Endeavor endeavor = (Endeavor)theEObject;
 				T result = caseEndeavor(endeavor);
+				if (result == null) result = casePeriod(endeavor);
 				if (result == null) result = caseAlignable(endeavor);
+				if (result == null) result = caseModelElement(endeavor);
+				if (result == null) result = caseAdaptable(endeavor);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -148,8 +180,9 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				T result = caseIncrement(increment);
 				if (result == null) result = caseNamedElement(increment);
 				if (result == null) result = caseEndeavor(increment);
-				if (result == null) result = caseModelElement(increment);
+				if (result == null) result = casePeriod(increment);
 				if (result == null) result = caseAlignable(increment);
+				if (result == null) result = caseModelElement(increment);
 				if (result == null) result = caseAdaptable(increment);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -199,6 +232,7 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				if (result == null) result = caseCapability(issue);
 				if (result == null) result = caseEndeavor(issue);
 				if (result == null) result = caseNamedElement(issue);
+				if (result == null) result = casePeriod(issue);
 				if (result == null) result = caseAlignable(issue);
 				if (result == null) result = caseModelElement(issue);
 				if (result == null) result = caseAdaptable(issue);
@@ -217,6 +251,7 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				EngineeredElement engineeredElement = (EngineeredElement)theEObject;
 				T result = caseEngineeredElement(engineeredElement);
 				if (result == null) result = caseForum(engineeredElement);
+				if (result == null) result = casePeriod(engineeredElement);
 				if (result == null) result = caseNamedElement(engineeredElement);
 				if (result == null) result = caseModelElement(engineeredElement);
 				if (result == null) result = caseAdaptable(engineeredElement);
@@ -228,6 +263,7 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				T result = caseDocument(document);
 				if (result == null) result = caseEngineeredElement(document);
 				if (result == null) result = caseForum(document);
+				if (result == null) result = casePeriod(document);
 				if (result == null) result = caseNamedElement(document);
 				if (result == null) result = caseModelElement(document);
 				if (result == null) result = caseAdaptable(document);
@@ -239,6 +275,7 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				T result = casePersona(persona);
 				if (result == null) result = caseEngineeredElement(persona);
 				if (result == null) result = caseForum(persona);
+				if (result == null) result = casePeriod(persona);
 				if (result == null) result = caseNamedElement(persona);
 				if (result == null) result = caseModelElement(persona);
 				if (result == null) result = caseAdaptable(persona);
@@ -251,6 +288,7 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				if (result == null) result = casePersona(engineer);
 				if (result == null) result = caseEngineeredElement(engineer);
 				if (result == null) result = caseForum(engineer);
+				if (result == null) result = casePeriod(engineer);
 				if (result == null) result = caseNamedElement(engineer);
 				if (result == null) result = caseModelElement(engineer);
 				if (result == null) result = caseAdaptable(engineer);
@@ -264,6 +302,7 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				if (result == null) result = casePersona(organization);
 				if (result == null) result = caseEngineeredElement(organization);
 				if (result == null) result = caseForum(organization);
+				if (result == null) result = casePeriod(organization);
 				if (result == null) result = caseNamedElement(organization);
 				if (result == null) result = caseModelElement(organization);
 				if (result == null) result = caseAdaptable(organization);
@@ -275,6 +314,7 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				T result = caseModule(module);
 				if (result == null) result = caseEngineeredElement(module);
 				if (result == null) result = caseForum(module);
+				if (result == null) result = casePeriod(module);
 				if (result == null) result = caseNamedElement(module);
 				if (result == null) result = caseModelElement(module);
 				if (result == null) result = caseAdaptable(module);
@@ -287,6 +327,7 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				if (result == null) result = caseModule(product);
 				if (result == null) result = caseEngineeredElement(product);
 				if (result == null) result = caseForum(product);
+				if (result == null) result = casePeriod(product);
 				if (result == null) result = caseNamedElement(product);
 				if (result == null) result = caseModelElement(product);
 				if (result == null) result = caseAdaptable(product);
@@ -297,6 +338,7 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				Capability capability = (Capability)theEObject;
 				T result = caseCapability(capability);
 				if (result == null) result = caseNamedElement(capability);
+				if (result == null) result = casePeriod(capability);
 				if (result == null) result = caseModelElement(capability);
 				if (result == null) result = caseAdaptable(capability);
 				if (result == null) result = defaultCase(theEObject);
@@ -308,6 +350,7 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				if (result == null) result = caseCapability(engineeredCapability);
 				if (result == null) result = caseEndeavor(engineeredCapability);
 				if (result == null) result = caseNamedElement(engineeredCapability);
+				if (result == null) result = casePeriod(engineeredCapability);
 				if (result == null) result = caseAlignable(engineeredCapability);
 				if (result == null) result = caseModelElement(engineeredCapability);
 				if (result == null) result = caseAdaptable(engineeredCapability);
@@ -321,6 +364,7 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				if (result == null) result = caseCapability(release);
 				if (result == null) result = caseEndeavor(release);
 				if (result == null) result = caseNamedElement(release);
+				if (result == null) result = casePeriod(release);
 				if (result == null) result = caseAlignable(release);
 				if (result == null) result = caseModelElement(release);
 				if (result == null) result = caseAdaptable(release);
@@ -334,6 +378,7 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				if (result == null) result = caseCapability(feature);
 				if (result == null) result = caseEndeavor(feature);
 				if (result == null) result = caseNamedElement(feature);
+				if (result == null) result = casePeriod(feature);
 				if (result == null) result = caseAlignable(feature);
 				if (result == null) result = caseModelElement(feature);
 				if (result == null) result = caseAdaptable(feature);
@@ -345,6 +390,7 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				T result = caseDirectory(directory);
 				if (result == null) result = caseEngineeredElement(directory);
 				if (result == null) result = caseForum(directory);
+				if (result == null) result = casePeriod(directory);
 				if (result == null) result = caseNamedElement(directory);
 				if (result == null) result = caseModelElement(directory);
 				if (result == null) result = caseAdaptable(directory);
@@ -542,6 +588,7 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				if (result == null) result = caseCapability(decision);
 				if (result == null) result = caseEndeavor(decision);
 				if (result == null) result = caseNamedElement(decision);
+				if (result == null) result = casePeriod(decision);
 				if (result == null) result = caseAlignable(decision);
 				if (result == null) result = caseModelElement(decision);
 				if (result == null) result = caseAdaptable(decision);
@@ -598,6 +645,36 @@ public class EngineeringSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Temporal</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Temporal</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTemporal(Temporal object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Period</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Period</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casePeriod(Period object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Named Element</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -609,6 +686,21 @@ public class EngineeringSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseNamedElement(NamedElement object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Event</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Event</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseEvent(Event object) {
 		return null;
 	}
 

@@ -35,7 +35,7 @@ public class AimViewAction<T extends Aim> extends NamedElementViewAction<T> {
 		for (Alignment alignment: getSemanticElement().getAligns()) {
 			table.body().row(
 					viewGenerator.link(ViewAction.adaptToViewActionNonNull(alignment.getAim())),
-					getModelElementDescription(alignment));
+					getModelElementDescription(alignment, getContext()));
 		}
 		return table;
 	}
@@ -54,7 +54,7 @@ public class AimViewAction<T extends Aim> extends NamedElementViewAction<T> {
 			table.body().row(
 					viewGenerator.link(ViewAction.adaptToViewActionNonNull(aContainer)),
 					progressBar,
-					getModelElementDescription(alignment));
+					getModelElementDescription(alignment, getContext()));
 		}
 		return table;
 	}				

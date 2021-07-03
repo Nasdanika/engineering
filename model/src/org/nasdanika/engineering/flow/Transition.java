@@ -2,6 +2,7 @@
  */
 package org.nasdanika.engineering.flow;
 
+import java.time.Duration;
 import org.eclipse.emf.common.util.EList;
 import org.nasdanika.engineering.NamedElement;
 
@@ -17,6 +18,7 @@ import org.nasdanika.engineering.NamedElement;
  *   <li>{@link org.nasdanika.engineering.flow.Transition#getPayload <em>Payload</em>}</li>
  *   <li>{@link org.nasdanika.engineering.flow.Transition#isSuppress <em>Suppress</em>}</li>
  *   <li>{@link org.nasdanika.engineering.flow.Transition#getTarget <em>Target</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.flow.Transition#getLag <em>Lag</em>}</li>
  * </ul>
  *
  * @see org.nasdanika.engineering.flow.FlowPackage#getTransition()
@@ -49,6 +51,31 @@ public interface Transition extends NamedElement {
 	 * @generated
 	 */
 	void setTarget(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Lag</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Duration of time between source journey element completion and starting the target journey element. Journey element durations and transitions lag can be used to compute start of journey elements relative to the journey start.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Lag</em>' attribute.
+	 * @see #setLag(Duration)
+	 * @see org.nasdanika.engineering.flow.FlowPackage#getTransition_Lag()
+	 * @model dataType="org.nasdanika.engineering.Duration"
+	 * @generated
+	 */
+	Duration getLag();
+
+	/**
+	 * Sets the value of the '{@link org.nasdanika.engineering.flow.Transition#getLag <em>Lag</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Lag</em>' attribute.
+	 * @see #getLag()
+	 * @generated
+	 */
+	void setLag(Duration value);
 
 	/**
 	 * <!-- begin-user-doc -->

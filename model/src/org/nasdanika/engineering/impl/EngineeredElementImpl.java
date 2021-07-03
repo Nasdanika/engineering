@@ -2,6 +2,7 @@
  */
 package org.nasdanika.engineering.impl;
 
+import java.time.Duration;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -16,7 +17,9 @@ import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeredElement;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Issue;
+import org.nasdanika.engineering.Period;
 import org.nasdanika.engineering.Principle;
+import org.nasdanika.engineering.Temporal;
 
 /**
  * <!-- begin-user-doc -->
@@ -26,6 +29,9 @@ import org.nasdanika.engineering.Principle;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link org.nasdanika.engineering.impl.EngineeredElementImpl#getStart <em>Start</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.EngineeredElementImpl#getEnd <em>End</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.EngineeredElementImpl#getDuration <em>Duration</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineeredElementImpl#getIssues <em>Issues</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineeredElementImpl#getOwners <em>Owners</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineeredElementImpl#getExperts <em>Experts</em>}</li>
@@ -37,6 +43,16 @@ import org.nasdanika.engineering.Principle;
  * @generated
  */
 public abstract class EngineeredElementImpl extends ForumImpl implements EngineeredElement {
+	/**
+	 * The default value of the '{@link #getDuration() <em>Duration</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDuration()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final Duration DURATION_EDEFAULT = null;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -54,6 +70,85 @@ public abstract class EngineeredElementImpl extends ForumImpl implements Enginee
 	@Override
 	protected EClass eStaticClass() {
 		return EngineeringPackage.Literals.ENGINEERED_ELEMENT;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Temporal getStart() {
+		return (Temporal)eDynamicGet(EngineeringPackage.ENGINEERED_ELEMENT__START, EngineeringPackage.Literals.PERIOD__START, true, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetStart(Temporal newStart, NotificationChain msgs) {
+		msgs = eDynamicInverseAdd((InternalEObject)newStart, EngineeringPackage.ENGINEERED_ELEMENT__START, msgs);
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setStart(Temporal newStart) {
+		eDynamicSet(EngineeringPackage.ENGINEERED_ELEMENT__START, EngineeringPackage.Literals.PERIOD__START, newStart);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Temporal getEnd() {
+		return (Temporal)eDynamicGet(EngineeringPackage.ENGINEERED_ELEMENT__END, EngineeringPackage.Literals.PERIOD__END, true, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Temporal basicGetEnd() {
+		return (Temporal)eDynamicGet(EngineeringPackage.ENGINEERED_ELEMENT__END, EngineeringPackage.Literals.PERIOD__END, false, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setEnd(Temporal newEnd) {
+		eDynamicSet(EngineeringPackage.ENGINEERED_ELEMENT__END, EngineeringPackage.Literals.PERIOD__END, newEnd);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Duration getDuration() {
+		return (Duration)eDynamicGet(EngineeringPackage.ENGINEERED_ELEMENT__DURATION, EngineeringPackage.Literals.PERIOD__DURATION, true, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setDuration(Duration newDuration) {
+		eDynamicSet(EngineeringPackage.ENGINEERED_ELEMENT__DURATION, EngineeringPackage.Literals.PERIOD__DURATION, newDuration);
 	}
 
 	/**
@@ -163,6 +258,8 @@ public abstract class EngineeredElementImpl extends ForumImpl implements Enginee
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+			case EngineeringPackage.ENGINEERED_ELEMENT__START:
+				return basicSetStart(null, msgs);
 			case EngineeringPackage.ENGINEERED_ELEMENT__ISSUES:
 				return ((InternalEList<?>)getIssues()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.ENGINEERED_ELEMENT__OWNERS:
@@ -185,6 +282,13 @@ public abstract class EngineeredElementImpl extends ForumImpl implements Enginee
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case EngineeringPackage.ENGINEERED_ELEMENT__START:
+				return getStart();
+			case EngineeringPackage.ENGINEERED_ELEMENT__END:
+				if (resolve) return getEnd();
+				return basicGetEnd();
+			case EngineeringPackage.ENGINEERED_ELEMENT__DURATION:
+				return getDuration();
 			case EngineeringPackage.ENGINEERED_ELEMENT__ISSUES:
 				return getIssues();
 			case EngineeringPackage.ENGINEERED_ELEMENT__OWNERS:
@@ -210,6 +314,15 @@ public abstract class EngineeredElementImpl extends ForumImpl implements Enginee
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case EngineeringPackage.ENGINEERED_ELEMENT__START:
+				setStart((Temporal)newValue);
+				return;
+			case EngineeringPackage.ENGINEERED_ELEMENT__END:
+				setEnd((Temporal)newValue);
+				return;
+			case EngineeringPackage.ENGINEERED_ELEMENT__DURATION:
+				setDuration((Duration)newValue);
+				return;
 			case EngineeringPackage.ENGINEERED_ELEMENT__ISSUES:
 				getIssues().clear();
 				getIssues().addAll((Collection<? extends Issue>)newValue);
@@ -242,6 +355,15 @@ public abstract class EngineeredElementImpl extends ForumImpl implements Enginee
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case EngineeringPackage.ENGINEERED_ELEMENT__START:
+				setStart((Temporal)null);
+				return;
+			case EngineeringPackage.ENGINEERED_ELEMENT__END:
+				setEnd((Temporal)null);
+				return;
+			case EngineeringPackage.ENGINEERED_ELEMENT__DURATION:
+				setDuration(DURATION_EDEFAULT);
+				return;
 			case EngineeringPackage.ENGINEERED_ELEMENT__ISSUES:
 				getIssues().clear();
 				return;
@@ -269,6 +391,12 @@ public abstract class EngineeredElementImpl extends ForumImpl implements Enginee
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case EngineeringPackage.ENGINEERED_ELEMENT__START:
+				return getStart() != null;
+			case EngineeringPackage.ENGINEERED_ELEMENT__END:
+				return basicGetEnd() != null;
+			case EngineeringPackage.ENGINEERED_ELEMENT__DURATION:
+				return DURATION_EDEFAULT == null ? getDuration() != null : !DURATION_EDEFAULT.equals(getDuration());
 			case EngineeringPackage.ENGINEERED_ELEMENT__ISSUES:
 				return !getIssues().isEmpty();
 			case EngineeringPackage.ENGINEERED_ELEMENT__OWNERS:
@@ -283,6 +411,42 @@ public abstract class EngineeredElementImpl extends ForumImpl implements Enginee
 				return !getAllIssues().isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == Period.class) {
+			switch (derivedFeatureID) {
+				case EngineeringPackage.ENGINEERED_ELEMENT__START: return EngineeringPackage.PERIOD__START;
+				case EngineeringPackage.ENGINEERED_ELEMENT__END: return EngineeringPackage.PERIOD__END;
+				case EngineeringPackage.ENGINEERED_ELEMENT__DURATION: return EngineeringPackage.PERIOD__DURATION;
+				default: return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == Period.class) {
+			switch (baseFeatureID) {
+				case EngineeringPackage.PERIOD__START: return EngineeringPackage.ENGINEERED_ELEMENT__START;
+				case EngineeringPackage.PERIOD__END: return EngineeringPackage.ENGINEERED_ELEMENT__END;
+				case EngineeringPackage.PERIOD__DURATION: return EngineeringPackage.ENGINEERED_ELEMENT__DURATION;
+				default: return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
 } //EngineeredElementImpl

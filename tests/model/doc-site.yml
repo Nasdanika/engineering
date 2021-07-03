@@ -3,6 +3,7 @@
 app-action:
    text: Nasdanika
    href: ../index.html   
+   icon: https://docs.nasdanika.org/images/nasdanika-logo.png
    children:
       - app-action:
          text: Engineering

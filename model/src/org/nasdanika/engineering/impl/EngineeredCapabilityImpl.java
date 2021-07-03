@@ -3,8 +3,6 @@
 package org.nasdanika.engineering.impl;
 
 import java.util.Collection;
-import java.util.Date;
-
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
@@ -37,8 +35,6 @@ import org.nasdanika.engineering.Objective;
  *   <li>{@link org.nasdanika.engineering.impl.EngineeredCapabilityImpl#getTotalCost <em>Total Cost</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineeredCapabilityImpl#getAssignee <em>Assignee</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineeredCapabilityImpl#getAllIssues <em>All Issues</em>}</li>
- *   <li>{@link org.nasdanika.engineering.impl.EngineeredCapabilityImpl#getStart <em>Start</em>}</li>
- *   <li>{@link org.nasdanika.engineering.impl.EngineeredCapabilityImpl#getEnd <em>End</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineeredCapabilityImpl#getCapacity <em>Capacity</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineeredCapabilityImpl#getObjectives <em>Objectives</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineeredCapabilityImpl#getLinkedObjectives <em>Linked Objectives</em>}</li>
@@ -76,26 +72,6 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 	 * @ordered
 	 */
 	protected static final double TOTAL_COST_EDEFAULT = 0.0;
-
-	/**
-	 * The default value of the '{@link #getStart() <em>Start</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getStart()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final Date START_EDEFAULT = null;
-
-	/**
-	 * The default value of the '{@link #getEnd() <em>End</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getEnd()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final Date END_EDEFAULT = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -226,46 +202,6 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Date getStart() {
-		return (Date)eDynamicGet(EngineeringPackage.ENGINEERED_CAPABILITY__START, EngineeringPackage.Literals.ENDEAVOR__START, true, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setStart(Date newStart) {
-		eDynamicSet(EngineeringPackage.ENGINEERED_CAPABILITY__START, EngineeringPackage.Literals.ENDEAVOR__START, newStart);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Date getEnd() {
-		return (Date)eDynamicGet(EngineeringPackage.ENGINEERED_CAPABILITY__END, EngineeringPackage.Literals.ENDEAVOR__END, true, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setEnd(Date newEnd) {
-		eDynamicSet(EngineeringPackage.ENGINEERED_CAPABILITY__END, EngineeringPackage.Literals.ENDEAVOR__END, newEnd);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
 	@Override
@@ -382,10 +318,6 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 				return basicGetAssignee();
 			case EngineeringPackage.ENGINEERED_CAPABILITY__ALL_ISSUES:
 				return getAllIssues();
-			case EngineeringPackage.ENGINEERED_CAPABILITY__START:
-				return getStart();
-			case EngineeringPackage.ENGINEERED_CAPABILITY__END:
-				return getEnd();
 			case EngineeringPackage.ENGINEERED_CAPABILITY__CAPACITY:
 				return getCapacity();
 			case EngineeringPackage.ENGINEERED_CAPABILITY__OBJECTIVES:
@@ -416,12 +348,6 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 				return;
 			case EngineeringPackage.ENGINEERED_CAPABILITY__ASSIGNEE:
 				setAssignee((Engineer)newValue);
-				return;
-			case EngineeringPackage.ENGINEERED_CAPABILITY__START:
-				setStart((Date)newValue);
-				return;
-			case EngineeringPackage.ENGINEERED_CAPABILITY__END:
-				setEnd((Date)newValue);
 				return;
 			case EngineeringPackage.ENGINEERED_CAPABILITY__OBJECTIVES:
 				getObjectives().clear();
@@ -456,12 +382,6 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 			case EngineeringPackage.ENGINEERED_CAPABILITY__ASSIGNEE:
 				setAssignee((Engineer)null);
 				return;
-			case EngineeringPackage.ENGINEERED_CAPABILITY__START:
-				setStart(START_EDEFAULT);
-				return;
-			case EngineeringPackage.ENGINEERED_CAPABILITY__END:
-				setEnd(END_EDEFAULT);
-				return;
 			case EngineeringPackage.ENGINEERED_CAPABILITY__OBJECTIVES:
 				getObjectives().clear();
 				return;
@@ -495,10 +415,6 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 				return basicGetAssignee() != null;
 			case EngineeringPackage.ENGINEERED_CAPABILITY__ALL_ISSUES:
 				return !getAllIssues().isEmpty();
-			case EngineeringPackage.ENGINEERED_CAPABILITY__START:
-				return START_EDEFAULT == null ? getStart() != null : !START_EDEFAULT.equals(getStart());
-			case EngineeringPackage.ENGINEERED_CAPABILITY__END:
-				return END_EDEFAULT == null ? getEnd() != null : !END_EDEFAULT.equals(getEnd());
 			case EngineeringPackage.ENGINEERED_CAPABILITY__CAPACITY:
 				return !getCapacity().isEmpty();
 			case EngineeringPackage.ENGINEERED_CAPABILITY__OBJECTIVES:
@@ -531,8 +447,6 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 				case EngineeringPackage.ENGINEERED_CAPABILITY__TOTAL_COST: return EngineeringPackage.ENDEAVOR__TOTAL_COST;
 				case EngineeringPackage.ENGINEERED_CAPABILITY__ASSIGNEE: return EngineeringPackage.ENDEAVOR__ASSIGNEE;
 				case EngineeringPackage.ENGINEERED_CAPABILITY__ALL_ISSUES: return EngineeringPackage.ENDEAVOR__ALL_ISSUES;
-				case EngineeringPackage.ENGINEERED_CAPABILITY__START: return EngineeringPackage.ENDEAVOR__START;
-				case EngineeringPackage.ENGINEERED_CAPABILITY__END: return EngineeringPackage.ENDEAVOR__END;
 				case EngineeringPackage.ENGINEERED_CAPABILITY__CAPACITY: return EngineeringPackage.ENDEAVOR__CAPACITY;
 				case EngineeringPackage.ENGINEERED_CAPABILITY__OBJECTIVES: return EngineeringPackage.ENDEAVOR__OBJECTIVES;
 				case EngineeringPackage.ENGINEERED_CAPABILITY__LINKED_OBJECTIVES: return EngineeringPackage.ENDEAVOR__LINKED_OBJECTIVES;
@@ -563,8 +477,6 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 				case EngineeringPackage.ENDEAVOR__TOTAL_COST: return EngineeringPackage.ENGINEERED_CAPABILITY__TOTAL_COST;
 				case EngineeringPackage.ENDEAVOR__ASSIGNEE: return EngineeringPackage.ENGINEERED_CAPABILITY__ASSIGNEE;
 				case EngineeringPackage.ENDEAVOR__ALL_ISSUES: return EngineeringPackage.ENGINEERED_CAPABILITY__ALL_ISSUES;
-				case EngineeringPackage.ENDEAVOR__START: return EngineeringPackage.ENGINEERED_CAPABILITY__START;
-				case EngineeringPackage.ENDEAVOR__END: return EngineeringPackage.ENGINEERED_CAPABILITY__END;
 				case EngineeringPackage.ENDEAVOR__CAPACITY: return EngineeringPackage.ENGINEERED_CAPABILITY__CAPACITY;
 				case EngineeringPackage.ENDEAVOR__OBJECTIVES: return EngineeringPackage.ENGINEERED_CAPABILITY__OBJECTIVES;
 				case EngineeringPackage.ENDEAVOR__LINKED_OBJECTIVES: return EngineeringPackage.ENGINEERED_CAPABILITY__LINKED_OBJECTIVES;

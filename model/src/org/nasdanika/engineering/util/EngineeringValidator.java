@@ -2,10 +2,10 @@
  */
 package org.nasdanika.engineering.util;
 
+import java.time.Duration;
 import java.util.Collection;
 import java.util.Date;
 import java.util.Map;
-
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EObject;
@@ -30,6 +30,7 @@ import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeredCapability;
 import org.nasdanika.engineering.EngineeredElement;
 import org.nasdanika.engineering.EngineeringPackage;
+import org.nasdanika.engineering.Event;
 import org.nasdanika.engineering.Feature;
 import org.nasdanika.engineering.Forum;
 import org.nasdanika.engineering.Goal;
@@ -51,11 +52,13 @@ import org.nasdanika.engineering.Note;
 import org.nasdanika.engineering.Objective;
 import org.nasdanika.engineering.Organization;
 import org.nasdanika.engineering.PackageAppearance;
+import org.nasdanika.engineering.Period;
 import org.nasdanika.engineering.Persona;
 import org.nasdanika.engineering.Principle;
 import org.nasdanika.engineering.Product;
 import org.nasdanika.engineering.Release;
 import org.nasdanika.engineering.TableOfContents;
+import org.nasdanika.engineering.Temporal;
 import org.nasdanika.engineering.Topic;
 import org.nasdanika.html.app.SectionStyle;
 import org.nasdanika.html.app.impl.Util;
@@ -138,8 +141,14 @@ public class EngineeringValidator extends EObjectValidator {
 				return validateModelElement((ModelElement)value, diagnostics, context);
 			case EngineeringPackage.TABLE_OF_CONTENTS:
 				return validateTableOfContents((TableOfContents)value, diagnostics, context);
+			case EngineeringPackage.TEMPORAL:
+				return validateTemporal((Temporal)value, diagnostics, context);
+			case EngineeringPackage.PERIOD:
+				return validatePeriod((Period)value, diagnostics, context);
 			case EngineeringPackage.NAMED_ELEMENT:
 				return validateNamedElement((NamedElement)value, diagnostics, context);
+			case EngineeringPackage.EVENT:
+				return validateEvent((Event)value, diagnostics, context);
 			case EngineeringPackage.ENDEAVOR:
 				return validateEndeavor((Endeavor)value, diagnostics, context);
 			case EngineeringPackage.INCREMENT:
@@ -226,6 +235,8 @@ public class EngineeringValidator extends EObjectValidator {
 				return validateObjective((Objective)value, diagnostics, context);
 			case EngineeringPackage.DECISION:
 				return validateDecision((Decision)value, diagnostics, context);
+			case EngineeringPackage.DURATION:
+				return validateDuration((Duration)value, diagnostics, context);
 			case EngineeringPackage.SECTION_STYLE:
 				return validateSectionStyle((SectionStyle)value, diagnostics, context);
 			default:
@@ -306,6 +317,44 @@ public class EngineeringValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean validateTemporal(Temporal temporal, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(temporal, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(temporal, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(temporal, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(temporal, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(temporal, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(temporal, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(temporal, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(temporal, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(temporal, diagnostics, context);
+		if (result || diagnostics != null) result &= validateModelElement_path(temporal, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validatePeriod(Period period, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(period, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(period, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(period, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(period, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(period, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(period, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(period, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(period, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(period, diagnostics, context);
+		if (result || diagnostics != null) result &= validateModelElement_path(period, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean validateNamedElement(NamedElement namedElement, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		if (!validate_NoCircularContainment(namedElement, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(namedElement, diagnostics, context);
@@ -325,6 +374,25 @@ public class EngineeringValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean validateEvent(Event event, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(event, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(event, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(event, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(event, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(event, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(event, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(event, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(event, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(event, diagnostics, context);
+		if (result || diagnostics != null) result &= validateModelElement_path(event, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean validateEndeavor(Endeavor endeavor, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		if (!validate_NoCircularContainment(endeavor, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(endeavor, diagnostics, context);
@@ -335,6 +403,7 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_UniqueID(endeavor, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(endeavor, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(endeavor, diagnostics, context);
+		if (result || diagnostics != null) result &= validateModelElement_path(endeavor, diagnostics, context);
 		if (result || diagnostics != null) result &= validateEndeavor_start_end(endeavor, diagnostics, context);
 		if (result || diagnostics != null) result &= validateEndeavor_capacity(endeavor, diagnostics, context);
 		return result;
@@ -1261,6 +1330,15 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validateEndeavor_capacity(decision, diagnostics, context);
 		if (result || diagnostics != null) result &= validateIssue_increment(decision, diagnostics, context);
 		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateDuration(Duration duration, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return true;
 	}
 
 	/**

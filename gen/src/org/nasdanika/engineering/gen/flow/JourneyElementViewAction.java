@@ -15,6 +15,8 @@ import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.ETypedElement;
+import org.nasdanika.common.Context;
+import org.nasdanika.common.ContextSupplier;
 import org.nasdanika.common.DiagramGenerator;
 import org.nasdanika.common.NasdanikaException;
 import org.nasdanika.common.ProgressMonitor;
@@ -86,12 +88,13 @@ public class JourneyElementViewAction<T extends JourneyElement> extends Engineer
 		BootstrapFactory bootstrapFactory = viewGenerator.getBootstrapFactory();
 		Table ret = bootstrapFactory.table().bordered().striped();
 		ret.header().headerRow("Target", "Name", "Description", "Payload").color(Color.INFO); 
+		Context context = getContext();
 		for (Transition output: getSemanticElement().getAllOutputs(journeyPath)) {
 			Row outputRow = ret.body().row();			
 			ViewAction<?> targetAction = adaptTargetToViewAction(output); 
 			outputRow.cell(targetAction == null ? bootstrapFactory.alert(Color.DANGER, "Unresolved output target: " + output.getTarget()) : viewGenerator.link(targetAction)); 
 			outputRow.cell(StringEscapeUtils.escapeHtml4(output.getName())); 
-			outputRow.cell(getModelElementDescription(output));
+			outputRow.cell(getModelElementDescription(output, context));
 			outputRow.cell(listOfMemberElementsViewActions(FlowPackage.Literals.TRANSITION__PAYLOAD, output.getPayload(), null, true, false, 1));
 		}
 		return ret;
@@ -122,12 +125,13 @@ public class JourneyElementViewAction<T extends JourneyElement> extends Engineer
 		BootstrapFactory bootstrapFactory = viewGenerator.getBootstrapFactory();
 		Table ret = bootstrapFactory.table().bordered().striped();
 		ret.header().headerRow("Target", "Name", "Description", "Request", "Response").color(Color.INFO); 
+		Context context = getContext();
 		for (Call call: getSemanticElement().getAllCalls(journeyPath)) {
 			Row callRow = ret.body().row();
 			ViewAction<?> targetAction = adaptTargetToViewAction(call); 
 			callRow.cell(targetAction == null ? bootstrapFactory.alert(Color.DANGER, "Unresolved call target: " + call.getTarget()) : viewGenerator.link(targetAction)); 
 			callRow.cell(StringEscapeUtils.escapeHtml4(call.getName())); 
-			callRow.cell(getModelElementDescription(call));
+			callRow.cell(getModelElementDescription(call, context));
 			callRow.cell(listOfMemberElementsViewActions(FlowPackage.Literals.TRANSITION__PAYLOAD, call.getPayload(), null, true, false, 1));
 			callRow.cell(listOfMemberElementsViewActions(FlowPackage.Literals.CALL__RESPONSE, call.getResponse(), null, true, false, 1));
 		}
@@ -147,10 +151,10 @@ public class JourneyElementViewAction<T extends JourneyElement> extends Engineer
 					realSource[0] = je;
 				}
 			});
-			ViewAction<?> targetAction = adaptToViewAction(realSource[0]); 
-			inputRow.cell(viewGenerator.link(targetAction)); 
+			ViewAction<?> sourceAction = adaptToViewAction(realSource[0]); 
+			inputRow.cell(viewGenerator.link(sourceAction)); 
 			inputRow.cell(StringEscapeUtils.escapeHtml4(input.getName())); 
-			inputRow.cell(getModelElementDescription(input));
+			inputRow.cell(getModelElementDescription(input, (sourceAction instanceof ContextSupplier ? (ContextSupplier) sourceAction : this).getContext()));
 			inputRow.cell(listOfMemberElementsViewActions(FlowPackage.Literals.TRANSITION__PAYLOAD, input.getPayload(), null, true, false, 1));
 		}
 		return ret;
@@ -169,10 +173,10 @@ public class JourneyElementViewAction<T extends JourneyElement> extends Engineer
 					realSource[0] = je;
 				}
 			});
-			ViewAction<?> targetAction = adaptToViewAction(realSource[0]); 
-			outputRow.cell(viewGenerator.link(targetAction)); 
+			ViewAction<?> sourceAction = adaptToViewAction(realSource[0]); 
+			outputRow.cell(viewGenerator.link(sourceAction)); 
 			outputRow.cell(StringEscapeUtils.escapeHtml4(call.getName())); 
-			outputRow.cell(getModelElementDescription(call));
+			outputRow.cell(getModelElementDescription(call, (sourceAction instanceof ContextSupplier ? (ContextSupplier) sourceAction : this).getContext()));
 			outputRow.cell(listOfMemberElementsViewActions(FlowPackage.Literals.TRANSITION__PAYLOAD, call.getPayload(), null, true, false, 1));
 			outputRow.cell(listOfMemberElementsViewActions(FlowPackage.Literals.CALL__RESPONSE, call.getResponse(), null, true, false, 1));
 		}

@@ -244,6 +244,18 @@ engineering-module:
        markdown-description: |+2
          Property, property entry. Properties at the model element. allProperties similar to allSections - Map collects taking inheritance (for jouney elements and documents) and
          containment (for all elements) into consideration. Usage - interpolation tokens - call in createContext(). E.g. inherit section text, but interpolate with tokens for this journey/document. 
+     - name: Issue categories, priorities, severities, and statuses cross-reference
+       markdown-description: |+2
+         E.g. for statuses - total and for each priority and severity. Or maybe just priority.
+         For priorities - total and for each status.
+         Categories - maybe. Add properties to appearance and methods to retrieve cascading properties. Cross-referencing shall be configurable via properties.
+     - name: Org. chart representation
+       markdown-description: |+2
+         ownerBased - boolean flag, if true show owners for orgs, not names.
+         depth, layout - whatever is supported by https://plantuml.com/wbs-diagram. Coloring based on diagnostic - flag. 
+     - name: Component diagram coloring based on diagnostic
+       markdown-description: |+2
+         Configuration flag.
 
 #### Done ####
 

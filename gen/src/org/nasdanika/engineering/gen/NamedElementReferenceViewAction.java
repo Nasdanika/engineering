@@ -1,5 +1,6 @@
 package org.nasdanika.engineering.gen;
 
+import org.nasdanika.common.ContextSupplier;
 import org.nasdanika.engineering.NamedElementReference;
 import org.nasdanika.html.app.ActionActivator;
 import org.nasdanika.html.app.impl.Util;
@@ -25,7 +26,8 @@ public class NamedElementReferenceViewAction extends NamedElementViewAction<Name
 	@Override
 	protected String getTargetDescription() {
 		String targetDescription = super.getTargetDescription();
-		return Util.isBlank(targetDescription) ? getModelElementDescription(getSemanticElement().getTarget()) : targetDescription; 
+		ViewAction<?> tva = ViewAction.adaptToViewActionNonNull(getSemanticElement().getTarget());
+		return Util.isBlank(targetDescription) ? getModelElementDescription(getSemanticElement().getTarget(), (tva instanceof ContextSupplier ? (ContextSupplier) tva : this).getContext()) : targetDescription; 
 	}
 	
 	@Override

@@ -29,7 +29,7 @@ public class TopicViewAction extends MessageViewAction<Topic> {
 		Fragment ret = (Fragment) super.doGenerate(viewGenerator, progressMonitor);
 		for (Message message: getSemanticElement().getMessages()) {
 			Card messageCard = viewGenerator.getBootstrapFactory().card();
-			messageCard.getBody().toHTMLElement().content(getModelElementDescription(message));
+			messageCard.getBody().toHTMLElement().content(getModelElementDescription(message, getContext()));
 			messageCard.getHeader().toHTMLElement().content(TagName.h5.create(message.getName()));
 			Tag footer = messageCard.getFooter().toHTMLElement();
 			if (message.getDate() != null) {

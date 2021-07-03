@@ -1,4 +1,4 @@
-Engineers are entities, people or organizations, owning [engineered elements](EngineeredElement.html) and working on [endeavors](Endeavors.html), e.g. [issues](Issue.html).
+Engineers are entities, people or organizations, owning [engineered elements](EngineeredElement.html) and working on [endeavors](Endeavor.html), e.g. [issues](Issue.html).
 
 Engineer extends [Persona](Persona.html) and as such can have [goals](Goal.html).
 Because Persona extends [Engineered Element](EngineeredElement.html) it may have issues associated with it.

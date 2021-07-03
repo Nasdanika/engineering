@@ -16,3 +16,13 @@ Engineered element can define [principles](Principle.html) to support decision m
 Published formally documented principles are important for Open and Inner Source projects to ensure contribution process efficiency.
 
 Engineers may be [allocated](Allocation.html) some capacity to work on the engineered element's issues for a particular [endeavor](Endeavor.html) and [issue category](IssueCategory.html).
+
+Engineered element is a a subclass of [Period](Period.html) and can have start, duration, and end.
+Semantics of those features depend on a subclass of engineered element. 
+For example:
+
+* [JourneyElement](flow/JourneyElement.html) - duration specifies how long it takes to complete an activity. E.g. ``P1D`` - one day, or ``PT2H15M`` - two hours and 15 minutes.
+* [Document](Document.html), [Module](Module.html) and [Product](Product.html) - inception and retirement.
+* [Persona](Persona.html) - when support of a given persona shall start and end.
+* [Engineer](Engineer.html) - when an engineer starts and ends their engagement.
+* [Organization](Organization.html) - organization formation and disbandment. 

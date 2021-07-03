@@ -3,6 +3,7 @@
 package org.nasdanika.engineering.flow.impl;
 
 import java.lang.reflect.InvocationTargetException;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -34,6 +35,7 @@ import org.nasdanika.html.app.impl.Util;
  *   <li>{@link org.nasdanika.engineering.flow.impl.TransitionImpl#getPayload <em>Payload</em>}</li>
  *   <li>{@link org.nasdanika.engineering.flow.impl.TransitionImpl#isSuppress <em>Suppress</em>}</li>
  *   <li>{@link org.nasdanika.engineering.flow.impl.TransitionImpl#getTarget <em>Target</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.flow.impl.TransitionImpl#getLag <em>Lag</em>}</li>
  * </ul>
  *
  * @generated
@@ -58,6 +60,16 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 	 * @ordered
 	 */
 	protected static final String TARGET_EDEFAULT = null;
+
+	/**
+	 * The default value of the '{@link #getLag() <em>Lag</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLag()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final Duration LAG_EDEFAULT = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -86,6 +98,26 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 	@Override
 	public void setTarget(String newTarget) {
 		eDynamicSet(FlowPackage.TRANSITION__TARGET, FlowPackage.Literals.TRANSITION__TARGET, newTarget);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Duration getLag() {
+		return (Duration)eDynamicGet(FlowPackage.TRANSITION__LAG, FlowPackage.Literals.TRANSITION__LAG, true, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setLag(Duration newLag) {
+		eDynamicSet(FlowPackage.TRANSITION__LAG, FlowPackage.Literals.TRANSITION__LAG, newLag);
 	}
 
 	/**
@@ -209,6 +241,8 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 				return isSuppress();
 			case FlowPackage.TRANSITION__TARGET:
 				return getTarget();
+			case FlowPackage.TRANSITION__LAG:
+				return getLag();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -232,6 +266,9 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 			case FlowPackage.TRANSITION__TARGET:
 				setTarget((String)newValue);
 				return;
+			case FlowPackage.TRANSITION__LAG:
+				setLag((Duration)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -253,6 +290,9 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 			case FlowPackage.TRANSITION__TARGET:
 				setTarget(TARGET_EDEFAULT);
 				return;
+			case FlowPackage.TRANSITION__LAG:
+				setLag(LAG_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -271,6 +311,8 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 				return isSuppress() != SUPPRESS_EDEFAULT;
 			case FlowPackage.TRANSITION__TARGET:
 				return TARGET_EDEFAULT == null ? getTarget() != null : !TARGET_EDEFAULT.equals(getTarget());
+			case FlowPackage.TRANSITION__LAG:
+				return LAG_EDEFAULT == null ? getLag() != null : !LAG_EDEFAULT.equals(getLag());
 		}
 		return super.eIsSet(featureID);
 	}

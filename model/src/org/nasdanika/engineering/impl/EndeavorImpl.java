@@ -3,17 +3,15 @@
 package org.nasdanika.engineering.impl;
 
 import java.util.Collection;
-import java.util.Date;
-
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.nasdanika.emf.EmfUtil;
+import org.nasdanika.engineering.Alignable;
 import org.nasdanika.engineering.Alignment;
 import org.nasdanika.engineering.Capacity;
 import org.nasdanika.engineering.Endeavor;
@@ -36,8 +34,6 @@ import org.nasdanika.engineering.Objective;
  *   <li>{@link org.nasdanika.engineering.impl.EndeavorImpl#getTotalCost <em>Total Cost</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EndeavorImpl#getAssignee <em>Assignee</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EndeavorImpl#getAllIssues <em>All Issues</em>}</li>
- *   <li>{@link org.nasdanika.engineering.impl.EndeavorImpl#getStart <em>Start</em>}</li>
- *   <li>{@link org.nasdanika.engineering.impl.EndeavorImpl#getEnd <em>End</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EndeavorImpl#getCapacity <em>Capacity</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EndeavorImpl#getObjectives <em>Objectives</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EndeavorImpl#getLinkedObjectives <em>Linked Objectives</em>}</li>
@@ -46,7 +42,7 @@ import org.nasdanika.engineering.Objective;
  *
  * @generated
  */
-public class EndeavorImpl extends MinimalEObjectImpl.Container implements Endeavor {
+public class EndeavorImpl extends PeriodImpl implements Endeavor {
 	/**
 	 * The default value of the '{@link #getCompletion() <em>Completion</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -78,26 +74,6 @@ public class EndeavorImpl extends MinimalEObjectImpl.Container implements Endeav
 	protected static final double TOTAL_COST_EDEFAULT = 0.0;
 
 	/**
-	 * The default value of the '{@link #getStart() <em>Start</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getStart()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final Date START_EDEFAULT = null;
-
-	/**
-	 * The default value of the '{@link #getEnd() <em>End</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getEnd()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final Date END_EDEFAULT = null;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -114,16 +90,6 @@ public class EndeavorImpl extends MinimalEObjectImpl.Container implements Endeav
 	@Override
 	protected EClass eStaticClass() {
 		return EngineeringPackage.Literals.ENDEAVOR;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected int eStaticFeatureCount() {
-		return 0;
 	}
 
 	/**
@@ -225,46 +191,6 @@ public class EndeavorImpl extends MinimalEObjectImpl.Container implements Endeav
 	@Override
 	public EList<Issue> getAllIssues() {
 		return (EList<Issue>)eDynamicGet(EngineeringPackage.ENDEAVOR__ALL_ISSUES, EngineeringPackage.Literals.ENDEAVOR__ALL_ISSUES, true, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Date getStart() {
-		return (Date)eDynamicGet(EngineeringPackage.ENDEAVOR__START, EngineeringPackage.Literals.ENDEAVOR__START, true, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setStart(Date newStart) {
-		eDynamicSet(EngineeringPackage.ENDEAVOR__START, EngineeringPackage.Literals.ENDEAVOR__START, newStart);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Date getEnd() {
-		return (Date)eDynamicGet(EngineeringPackage.ENDEAVOR__END, EngineeringPackage.Literals.ENDEAVOR__END, true, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setEnd(Date newEnd) {
-		eDynamicSet(EngineeringPackage.ENDEAVOR__END, EngineeringPackage.Literals.ENDEAVOR__END, newEnd);
 	}
 
 	/**
@@ -376,10 +302,6 @@ public class EndeavorImpl extends MinimalEObjectImpl.Container implements Endeav
 				return basicGetAssignee();
 			case EngineeringPackage.ENDEAVOR__ALL_ISSUES:
 				return getAllIssues();
-			case EngineeringPackage.ENDEAVOR__START:
-				return getStart();
-			case EngineeringPackage.ENDEAVOR__END:
-				return getEnd();
 			case EngineeringPackage.ENDEAVOR__CAPACITY:
 				return getCapacity();
 			case EngineeringPackage.ENDEAVOR__OBJECTIVES:
@@ -410,12 +332,6 @@ public class EndeavorImpl extends MinimalEObjectImpl.Container implements Endeav
 				return;
 			case EngineeringPackage.ENDEAVOR__ASSIGNEE:
 				setAssignee((Engineer)newValue);
-				return;
-			case EngineeringPackage.ENDEAVOR__START:
-				setStart((Date)newValue);
-				return;
-			case EngineeringPackage.ENDEAVOR__END:
-				setEnd((Date)newValue);
 				return;
 			case EngineeringPackage.ENDEAVOR__OBJECTIVES:
 				getObjectives().clear();
@@ -450,12 +366,6 @@ public class EndeavorImpl extends MinimalEObjectImpl.Container implements Endeav
 			case EngineeringPackage.ENDEAVOR__ASSIGNEE:
 				setAssignee((Engineer)null);
 				return;
-			case EngineeringPackage.ENDEAVOR__START:
-				setStart(START_EDEFAULT);
-				return;
-			case EngineeringPackage.ENDEAVOR__END:
-				setEnd(END_EDEFAULT);
-				return;
 			case EngineeringPackage.ENDEAVOR__OBJECTIVES:
 				getObjectives().clear();
 				return;
@@ -489,10 +399,6 @@ public class EndeavorImpl extends MinimalEObjectImpl.Container implements Endeav
 				return basicGetAssignee() != null;
 			case EngineeringPackage.ENDEAVOR__ALL_ISSUES:
 				return !getAllIssues().isEmpty();
-			case EngineeringPackage.ENDEAVOR__START:
-				return START_EDEFAULT == null ? getStart() != null : !START_EDEFAULT.equals(getStart());
-			case EngineeringPackage.ENDEAVOR__END:
-				return END_EDEFAULT == null ? getEnd() != null : !END_EDEFAULT.equals(getEnd());
 			case EngineeringPackage.ENDEAVOR__CAPACITY:
 				return !getCapacity().isEmpty();
 			case EngineeringPackage.ENDEAVOR__OBJECTIVES:
@@ -503,6 +409,38 @@ public class EndeavorImpl extends MinimalEObjectImpl.Container implements Endeav
 				return !getAllObjectives().isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == Alignable.class) {
+			switch (derivedFeatureID) {
+				case EngineeringPackage.ENDEAVOR__ALIGNS: return EngineeringPackage.ALIGNABLE__ALIGNS;
+				default: return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == Alignable.class) {
+			switch (baseFeatureID) {
+				case EngineeringPackage.ALIGNABLE__ALIGNS: return EngineeringPackage.ENDEAVOR__ALIGNS;
+				default: return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
 } //EndeavorImpl

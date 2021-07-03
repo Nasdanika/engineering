@@ -95,6 +95,72 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="Duration" instanceClassName="java.time.Duration">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="[Duration](https://docs.oracle.com/javase/8/docs/api/java/time/Duration.html) is an amount of time in the [ISO-8601 Duration format](https://en.wikipedia.org/wiki/ISO_8601#Duration). Supports days and smaller units. Weeks, months and years are not supported. Example: ``P28DT10H``."/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Temporal" eSuperTypes="#//ModelElement">
+    <eAnnotations source="urn:org.nasdanika">
+      <details key="documentation-reference" value="doc/temporal.md"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="instant" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="An absolute point on the time-line. E.g. ``2021/07/04``."/>
+      </eAnnotations>
+      <eAnnotations source="urn:org.nasdanika">
+        <details key="default-feature" value="true"/>
+        <details key="exclusive-with" value="base offset"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base" eType="#//Temporal">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Base of this temporal."/>
+      </eAnnotations>
+      <eAnnotations source="urn:org.nasdanika">
+        <details key="exclusive-with" value="instant"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="offset" eType="#//Duration">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Time offset from the base in [ISO-8601 durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) format. &#xA;&#xA;Examples:&#xA;&#xA;* ``P1H`` for one hour later.&#xA;* ``-P20D`` or ``P-20D`` for 20 days before. Can be null (zero), e.g. if one [period](Period.html) starts right after another period ends."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Period" eSuperTypes="#//ModelElement">
+    <eAnnotations source="urn:org.nasdanika">
+      <details key="documentation-reference" value="doc/period.md"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="start" eType="#//Temporal"
+        containment="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Period start."/>
+      </eAnnotations>
+      <eAnnotations source="urn:org.nasdanika">
+        <details key="homogenous" value="true"/>
+        <details key="strict-containment" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="end" eType="#//Temporal">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Base of this temporal."/>
+      </eAnnotations>
+      <eAnnotations source="urn:org.nasdanika">
+        <details key="exclusive-with" value="duration"/>
+        <details key="homogenous" value="true"/>
+        <details key="strict-containment" value="true"/>
+      </eAnnotations>
+      <eAnnotations source="urn:org.nasdanika"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="duration" eType="#//Duration">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Positive period duration in [ISO-8601 durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) format. E.g. ``P1M`` for one month or ``P20D`` for 20 days."/>
+      </eAnnotations>
+      <eAnnotations source="urn:org.nasdanika">
+        <details key="exclusive-with" value="end"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NamedElement" eSuperTypes="#//ModelElement">
     <eAnnotations source="urn:org.nasdanika">
       <details key="documentation-reference" value="doc/named-element.md"/>
@@ -105,7 +171,12 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Endeavor" eSuperTypes="#//Alignable">
+  <eClassifiers xsi:type="ecore:EClass" name="Event" eSuperTypes="#//NamedElement #//Temporal">
+    <eAnnotations source="urn:org.nasdanika">
+      <details key="documentation-reference" value="doc/event.md"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Endeavor" eSuperTypes="#//Period #//Alignable">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
       <details key="constraints" value="start_end capacity"/>
     </eAnnotations>
@@ -139,16 +210,6 @@
         eType="#//Issue" changeable="false" derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Issues scheduled to work on in this increment directly or indirectly via [releases](Release.html) and [features](Feature.html)."/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="start" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Endeavor start date. Default value can be derived for complex endeavors such as [issues](Issue.html) with children, [releases](Release.html), and [features](Feature.html)."/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="end" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Endeavor end date. Default value can be derived for complex endeavors such as [issues](Issue.html) with children, [releases](Release.html), and [features](Feature.html)."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="capacity" upperBound="-1"
@@ -443,7 +504,7 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="EngineeredElement" abstract="true" eSuperTypes="#//Forum">
+  <eClassifiers xsi:type="ecore:EClass" name="EngineeredElement" abstract="true" eSuperTypes="#//Forum #//Period">
     <eAnnotations source="urn:org.nasdanika">
       <details key="documentation-reference" value="doc/engineered-element.md"/>
     </eAnnotations>
@@ -762,7 +823,7 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Capability" eSuperTypes="#//NamedElement">
+  <eClassifiers xsi:type="ecore:EClass" name="Capability" eSuperTypes="#//NamedElement #//Period">
     <eAnnotations source="urn:org.nasdanika">
       <details key="documentation-reference" value="doc/capability.md"/>
     </eAnnotations>
@@ -1551,6 +1612,11 @@
         </eAnnotations>
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="Relative path to the target [journey element](JourneyElement.html). May contain ``..`` to navigate to the parent [journey](Journey.html) - i.e. the journey which contains the journey containing the element which contains this transition. May contain ``/`` to navigate to nested journeys. Treated as URI if contains ``:``."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="lag" eType="#//Duration">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Duration of time between source journey element completion and starting the target journey element. Journey element durations and transitions lag can be used to compute start of journey elements relative to the journey start."/>
         </eAnnotations>
       </eStructuralFeatures>
     </eClassifiers>

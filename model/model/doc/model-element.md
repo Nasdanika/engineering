@@ -296,6 +296,14 @@ Long description can be broken down into multiple [sections](Document.html).
 If you use sections you can define a [table of contents](TableOfContents.html).
 Note that in order for the table of contents links work [section-style](SectionStyle.html) shall be set to ``DEFAULT``.
 
+#### Extensions
+
+* [Table of contents](https://github.com/vsch/flexmark-java/wiki/Table-of-Contents-Extension) - add ``[TOC]`` to the document as explained in the documentation. This extension will create a table of contents from markdown headers. 
+It is complementary to the table of contents created from sections. 
+* [Footnotes](https://github.com/vsch/flexmark-java/wiki/Footnotes-Extension)
+* Strikethrough: ``~~strikethrough~~``-> ~~strikethrough~~ 
+* Subscript: ``H~2~O`` -> H~2~0
+* Superscript: ``2^5^ = 32`` -> 2^5^ = 32
 
 
 

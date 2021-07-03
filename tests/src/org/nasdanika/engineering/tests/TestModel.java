@@ -9,6 +9,7 @@ import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -203,6 +204,12 @@ public class TestModel {
 				file.delete();
 			}
 		}
+	}
+	
+	@Test
+	public void testDuration() {
+		Duration duration = DefaultConverter.INSTANCE.toDuration("PT12H10M");
+		System.out.println(duration.toMinutes());
 	}
 
 }

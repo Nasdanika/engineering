@@ -197,13 +197,20 @@ model-elements:
     features:
       issues:
         roles: actions/section
+  link:
+    icon: fas fa-external-link-alt
+  named-element-reference:
+    icon: fas fa-link        
   topic:
     roles: none
     features:
       messages:
         roles: none
+  directory:
+    icon: far fa-folder-open
   document:
     roles: none
+    icon: far fa-file-alt
     section-style: DEFAULT
     features:
       sections:

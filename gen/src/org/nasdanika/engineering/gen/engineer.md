@@ -1,5 +1,5 @@
 [Engineers](${doc-uri}Engineer.html) are entities, people or [organizations](${doc-uri}Organization.html), owning [engineered elements](${doc-uri}EngineeredElement.html)
-and working on [endeavors](${doc-uri}Endeavors.html), e.g. [issues](${doc-uri}Issue.html).
+and working on [endeavors](${doc-uri}Endeavor.html), e.g. [issues](${doc-uri}Issue.html).
 
 Engineer extends [Persona](${doc-uri}Persona.html) and as such can have [goals](${doc-uri}Goal.html).
 Because Persona extends [Engineered Element](${doc-uri}EngineeredElement.html) it may have issues associated with it.

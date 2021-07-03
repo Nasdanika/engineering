@@ -24,6 +24,7 @@ import org.nasdanika.engineering.EngineeringPackage;
  * <!-- end-user-doc -->
  * @see org.nasdanika.engineering.flow.FlowFactory
  * @model kind="package"
+ *        annotation="urn:org.nasdanika documentation-reference='doc/flow/package-summary.md'"
  * @generated
  */
 public interface FlowPackage extends EPackage {
@@ -176,6 +177,33 @@ public interface FlowPackage extends EPackage {
 	 * @ordered
 	 */
 	int JOURNEY_ELEMENT__TOPICS = EngineeringPackage.ENGINEERED_ELEMENT__TOPICS;
+
+	/**
+	 * The feature id for the '<em><b>Start</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY_ELEMENT__START = EngineeringPackage.ENGINEERED_ELEMENT__START;
+
+	/**
+	 * The feature id for the '<em><b>End</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY_ELEMENT__END = EngineeringPackage.ENGINEERED_ELEMENT__END;
+
+	/**
+	 * The feature id for the '<em><b>Duration</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY_ELEMENT__DURATION = EngineeringPackage.ENGINEERED_ELEMENT__DURATION;
 
 	/**
 	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
@@ -501,6 +529,33 @@ public interface FlowPackage extends EPackage {
 	 * @ordered
 	 */
 	int ACTIVITY__TOPICS = JOURNEY_ELEMENT__TOPICS;
+
+	/**
+	 * The feature id for the '<em><b>Start</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__START = JOURNEY_ELEMENT__START;
+
+	/**
+	 * The feature id for the '<em><b>End</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__END = JOURNEY_ELEMENT__END;
+
+	/**
+	 * The feature id for the '<em><b>Duration</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__DURATION = JOURNEY_ELEMENT__DURATION;
 
 	/**
 	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
@@ -846,6 +901,33 @@ public interface FlowPackage extends EPackage {
 	int SERVICE__TOPICS = JOURNEY_ELEMENT__TOPICS;
 
 	/**
+	 * The feature id for the '<em><b>Start</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE__START = JOURNEY_ELEMENT__START;
+
+	/**
+	 * The feature id for the '<em><b>End</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE__END = JOURNEY_ELEMENT__END;
+
+	/**
+	 * The feature id for the '<em><b>Duration</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE__DURATION = JOURNEY_ELEMENT__DURATION;
+
+	/**
 	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1189,13 +1271,22 @@ public interface FlowPackage extends EPackage {
 	int TRANSITION__TARGET = EngineeringPackage.NAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Lag</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION__LAG = EngineeringPackage.NAMED_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Transition</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSITION_FEATURE_COUNT = EngineeringPackage.NAMED_ELEMENT_FEATURE_COUNT + 3;
+	int TRANSITION_FEATURE_COUNT = EngineeringPackage.NAMED_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The operation id for the '<em>Get Target</em>' operation.
@@ -1341,6 +1432,15 @@ public interface FlowPackage extends EPackage {
 	 * @ordered
 	 */
 	int CALL__TARGET = TRANSITION__TARGET;
+
+	/**
+	 * The feature id for the '<em><b>Lag</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL__LAG = TRANSITION__LAG;
 
 	/**
 	 * The feature id for the '<em><b>Response</b></em>' reference list.
@@ -1495,6 +1595,33 @@ public interface FlowPackage extends EPackage {
 	 * @ordered
 	 */
 	int JOURNEY__TOPICS = ACTIVITY__TOPICS;
+
+	/**
+	 * The feature id for the '<em><b>Start</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY__START = ACTIVITY__START;
+
+	/**
+	 * The feature id for the '<em><b>End</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY__END = ACTIVITY__END;
+
+	/**
+	 * The feature id for the '<em><b>Duration</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY__DURATION = ACTIVITY__DURATION;
 
 	/**
 	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
@@ -1885,6 +2012,33 @@ public interface FlowPackage extends EPackage {
 	int PSEUDO_STATE__TOPICS = JOURNEY_ELEMENT__TOPICS;
 
 	/**
+	 * The feature id for the '<em><b>Start</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PSEUDO_STATE__START = JOURNEY_ELEMENT__START;
+
+	/**
+	 * The feature id for the '<em><b>End</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PSEUDO_STATE__END = JOURNEY_ELEMENT__END;
+
+	/**
+	 * The feature id for the '<em><b>Duration</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PSEUDO_STATE__DURATION = JOURNEY_ELEMENT__DURATION;
+
+	/**
 	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2217,6 +2371,33 @@ public interface FlowPackage extends EPackage {
 	 * @ordered
 	 */
 	int CHOICE__TOPICS = PSEUDO_STATE__TOPICS;
+
+	/**
+	 * The feature id for the '<em><b>Start</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHOICE__START = PSEUDO_STATE__START;
+
+	/**
+	 * The feature id for the '<em><b>End</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHOICE__END = PSEUDO_STATE__END;
+
+	/**
+	 * The feature id for the '<em><b>Duration</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHOICE__DURATION = PSEUDO_STATE__DURATION;
 
 	/**
 	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
@@ -2553,6 +2734,33 @@ public interface FlowPackage extends EPackage {
 	int END__TOPICS = PSEUDO_STATE__TOPICS;
 
 	/**
+	 * The feature id for the '<em><b>Start</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int END__START = PSEUDO_STATE__START;
+
+	/**
+	 * The feature id for the '<em><b>End</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int END__END = PSEUDO_STATE__END;
+
+	/**
+	 * The feature id for the '<em><b>Duration</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int END__DURATION = PSEUDO_STATE__DURATION;
+
+	/**
 	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2885,6 +3093,33 @@ public interface FlowPackage extends EPackage {
 	 * @ordered
 	 */
 	int ENTRY_POINT__TOPICS = PSEUDO_STATE__TOPICS;
+
+	/**
+	 * The feature id for the '<em><b>Start</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY_POINT__START = PSEUDO_STATE__START;
+
+	/**
+	 * The feature id for the '<em><b>End</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY_POINT__END = PSEUDO_STATE__END;
+
+	/**
+	 * The feature id for the '<em><b>Duration</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY_POINT__DURATION = PSEUDO_STATE__DURATION;
 
 	/**
 	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
@@ -3221,6 +3456,33 @@ public interface FlowPackage extends EPackage {
 	int EXIT_POINT__TOPICS = PSEUDO_STATE__TOPICS;
 
 	/**
+	 * The feature id for the '<em><b>Start</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_POINT__START = PSEUDO_STATE__START;
+
+	/**
+	 * The feature id for the '<em><b>End</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_POINT__END = PSEUDO_STATE__END;
+
+	/**
+	 * The feature id for the '<em><b>Duration</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_POINT__DURATION = PSEUDO_STATE__DURATION;
+
+	/**
 	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3553,6 +3815,33 @@ public interface FlowPackage extends EPackage {
 	 * @ordered
 	 */
 	int EXPANSION_INPUT__TOPICS = PSEUDO_STATE__TOPICS;
+
+	/**
+	 * The feature id for the '<em><b>Start</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_INPUT__START = PSEUDO_STATE__START;
+
+	/**
+	 * The feature id for the '<em><b>End</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_INPUT__END = PSEUDO_STATE__END;
+
+	/**
+	 * The feature id for the '<em><b>Duration</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_INPUT__DURATION = PSEUDO_STATE__DURATION;
 
 	/**
 	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
@@ -3889,6 +4178,33 @@ public interface FlowPackage extends EPackage {
 	int EXPANSION_OUTPUT__TOPICS = PSEUDO_STATE__TOPICS;
 
 	/**
+	 * The feature id for the '<em><b>Start</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_OUTPUT__START = PSEUDO_STATE__START;
+
+	/**
+	 * The feature id for the '<em><b>End</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_OUTPUT__END = PSEUDO_STATE__END;
+
+	/**
+	 * The feature id for the '<em><b>Duration</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPANSION_OUTPUT__DURATION = PSEUDO_STATE__DURATION;
+
+	/**
 	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4221,6 +4537,33 @@ public interface FlowPackage extends EPackage {
 	 * @ordered
 	 */
 	int FORK__TOPICS = PSEUDO_STATE__TOPICS;
+
+	/**
+	 * The feature id for the '<em><b>Start</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORK__START = PSEUDO_STATE__START;
+
+	/**
+	 * The feature id for the '<em><b>End</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORK__END = PSEUDO_STATE__END;
+
+	/**
+	 * The feature id for the '<em><b>Duration</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORK__DURATION = PSEUDO_STATE__DURATION;
 
 	/**
 	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
@@ -4557,6 +4900,33 @@ public interface FlowPackage extends EPackage {
 	int INPUT_PIN__TOPICS = PSEUDO_STATE__TOPICS;
 
 	/**
+	 * The feature id for the '<em><b>Start</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_PIN__START = PSEUDO_STATE__START;
+
+	/**
+	 * The feature id for the '<em><b>End</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_PIN__END = PSEUDO_STATE__END;
+
+	/**
+	 * The feature id for the '<em><b>Duration</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_PIN__DURATION = PSEUDO_STATE__DURATION;
+
+	/**
 	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4889,6 +5259,33 @@ public interface FlowPackage extends EPackage {
 	 * @ordered
 	 */
 	int JOIN__TOPICS = PSEUDO_STATE__TOPICS;
+
+	/**
+	 * The feature id for the '<em><b>Start</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN__START = PSEUDO_STATE__START;
+
+	/**
+	 * The feature id for the '<em><b>End</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN__END = PSEUDO_STATE__END;
+
+	/**
+	 * The feature id for the '<em><b>Duration</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN__DURATION = PSEUDO_STATE__DURATION;
 
 	/**
 	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
@@ -5225,6 +5622,33 @@ public interface FlowPackage extends EPackage {
 	int OUTPUT_PIN__TOPICS = PSEUDO_STATE__TOPICS;
 
 	/**
+	 * The feature id for the '<em><b>Start</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTPUT_PIN__START = PSEUDO_STATE__START;
+
+	/**
+	 * The feature id for the '<em><b>End</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTPUT_PIN__END = PSEUDO_STATE__END;
+
+	/**
+	 * The feature id for the '<em><b>Duration</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTPUT_PIN__DURATION = PSEUDO_STATE__DURATION;
+
+	/**
 	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5557,6 +5981,33 @@ public interface FlowPackage extends EPackage {
 	 * @ordered
 	 */
 	int START__TOPICS = PSEUDO_STATE__TOPICS;
+
+	/**
+	 * The feature id for the '<em><b>Start</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int START__START = PSEUDO_STATE__START;
+
+	/**
+	 * The feature id for the '<em><b>End</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int START__END = PSEUDO_STATE__END;
+
+	/**
+	 * The feature id for the '<em><b>Duration</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int START__DURATION = PSEUDO_STATE__DURATION;
 
 	/**
 	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
@@ -6040,6 +6491,17 @@ public interface FlowPackage extends EPackage {
 	EAttribute getTransition_Target();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.flow.Transition#getLag <em>Lag</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Lag</em>'.
+	 * @see org.nasdanika.engineering.flow.Transition#getLag()
+	 * @see #getTransition()
+	 * @generated
+	 */
+	EAttribute getTransition_Lag();
+
+	/**
 	 * Returns the meta object for the '{@link org.nasdanika.engineering.flow.Transition#getTarget(org.eclipse.emf.common.util.EList) <em>Get Target</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6496,6 +6958,14 @@ public interface FlowPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute TRANSITION__TARGET = eINSTANCE.getTransition_Target();
+
+		/**
+		 * The meta object literal for the '<em><b>Lag</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TRANSITION__LAG = eINSTANCE.getTransition_Lag();
 
 		/**
 		 * The meta object literal for the '<em><b>Get Target</b></em>' operation.

@@ -54,7 +54,7 @@ public class EngineeredCapabilityViewAction<T extends EngineeredCapability> exte
 		for (Alignment alignment: getSemanticElement().getAligns()) {
 			table.body().row(
 					viewGenerator.link(ViewAction.adaptToViewActionNonNull(alignment.getAim())),
-					getModelElementDescription(alignment));
+					getModelElementDescription(alignment, getContext()));
 		}
 		return table;
 	}					

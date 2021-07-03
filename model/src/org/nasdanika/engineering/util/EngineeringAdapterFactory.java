@@ -26,7 +26,9 @@ import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeredCapability;
 import org.nasdanika.engineering.EngineeredElement;
 import org.nasdanika.engineering.PackageAppearance;
+import org.nasdanika.engineering.Period;
 import org.nasdanika.engineering.EngineeringPackage;
+import org.nasdanika.engineering.Event;
 import org.nasdanika.engineering.Feature;
 import org.nasdanika.engineering.MemberAppearance;
 import org.nasdanika.engineering.Forum;
@@ -52,6 +54,7 @@ import org.nasdanika.engineering.Principle;
 import org.nasdanika.engineering.Product;
 import org.nasdanika.engineering.Release;
 import org.nasdanika.engineering.TableOfContents;
+import org.nasdanika.engineering.Temporal;
 import org.nasdanika.engineering.Topic;
 
 /**
@@ -123,8 +126,20 @@ public class EngineeringAdapterFactory extends AdapterFactoryImpl {
 				return createTableOfContentsAdapter();
 			}
 			@Override
+			public Adapter caseTemporal(Temporal object) {
+				return createTemporalAdapter();
+			}
+			@Override
+			public Adapter casePeriod(Period object) {
+				return createPeriodAdapter();
+			}
+			@Override
 			public Adapter caseNamedElement(NamedElement object) {
 				return createNamedElementAdapter();
+			}
+			@Override
+			public Adapter caseEvent(Event object) {
+				return createEventAdapter();
 			}
 			@Override
 			public Adapter caseEndeavor(Endeavor object) {
@@ -361,6 +376,34 @@ public class EngineeringAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.Temporal <em>Temporal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.nasdanika.engineering.Temporal
+	 * @generated
+	 */
+	public Adapter createTemporalAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.Period <em>Period</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.nasdanika.engineering.Period
+	 * @generated
+	 */
+	public Adapter createPeriodAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.NamedElement <em>Named Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -371,6 +414,20 @@ public class EngineeringAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createNamedElementAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.Event <em>Event</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.nasdanika.engineering.Event
+	 * @generated
+	 */
+	public Adapter createEventAdapter() {
 		return null;
 	}
 

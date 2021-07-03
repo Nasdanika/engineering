@@ -141,6 +141,11 @@ which other instances are "attached".
 First of all, [ModelElement](ModelElement.html) and [NamedElement](NamedElement.html) are base classes from which most of the other classes inherit.
 Although is some cases not necessary, it is recommended to specify ``path`` attribute for model elements in order to have semantic URI's and URL's.
 
+A number of classes inherit from [Period](Period.html) which supports relative start and end dates - [temporals](Temporal.html), and [duration](Duration.html).
+It allows to express plans in relative temporal terms, e.g. "Hire a tester 60 day after the project kick-off" where "Project kick-off" is an [event](Event.html)
+which can be initially "unbound", i.e. specified without absolute or relative date. Later on an event can be "bound" to an "instant" - absolute time, or to another 
+temporal - an event or start/end of a period, e.g. 30 days before quarter end.
+
 [Engineer](Engineer.html) or [Organization](Organization.html) are typically roots of the model. 
 For a single-person efforts with no delegation whatsoever you may define a model with an engineer as its root. 
 However, in many cases even for efforts which start as one-man shop eventually comes time when some tasks need to be delegated and execution tracked.
