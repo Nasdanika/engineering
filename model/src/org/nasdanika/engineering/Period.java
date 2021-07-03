@@ -21,6 +21,7 @@ import java.time.Duration;
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getPeriod()
  * @model annotation="urn:org.nasdanika documentation-reference='doc/period.md'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='start_end'"
  * @generated
  */
 public interface Period extends ModelElement {
@@ -51,26 +52,27 @@ public interface Period extends ModelElement {
 	void setStart(Temporal value);
 
 	/**
-	 * Returns the value of the '<em><b>End</b></em>' reference.
+	 * Returns the value of the '<em><b>End</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Base of this temporal.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>End</em>' reference.
+	 * @return the value of the '<em>End</em>' containment reference.
 	 * @see #setEnd(Temporal)
 	 * @see org.nasdanika.engineering.EngineeringPackage#getPeriod_End()
-	 * @model annotation="urn:org.nasdanika exclusive-with='duration' homogenous='true' strict-containment='true'"
+	 * @model containment="true"
+	 *        annotation="urn:org.nasdanika exclusive-with='duration' homogenous='true' strict-containment='true'"
 	 *        annotation="urn:org.nasdanika"
 	 * @generated
 	 */
 	Temporal getEnd();
 
 	/**
-	 * Sets the value of the '{@link org.nasdanika.engineering.Period#getEnd <em>End</em>}' reference.
+	 * Sets the value of the '{@link org.nasdanika.engineering.Period#getEnd <em>End</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>End</em>' reference.
+	 * @param value the new value of the '<em>End</em>' containment reference.
 	 * @see #getEnd()
 	 * @generated
 	 */

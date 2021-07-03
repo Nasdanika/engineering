@@ -102,8 +102,9 @@ public class PeriodImpl extends ModelElementImpl implements Period {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Temporal basicGetEnd() {
-		return (Temporal)eDynamicGet(EngineeringPackage.PERIOD__END, EngineeringPackage.Literals.PERIOD__END, false, true);
+	public NotificationChain basicSetEnd(Temporal newEnd, NotificationChain msgs) {
+		msgs = eDynamicInverseAdd((InternalEObject)newEnd, EngineeringPackage.PERIOD__END, msgs);
+		return msgs;
 	}
 
 	/**
@@ -146,6 +147,8 @@ public class PeriodImpl extends ModelElementImpl implements Period {
 		switch (featureID) {
 			case EngineeringPackage.PERIOD__START:
 				return basicSetStart(null, msgs);
+			case EngineeringPackage.PERIOD__END:
+				return basicSetEnd(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -161,8 +164,7 @@ public class PeriodImpl extends ModelElementImpl implements Period {
 			case EngineeringPackage.PERIOD__START:
 				return getStart();
 			case EngineeringPackage.PERIOD__END:
-				if (resolve) return getEnd();
-				return basicGetEnd();
+				return getEnd();
 			case EngineeringPackage.PERIOD__DURATION:
 				return getDuration();
 		}
@@ -222,7 +224,7 @@ public class PeriodImpl extends ModelElementImpl implements Period {
 			case EngineeringPackage.PERIOD__START:
 				return getStart() != null;
 			case EngineeringPackage.PERIOD__END:
-				return basicGetEnd() != null;
+				return getEnd() != null;
 			case EngineeringPackage.PERIOD__DURATION:
 				return DURATION_EDEFAULT == null ? getDuration() != null : !DURATION_EDEFAULT.equals(getDuration());
 		}

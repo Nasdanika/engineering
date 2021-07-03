@@ -3,7 +3,6 @@
 package org.nasdanika.engineering.impl;
 
 import java.util.Collection;
-import java.util.Date;
 import java.util.HashSet;
 
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -17,6 +16,7 @@ import org.nasdanika.engineering.Feature;
 import org.nasdanika.engineering.Increment;
 import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.Release;
+import org.nasdanika.engineering.Temporal;
 
 /**
  * <!-- begin-user-doc -->
@@ -277,12 +277,12 @@ public class ReleaseImpl extends EngineeredCapabilityImpl implements Release {
 	 * Computes default end from children or increment if there are no children with set end.
 	 */
 	@Override
-	public Date getEnd() {
-		Date ret = super.getEnd();
+	public Temporal getEnd() {
+		Temporal ret = super.getEnd();
 		if (ret == null) {
 			for (Issue child: getAllIssues()) {
-				Date cEnd = child.getEnd();
-				if (ret == null || (cEnd != null && ret.before(cEnd))) {
+				Temporal cEnd = child.getEnd();
+				if (ret == null || (cEnd != null && ret.before(cEnd) == Boolean.TRUE)) {
 					ret = cEnd;
 				}
 			}
@@ -294,12 +294,12 @@ public class ReleaseImpl extends EngineeredCapabilityImpl implements Release {
 	 * Computes default end from children or increment if there are no children with set end.
 	 */
 	@Override
-	public Date getStart() {
-		Date ret = super.getStart();
+	public Temporal getStart() {
+		Temporal ret = super.getStart();
 		if (ret == null) {
 			for (Issue child: getAllIssues()) {
-				Date cStart = child.getStart();
-				if (ret == null || (cStart != null && ret.after(cStart))) {
+				Temporal cStart = child.getStart();
+				if (ret == null || (cStart != null && ret.after(cStart) == Boolean.TRUE)) {
 					ret = cStart;
 				}
 			}

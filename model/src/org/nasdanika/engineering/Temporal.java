@@ -104,4 +104,48 @@ public interface Temporal extends ModelElement {
 	 */
 	void setOffset(Duration value);
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Tests if this temporal is after the specified temporal. Returns null if unknown, e.g. two unrelated events.
+	 * <!-- end-model-doc -->
+	 * @model
+	 * @generated
+	 */
+	Boolean after(Temporal when);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Tests if this temporal is before the specified temporal. Returns null if unknown, e.g. two unrelated events.
+	 * <!-- end-model-doc -->
+	 * @model
+	 * @generated
+	 */
+	Boolean before(Temporal when);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Tests if this temporal occurs at the same point on the time-line as the specified temporal. Returns null if unknown, e.g. two unrelated events.
+	 * <!-- end-model-doc -->
+	 * @model
+	 * @generated
+	 */
+	Boolean coincides(Temporal when);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Returns a normalized instance of this temporal not contained in the model. Normalization walks through the temporal chain to the root temporal. If that root temporal is instant/absolute then the normalized instance would be instant/absolute. Otherwise the normalized instance would contain the root temporal as its base and offset would be the sum of all offsets.
+	 * <!-- end-model-doc -->
+	 * @model
+	 * @generated
+	 */
+	Temporal normalize();
+
 } // Temporal

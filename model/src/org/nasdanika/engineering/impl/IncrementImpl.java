@@ -203,8 +203,9 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Temporal basicGetEnd() {
-		return (Temporal)eDynamicGet(EngineeringPackage.INCREMENT__END, EngineeringPackage.Literals.PERIOD__END, false, true);
+	public NotificationChain basicSetEnd(Temporal newEnd, NotificationChain msgs) {
+		msgs = eDynamicInverseAdd((InternalEObject)newEnd, EngineeringPackage.INCREMENT__END, msgs);
+		return msgs;
 	}
 
 	/**
@@ -355,6 +356,8 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 		switch (featureID) {
 			case EngineeringPackage.INCREMENT__START:
 				return basicSetStart(null, msgs);
+			case EngineeringPackage.INCREMENT__END:
+				return basicSetEnd(null, msgs);
 			case EngineeringPackage.INCREMENT__ALIGNS:
 				return ((InternalEList<?>)getAligns()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.INCREMENT__ASSIGNEE:
@@ -386,8 +389,7 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 			case EngineeringPackage.INCREMENT__START:
 				return getStart();
 			case EngineeringPackage.INCREMENT__END:
-				if (resolve) return getEnd();
-				return basicGetEnd();
+				return getEnd();
 			case EngineeringPackage.INCREMENT__DURATION:
 				return getDuration();
 			case EngineeringPackage.INCREMENT__ALIGNS:
@@ -522,7 +524,7 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 			case EngineeringPackage.INCREMENT__START:
 				return getStart() != null;
 			case EngineeringPackage.INCREMENT__END:
-				return basicGetEnd() != null;
+				return getEnd() != null;
 			case EngineeringPackage.INCREMENT__DURATION:
 				return DURATION_EDEFAULT == null ? getDuration() != null : !DURATION_EDEFAULT.equals(getDuration());
 			case EngineeringPackage.INCREMENT__ALIGNS:

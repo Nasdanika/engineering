@@ -188,7 +188,7 @@ public interface FlowPackage extends EPackage {
 	int JOURNEY_ELEMENT__START = EngineeringPackage.ENGINEERED_ELEMENT__START;
 
 	/**
-	 * The feature id for the '<em><b>End</b></em>' reference.
+	 * The feature id for the '<em><b>End</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -540,7 +540,7 @@ public interface FlowPackage extends EPackage {
 	int ACTIVITY__START = JOURNEY_ELEMENT__START;
 
 	/**
-	 * The feature id for the '<em><b>End</b></em>' reference.
+	 * The feature id for the '<em><b>End</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -910,7 +910,7 @@ public interface FlowPackage extends EPackage {
 	int SERVICE__START = JOURNEY_ELEMENT__START;
 
 	/**
-	 * The feature id for the '<em><b>End</b></em>' reference.
+	 * The feature id for the '<em><b>End</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1606,7 +1606,7 @@ public interface FlowPackage extends EPackage {
 	int JOURNEY__START = ACTIVITY__START;
 
 	/**
-	 * The feature id for the '<em><b>End</b></em>' reference.
+	 * The feature id for the '<em><b>End</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -2021,7 +2021,7 @@ public interface FlowPackage extends EPackage {
 	int PSEUDO_STATE__START = JOURNEY_ELEMENT__START;
 
 	/**
-	 * The feature id for the '<em><b>End</b></em>' reference.
+	 * The feature id for the '<em><b>End</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -2382,7 +2382,7 @@ public interface FlowPackage extends EPackage {
 	int CHOICE__START = PSEUDO_STATE__START;
 
 	/**
-	 * The feature id for the '<em><b>End</b></em>' reference.
+	 * The feature id for the '<em><b>End</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -2743,7 +2743,7 @@ public interface FlowPackage extends EPackage {
 	int END__START = PSEUDO_STATE__START;
 
 	/**
-	 * The feature id for the '<em><b>End</b></em>' reference.
+	 * The feature id for the '<em><b>End</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -3104,7 +3104,7 @@ public interface FlowPackage extends EPackage {
 	int ENTRY_POINT__START = PSEUDO_STATE__START;
 
 	/**
-	 * The feature id for the '<em><b>End</b></em>' reference.
+	 * The feature id for the '<em><b>End</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -3465,7 +3465,7 @@ public interface FlowPackage extends EPackage {
 	int EXIT_POINT__START = PSEUDO_STATE__START;
 
 	/**
-	 * The feature id for the '<em><b>End</b></em>' reference.
+	 * The feature id for the '<em><b>End</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -3826,7 +3826,7 @@ public interface FlowPackage extends EPackage {
 	int EXPANSION_INPUT__START = PSEUDO_STATE__START;
 
 	/**
-	 * The feature id for the '<em><b>End</b></em>' reference.
+	 * The feature id for the '<em><b>End</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -4187,7 +4187,7 @@ public interface FlowPackage extends EPackage {
 	int EXPANSION_OUTPUT__START = PSEUDO_STATE__START;
 
 	/**
-	 * The feature id for the '<em><b>End</b></em>' reference.
+	 * The feature id for the '<em><b>End</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -4548,7 +4548,7 @@ public interface FlowPackage extends EPackage {
 	int FORK__START = PSEUDO_STATE__START;
 
 	/**
-	 * The feature id for the '<em><b>End</b></em>' reference.
+	 * The feature id for the '<em><b>End</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -4909,7 +4909,7 @@ public interface FlowPackage extends EPackage {
 	int INPUT_PIN__START = PSEUDO_STATE__START;
 
 	/**
-	 * The feature id for the '<em><b>End</b></em>' reference.
+	 * The feature id for the '<em><b>End</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -5270,7 +5270,7 @@ public interface FlowPackage extends EPackage {
 	int JOIN__START = PSEUDO_STATE__START;
 
 	/**
-	 * The feature id for the '<em><b>End</b></em>' reference.
+	 * The feature id for the '<em><b>End</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -5631,7 +5631,7 @@ public interface FlowPackage extends EPackage {
 	int OUTPUT_PIN__START = PSEUDO_STATE__START;
 
 	/**
-	 * The feature id for the '<em><b>End</b></em>' reference.
+	 * The feature id for the '<em><b>End</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -5992,7 +5992,7 @@ public interface FlowPackage extends EPackage {
 	int START__START = PSEUDO_STATE__START;
 
 	/**
-	 * The feature id for the '<em><b>End</b></em>' reference.
+	 * The feature id for the '<em><b>End</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated

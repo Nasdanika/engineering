@@ -5,6 +5,7 @@ package org.nasdanika.engineering;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -378,13 +379,49 @@ public interface EngineeringPackage extends EPackage {
 	int TEMPORAL_FEATURE_COUNT = MODEL_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
+	 * The operation id for the '<em>After</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPORAL___AFTER__TEMPORAL = MODEL_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Before</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPORAL___BEFORE__TEMPORAL = MODEL_ELEMENT_OPERATION_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Coincides</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPORAL___COINCIDES__TEMPORAL = MODEL_ELEMENT_OPERATION_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Normalize</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPORAL___NORMALIZE = MODEL_ELEMENT_OPERATION_COUNT + 3;
+
+	/**
 	 * The number of operations of the '<em>Temporal</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TEMPORAL_OPERATION_COUNT = MODEL_ELEMENT_OPERATION_COUNT + 0;
+	int TEMPORAL_OPERATION_COUNT = MODEL_ELEMENT_OPERATION_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.PeriodImpl <em>Period</em>}' class.
@@ -487,7 +524,7 @@ public interface EngineeringPackage extends EPackage {
 	int PERIOD__START = MODEL_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>End</b></em>' reference.
+	 * The feature id for the '<em><b>End</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -777,13 +814,49 @@ public interface EngineeringPackage extends EPackage {
 	int EVENT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
+	 * The operation id for the '<em>After</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT___AFTER__TEMPORAL = NAMED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Before</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT___BEFORE__TEMPORAL = NAMED_ELEMENT_OPERATION_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Coincides</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT___COINCIDES__TEMPORAL = NAMED_ELEMENT_OPERATION_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Normalize</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT___NORMALIZE = NAMED_ELEMENT_OPERATION_COUNT + 3;
+
+	/**
 	 * The number of operations of the '<em>Event</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EVENT_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
+	int EVENT_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.Alignable <em>Alignable</em>}' class.
@@ -896,7 +969,7 @@ public interface EngineeringPackage extends EPackage {
 	int ENDEAVOR__START = PERIOD__START;
 
 	/**
-	 * The feature id for the '<em><b>End</b></em>' reference.
+	 * The feature id for the '<em><b>End</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1201,7 +1274,7 @@ public interface EngineeringPackage extends EPackage {
 	int INCREMENT__START = NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>End</b></em>' reference.
+	 * The feature id for the '<em><b>End</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -2271,7 +2344,7 @@ public interface EngineeringPackage extends EPackage {
 	int CAPABILITY__START = NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>End</b></em>' reference.
+	 * The feature id for the '<em><b>End</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -2424,7 +2497,7 @@ public interface EngineeringPackage extends EPackage {
 	int ENGINEERED_CAPABILITY__START = CAPABILITY__START;
 
 	/**
-	 * The feature id for the '<em><b>End</b></em>' reference.
+	 * The feature id for the '<em><b>End</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -2667,7 +2740,7 @@ public interface EngineeringPackage extends EPackage {
 	int ISSUE__START = ENGINEERED_CAPABILITY__START;
 
 	/**
-	 * The feature id for the '<em><b>End</b></em>' reference.
+	 * The feature id for the '<em><b>End</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -3360,7 +3433,7 @@ public interface EngineeringPackage extends EPackage {
 	int ENGINEERED_ELEMENT__START = FORUM_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>End</b></em>' reference.
+	 * The feature id for the '<em><b>End</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -3647,7 +3720,7 @@ public interface EngineeringPackage extends EPackage {
 	int DOCUMENT__START = ENGINEERED_ELEMENT__START;
 
 	/**
-	 * The feature id for the '<em><b>End</b></em>' reference.
+	 * The feature id for the '<em><b>End</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -3872,7 +3945,7 @@ public interface EngineeringPackage extends EPackage {
 	int PERSONA__START = ENGINEERED_ELEMENT__START;
 
 	/**
-	 * The feature id for the '<em><b>End</b></em>' reference.
+	 * The feature id for the '<em><b>End</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -4124,7 +4197,7 @@ public interface EngineeringPackage extends EPackage {
 	int ENGINEER__START = PERSONA__START;
 
 	/**
-	 * The feature id for the '<em><b>End</b></em>' reference.
+	 * The feature id for the '<em><b>End</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -4529,7 +4602,7 @@ public interface EngineeringPackage extends EPackage {
 	int ORGANIZATION__START = ENGINEER__START;
 
 	/**
-	 * The feature id for the '<em><b>End</b></em>' reference.
+	 * The feature id for the '<em><b>End</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -4943,7 +5016,7 @@ public interface EngineeringPackage extends EPackage {
 	int MODULE__START = ENGINEERED_ELEMENT__START;
 
 	/**
-	 * The feature id for the '<em><b>End</b></em>' reference.
+	 * The feature id for the '<em><b>End</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -5177,7 +5250,7 @@ public interface EngineeringPackage extends EPackage {
 	int PRODUCT__START = MODULE__START;
 
 	/**
-	 * The feature id for the '<em><b>End</b></em>' reference.
+	 * The feature id for the '<em><b>End</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -5420,7 +5493,7 @@ public interface EngineeringPackage extends EPackage {
 	int RELEASE__START = ENGINEERED_CAPABILITY__START;
 
 	/**
-	 * The feature id for the '<em><b>End</b></em>' reference.
+	 * The feature id for the '<em><b>End</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -5690,7 +5763,7 @@ public interface EngineeringPackage extends EPackage {
 	int FEATURE__START = ENGINEERED_CAPABILITY__START;
 
 	/**
-	 * The feature id for the '<em><b>End</b></em>' reference.
+	 * The feature id for the '<em><b>End</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -5987,7 +6060,7 @@ public interface EngineeringPackage extends EPackage {
 	int DIRECTORY__START = ENGINEERED_ELEMENT__START;
 
 	/**
-	 * The feature id for the '<em><b>End</b></em>' reference.
+	 * The feature id for the '<em><b>End</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -8254,7 +8327,7 @@ public interface EngineeringPackage extends EPackage {
 	int DECISION__START = ISSUE__START;
 
 	/**
-	 * The feature id for the '<em><b>End</b></em>' reference.
+	 * The feature id for the '<em><b>End</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -8823,6 +8896,46 @@ public interface EngineeringPackage extends EPackage {
 	EAttribute getTemporal_Offset();
 
 	/**
+	 * Returns the meta object for the '{@link org.nasdanika.engineering.Temporal#after(org.nasdanika.engineering.Temporal) <em>After</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>After</em>' operation.
+	 * @see org.nasdanika.engineering.Temporal#after(org.nasdanika.engineering.Temporal)
+	 * @generated
+	 */
+	EOperation getTemporal__After__Temporal();
+
+	/**
+	 * Returns the meta object for the '{@link org.nasdanika.engineering.Temporal#before(org.nasdanika.engineering.Temporal) <em>Before</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Before</em>' operation.
+	 * @see org.nasdanika.engineering.Temporal#before(org.nasdanika.engineering.Temporal)
+	 * @generated
+	 */
+	EOperation getTemporal__Before__Temporal();
+
+	/**
+	 * Returns the meta object for the '{@link org.nasdanika.engineering.Temporal#coincides(org.nasdanika.engineering.Temporal) <em>Coincides</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Coincides</em>' operation.
+	 * @see org.nasdanika.engineering.Temporal#coincides(org.nasdanika.engineering.Temporal)
+	 * @generated
+	 */
+	EOperation getTemporal__Coincides__Temporal();
+
+	/**
+	 * Returns the meta object for the '{@link org.nasdanika.engineering.Temporal#normalize() <em>Normalize</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Normalize</em>' operation.
+	 * @see org.nasdanika.engineering.Temporal#normalize()
+	 * @generated
+	 */
+	EOperation getTemporal__Normalize();
+
+	/**
 	 * Returns the meta object for class '{@link org.nasdanika.engineering.Period <em>Period</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8844,10 +8957,10 @@ public interface EngineeringPackage extends EPackage {
 	EReference getPeriod_Start();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.nasdanika.engineering.Period#getEnd <em>End</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.nasdanika.engineering.Period#getEnd <em>End</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>End</em>'.
+	 * @return the meta object for the containment reference '<em>End</em>'.
 	 * @see org.nasdanika.engineering.Period#getEnd()
 	 * @see #getPeriod()
 	 * @generated
@@ -11125,6 +11238,38 @@ public interface EngineeringPackage extends EPackage {
 		EAttribute TEMPORAL__OFFSET = eINSTANCE.getTemporal_Offset();
 
 		/**
+		 * The meta object literal for the '<em><b>After</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation TEMPORAL___AFTER__TEMPORAL = eINSTANCE.getTemporal__After__Temporal();
+
+		/**
+		 * The meta object literal for the '<em><b>Before</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation TEMPORAL___BEFORE__TEMPORAL = eINSTANCE.getTemporal__Before__Temporal();
+
+		/**
+		 * The meta object literal for the '<em><b>Coincides</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation TEMPORAL___COINCIDES__TEMPORAL = eINSTANCE.getTemporal__Coincides__Temporal();
+
+		/**
+		 * The meta object literal for the '<em><b>Normalize</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation TEMPORAL___NORMALIZE = eINSTANCE.getTemporal__Normalize();
+
+		/**
 		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.PeriodImpl <em>Period</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -11143,7 +11288,7 @@ public interface EngineeringPackage extends EPackage {
 		EReference PERIOD__START = eINSTANCE.getPeriod_Start();
 
 		/**
-		 * The meta object literal for the '<em><b>End</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>End</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

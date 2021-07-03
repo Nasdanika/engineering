@@ -115,8 +115,9 @@ public class CapabilityImpl extends NamedElementImpl implements Capability {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Temporal basicGetEnd() {
-		return (Temporal)eDynamicGet(EngineeringPackage.CAPABILITY__END, EngineeringPackage.Literals.PERIOD__END, false, true);
+	public NotificationChain basicSetEnd(Temporal newEnd, NotificationChain msgs) {
+		msgs = eDynamicInverseAdd((InternalEObject)newEnd, EngineeringPackage.CAPABILITY__END, msgs);
+		return msgs;
 	}
 
 	/**
@@ -204,6 +205,8 @@ public class CapabilityImpl extends NamedElementImpl implements Capability {
 		switch (featureID) {
 			case EngineeringPackage.CAPABILITY__START:
 				return basicSetStart(null, msgs);
+			case EngineeringPackage.CAPABILITY__END:
+				return basicSetEnd(null, msgs);
 			case EngineeringPackage.CAPABILITY__REQUIRED_BY:
 				return ((InternalEList<?>)getRequiredBy()).basicRemove(otherEnd, msgs);
 		}
@@ -221,8 +224,7 @@ public class CapabilityImpl extends NamedElementImpl implements Capability {
 			case EngineeringPackage.CAPABILITY__START:
 				return getStart();
 			case EngineeringPackage.CAPABILITY__END:
-				if (resolve) return getEnd();
-				return basicGetEnd();
+				return getEnd();
 			case EngineeringPackage.CAPABILITY__DURATION:
 				return getDuration();
 			case EngineeringPackage.CAPABILITY__REQUIRED_BY:
@@ -292,7 +294,7 @@ public class CapabilityImpl extends NamedElementImpl implements Capability {
 			case EngineeringPackage.CAPABILITY__START:
 				return getStart() != null;
 			case EngineeringPackage.CAPABILITY__END:
-				return basicGetEnd() != null;
+				return getEnd() != null;
 			case EngineeringPackage.CAPABILITY__DURATION:
 				return DURATION_EDEFAULT == null ? getDuration() != null : !DURATION_EDEFAULT.equals(getDuration());
 			case EngineeringPackage.CAPABILITY__REQUIRED_BY:

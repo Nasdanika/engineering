@@ -5,7 +5,6 @@ package org.nasdanika.engineering.impl;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Date;
 import java.util.HashSet;
 
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -28,6 +27,7 @@ import org.nasdanika.engineering.IssueSeverity;
 import org.nasdanika.engineering.IssueStatus;
 import org.nasdanika.engineering.Note;
 import org.nasdanika.engineering.Release;
+import org.nasdanika.engineering.Temporal;
 
 /**
  * <!-- begin-user-doc -->
@@ -154,7 +154,7 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 	public Increment getIncrement() {
 		Increment ret = (Increment)eDynamicGet(EngineeringPackage.ISSUE__INCREMENT, EngineeringPackage.Literals.ISSUE__INCREMENT, true, true);
 		if (ret == null) {
-			Date end = getEnd();
+			Temporal end = getEnd();
 			if (end != null) {
 				// Computing increment from the end date if the end data is set and the increment is not.
 				for (EObject ancestor = eContainer(); ancestor != null; ancestor = ancestor.eContainer()) {
@@ -182,12 +182,14 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 		return ret;
 	}
 	
-	private static Increment findIncrement(Date date, Collection<Increment> increments) {
+	private static Increment findIncrement(Temporal when, Collection<Increment> increments) {
 		for (Increment increment: increments) {
-			Date start = increment.getStart();
-			Date end = increment.getEnd();
-			if ((start.equals(date) || start.before(date)) && (end.equals(date) || end.after(date))) {
-				Increment ci = findIncrement(date, increment.getChildren());
+			Temporal start = increment.getStart();
+			Temporal end = increment.getEnd();
+			boolean testStart = start != null && (start.coincides(when) == Boolean.TRUE || start.before(when) == Boolean.TRUE);
+			boolean testEnd = end != null && (end.coincides(when) == Boolean.TRUE || end.after(when) == Boolean.TRUE);
+			if (testStart && testEnd) {
+				Increment ci = findIncrement(when, increment.getChildren());
 				return ci == null ? increment : ci;
 			}
 		}
@@ -856,12 +858,12 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 	 * Computes default end from children or increment if there are no children with set end.
 	 */
 	@Override
-	public Date getEnd() {
-		Date ret = super.getEnd();
+	public Temporal getEnd() {
+		Temporal ret = super.getEnd();
 		if (ret == null) {
 			for (Issue child: getChildren()) {
-				Date cEnd = child.getEnd();
-				if (ret == null || (cEnd != null && ret.before(cEnd))) {
+				Temporal cEnd = child.getEnd();
+				if (ret == null || (cEnd != null && ret.before(cEnd) == Boolean.TRUE)) {
 					ret = cEnd;
 				}
 			}
@@ -873,12 +875,12 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 	 * Computes default end from children or increment if there are no children with set end.
 	 */
 	@Override
-	public Date getStart() {
-		Date ret = super.getStart();
+	public Temporal getStart() {
+		Temporal ret = super.getStart();
 		if (ret == null) {
 			for (Issue child: getChildren()) {
-				Date cStart = child.getStart();
-				if (ret == null || (cStart != null && ret.after(cStart))) {
+				Temporal cStart = child.getStart();
+				if (ret == null || (cStart != null && ret.after(cStart) == Boolean.TRUE)) {
 					ret = cStart;
 				}
 			}

@@ -2,9 +2,11 @@
  */
 package org.nasdanika.engineering.impl;
 
+import java.lang.reflect.InvocationTargetException;
 import java.time.Duration;
 import java.util.Date;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 
 import org.nasdanika.engineering.EngineeringPackage;
@@ -140,6 +142,54 @@ public class TemporalImpl extends ModelElementImpl implements Temporal {
 	 * @generated
 	 */
 	@Override
+	public Boolean after(Temporal when) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Boolean before(Temporal when) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Boolean coincides(Temporal when) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Temporal normalize() {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case EngineeringPackage.TEMPORAL__INSTANT:
@@ -211,6 +261,26 @@ public class TemporalImpl extends ModelElementImpl implements Temporal {
 				return OFFSET_EDEFAULT == null ? getOffset() != null : !OFFSET_EDEFAULT.equals(getOffset());
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case EngineeringPackage.TEMPORAL___AFTER__TEMPORAL:
+				return after((Temporal)arguments.get(0));
+			case EngineeringPackage.TEMPORAL___BEFORE__TEMPORAL:
+				return before((Temporal)arguments.get(0));
+			case EngineeringPackage.TEMPORAL___COINCIDES__TEMPORAL:
+				return coincides((Temporal)arguments.get(0));
+			case EngineeringPackage.TEMPORAL___NORMALIZE:
+				return normalize();
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 } //TemporalImpl

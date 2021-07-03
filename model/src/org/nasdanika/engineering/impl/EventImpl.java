@@ -2,9 +2,11 @@
  */
 package org.nasdanika.engineering.impl;
 
+import java.lang.reflect.InvocationTargetException;
 import java.time.Duration;
 import java.util.Date;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 
 import org.nasdanika.engineering.EngineeringPackage;
@@ -141,6 +143,54 @@ public class EventImpl extends NamedElementImpl implements Event {
 	 * @generated
 	 */
 	@Override
+	public Boolean after(Temporal when) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Boolean before(Temporal when) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Boolean coincides(Temporal when) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Temporal normalize() {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case EngineeringPackage.EVENT__INSTANT:
@@ -248,6 +298,45 @@ public class EventImpl extends NamedElementImpl implements Event {
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
+		if (baseClass == Temporal.class) {
+			switch (baseOperationID) {
+				case EngineeringPackage.TEMPORAL___AFTER__TEMPORAL: return EngineeringPackage.EVENT___AFTER__TEMPORAL;
+				case EngineeringPackage.TEMPORAL___BEFORE__TEMPORAL: return EngineeringPackage.EVENT___BEFORE__TEMPORAL;
+				case EngineeringPackage.TEMPORAL___COINCIDES__TEMPORAL: return EngineeringPackage.EVENT___COINCIDES__TEMPORAL;
+				case EngineeringPackage.TEMPORAL___NORMALIZE: return EngineeringPackage.EVENT___NORMALIZE;
+				default: return -1;
+			}
+		}
+		return super.eDerivedOperationID(baseOperationID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case EngineeringPackage.EVENT___AFTER__TEMPORAL:
+				return after((Temporal)arguments.get(0));
+			case EngineeringPackage.EVENT___BEFORE__TEMPORAL:
+				return before((Temporal)arguments.get(0));
+			case EngineeringPackage.EVENT___COINCIDES__TEMPORAL:
+				return coincides((Temporal)arguments.get(0));
+			case EngineeringPackage.EVENT___NORMALIZE:
+				return normalize();
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 } //EventImpl

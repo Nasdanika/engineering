@@ -169,6 +169,7 @@ public class FlowValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(journeyElement, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(journeyElement, diagnostics, context);
 		if (result || diagnostics != null) result &= engineeringValidator.validateModelElement_path(journeyElement, diagnostics, context);
+		if (result || diagnostics != null) result &= engineeringValidator.validatePeriod_start_end(journeyElement, diagnostics, context);
 		if (result || diagnostics != null) result &= engineeringValidator.validateEngineeredElement_capacity(journeyElement, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourneyElement_final(journeyElement, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourneyElement_override(journeyElement, diagnostics, context);
@@ -193,6 +194,7 @@ public class FlowValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(activity, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(activity, diagnostics, context);
 		if (result || diagnostics != null) result &= engineeringValidator.validateModelElement_path(activity, diagnostics, context);
+		if (result || diagnostics != null) result &= engineeringValidator.validatePeriod_start_end(activity, diagnostics, context);
 		if (result || diagnostics != null) result &= engineeringValidator.validateEngineeredElement_capacity(activity, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourneyElement_final(activity, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourneyElement_override(activity, diagnostics, context);
@@ -217,6 +219,7 @@ public class FlowValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(service, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(service, diagnostics, context);
 		if (result || diagnostics != null) result &= engineeringValidator.validateModelElement_path(service, diagnostics, context);
+		if (result || diagnostics != null) result &= engineeringValidator.validatePeriod_start_end(service, diagnostics, context);
 		if (result || diagnostics != null) result &= engineeringValidator.validateEngineeredElement_capacity(service, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourneyElement_final(service, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourneyElement_override(service, diagnostics, context);
@@ -280,6 +283,7 @@ public class FlowValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(journey, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(journey, diagnostics, context);
 		if (result || diagnostics != null) result &= engineeringValidator.validateModelElement_path(journey, diagnostics, context);
+		if (result || diagnostics != null) result &= engineeringValidator.validatePeriod_start_end(journey, diagnostics, context);
 		if (result || diagnostics != null) result &= engineeringValidator.validateEngineeredElement_capacity(journey, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourney_final(journey, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourneyElement_override(journey, diagnostics, context);
@@ -306,6 +310,7 @@ public class FlowValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(pseudoState, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(pseudoState, diagnostics, context);
 		if (result || diagnostics != null) result &= engineeringValidator.validateModelElement_path(pseudoState, diagnostics, context);
+		if (result || diagnostics != null) result &= engineeringValidator.validatePeriod_start_end(pseudoState, diagnostics, context);
 		if (result || diagnostics != null) result &= engineeringValidator.validateEngineeredElement_capacity(pseudoState, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourneyElement_final(pseudoState, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourneyElement_override(pseudoState, diagnostics, context);
@@ -330,6 +335,7 @@ public class FlowValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(choice, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(choice, diagnostics, context);
 		if (result || diagnostics != null) result &= engineeringValidator.validateModelElement_path(choice, diagnostics, context);
+		if (result || diagnostics != null) result &= engineeringValidator.validatePeriod_start_end(choice, diagnostics, context);
 		if (result || diagnostics != null) result &= engineeringValidator.validateEngineeredElement_capacity(choice, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourneyElement_final(choice, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourneyElement_override(choice, diagnostics, context);
@@ -354,6 +360,7 @@ public class FlowValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(end, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(end, diagnostics, context);
 		if (result || diagnostics != null) result &= engineeringValidator.validateModelElement_path(end, diagnostics, context);
+		if (result || diagnostics != null) result &= engineeringValidator.validatePeriod_start_end(end, diagnostics, context);
 		if (result || diagnostics != null) result &= engineeringValidator.validateEngineeredElement_capacity(end, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourneyElement_final(end, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourneyElement_override(end, diagnostics, context);
@@ -378,6 +385,7 @@ public class FlowValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(entryPoint, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(entryPoint, diagnostics, context);
 		if (result || diagnostics != null) result &= engineeringValidator.validateModelElement_path(entryPoint, diagnostics, context);
+		if (result || diagnostics != null) result &= engineeringValidator.validatePeriod_start_end(entryPoint, diagnostics, context);
 		if (result || diagnostics != null) result &= engineeringValidator.validateEngineeredElement_capacity(entryPoint, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourneyElement_final(entryPoint, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourneyElement_override(entryPoint, diagnostics, context);
@@ -402,6 +410,7 @@ public class FlowValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(exitPoint, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(exitPoint, diagnostics, context);
 		if (result || diagnostics != null) result &= engineeringValidator.validateModelElement_path(exitPoint, diagnostics, context);
+		if (result || diagnostics != null) result &= engineeringValidator.validatePeriod_start_end(exitPoint, diagnostics, context);
 		if (result || diagnostics != null) result &= engineeringValidator.validateEngineeredElement_capacity(exitPoint, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourneyElement_final(exitPoint, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourneyElement_override(exitPoint, diagnostics, context);
@@ -426,6 +435,7 @@ public class FlowValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(expansionInput, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(expansionInput, diagnostics, context);
 		if (result || diagnostics != null) result &= engineeringValidator.validateModelElement_path(expansionInput, diagnostics, context);
+		if (result || diagnostics != null) result &= engineeringValidator.validatePeriod_start_end(expansionInput, diagnostics, context);
 		if (result || diagnostics != null) result &= engineeringValidator.validateEngineeredElement_capacity(expansionInput, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourneyElement_final(expansionInput, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourneyElement_override(expansionInput, diagnostics, context);
@@ -450,6 +460,7 @@ public class FlowValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(expansionOutput, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(expansionOutput, diagnostics, context);
 		if (result || diagnostics != null) result &= engineeringValidator.validateModelElement_path(expansionOutput, diagnostics, context);
+		if (result || diagnostics != null) result &= engineeringValidator.validatePeriod_start_end(expansionOutput, diagnostics, context);
 		if (result || diagnostics != null) result &= engineeringValidator.validateEngineeredElement_capacity(expansionOutput, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourneyElement_final(expansionOutput, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourneyElement_override(expansionOutput, diagnostics, context);
@@ -474,6 +485,7 @@ public class FlowValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(fork, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(fork, diagnostics, context);
 		if (result || diagnostics != null) result &= engineeringValidator.validateModelElement_path(fork, diagnostics, context);
+		if (result || diagnostics != null) result &= engineeringValidator.validatePeriod_start_end(fork, diagnostics, context);
 		if (result || diagnostics != null) result &= engineeringValidator.validateEngineeredElement_capacity(fork, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourneyElement_final(fork, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourneyElement_override(fork, diagnostics, context);
@@ -498,6 +510,7 @@ public class FlowValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(inputPin, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(inputPin, diagnostics, context);
 		if (result || diagnostics != null) result &= engineeringValidator.validateModelElement_path(inputPin, diagnostics, context);
+		if (result || diagnostics != null) result &= engineeringValidator.validatePeriod_start_end(inputPin, diagnostics, context);
 		if (result || diagnostics != null) result &= engineeringValidator.validateEngineeredElement_capacity(inputPin, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourneyElement_final(inputPin, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourneyElement_override(inputPin, diagnostics, context);
@@ -522,6 +535,7 @@ public class FlowValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(join, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(join, diagnostics, context);
 		if (result || diagnostics != null) result &= engineeringValidator.validateModelElement_path(join, diagnostics, context);
+		if (result || diagnostics != null) result &= engineeringValidator.validatePeriod_start_end(join, diagnostics, context);
 		if (result || diagnostics != null) result &= engineeringValidator.validateEngineeredElement_capacity(join, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourneyElement_final(join, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourneyElement_override(join, diagnostics, context);
@@ -546,6 +560,7 @@ public class FlowValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(outputPin, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(outputPin, diagnostics, context);
 		if (result || diagnostics != null) result &= engineeringValidator.validateModelElement_path(outputPin, diagnostics, context);
+		if (result || diagnostics != null) result &= engineeringValidator.validatePeriod_start_end(outputPin, diagnostics, context);
 		if (result || diagnostics != null) result &= engineeringValidator.validateEngineeredElement_capacity(outputPin, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourneyElement_final(outputPin, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourneyElement_override(outputPin, diagnostics, context);
@@ -570,6 +585,7 @@ public class FlowValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(start, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(start, diagnostics, context);
 		if (result || diagnostics != null) result &= engineeringValidator.validateModelElement_path(start, diagnostics, context);
+		if (result || diagnostics != null) result &= engineeringValidator.validatePeriod_start_end(start, diagnostics, context);
 		if (result || diagnostics != null) result &= engineeringValidator.validateEngineeredElement_capacity(start, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourneyElement_final(start, diagnostics, context);
 		if (result || diagnostics != null) result &= validateJourneyElement_override(start, diagnostics, context);

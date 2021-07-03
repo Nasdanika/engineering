@@ -117,8 +117,9 @@ public abstract class EngineeredElementImpl extends ForumImpl implements Enginee
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Temporal basicGetEnd() {
-		return (Temporal)eDynamicGet(EngineeringPackage.ENGINEERED_ELEMENT__END, EngineeringPackage.Literals.PERIOD__END, false, true);
+	public NotificationChain basicSetEnd(Temporal newEnd, NotificationChain msgs) {
+		msgs = eDynamicInverseAdd((InternalEObject)newEnd, EngineeringPackage.ENGINEERED_ELEMENT__END, msgs);
+		return msgs;
 	}
 
 	/**
@@ -260,6 +261,8 @@ public abstract class EngineeredElementImpl extends ForumImpl implements Enginee
 		switch (featureID) {
 			case EngineeringPackage.ENGINEERED_ELEMENT__START:
 				return basicSetStart(null, msgs);
+			case EngineeringPackage.ENGINEERED_ELEMENT__END:
+				return basicSetEnd(null, msgs);
 			case EngineeringPackage.ENGINEERED_ELEMENT__ISSUES:
 				return ((InternalEList<?>)getIssues()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.ENGINEERED_ELEMENT__OWNERS:
@@ -285,8 +288,7 @@ public abstract class EngineeredElementImpl extends ForumImpl implements Enginee
 			case EngineeringPackage.ENGINEERED_ELEMENT__START:
 				return getStart();
 			case EngineeringPackage.ENGINEERED_ELEMENT__END:
-				if (resolve) return getEnd();
-				return basicGetEnd();
+				return getEnd();
 			case EngineeringPackage.ENGINEERED_ELEMENT__DURATION:
 				return getDuration();
 			case EngineeringPackage.ENGINEERED_ELEMENT__ISSUES:
@@ -394,7 +396,7 @@ public abstract class EngineeredElementImpl extends ForumImpl implements Enginee
 			case EngineeringPackage.ENGINEERED_ELEMENT__START:
 				return getStart() != null;
 			case EngineeringPackage.ENGINEERED_ELEMENT__END:
-				return basicGetEnd() != null;
+				return getEnd() != null;
 			case EngineeringPackage.ENGINEERED_ELEMENT__DURATION:
 				return DURATION_EDEFAULT == null ? getDuration() != null : !DURATION_EDEFAULT.equals(getDuration());
 			case EngineeringPackage.ENGINEERED_ELEMENT__ISSUES:

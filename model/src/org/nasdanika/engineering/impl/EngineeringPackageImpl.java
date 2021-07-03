@@ -8,6 +8,7 @@ import java.util.Map;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EValidator;
@@ -706,6 +707,46 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	@Override
 	public EAttribute getTemporal_Offset() {
 		return (EAttribute)temporalEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EOperation getTemporal__After__Temporal() {
+		return temporalEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EOperation getTemporal__Before__Temporal() {
+		return temporalEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EOperation getTemporal__Coincides__Temporal() {
+		return temporalEClass.getEOperations().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EOperation getTemporal__Normalize() {
+		return temporalEClass.getEOperations().get(3);
 	}
 
 	/**
@@ -2709,6 +2750,10 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		createEAttribute(temporalEClass, TEMPORAL__INSTANT);
 		createEReference(temporalEClass, TEMPORAL__BASE);
 		createEAttribute(temporalEClass, TEMPORAL__OFFSET);
+		createEOperation(temporalEClass, TEMPORAL___AFTER__TEMPORAL);
+		createEOperation(temporalEClass, TEMPORAL___BEFORE__TEMPORAL);
+		createEOperation(temporalEClass, TEMPORAL___COINCIDES__TEMPORAL);
+		createEOperation(temporalEClass, TEMPORAL___NORMALIZE);
 
 		periodEClass = createEClass(PERIOD);
 		createEReference(periodEClass, PERIOD__START);
@@ -3064,9 +3109,20 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		initEReference(getTemporal_Base(), this.getTemporal(), null, "base", null, 0, 1, Temporal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTemporal_Offset(), this.getDuration(), "offset", null, 0, 1, Temporal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		EOperation op = initEOperation(getTemporal__After__Temporal(), ecorePackage.getEBooleanObject(), "after", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getTemporal(), "when", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getTemporal__Before__Temporal(), ecorePackage.getEBooleanObject(), "before", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getTemporal(), "when", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getTemporal__Coincides__Temporal(), ecorePackage.getEBooleanObject(), "coincides", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getTemporal(), "when", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getTemporal__Normalize(), this.getTemporal(), "normalize", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(periodEClass, Period.class, "Period", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getPeriod_Start(), this.getTemporal(), null, "start", null, 0, 1, Period.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPeriod_End(), this.getTemporal(), null, "end", null, 0, 1, Period.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPeriod_End(), this.getTemporal(), null, "end", null, 0, 1, Period.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPeriod_Duration(), this.getDuration(), "duration", null, 0, 1, Period.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(namedElementEClass, NamedElement.class, "NamedElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -4081,6 +4137,30 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 			   "documentation", "[Duration](https://docs.oracle.com/javase/8/docs/api/java/time/Duration.html) is an amount of time in the [ISO-8601 Duration format](https://en.wikipedia.org/wiki/ISO_8601#Duration). Supports days and smaller units. Weeks, months and years are not supported. Example: ``P28DT10H``."
 		   });
 		addAnnotation
+		  (getTemporal__After__Temporal(),
+		   source,
+		   new String[] {
+			   "documentation", "Tests if this temporal is after the specified temporal. Returns null if unknown, e.g. two unrelated events."
+		   });
+		addAnnotation
+		  (getTemporal__Before__Temporal(),
+		   source,
+		   new String[] {
+			   "documentation", "Tests if this temporal is before the specified temporal. Returns null if unknown, e.g. two unrelated events."
+		   });
+		addAnnotation
+		  (getTemporal__Coincides__Temporal(),
+		   source,
+		   new String[] {
+			   "documentation", "Tests if this temporal occurs at the same point on the time-line as the specified temporal. Returns null if unknown, e.g. two unrelated events."
+		   });
+		addAnnotation
+		  (getTemporal__Normalize(),
+		   source,
+		   new String[] {
+			   "documentation", "Returns a normalized instance of this temporal not contained in the model. Normalization walks through the temporal chain to the root temporal. If that root temporal is instant/absolute then the normalized instance would be instant/absolute. Otherwise the normalized instance would contain the root temporal as its base and offset would be the sum of all offsets."
+		   });
+		addAnnotation
 		  (getTemporal_Instant(),
 		   source,
 		   new String[] {
@@ -4991,10 +5071,16 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 			   "constraints", "path"
 		   });
 		addAnnotation
+		  (periodEClass,
+		   source,
+		   new String[] {
+			   "constraints", "start_end"
+		   });
+		addAnnotation
 		  (endeavorEClass,
 		   source,
 		   new String[] {
-			   "constraints", "start_end capacity"
+			   "constraints", "capacity children"
 		   });
 		addAnnotation
 		  (incrementEClass,

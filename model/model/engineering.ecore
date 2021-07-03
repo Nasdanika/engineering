@@ -104,6 +104,29 @@
     <eAnnotations source="urn:org.nasdanika">
       <details key="documentation-reference" value="doc/temporal.md"/>
     </eAnnotations>
+    <eOperations name="after" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Tests if this temporal is after the specified temporal. Returns null if unknown, e.g. two unrelated events."/>
+      </eAnnotations>
+      <eParameters name="when" eType="#//Temporal"/>
+    </eOperations>
+    <eOperations name="before" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Tests if this temporal is before the specified temporal. Returns null if unknown, e.g. two unrelated events."/>
+      </eAnnotations>
+      <eParameters name="when" eType="#//Temporal"/>
+    </eOperations>
+    <eOperations name="coincides" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Tests if this temporal occurs at the same point on the time-line as the specified temporal. Returns null if unknown, e.g. two unrelated events."/>
+      </eAnnotations>
+      <eParameters name="when" eType="#//Temporal"/>
+    </eOperations>
+    <eOperations name="normalize" eType="#//Temporal">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Returns a normalized instance of this temporal not contained in the model. Normalization walks through the temporal chain to the root temporal. If that root temporal is instant/absolute then the normalized instance would be instant/absolute. Otherwise the normalized instance would contain the root temporal as its base and offset would be the sum of all offsets."/>
+      </eAnnotations>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="instant" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="An absolute point on the time-line. E.g. ``2021/07/04``."/>
@@ -131,6 +154,9 @@
     <eAnnotations source="urn:org.nasdanika">
       <details key="documentation-reference" value="doc/period.md"/>
     </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="start_end"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="start" eType="#//Temporal"
         containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -141,7 +167,8 @@
         <details key="strict-containment" value="true"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="end" eType="#//Temporal">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="end" eType="#//Temporal"
+        containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Base of this temporal."/>
       </eAnnotations>
@@ -178,7 +205,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Endeavor" eSuperTypes="#//Period #//Alignable">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="start_end capacity"/>
+      <details key="constraints" value="capacity children"/>
     </eAnnotations>
     <eAnnotations source="urn:org.nasdanika">
       <details key="documentation-reference" value="doc/endeavor.md"/>

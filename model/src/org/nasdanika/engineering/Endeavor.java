@@ -25,7 +25,7 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getEndeavor()
- * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='start_end capacity'"
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='capacity children'"
  *        annotation="urn:org.nasdanika documentation-reference='doc/endeavor.md'"
  * @generated
  */
