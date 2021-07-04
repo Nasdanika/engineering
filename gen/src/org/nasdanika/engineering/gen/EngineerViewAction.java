@@ -3,7 +3,6 @@ package org.nasdanika.engineering.gen;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -33,6 +32,7 @@ import org.nasdanika.engineering.IssueStatus;
 import org.nasdanika.engineering.NamedElement;
 import org.nasdanika.engineering.Objective;
 import org.nasdanika.engineering.Release;
+import org.nasdanika.engineering.Temporal;
 import org.nasdanika.html.Fragment;
 import org.nasdanika.html.Tag;
 import org.nasdanika.html.TagName;
@@ -78,8 +78,8 @@ public class EngineerViewAction<T extends Engineer> extends PersonaViewAction<T>
 					null,
 					EcorePackage.Literals.EOBJECT___ECONTAINER,
 					EngineeringPackage.Literals.NAMED_ELEMENT__NAME,
-					EngineeringPackage.Literals.ENDEAVOR__START,
-					EngineeringPackage.Literals.ENDEAVOR__END,
+					EngineeringPackage.Literals.PERIOD__START,
+					EngineeringPackage.Literals.PERIOD__END,
 					EngineeringPackage.Literals.ENDEAVOR__BENEFIT,
 					EngineeringPackage.Literals.ENDEAVOR__TOTAL_COST,					
 					EngineeringPackage.Literals.ENDEAVOR__COMPLETION));			
@@ -92,8 +92,8 @@ public class EngineerViewAction<T extends Engineer> extends PersonaViewAction<T>
 					featureDiagnostic,
 					null,
 					EngineeringPackage.Literals.NAMED_ELEMENT__NAME,
-					EngineeringPackage.Literals.ENDEAVOR__START,
-					EngineeringPackage.Literals.ENDEAVOR__END,
+					EngineeringPackage.Literals.PERIOD__START,
+					EngineeringPackage.Literals.PERIOD__END,
 					EngineeringPackage.Literals.ENDEAVOR__BENEFIT,
 					EngineeringPackage.Literals.ENDEAVOR__TOTAL_COST,					
 					EngineeringPackage.Literals.ENDEAVOR__COMPLETION));			
@@ -106,8 +106,8 @@ public class EngineerViewAction<T extends Engineer> extends PersonaViewAction<T>
 					featureDiagnostic,
 					null,
 					EngineeringPackage.Literals.NAMED_ELEMENT__NAME,
-					EngineeringPackage.Literals.ENDEAVOR__START,
-					EngineeringPackage.Literals.ENDEAVOR__END,
+					EngineeringPackage.Literals.PERIOD__START,
+					EngineeringPackage.Literals.PERIOD__END,
 					EngineeringPackage.Literals.ENDEAVOR__BENEFIT,
 					EngineeringPackage.Literals.ENDEAVOR__TOTAL_COST,					
 					EngineeringPackage.Literals.ENDEAVOR__COMPLETION));			
@@ -120,8 +120,8 @@ public class EngineerViewAction<T extends Engineer> extends PersonaViewAction<T>
 					featureDiagnostic,
 					null,
 					EngineeringPackage.Literals.NAMED_ELEMENT__NAME,
-					EngineeringPackage.Literals.ENDEAVOR__START,
-					EngineeringPackage.Literals.ENDEAVOR__END,
+					EngineeringPackage.Literals.PERIOD__START,
+					EngineeringPackage.Literals.PERIOD__END,
 					EngineeringPackage.Literals.ISSUE__TARGET,
 					EngineeringPackage.Literals.ISSUE__STATUS,
 					EngineeringPackage.Literals.ISSUE__PRIORITY,
@@ -263,8 +263,8 @@ public class EngineerViewAction<T extends Engineer> extends PersonaViewAction<T>
 		return ret;
 	}
 	
-	private static Date getEnd(Endeavor endeavor) {
-		Date ret = endeavor.getEnd();
+	private static Temporal getEnd(Endeavor endeavor) {
+		Temporal ret = endeavor.getEnd();
 		if (ret == null) {
 			if (endeavor instanceof Feature) {
 				for (Release release: ((Feature) endeavor).getReleases()) {
@@ -328,8 +328,8 @@ public class EngineerViewAction<T extends Engineer> extends PersonaViewAction<T>
 				return 1;
 			}
 			
-			Date aEnd = getEnd(a);
-			Date bEnd = getEnd(b);
+			Temporal aEnd = getEnd(a);
+			Temporal bEnd = getEnd(b);
 			if (aEnd == null && bEnd != null) {
 				return 1;
 			}
@@ -338,7 +338,13 @@ public class EngineerViewAction<T extends Engineer> extends PersonaViewAction<T>
 			}
 			
 			if (aEnd != null && bEnd != null) {
-				return aEnd.compareTo(bEnd);
+				if (aEnd.before(bEnd)) {
+					return -1;
+				}
+				if (aEnd.after(bEnd)) {
+					return 1;
+				}
+				return 0;
 			}
 						
 			if (!(a instanceof NamedElement) || Util.isBlank(((NamedElement) a).getName())) {
@@ -426,8 +432,8 @@ public class EngineerViewAction<T extends Engineer> extends PersonaViewAction<T>
 								viewGenerator, 
 								progressMonitor, 
 								EngineeringPackage.Literals.NAMED_ELEMENT__NAME,
-								EngineeringPackage.Literals.ENDEAVOR__START,
-								EngineeringPackage.Literals.ENDEAVOR__END,
+								EngineeringPackage.Literals.PERIOD__START,
+								EngineeringPackage.Literals.PERIOD__END,
 								EngineeringPackage.Literals.ISSUE__TARGET,
 								EngineeringPackage.Literals.ISSUE__STATUS,
 								EngineeringPackage.Literals.ISSUE__PRIORITY,

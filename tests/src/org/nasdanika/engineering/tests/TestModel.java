@@ -27,6 +27,7 @@ import org.eclipse.emf.codegen.ecore.genmodel.GenPackage;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.junit.Test;
@@ -41,7 +42,9 @@ import org.nasdanika.common.resources.Container;
 import org.nasdanika.common.resources.FileSystemContainer;
 import org.nasdanika.emf.EObjectAdaptable;
 import org.nasdanika.engineering.EngineeringFactory;
+import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Event;
+import org.nasdanika.engineering.Increment;
 import org.nasdanika.engineering.Temporal;
 import org.nasdanika.html.app.Action;
 import org.nasdanika.html.app.factories.BootstrapContainerApplicationSupplierFactory;
@@ -220,7 +223,9 @@ public class TestModel {
 		
 		Event event = EngineeringFactory.eINSTANCE.createEvent();
 		event.setName("Start");
+		event.setBase(instant);
 		System.out.println(event);
+		System.out.println(event.normalize());
 		
 		Event relative = EngineeringFactory.eINSTANCE.createEvent();
 		relative.setName("Mid-term");
@@ -235,6 +240,12 @@ public class TestModel {
 		relative2.setOffset(Duration.parse("PT12H30M"));
 		System.out.println(relative2);
 		System.out.println(relative2.normalize());
+		
+		
+		Increment incr = EngineeringFactory.eINSTANCE.createIncrement();
+		incr.setPath("incr");
+		incr.setStart(relative);
+		System.out.println(relative.getUri());		
 	}
 
 }

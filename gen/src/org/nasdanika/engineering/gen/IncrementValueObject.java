@@ -1,17 +1,17 @@
 package org.nasdanika.engineering.gen;
 
-import java.util.Date;
 import java.util.Objects;
 
 import org.nasdanika.engineering.Endeavor;
 import org.nasdanika.engineering.Increment;
 import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.Release;
+import org.nasdanika.engineering.Temporal;
 
 public class IncrementValueObject implements Comparable<IncrementValueObject> {
 	
-	private Date start;
-	private Date end;
+	private Temporal start;
+	private Temporal end;
 	private String name;
 	
 	public IncrementValueObject(Increment increment) {
@@ -30,11 +30,11 @@ public class IncrementValueObject implements Comparable<IncrementValueObject> {
 		this(release.getIncrement());
 	}
 
-	public Date getStart() {
+	public Temporal getStart() {
 		return start;
 	}
 
-	public Date getEnd() {
+	public Temporal getEnd() {
 		return end;
 	}
 
@@ -46,9 +46,9 @@ public class IncrementValueObject implements Comparable<IncrementValueObject> {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((end == null) ? 0 : end.hashCode());
+		result = prime * result + ((end == null) ? 0 : end.toString().hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + ((start == null) ? 0 : start.hashCode());
+		result = prime * result + ((start == null) ? 0 : start.toString().hashCode());
 		return result;
 	}
 
@@ -64,7 +64,7 @@ public class IncrementValueObject implements Comparable<IncrementValueObject> {
 		if (end == null) {
 			if (other.end != null)
 				return false;
-		} else if (!end.equals(other.end))
+		} else if (!end.coincides(other.end))
 			return false;
 		if (name == null) {
 			if (other.name != null)
@@ -74,7 +74,7 @@ public class IncrementValueObject implements Comparable<IncrementValueObject> {
 		if (start == null) {
 			if (other.start != null)
 				return false;
-		} else if (!start.equals(other.start))
+		} else if (!start.coincides(other.start))
 			return false;
 		return true;
 	}
@@ -89,27 +89,36 @@ public class IncrementValueObject implements Comparable<IncrementValueObject> {
 			return -1;
 		}
 
-		Date oEnd = o.getEnd();
-		if (!Objects.equals(oEnd, end)) {
+		Temporal oEnd = o.getEnd();
+		if (end != oEnd && !(end != null && end.coincides(oEnd))) {
 			if (end == null) {
 				return 1;
 			}
 			if (oEnd == null) {
 				return -1;
 			}
-			return end.compareTo(oEnd);
+			if (end.before(oEnd)) {
+				return -1;
+			}
+			if (end.after(oEnd)) {
+				return 1;
+			}
 		}
 		
-		Date oStart = o.getStart();
-		
-		if (!Objects.equals(oStart, start)) {
+		Temporal oStart = o.getStart();
+		if (start != oStart && !(start != null && start.coincides(oStart))) {
 			if (start == null) {
 				return 1;
 			}
 			if (oStart == null) {
 				return -1;
 			}
-			return start.compareTo(oStart);
+			if (start.before(oStart)) {
+				return -1;
+			}
+			if (start.after(oStart)) {
+				return 1;
+			}
 		}
 		
 		String oName = o.getName();
@@ -122,7 +131,7 @@ public class IncrementValueObject implements Comparable<IncrementValueObject> {
 		}
 		
 		if (oName == null) {
-				return -1;
+			return -1;
 		}
 
 		return name.compareTo(oName);

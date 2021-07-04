@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -51,6 +50,7 @@ import org.nasdanika.engineering.ModelElementAppearance;
 import org.nasdanika.engineering.NamedElement;
 import org.nasdanika.engineering.Release;
 import org.nasdanika.engineering.TableOfContents;
+import org.nasdanika.engineering.Temporal;
 import org.nasdanika.engineering.flow.Start;
 import org.nasdanika.html.Fragment;
 import org.nasdanika.html.HTMLFactory;
@@ -480,10 +480,10 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 			return 1;
 		}
 		
-		Date aStart = a.getStart();
-		Date bStart = b.getStart();
+		Temporal aStart = a.getStart();
+		Temporal bStart = b.getStart();
 		
-		if (Objects.equals(aStart, bStart)) {
+		if (aStart == bStart || (aStart != null && aStart.coincides(bStart))) {
 			return containmentPath(a).compareTo(containmentPath(b));
 		}
 

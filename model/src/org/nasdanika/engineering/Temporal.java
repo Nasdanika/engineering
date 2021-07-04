@@ -178,31 +178,7 @@ public interface Temporal extends ModelElement {
 		if (when == null) {
 			return false;
 		}
-		Temporal nWhen = when.normalize();
-		Date whenInstant = nWhen.getInstant();
-		
-		Temporal nThis = normalize();
-		Date thisInstant = nThis.getInstant();
-		if (whenInstant != null) {
-			if (thisInstant == null) {
-				return null;
-			}
-			return thisInstant.before(whenInstant);
-		}
-		if (nWhen.getBase() == nThis.getBase()) {
-			Duration whenOffset = nWhen.getOffset();
-			Duration thisOffset = nThis.getOffset();
-			
-			if (whenOffset == null) {
-				whenOffset = Duration.ZERO;
-			}
-			if (thisOffset == null) {
-				thisOffset = Duration.ZERO;
-			}
-			return thisOffset.compareTo(whenOffset) < 0;
-		}
-		return null;		
-
+		return when.after(this);
 	}
 
 	/**
@@ -260,7 +236,23 @@ public interface Temporal extends ModelElement {
 		}
 		Temporal superBase = base.getBase();
 		if (superBase == null) {
-			return this;
+			Date bInstant = base.getInstant();
+			if (bInstant == null) {			
+				return this;
+			}
+			Duration offset = getOffset();
+			if (offset == null || offset.equals(Duration.ZERO)) {
+				return base;
+			}
+			Temporal ret;
+			if (this instanceof Event) {
+				ret = EngineeringFactory.eINSTANCE.createEvent();
+				((Event) ret).setName(((Event) this).getName());
+			} else {
+				ret = EngineeringFactory.eINSTANCE.createTemporal();
+			}
+			ret.setInstant(new Date(bInstant.toInstant().plus(offset).toEpochMilli()));	
+			return ret;
 		}
 		Temporal nBase = base.normalize();
 		Duration offset = getOffset();

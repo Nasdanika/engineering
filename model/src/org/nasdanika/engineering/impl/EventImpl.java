@@ -424,7 +424,7 @@ public class EventImpl extends NamedElementImpl implements Event {
 		Duration offset = getOffset();
 		Temporal base = getBase();
 		if ((offset == null || offset.equals(Duration.ZERO)) && base != null) {
-			return name + " coincides with " + base;				
+			return name + "coincides with " + base;				
 		}
 		
 		if (base != null) {
