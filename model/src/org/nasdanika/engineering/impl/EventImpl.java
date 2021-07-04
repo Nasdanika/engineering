@@ -4,14 +4,18 @@ package org.nasdanika.engineering.impl;
 
 import java.lang.reflect.InvocationTargetException;
 import java.time.Duration;
+import java.util.Collection;
 import java.util.Date;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.util.InternalEList;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Event;
 import org.nasdanika.engineering.Temporal;
+import org.nasdanika.html.app.impl.Util;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,6 +28,7 @@ import org.nasdanika.engineering.Temporal;
  *   <li>{@link org.nasdanika.engineering.impl.EventImpl#getInstant <em>Instant</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EventImpl#getBase <em>Base</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EventImpl#getOffset <em>Offset</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.EventImpl#getDerivatives <em>Derivatives</em>}</li>
  * </ul>
  *
  * @generated
@@ -112,6 +117,16 @@ public class EventImpl extends NamedElementImpl implements Event {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetBase(Temporal newBase, NotificationChain msgs) {
+		msgs = eDynamicInverseAdd((InternalEObject)newBase, EngineeringPackage.EVENT__BASE, msgs);
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public void setBase(Temporal newBase) {
 		eDynamicSet(EngineeringPackage.EVENT__BASE, EngineeringPackage.Literals.TEMPORAL__BASE, newBase);
@@ -142,35 +157,70 @@ public class EventImpl extends NamedElementImpl implements Event {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
-	public Boolean after(Temporal when) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+	public EList<Temporal> getDerivatives() {
+		return (EList<Temporal>)eDynamicGet(EngineeringPackage.EVENT__DERIVATIVES, EngineeringPackage.Literals.TEMPORAL__DERIVATIVES, true, true);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
+	 */
+	@Override
+	public Boolean after(Temporal when) {
+		return Event.super.after(when);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
 	 */
 	@Override
 	public Boolean before(Temporal when) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return Event.super.before(when);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public Boolean coincides(Temporal when) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return Event.super.coincides(when);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public Temporal normalize() {
+		return Event.super.normalize();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case EngineeringPackage.EVENT__BASE:
+				Temporal base = basicGetBase();
+				if (base != null)
+					msgs = ((InternalEObject)base).eInverseRemove(this, EngineeringPackage.TEMPORAL__DERIVATIVES, Temporal.class, msgs);
+				return basicSetBase((Temporal)otherEnd, msgs);
+			case EngineeringPackage.EVENT__DERIVATIVES:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getDerivatives()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -179,10 +229,14 @@ public class EventImpl extends NamedElementImpl implements Event {
 	 * @generated
 	 */
 	@Override
-	public Temporal normalize() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case EngineeringPackage.EVENT__BASE:
+				return basicSetBase(null, msgs);
+			case EngineeringPackage.EVENT__DERIVATIVES:
+				return ((InternalEList<?>)getDerivatives()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -200,6 +254,8 @@ public class EventImpl extends NamedElementImpl implements Event {
 				return basicGetBase();
 			case EngineeringPackage.EVENT__OFFSET:
 				return getOffset();
+			case EngineeringPackage.EVENT__DERIVATIVES:
+				return getDerivatives();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -209,6 +265,7 @@ public class EventImpl extends NamedElementImpl implements Event {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -220,6 +277,10 @@ public class EventImpl extends NamedElementImpl implements Event {
 				return;
 			case EngineeringPackage.EVENT__OFFSET:
 				setOffset((Duration)newValue);
+				return;
+			case EngineeringPackage.EVENT__DERIVATIVES:
+				getDerivatives().clear();
+				getDerivatives().addAll((Collection<? extends Temporal>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -242,6 +303,9 @@ public class EventImpl extends NamedElementImpl implements Event {
 			case EngineeringPackage.EVENT__OFFSET:
 				setOffset(OFFSET_EDEFAULT);
 				return;
+			case EngineeringPackage.EVENT__DERIVATIVES:
+				getDerivatives().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -260,6 +324,8 @@ public class EventImpl extends NamedElementImpl implements Event {
 				return basicGetBase() != null;
 			case EngineeringPackage.EVENT__OFFSET:
 				return OFFSET_EDEFAULT == null ? getOffset() != null : !OFFSET_EDEFAULT.equals(getOffset());
+			case EngineeringPackage.EVENT__DERIVATIVES:
+				return !getDerivatives().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -276,6 +342,7 @@ public class EventImpl extends NamedElementImpl implements Event {
 				case EngineeringPackage.EVENT__INSTANT: return EngineeringPackage.TEMPORAL__INSTANT;
 				case EngineeringPackage.EVENT__BASE: return EngineeringPackage.TEMPORAL__BASE;
 				case EngineeringPackage.EVENT__OFFSET: return EngineeringPackage.TEMPORAL__OFFSET;
+				case EngineeringPackage.EVENT__DERIVATIVES: return EngineeringPackage.TEMPORAL__DERIVATIVES;
 				default: return -1;
 			}
 		}
@@ -294,6 +361,7 @@ public class EventImpl extends NamedElementImpl implements Event {
 				case EngineeringPackage.TEMPORAL__INSTANT: return EngineeringPackage.EVENT__INSTANT;
 				case EngineeringPackage.TEMPORAL__BASE: return EngineeringPackage.EVENT__BASE;
 				case EngineeringPackage.TEMPORAL__OFFSET: return EngineeringPackage.EVENT__OFFSET;
+				case EngineeringPackage.TEMPORAL__DERIVATIVES: return EngineeringPackage.EVENT__DERIVATIVES;
 				default: return -1;
 			}
 		}
@@ -338,5 +406,33 @@ public class EventImpl extends NamedElementImpl implements Event {
 		}
 		return super.eInvoke(operationID, arguments);
 	}
+	
+	@Override
+	public String toString() {
+		String name = getName();
+		if (Util.isBlank(name)) {
+			name = "";
+		} else {
+			name = name + " ";
+		}
+		
+		Date instant = getInstant();
+		if (instant != null) {
+			return name + instant;
+		}
+		
+		Duration offset = getOffset();
+		Temporal base = getBase();
+		if ((offset == null || offset.equals(Duration.ZERO)) && base != null) {
+			return name + " coincides with " + base;				
+		}
+		
+		if (base != null) {
+			return name + Temporal.formatDuration(offset.abs()) + (offset.isNegative() ? " before " : " after ") + base;
+		}
+		
+		return getName();
+	}
+	
 
 } //EventImpl

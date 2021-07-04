@@ -4,12 +4,16 @@ package org.nasdanika.engineering.impl;
 
 import java.lang.reflect.InvocationTargetException;
 import java.time.Duration;
+import java.util.Collection;
 import java.util.Date;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.util.InternalEList;
 import org.nasdanika.engineering.EngineeringPackage;
+import org.nasdanika.engineering.NamedElement;
 import org.nasdanika.engineering.Temporal;
 
 /**
@@ -23,6 +27,7 @@ import org.nasdanika.engineering.Temporal;
  *   <li>{@link org.nasdanika.engineering.impl.TemporalImpl#getInstant <em>Instant</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.TemporalImpl#getBase <em>Base</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.TemporalImpl#getOffset <em>Offset</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.TemporalImpl#getDerivatives <em>Derivatives</em>}</li>
  * </ul>
  *
  * @generated
@@ -111,6 +116,16 @@ public class TemporalImpl extends ModelElementImpl implements Temporal {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetBase(Temporal newBase, NotificationChain msgs) {
+		msgs = eDynamicInverseAdd((InternalEObject)newBase, EngineeringPackage.TEMPORAL__BASE, msgs);
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public void setBase(Temporal newBase) {
 		eDynamicSet(EngineeringPackage.TEMPORAL__BASE, EngineeringPackage.Literals.TEMPORAL__BASE, newBase);
@@ -139,37 +154,71 @@ public class TemporalImpl extends ModelElementImpl implements Temporal {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
+	 */
+	@Override
+	public EList<Temporal> getDerivatives() {
+		return getReferrers(EngineeringPackage.Literals.TEMPORAL__BASE);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
 	 */
 	@Override
 	public Boolean after(Temporal when) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return Temporal.super.after(when);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public Boolean before(Temporal when) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return Temporal.super.before(when);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public Boolean coincides(Temporal when) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return Temporal.super.coincides(when);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public Temporal normalize() {
+		return Temporal.super.normalize();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case EngineeringPackage.TEMPORAL__BASE:
+				Temporal base = basicGetBase();
+				if (base != null)
+					msgs = ((InternalEObject)base).eInverseRemove(this, EngineeringPackage.TEMPORAL__DERIVATIVES, Temporal.class, msgs);
+				return basicSetBase((Temporal)otherEnd, msgs);
+			case EngineeringPackage.TEMPORAL__DERIVATIVES:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getDerivatives()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -178,10 +227,14 @@ public class TemporalImpl extends ModelElementImpl implements Temporal {
 	 * @generated
 	 */
 	@Override
-	public Temporal normalize() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case EngineeringPackage.TEMPORAL__BASE:
+				return basicSetBase(null, msgs);
+			case EngineeringPackage.TEMPORAL__DERIVATIVES:
+				return ((InternalEList<?>)getDerivatives()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -199,6 +252,8 @@ public class TemporalImpl extends ModelElementImpl implements Temporal {
 				return basicGetBase();
 			case EngineeringPackage.TEMPORAL__OFFSET:
 				return getOffset();
+			case EngineeringPackage.TEMPORAL__DERIVATIVES:
+				return getDerivatives();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -208,6 +263,7 @@ public class TemporalImpl extends ModelElementImpl implements Temporal {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -219,6 +275,10 @@ public class TemporalImpl extends ModelElementImpl implements Temporal {
 				return;
 			case EngineeringPackage.TEMPORAL__OFFSET:
 				setOffset((Duration)newValue);
+				return;
+			case EngineeringPackage.TEMPORAL__DERIVATIVES:
+				getDerivatives().clear();
+				getDerivatives().addAll((Collection<? extends Temporal>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -241,6 +301,9 @@ public class TemporalImpl extends ModelElementImpl implements Temporal {
 			case EngineeringPackage.TEMPORAL__OFFSET:
 				setOffset(OFFSET_EDEFAULT);
 				return;
+			case EngineeringPackage.TEMPORAL__DERIVATIVES:
+				getDerivatives().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -259,6 +322,8 @@ public class TemporalImpl extends ModelElementImpl implements Temporal {
 				return basicGetBase() != null;
 			case EngineeringPackage.TEMPORAL__OFFSET:
 				return OFFSET_EDEFAULT == null ? getOffset() != null : !OFFSET_EDEFAULT.equals(getOffset());
+			case EngineeringPackage.TEMPORAL__DERIVATIVES:
+				return !getDerivatives().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -281,6 +346,27 @@ public class TemporalImpl extends ModelElementImpl implements Temporal {
 				return normalize();
 		}
 		return super.eInvoke(operationID, arguments);
+	}
+	
+	@Override
+	public String toString() {
+		Date instant = getInstant();
+		if (instant != null) {
+			return instant.toString();
+		}
+		
+		Duration offset = getOffset();
+		Temporal base = getBase();
+		if ((offset == null || offset.equals(Duration.ZERO)) && base != null) {
+			return "Coincides with " + base;
+		}
+		
+		if (base != null) {
+			String baseStr = base instanceof NamedElement ? ((NamedElement) base).getName() : base.toString();			
+			return Temporal.formatDuration(offset.abs()) + (offset.isNegative() ? " before " : " after ") + baseStr;
+		}
+		
+		return super.toString();
 	}
 
 } //TemporalImpl

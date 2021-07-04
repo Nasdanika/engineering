@@ -715,6 +715,16 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
+	public EReference getTemporal_Derivatives() {
+		return (EReference)temporalEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EOperation getTemporal__After__Temporal() {
 		return temporalEClass.getEOperations().get(0);
 	}
@@ -2750,6 +2760,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		createEAttribute(temporalEClass, TEMPORAL__INSTANT);
 		createEReference(temporalEClass, TEMPORAL__BASE);
 		createEAttribute(temporalEClass, TEMPORAL__OFFSET);
+		createEReference(temporalEClass, TEMPORAL__DERIVATIVES);
 		createEOperation(temporalEClass, TEMPORAL___AFTER__TEMPORAL);
 		createEOperation(temporalEClass, TEMPORAL___BEFORE__TEMPORAL);
 		createEOperation(temporalEClass, TEMPORAL___COINCIDES__TEMPORAL);
@@ -3106,8 +3117,9 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 
 		initEClass(temporalEClass, Temporal.class, "Temporal", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTemporal_Instant(), ecorePackage.getEDate(), "instant", null, 0, 1, Temporal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTemporal_Base(), this.getTemporal(), null, "base", null, 0, 1, Temporal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTemporal_Base(), this.getTemporal(), this.getTemporal_Derivatives(), "base", null, 0, 1, Temporal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTemporal_Offset(), this.getDuration(), "offset", null, 0, 1, Temporal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTemporal_Derivatives(), this.getTemporal(), this.getTemporal_Base(), "derivatives", null, 0, -1, Temporal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		EOperation op = initEOperation(getTemporal__After__Temporal(), ecorePackage.getEBooleanObject(), "after", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getTemporal(), "when", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -4177,6 +4189,12 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		   source,
 		   new String[] {
 			   "documentation", "Time offset from the base in [ISO-8601 durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) format. \n\nExamples:\n\n* ``P1H`` for one hour later.\n* ``-P20D`` or ``P-20D`` for 20 days before. Can be null (zero), e.g. if one [period](Period.html) starts right after another period ends."
+		   });
+		addAnnotation
+		  (getTemporal_Derivatives(),
+		   source,
+		   new String[] {
+			   "documentation", "Temporals which are based on this temporal."
 		   });
 		addAnnotation
 		  (getPeriod_Start(),

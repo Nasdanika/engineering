@@ -370,13 +370,22 @@ public interface EngineeringPackage extends EPackage {
 	int TEMPORAL__OFFSET = MODEL_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Derivatives</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPORAL__DERIVATIVES = MODEL_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Temporal</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TEMPORAL_FEATURE_COUNT = MODEL_ELEMENT_FEATURE_COUNT + 3;
+	int TEMPORAL_FEATURE_COUNT = MODEL_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The operation id for the '<em>After</em>' operation.
@@ -805,13 +814,22 @@ public interface EngineeringPackage extends EPackage {
 	int EVENT__OFFSET = NAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Derivatives</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT__DERIVATIVES = NAMED_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Event</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EVENT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 3;
+	int EVENT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The operation id for the '<em>After</em>' operation.
@@ -8896,6 +8914,17 @@ public interface EngineeringPackage extends EPackage {
 	EAttribute getTemporal_Offset();
 
 	/**
+	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.Temporal#getDerivatives <em>Derivatives</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Derivatives</em>'.
+	 * @see org.nasdanika.engineering.Temporal#getDerivatives()
+	 * @see #getTemporal()
+	 * @generated
+	 */
+	EReference getTemporal_Derivatives();
+
+	/**
 	 * Returns the meta object for the '{@link org.nasdanika.engineering.Temporal#after(org.nasdanika.engineering.Temporal) <em>After</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -11236,6 +11265,14 @@ public interface EngineeringPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute TEMPORAL__OFFSET = eINSTANCE.getTemporal_Offset();
+
+		/**
+		 * The meta object literal for the '<em><b>Derivatives</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TEMPORAL__DERIVATIVES = eINSTANCE.getTemporal_Derivatives();
 
 		/**
 		 * The meta object literal for the '<em><b>After</b></em>' operation.

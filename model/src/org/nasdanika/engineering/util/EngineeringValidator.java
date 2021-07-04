@@ -6,7 +6,6 @@ import java.time.Duration;
 import java.util.Collection;
 import java.util.Date;
 import java.util.Map;
-
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EObject;

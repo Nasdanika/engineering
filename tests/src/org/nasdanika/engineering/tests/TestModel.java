@@ -11,6 +11,7 @@ import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.time.Duration;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -39,6 +40,9 @@ import org.nasdanika.common.Util;
 import org.nasdanika.common.resources.Container;
 import org.nasdanika.common.resources.FileSystemContainer;
 import org.nasdanika.emf.EObjectAdaptable;
+import org.nasdanika.engineering.EngineeringFactory;
+import org.nasdanika.engineering.Event;
+import org.nasdanika.engineering.Temporal;
 import org.nasdanika.html.app.Action;
 import org.nasdanika.html.app.factories.BootstrapContainerApplicationSupplierFactory;
 import org.nasdanika.html.app.factories.ComposedLoader;
@@ -207,9 +211,30 @@ public class TestModel {
 	}
 	
 	@Test
-	public void testDuration() {
+	public void testTemporal() {
+		Temporal instant = EngineeringFactory.eINSTANCE.createTemporal();
+		instant.setInstant(new Date());
+		System.out.println(instant);
+		
 		Duration duration = DefaultConverter.INSTANCE.toDuration("PT12H10M");
-		System.out.println(duration.toMinutes());
+		
+		Event event = EngineeringFactory.eINSTANCE.createEvent();
+		event.setName("Start");
+		System.out.println(event);
+		
+		Event relative = EngineeringFactory.eINSTANCE.createEvent();
+		relative.setName("Mid-term");
+		relative.setBase(event);
+		relative.setOffset(duration);
+		System.out.println(relative);
+		System.out.println(relative.normalize());
+		
+		Event relative2 = EngineeringFactory.eINSTANCE.createEvent();
+		relative2.setName("End");
+		relative2.setBase(relative);
+		relative2.setOffset(Duration.parse("PT12H30M"));
+		System.out.println(relative2);
+		System.out.println(relative2.normalize());
 	}
 
 }
