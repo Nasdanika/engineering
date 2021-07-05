@@ -4,6 +4,7 @@ package org.nasdanika.engineering.impl;
 
 import java.lang.reflect.InvocationTargetException;
 import java.time.Duration;
+import java.time.Instant;
 import java.util.Collection;
 import java.util.Date;
 
@@ -29,6 +30,8 @@ import org.nasdanika.html.app.impl.Util;
  *   <li>{@link org.nasdanika.engineering.impl.EventImpl#getBase <em>Base</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EventImpl#getOffset <em>Offset</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EventImpl#getDerivatives <em>Derivatives</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.EventImpl#getLowerBounds <em>Lower Bounds</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.EventImpl#getUpperBounds <em>Upper Bounds</em>}</li>
  * </ul>
  *
  * @generated
@@ -42,7 +45,7 @@ public class EventImpl extends NamedElementImpl implements Event {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final Date INSTANT_EDEFAULT = null;
+	protected static final Instant INSTANT_EDEFAULT = null;
 
 	/**
 	 * The default value of the '{@link #getOffset() <em>Offset</em>}' attribute.
@@ -79,8 +82,8 @@ public class EventImpl extends NamedElementImpl implements Event {
 	 * @generated
 	 */
 	@Override
-	public Date getInstant() {
-		return (Date)eDynamicGet(EngineeringPackage.EVENT__INSTANT, EngineeringPackage.Literals.TEMPORAL__INSTANT, true, true);
+	public Instant getInstant() {
+		return (Instant)eDynamicGet(EngineeringPackage.EVENT__INSTANT, EngineeringPackage.Literals.TEMPORAL__INSTANT, true, true);
 	}
 
 	/**
@@ -89,7 +92,7 @@ public class EventImpl extends NamedElementImpl implements Event {
 	 * @generated
 	 */
 	@Override
-	public void setInstant(Date newInstant) {
+	public void setInstant(Instant newInstant) {
 		eDynamicSet(EngineeringPackage.EVENT__INSTANT, EngineeringPackage.Literals.TEMPORAL__INSTANT, newInstant);
 	}
 
@@ -155,12 +158,33 @@ public class EventImpl extends NamedElementImpl implements Event {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public EList<Temporal> getDerivatives() {
+		return getReferrers(EngineeringPackage.Literals.TEMPORAL__BASE);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public EList<Temporal> getDerivatives() {
-		return (EList<Temporal>)eDynamicGet(EngineeringPackage.EVENT__DERIVATIVES, EngineeringPackage.Literals.TEMPORAL__DERIVATIVES, true, true);
+	public EList<Temporal> getLowerBounds() {
+		return (EList<Temporal>)eDynamicGet(EngineeringPackage.EVENT__LOWER_BOUNDS, EngineeringPackage.Literals.TEMPORAL__LOWER_BOUNDS, true, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public EList<Temporal> getUpperBounds() {
+		return (EList<Temporal>)eDynamicGet(EngineeringPackage.EVENT__UPPER_BOUNDS, EngineeringPackage.Literals.TEMPORAL__UPPER_BOUNDS, true, true);
 	}
 
 	/**
@@ -206,6 +230,36 @@ public class EventImpl extends NamedElementImpl implements Event {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public Duration minus(Temporal when) {
+		return Event.super.minus(when);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public Temporal minus(Duration offset) {
+		return Event.super.minus(offset);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public Temporal plus(Duration offset) {
+		return Event.super.plus(offset);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -235,6 +289,10 @@ public class EventImpl extends NamedElementImpl implements Event {
 				return basicSetBase(null, msgs);
 			case EngineeringPackage.EVENT__DERIVATIVES:
 				return ((InternalEList<?>)getDerivatives()).basicRemove(otherEnd, msgs);
+			case EngineeringPackage.EVENT__LOWER_BOUNDS:
+				return ((InternalEList<?>)getLowerBounds()).basicRemove(otherEnd, msgs);
+			case EngineeringPackage.EVENT__UPPER_BOUNDS:
+				return ((InternalEList<?>)getUpperBounds()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -256,6 +314,10 @@ public class EventImpl extends NamedElementImpl implements Event {
 				return getOffset();
 			case EngineeringPackage.EVENT__DERIVATIVES:
 				return getDerivatives();
+			case EngineeringPackage.EVENT__LOWER_BOUNDS:
+				return getLowerBounds();
+			case EngineeringPackage.EVENT__UPPER_BOUNDS:
+				return getUpperBounds();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -270,7 +332,7 @@ public class EventImpl extends NamedElementImpl implements Event {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case EngineeringPackage.EVENT__INSTANT:
-				setInstant((Date)newValue);
+				setInstant((Instant)newValue);
 				return;
 			case EngineeringPackage.EVENT__BASE:
 				setBase((Temporal)newValue);
@@ -281,6 +343,14 @@ public class EventImpl extends NamedElementImpl implements Event {
 			case EngineeringPackage.EVENT__DERIVATIVES:
 				getDerivatives().clear();
 				getDerivatives().addAll((Collection<? extends Temporal>)newValue);
+				return;
+			case EngineeringPackage.EVENT__LOWER_BOUNDS:
+				getLowerBounds().clear();
+				getLowerBounds().addAll((Collection<? extends Temporal>)newValue);
+				return;
+			case EngineeringPackage.EVENT__UPPER_BOUNDS:
+				getUpperBounds().clear();
+				getUpperBounds().addAll((Collection<? extends Temporal>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -306,6 +376,12 @@ public class EventImpl extends NamedElementImpl implements Event {
 			case EngineeringPackage.EVENT__DERIVATIVES:
 				getDerivatives().clear();
 				return;
+			case EngineeringPackage.EVENT__LOWER_BOUNDS:
+				getLowerBounds().clear();
+				return;
+			case EngineeringPackage.EVENT__UPPER_BOUNDS:
+				getUpperBounds().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -326,6 +402,10 @@ public class EventImpl extends NamedElementImpl implements Event {
 				return OFFSET_EDEFAULT == null ? getOffset() != null : !OFFSET_EDEFAULT.equals(getOffset());
 			case EngineeringPackage.EVENT__DERIVATIVES:
 				return !getDerivatives().isEmpty();
+			case EngineeringPackage.EVENT__LOWER_BOUNDS:
+				return !getLowerBounds().isEmpty();
+			case EngineeringPackage.EVENT__UPPER_BOUNDS:
+				return !getUpperBounds().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -343,6 +423,8 @@ public class EventImpl extends NamedElementImpl implements Event {
 				case EngineeringPackage.EVENT__BASE: return EngineeringPackage.TEMPORAL__BASE;
 				case EngineeringPackage.EVENT__OFFSET: return EngineeringPackage.TEMPORAL__OFFSET;
 				case EngineeringPackage.EVENT__DERIVATIVES: return EngineeringPackage.TEMPORAL__DERIVATIVES;
+				case EngineeringPackage.EVENT__LOWER_BOUNDS: return EngineeringPackage.TEMPORAL__LOWER_BOUNDS;
+				case EngineeringPackage.EVENT__UPPER_BOUNDS: return EngineeringPackage.TEMPORAL__UPPER_BOUNDS;
 				default: return -1;
 			}
 		}
@@ -362,6 +444,8 @@ public class EventImpl extends NamedElementImpl implements Event {
 				case EngineeringPackage.TEMPORAL__BASE: return EngineeringPackage.EVENT__BASE;
 				case EngineeringPackage.TEMPORAL__OFFSET: return EngineeringPackage.EVENT__OFFSET;
 				case EngineeringPackage.TEMPORAL__DERIVATIVES: return EngineeringPackage.EVENT__DERIVATIVES;
+				case EngineeringPackage.TEMPORAL__LOWER_BOUNDS: return EngineeringPackage.EVENT__LOWER_BOUNDS;
+				case EngineeringPackage.TEMPORAL__UPPER_BOUNDS: return EngineeringPackage.EVENT__UPPER_BOUNDS;
 				default: return -1;
 			}
 		}
@@ -381,6 +465,9 @@ public class EventImpl extends NamedElementImpl implements Event {
 				case EngineeringPackage.TEMPORAL___BEFORE__TEMPORAL: return EngineeringPackage.EVENT___BEFORE__TEMPORAL;
 				case EngineeringPackage.TEMPORAL___COINCIDES__TEMPORAL: return EngineeringPackage.EVENT___COINCIDES__TEMPORAL;
 				case EngineeringPackage.TEMPORAL___NORMALIZE: return EngineeringPackage.EVENT___NORMALIZE;
+				case EngineeringPackage.TEMPORAL___MINUS__TEMPORAL: return EngineeringPackage.EVENT___MINUS__TEMPORAL;
+				case EngineeringPackage.TEMPORAL___MINUS__DURATION: return EngineeringPackage.EVENT___MINUS__DURATION;
+				case EngineeringPackage.TEMPORAL___PLUS__DURATION: return EngineeringPackage.EVENT___PLUS__DURATION;
 				default: return -1;
 			}
 		}
@@ -403,6 +490,12 @@ public class EventImpl extends NamedElementImpl implements Event {
 				return coincides((Temporal)arguments.get(0));
 			case EngineeringPackage.EVENT___NORMALIZE:
 				return normalize();
+			case EngineeringPackage.EVENT___MINUS__TEMPORAL:
+				return minus((Temporal)arguments.get(0));
+			case EngineeringPackage.EVENT___MINUS__DURATION:
+				return minus((Duration)arguments.get(0));
+			case EngineeringPackage.EVENT___PLUS__DURATION:
+				return plus((Duration)arguments.get(0));
 		}
 		return super.eInvoke(operationID, arguments);
 	}
@@ -416,9 +509,9 @@ public class EventImpl extends NamedElementImpl implements Event {
 			name = name + " ";
 		}
 		
-		Date instant = getInstant();
+		Instant instant = getInstant();
 		if (instant != null) {
-			return name + instant;
+			return name + new Date(instant.toEpochMilli());
 		}
 		
 		Duration offset = getOffset();

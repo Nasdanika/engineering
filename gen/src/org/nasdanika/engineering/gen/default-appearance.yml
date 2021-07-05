@@ -27,6 +27,22 @@ model-elements:
         roles: head    
   table-of-contents:
     roles: none
+  temporal:
+    features:
+      derivatives: 
+        roles: property
+      lower-bounds: 
+        roles: property
+      upper-bounds: 
+        roles: property
+  period:
+    features:
+      start:
+        roles: property    
+      duration:
+        roles: property    
+      end:
+        roles: property    
   module:
     icon: fas fa-cube
     features:

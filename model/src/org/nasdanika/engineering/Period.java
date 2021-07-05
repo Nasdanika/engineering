@@ -56,14 +56,13 @@ public interface Period extends ModelElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Base of this temporal.
+	 * Period end.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>End</em>' containment reference.
 	 * @see #setEnd(Temporal)
 	 * @see org.nasdanika.engineering.EngineeringPackage#getPeriod_End()
 	 * @model containment="true"
-	 *        annotation="urn:org.nasdanika exclusive-with='duration' homogenous='true' strict-containment='true'"
-	 *        annotation="urn:org.nasdanika"
+	 *        annotation="urn:org.nasdanika homogenous='true' strict-containment='true'"
 	 * @generated
 	 */
 	Temporal getEnd();
@@ -89,7 +88,6 @@ public interface Period extends ModelElement {
 	 * @see #setDuration(Duration)
 	 * @see org.nasdanika.engineering.EngineeringPackage#getPeriod_Duration()
 	 * @model dataType="org.nasdanika.engineering.Duration"
-	 *        annotation="urn:org.nasdanika exclusive-with='end'"
 	 * @generated
 	 */
 	Duration getDuration();

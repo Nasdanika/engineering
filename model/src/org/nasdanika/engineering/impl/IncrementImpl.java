@@ -181,11 +181,12 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public void setStart(Temporal newStart) {
 		eDynamicSet(EngineeringPackage.INCREMENT__START, EngineeringPackage.Literals.PERIOD__START, newStart);
+		PeriodImpl.onStart(this, newStart);
 	}
 
 	/**
@@ -211,11 +212,12 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public void setEnd(Temporal newEnd) {
 		eDynamicSet(EngineeringPackage.INCREMENT__END, EngineeringPackage.Literals.PERIOD__END, newEnd);
+		PeriodImpl.onEnd(this, newEnd);
 	}
 
 	/**
@@ -231,11 +233,12 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public void setDuration(Duration newDuration) {
 		eDynamicSet(EngineeringPackage.INCREMENT__DURATION, EngineeringPackage.Literals.PERIOD__DURATION, newDuration);
+		PeriodImpl.onDuration(this, newDuration);
 	}
 
 	/**

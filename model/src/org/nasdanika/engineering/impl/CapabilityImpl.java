@@ -93,11 +93,12 @@ public class CapabilityImpl extends NamedElementImpl implements Capability {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public void setStart(Temporal newStart) {
 		eDynamicSet(EngineeringPackage.CAPABILITY__START, EngineeringPackage.Literals.PERIOD__START, newStart);
+		PeriodImpl.onStart(this, newStart);
 	}
 
 	/**
@@ -123,11 +124,12 @@ public class CapabilityImpl extends NamedElementImpl implements Capability {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public void setEnd(Temporal newEnd) {
 		eDynamicSet(EngineeringPackage.CAPABILITY__END, EngineeringPackage.Literals.PERIOD__END, newEnd);
+		PeriodImpl.onEnd(this, newEnd);
 	}
 
 	/**
@@ -143,11 +145,12 @@ public class CapabilityImpl extends NamedElementImpl implements Capability {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public void setDuration(Duration newDuration) {
 		eDynamicSet(EngineeringPackage.CAPABILITY__DURATION, EngineeringPackage.Literals.PERIOD__DURATION, newDuration);
+		PeriodImpl.onDuration(this, newDuration);
 	}
 
 	/**

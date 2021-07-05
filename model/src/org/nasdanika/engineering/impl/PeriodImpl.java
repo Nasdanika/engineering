@@ -3,11 +3,12 @@
 package org.nasdanika.engineering.impl;
 
 import java.time.Duration;
-import org.eclipse.emf.common.notify.NotificationChain;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
+import org.nasdanika.emf.EObjectAdaptable;
+import org.nasdanika.emf.persistence.LoadTracker;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Period;
 import org.nasdanika.engineering.Temporal;
@@ -80,11 +81,62 @@ public class PeriodImpl extends ModelElementImpl implements Period {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public void setStart(Temporal newStart) {
 		eDynamicSet(EngineeringPackage.PERIOD__START, EngineeringPackage.Literals.PERIOD__START, newStart);
+		onStart(this, newStart);
+	}
+
+	/**
+	 * Computes end and duration from start and previously loaded things.
+	 * @param period
+	 * @param newStart
+	 */
+	protected static void onStart(Period period, Temporal newStart) {
+		if (newStart != null) {
+			LoadTracker loadTracker = EObjectAdaptable.adaptTo(period, LoadTracker.class);
+			if (loadTracker != null && loadTracker.isLoaded(EngineeringPackage.Literals.PERIOD__START)) {
+				if (loadTracker.isLoaded(EngineeringPackage.Literals.PERIOD__END)) {
+					if (!loadTracker.isLoaded(EngineeringPackage.Literals.PERIOD__DURATION)) {
+						period.setDuration(period.getEnd().minus(newStart));
+					}
+				} else if (loadTracker.isLoaded(EngineeringPackage.Literals.PERIOD__DURATION)) {
+					period.setEnd(newStart.plus(period.getDuration()));
+				}
+			}
+		}
+	}
+	
+	protected static void onEnd(Period period, Temporal newEnd) {
+		if (newEnd != null) {
+			LoadTracker loadTracker = EObjectAdaptable.adaptTo(period, LoadTracker.class);
+			if (loadTracker != null && loadTracker.isLoaded(EngineeringPackage.Literals.PERIOD__END)) {
+				if (loadTracker.isLoaded(EngineeringPackage.Literals.PERIOD__START)) {
+					if (!loadTracker.isLoaded(EngineeringPackage.Literals.PERIOD__DURATION)) {
+						period.setDuration(newEnd.minus(period.getStart()));
+					}
+				} else if (loadTracker.isLoaded(EngineeringPackage.Literals.PERIOD__DURATION)) {
+					period.setStart(newEnd.minus(period.getDuration()));
+				}
+			}
+		}
+	}
+	
+	protected static void onDuration(Period period, Duration newDuration) {
+		if (newDuration != null) {
+			LoadTracker loadTracker = EObjectAdaptable.adaptTo(period, LoadTracker.class);
+			if (loadTracker != null && loadTracker.isLoaded(EngineeringPackage.Literals.PERIOD__DURATION)) {
+				if (loadTracker.isLoaded(EngineeringPackage.Literals.PERIOD__START)) {
+					if (!loadTracker.isLoaded(EngineeringPackage.Literals.PERIOD__END)) {
+						period.setEnd(period.getStart().plus(newDuration));
+					}
+				} else if (loadTracker.isLoaded(EngineeringPackage.Literals.PERIOD__END)) {
+					period.setStart(period.getEnd().minus(newDuration));
+				}
+			}
+		}
 	}
 
 	/**
@@ -110,11 +162,12 @@ public class PeriodImpl extends ModelElementImpl implements Period {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public void setEnd(Temporal newEnd) {
 		eDynamicSet(EngineeringPackage.PERIOD__END, EngineeringPackage.Literals.PERIOD__END, newEnd);
+		onEnd(this, newEnd);
 	}
 
 	/**

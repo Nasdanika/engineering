@@ -246,6 +246,16 @@ engineering-module:
          journey elements. update references in docs. Generation sub-package.         
      - name: Table Of Contents - an option to include headers from markdown
        description: Leverage com.vladsch.flexmark.ext.toc.TocExtension
+     - name: Computing of journey elements start, duration, end
+       description: Relative to the top-most journey start. Perform at the view action level because of inheritance.
+     - name: Temporal bounds
+       description: E.g. not known for sure, but definitely in July - temporal contains upper and lower bounds. Use in before/after computations.
+     - name: Temporal and duration proabilities/distributions
+       description: Maps value -> probability. If present and actual values are not present, values are computes as averages.
+     - name: MemberAppearance format
+       description: For dates (instants) and numbers. 
+     - name: Organization/engineer start/end validation
+       description: Organization start shall not be after engineer's start and end shall not be before. 
          
      ### === Done === ###    
      - name: Start/end from Issue and Increment to Endeavor

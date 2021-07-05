@@ -95,11 +95,12 @@ public abstract class EngineeredElementImpl extends ForumImpl implements Enginee
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public void setStart(Temporal newStart) {
 		eDynamicSet(EngineeringPackage.ENGINEERED_ELEMENT__START, EngineeringPackage.Literals.PERIOD__START, newStart);
+		PeriodImpl.onStart(this, newStart);
 	}
 
 	/**
@@ -125,11 +126,12 @@ public abstract class EngineeredElementImpl extends ForumImpl implements Enginee
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public void setEnd(Temporal newEnd) {
 		eDynamicSet(EngineeringPackage.ENGINEERED_ELEMENT__END, EngineeringPackage.Literals.PERIOD__END, newEnd);
+		PeriodImpl.onEnd(this, newEnd);
 	}
 
 	/**
@@ -145,11 +147,12 @@ public abstract class EngineeredElementImpl extends ForumImpl implements Enginee
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public void setDuration(Duration newDuration) {
 		eDynamicSet(EngineeringPackage.ENGINEERED_ELEMENT__DURATION, EngineeringPackage.Literals.PERIOD__DURATION, newDuration);
+		PeriodImpl.onDuration(this, newDuration);
 	}
 
 	/**

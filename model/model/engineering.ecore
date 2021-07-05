@@ -100,9 +100,17 @@
       <details key="documentation" value="[Duration](https://docs.oracle.com/javase/8/docs/api/java/time/Duration.html) is an amount of time in the [ISO-8601 Duration format](https://en.wikipedia.org/wiki/ISO_8601#Duration). Supports days and smaller units. Weeks, months and years are not supported. Example: ``P28DT10H``."/>
     </eAnnotations>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="Instant" instanceClassName="java.time.Instant">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="[Duration](https://docs.oracle.com/javase/8/docs/api/java/time/Duration.html) is an amount of time in the [ISO-8601 Duration format](https://en.wikipedia.org/wiki/ISO_8601#Duration). Supports days and smaller units. Weeks, months and years are not supported. Example: ``P28DT10H``."/>
+    </eAnnotations>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Temporal" eSuperTypes="#//ModelElement">
     <eAnnotations source="urn:org.nasdanika">
       <details key="documentation-reference" value="doc/temporal.md"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="bounds offset"/>
     </eAnnotations>
     <eOperations name="after" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -127,13 +135,31 @@
         <details key="documentation" value="Returns a normalized instance of this temporal not contained in the model. Normalization walks through the temporal chain to the root temporal. If that root temporal is instant/absolute then the normalized instance would be instant/absolute. Otherwise the normalized instance would contain the root temporal as its base and offset would be the sum of all offsets."/>
       </eAnnotations>
     </eOperations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="instant" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate">
+    <eOperations name="minus" eType="#//Duration">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Returns [duration](Duration.html) difference between this temporal and the argument temporal - how much this temporal is after the argument on the time-line, if difference can be computed, e.g. both this temporal and the argument temporal are instant or trace to the same base temporal. Returns null otherwise."/>
+      </eAnnotations>
+      <eParameters name="when" eType="#//Temporal"/>
+    </eOperations>
+    <eOperations name="minus" eType="#//Temporal">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Returns a temporal based on this one offset by negation of the argument [duration](Duration.html). Null duration is treated as zero and set as-is (not negated)."/>
+      </eAnnotations>
+      <eParameters name="offset" eType="#//Duration"/>
+    </eOperations>
+    <eOperations name="plus" eType="#//Temporal">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Returns a temporal based on this one offset by the argument [duration](Duration.html). Duration can be null."/>
+      </eAnnotations>
+      <eParameters name="offset" eType="#//Duration"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="instant" eType="#//Instant">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="An absolute point on the time-line. E.g. ``2021/07/04``."/>
       </eAnnotations>
       <eAnnotations source="urn:org.nasdanika">
         <details key="default-feature" value="true"/>
-        <details key="exclusive-with" value="base offset"/>
+        <details key="exclusive-with" value="base"/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="base" eType="#//Temporal"
@@ -154,6 +180,26 @@
         eType="#//Temporal" derived="true" eOpposite="#//Temporal/base">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Temporals which are based on this temporal."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="lowerBounds" upperBound="-1"
+        eType="#//Temporal" containment="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Lower bounds of a temporal. E.g. exact time of some temporal might not be known at a moment, but it might be known that it should be not before than some other temporal - a lower bound. Lower bounds are used in validations and before/after computations. "/>
+      </eAnnotations>
+      <eAnnotations source="urn:org.nasdanika">
+        <details key="homogenous" value="true"/>
+        <details key="strict-containment" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="upperBounds" upperBound="-1"
+        eType="#//Temporal" containment="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Upper bounds of a temporal. E.g. exact time of some temporal might not be known at a moment, but it might be known that it should not be after some other temporal - an upper bound. Upper bounds are used in validations and before/after computations. "/>
+      </eAnnotations>
+      <eAnnotations source="urn:org.nasdanika">
+        <details key="homogenous" value="true"/>
+        <details key="strict-containment" value="true"/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
@@ -177,21 +223,16 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="end" eType="#//Temporal"
         containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Base of this temporal."/>
+        <details key="documentation" value="Period end."/>
       </eAnnotations>
       <eAnnotations source="urn:org.nasdanika">
-        <details key="exclusive-with" value="duration"/>
         <details key="homogenous" value="true"/>
         <details key="strict-containment" value="true"/>
       </eAnnotations>
-      <eAnnotations source="urn:org.nasdanika"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="duration" eType="#//Duration">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Positive period duration in [ISO-8601 durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) format. E.g. ``P1M`` for one month or ``P20D`` for 20 days."/>
-      </eAnnotations>
-      <eAnnotations source="urn:org.nasdanika">
-        <details key="exclusive-with" value="end"/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
@@ -651,7 +692,7 @@
       <details key="icon" value="fas fa-user"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="capacity"/>
+      <details key="constraints" value="capacity start_end"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="modules" upperBound="-1"
         eType="#//Module" containment="true">

@@ -3,6 +3,7 @@
 package org.nasdanika.engineering.impl;
 
 import java.time.Duration;
+import java.time.Instant;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EAttribute;
@@ -429,6 +430,13 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EDataType instantEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EDataType sectionStyleEDataType = null;
 
 	/**
@@ -725,6 +733,26 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
+	public EReference getTemporal_LowerBounds() {
+		return (EReference)temporalEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getTemporal_UpperBounds() {
+		return (EReference)temporalEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EOperation getTemporal__After__Temporal() {
 		return temporalEClass.getEOperations().get(0);
 	}
@@ -757,6 +785,36 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	@Override
 	public EOperation getTemporal__Normalize() {
 		return temporalEClass.getEOperations().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EOperation getTemporal__Minus__Temporal() {
+		return temporalEClass.getEOperations().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EOperation getTemporal__Minus__Duration() {
+		return temporalEClass.getEOperations().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EOperation getTemporal__Plus__Duration() {
+		return temporalEClass.getEOperations().get(6);
 	}
 
 	/**
@@ -2655,6 +2713,16 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
+	public EDataType getInstant() {
+		return instantEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EAttribute getDocument_Content() {
 		return (EAttribute)documentEClass.getEStructuralFeatures().get(0);
 	}
@@ -2761,10 +2829,15 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		createEReference(temporalEClass, TEMPORAL__BASE);
 		createEAttribute(temporalEClass, TEMPORAL__OFFSET);
 		createEReference(temporalEClass, TEMPORAL__DERIVATIVES);
+		createEReference(temporalEClass, TEMPORAL__LOWER_BOUNDS);
+		createEReference(temporalEClass, TEMPORAL__UPPER_BOUNDS);
 		createEOperation(temporalEClass, TEMPORAL___AFTER__TEMPORAL);
 		createEOperation(temporalEClass, TEMPORAL___BEFORE__TEMPORAL);
 		createEOperation(temporalEClass, TEMPORAL___COINCIDES__TEMPORAL);
 		createEOperation(temporalEClass, TEMPORAL___NORMALIZE);
+		createEOperation(temporalEClass, TEMPORAL___MINUS__TEMPORAL);
+		createEOperation(temporalEClass, TEMPORAL___MINUS__DURATION);
+		createEOperation(temporalEClass, TEMPORAL___PLUS__DURATION);
 
 		periodEClass = createEClass(PERIOD);
 		createEReference(periodEClass, PERIOD__START);
@@ -3007,6 +3080,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 
 		// Create data types
 		durationEDataType = createEDataType(DURATION);
+		instantEDataType = createEDataType(INSTANT);
 		sectionStyleEDataType = createEDataType(SECTION_STYLE);
 	}
 
@@ -3116,10 +3190,12 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		initEAttribute(getTableOfContents_Header(), ecorePackage.getEString(), "header", null, 0, 1, TableOfContents.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(temporalEClass, Temporal.class, "Temporal", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getTemporal_Instant(), ecorePackage.getEDate(), "instant", null, 0, 1, Temporal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTemporal_Instant(), this.getInstant(), "instant", null, 0, 1, Temporal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTemporal_Base(), this.getTemporal(), this.getTemporal_Derivatives(), "base", null, 0, 1, Temporal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTemporal_Offset(), this.getDuration(), "offset", null, 0, 1, Temporal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTemporal_Derivatives(), this.getTemporal(), this.getTemporal_Base(), "derivatives", null, 0, -1, Temporal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getTemporal_LowerBounds(), this.getTemporal(), null, "lowerBounds", null, 0, -1, Temporal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTemporal_UpperBounds(), this.getTemporal(), null, "upperBounds", null, 0, -1, Temporal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		EOperation op = initEOperation(getTemporal__After__Temporal(), ecorePackage.getEBooleanObject(), "after", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getTemporal(), "when", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -3131,6 +3207,15 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		addEParameter(op, this.getTemporal(), "when", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEOperation(getTemporal__Normalize(), this.getTemporal(), "normalize", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getTemporal__Minus__Temporal(), this.getDuration(), "minus", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getTemporal(), "when", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getTemporal__Minus__Duration(), this.getTemporal(), "minus", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getDuration(), "offset", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getTemporal__Plus__Duration(), this.getTemporal(), "plus", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getDuration(), "offset", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(periodEClass, Period.class, "Period", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getPeriod_Start(), this.getTemporal(), null, "start", null, 0, 1, Period.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3373,6 +3458,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 
 		// Initialize data types
 		initEDataType(durationEDataType, Duration.class, "Duration", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(instantEDataType, Instant.class, "Instant", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(sectionStyleEDataType, SectionStyle.class, "SectionStyle", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
@@ -3455,13 +3541,27 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		   source,
 		   new String[] {
 			   "default-feature", "true",
-			   "exclusive-with", "base offset"
+			   "exclusive-with", "base"
 		   });
 		addAnnotation
 		  (getTemporal_Base(),
 		   source,
 		   new String[] {
 			   "exclusive-with", "instant"
+		   });
+		addAnnotation
+		  (getTemporal_LowerBounds(),
+		   source,
+		   new String[] {
+			   "homogenous", "true",
+			   "strict-containment", "true"
+		   });
+		addAnnotation
+		  (getTemporal_UpperBounds(),
+		   source,
+		   new String[] {
+			   "homogenous", "true",
+			   "strict-containment", "true"
 		   });
 		addAnnotation
 		  (periodEClass,
@@ -3480,20 +3580,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		  (getPeriod_End(),
 		   source,
 		   new String[] {
-			   "exclusive-with", "duration",
 			   "homogenous", "true",
 			   "strict-containment", "true"
-		   });
-		addAnnotation
-		  (getPeriod_End(),
-		   source,
-		   new String[] {
-		   });
-		addAnnotation
-		  (getPeriod_Duration(),
-		   source,
-		   new String[] {
-			   "exclusive-with", "end"
 		   });
 		addAnnotation
 		  (namedElementEClass,
@@ -4149,6 +4237,12 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 			   "documentation", "[Duration](https://docs.oracle.com/javase/8/docs/api/java/time/Duration.html) is an amount of time in the [ISO-8601 Duration format](https://en.wikipedia.org/wiki/ISO_8601#Duration). Supports days and smaller units. Weeks, months and years are not supported. Example: ``P28DT10H``."
 		   });
 		addAnnotation
+		  (instantEDataType,
+		   source,
+		   new String[] {
+			   "documentation", "[Duration](https://docs.oracle.com/javase/8/docs/api/java/time/Duration.html) is an amount of time in the [ISO-8601 Duration format](https://en.wikipedia.org/wiki/ISO_8601#Duration). Supports days and smaller units. Weeks, months and years are not supported. Example: ``P28DT10H``."
+		   });
+		addAnnotation
 		  (getTemporal__After__Temporal(),
 		   source,
 		   new String[] {
@@ -4171,6 +4265,24 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		   source,
 		   new String[] {
 			   "documentation", "Returns a normalized instance of this temporal not contained in the model. Normalization walks through the temporal chain to the root temporal. If that root temporal is instant/absolute then the normalized instance would be instant/absolute. Otherwise the normalized instance would contain the root temporal as its base and offset would be the sum of all offsets."
+		   });
+		addAnnotation
+		  (getTemporal__Minus__Temporal(),
+		   source,
+		   new String[] {
+			   "documentation", "Returns [duration](Duration.html) difference between this temporal and the argument temporal - how much this temporal is after the argument on the time-line, if difference can be computed, e.g. both this temporal and the argument temporal are instant or trace to the same base temporal. Returns null otherwise."
+		   });
+		addAnnotation
+		  (getTemporal__Minus__Duration(),
+		   source,
+		   new String[] {
+			   "documentation", "Returns a temporal based on this one offset by negation of the argument [duration](Duration.html). Null duration is treated as zero and set as-is (not negated)."
+		   });
+		addAnnotation
+		  (getTemporal__Plus__Duration(),
+		   source,
+		   new String[] {
+			   "documentation", "Returns a temporal based on this one offset by the argument [duration](Duration.html). Duration can be null."
 		   });
 		addAnnotation
 		  (getTemporal_Instant(),
@@ -4197,6 +4309,18 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 			   "documentation", "Temporals which are based on this temporal."
 		   });
 		addAnnotation
+		  (getTemporal_LowerBounds(),
+		   source,
+		   new String[] {
+			   "documentation", "Lower bounds of a temporal. E.g. exact time of some temporal might not be known at a moment, but it might be known that it should be not before than some other temporal - a lower bound. Lower bounds are used in validations and before/after computations. "
+		   });
+		addAnnotation
+		  (getTemporal_UpperBounds(),
+		   source,
+		   new String[] {
+			   "documentation", "Upper bounds of a temporal. E.g. exact time of some temporal might not be known at a moment, but it might be known that it should not be after some other temporal - an upper bound. Upper bounds are used in validations and before/after computations. "
+		   });
+		addAnnotation
 		  (getPeriod_Start(),
 		   source,
 		   new String[] {
@@ -4206,7 +4330,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		  (getPeriod_End(),
 		   source,
 		   new String[] {
-			   "documentation", "Base of this temporal."
+			   "documentation", "Period end."
 		   });
 		addAnnotation
 		  (getPeriod_Duration(),
@@ -5089,6 +5213,12 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 			   "constraints", "path"
 		   });
 		addAnnotation
+		  (temporalEClass,
+		   source,
+		   new String[] {
+			   "constraints", "bounds offset"
+		   });
+		addAnnotation
 		  (periodEClass,
 		   source,
 		   new String[] {
@@ -5122,7 +5252,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		  (engineerEClass,
 		   source,
 		   new String[] {
-			   "constraints", "capacity"
+			   "constraints", "capacity start_end"
 		   });
 		addAnnotation
 		  (releaseEClass,

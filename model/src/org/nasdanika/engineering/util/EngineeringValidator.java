@@ -3,6 +3,7 @@
 package org.nasdanika.engineering.util;
 
 import java.time.Duration;
+import java.time.Instant;
 import java.util.Collection;
 import java.util.Date;
 import java.util.Map;
@@ -238,6 +239,8 @@ public class EngineeringValidator extends EObjectValidator {
 				return validateDecision((Decision)value, diagnostics, context);
 			case EngineeringPackage.DURATION:
 				return validateDuration((Duration)value, diagnostics, context);
+			case EngineeringPackage.INSTANT:
+				return validateInstant((Instant)value, diagnostics, context);
 			case EngineeringPackage.SECTION_STYLE:
 				return validateSectionStyle((SectionStyle)value, diagnostics, context);
 			default:
@@ -329,7 +332,55 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(temporal, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(temporal, diagnostics, context);
 		if (result || diagnostics != null) result &= validateModelElement_path(temporal, diagnostics, context);
+		if (result || diagnostics != null) result &= validateTemporal_bounds(temporal, diagnostics, context);
+		if (result || diagnostics != null) result &= validateTemporal_offset(temporal, diagnostics, context);
 		return result;
+	}
+
+	/**
+	 * Validates the bounds constraint of '<em>Temporal</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean validateTemporal_bounds(Temporal temporal, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (diagnostics != null) {
+			DiagnosticHelper helper = new DiagnosticHelper(diagnostics, DIAGNOSTIC_SOURCE, 0, temporal);
+			Temporal nt = temporal.normalize();
+			for (Temporal lowerBound: temporal.getLowerBounds()) {
+				Temporal nlb = lowerBound.normalize();
+				if (lowerBound.after(temporal) == Boolean.TRUE) {
+					helper.error("Lower bound " + nlb + " is after the temporal " + nt, EngineeringPackage.Literals.TEMPORAL__LOWER_BOUNDS);					
+				}
+				for (Temporal upperBound: temporal.getUpperBounds()) {
+					if (lowerBound.after(upperBound) == Boolean.TRUE) {
+						helper.error("Lower bound " + nlb + " is after upper bound" + upperBound.normalize(), EngineeringPackage.Literals.TEMPORAL__LOWER_BOUNDS);					
+					}					
+				}
+			}
+			for (Temporal upperBound: temporal.getUpperBounds()) {
+				if (temporal.after(upperBound) == Boolean.TRUE) {
+					helper.error("Upper bound " + upperBound.normalize() + " is before the temporal " + nt, EngineeringPackage.Literals.TEMPORAL__UPPER_BOUNDS);					
+				}
+			}
+			return helper.isSuccess();
+		}
+		return true;
+	}
+
+	/**
+	 * Validates the duration_without_base constraint of '<em>Temporal</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean validateTemporal_offset(Temporal temporal, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (diagnostics != null && temporal.getOffset() != null && temporal.getBase() == null && temporal.getInstant() == null) {
+			DiagnosticHelper helper = new DiagnosticHelper(diagnostics, DIAGNOSTIC_SOURCE, 0, temporal);
+			helper.error("Offset without base or instant", EngineeringPackage.Literals.TEMPORAL__OFFSET);					
+			return helper.isSuccess();
+		}
+		return true;
 	}
 
 	/**
@@ -387,6 +438,8 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(event, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(event, diagnostics, context);
 		if (result || diagnostics != null) result &= validateModelElement_path(event, diagnostics, context);
+		if (result || diagnostics != null) result &= validateTemporal_bounds(event, diagnostics, context);
+		if (result || diagnostics != null) result &= validateTemporal_offset(event, diagnostics, context);
 		return result;
 	}
 
@@ -421,10 +474,14 @@ public class EngineeringValidator extends EObjectValidator {
 	public boolean validatePeriod_start_end(Period period, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		if (diagnostics != null) {
 			DiagnosticHelper helper = new DiagnosticHelper(diagnostics, DIAGNOSTIC_SOURCE, 0, period);
-			Temporal start = period.getStart();
+			Temporal expectedEnd = period.getStart();
+			Duration duration = period.getDuration();
+			if (duration != null && expectedEnd != null) {
+				expectedEnd = expectedEnd.plus(duration);
+			}
 			Temporal end = period.getEnd();
-			if (start != null && end != null && start.after(end) == Boolean.TRUE) {
-				helper.error("Endeavor end " + end + " is before the start " + start, EngineeringPackage.Literals.PERIOD__END);
+			if (expectedEnd != null && end != null && expectedEnd.after(end) == Boolean.TRUE) {
+				helper.error("Period expected end " + expectedEnd.normalize() + " is after the end " + end.normalize(), EngineeringPackage.Literals.PERIOD__END);
 			}
 			
 			return helper.isSuccess();
@@ -471,7 +528,7 @@ public class EngineeringValidator extends EObjectValidator {
 					Date date = ctx.get(Date.class);					
 					if (date != null) {
 						Temporal ctxTemporal = EngineeringFactory.eINSTANCE.createTemporal();
-						ctxTemporal.setInstant(date);
+						ctxTemporal.setInstant(date.toInstant());
 						if (ctxTemporal.after(end) == Boolean.TRUE) {
 							helper.warning("Past due", EngineeringPackage.Literals.PERIOD__END);
 						}
@@ -797,7 +854,7 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(engineer, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(engineer, diagnostics, context);
 		if (result || diagnostics != null) result &= validateModelElement_path(engineer, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePeriod_start_end(engineer, diagnostics, context);
+		if (result || diagnostics != null) result &= validateEngineer_start_end(engineer, diagnostics, context);
 		if (result || diagnostics != null) result &= validateEngineer_capacity(engineer, diagnostics, context);
 		return result;
 	}
@@ -825,6 +882,48 @@ public class EngineeringValidator extends EObjectValidator {
 	}
 
 	/**
+	 * Validates the start_end constraint of '<em>Engineer</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean validateEngineer_start_end(Engineer engineer, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		DiagnosticHelper helper = new DiagnosticHelper(diagnostics, DIAGNOSTIC_SOURCE, 0, engineer);
+		if (diagnostics != null) {			
+			Temporal start = engineer.getStart();
+			Temporal end = engineer.getEnd();
+			EObject ec = engineer.eContainer();
+			if ((start != null || end != null) && ec instanceof Organization) {
+				Organization org = (Organization) ec;
+				Temporal oStart = org.getStart();
+				Temporal normalizedStart = start == null ? null : start.normalize();
+				Temporal normalizedEnd = end == null ? null : end.normalize();
+				if (oStart != null) {
+					Temporal normalizedOrgStart = oStart.normalize();
+					if (oStart.after(start) == Boolean.TRUE) {
+						helper.error("Engineer start " + normalizedStart + " is before the containing organization start " + normalizedOrgStart, EngineeringPackage.Literals.PERIOD__START);
+					}
+					if (oStart.after(end) == Boolean.TRUE) {
+						helper.error("Engineer end " + normalizedEnd + " is before the containing organization start " + normalizedOrgStart, EngineeringPackage.Literals.PERIOD__END);
+					}
+				}
+				Temporal oEnd = org.getEnd();
+				if (oEnd != null) {
+					Temporal normalizedOrgEnd = oEnd.normalize();
+					if (oEnd.before(start) == Boolean.TRUE) {
+						helper.error("Engineer start " + normalizedStart + " is after the containing organization end " + normalizedOrgEnd, EngineeringPackage.Literals.PERIOD__START);
+					}
+					if (oEnd.before(end) == Boolean.TRUE) {
+						helper.error("Engineer end " + normalizedEnd + " is after the containing organization end " + normalizedOrgEnd, EngineeringPackage.Literals.PERIOD__END);
+					}
+				}				
+			}
+		}
+
+		return validatePeriod_start_end(engineer, diagnostics, context) && helper.isSuccess();
+	}
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -840,7 +939,7 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(organization, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(organization, diagnostics, context);
 		if (result || diagnostics != null) result &= validateModelElement_path(organization, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePeriod_start_end(organization, diagnostics, context);
+		if (result || diagnostics != null) result &= validateEngineer_start_end(organization, diagnostics, context);
 		if (result || diagnostics != null) result &= validateEngineer_capacity(organization, diagnostics, context);
 		return result;
 	}
@@ -1377,6 +1476,15 @@ public class EngineeringValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateDuration(Duration duration, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateInstant(Instant instant, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 

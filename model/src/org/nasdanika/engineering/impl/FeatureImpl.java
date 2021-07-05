@@ -253,38 +253,38 @@ public class FeatureImpl extends EngineeredCapabilityImpl implements Feature {
 		return new BasicEList<>(allIssues);		
 	}	
 	
-	/**
-	 * Computes default end from children or increment if there are no children with set end.
-	 */
-	@Override
-	public Temporal getEnd() {
-		Temporal ret = super.getEnd();
-		if (ret == null) {
-			for (Issue child: getAllIssues()) {
-				Temporal cEnd = child.getEnd();
-				if (ret == null || (cEnd != null && ret.before(cEnd) == Boolean.TRUE)) {
-					ret = cEnd;
-				}
-			}
-		}
-		return ret;
-	}
-	
-	/**
-	 * Computes default end from children or increment if there are no children with set end.
-	 */
-	@Override
-	public Temporal getStart() {
-		Temporal ret = super.getStart();
-		if (ret == null) {
-			for (Issue child: getAllIssues()) {
-				Temporal cStart = child.getStart();
-				if (ret == null || (cStart != null && ret.after(cStart) == Boolean.TRUE)) {
-					ret = cStart;
-				}
-			}
-		}
-		return ret;
-	}
+//	/**
+//	 * Computes default end from children or increment if there are no children with set end.
+//	 */
+//	@Override
+//	public Temporal getEnd() {
+//		Temporal ret = super.getEnd();
+//		if (ret == null) {
+//			for (Issue child: getAllIssues()) {
+//				Temporal cEnd = child.getEnd();
+//				if (ret == null || (cEnd != null && ret.before(cEnd) == Boolean.TRUE)) {
+//					ret = cEnd;
+//				}
+//			}
+//		}
+//		return ret;
+//	}
+//	
+//	/**
+//	 * Computes default end from children or increment if there are no children with set end.
+//	 */
+//	@Override
+//	public Temporal getStart() {
+//		Temporal ret = super.getStart();
+//		if (ret == null) {
+//			for (Issue child: getAllIssues()) {
+//				Temporal cStart = child.getStart();
+//				if (ret == null || (cStart != null && ret.after(cStart) == Boolean.TRUE)) {
+//					ret = cStart;
+//				}
+//			}
+//		}
+//		return ret;
+//	}
 	
 } //FeatureImpl

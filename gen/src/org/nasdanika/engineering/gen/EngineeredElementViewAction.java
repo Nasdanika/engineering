@@ -169,7 +169,7 @@ public class EngineeredElementViewAction<T extends EngineeredElement> extends Fo
 			if (allIssues.isEmpty() || allIssues.equals(issues)) {
 				return Collections.emptyList();
 			}
-			Action allIssuesAction = ModelElementViewActionImpl.endeavorsAction(
+			Action allIssuesAction = endeavorsAction(
 					allIssues, 
 					null,
 					"All Issues", 

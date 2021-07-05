@@ -3,8 +3,11 @@
 package org.nasdanika.engineering;
 
 import java.time.Duration;
-import java.util.Date;
+import java.time.Instant;
+import java.util.function.Supplier;
+
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EClass;
 
 /**
  * <!-- begin-user-doc -->
@@ -19,10 +22,13 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.nasdanika.engineering.Temporal#getBase <em>Base</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Temporal#getOffset <em>Offset</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Temporal#getDerivatives <em>Derivatives</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.Temporal#getLowerBounds <em>Lower Bounds</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.Temporal#getUpperBounds <em>Upper Bounds</em>}</li>
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getTemporal()
  * @model annotation="urn:org.nasdanika documentation-reference='doc/temporal.md'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='bounds offset'"
  * @generated
  */
 public interface Temporal extends ModelElement {
@@ -34,12 +40,13 @@ public interface Temporal extends ModelElement {
 	 * An absolute point on the time-line. E.g. ``2021/07/04``.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Instant</em>' attribute.
-	 * @see #setInstant(Date)
+	 * @see #setInstant(Instant)
 	 * @see org.nasdanika.engineering.EngineeringPackage#getTemporal_Instant()
-	 * @model annotation="urn:org.nasdanika default-feature='true' exclusive-with='base offset'"
+	 * @model dataType="org.nasdanika.engineering.Instant"
+	 *        annotation="urn:org.nasdanika default-feature='true' exclusive-with='base'"
 	 * @generated
 	 */
-	Date getInstant();
+	Instant getInstant();
 
 	/**
 	 * Sets the value of the '{@link org.nasdanika.engineering.Temporal#getInstant <em>Instant</em>}' attribute.
@@ -49,7 +56,7 @@ public interface Temporal extends ModelElement {
 	 * @see #getInstant()
 	 * @generated
 	 */
-	void setInstant(Date value);
+	void setInstant(Instant value);
 
 	/**
 	 * Returns the value of the '<em><b>Base</b></em>' reference.
@@ -122,9 +129,41 @@ public interface Temporal extends ModelElement {
 	 * @see org.nasdanika.engineering.EngineeringPackage#getTemporal_Derivatives()
 	 * @see org.nasdanika.engineering.Temporal#getBase
 	 * @model opposite="base" derived="true"
-	 * @generated
+	 * @generated NOT
 	 */
 	EList<Temporal> getDerivatives();
+
+	/**
+	 * Returns the value of the '<em><b>Lower Bounds</b></em>' containment reference list.
+	 * The list contents are of type {@link org.nasdanika.engineering.Temporal}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Lower bounds of a temporal. E.g. exact time of some temporal might not be known at a moment, but it might be known that it should be not before than some other temporal - a lower bound. Lower bounds are used in validations and before/after computations. 
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Lower Bounds</em>' containment reference list.
+	 * @see org.nasdanika.engineering.EngineeringPackage#getTemporal_LowerBounds()
+	 * @model containment="true"
+	 *        annotation="urn:org.nasdanika homogenous='true' strict-containment='true'"
+	 * @generated
+	 */
+	EList<Temporal> getLowerBounds();
+
+	/**
+	 * Returns the value of the '<em><b>Upper Bounds</b></em>' containment reference list.
+	 * The list contents are of type {@link org.nasdanika.engineering.Temporal}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Upper bounds of a temporal. E.g. exact time of some temporal might not be known at a moment, but it might be known that it should not be after some other temporal - an upper bound. Upper bounds are used in validations and before/after computations. 
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Upper Bounds</em>' containment reference list.
+	 * @see org.nasdanika.engineering.EngineeringPackage#getTemporal_UpperBounds()
+	 * @model containment="true"
+	 *        annotation="urn:org.nasdanika homogenous='true' strict-containment='true'"
+	 * @generated
+	 */
+	EList<Temporal> getUpperBounds();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -139,16 +178,18 @@ public interface Temporal extends ModelElement {
 		if (when == null) {
 			return false;
 		}
-		Temporal nWhen = when.normalize();
-		Date whenInstant = nWhen.getInstant();
 		
 		Temporal nThis = normalize();
-		Date thisInstant = nThis.getInstant();
+		Instant thisInstant = nThis.getInstant();
+		
+		Temporal nWhen = when.normalize();
+		Instant whenInstant = nWhen.getInstant();
+		
 		if (whenInstant != null) {
 			if (thisInstant == null) {
 				return null;
 			}
-			return thisInstant.after(whenInstant);
+			return thisInstant.isAfter(whenInstant);
 		}
 		if (nWhen.getBase() == nThis.getBase()) {
 			Duration whenOffset = nWhen.getOffset();
@@ -162,6 +203,28 @@ public interface Temporal extends ModelElement {
 			}
 			return thisOffset.compareTo(whenOffset) > 0;
 		}
+		
+		/*
+		 * Bounds based - when upper bounds shall not be after this or its lower bounds
+		 * If any of when upper bounds is before this or lower bound then this is after when 
+		 * if any of lower bounds are after when then this is after when 
+		 */
+		for (Temporal whenUpperBound: when.getUpperBounds()) {
+			if (this.after(whenUpperBound) == Boolean.TRUE) {
+				return true;
+			}
+			for (Temporal lowerBound: getLowerBounds()) {
+				if (lowerBound.after(whenUpperBound) == Boolean.TRUE) {
+					return true;
+				}
+			}
+		}
+		for (Temporal lowerBound: getLowerBounds()) {
+			if (lowerBound.after(when) == Boolean.TRUE) {
+				return true;
+			}
+		}
+		
 		return null;		
 	}
 
@@ -195,10 +258,10 @@ public interface Temporal extends ModelElement {
 			return false;
 		}
 		Temporal nWhen = when.normalize();
-		Date whenInstant = nWhen.getInstant();
+		Instant whenInstant = nWhen.getInstant();
 		
 		Temporal nThis = normalize();
-		Date thisInstant = nThis.getInstant();
+		Instant thisInstant = nThis.getInstant();
 		if (whenInstant != null) {
 			if (thisInstant == null) {
 				return null;
@@ -230,13 +293,28 @@ public interface Temporal extends ModelElement {
 	 * @generated NOT
 	 */
 	default Temporal normalize() {
+		Supplier<Temporal> retSupplier = () -> {
+			EClass eClass = eClass();
+			Temporal ret = (Temporal) eClass.getEPackage().getEFactoryInstance().create(eClass);
+			if (this instanceof Event) {
+				((Event) ret).setName(((Event) this).getName());
+			}
+			return ret;
+		};
 		Temporal base = getBase();
 		if (base == null) {
-			return this;
+			Duration offset = getOffset();
+			Instant instant = getInstant();
+			if (instant == null || offset == null || Duration.ZERO.equals(offset)) {
+				return this;
+			}
+			Temporal ret = retSupplier.get();
+			ret.setInstant(instant.plus(offset));
+			return ret;
 		}
 		Temporal superBase = base.getBase();
 		if (superBase == null) {
-			Date bInstant = base.getInstant();
+			Instant bInstant = base.getInstant();
 			if (bInstant == null) {			
 				return this;
 			}
@@ -244,14 +322,8 @@ public interface Temporal extends ModelElement {
 			if (offset == null || offset.equals(Duration.ZERO)) {
 				return base;
 			}
-			Temporal ret;
-			if (this instanceof Event) {
-				ret = EngineeringFactory.eINSTANCE.createEvent();
-				((Event) ret).setName(((Event) this).getName());
-			} else {
-				ret = EngineeringFactory.eINSTANCE.createTemporal();
-			}
-			ret.setInstant(new Date(bInstant.toInstant().plus(offset).toEpochMilli()));	
+			Temporal ret = retSupplier.get();
+			ret.setInstant(bInstant.plus(offset));	
 			return ret;
 		}
 		Temporal nBase = base.normalize();
@@ -259,24 +331,109 @@ public interface Temporal extends ModelElement {
 		if (offset == null || offset.equals(Duration.ZERO)) {
 			return nBase;
 		}
-		Temporal ret;
-		if (this instanceof Event) {
-			ret = EngineeringFactory.eINSTANCE.createEvent();
-			((Event) ret).setName(((Event) this).getName());
-		} else {
-			ret = EngineeringFactory.eINSTANCE.createTemporal();
-		}
-		Date nInstant = nBase.getInstant();
+		Temporal ret = retSupplier.get();
+		Instant nInstant = nBase.getInstant();
 		if (nInstant == null) {
 			ret.setBase(nBase.getBase());
 			Duration nOffset = nBase.getOffset();
 			ret.setOffset(nOffset == null ? offset : offset.plus(nOffset));
 		} else {
-			ret.setInstant(new Date(nInstant.toInstant().plus(offset).toEpochMilli()));
+			ret.setInstant(nInstant.plus(offset));
 		}
 		return ret;		
 	}
 	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Returns [duration](Duration.html) difference between this temporal and the argument temporal - how much this temporal is after the argument on the time-line, if difference can be computed, e.g. both this temporal and the argument temporal are instant or trace to the same base temporal. Returns null otherwise.
+	 * <!-- end-model-doc -->
+	 * @model dataType="org.nasdanika.engineering.Duration"
+	 * @generated NOT
+	 */
+	default Duration minus(Temporal when) {
+		if (when == null) {
+			return null;
+		}
+		
+		Temporal normalizedWhen = when.normalize();
+		Temporal normalizedThis = normalize();
+		
+		Instant whenInstant = normalizedWhen.getInstant();
+		Instant thisInstant = normalizedThis.getInstant();
+
+		if (thisInstant != null) {
+			if (whenInstant == null) {
+				return null;
+			}
+			return Duration.ofMillis(thisInstant.toEpochMilli() - whenInstant.toEpochMilli());
+		}
+		
+		if (whenInstant != null) {
+			return null;
+		}
+		
+		Temporal thisBase = normalizedThis.getBase();
+		Temporal whenBase = normalizedWhen.getBase();
+		
+		if (thisBase == null || whenBase == null) {
+			return null;
+		}
+		
+		if (thisBase != whenBase || thisBase.coincides(whenBase) != Boolean.TRUE) {
+			return null;
+		}
+		
+		Duration thisOffset = normalizedThis.getOffset();
+		if (thisOffset == null) {
+			thisOffset = Duration.ZERO;
+		}
+		
+		Duration whenOffset = normalizedWhen.getOffset();
+		if (whenOffset == null) {
+			whenOffset = Duration.ZERO;
+		}
+		
+		return thisOffset.minus(whenOffset);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Returns a temporal based on this one offset by negation of the argument [duration](Duration.html). Null duration is treated as zero and set as-is (not negated).
+	 * <!-- end-model-doc -->
+	 * @model offsetDataType="org.nasdanika.engineering.Duration"
+	 * @generated NOT
+	 */
+	default Temporal minus(Duration offset) {
+		EClass eClass = eClass();
+		Temporal ret = (Temporal) eClass.getEPackage().getEFactoryInstance().create(EngineeringPackage.Literals.TEMPORAL);
+		ret.setBase(this);
+		if (offset != null) {
+			ret.setOffset(offset.negated());
+		}
+		return ret;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Returns a temporal based on this one offset by the argument [duration](Duration.html). Duration can be null.
+	 * <!-- end-model-doc -->
+	 * @model offsetDataType="org.nasdanika.engineering.Duration"
+	 * @generated NOT
+	 */
+	default Temporal plus(Duration offset) {
+		EClass eClass = eClass();
+		Temporal ret = (Temporal) eClass.getEPackage().getEFactoryInstance().create(EngineeringPackage.Literals.TEMPORAL);
+		ret.setBase(this);
+		ret.setOffset(offset);
+		return ret;		
+	}
+
 	static String formatDuration(Duration duration) {
 		if (duration == null || duration.equals(Duration.ZERO)) {
 			return "Zero";
@@ -285,35 +442,35 @@ public interface Temporal extends ModelElement {
 		StringBuilder ret = new StringBuilder();
 		long days = duration.toDays();
 		if (days != 0) {
-			ret.append(days).append(" days");
+			ret.append(days).append(days == 1 ? " day" : " days");
 		}
 		long hours = duration.toHoursPart();
 		if (hours != 0) {
 			if (ret.length() > 0) {
 				ret.append(" ");
 			}
-			ret.append(hours).append(" hours");			
+			ret.append(hours).append(hours == 1 ? " hour" : " hours");			
 		}		
 		long minutes = duration.toMinutesPart();
 		if (minutes != 0) {
 			if (ret.length() > 0) {
 				ret.append(" ");
 			}	
-			ret.append(minutes).append(" minutes");
+			ret.append(minutes).append(minutes == 1 ? " minute" : " minutes");
 		}
 		long seconds = duration.toSecondsPart();
 		if (seconds != 0) {
 			if (ret.length() > 0) {
 				ret.append(" ");
 			}			
-			ret.append(seconds).append(" seconds");
+			ret.append(seconds).append(seconds == 1 ? " second" : " seconds");
 		}
 		long nanos = duration.toNanosPart();
 		if (nanos != 0) {
 			if (ret.length() > 0) {
 				ret.append(" ");
 			}			
-			ret.append(nanos).append(" nanoseconds");
+			ret.append(nanos).append(nanos == 1 ? " nanosecond" : " nanoseconds");
 		}
 		
 		return ret.toString();

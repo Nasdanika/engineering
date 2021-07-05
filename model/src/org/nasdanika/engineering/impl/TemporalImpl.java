@@ -4,6 +4,7 @@ package org.nasdanika.engineering.impl;
 
 import java.lang.reflect.InvocationTargetException;
 import java.time.Duration;
+import java.time.Instant;
 import java.util.Collection;
 import java.util.Date;
 
@@ -13,7 +14,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.nasdanika.engineering.EngineeringPackage;
-import org.nasdanika.engineering.NamedElement;
 import org.nasdanika.engineering.Temporal;
 
 /**
@@ -28,6 +28,8 @@ import org.nasdanika.engineering.Temporal;
  *   <li>{@link org.nasdanika.engineering.impl.TemporalImpl#getBase <em>Base</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.TemporalImpl#getOffset <em>Offset</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.TemporalImpl#getDerivatives <em>Derivatives</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.TemporalImpl#getLowerBounds <em>Lower Bounds</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.TemporalImpl#getUpperBounds <em>Upper Bounds</em>}</li>
  * </ul>
  *
  * @generated
@@ -41,7 +43,7 @@ public class TemporalImpl extends ModelElementImpl implements Temporal {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final Date INSTANT_EDEFAULT = null;
+	protected static final Instant INSTANT_EDEFAULT = null;
 
 	/**
 	 * The default value of the '{@link #getOffset() <em>Offset</em>}' attribute.
@@ -78,8 +80,8 @@ public class TemporalImpl extends ModelElementImpl implements Temporal {
 	 * @generated
 	 */
 	@Override
-	public Date getInstant() {
-		return (Date)eDynamicGet(EngineeringPackage.TEMPORAL__INSTANT, EngineeringPackage.Literals.TEMPORAL__INSTANT, true, true);
+	public Instant getInstant() {
+		return (Instant)eDynamicGet(EngineeringPackage.TEMPORAL__INSTANT, EngineeringPackage.Literals.TEMPORAL__INSTANT, true, true);
 	}
 
 	/**
@@ -88,7 +90,7 @@ public class TemporalImpl extends ModelElementImpl implements Temporal {
 	 * @generated
 	 */
 	@Override
-	public void setInstant(Date newInstant) {
+	public void setInstant(Instant newInstant) {
 		eDynamicSet(EngineeringPackage.TEMPORAL__INSTANT, EngineeringPackage.Literals.TEMPORAL__INSTANT, newInstant);
 	}
 
@@ -164,6 +166,28 @@ public class TemporalImpl extends ModelElementImpl implements Temporal {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public EList<Temporal> getLowerBounds() {
+		return (EList<Temporal>)eDynamicGet(EngineeringPackage.TEMPORAL__LOWER_BOUNDS, EngineeringPackage.Literals.TEMPORAL__LOWER_BOUNDS, true, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public EList<Temporal> getUpperBounds() {
+		return (EList<Temporal>)eDynamicGet(EngineeringPackage.TEMPORAL__UPPER_BOUNDS, EngineeringPackage.Literals.TEMPORAL__UPPER_BOUNDS, true, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
 	@Override
@@ -204,6 +228,36 @@ public class TemporalImpl extends ModelElementImpl implements Temporal {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public Duration minus(Temporal when) {
+		return Temporal.super.minus(when);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public Temporal minus(Duration offset) {
+		return Temporal.super.minus(offset);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public Temporal plus(Duration offset) {
+		return Temporal.super.plus(offset);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -233,6 +287,10 @@ public class TemporalImpl extends ModelElementImpl implements Temporal {
 				return basicSetBase(null, msgs);
 			case EngineeringPackage.TEMPORAL__DERIVATIVES:
 				return ((InternalEList<?>)getDerivatives()).basicRemove(otherEnd, msgs);
+			case EngineeringPackage.TEMPORAL__LOWER_BOUNDS:
+				return ((InternalEList<?>)getLowerBounds()).basicRemove(otherEnd, msgs);
+			case EngineeringPackage.TEMPORAL__UPPER_BOUNDS:
+				return ((InternalEList<?>)getUpperBounds()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -254,6 +312,10 @@ public class TemporalImpl extends ModelElementImpl implements Temporal {
 				return getOffset();
 			case EngineeringPackage.TEMPORAL__DERIVATIVES:
 				return getDerivatives();
+			case EngineeringPackage.TEMPORAL__LOWER_BOUNDS:
+				return getLowerBounds();
+			case EngineeringPackage.TEMPORAL__UPPER_BOUNDS:
+				return getUpperBounds();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -268,7 +330,7 @@ public class TemporalImpl extends ModelElementImpl implements Temporal {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case EngineeringPackage.TEMPORAL__INSTANT:
-				setInstant((Date)newValue);
+				setInstant((Instant)newValue);
 				return;
 			case EngineeringPackage.TEMPORAL__BASE:
 				setBase((Temporal)newValue);
@@ -279,6 +341,14 @@ public class TemporalImpl extends ModelElementImpl implements Temporal {
 			case EngineeringPackage.TEMPORAL__DERIVATIVES:
 				getDerivatives().clear();
 				getDerivatives().addAll((Collection<? extends Temporal>)newValue);
+				return;
+			case EngineeringPackage.TEMPORAL__LOWER_BOUNDS:
+				getLowerBounds().clear();
+				getLowerBounds().addAll((Collection<? extends Temporal>)newValue);
+				return;
+			case EngineeringPackage.TEMPORAL__UPPER_BOUNDS:
+				getUpperBounds().clear();
+				getUpperBounds().addAll((Collection<? extends Temporal>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -304,6 +374,12 @@ public class TemporalImpl extends ModelElementImpl implements Temporal {
 			case EngineeringPackage.TEMPORAL__DERIVATIVES:
 				getDerivatives().clear();
 				return;
+			case EngineeringPackage.TEMPORAL__LOWER_BOUNDS:
+				getLowerBounds().clear();
+				return;
+			case EngineeringPackage.TEMPORAL__UPPER_BOUNDS:
+				getUpperBounds().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -324,6 +400,10 @@ public class TemporalImpl extends ModelElementImpl implements Temporal {
 				return OFFSET_EDEFAULT == null ? getOffset() != null : !OFFSET_EDEFAULT.equals(getOffset());
 			case EngineeringPackage.TEMPORAL__DERIVATIVES:
 				return !getDerivatives().isEmpty();
+			case EngineeringPackage.TEMPORAL__LOWER_BOUNDS:
+				return !getLowerBounds().isEmpty();
+			case EngineeringPackage.TEMPORAL__UPPER_BOUNDS:
+				return !getUpperBounds().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -344,15 +424,21 @@ public class TemporalImpl extends ModelElementImpl implements Temporal {
 				return coincides((Temporal)arguments.get(0));
 			case EngineeringPackage.TEMPORAL___NORMALIZE:
 				return normalize();
+			case EngineeringPackage.TEMPORAL___MINUS__TEMPORAL:
+				return minus((Temporal)arguments.get(0));
+			case EngineeringPackage.TEMPORAL___MINUS__DURATION:
+				return minus((Duration)arguments.get(0));
+			case EngineeringPackage.TEMPORAL___PLUS__DURATION:
+				return plus((Duration)arguments.get(0));
 		}
 		return super.eInvoke(operationID, arguments);
 	}
 	
 	@Override
 	public String toString() {
-		Date instant = getInstant();
+		Instant instant = getInstant();
 		if (instant != null) {
-			return instant.toString();
+			return new Date(instant.toEpochMilli()).toString();
 		}
 		
 		Duration offset = getOffset();
@@ -362,8 +448,7 @@ public class TemporalImpl extends ModelElementImpl implements Temporal {
 		}
 		
 		if (base != null) {
-			String baseStr = base instanceof NamedElement ? ((NamedElement) base).getName() : base.toString();			
-			return Temporal.formatDuration(offset.abs()) + (offset.isNegative() ? " before " : " after ") + baseStr;
+			return Temporal.formatDuration(offset.abs()) + (offset.isNegative() ? " before " : " after ") + base;
 		}
 		
 		return super.toString();

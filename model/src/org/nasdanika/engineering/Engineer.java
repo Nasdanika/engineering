@@ -35,7 +35,7 @@ import org.nasdanika.engineering.flow.Activity;
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getEngineer()
  * @model annotation="urn:org.nasdanika documentation-reference='doc/engineer.md' icon='fas fa-user'"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='capacity'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='capacity start_end'"
  * @generated
  */
 public interface Engineer extends Persona {

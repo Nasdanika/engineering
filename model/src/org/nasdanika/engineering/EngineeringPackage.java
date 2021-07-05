@@ -379,13 +379,31 @@ public interface EngineeringPackage extends EPackage {
 	int TEMPORAL__DERIVATIVES = MODEL_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Lower Bounds</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPORAL__LOWER_BOUNDS = MODEL_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Upper Bounds</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPORAL__UPPER_BOUNDS = MODEL_ELEMENT_FEATURE_COUNT + 5;
+
+	/**
 	 * The number of structural features of the '<em>Temporal</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TEMPORAL_FEATURE_COUNT = MODEL_ELEMENT_FEATURE_COUNT + 4;
+	int TEMPORAL_FEATURE_COUNT = MODEL_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
 	 * The operation id for the '<em>After</em>' operation.
@@ -424,13 +442,40 @@ public interface EngineeringPackage extends EPackage {
 	int TEMPORAL___NORMALIZE = MODEL_ELEMENT_OPERATION_COUNT + 3;
 
 	/**
+	 * The operation id for the '<em>Minus</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPORAL___MINUS__TEMPORAL = MODEL_ELEMENT_OPERATION_COUNT + 4;
+
+	/**
+	 * The operation id for the '<em>Minus</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPORAL___MINUS__DURATION = MODEL_ELEMENT_OPERATION_COUNT + 5;
+
+	/**
+	 * The operation id for the '<em>Plus</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPORAL___PLUS__DURATION = MODEL_ELEMENT_OPERATION_COUNT + 6;
+
+	/**
 	 * The number of operations of the '<em>Temporal</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TEMPORAL_OPERATION_COUNT = MODEL_ELEMENT_OPERATION_COUNT + 4;
+	int TEMPORAL_OPERATION_COUNT = MODEL_ELEMENT_OPERATION_COUNT + 7;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.PeriodImpl <em>Period</em>}' class.
@@ -823,13 +868,31 @@ public interface EngineeringPackage extends EPackage {
 	int EVENT__DERIVATIVES = NAMED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Lower Bounds</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT__LOWER_BOUNDS = NAMED_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Upper Bounds</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT__UPPER_BOUNDS = NAMED_ELEMENT_FEATURE_COUNT + 5;
+
+	/**
 	 * The number of structural features of the '<em>Event</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EVENT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 4;
+	int EVENT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
 	 * The operation id for the '<em>After</em>' operation.
@@ -868,13 +931,40 @@ public interface EngineeringPackage extends EPackage {
 	int EVENT___NORMALIZE = NAMED_ELEMENT_OPERATION_COUNT + 3;
 
 	/**
+	 * The operation id for the '<em>Minus</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT___MINUS__TEMPORAL = NAMED_ELEMENT_OPERATION_COUNT + 4;
+
+	/**
+	 * The operation id for the '<em>Minus</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT___MINUS__DURATION = NAMED_ELEMENT_OPERATION_COUNT + 5;
+
+	/**
+	 * The operation id for the '<em>Plus</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT___PLUS__DURATION = NAMED_ELEMENT_OPERATION_COUNT + 6;
+
+	/**
 	 * The number of operations of the '<em>Event</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EVENT_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 4;
+	int EVENT_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 7;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.Alignable <em>Alignable</em>}' class.
@@ -8697,6 +8787,16 @@ public interface EngineeringPackage extends EPackage {
 	int DURATION = 50;
 
 	/**
+	 * The meta object id for the '<em>Instant</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see java.time.Instant
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getInstant()
+	 * @generated
+	 */
+	int INSTANT = 51;
+
+	/**
 	 * The meta object id for the '<em>Section Style</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8704,7 +8804,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getSectionStyle()
 	 * @generated
 	 */
-	int SECTION_STYLE = 51;
+	int SECTION_STYLE = 52;
 
 
 	/**
@@ -8925,6 +9025,28 @@ public interface EngineeringPackage extends EPackage {
 	EReference getTemporal_Derivatives();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link org.nasdanika.engineering.Temporal#getLowerBounds <em>Lower Bounds</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Lower Bounds</em>'.
+	 * @see org.nasdanika.engineering.Temporal#getLowerBounds()
+	 * @see #getTemporal()
+	 * @generated
+	 */
+	EReference getTemporal_LowerBounds();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.nasdanika.engineering.Temporal#getUpperBounds <em>Upper Bounds</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Upper Bounds</em>'.
+	 * @see org.nasdanika.engineering.Temporal#getUpperBounds()
+	 * @see #getTemporal()
+	 * @generated
+	 */
+	EReference getTemporal_UpperBounds();
+
+	/**
 	 * Returns the meta object for the '{@link org.nasdanika.engineering.Temporal#after(org.nasdanika.engineering.Temporal) <em>After</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8963,6 +9085,36 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getTemporal__Normalize();
+
+	/**
+	 * Returns the meta object for the '{@link org.nasdanika.engineering.Temporal#minus(org.nasdanika.engineering.Temporal) <em>Minus</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Minus</em>' operation.
+	 * @see org.nasdanika.engineering.Temporal#minus(org.nasdanika.engineering.Temporal)
+	 * @generated
+	 */
+	EOperation getTemporal__Minus__Temporal();
+
+	/**
+	 * Returns the meta object for the '{@link org.nasdanika.engineering.Temporal#minus(java.time.Duration) <em>Minus</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Minus</em>' operation.
+	 * @see org.nasdanika.engineering.Temporal#minus(java.time.Duration)
+	 * @generated
+	 */
+	EOperation getTemporal__Minus__Duration();
+
+	/**
+	 * Returns the meta object for the '{@link org.nasdanika.engineering.Temporal#plus(java.time.Duration) <em>Plus</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Plus</em>' operation.
+	 * @see org.nasdanika.engineering.Temporal#plus(java.time.Duration)
+	 * @generated
+	 */
+	EOperation getTemporal__Plus__Duration();
 
 	/**
 	 * Returns the meta object for class '{@link org.nasdanika.engineering.Period <em>Period</em>}'.
@@ -11018,6 +11170,20 @@ public interface EngineeringPackage extends EPackage {
 	EDataType getDuration();
 
 	/**
+	 * Returns the meta object for data type '{@link java.time.Instant <em>Instant</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+     * <!-- begin-model-doc -->
+     * [Duration](https://docs.oracle.com/javase/8/docs/api/java/time/Duration.html) is an amount of time in the [ISO-8601 Duration format](https://en.wikipedia.org/wiki/ISO_8601#Duration). Supports days and smaller units. Weeks, months and years are not supported. Example: ``P28DT10H``.
+     * <!-- end-model-doc -->
+	 * @return the meta object for data type '<em>Instant</em>'.
+	 * @see java.time.Instant
+	 * @model instanceClass="java.time.Instant"
+	 * @generated
+	 */
+	EDataType getInstant();
+
+	/**
 	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Document#getContent <em>Content</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -11275,6 +11441,22 @@ public interface EngineeringPackage extends EPackage {
 		EReference TEMPORAL__DERIVATIVES = eINSTANCE.getTemporal_Derivatives();
 
 		/**
+		 * The meta object literal for the '<em><b>Lower Bounds</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TEMPORAL__LOWER_BOUNDS = eINSTANCE.getTemporal_LowerBounds();
+
+		/**
+		 * The meta object literal for the '<em><b>Upper Bounds</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TEMPORAL__UPPER_BOUNDS = eINSTANCE.getTemporal_UpperBounds();
+
+		/**
 		 * The meta object literal for the '<em><b>After</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -11305,6 +11487,30 @@ public interface EngineeringPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation TEMPORAL___NORMALIZE = eINSTANCE.getTemporal__Normalize();
+
+		/**
+		 * The meta object literal for the '<em><b>Minus</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation TEMPORAL___MINUS__TEMPORAL = eINSTANCE.getTemporal__Minus__Temporal();
+
+		/**
+		 * The meta object literal for the '<em><b>Minus</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation TEMPORAL___MINUS__DURATION = eINSTANCE.getTemporal__Minus__Duration();
+
+		/**
+		 * The meta object literal for the '<em><b>Plus</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation TEMPORAL___PLUS__DURATION = eINSTANCE.getTemporal__Plus__Duration();
 
 		/**
 		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.PeriodImpl <em>Period</em>}' class.
@@ -12909,6 +13115,16 @@ public interface EngineeringPackage extends EPackage {
 		 * @generated
 		 */
 		EDataType DURATION = eINSTANCE.getDuration();
+
+		/**
+		 * The meta object literal for the '<em>Instant</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see java.time.Instant
+		 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getInstant()
+		 * @generated
+		 */
+		EDataType INSTANT = eINSTANCE.getInstant();
 
 		/**
 		 * The meta object literal for the '<em><b>Content</b></em>' attribute feature.

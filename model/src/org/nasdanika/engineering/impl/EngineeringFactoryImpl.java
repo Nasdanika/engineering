@@ -3,6 +3,7 @@
 package org.nasdanika.engineering.impl;
 
 import java.time.Duration;
+import java.time.Instant;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EClass;
@@ -161,6 +162,8 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 		switch (eDataType.getClassifierID()) {
 			case EngineeringPackage.DURATION:
 				return createDurationFromString(eDataType, initialValue);
+			case EngineeringPackage.INSTANT:
+				return createInstantFromString(eDataType, initialValue);
 			case EngineeringPackage.SECTION_STYLE:
 				return createSectionStyleFromString(eDataType, initialValue);
 			default:
@@ -178,6 +181,8 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 		switch (eDataType.getClassifierID()) {
 			case EngineeringPackage.DURATION:
 				return convertDurationToString(eDataType, instanceValue);
+			case EngineeringPackage.INSTANT:
+				return convertInstantToString(eDataType, instanceValue);
 			case EngineeringPackage.SECTION_STYLE:
 				return convertSectionStyleToString(eDataType, instanceValue);
 			default:
@@ -691,6 +696,24 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 	 * @generated
 	 */
 	public String convertDurationToString(EDataType eDataType, Object instanceValue) {
+		return super.convertToString(eDataType, instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Instant createInstantFromString(EDataType eDataType, String initialValue) {
+		return (Instant)super.createFromString(eDataType, initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertInstantToString(EDataType eDataType, Object instanceValue) {
 		return super.convertToString(eDataType, instanceValue);
 	}
 

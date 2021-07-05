@@ -1,8 +1,11 @@
 package org.nasdanika.engineering.gen;
 
+import java.lang.reflect.InvocationTargetException;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.time.Duration;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -12,6 +15,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Objects;
 import java.util.function.BiFunction;
+import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -27,6 +31,7 @@ import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.ETypedElement;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.nasdanika.common.Context;
@@ -35,12 +40,14 @@ import org.nasdanika.common.MarkdownHelper;
 import org.nasdanika.common.NasdanikaException;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.common.Util;
+import org.nasdanika.common.persistence.ConfigurationException;
 import org.nasdanika.common.persistence.Marker;
 import org.nasdanika.emf.EObjectAdaptable;
 import org.nasdanika.emf.EmfUtil;
 import org.nasdanika.engineering.Appearance;
 import org.nasdanika.engineering.Endeavor;
 import org.nasdanika.engineering.EngineeringPackage;
+import org.nasdanika.engineering.Event;
 import org.nasdanika.engineering.Increment;
 import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.IssueStatus;
@@ -52,6 +59,7 @@ import org.nasdanika.engineering.Release;
 import org.nasdanika.engineering.TableOfContents;
 import org.nasdanika.engineering.Temporal;
 import org.nasdanika.engineering.flow.Start;
+import org.nasdanika.html.Button;
 import org.nasdanika.html.Fragment;
 import org.nasdanika.html.HTMLFactory;
 import org.nasdanika.html.Tag;
@@ -71,10 +79,12 @@ import org.nasdanika.html.bootstrap.BootstrapFactory;
 import org.nasdanika.html.bootstrap.Breakpoint;
 import org.nasdanika.html.bootstrap.Card;
 import org.nasdanika.html.bootstrap.Color;
+import org.nasdanika.html.bootstrap.Modal;
 import org.nasdanika.html.bootstrap.RowContainer.Row;
 import org.nasdanika.html.bootstrap.RowContainer.Row.Cell;
 import org.nasdanika.html.bootstrap.Size;
 import org.nasdanika.html.bootstrap.Table;
+import org.nasdanika.html.bootstrap.TagBootstrapElement;
 import org.nasdanika.html.bootstrap.Text.Alignment;
 import org.nasdanika.html.emf.HtmlEmfUtil;
 import org.nasdanika.html.emf.SimpleEObjectViewAction;
@@ -512,7 +522,7 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 		return eContainmentFeature.isMany() ? ret + (((List<?>) eContainer.eGet(eContainmentFeature)).indexOf(obj)) : ret;
 	}
 	
-	protected static <E extends Endeavor> Table endeavorsTable(
+	protected <E extends Endeavor> Table endeavorsTable(
 			Collection<E> endeavors,
 			Function<ETypedElement, ViewBuilder> headerBuilderProvider,			
 			ViewGenerator viewGenerator, 
@@ -545,6 +555,30 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 						((org.nasdanika.html.bootstrap.RowContainer.Row.Cell) target).toHTMLElement().content(viewGenerator.getBootstrapFactory().progressBar((int) (100 * completion)));
 					}
 				};
+			}
+			if (dataSource instanceof ETypedElement) {
+				return (target, vg, pm) -> {
+					Object dataSourceValue;
+					if (dataSource instanceof EStructuralFeature) {
+						dataSourceValue = issue.eGet((EStructuralFeature) dataSource);
+					} else {
+						try {
+							dataSourceValue = dataSource == EcorePackage.Literals.EOBJECT___ECONTAINER ? issue.eContainer() : issue.eInvoke((EOperation) dataSource, ModelElementViewActionImpl.this.bind((EOperation) dataSource));
+						} catch (InvocationTargetException e) {
+							throw new ConfigurationException("Error invoking " + dataSource + ": " + e.getMessage(), e, getMarker());
+						}			
+					}
+					if (isEmptyMemberValue(dataSource, dataSourceValue)) {
+						return;
+					}
+					Object displayValue = memberValue(dataSource, dataSourceValue, viewGenerator, progressMonitor);
+					if (displayValue != null) {
+						org.nasdanika.html.RowContainer.Row.Cell valueCell = ((org.nasdanika.html.bootstrap.RowContainer.Row.Cell) target).toHTMLElement();
+						if (displayValue != null) {
+							valueCell.content(displayValue);
+						}
+					}
+				};				
 			}
 			return null;
 		};							
@@ -595,7 +629,7 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 	 * @param features
 	 * @return
 	 */
-	public static <E extends Endeavor> Action endeavorsAction(
+	public <E extends Endeavor> Action endeavorsAction(
 			Collection<E> endeavors, 
 			Function<ETypedElement, ViewBuilder> headerBuilderProvider,			
 			String text, 
@@ -1199,15 +1233,6 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 				return label;
 			}
 		}
-		
-//		for (EClass eClass: EmfUtil.lineage(getSemanticElement().eClass())) {
-//			for (ModelElementAppearance classAppearance: factory.getAppearance(eClass)) {
-//				String label = classAppearance.getLabel();
-//				if (!Util.isBlank(label)) {
-//					return label;
-//				}
-//			}
-//		}
 		return super.getText();
 	}
 	
@@ -1449,5 +1474,98 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 			throw new NasdanikaException(e);
 		}
 	}
-				
+
+	@Override
+	protected Object memberValue(ETypedElement member, Object value, ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {	
+		if (value instanceof Temporal) {
+			return temporalValue(member, (Temporal) value, viewGenerator, progressMonitor);
+		}
+		
+		if (value instanceof Duration) {
+			return Temporal.formatDuration((Duration) value);
+		}		
+		
+		return super.memberValue(member, value, viewGenerator, progressMonitor);
+	}
+
+	protected Object temporalValue(ETypedElement member, Temporal temporal, ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
+		if (temporal instanceof Event) {
+			return super.memberValue(member, temporal, viewGenerator, progressMonitor);
+		}
+		
+		Temporal normalized = ((Temporal) temporal).normalize();
+		Instant instant = normalized.getInstant();
+		if (instant != null) {
+			return memberValue(member, instant, viewGenerator, progressMonitor);
+		}
+		
+		Duration offset = normalized.getOffset();
+		Temporal base = normalized.getBase();
+		if ((offset == null || offset.equals(Duration.ZERO)) && base != null) {
+			return "Coincides with " + temporalValue(member, base, viewGenerator, progressMonitor) + temporalInfoModalTrigger(temporal, viewGenerator, progressMonitor);
+		}
+		
+		if (base != null) {
+			return Temporal.formatDuration(offset.abs()) + (offset.isNegative() ? " before " : " after ") + temporalValue(member, base, viewGenerator, progressMonitor) + temporalInfoModalTrigger(temporal, viewGenerator, progressMonitor);
+		}
+		
+		if (isEmptyMemberValue(member, temporal)) {
+			// Using containment
+			EObject tc = temporal.eContainer();
+			if (tc != null) {
+				ViewAction<?> tcv = EObjectAdaptable.adaptTo(tc, ViewAction.class);
+				EReference cf = temporal.eContainmentFeature();
+				return (tcv == null ? tc : viewGenerator.link(tcv)) + (cf == null ? "" : " " + cf.getName());
+			}
+		}
+		
+		return temporal.toString() + temporalInfoModalTrigger(temporal, viewGenerator, progressMonitor);
+	}
+	
+	private final static String IN_MODAL = ModelElementViewActionImpl.class.getName() + ":IN_MODAL";
+	
+	protected Object temporalInfoModalTrigger(Temporal temporal, ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
+		Consumer<Object> bodyContentConsumer = viewGenerator.getBodyContentConsumer();
+		if (bodyContentConsumer == null || viewGenerator.get(IN_MODAL) == Boolean.TRUE) {
+			return "";
+		}
+		
+		ViewAction<Temporal> tva = ViewAction.adaptToViewActionNonNull(temporal);
+		ViewGenerator vg = viewGenerator.fork();
+		vg.put(IN_MODAL, Boolean.TRUE);
+		Object modalContent = tva.generate(vg, progressMonitor);
+		if (modalContent != null) {
+			BootstrapFactory bootstrapFactory = viewGenerator.get(BootstrapFactory.class, BootstrapFactory.INSTANCE);
+			Modal infoModal = bootstrapFactory.modal();
+			infoModal.scrollable().size(Breakpoint.LARGE);
+			bodyContentConsumer.accept(infoModal);
+			TagBootstrapElement header = infoModal.getHeader();
+			header.background(Color.SECONDARY);
+			Tag headerTag = header.toHTMLElement();
+			String questionCircleIcon = "las la-info-circle";
+			Tag modalTitle = viewGenerator.getHTMLFactory().tag(TagName.h5, TagName.span.create().addClass(questionCircleIcon).style().margin().right("0.3em"), tva.getText());
+			headerTag.content(modalTitle);
+			Button dismisser = bootstrapFactory.getHTMLFactory().button("x").addClass("close");
+			headerTag.content(dismisser);
+			infoModal.bindDismisser(dismisser);
+			
+			Tag trigger = bootstrapFactory.getHTMLFactory().tag(TagName.sup).addClass(questionCircleIcon).style("cursor", "pointer");
+			infoModal.bindTrigger(trigger);
+			
+			infoModal.getBody().toHTMLElement().content(modalContent);
+			return trigger;
+		}
+		return null;		
+	}
+
+	@Override
+	protected boolean isEmptyMemberValue(ETypedElement member, Object value) {
+		if (value instanceof Temporal) {
+			Temporal temporal = (Temporal) value;
+			return temporal.getInstant() == null && temporal.getBase() == null;
+		}
+		
+		return super.isEmptyMemberValue(member, value);
+	}			
+	
 }

@@ -45,34 +45,34 @@ public class EngineeringViewAction extends ActionImpl {
 			}
 		});
 		
-		Action assignmentSection = ModelElementViewActionImpl.endeavorsAction(
-				issues, 
-				null,
-				"Issues", 
-				"issues", 
-				null,
-				getActivator(),
-				Collections.emptyList(),
-				null,
-				EngineeringPackage.Literals.NAMED_ELEMENT__NAME,
-				EngineeringPackage.Literals.PERIOD__START,
-				EngineeringPackage.Literals.PERIOD__END,
-				EngineeringPackage.Literals.ISSUE__TARGET,
-				EngineeringPackage.Literals.ENDEAVOR__ASSIGNEE,
-				EngineeringPackage.Literals.ISSUE__STATUS,
-				EngineeringPackage.Literals.ISSUE__PRIORITY,
-				EngineeringPackage.Literals.ISSUE__SEVERITY,
-				EngineeringPackage.Literals.ISSUE__CATEGORIES,				
-				EngineeringPackage.Literals.ISSUE__EFFORT,
-				EngineeringPackage.Literals.ISSUE__COST,
-				EngineeringPackage.Literals.ENDEAVOR__BENEFIT,
-				EngineeringPackage.Literals.ISSUE__REMAINING_EFFORT,
-				EngineeringPackage.Literals.ISSUE__REMAINING_COST,
-				EngineeringPackage.Literals.ENDEAVOR__COMPLETION);
-		
-		if (assignmentSection != null) {
-			children.add(assignmentSection);
-		}
+//		Action assignmentSection = ModelElementViewActionImpl.endeavorsAction(
+//				issues, 
+//				null,
+//				"Issues", 
+//				"issues", 
+//				null,
+//				getActivator(),
+//				Collections.emptyList(),
+//				null,
+//				EngineeringPackage.Literals.NAMED_ELEMENT__NAME,
+//				EngineeringPackage.Literals.PERIOD__START,
+//				EngineeringPackage.Literals.PERIOD__END,
+//				EngineeringPackage.Literals.ISSUE__TARGET,
+//				EngineeringPackage.Literals.ENDEAVOR__ASSIGNEE,
+//				EngineeringPackage.Literals.ISSUE__STATUS,
+//				EngineeringPackage.Literals.ISSUE__PRIORITY,
+//				EngineeringPackage.Literals.ISSUE__SEVERITY,
+//				EngineeringPackage.Literals.ISSUE__CATEGORIES,				
+//				EngineeringPackage.Literals.ISSUE__EFFORT,
+//				EngineeringPackage.Literals.ISSUE__COST,
+//				EngineeringPackage.Literals.ENDEAVOR__BENEFIT,
+//				EngineeringPackage.Literals.ISSUE__REMAINING_EFFORT,
+//				EngineeringPackage.Literals.ISSUE__REMAINING_COST,
+//				EngineeringPackage.Literals.ENDEAVOR__COMPLETION);
+//		
+//		if (assignmentSection != null) {
+//			children.add(assignmentSection);
+//		}
 		
 		return children;				
 	}

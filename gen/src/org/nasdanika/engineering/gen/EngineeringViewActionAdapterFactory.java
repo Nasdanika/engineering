@@ -28,6 +28,7 @@ import org.nasdanika.engineering.Directory;
 import org.nasdanika.engineering.Document;
 import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeringPackage;
+import org.nasdanika.engineering.Event;
 import org.nasdanika.engineering.Feature;
 import org.nasdanika.engineering.Forum;
 import org.nasdanika.engineering.Goal;
@@ -49,6 +50,7 @@ import org.nasdanika.engineering.Persona;
 import org.nasdanika.engineering.Principle;
 import org.nasdanika.engineering.Product;
 import org.nasdanika.engineering.Release;
+import org.nasdanika.engineering.Temporal;
 import org.nasdanika.engineering.Topic;
 import org.nasdanika.engineering.flow.Activity;
 import org.nasdanika.engineering.flow.FlowPackage;
@@ -252,6 +254,20 @@ public class EngineeringViewActionAdapterFactory extends ComposedAdapterFactory 
 				getViewActionClass(), 
 				this.getClass().getClassLoader(), 
 				obj -> new DecisionViewAction(obj, this)));			
+		
+		registerAdapterFactory(
+			new FunctionAdapterFactory<ViewAction<Event>, Event>(
+				EngineeringPackage.Literals.EVENT, 
+				getViewActionClass(), 
+				this.getClass().getClassLoader(), 
+				obj -> new EventViewAction(obj, this)));			
+		
+		registerAdapterFactory(
+			new FunctionAdapterFactory<ViewAction<Temporal>, Temporal>(
+				EngineeringPackage.Literals.TEMPORAL, 
+				getViewActionClass(), 
+				this.getClass().getClassLoader(), 
+				obj -> new TemporalViewAction(obj, this)));			
 		
 		registerAdapterFactory(
 			new FunctionAdapterFactory<ViewAction<Activity>, Activity>(
