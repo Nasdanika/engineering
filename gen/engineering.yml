@@ -256,6 +256,9 @@ engineering-module:
      - name: Component diagram coloring based on diagnostic
        markdown-description: |+2
          Configuration flag.
+     - name: Move start/end computation for releases etc to the gen layer
+       markdown-description: |+2
+         In memberValue() to avoid stack overflows - Release, Feature, 
 
 #### Done ####
 

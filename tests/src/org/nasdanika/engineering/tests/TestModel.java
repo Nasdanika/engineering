@@ -9,11 +9,14 @@ import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
+import java.text.DateFormat;
 import java.time.Duration;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentHashMap;
@@ -27,7 +30,6 @@ import org.eclipse.emf.codegen.ecore.genmodel.GenPackage;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.junit.Test;
@@ -42,7 +44,6 @@ import org.nasdanika.common.resources.Container;
 import org.nasdanika.common.resources.FileSystemContainer;
 import org.nasdanika.emf.EObjectAdaptable;
 import org.nasdanika.engineering.EngineeringFactory;
-import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Event;
 import org.nasdanika.engineering.Increment;
 import org.nasdanika.engineering.Temporal;
@@ -215,8 +216,15 @@ public class TestModel {
 	
 	@Test
 	public void testTemporal() {
+		Locale locale = Locale.getDefault();
+		DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.DEFAULT, locale);
+		String date = dateFormat.format(new Date());
+		System.out.println(date);		
+		
+		System.out.println(new Date(Instant.now().toEpochMilli()));
+		
 		Temporal instant = EngineeringFactory.eINSTANCE.createTemporal();
-		instant.setInstant(new Date());
+		instant.setInstant(new Date().toInstant());
 		System.out.println(instant);
 		
 		Duration duration = DefaultConverter.INSTANCE.toDuration("PT12H10M");
