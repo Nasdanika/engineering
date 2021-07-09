@@ -1,0 +1,306 @@
+model-elements:
+  model-element:
+    features:
+      description:
+        roles: none
+      markdown-description:
+        roles: none
+      path: 
+        roles: none
+      name: 
+        roles: none
+      actions:
+        roles: none
+      appearance:
+        roles: none
+      resources:
+        icon: fas fa-book
+        roles: 
+         - actions/section
+         - elements/none
+      sections:
+        roles: elements/section
+    actions:
+      diagnostic-summary: 
+        roles: head
+      properties-table:
+        roles: head    
+  table-of-contents:
+    roles: none
+  temporal:
+    features:
+      derivatives: 
+        roles: property
+      lower-bounds: 
+        roles: property
+      upper-bounds: 
+        roles: property
+  period:
+    features:
+      start:
+        roles: property    
+      duration:
+        roles: property    
+      end:
+        roles: property    
+  module:
+    icon: fas fa-cube
+    features:
+      modules:
+        icon: fas fa-cubes
+      dependencies:
+        roles: actions/section
+      dependants:
+        roles: actions/section   
+  alignable:
+    features:        
+      aligns:
+        roles: actions/section        
+  aim:
+    roles: none
+    features:
+      alignments:
+        roles: actions/section        
+  goal:
+    features:
+      children:
+        roles: 
+         - actions/section
+         - elements        
+  principle:
+    icon: fas fa-gavel
+    features:
+      children:
+        roles: 
+         - actions/section
+         - elements        
+  capability:
+    features:
+      required-by:
+        roles: actions/section
+  endeavor:
+    features:
+      all-issues:
+        roles: none
+      capacity:
+        roles: actions
+      objectives:
+        roles: elements/none 
+      linked-objectives:
+        roles: none 
+      all-objectives:
+        label: Objectives
+        roles: actions/section 
+  feature:
+    icon: fas fa-cog
+    features:
+      releases:
+        roles: property
+      issues:
+        roles: actions/section
+  issue:
+    features:
+      children: 
+        roles: 
+          - elements/none
+          - actions
+      releases:
+        roles: property
+      contributes-to:
+        roles: property
+      notes: 
+        roles: actions/section
+  release:
+    icon: fas fa-truck
+    features:
+      issues: 
+        roles: actions/section
+      features:
+        icon: fas fa-cogs
+        roles: actions/section
+  forum:
+    features:
+      topics:
+        roles: elements/none
+      discussion:
+        icon: far fa-comments
+        roles: 
+          - elements/none
+  engineered-element:
+    roles: navigation
+    features:
+      issues:
+        roles: 
+         - elements/none
+         - actions/section
+      all-issues:
+        roles: 
+         - actions/section
+      discussion:
+        category: false
+        roles: actions/context
+      owners:
+        roles: property
+      allocations:
+        roles: actions/section
+      principles:
+        roles: 
+          - actions/section
+          - elements
+  product:
+    icon: fas fa-box
+    features:
+      releases:
+        icon: fas fa-shipping-fast
+        roles: elements
+      features:
+        icon: fa fa-cogs
+  persona:
+    features:
+      representatives:
+        roles: property
+      extends:
+        roles: property
+      extensions:
+        roles: property
+      goals:
+        roles: 
+          - actions/section
+          - elements
+  engineer:
+    features:
+      assignments:
+        roles: actions
+      increments:
+        roles: 
+         - actions/content
+         - elements
+      capacity:
+        roles: none 
+      designations:
+        roles: none 
+      messages:
+        roles: none 
+      personas:
+        roles: elements 
+      represents:
+        roles: property 
+      objectives:
+        roles:
+          - elements/none 
+          - actions/section 
+      modules:
+        icon: fas fa-cubes
+  increment:
+    features:
+      issues:
+        roles: none
+      releases:
+        roles: actions/section
+      children:
+        roles: elements
+      capacity:
+        roles: actions
+      all-issues:
+        roles: none
+  issue-category:
+    features:
+      issues:
+        roles: actions/section
+      allocations:
+        roles: actions/section
+  issue-status:
+    features:
+      issues:
+        roles: actions/section
+  link:
+    icon: fas fa-external-link-alt
+  named-element-reference:
+    icon: fas fa-link        
+  topic:
+    roles: none
+    features:
+      messages:
+        roles: none
+  directory:
+    icon: far fa-folder-open
+  document:
+    roles: none
+    icon: far fa-file-alt
+    section-style: DEFAULT
+    features:
+      sections:
+        category: false
+        roles: elements/section
+      content:
+        roles: none
+      markdown-content:
+        roles: none
+  key-result:
+    icon: fas fa-poll-h
+    section-style: DEFAULT
+  objective:
+    icon: fas fa-crosshairs
+    features:
+      key-results:
+        roles: 
+          - elements/none
+          - actions/section
+      children:
+        roles: elements/none
+      linked-objectives:
+        roles: none
+      sub-objectives:
+        roles: actions/section
+sub-packages:
+  representation:
+    model-elements:
+      component-diagram:
+        roles: head
+        actions:
+          properties-table:
+            roles: none      
+  flow:
+    model-elements:
+      transition:
+        features:
+          payload:
+            category: false
+            roles: elements/none
+      call:
+        features:
+          response:
+            category: false
+            roles: elements/none
+      journey-element:
+        features:
+          outputs:
+            roles: none
+          calls:
+            roles: none
+          inputs:
+            roles: none
+          invocations:
+            roles: none
+        operations:  
+          get-all-outputs:
+            label: Outputs
+            icon: fas fa-sign-out-alt
+            roles: actions/section
+          get-all-calls:
+            label: Calls
+            roles: actions/section
+          get-all-invocations:
+            label: Invocations
+            roles: actions/section
+          get-all-inputs:
+            label: Inputs
+            icon: fas fa-sign-in-alt
+            roles: actions/section
+      journey:
+        features:
+          elements:
+            roles: none
+          all-elements:
+            roles: elements/none
+                        

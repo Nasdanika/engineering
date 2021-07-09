@@ -259,6 +259,9 @@ engineering-module:
      - name: Move start/end computation for releases etc to the gen layer
        markdown-description: |+2
          In memberValue() to avoid stack overflows - Release, Feature, 
+     - name: Breakdowns in dialogs
+       markdown-description: |+2
+         E.g. engineer assignments, priority or category issues by statuses, statuses by priority, category by status and by priority. 
 
 #### Done ####
 
