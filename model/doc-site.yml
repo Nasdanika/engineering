@@ -18,5 +18,5 @@ app-action:
               icon: fas fa-book-reader
               href: https://docs.nasdanika.org/engineering-demo/resources/user-guide/index.html
            # TODO - link to the User Guide in Demo                
-           - app-action-reference: ../target/model-doc/engineering.genmodel.yml
+           - app-action-reference: target/model-doc/engineering.genmodel.yml
                

@@ -256,6 +256,10 @@ engineering-module:
        description: For dates (instants) and numbers. 
      - name: Organization/engineer start/end validation
        description: Organization start shall not be after engineer's start and end shall not be before. 
+     - name: Cost, effort, and benefit to temporal?
+       description: Derived attributes computed from all endeavors derived from this temporal. Would represent "consequences" of binding the temporal. 
+     - name: Resource leveling
+       description: Some form of computed star/end bounds based on resource capacity. Or maybe "Suggestions" - also computed, but not a bound. E.g. computed at the gen level and output to temporal view action.    
          
      ### === Done === ###    
      - name: Start/end from Issue and Increment to Endeavor

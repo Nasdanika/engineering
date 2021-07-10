@@ -191,6 +191,8 @@ model-elements:
           - actions/section 
       modules:
         icon: fas fa-cubes
+      owns:
+        roles: actions/section        
   increment:
     features:
       issues:

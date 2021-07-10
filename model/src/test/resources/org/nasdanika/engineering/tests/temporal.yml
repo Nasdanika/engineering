@@ -1,0 +1,52 @@
+engineering-organization:
+   name: Nasdanika Engineering Demo
+   path: demo 
+   start: {} #2021/7/15
+   appearance:
+     icon: https://docs.nasdanika.org/images/nasdanika-logo.png
+     features:
+       engineers:
+         roles: 
+           - actions/context
+           - elements/none
+   engineers:
+     - engineering-engineer:
+         name: Joe Doe     
+         path: joe-doe
+         start: 
+           base: demo:issues/on-board-developer/end
+   resources:
+     - resources/user-guide/root.yml
+     - engineering-event:
+         name: Project kick-off
+         path: kick-off         
+#         instant: 2021/7/7
+         upper-bounds: 2021/7/8
+   representations:
+     - representation-component-diagram: true
+   issues: 
+     - name: Analysis
+       path: analysis
+       start: 2021/7/14
+       duration: P2D
+     - name: Design
+       path: design
+       start: 
+         base: demo:start
+         offset: P1D
+       duration: P5DT4H       
+     - name: Development
+       path: development
+       start: 
+         base: demo:issues/design/end
+         offset: P1D
+       duration: P15D       
+     - name: On-board a developer
+       path: on-board-developer
+       end: 
+         base: demo:issues/development/start
+         offset: P-1D
+       duration: P10D       
+         
+                                         
+                                         

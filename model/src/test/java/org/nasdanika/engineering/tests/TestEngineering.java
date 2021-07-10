@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
@@ -32,7 +33,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.nasdanika.common.Context;
 import org.nasdanika.common.DefaultConverter;
@@ -74,8 +74,7 @@ public class TestEngineering {
 		return DiagramGenerator.INSTANCE.cachingDiagramGenerator(output.stateAdapter().adapt(decoder, encoder), progressMonitor);
 	}
 		
-	@Test
-	@Ignore
+	@Test	
 	public void testEcoreDoc() throws Exception {
 		GenModelResourceSet resourceSet = new GenModelResourceSet();
 		
@@ -161,8 +160,13 @@ public class TestEngineering {
 		String base = "tmp://base/engineering/";
 		context.put(Context.BASE_URI_PROPERTY, base);
 		
-		ComposedLoader loader = new ComposedLoader();
-		Object actionFactory = loader.loadYaml(new File("model\\doc-site.yml"), progressMonitor);
+		ComposedLoader loader = new ComposedLoader() {
+			@Override
+			public Charset getCharset() {
+				return StandardCharsets.UTF_8;
+			}
+		};
+		Object actionFactory = loader.loadYaml(new File("doc-site.yml"), progressMonitor);
 		Action action = Util.call(Util.<Action>asSupplierFactory(actionFactory).create(context), progressMonitor, null);
 		
 		FileSystemContainer output = new FileSystemContainer(new File("..\\docs")); 
