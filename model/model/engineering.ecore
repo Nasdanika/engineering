@@ -102,7 +102,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="Instant" instanceClassName="java.time.Instant">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="[Duration](https://docs.oracle.com/javase/8/docs/api/java/time/Duration.html) is an amount of time in the [ISO-8601 Duration format](https://en.wikipedia.org/wiki/ISO_8601#Duration). Supports days and smaller units. Weeks, months and years are not supported. Example: ``P28DT10H``."/>
+      <details key="documentation" value="[Instant](https://docs.oracle.com/javase/8/docs/api/java/time/Instant.html) is a single instantaneous point on the time-line. &#xA;If instant specification contains ``Z``, then it is parsed using [Instant.parse()](https://docs.oracle.com/javase/8/docs/api/java/time/Instant.html#parse-java.lang.CharSequence-) method.&#xA;Otherwise the specification is used to construct ``java.util.Date`` which is then converted to instant.&#xA;&#xA;Examples:&#xA;&#xA;* ``2021-12-03T10:15:30.00Z`` - loaded using ``Instant.parse()``&#xA;* ``10/1/2021`` - loaded using ``new Date()`` and then converted to instant.&#xA;&#xA;"/>
     </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Temporal" eSuperTypes="#//ModelElement">
