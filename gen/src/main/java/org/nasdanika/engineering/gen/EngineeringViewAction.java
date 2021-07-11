@@ -1,6 +1,7 @@
 package org.nasdanika.engineering.gen;
 
 import java.util.ArrayList;
+
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -18,6 +19,8 @@ import org.nasdanika.html.app.ViewGenerator;
 import org.nasdanika.html.app.impl.ActionImpl;
 import org.nasdanika.html.emf.ViewAction;
 
+
+// Important: This class is currently not functional, keeping it for when it is needed in the future. 
 /**
  * Grouping action for {@link ModelElement}'s {@link ViewAction}'s. 
  * 
@@ -26,24 +29,24 @@ import org.nasdanika.html.emf.ViewAction;
  */
 public class EngineeringViewAction extends ActionImpl {
 	
-	private Collection<EObject> elements;
+	private Collection<Action> children;
 
-	public EngineeringViewAction(Collection<EObject> elements) {
-		this.elements = elements;
+	public EngineeringViewAction(Collection<Action> children) {
+		this.children = children;
 		setText("Engineering");
 		setSectionStyle(SectionStyle.DEFAULT);
 	}
 	
 	@Override
 	public List<Action> getChildren() {
-		List<Action> children = new ArrayList<>(ViewAction.adaptToViewActionsNonNull(elements));
+		List<Action> children = new ArrayList<>(this.children);
 		
-		List<Issue> issues = new ArrayList<>();
-		EcoreUtil.getAllContents(elements).forEachRemaining(e -> {
-			if (e instanceof Issue) {
-				issues.add((Issue) e);
-			}
-		});
+//		List<Issue> issues = new ArrayList<>();
+//		EcoreUtil.getAllContents(elements).forEachRemaining(e -> {
+//			if (e instanceof Issue) {
+//				issues.add((Issue) e);
+//			}
+//		});
 		
 //		Action assignmentSection = ModelElementViewActionImpl.endeavorsAction(
 //				issues, 
@@ -80,7 +83,7 @@ public class EngineeringViewAction extends ActionImpl {
 	@Override
 	public Object generate(ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
 		Fragment ret = viewGenerator.getHTMLFactory().fragment();
-		ret.content(viewGenerator.processViewPart(ViewAction.listOfViewActionsSorted(elements, null, false, false, 1), progressMonitor));		
+//		ret.content(viewGenerator.processViewPart(ViewAction.listOfViewActionsSorted(elements, null, false, false, 1), progressMonitor));		
 		return ret;
 	}
 

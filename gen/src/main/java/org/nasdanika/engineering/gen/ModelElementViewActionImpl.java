@@ -1568,7 +1568,11 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 	protected boolean isEmptyMemberValue(ETypedElement member, Object value) {
 		if (value instanceof Temporal) {
 			Temporal temporal = (Temporal) value;
-			return temporal.getInstant() == null && temporal.getBase() == null;
+			return temporal.getInstant() == null 
+					&& temporal.getBase() == null 
+					&& temporal.getLowerBounds().isEmpty()
+					&& temporal.getUpperBounds().isEmpty()
+					&& temporal.getDerivatives().isEmpty();
 		}
 		
 		return super.isEmptyMemberValue(member, value);
