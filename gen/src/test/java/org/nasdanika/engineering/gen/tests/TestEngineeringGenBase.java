@@ -13,8 +13,6 @@ import org.nasdanika.common.CommandFactory;
 import org.nasdanika.common.Context;
 import org.nasdanika.common.Diagnostic;
 import org.nasdanika.common.DiagnosticException;
-import org.nasdanika.common.DiagramGenerator;
-import org.nasdanika.common.MarkdownHelper;
 import org.nasdanika.common.MutableContext;
 import org.nasdanika.common.PrintStreamProgressMonitor;
 import org.nasdanika.common.ProgressMonitor;
@@ -369,22 +367,22 @@ public class TestEngineeringGenBase {
 				applicationSupplierFactory, 
 				outputDir) {
 			
-			@Override
-			protected MutableContext forkContext(Context context, ProgressMonitor progressMonitor) {
-				MutableContext ret = super.forkContext(context, progressMonitor);
-
-				MarkdownHelper markdownHelper = new MarkdownHelper() {
-					
-					@Override
-					protected DiagramGenerator getDiagramGenerator() {
-						return context.get(DiagramGenerator.class, DiagramGenerator.INSTANCE);
-					}
-					
-				};
-				ret.register(MarkdownHelper.class, markdownHelper);
-				
-				return ret;
-			}
+//			@Override
+//			protected MutableContext forkContext(Context context, ProgressMonitor progressMonitor) {
+//				MutableContext ret = super.forkContext(context, progressMonitor);
+//
+//				MarkdownHelper markdownHelper = new MarkdownHelper() {
+//					
+//					@Override
+//					protected DiagramGenerator getDiagramGenerator() {
+//						return context.get(DiagramGenerator.class, DiagramGenerator.INSTANCE);
+//					}
+//					
+//				};
+//				ret.register(MarkdownHelper.class, markdownHelper);
+//				
+//				return ret;
+//			}
 			
 		};
 		

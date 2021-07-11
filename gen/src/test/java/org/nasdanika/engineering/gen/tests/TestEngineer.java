@@ -4,13 +4,8 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 import java.io.File;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
@@ -30,13 +25,6 @@ public class TestEngineer extends TestEngineeringGenBase {
 		File engineerPage = new File(outputDir, "e-reference/engineers/joe-doe/index.html");
 		String ownsSelector = "body > div.container-fluid.nsd-app-container.border.mt-1 > div.row.nsd-app-content-row > div.nsd-app-content-panel.border-left.col.p-1 > div > div.row.nsd-app-content-panel-body-row > div > div > h3";
 		
-//		// JSoup
-//		Document doc = Jsoup.parse(engineerPage, StandardCharsets.UTF_8.name());
-//		Elements owns = doc.select(ownsSelector);
-//		assertEquals("Owns header not found", 1, owns.size());
-//		Element fOwns = owns.first();
-//		assertEquals("Owns", fOwns.text());		
-						
 		// Selenium		
 		webDriver.get(engineerPage.toURI().toURL().toString());
 		if (webDriver instanceof TakesScreenshot) {
