@@ -1,5 +1,27 @@
 package org.nasdanika.engineering.tests;
 
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+
+import org.eclipse.emf.common.notify.Notifier;
+import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage.Registry;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.util.Diagnostician;
+import org.junit.Before;
+import org.nasdanika.common.Context;
+import org.nasdanika.emf.persistence.EObjectLoader;
+import org.nasdanika.engineering.EngineeringPackage;
+import org.nasdanika.engineering.ModelElement;
+import org.nasdanika.engineering.flow.FlowPackage;
+import org.nasdanika.engineering.representation.RepresentationPackage;
+import org.nasdanika.html.app.factories.ComposedLoader;
+
 /**
  * Common methods for testing
  * @author Pavel
@@ -288,5 +310,6 @@ engineering
 		supercededBy
 		resolution
  */
+	
 
 }

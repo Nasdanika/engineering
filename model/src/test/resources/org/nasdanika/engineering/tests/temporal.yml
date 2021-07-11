@@ -1,52 +1,31 @@
 engineering-organization:
-   name: Nasdanika Engineering Demo
-   path: demo 
-   start: {} #2021/7/15
-   appearance:
-     icon: https://docs.nasdanika.org/images/nasdanika-logo.png
-     features:
-       engineers:
-         roles: 
-           - actions/context
-           - elements/none
-   engineers:
-     - engineering-engineer:
-         name: Joe Doe     
-         path: joe-doe
-         start: 
-           base: demo:issues/on-board-developer/end
+   name: Temporal tests
+   path: temporal-tests 
    resources:
-     - resources/user-guide/root.yml
      - engineering-event:
-         name: Project kick-off
-         path: kick-off         
-#         instant: 2021/7/7
+         name: Floating base
+         path: floating-base         
+         lower-bounds: 2021/7/6
+         upper-bounds: 2021/7/9
+     - engineering-event:
+         name: Instant base
+         path: instant-base         
+         instant: 2021/7/7
          upper-bounds: 2021/7/8
-   representations:
-     - representation-component-diagram: true
-   issues: 
-     - name: Analysis
-       path: analysis
-       start: 2021/7/14
-       duration: P2D
-     - name: Design
-       path: design
-       start: 
-         base: demo:start
-         offset: P1D
-       duration: P5DT4H       
-     - name: Development
-       path: development
-       start: 
-         base: demo:issues/design/end
-         offset: P1D
-       duration: P15D       
-     - name: On-board a developer
-       path: on-board-developer
-       end: 
-         base: demo:issues/development/start
-         offset: P-1D
-       duration: P10D       
+     - engineering-event:
+         name: Relative to floating
+         path: relative-to-floating
+         base: temporal-tests:resources/floating-base
+         offset: P10D        
+         lower-bounds: 2021/7/15
+         upper-bounds: 2021/7/18
+     - engineering-event:
+         name: Relative to instant
+         path: relative-to-instant
+         base: temporal-tests:resources/instant-base
+         offset: P20D        
+         lower-bounds: 2021/7/25
+         upper-bounds: 2021/7/28
          
                                          
                                          

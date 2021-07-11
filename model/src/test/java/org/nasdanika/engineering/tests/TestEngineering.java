@@ -10,14 +10,11 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
-import java.text.DateFormat;
-import java.time.Duration;
-import java.time.Instant;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentHashMap;
@@ -34,20 +31,20 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.junit.Test;
+import org.nasdanika.common.Command;
 import org.nasdanika.common.Context;
 import org.nasdanika.common.DefaultConverter;
+import org.nasdanika.common.DiagnosticException;
 import org.nasdanika.common.DiagramGenerator;
 import org.nasdanika.common.MutableContext;
 import org.nasdanika.common.PrintStreamProgressMonitor;
 import org.nasdanika.common.ProgressMonitor;
+import org.nasdanika.common.Status;
 import org.nasdanika.common.Util;
 import org.nasdanika.common.resources.Container;
 import org.nasdanika.common.resources.FileSystemContainer;
 import org.nasdanika.emf.EObjectAdaptable;
-import org.nasdanika.engineering.EngineeringFactory;
-import org.nasdanika.engineering.Event;
-import org.nasdanika.engineering.Increment;
-import org.nasdanika.engineering.Temporal;
+import org.nasdanika.engineering.util.EngineeringYamlLoadingExecutionParticipant;
 import org.nasdanika.html.app.Action;
 import org.nasdanika.html.app.factories.BootstrapContainerApplicationSupplierFactory;
 import org.nasdanika.html.app.factories.ComposedLoader;
@@ -64,7 +61,7 @@ import org.yaml.snakeyaml.Yaml;
  * @author Pavel
  *
  */
-public class TestEngineering {
+public class TestEngineering extends TestBase {
 	
 	private DiagramGenerator createDiagramGenerator(ProgressMonitor progressMonitor) {
 		FileSystemContainer output = new FileSystemContainer(new File("target\\diagram-cache"));
@@ -221,45 +218,85 @@ public class TestEngineering {
 	}
 	
 	@Test
-	public void testTemporal() {
-		Locale locale = Locale.getDefault();
-		DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.DEFAULT, locale);
-		String date = dateFormat.format(new Date());
-		System.out.println(date);		
+	public void testTemporal() throws Exception {	
+		// Outputs to console, send to file if desired.
+		ProgressMonitor progressMonitor = new PrintStreamProgressMonitor();
 		
-		System.out.println(new Date(Instant.now().toEpochMilli()));
+		class TestCommand extends EngineeringYamlLoadingExecutionParticipant implements Command {
+
+			public TestCommand(Context context) {
+				super(context);
+			}
+
+			@Override
+			protected Collection<URI> getResources() {
+				return Collections.singleton(URI.createURI(getClass().getResource("temporal.yml").toString()));
+			}
+
+			@Override
+			public void execute(ProgressMonitor progressMonitor) throws Exception {
+				System.out.println(roots);
+			}
+			
+		};
 		
-		Temporal instant = EngineeringFactory.eINSTANCE.createTemporal();
-		instant.setInstant(new Date().toInstant());
-		System.out.println(instant);
+		// Diagnosing loaded resources. 
+		try {
+			org.nasdanika.common.Diagnostic diagnostic = Util.call(new TestCommand(Context.EMPTY_CONTEXT), progressMonitor);
+			if (diagnostic.getStatus() == Status.WARNING || diagnostic.getStatus() == Status.ERROR) {
+				System.err.println("***********************");
+				System.err.println("*      Diagnostic     *");
+				System.err.println("***********************");
+				diagnostic.dump(System.err, 4, Status.ERROR, Status.WARNING);
+			}
+		} catch (DiagnosticException e) {
+			System.err.println("******************************");
+			System.err.println("*      Diagnostic failed     *");
+			System.err.println("******************************");
+			e.getDiagnostic().dump(System.err, 4, Status.FAIL);
+			throw e;
+		}
 		
-		Duration duration = DefaultConverter.INSTANCE.toDuration("PT12H10M");
-		
-		Event event = EngineeringFactory.eINSTANCE.createEvent();
-		event.setName("Start");
-		event.setBase(instant);
-		System.out.println(event);
-		System.out.println(event.normalize());
-		
-		Event relative = EngineeringFactory.eINSTANCE.createEvent();
-		relative.setName("Mid-term");
-		relative.setBase(event);
-		relative.setOffset(duration);
-		System.out.println(relative);
-		System.out.println(relative.normalize());
-		
-		Event relative2 = EngineeringFactory.eINSTANCE.createEvent();
-		relative2.setName("End");
-		relative2.setBase(relative);
-		relative2.setOffset(Duration.parse("PT12H30M"));
-		System.out.println(relative2);
-		System.out.println(relative2.normalize());
-		
-		
-		Increment incr = EngineeringFactory.eINSTANCE.createIncrement();
-		incr.setPath("incr");
-		incr.setStart(relative);
-		System.out.println(relative.getUri());		
+//		
+//		
+//		Locale locale = Locale.getDefault();
+//		DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.DEFAULT, locale);
+//		String date = dateFormat.format(new Date());
+//		System.out.println(date);		
+//		
+//		System.out.println(new Date(Instant.now().toEpochMilli()));
+//		
+//		Temporal instant = EngineeringFactory.eINSTANCE.createTemporal();
+//		instant.setInstant(new Date().toInstant());
+//		System.out.println(instant);
+//		
+//		Duration duration = DefaultConverter.INSTANCE.toDuration("PT12H10M");
+//		
+//		Event event = EngineeringFactory.eINSTANCE.createEvent();
+//		event.setName("Start");
+//		event.setBase(instant);
+//		System.out.println(event);
+//		System.out.println(event.normalize());
+//		
+//		Event relative = EngineeringFactory.eINSTANCE.createEvent();
+//		relative.setName("Mid-term");
+//		relative.setBase(event);
+//		relative.setOffset(duration);
+//		System.out.println(relative);
+//		System.out.println(relative.normalize());
+//		
+//		Event relative2 = EngineeringFactory.eINSTANCE.createEvent();
+//		relative2.setName("End");
+//		relative2.setBase(relative);
+//		relative2.setOffset(Duration.parse("PT12H30M"));
+//		System.out.println(relative2);
+//		System.out.println(relative2.normalize());
+//		
+//		
+//		Increment incr = EngineeringFactory.eINSTANCE.createIncrement();
+//		incr.setPath("incr");
+//		incr.setStart(relative);
+//		System.out.println(relative.getUri());		
 	}
 
 }
