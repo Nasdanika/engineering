@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -1514,19 +1515,98 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 					+ (withModalTrigger ? temporalInfoModalTrigger(member, temporal, viewGenerator, progressMonitor) : "");
 		}
 		
-		if (isEmptyMemberValue(member, temporal)) {
+		if (temporal.getInstant() == null && temporal.getBase() == null) {
 			// Using containment
 			EObject tc = temporal.eContainer();
 			if (tc != null) {
 				ViewAction<?> tcv = EObjectAdaptable.adaptTo(tc, ViewAction.class);
 				EReference cf = temporal.eContainmentFeature();
-				return (tcv == null ? tc : viewGenerator.link(tcv)) + (cf == null ? "" : " " + cf.getName());
+				return (tcv == null ? tc : viewGenerator.link(tcv)) + (cf == null ? "" : " " + cf.getName()) + bounds(member, temporal, viewGenerator, progressMonitor, withModalTrigger);
 			}
 		}
 		
+		// Should never be the case - should be handled as an empty value.
 		return temporal.toString()
-				+ (withModalTrigger ? temporalInfoModalTrigger(member, temporal, viewGenerator, progressMonitor) : "");
+				+ (withModalTrigger ? temporalInfoModalTrigger(member, temporal, viewGenerator, progressMonitor) : "");		
 	}
+
+	protected Object bounds(ETypedElement member, Temporal temporal, ViewGenerator viewGenerator, ProgressMonitor progressMonitor, boolean withModalTrigger) {
+		List<Temporal> lowerBounds = reduceLowerBounds(temporal.getLowerBounds());
+		List<Temporal> upperBounds = reduceUpperBounds(temporal.getUpperBounds());
+		if (lowerBounds.isEmpty() && upperBounds.isEmpty()) {
+			return "";
+		}
+			
+		Function<Temporal, String> temporalToString = t -> String.valueOf(temporalValue(member, t, viewGenerator, progressMonitor, withModalTrigger));
+			
+		String lowerBoundsList = String.join(" or ", lowerBounds.stream().map(temporalToString).collect(Collectors.toList()));
+		String upperBoundsList = String.join(" or ", upperBounds.stream().map(temporalToString).collect(Collectors.toList()));
+		if (lowerBounds.isEmpty()) {
+			return " before " + upperBoundsList;
+		} 
+		
+		if (upperBounds.isEmpty()) {
+			return " after " + lowerBoundsList;
+		}
+		
+		return " between " + lowerBoundsList + " and " + upperBoundsList;
+	}
+	
+	/**
+	 * Retains only the latest bounds.
+	 * @param lowerBounds
+	 * @return
+	 */
+	private static List<Temporal> reduceLowerBounds(List<Temporal> lowerBounds) {
+		List<Temporal> ret = new ArrayList<>();
+		for (Temporal bound: lowerBounds) {
+			if (ret.isEmpty()) {
+				ret.add(bound);
+			} else {
+				Iterator<Temporal> rit = ret.iterator();			
+				while (rit.hasNext()) {
+					Temporal rBound = rit.next();
+					Boolean isAfter = bound.after(rBound);
+					if (isAfter == Boolean.TRUE) {
+						// new bound is after already collected bound - removing the already collected.
+						rit.remove();
+					} else if (isAfter == null) {
+						// Not comparable - adding
+						ret.add(bound);
+					}
+				}
+			}
+		}
+		return ret;
+	}	
+	
+	/**
+	 * Retains only the earliest bounds.
+	 * @param lowerBounds
+	 * @return
+	 */
+	private static List<Temporal> reduceUpperBounds(List<Temporal> upperBounds) {
+		List<Temporal> ret = new ArrayList<>();
+		for (Temporal bound: upperBounds) {
+			if (ret.isEmpty()) {
+				ret.add(bound);
+			} else {
+				Iterator<Temporal> rit = ret.iterator();
+				while (rit.hasNext()) {
+					Temporal rBound = rit.next();
+					Boolean isBefore = bound.before(rBound);
+					if (isBefore == Boolean.TRUE) {
+						// new bound is before already collected bound - removing the already collected.
+						rit.remove();
+					} else if (isBefore == null) {
+						// Not comparable - adding
+						ret.add(bound);
+					}
+				}
+			}
+		}
+		return ret;
+	}	
 	
 	private final static String IN_MODAL = ModelElementViewActionImpl.class.getName() + ":IN_MODAL";
 	
@@ -1569,10 +1649,9 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 		if (value instanceof Temporal) {
 			Temporal temporal = (Temporal) value;
 			return temporal.getInstant() == null 
-					&& temporal.getBase() == null 
+					&& temporal.getBase() == null
 					&& temporal.getLowerBounds().isEmpty()
-					&& temporal.getUpperBounds().isEmpty()
-					&& temporal.getDerivatives().isEmpty();
+					&& temporal.getUpperBounds().isEmpty();
 		}
 		
 		return super.isEmptyMemberValue(member, value);
