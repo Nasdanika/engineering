@@ -1531,8 +1531,8 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 	}
 
 	protected Object bounds(ETypedElement member, Temporal temporal, ViewGenerator viewGenerator, ProgressMonitor progressMonitor, boolean withModalTrigger) {
-		List<Temporal> lowerBounds = reduceLowerBounds(temporal.getLowerBounds());
-		List<Temporal> upperBounds = reduceUpperBounds(temporal.getUpperBounds());
+		List<Temporal> lowerBounds = reduceBounds(temporal.getLowerBounds(), (a,b) -> a.after(b));
+		List<Temporal> upperBounds = reduceBounds(temporal.getUpperBounds(), (a,b) -> a.before(b));
 		if (lowerBounds.isEmpty() && upperBounds.isEmpty()) {
 			return "";
 		}
@@ -1554,55 +1554,27 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 	
 	/**
 	 * Retains only the latest bounds.
-	 * @param lowerBounds
+	 * @param bounds
+	 * @param comparator Returns true if the first argument supercedes the second, false if the second argument supercedes the first and null if unknown.
 	 * @return
 	 */
-	private static List<Temporal> reduceLowerBounds(List<Temporal> lowerBounds) {
+	private static List<Temporal> reduceBounds(List<Temporal> bounds, BiFunction<Temporal, Temporal, Boolean> comparator) {
 		List<Temporal> ret = new ArrayList<>();
-		for (Temporal bound: lowerBounds) {
-			if (ret.isEmpty()) {
-				ret.add(bound);
-			} else {
-				Iterator<Temporal> rit = ret.iterator();			
-				while (rit.hasNext()) {
-					Temporal rBound = rit.next();
-					Boolean isAfter = bound.after(rBound);
-					if (isAfter == Boolean.TRUE) {
-						// new bound is after already collected bound - removing the already collected.
-						rit.remove();
-					} else if (isAfter == null) {
-						// Not comparable - adding
-						ret.add(bound);
-					}
+		for (Temporal bound: bounds) {
+			boolean superceded = false;
+			Iterator<Temporal> rit = ret.iterator();			
+			while (rit.hasNext()) {
+				Temporal rBound = rit.next();
+				Boolean result = comparator.apply(bound, rBound);
+				if (result == Boolean.TRUE) {
+					rit.remove();
+				} else if (result != null) {
+					superceded = true;
 				}
 			}
-		}
-		return ret;
-	}	
-	
-	/**
-	 * Retains only the earliest bounds.
-	 * @param lowerBounds
-	 * @return
-	 */
-	private static List<Temporal> reduceUpperBounds(List<Temporal> upperBounds) {
-		List<Temporal> ret = new ArrayList<>();
-		for (Temporal bound: upperBounds) {
-			if (ret.isEmpty()) {
+			
+			if (!superceded) {
 				ret.add(bound);
-			} else {
-				Iterator<Temporal> rit = ret.iterator();
-				while (rit.hasNext()) {
-					Temporal rBound = rit.next();
-					Boolean isBefore = bound.before(rBound);
-					if (isBefore == Boolean.TRUE) {
-						// new bound is before already collected bound - removing the already collected.
-						rit.remove();
-					} else if (isBefore == null) {
-						// Not comparable - adding
-						ret.add(bound);
-					}
-				}
 			}
 		}
 		return ret;
