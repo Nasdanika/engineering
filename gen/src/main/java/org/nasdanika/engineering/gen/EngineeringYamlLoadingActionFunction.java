@@ -84,7 +84,7 @@ public abstract class EngineeringYamlLoadingActionFunction extends EngineeringYa
 	 * @return
 	 */
 	protected String resolveResourcePath(Resource resource) {
-		if (resourceSet.getResources().size() == 1) {
+		if (getResources().size() == 1) {
 			return null;
 		}
 		String lastSegment = resource.getURI().lastSegment();
