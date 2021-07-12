@@ -26,6 +26,16 @@ engineering-organization:
          offset: P20D        
          lower-bounds: 2021/7/25
          upper-bounds: 2021/7/28
+     - engineering-event:
+         name: Indirect relative to instant
+         path: indirect-relative-to-instant
+         base: temporal-tests:resources/relative-to-instant
+         offset: P50D        
+     - engineering-event:
+         name: Indirect relative to floating
+         path: indirect-relative-to-floating
+         base: temporal-tests:resources/relative-to-floating
+         offset: P100D        
          
                                          
                                          

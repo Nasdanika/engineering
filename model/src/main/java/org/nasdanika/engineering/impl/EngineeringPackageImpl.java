@@ -823,6 +823,16 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
+	public EOperation getTemporal__Copy() {
+		return temporalEClass.getEOperations().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getPeriod() {
 		return periodEClass;
 	}
@@ -2838,6 +2848,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		createEOperation(temporalEClass, TEMPORAL___MINUS__TEMPORAL);
 		createEOperation(temporalEClass, TEMPORAL___MINUS__DURATION);
 		createEOperation(temporalEClass, TEMPORAL___PLUS__DURATION);
+		createEOperation(temporalEClass, TEMPORAL___COPY);
 
 		periodEClass = createEClass(PERIOD);
 		createEReference(periodEClass, PERIOD__START);
@@ -3216,6 +3227,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 
 		op = initEOperation(getTemporal__Plus__Duration(), this.getTemporal(), "plus", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getDuration(), "offset", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getTemporal__Copy(), this.getTemporal(), "copy", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(periodEClass, Period.class, "Period", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getPeriod_Start(), this.getTemporal(), null, "start", null, 0, 1, Period.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -4283,6 +4296,12 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		   source,
 		   new String[] {
 			   "documentation", "Returns a temporal based on this one offset by the argument [duration](Duration.html). Duration can be null."
+		   });
+		addAnnotation
+		  (getTemporal__Copy(),
+		   source,
+		   new String[] {
+			   "documentation", "Returns a deep copy of self with bounds copied. Other containment references are not set."
 		   });
 		addAnnotation
 		  (getTemporal_Instant(),

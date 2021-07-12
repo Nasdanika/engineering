@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.nasdanika.engineering</groupId>
-	<version>2021.7.2</version>
+	<version>2021.7.3</version>
 	<artifactId>parent</artifactId>
 	<packaging>pom</packaging>
 	<name>Nasdanika Engineering Parent</name>
@@ -19,8 +19,8 @@
 	</licenses>
 
 	<properties>
-		<core.version>2021.7.2</core.version>
-		<html.version>2021.7.2</html.version>
+		<core.version>2021.7.3</core.version>
+		<html.version>2021.7.3</html.version>
 		<jacoco.version>0.8.7</jacoco.version>
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

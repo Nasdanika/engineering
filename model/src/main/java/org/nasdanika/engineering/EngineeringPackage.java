@@ -469,13 +469,22 @@ public interface EngineeringPackage extends EPackage {
 	int TEMPORAL___PLUS__DURATION = MODEL_ELEMENT_OPERATION_COUNT + 6;
 
 	/**
+	 * The operation id for the '<em>Copy</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPORAL___COPY = MODEL_ELEMENT_OPERATION_COUNT + 7;
+
+	/**
 	 * The number of operations of the '<em>Temporal</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TEMPORAL_OPERATION_COUNT = MODEL_ELEMENT_OPERATION_COUNT + 7;
+	int TEMPORAL_OPERATION_COUNT = MODEL_ELEMENT_OPERATION_COUNT + 8;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.PeriodImpl <em>Period</em>}' class.
@@ -958,13 +967,22 @@ public interface EngineeringPackage extends EPackage {
 	int EVENT___PLUS__DURATION = NAMED_ELEMENT_OPERATION_COUNT + 6;
 
 	/**
+	 * The operation id for the '<em>Copy</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT___COPY = NAMED_ELEMENT_OPERATION_COUNT + 7;
+
+	/**
 	 * The number of operations of the '<em>Event</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EVENT_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 7;
+	int EVENT_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 8;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.Alignable <em>Alignable</em>}' class.
@@ -9117,6 +9135,16 @@ public interface EngineeringPackage extends EPackage {
 	EOperation getTemporal__Plus__Duration();
 
 	/**
+	 * Returns the meta object for the '{@link org.nasdanika.engineering.Temporal#copy() <em>Copy</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Copy</em>' operation.
+	 * @see org.nasdanika.engineering.Temporal#copy()
+	 * @generated
+	 */
+	EOperation getTemporal__Copy();
+
+	/**
 	 * Returns the meta object for class '{@link org.nasdanika.engineering.Period <em>Period</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -11520,6 +11548,14 @@ public interface EngineeringPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation TEMPORAL___PLUS__DURATION = eINSTANCE.getTemporal__Plus__Duration();
+
+		/**
+		 * The meta object literal for the '<em><b>Copy</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation TEMPORAL___COPY = eINSTANCE.getTemporal__Copy();
 
 		/**
 		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.PeriodImpl <em>Period</em>}' class.

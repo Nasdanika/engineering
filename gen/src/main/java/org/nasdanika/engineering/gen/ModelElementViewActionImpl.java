@@ -1515,14 +1515,12 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 					+ (withModalTrigger ? temporalInfoModalTrigger(member, temporal, viewGenerator, progressMonitor) : "");
 		}
 		
-		if (temporal.getInstant() == null && temporal.getBase() == null) {
-			// Using containment
-			EObject tc = temporal.eContainer();
-			if (tc != null) {
-				ViewAction<?> tcv = EObjectAdaptable.adaptTo(tc, ViewAction.class);
-				EReference cf = temporal.eContainmentFeature();
-				return (tcv == null ? tc : viewGenerator.link(tcv)) + (cf == null ? "" : " " + cf.getName()) + bounds(member, temporal, viewGenerator, progressMonitor, withModalTrigger);
-			}
+		// Using containment
+		EObject tc = temporal.eContainer();
+		if (tc != null) {
+			ViewAction<?> tcv = EObjectAdaptable.adaptTo(tc, ViewAction.class);
+			EReference cf = temporal.eContainmentFeature();
+			return (tcv == null ? tc : viewGenerator.link(tcv)) + (cf == null ? "" : " " + cf.getName()) + bounds(member, temporal, viewGenerator, progressMonitor, withModalTrigger);
 		}
 		
 		// Should never be the case - should be handled as an empty value.
@@ -1584,11 +1582,14 @@ public class ModelElementViewActionImpl<T extends ModelElement> extends SimpleEO
 	
 	protected Object temporalInfoModalTrigger(ETypedElement member, Temporal temporal, ViewGenerator viewGenerator, ProgressMonitor progressMonitor) {
 		Consumer<Object> bodyContentConsumer = viewGenerator.getBodyContentConsumer();
-		if (bodyContentConsumer == null || viewGenerator.get(IN_MODAL) == Boolean.TRUE) {
+		@SuppressWarnings("unchecked")
+		ViewAction<Temporal> tva = EObjectAdaptable.adaptTo(temporal, ViewAction.class);
+		if (bodyContentConsumer == null
+				|| tva == null
+				|| viewGenerator.get(IN_MODAL) == Boolean.TRUE) {
 			return "";
 		}
 		
-		ViewAction<Temporal> tva = ViewAction.adaptToViewActionNonNull(temporal);
 		ViewGenerator vg = viewGenerator.fork();
 		vg.put(IN_MODAL, Boolean.TRUE);
 		Object modalContent = tva.generate(vg, progressMonitor);

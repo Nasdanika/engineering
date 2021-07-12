@@ -1,5 +1,8 @@
 package org.nasdanika.engineering.tests;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.nasdanika.html.app.impl.Util.writeAction;
 
 import java.io.File;
@@ -10,9 +13,11 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -44,6 +49,10 @@ import org.nasdanika.common.Util;
 import org.nasdanika.common.resources.Container;
 import org.nasdanika.common.resources.FileSystemContainer;
 import org.nasdanika.emf.EObjectAdaptable;
+import org.nasdanika.engineering.Event;
+import org.nasdanika.engineering.NamedElement;
+import org.nasdanika.engineering.Organization;
+import org.nasdanika.engineering.Temporal;
 import org.nasdanika.engineering.util.EngineeringYamlLoadingExecutionParticipant;
 import org.nasdanika.html.app.Action;
 import org.nasdanika.html.app.factories.BootstrapContainerApplicationSupplierFactory;
@@ -235,7 +244,108 @@ public class TestEngineering extends TestBase {
 
 			@Override
 			public void execute(ProgressMonitor progressMonitor) throws Exception {
-				System.out.println(roots);
+				Organization org = (Organization) roots.iterator().next();
+				
+				Iterator<NamedElement> rit = org.getResources().iterator();
+				
+//		         name: Floating base
+//		         path: floating-base         
+//		         lower-bounds: 2021/7/6
+//		         upper-bounds: 2021/7/9
+				
+				Event floatingBase = (Event) rit.next();
+				assertEquals("floating-base", floatingBase.getPath());
+				assertEquals(1, floatingBase.getLowerBounds().size());
+				assertEquals(1, floatingBase.getUpperBounds().size());
+				assertNull(floatingBase.getBase());
+				assertNull(floatingBase.getInstant());				
+
+//		         name: Instant base
+//		         path: instant-base         
+//		         instant: 2021/7/7
+//		         upper-bounds: 2021/7/8				
+				Event instantBase = (Event) rit.next();
+				assertEquals("instant-base", instantBase.getPath());
+				assertEquals(1, instantBase.getUpperBounds().size());
+				assertNull(instantBase.getBase());
+				assertNotNull(instantBase.getInstant());
+				
+//		         name: Relative to floating
+//		         path: relative-to-floating
+//		         base: temporal-tests:resources/floating-base
+//		         offset: P10D        
+//		         lower-bounds: 2021/7/15
+//		         upper-bounds: 2021/7/18
+				Event relativeToFloating = (Event) rit.next();
+				assertEquals("relative-to-floating", relativeToFloating.getPath());
+				assertEquals(1, relativeToFloating.getLowerBounds().size());
+				assertEquals(1, relativeToFloating.getUpperBounds().size());
+				assertEquals(Duration.parse("P10D"),relativeToFloating.minus(floatingBase));
+				assertNull(relativeToFloating.minus(instantBase));
+				assertEquals(floatingBase,relativeToFloating.getBase());
+
+				Temporal normalizedRelativeToFloating = relativeToFloating.normalize();
+				assertEquals(2, normalizedRelativeToFloating.getLowerBounds().size());
+				assertEquals(2, normalizedRelativeToFloating.getUpperBounds().size());
+				assertEquals(floatingBase,normalizedRelativeToFloating.getBase());
+				assertEquals(Duration.parse("P10D"),normalizedRelativeToFloating.minus(floatingBase));
+				assertNull(normalizedRelativeToFloating.minus(instantBase));
+				
+//		         name: Relative to instant
+//		         path: relative-to-instant
+//		         base: temporal-tests:resources/instant-base
+//		         offset: P20D        
+//		         lower-bounds: 2021/7/25
+//		         upper-bounds: 2021/7/28
+				Event relativeToInstant = (Event) rit.next();
+				assertEquals("relative-to-instant", relativeToInstant.getPath());
+				assertEquals(1, relativeToInstant.getLowerBounds().size());
+				assertEquals(1, relativeToInstant.getUpperBounds().size());
+				assertEquals(Duration.parse("P20D"),relativeToInstant.minus(instantBase));
+				assertNull(relativeToInstant.minus(floatingBase));
+				
+				Temporal normalizedRelativeToInstant = relativeToInstant.normalize();
+				assertEquals(1, normalizedRelativeToInstant.getLowerBounds().size());
+				assertEquals(2, normalizedRelativeToInstant.getUpperBounds().size());
+				assertNull(normalizedRelativeToInstant.getBase());
+				
+//		         name: Indirect relative to instant
+//		         path: indirect-relative-to-instant
+//		         base: temporal-tests:resources/relative-to-instant
+//		         offset: P50D        
+				Event indirectRelativeToInstant = (Event) rit.next();
+				assertEquals("indirect-relative-to-instant", indirectRelativeToInstant.getPath());
+				assertEquals(0, indirectRelativeToInstant.getLowerBounds().size());
+				assertEquals(0, indirectRelativeToInstant.getUpperBounds().size());
+				assertEquals(Duration.parse("P70D"),indirectRelativeToInstant.minus(instantBase));
+				assertNull(indirectRelativeToInstant.minus(floatingBase));
+				assertEquals(relativeToInstant, indirectRelativeToInstant.getBase());
+				
+				Temporal normalizedIndirectRelativeToInstant = indirectRelativeToInstant.normalize();
+				assertEquals(1, normalizedIndirectRelativeToInstant.getLowerBounds().size());
+				assertEquals(2, normalizedIndirectRelativeToInstant.getUpperBounds().size());
+				assertNull(normalizedIndirectRelativeToInstant.getBase());
+				assertEquals(Duration.parse("P70D"),normalizedIndirectRelativeToInstant.minus(instantBase));
+				assertNull(normalizedIndirectRelativeToInstant.minus(floatingBase));
+				assertNull(normalizedIndirectRelativeToInstant.getBase());
+				
+//		         name: Indirect relative to floating
+//		         path: indirect-relative-to-floating
+//		         base: temporal-tests:resources/relative-to-floating
+//		         offset: P100D        
+				Event indirectRelativeToFloating = (Event) rit.next();
+				assertEquals("indirect-relative-to-floating", indirectRelativeToFloating.getPath());
+				assertEquals(0, indirectRelativeToFloating.getLowerBounds().size());
+				assertEquals(0, indirectRelativeToFloating.getUpperBounds().size());
+				assertEquals(Duration.parse("P110D"),indirectRelativeToFloating.minus(floatingBase));
+				assertNull(indirectRelativeToFloating.minus(instantBase));
+
+				Temporal normalizedIndirectRelativeToFloating = indirectRelativeToFloating.normalize();
+				assertEquals(2, normalizedIndirectRelativeToFloating.getLowerBounds().size());
+				assertEquals(2, normalizedIndirectRelativeToFloating.getUpperBounds().size());
+				assertEquals(Duration.parse("P110D"),normalizedIndirectRelativeToFloating.minus(floatingBase));
+				assertNull(normalizedIndirectRelativeToFloating.minus(instantBase));
+				assertEquals(floatingBase,normalizedIndirectRelativeToFloating.getBase());
 			}
 			
 		};
@@ -257,46 +367,6 @@ public class TestEngineering extends TestBase {
 			throw e;
 		}
 		
-//		
-//		
-//		Locale locale = Locale.getDefault();
-//		DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.DEFAULT, locale);
-//		String date = dateFormat.format(new Date());
-//		System.out.println(date);		
-//		
-//		System.out.println(new Date(Instant.now().toEpochMilli()));
-//		
-//		Temporal instant = EngineeringFactory.eINSTANCE.createTemporal();
-//		instant.setInstant(new Date().toInstant());
-//		System.out.println(instant);
-//		
-//		Duration duration = DefaultConverter.INSTANCE.toDuration("PT12H10M");
-//		
-//		Event event = EngineeringFactory.eINSTANCE.createEvent();
-//		event.setName("Start");
-//		event.setBase(instant);
-//		System.out.println(event);
-//		System.out.println(event.normalize());
-//		
-//		Event relative = EngineeringFactory.eINSTANCE.createEvent();
-//		relative.setName("Mid-term");
-//		relative.setBase(event);
-//		relative.setOffset(duration);
-//		System.out.println(relative);
-//		System.out.println(relative.normalize());
-//		
-//		Event relative2 = EngineeringFactory.eINSTANCE.createEvent();
-//		relative2.setName("End");
-//		relative2.setBase(relative);
-//		relative2.setOffset(Duration.parse("PT12H30M"));
-//		System.out.println(relative2);
-//		System.out.println(relative2.normalize());
-//		
-//		
-//		Increment incr = EngineeringFactory.eINSTANCE.createIncrement();
-//		incr.setPath("incr");
-//		incr.setStart(relative);
-//		System.out.println(relative.getUri());		
 	}
 
 }

@@ -153,6 +153,11 @@
       </eAnnotations>
       <eParameters name="offset" eType="#//Duration"/>
     </eOperations>
+    <eOperations name="copy" eType="#//Temporal">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Returns a deep copy of self with bounds copied. Other containment references are not set."/>
+      </eAnnotations>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="instant" eType="#//Instant">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="An absolute point on the time-line. E.g. ``2021/07/04``."/>

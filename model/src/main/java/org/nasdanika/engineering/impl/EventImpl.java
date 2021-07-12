@@ -260,6 +260,16 @@ public class EventImpl extends NamedElementImpl implements Event {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public Temporal copy() {
+		return Event.super.copy();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -468,6 +478,7 @@ public class EventImpl extends NamedElementImpl implements Event {
 				case EngineeringPackage.TEMPORAL___MINUS__TEMPORAL: return EngineeringPackage.EVENT___MINUS__TEMPORAL;
 				case EngineeringPackage.TEMPORAL___MINUS__DURATION: return EngineeringPackage.EVENT___MINUS__DURATION;
 				case EngineeringPackage.TEMPORAL___PLUS__DURATION: return EngineeringPackage.EVENT___PLUS__DURATION;
+				case EngineeringPackage.TEMPORAL___COPY: return EngineeringPackage.EVENT___COPY;
 				default: return -1;
 			}
 		}
@@ -496,6 +507,8 @@ public class EventImpl extends NamedElementImpl implements Event {
 				return minus((Duration)arguments.get(0));
 			case EngineeringPackage.EVENT___PLUS__DURATION:
 				return plus((Duration)arguments.get(0));
+			case EngineeringPackage.EVENT___COPY:
+				return copy();
 		}
 		return super.eInvoke(operationID, arguments);
 	}

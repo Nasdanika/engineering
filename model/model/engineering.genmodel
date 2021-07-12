@@ -54,6 +54,7 @@
       <genOperations ecoreOperation="engineering.ecore#//Temporal/plus">
         <genParameters ecoreParameter="engineering.ecore#//Temporal/plus/offset"/>
       </genOperations>
+      <genOperations ecoreOperation="engineering.ecore#//Temporal/copy"/>
     </genClasses>
     <genClasses ecoreClass="engineering.ecore#//Period">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//Period/start"/>

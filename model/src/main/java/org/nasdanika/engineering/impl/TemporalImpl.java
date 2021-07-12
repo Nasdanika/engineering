@@ -258,6 +258,16 @@ public class TemporalImpl extends ModelElementImpl implements Temporal {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public Temporal copy() {
+		return Temporal.super.copy();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -430,6 +440,8 @@ public class TemporalImpl extends ModelElementImpl implements Temporal {
 				return minus((Duration)arguments.get(0));
 			case EngineeringPackage.TEMPORAL___PLUS__DURATION:
 				return plus((Duration)arguments.get(0));
+			case EngineeringPackage.TEMPORAL___COPY:
+				return copy();
 		}
 		return super.eInvoke(operationID, arguments);
 	}

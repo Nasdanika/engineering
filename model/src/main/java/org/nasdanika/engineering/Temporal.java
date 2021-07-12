@@ -4,10 +4,14 @@ package org.nasdanika.engineering;
 
 import java.time.Duration;
 import java.time.Instant;
+import java.util.Collection;
 import java.util.function.Supplier;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EStructuralFeature;
 
 /**
  * <!-- begin-user-doc -->
@@ -282,7 +286,43 @@ public interface Temporal extends ModelElement {
 		}
 		return null;		
 	}
-
+	
+	/**
+	 * Adds temporal to duration with basing result on the argument if there is no base or instant
+	 * or on the argument's base. Different from Temporal.plus which always bases on this temporal.
+	 * @param base Temporal to add offset to
+	 * @param offset Added to the base instant if base is instant based or to the super-base.
+	 */
+	static Temporal plus(Temporal base, Duration offset) {
+		if (offset == null || Duration.ZERO.equals(offset)) {
+			return base;
+		}
+		
+		EClass eClass = base.eClass();
+		Temporal ret = (Temporal) eClass.getEPackage().getEFactoryInstance().create(EngineeringPackage.Literals.TEMPORAL);
+		Instant instant = base.getInstant();
+		if (instant == null) {
+			Temporal superBase = base.getBase();
+			if (superBase == null) {
+				ret.setBase(base);
+				ret.setOffset(offset);
+			} else {
+				ret.setBase(superBase);
+				Duration baseOffset = base.getOffset();
+				ret.setOffset(baseOffset == null ? offset : offset.plus(baseOffset));
+			}
+		} else {
+			ret.setInstant(instant.plus(offset));
+		}
+		for (Temporal lowerBound: base.getLowerBounds()) {
+			ret.getLowerBounds().add(plus(lowerBound, offset));
+		}
+		for (Temporal upperBound: base.getUpperBounds()) {
+			ret.getUpperBounds().add(plus(upperBound, offset));
+		}
+		return ret;					
+	}
+	
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -301,44 +341,39 @@ public interface Temporal extends ModelElement {
 			}
 			return ret;
 		};
+		
 		Temporal base = getBase();
+		Duration offset = getOffset();
+		Instant instant = getInstant();
+		EList<Temporal> lowerBounds = getLowerBounds();
+		EList<Temporal> upperBounds = getUpperBounds();
+
+		// No base - adding offset to instant.
 		if (base == null) {
-			Duration offset = getOffset();
-			Instant instant = getInstant();
 			if (instant == null || offset == null || Duration.ZERO.equals(offset)) {
 				return this;
 			}
+			
 			Temporal ret = retSupplier.get();
 			ret.setInstant(instant.plus(offset));
+			for (Temporal lowerBound: lowerBounds) {
+				ret.getLowerBounds().add(lowerBound.plus(offset));
+			}
+			for (Temporal upperBound: upperBounds) {
+				ret.getUpperBounds().add(upperBound.plus(offset));
+			}
 			return ret;
 		}
-		Temporal superBase = base.getBase();
-		if (superBase == null) {
-			Instant bInstant = base.getInstant();
-			if (bInstant == null) {			
-				return this;
+		
+		Temporal ret = plus(base.normalize(), offset);
+		if (!lowerBounds.isEmpty() || !upperBounds.isEmpty()) {
+			ret = ret.copy();
+			for (Temporal lowerBound: lowerBounds) {
+				ret.getLowerBounds().add(lowerBound.copy());
 			}
-			Duration offset = getOffset();
-			if (offset == null || offset.equals(Duration.ZERO)) {
-				return base;
-			}
-			Temporal ret = retSupplier.get();
-			ret.setInstant(bInstant.plus(offset));	
-			return ret;
-		}
-		Temporal nBase = base.normalize();
-		Duration offset = getOffset();
-		if (offset == null || offset.equals(Duration.ZERO)) {
-			return nBase;
-		}
-		Temporal ret = retSupplier.get();
-		Instant nInstant = nBase.getInstant();
-		if (nInstant == null) {
-			ret.setBase(nBase.getBase());
-			Duration nOffset = nBase.getOffset();
-			ret.setOffset(nOffset == null ? offset : offset.plus(nOffset));
-		} else {
-			ret.setInstant(nInstant.plus(offset));
+			for (Temporal upperBound: upperBounds) {
+				ret.getUpperBounds().add(upperBound.copy());
+			}			
 		}
 		return ret;		
 	}
@@ -357,45 +392,60 @@ public interface Temporal extends ModelElement {
 			return null;
 		}
 		
-		Temporal normalizedWhen = when.normalize();
-		Temporal normalizedThis = normalize();
+		// Instant
+		Instant whenInstant = when.getInstant();
+		Instant thisInstant = getInstant();
 		
-		Instant whenInstant = normalizedWhen.getInstant();
-		Instant thisInstant = normalizedThis.getInstant();
-
-		if (thisInstant != null) {
-			if (whenInstant == null) {
-				return null;
-			}
+		if (thisInstant != null && whenInstant != null) {
 			return Duration.ofMillis(thisInstant.toEpochMilli() - whenInstant.toEpochMilli());
 		}
-		
-		if (whenInstant != null) {
-			return null;
+
+		// Base
+		Temporal base = getBase();
+		if (base == when) {
+			return getOffset();
 		}
 		
-		Temporal thisBase = normalizedThis.getBase();
-		Temporal whenBase = normalizedWhen.getBase();
-		
-		if (thisBase == null || whenBase == null) {
-			return null;
+		Temporal whenBase = when.getBase();		
+		if (whenBase == this) {
+			Duration whenOffset = when.getOffset();
+			return whenOffset == null ? whenOffset : whenOffset.negated();
 		}
 		
-		if (thisBase != whenBase || thisBase.coincides(whenBase) != Boolean.TRUE) {
-			return null;
+		if (whenBase == base) {
+			Duration whenOffset = when.getOffset();
+			Duration offset = getOffset();
+			if (whenOffset == null) {
+				return offset;
+			}
+			if (offset == null) {
+				return whenOffset.negated();
+			}
+			return offset.minus(whenOffset);
 		}
 		
-		Duration thisOffset = normalizedThis.getOffset();
-		if (thisOffset == null) {
-			thisOffset = Duration.ZERO;
+		if (whenBase == null && base == null) {
+			return null; // No point in normalization.
 		}
 		
-		Duration whenOffset = normalizedWhen.getOffset();
-		if (whenOffset == null) {
-			whenOffset = Duration.ZERO;
+		if (base == null) {
+			if (whenBase.getBase() == null) {
+				return null; // No point in normalization.
+			}
+			// There is when super-base - shall normalize.
+			return minus(when.normalize());
 		}
 		
-		return thisOffset.minus(whenOffset);
+		if (whenBase == null) {
+			if (base.getBase() == null) {
+				return null; // No point in normalization
+			}
+			// There is super-base - shall normalize.
+			return normalize().minus(when);
+		}
+		
+		// Normalized
+		return normalize().minus(when.normalize()); 
 	}
 
 	/**
@@ -408,15 +458,9 @@ public interface Temporal extends ModelElement {
 	 * @generated NOT
 	 */
 	default Temporal minus(Duration offset) {
-		EClass eClass = eClass();
-		Temporal ret = (Temporal) eClass.getEPackage().getEFactoryInstance().create(EngineeringPackage.Literals.TEMPORAL);
-		ret.setBase(this);
-		if (offset != null) {
-			ret.setOffset(offset.negated());
-		}
-		return ret;
+		return plus(offset == null ? offset : offset.negated());
 	}
-
+		
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -427,10 +471,59 @@ public interface Temporal extends ModelElement {
 	 * @generated NOT
 	 */
 	default Temporal plus(Duration offset) {
+		if (offset == null || Duration.ZERO.equals(offset)) {
+			return this;
+		}
+		
 		EClass eClass = eClass();
 		Temporal ret = (Temporal) eClass.getEPackage().getEFactoryInstance().create(EngineeringPackage.Literals.TEMPORAL);
 		ret.setBase(this);
 		ret.setOffset(offset);
+		for (Temporal lowerBound: getLowerBounds()) {
+			ret.getLowerBounds().add(lowerBound.plus(offset));
+		}
+		for (Temporal upperBound: getUpperBounds()) {
+			ret.getUpperBounds().add(upperBound.plus(offset));
+		}
+		return ret;		
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Returns a deep copy of self with bounds copied. Other containment references are not set.
+	 * <!-- end-model-doc -->
+	 * @model
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	default Temporal copy() {
+		EClass eClass = eClass();
+		Temporal ret = (Temporal) eClass.getEPackage().getEFactoryInstance().create(eClass);
+		for (EStructuralFeature sf: eClass.getEAllStructuralFeatures()) {
+			if (sf.isChangeable()) {
+				if (sf instanceof EAttribute) {
+					ret.eSet(sf, eGet(sf));
+				} else {
+					EReference ref = (EReference) sf;
+					if (ref.isContainment()) {
+						if (EngineeringPackage.Literals.TEMPORAL.isSuperTypeOf(ref.getEReferenceType())) {
+							if (ref.isMany()) {
+								Collection<Temporal> target = (Collection<Temporal>) ret.eGet(sf);
+								for (Temporal te: (Collection<Temporal>) eGet(sf)) {
+									target.add(te.copy());
+								}
+							} else {
+								ret.eSet(sf, ((Temporal) eGet(sf)).copy());														
+							}
+						}
+					} else {
+						ret.eSet(sf, eGet(sf));						
+					}
+				}
+			}
+		}
 		return ret;		
 	}
 
