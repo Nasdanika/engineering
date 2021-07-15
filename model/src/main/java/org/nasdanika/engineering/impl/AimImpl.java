@@ -55,7 +55,7 @@ public class AimImpl extends NamedElementImpl implements Aim {
 	 */
 	@Override
 	public EList<Alignment> getAlignments() {
-		return getReferrers(EngineeringPackage.Literals.ALIGNMENT__AIM);
+		return getOppositeReferrers(EngineeringPackage.Literals.AIM__ALIGNMENTS);
 	}
 
 	/**

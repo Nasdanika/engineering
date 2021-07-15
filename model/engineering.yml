@@ -61,7 +61,13 @@ engineering-module:
          Grouping of products, may contain child domains/portfolios. 
      - name: Metrics/Measurements
        markdown-description: |+2
-         Grouping of products, may contain child domains/portfolios. 
+         Metrics are defined at engineer, engineered element, or just model element. Measurements are collected under Observations.
+         Obeservation may have more than one measurement. Observation is a period. It may have a description, e.g. comments - extends ModelElement.
+         Measurement references Metric. Observation may have a status, e.g. planned, completed.
+         allObservations derived reference - uses ObservationProvider context service - passes self and gets a list of external observations back. 
+         E.g. a number of downloads for a release, or a number of site visits, or user rating. There might be multiple types of measurements. Metric may specify measurement type and validate. 
+         E.g. DoubleMetric with a single double value or multi-double value to compute avarage, deviation, etc.
+         Or AggregatedDoubleMetric which already has avarage, min, max, etc. computed.  
      - name: Activity duration/cost
        markdown-description: |+2
          To compute duration/costs of journeys. Ideally/eventually - a distribution for activity and distributions for journeys.

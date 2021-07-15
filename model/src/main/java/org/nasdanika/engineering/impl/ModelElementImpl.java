@@ -4,6 +4,7 @@ package org.nasdanika.engineering.impl;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 import java.util.function.Predicate;
 
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -24,6 +25,7 @@ import org.nasdanika.common.persistence.ConfigurationException;
 import org.nasdanika.common.persistence.Marked;
 import org.nasdanika.emf.EObjectAdaptable;
 import org.nasdanika.emf.EmfUtil;
+import org.nasdanika.emf.persistence.FeatureCache;
 import org.nasdanika.engineering.Document;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.ModelElement;
@@ -503,14 +505,42 @@ public abstract class ModelElementImpl extends MinimalEObjectImpl.Container impl
 			TreeIterator<?> cit = rSet == null ? res.getAllContents() : rSet. getAllContents();
 			while (cit.hasNext()) {
 				Object next = cit.next(); 
-				if (type.isInstance(next) && uri.equals(((T) next).getUri())) {
+				if (type.isInstance(next) && uri.toString().equals(((T) next).getUri())) {
 					return (T) next;
 				}
 			}
 		}
 		throw new ConfigurationException("Could not find " + type.getName() + " with uri " + uri, EObjectAdaptable.adaptTo(this, Marked.class));
 	}
+
+	/**
+	 * Get and caches a list of all objects in the resource set which point to this 
+	 * object with the provided {@link EReference}'s opposite.
+	 * @param <T>
+	 * @param eReference
+	 * @return
+	 */
+	protected <T extends EObject> EList<T> getOppositeReferrers(EReference reference, EReference opposite) {
+		return FeatureCache.get(this, Objects.requireNonNull(reference, "Reference is null"), (target, ref) -> getReferrers(Objects.requireNonNull(opposite, "Opposite is null")), true);
+	}
+
+	/**
+	 * Get and caches a list of all objects in the resource set which point to this 
+	 * object with the provided {@link EReference}'s opposite.
+	 * @param <T>
+	 * @param eReference
+	 * @return
+	 */
+	protected <T extends EObject> EList<T> getOppositeReferrers(EReference eReference) {
+		return getOppositeReferrers(eReference, Objects.requireNonNull(eReference.getEOpposite(), "No opposite for " + eReference));
+	}
 	
+	/**
+	 * Traverses the resource set and finds all objects referring this one via the provided reference. 
+	 * @param <T>
+	 * @param eReference
+	 * @return
+	 */
 	protected <T extends EObject> EList<T> getReferrers(EReference eReference) {
 		return EmfUtil.getReferrers(this, eReference);
 	}

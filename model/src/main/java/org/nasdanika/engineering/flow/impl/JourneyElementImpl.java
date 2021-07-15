@@ -171,7 +171,7 @@ public class JourneyElementImpl extends EngineeredElementImpl implements Journey
 	 */
 	@Override
 	public EList<JourneyElement> getOverridenBy() {
-		return getReferrers(FlowPackage.Literals.JOURNEY_ELEMENT__OVERRIDES);
+		return getOppositeReferrers(FlowPackage.Literals.JOURNEY_ELEMENT__OVERRIDEN_BY);
 	}
 
 	/**

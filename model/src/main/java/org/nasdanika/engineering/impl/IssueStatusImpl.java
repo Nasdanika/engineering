@@ -62,7 +62,7 @@ public class IssueStatusImpl extends NamedElementImpl implements IssueStatus {
 	 */
 	@Override
 	public EList<Issue> getIssues() {
-		return getReferrers(EngineeringPackage.Literals.ISSUE__STATUS);
+		return getOppositeReferrers(EngineeringPackage.Literals.ISSUE_STATUS__ISSUES);
 	}
 
 	/**

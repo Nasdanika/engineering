@@ -7,8 +7,6 @@ import java.util.Date;
 import java.util.UUID;
 
 import org.eclipse.emf.common.util.URI;
-import org.junit.After;
-import org.junit.Before;
 import org.nasdanika.common.CommandFactory;
 import org.nasdanika.common.Context;
 import org.nasdanika.common.Diagnostic;
@@ -29,8 +27,6 @@ import org.nasdanika.html.app.factories.BootstrapContainerApplicationSupplierFac
 import org.nasdanika.html.app.factories.ComposedLoader;
 import org.nasdanika.html.emf.SimpleEObjectViewAction;
 import org.nasdanika.html.model.app.AppPackage;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 /**
  * Base class for tests
@@ -38,20 +34,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
  *
  */
 public class TestEngineeringGenBase {
-	
-	protected WebDriver webDriver;
-	
-	@Before
-	public void initWebDriver() {
-		webDriver = new ChromeDriver();
-	}
-	
-	@After
-	public void quitWebDriver() {
-		if (webDriver != null) {
-			webDriver.quit();
-		}
-	}
 	
 	/* Packages, classes, features, operations to test
 	engineering
@@ -340,8 +322,6 @@ public class TestEngineeringGenBase {
 	 * For resolving resource locations to their source locations on GitHub.
 	 */
 	private static final String TEST_RESOURCES_PREFIX = "engineering/gen/target/test-classes/";
-	
-	
 
 	/**
 	 * Generates a given model to a given output location in ../docs/tests/gen.
@@ -349,11 +329,19 @@ public class TestEngineeringGenBase {
 	 * @throws Exception
 	 */
 	protected File generate(URL modelURL, String output) throws Exception {
+		return generate(modelURL, output, new PrintStreamProgressMonitor());
+	}
+	
+	/**
+	 * Generates a given model to a given output location in ../docs/tests/gen.
+	 * Gets index.html in the output. Returns output directory. 
+	 * @throws Exception
+	 */
+	protected File generate(URL modelURL, String output, ProgressMonitor progressMonitor) throws Exception {
 		// This loader is needed to load the application template (dark-fluid.yml) and the site template (site.yml).
 		ObjectLoader loader = new EObjectLoader(new ComposedLoader(), null, AppPackage.eINSTANCE);
 		
-		// Outputs to console, send to file if desired.
-		ProgressMonitor progressMonitor = new PrintStreamProgressMonitor();
+		// Outputs to console, send to file if desired.	
 		
 		// Application template
 		String resourceName = "org/nasdanika/html/app/templates/cerulean/dark-fluid.yml";
@@ -444,10 +432,6 @@ public class TestEngineeringGenBase {
 				System.err.println("*      Diagnostic     *");
 				System.err.println("***********************");
 				diagnostic.dump(System.err, 4, Status.ERROR, Status.WARNING);
-			}
-			File index = new File(outputDir, "index.html");
-			if (index.isFile()) {
-				webDriver.get(index.toURI().toURL().toString());
 			}
 			return outputDir;
 		} catch (DiagnosticException e) {

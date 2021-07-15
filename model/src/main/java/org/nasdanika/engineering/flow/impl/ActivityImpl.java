@@ -66,7 +66,7 @@ public class ActivityImpl extends JourneyElementImpl implements Activity {
 	 */
 	@Override
 	public EList<Service> getServices() {
-		return getReferrers(FlowPackage.Literals.SERVICE__TARGET);
+		return getOppositeReferrers(FlowPackage.Literals.ACTIVITY__SERVICES);
 	}
 
 	/**

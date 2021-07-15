@@ -495,7 +495,7 @@ public interface Temporal extends ModelElement {
 	 * Returns a deep copy of self with bounds copied. Other containment references are not set.
 	 * <!-- end-model-doc -->
 	 * @model
-	 * @generated
+	 * @generated NOT
 	 */
 	@SuppressWarnings("unchecked")
 	default Temporal copy() {

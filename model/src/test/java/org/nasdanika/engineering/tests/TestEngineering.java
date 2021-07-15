@@ -1,5 +1,6 @@
 package org.nasdanika.engineering.tests;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
@@ -12,6 +13,7 @@ import java.io.InputStream;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.time.Duration;
 import java.util.ArrayList;
@@ -49,7 +51,10 @@ import org.nasdanika.common.Util;
 import org.nasdanika.common.resources.Container;
 import org.nasdanika.common.resources.FileSystemContainer;
 import org.nasdanika.emf.EObjectAdaptable;
+import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.Event;
+import org.nasdanika.engineering.Issue;
+import org.nasdanika.engineering.Module;
 import org.nasdanika.engineering.NamedElement;
 import org.nasdanika.engineering.Organization;
 import org.nasdanika.engineering.Temporal;
@@ -369,4 +374,100 @@ public class TestEngineering extends TestBase {
 		
 	}
 
+	@Test
+	public void testProxyResolution() throws Exception {	
+		// Outputs to console, send to file if desired.
+		ProgressMonitor progressMonitor = new PrintStreamProgressMonitor();
+		
+		class TestCommand extends EngineeringYamlLoadingExecutionParticipant implements Command {
+
+			public TestCommand(Context context) {
+				super(context);
+			}
+
+			@Override
+			protected Collection<URI> getResources() {
+				return Collections.singleton(URI.createURI(getClass().getResource("proxy-resolution.yml").toString()));
+			}
+
+			@Override
+			public void execute(ProgressMonitor progressMonitor) throws Exception {
+				Organization org = (Organization) roots.iterator().next();
+				//dumpToYaml(org);
+				Issue issue = org.getIssues().iterator().next();
+				Engineer engineer = org.getEngineers().iterator().next();
+				assertThat(engineer).isEqualTo(issue.getAssignee());
+				assertThat(engineer.getAssignments()).hasSize(1).contains(issue);
+				
+				Module product = org.getModules().iterator().next();
+				assertEquals(1, product.getOwners().size());
+				assertEquals(engineer, product.getOwners().iterator().next());
+				assertEquals(1, engineer.getOwns().size());
+				assertEquals(product, engineer.getOwns().iterator().next());
+			}
+			
+		};
+		
+		// Diagnosing loaded resources. 
+		try {
+			org.nasdanika.common.Diagnostic diagnostic = Util.call(new TestCommand(Context.EMPTY_CONTEXT), progressMonitor);
+			if (diagnostic.getStatus() == Status.WARNING || diagnostic.getStatus() == Status.ERROR) {
+				System.err.println("***********************");
+				System.err.println("*      Diagnostic     *");
+				System.err.println("***********************");
+				diagnostic.dump(System.err, 4, Status.ERROR, Status.WARNING);
+			}
+		} catch (DiagnosticException e) {
+			System.err.println("******************************");
+			System.err.println("*      Diagnostic failed     *");
+			System.err.println("******************************");
+			e.getDiagnostic().dump(System.err, 4, Status.FAIL);
+			throw e;
+		}
+		
+	}
+	
+	@Test
+	public void testImageEmbeddingAndInclusion() throws Exception {	
+		// Outputs to console, send to file if desired.
+		ProgressMonitor progressMonitor = new PrintStreamProgressMonitor();
+		
+		class TestCommand extends EngineeringYamlLoadingExecutionParticipant implements Command {
+
+			public TestCommand(Context context) {
+				super(context);
+			}
+
+			@Override
+			protected Collection<URI> getResources() {
+				return Collections.singleton(URI.createURI(getClass().getResource("image-embedding-and-inclusion.yml").toString()));
+			}
+
+			@Override
+			public void execute(ProgressMonitor progressMonitor) throws Exception {
+				Organization org = (Organization) roots.iterator().next();
+				Files.write(Path.of("dump.html"), org.getMarkdownDescription().getBytes());
+			}
+			
+		};
+		
+		// Diagnosing loaded resources. 
+		try {
+			org.nasdanika.common.Diagnostic diagnostic = Util.call(new TestCommand(Context.EMPTY_CONTEXT), progressMonitor);
+			if (diagnostic.getStatus() == Status.WARNING || diagnostic.getStatus() == Status.ERROR) {
+				System.err.println("***********************");
+				System.err.println("*      Diagnostic     *");
+				System.err.println("***********************");
+				diagnostic.dump(System.err, 4, Status.ERROR, Status.WARNING);
+			}
+		} catch (DiagnosticException e) {
+			System.err.println("******************************");
+			System.err.println("*      Diagnostic failed     *");
+			System.err.println("******************************");
+			e.getDiagnostic().dump(System.err, 4, Status.FAIL);
+			throw e;
+		}
+		
+	}
+	
 }

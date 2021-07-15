@@ -16,7 +16,6 @@ import org.nasdanika.engineering.Feature;
 import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.Release;
 import org.nasdanika.engineering.flow.Activity;
-import org.nasdanika.engineering.flow.FlowPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -83,7 +82,7 @@ public class FeatureImpl extends EngineeredCapabilityImpl implements Feature {
 	 */
 	@Override
 	public EList<Issue> getIssues() {
-		return getReferrers(EngineeringPackage.Literals.ISSUE__CONTRIBUTES_TO);
+		return getOppositeReferrers(EngineeringPackage.Literals.FEATURE__ISSUES);
 	}
 
 	/**
@@ -93,7 +92,7 @@ public class FeatureImpl extends EngineeredCapabilityImpl implements Feature {
 	 */
 	@Override
 	public EList<Activity> getUses() {
-		return getReferrers(FlowPackage.Literals.ACTIVITY__FEATURES);
+		return getOppositeReferrers(EngineeringPackage.Literals.FEATURE__USES);
 	}
 
 	/**

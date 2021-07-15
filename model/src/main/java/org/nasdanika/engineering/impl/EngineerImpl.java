@@ -94,7 +94,7 @@ public class EngineerImpl extends PersonaImpl implements Engineer {
 	public EList<org.nasdanika.engineering.Module> getModules() {
 		return (EList<org.nasdanika.engineering.Module>)eDynamicGet(EngineeringPackage.ENGINEER__MODULES, EngineeringPackage.Literals.ENGINEER__MODULES, true, true);
 	}
-
+	
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -102,7 +102,7 @@ public class EngineerImpl extends PersonaImpl implements Engineer {
 	 */
 	@Override
 	public EList<EngineeredElement> getOwns() {
-		return getReferrers(EngineeringPackage.Literals.ENGINEERED_ELEMENT__OWNERS);
+		return getOppositeReferrers(EngineeringPackage.Literals.ENGINEER__OWNS);
 	}
 
 	/**
@@ -112,7 +112,7 @@ public class EngineerImpl extends PersonaImpl implements Engineer {
 	 */
 	@Override
 	public EList<EngineeredElement> getExpertise() {
-		return getReferrers(EngineeringPackage.Literals.ENGINEERED_ELEMENT__EXPERTS);
+		return getOppositeReferrers(EngineeringPackage.Literals.ENGINEER__EXPERTISE);
 	}
 
 	/**
@@ -148,14 +148,15 @@ public class EngineerImpl extends PersonaImpl implements Engineer {
 		return (EList<Persona>)eDynamicGet(EngineeringPackage.ENGINEER__PERSONAS, EngineeringPackage.Literals.ENGINEER__PERSONAS, true, true);
 	}
 
-	/**
+		/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
 	@Override
 	public EList<Endeavor> getAssignments() {
-		return getReferrers(EngineeringPackage.Literals.ENDEAVOR__ASSIGNEE);
+		return getOppositeReferrers(EngineeringPackage.Literals.ENGINEER__ASSIGNMENTS);
+//		return (EList<Endeavor>)eDynamicGet(EngineeringPackage.ENGINEER__ASSIGNMENTS, EngineeringPackage.Literals.ENGINEER__ASSIGNMENTS, true, true);
 	}
 	
 	/**
@@ -229,7 +230,7 @@ public class EngineerImpl extends PersonaImpl implements Engineer {
 	 */
 	@Override
 	public EList<Allocation> getDesignations() {
-		return getReferrers(EngineeringPackage.Literals.ALLOCATION__ENGINEER);
+		return getOppositeReferrers(EngineeringPackage.Literals.ENGINEER__DESIGNATIONS);
 	}
 
 	/**
@@ -250,7 +251,7 @@ public class EngineerImpl extends PersonaImpl implements Engineer {
 	 */
 	@Override
 	public EList<Persona> getRepresents() {
-		return getReferrers(EngineeringPackage.Literals.PERSONA__REPRESENTATIVES);
+		return getOppositeReferrers(EngineeringPackage.Literals.ENGINEER__REPRESENTS);
 	}
 
 	/**
@@ -260,7 +261,7 @@ public class EngineerImpl extends PersonaImpl implements Engineer {
 	 */
 	@Override
 	public EList<Message> getMessages() {
-		return getReferrers(EngineeringPackage.Literals.MESSAGE__AUTHOR);
+		return getOppositeReferrers(EngineeringPackage.Literals.ENGINEER__MESSAGES);
 	}
 
 	/**

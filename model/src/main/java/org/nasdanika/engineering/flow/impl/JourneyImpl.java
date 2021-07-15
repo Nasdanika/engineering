@@ -110,7 +110,7 @@ public class JourneyImpl extends ActivityImpl implements Journey {
 	 */
 	@Override
 	public EList<Journey> getExtensions() {
-		return getReferrers(FlowPackage.Literals.JOURNEY__EXTENDS);
+		return getOppositeReferrers(FlowPackage.Literals.JOURNEY__EXTENSIONS);
 	}
 
 	/**

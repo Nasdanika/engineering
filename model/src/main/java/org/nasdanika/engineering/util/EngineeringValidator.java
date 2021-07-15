@@ -1096,6 +1096,7 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validateEndeavor_children(feature, diagnostics, context);
 		return result;
 	}
+		
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

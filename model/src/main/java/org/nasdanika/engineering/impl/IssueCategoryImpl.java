@@ -95,7 +95,7 @@ public class IssueCategoryImpl extends AimImpl implements IssueCategory {
 	 */
 	@Override
 	public EList<Issue> getIssues() {
-		return getReferrers(EngineeringPackage.Literals.ISSUE__CATEGORIES);
+		return getOppositeReferrers(EngineeringPackage.Literals.ISSUE_CATEGORY__ISSUES);
 	}
 
 	/**
@@ -125,7 +125,7 @@ public class IssueCategoryImpl extends AimImpl implements IssueCategory {
 	 */
 	@Override
 	public EList<Allocation> getAllocations() {
-		return getReferrers(EngineeringPackage.Literals.ALLOCATION__CATEGORY);
+		return getOppositeReferrers(EngineeringPackage.Literals.ISSUE_CATEGORY__ALLOCATIONS);
 	}
 
 	/**

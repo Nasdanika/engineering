@@ -3,14 +3,10 @@
 package org.nasdanika.engineering.impl;
 
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.util.InternalEList;
-
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.IssueSeverity;
@@ -55,7 +51,7 @@ public class IssueSeverityImpl extends NamedElementImpl implements IssueSeverity
 	 */
 	@Override
 	public EList<Issue> getIssues() {
-		return getReferrers(EngineeringPackage.Literals.ISSUE__SEVERITY);
+		return getOppositeReferrers(EngineeringPackage.Literals.ISSUE_SEVERITY__ISSUES);
 	}
 
 	/**

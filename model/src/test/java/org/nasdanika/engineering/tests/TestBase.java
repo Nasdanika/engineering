@@ -1,26 +1,19 @@
 package org.nasdanika.engineering.tests;
 
-import java.util.Collections;
-import java.util.HashMap;
+import java.io.OutputStreamWriter;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
-import org.eclipse.emf.common.notify.Notifier;
-import org.eclipse.emf.common.util.Diagnostic;
-import org.eclipse.emf.common.util.TreeIterator;
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EPackage.Registry;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.emf.ecore.util.Diagnostician;
-import org.junit.Before;
-import org.nasdanika.common.Context;
-import org.nasdanika.emf.persistence.EObjectLoader;
-import org.nasdanika.engineering.EngineeringPackage;
+import org.eclipse.emf.ecore.EReference;
+import org.nasdanika.common.Util;
 import org.nasdanika.engineering.ModelElement;
-import org.nasdanika.engineering.flow.FlowPackage;
-import org.nasdanika.engineering.representation.RepresentationPackage;
-import org.nasdanika.html.app.factories.ComposedLoader;
+import org.nasdanika.engineering.NamedElement;
+import org.yaml.snakeyaml.DumperOptions;
+import org.yaml.snakeyaml.DumperOptions.FlowStyle;
+import org.yaml.snakeyaml.Yaml;
 
 /**
  * Common methods for testing
@@ -311,5 +304,55 @@ engineering
 		resolution
  */
 	
+	public static void dumpToYaml(EObject eObject) {
+		DumperOptions dumperOptions = new DumperOptions();
+		dumperOptions.setDefaultFlowStyle(FlowStyle.BLOCK); dumperOptions.setIndent(4); 
+		new Yaml(dumperOptions).dump(dump(eObject), new OutputStreamWriter(System.out));
+	}
+	
+	/**
+	 * Dumps {@link EObject} to {@link Map} for to further dump to YAML. 
+	 * Outputs class, path, URI, and name.
+	 * @param eObject
+	 * @return
+	 */
+	@SuppressWarnings("unchecked")
+	public static Map<String,Object> dump(EObject eObject) {
+		Map<String,Object> ret = new LinkedHashMap<>(); 
+		ret.put("class", eObject.eClass().getName());
+		if (eObject instanceof ModelElement) {
+			String path = ((ModelElement) eObject).getPath();
+			if (!Util.isBlank(path)) { 
+				ret.put("path", path);
+			}
+			ret.put("uri", ((ModelElement) eObject) .getUri()); 
+			if (ret instanceof NamedElement) {
+				ret.put("path", ((NamedElement) eObject).getName());
+			}
+		}
+		for (EReference ref: eObject.eClass().getEAllReferences()) {
+			if (ref. isContainment()) { 
+				if (ref.isMany()) {
+					Collection<Map<String,Object>> elements = new ArrayList<>(); 
+					for (EObject el: ((Collection<EObject>) eObject.eGet(ref))) { 
+						if (el != null) {
+							elements.add(dump(el));
+						}
+					}
+					if (!elements.isEmpty()) {
+						ret.put(ref.getName(), elements);
+					}
+				} else {
+					EObject val = (EObject) eObject.eGet(ref); 
+					if (val != null) {
+						ret.put(ref.getName(), dump(val));
+					}
+				}
+			}
+		}
+		return ret;
+	}
+
+
 
 }

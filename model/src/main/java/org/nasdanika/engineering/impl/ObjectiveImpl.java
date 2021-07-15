@@ -162,7 +162,7 @@ public class ObjectiveImpl extends KeyResultImpl implements Objective {
 	 */
 	@Override
 	public EList<Objective> getLinkedObjectives() {
-		return getReferrers(EngineeringPackage.Literals.OBJECTIVE__PARENT);
+		return getOppositeReferrers(EngineeringPackage.Literals.ENDEAVOR__LINKED_OBJECTIVES);
 	}
 
 	/**

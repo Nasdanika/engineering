@@ -3,6 +3,7 @@
 package org.nasdanika.engineering.impl;
 
 import java.util.Collection;
+
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
@@ -206,7 +207,7 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 	 */
 	@Override
 	public EList<Capacity> getCapacity() {
-		return getReferrers(EngineeringPackage.Literals.CAPACITY__ENDEAVOR);
+		return getOppositeReferrers(EngineeringPackage.Literals.ENDEAVOR__CAPACITY);
 	}
 
 	/**
@@ -227,7 +228,7 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 	 */
 	@Override
 	public EList<Objective> getLinkedObjectives() {
-		return getReferrers(EngineeringPackage.Literals.OBJECTIVE__ENDEAVOR);
+		return getOppositeReferrers(EngineeringPackage.Literals.ENDEAVOR__LINKED_OBJECTIVES);
 	}
 
 	/**

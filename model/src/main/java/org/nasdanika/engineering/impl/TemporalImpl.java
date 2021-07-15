@@ -160,7 +160,7 @@ public class TemporalImpl extends ModelElementImpl implements Temporal {
 	 */
 	@Override
 	public EList<Temporal> getDerivatives() {
-		return getReferrers(EngineeringPackage.Literals.TEMPORAL__BASE);
+		return getOppositeReferrers(EngineeringPackage.Literals.TEMPORAL__DERIVATIVES);
 	}
 
 	/**
@@ -268,7 +268,7 @@ public class TemporalImpl extends ModelElementImpl implements Temporal {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
@@ -280,7 +280,7 @@ public class TemporalImpl extends ModelElementImpl implements Temporal {
 					msgs = ((InternalEObject)base).eInverseRemove(this, EngineeringPackage.TEMPORAL__DERIVATIVES, Temporal.class, msgs);
 				return basicSetBase((Temporal)otherEnd, msgs);
 			case EngineeringPackage.TEMPORAL__DERIVATIVES:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getDerivatives()).basicAdd(otherEnd, msgs);
+				// return ((InternalEList<InternalEObject>)(InternalEList<?>)getDerivatives()).basicAdd(otherEnd, msgs); Do not add inverse derivatives - computed and cached.
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}

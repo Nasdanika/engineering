@@ -3,6 +3,7 @@
 package org.nasdanika.engineering.impl;
 
 import java.time.Duration;
+
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
@@ -160,7 +161,7 @@ public class CapabilityImpl extends NamedElementImpl implements Capability {
 	 */
 	@Override
 	public EList<Issue> getRequiredBy() {
-		return getReferrers(EngineeringPackage.Literals.ISSUE__REQUIRES);
+		return getOppositeReferrers(EngineeringPackage.Literals.CAPABILITY__REQUIRED_BY);
 	}
 
 	/**

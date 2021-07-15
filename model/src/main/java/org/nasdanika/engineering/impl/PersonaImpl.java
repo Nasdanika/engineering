@@ -13,7 +13,6 @@ import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Goal;
 import org.nasdanika.engineering.Persona;
-import org.nasdanika.engineering.flow.FlowPackage;
 import org.nasdanika.engineering.flow.JourneyElement;
 
 /**
@@ -60,7 +59,7 @@ public class PersonaImpl extends EngineeredElementImpl implements Persona {
 	 */
 	@Override
 	public EList<JourneyElement> getJourneyElements() {
-		return getReferrers(FlowPackage.Literals.JOURNEY_ELEMENT__PERSONAS);
+		return getOppositeReferrers(EngineeringPackage.Literals.PERSONA__JOURNEY_ELEMENTS);
 	}
 
 	/**
@@ -103,7 +102,7 @@ public class PersonaImpl extends EngineeredElementImpl implements Persona {
 	 */
 	@Override
 	public EList<Persona> getExtensions() {
-		return getReferrers(EngineeringPackage.Literals.PERSONA__EXTENDS);
+		return getOppositeReferrers(EngineeringPackage.Literals.PERSONA__EXTENSIONS);
 	}
 
 	/**

@@ -162,7 +162,7 @@ public class EventImpl extends NamedElementImpl implements Event {
 	 */
 	@Override
 	public EList<Temporal> getDerivatives() {
-		return getReferrers(EngineeringPackage.Literals.TEMPORAL__BASE);
+		return getOppositeReferrers(EngineeringPackage.Literals.TEMPORAL__DERIVATIVES);
 	}
 
 	/**

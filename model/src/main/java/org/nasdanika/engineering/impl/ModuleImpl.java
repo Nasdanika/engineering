@@ -75,7 +75,7 @@ public class ModuleImpl extends EngineeredElementImpl implements org.nasdanika.e
 	 */
 	@Override
 	public EList<org.nasdanika.engineering.Module> getDependants() {
-		return getReferrers(EngineeringPackage.Literals.MODULE__DEPENDENCIES);
+		return getOppositeReferrers(EngineeringPackage.Literals.MODULE__DEPENDANTS);
 	}
 
 	/**

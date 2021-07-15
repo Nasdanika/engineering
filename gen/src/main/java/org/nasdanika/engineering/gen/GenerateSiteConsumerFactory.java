@@ -30,7 +30,7 @@ public class GenerateSiteConsumerFactory implements ConsumerFactory<Action> {
 	protected Container<String> output;
 	protected SupplierFactory<? extends Application> applicationSupplierFactory;
 
-	protected GenerateSiteConsumerFactory(
+	public GenerateSiteConsumerFactory(
 			Collection<URI> resources,
 			SupplierFactory<? extends Application> applicationSupplierFactory,
 			Container<String> output) {
@@ -39,35 +39,35 @@ public class GenerateSiteConsumerFactory implements ConsumerFactory<Action> {
 		this.output = output;
 	}
 
-	protected GenerateSiteConsumerFactory(
+	public GenerateSiteConsumerFactory(
 			Collection<URI> resources, 
 			SupplierFactory<? extends Application> applicationSupplierFactory,
 			BinaryEntityContainer output) {
 		this(resources, applicationSupplierFactory, output.stateAdapter().adapt(Util.INPUT_STREAM_TO_STRING_DECODER, Util.OBJECT_TO_INPUT_STREAM_ENCODER));
 	}
 	
-	protected GenerateSiteConsumerFactory(
+	public GenerateSiteConsumerFactory(
 			Collection<URI> resources, 
 			SupplierFactory<? extends Application> applicationSupplierFactory,
 			File output) {
 		this(resources, applicationSupplierFactory, new FileSystemContainer(output));
 	}	
 
-	protected GenerateSiteConsumerFactory(
+	public GenerateSiteConsumerFactory(
 			URI resource,
 			SupplierFactory<? extends Application> applicationSupplierFactory,
 			Container<String> output) {
 		this(Collections.singleton(resource), applicationSupplierFactory, output);
 	}
 
-	protected GenerateSiteConsumerFactory(
+	public GenerateSiteConsumerFactory(
 			URI resource, 
 			SupplierFactory<? extends Application> applicationSupplierFactory,
 			BinaryEntityContainer output) {
 		this(Collections.singleton(resource), applicationSupplierFactory, output);
 	}
 	
-	protected GenerateSiteConsumerFactory(
+	public GenerateSiteConsumerFactory(
 			URI resource, 
 			SupplierFactory<? extends Application> applicationSupplierFactory,
 			File output) {
@@ -77,16 +77,10 @@ public class GenerateSiteConsumerFactory implements ConsumerFactory<Action> {
 
 	@Override
 	public Consumer<Action> create(Context context) throws Exception {		
-		@SuppressWarnings("resource")
-		EngineeringYamlLoadingActionFunction actionFunction = new EngineeringYamlLoadingActionFunction(context) {
+		return createActionFunction(context).then(createGenerateSiteConsumer(context));
+	}
 
-			@Override
-			protected Collection<URI> getResources() {
-				return GenerateSiteConsumerFactory.this.resources;
-			}
-			
-		};
-		
+	protected AbstractGenerateSiteConsumer createGenerateSiteConsumer(Context context) {
 		AbstractGenerateSiteConsumer generateSiteConsumer = new AbstractGenerateSiteConsumer(applicationSupplierFactory, output, context) {
 			
 			@Override
@@ -97,8 +91,20 @@ public class GenerateSiteConsumerFactory implements ConsumerFactory<Action> {
 				return principal;		
 			}
 		};
-		
-		return actionFunction.then(generateSiteConsumer);
+		return generateSiteConsumer;
+	}
+
+	protected EngineeringYamlLoadingActionFunction createActionFunction(Context context) {
+		@SuppressWarnings("resource")
+		EngineeringYamlLoadingActionFunction actionFunction = new EngineeringYamlLoadingActionFunction(context) {
+
+			@Override
+			protected Collection<URI> getResources() {
+				return GenerateSiteConsumerFactory.this.resources;
+			}
+			
+		};
+		return actionFunction;
 	}
 		
 }

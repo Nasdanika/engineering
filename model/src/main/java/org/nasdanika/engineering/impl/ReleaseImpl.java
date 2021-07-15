@@ -98,7 +98,7 @@ public class ReleaseImpl extends EngineeredCapabilityImpl implements Release {
 	 */
 	@Override
 	public EList<Issue> getIssues() {
-		return getReferrers(EngineeringPackage.Literals.ISSUE__RELEASES);
+		return getOppositeReferrers(EngineeringPackage.Literals.RELEASE__ISSUES);
 	}
 
 	/**
@@ -108,7 +108,7 @@ public class ReleaseImpl extends EngineeredCapabilityImpl implements Release {
 	 */
 	@Override
 	public EList<Feature> getFeatures() {
-		return getReferrers(EngineeringPackage.Literals.FEATURE__RELEASES);
+		return getOppositeReferrers(EngineeringPackage.Literals.RELEASE__FEATURES);
 	}
 
 	/**

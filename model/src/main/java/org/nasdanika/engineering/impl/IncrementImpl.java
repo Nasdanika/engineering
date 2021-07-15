@@ -274,7 +274,7 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 	 */
 	@Override
 	public EList<Issue> getIssues() {
-		return getReferrers(EngineeringPackage.Literals.ISSUE__INCREMENT);
+		return getOppositeReferrers(EngineeringPackage.Literals.INCREMENT__ISSUES);
 	}
 
 	/**
@@ -284,7 +284,7 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 	 */
 	@Override
 	public EList<Release> getReleases() {
-		return getReferrers(EngineeringPackage.Literals.RELEASE__INCREMENT);
+		return getOppositeReferrers(EngineeringPackage.Literals.INCREMENT__RELEASES);
 	}
 
 	/**
@@ -294,7 +294,7 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 	 */
 	@Override
 	public EList<Capacity> getCapacity() {
-		return getReferrers(EngineeringPackage.Literals.CAPACITY__ENDEAVOR);
+		return getOppositeReferrers(EngineeringPackage.Literals.ENDEAVOR__CAPACITY);
 	}
 
 	/**
@@ -315,7 +315,7 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 	 */
 	@Override
 	public EList<Objective> getLinkedObjectives() {
-		return getReferrers(EngineeringPackage.Literals.OBJECTIVE__ENDEAVOR);
+		return getOppositeReferrers(EngineeringPackage.Literals.ENDEAVOR__LINKED_OBJECTIVES);
 	}
 
 	/**
