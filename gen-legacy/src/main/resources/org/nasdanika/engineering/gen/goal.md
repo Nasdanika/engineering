@@ -1,0 +1,3 @@
+[Goal](${doc-uri}Goal.html) is an [aim](${doc-uri}Aim.html) defined under a [persona](${doc-uri}Persona.html) and its sub-types - [engineer](${doc-uri}Engineer.html) and [organization](${doc-uri}Organization.html).
+Goal is something that rarely changes and can be achieved, unlike [principle](${doc-uri}Principle.html) which is also an aim, also rarely changes, but it is not achievable, it guides achievement of other aims.
+Goals can be organized into a hierarchy. There is no Mission class, a way to model a mission of an engineer or an organization is to define it as a single goal and then define goals as mission children.
