@@ -2,6 +2,8 @@
  */
 package org.nasdanika.engineering;
 
+import org.nasdanika.ncore.Temporal;
+
 
 /**
  * <!-- begin-user-doc -->

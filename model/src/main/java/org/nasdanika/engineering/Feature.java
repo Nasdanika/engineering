@@ -3,7 +3,7 @@
 package org.nasdanika.engineering;
 
 import org.eclipse.emf.common.util.EList;
-import org.nasdanika.engineering.flow.Activity;
+import org.nasdanika.engineering.journey.Activity;
 
 
 /**
@@ -45,7 +45,7 @@ public interface Feature extends EngineeredCapability {
 
 	/**
 	 * Returns the value of the '<em><b>Activities</b></em>' containment reference list.
-	 * The list contents are of type {@link org.nasdanika.engineering.flow.Activity}.
+	 * The list contents are of type {@link org.nasdanika.engineering.journey.Activity}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -77,8 +77,7 @@ public interface Feature extends EngineeredCapability {
 
 	/**
 	 * Returns the value of the '<em><b>Uses</b></em>' reference list.
-	 * The list contents are of type {@link org.nasdanika.engineering.flow.Activity}.
-	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.flow.Activity#getFeatures <em>Features</em>}'.
+	 * The list contents are of type {@link org.nasdanika.engineering.journey.Activity}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -86,8 +85,7 @@ public interface Feature extends EngineeredCapability {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Uses</em>' reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getFeature_Uses()
-	 * @see org.nasdanika.engineering.flow.Activity#getFeatures
-	 * @model opposite="features" changeable="false" derived="true"
+	 * @model changeable="false" derived="true"
 	 * @generated
 	 */
 	EList<Activity> getUses();

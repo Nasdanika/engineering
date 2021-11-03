@@ -8,16 +8,18 @@ Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.nasdanika.engineering,
- org.nasdanika.engineering.flow,
- org.nasdanika.engineering.flow.impl,
- org.nasdanika.engineering.flow.util,
  org.nasdanika.engineering.impl,
+ org.nasdanika.engineering.journey,
+ org.nasdanika.engineering.journey.impl,
+ org.nasdanika.engineering.journey.util,
  org.nasdanika.engineering.representation,
  org.nasdanika.engineering.representation.impl,
  org.nasdanika.engineering.representation.util,
  org.nasdanika.engineering.util
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
+ org.nasdanika.diagram;visibility:=reexport,
+ org.nasdanika.flow;visibility:=reexport,
  org.nasdanika.ncore;visibility:=reexport,
  org.eclipse.emf.ecore.xmi;bundle-version="2.15.0";visibility:=reexport,
  org.apache.commons.codec;bundle-version="1.14.0",

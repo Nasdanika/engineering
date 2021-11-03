@@ -1,1 +1,0 @@
-An [EMap](https://wiki.eclipse.org/EMF/FAQ#How_do_I_create_a_Map_in_EMF.3F) entry class to support feature or operation name to [member appearance](MemberAppearance.html) mapping.

@@ -4,35 +4,16 @@
   <eAnnotations source="urn:org.nasdanika">
     <details key="documentation-reference" value="doc/engineering.md"/>
   </eAnnotations>
-  <eClassifiers xsi:type="ecore:EClass" name="ModelElement" abstract="true" eSuperTypes="../../org.nasdanika.ncore/model/ncore.ecore#//Adaptable">
+  <eClassifiers xsi:type="ecore:EClass" name="ModelElement" abstract="true" eSuperTypes="../../org.nasdanika.ncore/model/ncore.ecore#//ModelElement">
     <eAnnotations source="urn:org.nasdanika">
       <details key="documentation-reference" value="doc/model-element.md"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
       <details key="constraints" value="path"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="uri" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-        changeable="false" derived="true">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Element's URI is derived from ``path``, container URI, and containment reference. URI is used for cross-referencing of elements."/>
-      </eAnnotations>
-    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="path" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Element's path to form full element URI and URL. Shall be unique in the containing collection. If blank, derived from element's position in the collection. For named elements is derived from element name.&#xA;Element URL is formed by adding ``.html`` extension to the path if the model element's EClass doesn't have containment references and as such the element may not have children, and by adding ``/index.html`` otherwise."/>
-      </eAnnotations>
-      <eAnnotations source="urn:org.nasdanika">
-        <details key="load-key" value="path"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Description in HTML."/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="markdownDescription" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Description in [Markdown](https://en.wikipedia.org/wiki/Markdown)."/>
+        <details key="documentation" value="Resources associated with the element, e.g. documentation."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="resources" upperBound="-1"
@@ -41,12 +22,8 @@
         <details key="documentation" value="Resources associated with the element, e.g. documentation."/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="appearance" eType="#//ModelElementAppearance"
-        containment="true">
-      <eAnnotations source="urn:org.nasdanika">
-        <details key="homogenous" value="true"/>
-      </eAnnotations>
-    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="documentation" upperBound="-1"
+        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="tableOfContents" eType="#//TableOfContents"
         containment="true">
       <eAnnotations source="urn:org.nasdanika">
@@ -64,7 +41,8 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="representations" upperBound="-1"
-        eType="#//NamedElement" containment="true">
+        eType="ecore:EClass ../../org.nasdanika.diagram/model/diagram.ecore#//Diagram"
+        containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Pluggable representations of a model element, e.g. a component diagram for engineers and modules."/>
       </eAnnotations>
@@ -93,7 +71,7 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Period" eSuperTypes="#//ModelElement">
+  <eClassifiers xsi:type="ecore:EClass" name="Period" eSuperTypes="../../org.nasdanika.ncore/model/ncore.ecore#//ModelElement">
     <eAnnotations source="urn:org.nasdanika">
       <details key="documentation-reference" value="doc/period.md"/>
     </eAnnotations>
@@ -126,20 +104,30 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="NamedElement" eSuperTypes="#//ModelElement">
+  <eClassifiers xsi:type="ecore:EClass" name="NamedElement" eSuperTypes="#//ModelElement ../../org.nasdanika.ncore/model/ncore.ecore#//NamedElement">
     <eAnnotations source="urn:org.nasdanika">
       <details key="documentation-reference" value="doc/named-element.md"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Element name."/>
-      </eAnnotations>
-    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Event" eSuperTypes="#//NamedElement ../../org.nasdanika.ncore/model/ncore.ecore#//Temporal">
     <eAnnotations source="urn:org.nasdanika">
       <details key="documentation-reference" value="doc/event.md"/>
     </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Alignable" abstract="true" interface="true">
+    <eAnnotations source="urn:org.nasdanika">
+      <details key="documentation-reference" value="doc/alignable.md"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="aligns" upperBound="-1"
+        eType="#//Alignment" containment="true">
+      <eAnnotations source="urn:org.nasdanika">
+        <details key="homogenous" value="true"/>
+        <details key="strict-containment" value="true"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Aims to which this alignable aligns. E.g. a module level principle may align to organization pirinciples."/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Endeavor" eSuperTypes="#//Period #//Alignable">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
@@ -469,6 +457,29 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Forum" eSuperTypes="#//NamedElement">
+    <eAnnotations source="urn:org.nasdanika">
+      <details key="documentation-reference" value="doc/forum.md"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="discussion" upperBound="-1"
+        eType="#//Forum" containment="true">
+      <eAnnotations source="urn:org.nasdanika">
+        <details key="homogenous" value="true"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Sub-forums."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="topics" upperBound="-1"
+        eType="#//Topic" containment="true">
+      <eAnnotations source="urn:org.nasdanika">
+        <details key="homogenous" value="true"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Discussion topics in this forum."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EngineeredElement" abstract="true" eSuperTypes="#//Forum #//Period">
     <eAnnotations source="urn:org.nasdanika">
       <details key="documentation-reference" value="doc/engineered-element.md"/>
@@ -542,12 +553,6 @@
       <details key="documentation-reference" value="doc/persona.md"/>
       <details key="icon" value="far fa-user"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="journeyElements" upperBound="-1"
-        eType="#//flow/JourneyElement" changeable="false" derived="true" eOpposite="#//flow/JourneyElement/personas">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Derived opposite to journey element personas reference - [activities](Activity.html) performed by this persona which use [product](Product.html) [features](Feature.html) and [services](Service.html) which this persona uses."/>
-      </eAnnotations>
-    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="goals" upperBound="-1"
         eType="#//Goal" containment="true">
       <eAnnotations source="urn:org.nasdanika">
@@ -585,7 +590,7 @@
       <details key="constraints" value="capacity start_end"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="modules" upperBound="-1"
-        eType="#//Module" containment="true">
+        eType="#//Module" containment="true" eKeys="#//ModelElement/path">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Modules ([products](Product.html)) are defined under engineer or [organization](Organization.html)."/>
       </eAnnotations>
@@ -612,7 +617,7 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="services" upperBound="-1"
-        eType="#//flow/Activity" containment="true">
+        eType="#//journey/Activity" containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Engineer may perform shared activities (services) which can be parts of [persona](Persona.html) [journeys](Journey.html)."/>
       </eAnnotations>
@@ -735,7 +740,7 @@
       <details key="documentation-reference" value="doc/module.md"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="modules" upperBound="-1"
-        eType="#//Module" containment="true">
+        eType="#//Module" containment="true" eKeys="#//ModelElement/path">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Sub-modules of this module."/>
       </eAnnotations>
@@ -779,7 +784,7 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="activities" upperBound="-1"
-        eType="#//flow/Activity" containment="true">
+        eType="#//journey/Activity" containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Activities/[journeys](Journey.html) which demonstrate how to use the product and its features."/>
       </eAnnotations>
@@ -846,7 +851,7 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="activities" upperBound="-1"
-        eType="#//flow/Activity" containment="true">
+        eType="#//journey/Activity" containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Activities exemplifying use of the feature. These activities may be [journeys](Journey.html) and may be referenced from journeys."/>
       </eAnnotations>
@@ -857,8 +862,8 @@
         <details key="documentation" value="Issues contributing to this feature."/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="uses" upperBound="-1" eType="#//flow/Activity"
-        changeable="false" derived="true" eOpposite="#//flow/Activity/features">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="uses" upperBound="-1" eType="#//journey/Activity"
+        changeable="false" derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Activities using this feature."/>
       </eAnnotations>
@@ -915,21 +920,6 @@
         eOpposite="#//IssueCategory/allocations">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Optional issue category for this allocation. E.g. a allocation can be made to &quot;Documentation&quot; or &quot;Test coverage&quot; categories."/>
-      </eAnnotations>
-    </eStructuralFeatures>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Alignable" abstract="true" interface="true">
-    <eAnnotations source="urn:org.nasdanika">
-      <details key="documentation-reference" value="doc/alignable.md"/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="aligns" upperBound="-1"
-        eType="#//Alignment" containment="true">
-      <eAnnotations source="urn:org.nasdanika">
-        <details key="homogenous" value="true"/>
-        <details key="strict-containment" value="true"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Aims to which this alignable aligns. E.g. a module level principle may align to organization pirinciples."/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
@@ -992,29 +982,6 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Forum" eSuperTypes="#//NamedElement">
-    <eAnnotations source="urn:org.nasdanika">
-      <details key="documentation-reference" value="doc/forum.md"/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="discussion" upperBound="-1"
-        eType="#//Forum" containment="true">
-      <eAnnotations source="urn:org.nasdanika">
-        <details key="homogenous" value="true"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Sub-forums."/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="topics" upperBound="-1"
-        eType="#//Topic" containment="true">
-      <eAnnotations source="urn:org.nasdanika">
-        <details key="homogenous" value="true"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Discussion topics in this forum."/>
-      </eAnnotations>
-    </eStructuralFeatures>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Message" eSuperTypes="#//NamedElement">
     <eAnnotations source="urn:org.nasdanika">
       <details key="documentation-reference" value="doc/message.md"/>
@@ -1044,184 +1011,6 @@
         <details key="documentation" value="Messages in this topic."/>
       </eAnnotations>
     </eStructuralFeatures>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="PackageAppearance">
-    <eAnnotations source="urn:org.nasdanika">
-      <details key="documentation-reference" value="doc/package-appearance.md"/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="modelElements" upperBound="-1"
-        eType="#//ModelElementAppearanceEntry" containment="true">
-      <eAnnotations source="urn:org.nasdanika">
-        <details key="homogenous" value="true"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Mapping of model element EClass names in kebab case to model element appearance.&#xA;E.g. for ``IssueStatus`` appearance specification will look like:&#xA;&#xA;```yaml&#xA;model-elements:&#xA;    issue-status:&#xA;        roles: context&#xA;```&#xA;"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="subPackages" upperBound="-1"
-        eType="#//PackageAppearanceEntry" containment="true">
-      <eAnnotations source="urn:org.nasdanika">
-        <details key="homogenous" value="true"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Mapping of model element EClass names in kebab case to model element appearance.&#xA;E.g. for ``IssueStatus`` appearance specification will look like:&#xA;&#xA;```yaml&#xA;model-elements:&#xA;    issue-status:&#xA;        roles: context&#xA;```&#xA;"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="PackageAppearanceEntry" instanceClassName="java.util.Map$Entry">
-    <eAnnotations source="urn:org.nasdanika">
-      <details key="documentation-reference" value="doc/package-appearance-entry.md"/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="key" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Model element EClass name in kebab case. E.g. ``issue-status`` for [IssueStatus](IssueStatus.html)."/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="value" lowerBound="1" eType="#//PackageAppearance"
-        containment="true">
-      <eAnnotations source="urn:org.nasdanika">
-        <details key="homogenous" value="true"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Model element appearance."/>
-      </eAnnotations>
-    </eStructuralFeatures>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Appearance">
-    <eAnnotations source="urn:org.nasdanika">
-      <details key="documentation-reference" value="doc/appearance.md"/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="label" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Custom text."/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="icon" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Icon - image URL if contains slash (``/``). CSS class otherwise, e.g. ``fas fa-user``.  ``none`` to suppress the icon."/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Description in HTML to show in the context help modal dialog."/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="markdownDescription" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Description  in [Markdown](https://en.wikipedia.org/wiki/Markdown) to show in the context help modal dialog."/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="roles" upperBound="-1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Roles of the containing element. &#xA;&#xA;Action role for model elements. One of:&#xA;&#xA;* ``navigation`` - Navigation actions are shown in the navigation panel as a list or as a tree. &#xA;* ``context`` - Context actions are shown as a tree context menu and as a button toolbar in the content panel.&#xA;* ``section`` - Section actions are shown as sections in the content panel. &#xA;* ``content-right`` - Content right actions are shown in an adaptive navigation panel to the right of the action content.&#xA;* ``content-left`` - Content left actions are shown in an adaptive  navigation panel to the left of the action content.&#xA;&#xA;For members (features and operations) and actions - member/action role. One of:&#xA;&#xA;* ``actions`` - Child actions for a member, e.g. a section with a table of an action list.&#xA;* ``content`` - Feature value or operation result is shown in the content. &#xA;* ``elements`` - Child action for each feature or operation result element&#xA;* ``elements-sorted`` - Child actions for member elements sorted by text&#xA;* ``head`` - Feature value or operation result is shown in the content head - above description and sections. &#xA;* ``property`` - Member value/result is shown in the properties table.&#xA;&#xA;Action member roles (``acitons``, ``elements``, and ``elements-sorted``) may be followed by a slash (``/``) and then action role.&#xA;For example: ``actions/context``.&#xA;&#xA;Use ``none`` role to hide feature or model element.&#xA;&#xA;&#xA;"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sectionStyle" eType="#//SectionStyle"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="AppearanceEntry" instanceClassName="java.util.Map$Entry">
-    <eAnnotations source="urn:org.nasdanika">
-      <details key="documentation-reference" value="doc/appearance-entry.md"/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="key" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Model element EClass name in kebab case. E.g. ``issue-status`` for [IssueStatus](IssueStatus.html)."/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="value" lowerBound="1" eType="#//Appearance"
-        containment="true">
-      <eAnnotations source="urn:org.nasdanika">
-        <details key="homogenous" value="true"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Model element appearance."/>
-      </eAnnotations>
-    </eStructuralFeatures>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ModelElementAppearance" eSuperTypes="#//Appearance">
-    <eAnnotations source="urn:org.nasdanika">
-      <details key="documentation-reference" value="doc/model-element-appearance.md"/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="features" upperBound="-1"
-        eType="#//MemberAppearanceEntry" containment="true">
-      <eAnnotations source="urn:org.nasdanika">
-        <details key="homogenous" value="true"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Mapping of feature names in kebab case to feature appearance.&#xA;E.g. for ``issueCategories`` feature mapping specification will look like:&#xA;&#xA;```yaml&#xA;features:&#xA;    issue-categories:&#xA;        roles: context&#xA;```&#xA;"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="operations" upperBound="-1"
-        eType="#//MemberAppearanceEntry" containment="true">
-      <eAnnotations source="urn:org.nasdanika">
-        <details key="homogenous" value="true"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Mapping of operation names in kebab case to operation appearance.&#xA;E.g. for ``allInvocations`` operation mapping specification will look like:&#xA;&#xA;```yaml&#xA;operations:&#xA;    all-invocations:&#xA;        roles: context&#xA;```&#xA;"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="actions" upperBound="-1"
-        eType="#//AppearanceEntry" containment="true">
-      <eAnnotations source="urn:org.nasdanika">
-        <details key="homogenous" value="true"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Mapping of UI action names.&#xA;E.g. for ``diagnostic-summary`` action mapping specification will look like:&#xA;&#xA;```yaml&#xA;actions:&#xA;    diagnostic-summary:&#xA;        roles: context&#xA;```&#xA;"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ModelElementAppearanceEntry" instanceClassName="java.util.Map$Entry">
-    <eAnnotations source="urn:org.nasdanika">
-      <details key="documentation-reference" value="doc/model-element-appearance-entry.md"/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="key" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Model element EClass name in kebab case. E.g. ``issue-status`` for [IssueStatus](IssueStatus.html)."/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="value" lowerBound="1" eType="#//ModelElementAppearance"
-        containment="true">
-      <eAnnotations source="urn:org.nasdanika">
-        <details key="homogenous" value="true"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Model element appearance."/>
-      </eAnnotations>
-    </eStructuralFeatures>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="MemberAppearanceEntry" instanceClassName="java.util.Map$Entry">
-    <eAnnotations source="urn:org.nasdanika">
-      <details key="documentation-reference" value="doc/member-appearance-entry.md"/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="key" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Feature name in kebab case. E.g. ``issue-categories``."/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="value" lowerBound="1" eType="#//MemberAppearance"
-        containment="true">
-      <eAnnotations source="urn:org.nasdanika">
-        <details key="homogenous" value="true"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Feature appearance."/>
-      </eAnnotations>
-    </eStructuralFeatures>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="MemberAppearance" eSuperTypes="#//Appearance">
-    <eAnnotations source="urn:org.nasdanika">
-      <details key="documentation-reference" value="doc/member-appearance.md"/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="category" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="If false feature element actions are not categorized, i.e. in the navigation tree they would appear as container children without an intermediary feature category node. It can be useful if the containing element has navigation children only of one type or they can be distinguished by an icon and as such a feature category is not necessary."/>
-      </eAnnotations>
-    </eStructuralFeatures>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EDataType" name="SectionStyle" instanceClassName="org.nasdanika.html.app.SectionStyle">
-    <eAnnotations source="urn:org.nasdanika">
-      <details key="documentation-reference" value="doc/section-style.md"/>
-    </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NamedElementReference" eSuperTypes="#//NamedElement">
     <eAnnotations source="urn:org.nasdanika">
@@ -1356,348 +1145,24 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eSubpackages name="representation" nsURI="urn:org.nasdanika.engineering.representation"
-      nsPrefix="org.nasdanika.engineering.representation">
+  <eSubpackages name="journey" nsURI="urn:org.nasdanika.engineering.journey" nsPrefix="org.nasdanika.engineering.journey">
     <eAnnotations source="urn:org.nasdanika">
-      <details key="documentation-reference" value="doc/representation/package-summary.md"/>
+      <details key="documentation-reference" value="doc/journey/package-summary.md"/>
     </eAnnotations>
-    <eClassifiers xsi:type="ecore:EClass" name="ComponentDiagram" eSuperTypes="#//NamedElement">
-      <eAnnotations source="urn:org.nasdanika">
-        <details key="documentation-reference" value="doc/representation/component-diagram.md"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-        <details key="constraints" value="container"/>
-      </eAnnotations>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="depthOut" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="Depth of outbound dependencies - what this module or module contained in the engineer depends on. Zero means unlimited."/>
-        </eAnnotations>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="depthIn" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="Depth of inbound dependencies - which modules depend on this module or module contained in this engineer. Zero means unlimited."/>
-        </eAnnotations>
-      </eStructuralFeatures>
-    </eClassifiers>
-  </eSubpackages>
-  <eSubpackages name="flow" nsURI="urn:org.nasdanika.engineering.flow" nsPrefix="org.nasdanika.engineering.flow">
-    <eAnnotations source="urn:org.nasdanika">
-      <details key="documentation-reference" value="doc/flow/package-summary.md"/>
-    </eAnnotations>
-    <eClassifiers xsi:type="ecore:EClass" name="JourneyElement" eSuperTypes="#//EngineeredElement">
-      <eAnnotations source="urn:org.nasdanika">
-        <details key="documentation-reference" value="doc/flow/journey-element.md"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-        <details key="constraints" value="final override suppress suppressAndOverride"/>
-      </eAnnotations>
-      <eOperations name="getInputs" upperBound="-1" eType="#//flow/Transition">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="Transitions which have this journey element as its target in a given journey path. "/>
-        </eAnnotations>
-        <eParameters name="journeyPath" lowerBound="1" upperBound="-1" eType="#//flow/Journey">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="Journey nesting path to resolve transitions target elements. May be different from the containment path in the case of nested journeys of extended journeys."/>
-          </eAnnotations>
-        </eParameters>
-      </eOperations>
-      <eOperations name="getInvocations" upperBound="-1" eType="#//flow/Call">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="Calls which have this journey element as its target in a given journey path. "/>
-        </eAnnotations>
-        <eParameters name="journeyPath" lowerBound="1" upperBound="-1" eType="#//flow/Journey">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="Journey nesting path to resolve calls target elements. May be different from the containment path in the case of nested journeys of extended journeys."/>
-          </eAnnotations>
-        </eParameters>
-      </eOperations>
-      <eOperations name="getAllInputs" upperBound="-1" eType="#//flow/Transition">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="Opposite to all outputs, i.e. all inbound transitions, in a given journey path."/>
-        </eAnnotations>
-        <eParameters name="journeyPath" lowerBound="1" upperBound="-1" eType="#//flow/Journey">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="Journey nesting path to resolve transitions target elements. May be different from the containment path in the case of nested journeys of extended journeys."/>
-          </eAnnotations>
-        </eParameters>
-      </eOperations>
-      <eOperations name="getAllInvocations" upperBound="-1" eType="#//flow/Call">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="Opposite to all calls, i.e. all incoming calls, in a given journey path."/>
-        </eAnnotations>
-        <eParameters name="journeyPath" lowerBound="1" upperBound="-1" eType="#//flow/Journey">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="Journey nesting path to resolve calls target elements. May be different from the containment path in the case of nested journeys of extended journeys."/>
-          </eAnnotations>
-        </eParameters>
-      </eOperations>
-      <eOperations name="getAllOutputs" upperBound="-1" eType="#//flow/Transition">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="Includes own outputs and outputs inherited from the base journey of the containing journey. This element outputs override inherited outputs with the same path."/>
-        </eAnnotations>
-        <eParameters name="journeyPath" lowerBound="1" upperBound="-1" eType="#//flow/Journey">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="Journey nesting path to resolve transitions target elements. May be different from the containment path in the case of nested journeys of extended journeys."/>
-          </eAnnotations>
-        </eParameters>
-      </eOperations>
-      <eOperations name="getAllCalls" upperBound="-1" eType="#//flow/Call">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="Includes own calls and calls inherited from the base journey of the containing journey. This element calls override inherited calls with the same path."/>
-        </eAnnotations>
-        <eParameters name="journeyPath" lowerBound="1" upperBound="-1" eType="#//flow/Journey">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="Journey nesting path to resolve calls target elements. May be different from the containment path in the case of nested journeys of extended journeys."/>
-          </eAnnotations>
-        </eParameters>
-      </eOperations>
-      <eOperations name="overrides" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="Returns ``true`` if this journey element directly or transitively overrided the argument journey element."/>
-        </eAnnotations>
-        <eParameters name="journeyElement" eType="#//flow/JourneyElement"/>
-      </eOperations>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="outputs" upperBound="-1"
-          eType="#//flow/Transition" containment="true">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="Activity outbound transitions to other activities."/>
-        </eAnnotations>
-        <eAnnotations source="urn:org.nasdanika">
-          <details key="homogenous" value="true"/>
-          <details key="strict-containment" value="true"/>
-        </eAnnotations>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="calls" upperBound="-1"
-          eType="#//flow/Call" containment="true">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="Calls to other activities."/>
-        </eAnnotations>
-        <eAnnotations source="urn:org.nasdanika">
-          <details key="homogenous" value="true"/>
-          <details key="strict-containment" value="true"/>
-        </eAnnotations>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="requirements" upperBound="-1"
-          eType="#//NamedElement">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="Input artifacts required to start working on this activity."/>
-        </eAnnotations>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="deliverables" upperBound="-1"
-          eType="#//NamedElement">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="Output artifacts of the activity."/>
-        </eAnnotations>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="personas" upperBound="-1"
-          eType="#//Persona" eOpposite="#//Persona/journeyElements">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="Personas performing this journey element if it is an activity. Applies to all journey elements in order to group them into persona partitions."/>
-        </eAnnotations>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="overrides" eType="#//flow/JourneyElement"
-          changeable="false" derived="true" eOpposite="#//flow/JourneyElement/overridenBy">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="A journey element which is overriden by this element. "/>
-        </eAnnotations>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="overridenBy" upperBound="-1"
-          eType="#//flow/JourneyElement" changeable="false" derived="true" eOpposite="#//flow/JourneyElement/overrides.1">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="Elements of the extension journeys which override this element."/>
-        </eAnnotations>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="modifiers" upperBound="-1"
-          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="A collection of boolean flags:&#xA;&#xA;* ``abstract`` - Specifies that this journey element is abstract. For journeys it means that they contain abstract elements and must be extended to become concrete. If a journey contains abstract elements and does not have abstract modifier, it is diagnosed as an error. If concrete journeys extend abstract journeys they must override (implement) all abstract elements.&#xA;* ``explicit-end`` - Applies to [journeys](Journey.html). Specifies that the [end](End.html) [pseudo-state](PseudoState.html) shall not be inferred by finding journey elements with no outputs. End will either be explicitly specified or the diagram will not have an end pseudo-state.&#xA;* ``explicit-start`` - Applies to journeys. Specifies that the [start](Start.html) pseudo-state shall not be inferred by finding journey elements with no inputs. Start will either be explicitly specified or the diagram will not have a start pseudo-state.&#xA;* ``final`` - Specifies that this journey element cannot be overriden in journeys extending this journey. Overriding a final elemen will be diagnosed as an error. For example, in an organization some processes can be defined as journeys at higher levels of the orgnization and extended at lower levels. ``final`` modifier allows to specify what can be extended and what cannot. Specifying a top-level journey as final indicates that it cannot have extensions.&#xA;* ``optional`` - Specifies that this journey element is optional. Optional elements have different apperance on diagrams.&#xA;* ``override`` - Specifies that this journey element overrides an element in one of extended journeys. If this modifier is present and overrides reference is null, then it results in a diagnostic error.&#xA;* ``partition`` - Applies to journeys and specifies that the journey shall be rendered as a partition on a digarm.&#xA;* ``suppress`` - Specifies that this element supprresses its overriden element, i.e. removes it from the list of journey elements.&#xA;* ``vertical`` - Specifies that journey element direction top-down instead of the default left-to-right.&#xA;"/>
-        </eAnnotations>
-      </eStructuralFeatures>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Activity" eSuperTypes="#//flow/JourneyElement">
+    <eClassifiers xsi:type="ecore:EClass" name="Activity">
       <eAnnotations source="urn:org.nasdanika">
         <details key="documentation-reference" value="doc/flow/activity.md"/>
       </eAnnotations>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="features" upperBound="-1"
-          eType="#//Feature" eOpposite="#//Feature/uses">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="Product features used by this activity."/>
-        </eAnnotations>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="services" upperBound="-1"
-          eType="#//flow/Service" changeable="false" derived="true" eOpposite="#//flow/Service/target">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="Derived opposite to Service target."/>
-        </eAnnotations>
-      </eStructuralFeatures>
+      <eGenericSuperTypes eClassifier="ecore:EClass ../../org.nasdanika.flow/model/flow.ecore#//Activity">
+        <eTypeArguments eClassifier="#//journey/Activity"/>
+      </eGenericSuperTypes>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Service" eSuperTypes="#//flow/JourneyElement">
-      <eAnnotations source="urn:org.nasdanika">
-        <details key="documentation-reference" value="doc/flow/service.md"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-        <details key="constraints" value="abstract"/>
-      </eAnnotations>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
-          eType="#//flow/Activity" eOpposite="#//flow/Activity/services">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="Target activity of the service."/>
-        </eAnnotations>
-      </eStructuralFeatures>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Transition" eSuperTypes="#//NamedElement">
-      <eAnnotations source="urn:org.nasdanika">
-        <details key="documentation-reference" value="doc/flow/transition.md"/>
-      </eAnnotations>
-      <eOperations name="getTarget" eType="#//flow/JourneyElement">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="Resolves transition's target journey element for a given journey."/>
-        </eAnnotations>
-        <eParameters name="journeyPath" lowerBound="1" upperBound="-1" eType="#//flow/Journey">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="Journey nesting path to resolve target element for. May be different from the containment path in the case of nested journeys of extended journeys."/>
-          </eAnnotations>
-        </eParameters>
-      </eOperations>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="payload" upperBound="-1"
-          eType="#//NamedElement">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="Artifacts passed from source to target activity."/>
-        </eAnnotations>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="suppress" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="Can be used in journeys extending other journeys to remove the inherited transition from the list of outputs/call. Transitions to supprressed journey elements are automatically supppressed."/>
-        </eAnnotations>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="target" lowerBound="1"
-          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
-        <eAnnotations source="urn:org.nasdanika">
-          <details key="default-feature" value="true"/>
-        </eAnnotations>
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="Relative path to the target [journey element](JourneyElement.html). May contain ``..`` to navigate to the parent [journey](Journey.html) - i.e. the journey which contains the journey containing the element which contains this transition. May contain ``/`` to navigate to nested journeys. Treated as URI if contains ``:``."/>
-        </eAnnotations>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="lag" eType="ecore:EDataType ../../org.nasdanika.ncore/model/ncore.ecore#//Duration">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="Duration of time between source journey element completion and starting the target journey element. Journey element durations and transitions lag can be used to compute start of journey elements relative to the journey start."/>
-        </eAnnotations>
-      </eStructuralFeatures>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Call" eSuperTypes="#//flow/Transition">
-      <eAnnotations source="urn:org.nasdanika">
-        <details key="documentation-reference" value="doc/flow/call.md"/>
-      </eAnnotations>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="response" upperBound="-1"
-          eType="#//NamedElement">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="Response artifacts passed back from the target to the source activity."/>
-        </eAnnotations>
-      </eStructuralFeatures>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Journey" eSuperTypes="#//flow/Activity">
+    <eClassifiers xsi:type="ecore:EClass" name="Journey" eSuperTypes="../../org.nasdanika.flow/model/flow.ecore#//Flow">
       <eAnnotations source="urn:org.nasdanika">
         <details key="documentation-reference" value="doc/flow/journey.md"/>
       </eAnnotations>
       <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
         <details key="constraints" value="final abstract elements"/>
-      </eAnnotations>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
-          eType="#//flow/JourneyElement" containment="true">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="Elements of this journey."/>
-        </eAnnotations>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="extends" eType="#//flow/Journey"
-          eOpposite="#//flow/Journey/extensions">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="Journey can  extend another journey and inherit its elements. Inherited elements can be overriden or suppressed."/>
-        </eAnnotations>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="extensions" upperBound="-1"
-          eType="#//flow/Journey" changeable="false" derived="true" eOpposite="#//flow/Journey/extends">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="Journeys extending this journey."/>
-        </eAnnotations>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="root" eType="#//flow/Journey"
-          changeable="false" derived="true">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="Root of this journey inheritance hierarchy."/>
-        </eAnnotations>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="allElements" upperBound="-1"
-          eType="#//flow/JourneyElement" changeable="false" derived="true">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="Own and inherited elements."/>
-        </eAnnotations>
-      </eStructuralFeatures>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="PseudoState" eSuperTypes="#//flow/JourneyElement">
-      <eAnnotations source="urn:org.nasdanika">
-        <details key="documentation-reference" value="doc/flow/pseudo-state.md"/>
-      </eAnnotations>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-          changeable="false" derived="true">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="Pseudo-state type provided by concrete sub-classes."/>
-        </eAnnotations>
-      </eStructuralFeatures>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Choice" eSuperTypes="#//flow/PseudoState">
-      <eAnnotations source="urn:org.nasdanika">
-        <details key="documentation-reference" value="doc/flow/choice.md"/>
-      </eAnnotations>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="End" eSuperTypes="#//flow/PseudoState">
-      <eAnnotations source="urn:org.nasdanika">
-        <details key="documentation-reference" value="doc/flow/end.md"/>
-      </eAnnotations>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="EntryPoint" eSuperTypes="#//flow/PseudoState">
-      <eAnnotations source="urn:org.nasdanika">
-        <details key="documentation-reference" value="doc/flow/entry-point.md"/>
-      </eAnnotations>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="ExitPoint" eSuperTypes="#//flow/PseudoState">
-      <eAnnotations source="urn:org.nasdanika">
-        <details key="documentation-reference" value="doc/flow/exit-point.md"/>
-      </eAnnotations>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="ExpansionInput" eSuperTypes="#//flow/PseudoState">
-      <eAnnotations source="urn:org.nasdanika">
-        <details key="documentation-reference" value="doc/flow/expansion-input.md"/>
-      </eAnnotations>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="ExpansionOutput" eSuperTypes="#//flow/PseudoState">
-      <eAnnotations source="urn:org.nasdanika">
-        <details key="documentation-reference" value="doc/flow/expansion-output.md"/>
-      </eAnnotations>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Fork" eSuperTypes="#//flow/PseudoState">
-      <eAnnotations source="urn:org.nasdanika">
-        <details key="documentation-reference" value="doc/flow/fork.md"/>
-      </eAnnotations>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="InputPin" eSuperTypes="#//flow/PseudoState">
-      <eAnnotations source="urn:org.nasdanika">
-        <details key="documentation-reference" value="doc/flow/input-pin.md"/>
-      </eAnnotations>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Join" eSuperTypes="#//flow/PseudoState">
-      <eAnnotations source="urn:org.nasdanika">
-        <details key="documentation-reference" value="doc/flow/join.md"/>
-      </eAnnotations>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="OutputPin" eSuperTypes="#//flow/PseudoState">
-      <eAnnotations source="urn:org.nasdanika">
-        <details key="documentation-reference" value="doc/flow/output-pin.md"/>
-      </eAnnotations>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Start" eSuperTypes="#//flow/PseudoState">
-      <eAnnotations source="urn:org.nasdanika">
-        <details key="documentation-reference" value="doc/flow/start.md"/>
       </eAnnotations>
     </eClassifiers>
   </eSubpackages>

@@ -4,6 +4,9 @@ package org.nasdanika.engineering;
 
 import java.time.Duration;
 
+import org.nasdanika.ncore.ModelElement;
+import org.nasdanika.ncore.Temporal;
+
 
 /**
  * <!-- begin-user-doc -->
@@ -87,7 +90,7 @@ public interface Period extends ModelElement {
 	 * @return the value of the '<em>Duration</em>' attribute.
 	 * @see #setDuration(Duration)
 	 * @see org.nasdanika.engineering.EngineeringPackage#getPeriod_Duration()
-	 * @model dataType="org.nasdanika.engineering.Duration"
+	 * @model dataType="org.nasdanika.ncore.Duration"
 	 * @generated
 	 */
 	Duration getDuration();

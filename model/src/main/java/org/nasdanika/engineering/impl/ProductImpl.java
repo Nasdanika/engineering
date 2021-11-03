@@ -13,7 +13,7 @@ import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Feature;
 import org.nasdanika.engineering.Product;
 import org.nasdanika.engineering.Release;
-import org.nasdanika.engineering.flow.Activity;
+import org.nasdanika.engineering.journey.Activity;
 
 /**
  * <!-- begin-user-doc -->

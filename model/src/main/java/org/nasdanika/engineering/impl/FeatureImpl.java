@@ -15,7 +15,7 @@ import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Feature;
 import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.Release;
-import org.nasdanika.engineering.flow.Activity;
+import org.nasdanika.engineering.journey.Activity;
 
 /**
  * <!-- begin-user-doc -->
@@ -108,8 +108,6 @@ public class FeatureImpl extends EngineeredCapabilityImpl implements Feature {
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getReleases()).basicAdd(otherEnd, msgs);
 			case EngineeringPackage.FEATURE__ISSUES:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getIssues()).basicAdd(otherEnd, msgs);
-			case EngineeringPackage.FEATURE__USES:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getUses()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -128,8 +126,6 @@ public class FeatureImpl extends EngineeredCapabilityImpl implements Feature {
 				return ((InternalEList<?>)getActivities()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.FEATURE__ISSUES:
 				return ((InternalEList<?>)getIssues()).basicRemove(otherEnd, msgs);
-			case EngineeringPackage.FEATURE__USES:
-				return ((InternalEList<?>)getUses()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}

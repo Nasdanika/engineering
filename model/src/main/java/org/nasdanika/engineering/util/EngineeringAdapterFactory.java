@@ -2,20 +2,16 @@
  */
 package org.nasdanika.engineering.util;
 
-import java.util.Map;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
-
 import org.eclipse.emf.ecore.EObject;
-
 import org.nasdanika.common.Adaptable;
+import org.nasdanika.common.persistence.Marked;
 import org.nasdanika.engineering.Aim;
 import org.nasdanika.engineering.Alignable;
 import org.nasdanika.engineering.Alignment;
 import org.nasdanika.engineering.Allocation;
-import org.nasdanika.engineering.Appearance;
 import org.nasdanika.engineering.Capability;
 import org.nasdanika.engineering.Capacity;
 import org.nasdanika.engineering.Decision;
@@ -25,12 +21,9 @@ import org.nasdanika.engineering.Endeavor;
 import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeredCapability;
 import org.nasdanika.engineering.EngineeredElement;
-import org.nasdanika.engineering.PackageAppearance;
-import org.nasdanika.engineering.Period;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Event;
 import org.nasdanika.engineering.Feature;
-import org.nasdanika.engineering.MemberAppearance;
 import org.nasdanika.engineering.Forum;
 import org.nasdanika.engineering.Goal;
 import org.nasdanika.engineering.Increment;
@@ -43,19 +36,19 @@ import org.nasdanika.engineering.KeyResult;
 import org.nasdanika.engineering.Link;
 import org.nasdanika.engineering.Message;
 import org.nasdanika.engineering.ModelElement;
-import org.nasdanika.engineering.ModelElementAppearance;
 import org.nasdanika.engineering.NamedElement;
 import org.nasdanika.engineering.NamedElementReference;
 import org.nasdanika.engineering.Note;
 import org.nasdanika.engineering.Objective;
 import org.nasdanika.engineering.Organization;
+import org.nasdanika.engineering.Period;
 import org.nasdanika.engineering.Persona;
 import org.nasdanika.engineering.Principle;
 import org.nasdanika.engineering.Product;
 import org.nasdanika.engineering.Release;
 import org.nasdanika.engineering.TableOfContents;
-import org.nasdanika.engineering.Temporal;
 import org.nasdanika.engineering.Topic;
+import org.nasdanika.ncore.Temporal;
 
 /**
  * <!-- begin-user-doc -->
@@ -114,20 +107,12 @@ public class EngineeringAdapterFactory extends AdapterFactoryImpl {
 	protected EngineeringSwitch<Adapter> modelSwitch =
 		new EngineeringSwitch<Adapter>() {
 			@Override
-			public Adapter caseAdaptable(Adaptable object) {
-				return createAdaptableAdapter();
-			}
-			@Override
 			public Adapter caseModelElement(ModelElement object) {
 				return createModelElementAdapter();
 			}
 			@Override
 			public Adapter caseTableOfContents(TableOfContents object) {
 				return createTableOfContentsAdapter();
-			}
-			@Override
-			public Adapter caseTemporal(Temporal object) {
-				return createTemporalAdapter();
 			}
 			@Override
 			public Adapter casePeriod(Period object) {
@@ -140,6 +125,10 @@ public class EngineeringAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseEvent(Event object) {
 				return createEventAdapter();
+			}
+			@Override
+			public Adapter caseAlignable(Alignable object) {
+				return createAlignableAdapter();
 			}
 			@Override
 			public Adapter caseEndeavor(Endeavor object) {
@@ -172,6 +161,10 @@ public class EngineeringAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseNote(Note object) {
 				return createNoteAdapter();
+			}
+			@Override
+			public Adapter caseForum(Forum object) {
+				return createForumAdapter();
 			}
 			@Override
 			public Adapter caseEngineeredElement(EngineeredElement object) {
@@ -230,10 +223,6 @@ public class EngineeringAdapterFactory extends AdapterFactoryImpl {
 				return createAllocationAdapter();
 			}
 			@Override
-			public Adapter caseAlignable(Alignable object) {
-				return createAlignableAdapter();
-			}
-			@Override
 			public Adapter caseAim(Aim object) {
 				return createAimAdapter();
 			}
@@ -250,48 +239,12 @@ public class EngineeringAdapterFactory extends AdapterFactoryImpl {
 				return createGoalAdapter();
 			}
 			@Override
-			public Adapter caseForum(Forum object) {
-				return createForumAdapter();
-			}
-			@Override
 			public Adapter caseMessage(Message object) {
 				return createMessageAdapter();
 			}
 			@Override
 			public Adapter caseTopic(Topic object) {
 				return createTopicAdapter();
-			}
-			@Override
-			public Adapter casePackageAppearance(PackageAppearance object) {
-				return createPackageAppearanceAdapter();
-			}
-			@Override
-			public Adapter casePackageAppearanceEntry(Map.Entry<String, PackageAppearance> object) {
-				return createPackageAppearanceEntryAdapter();
-			}
-			@Override
-			public Adapter caseAppearance(Appearance object) {
-				return createAppearanceAdapter();
-			}
-			@Override
-			public Adapter caseAppearanceEntry(Map.Entry<String, Appearance> object) {
-				return createAppearanceEntryAdapter();
-			}
-			@Override
-			public Adapter caseModelElementAppearance(ModelElementAppearance object) {
-				return createModelElementAppearanceAdapter();
-			}
-			@Override
-			public Adapter caseModelElementAppearanceEntry(Map.Entry<String, ModelElementAppearance> object) {
-				return createModelElementAppearanceEntryAdapter();
-			}
-			@Override
-			public Adapter caseMemberAppearanceEntry(Map.Entry<String, MemberAppearance> object) {
-				return createMemberAppearanceEntryAdapter();
-			}
-			@Override
-			public Adapter caseMemberAppearance(MemberAppearance object) {
-				return createMemberAppearanceAdapter();
 			}
 			@Override
 			public Adapter caseNamedElementReference(NamedElementReference object) {
@@ -312,6 +265,30 @@ public class EngineeringAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseDecision(Decision object) {
 				return createDecisionAdapter();
+			}
+			@Override
+			public Adapter caseIMarked(Marked object) {
+				return createIMarkedAdapter();
+			}
+			@Override
+			public Adapter caseMarked(org.nasdanika.ncore.Marked object) {
+				return createMarkedAdapter();
+			}
+			@Override
+			public Adapter caseAdaptable(Adaptable object) {
+				return createAdaptableAdapter();
+			}
+			@Override
+			public Adapter caseNcore_ModelElement(org.nasdanika.ncore.ModelElement object) {
+				return createNcore_ModelElementAdapter();
+			}
+			@Override
+			public Adapter caseNcore_NamedElement(org.nasdanika.ncore.NamedElement object) {
+				return createNcore_NamedElementAdapter();
+			}
+			@Override
+			public Adapter caseTemporal(Temporal object) {
+				return createTemporalAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -348,6 +325,34 @@ public class EngineeringAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.ncore.ModelElement <em>Model Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.nasdanika.ncore.ModelElement
+	 * @generated
+	 */
+	public Adapter createNcore_ModelElementAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.ncore.NamedElement <em>Named Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.nasdanika.ncore.NamedElement
+	 * @generated
+	 */
+	public Adapter createNcore_NamedElementAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.ModelElement <em>Model Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -376,13 +381,13 @@ public class EngineeringAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.Temporal <em>Temporal</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.ncore.Temporal <em>Temporal</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.nasdanika.engineering.Temporal
+	 * @see org.nasdanika.ncore.Temporal
 	 * @generated
 	 */
 	public Adapter createTemporalAdapter() {
@@ -824,118 +829,6 @@ public class EngineeringAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.PackageAppearance <em>Package Appearance</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.engineering.PackageAppearance
-	 * @generated
-	 */
-	public Adapter createPackageAppearanceAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link java.util.Map.Entry <em>Package Appearance Entry</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see java.util.Map.Entry
-	 * @generated
-	 */
-	public Adapter createPackageAppearanceEntryAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.Appearance <em>Appearance</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.engineering.Appearance
-	 * @generated
-	 */
-	public Adapter createAppearanceAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link java.util.Map.Entry <em>Appearance Entry</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see java.util.Map.Entry
-	 * @generated
-	 */
-	public Adapter createAppearanceEntryAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.ModelElementAppearance <em>Model Element Appearance</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.engineering.ModelElementAppearance
-	 * @generated
-	 */
-	public Adapter createModelElementAppearanceAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link java.util.Map.Entry <em>Model Element Appearance Entry</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see java.util.Map.Entry
-	 * @generated
-	 */
-	public Adapter createModelElementAppearanceEntryAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link java.util.Map.Entry <em>Member Appearance Entry</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see java.util.Map.Entry
-	 * @generated
-	 */
-	public Adapter createMemberAppearanceEntryAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.MemberAppearance <em>Member Appearance</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.engineering.MemberAppearance
-	 * @generated
-	 */
-	public Adapter createMemberAppearanceAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.Document <em>Document</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -1016,6 +909,34 @@ public class EngineeringAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createDecisionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.common.persistence.Marked <em>IMarked</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.nasdanika.common.persistence.Marked
+	 * @generated
+	 */
+	public Adapter createIMarkedAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.ncore.Marked <em>Marked</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.nasdanika.ncore.Marked
+	 * @generated
+	 */
+	public Adapter createMarkedAdapter() {
 		return null;
 	}
 

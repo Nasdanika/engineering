@@ -1,1 +1,0 @@
-An [EMap](https://wiki.eclipse.org/EMF/FAQ#How_do_I_create_a_Map_in_EMF.3F) entry class to support sub-package name to [package appearance](PackageAppearance.html) mapping.

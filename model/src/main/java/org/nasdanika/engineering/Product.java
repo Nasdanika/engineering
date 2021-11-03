@@ -3,7 +3,7 @@
 package org.nasdanika.engineering;
 
 import org.eclipse.emf.common.util.EList;
-import org.nasdanika.engineering.flow.Activity;
+import org.nasdanika.engineering.journey.Activity;
 
 /**
  * <!-- begin-user-doc -->
@@ -58,7 +58,7 @@ public interface Product extends org.nasdanika.engineering.Module {
 
 	/**
 	 * Returns the value of the '<em><b>Activities</b></em>' containment reference list.
-	 * The list contents are of type {@link org.nasdanika.engineering.flow.Activity}.
+	 * The list contents are of type {@link org.nasdanika.engineering.journey.Activity}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->

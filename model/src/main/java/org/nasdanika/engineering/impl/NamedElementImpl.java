@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.apache.commons.codec.binary.Hex;
-import org.apache.commons.lang3.StringUtils;
 import org.eclipse.emf.ecore.EClass;
 import org.nasdanika.common.Util;
 import org.nasdanika.common.persistence.ConfigurationException;
@@ -17,6 +16,7 @@ import org.nasdanika.common.persistence.Marked;
 import org.nasdanika.emf.EObjectAdaptable;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.NamedElement;
+import org.nasdanika.ncore.NcorePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -61,28 +61,38 @@ public class NamedElementImpl extends ModelElementImpl implements NamedElement {
 		return EngineeringPackage.Literals.NAMED_ELEMENT;
 	}
 
-	/**
+/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	@Override
 	public String getName() {
-		String name = (String)eDynamicGet(EngineeringPackage.NAMED_ELEMENT__NAME, EngineeringPackage.Literals.NAMED_ELEMENT__NAME, true, true);
-		// Deriving name from path
-		if (name == null) {
-			String path = getPath();
-			if (!Util.isBlank(path)) {
-				String[] cca = path.split("-");
-				cca[0] = StringUtils.capitalize(cca[0]);
-				for (int i=1; i<cca.length; ++i) {
-					cca[i] = cca[i].toLowerCase();
-				}
-				return StringUtils.join(cca, " ");				
-			}
-		}
-		return name;
+		return (String)eDynamicGet(EngineeringPackage.NAMED_ELEMENT__NAME, NcorePackage.Literals.NAMED_ELEMENT__NAME, true, true);
 	}
+
+	//	/**
+//	 * <!-- begin-user-doc -->
+//	 * <!-- end-user-doc -->
+//	 * @generated NOT
+//	 */
+//	@Override
+//	public String getName() {
+//		String name = (String)eDynamicGet(NcorePackage.NAMED_ELEMENT__NAME, NcorePackage.Literals.NAMED_ELEMENT__NAME, true, true);
+//		// Deriving name from path
+//		if (name == null) {
+//			String path = getPath();
+//			if (!Util.isBlank(path)) {
+//				String[] cca = path.split("-");
+//				cca[0] = StringUtils.capitalize(cca[0]);
+//				for (int i=1; i<cca.length; ++i) {
+//					cca[i] = cca[i].toLowerCase();
+//				}
+//				return StringUtils.join(cca, " ");				
+//			}
+//		}
+//		return name;
+//	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -91,7 +101,7 @@ public class NamedElementImpl extends ModelElementImpl implements NamedElement {
 	 */
 	@Override
 	public void setName(String newName) {
-		eDynamicSet(EngineeringPackage.NAMED_ELEMENT__NAME, EngineeringPackage.Literals.NAMED_ELEMENT__NAME, newName);
+		eDynamicSet(EngineeringPackage.NAMED_ELEMENT__NAME, NcorePackage.Literals.NAMED_ELEMENT__NAME, newName);
 	}
 
 	/**
@@ -152,6 +162,38 @@ public class NamedElementImpl extends ModelElementImpl implements NamedElement {
 		return super.eIsSet(featureID);
 	}
 	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == org.nasdanika.ncore.NamedElement.class) {
+			switch (derivedFeatureID) {
+				case EngineeringPackage.NAMED_ELEMENT__NAME: return NcorePackage.NAMED_ELEMENT__NAME;
+				default: return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == org.nasdanika.ncore.NamedElement.class) {
+			switch (baseFeatureID) {
+				case NcorePackage.NAMED_ELEMENT__NAME: return EngineeringPackage.NAMED_ELEMENT__NAME;
+				default: return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
+
 	@Override
 	protected String getDefaultPath() {
 		String name = getName();

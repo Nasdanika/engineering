@@ -10,26 +10,22 @@ import java.util.function.Predicate;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.BasicInternalEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.nasdanika.common.Util;
-import org.nasdanika.common.persistence.ConfigurationException;
-import org.nasdanika.common.persistence.Marked;
+import org.nasdanika.diagram.Diagram;
 import org.nasdanika.emf.EObjectAdaptable;
 import org.nasdanika.emf.EmfUtil;
 import org.nasdanika.emf.persistence.FeatureCache;
 import org.nasdanika.engineering.Document;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.ModelElement;
-import org.nasdanika.engineering.ModelElementAppearance;
 import org.nasdanika.engineering.NamedElement;
 import org.nasdanika.engineering.TableOfContents;
 
@@ -41,12 +37,9 @@ import org.nasdanika.engineering.TableOfContents;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.nasdanika.engineering.impl.ModelElementImpl#getUri <em>Uri</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.ModelElementImpl#getPath <em>Path</em>}</li>
- *   <li>{@link org.nasdanika.engineering.impl.ModelElementImpl#getDescription <em>Description</em>}</li>
- *   <li>{@link org.nasdanika.engineering.impl.ModelElementImpl#getMarkdownDescription <em>Markdown Description</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.ModelElementImpl#getResources <em>Resources</em>}</li>
- *   <li>{@link org.nasdanika.engineering.impl.ModelElementImpl#getAppearance <em>Appearance</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.ModelElementImpl#getDocumentation <em>Documentation</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.ModelElementImpl#getTableOfContents <em>Table Of Contents</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.ModelElementImpl#getSections <em>Sections</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.ModelElementImpl#getRepresentations <em>Representations</em>}</li>
@@ -54,19 +47,7 @@ import org.nasdanika.engineering.TableOfContents;
  *
  * @generated
  */
-public abstract class ModelElementImpl extends MinimalEObjectImpl.Container implements ModelElement {
-	private static final String THIS_PATH = ":this";
-
-	/**
-	 * The default value of the '{@link #getUri() <em>Uri</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getUri()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String URI_EDEFAULT = null;
-
+public abstract class ModelElementImpl extends org.nasdanika.ncore.impl.ModelElementImpl implements ModelElement {
 	/**
 	 * The default value of the '{@link #getPath() <em>Path</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -76,26 +57,7 @@ public abstract class ModelElementImpl extends MinimalEObjectImpl.Container impl
 	 * @ordered
 	 */
 	protected static final String PATH_EDEFAULT = null;
-
-	/**
-	 * The default value of the '{@link #getDescription() <em>Description</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDescription()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String DESCRIPTION_EDEFAULT = null;
-
-	/**
-	 * The default value of the '{@link #getMarkdownDescription() <em>Markdown Description</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMarkdownDescription()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String MARKDOWN_DESCRIPTION_EDEFAULT = null;
+	private static final String THIS_PATH = ":this";
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -115,66 +77,7 @@ public abstract class ModelElementImpl extends MinimalEObjectImpl.Container impl
 	protected EClass eStaticClass() {
 		return EngineeringPackage.Literals.MODEL_ELEMENT;
 	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected int eStaticFeatureCount() {
-		return 0;
-	}
 	
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	@Override
-	public String getUri() {
-		String path = getPath();
-		if (!Util.isBlank(path) && path.indexOf(':') > 1) {
-			// Treating as absolute URI
-			return path;
-		}
-		if (!Util.isBlank(path) && path.startsWith("/")) {
-			int idx = path.indexOf("/", 1);
-			if (idx == -1) {
-				return path.substring(1) + THIS_PATH;
-			}
-			return path.substring(1, idx) + ":" + path.substring(idx + 1);
-		}
-		
-		EObject c = eContainer();
-		if (c instanceof ModelElement) {
-			String base = ((ModelElement) c).getUri();
-			EReference eContainmentFeature = eContainmentFeature();			
-			StringBuilder ret = new StringBuilder();
-			if (base.endsWith(THIS_PATH)) {
-				ret.append(base.substring(0, base.length() - THIS_PATH.length() + 1));
-			} else {
-				ret.append(base);
-				ret.append("/");
-			}
-			ret.append(Util.camelToKebab(eContainmentFeature.getName()));
-			if (eContainmentFeature.isMany()) {
-				if (Util.isBlank(path)) {
-					path = getDefaultPath();
-				}
-				ret.append("/").append(path);
-			}
-			
-			return ret.toString();
-		}
-		
-		return (Util.isBlank(path) ? "engineering" : path) + THIS_PATH;
-	}
-	
-	protected String getDefaultPath() {
-		return String.valueOf(((List<?>) eContainer().eGet(eContainmentFeature())).indexOf(this));
-	}
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -195,44 +98,8 @@ public abstract class ModelElementImpl extends MinimalEObjectImpl.Container impl
 		eDynamicSet(EngineeringPackage.MODEL_ELEMENT__PATH, EngineeringPackage.Literals.MODEL_ELEMENT__PATH, newPath);
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String getDescription() {
-		return (String)eDynamicGet(EngineeringPackage.MODEL_ELEMENT__DESCRIPTION, EngineeringPackage.Literals.MODEL_ELEMENT__DESCRIPTION, true, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setDescription(String newDescription) {
-		eDynamicSet(EngineeringPackage.MODEL_ELEMENT__DESCRIPTION, EngineeringPackage.Literals.MODEL_ELEMENT__DESCRIPTION, newDescription);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String getMarkdownDescription() {
-		return (String)eDynamicGet(EngineeringPackage.MODEL_ELEMENT__MARKDOWN_DESCRIPTION, EngineeringPackage.Literals.MODEL_ELEMENT__MARKDOWN_DESCRIPTION, true, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setMarkdownDescription(String newMarkdownDescription) {
-		eDynamicSet(EngineeringPackage.MODEL_ELEMENT__MARKDOWN_DESCRIPTION, EngineeringPackage.Literals.MODEL_ELEMENT__MARKDOWN_DESCRIPTION, newMarkdownDescription);
+	protected String getDefaultPath() {
+		return String.valueOf(((List<?>) eContainer().eGet(eContainmentFeature())).indexOf(this));
 	}
 
 	/**
@@ -251,29 +118,10 @@ public abstract class ModelElementImpl extends MinimalEObjectImpl.Container impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
-	public ModelElementAppearance getAppearance() {
-		return (ModelElementAppearance)eDynamicGet(EngineeringPackage.MODEL_ELEMENT__APPEARANCE, EngineeringPackage.Literals.MODEL_ELEMENT__APPEARANCE, true, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetAppearance(ModelElementAppearance newAppearance, NotificationChain msgs) {
-		msgs = eDynamicInverseAdd((InternalEObject)newAppearance, EngineeringPackage.MODEL_ELEMENT__APPEARANCE, msgs);
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setAppearance(ModelElementAppearance newAppearance) {
-		eDynamicSet(EngineeringPackage.MODEL_ELEMENT__APPEARANCE, EngineeringPackage.Literals.MODEL_ELEMENT__APPEARANCE, newAppearance);
+	public EList<EObject> getDocumentation() {
+		return (EList<EObject>)eDynamicGet(EngineeringPackage.MODEL_ELEMENT__DOCUMENTATION, EngineeringPackage.Literals.MODEL_ELEMENT__DOCUMENTATION, true, true);
 	}
 
 	/**
@@ -324,8 +172,8 @@ public abstract class ModelElementImpl extends MinimalEObjectImpl.Container impl
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public EList<NamedElement> getRepresentations() {
-		return (EList<NamedElement>)eDynamicGet(EngineeringPackage.MODEL_ELEMENT__REPRESENTATIONS, EngineeringPackage.Literals.MODEL_ELEMENT__REPRESENTATIONS, true, true);
+	public EList<Diagram> getRepresentations() {
+		return (EList<Diagram>)eDynamicGet(EngineeringPackage.MODEL_ELEMENT__REPRESENTATIONS, EngineeringPackage.Literals.MODEL_ELEMENT__REPRESENTATIONS, true, true);
 	}
 
 	/**
@@ -338,8 +186,8 @@ public abstract class ModelElementImpl extends MinimalEObjectImpl.Container impl
 		switch (featureID) {
 			case EngineeringPackage.MODEL_ELEMENT__RESOURCES:
 				return ((InternalEList<?>)getResources()).basicRemove(otherEnd, msgs);
-			case EngineeringPackage.MODEL_ELEMENT__APPEARANCE:
-				return basicSetAppearance(null, msgs);
+			case EngineeringPackage.MODEL_ELEMENT__DOCUMENTATION:
+				return ((InternalEList<?>)getDocumentation()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.MODEL_ELEMENT__TABLE_OF_CONTENTS:
 				return basicSetTableOfContents(null, msgs);
 			case EngineeringPackage.MODEL_ELEMENT__SECTIONS:
@@ -358,18 +206,12 @@ public abstract class ModelElementImpl extends MinimalEObjectImpl.Container impl
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EngineeringPackage.MODEL_ELEMENT__URI:
-				return getUri();
 			case EngineeringPackage.MODEL_ELEMENT__PATH:
 				return getPath();
-			case EngineeringPackage.MODEL_ELEMENT__DESCRIPTION:
-				return getDescription();
-			case EngineeringPackage.MODEL_ELEMENT__MARKDOWN_DESCRIPTION:
-				return getMarkdownDescription();
 			case EngineeringPackage.MODEL_ELEMENT__RESOURCES:
 				return getResources();
-			case EngineeringPackage.MODEL_ELEMENT__APPEARANCE:
-				return getAppearance();
+			case EngineeringPackage.MODEL_ELEMENT__DOCUMENTATION:
+				return getDocumentation();
 			case EngineeringPackage.MODEL_ELEMENT__TABLE_OF_CONTENTS:
 				return getTableOfContents();
 			case EngineeringPackage.MODEL_ELEMENT__SECTIONS:
@@ -392,18 +234,13 @@ public abstract class ModelElementImpl extends MinimalEObjectImpl.Container impl
 			case EngineeringPackage.MODEL_ELEMENT__PATH:
 				setPath((String)newValue);
 				return;
-			case EngineeringPackage.MODEL_ELEMENT__DESCRIPTION:
-				setDescription((String)newValue);
-				return;
-			case EngineeringPackage.MODEL_ELEMENT__MARKDOWN_DESCRIPTION:
-				setMarkdownDescription((String)newValue);
-				return;
 			case EngineeringPackage.MODEL_ELEMENT__RESOURCES:
 				getResources().clear();
 				getResources().addAll((Collection<? extends NamedElement>)newValue);
 				return;
-			case EngineeringPackage.MODEL_ELEMENT__APPEARANCE:
-				setAppearance((ModelElementAppearance)newValue);
+			case EngineeringPackage.MODEL_ELEMENT__DOCUMENTATION:
+				getDocumentation().clear();
+				getDocumentation().addAll((Collection<? extends EObject>)newValue);
 				return;
 			case EngineeringPackage.MODEL_ELEMENT__TABLE_OF_CONTENTS:
 				setTableOfContents((TableOfContents)newValue);
@@ -414,7 +251,7 @@ public abstract class ModelElementImpl extends MinimalEObjectImpl.Container impl
 				return;
 			case EngineeringPackage.MODEL_ELEMENT__REPRESENTATIONS:
 				getRepresentations().clear();
-				getRepresentations().addAll((Collection<? extends NamedElement>)newValue);
+				getRepresentations().addAll((Collection<? extends Diagram>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -431,17 +268,11 @@ public abstract class ModelElementImpl extends MinimalEObjectImpl.Container impl
 			case EngineeringPackage.MODEL_ELEMENT__PATH:
 				setPath(PATH_EDEFAULT);
 				return;
-			case EngineeringPackage.MODEL_ELEMENT__DESCRIPTION:
-				setDescription(DESCRIPTION_EDEFAULT);
-				return;
-			case EngineeringPackage.MODEL_ELEMENT__MARKDOWN_DESCRIPTION:
-				setMarkdownDescription(MARKDOWN_DESCRIPTION_EDEFAULT);
-				return;
 			case EngineeringPackage.MODEL_ELEMENT__RESOURCES:
 				getResources().clear();
 				return;
-			case EngineeringPackage.MODEL_ELEMENT__APPEARANCE:
-				setAppearance((ModelElementAppearance)null);
+			case EngineeringPackage.MODEL_ELEMENT__DOCUMENTATION:
+				getDocumentation().clear();
 				return;
 			case EngineeringPackage.MODEL_ELEMENT__TABLE_OF_CONTENTS:
 				setTableOfContents((TableOfContents)null);
@@ -464,18 +295,12 @@ public abstract class ModelElementImpl extends MinimalEObjectImpl.Container impl
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EngineeringPackage.MODEL_ELEMENT__URI:
-				return URI_EDEFAULT == null ? getUri() != null : !URI_EDEFAULT.equals(getUri());
 			case EngineeringPackage.MODEL_ELEMENT__PATH:
 				return PATH_EDEFAULT == null ? getPath() != null : !PATH_EDEFAULT.equals(getPath());
-			case EngineeringPackage.MODEL_ELEMENT__DESCRIPTION:
-				return DESCRIPTION_EDEFAULT == null ? getDescription() != null : !DESCRIPTION_EDEFAULT.equals(getDescription());
-			case EngineeringPackage.MODEL_ELEMENT__MARKDOWN_DESCRIPTION:
-				return MARKDOWN_DESCRIPTION_EDEFAULT == null ? getMarkdownDescription() != null : !MARKDOWN_DESCRIPTION_EDEFAULT.equals(getMarkdownDescription());
 			case EngineeringPackage.MODEL_ELEMENT__RESOURCES:
 				return !getResources().isEmpty();
-			case EngineeringPackage.MODEL_ELEMENT__APPEARANCE:
-				return getAppearance() != null;
+			case EngineeringPackage.MODEL_ELEMENT__DOCUMENTATION:
+				return !getDocumentation().isEmpty();
 			case EngineeringPackage.MODEL_ELEMENT__TABLE_OF_CONTENTS:
 				return getTableOfContents() != null;
 			case EngineeringPackage.MODEL_ELEMENT__SECTIONS:
@@ -491,27 +316,27 @@ public abstract class ModelElementImpl extends MinimalEObjectImpl.Container impl
 		return EObjectAdaptable.adaptTo(this, type);
 	}
 	
-	protected <T extends ModelElement> EList<T> findByURI(Class<T> type, Collection<URI> uris) {
-		EList<T> ret = new BasicInternalEList<>(type);
-		uris.stream().map(uri -> findByURI(type, uri)).forEach(ret::add);
-		return ret;
-	}
-	
-	@SuppressWarnings("unchecked")
-	protected <T extends ModelElement> T findByURI(Class<T> type, URI uri) {
-		Resource res = eResource(); 
-		if (res != null) {
-			ResourceSet rSet = res.getResourceSet();
-			TreeIterator<?> cit = rSet == null ? res.getAllContents() : rSet. getAllContents();
-			while (cit.hasNext()) {
-				Object next = cit.next(); 
-				if (type.isInstance(next) && uri.toString().equals(((T) next).getUri())) {
-					return (T) next;
-				}
-			}
-		}
-		throw new ConfigurationException("Could not find " + type.getName() + " with uri " + uri, EObjectAdaptable.adaptTo(this, Marked.class));
-	}
+//	protected <T extends ModelElement> EList<T> findByURI(Class<T> type, Collection<URI> uris) {
+//		EList<T> ret = new BasicInternalEList<>(type);
+//		uris.stream().map(uri -> findByURI(type, uri)).forEach(ret::add);
+//		return ret;
+//	}
+//	
+//	@SuppressWarnings("unchecked")
+//	protected <T extends ModelElement> T findByURI(Class<T> type, URI uri) {
+//		Resource res = eResource(); 
+//		if (res != null) {
+//			ResourceSet rSet = res.getResourceSet();
+//			TreeIterator<?> cit = rSet == null ? res.getAllContents() : rSet. getAllContents();
+//			while (cit.hasNext()) {
+//				Object next = cit.next(); 
+//				if (type.isInstance(next) && uri.toString().equals(((T) next).getUri())) {
+//					return (T) next;
+//				}
+//			}
+//		}
+//		throw new ConfigurationException("Could not find " + type.getName() + " with uri " + uri, EObjectAdaptable.adaptTo(this, Marked.class));
+//	}
 
 	/**
 	 * Get and caches a list of all objects in the resource set which point to this 

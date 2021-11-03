@@ -13,7 +13,6 @@ import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Goal;
 import org.nasdanika.engineering.Persona;
-import org.nasdanika.engineering.flow.JourneyElement;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,7 +22,6 @@ import org.nasdanika.engineering.flow.JourneyElement;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.nasdanika.engineering.impl.PersonaImpl#getJourneyElements <em>Journey Elements</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.PersonaImpl#getGoals <em>Goals</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.PersonaImpl#getRepresentatives <em>Representatives</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.PersonaImpl#getExtends <em>Extends</em>}</li>
@@ -50,16 +48,6 @@ public class PersonaImpl extends EngineeredElementImpl implements Persona {
 	@Override
 	protected EClass eStaticClass() {
 		return EngineeringPackage.Literals.PERSONA;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	@Override
-	public EList<JourneyElement> getJourneyElements() {
-		return getOppositeReferrers(EngineeringPackage.Literals.PERSONA__JOURNEY_ELEMENTS);
 	}
 
 	/**
@@ -114,8 +102,6 @@ public class PersonaImpl extends EngineeredElementImpl implements Persona {
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case EngineeringPackage.PERSONA__JOURNEY_ELEMENTS:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getJourneyElements()).basicAdd(otherEnd, msgs);
 			case EngineeringPackage.PERSONA__REPRESENTATIVES:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getRepresentatives()).basicAdd(otherEnd, msgs);
 			case EngineeringPackage.PERSONA__EXTENDS:
@@ -134,8 +120,6 @@ public class PersonaImpl extends EngineeredElementImpl implements Persona {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case EngineeringPackage.PERSONA__JOURNEY_ELEMENTS:
-				return ((InternalEList<?>)getJourneyElements()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.PERSONA__GOALS:
 				return ((InternalEList<?>)getGoals()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.PERSONA__REPRESENTATIVES:
@@ -156,8 +140,6 @@ public class PersonaImpl extends EngineeredElementImpl implements Persona {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EngineeringPackage.PERSONA__JOURNEY_ELEMENTS:
-				return getJourneyElements();
 			case EngineeringPackage.PERSONA__GOALS:
 				return getGoals();
 			case EngineeringPackage.PERSONA__REPRESENTATIVES:
@@ -224,8 +206,6 @@ public class PersonaImpl extends EngineeredElementImpl implements Persona {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EngineeringPackage.PERSONA__JOURNEY_ELEMENTS:
-				return !getJourneyElements().isEmpty();
 			case EngineeringPackage.PERSONA__GOALS:
 				return !getGoals().isEmpty();
 			case EngineeringPackage.PERSONA__REPRESENTATIVES:

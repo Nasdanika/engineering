@@ -33,7 +33,7 @@ public interface Module extends EngineeredElement {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Modules</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getModule_Modules()
-	 * @model containment="true"
+	 * @model containment="true" keys="path"
 	 * @generated
 	 */
 	EList<Module> getModules();

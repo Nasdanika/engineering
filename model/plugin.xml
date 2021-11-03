@@ -17,16 +17,8 @@
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated engineering -->
       <package
-            uri="urn:org.nasdanika.engineering.representation"
-            class="org.nasdanika.engineering.representation.RepresentationPackage"
-            genModel="model/engineering.genmodel"/>
-   </extension>
-
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated engineering -->
-      <package
-            uri="urn:org.nasdanika.engineering.flow"
-            class="org.nasdanika.engineering.flow.FlowPackage"
+            uri="urn:org.nasdanika.engineering.journey"
+            class="org.nasdanika.engineering.journey.JourneyPackage"
             genModel="model/engineering.genmodel"/>
    </extension>
 

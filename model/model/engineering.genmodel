@@ -4,21 +4,15 @@
     editorDirectory="" modelPluginID="org.nasdanika.engineering" modelName="Engineering"
     rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore"
     featureDelegation="Dynamic" complianceLevel="8.0" suppressGenModelAnnotations="false"
-    copyrightFields="false" operationReflection="true" importOrganizing="true">
+    copyrightFields="false" usedGenPackages="../../org.nasdanika.diagram/model/diagram.genmodel#//diagram ../../org.nasdanika.flow/model/flow.genmodel#//flow ../../org.nasdanika.ncore/model/ncore.genmodel#//ncore"
+    operationReflection="true" importOrganizing="true">
   <foreignModel>engineering.ecore</foreignModel>
   <genPackages prefix="Engineering" basePackage="org.nasdanika" disposableProviderFactory="true"
       ecorePackage="engineering.ecore#/">
-    <genDataTypes ecoreDataType="engineering.ecore#//Duration"/>
-    <genDataTypes ecoreDataType="engineering.ecore#//Instant"/>
-    <genDataTypes ecoreDataType="engineering.ecore#//SectionStyle"/>
-    <genClasses image="false" ecoreClass="engineering.ecore#//Adaptable"/>
     <genClasses image="false" ecoreClass="engineering.ecore#//ModelElement">
-      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//ModelElement/uri"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//ModelElement/path"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//ModelElement/description"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//ModelElement/markdownDescription"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//ModelElement/resources"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//ModelElement/appearance"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//ModelElement/documentation"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//ModelElement/tableOfContents"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//ModelElement/sections"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//ModelElement/representations"/>
@@ -28,43 +22,16 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//TableOfContents/depth"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//TableOfContents/header"/>
     </genClasses>
-    <genClasses ecoreClass="engineering.ecore#//Temporal">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Temporal/instant"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//Temporal/base"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Temporal/offset"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//Temporal/derivatives"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//Temporal/lowerBounds"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//Temporal/upperBounds"/>
-      <genOperations ecoreOperation="engineering.ecore#//Temporal/after">
-        <genParameters ecoreParameter="engineering.ecore#//Temporal/after/when"/>
-      </genOperations>
-      <genOperations ecoreOperation="engineering.ecore#//Temporal/before">
-        <genParameters ecoreParameter="engineering.ecore#//Temporal/before/when"/>
-      </genOperations>
-      <genOperations ecoreOperation="engineering.ecore#//Temporal/coincides">
-        <genParameters ecoreParameter="engineering.ecore#//Temporal/coincides/when"/>
-      </genOperations>
-      <genOperations ecoreOperation="engineering.ecore#//Temporal/normalize"/>
-      <genOperations ecoreOperation="engineering.ecore#//Temporal/minus">
-        <genParameters ecoreParameter="engineering.ecore#//Temporal/minus/when"/>
-      </genOperations>
-      <genOperations ecoreOperation="engineering.ecore#//Temporal/minus.1">
-        <genParameters ecoreParameter="engineering.ecore#//Temporal/minus.1/offset"/>
-      </genOperations>
-      <genOperations ecoreOperation="engineering.ecore#//Temporal/plus">
-        <genParameters ecoreParameter="engineering.ecore#//Temporal/plus/offset"/>
-      </genOperations>
-      <genOperations ecoreOperation="engineering.ecore#//Temporal/copy"/>
-    </genClasses>
     <genClasses ecoreClass="engineering.ecore#//Period">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//Period/start"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//Period/end"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Period/duration"/>
     </genClasses>
-    <genClasses image="false" ecoreClass="engineering.ecore#//NamedElement">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//NamedElement/name"/>
-    </genClasses>
+    <genClasses image="false" ecoreClass="engineering.ecore#//NamedElement"/>
     <genClasses ecoreClass="engineering.ecore#//Event"/>
+    <genClasses image="false" ecoreClass="engineering.ecore#//Alignable">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//Alignable/aligns"/>
+    </genClasses>
     <genClasses image="false" ecoreClass="engineering.ecore#//Endeavor">
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Endeavor/completion"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Endeavor/benefit"/>
@@ -124,6 +91,10 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Note/remainingCost"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//Note/status"/>
     </genClasses>
+    <genClasses ecoreClass="engineering.ecore#//Forum">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//Forum/discussion"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//Forum/topics"/>
+    </genClasses>
     <genClasses image="false" ecoreClass="engineering.ecore#//EngineeredElement">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//EngineeredElement/issues"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference engineering.ecore#//EngineeredElement/owners"/>
@@ -137,7 +108,6 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Document/markdownContent"/>
     </genClasses>
     <genClasses ecoreClass="engineering.ecore#//Persona">
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference engineering.ecore#//Persona/journeyElements"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//Persona/goals"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//Persona/representatives"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//Persona/extends"/>
@@ -204,9 +174,6 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//Allocation/engineer"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//Allocation/category"/>
     </genClasses>
-    <genClasses image="false" ecoreClass="engineering.ecore#//Alignable">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//Alignable/aligns"/>
-    </genClasses>
     <genClasses ecoreClass="engineering.ecore#//Aim">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//Aim/alignments"/>
     </genClasses>
@@ -220,52 +187,12 @@
     <genClasses ecoreClass="engineering.ecore#//Goal">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//Goal/children"/>
     </genClasses>
-    <genClasses ecoreClass="engineering.ecore#//Forum">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//Forum/discussion"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//Forum/topics"/>
-    </genClasses>
     <genClasses ecoreClass="engineering.ecore#//Message">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Message/date"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//Message/author"/>
     </genClasses>
     <genClasses ecoreClass="engineering.ecore#//Topic">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//Topic/messages"/>
-    </genClasses>
-    <genClasses ecoreClass="engineering.ecore#//PackageAppearance">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//PackageAppearance/modelElements"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//PackageAppearance/subPackages"/>
-    </genClasses>
-    <genClasses ecoreClass="engineering.ecore#//PackageAppearanceEntry">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//PackageAppearanceEntry/key"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//PackageAppearanceEntry/value"/>
-    </genClasses>
-    <genClasses image="false" ecoreClass="engineering.ecore#//Appearance">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Appearance/label"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Appearance/icon"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Appearance/description"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Appearance/markdownDescription"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Appearance/roles"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Appearance/sectionStyle"/>
-    </genClasses>
-    <genClasses ecoreClass="engineering.ecore#//AppearanceEntry">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//AppearanceEntry/key"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//AppearanceEntry/value"/>
-    </genClasses>
-    <genClasses ecoreClass="engineering.ecore#//ModelElementAppearance">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//ModelElementAppearance/features"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//ModelElementAppearance/operations"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//ModelElementAppearance/actions"/>
-    </genClasses>
-    <genClasses ecoreClass="engineering.ecore#//ModelElementAppearanceEntry">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//ModelElementAppearanceEntry/key"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//ModelElementAppearanceEntry/value"/>
-    </genClasses>
-    <genClasses ecoreClass="engineering.ecore#//MemberAppearanceEntry">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//MemberAppearanceEntry/key"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//MemberAppearanceEntry/value"/>
-    </genClasses>
-    <genClasses ecoreClass="engineering.ecore#//MemberAppearance">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//MemberAppearance/category"/>
     </genClasses>
     <genClasses ecoreClass="engineering.ecore#//NamedElementReference">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//NamedElementReference/target"/>
@@ -293,92 +220,10 @@
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference engineering.ecore#//Decision/supercededBy"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Decision/resolution"/>
     </genClasses>
-    <nestedGenPackages prefix="Representation" disposableProviderFactory="true" ecorePackage="engineering.ecore#//representation">
-      <genClasses ecoreClass="engineering.ecore#//representation/ComponentDiagram">
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//representation/ComponentDiagram/depthOut"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//representation/ComponentDiagram/depthIn"/>
-      </genClasses>
-    </nestedGenPackages>
-    <nestedGenPackages prefix="Flow" disposableProviderFactory="true" ecorePackage="engineering.ecore#//flow">
-      <genClasses ecoreClass="engineering.ecore#//flow/JourneyElement">
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//flow/JourneyElement/outputs"/>
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//flow/JourneyElement/calls"/>
-        <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference engineering.ecore#//flow/JourneyElement/requirements"/>
-        <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference engineering.ecore#//flow/JourneyElement/deliverables"/>
-        <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference engineering.ecore#//flow/JourneyElement/personas"/>
-        <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference engineering.ecore#//flow/JourneyElement/overrides.1"/>
-        <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference engineering.ecore#//flow/JourneyElement/overridenBy"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//flow/JourneyElement/modifiers"/>
-        <genOperations ecoreOperation="engineering.ecore#//flow/JourneyElement/getInputs">
-          <genParameters ecoreParameter="engineering.ecore#//flow/JourneyElement/getInputs/journeyPath"/>
-        </genOperations>
-        <genOperations ecoreOperation="engineering.ecore#//flow/JourneyElement/getInvocations">
-          <genParameters ecoreParameter="engineering.ecore#//flow/JourneyElement/getInvocations/journeyPath"/>
-        </genOperations>
-        <genOperations ecoreOperation="engineering.ecore#//flow/JourneyElement/getAllInputs">
-          <genParameters ecoreParameter="engineering.ecore#//flow/JourneyElement/getAllInputs/journeyPath"/>
-        </genOperations>
-        <genOperations ecoreOperation="engineering.ecore#//flow/JourneyElement/getAllInvocations">
-          <genParameters ecoreParameter="engineering.ecore#//flow/JourneyElement/getAllInvocations/journeyPath"/>
-        </genOperations>
-        <genOperations ecoreOperation="engineering.ecore#//flow/JourneyElement/getAllOutputs">
-          <genParameters ecoreParameter="engineering.ecore#//flow/JourneyElement/getAllOutputs/journeyPath"/>
-        </genOperations>
-        <genOperations ecoreOperation="engineering.ecore#//flow/JourneyElement/getAllCalls">
-          <genParameters ecoreParameter="engineering.ecore#//flow/JourneyElement/getAllCalls/journeyPath"/>
-        </genOperations>
-        <genOperations ecoreOperation="engineering.ecore#//flow/JourneyElement/overrides">
-          <genParameters ecoreParameter="engineering.ecore#//flow/JourneyElement/overrides/journeyElement"/>
-        </genOperations>
-      </genClasses>
-      <genClasses ecoreClass="engineering.ecore#//flow/Activity">
-        <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference engineering.ecore#//flow/Activity/features"/>
-        <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference engineering.ecore#//flow/Activity/services"/>
-      </genClasses>
-      <genClasses ecoreClass="engineering.ecore#//flow/Service">
-        <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference engineering.ecore#//flow/Service/target"/>
-      </genClasses>
-      <genClasses ecoreClass="engineering.ecore#//flow/Transition">
-        <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference engineering.ecore#//flow/Transition/payload"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//flow/Transition/suppress"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//flow/Transition/target"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//flow/Transition/lag"/>
-        <genOperations ecoreOperation="engineering.ecore#//flow/Transition/getTarget">
-          <genParameters ecoreParameter="engineering.ecore#//flow/Transition/getTarget/journeyPath"/>
-        </genOperations>
-      </genClasses>
-      <genClasses ecoreClass="engineering.ecore#//flow/Call">
-        <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference engineering.ecore#//flow/Call/response"/>
-      </genClasses>
-      <genClasses ecoreClass="engineering.ecore#//flow/Journey">
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//flow/Journey/elements"/>
-        <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference engineering.ecore#//flow/Journey/extends"/>
-        <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference engineering.ecore#//flow/Journey/extensions"/>
-        <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference engineering.ecore#//flow/Journey/root"/>
-        <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference engineering.ecore#//flow/Journey/allElements"/>
-      </genClasses>
-      <genClasses ecoreClass="engineering.ecore#//flow/PseudoState">
-        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//flow/PseudoState/type"/>
-      </genClasses>
-      <genClasses ecoreClass="engineering.ecore#//flow/Choice"/>
-      <genClasses ecoreClass="engineering.ecore#//flow/End"/>
-      <genClasses ecoreClass="engineering.ecore#//flow/EntryPoint"/>
-      <genClasses ecoreClass="engineering.ecore#//flow/ExitPoint"/>
-      <genClasses ecoreClass="engineering.ecore#//flow/ExpansionInput"/>
-      <genClasses ecoreClass="engineering.ecore#//flow/ExpansionOutput"/>
-      <genClasses ecoreClass="engineering.ecore#//flow/Fork"/>
-      <genClasses ecoreClass="engineering.ecore#//flow/InputPin"/>
-      <genClasses ecoreClass="engineering.ecore#//flow/Join"/>
-      <genClasses ecoreClass="engineering.ecore#//flow/OutputPin"/>
-      <genClasses ecoreClass="engineering.ecore#//flow/Start"/>
+    <nestedGenPackages prefix="Journey" basePackage="org.nasdanika.engineering" disposableProviderFactory="true"
+        ecorePackage="engineering.ecore#//journey">
+      <genClasses ecoreClass="engineering.ecore#//journey/Activity"/>
+      <genClasses ecoreClass="engineering.ecore#//journey/Journey"/>
     </nestedGenPackages>
   </genPackages>
 </genmodel:GenModel>

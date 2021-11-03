@@ -1,2 +1,0 @@
-Output pin is a [pseudo-state](PseudoState.html) displayed as a square on the border of the containing partition
-[journey](Journey.html) through which [calls](Call.html) are made to other journey elements.

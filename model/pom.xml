@@ -5,7 +5,7 @@
 	<parent>
 		<artifactId>parent</artifactId>
 		<groupId>org.nasdanika.engineering</groupId>
-		<version>2021.7.3</version>
+		<version>2021.11.0</version>
 		<relativePath>..</relativePath>
 	</parent>
 	<artifactId>model</artifactId>
@@ -69,31 +69,14 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.nasdanika.core</groupId>
-			<artifactId>emf</artifactId>
+			<artifactId>flow</artifactId>
 			<version>${core.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.nasdanika.html</groupId>
-			<artifactId>app</artifactId>
-			<version>${html.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.13.2</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.nasdanika.html</groupId>
-			<artifactId>ecore</artifactId>
-			<version>${html.version}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.nasdanika.html</groupId>
-			<artifactId>model-app</artifactId>
-			<version>${html.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>

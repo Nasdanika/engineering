@@ -2,12 +2,7 @@
  */
 package org.nasdanika.engineering.impl;
 
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Map;
-
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
@@ -15,7 +10,6 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.nasdanika.engineering.Aim;
 import org.nasdanika.engineering.Alignment;
 import org.nasdanika.engineering.Allocation;
-import org.nasdanika.engineering.Appearance;
 import org.nasdanika.engineering.Capability;
 import org.nasdanika.engineering.Capacity;
 import org.nasdanika.engineering.Decision;
@@ -38,24 +32,19 @@ import org.nasdanika.engineering.IssueSeverity;
 import org.nasdanika.engineering.IssueStatus;
 import org.nasdanika.engineering.KeyResult;
 import org.nasdanika.engineering.Link;
-import org.nasdanika.engineering.MemberAppearance;
 import org.nasdanika.engineering.Message;
-import org.nasdanika.engineering.ModelElementAppearance;
 import org.nasdanika.engineering.NamedElement;
 import org.nasdanika.engineering.NamedElementReference;
 import org.nasdanika.engineering.Note;
 import org.nasdanika.engineering.Objective;
 import org.nasdanika.engineering.Organization;
-import org.nasdanika.engineering.PackageAppearance;
 import org.nasdanika.engineering.Period;
 import org.nasdanika.engineering.Persona;
 import org.nasdanika.engineering.Principle;
 import org.nasdanika.engineering.Product;
 import org.nasdanika.engineering.Release;
 import org.nasdanika.engineering.TableOfContents;
-import org.nasdanika.engineering.Temporal;
 import org.nasdanika.engineering.Topic;
-import org.nasdanika.html.app.SectionStyle;
 
 /**
  * <!-- begin-user-doc -->
@@ -102,7 +91,6 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case EngineeringPackage.TABLE_OF_CONTENTS: return createTableOfContents();
-			case EngineeringPackage.TEMPORAL: return createTemporal();
 			case EngineeringPackage.PERIOD: return createPeriod();
 			case EngineeringPackage.NAMED_ELEMENT: return createNamedElement();
 			case EngineeringPackage.EVENT: return createEvent();
@@ -114,6 +102,7 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 			case EngineeringPackage.ISSUE_SEVERITY: return createIssueSeverity();
 			case EngineeringPackage.ISSUE: return createIssue();
 			case EngineeringPackage.NOTE: return createNote();
+			case EngineeringPackage.FORUM: return createForum();
 			case EngineeringPackage.DOCUMENT: return createDocument();
 			case EngineeringPackage.PERSONA: return createPersona();
 			case EngineeringPackage.ENGINEER: return createEngineer();
@@ -131,17 +120,8 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 			case EngineeringPackage.PRINCIPLE: return createPrinciple();
 			case EngineeringPackage.ALIGNMENT: return createAlignment();
 			case EngineeringPackage.GOAL: return createGoal();
-			case EngineeringPackage.FORUM: return createForum();
 			case EngineeringPackage.MESSAGE: return createMessage();
 			case EngineeringPackage.TOPIC: return createTopic();
-			case EngineeringPackage.PACKAGE_APPEARANCE: return createPackageAppearance();
-			case EngineeringPackage.PACKAGE_APPEARANCE_ENTRY: return (EObject)createPackageAppearanceEntry();
-			case EngineeringPackage.APPEARANCE: return createAppearance();
-			case EngineeringPackage.APPEARANCE_ENTRY: return (EObject)createAppearanceEntry();
-			case EngineeringPackage.MODEL_ELEMENT_APPEARANCE: return createModelElementAppearance();
-			case EngineeringPackage.MODEL_ELEMENT_APPEARANCE_ENTRY: return (EObject)createModelElementAppearanceEntry();
-			case EngineeringPackage.MEMBER_APPEARANCE_ENTRY: return (EObject)createMemberAppearanceEntry();
-			case EngineeringPackage.MEMBER_APPEARANCE: return createMemberAppearance();
 			case EngineeringPackage.NAMED_ELEMENT_REFERENCE: return createNamedElementReference();
 			case EngineeringPackage.LINK: return createLink();
 			case EngineeringPackage.KEY_RESULT: return createKeyResult();
@@ -158,58 +138,9 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 	 * @generated
 	 */
 	@Override
-	public Object createFromString(EDataType eDataType, String initialValue) {
-		switch (eDataType.getClassifierID()) {
-			case EngineeringPackage.DURATION:
-				return createDurationFromString(eDataType, initialValue);
-			case EngineeringPackage.INSTANT:
-				return createInstantFromString(eDataType, initialValue);
-			case EngineeringPackage.SECTION_STYLE:
-				return createSectionStyleFromString(eDataType, initialValue);
-			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
-		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String convertToString(EDataType eDataType, Object instanceValue) {
-		switch (eDataType.getClassifierID()) {
-			case EngineeringPackage.DURATION:
-				return convertDurationToString(eDataType, instanceValue);
-			case EngineeringPackage.INSTANT:
-				return convertInstantToString(eDataType, instanceValue);
-			case EngineeringPackage.SECTION_STYLE:
-				return convertSectionStyleToString(eDataType, instanceValue);
-			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
-		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public TableOfContents createTableOfContents() {
 		TableOfContentsImpl tableOfContents = new TableOfContentsImpl();
 		return tableOfContents;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Temporal createTemporal() {
-		TemporalImpl temporal = new TemporalImpl();
-		return temporal;
 	}
 
 	/**
@@ -537,90 +468,6 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 	 * @generated
 	 */
 	@Override
-	public PackageAppearance createPackageAppearance() {
-		PackageAppearanceImpl packageAppearance = new PackageAppearanceImpl();
-		return packageAppearance;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Map.Entry<String, PackageAppearance> createPackageAppearanceEntry() {
-		PackageAppearanceEntryImpl packageAppearanceEntry = new PackageAppearanceEntryImpl();
-		return packageAppearanceEntry;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Appearance createAppearance() {
-		AppearanceImpl appearance = new AppearanceImpl();
-		return appearance;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Map.Entry<String, Appearance> createAppearanceEntry() {
-		AppearanceEntryImpl appearanceEntry = new AppearanceEntryImpl();
-		return appearanceEntry;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public ModelElementAppearance createModelElementAppearance() {
-		ModelElementAppearanceImpl modelElementAppearance = new ModelElementAppearanceImpl();
-		return modelElementAppearance;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Map.Entry<String, ModelElementAppearance> createModelElementAppearanceEntry() {
-		ModelElementAppearanceEntryImpl modelElementAppearanceEntry = new ModelElementAppearanceEntryImpl();
-		return modelElementAppearanceEntry;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Map.Entry<String, MemberAppearance> createMemberAppearanceEntry() {
-		MemberAppearanceEntryImpl memberAppearanceEntry = new MemberAppearanceEntryImpl();
-		return memberAppearanceEntry;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public MemberAppearance createMemberAppearance() {
-		MemberAppearanceImpl memberAppearance = new MemberAppearanceImpl();
-		return memberAppearance;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public Document createDocument() {
 		DocumentImpl document = new DocumentImpl();
 		return document;
@@ -679,60 +526,6 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 	public Decision createDecision() {
 		DecisionImpl decision = new DecisionImpl();
 		return decision;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Duration createDurationFromString(EDataType eDataType, String initialValue) {
-		return (Duration)super.createFromString(eDataType, initialValue);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String convertDurationToString(EDataType eDataType, Object instanceValue) {
-		return super.convertToString(eDataType, instanceValue);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Instant createInstantFromString(EDataType eDataType, String initialValue) {
-		return (Instant)super.createFromString(eDataType, initialValue);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String convertInstantToString(EDataType eDataType, Object instanceValue) {
-		return super.convertToString(eDataType, instanceValue);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public SectionStyle createSectionStyleFromString(EDataType eDataType, String initialValue) {
-		return (SectionStyle)super.createFromString(eDataType, initialValue);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String convertSectionStyleToString(EDataType eDataType, Object instanceValue) {
-		return super.convertToString(eDataType, instanceValue);
 	}
 
 	/**

@@ -31,15 +31,6 @@ public interface EngineeringFactory extends EFactory {
 	TableOfContents createTableOfContents();
 
 	/**
-	 * Returns a new object of class '<em>Temporal</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Temporal</em>'.
-	 * @generated
-	 */
-	Temporal createTemporal();
-
-	/**
 	 * Returns a new object of class '<em>Period</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -299,42 +290,6 @@ public interface EngineeringFactory extends EFactory {
 	 * @generated
 	 */
 	Topic createTopic();
-
-	/**
-	 * Returns a new object of class '<em>Package Appearance</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Package Appearance</em>'.
-	 * @generated
-	 */
-	PackageAppearance createPackageAppearance();
-
-	/**
-	 * Returns a new object of class '<em>Appearance</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Appearance</em>'.
-	 * @generated
-	 */
-	Appearance createAppearance();
-
-	/**
-	 * Returns a new object of class '<em>Model Element Appearance</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Model Element Appearance</em>'.
-	 * @generated
-	 */
-	ModelElementAppearance createModelElementAppearance();
-
-	/**
-	 * Returns a new object of class '<em>Member Appearance</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Member Appearance</em>'.
-	 * @generated
-	 */
-	MemberAppearance createMemberAppearance();
 
 	/**
 	 * Returns a new object of class '<em>Document</em>'.

@@ -1,1 +1,0 @@
-Component diagram visualizing dependencies and containment.

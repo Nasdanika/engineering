@@ -11,7 +11,8 @@ import org.nasdanika.emf.EObjectAdaptable;
 import org.nasdanika.emf.persistence.LoadTracker;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Period;
-import org.nasdanika.engineering.Temporal;
+import org.nasdanika.ncore.Temporal;
+import org.nasdanika.ncore.impl.ModelElementImpl;
 
 /**
  * <!-- begin-user-doc -->

@@ -1,0 +1,12 @@
+engineering-organization:
+  uri: engineering://nasdanika
+  name: Nasdanika
+  description: Engineering model to test core model classes.
+  modules:
+    - engineering-product:
+        path: core
+        name: Core
+        modules:
+          - engineering-module:
+              path: common
+              name: Common

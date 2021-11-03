@@ -13,10 +13,11 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.nasdanika.common.Util;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Event;
-import org.nasdanika.engineering.Temporal;
-import org.nasdanika.html.app.impl.Util;
+import org.nasdanika.ncore.NcorePackage;
+import org.nasdanika.ncore.Temporal;
 
 /**
  * <!-- begin-user-doc -->
@@ -83,7 +84,7 @@ public class EventImpl extends NamedElementImpl implements Event {
 	 */
 	@Override
 	public Instant getInstant() {
-		return (Instant)eDynamicGet(EngineeringPackage.EVENT__INSTANT, EngineeringPackage.Literals.TEMPORAL__INSTANT, true, true);
+		return (Instant)eDynamicGet(EngineeringPackage.EVENT__INSTANT, NcorePackage.Literals.TEMPORAL__INSTANT, true, true);
 	}
 
 	/**
@@ -93,7 +94,7 @@ public class EventImpl extends NamedElementImpl implements Event {
 	 */
 	@Override
 	public void setInstant(Instant newInstant) {
-		eDynamicSet(EngineeringPackage.EVENT__INSTANT, EngineeringPackage.Literals.TEMPORAL__INSTANT, newInstant);
+		eDynamicSet(EngineeringPackage.EVENT__INSTANT, NcorePackage.Literals.TEMPORAL__INSTANT, newInstant);
 	}
 
 	/**
@@ -103,7 +104,7 @@ public class EventImpl extends NamedElementImpl implements Event {
 	 */
 	@Override
 	public Temporal getBase() {
-		return (Temporal)eDynamicGet(EngineeringPackage.EVENT__BASE, EngineeringPackage.Literals.TEMPORAL__BASE, true, true);
+		return (Temporal)eDynamicGet(EngineeringPackage.EVENT__BASE, NcorePackage.Literals.TEMPORAL__BASE, true, true);
 	}
 
 	/**
@@ -112,7 +113,7 @@ public class EventImpl extends NamedElementImpl implements Event {
 	 * @generated
 	 */
 	public Temporal basicGetBase() {
-		return (Temporal)eDynamicGet(EngineeringPackage.EVENT__BASE, EngineeringPackage.Literals.TEMPORAL__BASE, false, true);
+		return (Temporal)eDynamicGet(EngineeringPackage.EVENT__BASE, NcorePackage.Literals.TEMPORAL__BASE, false, true);
 	}
 
 	/**
@@ -132,7 +133,7 @@ public class EventImpl extends NamedElementImpl implements Event {
 	 */
 	@Override
 	public void setBase(Temporal newBase) {
-		eDynamicSet(EngineeringPackage.EVENT__BASE, EngineeringPackage.Literals.TEMPORAL__BASE, newBase);
+		eDynamicSet(EngineeringPackage.EVENT__BASE, NcorePackage.Literals.TEMPORAL__BASE, newBase);
 	}
 
 	/**
@@ -142,7 +143,7 @@ public class EventImpl extends NamedElementImpl implements Event {
 	 */
 	@Override
 	public Duration getOffset() {
-		return (Duration)eDynamicGet(EngineeringPackage.EVENT__OFFSET, EngineeringPackage.Literals.TEMPORAL__OFFSET, true, true);
+		return (Duration)eDynamicGet(EngineeringPackage.EVENT__OFFSET, NcorePackage.Literals.TEMPORAL__OFFSET, true, true);
 	}
 
 	/**
@@ -152,7 +153,7 @@ public class EventImpl extends NamedElementImpl implements Event {
 	 */
 	@Override
 	public void setOffset(Duration newOffset) {
-		eDynamicSet(EngineeringPackage.EVENT__OFFSET, EngineeringPackage.Literals.TEMPORAL__OFFSET, newOffset);
+		eDynamicSet(EngineeringPackage.EVENT__OFFSET, NcorePackage.Literals.TEMPORAL__OFFSET, newOffset);
 	}
 
 	/**
@@ -162,7 +163,7 @@ public class EventImpl extends NamedElementImpl implements Event {
 	 */
 	@Override
 	public EList<Temporal> getDerivatives() {
-		return getOppositeReferrers(EngineeringPackage.Literals.TEMPORAL__DERIVATIVES);
+		return getOppositeReferrers(NcorePackage.Literals.TEMPORAL__DERIVATIVES);
 	}
 
 	/**
@@ -173,7 +174,7 @@ public class EventImpl extends NamedElementImpl implements Event {
 	@SuppressWarnings("unchecked")
 	@Override
 	public EList<Temporal> getLowerBounds() {
-		return (EList<Temporal>)eDynamicGet(EngineeringPackage.EVENT__LOWER_BOUNDS, EngineeringPackage.Literals.TEMPORAL__LOWER_BOUNDS, true, true);
+		return (EList<Temporal>)eDynamicGet(EngineeringPackage.EVENT__LOWER_BOUNDS, NcorePackage.Literals.TEMPORAL__LOWER_BOUNDS, true, true);
 	}
 
 	/**
@@ -184,7 +185,7 @@ public class EventImpl extends NamedElementImpl implements Event {
 	@SuppressWarnings("unchecked")
 	@Override
 	public EList<Temporal> getUpperBounds() {
-		return (EList<Temporal>)eDynamicGet(EngineeringPackage.EVENT__UPPER_BOUNDS, EngineeringPackage.Literals.TEMPORAL__UPPER_BOUNDS, true, true);
+		return (EList<Temporal>)eDynamicGet(EngineeringPackage.EVENT__UPPER_BOUNDS, NcorePackage.Literals.TEMPORAL__UPPER_BOUNDS, true, true);
 	}
 
 	/**
@@ -279,7 +280,7 @@ public class EventImpl extends NamedElementImpl implements Event {
 			case EngineeringPackage.EVENT__BASE:
 				Temporal base = basicGetBase();
 				if (base != null)
-					msgs = ((InternalEObject)base).eInverseRemove(this, EngineeringPackage.TEMPORAL__DERIVATIVES, Temporal.class, msgs);
+					msgs = ((InternalEObject)base).eInverseRemove(this, NcorePackage.TEMPORAL__DERIVATIVES, Temporal.class, msgs);
 				return basicSetBase((Temporal)otherEnd, msgs);
 			case EngineeringPackage.EVENT__DERIVATIVES:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getDerivatives()).basicAdd(otherEnd, msgs);
@@ -429,12 +430,12 @@ public class EventImpl extends NamedElementImpl implements Event {
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == Temporal.class) {
 			switch (derivedFeatureID) {
-				case EngineeringPackage.EVENT__INSTANT: return EngineeringPackage.TEMPORAL__INSTANT;
-				case EngineeringPackage.EVENT__BASE: return EngineeringPackage.TEMPORAL__BASE;
-				case EngineeringPackage.EVENT__OFFSET: return EngineeringPackage.TEMPORAL__OFFSET;
-				case EngineeringPackage.EVENT__DERIVATIVES: return EngineeringPackage.TEMPORAL__DERIVATIVES;
-				case EngineeringPackage.EVENT__LOWER_BOUNDS: return EngineeringPackage.TEMPORAL__LOWER_BOUNDS;
-				case EngineeringPackage.EVENT__UPPER_BOUNDS: return EngineeringPackage.TEMPORAL__UPPER_BOUNDS;
+				case EngineeringPackage.EVENT__INSTANT: return NcorePackage.TEMPORAL__INSTANT;
+				case EngineeringPackage.EVENT__BASE: return NcorePackage.TEMPORAL__BASE;
+				case EngineeringPackage.EVENT__OFFSET: return NcorePackage.TEMPORAL__OFFSET;
+				case EngineeringPackage.EVENT__DERIVATIVES: return NcorePackage.TEMPORAL__DERIVATIVES;
+				case EngineeringPackage.EVENT__LOWER_BOUNDS: return NcorePackage.TEMPORAL__LOWER_BOUNDS;
+				case EngineeringPackage.EVENT__UPPER_BOUNDS: return NcorePackage.TEMPORAL__UPPER_BOUNDS;
 				default: return -1;
 			}
 		}
@@ -450,12 +451,12 @@ public class EventImpl extends NamedElementImpl implements Event {
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == Temporal.class) {
 			switch (baseFeatureID) {
-				case EngineeringPackage.TEMPORAL__INSTANT: return EngineeringPackage.EVENT__INSTANT;
-				case EngineeringPackage.TEMPORAL__BASE: return EngineeringPackage.EVENT__BASE;
-				case EngineeringPackage.TEMPORAL__OFFSET: return EngineeringPackage.EVENT__OFFSET;
-				case EngineeringPackage.TEMPORAL__DERIVATIVES: return EngineeringPackage.EVENT__DERIVATIVES;
-				case EngineeringPackage.TEMPORAL__LOWER_BOUNDS: return EngineeringPackage.EVENT__LOWER_BOUNDS;
-				case EngineeringPackage.TEMPORAL__UPPER_BOUNDS: return EngineeringPackage.EVENT__UPPER_BOUNDS;
+				case NcorePackage.TEMPORAL__INSTANT: return EngineeringPackage.EVENT__INSTANT;
+				case NcorePackage.TEMPORAL__BASE: return EngineeringPackage.EVENT__BASE;
+				case NcorePackage.TEMPORAL__OFFSET: return EngineeringPackage.EVENT__OFFSET;
+				case NcorePackage.TEMPORAL__DERIVATIVES: return EngineeringPackage.EVENT__DERIVATIVES;
+				case NcorePackage.TEMPORAL__LOWER_BOUNDS: return EngineeringPackage.EVENT__LOWER_BOUNDS;
+				case NcorePackage.TEMPORAL__UPPER_BOUNDS: return EngineeringPackage.EVENT__UPPER_BOUNDS;
 				default: return -1;
 			}
 		}
@@ -471,14 +472,14 @@ public class EventImpl extends NamedElementImpl implements Event {
 	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
 		if (baseClass == Temporal.class) {
 			switch (baseOperationID) {
-				case EngineeringPackage.TEMPORAL___AFTER__TEMPORAL: return EngineeringPackage.EVENT___AFTER__TEMPORAL;
-				case EngineeringPackage.TEMPORAL___BEFORE__TEMPORAL: return EngineeringPackage.EVENT___BEFORE__TEMPORAL;
-				case EngineeringPackage.TEMPORAL___COINCIDES__TEMPORAL: return EngineeringPackage.EVENT___COINCIDES__TEMPORAL;
-				case EngineeringPackage.TEMPORAL___NORMALIZE: return EngineeringPackage.EVENT___NORMALIZE;
-				case EngineeringPackage.TEMPORAL___MINUS__TEMPORAL: return EngineeringPackage.EVENT___MINUS__TEMPORAL;
-				case EngineeringPackage.TEMPORAL___MINUS__DURATION: return EngineeringPackage.EVENT___MINUS__DURATION;
-				case EngineeringPackage.TEMPORAL___PLUS__DURATION: return EngineeringPackage.EVENT___PLUS__DURATION;
-				case EngineeringPackage.TEMPORAL___COPY: return EngineeringPackage.EVENT___COPY;
+				case NcorePackage.TEMPORAL___AFTER__TEMPORAL: return EngineeringPackage.EVENT___AFTER__TEMPORAL;
+				case NcorePackage.TEMPORAL___BEFORE__TEMPORAL: return EngineeringPackage.EVENT___BEFORE__TEMPORAL;
+				case NcorePackage.TEMPORAL___COINCIDES__TEMPORAL: return EngineeringPackage.EVENT___COINCIDES__TEMPORAL;
+				case NcorePackage.TEMPORAL___NORMALIZE: return EngineeringPackage.EVENT___NORMALIZE;
+				case NcorePackage.TEMPORAL___MINUS__TEMPORAL: return EngineeringPackage.EVENT___MINUS__TEMPORAL;
+				case NcorePackage.TEMPORAL___MINUS__DURATION: return EngineeringPackage.EVENT___MINUS__DURATION;
+				case NcorePackage.TEMPORAL___PLUS__DURATION: return EngineeringPackage.EVENT___PLUS__DURATION;
+				case NcorePackage.TEMPORAL___COPY: return EngineeringPackage.EVENT___COPY;
 				default: return -1;
 			}
 		}

@@ -26,7 +26,7 @@ import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.Objective;
 import org.nasdanika.engineering.Period;
 import org.nasdanika.engineering.Release;
-import org.nasdanika.engineering.Temporal;
+import org.nasdanika.ncore.Temporal;
 
 /**
  * <!-- begin-user-doc -->

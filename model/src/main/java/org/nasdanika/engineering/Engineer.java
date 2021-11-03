@@ -3,7 +3,7 @@
 package org.nasdanika.engineering;
 
 import org.eclipse.emf.common.util.EList;
-import org.nasdanika.engineering.flow.Activity;
+import org.nasdanika.engineering.journey.Activity;
 
 /**
  * <!-- begin-user-doc -->
@@ -49,7 +49,7 @@ public interface Engineer extends Persona {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Modules</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getEngineer_Modules()
-	 * @model containment="true"
+	 * @model containment="true" keys="path"
 	 * @generated
 	 */
 	EList<org.nasdanika.engineering.Module> getModules();
@@ -106,7 +106,7 @@ public interface Engineer extends Persona {
 
 	/**
 	 * Returns the value of the '<em><b>Services</b></em>' containment reference list.
-	 * The list contents are of type {@link org.nasdanika.engineering.flow.Activity}.
+	 * The list contents are of type {@link org.nasdanika.engineering.journey.Activity}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->

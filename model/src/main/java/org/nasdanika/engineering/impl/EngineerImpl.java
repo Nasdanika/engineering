@@ -23,7 +23,7 @@ import org.nasdanika.engineering.IssueStatus;
 import org.nasdanika.engineering.Message;
 import org.nasdanika.engineering.Objective;
 import org.nasdanika.engineering.Persona;
-import org.nasdanika.engineering.flow.Activity;
+import org.nasdanika.engineering.journey.Activity;
 
 /**
  * <!-- begin-user-doc -->

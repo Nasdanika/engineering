@@ -27,7 +27,7 @@ import org.nasdanika.engineering.IssueSeverity;
 import org.nasdanika.engineering.IssueStatus;
 import org.nasdanika.engineering.Note;
 import org.nasdanika.engineering.Release;
-import org.nasdanika.engineering.Temporal;
+import org.nasdanika.ncore.Temporal;
 
 /**
  * <!-- begin-user-doc -->

@@ -2,18 +2,15 @@
  */
 package org.nasdanika.engineering.util;
 
-import java.util.Map;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.util.Switch;
-
 import org.nasdanika.common.Adaptable;
+import org.nasdanika.common.persistence.Marked;
 import org.nasdanika.engineering.Aim;
 import org.nasdanika.engineering.Alignable;
 import org.nasdanika.engineering.Alignment;
 import org.nasdanika.engineering.Allocation;
-import org.nasdanika.engineering.Appearance;
 import org.nasdanika.engineering.Capability;
 import org.nasdanika.engineering.Capacity;
 import org.nasdanika.engineering.Decision;
@@ -23,12 +20,9 @@ import org.nasdanika.engineering.Endeavor;
 import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeredCapability;
 import org.nasdanika.engineering.EngineeredElement;
-import org.nasdanika.engineering.PackageAppearance;
-import org.nasdanika.engineering.Period;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Event;
 import org.nasdanika.engineering.Feature;
-import org.nasdanika.engineering.MemberAppearance;
 import org.nasdanika.engineering.Forum;
 import org.nasdanika.engineering.Goal;
 import org.nasdanika.engineering.Increment;
@@ -41,19 +35,19 @@ import org.nasdanika.engineering.KeyResult;
 import org.nasdanika.engineering.Link;
 import org.nasdanika.engineering.Message;
 import org.nasdanika.engineering.ModelElement;
-import org.nasdanika.engineering.ModelElementAppearance;
 import org.nasdanika.engineering.NamedElement;
 import org.nasdanika.engineering.NamedElementReference;
 import org.nasdanika.engineering.Note;
 import org.nasdanika.engineering.Objective;
 import org.nasdanika.engineering.Organization;
+import org.nasdanika.engineering.Period;
 import org.nasdanika.engineering.Persona;
 import org.nasdanika.engineering.Principle;
 import org.nasdanika.engineering.Product;
 import org.nasdanika.engineering.Release;
 import org.nasdanika.engineering.TableOfContents;
-import org.nasdanika.engineering.Temporal;
 import org.nasdanika.engineering.Topic;
+import org.nasdanika.ncore.Temporal;
 
 /**
  * <!-- begin-user-doc -->
@@ -112,16 +106,13 @@ public class EngineeringSwitch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-			case EngineeringPackage.ADAPTABLE: {
-				Adaptable adaptable = (Adaptable)theEObject;
-				T result = caseAdaptable(adaptable);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case EngineeringPackage.MODEL_ELEMENT: {
 				ModelElement modelElement = (ModelElement)theEObject;
 				T result = caseModelElement(modelElement);
+				if (result == null) result = caseNcore_ModelElement(modelElement);
+				if (result == null) result = caseMarked(modelElement);
 				if (result == null) result = caseAdaptable(modelElement);
+				if (result == null) result = caseIMarked(modelElement);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -131,19 +122,13 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case EngineeringPackage.TEMPORAL: {
-				Temporal temporal = (Temporal)theEObject;
-				T result = caseTemporal(temporal);
-				if (result == null) result = caseModelElement(temporal);
-				if (result == null) result = caseAdaptable(temporal);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case EngineeringPackage.PERIOD: {
 				Period period = (Period)theEObject;
 				T result = casePeriod(period);
-				if (result == null) result = caseModelElement(period);
+				if (result == null) result = caseNcore_ModelElement(period);
+				if (result == null) result = caseMarked(period);
 				if (result == null) result = caseAdaptable(period);
+				if (result == null) result = caseIMarked(period);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -151,7 +136,11 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				NamedElement namedElement = (NamedElement)theEObject;
 				T result = caseNamedElement(namedElement);
 				if (result == null) result = caseModelElement(namedElement);
+				if (result == null) result = caseNcore_NamedElement(namedElement);
+				if (result == null) result = caseNcore_ModelElement(namedElement);
+				if (result == null) result = caseMarked(namedElement);
 				if (result == null) result = caseAdaptable(namedElement);
+				if (result == null) result = caseIMarked(namedElement);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -161,7 +150,17 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				if (result == null) result = caseNamedElement(event);
 				if (result == null) result = caseTemporal(event);
 				if (result == null) result = caseModelElement(event);
+				if (result == null) result = caseNcore_NamedElement(event);
+				if (result == null) result = caseNcore_ModelElement(event);
+				if (result == null) result = caseMarked(event);
 				if (result == null) result = caseAdaptable(event);
+				if (result == null) result = caseIMarked(event);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EngineeringPackage.ALIGNABLE: {
+				Alignable alignable = (Alignable)theEObject;
+				T result = caseAlignable(alignable);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -170,8 +169,10 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				T result = caseEndeavor(endeavor);
 				if (result == null) result = casePeriod(endeavor);
 				if (result == null) result = caseAlignable(endeavor);
-				if (result == null) result = caseModelElement(endeavor);
+				if (result == null) result = caseNcore_ModelElement(endeavor);
+				if (result == null) result = caseMarked(endeavor);
 				if (result == null) result = caseAdaptable(endeavor);
+				if (result == null) result = caseIMarked(endeavor);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -180,10 +181,14 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				T result = caseIncrement(increment);
 				if (result == null) result = caseNamedElement(increment);
 				if (result == null) result = caseEndeavor(increment);
+				if (result == null) result = caseModelElement(increment);
+				if (result == null) result = caseNcore_NamedElement(increment);
 				if (result == null) result = casePeriod(increment);
 				if (result == null) result = caseAlignable(increment);
-				if (result == null) result = caseModelElement(increment);
+				if (result == null) result = caseNcore_ModelElement(increment);
+				if (result == null) result = caseMarked(increment);
 				if (result == null) result = caseAdaptable(increment);
+				if (result == null) result = caseIMarked(increment);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -194,7 +199,11 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				if (result == null) result = caseNamedElement(issueCategory);
 				if (result == null) result = caseAlignable(issueCategory);
 				if (result == null) result = caseModelElement(issueCategory);
+				if (result == null) result = caseNcore_NamedElement(issueCategory);
+				if (result == null) result = caseNcore_ModelElement(issueCategory);
+				if (result == null) result = caseMarked(issueCategory);
 				if (result == null) result = caseAdaptable(issueCategory);
+				if (result == null) result = caseIMarked(issueCategory);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -203,7 +212,11 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				T result = caseIssueStatus(issueStatus);
 				if (result == null) result = caseNamedElement(issueStatus);
 				if (result == null) result = caseModelElement(issueStatus);
+				if (result == null) result = caseNcore_NamedElement(issueStatus);
+				if (result == null) result = caseNcore_ModelElement(issueStatus);
+				if (result == null) result = caseMarked(issueStatus);
 				if (result == null) result = caseAdaptable(issueStatus);
+				if (result == null) result = caseIMarked(issueStatus);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -212,7 +225,11 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				T result = caseIssuePriority(issuePriority);
 				if (result == null) result = caseNamedElement(issuePriority);
 				if (result == null) result = caseModelElement(issuePriority);
+				if (result == null) result = caseNcore_NamedElement(issuePriority);
+				if (result == null) result = caseNcore_ModelElement(issuePriority);
+				if (result == null) result = caseMarked(issuePriority);
 				if (result == null) result = caseAdaptable(issuePriority);
+				if (result == null) result = caseIMarked(issuePriority);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -221,7 +238,11 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				T result = caseIssueSeverity(issueSeverity);
 				if (result == null) result = caseNamedElement(issueSeverity);
 				if (result == null) result = caseModelElement(issueSeverity);
+				if (result == null) result = caseNcore_NamedElement(issueSeverity);
+				if (result == null) result = caseNcore_ModelElement(issueSeverity);
+				if (result == null) result = caseMarked(issueSeverity);
 				if (result == null) result = caseAdaptable(issueSeverity);
+				if (result == null) result = caseIMarked(issueSeverity);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -235,7 +256,11 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				if (result == null) result = casePeriod(issue);
 				if (result == null) result = caseAlignable(issue);
 				if (result == null) result = caseModelElement(issue);
+				if (result == null) result = caseNcore_NamedElement(issue);
+				if (result == null) result = caseNcore_ModelElement(issue);
+				if (result == null) result = caseMarked(issue);
 				if (result == null) result = caseAdaptable(issue);
+				if (result == null) result = caseIMarked(issue);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -243,7 +268,23 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				Note note = (Note)theEObject;
 				T result = caseNote(note);
 				if (result == null) result = caseModelElement(note);
+				if (result == null) result = caseNcore_ModelElement(note);
+				if (result == null) result = caseMarked(note);
 				if (result == null) result = caseAdaptable(note);
+				if (result == null) result = caseIMarked(note);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EngineeringPackage.FORUM: {
+				Forum forum = (Forum)theEObject;
+				T result = caseForum(forum);
+				if (result == null) result = caseNamedElement(forum);
+				if (result == null) result = caseModelElement(forum);
+				if (result == null) result = caseNcore_NamedElement(forum);
+				if (result == null) result = caseNcore_ModelElement(forum);
+				if (result == null) result = caseMarked(forum);
+				if (result == null) result = caseAdaptable(forum);
+				if (result == null) result = caseIMarked(forum);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -254,7 +295,11 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				if (result == null) result = casePeriod(engineeredElement);
 				if (result == null) result = caseNamedElement(engineeredElement);
 				if (result == null) result = caseModelElement(engineeredElement);
+				if (result == null) result = caseNcore_NamedElement(engineeredElement);
+				if (result == null) result = caseNcore_ModelElement(engineeredElement);
+				if (result == null) result = caseMarked(engineeredElement);
 				if (result == null) result = caseAdaptable(engineeredElement);
+				if (result == null) result = caseIMarked(engineeredElement);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -266,7 +311,11 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				if (result == null) result = casePeriod(document);
 				if (result == null) result = caseNamedElement(document);
 				if (result == null) result = caseModelElement(document);
+				if (result == null) result = caseNcore_NamedElement(document);
+				if (result == null) result = caseNcore_ModelElement(document);
+				if (result == null) result = caseMarked(document);
 				if (result == null) result = caseAdaptable(document);
+				if (result == null) result = caseIMarked(document);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -278,7 +327,11 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				if (result == null) result = casePeriod(persona);
 				if (result == null) result = caseNamedElement(persona);
 				if (result == null) result = caseModelElement(persona);
+				if (result == null) result = caseNcore_NamedElement(persona);
+				if (result == null) result = caseNcore_ModelElement(persona);
+				if (result == null) result = caseMarked(persona);
 				if (result == null) result = caseAdaptable(persona);
+				if (result == null) result = caseIMarked(persona);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -291,7 +344,11 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				if (result == null) result = casePeriod(engineer);
 				if (result == null) result = caseNamedElement(engineer);
 				if (result == null) result = caseModelElement(engineer);
+				if (result == null) result = caseNcore_NamedElement(engineer);
+				if (result == null) result = caseNcore_ModelElement(engineer);
+				if (result == null) result = caseMarked(engineer);
 				if (result == null) result = caseAdaptable(engineer);
+				if (result == null) result = caseIMarked(engineer);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -305,7 +362,11 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				if (result == null) result = casePeriod(organization);
 				if (result == null) result = caseNamedElement(organization);
 				if (result == null) result = caseModelElement(organization);
+				if (result == null) result = caseNcore_NamedElement(organization);
+				if (result == null) result = caseNcore_ModelElement(organization);
+				if (result == null) result = caseMarked(organization);
 				if (result == null) result = caseAdaptable(organization);
+				if (result == null) result = caseIMarked(organization);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -317,7 +378,11 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				if (result == null) result = casePeriod(module);
 				if (result == null) result = caseNamedElement(module);
 				if (result == null) result = caseModelElement(module);
+				if (result == null) result = caseNcore_NamedElement(module);
+				if (result == null) result = caseNcore_ModelElement(module);
+				if (result == null) result = caseMarked(module);
 				if (result == null) result = caseAdaptable(module);
+				if (result == null) result = caseIMarked(module);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -330,7 +395,11 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				if (result == null) result = casePeriod(product);
 				if (result == null) result = caseNamedElement(product);
 				if (result == null) result = caseModelElement(product);
+				if (result == null) result = caseNcore_NamedElement(product);
+				if (result == null) result = caseNcore_ModelElement(product);
+				if (result == null) result = caseMarked(product);
 				if (result == null) result = caseAdaptable(product);
+				if (result == null) result = caseIMarked(product);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -340,7 +409,11 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				if (result == null) result = caseNamedElement(capability);
 				if (result == null) result = casePeriod(capability);
 				if (result == null) result = caseModelElement(capability);
+				if (result == null) result = caseNcore_NamedElement(capability);
+				if (result == null) result = caseNcore_ModelElement(capability);
+				if (result == null) result = caseMarked(capability);
 				if (result == null) result = caseAdaptable(capability);
+				if (result == null) result = caseIMarked(capability);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -353,7 +426,11 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				if (result == null) result = casePeriod(engineeredCapability);
 				if (result == null) result = caseAlignable(engineeredCapability);
 				if (result == null) result = caseModelElement(engineeredCapability);
+				if (result == null) result = caseNcore_NamedElement(engineeredCapability);
+				if (result == null) result = caseNcore_ModelElement(engineeredCapability);
+				if (result == null) result = caseMarked(engineeredCapability);
 				if (result == null) result = caseAdaptable(engineeredCapability);
+				if (result == null) result = caseIMarked(engineeredCapability);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -367,7 +444,11 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				if (result == null) result = casePeriod(release);
 				if (result == null) result = caseAlignable(release);
 				if (result == null) result = caseModelElement(release);
+				if (result == null) result = caseNcore_NamedElement(release);
+				if (result == null) result = caseNcore_ModelElement(release);
+				if (result == null) result = caseMarked(release);
 				if (result == null) result = caseAdaptable(release);
+				if (result == null) result = caseIMarked(release);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -381,7 +462,11 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				if (result == null) result = casePeriod(feature);
 				if (result == null) result = caseAlignable(feature);
 				if (result == null) result = caseModelElement(feature);
+				if (result == null) result = caseNcore_NamedElement(feature);
+				if (result == null) result = caseNcore_ModelElement(feature);
+				if (result == null) result = caseMarked(feature);
 				if (result == null) result = caseAdaptable(feature);
+				if (result == null) result = caseIMarked(feature);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -393,7 +478,11 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				if (result == null) result = casePeriod(directory);
 				if (result == null) result = caseNamedElement(directory);
 				if (result == null) result = caseModelElement(directory);
+				if (result == null) result = caseNcore_NamedElement(directory);
+				if (result == null) result = caseNcore_ModelElement(directory);
+				if (result == null) result = caseMarked(directory);
 				if (result == null) result = caseAdaptable(directory);
+				if (result == null) result = caseIMarked(directory);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -401,7 +490,10 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				Capacity capacity = (Capacity)theEObject;
 				T result = caseCapacity(capacity);
 				if (result == null) result = caseModelElement(capacity);
+				if (result == null) result = caseNcore_ModelElement(capacity);
+				if (result == null) result = caseMarked(capacity);
 				if (result == null) result = caseAdaptable(capacity);
+				if (result == null) result = caseIMarked(capacity);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -410,13 +502,10 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				T result = caseAllocation(allocation);
 				if (result == null) result = caseCapacity(allocation);
 				if (result == null) result = caseModelElement(allocation);
+				if (result == null) result = caseNcore_ModelElement(allocation);
+				if (result == null) result = caseMarked(allocation);
 				if (result == null) result = caseAdaptable(allocation);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case EngineeringPackage.ALIGNABLE: {
-				Alignable alignable = (Alignable)theEObject;
-				T result = caseAlignable(alignable);
+				if (result == null) result = caseIMarked(allocation);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -426,7 +515,11 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				if (result == null) result = caseNamedElement(aim);
 				if (result == null) result = caseAlignable(aim);
 				if (result == null) result = caseModelElement(aim);
+				if (result == null) result = caseNcore_NamedElement(aim);
+				if (result == null) result = caseNcore_ModelElement(aim);
+				if (result == null) result = caseMarked(aim);
 				if (result == null) result = caseAdaptable(aim);
+				if (result == null) result = caseIMarked(aim);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -437,7 +530,11 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				if (result == null) result = caseNamedElement(principle);
 				if (result == null) result = caseAlignable(principle);
 				if (result == null) result = caseModelElement(principle);
+				if (result == null) result = caseNcore_NamedElement(principle);
+				if (result == null) result = caseNcore_ModelElement(principle);
+				if (result == null) result = caseMarked(principle);
 				if (result == null) result = caseAdaptable(principle);
+				if (result == null) result = caseIMarked(principle);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -445,7 +542,10 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				Alignment alignment = (Alignment)theEObject;
 				T result = caseAlignment(alignment);
 				if (result == null) result = caseModelElement(alignment);
+				if (result == null) result = caseNcore_ModelElement(alignment);
+				if (result == null) result = caseMarked(alignment);
 				if (result == null) result = caseAdaptable(alignment);
+				if (result == null) result = caseIMarked(alignment);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -456,16 +556,11 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				if (result == null) result = caseNamedElement(goal);
 				if (result == null) result = caseAlignable(goal);
 				if (result == null) result = caseModelElement(goal);
+				if (result == null) result = caseNcore_NamedElement(goal);
+				if (result == null) result = caseNcore_ModelElement(goal);
+				if (result == null) result = caseMarked(goal);
 				if (result == null) result = caseAdaptable(goal);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case EngineeringPackage.FORUM: {
-				Forum forum = (Forum)theEObject;
-				T result = caseForum(forum);
-				if (result == null) result = caseNamedElement(forum);
-				if (result == null) result = caseModelElement(forum);
-				if (result == null) result = caseAdaptable(forum);
+				if (result == null) result = caseIMarked(goal);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -474,7 +569,11 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				T result = caseMessage(message);
 				if (result == null) result = caseNamedElement(message);
 				if (result == null) result = caseModelElement(message);
+				if (result == null) result = caseNcore_NamedElement(message);
+				if (result == null) result = caseNcore_ModelElement(message);
+				if (result == null) result = caseMarked(message);
 				if (result == null) result = caseAdaptable(message);
+				if (result == null) result = caseIMarked(message);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -484,57 +583,11 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				if (result == null) result = caseMessage(topic);
 				if (result == null) result = caseNamedElement(topic);
 				if (result == null) result = caseModelElement(topic);
+				if (result == null) result = caseNcore_NamedElement(topic);
+				if (result == null) result = caseNcore_ModelElement(topic);
+				if (result == null) result = caseMarked(topic);
 				if (result == null) result = caseAdaptable(topic);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case EngineeringPackage.PACKAGE_APPEARANCE: {
-				PackageAppearance packageAppearance = (PackageAppearance)theEObject;
-				T result = casePackageAppearance(packageAppearance);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case EngineeringPackage.PACKAGE_APPEARANCE_ENTRY: {
-				@SuppressWarnings("unchecked") Map.Entry<String, PackageAppearance> packageAppearanceEntry = (Map.Entry<String, PackageAppearance>)theEObject;
-				T result = casePackageAppearanceEntry(packageAppearanceEntry);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case EngineeringPackage.APPEARANCE: {
-				Appearance appearance = (Appearance)theEObject;
-				T result = caseAppearance(appearance);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case EngineeringPackage.APPEARANCE_ENTRY: {
-				@SuppressWarnings("unchecked") Map.Entry<String, Appearance> appearanceEntry = (Map.Entry<String, Appearance>)theEObject;
-				T result = caseAppearanceEntry(appearanceEntry);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case EngineeringPackage.MODEL_ELEMENT_APPEARANCE: {
-				ModelElementAppearance modelElementAppearance = (ModelElementAppearance)theEObject;
-				T result = caseModelElementAppearance(modelElementAppearance);
-				if (result == null) result = caseAppearance(modelElementAppearance);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case EngineeringPackage.MODEL_ELEMENT_APPEARANCE_ENTRY: {
-				@SuppressWarnings("unchecked") Map.Entry<String, ModelElementAppearance> modelElementAppearanceEntry = (Map.Entry<String, ModelElementAppearance>)theEObject;
-				T result = caseModelElementAppearanceEntry(modelElementAppearanceEntry);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case EngineeringPackage.MEMBER_APPEARANCE_ENTRY: {
-				@SuppressWarnings("unchecked") Map.Entry<String, MemberAppearance> memberAppearanceEntry = (Map.Entry<String, MemberAppearance>)theEObject;
-				T result = caseMemberAppearanceEntry(memberAppearanceEntry);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case EngineeringPackage.MEMBER_APPEARANCE: {
-				MemberAppearance memberAppearance = (MemberAppearance)theEObject;
-				T result = caseMemberAppearance(memberAppearance);
-				if (result == null) result = caseAppearance(memberAppearance);
+				if (result == null) result = caseIMarked(topic);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -543,7 +596,11 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				T result = caseNamedElementReference(namedElementReference);
 				if (result == null) result = caseNamedElement(namedElementReference);
 				if (result == null) result = caseModelElement(namedElementReference);
+				if (result == null) result = caseNcore_NamedElement(namedElementReference);
+				if (result == null) result = caseNcore_ModelElement(namedElementReference);
+				if (result == null) result = caseMarked(namedElementReference);
 				if (result == null) result = caseAdaptable(namedElementReference);
+				if (result == null) result = caseIMarked(namedElementReference);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -552,7 +609,11 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				T result = caseLink(link);
 				if (result == null) result = caseNamedElement(link);
 				if (result == null) result = caseModelElement(link);
+				if (result == null) result = caseNcore_NamedElement(link);
+				if (result == null) result = caseNcore_ModelElement(link);
+				if (result == null) result = caseMarked(link);
 				if (result == null) result = caseAdaptable(link);
+				if (result == null) result = caseIMarked(link);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -563,7 +624,11 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				if (result == null) result = caseNamedElement(keyResult);
 				if (result == null) result = caseAlignable(keyResult);
 				if (result == null) result = caseModelElement(keyResult);
+				if (result == null) result = caseNcore_NamedElement(keyResult);
+				if (result == null) result = caseNcore_ModelElement(keyResult);
+				if (result == null) result = caseMarked(keyResult);
 				if (result == null) result = caseAdaptable(keyResult);
+				if (result == null) result = caseIMarked(keyResult);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -575,7 +640,11 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				if (result == null) result = caseNamedElement(objective);
 				if (result == null) result = caseAlignable(objective);
 				if (result == null) result = caseModelElement(objective);
+				if (result == null) result = caseNcore_NamedElement(objective);
+				if (result == null) result = caseNcore_ModelElement(objective);
+				if (result == null) result = caseMarked(objective);
 				if (result == null) result = caseAdaptable(objective);
+				if (result == null) result = caseIMarked(objective);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -591,7 +660,11 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				if (result == null) result = casePeriod(decision);
 				if (result == null) result = caseAlignable(decision);
 				if (result == null) result = caseModelElement(decision);
+				if (result == null) result = caseNcore_NamedElement(decision);
+				if (result == null) result = caseNcore_ModelElement(decision);
+				if (result == null) result = caseMarked(decision);
 				if (result == null) result = caseAdaptable(decision);
+				if (result == null) result = caseIMarked(decision);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -625,6 +698,51 @@ public class EngineeringSwitch<T> extends Switch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
+	public T caseNcore_ModelElement(org.nasdanika.ncore.ModelElement object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Named Element</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Named Element</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseNcore_NamedElement(org.nasdanika.ncore.NamedElement object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Temporal</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Temporal</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTemporal(Temporal object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Model Element</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Model Element</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
 	public T caseModelElement(ModelElement object) {
 		return null;
 	}
@@ -641,21 +759,6 @@ public class EngineeringSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseTableOfContents(TableOfContents object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Temporal</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Temporal</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseTemporal(Temporal object) {
 		return null;
 	}
 
@@ -1125,126 +1228,6 @@ public class EngineeringSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Package Appearance</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Package Appearance</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T casePackageAppearance(PackageAppearance object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Package Appearance Entry</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Package Appearance Entry</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T casePackageAppearanceEntry(Map.Entry<String, PackageAppearance> object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Appearance</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Appearance</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseAppearance(Appearance object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Appearance Entry</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Appearance Entry</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseAppearanceEntry(Map.Entry<String, Appearance> object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Model Element Appearance</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Model Element Appearance</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseModelElementAppearance(ModelElementAppearance object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Model Element Appearance Entry</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Model Element Appearance Entry</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseModelElementAppearanceEntry(Map.Entry<String, ModelElementAppearance> object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Member Appearance Entry</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Member Appearance Entry</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseMemberAppearanceEntry(Map.Entry<String, MemberAppearance> object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Member Appearance</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Member Appearance</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseMemberAppearance(MemberAppearance object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Document</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -1331,6 +1314,36 @@ public class EngineeringSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseDecision(Decision object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>IMarked</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>IMarked</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseIMarked(Marked object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Marked</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Marked</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseMarked(org.nasdanika.ncore.Marked object) {
 		return null;
 	}
 

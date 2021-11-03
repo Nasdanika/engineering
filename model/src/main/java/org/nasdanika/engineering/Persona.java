@@ -3,7 +3,6 @@
 package org.nasdanika.engineering;
 
 import org.eclipse.emf.common.util.EList;
-import org.nasdanika.engineering.flow.JourneyElement;
 
 
 /**
@@ -15,7 +14,6 @@ import org.nasdanika.engineering.flow.JourneyElement;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.nasdanika.engineering.Persona#getJourneyElements <em>Journey Elements</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Persona#getGoals <em>Goals</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Persona#getRepresentatives <em>Representatives</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Persona#getExtends <em>Extends</em>}</li>
@@ -27,23 +25,6 @@ import org.nasdanika.engineering.flow.JourneyElement;
  * @generated
  */
 public interface Persona extends EngineeredElement {
-
-	/**
-	 * Returns the value of the '<em><b>Journey Elements</b></em>' reference list.
-	 * The list contents are of type {@link org.nasdanika.engineering.flow.JourneyElement}.
-	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.flow.JourneyElement#getPersonas <em>Personas</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Derived opposite to journey element personas reference - [activities](Activity.html) performed by this persona which use [product](Product.html) [features](Feature.html) and [services](Service.html) which this persona uses.
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Journey Elements</em>' reference list.
-	 * @see org.nasdanika.engineering.EngineeringPackage#getPersona_JourneyElements()
-	 * @see org.nasdanika.engineering.flow.JourneyElement#getPersonas
-	 * @model opposite="personas" changeable="false" derived="true"
-	 * @generated
-	 */
-	EList<JourneyElement> getJourneyElements();
 
 	/**
 	 * Returns the value of the '<em><b>Goals</b></em>' containment reference list.

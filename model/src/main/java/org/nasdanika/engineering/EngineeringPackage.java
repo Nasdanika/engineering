@@ -4,10 +4,9 @@ package org.nasdanika.engineering;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EDataType;
-import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
+import org.nasdanika.ncore.NcorePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -60,34 +59,6 @@ public interface EngineeringPackage extends EPackage {
 	EngineeringPackage eINSTANCE = org.nasdanika.engineering.impl.EngineeringPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link org.nasdanika.common.Adaptable <em>Adaptable</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.common.Adaptable
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getAdaptable()
-	 * @generated
-	 */
-	int ADAPTABLE = 0;
-
-	/**
-	 * The number of structural features of the '<em>Adaptable</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ADAPTABLE_FEATURE_COUNT = 0;
-
-	/**
-	 * The number of operations of the '<em>Adaptable</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ADAPTABLE_OPERATION_COUNT = 0;
-
-	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.ModelElementImpl <em>Model Element</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -95,7 +66,16 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getModelElement()
 	 * @generated
 	 */
-	int MODEL_ELEMENT = 1;
+	int MODEL_ELEMENT = 0;
+
+	/**
+	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL_ELEMENT__MARKER = NcorePackage.MODEL_ELEMENT__MARKER;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -104,16 +84,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_ELEMENT__URI = ADAPTABLE_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODEL_ELEMENT__PATH = ADAPTABLE_FEATURE_COUNT + 1;
+	int MODEL_ELEMENT__URI = NcorePackage.MODEL_ELEMENT__URI;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -122,16 +93,25 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_ELEMENT__DESCRIPTION = ADAPTABLE_FEATURE_COUNT + 2;
+	int MODEL_ELEMENT__DESCRIPTION = NcorePackage.MODEL_ELEMENT__DESCRIPTION;
 
 	/**
-	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_ELEMENT__MARKDOWN_DESCRIPTION = ADAPTABLE_FEATURE_COUNT + 3;
+	int MODEL_ELEMENT__UUID = NcorePackage.MODEL_ELEMENT__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL_ELEMENT__PATH = NcorePackage.MODEL_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
@@ -140,16 +120,16 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_ELEMENT__RESOURCES = ADAPTABLE_FEATURE_COUNT + 4;
+	int MODEL_ELEMENT__RESOURCES = NcorePackage.MODEL_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Appearance</b></em>' containment reference.
+	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_ELEMENT__APPEARANCE = ADAPTABLE_FEATURE_COUNT + 5;
+	int MODEL_ELEMENT__DOCUMENTATION = NcorePackage.MODEL_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Table Of Contents</b></em>' containment reference.
@@ -158,7 +138,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_ELEMENT__TABLE_OF_CONTENTS = ADAPTABLE_FEATURE_COUNT + 6;
+	int MODEL_ELEMENT__TABLE_OF_CONTENTS = NcorePackage.MODEL_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Sections</b></em>' containment reference list.
@@ -167,7 +147,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_ELEMENT__SECTIONS = ADAPTABLE_FEATURE_COUNT + 7;
+	int MODEL_ELEMENT__SECTIONS = NcorePackage.MODEL_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Representations</b></em>' containment reference list.
@@ -176,7 +156,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_ELEMENT__REPRESENTATIONS = ADAPTABLE_FEATURE_COUNT + 8;
+	int MODEL_ELEMENT__REPRESENTATIONS = NcorePackage.MODEL_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of structural features of the '<em>Model Element</em>' class.
@@ -185,7 +165,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_ELEMENT_FEATURE_COUNT = ADAPTABLE_FEATURE_COUNT + 9;
+	int MODEL_ELEMENT_FEATURE_COUNT = NcorePackage.MODEL_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
 	 * The number of operations of the '<em>Model Element</em>' class.
@@ -194,7 +174,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_ELEMENT_OPERATION_COUNT = ADAPTABLE_OPERATION_COUNT + 0;
+	int MODEL_ELEMENT_OPERATION_COUNT = NcorePackage.MODEL_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.TableOfContentsImpl <em>Table Of Contents</em>}' class.
@@ -204,7 +184,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getTableOfContents()
 	 * @generated
 	 */
-	int TABLE_OF_CONTENTS = 2;
+	int TABLE_OF_CONTENTS = 1;
 
 	/**
 	 * The feature id for the '<em><b>Role</b></em>' attribute.
@@ -252,241 +232,6 @@ public interface EngineeringPackage extends EPackage {
 	int TABLE_OF_CONTENTS_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.TemporalImpl <em>Temporal</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.TemporalImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getTemporal()
-	 * @generated
-	 */
-	int TEMPORAL = 3;
-
-	/**
-	 * The feature id for the '<em><b>Uri</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPORAL__URI = MODEL_ELEMENT__URI;
-
-	/**
-	 * The feature id for the '<em><b>Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPORAL__PATH = MODEL_ELEMENT__PATH;
-
-	/**
-	 * The feature id for the '<em><b>Description</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPORAL__DESCRIPTION = MODEL_ELEMENT__DESCRIPTION;
-
-	/**
-	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPORAL__MARKDOWN_DESCRIPTION = MODEL_ELEMENT__MARKDOWN_DESCRIPTION;
-
-	/**
-	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPORAL__RESOURCES = MODEL_ELEMENT__RESOURCES;
-
-	/**
-	 * The feature id for the '<em><b>Appearance</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPORAL__APPEARANCE = MODEL_ELEMENT__APPEARANCE;
-
-	/**
-	 * The feature id for the '<em><b>Table Of Contents</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPORAL__TABLE_OF_CONTENTS = MODEL_ELEMENT__TABLE_OF_CONTENTS;
-
-	/**
-	 * The feature id for the '<em><b>Sections</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPORAL__SECTIONS = MODEL_ELEMENT__SECTIONS;
-
-	/**
-	 * The feature id for the '<em><b>Representations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPORAL__REPRESENTATIONS = MODEL_ELEMENT__REPRESENTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Instant</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPORAL__INSTANT = MODEL_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Base</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPORAL__BASE = MODEL_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Offset</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPORAL__OFFSET = MODEL_ELEMENT_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Derivatives</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPORAL__DERIVATIVES = MODEL_ELEMENT_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>Lower Bounds</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPORAL__LOWER_BOUNDS = MODEL_ELEMENT_FEATURE_COUNT + 4;
-
-	/**
-	 * The feature id for the '<em><b>Upper Bounds</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPORAL__UPPER_BOUNDS = MODEL_ELEMENT_FEATURE_COUNT + 5;
-
-	/**
-	 * The number of structural features of the '<em>Temporal</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPORAL_FEATURE_COUNT = MODEL_ELEMENT_FEATURE_COUNT + 6;
-
-	/**
-	 * The operation id for the '<em>After</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPORAL___AFTER__TEMPORAL = MODEL_ELEMENT_OPERATION_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>Before</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPORAL___BEFORE__TEMPORAL = MODEL_ELEMENT_OPERATION_COUNT + 1;
-
-	/**
-	 * The operation id for the '<em>Coincides</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPORAL___COINCIDES__TEMPORAL = MODEL_ELEMENT_OPERATION_COUNT + 2;
-
-	/**
-	 * The operation id for the '<em>Normalize</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPORAL___NORMALIZE = MODEL_ELEMENT_OPERATION_COUNT + 3;
-
-	/**
-	 * The operation id for the '<em>Minus</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPORAL___MINUS__TEMPORAL = MODEL_ELEMENT_OPERATION_COUNT + 4;
-
-	/**
-	 * The operation id for the '<em>Minus</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPORAL___MINUS__DURATION = MODEL_ELEMENT_OPERATION_COUNT + 5;
-
-	/**
-	 * The operation id for the '<em>Plus</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPORAL___PLUS__DURATION = MODEL_ELEMENT_OPERATION_COUNT + 6;
-
-	/**
-	 * The operation id for the '<em>Copy</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPORAL___COPY = MODEL_ELEMENT_OPERATION_COUNT + 7;
-
-	/**
-	 * The number of operations of the '<em>Temporal</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPORAL_OPERATION_COUNT = MODEL_ELEMENT_OPERATION_COUNT + 8;
-
-	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.PeriodImpl <em>Period</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -494,7 +239,16 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getPeriod()
 	 * @generated
 	 */
-	int PERIOD = 4;
+	int PERIOD = 2;
+
+	/**
+	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERIOD__MARKER = NcorePackage.MODEL_ELEMENT__MARKER;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -503,16 +257,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PERIOD__URI = MODEL_ELEMENT__URI;
-
-	/**
-	 * The feature id for the '<em><b>Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PERIOD__PATH = MODEL_ELEMENT__PATH;
+	int PERIOD__URI = NcorePackage.MODEL_ELEMENT__URI;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -521,61 +266,16 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PERIOD__DESCRIPTION = MODEL_ELEMENT__DESCRIPTION;
+	int PERIOD__DESCRIPTION = NcorePackage.MODEL_ELEMENT__DESCRIPTION;
 
 	/**
-	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PERIOD__MARKDOWN_DESCRIPTION = MODEL_ELEMENT__MARKDOWN_DESCRIPTION;
-
-	/**
-	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PERIOD__RESOURCES = MODEL_ELEMENT__RESOURCES;
-
-	/**
-	 * The feature id for the '<em><b>Appearance</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PERIOD__APPEARANCE = MODEL_ELEMENT__APPEARANCE;
-
-	/**
-	 * The feature id for the '<em><b>Table Of Contents</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PERIOD__TABLE_OF_CONTENTS = MODEL_ELEMENT__TABLE_OF_CONTENTS;
-
-	/**
-	 * The feature id for the '<em><b>Sections</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PERIOD__SECTIONS = MODEL_ELEMENT__SECTIONS;
-
-	/**
-	 * The feature id for the '<em><b>Representations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PERIOD__REPRESENTATIONS = MODEL_ELEMENT__REPRESENTATIONS;
+	int PERIOD__UUID = NcorePackage.MODEL_ELEMENT__UUID;
 
 	/**
 	 * The feature id for the '<em><b>Start</b></em>' containment reference.
@@ -584,7 +284,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PERIOD__START = MODEL_ELEMENT_FEATURE_COUNT + 0;
+	int PERIOD__START = NcorePackage.MODEL_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>End</b></em>' containment reference.
@@ -593,7 +293,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PERIOD__END = MODEL_ELEMENT_FEATURE_COUNT + 1;
+	int PERIOD__END = NcorePackage.MODEL_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Duration</b></em>' attribute.
@@ -602,7 +302,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PERIOD__DURATION = MODEL_ELEMENT_FEATURE_COUNT + 2;
+	int PERIOD__DURATION = NcorePackage.MODEL_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Period</em>' class.
@@ -611,7 +311,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PERIOD_FEATURE_COUNT = MODEL_ELEMENT_FEATURE_COUNT + 3;
+	int PERIOD_FEATURE_COUNT = NcorePackage.MODEL_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>Period</em>' class.
@@ -620,7 +320,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PERIOD_OPERATION_COUNT = MODEL_ELEMENT_OPERATION_COUNT + 0;
+	int PERIOD_OPERATION_COUNT = NcorePackage.MODEL_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.NamedElementImpl <em>Named Element</em>}' class.
@@ -630,7 +330,16 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getNamedElement()
 	 * @generated
 	 */
-	int NAMED_ELEMENT = 5;
+	int NAMED_ELEMENT = 3;
+
+	/**
+	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NAMED_ELEMENT__MARKER = MODEL_ELEMENT__MARKER;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -642,15 +351,6 @@ public interface EngineeringPackage extends EPackage {
 	int NAMED_ELEMENT__URI = MODEL_ELEMENT__URI;
 
 	/**
-	 * The feature id for the '<em><b>Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NAMED_ELEMENT__PATH = MODEL_ELEMENT__PATH;
-
-	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -660,13 +360,22 @@ public interface EngineeringPackage extends EPackage {
 	int NAMED_ELEMENT__DESCRIPTION = MODEL_ELEMENT__DESCRIPTION;
 
 	/**
-	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NAMED_ELEMENT__MARKDOWN_DESCRIPTION = MODEL_ELEMENT__MARKDOWN_DESCRIPTION;
+	int NAMED_ELEMENT__UUID = MODEL_ELEMENT__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NAMED_ELEMENT__PATH = MODEL_ELEMENT__PATH;
 
 	/**
 	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
@@ -678,13 +387,13 @@ public interface EngineeringPackage extends EPackage {
 	int NAMED_ELEMENT__RESOURCES = MODEL_ELEMENT__RESOURCES;
 
 	/**
-	 * The feature id for the '<em><b>Appearance</b></em>' containment reference.
+	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NAMED_ELEMENT__APPEARANCE = MODEL_ELEMENT__APPEARANCE;
+	int NAMED_ELEMENT__DOCUMENTATION = MODEL_ELEMENT__DOCUMENTATION;
 
 	/**
 	 * The feature id for the '<em><b>Table Of Contents</b></em>' containment reference.
@@ -748,7 +457,16 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getEvent()
 	 * @generated
 	 */
-	int EVENT = 6;
+	int EVENT = 4;
+
+	/**
+	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT__MARKER = NAMED_ELEMENT__MARKER;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -760,15 +478,6 @@ public interface EngineeringPackage extends EPackage {
 	int EVENT__URI = NAMED_ELEMENT__URI;
 
 	/**
-	 * The feature id for the '<em><b>Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EVENT__PATH = NAMED_ELEMENT__PATH;
-
-	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -778,13 +487,22 @@ public interface EngineeringPackage extends EPackage {
 	int EVENT__DESCRIPTION = NAMED_ELEMENT__DESCRIPTION;
 
 	/**
-	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EVENT__MARKDOWN_DESCRIPTION = NAMED_ELEMENT__MARKDOWN_DESCRIPTION;
+	int EVENT__UUID = NAMED_ELEMENT__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT__PATH = NAMED_ELEMENT__PATH;
 
 	/**
 	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
@@ -796,13 +514,13 @@ public interface EngineeringPackage extends EPackage {
 	int EVENT__RESOURCES = NAMED_ELEMENT__RESOURCES;
 
 	/**
-	 * The feature id for the '<em><b>Appearance</b></em>' containment reference.
+	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EVENT__APPEARANCE = NAMED_ELEMENT__APPEARANCE;
+	int EVENT__DOCUMENTATION = NAMED_ELEMENT__DOCUMENTATION;
 
 	/**
 	 * The feature id for the '<em><b>Table Of Contents</b></em>' containment reference.
@@ -992,7 +710,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getAlignable()
 	 * @generated
 	 */
-	int ALIGNABLE = 29;
+	int ALIGNABLE = 5;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.EndeavorImpl <em>Endeavor</em>}' class.
@@ -1002,7 +720,323 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getEndeavor()
 	 * @generated
 	 */
-	int ENDEAVOR = 7;
+	int ENDEAVOR = 6;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.EngineeredElementImpl <em>Engineered Element</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.EngineeredElementImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getEngineeredElement()
+	 * @generated
+	 */
+	int ENGINEERED_ELEMENT = 15;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.PersonaImpl <em>Persona</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.PersonaImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getPersona()
+	 * @generated
+	 */
+	int PERSONA = 17;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.EngineerImpl <em>Engineer</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.EngineerImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getEngineer()
+	 * @generated
+	 */
+	int ENGINEER = 18;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.OrganizationImpl <em>Organization</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.OrganizationImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getOrganization()
+	 * @generated
+	 */
+	int ORGANIZATION = 19;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.ModuleImpl <em>Module</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.ModuleImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getModule()
+	 * @generated
+	 */
+	int MODULE = 20;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.ProductImpl <em>Product</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.ProductImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getProduct()
+	 * @generated
+	 */
+	int PRODUCT = 21;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.CapabilityImpl <em>Capability</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.CapabilityImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getCapability()
+	 * @generated
+	 */
+	int CAPABILITY = 22;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.IncrementImpl <em>Increment</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.IncrementImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getIncrement()
+	 * @generated
+	 */
+	int INCREMENT = 7;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.IssueCategoryImpl <em>Issue Category</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.IssueCategoryImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getIssueCategory()
+	 * @generated
+	 */
+	int ISSUE_CATEGORY = 8;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.IssueStatusImpl <em>Issue Status</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.IssueStatusImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getIssueStatus()
+	 * @generated
+	 */
+	int ISSUE_STATUS = 9;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.EngineeredCapabilityImpl <em>Engineered Capability</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.EngineeredCapabilityImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getEngineeredCapability()
+	 * @generated
+	 */
+	int ENGINEERED_CAPABILITY = 23;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.ReleaseImpl <em>Release</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.ReleaseImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getRelease()
+	 * @generated
+	 */
+	int RELEASE = 24;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.FeatureImpl <em>Feature</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.FeatureImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getFeature()
+	 * @generated
+	 */
+	int FEATURE = 25;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.IssueImpl <em>Issue</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.IssueImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getIssue()
+	 * @generated
+	 */
+	int ISSUE = 12;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.NoteImpl <em>Note</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.NoteImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getNote()
+	 * @generated
+	 */
+	int NOTE = 13;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.DirectoryImpl <em>Directory</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.DirectoryImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getDirectory()
+	 * @generated
+	 */
+	int DIRECTORY = 26;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.CapacityImpl <em>Capacity</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.CapacityImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getCapacity()
+	 * @generated
+	 */
+	int CAPACITY = 27;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.AllocationImpl <em>Allocation</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.AllocationImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getAllocation()
+	 * @generated
+	 */
+	int ALLOCATION = 28;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.AimImpl <em>Aim</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.AimImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getAim()
+	 * @generated
+	 */
+	int AIM = 29;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.PrincipleImpl <em>Principle</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.PrincipleImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getPrinciple()
+	 * @generated
+	 */
+	int PRINCIPLE = 30;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.AlignmentImpl <em>Alignment</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.AlignmentImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getAlignment()
+	 * @generated
+	 */
+	int ALIGNMENT = 31;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.GoalImpl <em>Goal</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.GoalImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getGoal()
+	 * @generated
+	 */
+	int GOAL = 32;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.ForumImpl <em>Forum</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.ForumImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getForum()
+	 * @generated
+	 */
+	int FORUM = 14;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.IssuePriorityImpl <em>Issue Priority</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.IssuePriorityImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getIssuePriority()
+	 * @generated
+	 */
+	int ISSUE_PRIORITY = 10;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.IssueSeverityImpl <em>Issue Severity</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.IssueSeverityImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getIssueSeverity()
+	 * @generated
+	 */
+	int ISSUE_SEVERITY = 11;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.TopicImpl <em>Topic</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.TopicImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getTopic()
+	 * @generated
+	 */
+	int TOPIC = 34;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.MessageImpl <em>Message</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.MessageImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getMessage()
+	 * @generated
+	 */
+	int MESSAGE = 33;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.DocumentImpl <em>Document</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.DocumentImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getDocument()
+	 * @generated
+	 */
+	int DOCUMENT = 16;
+
+	/**
+	 * The feature id for the '<em><b>Aligns</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ALIGNABLE__ALIGNS = 0;
+
+	/**
+	 * The number of structural features of the '<em>Alignable</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ALIGNABLE_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Alignable</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ALIGNABLE_OPERATION_COUNT = 0;
+
+	/**
+	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENDEAVOR__MARKER = PERIOD__MARKER;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -1014,15 +1048,6 @@ public interface EngineeringPackage extends EPackage {
 	int ENDEAVOR__URI = PERIOD__URI;
 
 	/**
-	 * The feature id for the '<em><b>Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENDEAVOR__PATH = PERIOD__PATH;
-
-	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1032,58 +1057,13 @@ public interface EngineeringPackage extends EPackage {
 	int ENDEAVOR__DESCRIPTION = PERIOD__DESCRIPTION;
 
 	/**
-	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENDEAVOR__MARKDOWN_DESCRIPTION = PERIOD__MARKDOWN_DESCRIPTION;
-
-	/**
-	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENDEAVOR__RESOURCES = PERIOD__RESOURCES;
-
-	/**
-	 * The feature id for the '<em><b>Appearance</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENDEAVOR__APPEARANCE = PERIOD__APPEARANCE;
-
-	/**
-	 * The feature id for the '<em><b>Table Of Contents</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENDEAVOR__TABLE_OF_CONTENTS = PERIOD__TABLE_OF_CONTENTS;
-
-	/**
-	 * The feature id for the '<em><b>Sections</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENDEAVOR__SECTIONS = PERIOD__SECTIONS;
-
-	/**
-	 * The feature id for the '<em><b>Representations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENDEAVOR__REPRESENTATIONS = PERIOD__REPRESENTATIONS;
+	int ENDEAVOR__UUID = PERIOD__UUID;
 
 	/**
 	 * The feature id for the '<em><b>Start</b></em>' containment reference.
@@ -1221,84 +1201,13 @@ public interface EngineeringPackage extends EPackage {
 	int ENDEAVOR_OPERATION_COUNT = PERIOD_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.EngineeredElementImpl <em>Engineered Element</em>}' class.
+	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.EngineeredElementImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getEngineeredElement()
 	 * @generated
+	 * @ordered
 	 */
-	int ENGINEERED_ELEMENT = 15;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.PersonaImpl <em>Persona</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.PersonaImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getPersona()
-	 * @generated
-	 */
-	int PERSONA = 17;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.EngineerImpl <em>Engineer</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.EngineerImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getEngineer()
-	 * @generated
-	 */
-	int ENGINEER = 18;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.OrganizationImpl <em>Organization</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.OrganizationImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getOrganization()
-	 * @generated
-	 */
-	int ORGANIZATION = 19;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.ModuleImpl <em>Module</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.ModuleImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getModule()
-	 * @generated
-	 */
-	int MODULE = 20;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.ProductImpl <em>Product</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.ProductImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getProduct()
-	 * @generated
-	 */
-	int PRODUCT = 21;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.CapabilityImpl <em>Capability</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.CapabilityImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getCapability()
-	 * @generated
-	 */
-	int CAPABILITY = 22;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.IncrementImpl <em>Increment</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.IncrementImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getIncrement()
-	 * @generated
-	 */
-	int INCREMENT = 8;
+	int INCREMENT__MARKER = NAMED_ELEMENT__MARKER;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -1310,15 +1219,6 @@ public interface EngineeringPackage extends EPackage {
 	int INCREMENT__URI = NAMED_ELEMENT__URI;
 
 	/**
-	 * The feature id for the '<em><b>Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INCREMENT__PATH = NAMED_ELEMENT__PATH;
-
-	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1328,13 +1228,22 @@ public interface EngineeringPackage extends EPackage {
 	int INCREMENT__DESCRIPTION = NAMED_ELEMENT__DESCRIPTION;
 
 	/**
-	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INCREMENT__MARKDOWN_DESCRIPTION = NAMED_ELEMENT__MARKDOWN_DESCRIPTION;
+	int INCREMENT__UUID = NAMED_ELEMENT__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INCREMENT__PATH = NAMED_ELEMENT__PATH;
 
 	/**
 	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
@@ -1346,13 +1255,13 @@ public interface EngineeringPackage extends EPackage {
 	int INCREMENT__RESOURCES = NAMED_ELEMENT__RESOURCES;
 
 	/**
-	 * The feature id for the '<em><b>Appearance</b></em>' containment reference.
+	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INCREMENT__APPEARANCE = NAMED_ELEMENT__APPEARANCE;
+	int INCREMENT__DOCUMENTATION = NAMED_ELEMENT__DOCUMENTATION;
 
 	/**
 	 * The feature id for the '<em><b>Table Of Contents</b></em>' containment reference.
@@ -1553,154 +1462,13 @@ public interface EngineeringPackage extends EPackage {
 	int INCREMENT_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.IssueCategoryImpl <em>Issue Category</em>}' class.
+	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.IssueCategoryImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getIssueCategory()
 	 * @generated
+	 * @ordered
 	 */
-	int ISSUE_CATEGORY = 9;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.IssueStatusImpl <em>Issue Status</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.IssueStatusImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getIssueStatus()
-	 * @generated
-	 */
-	int ISSUE_STATUS = 10;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.EngineeredCapabilityImpl <em>Engineered Capability</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.EngineeredCapabilityImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getEngineeredCapability()
-	 * @generated
-	 */
-	int ENGINEERED_CAPABILITY = 23;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.ReleaseImpl <em>Release</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.ReleaseImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getRelease()
-	 * @generated
-	 */
-	int RELEASE = 24;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.FeatureImpl <em>Feature</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.FeatureImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getFeature()
-	 * @generated
-	 */
-	int FEATURE = 25;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.IssueImpl <em>Issue</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.IssueImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getIssue()
-	 * @generated
-	 */
-	int ISSUE = 13;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.NoteImpl <em>Note</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.NoteImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getNote()
-	 * @generated
-	 */
-	int NOTE = 14;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.DirectoryImpl <em>Directory</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.DirectoryImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getDirectory()
-	 * @generated
-	 */
-	int DIRECTORY = 26;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.CapacityImpl <em>Capacity</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.CapacityImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getCapacity()
-	 * @generated
-	 */
-	int CAPACITY = 27;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.AllocationImpl <em>Allocation</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.AllocationImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getAllocation()
-	 * @generated
-	 */
-	int ALLOCATION = 28;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.AimImpl <em>Aim</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.AimImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getAim()
-	 * @generated
-	 */
-	int AIM = 30;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.PrincipleImpl <em>Principle</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.PrincipleImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getPrinciple()
-	 * @generated
-	 */
-	int PRINCIPLE = 31;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.AlignmentImpl <em>Alignment</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.AlignmentImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getAlignment()
-	 * @generated
-	 */
-	int ALIGNMENT = 32;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.GoalImpl <em>Goal</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.GoalImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getGoal()
-	 * @generated
-	 */
-	int GOAL = 33;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.ForumImpl <em>Forum</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.ForumImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getForum()
-	 * @generated
-	 */
-	int FORUM = 34;
+	int AIM__MARKER = NAMED_ELEMENT__MARKER;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -1712,15 +1480,6 @@ public interface EngineeringPackage extends EPackage {
 	int AIM__URI = NAMED_ELEMENT__URI;
 
 	/**
-	 * The feature id for the '<em><b>Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AIM__PATH = NAMED_ELEMENT__PATH;
-
-	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1730,13 +1489,22 @@ public interface EngineeringPackage extends EPackage {
 	int AIM__DESCRIPTION = NAMED_ELEMENT__DESCRIPTION;
 
 	/**
-	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int AIM__MARKDOWN_DESCRIPTION = NAMED_ELEMENT__MARKDOWN_DESCRIPTION;
+	int AIM__UUID = NAMED_ELEMENT__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AIM__PATH = NAMED_ELEMENT__PATH;
 
 	/**
 	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
@@ -1748,13 +1516,13 @@ public interface EngineeringPackage extends EPackage {
 	int AIM__RESOURCES = NAMED_ELEMENT__RESOURCES;
 
 	/**
-	 * The feature id for the '<em><b>Appearance</b></em>' containment reference.
+	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int AIM__APPEARANCE = NAMED_ELEMENT__APPEARANCE;
+	int AIM__DOCUMENTATION = NAMED_ELEMENT__DOCUMENTATION;
 
 	/**
 	 * The feature id for the '<em><b>Table Of Contents</b></em>' containment reference.
@@ -1829,6 +1597,15 @@ public interface EngineeringPackage extends EPackage {
 	int AIM_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE_CATEGORY__MARKER = AIM__MARKER;
+
+	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1836,15 +1613,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int ISSUE_CATEGORY__URI = AIM__URI;
-
-	/**
-	 * The feature id for the '<em><b>Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ISSUE_CATEGORY__PATH = AIM__PATH;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -1856,13 +1624,22 @@ public interface EngineeringPackage extends EPackage {
 	int ISSUE_CATEGORY__DESCRIPTION = AIM__DESCRIPTION;
 
 	/**
-	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ISSUE_CATEGORY__MARKDOWN_DESCRIPTION = AIM__MARKDOWN_DESCRIPTION;
+	int ISSUE_CATEGORY__UUID = AIM__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE_CATEGORY__PATH = AIM__PATH;
 
 	/**
 	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
@@ -1874,13 +1651,13 @@ public interface EngineeringPackage extends EPackage {
 	int ISSUE_CATEGORY__RESOURCES = AIM__RESOURCES;
 
 	/**
-	 * The feature id for the '<em><b>Appearance</b></em>' containment reference.
+	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ISSUE_CATEGORY__APPEARANCE = AIM__APPEARANCE;
+	int ISSUE_CATEGORY__DOCUMENTATION = AIM__DOCUMENTATION;
 
 	/**
 	 * The feature id for the '<em><b>Table Of Contents</b></em>' containment reference.
@@ -1991,6 +1768,15 @@ public interface EngineeringPackage extends EPackage {
 	int ISSUE_CATEGORY_OPERATION_COUNT = AIM_OPERATION_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE_STATUS__MARKER = NAMED_ELEMENT__MARKER;
+
+	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1998,15 +1784,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int ISSUE_STATUS__URI = NAMED_ELEMENT__URI;
-
-	/**
-	 * The feature id for the '<em><b>Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ISSUE_STATUS__PATH = NAMED_ELEMENT__PATH;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -2018,13 +1795,22 @@ public interface EngineeringPackage extends EPackage {
 	int ISSUE_STATUS__DESCRIPTION = NAMED_ELEMENT__DESCRIPTION;
 
 	/**
-	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ISSUE_STATUS__MARKDOWN_DESCRIPTION = NAMED_ELEMENT__MARKDOWN_DESCRIPTION;
+	int ISSUE_STATUS__UUID = NAMED_ELEMENT__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE_STATUS__PATH = NAMED_ELEMENT__PATH;
 
 	/**
 	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
@@ -2036,13 +1822,13 @@ public interface EngineeringPackage extends EPackage {
 	int ISSUE_STATUS__RESOURCES = NAMED_ELEMENT__RESOURCES;
 
 	/**
-	 * The feature id for the '<em><b>Appearance</b></em>' containment reference.
+	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ISSUE_STATUS__APPEARANCE = NAMED_ELEMENT__APPEARANCE;
+	int ISSUE_STATUS__DOCUMENTATION = NAMED_ELEMENT__DOCUMENTATION;
 
 	/**
 	 * The feature id for the '<em><b>Table Of Contents</b></em>' containment reference.
@@ -2117,14 +1903,13 @@ public interface EngineeringPackage extends EPackage {
 	int ISSUE_STATUS_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.IssuePriorityImpl <em>Issue Priority</em>}' class.
+	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.IssuePriorityImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getIssuePriority()
 	 * @generated
+	 * @ordered
 	 */
-	int ISSUE_PRIORITY = 11;
+	int ISSUE_PRIORITY__MARKER = NAMED_ELEMENT__MARKER;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -2136,15 +1921,6 @@ public interface EngineeringPackage extends EPackage {
 	int ISSUE_PRIORITY__URI = NAMED_ELEMENT__URI;
 
 	/**
-	 * The feature id for the '<em><b>Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ISSUE_PRIORITY__PATH = NAMED_ELEMENT__PATH;
-
-	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2154,13 +1930,22 @@ public interface EngineeringPackage extends EPackage {
 	int ISSUE_PRIORITY__DESCRIPTION = NAMED_ELEMENT__DESCRIPTION;
 
 	/**
-	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ISSUE_PRIORITY__MARKDOWN_DESCRIPTION = NAMED_ELEMENT__MARKDOWN_DESCRIPTION;
+	int ISSUE_PRIORITY__UUID = NAMED_ELEMENT__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE_PRIORITY__PATH = NAMED_ELEMENT__PATH;
 
 	/**
 	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
@@ -2172,13 +1957,13 @@ public interface EngineeringPackage extends EPackage {
 	int ISSUE_PRIORITY__RESOURCES = NAMED_ELEMENT__RESOURCES;
 
 	/**
-	 * The feature id for the '<em><b>Appearance</b></em>' containment reference.
+	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ISSUE_PRIORITY__APPEARANCE = NAMED_ELEMENT__APPEARANCE;
+	int ISSUE_PRIORITY__DOCUMENTATION = NAMED_ELEMENT__DOCUMENTATION;
 
 	/**
 	 * The feature id for the '<em><b>Table Of Contents</b></em>' containment reference.
@@ -2244,14 +2029,13 @@ public interface EngineeringPackage extends EPackage {
 	int ISSUE_PRIORITY_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.IssueSeverityImpl <em>Issue Severity</em>}' class.
+	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.IssueSeverityImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getIssueSeverity()
 	 * @generated
+	 * @ordered
 	 */
-	int ISSUE_SEVERITY = 12;
+	int ISSUE_SEVERITY__MARKER = NAMED_ELEMENT__MARKER;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -2263,15 +2047,6 @@ public interface EngineeringPackage extends EPackage {
 	int ISSUE_SEVERITY__URI = NAMED_ELEMENT__URI;
 
 	/**
-	 * The feature id for the '<em><b>Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ISSUE_SEVERITY__PATH = NAMED_ELEMENT__PATH;
-
-	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2281,13 +2056,22 @@ public interface EngineeringPackage extends EPackage {
 	int ISSUE_SEVERITY__DESCRIPTION = NAMED_ELEMENT__DESCRIPTION;
 
 	/**
-	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ISSUE_SEVERITY__MARKDOWN_DESCRIPTION = NAMED_ELEMENT__MARKDOWN_DESCRIPTION;
+	int ISSUE_SEVERITY__UUID = NAMED_ELEMENT__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE_SEVERITY__PATH = NAMED_ELEMENT__PATH;
 
 	/**
 	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
@@ -2299,13 +2083,13 @@ public interface EngineeringPackage extends EPackage {
 	int ISSUE_SEVERITY__RESOURCES = NAMED_ELEMENT__RESOURCES;
 
 	/**
-	 * The feature id for the '<em><b>Appearance</b></em>' containment reference.
+	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ISSUE_SEVERITY__APPEARANCE = NAMED_ELEMENT__APPEARANCE;
+	int ISSUE_SEVERITY__DOCUMENTATION = NAMED_ELEMENT__DOCUMENTATION;
 
 	/**
 	 * The feature id for the '<em><b>Table Of Contents</b></em>' containment reference.
@@ -2371,6 +2155,15 @@ public interface EngineeringPackage extends EPackage {
 	int ISSUE_SEVERITY_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY__MARKER = NAMED_ELEMENT__MARKER;
+
+	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2378,15 +2171,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int CAPABILITY__URI = NAMED_ELEMENT__URI;
-
-	/**
-	 * The feature id for the '<em><b>Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CAPABILITY__PATH = NAMED_ELEMENT__PATH;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -2398,13 +2182,22 @@ public interface EngineeringPackage extends EPackage {
 	int CAPABILITY__DESCRIPTION = NAMED_ELEMENT__DESCRIPTION;
 
 	/**
-	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY__MARKDOWN_DESCRIPTION = NAMED_ELEMENT__MARKDOWN_DESCRIPTION;
+	int CAPABILITY__UUID = NAMED_ELEMENT__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY__PATH = NAMED_ELEMENT__PATH;
 
 	/**
 	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
@@ -2416,13 +2209,13 @@ public interface EngineeringPackage extends EPackage {
 	int CAPABILITY__RESOURCES = NAMED_ELEMENT__RESOURCES;
 
 	/**
-	 * The feature id for the '<em><b>Appearance</b></em>' containment reference.
+	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY__APPEARANCE = NAMED_ELEMENT__APPEARANCE;
+	int CAPABILITY__DOCUMENTATION = NAMED_ELEMENT__DOCUMENTATION;
 
 	/**
 	 * The feature id for the '<em><b>Table Of Contents</b></em>' containment reference.
@@ -2524,6 +2317,15 @@ public interface EngineeringPackage extends EPackage {
 	int CAPABILITY_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEERED_CAPABILITY__MARKER = CAPABILITY__MARKER;
+
+	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2531,15 +2333,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int ENGINEERED_CAPABILITY__URI = CAPABILITY__URI;
-
-	/**
-	 * The feature id for the '<em><b>Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENGINEERED_CAPABILITY__PATH = CAPABILITY__PATH;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -2551,13 +2344,22 @@ public interface EngineeringPackage extends EPackage {
 	int ENGINEERED_CAPABILITY__DESCRIPTION = CAPABILITY__DESCRIPTION;
 
 	/**
-	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEERED_CAPABILITY__MARKDOWN_DESCRIPTION = CAPABILITY__MARKDOWN_DESCRIPTION;
+	int ENGINEERED_CAPABILITY__UUID = CAPABILITY__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEERED_CAPABILITY__PATH = CAPABILITY__PATH;
 
 	/**
 	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
@@ -2569,13 +2371,13 @@ public interface EngineeringPackage extends EPackage {
 	int ENGINEERED_CAPABILITY__RESOURCES = CAPABILITY__RESOURCES;
 
 	/**
-	 * The feature id for the '<em><b>Appearance</b></em>' containment reference.
+	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEERED_CAPABILITY__APPEARANCE = CAPABILITY__APPEARANCE;
+	int ENGINEERED_CAPABILITY__DOCUMENTATION = CAPABILITY__DOCUMENTATION;
 
 	/**
 	 * The feature id for the '<em><b>Table Of Contents</b></em>' containment reference.
@@ -2767,6 +2569,15 @@ public interface EngineeringPackage extends EPackage {
 	int ENGINEERED_CAPABILITY_OPERATION_COUNT = CAPABILITY_OPERATION_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE__MARKER = ENGINEERED_CAPABILITY__MARKER;
+
+	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2774,15 +2585,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int ISSUE__URI = ENGINEERED_CAPABILITY__URI;
-
-	/**
-	 * The feature id for the '<em><b>Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ISSUE__PATH = ENGINEERED_CAPABILITY__PATH;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -2794,13 +2596,22 @@ public interface EngineeringPackage extends EPackage {
 	int ISSUE__DESCRIPTION = ENGINEERED_CAPABILITY__DESCRIPTION;
 
 	/**
-	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ISSUE__MARKDOWN_DESCRIPTION = ENGINEERED_CAPABILITY__MARKDOWN_DESCRIPTION;
+	int ISSUE__UUID = ENGINEERED_CAPABILITY__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE__PATH = ENGINEERED_CAPABILITY__PATH;
 
 	/**
 	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
@@ -2812,13 +2623,13 @@ public interface EngineeringPackage extends EPackage {
 	int ISSUE__RESOURCES = ENGINEERED_CAPABILITY__RESOURCES;
 
 	/**
-	 * The feature id for the '<em><b>Appearance</b></em>' containment reference.
+	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ISSUE__APPEARANCE = ENGINEERED_CAPABILITY__APPEARANCE;
+	int ISSUE__DOCUMENTATION = ENGINEERED_CAPABILITY__DOCUMENTATION;
 
 	/**
 	 * The feature id for the '<em><b>Table Of Contents</b></em>' containment reference.
@@ -3154,6 +2965,15 @@ public interface EngineeringPackage extends EPackage {
 	int ISSUE_OPERATION_COUNT = ENGINEERED_CAPABILITY_OPERATION_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NOTE__MARKER = MODEL_ELEMENT__MARKER;
+
+	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3161,15 +2981,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int NOTE__URI = MODEL_ELEMENT__URI;
-
-	/**
-	 * The feature id for the '<em><b>Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NOTE__PATH = MODEL_ELEMENT__PATH;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -3181,13 +2992,22 @@ public interface EngineeringPackage extends EPackage {
 	int NOTE__DESCRIPTION = MODEL_ELEMENT__DESCRIPTION;
 
 	/**
-	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NOTE__MARKDOWN_DESCRIPTION = MODEL_ELEMENT__MARKDOWN_DESCRIPTION;
+	int NOTE__UUID = MODEL_ELEMENT__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NOTE__PATH = MODEL_ELEMENT__PATH;
 
 	/**
 	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
@@ -3199,13 +3019,13 @@ public interface EngineeringPackage extends EPackage {
 	int NOTE__RESOURCES = MODEL_ELEMENT__RESOURCES;
 
 	/**
-	 * The feature id for the '<em><b>Appearance</b></em>' containment reference.
+	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NOTE__APPEARANCE = MODEL_ELEMENT__APPEARANCE;
+	int NOTE__DOCUMENTATION = MODEL_ELEMENT__DOCUMENTATION;
 
 	/**
 	 * The feature id for the '<em><b>Table Of Contents</b></em>' containment reference.
@@ -3316,6 +3136,15 @@ public interface EngineeringPackage extends EPackage {
 	int NOTE_OPERATION_COUNT = MODEL_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORUM__MARKER = NAMED_ELEMENT__MARKER;
+
+	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3323,15 +3152,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int FORUM__URI = NAMED_ELEMENT__URI;
-
-	/**
-	 * The feature id for the '<em><b>Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FORUM__PATH = NAMED_ELEMENT__PATH;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -3343,13 +3163,22 @@ public interface EngineeringPackage extends EPackage {
 	int FORUM__DESCRIPTION = NAMED_ELEMENT__DESCRIPTION;
 
 	/**
-	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FORUM__MARKDOWN_DESCRIPTION = NAMED_ELEMENT__MARKDOWN_DESCRIPTION;
+	int FORUM__UUID = NAMED_ELEMENT__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORUM__PATH = NAMED_ELEMENT__PATH;
 
 	/**
 	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
@@ -3361,13 +3190,13 @@ public interface EngineeringPackage extends EPackage {
 	int FORUM__RESOURCES = NAMED_ELEMENT__RESOURCES;
 
 	/**
-	 * The feature id for the '<em><b>Appearance</b></em>' containment reference.
+	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FORUM__APPEARANCE = NAMED_ELEMENT__APPEARANCE;
+	int FORUM__DOCUMENTATION = NAMED_ELEMENT__DOCUMENTATION;
 
 	/**
 	 * The feature id for the '<em><b>Table Of Contents</b></em>' containment reference.
@@ -3442,6 +3271,15 @@ public interface EngineeringPackage extends EPackage {
 	int FORUM_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEERED_ELEMENT__MARKER = FORUM__MARKER;
+
+	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3449,15 +3287,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int ENGINEERED_ELEMENT__URI = FORUM__URI;
-
-	/**
-	 * The feature id for the '<em><b>Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENGINEERED_ELEMENT__PATH = FORUM__PATH;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -3469,13 +3298,22 @@ public interface EngineeringPackage extends EPackage {
 	int ENGINEERED_ELEMENT__DESCRIPTION = FORUM__DESCRIPTION;
 
 	/**
-	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEERED_ELEMENT__MARKDOWN_DESCRIPTION = FORUM__MARKDOWN_DESCRIPTION;
+	int ENGINEERED_ELEMENT__UUID = FORUM__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEERED_ELEMENT__PATH = FORUM__PATH;
 
 	/**
 	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
@@ -3487,13 +3325,13 @@ public interface EngineeringPackage extends EPackage {
 	int ENGINEERED_ELEMENT__RESOURCES = FORUM__RESOURCES;
 
 	/**
-	 * The feature id for the '<em><b>Appearance</b></em>' containment reference.
+	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEERED_ELEMENT__APPEARANCE = FORUM__APPEARANCE;
+	int ENGINEERED_ELEMENT__DOCUMENTATION = FORUM__DOCUMENTATION;
 
 	/**
 	 * The feature id for the '<em><b>Table Of Contents</b></em>' containment reference.
@@ -3649,84 +3487,13 @@ public interface EngineeringPackage extends EPackage {
 	int ENGINEERED_ELEMENT_OPERATION_COUNT = FORUM_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.TopicImpl <em>Topic</em>}' class.
+	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.TopicImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getTopic()
 	 * @generated
+	 * @ordered
 	 */
-	int TOPIC = 36;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.MessageImpl <em>Message</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.MessageImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getMessage()
-	 * @generated
-	 */
-	int MESSAGE = 35;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.AppearanceImpl <em>Appearance</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.AppearanceImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getAppearance()
-	 * @generated
-	 */
-	int APPEARANCE = 39;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.ModelElementAppearanceImpl <em>Model Element Appearance</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.ModelElementAppearanceImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getModelElementAppearance()
-	 * @generated
-	 */
-	int MODEL_ELEMENT_APPEARANCE = 41;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.ModelElementAppearanceEntryImpl <em>Model Element Appearance Entry</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.ModelElementAppearanceEntryImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getModelElementAppearanceEntry()
-	 * @generated
-	 */
-	int MODEL_ELEMENT_APPEARANCE_ENTRY = 42;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.MemberAppearanceEntryImpl <em>Member Appearance Entry</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.MemberAppearanceEntryImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getMemberAppearanceEntry()
-	 * @generated
-	 */
-	int MEMBER_APPEARANCE_ENTRY = 43;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.MemberAppearanceImpl <em>Member Appearance</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.MemberAppearanceImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getMemberAppearance()
-	 * @generated
-	 */
-	int MEMBER_APPEARANCE = 44;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.DocumentImpl <em>Document</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.DocumentImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getDocument()
-	 * @generated
-	 */
-	int DOCUMENT = 16;
+	int DOCUMENT__MARKER = ENGINEERED_ELEMENT__MARKER;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -3738,15 +3505,6 @@ public interface EngineeringPackage extends EPackage {
 	int DOCUMENT__URI = ENGINEERED_ELEMENT__URI;
 
 	/**
-	 * The feature id for the '<em><b>Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DOCUMENT__PATH = ENGINEERED_ELEMENT__PATH;
-
-	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3756,13 +3514,22 @@ public interface EngineeringPackage extends EPackage {
 	int DOCUMENT__DESCRIPTION = ENGINEERED_ELEMENT__DESCRIPTION;
 
 	/**
-	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DOCUMENT__MARKDOWN_DESCRIPTION = ENGINEERED_ELEMENT__MARKDOWN_DESCRIPTION;
+	int DOCUMENT__UUID = ENGINEERED_ELEMENT__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT__PATH = ENGINEERED_ELEMENT__PATH;
 
 	/**
 	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
@@ -3774,13 +3541,13 @@ public interface EngineeringPackage extends EPackage {
 	int DOCUMENT__RESOURCES = ENGINEERED_ELEMENT__RESOURCES;
 
 	/**
-	 * The feature id for the '<em><b>Appearance</b></em>' containment reference.
+	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DOCUMENT__APPEARANCE = ENGINEERED_ELEMENT__APPEARANCE;
+	int DOCUMENT__DOCUMENTATION = ENGINEERED_ELEMENT__DOCUMENTATION;
 
 	/**
 	 * The feature id for the '<em><b>Table Of Contents</b></em>' containment reference.
@@ -3954,6 +3721,15 @@ public interface EngineeringPackage extends EPackage {
 	int DOCUMENT_OPERATION_COUNT = ENGINEERED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSONA__MARKER = ENGINEERED_ELEMENT__MARKER;
+
+	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3961,15 +3737,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int PERSONA__URI = ENGINEERED_ELEMENT__URI;
-
-	/**
-	 * The feature id for the '<em><b>Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PERSONA__PATH = ENGINEERED_ELEMENT__PATH;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -3981,13 +3748,22 @@ public interface EngineeringPackage extends EPackage {
 	int PERSONA__DESCRIPTION = ENGINEERED_ELEMENT__DESCRIPTION;
 
 	/**
-	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PERSONA__MARKDOWN_DESCRIPTION = ENGINEERED_ELEMENT__MARKDOWN_DESCRIPTION;
+	int PERSONA__UUID = ENGINEERED_ELEMENT__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSONA__PATH = ENGINEERED_ELEMENT__PATH;
 
 	/**
 	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
@@ -3999,13 +3775,13 @@ public interface EngineeringPackage extends EPackage {
 	int PERSONA__RESOURCES = ENGINEERED_ELEMENT__RESOURCES;
 
 	/**
-	 * The feature id for the '<em><b>Appearance</b></em>' containment reference.
+	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PERSONA__APPEARANCE = ENGINEERED_ELEMENT__APPEARANCE;
+	int PERSONA__DOCUMENTATION = ENGINEERED_ELEMENT__DOCUMENTATION;
 
 	/**
 	 * The feature id for the '<em><b>Table Of Contents</b></em>' containment reference.
@@ -4143,22 +3919,13 @@ public interface EngineeringPackage extends EPackage {
 	int PERSONA__ALL_ISSUES = ENGINEERED_ELEMENT__ALL_ISSUES;
 
 	/**
-	 * The feature id for the '<em><b>Journey Elements</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PERSONA__JOURNEY_ELEMENTS = ENGINEERED_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
 	 * The feature id for the '<em><b>Goals</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PERSONA__GOALS = ENGINEERED_ELEMENT_FEATURE_COUNT + 1;
+	int PERSONA__GOALS = ENGINEERED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Representatives</b></em>' reference list.
@@ -4167,7 +3934,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PERSONA__REPRESENTATIVES = ENGINEERED_ELEMENT_FEATURE_COUNT + 2;
+	int PERSONA__REPRESENTATIVES = ENGINEERED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Extends</b></em>' reference list.
@@ -4176,7 +3943,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PERSONA__EXTENDS = ENGINEERED_ELEMENT_FEATURE_COUNT + 3;
+	int PERSONA__EXTENDS = ENGINEERED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Extensions</b></em>' reference list.
@@ -4185,7 +3952,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PERSONA__EXTENSIONS = ENGINEERED_ELEMENT_FEATURE_COUNT + 4;
+	int PERSONA__EXTENSIONS = ENGINEERED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Persona</em>' class.
@@ -4194,7 +3961,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PERSONA_FEATURE_COUNT = ENGINEERED_ELEMENT_FEATURE_COUNT + 5;
+	int PERSONA_FEATURE_COUNT = ENGINEERED_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of operations of the '<em>Persona</em>' class.
@@ -4206,6 +3973,15 @@ public interface EngineeringPackage extends EPackage {
 	int PERSONA_OPERATION_COUNT = ENGINEERED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEER__MARKER = PERSONA__MARKER;
+
+	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4213,15 +3989,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int ENGINEER__URI = PERSONA__URI;
-
-	/**
-	 * The feature id for the '<em><b>Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENGINEER__PATH = PERSONA__PATH;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -4233,13 +4000,22 @@ public interface EngineeringPackage extends EPackage {
 	int ENGINEER__DESCRIPTION = PERSONA__DESCRIPTION;
 
 	/**
-	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEER__MARKDOWN_DESCRIPTION = PERSONA__MARKDOWN_DESCRIPTION;
+	int ENGINEER__UUID = PERSONA__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEER__PATH = PERSONA__PATH;
 
 	/**
 	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
@@ -4251,13 +4027,13 @@ public interface EngineeringPackage extends EPackage {
 	int ENGINEER__RESOURCES = PERSONA__RESOURCES;
 
 	/**
-	 * The feature id for the '<em><b>Appearance</b></em>' containment reference.
+	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEER__APPEARANCE = PERSONA__APPEARANCE;
+	int ENGINEER__DOCUMENTATION = PERSONA__DOCUMENTATION;
 
 	/**
 	 * The feature id for the '<em><b>Table Of Contents</b></em>' containment reference.
@@ -4393,15 +4169,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int ENGINEER__ALL_ISSUES = PERSONA__ALL_ISSUES;
-
-	/**
-	 * The feature id for the '<em><b>Journey Elements</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENGINEER__JOURNEY_ELEMENTS = PERSONA__JOURNEY_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Goals</b></em>' containment reference list.
@@ -4611,6 +4378,15 @@ public interface EngineeringPackage extends EPackage {
 	int ENGINEER_OPERATION_COUNT = PERSONA_OPERATION_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANIZATION__MARKER = ENGINEER__MARKER;
+
+	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4618,15 +4394,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int ORGANIZATION__URI = ENGINEER__URI;
-
-	/**
-	 * The feature id for the '<em><b>Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ORGANIZATION__PATH = ENGINEER__PATH;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -4638,13 +4405,22 @@ public interface EngineeringPackage extends EPackage {
 	int ORGANIZATION__DESCRIPTION = ENGINEER__DESCRIPTION;
 
 	/**
-	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ORGANIZATION__MARKDOWN_DESCRIPTION = ENGINEER__MARKDOWN_DESCRIPTION;
+	int ORGANIZATION__UUID = ENGINEER__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANIZATION__PATH = ENGINEER__PATH;
 
 	/**
 	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
@@ -4656,13 +4432,13 @@ public interface EngineeringPackage extends EPackage {
 	int ORGANIZATION__RESOURCES = ENGINEER__RESOURCES;
 
 	/**
-	 * The feature id for the '<em><b>Appearance</b></em>' containment reference.
+	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ORGANIZATION__APPEARANCE = ENGINEER__APPEARANCE;
+	int ORGANIZATION__DOCUMENTATION = ENGINEER__DOCUMENTATION;
 
 	/**
 	 * The feature id for the '<em><b>Table Of Contents</b></em>' containment reference.
@@ -4798,15 +4574,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int ORGANIZATION__ALL_ISSUES = ENGINEER__ALL_ISSUES;
-
-	/**
-	 * The feature id for the '<em><b>Journey Elements</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ORGANIZATION__JOURNEY_ELEMENTS = ENGINEER__JOURNEY_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Goals</b></em>' containment reference list.
@@ -5025,6 +4792,15 @@ public interface EngineeringPackage extends EPackage {
 	int ORGANIZATION_OPERATION_COUNT = ENGINEER_OPERATION_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODULE__MARKER = ENGINEERED_ELEMENT__MARKER;
+
+	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5032,15 +4808,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int MODULE__URI = ENGINEERED_ELEMENT__URI;
-
-	/**
-	 * The feature id for the '<em><b>Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODULE__PATH = ENGINEERED_ELEMENT__PATH;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -5052,13 +4819,22 @@ public interface EngineeringPackage extends EPackage {
 	int MODULE__DESCRIPTION = ENGINEERED_ELEMENT__DESCRIPTION;
 
 	/**
-	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE__MARKDOWN_DESCRIPTION = ENGINEERED_ELEMENT__MARKDOWN_DESCRIPTION;
+	int MODULE__UUID = ENGINEERED_ELEMENT__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODULE__PATH = ENGINEERED_ELEMENT__PATH;
 
 	/**
 	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
@@ -5070,13 +4846,13 @@ public interface EngineeringPackage extends EPackage {
 	int MODULE__RESOURCES = ENGINEERED_ELEMENT__RESOURCES;
 
 	/**
-	 * The feature id for the '<em><b>Appearance</b></em>' containment reference.
+	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE__APPEARANCE = ENGINEERED_ELEMENT__APPEARANCE;
+	int MODULE__DOCUMENTATION = ENGINEERED_ELEMENT__DOCUMENTATION;
 
 	/**
 	 * The feature id for the '<em><b>Table Of Contents</b></em>' containment reference.
@@ -5259,6 +5035,15 @@ public interface EngineeringPackage extends EPackage {
 	int MODULE_OPERATION_COUNT = ENGINEERED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT__MARKER = MODULE__MARKER;
+
+	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5266,15 +5051,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int PRODUCT__URI = MODULE__URI;
-
-	/**
-	 * The feature id for the '<em><b>Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PRODUCT__PATH = MODULE__PATH;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -5286,13 +5062,22 @@ public interface EngineeringPackage extends EPackage {
 	int PRODUCT__DESCRIPTION = MODULE__DESCRIPTION;
 
 	/**
-	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT__MARKDOWN_DESCRIPTION = MODULE__MARKDOWN_DESCRIPTION;
+	int PRODUCT__UUID = MODULE__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT__PATH = MODULE__PATH;
 
 	/**
 	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
@@ -5304,13 +5089,13 @@ public interface EngineeringPackage extends EPackage {
 	int PRODUCT__RESOURCES = MODULE__RESOURCES;
 
 	/**
-	 * The feature id for the '<em><b>Appearance</b></em>' containment reference.
+	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT__APPEARANCE = MODULE__APPEARANCE;
+	int PRODUCT__DOCUMENTATION = MODULE__DOCUMENTATION;
 
 	/**
 	 * The feature id for the '<em><b>Table Of Contents</b></em>' containment reference.
@@ -5520,6 +5305,15 @@ public interface EngineeringPackage extends EPackage {
 	int PRODUCT_OPERATION_COUNT = MODULE_OPERATION_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RELEASE__MARKER = ENGINEERED_CAPABILITY__MARKER;
+
+	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5527,15 +5321,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int RELEASE__URI = ENGINEERED_CAPABILITY__URI;
-
-	/**
-	 * The feature id for the '<em><b>Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RELEASE__PATH = ENGINEERED_CAPABILITY__PATH;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -5547,13 +5332,22 @@ public interface EngineeringPackage extends EPackage {
 	int RELEASE__DESCRIPTION = ENGINEERED_CAPABILITY__DESCRIPTION;
 
 	/**
-	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RELEASE__MARKDOWN_DESCRIPTION = ENGINEERED_CAPABILITY__MARKDOWN_DESCRIPTION;
+	int RELEASE__UUID = ENGINEERED_CAPABILITY__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RELEASE__PATH = ENGINEERED_CAPABILITY__PATH;
 
 	/**
 	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
@@ -5565,13 +5359,13 @@ public interface EngineeringPackage extends EPackage {
 	int RELEASE__RESOURCES = ENGINEERED_CAPABILITY__RESOURCES;
 
 	/**
-	 * The feature id for the '<em><b>Appearance</b></em>' containment reference.
+	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RELEASE__APPEARANCE = ENGINEERED_CAPABILITY__APPEARANCE;
+	int RELEASE__DOCUMENTATION = ENGINEERED_CAPABILITY__DOCUMENTATION;
 
 	/**
 	 * The feature id for the '<em><b>Table Of Contents</b></em>' containment reference.
@@ -5790,6 +5584,15 @@ public interface EngineeringPackage extends EPackage {
 	int RELEASE_OPERATION_COUNT = ENGINEERED_CAPABILITY_OPERATION_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE__MARKER = ENGINEERED_CAPABILITY__MARKER;
+
+	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5797,15 +5600,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int FEATURE__URI = ENGINEERED_CAPABILITY__URI;
-
-	/**
-	 * The feature id for the '<em><b>Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FEATURE__PATH = ENGINEERED_CAPABILITY__PATH;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -5817,13 +5611,22 @@ public interface EngineeringPackage extends EPackage {
 	int FEATURE__DESCRIPTION = ENGINEERED_CAPABILITY__DESCRIPTION;
 
 	/**
-	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FEATURE__MARKDOWN_DESCRIPTION = ENGINEERED_CAPABILITY__MARKDOWN_DESCRIPTION;
+	int FEATURE__UUID = ENGINEERED_CAPABILITY__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE__PATH = ENGINEERED_CAPABILITY__PATH;
 
 	/**
 	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
@@ -5835,13 +5638,13 @@ public interface EngineeringPackage extends EPackage {
 	int FEATURE__RESOURCES = ENGINEERED_CAPABILITY__RESOURCES;
 
 	/**
-	 * The feature id for the '<em><b>Appearance</b></em>' containment reference.
+	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FEATURE__APPEARANCE = ENGINEERED_CAPABILITY__APPEARANCE;
+	int FEATURE__DOCUMENTATION = ENGINEERED_CAPABILITY__DOCUMENTATION;
 
 	/**
 	 * The feature id for the '<em><b>Table Of Contents</b></em>' containment reference.
@@ -6069,6 +5872,15 @@ public interface EngineeringPackage extends EPackage {
 	int FEATURE_OPERATION_COUNT = ENGINEERED_CAPABILITY_OPERATION_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIRECTORY__MARKER = ENGINEERED_ELEMENT__MARKER;
+
+	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6076,15 +5888,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int DIRECTORY__URI = ENGINEERED_ELEMENT__URI;
-
-	/**
-	 * The feature id for the '<em><b>Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIRECTORY__PATH = ENGINEERED_ELEMENT__PATH;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -6096,13 +5899,22 @@ public interface EngineeringPackage extends EPackage {
 	int DIRECTORY__DESCRIPTION = ENGINEERED_ELEMENT__DESCRIPTION;
 
 	/**
-	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DIRECTORY__MARKDOWN_DESCRIPTION = ENGINEERED_ELEMENT__MARKDOWN_DESCRIPTION;
+	int DIRECTORY__UUID = ENGINEERED_ELEMENT__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIRECTORY__PATH = ENGINEERED_ELEMENT__PATH;
 
 	/**
 	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
@@ -6114,13 +5926,13 @@ public interface EngineeringPackage extends EPackage {
 	int DIRECTORY__RESOURCES = ENGINEERED_ELEMENT__RESOURCES;
 
 	/**
-	 * The feature id for the '<em><b>Appearance</b></em>' containment reference.
+	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DIRECTORY__APPEARANCE = ENGINEERED_ELEMENT__APPEARANCE;
+	int DIRECTORY__DOCUMENTATION = ENGINEERED_ELEMENT__DOCUMENTATION;
 
 	/**
 	 * The feature id for the '<em><b>Table Of Contents</b></em>' containment reference.
@@ -6285,6 +6097,15 @@ public interface EngineeringPackage extends EPackage {
 	int DIRECTORY_OPERATION_COUNT = ENGINEERED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPACITY__MARKER = MODEL_ELEMENT__MARKER;
+
+	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6292,15 +6113,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int CAPACITY__URI = MODEL_ELEMENT__URI;
-
-	/**
-	 * The feature id for the '<em><b>Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CAPACITY__PATH = MODEL_ELEMENT__PATH;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -6312,13 +6124,22 @@ public interface EngineeringPackage extends EPackage {
 	int CAPACITY__DESCRIPTION = MODEL_ELEMENT__DESCRIPTION;
 
 	/**
-	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CAPACITY__MARKDOWN_DESCRIPTION = MODEL_ELEMENT__MARKDOWN_DESCRIPTION;
+	int CAPACITY__UUID = MODEL_ELEMENT__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPACITY__PATH = MODEL_ELEMENT__PATH;
 
 	/**
 	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
@@ -6330,13 +6151,13 @@ public interface EngineeringPackage extends EPackage {
 	int CAPACITY__RESOURCES = MODEL_ELEMENT__RESOURCES;
 
 	/**
-	 * The feature id for the '<em><b>Appearance</b></em>' containment reference.
+	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CAPACITY__APPEARANCE = MODEL_ELEMENT__APPEARANCE;
+	int CAPACITY__DOCUMENTATION = MODEL_ELEMENT__DOCUMENTATION;
 
 	/**
 	 * The feature id for the '<em><b>Table Of Contents</b></em>' containment reference.
@@ -6420,6 +6241,15 @@ public interface EngineeringPackage extends EPackage {
 	int CAPACITY_OPERATION_COUNT = MODEL_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ALLOCATION__MARKER = CAPACITY__MARKER;
+
+	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6427,15 +6257,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int ALLOCATION__URI = CAPACITY__URI;
-
-	/**
-	 * The feature id for the '<em><b>Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ALLOCATION__PATH = CAPACITY__PATH;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -6447,13 +6268,22 @@ public interface EngineeringPackage extends EPackage {
 	int ALLOCATION__DESCRIPTION = CAPACITY__DESCRIPTION;
 
 	/**
-	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ALLOCATION__MARKDOWN_DESCRIPTION = CAPACITY__MARKDOWN_DESCRIPTION;
+	int ALLOCATION__UUID = CAPACITY__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ALLOCATION__PATH = CAPACITY__PATH;
 
 	/**
 	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
@@ -6465,13 +6295,13 @@ public interface EngineeringPackage extends EPackage {
 	int ALLOCATION__RESOURCES = CAPACITY__RESOURCES;
 
 	/**
-	 * The feature id for the '<em><b>Appearance</b></em>' containment reference.
+	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ALLOCATION__APPEARANCE = CAPACITY__APPEARANCE;
+	int ALLOCATION__DOCUMENTATION = CAPACITY__DOCUMENTATION;
 
 	/**
 	 * The feature id for the '<em><b>Table Of Contents</b></em>' containment reference.
@@ -6573,31 +6403,13 @@ public interface EngineeringPackage extends EPackage {
 	int ALLOCATION_OPERATION_COUNT = CAPACITY_OPERATION_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Aligns</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ALIGNABLE__ALIGNS = 0;
-
-	/**
-	 * The number of structural features of the '<em>Alignable</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ALIGNABLE_FEATURE_COUNT = 1;
-
-	/**
-	 * The number of operations of the '<em>Alignable</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ALIGNABLE_OPERATION_COUNT = 0;
+	int PRINCIPLE__MARKER = AIM__MARKER;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -6609,15 +6421,6 @@ public interface EngineeringPackage extends EPackage {
 	int PRINCIPLE__URI = AIM__URI;
 
 	/**
-	 * The feature id for the '<em><b>Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PRINCIPLE__PATH = AIM__PATH;
-
-	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6627,13 +6430,22 @@ public interface EngineeringPackage extends EPackage {
 	int PRINCIPLE__DESCRIPTION = AIM__DESCRIPTION;
 
 	/**
-	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PRINCIPLE__MARKDOWN_DESCRIPTION = AIM__MARKDOWN_DESCRIPTION;
+	int PRINCIPLE__UUID = AIM__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRINCIPLE__PATH = AIM__PATH;
 
 	/**
 	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
@@ -6645,13 +6457,13 @@ public interface EngineeringPackage extends EPackage {
 	int PRINCIPLE__RESOURCES = AIM__RESOURCES;
 
 	/**
-	 * The feature id for the '<em><b>Appearance</b></em>' containment reference.
+	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PRINCIPLE__APPEARANCE = AIM__APPEARANCE;
+	int PRINCIPLE__DOCUMENTATION = AIM__DOCUMENTATION;
 
 	/**
 	 * The feature id for the '<em><b>Table Of Contents</b></em>' containment reference.
@@ -6735,6 +6547,15 @@ public interface EngineeringPackage extends EPackage {
 	int PRINCIPLE_OPERATION_COUNT = AIM_OPERATION_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ALIGNMENT__MARKER = MODEL_ELEMENT__MARKER;
+
+	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6742,15 +6563,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int ALIGNMENT__URI = MODEL_ELEMENT__URI;
-
-	/**
-	 * The feature id for the '<em><b>Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ALIGNMENT__PATH = MODEL_ELEMENT__PATH;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -6762,13 +6574,22 @@ public interface EngineeringPackage extends EPackage {
 	int ALIGNMENT__DESCRIPTION = MODEL_ELEMENT__DESCRIPTION;
 
 	/**
-	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ALIGNMENT__MARKDOWN_DESCRIPTION = MODEL_ELEMENT__MARKDOWN_DESCRIPTION;
+	int ALIGNMENT__UUID = MODEL_ELEMENT__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ALIGNMENT__PATH = MODEL_ELEMENT__PATH;
 
 	/**
 	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
@@ -6780,13 +6601,13 @@ public interface EngineeringPackage extends EPackage {
 	int ALIGNMENT__RESOURCES = MODEL_ELEMENT__RESOURCES;
 
 	/**
-	 * The feature id for the '<em><b>Appearance</b></em>' containment reference.
+	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ALIGNMENT__APPEARANCE = MODEL_ELEMENT__APPEARANCE;
+	int ALIGNMENT__DOCUMENTATION = MODEL_ELEMENT__DOCUMENTATION;
 
 	/**
 	 * The feature id for the '<em><b>Table Of Contents</b></em>' containment reference.
@@ -6852,6 +6673,15 @@ public interface EngineeringPackage extends EPackage {
 	int ALIGNMENT_OPERATION_COUNT = MODEL_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GOAL__MARKER = AIM__MARKER;
+
+	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6859,15 +6689,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int GOAL__URI = AIM__URI;
-
-	/**
-	 * The feature id for the '<em><b>Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GOAL__PATH = AIM__PATH;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -6879,13 +6700,22 @@ public interface EngineeringPackage extends EPackage {
 	int GOAL__DESCRIPTION = AIM__DESCRIPTION;
 
 	/**
-	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GOAL__MARKDOWN_DESCRIPTION = AIM__MARKDOWN_DESCRIPTION;
+	int GOAL__UUID = AIM__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GOAL__PATH = AIM__PATH;
 
 	/**
 	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
@@ -6897,13 +6727,13 @@ public interface EngineeringPackage extends EPackage {
 	int GOAL__RESOURCES = AIM__RESOURCES;
 
 	/**
-	 * The feature id for the '<em><b>Appearance</b></em>' containment reference.
+	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GOAL__APPEARANCE = AIM__APPEARANCE;
+	int GOAL__DOCUMENTATION = AIM__DOCUMENTATION;
 
 	/**
 	 * The feature id for the '<em><b>Table Of Contents</b></em>' containment reference.
@@ -6987,6 +6817,15 @@ public interface EngineeringPackage extends EPackage {
 	int GOAL_OPERATION_COUNT = AIM_OPERATION_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE__MARKER = NAMED_ELEMENT__MARKER;
+
+	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6994,15 +6833,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int MESSAGE__URI = NAMED_ELEMENT__URI;
-
-	/**
-	 * The feature id for the '<em><b>Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MESSAGE__PATH = NAMED_ELEMENT__PATH;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -7014,13 +6844,22 @@ public interface EngineeringPackage extends EPackage {
 	int MESSAGE__DESCRIPTION = NAMED_ELEMENT__DESCRIPTION;
 
 	/**
-	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE__MARKDOWN_DESCRIPTION = NAMED_ELEMENT__MARKDOWN_DESCRIPTION;
+	int MESSAGE__UUID = NAMED_ELEMENT__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE__PATH = NAMED_ELEMENT__PATH;
 
 	/**
 	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
@@ -7032,13 +6871,13 @@ public interface EngineeringPackage extends EPackage {
 	int MESSAGE__RESOURCES = NAMED_ELEMENT__RESOURCES;
 
 	/**
-	 * The feature id for the '<em><b>Appearance</b></em>' containment reference.
+	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE__APPEARANCE = NAMED_ELEMENT__APPEARANCE;
+	int MESSAGE__DOCUMENTATION = NAMED_ELEMENT__DOCUMENTATION;
 
 	/**
 	 * The feature id for the '<em><b>Table Of Contents</b></em>' containment reference.
@@ -7113,6 +6952,15 @@ public interface EngineeringPackage extends EPackage {
 	int MESSAGE_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TOPIC__MARKER = MESSAGE__MARKER;
+
+	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7120,15 +6968,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int TOPIC__URI = MESSAGE__URI;
-
-	/**
-	 * The feature id for the '<em><b>Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TOPIC__PATH = MESSAGE__PATH;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -7140,13 +6979,22 @@ public interface EngineeringPackage extends EPackage {
 	int TOPIC__DESCRIPTION = MESSAGE__DESCRIPTION;
 
 	/**
-	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TOPIC__MARKDOWN_DESCRIPTION = MESSAGE__MARKDOWN_DESCRIPTION;
+	int TOPIC__UUID = MESSAGE__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TOPIC__PATH = MESSAGE__PATH;
 
 	/**
 	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
@@ -7158,13 +7006,13 @@ public interface EngineeringPackage extends EPackage {
 	int TOPIC__RESOURCES = MESSAGE__RESOURCES;
 
 	/**
-	 * The feature id for the '<em><b>Appearance</b></em>' containment reference.
+	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TOPIC__APPEARANCE = MESSAGE__APPEARANCE;
+	int TOPIC__DOCUMENTATION = MESSAGE__DOCUMENTATION;
 
 	/**
 	 * The feature id for the '<em><b>Table Of Contents</b></em>' containment reference.
@@ -7248,468 +7096,6 @@ public interface EngineeringPackage extends EPackage {
 	int TOPIC_OPERATION_COUNT = MESSAGE_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.PackageAppearanceImpl <em>Package Appearance</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.PackageAppearanceImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getPackageAppearance()
-	 * @generated
-	 */
-	int PACKAGE_APPEARANCE = 37;
-
-	/**
-	 * The feature id for the '<em><b>Model Elements</b></em>' map.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PACKAGE_APPEARANCE__MODEL_ELEMENTS = 0;
-
-	/**
-	 * The feature id for the '<em><b>Sub Packages</b></em>' map.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PACKAGE_APPEARANCE__SUB_PACKAGES = 1;
-
-	/**
-	 * The number of structural features of the '<em>Package Appearance</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PACKAGE_APPEARANCE_FEATURE_COUNT = 2;
-
-	/**
-	 * The number of operations of the '<em>Package Appearance</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PACKAGE_APPEARANCE_OPERATION_COUNT = 0;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.PackageAppearanceEntryImpl <em>Package Appearance Entry</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.PackageAppearanceEntryImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getPackageAppearanceEntry()
-	 * @generated
-	 */
-	int PACKAGE_APPEARANCE_ENTRY = 38;
-
-	/**
-	 * The feature id for the '<em><b>Key</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PACKAGE_APPEARANCE_ENTRY__KEY = 0;
-
-	/**
-	 * The feature id for the '<em><b>Value</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PACKAGE_APPEARANCE_ENTRY__VALUE = 1;
-
-	/**
-	 * The number of structural features of the '<em>Package Appearance Entry</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PACKAGE_APPEARANCE_ENTRY_FEATURE_COUNT = 2;
-
-	/**
-	 * The number of operations of the '<em>Package Appearance Entry</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PACKAGE_APPEARANCE_ENTRY_OPERATION_COUNT = 0;
-
-	/**
-	 * The feature id for the '<em><b>Label</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int APPEARANCE__LABEL = 0;
-
-	/**
-	 * The feature id for the '<em><b>Icon</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int APPEARANCE__ICON = 1;
-
-	/**
-	 * The feature id for the '<em><b>Description</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int APPEARANCE__DESCRIPTION = 2;
-
-	/**
-	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int APPEARANCE__MARKDOWN_DESCRIPTION = 3;
-
-	/**
-	 * The feature id for the '<em><b>Roles</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int APPEARANCE__ROLES = 4;
-
-	/**
-	 * The feature id for the '<em><b>Section Style</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int APPEARANCE__SECTION_STYLE = 5;
-
-	/**
-	 * The number of structural features of the '<em>Appearance</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int APPEARANCE_FEATURE_COUNT = 6;
-
-	/**
-	 * The number of operations of the '<em>Appearance</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int APPEARANCE_OPERATION_COUNT = 0;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.AppearanceEntryImpl <em>Appearance Entry</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.AppearanceEntryImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getAppearanceEntry()
-	 * @generated
-	 */
-	int APPEARANCE_ENTRY = 40;
-
-	/**
-	 * The feature id for the '<em><b>Key</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int APPEARANCE_ENTRY__KEY = 0;
-
-	/**
-	 * The feature id for the '<em><b>Value</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int APPEARANCE_ENTRY__VALUE = 1;
-
-	/**
-	 * The number of structural features of the '<em>Appearance Entry</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int APPEARANCE_ENTRY_FEATURE_COUNT = 2;
-
-	/**
-	 * The number of operations of the '<em>Appearance Entry</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int APPEARANCE_ENTRY_OPERATION_COUNT = 0;
-
-	/**
-	 * The feature id for the '<em><b>Label</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODEL_ELEMENT_APPEARANCE__LABEL = APPEARANCE__LABEL;
-
-	/**
-	 * The feature id for the '<em><b>Icon</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODEL_ELEMENT_APPEARANCE__ICON = APPEARANCE__ICON;
-
-	/**
-	 * The feature id for the '<em><b>Description</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODEL_ELEMENT_APPEARANCE__DESCRIPTION = APPEARANCE__DESCRIPTION;
-
-	/**
-	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODEL_ELEMENT_APPEARANCE__MARKDOWN_DESCRIPTION = APPEARANCE__MARKDOWN_DESCRIPTION;
-
-	/**
-	 * The feature id for the '<em><b>Roles</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODEL_ELEMENT_APPEARANCE__ROLES = APPEARANCE__ROLES;
-
-	/**
-	 * The feature id for the '<em><b>Section Style</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODEL_ELEMENT_APPEARANCE__SECTION_STYLE = APPEARANCE__SECTION_STYLE;
-
-	/**
-	 * The feature id for the '<em><b>Features</b></em>' map.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODEL_ELEMENT_APPEARANCE__FEATURES = APPEARANCE_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Operations</b></em>' map.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODEL_ELEMENT_APPEARANCE__OPERATIONS = APPEARANCE_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Actions</b></em>' map.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODEL_ELEMENT_APPEARANCE__ACTIONS = APPEARANCE_FEATURE_COUNT + 2;
-
-	/**
-	 * The number of structural features of the '<em>Model Element Appearance</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODEL_ELEMENT_APPEARANCE_FEATURE_COUNT = APPEARANCE_FEATURE_COUNT + 3;
-
-	/**
-	 * The number of operations of the '<em>Model Element Appearance</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODEL_ELEMENT_APPEARANCE_OPERATION_COUNT = APPEARANCE_OPERATION_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Key</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODEL_ELEMENT_APPEARANCE_ENTRY__KEY = 0;
-
-	/**
-	 * The feature id for the '<em><b>Value</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODEL_ELEMENT_APPEARANCE_ENTRY__VALUE = 1;
-
-	/**
-	 * The number of structural features of the '<em>Model Element Appearance Entry</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODEL_ELEMENT_APPEARANCE_ENTRY_FEATURE_COUNT = 2;
-
-	/**
-	 * The number of operations of the '<em>Model Element Appearance Entry</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODEL_ELEMENT_APPEARANCE_ENTRY_OPERATION_COUNT = 0;
-
-	/**
-	 * The feature id for the '<em><b>Key</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MEMBER_APPEARANCE_ENTRY__KEY = 0;
-
-	/**
-	 * The feature id for the '<em><b>Value</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MEMBER_APPEARANCE_ENTRY__VALUE = 1;
-
-	/**
-	 * The number of structural features of the '<em>Member Appearance Entry</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MEMBER_APPEARANCE_ENTRY_FEATURE_COUNT = 2;
-
-	/**
-	 * The number of operations of the '<em>Member Appearance Entry</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MEMBER_APPEARANCE_ENTRY_OPERATION_COUNT = 0;
-
-	/**
-	 * The feature id for the '<em><b>Label</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MEMBER_APPEARANCE__LABEL = APPEARANCE__LABEL;
-
-	/**
-	 * The feature id for the '<em><b>Icon</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MEMBER_APPEARANCE__ICON = APPEARANCE__ICON;
-
-	/**
-	 * The feature id for the '<em><b>Description</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MEMBER_APPEARANCE__DESCRIPTION = APPEARANCE__DESCRIPTION;
-
-	/**
-	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MEMBER_APPEARANCE__MARKDOWN_DESCRIPTION = APPEARANCE__MARKDOWN_DESCRIPTION;
-
-	/**
-	 * The feature id for the '<em><b>Roles</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MEMBER_APPEARANCE__ROLES = APPEARANCE__ROLES;
-
-	/**
-	 * The feature id for the '<em><b>Section Style</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MEMBER_APPEARANCE__SECTION_STYLE = APPEARANCE__SECTION_STYLE;
-
-	/**
-	 * The feature id for the '<em><b>Category</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MEMBER_APPEARANCE__CATEGORY = APPEARANCE_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Member Appearance</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MEMBER_APPEARANCE_FEATURE_COUNT = APPEARANCE_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of operations of the '<em>Member Appearance</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MEMBER_APPEARANCE_OPERATION_COUNT = APPEARANCE_OPERATION_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.NamedElementReferenceImpl <em>Named Element Reference</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7717,7 +7103,16 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getNamedElementReference()
 	 * @generated
 	 */
-	int NAMED_ELEMENT_REFERENCE = 45;
+	int NAMED_ELEMENT_REFERENCE = 35;
+
+	/**
+	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NAMED_ELEMENT_REFERENCE__MARKER = NAMED_ELEMENT__MARKER;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -7729,15 +7124,6 @@ public interface EngineeringPackage extends EPackage {
 	int NAMED_ELEMENT_REFERENCE__URI = NAMED_ELEMENT__URI;
 
 	/**
-	 * The feature id for the '<em><b>Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NAMED_ELEMENT_REFERENCE__PATH = NAMED_ELEMENT__PATH;
-
-	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7747,13 +7133,22 @@ public interface EngineeringPackage extends EPackage {
 	int NAMED_ELEMENT_REFERENCE__DESCRIPTION = NAMED_ELEMENT__DESCRIPTION;
 
 	/**
-	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NAMED_ELEMENT_REFERENCE__MARKDOWN_DESCRIPTION = NAMED_ELEMENT__MARKDOWN_DESCRIPTION;
+	int NAMED_ELEMENT_REFERENCE__UUID = NAMED_ELEMENT__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NAMED_ELEMENT_REFERENCE__PATH = NAMED_ELEMENT__PATH;
 
 	/**
 	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
@@ -7765,13 +7160,13 @@ public interface EngineeringPackage extends EPackage {
 	int NAMED_ELEMENT_REFERENCE__RESOURCES = NAMED_ELEMENT__RESOURCES;
 
 	/**
-	 * The feature id for the '<em><b>Appearance</b></em>' containment reference.
+	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NAMED_ELEMENT_REFERENCE__APPEARANCE = NAMED_ELEMENT__APPEARANCE;
+	int NAMED_ELEMENT_REFERENCE__DOCUMENTATION = NAMED_ELEMENT__DOCUMENTATION;
 
 	/**
 	 * The feature id for the '<em><b>Table Of Contents</b></em>' containment reference.
@@ -7844,7 +7239,16 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getLink()
 	 * @generated
 	 */
-	int LINK = 46;
+	int LINK = 36;
+
+	/**
+	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINK__MARKER = NAMED_ELEMENT__MARKER;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -7856,15 +7260,6 @@ public interface EngineeringPackage extends EPackage {
 	int LINK__URI = NAMED_ELEMENT__URI;
 
 	/**
-	 * The feature id for the '<em><b>Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LINK__PATH = NAMED_ELEMENT__PATH;
-
-	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7874,13 +7269,22 @@ public interface EngineeringPackage extends EPackage {
 	int LINK__DESCRIPTION = NAMED_ELEMENT__DESCRIPTION;
 
 	/**
-	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LINK__MARKDOWN_DESCRIPTION = NAMED_ELEMENT__MARKDOWN_DESCRIPTION;
+	int LINK__UUID = NAMED_ELEMENT__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINK__PATH = NAMED_ELEMENT__PATH;
 
 	/**
 	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
@@ -7892,13 +7296,13 @@ public interface EngineeringPackage extends EPackage {
 	int LINK__RESOURCES = NAMED_ELEMENT__RESOURCES;
 
 	/**
-	 * The feature id for the '<em><b>Appearance</b></em>' containment reference.
+	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LINK__APPEARANCE = NAMED_ELEMENT__APPEARANCE;
+	int LINK__DOCUMENTATION = NAMED_ELEMENT__DOCUMENTATION;
 
 	/**
 	 * The feature id for the '<em><b>Table Of Contents</b></em>' containment reference.
@@ -7971,7 +7375,16 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getKeyResult()
 	 * @generated
 	 */
-	int KEY_RESULT = 47;
+	int KEY_RESULT = 37;
+
+	/**
+	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int KEY_RESULT__MARKER = AIM__MARKER;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -7983,15 +7396,6 @@ public interface EngineeringPackage extends EPackage {
 	int KEY_RESULT__URI = AIM__URI;
 
 	/**
-	 * The feature id for the '<em><b>Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int KEY_RESULT__PATH = AIM__PATH;
-
-	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8001,13 +7405,22 @@ public interface EngineeringPackage extends EPackage {
 	int KEY_RESULT__DESCRIPTION = AIM__DESCRIPTION;
 
 	/**
-	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int KEY_RESULT__MARKDOWN_DESCRIPTION = AIM__MARKDOWN_DESCRIPTION;
+	int KEY_RESULT__UUID = AIM__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int KEY_RESULT__PATH = AIM__PATH;
 
 	/**
 	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
@@ -8019,13 +7432,13 @@ public interface EngineeringPackage extends EPackage {
 	int KEY_RESULT__RESOURCES = AIM__RESOURCES;
 
 	/**
-	 * The feature id for the '<em><b>Appearance</b></em>' containment reference.
+	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int KEY_RESULT__APPEARANCE = AIM__APPEARANCE;
+	int KEY_RESULT__DOCUMENTATION = AIM__DOCUMENTATION;
 
 	/**
 	 * The feature id for the '<em><b>Table Of Contents</b></em>' containment reference.
@@ -8134,7 +7547,16 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getObjective()
 	 * @generated
 	 */
-	int OBJECTIVE = 48;
+	int OBJECTIVE = 38;
+
+	/**
+	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBJECTIVE__MARKER = KEY_RESULT__MARKER;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -8146,15 +7568,6 @@ public interface EngineeringPackage extends EPackage {
 	int OBJECTIVE__URI = KEY_RESULT__URI;
 
 	/**
-	 * The feature id for the '<em><b>Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OBJECTIVE__PATH = KEY_RESULT__PATH;
-
-	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8164,13 +7577,22 @@ public interface EngineeringPackage extends EPackage {
 	int OBJECTIVE__DESCRIPTION = KEY_RESULT__DESCRIPTION;
 
 	/**
-	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OBJECTIVE__MARKDOWN_DESCRIPTION = KEY_RESULT__MARKDOWN_DESCRIPTION;
+	int OBJECTIVE__UUID = KEY_RESULT__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBJECTIVE__PATH = KEY_RESULT__PATH;
 
 	/**
 	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
@@ -8182,13 +7604,13 @@ public interface EngineeringPackage extends EPackage {
 	int OBJECTIVE__RESOURCES = KEY_RESULT__RESOURCES;
 
 	/**
-	 * The feature id for the '<em><b>Appearance</b></em>' containment reference.
+	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OBJECTIVE__APPEARANCE = KEY_RESULT__APPEARANCE;
+	int OBJECTIVE__DOCUMENTATION = KEY_RESULT__DOCUMENTATION;
 
 	/**
 	 * The feature id for the '<em><b>Table Of Contents</b></em>' containment reference.
@@ -8351,7 +7773,16 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getDecision()
 	 * @generated
 	 */
-	int DECISION = 49;
+	int DECISION = 39;
+
+	/**
+	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DECISION__MARKER = ISSUE__MARKER;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -8363,15 +7794,6 @@ public interface EngineeringPackage extends EPackage {
 	int DECISION__URI = ISSUE__URI;
 
 	/**
-	 * The feature id for the '<em><b>Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DECISION__PATH = ISSUE__PATH;
-
-	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8381,13 +7803,22 @@ public interface EngineeringPackage extends EPackage {
 	int DECISION__DESCRIPTION = ISSUE__DESCRIPTION;
 
 	/**
-	 * The feature id for the '<em><b>Markdown Description</b></em>' attribute.
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DECISION__MARKDOWN_DESCRIPTION = ISSUE__MARKDOWN_DESCRIPTION;
+	int DECISION__UUID = ISSUE__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DECISION__PATH = ISSUE__PATH;
 
 	/**
 	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
@@ -8399,13 +7830,13 @@ public interface EngineeringPackage extends EPackage {
 	int DECISION__RESOURCES = ISSUE__RESOURCES;
 
 	/**
-	 * The feature id for the '<em><b>Appearance</b></em>' containment reference.
+	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DECISION__APPEARANCE = ISSUE__APPEARANCE;
+	int DECISION__DOCUMENTATION = ISSUE__DOCUMENTATION;
 
 	/**
 	 * The feature id for the '<em><b>Table Of Contents</b></em>' containment reference.
@@ -8795,48 +8226,6 @@ public interface EngineeringPackage extends EPackage {
 	int DECISION_OPERATION_COUNT = ISSUE_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '<em>Duration</em>' data type.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see java.time.Duration
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getDuration()
-	 * @generated
-	 */
-	int DURATION = 50;
-
-	/**
-	 * The meta object id for the '<em>Instant</em>' data type.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see java.time.Instant
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getInstant()
-	 * @generated
-	 */
-	int INSTANT = 51;
-
-	/**
-	 * The meta object id for the '<em>Section Style</em>' data type.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.html.app.SectionStyle
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getSectionStyle()
-	 * @generated
-	 */
-	int SECTION_STYLE = 52;
-
-
-	/**
-	 * Returns the meta object for class '{@link org.nasdanika.common.Adaptable <em>Adaptable</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Adaptable</em>'.
-	 * @see org.nasdanika.common.Adaptable
-	 * @model instanceClass="org.nasdanika.common.Adaptable"
-	 * @generated
-	 */
-	EClass getAdaptable();
-
-	/**
 	 * Returns the meta object for class '{@link org.nasdanika.engineering.ModelElement <em>Model Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8845,17 +8234,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getModelElement();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.ModelElement#getUri <em>Uri</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Uri</em>'.
-	 * @see org.nasdanika.engineering.ModelElement#getUri()
-	 * @see #getModelElement()
-	 * @generated
-	 */
-	EAttribute getModelElement_Uri();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.ModelElement#getPath <em>Path</em>}'.
@@ -8869,28 +8247,6 @@ public interface EngineeringPackage extends EPackage {
 	EAttribute getModelElement_Path();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.ModelElement#getDescription <em>Description</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Description</em>'.
-	 * @see org.nasdanika.engineering.ModelElement#getDescription()
-	 * @see #getModelElement()
-	 * @generated
-	 */
-	EAttribute getModelElement_Description();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.ModelElement#getMarkdownDescription <em>Markdown Description</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Markdown Description</em>'.
-	 * @see org.nasdanika.engineering.ModelElement#getMarkdownDescription()
-	 * @see #getModelElement()
-	 * @generated
-	 */
-	EAttribute getModelElement_MarkdownDescription();
-
-	/**
 	 * Returns the meta object for the containment reference list '{@link org.nasdanika.engineering.ModelElement#getResources <em>Resources</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8902,15 +8258,15 @@ public interface EngineeringPackage extends EPackage {
 	EReference getModelElement_Resources();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.nasdanika.engineering.ModelElement#getAppearance <em>Appearance</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.nasdanika.engineering.ModelElement#getDocumentation <em>Documentation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Appearance</em>'.
-	 * @see org.nasdanika.engineering.ModelElement#getAppearance()
+	 * @return the meta object for the containment reference list '<em>Documentation</em>'.
+	 * @see org.nasdanika.engineering.ModelElement#getDocumentation()
 	 * @see #getModelElement()
 	 * @generated
 	 */
-	EReference getModelElement_Appearance();
+	EReference getModelElement_Documentation();
 
 	/**
 	 * Returns the meta object for the containment reference '{@link org.nasdanika.engineering.ModelElement#getTableOfContents <em>Table Of Contents</em>}'.
@@ -8989,162 +8345,6 @@ public interface EngineeringPackage extends EPackage {
 	EAttribute getTableOfContents_Header();
 
 	/**
-	 * Returns the meta object for class '{@link org.nasdanika.engineering.Temporal <em>Temporal</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Temporal</em>'.
-	 * @see org.nasdanika.engineering.Temporal
-	 * @generated
-	 */
-	EClass getTemporal();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Temporal#getInstant <em>Instant</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Instant</em>'.
-	 * @see org.nasdanika.engineering.Temporal#getInstant()
-	 * @see #getTemporal()
-	 * @generated
-	 */
-	EAttribute getTemporal_Instant();
-
-	/**
-	 * Returns the meta object for the reference '{@link org.nasdanika.engineering.Temporal#getBase <em>Base</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Base</em>'.
-	 * @see org.nasdanika.engineering.Temporal#getBase()
-	 * @see #getTemporal()
-	 * @generated
-	 */
-	EReference getTemporal_Base();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Temporal#getOffset <em>Offset</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Offset</em>'.
-	 * @see org.nasdanika.engineering.Temporal#getOffset()
-	 * @see #getTemporal()
-	 * @generated
-	 */
-	EAttribute getTemporal_Offset();
-
-	/**
-	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.Temporal#getDerivatives <em>Derivatives</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Derivatives</em>'.
-	 * @see org.nasdanika.engineering.Temporal#getDerivatives()
-	 * @see #getTemporal()
-	 * @generated
-	 */
-	EReference getTemporal_Derivatives();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.nasdanika.engineering.Temporal#getLowerBounds <em>Lower Bounds</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Lower Bounds</em>'.
-	 * @see org.nasdanika.engineering.Temporal#getLowerBounds()
-	 * @see #getTemporal()
-	 * @generated
-	 */
-	EReference getTemporal_LowerBounds();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.nasdanika.engineering.Temporal#getUpperBounds <em>Upper Bounds</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Upper Bounds</em>'.
-	 * @see org.nasdanika.engineering.Temporal#getUpperBounds()
-	 * @see #getTemporal()
-	 * @generated
-	 */
-	EReference getTemporal_UpperBounds();
-
-	/**
-	 * Returns the meta object for the '{@link org.nasdanika.engineering.Temporal#after(org.nasdanika.engineering.Temporal) <em>After</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>After</em>' operation.
-	 * @see org.nasdanika.engineering.Temporal#after(org.nasdanika.engineering.Temporal)
-	 * @generated
-	 */
-	EOperation getTemporal__After__Temporal();
-
-	/**
-	 * Returns the meta object for the '{@link org.nasdanika.engineering.Temporal#before(org.nasdanika.engineering.Temporal) <em>Before</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Before</em>' operation.
-	 * @see org.nasdanika.engineering.Temporal#before(org.nasdanika.engineering.Temporal)
-	 * @generated
-	 */
-	EOperation getTemporal__Before__Temporal();
-
-	/**
-	 * Returns the meta object for the '{@link org.nasdanika.engineering.Temporal#coincides(org.nasdanika.engineering.Temporal) <em>Coincides</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Coincides</em>' operation.
-	 * @see org.nasdanika.engineering.Temporal#coincides(org.nasdanika.engineering.Temporal)
-	 * @generated
-	 */
-	EOperation getTemporal__Coincides__Temporal();
-
-	/**
-	 * Returns the meta object for the '{@link org.nasdanika.engineering.Temporal#normalize() <em>Normalize</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Normalize</em>' operation.
-	 * @see org.nasdanika.engineering.Temporal#normalize()
-	 * @generated
-	 */
-	EOperation getTemporal__Normalize();
-
-	/**
-	 * Returns the meta object for the '{@link org.nasdanika.engineering.Temporal#minus(org.nasdanika.engineering.Temporal) <em>Minus</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Minus</em>' operation.
-	 * @see org.nasdanika.engineering.Temporal#minus(org.nasdanika.engineering.Temporal)
-	 * @generated
-	 */
-	EOperation getTemporal__Minus__Temporal();
-
-	/**
-	 * Returns the meta object for the '{@link org.nasdanika.engineering.Temporal#minus(java.time.Duration) <em>Minus</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Minus</em>' operation.
-	 * @see org.nasdanika.engineering.Temporal#minus(java.time.Duration)
-	 * @generated
-	 */
-	EOperation getTemporal__Minus__Duration();
-
-	/**
-	 * Returns the meta object for the '{@link org.nasdanika.engineering.Temporal#plus(java.time.Duration) <em>Plus</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Plus</em>' operation.
-	 * @see org.nasdanika.engineering.Temporal#plus(java.time.Duration)
-	 * @generated
-	 */
-	EOperation getTemporal__Plus__Duration();
-
-	/**
-	 * Returns the meta object for the '{@link org.nasdanika.engineering.Temporal#copy() <em>Copy</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Copy</em>' operation.
-	 * @see org.nasdanika.engineering.Temporal#copy()
-	 * @generated
-	 */
-	EOperation getTemporal__Copy();
-
-	/**
 	 * Returns the meta object for class '{@link org.nasdanika.engineering.Period <em>Period</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9196,17 +8396,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getNamedElement();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.NamedElement#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see org.nasdanika.engineering.NamedElement#getName()
-	 * @see #getNamedElement()
-	 * @generated
-	 */
-	EAttribute getNamedElement_Name();
 
 	/**
 	 * Returns the meta object for class '{@link org.nasdanika.engineering.Event <em>Event</em>}'.
@@ -9412,17 +8601,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getPersona();
-
-	/**
-	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.Persona#getJourneyElements <em>Journey Elements</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Journey Elements</em>'.
-	 * @see org.nasdanika.engineering.Persona#getJourneyElements()
-	 * @see #getPersona()
-	 * @generated
-	 */
-	EReference getPersona_JourneyElements();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link org.nasdanika.engineering.Persona#getGoals <em>Goals</em>}'.
@@ -10632,322 +9810,6 @@ public interface EngineeringPackage extends EPackage {
 	EReference getTopic_Messages();
 
 	/**
-	 * Returns the meta object for class '{@link org.nasdanika.engineering.PackageAppearance <em>Package Appearance</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Package Appearance</em>'.
-	 * @see org.nasdanika.engineering.PackageAppearance
-	 * @generated
-	 */
-	EClass getPackageAppearance();
-
-	/**
-	 * Returns the meta object for the map '{@link org.nasdanika.engineering.PackageAppearance#getModelElements <em>Model Elements</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the map '<em>Model Elements</em>'.
-	 * @see org.nasdanika.engineering.PackageAppearance#getModelElements()
-	 * @see #getPackageAppearance()
-	 * @generated
-	 */
-	EReference getPackageAppearance_ModelElements();
-
-	/**
-	 * Returns the meta object for the map '{@link org.nasdanika.engineering.PackageAppearance#getSubPackages <em>Sub Packages</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the map '<em>Sub Packages</em>'.
-	 * @see org.nasdanika.engineering.PackageAppearance#getSubPackages()
-	 * @see #getPackageAppearance()
-	 * @generated
-	 */
-	EReference getPackageAppearance_SubPackages();
-
-	/**
-	 * Returns the meta object for class '{@link java.util.Map.Entry <em>Package Appearance Entry</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Package Appearance Entry</em>'.
-	 * @see java.util.Map.Entry
-	 * @model keyDataType="org.eclipse.emf.ecore.EString"
-	 *        valueType="org.nasdanika.engineering.PackageAppearance" valueContainment="true" valueRequired="true"
-	 *        valueAnnotation="urn:org.nasdanika homogenous='true'"
-	 *        annotation="urn:org.nasdanika documentation-reference='doc/package-appearance-entry.md'"
-	 * @generated
-	 */
-	EClass getPackageAppearanceEntry();
-
-	/**
-	 * Returns the meta object for the attribute '{@link java.util.Map.Entry <em>Key</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Key</em>'.
-	 * @see java.util.Map.Entry
-	 * @see #getPackageAppearanceEntry()
-	 * @generated
-	 */
-	EAttribute getPackageAppearanceEntry_Key();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link java.util.Map.Entry <em>Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Value</em>'.
-	 * @see java.util.Map.Entry
-	 * @see #getPackageAppearanceEntry()
-	 * @generated
-	 */
-	EReference getPackageAppearanceEntry_Value();
-
-	/**
-	 * Returns the meta object for class '{@link org.nasdanika.engineering.Appearance <em>Appearance</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Appearance</em>'.
-	 * @see org.nasdanika.engineering.Appearance
-	 * @generated
-	 */
-	EClass getAppearance();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Appearance#getLabel <em>Label</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Label</em>'.
-	 * @see org.nasdanika.engineering.Appearance#getLabel()
-	 * @see #getAppearance()
-	 * @generated
-	 */
-	EAttribute getAppearance_Label();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Appearance#getIcon <em>Icon</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Icon</em>'.
-	 * @see org.nasdanika.engineering.Appearance#getIcon()
-	 * @see #getAppearance()
-	 * @generated
-	 */
-	EAttribute getAppearance_Icon();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Appearance#getDescription <em>Description</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Description</em>'.
-	 * @see org.nasdanika.engineering.Appearance#getDescription()
-	 * @see #getAppearance()
-	 * @generated
-	 */
-	EAttribute getAppearance_Description();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Appearance#getMarkdownDescription <em>Markdown Description</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Markdown Description</em>'.
-	 * @see org.nasdanika.engineering.Appearance#getMarkdownDescription()
-	 * @see #getAppearance()
-	 * @generated
-	 */
-	EAttribute getAppearance_MarkdownDescription();
-
-	/**
-	 * Returns the meta object for the attribute list '{@link org.nasdanika.engineering.Appearance#getRoles <em>Roles</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute list '<em>Roles</em>'.
-	 * @see org.nasdanika.engineering.Appearance#getRoles()
-	 * @see #getAppearance()
-	 * @generated
-	 */
-	EAttribute getAppearance_Roles();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Appearance#getSectionStyle <em>Section Style</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Section Style</em>'.
-	 * @see org.nasdanika.engineering.Appearance#getSectionStyle()
-	 * @see #getAppearance()
-	 * @generated
-	 */
-	EAttribute getAppearance_SectionStyle();
-
-	/**
-	 * Returns the meta object for class '{@link java.util.Map.Entry <em>Appearance Entry</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Appearance Entry</em>'.
-	 * @see java.util.Map.Entry
-	 * @model keyDataType="org.eclipse.emf.ecore.EString"
-	 *        valueType="org.nasdanika.engineering.Appearance" valueContainment="true" valueRequired="true"
-	 *        valueAnnotation="urn:org.nasdanika homogenous='true'"
-	 *        annotation="urn:org.nasdanika documentation-reference='doc/appearance-entry.md'"
-	 * @generated
-	 */
-	EClass getAppearanceEntry();
-
-	/**
-	 * Returns the meta object for the attribute '{@link java.util.Map.Entry <em>Key</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Key</em>'.
-	 * @see java.util.Map.Entry
-	 * @see #getAppearanceEntry()
-	 * @generated
-	 */
-	EAttribute getAppearanceEntry_Key();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link java.util.Map.Entry <em>Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Value</em>'.
-	 * @see java.util.Map.Entry
-	 * @see #getAppearanceEntry()
-	 * @generated
-	 */
-	EReference getAppearanceEntry_Value();
-
-	/**
-	 * Returns the meta object for class '{@link org.nasdanika.engineering.ModelElementAppearance <em>Model Element Appearance</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Model Element Appearance</em>'.
-	 * @see org.nasdanika.engineering.ModelElementAppearance
-	 * @generated
-	 */
-	EClass getModelElementAppearance();
-
-	/**
-	 * Returns the meta object for the map '{@link org.nasdanika.engineering.ModelElementAppearance#getFeatures <em>Features</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the map '<em>Features</em>'.
-	 * @see org.nasdanika.engineering.ModelElementAppearance#getFeatures()
-	 * @see #getModelElementAppearance()
-	 * @generated
-	 */
-	EReference getModelElementAppearance_Features();
-
-	/**
-	 * Returns the meta object for the map '{@link org.nasdanika.engineering.ModelElementAppearance#getOperations <em>Operations</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the map '<em>Operations</em>'.
-	 * @see org.nasdanika.engineering.ModelElementAppearance#getOperations()
-	 * @see #getModelElementAppearance()
-	 * @generated
-	 */
-	EReference getModelElementAppearance_Operations();
-
-	/**
-	 * Returns the meta object for the map '{@link org.nasdanika.engineering.ModelElementAppearance#getActions <em>Actions</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the map '<em>Actions</em>'.
-	 * @see org.nasdanika.engineering.ModelElementAppearance#getActions()
-	 * @see #getModelElementAppearance()
-	 * @generated
-	 */
-	EReference getModelElementAppearance_Actions();
-
-	/**
-	 * Returns the meta object for class '{@link java.util.Map.Entry <em>Model Element Appearance Entry</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Model Element Appearance Entry</em>'.
-	 * @see java.util.Map.Entry
-	 * @model keyDataType="org.eclipse.emf.ecore.EString"
-	 *        valueType="org.nasdanika.engineering.ModelElementAppearance" valueContainment="true" valueRequired="true"
-	 *        valueAnnotation="urn:org.nasdanika homogenous='true'"
-	 *        annotation="urn:org.nasdanika documentation-reference='doc/model-element-appearance-entry.md'"
-	 * @generated
-	 */
-	EClass getModelElementAppearanceEntry();
-
-	/**
-	 * Returns the meta object for the attribute '{@link java.util.Map.Entry <em>Key</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Key</em>'.
-	 * @see java.util.Map.Entry
-	 * @see #getModelElementAppearanceEntry()
-	 * @generated
-	 */
-	EAttribute getModelElementAppearanceEntry_Key();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link java.util.Map.Entry <em>Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Value</em>'.
-	 * @see java.util.Map.Entry
-	 * @see #getModelElementAppearanceEntry()
-	 * @generated
-	 */
-	EReference getModelElementAppearanceEntry_Value();
-
-	/**
-	 * Returns the meta object for class '{@link java.util.Map.Entry <em>Member Appearance Entry</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Member Appearance Entry</em>'.
-	 * @see java.util.Map.Entry
-	 * @model keyDataType="org.eclipse.emf.ecore.EString"
-	 *        valueType="org.nasdanika.engineering.MemberAppearance" valueContainment="true" valueRequired="true"
-	 *        valueAnnotation="urn:org.nasdanika homogenous='true'"
-	 *        annotation="urn:org.nasdanika documentation-reference='doc/member-appearance-entry.md'"
-	 * @generated
-	 */
-	EClass getMemberAppearanceEntry();
-
-	/**
-	 * Returns the meta object for the attribute '{@link java.util.Map.Entry <em>Key</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Key</em>'.
-	 * @see java.util.Map.Entry
-	 * @see #getMemberAppearanceEntry()
-	 * @generated
-	 */
-	EAttribute getMemberAppearanceEntry_Key();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link java.util.Map.Entry <em>Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Value</em>'.
-	 * @see java.util.Map.Entry
-	 * @see #getMemberAppearanceEntry()
-	 * @generated
-	 */
-	EReference getMemberAppearanceEntry_Value();
-
-	/**
-	 * Returns the meta object for class '{@link org.nasdanika.engineering.MemberAppearance <em>Member Appearance</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Member Appearance</em>'.
-	 * @see org.nasdanika.engineering.MemberAppearance
-	 * @generated
-	 */
-	EClass getMemberAppearance();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.MemberAppearance#getCategory <em>Category</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Category</em>'.
-	 * @see org.nasdanika.engineering.MemberAppearance#getCategory()
-	 * @see #getMemberAppearance()
-	 * @generated
-	 */
-	EAttribute getMemberAppearance_Category();
-
-	/**
 	 * Returns the meta object for class '{@link org.nasdanika.engineering.Document <em>Document</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -11184,43 +10046,6 @@ public interface EngineeringPackage extends EPackage {
 	EAttribute getDecision_Resolution();
 
 	/**
-	 * Returns the meta object for data type '{@link java.time.Duration <em>Duration</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-     * <!-- begin-model-doc -->
-     * [Duration](https://docs.oracle.com/javase/8/docs/api/java/time/Duration.html) is an amount of time in the [ISO-8601 Duration format](https://en.wikipedia.org/wiki/ISO_8601#Duration). Supports days and smaller units. Weeks, months and years are not supported. Example: ``P28DT10H``.
-     * <!-- end-model-doc -->
-	 * @return the meta object for data type '<em>Duration</em>'.
-	 * @see java.time.Duration
-	 * @model instanceClass="java.time.Duration"
-	 * @generated
-	 */
-	EDataType getDuration();
-
-	/**
-	 * Returns the meta object for data type '{@link java.time.Instant <em>Instant</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-     * <!-- begin-model-doc -->
-     * [Instant](https://docs.oracle.com/javase/8/docs/api/java/time/Instant.html) is a single instantaneous point on the time-line. 
-     * If instant specification contains ``Z``, then it is parsed using [Instant.parse()](https://docs.oracle.com/javase/8/docs/api/java/time/Instant.html#parse-java.lang.CharSequence-) method.
-     * Otherwise the specification is used to construct ``java.util.Date`` which is then converted to instant.
-     * 
-     * Examples:
-     * 
-     * * ``2021-12-03T10:15:30.00Z`` - loaded using ``Instant.parse()``
-     * * ``10/1/2021`` - loaded using ``new Date()`` and then converted to instant.
-     * 
-     * 
-     * <!-- end-model-doc -->
-	 * @return the meta object for data type '<em>Instant</em>'.
-	 * @see java.time.Instant
-	 * @model instanceClass="java.time.Instant"
-	 * @generated
-	 */
-	EDataType getInstant();
-
-	/**
 	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Document#getContent <em>Content</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -11241,18 +10066,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getDocument_MarkdownContent();
-
-	/**
-	 * Returns the meta object for data type '{@link org.nasdanika.html.app.SectionStyle <em>Section Style</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for data type '<em>Section Style</em>'.
-	 * @see org.nasdanika.html.app.SectionStyle
-	 * @model instanceClass="org.nasdanika.html.app.SectionStyle"
-	 *        annotation="urn:org.nasdanika documentation-reference='doc/section-style.md'"
-	 * @generated
-	 */
-	EDataType getSectionStyle();
 
 	/**
 	 * Returns the meta object for class '{@link org.nasdanika.engineering.Message <em>Message</em>}'.
@@ -11310,16 +10123,6 @@ public interface EngineeringPackage extends EPackage {
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '{@link org.nasdanika.common.Adaptable <em>Adaptable</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.nasdanika.common.Adaptable
-		 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getAdaptable()
-		 * @generated
-		 */
-		EClass ADAPTABLE = eINSTANCE.getAdaptable();
-
-		/**
 		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.ModelElementImpl <em>Model Element</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -11330,36 +10133,12 @@ public interface EngineeringPackage extends EPackage {
 		EClass MODEL_ELEMENT = eINSTANCE.getModelElement();
 
 		/**
-		 * The meta object literal for the '<em><b>Uri</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute MODEL_ELEMENT__URI = eINSTANCE.getModelElement_Uri();
-
-		/**
 		 * The meta object literal for the '<em><b>Path</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EAttribute MODEL_ELEMENT__PATH = eINSTANCE.getModelElement_Path();
-
-		/**
-		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute MODEL_ELEMENT__DESCRIPTION = eINSTANCE.getModelElement_Description();
-
-		/**
-		 * The meta object literal for the '<em><b>Markdown Description</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute MODEL_ELEMENT__MARKDOWN_DESCRIPTION = eINSTANCE.getModelElement_MarkdownDescription();
 
 		/**
 		 * The meta object literal for the '<em><b>Resources</b></em>' containment reference list feature.
@@ -11370,12 +10149,12 @@ public interface EngineeringPackage extends EPackage {
 		EReference MODEL_ELEMENT__RESOURCES = eINSTANCE.getModelElement_Resources();
 
 		/**
-		 * The meta object literal for the '<em><b>Appearance</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Documentation</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference MODEL_ELEMENT__APPEARANCE = eINSTANCE.getModelElement_Appearance();
+		EReference MODEL_ELEMENT__DOCUMENTATION = eINSTANCE.getModelElement_Documentation();
 
 		/**
 		 * The meta object literal for the '<em><b>Table Of Contents</b></em>' containment reference feature.
@@ -11436,128 +10215,6 @@ public interface EngineeringPackage extends EPackage {
 		EAttribute TABLE_OF_CONTENTS__HEADER = eINSTANCE.getTableOfContents_Header();
 
 		/**
-		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.TemporalImpl <em>Temporal</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.nasdanika.engineering.impl.TemporalImpl
-		 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getTemporal()
-		 * @generated
-		 */
-		EClass TEMPORAL = eINSTANCE.getTemporal();
-
-		/**
-		 * The meta object literal for the '<em><b>Instant</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute TEMPORAL__INSTANT = eINSTANCE.getTemporal_Instant();
-
-		/**
-		 * The meta object literal for the '<em><b>Base</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference TEMPORAL__BASE = eINSTANCE.getTemporal_Base();
-
-		/**
-		 * The meta object literal for the '<em><b>Offset</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute TEMPORAL__OFFSET = eINSTANCE.getTemporal_Offset();
-
-		/**
-		 * The meta object literal for the '<em><b>Derivatives</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference TEMPORAL__DERIVATIVES = eINSTANCE.getTemporal_Derivatives();
-
-		/**
-		 * The meta object literal for the '<em><b>Lower Bounds</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference TEMPORAL__LOWER_BOUNDS = eINSTANCE.getTemporal_LowerBounds();
-
-		/**
-		 * The meta object literal for the '<em><b>Upper Bounds</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference TEMPORAL__UPPER_BOUNDS = eINSTANCE.getTemporal_UpperBounds();
-
-		/**
-		 * The meta object literal for the '<em><b>After</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation TEMPORAL___AFTER__TEMPORAL = eINSTANCE.getTemporal__After__Temporal();
-
-		/**
-		 * The meta object literal for the '<em><b>Before</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation TEMPORAL___BEFORE__TEMPORAL = eINSTANCE.getTemporal__Before__Temporal();
-
-		/**
-		 * The meta object literal for the '<em><b>Coincides</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation TEMPORAL___COINCIDES__TEMPORAL = eINSTANCE.getTemporal__Coincides__Temporal();
-
-		/**
-		 * The meta object literal for the '<em><b>Normalize</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation TEMPORAL___NORMALIZE = eINSTANCE.getTemporal__Normalize();
-
-		/**
-		 * The meta object literal for the '<em><b>Minus</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation TEMPORAL___MINUS__TEMPORAL = eINSTANCE.getTemporal__Minus__Temporal();
-
-		/**
-		 * The meta object literal for the '<em><b>Minus</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation TEMPORAL___MINUS__DURATION = eINSTANCE.getTemporal__Minus__Duration();
-
-		/**
-		 * The meta object literal for the '<em><b>Plus</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation TEMPORAL___PLUS__DURATION = eINSTANCE.getTemporal__Plus__Duration();
-
-		/**
-		 * The meta object literal for the '<em><b>Copy</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation TEMPORAL___COPY = eINSTANCE.getTemporal__Copy();
-
-		/**
 		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.PeriodImpl <em>Period</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -11600,14 +10257,6 @@ public interface EngineeringPackage extends EPackage {
 		 * @generated
 		 */
 		EClass NAMED_ELEMENT = eINSTANCE.getNamedElement();
-
-		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute NAMED_ELEMENT__NAME = eINSTANCE.getNamedElement_Name();
 
 		/**
 		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.EventImpl <em>Event</em>}' class.
@@ -11768,14 +10417,6 @@ public interface EngineeringPackage extends EPackage {
 		 * @generated
 		 */
 		EClass PERSONA = eINSTANCE.getPersona();
-
-		/**
-		 * The meta object literal for the '<em><b>Journey Elements</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PERSONA__JOURNEY_ELEMENTS = eINSTANCE.getPersona_JourneyElements();
 
 		/**
 		 * The meta object literal for the '<em><b>Goals</b></em>' containment reference list feature.
@@ -12724,246 +11365,6 @@ public interface EngineeringPackage extends EPackage {
 		EReference TOPIC__MESSAGES = eINSTANCE.getTopic_Messages();
 
 		/**
-		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.PackageAppearanceImpl <em>Package Appearance</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.nasdanika.engineering.impl.PackageAppearanceImpl
-		 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getPackageAppearance()
-		 * @generated
-		 */
-		EClass PACKAGE_APPEARANCE = eINSTANCE.getPackageAppearance();
-
-		/**
-		 * The meta object literal for the '<em><b>Model Elements</b></em>' map feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PACKAGE_APPEARANCE__MODEL_ELEMENTS = eINSTANCE.getPackageAppearance_ModelElements();
-
-		/**
-		 * The meta object literal for the '<em><b>Sub Packages</b></em>' map feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PACKAGE_APPEARANCE__SUB_PACKAGES = eINSTANCE.getPackageAppearance_SubPackages();
-
-		/**
-		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.PackageAppearanceEntryImpl <em>Package Appearance Entry</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.nasdanika.engineering.impl.PackageAppearanceEntryImpl
-		 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getPackageAppearanceEntry()
-		 * @generated
-		 */
-		EClass PACKAGE_APPEARANCE_ENTRY = eINSTANCE.getPackageAppearanceEntry();
-
-		/**
-		 * The meta object literal for the '<em><b>Key</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute PACKAGE_APPEARANCE_ENTRY__KEY = eINSTANCE.getPackageAppearanceEntry_Key();
-
-		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PACKAGE_APPEARANCE_ENTRY__VALUE = eINSTANCE.getPackageAppearanceEntry_Value();
-
-		/**
-		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.AppearanceImpl <em>Appearance</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.nasdanika.engineering.impl.AppearanceImpl
-		 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getAppearance()
-		 * @generated
-		 */
-		EClass APPEARANCE = eINSTANCE.getAppearance();
-
-		/**
-		 * The meta object literal for the '<em><b>Label</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute APPEARANCE__LABEL = eINSTANCE.getAppearance_Label();
-
-		/**
-		 * The meta object literal for the '<em><b>Icon</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute APPEARANCE__ICON = eINSTANCE.getAppearance_Icon();
-
-		/**
-		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute APPEARANCE__DESCRIPTION = eINSTANCE.getAppearance_Description();
-
-		/**
-		 * The meta object literal for the '<em><b>Markdown Description</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute APPEARANCE__MARKDOWN_DESCRIPTION = eINSTANCE.getAppearance_MarkdownDescription();
-
-		/**
-		 * The meta object literal for the '<em><b>Roles</b></em>' attribute list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute APPEARANCE__ROLES = eINSTANCE.getAppearance_Roles();
-
-		/**
-		 * The meta object literal for the '<em><b>Section Style</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute APPEARANCE__SECTION_STYLE = eINSTANCE.getAppearance_SectionStyle();
-
-		/**
-		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.AppearanceEntryImpl <em>Appearance Entry</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.nasdanika.engineering.impl.AppearanceEntryImpl
-		 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getAppearanceEntry()
-		 * @generated
-		 */
-		EClass APPEARANCE_ENTRY = eINSTANCE.getAppearanceEntry();
-
-		/**
-		 * The meta object literal for the '<em><b>Key</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute APPEARANCE_ENTRY__KEY = eINSTANCE.getAppearanceEntry_Key();
-
-		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference APPEARANCE_ENTRY__VALUE = eINSTANCE.getAppearanceEntry_Value();
-
-		/**
-		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.ModelElementAppearanceImpl <em>Model Element Appearance</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.nasdanika.engineering.impl.ModelElementAppearanceImpl
-		 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getModelElementAppearance()
-		 * @generated
-		 */
-		EClass MODEL_ELEMENT_APPEARANCE = eINSTANCE.getModelElementAppearance();
-
-		/**
-		 * The meta object literal for the '<em><b>Features</b></em>' map feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference MODEL_ELEMENT_APPEARANCE__FEATURES = eINSTANCE.getModelElementAppearance_Features();
-
-		/**
-		 * The meta object literal for the '<em><b>Operations</b></em>' map feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference MODEL_ELEMENT_APPEARANCE__OPERATIONS = eINSTANCE.getModelElementAppearance_Operations();
-
-		/**
-		 * The meta object literal for the '<em><b>Actions</b></em>' map feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference MODEL_ELEMENT_APPEARANCE__ACTIONS = eINSTANCE.getModelElementAppearance_Actions();
-
-		/**
-		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.ModelElementAppearanceEntryImpl <em>Model Element Appearance Entry</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.nasdanika.engineering.impl.ModelElementAppearanceEntryImpl
-		 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getModelElementAppearanceEntry()
-		 * @generated
-		 */
-		EClass MODEL_ELEMENT_APPEARANCE_ENTRY = eINSTANCE.getModelElementAppearanceEntry();
-
-		/**
-		 * The meta object literal for the '<em><b>Key</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute MODEL_ELEMENT_APPEARANCE_ENTRY__KEY = eINSTANCE.getModelElementAppearanceEntry_Key();
-
-		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference MODEL_ELEMENT_APPEARANCE_ENTRY__VALUE = eINSTANCE.getModelElementAppearanceEntry_Value();
-
-		/**
-		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.MemberAppearanceEntryImpl <em>Member Appearance Entry</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.nasdanika.engineering.impl.MemberAppearanceEntryImpl
-		 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getMemberAppearanceEntry()
-		 * @generated
-		 */
-		EClass MEMBER_APPEARANCE_ENTRY = eINSTANCE.getMemberAppearanceEntry();
-
-		/**
-		 * The meta object literal for the '<em><b>Key</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute MEMBER_APPEARANCE_ENTRY__KEY = eINSTANCE.getMemberAppearanceEntry_Key();
-
-		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference MEMBER_APPEARANCE_ENTRY__VALUE = eINSTANCE.getMemberAppearanceEntry_Value();
-
-		/**
-		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.MemberAppearanceImpl <em>Member Appearance</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.nasdanika.engineering.impl.MemberAppearanceImpl
-		 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getMemberAppearance()
-		 * @generated
-		 */
-		EClass MEMBER_APPEARANCE = eINSTANCE.getMemberAppearance();
-
-		/**
-		 * The meta object literal for the '<em><b>Category</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute MEMBER_APPEARANCE__CATEGORY = eINSTANCE.getMemberAppearance_Category();
-
-		/**
 		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.DocumentImpl <em>Document</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -13152,26 +11553,6 @@ public interface EngineeringPackage extends EPackage {
 		EAttribute DECISION__RESOLUTION = eINSTANCE.getDecision_Resolution();
 
 		/**
-		 * The meta object literal for the '<em>Duration</em>' data type.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see java.time.Duration
-		 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getDuration()
-		 * @generated
-		 */
-		EDataType DURATION = eINSTANCE.getDuration();
-
-		/**
-		 * The meta object literal for the '<em>Instant</em>' data type.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see java.time.Instant
-		 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getInstant()
-		 * @generated
-		 */
-		EDataType INSTANT = eINSTANCE.getInstant();
-
-		/**
 		 * The meta object literal for the '<em><b>Content</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -13186,16 +11567,6 @@ public interface EngineeringPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute DOCUMENT__MARKDOWN_CONTENT = eINSTANCE.getDocument_MarkdownContent();
-
-		/**
-		 * The meta object literal for the '<em>Section Style</em>' data type.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.nasdanika.html.app.SectionStyle
-		 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getSectionStyle()
-		 * @generated
-		 */
-		EDataType SECTION_STYLE = eINSTANCE.getSectionStyle();
 
 		/**
 		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.MessageImpl <em>Message</em>}' class.

@@ -2,25 +2,17 @@
  */
 package org.nasdanika.engineering.util;
 
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Collection;
-import java.util.Date;
 import java.util.Map;
+
+import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.ResourceLocator;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.util.EObjectValidator;
-import org.nasdanika.common.Adaptable;
-import org.nasdanika.common.Context;
-import org.nasdanika.emf.DiagnosticHelper;
 import org.nasdanika.engineering.Aim;
 import org.nasdanika.engineering.Alignable;
 import org.nasdanika.engineering.Alignment;
 import org.nasdanika.engineering.Allocation;
-import org.nasdanika.engineering.Appearance;
 import org.nasdanika.engineering.Capability;
 import org.nasdanika.engineering.Capacity;
 import org.nasdanika.engineering.Decision;
@@ -30,7 +22,6 @@ import org.nasdanika.engineering.Endeavor;
 import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeredCapability;
 import org.nasdanika.engineering.EngineeredElement;
-import org.nasdanika.engineering.EngineeringFactory;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Event;
 import org.nasdanika.engineering.Feature;
@@ -44,26 +35,21 @@ import org.nasdanika.engineering.IssueSeverity;
 import org.nasdanika.engineering.IssueStatus;
 import org.nasdanika.engineering.KeyResult;
 import org.nasdanika.engineering.Link;
-import org.nasdanika.engineering.MemberAppearance;
 import org.nasdanika.engineering.Message;
 import org.nasdanika.engineering.ModelElement;
-import org.nasdanika.engineering.ModelElementAppearance;
 import org.nasdanika.engineering.NamedElement;
 import org.nasdanika.engineering.NamedElementReference;
 import org.nasdanika.engineering.Note;
 import org.nasdanika.engineering.Objective;
 import org.nasdanika.engineering.Organization;
-import org.nasdanika.engineering.PackageAppearance;
 import org.nasdanika.engineering.Period;
 import org.nasdanika.engineering.Persona;
 import org.nasdanika.engineering.Principle;
 import org.nasdanika.engineering.Product;
 import org.nasdanika.engineering.Release;
 import org.nasdanika.engineering.TableOfContents;
-import org.nasdanika.engineering.Temporal;
 import org.nasdanika.engineering.Topic;
-import org.nasdanika.html.app.SectionStyle;
-import org.nasdanika.html.app.impl.Util;
+import org.nasdanika.ncore.util.NcoreValidator;
 
 /**
  * <!-- begin-user-doc -->
@@ -108,6 +94,14 @@ public class EngineeringValidator extends EObjectValidator {
 	protected static final int DIAGNOSTIC_CODE_COUNT = GENERATED_DIAGNOSTIC_CODE_COUNT;
 
 	/**
+	 * The cached base package validator.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected NcoreValidator ncoreValidator;
+
+	/**
 	 * Creates an instance of the switch.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -115,6 +109,7 @@ public class EngineeringValidator extends EObjectValidator {
 	 */
 	public EngineeringValidator() {
 		super();
+		ncoreValidator = NcoreValidator.INSTANCE;
 	}
 
 	/**
@@ -137,20 +132,18 @@ public class EngineeringValidator extends EObjectValidator {
 	@Override
 	protected boolean validate(int classifierID, Object value, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		switch (classifierID) {
-			case EngineeringPackage.ADAPTABLE:
-				return validateAdaptable((Adaptable)value, diagnostics, context);
 			case EngineeringPackage.MODEL_ELEMENT:
 				return validateModelElement((ModelElement)value, diagnostics, context);
 			case EngineeringPackage.TABLE_OF_CONTENTS:
 				return validateTableOfContents((TableOfContents)value, diagnostics, context);
-			case EngineeringPackage.TEMPORAL:
-				return validateTemporal((Temporal)value, diagnostics, context);
 			case EngineeringPackage.PERIOD:
 				return validatePeriod((Period)value, diagnostics, context);
 			case EngineeringPackage.NAMED_ELEMENT:
 				return validateNamedElement((NamedElement)value, diagnostics, context);
 			case EngineeringPackage.EVENT:
 				return validateEvent((Event)value, diagnostics, context);
+			case EngineeringPackage.ALIGNABLE:
+				return validateAlignable((Alignable)value, diagnostics, context);
 			case EngineeringPackage.ENDEAVOR:
 				return validateEndeavor((Endeavor)value, diagnostics, context);
 			case EngineeringPackage.INCREMENT:
@@ -167,6 +160,8 @@ public class EngineeringValidator extends EObjectValidator {
 				return validateIssue((Issue)value, diagnostics, context);
 			case EngineeringPackage.NOTE:
 				return validateNote((Note)value, diagnostics, context);
+			case EngineeringPackage.FORUM:
+				return validateForum((Forum)value, diagnostics, context);
 			case EngineeringPackage.ENGINEERED_ELEMENT:
 				return validateEngineeredElement((EngineeredElement)value, diagnostics, context);
 			case EngineeringPackage.DOCUMENT:
@@ -195,8 +190,6 @@ public class EngineeringValidator extends EObjectValidator {
 				return validateCapacity((Capacity)value, diagnostics, context);
 			case EngineeringPackage.ALLOCATION:
 				return validateAllocation((Allocation)value, diagnostics, context);
-			case EngineeringPackage.ALIGNABLE:
-				return validateAlignable((Alignable)value, diagnostics, context);
 			case EngineeringPackage.AIM:
 				return validateAim((Aim)value, diagnostics, context);
 			case EngineeringPackage.PRINCIPLE:
@@ -205,28 +198,10 @@ public class EngineeringValidator extends EObjectValidator {
 				return validateAlignment((Alignment)value, diagnostics, context);
 			case EngineeringPackage.GOAL:
 				return validateGoal((Goal)value, diagnostics, context);
-			case EngineeringPackage.FORUM:
-				return validateForum((Forum)value, diagnostics, context);
 			case EngineeringPackage.MESSAGE:
 				return validateMessage((Message)value, diagnostics, context);
 			case EngineeringPackage.TOPIC:
 				return validateTopic((Topic)value, diagnostics, context);
-			case EngineeringPackage.PACKAGE_APPEARANCE:
-				return validatePackageAppearance((PackageAppearance)value, diagnostics, context);
-			case EngineeringPackage.PACKAGE_APPEARANCE_ENTRY:
-				return validatePackageAppearanceEntry((Map.Entry<?, ?>)value, diagnostics, context);
-			case EngineeringPackage.APPEARANCE:
-				return validateAppearance((Appearance)value, diagnostics, context);
-			case EngineeringPackage.APPEARANCE_ENTRY:
-				return validateAppearanceEntry((Map.Entry<?, ?>)value, diagnostics, context);
-			case EngineeringPackage.MODEL_ELEMENT_APPEARANCE:
-				return validateModelElementAppearance((ModelElementAppearance)value, diagnostics, context);
-			case EngineeringPackage.MODEL_ELEMENT_APPEARANCE_ENTRY:
-				return validateModelElementAppearanceEntry((Map.Entry<?, ?>)value, diagnostics, context);
-			case EngineeringPackage.MEMBER_APPEARANCE_ENTRY:
-				return validateMemberAppearanceEntry((Map.Entry<?, ?>)value, diagnostics, context);
-			case EngineeringPackage.MEMBER_APPEARANCE:
-				return validateMemberAppearance((MemberAppearance)value, diagnostics, context);
 			case EngineeringPackage.NAMED_ELEMENT_REFERENCE:
 				return validateNamedElementReference((NamedElementReference)value, diagnostics, context);
 			case EngineeringPackage.LINK:
@@ -237,24 +212,9 @@ public class EngineeringValidator extends EObjectValidator {
 				return validateObjective((Objective)value, diagnostics, context);
 			case EngineeringPackage.DECISION:
 				return validateDecision((Decision)value, diagnostics, context);
-			case EngineeringPackage.DURATION:
-				return validateDuration((Duration)value, diagnostics, context);
-			case EngineeringPackage.INSTANT:
-				return validateInstant((Instant)value, diagnostics, context);
-			case EngineeringPackage.SECTION_STYLE:
-				return validateSectionStyle((SectionStyle)value, diagnostics, context);
 			default:
 				return true;
 		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateAdaptable(Adaptable adaptable, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint((EObject)adaptable, diagnostics, context);
 	}
 
 	/**
@@ -280,29 +240,26 @@ public class EngineeringValidator extends EObjectValidator {
 	 * Validates the path constraint of '<em>Model Element</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	public boolean validateModelElement_path(ModelElement modelElement, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		if (diagnostics != null) {
-			String path = modelElement.getPath();
-			if (!Util.isBlank(path)) {
-				EReference cf = modelElement.eContainmentFeature();
-				if (cf != null && cf.isMany()) {
-					EObject c = modelElement.eContainer();
-					if (c != null) {
-						Object cfv = c.eGet(cf);
-						if (cfv instanceof Collection) {
-							DiagnosticHelper helper = new DiagnosticHelper(diagnostics, DIAGNOSTIC_SOURCE, 0, modelElement);
-							for (Object e: (Collection<?>) cfv) {
-								if (e != modelElement && e instanceof ModelElement && path.equals(((ModelElement) e).getPath())) {
-									helper.error("Duplicate path in the containing collection: " + path);									
-								}
-							}
-							return helper.isSuccess();
-						}
-					}
-				}
+		// TODO implement the constraint
+		// -> specify the condition that violates the constraint
+		// -> verify the diagnostic details, including severity, code, and message
+		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "path", getObjectLabel(modelElement, context) },
+						 new Object[] { modelElement },
+						 context));
 			}
+			return false;
 		}
 		return true;
 	}
@@ -321,73 +278,6 @@ public class EngineeringValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateTemporal(Temporal temporal, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		if (!validate_NoCircularContainment(temporal, diagnostics, context)) return false;
-		boolean result = validate_EveryMultiplicityConforms(temporal, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(temporal, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(temporal, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(temporal, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryProxyResolves(temporal, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_UniqueID(temporal, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryKeyUnique(temporal, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(temporal, diagnostics, context);
-		if (result || diagnostics != null) result &= validateModelElement_path(temporal, diagnostics, context);
-		if (result || diagnostics != null) result &= validateTemporal_bounds(temporal, diagnostics, context);
-		if (result || diagnostics != null) result &= validateTemporal_offset(temporal, diagnostics, context);
-		return result;
-	}
-
-	/**
-	 * Validates the bounds constraint of '<em>Temporal</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public boolean validateTemporal_bounds(Temporal temporal, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		if (diagnostics != null) {
-			DiagnosticHelper helper = new DiagnosticHelper(diagnostics, DIAGNOSTIC_SOURCE, 0, temporal);
-			Temporal nt = temporal.normalize();
-			for (Temporal lowerBound: temporal.getLowerBounds()) {
-				Temporal nlb = lowerBound.normalize();
-				if (lowerBound.after(temporal) == Boolean.TRUE) {
-					helper.error("Lower bound " + nlb + " is after the temporal " + nt, EngineeringPackage.Literals.TEMPORAL__LOWER_BOUNDS);					
-				}
-				for (Temporal upperBound: temporal.getUpperBounds()) {
-					if (lowerBound.after(upperBound) == Boolean.TRUE) {
-						helper.error("Lower bound " + nlb + " is after upper bound" + upperBound.normalize(), EngineeringPackage.Literals.TEMPORAL__LOWER_BOUNDS);					
-					}					
-				}
-			}
-			for (Temporal upperBound: temporal.getUpperBounds()) {
-				if (temporal.after(upperBound) == Boolean.TRUE) {
-					helper.error("Upper bound " + upperBound.normalize() + " is before the temporal " + nt, EngineeringPackage.Literals.TEMPORAL__UPPER_BOUNDS);					
-				}
-			}
-			return helper.isSuccess();
-		}
-		return true;
-	}
-
-	/**
-	 * Validates the duration_without_base constraint of '<em>Temporal</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public boolean validateTemporal_offset(Temporal temporal, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		if (diagnostics != null && temporal.getOffset() != null && temporal.getBase() == null && temporal.getInstant() == null) {
-			DiagnosticHelper helper = new DiagnosticHelper(diagnostics, DIAGNOSTIC_SOURCE, 0, temporal);
-			helper.error("Offset without base or instant", EngineeringPackage.Literals.TEMPORAL__OFFSET);					
-			return helper.isSuccess();
-		}
-		return true;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public boolean validatePeriod(Period period, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		if (!validate_NoCircularContainment(period, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(period, diagnostics, context);
@@ -398,9 +288,36 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_UniqueID(period, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(period, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(period, diagnostics, context);
-		if (result || diagnostics != null) result &= validateModelElement_path(period, diagnostics, context);
 		if (result || diagnostics != null) result &= validatePeriod_start_end(period, diagnostics, context);
 		return result;
+	}
+
+	/**
+	 * Validates the start_end constraint of '<em>Period</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validatePeriod_start_end(Period period, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		// TODO implement the constraint
+		// -> specify the condition that violates the constraint
+		// -> verify the diagnostic details, including severity, code, and message
+		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "start_end", getObjectLabel(period, context) },
+						 new Object[] { period },
+						 context));
+			}
+			return false;
+		}
+		return true;
 	}
 
 	/**
@@ -438,9 +355,18 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(event, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(event, diagnostics, context);
 		if (result || diagnostics != null) result &= validateModelElement_path(event, diagnostics, context);
-		if (result || diagnostics != null) result &= validateTemporal_bounds(event, diagnostics, context);
-		if (result || diagnostics != null) result &= validateTemporal_offset(event, diagnostics, context);
+		if (result || diagnostics != null) result &= ncoreValidator.validateTemporal_bounds(event, diagnostics, context);
+		if (result || diagnostics != null) result &= ncoreValidator.validateTemporal_offset(event, diagnostics, context);
 		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateAlignable(Alignable alignable, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(alignable, diagnostics, context);
 	}
 
 	/**
@@ -458,7 +384,6 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_UniqueID(endeavor, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(endeavor, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(endeavor, diagnostics, context);
-		if (result || diagnostics != null) result &= validateModelElement_path(endeavor, diagnostics, context);
 		if (result || diagnostics != null) result &= validatePeriod_start_end(endeavor, diagnostics, context);
 		if (result || diagnostics != null) result &= validateEndeavor_capacity(endeavor, diagnostics, context);
 		if (result || diagnostics != null) result &= validateEndeavor_children(endeavor, diagnostics, context);
@@ -466,45 +391,29 @@ public class EngineeringValidator extends EObjectValidator {
 	}
 
 	/**
-	 * Validates the start_end constraint of '<em>Endeavor</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public boolean validatePeriod_start_end(Period period, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		if (diagnostics != null) {
-			DiagnosticHelper helper = new DiagnosticHelper(diagnostics, DIAGNOSTIC_SOURCE, 0, period);
-			Temporal expectedEnd = period.getStart();
-			Duration duration = period.getDuration();
-			if (duration != null && expectedEnd != null) {
-				expectedEnd = expectedEnd.plus(duration);
-			}
-			Temporal end = period.getEnd();
-			if (expectedEnd != null && end != null && expectedEnd.after(end) == Boolean.TRUE) {
-				helper.error("Period expected end " + expectedEnd.normalize() + " is after the end " + end.normalize(), EngineeringPackage.Literals.PERIOD__END);
-			}
-			
-			return helper.isSuccess();
-		}
-		return true;
-	}
-
-	/**
 	 * Validates the capacity constraint of '<em>Endeavor</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	public boolean validateEndeavor_capacity(Endeavor endeavor, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		if (diagnostics != null) {
-			DiagnosticHelper helper = new DiagnosticHelper(diagnostics, DIAGNOSTIC_SOURCE, 0, endeavor);
-			
-			/*
-			 * TODO - validate that endeavor is properly capacitized - engineers have enough capacity
-			 * to work on this endeavor. Tolerance from context - error and warning levels.
-			 */
-			
-			return helper.isSuccess();
+		// TODO implement the constraint
+		// -> specify the condition that violates the constraint
+		// -> verify the diagnostic details, including severity, code, and message
+		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "capacity", getObjectLabel(endeavor, context) },
+						 new Object[] { endeavor },
+						 context));
+			}
+			return false;
 		}
 		return true;
 	}
@@ -513,83 +422,26 @@ public class EngineeringValidator extends EObjectValidator {
 	 * Validates the children constraint of '<em>Endeavor</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
-	public boolean validateEndeavor_children(Endeavor period, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		if (diagnostics != null) {
-			DiagnosticHelper helper = new DiagnosticHelper(diagnostics, DIAGNOSTIC_SOURCE, 0, period);
-			Temporal start = period.getStart();
-			Temporal end = period.getEnd();
-			
-			// Past due
-			if (end != null && period.getCompletion() < 0.9999) {
-				Context ctx = (Context) context.get(Context.class);
-				if (ctx != null) {
-					Date date = ctx.get(Date.class);					
-					if (date != null) {
-						Temporal ctxTemporal = EngineeringFactory.eINSTANCE.createTemporal();
-						ctxTemporal.setInstant(date.toInstant());
-						if (ctxTemporal.after(end) == Boolean.TRUE) {
-							helper.warning("Past due", EngineeringPackage.Literals.PERIOD__END);
-						}
-					}
-				}
-			}	
-						
-			// Issue - children, release, feature
-			if (period instanceof Issue) {
-				Issue issue = (Issue) period;
-				EObject ic = issue.eContainer();
-				if (ic instanceof Issue) {
-					Issue ci = (Issue) ic;
-					Temporal cStart = ci.getStart();
-					if (start != null && cStart != null && cStart.after(start) == Boolean.TRUE) {
-						helper.error("Issue start " + start + " is before the parent issue date " + cStart, EngineeringPackage.Literals.PERIOD__START);						
-					}
-					Temporal cEnd = ci.getEnd();
-					if (end != null && cEnd != null && cEnd.before(end) == Boolean.TRUE) {
-						helper.error("Issue end " + end + " is after the parent issue end " + cEnd, EngineeringPackage.Literals.PERIOD__END);						
-					}
-				}
-				
-				for (Release release: issue.getReleases()) {
-					Temporal rStart = release.getStart();
-					if (start != null && rStart != null && rStart.after(start) == Boolean.TRUE) {
-						helper.error("Issue start " + start + " is before the release start " + rStart, EngineeringPackage.Literals.PERIOD__START);						
-					}
-					Temporal rEnd = release.getEnd();
-					if (end != null && rEnd != null && rEnd.before(end) == Boolean.TRUE) {
-						helper.error("Issue end " + end + " is after the release end " + rEnd, EngineeringPackage.Literals.PERIOD__END);						
-					}					
-				}
-				
-				for (Feature feature: issue.getContributesTo()) {
-					Temporal fStart = feature.getStart();
-					if (start != null && fStart != null && fStart.after(start) == Boolean.TRUE) {
-						helper.error("Issue start " + start + " is before the feature start " + fStart, EngineeringPackage.Literals.PERIOD__START);						
-					}
-					Temporal fEnd = feature.getEnd();
-					if (end != null && fEnd != null && fEnd.before(end) == Boolean.TRUE) {
-						helper.error("Issue end " + end + " is after the feature end " + fEnd, EngineeringPackage.Literals.PERIOD__END);						
-					}					
-				}
+	public boolean validateEndeavor_children(Endeavor endeavor, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		// TODO implement the constraint
+		// -> specify the condition that violates the constraint
+		// -> verify the diagnostic details, including severity, code, and message
+		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "children", getObjectLabel(endeavor, context) },
+						 new Object[] { endeavor },
+						 context));
 			}
-			
-			// Feature - release
-			if (period instanceof Feature) {				
-				for (Release release: ((Feature) period).getReleases()) {
-					Temporal rStart = release.getStart();
-					if (start != null && rStart != null && rStart.after(start) == Boolean.TRUE) {
-						helper.error("Feature start " + start + " is before the release start " + rStart, EngineeringPackage.Literals.PERIOD__START);						
-					}
-					Temporal rEnd = release.getEnd();
-					if (end != null && rEnd != null && rEnd.before(end) == Boolean.TRUE) {
-						helper.error("Feature end " + end + " is after the release end " + rEnd, EngineeringPackage.Literals.PERIOD__END);						
-					}					
-				}
-			}			
-			
-			return helper.isSuccess();
+			return false;
 		}
 		return true;
 	}
@@ -621,16 +473,27 @@ public class EngineeringValidator extends EObjectValidator {
 	 * Validates the nesting constraint of '<em>Increment</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	public boolean validateIncrement_nesting(Increment increment, DiagnosticChain diagnostics, Map<Object, Object> context) {
-//		if (diagnostics != null) {
-//			// Test
-//			DiagnosticHelper helper = new DiagnosticHelper(diagnostics, DIAGNOSTIC_SOURCE, 0, increment);
-//			helper.error("Test EObject error");
-//			helper.error("Test Feature error", EngineeringPackage.Literals.INCREMENT__END);
-//			return false;
-//		}
+		// TODO implement the constraint
+		// -> specify the condition that violates the constraint
+		// -> verify the diagnostic details, including severity, code, and message
+		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "nesting", getObjectLabel(increment, context) },
+						 new Object[] { increment },
+						 context));
+			}
+			return false;
+		}
 		return true;
 	}
 
@@ -737,22 +600,26 @@ public class EngineeringValidator extends EObjectValidator {
 	 * Validates the increment constraint of '<em>Issue</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	public boolean validateIssue_increment(Issue issue, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		if (diagnostics != null) {			
-			Increment increment = issue.getIncrement();
-			if (increment != null) {
-				Temporal incStart = increment.getStart();
-				Temporal issEnd = issue.getEnd();
-				Temporal incEnd = increment.getEnd();
-				DiagnosticHelper helper = new DiagnosticHelper(diagnostics, DIAGNOSTIC_SOURCE, 0, issue);
-				if (issEnd != null && (incStart.after(issEnd) == Boolean.TRUE || incEnd.before(issEnd) == Boolean.TRUE)) {
-					helper.error("Issue end " + issEnd + " is not within the increment " + incStart + " - " + incEnd, EngineeringPackage.Literals.ISSUE__INCREMENT);
-					return helper.isSuccess();
-				}
-				return helper.isSuccess();
+		// TODO implement the constraint
+		// -> specify the condition that violates the constraint
+		// -> verify the diagnostic details, including severity, code, and message
+		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "increment", getObjectLabel(issue, context) },
+						 new Object[] { issue },
+						 context));
 			}
+			return false;
 		}
 		return true;
 	}
@@ -781,6 +648,25 @@ public class EngineeringValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean validateForum(Forum forum, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(forum, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(forum, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(forum, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(forum, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(forum, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(forum, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(forum, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(forum, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(forum, diagnostics, context);
+		if (result || diagnostics != null) result &= validateModelElement_path(forum, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean validateEngineeredElement(EngineeredElement engineeredElement, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		if (!validate_NoCircularContainment(engineeredElement, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(engineeredElement, diagnostics, context);
@@ -801,20 +687,49 @@ public class EngineeringValidator extends EObjectValidator {
 	 * Validates the capacity constraint of '<em>Engineered Element</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	public boolean validateEngineeredElement_capacity(EngineeredElement engineeredElement, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		if (diagnostics != null) {
-			DiagnosticHelper helper = new DiagnosticHelper(diagnostics, DIAGNOSTIC_SOURCE, 0, engineeredElement);
-			
-			/*
-			 * TODO - validate for this engineered element that there is enough capacity to work on  issues assigned to engineers and scheduled for endeavors
-			 * Tolerance from context.
-			 */
-			
-			return helper.isSuccess();
+		// TODO implement the constraint
+		// -> specify the condition that violates the constraint
+		// -> verify the diagnostic details, including severity, code, and message
+		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "capacity", getObjectLabel(engineeredElement, context) },
+						 new Object[] { engineeredElement },
+						 context));
+			}
+			return false;
 		}
 		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateDocument(Document document, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(document, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(document, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(document, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(document, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(document, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(document, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(document, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(document, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(document, diagnostics, context);
+		if (result || diagnostics != null) result &= validateModelElement_path(document, diagnostics, context);
+		if (result || diagnostics != null) result &= validatePeriod_start_end(document, diagnostics, context);
+		if (result || diagnostics != null) result &= validateEngineeredElement_capacity(document, diagnostics, context);
+		return result;
 	}
 
 	/**
@@ -863,20 +778,27 @@ public class EngineeringValidator extends EObjectValidator {
 	 * Validates the capacity constraint of '<em>Engineer</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	public boolean validateEngineer_capacity(Engineer engineer, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		if (diagnostics != null) {
-			DiagnosticHelper helper = new DiagnosticHelper(diagnostics, DIAGNOSTIC_SOURCE, 0, engineer);
-			
-			/*
-			 * TODO - validate for this engineer that capacity and allocations match for endeavors. 
-			 * Pro-rate if capacity is for increments and allocations are for releases/features.  
-			 * Tolerance from context.
-			 * Funds are cumulative or cumulative flag to Capacity.
-			 */
-			
-			return validateEngineeredElement_capacity(engineer, diagnostics, context) && helper.isSuccess();
+		// TODO override the constraint, if desired
+		// -> uncomment the scaffolding
+		// -> specify the condition that violates the constraint
+		// -> verify the diagnostic details, including severity, code, and message
+		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "capacity", getObjectLabel(engineer, context) },
+						 new Object[] { engineer },
+						 context));
+			}
+			return false;
 		}
 		return validateEngineeredElement_capacity(engineer, diagnostics, context);
 	}
@@ -885,42 +807,29 @@ public class EngineeringValidator extends EObjectValidator {
 	 * Validates the start_end constraint of '<em>Engineer</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	public boolean validateEngineer_start_end(Engineer engineer, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		DiagnosticHelper helper = new DiagnosticHelper(diagnostics, DIAGNOSTIC_SOURCE, 0, engineer);
-		if (diagnostics != null) {			
-			Temporal start = engineer.getStart();
-			Temporal end = engineer.getEnd();
-			EObject ec = engineer.eContainer();
-			if ((start != null || end != null) && ec instanceof Organization) {
-				Organization org = (Organization) ec;
-				Temporal oStart = org.getStart();
-				Temporal normalizedStart = start == null ? null : start.normalize();
-				Temporal normalizedEnd = end == null ? null : end.normalize();
-				if (oStart != null) {
-					Temporal normalizedOrgStart = oStart.normalize();
-					if (oStart.after(start) == Boolean.TRUE) {
-						helper.error("Engineer start " + normalizedStart + " is before the containing organization start " + normalizedOrgStart, EngineeringPackage.Literals.PERIOD__START);
-					}
-					if (oStart.after(end) == Boolean.TRUE) {
-						helper.error("Engineer end " + normalizedEnd + " is before the containing organization start " + normalizedOrgStart, EngineeringPackage.Literals.PERIOD__END);
-					}
-				}
-				Temporal oEnd = org.getEnd();
-				if (oEnd != null) {
-					Temporal normalizedOrgEnd = oEnd.normalize();
-					if (oEnd.before(start) == Boolean.TRUE) {
-						helper.error("Engineer start " + normalizedStart + " is after the containing organization end " + normalizedOrgEnd, EngineeringPackage.Literals.PERIOD__START);
-					}
-					if (oEnd.before(end) == Boolean.TRUE) {
-						helper.error("Engineer end " + normalizedEnd + " is after the containing organization end " + normalizedOrgEnd, EngineeringPackage.Literals.PERIOD__END);
-					}
-				}				
+		// TODO override the constraint, if desired
+		// -> uncomment the scaffolding
+		// -> specify the condition that violates the constraint
+		// -> verify the diagnostic details, including severity, code, and message
+		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "start_end", getObjectLabel(engineer, context) },
+						 new Object[] { engineer },
+						 context));
 			}
+			return false;
 		}
-
-		return validatePeriod_start_end(engineer, diagnostics, context) && helper.isSuccess();
+		return validatePeriod_start_end(engineer, diagnostics, context);
 	}
 
 	/**
@@ -1055,22 +964,26 @@ public class EngineeringValidator extends EObjectValidator {
 	 * Validates the increment constraint of '<em>Release</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	public boolean validateRelease_increment(Release release, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		if (diagnostics != null) {			
-			Increment increment = release.getIncrement();
-			if (increment != null) {
-				Temporal incStart = increment.getStart();
-				Temporal relEnd = release.getEnd();
-				Temporal incEnd = increment.getEnd();
-				DiagnosticHelper helper = new DiagnosticHelper(diagnostics, DIAGNOSTIC_SOURCE, 0, release);
-				if (relEnd != null && (incStart.after(relEnd) == Boolean.TRUE || incEnd.before(relEnd) == Boolean.TRUE)) {
-					helper.error("Release end " + relEnd + " is not within the increment " + incStart + " - " + incEnd, EngineeringPackage.Literals.RELEASE__INCREMENT);
-					return helper.isSuccess();
-				}
-				return helper.isSuccess();
+		// TODO implement the constraint
+		// -> specify the condition that violates the constraint
+		// -> verify the diagnostic details, including severity, code, and message
+		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "increment", getObjectLabel(release, context) },
+						 new Object[] { release },
+						 context));
 			}
+			return false;
 		}
 		return true;
 	}
@@ -1096,7 +1009,7 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validateEndeavor_children(feature, diagnostics, context);
 		return result;
 	}
-		
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1154,15 +1067,6 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(allocation, diagnostics, context);
 		if (result || diagnostics != null) result &= validateModelElement_path(allocation, diagnostics, context);
 		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateAlignable(Alignable alignable, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(alignable, diagnostics, context);
 	}
 
 	/**
@@ -1246,17 +1150,17 @@ public class EngineeringValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateForum(Forum forum, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		if (!validate_NoCircularContainment(forum, diagnostics, context)) return false;
-		boolean result = validate_EveryMultiplicityConforms(forum, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(forum, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(forum, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(forum, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryProxyResolves(forum, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_UniqueID(forum, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryKeyUnique(forum, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(forum, diagnostics, context);
-		if (result || diagnostics != null) result &= validateModelElement_path(forum, diagnostics, context);
+	public boolean validateMessage(Message message, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(message, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(message, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(message, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(message, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(message, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(message, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(message, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(message, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(message, diagnostics, context);
+		if (result || diagnostics != null) result &= validateModelElement_path(message, diagnostics, context);
 		return result;
 	}
 
@@ -1276,99 +1180,6 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(topic, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(topic, diagnostics, context);
 		if (result || diagnostics != null) result &= validateModelElement_path(topic, diagnostics, context);
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validatePackageAppearance(PackageAppearance packageAppearance, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(packageAppearance, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validatePackageAppearanceEntry(Map.Entry<?, ?> packageAppearanceEntry, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint((EObject)packageAppearanceEntry, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateAppearance(Appearance appearance, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(appearance, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateAppearanceEntry(Map.Entry<?, ?> appearanceEntry, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint((EObject)appearanceEntry, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateModelElementAppearance(ModelElementAppearance modelElementAppearance, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(modelElementAppearance, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateModelElementAppearanceEntry(Map.Entry<?, ?> modelElementAppearanceEntry, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint((EObject)modelElementAppearanceEntry, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateMemberAppearanceEntry(Map.Entry<?, ?> memberAppearanceEntry, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint((EObject)memberAppearanceEntry, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateMemberAppearance(MemberAppearance memberAppearance, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(memberAppearance, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateDocument(Document document, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		if (!validate_NoCircularContainment(document, diagnostics, context)) return false;
-		boolean result = validate_EveryMultiplicityConforms(document, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(document, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(document, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(document, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryProxyResolves(document, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_UniqueID(document, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryKeyUnique(document, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(document, diagnostics, context);
-		if (result || diagnostics != null) result &= validateModelElement_path(document, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePeriod_start_end(document, diagnostics, context);
-		if (result || diagnostics != null) result &= validateEngineeredElement_capacity(document, diagnostics, context);
 		return result;
 	}
 
@@ -1468,52 +1279,6 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validateEndeavor_capacity(decision, diagnostics, context);
 		if (result || diagnostics != null) result &= validateEndeavor_children(decision, diagnostics, context);
 		if (result || diagnostics != null) result &= validateIssue_increment(decision, diagnostics, context);
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateDuration(Duration duration, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return true;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateInstant(Instant instant, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return true;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateSectionStyle(SectionStyle sectionStyle, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return true;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateMessage(Message message, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		if (!validate_NoCircularContainment(message, diagnostics, context)) return false;
-		boolean result = validate_EveryMultiplicityConforms(message, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(message, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(message, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(message, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryProxyResolves(message, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_UniqueID(message, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryKeyUnique(message, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(message, diagnostics, context);
-		if (result || diagnostics != null) result &= validateModelElement_path(message, diagnostics, context);
 		return result;
 	}
 
