@@ -554,7 +554,7 @@
       <details key="icon" value="far fa-user"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="goals" upperBound="-1"
-        eType="#//Goal" containment="true">
+        eType="#//Goal" containment="true" eKeys="#//ModelElement/path">
       <eAnnotations source="urn:org.nasdanika">
         <details key="homogenous" value="true"/>
       </eAnnotations>
@@ -973,7 +973,7 @@
       <details key="icon" value="fas fa-bullseye"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
-        eType="#//Goal" containment="true">
+        eType="#//Goal" containment="true" eKeys="#//ModelElement/path">
       <eAnnotations source="urn:org.nasdanika">
         <details key="homogenous" value="true"/>
       </eAnnotations>

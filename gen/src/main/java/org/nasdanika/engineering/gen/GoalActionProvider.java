@@ -11,16 +11,15 @@ import org.nasdanika.common.Context;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Goal;
-import org.nasdanika.engineering.Persona;
 import org.nasdanika.html.model.app.Action;
 import org.nasdanika.html.model.app.AppFactory;
 
-public class PersonaActionProvider<T extends Persona> extends EngineeredElementActionProvider<T> {
+public class GoalActionProvider extends AimActionProvider<Goal> {
 	
-	public PersonaActionProvider(T target, Context context) {
+	public GoalActionProvider(Goal target, Context context) {
 		super(target, context);		
 	}
-		
+	
 	@Override
 	protected Action createAction(
 			BiConsumer<EObject,Action> registry, 
@@ -28,24 +27,24 @@ public class PersonaActionProvider<T extends Persona> extends EngineeredElementA
 			ProgressMonitor progressMonitor) throws Exception {
 		Action action = super.createAction(registry, resolveConsumer, progressMonitor);
 		
-		action.getSections().addAll(createGoalActions(registry, resolveConsumer, progressMonitor));
+		action.getSections().addAll(createChildrenActions(registry, resolveConsumer, progressMonitor));
 		
 		return action;
 	}
 	
-	protected List<Action> createGoalActions(
+	protected List<Action> createChildrenActions(
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
 			ProgressMonitor progressMonitor) throws Exception {
 		
-		List<Goal> goals = getTarget().getGoals();
-		if (goals.isEmpty()) {
+		List<Goal> children = getTarget().getChildren();
+		if (children.isEmpty()) {
 			return Collections.emptyList();
 		}
 		Action group = AppFactory.eINSTANCE.createAction();
-		group.setText("Goals");
+		group.setText("Children");
 		EList<Action> groupAnonymous = group.getAnonymous();
-		for (Goal goal: goals) {
+		for (Goal goal: children) {
 			groupAnonymous.add(createChildAction(goal, registry, resolveConsumer, progressMonitor));
 		}
 		
@@ -59,9 +58,9 @@ public class PersonaActionProvider<T extends Persona> extends EngineeredElementA
 			ProgressMonitor progressMonitor) throws Exception {
 		super.resolve(action, context, progressMonitor);
 		
-		EList<Goal> goals = getTarget().getGoals();
-		if (!goals.isEmpty()) {
-			Action goalsAction = (Action) action.getSections().get(0);
+		EList<Goal> children = getTarget().getChildren();
+		if (!children.isEmpty()) {
+			Action childrenAction = (Action) action.getSections().get(0);
 			ContentProvider<Goal> goalChildrenListProvider = new ContentProvider<Goal>() {
 
 				@Override
@@ -80,8 +79,9 @@ public class PersonaActionProvider<T extends Persona> extends EngineeredElementA
 				}
 				
 			};
-			goalsAction.getContent().add(renderList(goals, true, goalChildrenListProvider, action, EngineeringPackage.Literals.PERSONA__GOALS, context, progressMonitor));
+			
+			childrenAction.getContent().add(renderList(children, true, goalChildrenListProvider, action, EngineeringPackage.Literals.PERSONA__GOALS, context, progressMonitor));
 		}
 	}
-		
+	
 }

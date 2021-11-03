@@ -12,4 +12,12 @@ engineering-organization:
               name: Common
   personas:
     - path: java-developer
-      name: Java Developer              
+      name: Java Developer
+      goals:
+        - path: efficiency
+          name: Efficiency
+          children:
+            - path: generated-doc
+              name: Generated Documentation
+              
+                            

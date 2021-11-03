@@ -65,7 +65,7 @@ public class EngineerActionProvider<T extends Engineer> extends PersonaActionPro
 	/**
 	 * Creates a list of actions for personas and adds them to the list of group's anonymous actions. 
 	 * @param progressMonitor
-	 * @return An empty list if there are no modules. A singleton list containing a grouping action containing module actions otherwise.
+	 * @return An empty list if there are no personas. A singleton list containing a grouping action containing persona actions otherwise.
 	 * @throws Exception 
 	 */
 	protected List<Action> createPersonaActions(
