@@ -10,3 +10,6 @@ engineering-organization:
           - engineering-module:
               path: common
               name: Common
+  personas:
+    - path: java-developer
+      name: Java Developer              

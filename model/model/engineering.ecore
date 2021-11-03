@@ -623,7 +623,7 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="personas" upperBound="-1"
-        eType="#//Persona" containment="true">
+        eType="#//Persona" containment="true" eKeys="#//ModelElement/path">
       <eAnnotations source="urn:org.nasdanika">
         <details key="homogenous" value="true"/>
       </eAnnotations>

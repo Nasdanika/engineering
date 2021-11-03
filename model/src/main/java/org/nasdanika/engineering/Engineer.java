@@ -129,7 +129,7 @@ public interface Engineer extends Persona {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Personas</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getEngineer_Personas()
-	 * @model containment="true"
+	 * @model containment="true" keys="path"
 	 *        annotation="urn:org.nasdanika homogenous='true'"
 	 * @generated
 	 */
