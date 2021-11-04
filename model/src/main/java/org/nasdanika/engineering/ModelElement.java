@@ -40,7 +40,7 @@ public interface ModelElement extends org.nasdanika.ncore.ModelElement {
 	 * @return the value of the '<em>Path</em>' attribute.
 	 * @see #setPath(String)
 	 * @see org.nasdanika.engineering.EngineeringPackage#getModelElement_Path()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	String getPath();

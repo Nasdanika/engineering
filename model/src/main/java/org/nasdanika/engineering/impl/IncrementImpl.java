@@ -24,8 +24,10 @@ import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Increment;
 import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.Objective;
-import org.nasdanika.engineering.Period;
 import org.nasdanika.engineering.Release;
+import org.nasdanika.engineering.util.EngineeringUtil;
+import org.nasdanika.ncore.NcorePackage;
+import org.nasdanika.ncore.Period;
 import org.nasdanika.ncore.Temporal;
 
 /**
@@ -165,7 +167,7 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 	 */
 	@Override
 	public Temporal getStart() {
-		return (Temporal)eDynamicGet(EngineeringPackage.INCREMENT__START, EngineeringPackage.Literals.PERIOD__START, true, true);
+		return (Temporal)eDynamicGet(EngineeringPackage.INCREMENT__START, NcorePackage.Literals.PERIOD__START, true, true);
 	}
 
 	/**
@@ -185,8 +187,8 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 	 */
 	@Override
 	public void setStart(Temporal newStart) {
-		eDynamicSet(EngineeringPackage.INCREMENT__START, EngineeringPackage.Literals.PERIOD__START, newStart);
-		PeriodImpl.onStart(this, newStart);
+		eDynamicSet(EngineeringPackage.INCREMENT__START, NcorePackage.Literals.PERIOD__START, newStart);
+		EngineeringUtil.onStart(this, newStart);
 	}
 
 	/**
@@ -196,7 +198,7 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 	 */
 	@Override
 	public Temporal getEnd() {
-		return (Temporal)eDynamicGet(EngineeringPackage.INCREMENT__END, EngineeringPackage.Literals.PERIOD__END, true, true);
+		return (Temporal)eDynamicGet(EngineeringPackage.INCREMENT__END, NcorePackage.Literals.PERIOD__END, true, true);
 	}
 
 	/**
@@ -216,8 +218,8 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 	 */
 	@Override
 	public void setEnd(Temporal newEnd) {
-		eDynamicSet(EngineeringPackage.INCREMENT__END, EngineeringPackage.Literals.PERIOD__END, newEnd);
-		PeriodImpl.onEnd(this, newEnd);
+		eDynamicSet(EngineeringPackage.INCREMENT__END, NcorePackage.Literals.PERIOD__END, newEnd);
+		EngineeringUtil.onEnd(this, newEnd);
 	}
 
 	/**
@@ -227,7 +229,7 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 	 */
 	@Override
 	public Duration getDuration() {
-		return (Duration)eDynamicGet(EngineeringPackage.INCREMENT__DURATION, EngineeringPackage.Literals.PERIOD__DURATION, true, true);
+		return (Duration)eDynamicGet(EngineeringPackage.INCREMENT__DURATION, NcorePackage.Literals.PERIOD__DURATION, true, true);
 	}
 
 	/**
@@ -237,8 +239,8 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 	 */
 	@Override
 	public void setDuration(Duration newDuration) {
-		eDynamicSet(EngineeringPackage.INCREMENT__DURATION, EngineeringPackage.Literals.PERIOD__DURATION, newDuration);
-		PeriodImpl.onDuration(this, newDuration);
+		eDynamicSet(EngineeringPackage.INCREMENT__DURATION, NcorePackage.Literals.PERIOD__DURATION, newDuration);
+		EngineeringUtil.onDuration(this, newDuration);
 	}
 
 	/**
@@ -569,9 +571,9 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == Period.class) {
 			switch (derivedFeatureID) {
-				case EngineeringPackage.INCREMENT__START: return EngineeringPackage.PERIOD__START;
-				case EngineeringPackage.INCREMENT__END: return EngineeringPackage.PERIOD__END;
-				case EngineeringPackage.INCREMENT__DURATION: return EngineeringPackage.PERIOD__DURATION;
+				case EngineeringPackage.INCREMENT__START: return NcorePackage.PERIOD__START;
+				case EngineeringPackage.INCREMENT__END: return NcorePackage.PERIOD__END;
+				case EngineeringPackage.INCREMENT__DURATION: return NcorePackage.PERIOD__DURATION;
 				default: return -1;
 			}
 		}
@@ -607,9 +609,9 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == Period.class) {
 			switch (baseFeatureID) {
-				case EngineeringPackage.PERIOD__START: return EngineeringPackage.INCREMENT__START;
-				case EngineeringPackage.PERIOD__END: return EngineeringPackage.INCREMENT__END;
-				case EngineeringPackage.PERIOD__DURATION: return EngineeringPackage.INCREMENT__DURATION;
+				case NcorePackage.PERIOD__START: return EngineeringPackage.INCREMENT__START;
+				case NcorePackage.PERIOD__END: return EngineeringPackage.INCREMENT__END;
+				case NcorePackage.PERIOD__DURATION: return EngineeringPackage.INCREMENT__DURATION;
 				default: return -1;
 			}
 		}

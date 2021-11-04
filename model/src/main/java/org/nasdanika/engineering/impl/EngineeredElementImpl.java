@@ -16,8 +16,10 @@ import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeredElement;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Issue;
-import org.nasdanika.engineering.Period;
 import org.nasdanika.engineering.Principle;
+import org.nasdanika.engineering.util.EngineeringUtil;
+import org.nasdanika.ncore.NcorePackage;
+import org.nasdanika.ncore.Period;
 import org.nasdanika.ncore.Temporal;
 
 /**
@@ -78,7 +80,7 @@ public abstract class EngineeredElementImpl extends ForumImpl implements Enginee
 	 */
 	@Override
 	public Temporal getStart() {
-		return (Temporal)eDynamicGet(EngineeringPackage.ENGINEERED_ELEMENT__START, EngineeringPackage.Literals.PERIOD__START, true, true);
+		return (Temporal)eDynamicGet(EngineeringPackage.ENGINEERED_ELEMENT__START, NcorePackage.Literals.PERIOD__START, true, true);
 	}
 
 	/**
@@ -98,8 +100,8 @@ public abstract class EngineeredElementImpl extends ForumImpl implements Enginee
 	 */
 	@Override
 	public void setStart(Temporal newStart) {
-		eDynamicSet(EngineeringPackage.ENGINEERED_ELEMENT__START, EngineeringPackage.Literals.PERIOD__START, newStart);
-		PeriodImpl.onStart(this, newStart);
+		eDynamicSet(EngineeringPackage.ENGINEERED_ELEMENT__START, NcorePackage.Literals.PERIOD__START, newStart);
+		EngineeringUtil.onStart(this, newStart);
 	}
 
 	/**
@@ -109,7 +111,7 @@ public abstract class EngineeredElementImpl extends ForumImpl implements Enginee
 	 */
 	@Override
 	public Temporal getEnd() {
-		return (Temporal)eDynamicGet(EngineeringPackage.ENGINEERED_ELEMENT__END, EngineeringPackage.Literals.PERIOD__END, true, true);
+		return (Temporal)eDynamicGet(EngineeringPackage.ENGINEERED_ELEMENT__END, NcorePackage.Literals.PERIOD__END, true, true);
 	}
 
 	/**
@@ -129,8 +131,8 @@ public abstract class EngineeredElementImpl extends ForumImpl implements Enginee
 	 */
 	@Override
 	public void setEnd(Temporal newEnd) {
-		eDynamicSet(EngineeringPackage.ENGINEERED_ELEMENT__END, EngineeringPackage.Literals.PERIOD__END, newEnd);
-		PeriodImpl.onEnd(this, newEnd);
+		eDynamicSet(EngineeringPackage.ENGINEERED_ELEMENT__END, NcorePackage.Literals.PERIOD__END, newEnd);
+		EngineeringUtil.onEnd(this, newEnd);
 	}
 
 	/**
@@ -140,7 +142,7 @@ public abstract class EngineeredElementImpl extends ForumImpl implements Enginee
 	 */
 	@Override
 	public Duration getDuration() {
-		return (Duration)eDynamicGet(EngineeringPackage.ENGINEERED_ELEMENT__DURATION, EngineeringPackage.Literals.PERIOD__DURATION, true, true);
+		return (Duration)eDynamicGet(EngineeringPackage.ENGINEERED_ELEMENT__DURATION, NcorePackage.Literals.PERIOD__DURATION, true, true);
 	}
 
 	/**
@@ -150,8 +152,8 @@ public abstract class EngineeredElementImpl extends ForumImpl implements Enginee
 	 */
 	@Override
 	public void setDuration(Duration newDuration) {
-		eDynamicSet(EngineeringPackage.ENGINEERED_ELEMENT__DURATION, EngineeringPackage.Literals.PERIOD__DURATION, newDuration);
-		PeriodImpl.onDuration(this, newDuration);
+		eDynamicSet(EngineeringPackage.ENGINEERED_ELEMENT__DURATION, NcorePackage.Literals.PERIOD__DURATION, newDuration);
+		EngineeringUtil.onDuration(this, newDuration);
 	}
 
 	/**
@@ -415,9 +417,9 @@ public abstract class EngineeredElementImpl extends ForumImpl implements Enginee
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == Period.class) {
 			switch (derivedFeatureID) {
-				case EngineeringPackage.ENGINEERED_ELEMENT__START: return EngineeringPackage.PERIOD__START;
-				case EngineeringPackage.ENGINEERED_ELEMENT__END: return EngineeringPackage.PERIOD__END;
-				case EngineeringPackage.ENGINEERED_ELEMENT__DURATION: return EngineeringPackage.PERIOD__DURATION;
+				case EngineeringPackage.ENGINEERED_ELEMENT__START: return NcorePackage.PERIOD__START;
+				case EngineeringPackage.ENGINEERED_ELEMENT__END: return NcorePackage.PERIOD__END;
+				case EngineeringPackage.ENGINEERED_ELEMENT__DURATION: return NcorePackage.PERIOD__DURATION;
 				default: return -1;
 			}
 		}
@@ -433,9 +435,9 @@ public abstract class EngineeredElementImpl extends ForumImpl implements Enginee
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == Period.class) {
 			switch (baseFeatureID) {
-				case EngineeringPackage.PERIOD__START: return EngineeringPackage.ENGINEERED_ELEMENT__START;
-				case EngineeringPackage.PERIOD__END: return EngineeringPackage.ENGINEERED_ELEMENT__END;
-				case EngineeringPackage.PERIOD__DURATION: return EngineeringPackage.ENGINEERED_ELEMENT__DURATION;
+				case NcorePackage.PERIOD__START: return EngineeringPackage.ENGINEERED_ELEMENT__START;
+				case NcorePackage.PERIOD__END: return EngineeringPackage.ENGINEERED_ELEMENT__END;
+				case NcorePackage.PERIOD__DURATION: return EngineeringPackage.ENGINEERED_ELEMENT__DURATION;
 				default: return -1;
 			}
 		}

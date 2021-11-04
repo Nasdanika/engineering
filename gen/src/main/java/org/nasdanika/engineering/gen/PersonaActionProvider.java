@@ -62,26 +62,30 @@ public class PersonaActionProvider<T extends Persona> extends EngineeredElementA
 		EList<Goal> goals = getTarget().getGoals();
 		if (!goals.isEmpty()) {
 			Action goalsAction = (Action) action.getSections().get(0);
-			ContentProvider<Goal> goalChildrenListProvider = new ContentProvider<Goal>() {
-
-				@Override
-				public List<EObject> createContent(
-						Goal element, 
-						Action base, 
-						ETypedElement typedElement,
-						org.nasdanika.html.emf.EObjectActionResolver.Context context, 
-						ProgressMonitor progressMonitor) throws Exception {
-					
-					EList<Goal> children = element.getChildren();
-					if (children.isEmpty()) {
-						return null;
-					}
-					return Collections.singletonList(renderList(children, true, this, action, EngineeringPackage.Literals.GOAL__CHILDREN, context, progressMonitor));
-				}
-				
-			};
-			goalsAction.getContent().add(renderList(goals, true, goalChildrenListProvider, action, EngineeringPackage.Literals.PERSONA__GOALS, context, progressMonitor));
+			goalsAction.getContent().add(renderList(goals, true, createGoalChildrenListProvider(), goalsAction, EngineeringPackage.Literals.PERSONA__GOALS, context, progressMonitor));
 		}
+	}
+
+	protected ContentProvider<Goal> createGoalChildrenListProvider() {
+		ContentProvider<Goal> goalChildrenListProvider = new ContentProvider<Goal>() {
+
+			@Override
+			public List<EObject> createContent(
+					Goal element, 
+					Action base, 
+					ETypedElement typedElement,
+					org.nasdanika.html.emf.EObjectActionResolver.Context context, 
+					ProgressMonitor progressMonitor) throws Exception {
+				
+				EList<Goal> children = element.getChildren();
+				if (children.isEmpty()) {
+					return null;
+				}
+				return Collections.singletonList(renderList(children, true, this, base, EngineeringPackage.Literals.GOAL__CHILDREN, context, progressMonitor));
+			}
+			
+		};
+		return goalChildrenListProvider;
 	}
 		
 }

@@ -31,15 +31,6 @@ public interface EngineeringFactory extends EFactory {
 	TableOfContents createTableOfContents();
 
 	/**
-	 * Returns a new object of class '<em>Period</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Period</em>'.
-	 * @generated
-	 */
-	Period createPeriod();
-
-	/**
 	 * Returns a new object of class '<em>Named Element</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -2,16 +2,24 @@ package org.nasdanika.engineering.gen;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.BiConsumer;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.ETypedElement;
 import org.nasdanika.common.Context;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeringPackage;
+import org.nasdanika.engineering.IssueCategory;
+import org.nasdanika.engineering.IssuePriority;
+import org.nasdanika.engineering.IssueSeverity;
+import org.nasdanika.engineering.IssueStatus;
 import org.nasdanika.engineering.Persona;
+import org.nasdanika.engineering.Product;
 import org.nasdanika.html.model.app.Action;
 import org.nasdanika.html.model.app.AppFactory;
 import org.nasdanika.ncore.util.NamedElementComparator;
@@ -29,10 +37,9 @@ public class EngineerActionProvider<T extends Engineer> extends PersonaActionPro
 			ProgressMonitor progressMonitor) throws Exception {
 		Action action = super.createAction(registry, resolveConsumer, progressMonitor);
 		
-		EList<EObject> children = action.getChildren();
-		children.addAll(createModuleActions(registry, resolveConsumer, progressMonitor));
-		
-		action.getNavigation().addAll(createPersonaActions(registry, resolveConsumer, progressMonitor));
+		createModuleActions(action, registry, resolveConsumer, progressMonitor);		
+		createPersonaActions(action, registry, resolveConsumer, progressMonitor);
+		createIssueGroupingActions(action, registry, resolveConsumer, progressMonitor);
 		
 		return action;
 	}
@@ -43,23 +50,24 @@ public class EngineerActionProvider<T extends Engineer> extends PersonaActionPro
 	 * @return An empty list if there are no modules. A singleton list containing a grouping action containing module actions otherwise.
 	 * @throws Exception 
 	 */
-	protected List<Action> createModuleActions(
+	protected void createModuleActions(
+			Action action,
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
 			ProgressMonitor progressMonitor) throws Exception {
 		List<org.nasdanika.engineering.Module> modules = getTarget().getModules().stream().sorted(NamedElementComparator.INSTANCE).collect(Collectors.toList());
-		if (modules.isEmpty()) {
-			return Collections.emptyList();
+		if (!modules.isEmpty()) {
+			Action group = AppFactory.eINSTANCE.createAction();
+			Predicate<org.nasdanika.engineering.Module> isProduct = Product.class::isInstance;			
+			group.setText(modules.stream().anyMatch(isProduct.negate()) ? "Modules" : "Products");
+			group.setIcon("fas fa-cubes");
+			EList<EObject> children = group.getChildren();
+			for (org.nasdanika.engineering.Module module: modules) {
+				children.add(createChildAction(module, registry, resolveConsumer, progressMonitor));
+			}
+	
+			action.getChildren().add(group);
 		}
-		Action group = AppFactory.eINSTANCE.createAction();
-		group.setText("Modules");
-		// TODO - icon, ...
-		EList<EObject> children = group.getChildren();
-		for (org.nasdanika.engineering.Module module: modules) {
-			children.add(createChildAction(module, registry, resolveConsumer, progressMonitor));
-		}
-		
-		return Collections.singletonList(group);
 	}
 	
 	/**
@@ -68,27 +76,105 @@ public class EngineerActionProvider<T extends Engineer> extends PersonaActionPro
 	 * @return An empty list if there are no personas. A singleton list containing a grouping action containing persona actions otherwise.
 	 * @throws Exception 
 	 */
-	protected List<Action> createPersonaActions(
+	protected void createPersonaActions(
+			Action action,
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
 			ProgressMonitor progressMonitor) throws Exception {
 		
-		List<Persona> personas = getTarget().getPersonas().stream().sorted(NamedElementComparator.INSTANCE).collect(Collectors.toList());
-		if (personas.isEmpty()) {
-			return Collections.emptyList();
-		}
-		Action group = AppFactory.eINSTANCE.createAction();
-		group.setText("Personas");
-		group.setLocation("personas.html");
-		// TODO - icon, ...
-		EList<Action> groupAnonymous = group.getAnonymous();
-		for (Persona persona: personas) {
-			groupAnonymous.add(createChildAction(persona, registry, resolveConsumer, progressMonitor));
-		}
+		List<Persona> personas = getTarget().getPersonas();
+		if (!personas.isEmpty()) {
+			Action group = AppFactory.eINSTANCE.createAction();
+			group.setText("Personas");
+			group.setUuid(action.getUuid() + "-personas");
+			group.setLocation("personas.html");
+			// TODO - icon, ...
+			EList<Action> groupAnonymous = group.getAnonymous();
+			for (Persona persona: personas) {
+				groupAnonymous.add(createChildAction(persona, registry, resolveConsumer, progressMonitor));
+			}
 		
-		return Collections.singletonList(group);
+			action.getNavigation().add(group);
+		}
 	}
 	
+	protected void createIssueGroupingActions(
+			Action action,
+			BiConsumer<EObject,Action> registry, 
+			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
+			ProgressMonitor progressMonitor) throws Exception {
+		
+		T engineer = getTarget();
+		EList<IssueCategory> issueCategories = engineer.getIssueCategories();
+		EList<IssuePriority> issuePriorities = engineer.getIssuePriorities();
+		EList<IssueSeverity> issueSeverities = engineer.getIssueSeverities();
+		EList<IssueStatus> issueStatuses = engineer.getIssueStatuses();
+		
+		if (issueCategories.isEmpty() 
+				&& issuePriorities.isEmpty()
+				&& issueSeverities.isEmpty()
+				&& issueStatuses.isEmpty()) {
+			return;
+		}
+
+		Action root = AppFactory.eINSTANCE.createAction();
+		root.setText("Issue");
+		root.setUuid(action.getUuid() + "-issue");
+		action.getNavigation().add(root);
+		
+		if (!issueCategories.isEmpty()) {
+			Action group = AppFactory.eINSTANCE.createAction();
+			group.setText("Categories");
+			group.setUuid(root.getUuid() + "-categories");
+			group.setLocation("issue-categories.html");
+			EList<Action> groupAnonymous = group.getAnonymous();
+			for (IssueCategory issueCategory: issueCategories) {
+				groupAnonymous.add(createChildAction(issueCategory, registry, resolveConsumer, progressMonitor));
+			}
+		
+			root.getChildren().add(group);
+		}
+		
+		if (!issuePriorities.isEmpty()) {
+			Action group = AppFactory.eINSTANCE.createAction();
+			group.setText("Priorities");
+			group.setUuid(root.getUuid() + "-priorities");
+			group.setLocation("issue-priorities.html");
+			EList<Action> groupAnonymous = group.getAnonymous();
+			for (IssuePriority issuePriority: issuePriorities) {
+				groupAnonymous.add(createChildAction(issuePriority, registry, resolveConsumer, progressMonitor));
+			}
+		
+			root.getChildren().add(group);
+		}
+		
+		if (!issueSeverities.isEmpty()) {
+			Action group = AppFactory.eINSTANCE.createAction();
+			group.setText("Severities");
+			group.setUuid(root.getUuid() + "-severities");
+			group.setLocation("issue-severities.html");
+			EList<Action> groupAnonymous = group.getAnonymous();
+			for (IssueSeverity issueSeverity: issueSeverities) {
+				groupAnonymous.add(createChildAction(issueSeverity, registry, resolveConsumer, progressMonitor));
+			}
+		
+			root.getChildren().add(group);
+		}
+		
+		if (!issueStatuses.isEmpty()) {
+			Action group = AppFactory.eINSTANCE.createAction();
+			group.setText("Statuses");
+			group.setUuid(root.getUuid() + "-statuses");
+			group.setLocation("issue-statuses.html");
+			EList<Action> groupAnonymous = group.getAnonymous();
+			for (IssueStatus issueStatus: issueStatuses) {
+				groupAnonymous.add(createChildAction(issueStatus, registry, resolveConsumer, progressMonitor));
+			}
+		
+			root.getChildren().add(group);
+		}
+	}
+		
 	@Override
 	protected void resolve(
 			Action action, 
@@ -96,11 +182,104 @@ public class EngineerActionProvider<T extends Engineer> extends PersonaActionPro
 			ProgressMonitor progressMonitor) throws Exception {
 		super.resolve(action, context, progressMonitor);
 		
-		EList<Persona> personas = getTarget().getPersonas();
+		T engineer = getTarget();
+		EList<Persona> personas = engineer.getPersonas();
 		if (!personas.isEmpty()) {
-			Action personasAction = (Action) action.getNavigation().get(0);
-			personasAction.getContent().add(renderList(personas, true, null, action, EngineeringPackage.Literals.ENGINEER__PERSONAS, context, progressMonitor)); // Table?
+			String personaGroupUUID = action.getUuid() + "-personas";
+			Optional<Action> personasActionOptional = action.getNavigation().stream()
+					.filter(Action.class::isInstance)					
+					.map(Action.class::cast)
+					.filter(a -> personaGroupUUID.equals(a.getUuid()))
+					.findFirst();
+			
+			Action personasAction = personasActionOptional.get();
+			personasAction.getContent().add(renderList(personas, true, null, personasAction, EngineeringPackage.Literals.ENGINEER__PERSONAS, context, progressMonitor)); // Table?
 		}
+		
+		String issueGroupUUID = action.getUuid() + "-issue";
+		Optional<Action> issueGroupOptional = action.getNavigation().stream()
+				.filter(Action.class::isInstance)					
+				.map(Action.class::cast)
+				.filter(a -> issueGroupUUID.equals(a.getUuid()))
+				.findFirst();
+		
+		if (issueGroupOptional.isPresent()) {
+			Action issueGroup = issueGroupOptional.get();
+			
+			EList<IssueCategory> issueCategories = engineer.getIssueCategories();
+			if (!issueCategories.isEmpty()) {
+				String issueCategoriesUUID = issueGroup.getUuid() + "-categories";
+				Optional<Action> issueCategoriesActionOptional = issueGroup.getChildren().stream()
+						.filter(Action.class::isInstance)					
+						.map(Action.class::cast)
+						.filter(a -> issueCategoriesUUID.equals(a.getUuid()))
+						.findFirst();
+								
+				Action issueCategoriesAction = issueCategoriesActionOptional.get();
+				issueCategoriesAction.getContent().add(renderList(issueCategories, false, createIssueCategoryChildrenProvider(), issueCategoriesAction, EngineeringPackage.Literals.ENGINEER__ISSUE_CATEGORIES, context, progressMonitor)); // Table?
+			}
+			
+			EList<IssuePriority> issuePriorities = engineer.getIssuePriorities();
+			if (!issuePriorities.isEmpty()) {
+				String issuePrioritiesUUID = issueGroup.getUuid() + "-priorities";
+				Optional<Action> issuePrioritiesActionOptional = issueGroup.getChildren().stream()
+						.filter(Action.class::isInstance)					
+						.map(Action.class::cast)
+						.filter(a -> issuePrioritiesUUID.equals(a.getUuid()))
+						.findFirst();
+				
+				Action issuePrioritiesAction = issuePrioritiesActionOptional.get();
+				issuePrioritiesAction.getContent().add(renderList(issuePriorities, false, null, issuePrioritiesAction, EngineeringPackage.Literals.ENGINEER__ISSUE_PRIORITIES, context, progressMonitor)); // Table?
+			}
+			
+			EList<IssueSeverity> issueSeverities = engineer.getIssueSeverities();
+			if (!issueSeverities.isEmpty()) {
+				String issueSeveritiesUUID = issueGroup.getUuid() + "-severities";
+				Optional<Action> issueSeveritiesActionOptional = issueGroup.getChildren().stream()
+						.filter(Action.class::isInstance)					
+						.map(Action.class::cast)
+						.filter(a -> issueSeveritiesUUID.equals(a.getUuid()))
+						.findFirst();
+				
+				Action issueSeveritiesAction = issueSeveritiesActionOptional.get();
+				issueSeveritiesAction.getContent().add(renderList(issueSeverities, false, null, issueSeveritiesAction, EngineeringPackage.Literals.ENGINEER__ISSUE_SEVERITIES, context, progressMonitor)); // Table?
+			}
+			
+			EList<IssueStatus> issueStatuses = engineer.getIssueStatuses();
+			if (!issueStatuses.isEmpty()) {
+				String issueStatusesUUID = issueGroup.getUuid() + "-statuses";
+				Optional<Action> issueStatusesActionOptional = issueGroup.getChildren().stream()
+						.filter(Action.class::isInstance)					
+						.map(Action.class::cast)
+						.filter(a -> issueStatusesUUID.equals(a.getUuid()))
+						.findFirst();
+				
+				Action issueStatusesAction = issueStatusesActionOptional.get();
+				issueStatusesAction.getContent().add(renderList(issueStatuses, false, null, issueStatusesAction, EngineeringPackage.Literals.ENGINEER__ISSUE_STATUSES, context, progressMonitor)); // Table?
+			}
+		}		
+		
+	}
+
+	private ContentProvider<IssueCategory> createIssueCategoryChildrenProvider() {
+		return new ContentProvider<IssueCategory>() {
+
+			@Override
+			public List<EObject> createContent(
+					IssueCategory element, 
+					Action base, 
+					ETypedElement typedElement,
+					org.nasdanika.html.emf.EObjectActionResolver.Context context, 
+					ProgressMonitor progressMonitor) throws Exception {
+				
+				EList<IssueCategory> children = element.getChildren();
+				if (children.isEmpty()) {
+					return null;
+				}
+				return Collections.singletonList(renderList(children, true, this, base, EngineeringPackage.Literals.ISSUE_CATEGORY__CHILDREN, context, progressMonitor));
+			}
+			
+		};
 	}
 		
 }

@@ -11,7 +11,7 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
       <details key="constraints" value="path"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="path" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="path" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Resources associated with the element, e.g. documentation."/>
       </eAnnotations>
@@ -71,39 +71,6 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Period" eSuperTypes="../../org.nasdanika.ncore/model/ncore.ecore#//ModelElement">
-    <eAnnotations source="urn:org.nasdanika">
-      <details key="documentation-reference" value="doc/period.md"/>
-    </eAnnotations>
-    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="start_end"/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="start" eType="ecore:EClass ../../org.nasdanika.ncore/model/ncore.ecore#//Temporal"
-        containment="true">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Period start."/>
-      </eAnnotations>
-      <eAnnotations source="urn:org.nasdanika">
-        <details key="homogenous" value="true"/>
-        <details key="strict-containment" value="true"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="end" eType="ecore:EClass ../../org.nasdanika.ncore/model/ncore.ecore#//Temporal"
-        containment="true">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Period end."/>
-      </eAnnotations>
-      <eAnnotations source="urn:org.nasdanika">
-        <details key="homogenous" value="true"/>
-        <details key="strict-containment" value="true"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="duration" eType="ecore:EDataType ../../org.nasdanika.ncore/model/ncore.ecore#//Duration">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Positive period duration in [ISO-8601 durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) format. E.g. ``P1M`` for one month or ``P20D`` for 20 days."/>
-      </eAnnotations>
-    </eStructuralFeatures>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NamedElement" eSuperTypes="#//ModelElement ../../org.nasdanika.ncore/model/ncore.ecore#//NamedElement">
     <eAnnotations source="urn:org.nasdanika">
       <details key="documentation-reference" value="doc/named-element.md"/>
@@ -129,7 +96,7 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Endeavor" eSuperTypes="#//Period #//Alignable">
+  <eClassifiers xsi:type="ecore:EClass" name="Endeavor" eSuperTypes="#//ModelElement ../../org.nasdanika.ncore/model/ncore.ecore#//Period #//Alignable">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
       <details key="constraints" value="capacity children"/>
     </eAnnotations>
@@ -137,7 +104,7 @@
       <details key="documentation-reference" value="doc/endeavor.md"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="completion" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
-        changeable="false" derived="true">
+        changeable="false" transient="true" derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Number between 0 and 1."/>
       </eAnnotations>
@@ -160,7 +127,7 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="allIssues" upperBound="-1"
-        eType="#//Issue" changeable="false" derived="true">
+        eType="#//Issue" changeable="false" transient="true" derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Issues scheduled to work on in this increment directly or indirectly via [releases](Release.html) and [features](Feature.html)."/>
       </eAnnotations>
@@ -187,7 +154,7 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="allObjectives" upperBound="-1"
-        eType="#//Objective" derived="true">
+        eType="#//Objective" transient="true" derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="All objectives for this endeavor - a union of objectives and linkedObjectives."/>
       </eAnnotations>
@@ -247,6 +214,15 @@
         eType="#//Allocation" changeable="false" derived="true" eOpposite="#//Allocation/category">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Allocations for this category."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
+        eType="#//IssueCategory" containment="true" eKeys="#//ModelElement/path">
+      <eAnnotations source="urn:org.nasdanika">
+        <details key="homogenous" value="true"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Issue categories can form a hierarchy."/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
@@ -359,7 +335,7 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="workable" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        changeable="false" derived="true">
+        changeable="false" transient="true" derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Issue is workable if it doesn't have any unavailable required capabilities."/>
       </eAnnotations>
@@ -480,7 +456,7 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="EngineeredElement" abstract="true" eSuperTypes="#//Forum #//Period">
+  <eClassifiers xsi:type="ecore:EClass" name="EngineeredElement" abstract="true" eSuperTypes="#//Forum ../../org.nasdanika.ncore/model/ncore.ecore#//Period">
     <eAnnotations source="urn:org.nasdanika">
       <details key="documentation-reference" value="doc/engineered-element.md"/>
     </eAnnotations>
@@ -488,7 +464,7 @@
       <details key="constraints" value="capacity"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="issues" upperBound="-1"
-        eType="#//Issue" containment="true">
+        eType="#//Issue" containment="true" eKeys="#//ModelElement/path">
       <eAnnotations source="urn:org.nasdanika">
         <details key="homogenous" value="true"/>
       </eAnnotations>
@@ -518,7 +494,7 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="principles" upperBound="-1"
-        eType="#//Principle" containment="true">
+        eType="#//Principle" containment="true" eKeys="#//ModelElement/path">
       <eAnnotations source="urn:org.nasdanika">
         <details key="homogenous" value="true"/>
       </eAnnotations>
@@ -527,7 +503,7 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="allIssues" upperBound="-1"
-        eType="#//Issue" changeable="false" derived="true">
+        eType="#//Issue" changeable="false" transient="true" derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Issues (work items) for this element."/>
       </eAnnotations>
@@ -638,7 +614,7 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="issueCategories" upperBound="-1"
-        eType="#//IssueCategory" containment="true">
+        eType="#//IssueCategory" containment="true" eKeys="#//ModelElement/path">
       <eAnnotations source="urn:org.nasdanika">
         <details key="homogenous" value="true"/>
         <details key="strict-containment" value="true"/>
@@ -648,7 +624,7 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="issueStatuses" upperBound="-1"
-        eType="#//IssueStatus" containment="true">
+        eType="#//IssueStatus" containment="true" eKeys="#//ModelElement/path">
       <eAnnotations source="urn:org.nasdanika">
         <details key="homogenous" value="true"/>
         <details key="strict-containment" value="true"/>
@@ -658,7 +634,7 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="issuePriorities" upperBound="-1"
-        eType="#//IssuePriority" containment="true">
+        eType="#//IssuePriority" containment="true" eKeys="#//ModelElement/path">
       <eAnnotations source="urn:org.nasdanika">
         <details key="homogenous" value="true"/>
         <details key="strict-containment" value="true"/>
@@ -668,7 +644,7 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="issueSeverities" upperBound="-1"
-        eType="#//IssueSeverity" containment="true">
+        eType="#//IssueSeverity" containment="true" eKeys="#//ModelElement/path">
       <eAnnotations source="urn:org.nasdanika">
         <details key="homogenous" value="true"/>
         <details key="strict-containment" value="true"/>
@@ -764,7 +740,7 @@
       <details key="type-code" value="d"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="releases" upperBound="-1"
-        eType="#//Release" containment="true">
+        eType="#//Release" containment="true" eKeys="#//ModelElement/path">
       <eAnnotations source="urn:org.nasdanika">
         <details key="homogenous" value="true"/>
         <details key="strict-containment" value="true"/>
@@ -774,7 +750,7 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="features" upperBound="-1"
-        eType="#//Feature" containment="true">
+        eType="#//Feature" containment="true" eKeys="#//ModelElement/path">
       <eAnnotations source="urn:org.nasdanika">
         <details key="homogenous" value="true"/>
         <details key="strict-containment" value="true"/>
@@ -793,7 +769,7 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Capability" eSuperTypes="#//NamedElement #//Period">
+  <eClassifiers xsi:type="ecore:EClass" name="Capability" eSuperTypes="#//NamedElement ../../org.nasdanika.ncore/model/ncore.ecore#//Period">
     <eAnnotations source="urn:org.nasdanika">
       <details key="documentation-reference" value="doc/capability.md"/>
     </eAnnotations>
@@ -866,6 +842,12 @@
         changeable="false" derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Activities using this feature."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
+        eType="#//Feature" containment="true" eKeys="#//ModelElement/path">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Features can be organized into a hierarchy."/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>

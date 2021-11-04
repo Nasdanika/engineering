@@ -72,6 +72,55 @@ public class EngineeringActionProviderAdapterFactory extends FlowActionProviderA
 					ActionProvider.class, 
 					this.getClass().getClassLoader(), 
 					e -> new GoalActionProvider(e, context)));
+		
+		registerAdapterFactory(
+				new FunctionAdapterFactory<ActionProvider, org.nasdanika.engineering.IssueCategory>(
+					EngineeringPackage.Literals.ISSUE_CATEGORY, 
+					ActionProvider.class, 
+					this.getClass().getClassLoader(), 
+					e -> new IssueCategoryActionProvider(e, context)));
+		
+		registerAdapterFactory(
+				new FunctionAdapterFactory<ActionProvider, org.nasdanika.engineering.IssuePriority>(
+					EngineeringPackage.Literals.ISSUE_PRIORITY, 
+					ActionProvider.class, 
+					this.getClass().getClassLoader(), 
+					e -> new IssuePriorityActionProvider(e, context)));
+		
+		registerAdapterFactory(
+				new FunctionAdapterFactory<ActionProvider, org.nasdanika.engineering.IssueSeverity>(
+					EngineeringPackage.Literals.ISSUE_SEVERITY, 
+					ActionProvider.class, 
+					this.getClass().getClassLoader(), 
+					e -> new IssueSeverityActionProvider(e, context)));
+		
+		registerAdapterFactory(
+				new FunctionAdapterFactory<ActionProvider, org.nasdanika.engineering.IssueStatus>(
+					EngineeringPackage.Literals.ISSUE_STATUS, 
+					ActionProvider.class, 
+					this.getClass().getClassLoader(), 
+					e -> new IssueStatusActionProvider(e, context)));
+		
+		registerAdapterFactory(
+				new FunctionAdapterFactory<ActionProvider, org.nasdanika.engineering.Issue>(
+					EngineeringPackage.Literals.ISSUE, 
+					ActionProvider.class, 
+					this.getClass().getClassLoader(), 
+					e -> new IssueActionProvider(e, context)));
+		
+		registerAdapterFactory(
+				new FunctionAdapterFactory<ActionProvider, org.nasdanika.engineering.Feature>(
+					EngineeringPackage.Literals.FEATURE, 
+					ActionProvider.class, 
+					this.getClass().getClassLoader(), 
+					e -> new FeatureActionProvider(e, context)));
+		
+		registerAdapterFactory(
+				new FunctionAdapterFactory<ActionProvider, org.nasdanika.engineering.Release>(
+					EngineeringPackage.Literals.RELEASE, 
+					ActionProvider.class, 
+					this.getClass().getClassLoader(), 
+					e -> new ReleaseActionProvider(e, context)));
 			
 	}
 			

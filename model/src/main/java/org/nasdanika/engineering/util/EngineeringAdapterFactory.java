@@ -41,13 +41,13 @@ import org.nasdanika.engineering.NamedElementReference;
 import org.nasdanika.engineering.Note;
 import org.nasdanika.engineering.Objective;
 import org.nasdanika.engineering.Organization;
-import org.nasdanika.engineering.Period;
 import org.nasdanika.engineering.Persona;
 import org.nasdanika.engineering.Principle;
 import org.nasdanika.engineering.Product;
 import org.nasdanika.engineering.Release;
 import org.nasdanika.engineering.TableOfContents;
 import org.nasdanika.engineering.Topic;
+import org.nasdanika.ncore.Period;
 import org.nasdanika.ncore.Temporal;
 
 /**
@@ -113,10 +113,6 @@ public class EngineeringAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseTableOfContents(TableOfContents object) {
 				return createTableOfContentsAdapter();
-			}
-			@Override
-			public Adapter casePeriod(Period object) {
-				return createPeriodAdapter();
 			}
 			@Override
 			public Adapter caseNamedElement(NamedElement object) {
@@ -291,6 +287,10 @@ public class EngineeringAdapterFactory extends AdapterFactoryImpl {
 				return createTemporalAdapter();
 			}
 			@Override
+			public Adapter casePeriod(Period object) {
+				return createPeriodAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -395,13 +395,13 @@ public class EngineeringAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.Period <em>Period</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.ncore.Period <em>Period</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.nasdanika.engineering.Period
+	 * @see org.nasdanika.ncore.Period
 	 * @generated
 	 */
 	public Adapter createPeriodAdapter() {

@@ -3,6 +3,7 @@
 package org.nasdanika.engineering;
 
 import org.eclipse.emf.common.util.EList;
+import org.nasdanika.ncore.Period;
 
 /**
  * <!-- begin-user-doc -->
@@ -29,7 +30,7 @@ import org.eclipse.emf.common.util.EList;
  *        annotation="urn:org.nasdanika documentation-reference='doc/endeavor.md'"
  * @generated
  */
-public interface Endeavor extends Period, Alignable {
+public interface Endeavor extends ModelElement, Period, Alignable {
 	/**
 	 * Returns the value of the '<em><b>Completion</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -39,7 +40,7 @@ public interface Endeavor extends Period, Alignable {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Completion</em>' attribute.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getEndeavor_Completion()
-	 * @model changeable="false" derived="true"
+	 * @model transient="true" changeable="false" derived="true"
 	 * @generated
 	 */
 	double getCompletion();
@@ -120,7 +121,7 @@ public interface Endeavor extends Period, Alignable {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>All Issues</em>' reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getEndeavor_AllIssues()
-	 * @model changeable="false" derived="true"
+	 * @model transient="true" changeable="false" derived="true"
 	 * @generated
 	 */
 	EList<Issue> getAllIssues();
@@ -185,7 +186,7 @@ public interface Endeavor extends Period, Alignable {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>All Objectives</em>' reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getEndeavor_AllObjectives()
-	 * @model derived="true"
+	 * @model transient="true" derived="true"
 	 * @generated
 	 */
 	EList<Objective> getAllObjectives();

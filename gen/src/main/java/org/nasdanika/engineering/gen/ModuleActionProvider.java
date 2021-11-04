@@ -3,12 +3,14 @@ package org.nasdanika.engineering.gen;
 import java.util.Collections;
 import java.util.List;
 import java.util.function.BiConsumer;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.nasdanika.common.Context;
 import org.nasdanika.common.ProgressMonitor;
+import org.nasdanika.engineering.Product;
 import org.nasdanika.html.model.app.Action;
 import org.nasdanika.html.model.app.AppFactory;
 import org.nasdanika.ncore.util.NamedElementComparator;
@@ -25,6 +27,7 @@ public class ModuleActionProvider<T extends org.nasdanika.engineering.Module> ex
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
 			ProgressMonitor progressMonitor) throws Exception {
 		Action action = super.createAction(registry, resolveConsumer, progressMonitor);
+		action.setIcon("fas fa-cube");		
 		
 		EList<EObject> children = action.getChildren();
 		children.addAll(createModuleActions(registry, resolveConsumer, progressMonitor));
@@ -47,8 +50,9 @@ public class ModuleActionProvider<T extends org.nasdanika.engineering.Module> ex
 			return Collections.emptyList();
 		}
 		Action group = AppFactory.eINSTANCE.createAction();
-		group.setText("Modules");
-		// TODO - icon, ...
+		Predicate<org.nasdanika.engineering.Module> isProduct = Product.class::isInstance;			
+		group.setText(modules.stream().anyMatch(isProduct.negate()) ? "Modules" : "Products");
+		group.setIcon("fas fa-cubes");
 		EList<EObject> children = group.getChildren();
 		for (org.nasdanika.engineering.Module module: modules) {
 			children.add(createChildAction(module, registry, resolveConsumer, progressMonitor));

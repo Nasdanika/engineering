@@ -40,13 +40,13 @@ import org.nasdanika.engineering.NamedElementReference;
 import org.nasdanika.engineering.Note;
 import org.nasdanika.engineering.Objective;
 import org.nasdanika.engineering.Organization;
-import org.nasdanika.engineering.Period;
 import org.nasdanika.engineering.Persona;
 import org.nasdanika.engineering.Principle;
 import org.nasdanika.engineering.Product;
 import org.nasdanika.engineering.Release;
 import org.nasdanika.engineering.TableOfContents;
 import org.nasdanika.engineering.Topic;
+import org.nasdanika.ncore.Period;
 import org.nasdanika.ncore.Temporal;
 
 /**
@@ -122,16 +122,6 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case EngineeringPackage.PERIOD: {
-				Period period = (Period)theEObject;
-				T result = casePeriod(period);
-				if (result == null) result = caseNcore_ModelElement(period);
-				if (result == null) result = caseMarked(period);
-				if (result == null) result = caseAdaptable(period);
-				if (result == null) result = caseIMarked(period);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case EngineeringPackage.NAMED_ELEMENT: {
 				NamedElement namedElement = (NamedElement)theEObject;
 				T result = caseNamedElement(namedElement);
@@ -167,6 +157,7 @@ public class EngineeringSwitch<T> extends Switch<T> {
 			case EngineeringPackage.ENDEAVOR: {
 				Endeavor endeavor = (Endeavor)theEObject;
 				T result = caseEndeavor(endeavor);
+				if (result == null) result = caseModelElement(endeavor);
 				if (result == null) result = casePeriod(endeavor);
 				if (result == null) result = caseAlignable(endeavor);
 				if (result == null) result = caseNcore_ModelElement(endeavor);
@@ -733,6 +724,21 @@ public class EngineeringSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Period</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Period</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casePeriod(Period object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Model Element</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -759,21 +765,6 @@ public class EngineeringSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseTableOfContents(TableOfContents object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Period</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Period</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T casePeriod(Period object) {
 		return null;
 	}
 

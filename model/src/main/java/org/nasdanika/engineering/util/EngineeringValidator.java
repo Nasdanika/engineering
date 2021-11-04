@@ -42,7 +42,6 @@ import org.nasdanika.engineering.NamedElementReference;
 import org.nasdanika.engineering.Note;
 import org.nasdanika.engineering.Objective;
 import org.nasdanika.engineering.Organization;
-import org.nasdanika.engineering.Period;
 import org.nasdanika.engineering.Persona;
 import org.nasdanika.engineering.Principle;
 import org.nasdanika.engineering.Product;
@@ -136,8 +135,6 @@ public class EngineeringValidator extends EObjectValidator {
 				return validateModelElement((ModelElement)value, diagnostics, context);
 			case EngineeringPackage.TABLE_OF_CONTENTS:
 				return validateTableOfContents((TableOfContents)value, diagnostics, context);
-			case EngineeringPackage.PERIOD:
-				return validatePeriod((Period)value, diagnostics, context);
 			case EngineeringPackage.NAMED_ELEMENT:
 				return validateNamedElement((NamedElement)value, diagnostics, context);
 			case EngineeringPackage.EVENT:
@@ -278,53 +275,6 @@ public class EngineeringValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validatePeriod(Period period, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		if (!validate_NoCircularContainment(period, diagnostics, context)) return false;
-		boolean result = validate_EveryMultiplicityConforms(period, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(period, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(period, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(period, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryProxyResolves(period, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_UniqueID(period, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryKeyUnique(period, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(period, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePeriod_start_end(period, diagnostics, context);
-		return result;
-	}
-
-	/**
-	 * Validates the start_end constraint of '<em>Period</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validatePeriod_start_end(Period period, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		// TODO implement the constraint
-		// -> specify the condition that violates the constraint
-		// -> verify the diagnostic details, including severity, code, and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics.add
-					(createDiagnostic
-						(Diagnostic.ERROR,
-						 DIAGNOSTIC_SOURCE,
-						 0,
-						 "_UI_GenericConstraint_diagnostic",
-						 new Object[] { "start_end", getObjectLabel(period, context) },
-						 new Object[] { period },
-						 context));
-			}
-			return false;
-		}
-		return true;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public boolean validateNamedElement(NamedElement namedElement, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		if (!validate_NoCircularContainment(namedElement, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(namedElement, diagnostics, context);
@@ -384,7 +334,8 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_UniqueID(endeavor, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(endeavor, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(endeavor, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePeriod_start_end(endeavor, diagnostics, context);
+		if (result || diagnostics != null) result &= validateModelElement_path(endeavor, diagnostics, context);
+		if (result || diagnostics != null) result &= ncoreValidator.validatePeriod_start_end(endeavor, diagnostics, context);
 		if (result || diagnostics != null) result &= validateEndeavor_capacity(endeavor, diagnostics, context);
 		if (result || diagnostics != null) result &= validateEndeavor_children(endeavor, diagnostics, context);
 		return result;
@@ -462,7 +413,7 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(increment, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(increment, diagnostics, context);
 		if (result || diagnostics != null) result &= validateModelElement_path(increment, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePeriod_start_end(increment, diagnostics, context);
+		if (result || diagnostics != null) result &= ncoreValidator.validatePeriod_start_end(increment, diagnostics, context);
 		if (result || diagnostics != null) result &= validateEndeavor_capacity(increment, diagnostics, context);
 		if (result || diagnostics != null) result &= validateEndeavor_children(increment, diagnostics, context);
 		if (result || diagnostics != null) result &= validateIncrement_nesting(increment, diagnostics, context);
@@ -589,7 +540,7 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(issue, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(issue, diagnostics, context);
 		if (result || diagnostics != null) result &= validateModelElement_path(issue, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePeriod_start_end(issue, diagnostics, context);
+		if (result || diagnostics != null) result &= ncoreValidator.validatePeriod_start_end(issue, diagnostics, context);
 		if (result || diagnostics != null) result &= validateEndeavor_capacity(issue, diagnostics, context);
 		if (result || diagnostics != null) result &= validateEndeavor_children(issue, diagnostics, context);
 		if (result || diagnostics != null) result &= validateIssue_increment(issue, diagnostics, context);
@@ -678,7 +629,7 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(engineeredElement, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(engineeredElement, diagnostics, context);
 		if (result || diagnostics != null) result &= validateModelElement_path(engineeredElement, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePeriod_start_end(engineeredElement, diagnostics, context);
+		if (result || diagnostics != null) result &= ncoreValidator.validatePeriod_start_end(engineeredElement, diagnostics, context);
 		if (result || diagnostics != null) result &= validateEngineeredElement_capacity(engineeredElement, diagnostics, context);
 		return result;
 	}
@@ -727,7 +678,7 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(document, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(document, diagnostics, context);
 		if (result || diagnostics != null) result &= validateModelElement_path(document, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePeriod_start_end(document, diagnostics, context);
+		if (result || diagnostics != null) result &= ncoreValidator.validatePeriod_start_end(document, diagnostics, context);
 		if (result || diagnostics != null) result &= validateEngineeredElement_capacity(document, diagnostics, context);
 		return result;
 	}
@@ -748,7 +699,7 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(persona, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(persona, diagnostics, context);
 		if (result || diagnostics != null) result &= validateModelElement_path(persona, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePeriod_start_end(persona, diagnostics, context);
+		if (result || diagnostics != null) result &= ncoreValidator.validatePeriod_start_end(persona, diagnostics, context);
 		if (result || diagnostics != null) result &= validateEngineeredElement_capacity(persona, diagnostics, context);
 		return result;
 	}
@@ -829,7 +780,7 @@ public class EngineeringValidator extends EObjectValidator {
 			}
 			return false;
 		}
-		return validatePeriod_start_end(engineer, diagnostics, context);
+		return ncoreValidator.validatePeriod_start_end(engineer, diagnostics, context);
 	}
 
 	/**
@@ -869,7 +820,7 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(module, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(module, diagnostics, context);
 		if (result || diagnostics != null) result &= validateModelElement_path(module, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePeriod_start_end(module, diagnostics, context);
+		if (result || diagnostics != null) result &= ncoreValidator.validatePeriod_start_end(module, diagnostics, context);
 		if (result || diagnostics != null) result &= validateEngineeredElement_capacity(module, diagnostics, context);
 		return result;
 	}
@@ -890,7 +841,7 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(product, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(product, diagnostics, context);
 		if (result || diagnostics != null) result &= validateModelElement_path(product, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePeriod_start_end(product, diagnostics, context);
+		if (result || diagnostics != null) result &= ncoreValidator.validatePeriod_start_end(product, diagnostics, context);
 		if (result || diagnostics != null) result &= validateEngineeredElement_capacity(product, diagnostics, context);
 		return result;
 	}
@@ -911,7 +862,7 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(capability, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(capability, diagnostics, context);
 		if (result || diagnostics != null) result &= validateModelElement_path(capability, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePeriod_start_end(capability, diagnostics, context);
+		if (result || diagnostics != null) result &= ncoreValidator.validatePeriod_start_end(capability, diagnostics, context);
 		return result;
 	}
 
@@ -931,7 +882,7 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(engineeredCapability, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(engineeredCapability, diagnostics, context);
 		if (result || diagnostics != null) result &= validateModelElement_path(engineeredCapability, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePeriod_start_end(engineeredCapability, diagnostics, context);
+		if (result || diagnostics != null) result &= ncoreValidator.validatePeriod_start_end(engineeredCapability, diagnostics, context);
 		if (result || diagnostics != null) result &= validateEndeavor_capacity(engineeredCapability, diagnostics, context);
 		if (result || diagnostics != null) result &= validateEndeavor_children(engineeredCapability, diagnostics, context);
 		return result;
@@ -953,7 +904,7 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(release, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(release, diagnostics, context);
 		if (result || diagnostics != null) result &= validateModelElement_path(release, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePeriod_start_end(release, diagnostics, context);
+		if (result || diagnostics != null) result &= ncoreValidator.validatePeriod_start_end(release, diagnostics, context);
 		if (result || diagnostics != null) result &= validateEndeavor_capacity(release, diagnostics, context);
 		if (result || diagnostics != null) result &= validateEndeavor_children(release, diagnostics, context);
 		if (result || diagnostics != null) result &= validateRelease_increment(release, diagnostics, context);
@@ -1004,7 +955,7 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(feature, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(feature, diagnostics, context);
 		if (result || diagnostics != null) result &= validateModelElement_path(feature, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePeriod_start_end(feature, diagnostics, context);
+		if (result || diagnostics != null) result &= ncoreValidator.validatePeriod_start_end(feature, diagnostics, context);
 		if (result || diagnostics != null) result &= validateEndeavor_capacity(feature, diagnostics, context);
 		if (result || diagnostics != null) result &= validateEndeavor_children(feature, diagnostics, context);
 		return result;
@@ -1026,7 +977,7 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(directory, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(directory, diagnostics, context);
 		if (result || diagnostics != null) result &= validateModelElement_path(directory, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePeriod_start_end(directory, diagnostics, context);
+		if (result || diagnostics != null) result &= ncoreValidator.validatePeriod_start_end(directory, diagnostics, context);
 		if (result || diagnostics != null) result &= validateEngineeredElement_capacity(directory, diagnostics, context);
 		return result;
 	}
@@ -1275,7 +1226,7 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(decision, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(decision, diagnostics, context);
 		if (result || diagnostics != null) result &= validateModelElement_path(decision, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePeriod_start_end(decision, diagnostics, context);
+		if (result || diagnostics != null) result &= ncoreValidator.validatePeriod_start_end(decision, diagnostics, context);
 		if (result || diagnostics != null) result &= validateEndeavor_capacity(decision, diagnostics, context);
 		if (result || diagnostics != null) result &= validateEndeavor_children(decision, diagnostics, context);
 		if (result || diagnostics != null) result &= validateIssue_increment(decision, diagnostics, context);

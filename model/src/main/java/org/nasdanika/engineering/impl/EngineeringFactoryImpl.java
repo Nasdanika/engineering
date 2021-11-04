@@ -38,7 +38,6 @@ import org.nasdanika.engineering.NamedElementReference;
 import org.nasdanika.engineering.Note;
 import org.nasdanika.engineering.Objective;
 import org.nasdanika.engineering.Organization;
-import org.nasdanika.engineering.Period;
 import org.nasdanika.engineering.Persona;
 import org.nasdanika.engineering.Principle;
 import org.nasdanika.engineering.Product;
@@ -91,7 +90,6 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case EngineeringPackage.TABLE_OF_CONTENTS: return createTableOfContents();
-			case EngineeringPackage.PERIOD: return createPeriod();
 			case EngineeringPackage.NAMED_ELEMENT: return createNamedElement();
 			case EngineeringPackage.EVENT: return createEvent();
 			case EngineeringPackage.ENDEAVOR: return createEndeavor();
@@ -141,17 +139,6 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 	public TableOfContents createTableOfContents() {
 		TableOfContentsImpl tableOfContents = new TableOfContentsImpl();
 		return tableOfContents;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Period createPeriod() {
-		PeriodImpl period = new PeriodImpl();
-		return period;
 	}
 
 	/**

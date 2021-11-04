@@ -22,11 +22,6 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//TableOfContents/depth"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//TableOfContents/header"/>
     </genClasses>
-    <genClasses ecoreClass="engineering.ecore#//Period">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//Period/start"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//Period/end"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Period/duration"/>
-    </genClasses>
     <genClasses image="false" ecoreClass="engineering.ecore#//NamedElement"/>
     <genClasses ecoreClass="engineering.ecore#//Event"/>
     <genClasses image="false" ecoreClass="engineering.ecore#//Alignable">
@@ -53,6 +48,7 @@
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference engineering.ecore#//IssueCategory/issues"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//IssueCategory/cumulative"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference engineering.ecore#//IssueCategory/allocations"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//IssueCategory/children"/>
     </genClasses>
     <genClasses ecoreClass="engineering.ecore#//IssueStatus">
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference engineering.ecore#//IssueStatus/issues"/>
@@ -160,6 +156,7 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//Feature/activities"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference engineering.ecore#//Feature/issues"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference engineering.ecore#//Feature/uses"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//Feature/children"/>
     </genClasses>
     <genClasses ecoreClass="engineering.ecore#//Directory">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//Directory/elements"/>

@@ -10,13 +10,13 @@ import org.eclipse.emf.ecore.ETypedElement;
 import org.nasdanika.common.Context;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.engineering.EngineeringPackage;
-import org.nasdanika.engineering.Goal;
+import org.nasdanika.engineering.IssueCategory;
 import org.nasdanika.html.model.app.Action;
 import org.nasdanika.html.model.app.AppFactory;
 
-public class GoalActionProvider extends AimActionProvider<Goal> {
+public class IssueCategoryActionProvider extends AimActionProvider<IssueCategory> {
 	
-	public GoalActionProvider(Goal target, Context context) {
+	public IssueCategoryActionProvider(IssueCategory target, Context context) {
 		super(target, context);		
 	}
 	
@@ -37,15 +37,15 @@ public class GoalActionProvider extends AimActionProvider<Goal> {
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
 			ProgressMonitor progressMonitor) throws Exception {
 		
-		List<Goal> children = getTarget().getChildren();
+		List<IssueCategory> children = getTarget().getChildren();
 		if (children.isEmpty()) {
 			return Collections.emptyList();
 		}
 		Action group = AppFactory.eINSTANCE.createAction();
-		group.setText("Children");
+		group.setText("Sub-categories");
 		EList<Action> groupAnonymous = group.getAnonymous();
-		for (Goal goal: children) {
-			groupAnonymous.add(createChildAction(goal, registry, resolveConsumer, progressMonitor));
+		for (IssueCategory subCategory: children) {
+			groupAnonymous.add(createChildAction(subCategory, registry, resolveConsumer, progressMonitor));
 		}
 		
 		return Collections.singletonList(group);
@@ -58,33 +58,32 @@ public class GoalActionProvider extends AimActionProvider<Goal> {
 			ProgressMonitor progressMonitor) throws Exception {
 		super.resolve(action, context, progressMonitor);
 		
-		EList<Goal> children = getTarget().getChildren();
+		EList<IssueCategory> children = getTarget().getChildren();
 		if (!children.isEmpty()) {
-			Action childrenAction = (Action) action.getSections().get(0);			
-			childrenAction.getContent().add(renderList(children, true, createGoalChildrenListProvider(), childrenAction, EngineeringPackage.Literals.PERSONA__GOALS, context, progressMonitor));
-		}
-	}
+			Action childrenAction = (Action) action.getSections().get(0);
+			ContentProvider<IssueCategory> issueCategoryChildrenListProvider = new ContentProvider<IssueCategory>() {
 
-	protected ContentProvider<Goal> createGoalChildrenListProvider() {
-		ContentProvider<Goal> goalChildrenListProvider = new ContentProvider<Goal>() {
-
-			@Override
-			public List<EObject> createContent(
-					Goal element, 
-					Action base, 
-					ETypedElement typedElement,
-					org.nasdanika.html.emf.EObjectActionResolver.Context context, 
-					ProgressMonitor progressMonitor) throws Exception {
-				
-				EList<Goal> children = element.getChildren();
-				if (children.isEmpty()) {
-					return null;
+				@Override
+				public List<EObject> createContent(
+						IssueCategory element, 
+						Action base, 
+						ETypedElement typedElement,
+						org.nasdanika.html.emf.EObjectActionResolver.Context context, 
+						ProgressMonitor progressMonitor) throws Exception {
+					
+					EList<IssueCategory> children = element.getChildren();
+					if (children.isEmpty()) {
+						return null;
+					}
+					return Collections.singletonList(renderList(children, true, this, base, EngineeringPackage.Literals.ISSUE_CATEGORY__CHILDREN, context, progressMonitor));
 				}
-				return Collections.singletonList(renderList(children, true, this, base, EngineeringPackage.Literals.GOAL__CHILDREN, context, progressMonitor));
-			}
+				
+			};
 			
-		};
-		return goalChildrenListProvider;
+			childrenAction.getContent().add(renderList(children, true, issueCategoryChildrenListProvider, action, EngineeringPackage.Literals.ENGINEER__ISSUE_CATEGORIES, context, progressMonitor));
+		}
+		
+		// TODO - issues
 	}
 	
 }

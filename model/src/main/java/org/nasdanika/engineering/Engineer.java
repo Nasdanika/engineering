@@ -162,7 +162,7 @@ public interface Engineer extends Persona {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Issue Categories</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getEngineer_IssueCategories()
-	 * @model containment="true"
+	 * @model containment="true" keys="path"
 	 *        annotation="urn:org.nasdanika homogenous='true' strict-containment='true'"
 	 * @generated
 	 */
@@ -178,7 +178,7 @@ public interface Engineer extends Persona {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Issue Statuses</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getEngineer_IssueStatuses()
-	 * @model containment="true"
+	 * @model containment="true" keys="path"
 	 *        annotation="urn:org.nasdanika homogenous='true' strict-containment='true'"
 	 * @generated
 	 */
@@ -194,7 +194,7 @@ public interface Engineer extends Persona {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Issue Priorities</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getEngineer_IssuePriorities()
-	 * @model containment="true"
+	 * @model containment="true" keys="path"
 	 *        annotation="urn:org.nasdanika homogenous='true' strict-containment='true'"
 	 * @generated
 	 */
@@ -210,7 +210,7 @@ public interface Engineer extends Persona {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Issue Severities</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getEngineer_IssueSeverities()
-	 * @model containment="true"
+	 * @model containment="true" keys="path"
 	 *        annotation="urn:org.nasdanika homogenous='true' strict-containment='true'"
 	 * @generated
 	 */

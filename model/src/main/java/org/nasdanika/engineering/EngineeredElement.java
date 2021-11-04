@@ -3,6 +3,7 @@
 package org.nasdanika.engineering;
 
 import org.eclipse.emf.common.util.EList;
+import org.nasdanika.ncore.Period;
 
 /**
  * <!-- begin-user-doc -->
@@ -38,7 +39,7 @@ public interface EngineeredElement extends Forum, Period {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Issues</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getEngineeredElement_Issues()
-	 * @model containment="true"
+	 * @model containment="true" keys="path"
 	 *        annotation="urn:org.nasdanika homogenous='true'"
 	 * @generated
 	 */
@@ -104,7 +105,7 @@ public interface EngineeredElement extends Forum, Period {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Principles</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getEngineeredElement_Principles()
-	 * @model containment="true"
+	 * @model containment="true" keys="path"
 	 *        annotation="urn:org.nasdanika homogenous='true'"
 	 * @generated
 	 */
@@ -120,7 +121,7 @@ public interface EngineeredElement extends Forum, Period {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>All Issues</em>' reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getEngineeredElement_AllIssues()
-	 * @model changeable="false" derived="true"
+	 * @model transient="true" changeable="false" derived="true"
 	 * @generated
 	 */
 	EList<Issue> getAllIssues();

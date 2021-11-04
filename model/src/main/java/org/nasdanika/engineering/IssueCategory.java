@@ -17,6 +17,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.nasdanika.engineering.IssueCategory#getIssues <em>Issues</em>}</li>
  *   <li>{@link org.nasdanika.engineering.IssueCategory#isCumulative <em>Cumulative</em>}</li>
  *   <li>{@link org.nasdanika.engineering.IssueCategory#getAllocations <em>Allocations</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.IssueCategory#getChildren <em>Children</em>}</li>
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getIssueCategory()
@@ -107,5 +108,21 @@ public interface IssueCategory extends Aim {
 	 * @generated
 	 */
 	EList<Allocation> getAllocations();
+
+	/**
+	 * Returns the value of the '<em><b>Children</b></em>' containment reference list.
+	 * The list contents are of type {@link org.nasdanika.engineering.IssueCategory}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Issue categories can form a hierarchy.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Children</em>' containment reference list.
+	 * @see org.nasdanika.engineering.EngineeringPackage#getIssueCategory_Children()
+	 * @model containment="true" keys="path"
+	 *        annotation="urn:org.nasdanika homogenous='true'"
+	 * @generated
+	 */
+	EList<IssueCategory> getChildren();
 
 } // IssueCategory

@@ -2,6 +2,7 @@
  */
 package org.nasdanika.engineering.impl;
 
+import java.util.Collection;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
@@ -24,6 +25,7 @@ import org.nasdanika.engineering.IssueCategory;
  *   <li>{@link org.nasdanika.engineering.impl.IssueCategoryImpl#getIssues <em>Issues</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IssueCategoryImpl#isCumulative <em>Cumulative</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IssueCategoryImpl#getAllocations <em>Allocations</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.IssueCategoryImpl#getChildren <em>Children</em>}</li>
  * </ul>
  *
  * @generated
@@ -135,6 +137,17 @@ public class IssueCategoryImpl extends AimImpl implements IssueCategory {
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
+	public EList<IssueCategory> getChildren() {
+		return (EList<IssueCategory>)eDynamicGet(EngineeringPackage.ISSUE_CATEGORY__CHILDREN, EngineeringPackage.Literals.ISSUE_CATEGORY__CHILDREN, true, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case EngineeringPackage.ISSUE_CATEGORY__ISSUES:
@@ -157,6 +170,8 @@ public class IssueCategoryImpl extends AimImpl implements IssueCategory {
 				return ((InternalEList<?>)getIssues()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.ISSUE_CATEGORY__ALLOCATIONS:
 				return ((InternalEList<?>)getAllocations()).basicRemove(otherEnd, msgs);
+			case EngineeringPackage.ISSUE_CATEGORY__CHILDREN:
+				return ((InternalEList<?>)getChildren()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -177,6 +192,8 @@ public class IssueCategoryImpl extends AimImpl implements IssueCategory {
 				return isCumulative();
 			case EngineeringPackage.ISSUE_CATEGORY__ALLOCATIONS:
 				return getAllocations();
+			case EngineeringPackage.ISSUE_CATEGORY__CHILDREN:
+				return getChildren();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -186,6 +203,7 @@ public class IssueCategoryImpl extends AimImpl implements IssueCategory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -194,6 +212,10 @@ public class IssueCategoryImpl extends AimImpl implements IssueCategory {
 				return;
 			case EngineeringPackage.ISSUE_CATEGORY__CUMULATIVE:
 				setCumulative((Boolean)newValue);
+				return;
+			case EngineeringPackage.ISSUE_CATEGORY__CHILDREN:
+				getChildren().clear();
+				getChildren().addAll((Collection<? extends IssueCategory>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -212,6 +234,9 @@ public class IssueCategoryImpl extends AimImpl implements IssueCategory {
 				return;
 			case EngineeringPackage.ISSUE_CATEGORY__CUMULATIVE:
 				setCumulative(CUMULATIVE_EDEFAULT);
+				return;
+			case EngineeringPackage.ISSUE_CATEGORY__CHILDREN:
+				getChildren().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -233,6 +258,8 @@ public class IssueCategoryImpl extends AimImpl implements IssueCategory {
 				return isCumulative() != CUMULATIVE_EDEFAULT;
 			case EngineeringPackage.ISSUE_CATEGORY__ALLOCATIONS:
 				return !getAllocations().isEmpty();
+			case EngineeringPackage.ISSUE_CATEGORY__CHILDREN:
+				return !getChildren().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

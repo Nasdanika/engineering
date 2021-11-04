@@ -12,7 +12,9 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.nasdanika.engineering.Capability;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Issue;
-import org.nasdanika.engineering.Period;
+import org.nasdanika.engineering.util.EngineeringUtil;
+import org.nasdanika.ncore.NcorePackage;
+import org.nasdanika.ncore.Period;
 import org.nasdanika.ncore.Temporal;
 
 /**
@@ -78,7 +80,7 @@ public class CapabilityImpl extends NamedElementImpl implements Capability {
 	 */
 	@Override
 	public Temporal getStart() {
-		return (Temporal)eDynamicGet(EngineeringPackage.CAPABILITY__START, EngineeringPackage.Literals.PERIOD__START, true, true);
+		return (Temporal)eDynamicGet(EngineeringPackage.CAPABILITY__START, NcorePackage.Literals.PERIOD__START, true, true);
 	}
 
 	/**
@@ -98,8 +100,8 @@ public class CapabilityImpl extends NamedElementImpl implements Capability {
 	 */
 	@Override
 	public void setStart(Temporal newStart) {
-		eDynamicSet(EngineeringPackage.CAPABILITY__START, EngineeringPackage.Literals.PERIOD__START, newStart);
-		PeriodImpl.onStart(this, newStart);
+		eDynamicSet(EngineeringPackage.CAPABILITY__START, NcorePackage.Literals.PERIOD__START, newStart);
+		EngineeringUtil.onStart(this, newStart);
 	}
 
 	/**
@@ -109,7 +111,7 @@ public class CapabilityImpl extends NamedElementImpl implements Capability {
 	 */
 	@Override
 	public Temporal getEnd() {
-		return (Temporal)eDynamicGet(EngineeringPackage.CAPABILITY__END, EngineeringPackage.Literals.PERIOD__END, true, true);
+		return (Temporal)eDynamicGet(EngineeringPackage.CAPABILITY__END, NcorePackage.Literals.PERIOD__END, true, true);
 	}
 
 	/**
@@ -129,8 +131,8 @@ public class CapabilityImpl extends NamedElementImpl implements Capability {
 	 */
 	@Override
 	public void setEnd(Temporal newEnd) {
-		eDynamicSet(EngineeringPackage.CAPABILITY__END, EngineeringPackage.Literals.PERIOD__END, newEnd);
-		PeriodImpl.onEnd(this, newEnd);
+		eDynamicSet(EngineeringPackage.CAPABILITY__END, NcorePackage.Literals.PERIOD__END, newEnd);
+		EngineeringUtil.onEnd(this, newEnd);
 	}
 
 	/**
@@ -140,7 +142,7 @@ public class CapabilityImpl extends NamedElementImpl implements Capability {
 	 */
 	@Override
 	public Duration getDuration() {
-		return (Duration)eDynamicGet(EngineeringPackage.CAPABILITY__DURATION, EngineeringPackage.Literals.PERIOD__DURATION, true, true);
+		return (Duration)eDynamicGet(EngineeringPackage.CAPABILITY__DURATION, NcorePackage.Literals.PERIOD__DURATION, true, true);
 	}
 
 	/**
@@ -150,8 +152,8 @@ public class CapabilityImpl extends NamedElementImpl implements Capability {
 	 */
 	@Override
 	public void setDuration(Duration newDuration) {
-		eDynamicSet(EngineeringPackage.CAPABILITY__DURATION, EngineeringPackage.Literals.PERIOD__DURATION, newDuration);
-		PeriodImpl.onDuration(this, newDuration);
+		eDynamicSet(EngineeringPackage.CAPABILITY__DURATION, NcorePackage.Literals.PERIOD__DURATION, newDuration);
+		EngineeringUtil.onDuration(this, newDuration);
 	}
 
 	/**
@@ -318,9 +320,9 @@ public class CapabilityImpl extends NamedElementImpl implements Capability {
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == Period.class) {
 			switch (derivedFeatureID) {
-				case EngineeringPackage.CAPABILITY__START: return EngineeringPackage.PERIOD__START;
-				case EngineeringPackage.CAPABILITY__END: return EngineeringPackage.PERIOD__END;
-				case EngineeringPackage.CAPABILITY__DURATION: return EngineeringPackage.PERIOD__DURATION;
+				case EngineeringPackage.CAPABILITY__START: return NcorePackage.PERIOD__START;
+				case EngineeringPackage.CAPABILITY__END: return NcorePackage.PERIOD__END;
+				case EngineeringPackage.CAPABILITY__DURATION: return NcorePackage.PERIOD__DURATION;
 				default: return -1;
 			}
 		}
@@ -336,9 +338,9 @@ public class CapabilityImpl extends NamedElementImpl implements Capability {
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == Period.class) {
 			switch (baseFeatureID) {
-				case EngineeringPackage.PERIOD__START: return EngineeringPackage.CAPABILITY__START;
-				case EngineeringPackage.PERIOD__END: return EngineeringPackage.CAPABILITY__END;
-				case EngineeringPackage.PERIOD__DURATION: return EngineeringPackage.CAPABILITY__DURATION;
+				case NcorePackage.PERIOD__START: return EngineeringPackage.CAPABILITY__START;
+				case NcorePackage.PERIOD__END: return EngineeringPackage.CAPABILITY__END;
+				case NcorePackage.PERIOD__DURATION: return EngineeringPackage.CAPABILITY__DURATION;
 				default: return -1;
 			}
 		}

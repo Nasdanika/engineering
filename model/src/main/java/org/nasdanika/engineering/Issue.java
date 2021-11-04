@@ -152,7 +152,7 @@ public interface Issue extends EngineeredCapability {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Workable</em>' attribute.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getIssue_Workable()
-	 * @model changeable="false" derived="true"
+	 * @model transient="true" changeable="false" derived="true"
 	 * @generated
 	 */
 	boolean isWorkable();

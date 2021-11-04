@@ -19,6 +19,7 @@ import org.nasdanika.engineering.journey.Activity;
  *   <li>{@link org.nasdanika.engineering.Feature#getActivities <em>Activities</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Feature#getIssues <em>Issues</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Feature#getUses <em>Uses</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.Feature#getChildren <em>Children</em>}</li>
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getFeature()
@@ -89,5 +90,20 @@ public interface Feature extends EngineeredCapability {
 	 * @generated
 	 */
 	EList<Activity> getUses();
+
+	/**
+	 * Returns the value of the '<em><b>Children</b></em>' containment reference list.
+	 * The list contents are of type {@link org.nasdanika.engineering.Feature}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Features can be organized into a hierarchy.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Children</em>' containment reference list.
+	 * @see org.nasdanika.engineering.EngineeringPackage#getFeature_Children()
+	 * @model containment="true" keys="path"
+	 * @generated
+	 */
+	EList<Feature> getChildren();
 
 } // Feature
