@@ -1,7 +1,6 @@
 package org.nasdanika.engineering.gen;
 
 import org.nasdanika.common.Context;
-import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.Release;
 
 public class ReleaseActionProvider extends EngineeredCapabilityActionProvider<Release> {

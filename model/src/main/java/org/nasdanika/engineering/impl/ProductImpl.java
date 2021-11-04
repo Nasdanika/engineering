@@ -13,7 +13,6 @@ import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Feature;
 import org.nasdanika.engineering.Product;
 import org.nasdanika.engineering.Release;
-import org.nasdanika.engineering.journey.Activity;
 
 /**
  * <!-- begin-user-doc -->
@@ -25,7 +24,6 @@ import org.nasdanika.engineering.journey.Activity;
  * <ul>
  *   <li>{@link org.nasdanika.engineering.impl.ProductImpl#getReleases <em>Releases</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.ProductImpl#getFeatures <em>Features</em>}</li>
- *   <li>{@link org.nasdanika.engineering.impl.ProductImpl#getActivities <em>Activities</em>}</li>
  * </ul>
  *
  * @generated
@@ -77,17 +75,6 @@ public class ProductImpl extends ModuleImpl implements Product {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public EList<Activity> getActivities() {
-		return (EList<Activity>)eDynamicGet(EngineeringPackage.PRODUCT__ACTIVITIES, EngineeringPackage.Literals.PRODUCT__ACTIVITIES, true, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -95,8 +82,6 @@ public class ProductImpl extends ModuleImpl implements Product {
 				return ((InternalEList<?>)getReleases()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.PRODUCT__FEATURES:
 				return ((InternalEList<?>)getFeatures()).basicRemove(otherEnd, msgs);
-			case EngineeringPackage.PRODUCT__ACTIVITIES:
-				return ((InternalEList<?>)getActivities()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -113,8 +98,6 @@ public class ProductImpl extends ModuleImpl implements Product {
 				return getReleases();
 			case EngineeringPackage.PRODUCT__FEATURES:
 				return getFeatures();
-			case EngineeringPackage.PRODUCT__ACTIVITIES:
-				return getActivities();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -136,10 +119,6 @@ public class ProductImpl extends ModuleImpl implements Product {
 				getFeatures().clear();
 				getFeatures().addAll((Collection<? extends Feature>)newValue);
 				return;
-			case EngineeringPackage.PRODUCT__ACTIVITIES:
-				getActivities().clear();
-				getActivities().addAll((Collection<? extends Activity>)newValue);
-				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -158,9 +137,6 @@ public class ProductImpl extends ModuleImpl implements Product {
 			case EngineeringPackage.PRODUCT__FEATURES:
 				getFeatures().clear();
 				return;
-			case EngineeringPackage.PRODUCT__ACTIVITIES:
-				getActivities().clear();
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -177,8 +153,6 @@ public class ProductImpl extends ModuleImpl implements Product {
 				return !getReleases().isEmpty();
 			case EngineeringPackage.PRODUCT__FEATURES:
 				return !getFeatures().isEmpty();
-			case EngineeringPackage.PRODUCT__ACTIVITIES:
-				return !getActivities().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

@@ -7,6 +7,19 @@ engineering-organization:
     - engineering-product:
         path: core
         name: Core
+        releases:
+          - path: "0.1"
+            name: "0.1"
+          - path: "1.0"
+            name: "1.0"
+        features:
+          - path: f1
+            name: Feature 1
+            children: 
+              - path: sfa
+                name: Sub-feature A
+          - path: f2
+            name: Feature 2
         modules:
           - engineering-module:
               path: common
@@ -18,6 +31,7 @@ engineering-organization:
                   priority: engineering://nasdanika/issue-priorities/medium
                   severity: engineering://nasdanika/issue-severities/low
                   categories: engineering://nasdanika/issue-categories/development/children/back-end
+                  contributes-to: engineering://nasdanika/modules/core/features/f1/children/sfa
   personas:
     - path: java-developer
       name: Java Developer

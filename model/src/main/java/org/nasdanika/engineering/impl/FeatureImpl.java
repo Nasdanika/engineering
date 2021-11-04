@@ -15,7 +15,6 @@ import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Feature;
 import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.Release;
-import org.nasdanika.engineering.journey.Activity;
 
 /**
  * <!-- begin-user-doc -->
@@ -26,9 +25,7 @@ import org.nasdanika.engineering.journey.Activity;
  * </p>
  * <ul>
  *   <li>{@link org.nasdanika.engineering.impl.FeatureImpl#getReleases <em>Releases</em>}</li>
- *   <li>{@link org.nasdanika.engineering.impl.FeatureImpl#getActivities <em>Activities</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.FeatureImpl#getIssues <em>Issues</em>}</li>
- *   <li>{@link org.nasdanika.engineering.impl.FeatureImpl#getUses <em>Uses</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.FeatureImpl#getChildren <em>Children</em>}</li>
  * </ul>
  *
@@ -68,32 +65,11 @@ public class FeatureImpl extends EngineeredCapabilityImpl implements Feature {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public EList<Activity> getActivities() {
-		return (EList<Activity>)eDynamicGet(EngineeringPackage.FEATURE__ACTIVITIES, EngineeringPackage.Literals.FEATURE__ACTIVITIES, true, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
 	@Override
 	public EList<Issue> getIssues() {
 		return getOppositeReferrers(EngineeringPackage.Literals.FEATURE__ISSUES);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	@Override
-	public EList<Activity> getUses() {
-		return getOppositeReferrers(EngineeringPackage.Literals.FEATURE__USES);
 	}
 
 	/**
@@ -132,8 +108,6 @@ public class FeatureImpl extends EngineeredCapabilityImpl implements Feature {
 		switch (featureID) {
 			case EngineeringPackage.FEATURE__RELEASES:
 				return ((InternalEList<?>)getReleases()).basicRemove(otherEnd, msgs);
-			case EngineeringPackage.FEATURE__ACTIVITIES:
-				return ((InternalEList<?>)getActivities()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.FEATURE__CHILDREN:
 				return ((InternalEList<?>)getChildren()).basicRemove(otherEnd, msgs);
 		}
@@ -150,12 +124,8 @@ public class FeatureImpl extends EngineeredCapabilityImpl implements Feature {
 		switch (featureID) {
 			case EngineeringPackage.FEATURE__RELEASES:
 				return getReleases();
-			case EngineeringPackage.FEATURE__ACTIVITIES:
-				return getActivities();
 			case EngineeringPackage.FEATURE__ISSUES:
 				return getIssues();
-			case EngineeringPackage.FEATURE__USES:
-				return getUses();
 			case EngineeringPackage.FEATURE__CHILDREN:
 				return getChildren();
 		}
@@ -174,10 +144,6 @@ public class FeatureImpl extends EngineeredCapabilityImpl implements Feature {
 			case EngineeringPackage.FEATURE__RELEASES:
 				getReleases().clear();
 				getReleases().addAll((Collection<? extends Release>)newValue);
-				return;
-			case EngineeringPackage.FEATURE__ACTIVITIES:
-				getActivities().clear();
-				getActivities().addAll((Collection<? extends Activity>)newValue);
 				return;
 			case EngineeringPackage.FEATURE__CHILDREN:
 				getChildren().clear();
@@ -198,9 +164,6 @@ public class FeatureImpl extends EngineeredCapabilityImpl implements Feature {
 			case EngineeringPackage.FEATURE__RELEASES:
 				getReleases().clear();
 				return;
-			case EngineeringPackage.FEATURE__ACTIVITIES:
-				getActivities().clear();
-				return;
 			case EngineeringPackage.FEATURE__CHILDREN:
 				getChildren().clear();
 				return;
@@ -218,12 +181,8 @@ public class FeatureImpl extends EngineeredCapabilityImpl implements Feature {
 		switch (featureID) {
 			case EngineeringPackage.FEATURE__RELEASES:
 				return !getReleases().isEmpty();
-			case EngineeringPackage.FEATURE__ACTIVITIES:
-				return !getActivities().isEmpty();
 			case EngineeringPackage.FEATURE__ISSUES:
 				return !getIssues().isEmpty();
-			case EngineeringPackage.FEATURE__USES:
-				return !getUses().isEmpty();
 			case EngineeringPackage.FEATURE__CHILDREN:
 				return !getChildren().isEmpty();
 		}
@@ -267,39 +226,5 @@ public class FeatureImpl extends EngineeredCapabilityImpl implements Feature {
 		}
 		return new BasicEList<>(allIssues);		
 	}	
-	
-//	/**
-//	 * Computes default end from children or increment if there are no children with set end.
-//	 */
-//	@Override
-//	public Temporal getEnd() {
-//		Temporal ret = super.getEnd();
-//		if (ret == null) {
-//			for (Issue child: getAllIssues()) {
-//				Temporal cEnd = child.getEnd();
-//				if (ret == null || (cEnd != null && ret.before(cEnd) == Boolean.TRUE)) {
-//					ret = cEnd;
-//				}
-//			}
-//		}
-//		return ret;
-//	}
-//	
-//	/**
-//	 * Computes default end from children or increment if there are no children with set end.
-//	 */
-//	@Override
-//	public Temporal getStart() {
-//		Temporal ret = super.getStart();
-//		if (ret == null) {
-//			for (Issue child: getAllIssues()) {
-//				Temporal cStart = child.getStart();
-//				if (ret == null || (cStart != null && ret.after(cStart) == Boolean.TRUE)) {
-//					ret = cStart;
-//				}
-//			}
-//		}
-//		return ret;
-//	}
 	
 } //FeatureImpl

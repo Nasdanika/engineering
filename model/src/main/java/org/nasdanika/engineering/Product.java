@@ -3,7 +3,6 @@
 package org.nasdanika.engineering;
 
 import org.eclipse.emf.common.util.EList;
-import org.nasdanika.engineering.journey.Activity;
 
 /**
  * <!-- begin-user-doc -->
@@ -16,7 +15,6 @@ import org.nasdanika.engineering.journey.Activity;
  * <ul>
  *   <li>{@link org.nasdanika.engineering.Product#getReleases <em>Releases</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Product#getFeatures <em>Features</em>}</li>
- *   <li>{@link org.nasdanika.engineering.Product#getActivities <em>Activities</em>}</li>
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getProduct()
@@ -55,21 +53,5 @@ public interface Product extends org.nasdanika.engineering.Module {
 	 * @generated
 	 */
 	EList<Feature> getFeatures();
-
-	/**
-	 * Returns the value of the '<em><b>Activities</b></em>' containment reference list.
-	 * The list contents are of type {@link org.nasdanika.engineering.journey.Activity}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Activities/[journeys](Journey.html) which demonstrate how to use the product and its features.
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Activities</em>' containment reference list.
-	 * @see org.nasdanika.engineering.EngineeringPackage#getProduct_Activities()
-	 * @model containment="true"
-	 *        annotation="urn:org.nasdanika homogenous='true'"
-	 * @generated
-	 */
-	EList<Activity> getActivities();
 
 } // Product

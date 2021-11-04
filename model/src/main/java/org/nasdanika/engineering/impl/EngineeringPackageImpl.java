@@ -1043,16 +1043,6 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EReference getProduct_Activities() {
-		return (EReference)productEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EClass getCapability() {
 		return capabilityEClass;
 	}
@@ -1323,7 +1313,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EReference getFeature_Activities() {
+	public EReference getFeature_Issues() {
 		return (EReference)featureEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -1333,28 +1323,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EReference getFeature_Issues() {
-		return (EReference)featureEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getFeature_Uses() {
-		return (EReference)featureEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EReference getFeature_Children() {
-		return (EReference)featureEClass.getEStructuralFeatures().get(4);
+		return (EReference)featureEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -2298,7 +2268,6 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		productEClass = createEClass(PRODUCT);
 		createEReference(productEClass, PRODUCT__RELEASES);
 		createEReference(productEClass, PRODUCT__FEATURES);
-		createEReference(productEClass, PRODUCT__ACTIVITIES);
 
 		capabilityEClass = createEClass(CAPABILITY);
 		createEReference(capabilityEClass, CAPABILITY__REQUIRED_BY);
@@ -2313,9 +2282,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 
 		featureEClass = createEClass(FEATURE);
 		createEReference(featureEClass, FEATURE__RELEASES);
-		createEReference(featureEClass, FEATURE__ACTIVITIES);
 		createEReference(featureEClass, FEATURE__ISSUES);
-		createEReference(featureEClass, FEATURE__USES);
 		createEReference(featureEClass, FEATURE__CHILDREN);
 
 		directoryEClass = createEClass(DIRECTORY);
@@ -2608,7 +2575,6 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		getProduct_Releases().getEKeys().add(this.getModelElement_Path());
 		initEReference(getProduct_Features(), this.getFeature(), null, "features", null, 0, -1, Product.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		getProduct_Features().getEKeys().add(this.getModelElement_Path());
-		initEReference(getProduct_Activities(), theJourneyPackage.getActivity(), null, "activities", null, 0, -1, Product.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(capabilityEClass, Capability.class, "Capability", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getCapability_RequiredBy(), this.getIssue(), null, "requiredBy", null, 0, -1, Capability.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
@@ -2623,9 +2589,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 
 		initEClass(featureEClass, Feature.class, "Feature", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getFeature_Releases(), this.getRelease(), this.getRelease_Features(), "releases", null, 0, -1, Feature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getFeature_Activities(), theJourneyPackage.getActivity(), null, "activities", null, 0, -1, Feature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getFeature_Issues(), this.getIssue(), null, "issues", null, 0, -1, Feature.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEReference(getFeature_Uses(), theJourneyPackage.getActivity(), null, "uses", null, 0, -1, Feature.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getFeature_Children(), this.getFeature(), null, "children", null, 0, -1, Feature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		getFeature_Children().getEKeys().add(this.getModelElement_Path());
 
@@ -3071,12 +3035,6 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 			   "strict-containment", "true"
 		   });
 		addAnnotation
-		  (getProduct_Activities(),
-		   source,
-		   new String[] {
-			   "homogenous", "true"
-		   });
-		addAnnotation
 		  (capabilityEClass,
 		   source,
 		   new String[] {
@@ -3099,6 +3057,13 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		   source,
 		   new String[] {
 			   "documentation-reference", "doc/feature.md"
+		   });
+		addAnnotation
+		  (getFeature_Children(),
+		   source,
+		   new String[] {
+			   "homogenous", "true",
+			   "strict-containment", "true"
 		   });
 		addAnnotation
 		  (directoryEClass,
@@ -3784,12 +3749,6 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 			   "documentation", "Product features."
 		   });
 		addAnnotation
-		  (getProduct_Activities(),
-		   source,
-		   new String[] {
-			   "documentation", "Activities/[journeys](Journey.html) which demonstrate how to use the product and its features."
-		   });
-		addAnnotation
 		  (getCapability_RequiredBy(),
 		   source,
 		   new String[] {
@@ -3826,22 +3785,10 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 			   "documentation", "Releases for which this feature is planned."
 		   });
 		addAnnotation
-		  (getFeature_Activities(),
-		   source,
-		   new String[] {
-			   "documentation", "Activities exemplifying use of the feature. These activities may be [journeys](Journey.html) and may be referenced from journeys."
-		   });
-		addAnnotation
 		  (getFeature_Issues(),
 		   source,
 		   new String[] {
 			   "documentation", "Issues contributing to this feature."
-		   });
-		addAnnotation
-		  (getFeature_Uses(),
-		   source,
-		   new String[] {
-			   "documentation", "Activities using this feature."
 		   });
 		addAnnotation
 		  (getFeature_Children(),

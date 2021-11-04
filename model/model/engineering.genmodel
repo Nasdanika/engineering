@@ -139,7 +139,6 @@
     <genClasses ecoreClass="engineering.ecore#//Product">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//Product/releases"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//Product/features"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//Product/activities"/>
     </genClasses>
     <genClasses ecoreClass="engineering.ecore#//Capability">
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference engineering.ecore#//Capability/requiredBy"/>
@@ -153,9 +152,7 @@
     </genClasses>
     <genClasses ecoreClass="engineering.ecore#//Feature">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//Feature/releases"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//Feature/activities"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference engineering.ecore#//Feature/issues"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference engineering.ecore#//Feature/uses"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//Feature/children"/>
     </genClasses>
     <genClasses ecoreClass="engineering.ecore#//Directory">
