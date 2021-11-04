@@ -150,8 +150,6 @@ public class IssueCategoryImpl extends AimImpl implements IssueCategory {
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case EngineeringPackage.ISSUE_CATEGORY__ISSUES:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getIssues()).basicAdd(otherEnd, msgs);
 			case EngineeringPackage.ISSUE_CATEGORY__ALLOCATIONS:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getAllocations()).basicAdd(otherEnd, msgs);
 		}
@@ -166,8 +164,6 @@ public class IssueCategoryImpl extends AimImpl implements IssueCategory {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case EngineeringPackage.ISSUE_CATEGORY__ISSUES:
-				return ((InternalEList<?>)getIssues()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.ISSUE_CATEGORY__ALLOCATIONS:
 				return ((InternalEList<?>)getAllocations()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.ISSUE_CATEGORY__CHILDREN:

@@ -315,49 +315,15 @@ public abstract class ModelElementImpl extends org.nasdanika.ncore.impl.ModelEle
 	public <T> T adaptTo(Class<T> type) {
 		return EObjectAdaptable.adaptTo(this, type);
 	}
-	
-//	protected <T extends ModelElement> EList<T> findByURI(Class<T> type, Collection<URI> uris) {
-//		EList<T> ret = new BasicInternalEList<>(type);
-//		uris.stream().map(uri -> findByURI(type, uri)).forEach(ret::add);
-//		return ret;
-//	}
-//	
-//	@SuppressWarnings("unchecked")
-//	protected <T extends ModelElement> T findByURI(Class<T> type, URI uri) {
-//		Resource res = eResource(); 
-//		if (res != null) {
-//			ResourceSet rSet = res.getResourceSet();
-//			TreeIterator<?> cit = rSet == null ? res.getAllContents() : rSet. getAllContents();
-//			while (cit.hasNext()) {
-//				Object next = cit.next(); 
-//				if (type.isInstance(next) && uri.toString().equals(((T) next).getUri())) {
-//					return (T) next;
-//				}
-//			}
-//		}
-//		throw new ConfigurationException("Could not find " + type.getName() + " with uri " + uri, EObjectAdaptable.adaptTo(this, Marked.class));
-//	}
-
+		
 	/**
-	 * Get and caches a list of all objects in the resource set which point to this 
-	 * object with the provided {@link EReference}'s opposite.
-	 * @param <T>
+	 * Caching opposites.
+	 * @param <E>
 	 * @param eReference
 	 * @return
 	 */
-	protected <T extends EObject> EList<T> getOppositeReferrers(EReference reference, EReference opposite) {
-		return FeatureCache.get(this, Objects.requireNonNull(reference, "Reference is null"), (target, ref) -> getReferrers(Objects.requireNonNull(opposite, "Opposite is null")), true);
-	}
-
-	/**
-	 * Get and caches a list of all objects in the resource set which point to this 
-	 * object with the provided {@link EReference}'s opposite.
-	 * @param <T>
-	 * @param eReference
-	 * @return
-	 */
-	protected <T extends EObject> EList<T> getOppositeReferrers(EReference eReference) {
-		return getOppositeReferrers(eReference, Objects.requireNonNull(eReference.getEOpposite(), "No opposite for " + eReference));
+	protected <E extends EObject> EList<E> getOppositeReferrers(EReference reference) {
+		return FeatureCache.get(this, Objects.requireNonNull(reference, "Reference is null"), (target, ref) -> super.getOppositeReferrers(ref), true);		
 	}
 	
 	/**

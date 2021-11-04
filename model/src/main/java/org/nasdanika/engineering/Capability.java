@@ -28,7 +28,6 @@ public interface Capability extends NamedElement, Period {
 	/**
 	 * Returns the value of the '<em><b>Required By</b></em>' reference list.
 	 * The list contents are of type {@link org.nasdanika.engineering.Issue}.
-	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Issue#getRequires <em>Requires</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -36,8 +35,7 @@ public interface Capability extends NamedElement, Period {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Required By</em>' reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getCapability_RequiredBy()
-	 * @see org.nasdanika.engineering.Issue#getRequires
-	 * @model opposite="requires" changeable="false" derived="true"
+	 * @model changeable="false" derived="true"
 	 * @generated
 	 */
 	EList<Issue> getRequiredBy();

@@ -17,7 +17,7 @@ engineering-organization:
                   status: engineering://nasdanika/issue-statuses/in-progress
                   priority: engineering://nasdanika/issue-priorities/medium
                   severity: engineering://nasdanika/issue-severities/low
-                  categories: engineering://nasdanika/issue-categories/development
+                  categories: engineering://nasdanika/issue-categories/development/children/back-end
   personas:
     - path: java-developer
       name: Java Developer

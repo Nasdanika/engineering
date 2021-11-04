@@ -53,7 +53,6 @@ public interface IssueCategory extends Aim {
 	/**
 	 * Returns the value of the '<em><b>Issues</b></em>' reference list.
 	 * The list contents are of type {@link org.nasdanika.engineering.Issue}.
-	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Issue#getCategories <em>Categories</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -61,8 +60,8 @@ public interface IssueCategory extends Aim {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Issues</em>' reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getIssueCategory_Issues()
-	 * @see org.nasdanika.engineering.Issue#getCategories
-	 * @model opposite="categories" changeable="false" derived="true"
+	 * @model transient="true" changeable="false" derived="true"
+	 *        annotation="urn:org.nasdanika opposite='categories'"
 	 * @generated
 	 */
 	EList<Issue> getIssues();

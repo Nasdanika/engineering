@@ -118,8 +118,6 @@ public class FeatureImpl extends EngineeredCapabilityImpl implements Feature {
 		switch (featureID) {
 			case EngineeringPackage.FEATURE__RELEASES:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getReleases()).basicAdd(otherEnd, msgs);
-			case EngineeringPackage.FEATURE__ISSUES:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getIssues()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -136,8 +134,6 @@ public class FeatureImpl extends EngineeredCapabilityImpl implements Feature {
 				return ((InternalEList<?>)getReleases()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.FEATURE__ACTIVITIES:
 				return ((InternalEList<?>)getActivities()).basicRemove(otherEnd, msgs);
-			case EngineeringPackage.FEATURE__ISSUES:
-				return ((InternalEList<?>)getIssues()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.FEATURE__CHILDREN:
 				return ((InternalEList<?>)getChildren()).basicRemove(otherEnd, msgs);
 		}

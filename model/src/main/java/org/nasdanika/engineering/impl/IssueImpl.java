@@ -279,16 +279,6 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetStatus(IssueStatus newStatus, NotificationChain msgs) {
-		msgs = eDynamicInverseAdd((InternalEObject)newStatus, EngineeringPackage.ISSUE__STATUS, msgs);
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public void setStatus(IssueStatus newStatus) {
 		eDynamicSet(EngineeringPackage.ISSUE__STATUS, EngineeringPackage.Literals.ISSUE__STATUS, newStatus);
@@ -433,16 +423,6 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetPriority(IssuePriority newPriority, NotificationChain msgs) {
-		msgs = eDynamicInverseAdd((InternalEObject)newPriority, EngineeringPackage.ISSUE__PRIORITY, msgs);
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public void setPriority(IssuePriority newPriority) {
 		eDynamicSet(EngineeringPackage.ISSUE__PRIORITY, EngineeringPackage.Literals.ISSUE__PRIORITY, newPriority);
@@ -465,16 +445,6 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 	 */
 	public IssueSeverity basicGetSeverity() {
 		return (IssueSeverity)eDynamicGet(EngineeringPackage.ISSUE__SEVERITY, EngineeringPackage.Literals.ISSUE__SEVERITY, false, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetSeverity(IssueSeverity newSeverity, NotificationChain msgs) {
-		msgs = eDynamicInverseAdd((InternalEObject)newSeverity, EngineeringPackage.ISSUE__SEVERITY, msgs);
-		return msgs;
 	}
 
 	/**
@@ -573,34 +543,13 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case EngineeringPackage.ISSUE__REQUIRES:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getRequires()).basicAdd(otherEnd, msgs);
 			case EngineeringPackage.ISSUE__INCREMENT:
 				Increment increment = basicGetIncrement();
 				if (increment != null)
 					msgs = ((InternalEObject)increment).eInverseRemove(this, EngineeringPackage.INCREMENT__ISSUES, Increment.class, msgs);
 				return basicSetIncrement((Increment)otherEnd, msgs);
-			case EngineeringPackage.ISSUE__CONTRIBUTES_TO:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getContributesTo()).basicAdd(otherEnd, msgs);
-			case EngineeringPackage.ISSUE__CATEGORIES:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getCategories()).basicAdd(otherEnd, msgs);
-			case EngineeringPackage.ISSUE__STATUS:
-				IssueStatus status = basicGetStatus();
-				if (status != null)
-					msgs = ((InternalEObject)status).eInverseRemove(this, EngineeringPackage.ISSUE_STATUS__ISSUES, IssueStatus.class, msgs);
-				return basicSetStatus((IssueStatus)otherEnd, msgs);
 			case EngineeringPackage.ISSUE__RELEASES:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getReleases()).basicAdd(otherEnd, msgs);
-			case EngineeringPackage.ISSUE__PRIORITY:
-				IssuePriority priority = basicGetPriority();
-				if (priority != null)
-					msgs = ((InternalEObject)priority).eInverseRemove(this, EngineeringPackage.ISSUE_PRIORITY__ISSUES, IssuePriority.class, msgs);
-				return basicSetPriority((IssuePriority)otherEnd, msgs);
-			case EngineeringPackage.ISSUE__SEVERITY:
-				IssueSeverity severity = basicGetSeverity();
-				if (severity != null)
-					msgs = ((InternalEObject)severity).eInverseRemove(this, EngineeringPackage.ISSUE_SEVERITY__ISSUES, IssueSeverity.class, msgs);
-				return basicSetSeverity((IssueSeverity)otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -615,24 +564,12 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 		switch (featureID) {
 			case EngineeringPackage.ISSUE__CHILDREN:
 				return ((InternalEList<?>)getChildren()).basicRemove(otherEnd, msgs);
-			case EngineeringPackage.ISSUE__REQUIRES:
-				return ((InternalEList<?>)getRequires()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.ISSUE__INCREMENT:
 				return basicSetIncrement(null, msgs);
-			case EngineeringPackage.ISSUE__CONTRIBUTES_TO:
-				return ((InternalEList<?>)getContributesTo()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.ISSUE__NOTES:
 				return ((InternalEList<?>)getNotes()).basicRemove(otherEnd, msgs);
-			case EngineeringPackage.ISSUE__CATEGORIES:
-				return ((InternalEList<?>)getCategories()).basicRemove(otherEnd, msgs);
-			case EngineeringPackage.ISSUE__STATUS:
-				return basicSetStatus(null, msgs);
 			case EngineeringPackage.ISSUE__RELEASES:
 				return ((InternalEList<?>)getReleases()).basicRemove(otherEnd, msgs);
-			case EngineeringPackage.ISSUE__PRIORITY:
-				return basicSetPriority(null, msgs);
-			case EngineeringPackage.ISSUE__SEVERITY:
-				return basicSetSeverity(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}

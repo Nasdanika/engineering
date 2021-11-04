@@ -200,9 +200,12 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="issues" upperBound="-1"
-        eType="#//Issue" changeable="false" derived="true" eOpposite="#//Issue/categories">
+        eType="#//Issue" changeable="false" transient="true" derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Issues in the category."/>
+      </eAnnotations>
+      <eAnnotations source="urn:org.nasdanika">
+        <details key="opposite" value="categories"/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="cumulative" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
@@ -231,7 +234,7 @@
       <details key="documentation-reference" value="doc/issue-status.md"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="issues" upperBound="-1"
-        eType="#//Issue" changeable="false" derived="true" eOpposite="#//Issue/status">
+        eType="#//Issue" changeable="false" transient="true" derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Issues in this status."/>
       </eAnnotations>
@@ -247,7 +250,7 @@
       <details key="documentation-reference" value="doc/issue-priority.md"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="issues" upperBound="-1"
-        eType="#//Issue" changeable="false" derived="true" eOpposite="#//Issue/priority">
+        eType="#//Issue" changeable="false" transient="true" derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Issues in this priority"/>
       </eAnnotations>
@@ -258,7 +261,7 @@
       <details key="documentation-reference" value="doc/issue-severity.md"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="issues" upperBound="-1"
-        eType="#//Issue" changeable="false" derived="true" eOpposite="#//Issue/severity">
+        eType="#//Issue" changeable="false" transient="true" derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Issues in this severity."/>
       </eAnnotations>
@@ -281,24 +284,30 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="requires" upperBound="-1"
-        eType="#//Capability" eOpposite="#//Capability/requiredBy">
+        eType="#//Capability">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Capabilities required to start working on an issue."/>
+      </eAnnotations>
+      <eAnnotations source="urn:org.nasdanika">
+        <details key="opposite" value="requiredBy"/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="increment" eType="#//Increment"
         eOpposite="#//Increment/issues">
       <eAnnotations source="urn:org.nasdanika">
-        <details key="homogenous" value="true"/>
+        <details key="opposite" value="issues"/>
       </eAnnotations>
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Increment for which this issue is directly scheduled. Issue can be scheduled for an increment directly or indirectly via [features](Feature.html) and [releases](Release.html). Release increment can be different from issue incrmenent. E.g. issue can be scheduled for May, but its release might be scheduled for July."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="contributesTo" upperBound="-1"
-        eType="#//Feature" eOpposite="#//Feature/issues">
+        eType="#//Feature">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Issue can contribute to zero or more features."/>
+      </eAnnotations>
+      <eAnnotations source="urn:org.nasdanika">
+        <details key="opposite" value="issues"/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="notes" upperBound="-1"
@@ -311,7 +320,7 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="categories" upperBound="-1"
-        eType="#//IssueCategory" eOpposite="#//IssueCategory/issues">
+        eType="#//IssueCategory">
       <eAnnotations source="urn:org.nasdanika">
         <details key="homogenous" value="true"/>
       </eAnnotations>
@@ -325,13 +334,12 @@
         <details key="documentation" value="Target element for this issue - container of the issue itself or the root issue in the issue hierarchy."/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="status" eType="#//IssueStatus"
-        eOpposite="#//IssueStatus/issues">
-      <eAnnotations source="urn:org.nasdanika">
-        <details key="homogenous" value="true"/>
-      </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="status" eType="#//IssueStatus">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Issue status."/>
+      </eAnnotations>
+      <eAnnotations source="urn:org.nasdanika">
+        <details key="opposite" value="issues"/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="workable" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
@@ -371,22 +379,20 @@
         <details key="documentation" value="Remaining cost is computed from issue cost and [notes](Note.html) cost or remaining cost."/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="priority" eType="#//IssuePriority"
-        eOpposite="#//IssuePriority/issues">
-      <eAnnotations source="urn:org.nasdanika">
-        <details key="homogenous" value="true"/>
-      </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="priority" eType="#//IssuePriority">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Issue status."/>
+      </eAnnotations>
+      <eAnnotations source="urn:org.nasdanika">
+        <details key="opposite" value="issues"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="severity" eType="#//IssueSeverity"
-        eOpposite="#//IssueSeverity/issues">
-      <eAnnotations source="urn:org.nasdanika">
-        <details key="homogenous" value="true"/>
-      </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="severity" eType="#//IssueSeverity">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Issue status."/>
+      </eAnnotations>
+      <eAnnotations source="urn:org.nasdanika">
+        <details key="opposite" value="issues"/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
@@ -774,7 +780,7 @@
       <details key="documentation-reference" value="doc/capability.md"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="requiredBy" upperBound="-1"
-        eType="#//Issue" changeable="false" derived="true" eOpposite="#//Issue/requires">
+        eType="#//Issue" changeable="false" derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Issues requiring this capability."/>
       </eAnnotations>
@@ -833,7 +839,7 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="issues" upperBound="-1"
-        eType="#//Issue" changeable="false" derived="true" eOpposite="#//Issue/contributesTo">
+        eType="#//Issue" changeable="false" derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Issues contributing to this feature."/>
       </eAnnotations>

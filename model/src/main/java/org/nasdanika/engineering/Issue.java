@@ -56,7 +56,6 @@ public interface Issue extends EngineeredCapability {
 	/**
 	 * Returns the value of the '<em><b>Requires</b></em>' reference list.
 	 * The list contents are of type {@link org.nasdanika.engineering.Capability}.
-	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Capability#getRequiredBy <em>Required By</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -64,8 +63,7 @@ public interface Issue extends EngineeredCapability {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Requires</em>' reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getIssue_Requires()
-	 * @see org.nasdanika.engineering.Capability#getRequiredBy
-	 * @model opposite="requiredBy"
+	 * @model annotation="urn:org.nasdanika opposite='requiredBy'"
 	 * @generated
 	 */
 	EList<Capability> getRequires();
@@ -83,7 +81,7 @@ public interface Issue extends EngineeredCapability {
 	 * @see org.nasdanika.engineering.EngineeringPackage#getIssue_Increment()
 	 * @see org.nasdanika.engineering.Increment#getIssues
 	 * @model opposite="issues"
-	 *        annotation="urn:org.nasdanika homogenous='true'"
+	 *        annotation="urn:org.nasdanika opposite='issues'"
 	 * @generated
 	 */
 	Increment getIncrement();
@@ -101,7 +99,6 @@ public interface Issue extends EngineeredCapability {
 	/**
 	 * Returns the value of the '<em><b>Contributes To</b></em>' reference list.
 	 * The list contents are of type {@link org.nasdanika.engineering.Feature}.
-	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Feature#getIssues <em>Issues</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -109,15 +106,13 @@ public interface Issue extends EngineeredCapability {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Contributes To</em>' reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getIssue_ContributesTo()
-	 * @see org.nasdanika.engineering.Feature#getIssues
-	 * @model opposite="issues"
+	 * @model annotation="urn:org.nasdanika opposite='issues'"
 	 * @generated
 	 */
 	EList<Feature> getContributesTo();
 
 	/**
 	 * Returns the value of the '<em><b>Status</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.IssueStatus#getIssues <em>Issues</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -126,9 +121,7 @@ public interface Issue extends EngineeredCapability {
 	 * @return the value of the '<em>Status</em>' reference.
 	 * @see #setStatus(IssueStatus)
 	 * @see org.nasdanika.engineering.EngineeringPackage#getIssue_Status()
-	 * @see org.nasdanika.engineering.IssueStatus#getIssues
-	 * @model opposite="issues"
-	 *        annotation="urn:org.nasdanika homogenous='true'"
+	 * @model annotation="urn:org.nasdanika opposite='issues'"
 	 * @generated
 	 */
 	IssueStatus getStatus();
@@ -255,7 +248,6 @@ public interface Issue extends EngineeredCapability {
 
 	/**
 	 * Returns the value of the '<em><b>Priority</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.IssuePriority#getIssues <em>Issues</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -264,9 +256,7 @@ public interface Issue extends EngineeredCapability {
 	 * @return the value of the '<em>Priority</em>' reference.
 	 * @see #setPriority(IssuePriority)
 	 * @see org.nasdanika.engineering.EngineeringPackage#getIssue_Priority()
-	 * @see org.nasdanika.engineering.IssuePriority#getIssues
-	 * @model opposite="issues"
-	 *        annotation="urn:org.nasdanika homogenous='true'"
+	 * @model annotation="urn:org.nasdanika opposite='issues'"
 	 * @generated
 	 */
 	IssuePriority getPriority();
@@ -283,7 +273,6 @@ public interface Issue extends EngineeredCapability {
 
 	/**
 	 * Returns the value of the '<em><b>Severity</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.IssueSeverity#getIssues <em>Issues</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -292,9 +281,7 @@ public interface Issue extends EngineeredCapability {
 	 * @return the value of the '<em>Severity</em>' reference.
 	 * @see #setSeverity(IssueSeverity)
 	 * @see org.nasdanika.engineering.EngineeringPackage#getIssue_Severity()
-	 * @see org.nasdanika.engineering.IssueSeverity#getIssues
-	 * @model opposite="issues"
-	 *        annotation="urn:org.nasdanika homogenous='true'"
+	 * @model annotation="urn:org.nasdanika opposite='issues'"
 	 * @generated
 	 */
 	IssueSeverity getSeverity();
@@ -328,7 +315,6 @@ public interface Issue extends EngineeredCapability {
 	/**
 	 * Returns the value of the '<em><b>Categories</b></em>' reference list.
 	 * The list contents are of type {@link org.nasdanika.engineering.IssueCategory}.
-	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.IssueCategory#getIssues <em>Issues</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -336,9 +322,7 @@ public interface Issue extends EngineeredCapability {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Categories</em>' reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getIssue_Categories()
-	 * @see org.nasdanika.engineering.IssueCategory#getIssues
-	 * @model opposite="issues"
-	 *        annotation="urn:org.nasdanika homogenous='true'"
+	 * @model annotation="urn:org.nasdanika homogenous='true'"
 	 * @generated
 	 */
 	EList<IssueCategory> getCategories();
