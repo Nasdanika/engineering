@@ -83,32 +83,11 @@ public class ModuleImpl extends EngineeredElementImpl implements org.nasdanika.e
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case EngineeringPackage.MODULE__DEPENDENCIES:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getDependencies()).basicAdd(otherEnd, msgs);
-			case EngineeringPackage.MODULE__DEPENDANTS:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getDependants()).basicAdd(otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case EngineeringPackage.MODULE__MODULES:
 				return ((InternalEList<?>)getModules()).basicRemove(otherEnd, msgs);
-			case EngineeringPackage.MODULE__DEPENDENCIES:
-				return ((InternalEList<?>)getDependencies()).basicRemove(otherEnd, msgs);
-			case EngineeringPackage.MODULE__DEPENDANTS:
-				return ((InternalEList<?>)getDependants()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}

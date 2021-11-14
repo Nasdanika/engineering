@@ -41,7 +41,6 @@ public interface Module extends EngineeredElement {
 	/**
 	 * Returns the value of the '<em><b>Dependencies</b></em>' reference list.
 	 * The list contents are of type {@link org.nasdanika.engineering.Module}.
-	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Module#getDependants <em>Dependants</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -49,8 +48,7 @@ public interface Module extends EngineeredElement {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Dependencies</em>' reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getModule_Dependencies()
-	 * @see org.nasdanika.engineering.Module#getDependants
-	 * @model opposite="dependants"
+	 * @model
 	 * @generated
 	 */
 	EList<Module> getDependencies();
@@ -58,7 +56,6 @@ public interface Module extends EngineeredElement {
 	/**
 	 * Returns the value of the '<em><b>Dependants</b></em>' reference list.
 	 * The list contents are of type {@link org.nasdanika.engineering.Module}.
-	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Module#getDependencies <em>Dependencies</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -66,8 +63,8 @@ public interface Module extends EngineeredElement {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Dependants</em>' reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getModule_Dependants()
-	 * @see org.nasdanika.engineering.Module#getDependencies
-	 * @model opposite="dependencies" changeable="false" derived="true"
+	 * @model transient="true" changeable="false" derived="true"
+	 *        annotation="urn:org.nasdanika opposite='dependencies'"
 	 * @generated
 	 */
 	EList<Module> getDependants();

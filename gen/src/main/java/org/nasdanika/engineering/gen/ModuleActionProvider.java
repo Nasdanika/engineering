@@ -8,8 +8,10 @@ import java.util.stream.Collectors;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.ETypedElement;
 import org.nasdanika.common.Context;
 import org.nasdanika.common.ProgressMonitor;
+import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Product;
 import org.nasdanika.html.model.app.Action;
 import org.nasdanika.html.model.app.AppFactory;
@@ -33,6 +35,15 @@ public class ModuleActionProvider<T extends org.nasdanika.engineering.Module> ex
 		children.addAll(createModuleActions(registry, resolveConsumer, progressMonitor));
 		
 		return action;
+	}
+	
+	@Override
+	protected List<ETypedElement> getProperties() {
+		List<ETypedElement> properties = super.getProperties();
+		properties.add(EngineeringPackage.Literals.MODULE__DEPENDENCIES);
+		properties.add(EngineeringPackage.Literals.MODULE__DEPENDANTS);
+		
+		return properties;
 	}
 	
 	/**

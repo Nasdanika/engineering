@@ -728,15 +728,18 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="dependencies" upperBound="-1"
-        eType="#//Module" eOpposite="#//Module/dependants">
+        eType="#//Module">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Modules which this module depends on."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="dependants" upperBound="-1"
-        eType="#//Module" changeable="false" derived="true" eOpposite="#//Module/dependencies">
+        eType="#//Module" changeable="false" transient="true" derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Derived opposite to dependencies - modules which depend on this module."/>
+      </eAnnotations>
+      <eAnnotations source="urn:org.nasdanika">
+        <details key="opposite" value="dependencies"/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
