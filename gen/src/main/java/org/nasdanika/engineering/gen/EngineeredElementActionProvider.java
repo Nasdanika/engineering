@@ -30,12 +30,13 @@ public class EngineeredElementActionProvider<T extends EngineeredElement> extend
 			ProgressMonitor progressMonitor) throws Exception {
 		Action action = super.createAction(registry, resolveConsumer, progressMonitor);
 		
-		createIssueActions(action, registry, resolveConsumer, progressMonitor);		
+		createIssuesAction(action, registry, resolveConsumer, progressMonitor);		
+		createAllIssuesAction(action, registry, resolveConsumer, progressMonitor);		
 		
 		return action;
 	}
 	
-	protected void createIssueActions(
+	protected void createIssuesAction(
 			Action action,
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
@@ -57,17 +58,20 @@ public class EngineeredElementActionProvider<T extends EngineeredElement> extend
 			action.getNavigation().add(group);
 		}
 		
+	}
+	
+	protected void createAllIssuesAction(
+			Action action,
+			BiConsumer<EObject,Action> registry, 
+			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
+			ProgressMonitor progressMonitor) throws Exception {
+		
 		List<Issue> allIssues = getTarget().getAllIssues();
 		if (!allIssues.isEmpty()) {
 			Action group = AppFactory.eINSTANCE.createAction();
 			group.setText("All Issues");
 			group.setUuid(action.getUuid() + "-all-issues");
 			group.setLocation("all-issues.html");
-			EList<Action> groupAnonymous = group.getAnonymous();
-			for (Issue issue: issues) {
-				groupAnonymous.add(createChildAction(issue, registry, resolveConsumer, progressMonitor));
-			}
-		
 			action.getNavigation().add(group);
 		}
 		

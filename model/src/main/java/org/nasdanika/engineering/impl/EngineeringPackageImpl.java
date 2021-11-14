@@ -2577,7 +2577,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		getProduct_Features().getEKeys().add(this.getModelElement_Path());
 
 		initEClass(capabilityEClass, Capability.class, "Capability", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getCapability_RequiredBy(), this.getIssue(), null, "requiredBy", null, 0, -1, Capability.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getCapability_RequiredBy(), this.getIssue(), null, "requiredBy", null, 0, -1, Capability.class, IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCapability_Available(), ecorePackage.getEBoolean(), "available", null, 0, 1, Capability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(engineeredCapabilityEClass, EngineeredCapability.class, "EngineeredCapability", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -3045,6 +3045,12 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		   source,
 		   new String[] {
 			   "documentation-reference", "doc/capability.md"
+		   });
+		addAnnotation
+		  (getCapability_RequiredBy(),
+		   source,
+		   new String[] {
+			   "opposite", "requires"
 		   });
 		addAnnotation
 		  (engineeredCapabilityEClass,

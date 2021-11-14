@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.ETypedElement;
 import org.nasdanika.common.Context;
 import org.nasdanika.common.ProgressMonitor;
+import org.nasdanika.engineering.Capability;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.Note;
@@ -44,6 +45,7 @@ public class IssueActionProvider extends EngineeredCapabilityActionProvider<Issu
 			ProgressMonitor progressMonitor) throws Exception {
 		Action action = super.createAction(registry, resolveConsumer, progressMonitor);
 		
+		createRequiresAction(action, registry, resolveConsumer, progressMonitor);		
 		createChildrenActions(action, registry, resolveConsumer, progressMonitor);		
 		createNotesActions(action, registry, resolveConsumer, progressMonitor);
 		
@@ -94,6 +96,27 @@ public class IssueActionProvider extends EngineeredCapabilityActionProvider<Issu
 		
 		Issue issue = getTarget();
 		
+		EList<Capability> requires = getTarget().getRequires();
+		if (!requires.isEmpty()) {
+			String allIssuesGroupUUID = action.getUuid() + "-requires";
+			Optional<Action> requiredByOptional = action.getSections().stream()
+					.filter(a -> allIssuesGroupUUID.equals(a.getUuid()))
+					.findFirst();
+			Action issuesAction = requiredByOptional.get();
+			Table requiredByTable = buildTable(
+					requires, 
+					action, 
+					EngineeringPackage.Literals.ISSUE__REQUIRES, 
+					context, 
+					progressMonitor,
+					createColumnBuilder("Capability"),
+					createColumnBuilder(EngineeringPackage.Literals.CAPABILITY__AVAILABLE),
+					createColumnBuilder(NcorePackage.Literals.PERIOD__START),
+					createColumnBuilder(NcorePackage.Literals.PERIOD__END));
+			
+			issuesAction.getContent().add(requiredByTable);
+		}
+				
 		EList<Issue> children = issue.getChildren();
 		if (!children.isEmpty()) {
 			String childrenGroupUUID = action.getUuid() + "-children";
@@ -149,7 +172,21 @@ public class IssueActionProvider extends EngineeredCapabilityActionProvider<Issu
 			featuresAction.getContent().add(notesTable);
 		}		
 	}
-	
+
+	protected void createRequiresAction(
+			Action action,
+			BiConsumer<EObject,Action> registry, 
+			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
+			ProgressMonitor progressMonitor) throws Exception {
 		
-	// TODO - Children
+		List<Capability> requires = getTarget().getRequires();
+		if (!requires.isEmpty()) {
+			Action group = AppFactory.eINSTANCE.createAction();
+			group.setText("Requires");
+			group.setUuid(action.getUuid() + "-requires");
+			group.setLocation("requires.html");
+			action.getSections().add(group);
+		}		
+	}
+	
 }

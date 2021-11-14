@@ -774,9 +774,12 @@
       <details key="documentation-reference" value="doc/capability.md"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="requiredBy" upperBound="-1"
-        eType="#//Issue" changeable="false" derived="true">
+        eType="#//Issue" changeable="false" transient="true" derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Issues requiring this capability."/>
+      </eAnnotations>
+      <eAnnotations source="urn:org.nasdanika">
+        <details key="opposite" value="requires"/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="available" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">

@@ -35,7 +35,8 @@ public interface Capability extends NamedElement, Period {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Required By</em>' reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getCapability_RequiredBy()
-	 * @model changeable="false" derived="true"
+	 * @model transient="true" changeable="false" derived="true"
+	 *        annotation="urn:org.nasdanika opposite='requires'"
 	 * @generated
 	 */
 	EList<Issue> getRequiredBy();

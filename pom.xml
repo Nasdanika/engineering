@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.nasdanika.engineering</groupId>
-	<version>2021.11.0</version>
+	<version>2021.11.1</version>
 	<artifactId>parent</artifactId>
 	<packaging>pom</packaging>
 	<name>Nasdanika Engineering Parent</name>
@@ -19,8 +19,8 @@
 	</licenses>
 
 	<properties>
-		<core.version>2021.11.0</core.version>
-		<html.version>2021.11.0</html.version>
+		<core.version>2021.11.1</core.version>
+		<html.version>2021.11.1</html.version>
 		<jacoco.version>0.8.7</jacoco.version>
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -43,14 +43,14 @@
 	      <extension>
 	        <groupId>org.apache.maven.wagon</groupId>
 	         <artifactId>wagon-ssh</artifactId>
-	         <version>3.4.1</version>
+	         <version>3.4.3</version>
 	      </extension>
 	    </extensions>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-gpg-plugin</artifactId>
-				<version>1.6</version>
+				<version>3.0.1</version>
 				<executions>
 					<execution>
 						<id>sign-artifacts</id>
@@ -64,7 +64,7 @@
     <plugin>
       <groupId>org.sonatype.plugins</groupId>
       <artifactId>nexus-staging-maven-plugin</artifactId>
-      <version>1.6.7</version>
+      <version>1.6.8</version>
       <extensions>true</extensions>
       <configuration>
         <serverId>ossrh</serverId>
@@ -90,7 +90,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
-				<version>3.1.0</version>
+				<version>3.2.0</version>
 				<executions>
 					<execution>
 						<id>attach-sources</id>
@@ -103,18 +103,8 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>3.1.0</version>
+				<version>3.3.1</version>
 			
-				<configuration>
-					<doclet>ch.raffael.mddoclet.MarkdownDoclet</doclet>
-					<docletArtifact>
-						<groupId>ch.raffael.markdown-doclet</groupId>
-						<artifactId>markdown-doclet</artifactId>
-						<version>1.4</version>
-					</docletArtifact>
-					<useStandardDocletOptions>true</useStandardDocletOptions>
-				</configuration>
-
 				<executions>
 					<execution>
 						<id>attach-javadocs</id>
