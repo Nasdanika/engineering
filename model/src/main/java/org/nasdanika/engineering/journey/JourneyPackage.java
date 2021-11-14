@@ -166,6 +166,15 @@ public interface JourneyPackage extends EPackage {
 	int ACTIVITY__REPRESENTATIONS = FlowPackage.ACTIVITY__REPRESENTATIONS;
 
 	/**
+	 * The feature id for the '<em><b>Properties</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__PROPERTIES = FlowPackage.ACTIVITY__PROPERTIES;
+
+	/**
 	 * The feature id for the '<em><b>Responsible</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -516,6 +525,15 @@ public interface JourneyPackage extends EPackage {
 	 * @ordered
 	 */
 	int JOURNEY__REPRESENTATIONS = FlowPackage.FLOW__REPRESENTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Properties</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY__PROPERTIES = FlowPackage.FLOW__PROPERTIES;
 
 	/**
 	 * The feature id for the '<em><b>Responsible</b></em>' reference list.

@@ -115,7 +115,7 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="totalCost" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
-        changeable="false" derived="true">
+        changeable="false" transient="true" derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Total cost of the endeavor includes both cost and labor multiplied by rate."/>
       </eAnnotations>
@@ -368,13 +368,13 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="remainingEffort" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
-        changeable="false" derived="true">
+        changeable="false" transient="true" derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Remaining effort is computed from issue effort and [notes](Note.html) effort or remaining effort."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="remainingCost" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
-        changeable="false" derived="true">
+        changeable="false" transient="true" derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Remaining cost is computed from issue cost and [notes](Note.html) cost or remaining cost."/>
       </eAnnotations>
@@ -899,9 +899,12 @@
       <details key="documentation-reference" value="doc/aim.md"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="alignments" upperBound="-1"
-        eType="#//Alignment" derived="true" eOpposite="#//Alignment/aim">
+        eType="#//Alignment" changeable="false" transient="true" derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Alignments to this aim. "/>
+      </eAnnotations>
+      <eAnnotations source="urn:org.nasdanika">
+        <details key="opposite" value="aim"/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
@@ -923,7 +926,7 @@
     <eAnnotations source="urn:org.nasdanika">
       <details key="documentation-reference" value="doc/alignment.md"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="aim" eType="#//Aim" eOpposite="#//Aim/alignments">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="aim" eType="#//Aim">
       <eAnnotations source="urn:org.nasdanika">
         <details key="default-feature" value="true"/>
       </eAnnotations>

@@ -6,7 +6,7 @@ import org.nasdanika.engineering.Organization;
 public class OrganizationActionProvider extends EngineerActionProvider<Organization> {
 	
 	public OrganizationActionProvider(Organization target, Context context) {
-		super(target, context);		
+		super(target, context);	
 	}
 	
 }

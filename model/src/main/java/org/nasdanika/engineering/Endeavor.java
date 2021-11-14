@@ -79,7 +79,7 @@ public interface Endeavor extends ModelElement, Period, Alignable {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Total Cost</em>' attribute.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getEndeavor_TotalCost()
-	 * @model changeable="false" derived="true"
+	 * @model transient="true" changeable="false" derived="true"
 	 * @generated
 	 */
 	double getTotalCost();

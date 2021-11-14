@@ -2,6 +2,7 @@ package org.nasdanika.engineering.gen;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.BiConsumer;
 
 import org.eclipse.emf.common.util.EList;
@@ -27,28 +28,28 @@ public class GoalActionProvider extends AimActionProvider<Goal> {
 			ProgressMonitor progressMonitor) throws Exception {
 		Action action = super.createAction(registry, resolveConsumer, progressMonitor);
 		
-		action.getSections().addAll(createChildrenActions(registry, resolveConsumer, progressMonitor));
+		createChildrenActions(action, registry, resolveConsumer, progressMonitor);
 		
 		return action;
 	}
 	
-	protected List<Action> createChildrenActions(
+	protected void createChildrenActions(
+			Action action, 
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
 			ProgressMonitor progressMonitor) throws Exception {
 		
 		List<Goal> children = getTarget().getChildren();
-		if (children.isEmpty()) {
-			return Collections.emptyList();
+		if (!children.isEmpty()) {
+			Action group = AppFactory.eINSTANCE.createAction();
+			group.setText("Children");
+			group.setUuid(action.getUuid() + "-children");
+			action.getSections().add(group);
+			EList<Action> groupAnonymous = group.getAnonymous();
+			for (Goal goal: children) {
+				groupAnonymous.add(createChildAction(goal, registry, resolveConsumer, progressMonitor));
+			}
 		}
-		Action group = AppFactory.eINSTANCE.createAction();
-		group.setText("Children");
-		EList<Action> groupAnonymous = group.getAnonymous();
-		for (Goal goal: children) {
-			groupAnonymous.add(createChildAction(goal, registry, resolveConsumer, progressMonitor));
-		}
-		
-		return Collections.singletonList(group);
 	}
 	
 	@Override
@@ -60,8 +61,11 @@ public class GoalActionProvider extends AimActionProvider<Goal> {
 		
 		EList<Goal> children = getTarget().getChildren();
 		if (!children.isEmpty()) {
-			Action childrenAction = (Action) action.getSections().get(0);			
-			childrenAction.getContent().add(renderList(children, true, createGoalChildrenListProvider(), childrenAction, EngineeringPackage.Literals.PERSONA__GOALS, context, progressMonitor));
+			String childrenGroupUUID = action.getUuid() + "-children";
+			Optional<Action> childrenActionOptional = action.getSections().stream()
+					.filter(a -> childrenGroupUUID.equals(a.getUuid()))
+					.findFirst();
+			childrenActionOptional.get().getContent().add(renderList(children, true, createGoalChildrenListProvider(), action, EngineeringPackage.Literals.PERSONA__GOALS, context, progressMonitor));
 		}
 	}
 

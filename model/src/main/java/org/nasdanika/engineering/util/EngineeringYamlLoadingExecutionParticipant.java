@@ -23,7 +23,7 @@ public abstract class EngineeringYamlLoadingExecutionParticipant extends FlowYam
 
 	@Override
 	protected Collection<EPackage> getEPackages() {
-		Collection<EPackage> ret = new ArrayList<>(); 
+		Collection<EPackage> ret = super.getEPackages(); 
 		ret.add(EngineeringPackage.eINSTANCE);
 		ret.add(JourneyPackage.eINSTANCE);
 		return ret;

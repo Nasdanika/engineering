@@ -2,9 +2,7 @@
  */
 package org.nasdanika.engineering.impl;
 
-import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 import org.nasdanika.engineering.Aim;
 import org.nasdanika.engineering.Alignment;
 import org.nasdanika.engineering.EngineeringPackage;
@@ -77,16 +75,6 @@ public class AlignmentImpl extends ModelElementImpl implements Alignment {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetAim(Aim newAim, NotificationChain msgs) {
-		msgs = eDynamicInverseAdd((InternalEObject)newAim, EngineeringPackage.ALIGNMENT__AIM, msgs);
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public void setAim(Aim newAim) {
 		eDynamicSet(EngineeringPackage.ALIGNMENT__AIM, EngineeringPackage.Literals.ALIGNMENT__AIM, newAim);
@@ -110,37 +98,6 @@ public class AlignmentImpl extends ModelElementImpl implements Alignment {
 	@Override
 	public void setWeight(double newWeight) {
 		eDynamicSet(EngineeringPackage.ALIGNMENT__WEIGHT, EngineeringPackage.Literals.ALIGNMENT__WEIGHT, newWeight);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case EngineeringPackage.ALIGNMENT__AIM:
-				Aim aim = basicGetAim();
-				if (aim != null)
-					msgs = ((InternalEObject)aim).eInverseRemove(this, EngineeringPackage.AIM__ALIGNMENTS, Aim.class, msgs);
-				return basicSetAim((Aim)otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case EngineeringPackage.ALIGNMENT__AIM:
-				return basicSetAim(null, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**

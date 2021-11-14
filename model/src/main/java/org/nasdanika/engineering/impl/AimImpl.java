@@ -74,28 +74,11 @@ public class AimImpl extends NamedElementImpl implements Aim {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case EngineeringPackage.AIM__ALIGNMENTS:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getAlignments()).basicAdd(otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case EngineeringPackage.AIM__ALIGNS:
 				return ((InternalEList<?>)getAligns()).basicRemove(otherEnd, msgs);
-			case EngineeringPackage.AIM__ALIGNMENTS:
-				return ((InternalEList<?>)getAlignments()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -129,10 +112,6 @@ public class AimImpl extends NamedElementImpl implements Aim {
 				getAligns().clear();
 				getAligns().addAll((Collection<? extends Alignment>)newValue);
 				return;
-			case EngineeringPackage.AIM__ALIGNMENTS:
-				getAlignments().clear();
-				getAlignments().addAll((Collection<? extends Alignment>)newValue);
-				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -147,9 +126,6 @@ public class AimImpl extends NamedElementImpl implements Aim {
 		switch (featureID) {
 			case EngineeringPackage.AIM__ALIGNS:
 				getAligns().clear();
-				return;
-			case EngineeringPackage.AIM__ALIGNMENTS:
-				getAlignments().clear();
 				return;
 		}
 		super.eUnset(featureID);

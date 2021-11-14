@@ -20,6 +20,11 @@ engineering-organization:
                 name: Sub-feature A
           - path: f2
             name: Feature 2
+            aligns:
+              - path: generated-doc
+                aim: engineering://nasdanika/personas/java-developer/goals/efficiency/children/generated-doc
+                weight: 0.5
+                description: Feature 2 simplifies generation of documentation. 
         modules:
           - engineering-module:
               path: common
@@ -27,11 +32,23 @@ engineering-organization:
               issues:
                 - name: My Issue
                   path: my-issue
+                  description: Issue description/summary.
+                  documentation: 
+                    content-text: Issue documentation.
                   status: engineering://nasdanika/issue-statuses/in-progress
                   priority: engineering://nasdanika/issue-priorities/medium
                   severity: engineering://nasdanika/issue-severities/low
                   categories: engineering://nasdanika/issue-categories/development/children/back-end
                   contributes-to: engineering://nasdanika/modules/core/features/f1/children/sfa
+                  effort: 40
+                  children:
+                    - name: Step 1
+                      path: step-1
+                      description: Do this and that.
+                  notes:
+                    - path: "2021-11-13" 
+                      description: Got to do something about it
+                      effort: 4
   personas:
     - path: java-developer
       name: Java Developer

@@ -185,8 +185,6 @@ public class DecisionImpl extends IssueImpl implements Decision {
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case EngineeringPackage.DECISION__ALIGNMENTS:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getAlignments()).basicAdd(otherEnd, msgs);
 			case EngineeringPackage.DECISION__SUPERCEDES:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getSupercedes()).basicAdd(otherEnd, msgs);
 			case EngineeringPackage.DECISION__SUPERCEDED_BY:
@@ -203,8 +201,6 @@ public class DecisionImpl extends IssueImpl implements Decision {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case EngineeringPackage.DECISION__ALIGNMENTS:
-				return ((InternalEList<?>)getAlignments()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.DECISION__SUPERCEDES:
 				return ((InternalEList<?>)getSupercedes()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.DECISION__SUPERCEDED_BY:
@@ -246,10 +242,6 @@ public class DecisionImpl extends IssueImpl implements Decision {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EngineeringPackage.DECISION__ALIGNMENTS:
-				getAlignments().clear();
-				getAlignments().addAll((Collection<? extends Alignment>)newValue);
-				return;
 			case EngineeringPackage.DECISION__EFFECTIVE_START:
 				setEffectiveStart((Date)newValue);
 				return;
@@ -275,9 +267,6 @@ public class DecisionImpl extends IssueImpl implements Decision {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EngineeringPackage.DECISION__ALIGNMENTS:
-				getAlignments().clear();
-				return;
 			case EngineeringPackage.DECISION__EFFECTIVE_START:
 				setEffectiveStart(EFFECTIVE_START_EDEFAULT);
 				return;

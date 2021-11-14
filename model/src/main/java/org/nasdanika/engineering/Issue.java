@@ -227,7 +227,7 @@ public interface Issue extends EngineeredCapability {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Remaining Effort</em>' attribute.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getIssue_RemainingEffort()
-	 * @model changeable="false" derived="true"
+	 * @model transient="true" changeable="false" derived="true"
 	 * @generated
 	 */
 	double getRemainingEffort();
@@ -241,7 +241,7 @@ public interface Issue extends EngineeredCapability {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Remaining Cost</em>' attribute.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getIssue_RemainingCost()
-	 * @model changeable="false" derived="true"
+	 * @model transient="true" changeable="false" derived="true"
 	 * @generated
 	 */
 	double getRemainingCost();

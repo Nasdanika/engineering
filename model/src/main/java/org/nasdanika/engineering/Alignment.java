@@ -23,7 +23,6 @@ package org.nasdanika.engineering;
 public interface Alignment extends ModelElement {
 	/**
 	 * Returns the value of the '<em><b>Aim</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Aim#getAlignments <em>Alignments</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -32,9 +31,7 @@ public interface Alignment extends ModelElement {
 	 * @return the value of the '<em>Aim</em>' reference.
 	 * @see #setAim(Aim)
 	 * @see org.nasdanika.engineering.EngineeringPackage#getAlignment_Aim()
-	 * @see org.nasdanika.engineering.Aim#getAlignments
-	 * @model opposite="alignments"
-	 *        annotation="urn:org.nasdanika default-feature='true'"
+	 * @model annotation="urn:org.nasdanika default-feature='true'"
 	 * @generated
 	 */
 	Aim getAim();

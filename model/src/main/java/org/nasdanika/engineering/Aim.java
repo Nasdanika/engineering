@@ -24,7 +24,6 @@ public interface Aim extends NamedElement, Alignable {
 	/**
 	 * Returns the value of the '<em><b>Alignments</b></em>' reference list.
 	 * The list contents are of type {@link org.nasdanika.engineering.Alignment}.
-	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Alignment#getAim <em>Aim</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -32,8 +31,8 @@ public interface Aim extends NamedElement, Alignable {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Alignments</em>' reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getAim_Alignments()
-	 * @see org.nasdanika.engineering.Alignment#getAim
-	 * @model opposite="aim" derived="true"
+	 * @model transient="true" changeable="false" derived="true"
+	 *        annotation="urn:org.nasdanika opposite='aim'"
 	 * @generated
 	 */
 	EList<Alignment> getAlignments();
