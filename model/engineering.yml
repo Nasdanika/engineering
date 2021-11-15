@@ -1,12 +1,14 @@
 engineering-module:
-   name: Model
-   path: model
-   representations:
-     - representation-component-diagram: true
-   dependencies:
-     - nasdanika:modules/html/modules/app
-     - nasdanika:modules/core/modules/emf
-   issues:
+  name: Model
+  path: model
+  representations:
+    - representation-component-diagram: true
+  dependencies:
+    - nasdanika:modules/html/modules/app
+    - nasdanika:modules/core/modules/emf
+  issues:
+    event-to-ncore:
+      name: Move Event to Ncore   
      - name: Validation of duplicate paths in containing collection and duplicate URI's                         
      - name: Support of objectives and key results                         
      - name: Journey inheritance
