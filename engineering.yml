@@ -1,6 +1,9 @@
 engineering-product:
    name: Engineering
    path: engineering
+   releases:
+     "2021-11-2":
+       name: "2021.11.2"
    representations:
      - representation-component-diagram: true
    releases:
