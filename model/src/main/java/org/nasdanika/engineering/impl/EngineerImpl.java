@@ -288,8 +288,6 @@ public class EngineerImpl extends PersonaImpl implements Engineer {
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getOwns()).basicAdd(otherEnd, msgs);
 			case EngineeringPackage.ENGINEER__EXPERTISE:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getExpertise()).basicAdd(otherEnd, msgs);
-			case EngineeringPackage.ENGINEER__ASSIGNMENTS:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getAssignments()).basicAdd(otherEnd, msgs);
 			case EngineeringPackage.ENGINEER__DESIGNATIONS:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getDesignations()).basicAdd(otherEnd, msgs);
 			case EngineeringPackage.ENGINEER__REPRESENTS:
@@ -326,8 +324,6 @@ public class EngineerImpl extends PersonaImpl implements Engineer {
 				return ((InternalEList<?>)getServices()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.ENGINEER__PERSONAS:
 				return ((InternalEList<?>)getPersonas()).basicRemove(otherEnd, msgs);
-			case EngineeringPackage.ENGINEER__ASSIGNMENTS:
-				return ((InternalEList<?>)getAssignments()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.ENGINEER__ISSUE_CATEGORIES:
 				return ((InternalEList<?>)getIssueCategories()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.ENGINEER__ISSUE_STATUSES:

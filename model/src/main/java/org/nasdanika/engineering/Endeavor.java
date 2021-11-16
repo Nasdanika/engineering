@@ -86,7 +86,6 @@ public interface Endeavor extends ModelElement, Period, Alignable {
 
 	/**
 	 * Returns the value of the '<em><b>Assignee</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Engineer#getAssignments <em>Assignments</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -95,8 +94,7 @@ public interface Endeavor extends ModelElement, Period, Alignable {
 	 * @return the value of the '<em>Assignee</em>' reference.
 	 * @see #setAssignee(Engineer)
 	 * @see org.nasdanika.engineering.EngineeringPackage#getEndeavor_Assignee()
-	 * @see org.nasdanika.engineering.Engineer#getAssignments
-	 * @model opposite="assignments"
+	 * @model
 	 * @generated
 	 */
 	Engineer getAssignee();

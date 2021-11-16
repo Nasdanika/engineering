@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.BiConsumer;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -22,7 +21,6 @@ import org.nasdanika.engineering.Persona;
 import org.nasdanika.engineering.Product;
 import org.nasdanika.html.model.app.Action;
 import org.nasdanika.html.model.app.AppFactory;
-import org.nasdanika.ncore.util.NamedElementComparator;
 
 public class EngineerActionProvider<T extends Engineer> extends PersonaActionProvider<T> {
 	
@@ -55,7 +53,7 @@ public class EngineerActionProvider<T extends Engineer> extends PersonaActionPro
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
 			ProgressMonitor progressMonitor) throws Exception {
-		List<org.nasdanika.engineering.Module> modules = getTarget().getModules().stream().sorted(NamedElementComparator.INSTANCE).collect(Collectors.toList());
+		List<org.nasdanika.engineering.Module> modules = getTarget().getModules();
 		if (!modules.isEmpty()) {
 			Action group = AppFactory.eINSTANCE.createAction();
 			Predicate<org.nasdanika.engineering.Module> isProduct = Product.class::isInstance;			

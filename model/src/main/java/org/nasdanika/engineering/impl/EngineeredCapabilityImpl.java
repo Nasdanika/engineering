@@ -174,16 +174,6 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetAssignee(Engineer newAssignee, NotificationChain msgs) {
-		msgs = eDynamicInverseAdd((InternalEObject)newAssignee, EngineeringPackage.ENGINEERED_CAPABILITY__ASSIGNEE, msgs);
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public void setAssignee(Engineer newAssignee) {
 		eDynamicSet(EngineeringPackage.ENGINEERED_CAPABILITY__ASSIGNEE, EngineeringPackage.Literals.ENDEAVOR__ASSIGNEE, newAssignee);
@@ -263,11 +253,6 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case EngineeringPackage.ENGINEERED_CAPABILITY__ASSIGNEE:
-				Engineer assignee = basicGetAssignee();
-				if (assignee != null)
-					msgs = ((InternalEObject)assignee).eInverseRemove(this, EngineeringPackage.ENGINEER__ASSIGNMENTS, Engineer.class, msgs);
-				return basicSetAssignee((Engineer)otherEnd, msgs);
 			case EngineeringPackage.ENGINEERED_CAPABILITY__CAPACITY:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getCapacity()).basicAdd(otherEnd, msgs);
 			case EngineeringPackage.ENGINEERED_CAPABILITY__LINKED_OBJECTIVES:
@@ -286,8 +271,6 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 		switch (featureID) {
 			case EngineeringPackage.ENGINEERED_CAPABILITY__ALIGNS:
 				return ((InternalEList<?>)getAligns()).basicRemove(otherEnd, msgs);
-			case EngineeringPackage.ENGINEERED_CAPABILITY__ASSIGNEE:
-				return basicSetAssignee(null, msgs);
 			case EngineeringPackage.ENGINEERED_CAPABILITY__CAPACITY:
 				return ((InternalEList<?>)getCapacity()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.ENGINEERED_CAPABILITY__OBJECTIVES:

@@ -3,6 +3,14 @@ engineering-organization:
   path: nasdanika
   name: Nasdanika
   description: Engineering model to test core model classes.
+  principles:
+    written-communication:
+      name: Written Communication
+      description: TODO
+  engineers:
+    joe-doe:
+      engineering-engineer:
+        name: Joe Doe   
   modules:
     - engineering-product:
         path: core
@@ -41,6 +49,7 @@ engineering-organization:
                   categories: engineering://nasdanika/issue-categories/development/children/back-end
                   contributes-to: engineering://nasdanika/modules/core/features/f1/children/sfa
                   effort: 40
+                  assignee: engineering://nasdanika/engineers/joe-doe
                   requires: 
                     - engineering://nasdanika/modules/core/features/f1/children/sfa
                   children:

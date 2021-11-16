@@ -31,7 +31,7 @@ public interface Organization extends Engineer {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Engineers</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getOrganization_Engineers()
-	 * @model containment="true"
+	 * @model containment="true" keys="path"
 	 *        annotation="urn:org.nasdanika icon='fas fa-users'"
 	 * @generated
 	 */

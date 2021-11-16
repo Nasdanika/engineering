@@ -120,8 +120,7 @@
         <details key="documentation" value="Total cost of the endeavor includes both cost and labor multiplied by rate."/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="assignee" eType="#//Engineer"
-        eOpposite="#//Engineer/assignments">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="assignee" eType="#//Engineer">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Engineer responsible for completion of this endeavor. For a simple issue it would be an engineer working on the issue, for other endeavors the assignee's may not actually work on issues, but rather coordinate. E.g. [increment](Increment.html) assignee responsibility would be similar to those of a [scrum master](https://en.wikipedia.org/wiki/Scrum_(software_development)#Scrum_master)."/>
       </eAnnotations>
@@ -614,9 +613,12 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="assignments" upperBound="-1"
-        eType="#//Endeavor" changeable="false" derived="true" eOpposite="#//Endeavor/assignee">
+        eType="#//Endeavor" changeable="false" transient="true" derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Engineer assignments."/>
+      </eAnnotations>
+      <eAnnotations source="urn:org.nasdanika">
+        <details key="opposite" value="assignee"/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="issueCategories" upperBound="-1"
@@ -708,7 +710,7 @@
       <details key="documentation-reference" value="doc/organization.md"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="engineers" upperBound="-1"
-        eType="#//Engineer" containment="true">
+        eType="#//Engineer" containment="true" eKeys="#//ModelElement/path">
       <eAnnotations source="urn:org.nasdanika">
         <details key="icon" value="fas fa-users"/>
       </eAnnotations>

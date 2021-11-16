@@ -252,11 +252,6 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case EngineeringPackage.INCREMENT__ASSIGNEE:
-				Engineer assignee = basicGetAssignee();
-				if (assignee != null)
-					msgs = ((InternalEObject)assignee).eInverseRemove(this, EngineeringPackage.ENGINEER__ASSIGNMENTS, Engineer.class, msgs);
-				return basicSetAssignee((Engineer)otherEnd, msgs);
 			case EngineeringPackage.INCREMENT__CAPACITY:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getCapacity()).basicAdd(otherEnd, msgs);
 			case EngineeringPackage.INCREMENT__LINKED_OBJECTIVES:
@@ -365,8 +360,6 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 				return basicSetEnd(null, msgs);
 			case EngineeringPackage.INCREMENT__ALIGNS:
 				return ((InternalEList<?>)getAligns()).basicRemove(otherEnd, msgs);
-			case EngineeringPackage.INCREMENT__ASSIGNEE:
-				return basicSetAssignee(null, msgs);
 			case EngineeringPackage.INCREMENT__CAPACITY:
 				return ((InternalEList<?>)getCapacity()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.INCREMENT__OBJECTIVES:
@@ -724,16 +717,6 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 	 */
 	public Engineer basicGetAssignee() {
 		return (Engineer)eDynamicGet(EngineeringPackage.INCREMENT__ASSIGNEE, EngineeringPackage.Literals.ENDEAVOR__ASSIGNEE, false, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetAssignee(Engineer newAssignee, NotificationChain msgs) {
-		msgs = eDynamicInverseAdd((InternalEObject)newAssignee, EngineeringPackage.INCREMENT__ASSIGNEE, msgs);
-		return msgs;
 	}
 
 	/**

@@ -265,16 +265,6 @@ public class EndeavorImpl extends ModelElementImpl implements Endeavor {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetAssignee(Engineer newAssignee, NotificationChain msgs) {
-		msgs = eDynamicInverseAdd((InternalEObject)newAssignee, EngineeringPackage.ENDEAVOR__ASSIGNEE, msgs);
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public void setAssignee(Engineer newAssignee) {
 		eDynamicSet(EngineeringPackage.ENDEAVOR__ASSIGNEE, EngineeringPackage.Literals.ENDEAVOR__ASSIGNEE, newAssignee);
@@ -344,11 +334,6 @@ public class EndeavorImpl extends ModelElementImpl implements Endeavor {
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case EngineeringPackage.ENDEAVOR__ASSIGNEE:
-				Engineer assignee = basicGetAssignee();
-				if (assignee != null)
-					msgs = ((InternalEObject)assignee).eInverseRemove(this, EngineeringPackage.ENGINEER__ASSIGNMENTS, Engineer.class, msgs);
-				return basicSetAssignee((Engineer)otherEnd, msgs);
 			case EngineeringPackage.ENDEAVOR__CAPACITY:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getCapacity()).basicAdd(otherEnd, msgs);
 			case EngineeringPackage.ENDEAVOR__LINKED_OBJECTIVES:
@@ -371,8 +356,6 @@ public class EndeavorImpl extends ModelElementImpl implements Endeavor {
 				return basicSetEnd(null, msgs);
 			case EngineeringPackage.ENDEAVOR__ALIGNS:
 				return ((InternalEList<?>)getAligns()).basicRemove(otherEnd, msgs);
-			case EngineeringPackage.ENDEAVOR__ASSIGNEE:
-				return basicSetAssignee(null, msgs);
 			case EngineeringPackage.ENDEAVOR__CAPACITY:
 				return ((InternalEList<?>)getCapacity()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.ENDEAVOR__OBJECTIVES:
