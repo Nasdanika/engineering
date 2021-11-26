@@ -9,6 +9,8 @@ engineering-module:
   issues:
     event-to-ncore:
       name: Move Event to Ncore   
+    impress-js:
+      name: Consider slides with Impress.js and markdown.   
      - name: Validation of duplicate paths in containing collection and duplicate URI's                         
      - name: Support of objectives and key results                         
      - name: Journey inheritance

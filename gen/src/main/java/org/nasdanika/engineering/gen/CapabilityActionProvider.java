@@ -6,6 +6,7 @@ import java.util.function.BiConsumer;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.ETypedElement;
 import org.nasdanika.common.Context;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.engineering.Capability;
@@ -14,6 +15,7 @@ import org.nasdanika.engineering.Issue;
 import org.nasdanika.html.model.app.Action;
 import org.nasdanika.html.model.app.AppFactory;
 import org.nasdanika.html.model.bootstrap.Table;
+import org.nasdanika.ncore.NcorePackage;
 
 public class CapabilityActionProvider<T extends Capability> extends NamedElementActionProvider<T> {
 	
@@ -31,6 +33,16 @@ public class CapabilityActionProvider<T extends Capability> extends NamedElement
 		createRequiredByAction(action, registry, resolveConsumer, progressMonitor);		
 		
 		return action;
+	}
+	
+	@Override
+	protected List<ETypedElement> getProperties() {
+		List<ETypedElement> properties = super.getProperties();
+		properties.add(EngineeringPackage.Literals.CAPABILITY__AVAILABLE);
+		properties.add(NcorePackage.Literals.PERIOD__START);
+		properties.add(NcorePackage.Literals.PERIOD__END);
+		properties.add(NcorePackage.Literals.PERIOD__DURATION);
+		return properties;
 	}
 	
 	protected void createRequiredByAction(

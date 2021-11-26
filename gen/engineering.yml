@@ -19,7 +19,8 @@ engineering-module:
         Perhaps appearance model and not specific just to engineering, but generic and handled at EObjectActionProvider with extensibility.
         References with eKeys shall make it easy to build such a model - class(ifier) and feature keys. 
         More complex with operations, but it is an edge case.        
-        Modal actions. Cascading appearance. Ability to define Bootstrap appearance - extend?          
+        Modal actions. Cascading appearance. Ability to define Bootstrap appearance - extend?  
+        Custom properties, e.g. to show/hide columns in issue tables.        
    
        ### 2021.5.0 ###
      
