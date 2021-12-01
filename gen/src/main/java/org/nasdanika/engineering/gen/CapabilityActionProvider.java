@@ -15,7 +15,6 @@ import org.nasdanika.engineering.Issue;
 import org.nasdanika.html.model.app.Action;
 import org.nasdanika.html.model.app.AppFactory;
 import org.nasdanika.html.model.bootstrap.Table;
-import org.nasdanika.ncore.NcorePackage;
 
 public class CapabilityActionProvider<T extends Capability> extends NamedElementActionProvider<T> {
 	
@@ -39,9 +38,6 @@ public class CapabilityActionProvider<T extends Capability> extends NamedElement
 	protected List<ETypedElement> getProperties() {
 		List<ETypedElement> properties = super.getProperties();
 		properties.add(EngineeringPackage.Literals.CAPABILITY__AVAILABLE);
-		properties.add(NcorePackage.Literals.PERIOD__START);
-		properties.add(NcorePackage.Literals.PERIOD__END);
-		properties.add(NcorePackage.Literals.PERIOD__DURATION);
 		return properties;
 	}
 	

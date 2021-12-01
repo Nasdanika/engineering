@@ -42,6 +42,12 @@ public class EngineerActionProvider<T extends Engineer> extends PersonaActionPro
 		return action;
 	}
 	
+	protected List<ETypedElement> getProperties() {
+		List<ETypedElement> properties = super.getProperties();
+		properties.add(EngineeringPackage.Literals.ENGINEER__RATE);
+		return properties;
+	}	
+	
 	/**
 	 * Creates a list of actions for modules. 
 	 * @param progressMonitor

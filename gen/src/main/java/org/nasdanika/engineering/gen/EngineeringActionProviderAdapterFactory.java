@@ -74,6 +74,13 @@ public class EngineeringActionProviderAdapterFactory extends FlowActionProviderA
 					e -> new GoalActionProvider(e, context)));
 		
 		registerAdapterFactory(
+				new FunctionAdapterFactory<ActionProvider, org.nasdanika.engineering.Principle>(
+					EngineeringPackage.Literals.PRINCIPLE, 
+					ActionProvider.class, 
+					this.getClass().getClassLoader(), 
+					e -> new PrincipleActionProvider(e, context)));
+		
+		registerAdapterFactory(
 				new FunctionAdapterFactory<ActionProvider, org.nasdanika.engineering.IssueCategory>(
 					EngineeringPackage.Literals.ISSUE_CATEGORY, 
 					ActionProvider.class, 

@@ -21,6 +21,13 @@ public class IssueCategoryActionProvider extends AimActionProvider<IssueCategory
 	}
 	
 	@Override
+	protected List<ETypedElement> getProperties() {
+		List<ETypedElement> properties = super.getProperties();
+		properties.add(EngineeringPackage.Literals.ISSUE_CATEGORY__WEIGHT);
+		return properties;
+	}
+	
+	@Override
 	protected Action createAction(
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 

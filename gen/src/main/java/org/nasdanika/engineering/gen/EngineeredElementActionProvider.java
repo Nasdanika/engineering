@@ -13,15 +13,24 @@ import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.engineering.EngineeredElement;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Issue;
+import org.nasdanika.engineering.Principle;
 import org.nasdanika.html.model.app.Action;
 import org.nasdanika.html.model.app.AppFactory;
 import org.nasdanika.html.model.bootstrap.Table;
+import org.nasdanika.ncore.NcorePackage;
 
 public class EngineeredElementActionProvider<T extends EngineeredElement> extends ForumActionProvider<T> {
 	
 	public EngineeredElementActionProvider(T target, Context context) {
 		super(target, context);		
 	}
+	
+	protected List<ETypedElement> getProperties() {
+		List<ETypedElement> properties = super.getProperties();
+		properties.add(EngineeringPackage.Literals.ENGINEERED_ELEMENT__OWNERS);
+		properties.add(EngineeringPackage.Literals.ENGINEERED_ELEMENT__EXPERTS);
+		return properties;
+	}	
 	
 	@Override
 	protected Action createAction(
@@ -32,6 +41,7 @@ public class EngineeredElementActionProvider<T extends EngineeredElement> extend
 		
 		createIssuesAction(action, registry, resolveConsumer, progressMonitor);		
 		createAllIssuesAction(action, registry, resolveConsumer, progressMonitor);		
+		createPrinciplesActions(action, registry, resolveConsumer, progressMonitor);
 		
 		return action;
 	}
@@ -106,7 +116,7 @@ public class EngineeredElementActionProvider<T extends EngineeredElement> extend
 					.map(Action.class::cast)
 					.filter(a -> allIssuesGroupUUID.equals(a.getUuid()))
 					.findFirst();
-			Action issuesAction = issuesActionOptional.get();
+			Action allIssuesAction = issuesActionOptional.get();
 			Table allIssuesTable = buildTable(
 					allIssues, 
 					action, 
@@ -126,11 +136,48 @@ public class EngineeredElementActionProvider<T extends EngineeredElement> extend
 					createColumnBuilder(EngineeringPackage.Literals.ISSUE__EFFORT),
 					createColumnBuilder(EngineeringPackage.Literals.ISSUE__REMAINING_COST),
 					createColumnBuilder(EngineeringPackage.Literals.ISSUE__REMAINING_EFFORT),
-					createColumnBuilder(EngineeringPackage.Literals.ENDEAVOR__COMPLETION));
+					createColumnBuilder(EngineeringPackage.Literals.ENDEAVOR__COMPLETION),
+					createColumnBuilder(NcorePackage.Literals.PERIOD__START),
+					createColumnBuilder(NcorePackage.Literals.PERIOD__END),
+					createColumnBuilder(NcorePackage.Literals.PERIOD__DURATION));
 			
-			issuesAction.getContent().add(allIssuesTable);
+			allIssuesAction.getContent().add(allIssuesTable);
 		}
 		
+		EList<Principle> principles = getTarget().getPrinciples();
+		if (!principles.isEmpty()) {
+			String principlesGroupUUID = action.getUuid() + "-principles";
+			Optional<Action> principlesActionOptional = action.getNavigation().stream()
+					.filter(Action.class::isInstance)
+					.map(Action.class::cast)
+					.filter(a -> principlesGroupUUID.equals(a.getUuid()))
+					.findFirst();
+			
+			Action principlesAction = principlesActionOptional.get();
+			principlesAction.getContent().add(renderList(principles, true, createPrincipleChildrenListProvider(), action, EngineeringPackage.Literals.ENGINEERED_ELEMENT__PRINCIPLES, context, progressMonitor));
+		}
+	}
+
+	protected ContentProvider<Principle> createPrincipleChildrenListProvider() {
+		ContentProvider<Principle> goalChildrenListProvider = new ContentProvider<Principle>() {
+
+			@Override
+			public List<EObject> createContent(
+					Principle element, 
+					Action base, 
+					ETypedElement typedElement,
+					org.nasdanika.html.emf.EObjectActionResolver.Context context, 
+					ProgressMonitor progressMonitor) throws Exception {
+				
+				EList<Principle> children = element.getChildren();
+				if (children.isEmpty()) {
+					return null;
+				}
+				return Collections.singletonList(renderList(children, true, this, base, EngineeringPackage.Literals.PRINCIPLE__CHILDREN, context, progressMonitor));
+			}
+			
+		};
+		return goalChildrenListProvider;
 	}
 	
 	private ContentProvider<Issue> createIssueChildrenProvider() {
@@ -154,4 +201,24 @@ public class EngineeredElementActionProvider<T extends EngineeredElement> extend
 		};
 	}	
 	
+	protected void createPrinciplesActions(
+			Action action, 
+			BiConsumer<EObject,Action> registry, 
+			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
+			ProgressMonitor progressMonitor) throws Exception {
+		
+		List<Principle> principles = getTarget().getPrinciples();
+		if (!principles.isEmpty()) {
+			Action group = AppFactory.eINSTANCE.createAction();
+			group.setText("Principles");
+			group.setUuid(action.getUuid() + "-principles");
+			group.setLocation("principles.html");
+			action.getNavigation().add(group);
+			EList<Action> groupAnonymous = group.getAnonymous();
+			for (Principle principle: principles) {
+				groupAnonymous.add(createChildAction(principle, registry, resolveConsumer, progressMonitor));
+			}
+		}
+	}
+
 }

@@ -2,8 +2,6 @@ package org.nasdanika.engineering.gen;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.function.BiConsumer;
 
 import org.apache.commons.codec.binary.Hex;
@@ -30,7 +28,6 @@ import org.nasdanika.html.model.bootstrap.TableRow;
 import org.nasdanika.html.model.bootstrap.TableSection;
 import org.nasdanika.html.model.html.HtmlFactory;
 import org.nasdanika.ncore.Marker;
-import org.nasdanika.ncore.NcorePackage;
 import org.nasdanika.ncore.util.NcoreUtil;
 
 public class ModelElementActionProvider<T extends ModelElement> extends EObjectActionProvider<T> {
@@ -72,22 +69,6 @@ public class ModelElementActionProvider<T extends ModelElement> extends EObjectA
 		}
 		
 		ret.setSectionStyle(SectionStyle.HEADER);
-		return ret;
-	}
-	
-	@Override
-	protected List<ETypedElement> getProperties() {
-		List<ETypedElement> ret = new ArrayList<>();
-		ret.add(NcorePackage.Literals.MODEL_ELEMENT__URI);
-		return ret;
-	}
-	
-	@Override
-	protected Object getTypedElementValue(ETypedElement typedElement) throws Exception {
-		Object ret = super.getTypedElementValue(typedElement);
-		if (typedElement == NcorePackage.Literals.MODEL_ELEMENT__URI && ret == null) {
-			return NcoreUtil.getUri(getTarget());
-		}
 		return ret;
 	}
 	

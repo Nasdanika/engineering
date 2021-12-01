@@ -21,6 +21,12 @@ engineering-module:
         More complex with operations, but it is an edge case.        
         Modal actions. Cascading appearance. Ability to define Bootstrap appearance - extend?  
         Custom properties, e.g. to show/hide columns in issue tables.        
+    rest-api:
+      name: REST API
+      description: |+2
+        Generate static cross-refrencing JSON files which can be used for programmatic access by, say, single-page applications. For example, an issues table with filtering and sorting or by charts.   
+        May also generate a JavaScript API on top of the JSON "dumb" data - read-only properties returning promises.
+        Ideally, the JSON should be loadable back to the model. Also may publish XMI at the root of the generated site - an alternative to Maven repository.      
    
        ### 2021.5.0 ###
      

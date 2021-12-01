@@ -1076,20 +1076,22 @@
         <details key="documentation" value="Sub-objectives of this objective."/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="parent" eType="#//Objective"
-        eOpposite="#//Objective/linkedObjectives">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parent" eType="#//Objective">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Objective can be linked to a parent objective it is not already a child of objective, i.e. is contained by an [engineer](Engineer.html) or [endeavor](Endeavor.html)."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="linkedObjectives" upperBound="-1"
-        eType="#//Objective" derived="true" eOpposite="#//Objective/parent">
+        eType="#//Objective" changeable="false" transient="true" derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Objectives linked to this one via the ``parent`` reference."/>
       </eAnnotations>
+      <eAnnotations source="urn:org.nasdanika">
+        <details key="opposite" value="parent"/>
+      </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="subObjectives" upperBound="-1"
-        eType="#//Objective" derived="true">
+        eType="#//Objective" changeable="false" transient="true" derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="A union of children and linked objectives."/>
       </eAnnotations>

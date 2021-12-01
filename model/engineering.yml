@@ -8,7 +8,10 @@ engineering-module:
     - nasdanika:modules/core/modules/emf
   issues:
     event-to-ncore:
-      name: Move Event to Ncore   
+      name: Move Event to Ncore  
+    relative-dates-feature:
+      name: Relative dates feature
+      description: Create a feature explaining relative dates (temporals), bounds, and validations. 
     impress-js:
       name: Consider slides with Impress.js and markdown.   
      - name: Validation of duplicate paths in containing collection and duplicate URI's                         

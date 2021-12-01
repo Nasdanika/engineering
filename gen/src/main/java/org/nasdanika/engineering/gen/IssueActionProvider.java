@@ -29,6 +29,7 @@ public class IssueActionProvider extends EngineeredCapabilityActionProvider<Issu
 	@Override
 	protected List<ETypedElement> getProperties() {
 		List<ETypedElement> properties = super.getProperties();
+		properties.add(EngineeringPackage.Literals.ISSUE__INCREMENT);
 		properties.add(EngineeringPackage.Literals.ISSUE__CATEGORIES);
 		properties.add(EngineeringPackage.Literals.ISSUE__PRIORITY);
 		properties.add(EngineeringPackage.Literals.ISSUE__SEVERITY);
@@ -37,6 +38,11 @@ public class IssueActionProvider extends EngineeredCapabilityActionProvider<Issu
 		properties.add(EngineeringPackage.Literals.ISSUE__RELEASES);
 		properties.add(EngineeringPackage.Literals.ISSUE__COST);
 		properties.add(EngineeringPackage.Literals.ISSUE__EFFORT);
+		properties.add(EngineeringPackage.Literals.ISSUE__REMAINING_COST);
+		properties.add(EngineeringPackage.Literals.ISSUE__REMAINING_EFFORT);
+		properties.add(EngineeringPackage.Literals.ISSUE__TARGET);
+		properties.add(EngineeringPackage.Literals.ISSUE__WORKABLE);
+		properties.add(EngineeringPackage.Literals.ISSUE__REQUIRES);
 		return properties;
 	}
 

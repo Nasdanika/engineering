@@ -11,17 +11,16 @@ import org.eclipse.emf.ecore.ETypedElement;
 import org.nasdanika.common.Context;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.engineering.EngineeringPackage;
-import org.nasdanika.engineering.Goal;
-import org.nasdanika.engineering.Persona;
+import org.nasdanika.engineering.Principle;
 import org.nasdanika.html.model.app.Action;
 import org.nasdanika.html.model.app.AppFactory;
 
-public class PersonaActionProvider<T extends Persona> extends EngineeredElementActionProvider<T> {
+public class PrincipleActionProvider extends AimActionProvider<Principle> {
 	
-	public PersonaActionProvider(T target, Context context) {
+	public PrincipleActionProvider(Principle target, Context context) {
 		super(target, context);		
 	}
-		
+	
 	@Override
 	protected Action createAction(
 			BiConsumer<EObject,Action> registry, 
@@ -29,34 +28,25 @@ public class PersonaActionProvider<T extends Persona> extends EngineeredElementA
 			ProgressMonitor progressMonitor) throws Exception {
 		Action action = super.createAction(registry, resolveConsumer, progressMonitor);
 		
-		createGoalActions(action, registry, resolveConsumer, progressMonitor);
+		createChildrenActions(action, registry, resolveConsumer, progressMonitor);
 		
 		return action;
 	}
 	
-	@Override
-	protected List<ETypedElement> getProperties() {
-		List<ETypedElement> properties = super.getProperties();
-		properties.add(EngineeringPackage.Literals.PERSONA__EXTENDS);
-		properties.add(EngineeringPackage.Literals.PERSONA__EXTENSIONS);
-		properties.add(EngineeringPackage.Literals.PERSONA__REPRESENTATIVES);
-		return properties;
-	}
-	
-	protected void createGoalActions(
+	protected void createChildrenActions(
 			Action action, 
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
 			ProgressMonitor progressMonitor) throws Exception {
 		
-		List<Goal> goals = getTarget().getGoals();
-		if (!goals.isEmpty()) {
+		List<Principle> children = getTarget().getChildren();
+		if (!children.isEmpty()) {
 			Action group = AppFactory.eINSTANCE.createAction();
-			group.setText("Goals");
-			group.setUuid(action.getUuid() + "-goals");
+			group.setText("Children");
+			group.setUuid(action.getUuid() + "-children");
 			action.getSections().add(group);
 			EList<Action> groupAnonymous = group.getAnonymous();
-			for (Goal goal: goals) {
+			for (Principle goal: children) {
 				groupAnonymous.add(createChildAction(goal, registry, resolveConsumer, progressMonitor));
 			}
 		}
@@ -69,38 +59,36 @@ public class PersonaActionProvider<T extends Persona> extends EngineeredElementA
 			ProgressMonitor progressMonitor) throws Exception {
 		super.resolve(action, context, progressMonitor);
 		
-		EList<Goal> goals = getTarget().getGoals();
-		if (!goals.isEmpty()) {
-			String goalsGroupUUID = action.getUuid() + "-goals";
-			Optional<Action> goalsActionOptional = action.getSections().stream()
-					.filter(a -> goalsGroupUUID.equals(a.getUuid()))
+		EList<Principle> children = getTarget().getChildren();
+		if (!children.isEmpty()) {
+			String childrenGroupUUID = action.getUuid() + "-children";
+			Optional<Action> childrenActionOptional = action.getSections().stream()
+					.filter(a -> childrenGroupUUID.equals(a.getUuid()))
 					.findFirst();
-			
-			Action goalsAction = goalsActionOptional.get();
-			goalsAction.getContent().add(renderList(goals, true, createGoalChildrenListProvider(), action, EngineeringPackage.Literals.PERSONA__GOALS, context, progressMonitor));
+			childrenActionOptional.get().getContent().add(renderList(children, true, createGoalChildrenListProvider(), action, EngineeringPackage.Literals.ENGINEERED_ELEMENT__PRINCIPLES, context, progressMonitor));
 		}
 	}
 
-	protected ContentProvider<Goal> createGoalChildrenListProvider() {
-		ContentProvider<Goal> goalChildrenListProvider = new ContentProvider<Goal>() {
+	protected ContentProvider<Principle> createGoalChildrenListProvider() {
+		ContentProvider<Principle> principleChildrenListProvider = new ContentProvider<Principle>() {
 
 			@Override
 			public List<EObject> createContent(
-					Goal element, 
+					Principle element, 
 					Action base, 
 					ETypedElement typedElement,
 					org.nasdanika.html.emf.EObjectActionResolver.Context context, 
 					ProgressMonitor progressMonitor) throws Exception {
 				
-				EList<Goal> children = element.getChildren();
+				EList<Principle> children = element.getChildren();
 				if (children.isEmpty()) {
 					return null;
 				}
-				return Collections.singletonList(renderList(children, true, this, base, EngineeringPackage.Literals.GOAL__CHILDREN, context, progressMonitor));
+				return Collections.singletonList(renderList(children, true, this, base, EngineeringPackage.Literals.PRINCIPLE__CHILDREN, context, progressMonitor));
 			}
 			
 		};
-		return goalChildrenListProvider;
+		return principleChildrenListProvider;
 	}
-		
+	
 }
