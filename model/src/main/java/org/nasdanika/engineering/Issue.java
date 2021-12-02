@@ -70,7 +70,6 @@ public interface Issue extends EngineeredCapability {
 
 	/**
 	 * Returns the value of the '<em><b>Increment</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Increment#getIssues <em>Issues</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -79,9 +78,7 @@ public interface Issue extends EngineeredCapability {
 	 * @return the value of the '<em>Increment</em>' reference.
 	 * @see #setIncrement(Increment)
 	 * @see org.nasdanika.engineering.EngineeringPackage#getIssue_Increment()
-	 * @see org.nasdanika.engineering.Increment#getIssues
-	 * @model opposite="issues"
-	 *        annotation="urn:org.nasdanika opposite='issues'"
+	 * @model annotation="urn:org.nasdanika opposite='issues'"
 	 * @generated
 	 */
 	Increment getIncrement();

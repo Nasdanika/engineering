@@ -364,6 +364,15 @@ public interface JourneyPackage extends EPackage {
 	int ACTIVITY__ARTIFACT_RESPONSIBILITIES = FlowPackage.ACTIVITY__ARTIFACT_RESPONSIBILITIES;
 
 	/**
+	 * The feature id for the '<em><b>Sort Group</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__SORT_GROUP = FlowPackage.ACTIVITY__SORT_GROUP;
+
+	/**
 	 * The feature id for the '<em><b>Services</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -723,6 +732,15 @@ public interface JourneyPackage extends EPackage {
 	 * @ordered
 	 */
 	int JOURNEY__ARTIFACT_RESPONSIBILITIES = FlowPackage.FLOW__ARTIFACT_RESPONSIBILITIES;
+
+	/**
+	 * The feature id for the '<em><b>Sort Group</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY__SORT_GROUP = FlowPackage.FLOW__SORT_GROUP;
 
 	/**
 	 * The feature id for the '<em><b>Services</b></em>' reference list.

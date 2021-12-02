@@ -151,7 +151,7 @@ public interface Endeavor extends ModelElement, Period, Alignable {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Objectives</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getEndeavor_Objectives()
-	 * @model containment="true"
+	 * @model containment="true" keys="path"
 	 *        annotation="urn:org.nasdanika homogenous='true'"
 	 * @generated
 	 */

@@ -140,16 +140,6 @@ public class ObjectiveImpl extends KeyResultImpl implements Objective {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetParent(Objective newParent, NotificationChain msgs) {
-		msgs = eDynamicInverseAdd((InternalEObject)newParent, EngineeringPackage.OBJECTIVE__PARENT, msgs);
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public void setParent(Objective newParent) {
 		eDynamicSet(EngineeringPackage.OBJECTIVE__PARENT, EngineeringPackage.Literals.OBJECTIVE__PARENT, newParent);
@@ -217,13 +207,6 @@ public class ObjectiveImpl extends KeyResultImpl implements Objective {
 				if (endeavor != null)
 					msgs = ((InternalEObject)endeavor).eInverseRemove(this, EngineeringPackage.ENDEAVOR__LINKED_OBJECTIVES, Endeavor.class, msgs);
 				return basicSetEndeavor((Endeavor)otherEnd, msgs);
-			case EngineeringPackage.OBJECTIVE__PARENT:
-				Objective parent = basicGetParent();
-				if (parent != null)
-					msgs = ((InternalEObject)parent).eInverseRemove(this, EngineeringPackage.OBJECTIVE__LINKED_OBJECTIVES, Objective.class, msgs);
-				return basicSetParent((Objective)otherEnd, msgs);
-			case EngineeringPackage.OBJECTIVE__LINKED_OBJECTIVES:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getLinkedObjectives()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -242,10 +225,6 @@ public class ObjectiveImpl extends KeyResultImpl implements Objective {
 				return ((InternalEList<?>)getKeyResults()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.OBJECTIVE__CHILDREN:
 				return ((InternalEList<?>)getChildren()).basicRemove(otherEnd, msgs);
-			case EngineeringPackage.OBJECTIVE__PARENT:
-				return basicSetParent(null, msgs);
-			case EngineeringPackage.OBJECTIVE__LINKED_OBJECTIVES:
-				return ((InternalEList<?>)getLinkedObjectives()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -299,14 +278,6 @@ public class ObjectiveImpl extends KeyResultImpl implements Objective {
 			case EngineeringPackage.OBJECTIVE__PARENT:
 				setParent((Objective)newValue);
 				return;
-			case EngineeringPackage.OBJECTIVE__LINKED_OBJECTIVES:
-				getLinkedObjectives().clear();
-				getLinkedObjectives().addAll((Collection<? extends Objective>)newValue);
-				return;
-			case EngineeringPackage.OBJECTIVE__SUB_OBJECTIVES:
-				getSubObjectives().clear();
-				getSubObjectives().addAll((Collection<? extends Objective>)newValue);
-				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -330,12 +301,6 @@ public class ObjectiveImpl extends KeyResultImpl implements Objective {
 				return;
 			case EngineeringPackage.OBJECTIVE__PARENT:
 				setParent((Objective)null);
-				return;
-			case EngineeringPackage.OBJECTIVE__LINKED_OBJECTIVES:
-				getLinkedObjectives().clear();
-				return;
-			case EngineeringPackage.OBJECTIVE__SUB_OBJECTIVES:
-				getSubObjectives().clear();
 				return;
 		}
 		super.eUnset(featureID);

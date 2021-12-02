@@ -98,7 +98,7 @@ public interface Engineer extends Persona {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Increments</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getEngineer_Increments()
-	 * @model containment="true"
+	 * @model containment="true" keys="path"
 	 *        annotation="urn:org.nasdanika homogenous='true'"
 	 * @generated
 	 */
@@ -318,7 +318,7 @@ public interface Engineer extends Persona {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Objectives</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getEngineer_Objectives()
-	 * @model containment="true"
+	 * @model containment="true" keys="path"
 	 *        annotation="urn:org.nasdanika homogenous='true'"
 	 * @generated
 	 */

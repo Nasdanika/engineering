@@ -13,10 +13,12 @@ import org.nasdanika.common.Context;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeringPackage;
+import org.nasdanika.engineering.Increment;
 import org.nasdanika.engineering.IssueCategory;
 import org.nasdanika.engineering.IssuePriority;
 import org.nasdanika.engineering.IssueSeverity;
 import org.nasdanika.engineering.IssueStatus;
+import org.nasdanika.engineering.Objective;
 import org.nasdanika.engineering.Persona;
 import org.nasdanika.engineering.Product;
 import org.nasdanika.html.model.app.Action;
@@ -36,8 +38,10 @@ public class EngineerActionProvider<T extends Engineer> extends PersonaActionPro
 		Action action = super.createAction(registry, resolveConsumer, progressMonitor);
 		
 		createModuleActions(action, registry, resolveConsumer, progressMonitor);		
+		createIncrementActions(action, registry, resolveConsumer, progressMonitor);		
 		createPersonaActions(action, registry, resolveConsumer, progressMonitor);
 		createIssueGroupingActions(action, registry, resolveConsumer, progressMonitor);
+		createObjectiveActions(action, registry, resolveConsumer, progressMonitor);
 		
 		return action;
 	}
@@ -74,6 +78,25 @@ public class EngineerActionProvider<T extends Engineer> extends PersonaActionPro
 		}
 	}
 	
+	protected void createIncrementActions(
+			Action action,
+			BiConsumer<EObject,Action> registry, 
+			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
+			ProgressMonitor progressMonitor) throws Exception {
+		List<Increment> increments = getTarget().getIncrements();
+		if (!increments.isEmpty()) {
+			Action group = AppFactory.eINSTANCE.createAction();
+			group.setText("Increments");
+			group.setIcon("far fa-calendar-alt");
+			EList<EObject> children = group.getChildren();
+			for (Increment increment: increments) {
+				children.add(createChildAction(increment, registry, resolveConsumer, progressMonitor));
+			}
+	
+			action.getChildren().add(group);
+		}
+	}
+	
 	/**
 	 * Creates a list of actions for personas and adds them to the list of group's anonymous actions. 
 	 * @param progressMonitor
@@ -96,6 +119,28 @@ public class EngineerActionProvider<T extends Engineer> extends PersonaActionPro
 			EList<Action> groupAnonymous = group.getAnonymous();
 			for (Persona persona: personas) {
 				groupAnonymous.add(createChildAction(persona, registry, resolveConsumer, progressMonitor));
+			}
+		
+			action.getNavigation().add(group);
+		}
+	}
+	
+	protected void createObjectiveActions(
+			Action action,
+			BiConsumer<EObject,Action> registry, 
+			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
+			ProgressMonitor progressMonitor) throws Exception {
+		
+		List<Objective> objectives = getTarget().getObjectives();
+		if (!objectives.isEmpty()) {
+			Action group = AppFactory.eINSTANCE.createAction();
+			group.setText("Objectives");
+			group.setUuid(action.getUuid() + "-objectives");
+			group.setLocation("objectives.html");
+			// TODO - icon, ...
+			EList<Action> groupAnonymous = group.getAnonymous();
+			for (Objective objective: objectives) {
+				groupAnonymous.add(createChildAction(objective, registry, resolveConsumer, progressMonitor));
 			}
 		
 			action.getNavigation().add(group);
@@ -187,6 +232,20 @@ public class EngineerActionProvider<T extends Engineer> extends PersonaActionPro
 		super.resolve(action, context, progressMonitor);
 		
 		T engineer = getTarget();
+		
+		EList<Objective> objectives = engineer.getObjectives();
+		if (!objectives.isEmpty()) {
+			String objectivesGroupUUID = action.getUuid() + "-objectives";
+			Optional<Action> objectivesActionOptional = action.getNavigation().stream()
+					.filter(Action.class::isInstance)					
+					.map(Action.class::cast)
+					.filter(a -> objectivesGroupUUID.equals(a.getUuid()))
+					.findFirst();
+			
+			Action objectivesAction = objectivesActionOptional.get();
+			objectivesAction.getContent().add(renderList(objectives, true, null, objectivesAction, EngineeringPackage.Literals.ENGINEER__OBJECTIVES, context, progressMonitor)); // Table?
+		}
+		
 		EList<Persona> personas = engineer.getPersonas();
 		if (!personas.isEmpty()) {
 			String personaGroupUUID = action.getUuid() + "-personas";

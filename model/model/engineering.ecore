@@ -86,7 +86,7 @@
       <details key="documentation-reference" value="doc/alignable.md"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="aligns" upperBound="-1"
-        eType="#//Alignment" containment="true">
+        eType="#//Alignment" containment="true" eKeys="#//ModelElement/path">
       <eAnnotations source="urn:org.nasdanika">
         <details key="homogenous" value="true"/>
         <details key="strict-containment" value="true"/>
@@ -138,7 +138,7 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="objectives" upperBound="-1"
-        eType="#//Objective" containment="true">
+        eType="#//Objective" containment="true" eKeys="#//ModelElement/path">
       <eAnnotations source="urn:org.nasdanika">
         <details key="homogenous" value="true"/>
       </eAnnotations>
@@ -168,7 +168,7 @@
       <details key="documentation-reference" value="doc/increment.md"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
-        eType="#//Increment" containment="true">
+        eType="#//Increment" containment="true" eKeys="#//ModelElement/path">
       <eAnnotations source="urn:org.nasdanika">
         <details key="homogenous" value="true"/>
       </eAnnotations>
@@ -177,15 +177,21 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="issues" upperBound="-1"
-        eType="#//Issue" changeable="false" derived="true" eOpposite="#//Issue/increment">
+        eType="#//Issue" changeable="false" transient="true" derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Issues scheduled to work on in this increment"/>
       </eAnnotations>
+      <eAnnotations source="urn:org.nasdanika">
+        <details key="opposite" value="increment"/>
+      </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="releases" upperBound="-1"
-        eType="#//Release" changeable="false" derived="true" eOpposite="#//Release/increment">
+        eType="#//Release" changeable="false" transient="true" derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Releases scheduled to be made available in this increment"/>
+      </eAnnotations>
+      <eAnnotations source="urn:org.nasdanika">
+        <details key="opposite" value="increment"/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
@@ -291,8 +297,7 @@
         <details key="opposite" value="requiredBy"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="increment" eType="#//Increment"
-        eOpposite="#//Increment/issues">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="increment" eType="#//Increment">
       <eAnnotations source="urn:org.nasdanika">
         <details key="opposite" value="issues"/>
       </eAnnotations>
@@ -589,7 +594,7 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="increments" upperBound="-1"
-        eType="#//Increment" containment="true">
+        eType="#//Increment" containment="true" eKeys="#//ModelElement/path">
       <eAnnotations source="urn:org.nasdanika">
         <details key="homogenous" value="true"/>
       </eAnnotations>
@@ -695,7 +700,7 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="objectives" upperBound="-1"
-        eType="#//Objective" containment="true">
+        eType="#//Objective" containment="true" eKeys="#//ModelElement/path">
       <eAnnotations source="urn:org.nasdanika">
         <details key="homogenous" value="true"/>
       </eAnnotations>
@@ -802,8 +807,7 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
       <details key="constraints" value="increment"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="increment" eType="#//Increment"
-        eOpposite="#//Increment/releases">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="increment" eType="#//Increment">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Increment for which this release is scheduled."/>
       </eAnnotations>
@@ -921,7 +925,7 @@
       <details key="documentation-reference" value="doc/principle.md"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
-        eType="#//Principle" containment="true">
+        eType="#//Principle" containment="true" eKeys="#//ModelElement/path">
       <eAnnotations source="urn:org.nasdanika">
         <details key="homogenous" value="true"/>
       </eAnnotations>
@@ -1039,7 +1043,7 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="initiatives" upperBound="-1"
-        eType="#//Issue" containment="true">
+        eType="#//Issue" containment="true" eKeys="#//ModelElement/path">
       <eAnnotations source="urn:org.nasdanika">
         <details key="homogenous" value="true"/>
       </eAnnotations>
@@ -1059,7 +1063,7 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="keyResults" upperBound="-1"
-        eType="#//KeyResult" containment="true">
+        eType="#//KeyResult" containment="true" eKeys="#//ModelElement/path">
       <eAnnotations source="urn:org.nasdanika">
         <details key="homogenous" value="true"/>
       </eAnnotations>
@@ -1068,7 +1072,7 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
-        eType="#//Objective" containment="true">
+        eType="#//Objective" containment="true" eKeys="#//ModelElement/path">
       <eAnnotations source="urn:org.nasdanika">
         <details key="homogenous" value="true"/>
       </eAnnotations>

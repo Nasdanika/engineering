@@ -34,7 +34,7 @@ public interface Increment extends NamedElement, Endeavor {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Children</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getIncrement_Children()
-	 * @model containment="true"
+	 * @model containment="true" keys="path"
 	 *        annotation="urn:org.nasdanika homogenous='true'"
 	 * @generated
 	 */
@@ -43,7 +43,6 @@ public interface Increment extends NamedElement, Endeavor {
 	/**
 	 * Returns the value of the '<em><b>Issues</b></em>' reference list.
 	 * The list contents are of type {@link org.nasdanika.engineering.Issue}.
-	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Issue#getIncrement <em>Increment</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -51,8 +50,8 @@ public interface Increment extends NamedElement, Endeavor {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Issues</em>' reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getIncrement_Issues()
-	 * @see org.nasdanika.engineering.Issue#getIncrement
-	 * @model opposite="increment" changeable="false" derived="true"
+	 * @model transient="true" changeable="false" derived="true"
+	 *        annotation="urn:org.nasdanika opposite='increment'"
 	 * @generated
 	 */
 	EList<Issue> getIssues();
@@ -60,7 +59,6 @@ public interface Increment extends NamedElement, Endeavor {
 	/**
 	 * Returns the value of the '<em><b>Releases</b></em>' reference list.
 	 * The list contents are of type {@link org.nasdanika.engineering.Release}.
-	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Release#getIncrement <em>Increment</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -68,8 +66,8 @@ public interface Increment extends NamedElement, Endeavor {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Releases</em>' reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getIncrement_Releases()
-	 * @see org.nasdanika.engineering.Release#getIncrement
-	 * @model opposite="increment" changeable="false" derived="true"
+	 * @model transient="true" changeable="false" derived="true"
+	 *        annotation="urn:org.nasdanika opposite='increment'"
 	 * @generated
 	 */
 	EList<Release> getReleases();

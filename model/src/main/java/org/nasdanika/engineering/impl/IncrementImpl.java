@@ -256,10 +256,6 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getCapacity()).basicAdd(otherEnd, msgs);
 			case EngineeringPackage.INCREMENT__LINKED_OBJECTIVES:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getLinkedObjectives()).basicAdd(otherEnd, msgs);
-			case EngineeringPackage.INCREMENT__ISSUES:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getIssues()).basicAdd(otherEnd, msgs);
-			case EngineeringPackage.INCREMENT__RELEASES:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getReleases()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -368,10 +364,6 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 				return ((InternalEList<?>)getLinkedObjectives()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.INCREMENT__CHILDREN:
 				return ((InternalEList<?>)getChildren()).basicRemove(otherEnd, msgs);
-			case EngineeringPackage.INCREMENT__ISSUES:
-				return ((InternalEList<?>)getIssues()).basicRemove(otherEnd, msgs);
-			case EngineeringPackage.INCREMENT__RELEASES:
-				return ((InternalEList<?>)getReleases()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}

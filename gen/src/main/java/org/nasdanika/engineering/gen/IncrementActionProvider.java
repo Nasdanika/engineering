@@ -7,21 +7,23 @@ import java.util.function.BiConsumer;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.ETypedElement;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.nasdanika.common.Context;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.engineering.Alignment;
-import org.nasdanika.engineering.EngineeredCapability;
 import org.nasdanika.engineering.EngineeringPackage;
+import org.nasdanika.engineering.Increment;
 import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.Objective;
+import org.nasdanika.engineering.Release;
 import org.nasdanika.html.model.app.Action;
 import org.nasdanika.html.model.app.AppFactory;
 import org.nasdanika.html.model.bootstrap.Table;
 import org.nasdanika.ncore.NcorePackage;
 
-public class EngineeredCapabilityActionProvider<T extends EngineeredCapability> extends CapabilityActionProvider<T> {
+public class IncrementActionProvider extends NamedElementActionProvider<Increment> {
 	
-	public EngineeredCapabilityActionProvider(T target, Context context) {
+	public IncrementActionProvider(Increment target, Context context) {
 		super(target, context);		
 	}
 	
@@ -34,7 +36,6 @@ public class EngineeredCapabilityActionProvider<T extends EngineeredCapability> 
 		properties.add(EngineeringPackage.Literals.ENDEAVOR__COMPLETION);
 		properties.add(EngineeringPackage.Literals.ENDEAVOR__TOTAL_COST);
 		properties.add(EngineeringPackage.Literals.ENDEAVOR__BENEFIT);
-		// TODO - 
 		
 		return properties;
 	}
@@ -45,8 +46,12 @@ public class EngineeredCapabilityActionProvider<T extends EngineeredCapability> 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
 			ProgressMonitor progressMonitor) throws Exception {
 		Action action = super.createAction(registry, resolveConsumer, progressMonitor);
+		action.setIcon("far fa-calendar-alt");
 		
+		createChildrenActions(action, registry, resolveConsumer, progressMonitor);
 		createAlignsActions(action, registry, resolveConsumer, progressMonitor);
+		createReleasesAction(action, registry, resolveConsumer, progressMonitor);		
+		createIssuesAction(action, registry, resolveConsumer, progressMonitor);		
 		createAllIssuesAction(action, registry, resolveConsumer, progressMonitor);		
 		createAllObjectiveActions(action, registry, resolveConsumer, progressMonitor);
 		
@@ -85,8 +90,38 @@ public class EngineeredCapabilityActionProvider<T extends EngineeredCapability> 
 			group.setText("Aligns");
 			group.setUuid(action.getUuid() + "-aligns");
 			action.getSections().add(group);
-		}		
+		}
 		
+	}
+	
+	protected void createReleasesAction(
+			Action action,
+			BiConsumer<EObject,Action> registry, 
+			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
+			ProgressMonitor progressMonitor) throws Exception {
+		
+		List<Release> releases = getTarget().getReleases();
+		if (!releases.isEmpty()) {
+			Action group = AppFactory.eINSTANCE.createAction();
+			group.setText("Releases");
+			group.setUuid(action.getUuid() + "-releases");
+			action.getSections().add(group);
+		}
+	}
+	
+	protected void createIssuesAction(
+			Action action,
+			BiConsumer<EObject,Action> registry, 
+			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
+			ProgressMonitor progressMonitor) throws Exception {
+		
+		List<Issue> issues = getTarget().getIssues();
+		if (!issues.isEmpty()) {
+			Action group = AppFactory.eINSTANCE.createAction();
+			group.setText("Issues");
+			group.setUuid(action.getUuid() + "-issues");
+			action.getSections().add(group);
+		}
 	}
 	
 	protected void createAllIssuesAction(
@@ -142,6 +177,68 @@ public class EngineeredCapabilityActionProvider<T extends EngineeredCapability> 
 			
 			allObjectivesActionOptional.get().getContent().add(renderList(allObjectives, true, null, action, EngineeringPackage.Literals.ENDEAVOR__ALL_OBJECTIVES, context, progressMonitor)); // Table?
 		}
+				
+		// Releases
+		EList<Release> releases = getTarget().getReleases();
+		if (!releases.isEmpty()) {
+			String releasesGroupUUID = action.getUuid() + "-releases";
+			Optional<Action> releasesActionOptional = action.getSections().stream()
+					.filter(Action.class::isInstance)					
+					.map(Action.class::cast)
+					.filter(a -> releasesGroupUUID.equals(a.getUuid()))
+					.findFirst();
+			Action releasesAction = releasesActionOptional.get();
+			Table allIssuesTable = buildTable(
+					releases, 
+					action, 
+					EngineeringPackage.Literals.INCREMENT__RELEASES, 
+					context, 
+					progressMonitor,
+					createColumnBuilder(EcorePackage.Literals.EOBJECT___ECONTAINER, "Product"),
+					createColumnBuilder("Release"),
+					createColumnBuilder(NcorePackage.Literals.PERIOD__START),					
+					createColumnBuilder(NcorePackage.Literals.PERIOD__END),					
+					createColumnBuilder(NcorePackage.Literals.PERIOD__DURATION),					
+					createColumnBuilder(EngineeringPackage.Literals.ENDEAVOR__COMPLETION));
+			
+			releasesAction.getContent().add(allIssuesTable);
+		}
+		
+		// Issues
+		EList<Issue> issues = getTarget().getIssues();
+		if (!issues.isEmpty()) {
+			String issuesGroupUUID = action.getUuid() + "-issues";
+			Optional<Action> issuesActionOptional = action.getSections().stream()
+					.filter(Action.class::isInstance)					
+					.map(Action.class::cast)
+					.filter(a -> issuesGroupUUID.equals(a.getUuid()))
+					.findFirst();
+			Action issuesAction = issuesActionOptional.get();
+			Table allIssuesTable = buildTable(
+					issues, 
+					action, 
+					EngineeringPackage.Literals.INCREMENT__ISSUES, 
+					context, 
+					progressMonitor,
+					createColumnBuilder("Issue"),
+					createColumnBuilder(EngineeringPackage.Literals.ISSUE__TARGET),
+					createColumnBuilder(EngineeringPackage.Literals.ENDEAVOR__ASSIGNEE),
+					createColumnBuilder(EngineeringPackage.Literals.ISSUE__CATEGORIES),
+					createColumnBuilder(EngineeringPackage.Literals.ISSUE__PRIORITY),
+					createColumnBuilder(EngineeringPackage.Literals.ISSUE__SEVERITY),
+					createColumnBuilder(EngineeringPackage.Literals.ISSUE__STATUS),
+					createColumnBuilder(EngineeringPackage.Literals.ISSUE__WORKABLE),
+					createColumnBuilder(EngineeringPackage.Literals.ENDEAVOR__BENEFIT),
+					createColumnBuilder(EngineeringPackage.Literals.ISSUE__COST),
+					createColumnBuilder(EngineeringPackage.Literals.ISSUE__EFFORT),
+					createColumnBuilder(EngineeringPackage.Literals.ISSUE__REMAINING_COST),
+					createColumnBuilder(EngineeringPackage.Literals.ISSUE__REMAINING_EFFORT),
+					createColumnBuilder(EngineeringPackage.Literals.ISSUE__RELEASES),
+					createColumnBuilder(EngineeringPackage.Literals.ISSUE__CONTRIBUTES_TO),					
+					createColumnBuilder(EngineeringPackage.Literals.ENDEAVOR__COMPLETION));
+			
+			issuesAction.getContent().add(allIssuesTable);
+		}
 		
 		// All Issues
 		EList<Issue> allIssues = getTarget().getAllIssues();
@@ -172,11 +269,33 @@ public class EngineeredCapabilityActionProvider<T extends EngineeredCapability> 
 					createColumnBuilder(EngineeringPackage.Literals.ISSUE__EFFORT),
 					createColumnBuilder(EngineeringPackage.Literals.ISSUE__REMAINING_COST),
 					createColumnBuilder(EngineeringPackage.Literals.ISSUE__REMAINING_EFFORT),
+					createColumnBuilder(EngineeringPackage.Literals.ISSUE__RELEASES),
+					createColumnBuilder(EngineeringPackage.Literals.ISSUE__CONTRIBUTES_TO),					
 					createColumnBuilder(EngineeringPackage.Literals.ENDEAVOR__COMPLETION));
 			
 			allIssuesAction.getContent().add(allIssuesTable);
 		}
 		
 	}	
-		
+
+	/**
+	 * Creates a list of actions for sub-packages. 
+	 * @param progressMonitor
+	 * @return An empty list if there are no sub-packages. A singleton list containing a grouping action containing sub-package actions otherwise.
+	 * @throws Exception 
+	 */
+	protected void createChildrenActions(
+			Action action,
+			BiConsumer<EObject,Action> registry, 
+			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
+			ProgressMonitor progressMonitor) throws Exception {
+		List<Increment> children = getTarget().getChildren();
+		if (!children.isEmpty()) {
+			EList<EObject> actionChildren = action.getChildren();
+			for (Increment child: children) {
+				actionChildren.add(createChildAction(child, registry, resolveConsumer, progressMonitor));
+			}
+		}		
+	}	
+	
 }

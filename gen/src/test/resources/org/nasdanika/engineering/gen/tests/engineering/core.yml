@@ -29,7 +29,7 @@ engineering-organization:
           - path: f2
             name: Feature 2
             aligns:
-              - path: generated-doc
+              generated-doc:
                 aim: engineering://nasdanika/personas/java-developer/goals/efficiency/children/generated-doc
                 weight: 0.5
                 description: Feature 2 simplifies generation of documentation. 

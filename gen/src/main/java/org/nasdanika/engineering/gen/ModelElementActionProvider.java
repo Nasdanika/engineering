@@ -151,19 +151,7 @@ public class ModelElementActionProvider<T extends ModelElement> extends EObjectA
 			org.nasdanika.html.emf.EObjectActionResolver.Context context, ProgressMonitor progressMonitor)
 			throws Exception {
 
-		if (value instanceof Marker) {
-			Marker marker = (Marker) value;
-			StringBuilder textBuilder = new StringBuilder(marker.getLocation());
-			if (marker.getLine() > 0) {
-				textBuilder.append(" ").append(marker.getLine());
-				if (marker.getColumn() > 0) {
-					textBuilder.append(":").append(marker.getColumn());
-				}
-			}
-			return createText(textBuilder.toString());
-		}
-		
-		if (typedElement == EngineeringPackage.Literals.ENDEAVOR__COMPLETION && value instanceof Double) {
+		if ((typedElement == EngineeringPackage.Literals.ENDEAVOR__COMPLETION || typedElement == EngineeringPackage.Literals.KEY_RESULT__COMPLETION) && value instanceof Double) {
 			double completion = (Double) value;
 			if (completion != Double.NaN && completion > 0.001) {
 				int percentage = (int) (100.0 * completion);

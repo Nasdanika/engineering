@@ -210,16 +210,6 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetIncrement(Increment newIncrement, NotificationChain msgs) {
-		msgs = eDynamicInverseAdd((InternalEObject)newIncrement, EngineeringPackage.ISSUE__INCREMENT, msgs);
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public void setIncrement(Increment newIncrement) {
 		eDynamicSet(EngineeringPackage.ISSUE__INCREMENT, EngineeringPackage.Literals.ISSUE__INCREMENT, newIncrement);
@@ -543,11 +533,6 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case EngineeringPackage.ISSUE__INCREMENT:
-				Increment increment = basicGetIncrement();
-				if (increment != null)
-					msgs = ((InternalEObject)increment).eInverseRemove(this, EngineeringPackage.INCREMENT__ISSUES, Increment.class, msgs);
-				return basicSetIncrement((Increment)otherEnd, msgs);
 			case EngineeringPackage.ISSUE__RELEASES:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getReleases()).basicAdd(otherEnd, msgs);
 		}
@@ -564,8 +549,6 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 		switch (featureID) {
 			case EngineeringPackage.ISSUE__CHILDREN:
 				return ((InternalEList<?>)getChildren()).basicRemove(otherEnd, msgs);
-			case EngineeringPackage.ISSUE__INCREMENT:
-				return basicSetIncrement(null, msgs);
 			case EngineeringPackage.ISSUE__NOTES:
 				return ((InternalEList<?>)getNotes()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.ISSUE__RELEASES:

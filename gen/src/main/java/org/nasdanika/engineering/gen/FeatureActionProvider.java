@@ -143,6 +143,7 @@ public class FeatureActionProvider extends EngineeredCapabilityActionProvider<Fe
 					createColumnBuilder(EngineeringPackage.Literals.ISSUE__REMAINING_COST),
 					createColumnBuilder(EngineeringPackage.Literals.ISSUE__REMAINING_EFFORT),
 					createColumnBuilder(EngineeringPackage.Literals.ENDEAVOR__COMPLETION),
+					createColumnBuilder(EngineeringPackage.Literals.ISSUE__INCREMENT),
 					createColumnBuilder(NcorePackage.Literals.PERIOD__START),
 					createColumnBuilder(NcorePackage.Literals.PERIOD__END),
 					createColumnBuilder(NcorePackage.Literals.PERIOD__DURATION));

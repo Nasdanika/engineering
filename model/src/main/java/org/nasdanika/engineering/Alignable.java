@@ -33,7 +33,7 @@ public interface Alignable extends EObject {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Aligns</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getAlignable_Aligns()
-	 * @model containment="true"
+	 * @model containment="true" keys="path"
 	 *        annotation="urn:org.nasdanika homogenous='true' strict-containment='true'"
 	 * @generated
 	 */

@@ -74,7 +74,7 @@ public interface KeyResult extends Aim {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Initiatives</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getKeyResult_Initiatives()
-	 * @model containment="true"
+	 * @model containment="true" keys="path"
 	 *        annotation="urn:org.nasdanika homogenous='true'"
 	 * @generated
 	 */

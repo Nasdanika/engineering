@@ -63,7 +63,7 @@ public interface Objective extends KeyResult {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Key Results</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getObjective_KeyResults()
-	 * @model containment="true"
+	 * @model containment="true" keys="path"
 	 *        annotation="urn:org.nasdanika homogenous='true'"
 	 * @generated
 	 */
@@ -79,7 +79,7 @@ public interface Objective extends KeyResult {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Children</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getObjective_Children()
-	 * @model containment="true"
+	 * @model containment="true" keys="path"
 	 *        annotation="urn:org.nasdanika homogenous='true'"
 	 * @generated
 	 */
@@ -87,7 +87,6 @@ public interface Objective extends KeyResult {
 
 	/**
 	 * Returns the value of the '<em><b>Parent</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Objective#getLinkedObjectives <em>Linked Objectives</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -96,8 +95,7 @@ public interface Objective extends KeyResult {
 	 * @return the value of the '<em>Parent</em>' reference.
 	 * @see #setParent(Objective)
 	 * @see org.nasdanika.engineering.EngineeringPackage#getObjective_Parent()
-	 * @see org.nasdanika.engineering.Objective#getLinkedObjectives
-	 * @model opposite="linkedObjectives"
+	 * @model
 	 * @generated
 	 */
 	Objective getParent();
@@ -115,7 +113,6 @@ public interface Objective extends KeyResult {
 	/**
 	 * Returns the value of the '<em><b>Linked Objectives</b></em>' reference list.
 	 * The list contents are of type {@link org.nasdanika.engineering.Objective}.
-	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Objective#getParent <em>Parent</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -123,8 +120,8 @@ public interface Objective extends KeyResult {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Linked Objectives</em>' reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getObjective_LinkedObjectives()
-	 * @see org.nasdanika.engineering.Objective#getParent
-	 * @model opposite="parent" derived="true"
+	 * @model transient="true" changeable="false" derived="true"
+	 *        annotation="urn:org.nasdanika opposite='parent'"
 	 * @generated
 	 */
 	EList<Objective> getLinkedObjectives();
@@ -139,7 +136,7 @@ public interface Objective extends KeyResult {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Sub Objectives</em>' reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getObjective_SubObjectives()
-	 * @model derived="true"
+	 * @model transient="true" changeable="false" derived="true"
 	 * @generated
 	 */
 	EList<Objective> getSubObjectives();

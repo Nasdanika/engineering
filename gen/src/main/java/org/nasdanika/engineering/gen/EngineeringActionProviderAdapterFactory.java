@@ -16,6 +16,8 @@ import org.nasdanika.emf.DiagnosticProviderAdapter;
 import org.nasdanika.emf.FunctionAdapterFactory;
 import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeringPackage;
+import org.nasdanika.engineering.KeyResult;
+import org.nasdanika.engineering.Objective;
 import org.nasdanika.engineering.Persona;
 import org.nasdanika.html.flow.FlowActionProviderAdapterFactory;
 import org.nasdanika.html.model.app.util.ActionProvider;
@@ -128,6 +130,27 @@ public class EngineeringActionProviderAdapterFactory extends FlowActionProviderA
 					ActionProvider.class, 
 					this.getClass().getClassLoader(), 
 					e -> new ReleaseActionProvider(e, context)));
+		
+		registerAdapterFactory(
+				new FunctionAdapterFactory<ActionProvider, org.nasdanika.engineering.Increment>(
+					EngineeringPackage.Literals.INCREMENT, 
+					ActionProvider.class, 
+					this.getClass().getClassLoader(), 
+					e -> new IncrementActionProvider(e, context)));
+		
+		registerAdapterFactory(
+				new FunctionAdapterFactory<ActionProvider, KeyResult>(
+					EngineeringPackage.Literals.KEY_RESULT, 
+					ActionProvider.class, 
+					this.getClass().getClassLoader(), 
+					e -> new KeyResultActionProvider<KeyResult>(e, context)));
+		
+		registerAdapterFactory(
+				new FunctionAdapterFactory<ActionProvider, Objective>(
+					EngineeringPackage.Literals.OBJECTIVE, 
+					ActionProvider.class, 
+					this.getClass().getClassLoader(), 
+					e -> new ObjectiveActionProvider(e, context)));
 			
 	}
 			
