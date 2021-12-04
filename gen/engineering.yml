@@ -27,6 +27,9 @@ engineering-module:
         Generate static cross-refrencing JSON files which can be used for programmatic access by, say, single-page applications. For example, an issues table with filtering and sorting or by charts.   
         May also generate a JavaScript API on top of the JSON "dumb" data - read-only properties returning promises.
         Ideally, the JSON should be loadable back to the model. Also may publish XMI at the root of the generated site - an alternative to Maven repository.      
+    help-dialogs:
+      name: Help dialogs
+      description: Markdown help resource. Superscript question mark if present.    
    
        ### 2021.5.0 ###
      

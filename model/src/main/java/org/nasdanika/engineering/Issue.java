@@ -150,7 +150,6 @@ public interface Issue extends EngineeredCapability {
 	/**
 	 * Returns the value of the '<em><b>Releases</b></em>' reference list.
 	 * The list contents are of type {@link org.nasdanika.engineering.Release}.
-	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Release#getIssues <em>Issues</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -158,9 +157,7 @@ public interface Issue extends EngineeredCapability {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Releases</em>' reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getIssue_Releases()
-	 * @see org.nasdanika.engineering.Release#getIssues
-	 * @model opposite="issues"
-	 *        annotation="urn:org.nasdanika homogenous='true'"
+	 * @model annotation="urn:org.nasdanika opposite='issues'"
 	 * @generated
 	 */
 	EList<Release> getReleases();

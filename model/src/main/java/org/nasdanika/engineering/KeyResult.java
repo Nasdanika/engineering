@@ -59,7 +59,7 @@ public interface KeyResult extends Aim {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Completion</em>' attribute.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getKeyResult_Completion()
-	 * @model changeable="false" derived="true"
+	 * @model transient="true" changeable="false" derived="true"
 	 * @generated
 	 */
 	double getCompletion();

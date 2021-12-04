@@ -52,7 +52,6 @@ public interface Release extends EngineeredCapability {
 	/**
 	 * Returns the value of the '<em><b>Issues</b></em>' reference list.
 	 * The list contents are of type {@link org.nasdanika.engineering.Issue}.
-	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Issue#getReleases <em>Releases</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -60,8 +59,7 @@ public interface Release extends EngineeredCapability {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Issues</em>' reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getRelease_Issues()
-	 * @see org.nasdanika.engineering.Issue#getReleases
-	 * @model opposite="releases" changeable="false" derived="true"
+	 * @model transient="true" changeable="false" derived="true"
 	 * @generated
 	 */
 	EList<Issue> getIssues();
@@ -69,7 +67,6 @@ public interface Release extends EngineeredCapability {
 	/**
 	 * Returns the value of the '<em><b>Features</b></em>' reference list.
 	 * The list contents are of type {@link org.nasdanika.engineering.Feature}.
-	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Feature#getReleases <em>Releases</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -77,8 +74,7 @@ public interface Release extends EngineeredCapability {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Features</em>' reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getRelease_Features()
-	 * @see org.nasdanika.engineering.Feature#getReleases
-	 * @model opposite="releases" changeable="false" derived="true"
+	 * @model transient="true" changeable="false" derived="true"
 	 * @generated
 	 */
 	EList<Feature> getFeatures();

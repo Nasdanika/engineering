@@ -27,7 +27,6 @@ public interface Feature extends EngineeredCapability {
 	/**
 	 * Returns the value of the '<em><b>Releases</b></em>' reference list.
 	 * The list contents are of type {@link org.nasdanika.engineering.Release}.
-	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Release#getFeatures <em>Features</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -35,8 +34,7 @@ public interface Feature extends EngineeredCapability {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Releases</em>' reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getFeature_Releases()
-	 * @see org.nasdanika.engineering.Release#getFeatures
-	 * @model opposite="features"
+	 * @model annotation="urn:org.nasdanika opposite='features'"
 	 * @generated
 	 */
 	EList<Release> getReleases();

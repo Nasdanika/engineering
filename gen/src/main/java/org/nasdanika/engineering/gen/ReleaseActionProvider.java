@@ -39,8 +39,8 @@ public class ReleaseActionProvider extends EngineeredCapabilityActionProvider<Re
 			ProgressMonitor progressMonitor) throws Exception {
 		Action action = super.createAction(registry, resolveConsumer, progressMonitor);
 		
-		createIssuesAction(action, registry, resolveConsumer, progressMonitor);		
 		createFeaturesAction(action, registry, resolveConsumer, progressMonitor);		
+		createIssuesAction(action, registry, resolveConsumer, progressMonitor);		
 		
 		return action;
 	}
@@ -60,7 +60,7 @@ public class ReleaseActionProvider extends EngineeredCapabilityActionProvider<Re
 			//group.setNotification(String.valueOf(issues.size()));
 			// TODO - icon, ...
 		
-			action.getNavigation().add(group);
+			action.getSections().add(group);
 		}
 		
 	}
@@ -95,8 +95,6 @@ public class ReleaseActionProvider extends EngineeredCapabilityActionProvider<Re
 		if (!features.isEmpty()) {
 			String featuresGroupUUID = action.getUuid() + "-features";
 			Optional<Action> featuresActionOptional = action.getSections().stream()
-					.filter(Action.class::isInstance)					
-					.map(Action.class::cast)
 					.filter(a -> featuresGroupUUID.equals(a.getUuid()))
 					.findFirst();
 			Action featuresAction = featuresActionOptional.get();
@@ -121,9 +119,7 @@ public class ReleaseActionProvider extends EngineeredCapabilityActionProvider<Re
 		EList<Issue> issues = getTarget().getIssues();
 		if (!issues.isEmpty()) {
 			String issuesGroupUUID = action.getUuid() + "-issues";
-			Optional<Action> issuesActionOptional = action.getNavigation().stream()
-					.filter(Action.class::isInstance)					
-					.map(Action.class::cast)
+			Optional<Action> issuesActionOptional = action.getSections().stream()
 					.filter(a -> issuesGroupUUID.equals(a.getUuid()))
 					.findFirst();
 			Action issuesAction = issuesActionOptional.get();

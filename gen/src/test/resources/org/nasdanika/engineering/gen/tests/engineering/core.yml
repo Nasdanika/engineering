@@ -16,23 +16,29 @@ engineering-organization:
         path: core
         name: Core
         releases:
-          - path: "0.1"
+          "0.1":
             name: "0.1"
-          - path: "1.0"
+            increment: engineering://nasdanika/increments/2021/children/Q4            
+          "1.0":
             name: "1.0"
         features:
-          - path: f1
+          f1:
             name: Feature 1
             children: 
-              - path: sfa
+              sfa:
                 name: Sub-feature A
-          - path: f2
+          f2:
             name: Feature 2
+            releases: engineering://nasdanika/modules/core/releases/0.1            
             aligns:
               generated-doc:
                 aim: engineering://nasdanika/personas/java-developer/goals/efficiency/children/generated-doc
                 weight: 0.5
                 description: Feature 2 simplifies generation of documentation. 
+              my-objective:
+                aim: engineering://nasdanika/increments/2021/children/Q4/objectives/my-objective
+                weight: 0.5
+                description: Some info here. 
         modules:
           - engineering-module:
               path: common
@@ -50,6 +56,7 @@ engineering-organization:
                   contributes-to: engineering://nasdanika/modules/core/features/f1/children/sfa
                   effort: 40
                   assignee: engineering://nasdanika/engineers/joe-doe
+                  releases: engineering://nasdanika/modules/core/releases/0.1
                   requires: 
                     - engineering://nasdanika/modules/core/features/f1/children/sfa
                   children:
@@ -103,4 +110,29 @@ engineering-organization:
       done: true
     - path: cancelled
       name: Cancelled
+  increments:
+    "2021":
+      name: 2021
+      start: 2021/01/01
+      end: 2022/01/01
+      children:
+        Q4:
+          name: Q4
+          start: 2021/10/01
+          end: 2022/01/01
+          children: 
+            dec:
+              name: December
+              start: 2021/12/01
+              end: 2022/01/01
+              objectives:
+                test-objective:
+                  name: Test Objective
+                  key-results:
+                    do-something:
+                      name: Do something
+          objectives:
+            my-objective:
+              name: My Objective
+              
                             
