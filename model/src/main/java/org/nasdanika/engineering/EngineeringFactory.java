@@ -76,6 +76,15 @@ public interface EngineeringFactory extends EFactory {
 	Engineer createEngineer();
 
 	/**
+	 * Returns a new object of class '<em>Domain</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Domain</em>'.
+	 * @generated
+	 */
+	Domain createDomain();
+
+	/**
 	 * Returns a new object of class '<em>Organization</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

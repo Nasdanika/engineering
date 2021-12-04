@@ -27,7 +27,6 @@ import org.nasdanika.html.model.bootstrap.TableCell;
 import org.nasdanika.html.model.bootstrap.TableRow;
 import org.nasdanika.html.model.bootstrap.TableSection;
 import org.nasdanika.html.model.html.HtmlFactory;
-import org.nasdanika.ncore.Marker;
 import org.nasdanika.ncore.util.NcoreUtil;
 
 public class ModelElementActionProvider<T extends ModelElement> extends EObjectActionProvider<T> {

@@ -11,6 +11,20 @@ engineering-organization:
     joe-doe:
       engineering-engineer:
         name: Joe Doe   
+  domains:
+    cloud:
+      name: Cloud
+      elements:
+        private:
+          engineering-domain:
+            name: Private
+        public:
+          engineering-domain:
+            name: Public
+            elements:
+              xyz:
+                engineering-product:
+                  name: XYZ                    
   modules:
     - engineering-product:
         path: core

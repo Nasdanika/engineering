@@ -18,6 +18,7 @@ import org.nasdanika.engineering.Capacity;
 import org.nasdanika.engineering.Decision;
 import org.nasdanika.engineering.Directory;
 import org.nasdanika.engineering.Document;
+import org.nasdanika.engineering.Domain;
 import org.nasdanika.engineering.Endeavor;
 import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeredCapability;
@@ -117,6 +118,13 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	private EClass engineerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass domainEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -945,6 +953,36 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	@Override
 	public EReference getEngineer_Objectives() {
 		return (EReference)engineerEClass.getEStructuralFeatures().get(16);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getEngineer_Domains() {
+		return (EReference)engineerEClass.getEStructuralFeatures().get(17);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getDomain() {
+		return domainEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getDomain_Elements() {
+		return (EReference)domainEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -2256,6 +2294,10 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		createEReference(engineerEClass, ENGINEER__REPRESENTS);
 		createEReference(engineerEClass, ENGINEER__MESSAGES);
 		createEReference(engineerEClass, ENGINEER__OBJECTIVES);
+		createEReference(engineerEClass, ENGINEER__DOMAINS);
+
+		domainEClass = createEClass(DOMAIN);
+		createEReference(domainEClass, DOMAIN__ELEMENTS);
 
 		organizationEClass = createEClass(ORGANIZATION);
 		createEReference(organizationEClass, ORGANIZATION__ENGINEERS);
@@ -2403,6 +2445,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		documentEClass.getESuperTypes().add(this.getEngineeredElement());
 		personaEClass.getESuperTypes().add(this.getEngineeredElement());
 		engineerEClass.getESuperTypes().add(this.getPersona());
+		domainEClass.getESuperTypes().add(this.getEngineeredElement());
 		organizationEClass.getESuperTypes().add(this.getEngineer());
 		moduleEClass.getESuperTypes().add(this.getEngineeredElement());
 		productEClass.getESuperTypes().add(this.getModule());
@@ -2565,6 +2608,12 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		initEReference(getEngineer_Messages(), this.getMessage(), this.getMessage_Author(), "messages", null, 0, -1, Engineer.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getEngineer_Objectives(), this.getObjective(), null, "objectives", null, 0, -1, Engineer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		getEngineer_Objectives().getEKeys().add(this.getModelElement_Path());
+		initEReference(getEngineer_Domains(), this.getDomain(), null, "domains", null, 0, -1, Engineer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		getEngineer_Domains().getEKeys().add(this.getModelElement_Path());
+
+		initEClass(domainEClass, Domain.class, "Domain", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getDomain_Elements(), this.getEngineeredElement(), null, "elements", null, 0, -1, Domain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		getDomain_Elements().getEKeys().add(this.getModelElement_Path());
 
 		initEClass(organizationEClass, Organization.class, "Organization", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getOrganization_Engineers(), this.getEngineer(), null, "engineers", null, 0, -1, Organization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3021,6 +3070,18 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		   source,
 		   new String[] {
 			   "homogenous", "true"
+		   });
+		addAnnotation
+		  (getEngineer_Domains(),
+		   source,
+		   new String[] {
+			   "homogenous", "true"
+		   });
+		addAnnotation
+		  (domainEClass,
+		   source,
+		   new String[] {
+			   "documentation-reference", "doc/domain.md"
 		   });
 		addAnnotation
 		  (organizationEClass,
@@ -3769,6 +3830,18 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		   source,
 		   new String[] {
 			   "documentation", "Engineer\'s objectives for a particular [endeavor](Endeavor.html)"
+		   });
+		addAnnotation
+		  (getEngineer_Domains(),
+		   source,
+		   new String[] {
+			   "documentation", "Engineer\'s domains"
+		   });
+		addAnnotation
+		  (getDomain_Elements(),
+		   source,
+		   new String[] {
+			   "documentation", "Domain elements"
 		   });
 		addAnnotation
 		  (getOrganization_Engineers(),

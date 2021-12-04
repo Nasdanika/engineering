@@ -15,6 +15,7 @@ import org.nasdanika.engineering.Capacity;
 import org.nasdanika.engineering.Decision;
 import org.nasdanika.engineering.Directory;
 import org.nasdanika.engineering.Document;
+import org.nasdanika.engineering.Domain;
 import org.nasdanika.engineering.Endeavor;
 import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeredCapability;
@@ -104,6 +105,7 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 			case EngineeringPackage.DOCUMENT: return createDocument();
 			case EngineeringPackage.PERSONA: return createPersona();
 			case EngineeringPackage.ENGINEER: return createEngineer();
+			case EngineeringPackage.DOMAIN: return createDomain();
 			case EngineeringPackage.ORGANIZATION: return createOrganization();
 			case EngineeringPackage.MODULE: return createModule();
 			case EngineeringPackage.PRODUCT: return createProduct();
@@ -194,6 +196,17 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 	public Engineer createEngineer() {
 		EngineerImpl engineer = new EngineerImpl();
 		return engineer;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Domain createDomain() {
+		DomainImpl domain = new DomainImpl();
+		return domain;
 	}
 
 	/**

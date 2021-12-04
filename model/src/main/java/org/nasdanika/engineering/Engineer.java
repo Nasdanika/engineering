@@ -31,6 +31,7 @@ import org.nasdanika.engineering.journey.Activity;
  *   <li>{@link org.nasdanika.engineering.Engineer#getRepresents <em>Represents</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Engineer#getMessages <em>Messages</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Engineer#getObjectives <em>Objectives</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.Engineer#getDomains <em>Domains</em>}</li>
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getEngineer()
@@ -323,5 +324,21 @@ public interface Engineer extends Persona {
 	 * @generated
 	 */
 	EList<Objective> getObjectives();
+
+	/**
+	 * Returns the value of the '<em><b>Domains</b></em>' containment reference list.
+	 * The list contents are of type {@link org.nasdanika.engineering.Domain}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Engineer's domains
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Domains</em>' containment reference list.
+	 * @see org.nasdanika.engineering.EngineeringPackage#getEngineer_Domains()
+	 * @model containment="true" keys="path"
+	 *        annotation="urn:org.nasdanika homogenous='true'"
+	 * @generated
+	 */
+	EList<Domain> getDomains();
 
 } // Engineer

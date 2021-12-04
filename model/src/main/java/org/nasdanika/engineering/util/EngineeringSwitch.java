@@ -16,6 +16,7 @@ import org.nasdanika.engineering.Capacity;
 import org.nasdanika.engineering.Decision;
 import org.nasdanika.engineering.Directory;
 import org.nasdanika.engineering.Document;
+import org.nasdanika.engineering.Domain;
 import org.nasdanika.engineering.Endeavor;
 import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeredCapability;
@@ -340,6 +341,22 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				if (result == null) result = caseMarked(engineer);
 				if (result == null) result = caseAdaptable(engineer);
 				if (result == null) result = caseIMarked(engineer);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EngineeringPackage.DOMAIN: {
+				Domain domain = (Domain)theEObject;
+				T result = caseDomain(domain);
+				if (result == null) result = caseEngineeredElement(domain);
+				if (result == null) result = caseForum(domain);
+				if (result == null) result = casePeriod(domain);
+				if (result == null) result = caseNamedElement(domain);
+				if (result == null) result = caseModelElement(domain);
+				if (result == null) result = caseNcore_NamedElement(domain);
+				if (result == null) result = caseNcore_ModelElement(domain);
+				if (result == null) result = caseMarked(domain);
+				if (result == null) result = caseAdaptable(domain);
+				if (result == null) result = caseIMarked(domain);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -855,6 +872,21 @@ public class EngineeringSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseEngineer(Engineer object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Domain</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Domain</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDomain(Domain object) {
 		return null;
 	}
 

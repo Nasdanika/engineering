@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.ETypedElement;
 import org.nasdanika.common.Context;
 import org.nasdanika.common.ProgressMonitor;
+import org.nasdanika.engineering.Domain;
 import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Increment;
@@ -37,6 +38,7 @@ public class EngineerActionProvider<T extends Engineer> extends PersonaActionPro
 			ProgressMonitor progressMonitor) throws Exception {
 		Action action = super.createAction(registry, resolveConsumer, progressMonitor);
 		
+		createDomainActions(action, registry, resolveConsumer, progressMonitor);		
 		createModuleActions(action, registry, resolveConsumer, progressMonitor);		
 		createIncrementActions(action, registry, resolveConsumer, progressMonitor);		
 		createPersonaActions(action, registry, resolveConsumer, progressMonitor);
@@ -50,7 +52,25 @@ public class EngineerActionProvider<T extends Engineer> extends PersonaActionPro
 		List<ETypedElement> properties = super.getProperties();
 		properties.add(EngineeringPackage.Literals.ENGINEER__RATE);
 		return properties;
-	}	
+	}
+	
+	protected void createDomainActions(
+			Action action,
+			BiConsumer<EObject,Action> registry, 
+			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
+			ProgressMonitor progressMonitor) throws Exception {
+		List<Domain> domains = getTarget().getDomains();
+		if (!domains.isEmpty()) {
+			Action group = AppFactory.eINSTANCE.createAction();
+			group.setText("Domains");
+			EList<EObject> children = group.getChildren();
+			for (Domain domain: domains) {
+				children.add(createChildAction(domain, registry, resolveConsumer, progressMonitor));
+			}
+	
+			action.getChildren().add(group);
+		}
+	}
 	
 	/**
 	 * Creates a list of actions for modules. 

@@ -50,17 +50,10 @@ public class ModuleActionProvider<T extends org.nasdanika.engineering.Module> ex
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
 			ProgressMonitor progressMonitor) throws Exception {
-		List<org.nasdanika.engineering.Module> modules = getTarget().getModules();
-		if (!modules.isEmpty()) {
-	//		Action group = AppFactory.eINSTANCE.createAction();
-	//		Predicate<org.nasdanika.engineering.Module> isProduct = Product.class::isInstance;			
-	//		group.setText(modules.stream().anyMatch(isProduct.negate()) ? "Modules" : "Products");
-	//		group.setIcon("fas fa-cubes");
-			EList<EObject> children = action.getChildren();
-			for (org.nasdanika.engineering.Module module: modules) {
-				children.add(createChildAction(module, registry, resolveConsumer, progressMonitor));
-			}
-		}		
+		EList<EObject> children = action.getChildren();
+		for (org.nasdanika.engineering.Module module: getTarget().getModules()) {
+			children.add(createChildAction(module, registry, resolveConsumer, progressMonitor));
+		}
 	}	
 	
 }

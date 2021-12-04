@@ -18,6 +18,7 @@ import org.nasdanika.engineering.Capacity;
 import org.nasdanika.engineering.Decision;
 import org.nasdanika.engineering.Directory;
 import org.nasdanika.engineering.Document;
+import org.nasdanika.engineering.Domain;
 import org.nasdanika.engineering.Endeavor;
 import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeredCapability;
@@ -167,6 +168,8 @@ public class EngineeringValidator extends EObjectValidator {
 				return validatePersona((Persona)value, diagnostics, context);
 			case EngineeringPackage.ENGINEER:
 				return validateEngineer((Engineer)value, diagnostics, context);
+			case EngineeringPackage.DOMAIN:
+				return validateDomain((Domain)value, diagnostics, context);
 			case EngineeringPackage.ORGANIZATION:
 				return validateOrganization((Organization)value, diagnostics, context);
 			case EngineeringPackage.MODULE:
@@ -781,6 +784,27 @@ public class EngineeringValidator extends EObjectValidator {
 			return false;
 		}
 		return ncoreValidator.validatePeriod_start_end(engineer, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateDomain(Domain domain, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(domain, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(domain, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(domain, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(domain, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(domain, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(domain, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(domain, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(domain, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(domain, diagnostics, context);
+		if (result || diagnostics != null) result &= validateModelElement_path(domain, diagnostics, context);
+		if (result || diagnostics != null) result &= ncoreValidator.validatePeriod_start_end(domain, diagnostics, context);
+		if (result || diagnostics != null) result &= validateEngineeredElement_capacity(domain, diagnostics, context);
+		return result;
 	}
 
 	/**
