@@ -24,7 +24,35 @@ engineering-organization:
             elements:
               xyz:
                 engineering-product:
-                  name: XYZ                    
+                  name: XYZ     
+                  documentation:
+                    - bootstrap-carousel:
+                        #cross-fade: true
+                        controls: true
+                        indicator: true
+                        interval: 3000
+                        appearance:
+                          border: LIGHT
+                          background: SECONDARY
+                          padding: S2
+                          attributes:
+                            style: 
+                              content-text: "min-height: 5em"
+                            class: 
+                              content-text: "rounded align-middle"
+                          text:
+                            alignment: CENTER
+                        slides:
+                          - content:
+                              content-text: Zoom
+                          - content:
+                              content-text: Skype
+                          - content:
+                              content-text: Google Meet
+                    - content-markdown:
+                        style: true
+                        source:
+                          content-text: "Turum-``purum``"               
   modules:
     - engineering-product:
         path: core

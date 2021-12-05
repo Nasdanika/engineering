@@ -72,6 +72,11 @@
 			<artifactId>flow</artifactId>
 			<version>${core.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.nasdanika.html</groupId>
+			<artifactId>bootstrap-model</artifactId>
+			<version>${core.version}</version>
+		</dependency>
 
 		<dependency>
 			<groupId>junit</groupId>
