@@ -483,13 +483,13 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="owners" upperBound="-1"
-        eType="#//Engineer" eOpposite="#//Engineer/owns">
+        eType="#//Engineer">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Element owners have both expertise and authority over the element."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="experts" upperBound="-1"
-        eType="#//Engineer" eOpposite="#//Engineer/expertise">
+        eType="#//Engineer">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Experts have expertise with the element, but no authority. E.g. they can help others with using the element, but cannot make changes in the element without owners' approval."/>
       </eAnnotations>
@@ -582,15 +582,21 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="owns" upperBound="-1" eType="#//EngineeredElement"
-        changeable="false" derived="true" eOpposite="#//EngineeredElement/owners">
+        changeable="false" transient="true" derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Engineered elements owned by this engineer."/>
       </eAnnotations>
+      <eAnnotations source="urn:org.nasdanika">
+        <details key="opposite" value="owners"/>
+      </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="expertise" upperBound="-1"
-        eType="#//EngineeredElement" changeable="false" derived="true" eOpposite="#//EngineeredElement/experts">
+        eType="#//EngineeredElement" changeable="false" transient="true" derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Engineered element which this engineer has experience with."/>
+      </eAnnotations>
+      <eAnnotations source="urn:org.nasdanika">
+        <details key="opposite" value="experts"/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="increments" upperBound="-1"

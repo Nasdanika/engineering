@@ -48,7 +48,6 @@ public interface EngineeredElement extends Forum, Period {
 	/**
 	 * Returns the value of the '<em><b>Owners</b></em>' reference list.
 	 * The list contents are of type {@link org.nasdanika.engineering.Engineer}.
-	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Engineer#getOwns <em>Owns</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -56,8 +55,7 @@ public interface EngineeredElement extends Forum, Period {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owners</em>' reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getEngineeredElement_Owners()
-	 * @see org.nasdanika.engineering.Engineer#getOwns
-	 * @model opposite="owns"
+	 * @model
 	 * @generated
 	 */
 	EList<Engineer> getOwners();
@@ -65,7 +63,6 @@ public interface EngineeredElement extends Forum, Period {
 	/**
 	 * Returns the value of the '<em><b>Experts</b></em>' reference list.
 	 * The list contents are of type {@link org.nasdanika.engineering.Engineer}.
-	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Engineer#getExpertise <em>Expertise</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -73,8 +70,7 @@ public interface EngineeredElement extends Forum, Period {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Experts</em>' reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getEngineeredElement_Experts()
-	 * @see org.nasdanika.engineering.Engineer#getExpertise
-	 * @model opposite="expertise"
+	 * @model
 	 * @generated
 	 */
 	EList<Engineer> getExperts();

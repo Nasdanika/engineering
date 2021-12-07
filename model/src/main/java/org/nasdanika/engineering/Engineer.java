@@ -58,7 +58,6 @@ public interface Engineer extends Persona {
 	/**
 	 * Returns the value of the '<em><b>Owns</b></em>' reference list.
 	 * The list contents are of type {@link org.nasdanika.engineering.EngineeredElement}.
-	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.EngineeredElement#getOwners <em>Owners</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -66,8 +65,8 @@ public interface Engineer extends Persona {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owns</em>' reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getEngineer_Owns()
-	 * @see org.nasdanika.engineering.EngineeredElement#getOwners
-	 * @model opposite="owners" changeable="false" derived="true"
+	 * @model transient="true" changeable="false" derived="true"
+	 *        annotation="urn:org.nasdanika opposite='owners'"
 	 * @generated
 	 */
 	EList<EngineeredElement> getOwns();
@@ -75,7 +74,6 @@ public interface Engineer extends Persona {
 	/**
 	 * Returns the value of the '<em><b>Expertise</b></em>' reference list.
 	 * The list contents are of type {@link org.nasdanika.engineering.EngineeredElement}.
-	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.EngineeredElement#getExperts <em>Experts</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -83,8 +81,8 @@ public interface Engineer extends Persona {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Expertise</em>' reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getEngineer_Expertise()
-	 * @see org.nasdanika.engineering.EngineeredElement#getExperts
-	 * @model opposite="experts" changeable="false" derived="true"
+	 * @model transient="true" changeable="false" derived="true"
+	 *        annotation="urn:org.nasdanika opposite='experts'"
 	 * @generated
 	 */
 	EList<EngineeredElement> getExpertise();

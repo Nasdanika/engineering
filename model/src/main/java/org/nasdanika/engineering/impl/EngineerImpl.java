@@ -297,10 +297,6 @@ public class EngineerImpl extends PersonaImpl implements Engineer {
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case EngineeringPackage.ENGINEER__OWNS:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getOwns()).basicAdd(otherEnd, msgs);
-			case EngineeringPackage.ENGINEER__EXPERTISE:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getExpertise()).basicAdd(otherEnd, msgs);
 			case EngineeringPackage.ENGINEER__DESIGNATIONS:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getDesignations()).basicAdd(otherEnd, msgs);
 			case EngineeringPackage.ENGINEER__REPRESENTS:
@@ -327,10 +323,6 @@ public class EngineerImpl extends PersonaImpl implements Engineer {
 		switch (featureID) {
 			case EngineeringPackage.ENGINEER__MODULES:
 				return ((InternalEList<?>)getModules()).basicRemove(otherEnd, msgs);
-			case EngineeringPackage.ENGINEER__OWNS:
-				return ((InternalEList<?>)getOwns()).basicRemove(otherEnd, msgs);
-			case EngineeringPackage.ENGINEER__EXPERTISE:
-				return ((InternalEList<?>)getExpertise()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.ENGINEER__INCREMENTS:
 				return ((InternalEList<?>)getIncrements()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.ENGINEER__SERVICES:

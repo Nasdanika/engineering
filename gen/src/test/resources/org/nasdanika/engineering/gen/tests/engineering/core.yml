@@ -57,6 +57,8 @@ engineering-organization:
     - engineering-product:
         path: core
         name: Core
+        owners: engineering://nasdanika/engineers/joe-doe
+        experts: engineering://nasdanika/engineers/joe-doe
         releases:
           "0.1":
             name: "0.1"

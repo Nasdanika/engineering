@@ -2,16 +2,21 @@ package org.nasdanika.engineering.gen;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.function.BiConsumer;
 import java.util.function.Predicate;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.ETypedElement;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.nasdanika.common.Context;
 import org.nasdanika.common.ProgressMonitor;
+import org.nasdanika.common.Util;
 import org.nasdanika.engineering.Domain;
+import org.nasdanika.engineering.Endeavor;
 import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Increment;
@@ -24,6 +29,8 @@ import org.nasdanika.engineering.Persona;
 import org.nasdanika.engineering.Product;
 import org.nasdanika.html.model.app.Action;
 import org.nasdanika.html.model.app.AppFactory;
+import org.nasdanika.html.model.bootstrap.Table;
+import org.nasdanika.ncore.NcorePackage;
 
 public class EngineerActionProvider<T extends Engineer> extends PersonaActionProvider<T> {
 	
@@ -44,6 +51,7 @@ public class EngineerActionProvider<T extends Engineer> extends PersonaActionPro
 		createPersonaActions(action, registry, resolveConsumer, progressMonitor);
 		createIssueGroupingActions(action, registry, resolveConsumer, progressMonitor);
 		createObjectiveActions(action, registry, resolveConsumer, progressMonitor);
+		createAssignmentsAction(action, registry, resolveConsumer, progressMonitor);		
 		
 		return action;
 	}
@@ -51,7 +59,28 @@ public class EngineerActionProvider<T extends Engineer> extends PersonaActionPro
 	protected List<ETypedElement> getProperties() {
 		List<ETypedElement> properties = super.getProperties();
 		properties.add(EngineeringPackage.Literals.ENGINEER__RATE);
+		properties.add(EngineeringPackage.Literals.ENGINEER__OWNS);
+		properties.add(EngineeringPackage.Literals.ENGINEER__EXPERTISE);
+		properties.add(EngineeringPackage.Literals.ENGINEER__REPRESENTS);
+
 		return properties;
+	}
+	
+	protected void createAssignmentsAction(
+			Action action,
+			BiConsumer<EObject,Action> registry, 
+			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
+			ProgressMonitor progressMonitor) throws Exception {
+		
+		List<Endeavor> assignments = getTarget().getAssignments();
+		if (!assignments.isEmpty()) {
+			Action group = AppFactory.eINSTANCE.createAction();
+			group.setText("Assignments");
+			group.setUuid(action.getUuid() + "-assignments");
+			group.setLocation("assignments.html");
+			action.getNavigation().add(group);
+		}
+		
 	}
 	
 	protected void createDomainActions(
@@ -341,6 +370,110 @@ public class EngineerActionProvider<T extends Engineer> extends PersonaActionPro
 				issueStatusesAction.getContent().add(renderList(issueStatuses, false, null, issueStatusesAction, EngineeringPackage.Literals.ENGINEER__ISSUE_STATUSES, context, progressMonitor)); // Table?
 			}
 		}		
+		
+		// Assignments		
+		EList<Endeavor> assignments = getTarget().getAssignments();
+		if (!assignments.isEmpty()) {
+			String assignmentsGroupUUID = action.getUuid() + "-assignments";
+			Optional<Action> assignmentsActionOptional = action.getNavigation().stream()
+					.filter(Action.class::isInstance)					
+					.map(Action.class::cast)
+					.filter(a -> assignmentsGroupUUID.equals(a.getUuid()))
+					.findFirst();
+			Action assignmentsAction = assignmentsActionOptional.get();
+			Map<EClass, List<Endeavor>> groupedAssignments = Util.groupBy(assignments, EObject::eClass);
+			
+			List<Endeavor> features = groupedAssignments.get(EngineeringPackage.Literals.FEATURE);
+			if (features != null && !features.isEmpty()) {
+				Table featuresTable = buildTable(
+						features, 
+						action, 
+						EngineeringPackage.Literals.ENGINEER__ASSIGNMENTS, 
+						context, 
+						progressMonitor,
+						createColumnBuilder("Feature"),
+						createColumnBuilder(EcorePackage.Literals.EOBJECT___ECONTAINER, "Product"),
+						createColumnBuilder(EngineeringPackage.Literals.FEATURE__RELEASES),
+						createColumnBuilder(NcorePackage.Literals.PERIOD__START),
+						createColumnBuilder(NcorePackage.Literals.PERIOD__END),
+						createColumnBuilder(NcorePackage.Literals.PERIOD__DURATION),
+						createColumnBuilder(EngineeringPackage.Literals.ENDEAVOR__COMPLETION));
+				
+				Action section = AppFactory.eINSTANCE.createAction();
+				section.setText("Features");
+				section.getContent().add(featuresTable);
+			
+				assignmentsAction.getSections().add(section);
+			}
+			
+			List<Endeavor> increments = groupedAssignments.get(EngineeringPackage.Literals.INCREMENT);
+			if (increments != null && !increments.isEmpty()) {
+				Table incrementsTable = buildTable(
+						increments, 
+						action, 
+						EngineeringPackage.Literals.ENGINEER__ASSIGNMENTS, 
+						context, 
+						progressMonitor,
+						createColumnBuilder("Increment"),
+						createColumnBuilder(NcorePackage.Literals.PERIOD__START),
+						createColumnBuilder(NcorePackage.Literals.PERIOD__END),
+						createColumnBuilder(NcorePackage.Literals.PERIOD__DURATION),
+						createColumnBuilder(EngineeringPackage.Literals.ENDEAVOR__COMPLETION));
+				
+				Action section = AppFactory.eINSTANCE.createAction();
+				section.setText("Increments");
+				section.getContent().add(incrementsTable);
+			
+				assignmentsAction.getSections().add(section);
+			}
+			
+			List<Endeavor> issues = groupedAssignments.get(EngineeringPackage.Literals.ISSUE);
+			if (issues != null && !issues.isEmpty()) {
+				Table issuesTable = buildTable(
+						issues, 
+						action, 
+						EngineeringPackage.Literals.ENGINEER__ASSIGNMENTS, 
+						context, 
+						progressMonitor,
+						createColumnBuilder("Issue"),
+						createColumnBuilder(EcorePackage.Literals.EOBJECT___ECONTAINER, "Module"),
+						createColumnBuilder(EngineeringPackage.Literals.ISSUE__INCREMENT),
+						createColumnBuilder(NcorePackage.Literals.PERIOD__START),
+						createColumnBuilder(NcorePackage.Literals.PERIOD__END),
+						createColumnBuilder(NcorePackage.Literals.PERIOD__DURATION),
+						createColumnBuilder(EngineeringPackage.Literals.ENDEAVOR__COMPLETION));
+				
+				Action section = AppFactory.eINSTANCE.createAction();
+				section.setText("Issues");
+				section.getContent().add(issuesTable);
+			
+				assignmentsAction.getSections().add(section);
+			}
+			
+			List<Endeavor> releases = groupedAssignments.get(EngineeringPackage.Literals.RELEASE);
+			if (releases != null && !releases.isEmpty()) {
+				Table releasesTable = buildTable(
+						releases, 
+						action, 
+						EngineeringPackage.Literals.ENGINEER__ASSIGNMENTS, 
+						context, 
+						progressMonitor,
+						createColumnBuilder("Release"),
+						createColumnBuilder(EcorePackage.Literals.EOBJECT___ECONTAINER, "Product"),
+						createColumnBuilder(EngineeringPackage.Literals.RELEASE__INCREMENT),
+						createColumnBuilder(NcorePackage.Literals.PERIOD__START),
+						createColumnBuilder(NcorePackage.Literals.PERIOD__END),
+						createColumnBuilder(NcorePackage.Literals.PERIOD__DURATION),
+						createColumnBuilder(EngineeringPackage.Literals.ENDEAVOR__COMPLETION));
+				
+				Action section = AppFactory.eINSTANCE.createAction();
+				section.setText("Releases");
+				section.getContent().add(releasesTable);
+			
+				assignmentsAction.getSections().add(section);
+			}
+			
+		}
 		
 	}
 

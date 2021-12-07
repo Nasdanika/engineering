@@ -111,12 +111,12 @@ public class EngineeredElementActionProvider<T extends EngineeredElement> extend
 		EList<Issue> allIssues = engineeredElement.getAllIssues();
 		if (!allIssues.isEmpty()) {
 			String allIssuesGroupUUID = action.getUuid() + "-all-issues";
-			Optional<Action> issuesActionOptional = action.getNavigation().stream()
+			Optional<Action> allIssuesActionOptional = action.getNavigation().stream()
 					.filter(Action.class::isInstance)					
 					.map(Action.class::cast)
 					.filter(a -> allIssuesGroupUUID.equals(a.getUuid()))
 					.findFirst();
-			Action allIssuesAction = issuesActionOptional.get();
+			Action allIssuesAction = allIssuesActionOptional.get();
 			Table allIssuesTable = buildTable(
 					allIssues, 
 					action, 
