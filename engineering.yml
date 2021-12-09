@@ -2,36 +2,15 @@ engineering-product:
    name: Engineering
    path: engineering
    releases:
-     "2021-11-2":
-       name: "2021.11.2"
-   representations:
-     - representation-component-diagram: true
-   releases:
-      - name: 2021.4.4
-        path: 2021/4/4
-        increment: nasdanika:increments/2021/children/q2/children/apr
-        available: true
-      - name: 2021.5.0
-        path: 2021/5/0
-        increment: nasdanika:increments/2021/children/q2/children/may
-   features:
-      - name: Test feature
-        path: test
-        releases: nasdanika:modules/engineering/releases/2021/4/4
+     "2021-12-4":
+       name: "2021.12.4"
    modules:
       - model/engineering.yml
       - gen/engineering.yml
    issues:
-      - name: Maven plugin for site generationengineering.yml
-        description: Explicit source base property, later support jGit origin.   
-      - name: Eclipse builder
-        description: On save or explicit.
-      - name: Engineering positioning
-        description: Multiple repositories - source, doc/design, requirements (issues) - all in one, interconnected.
-      - name: IDE editors
-        description: Tree, diagram (Sirius) - leverage old bundles from core - move to org.nasdanika.eclipse product.
-      - name: Diagramming
-        description: |+2
+     diagramming:
+       name: Diagramming
+       description: |+2
           Diagramming model - PlantUML is the first generation target. mxGraph is the next - option to specify layout and merge updates with manually laid out diagrams - match by ID (URI digest), update only the semantic part if found. 
           Delete if no match, some primitive layout for new - below all or similar to text wrapping - grow proportionally. First, validate compatibility of mxGraph-produced output with draw.io - mxGraph is end of life, but it is ostensibly used by draw.io
           If no compatibility - a primitive XML-based output - don't need much functionality.

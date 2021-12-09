@@ -74,7 +74,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.nasdanika.html</groupId>
-			<artifactId>bootstrap-model</artifactId>
+			<artifactId>app-model</artifactId>
 			<version>${core.version}</version>
 		</dependency>
 
