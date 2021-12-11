@@ -152,7 +152,7 @@ public class IssueActionProvider extends EngineeredCapabilityActionProvider<Issu
 			};
 			
 			Action childrenAction = childrenActionOptional.get();
-			childrenAction.getContent().add(renderList(children, false, issueChildrenListProvider, childrenAction, EngineeringPackage.Literals.ISSUE__CHILDREN, context, progressMonitor)); // Table?
+			childrenAction.getContent().add(renderList(children, false, issueChildrenListProvider, action, EngineeringPackage.Literals.ISSUE__CHILDREN, context, progressMonitor)); // Table?
 		}
 		
 		EList<Note> notes = issue.getNotes();
