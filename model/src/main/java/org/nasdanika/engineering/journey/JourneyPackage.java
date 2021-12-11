@@ -103,6 +103,15 @@ public interface JourneyPackage extends EPackage {
 	int ACTIVITY__UUID = FlowPackage.ACTIVITY__UUID;
 
 	/**
+	 * The feature id for the '<em><b>Action Prototype</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__ACTION_PROTOTYPE = FlowPackage.ACTIVITY__ACTION_PROTOTYPE;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -471,6 +480,15 @@ public interface JourneyPackage extends EPackage {
 	 * @ordered
 	 */
 	int JOURNEY__UUID = FlowPackage.FLOW__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Action Prototype</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY__ACTION_PROTOTYPE = FlowPackage.FLOW__ACTION_PROTOTYPE;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.

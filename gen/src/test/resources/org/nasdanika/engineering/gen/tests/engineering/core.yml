@@ -105,11 +105,11 @@ engineering-organization:
                   requires: 
                     - engineering://nasdanika/modules/core/features/f1/children/sfa
                   children:
-                    - name: Step 1
-                      path: step-1
+                    step-1:
+                      name: Step 1
                       description: Do this and that.
                   notes:
-                    - path: "2021-11-13" 
+                    2021-11-13:  
                       description: Got to do something about it
                       effort: 4
   personas:

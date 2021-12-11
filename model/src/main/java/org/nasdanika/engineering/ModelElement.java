@@ -65,7 +65,7 @@ public interface ModelElement extends org.nasdanika.ncore.ModelElement {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Resources</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getModelElement_Resources()
-	 * @model containment="true"
+	 * @model containment="true" keys="path"
 	 * @generated
 	 */
 	EList<NamedElement> getResources();

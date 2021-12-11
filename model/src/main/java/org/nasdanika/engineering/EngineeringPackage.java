@@ -105,6 +105,15 @@ public interface EngineeringPackage extends EPackage {
 	int MODEL_ELEMENT__UUID = NcorePackage.MODEL_ELEMENT__UUID;
 
 	/**
+	 * The feature id for the '<em><b>Action Prototype</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL_ELEMENT__ACTION_PROTOTYPE = NcorePackage.MODEL_ELEMENT__ACTION_PROTOTYPE;
+
+	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -278,6 +287,15 @@ public interface EngineeringPackage extends EPackage {
 	int NAMED_ELEMENT__UUID = MODEL_ELEMENT__UUID;
 
 	/**
+	 * The feature id for the '<em><b>Action Prototype</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NAMED_ELEMENT__ACTION_PROTOTYPE = MODEL_ELEMENT__ACTION_PROTOTYPE;
+
+	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -403,6 +421,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int EVENT__UUID = NAMED_ELEMENT__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Action Prototype</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT__ACTION_PROTOTYPE = NAMED_ELEMENT__ACTION_PROTOTYPE;
 
 	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
@@ -975,6 +1002,15 @@ public interface EngineeringPackage extends EPackage {
 	int ENDEAVOR__UUID = MODEL_ELEMENT__UUID;
 
 	/**
+	 * The feature id for the '<em><b>Action Prototype</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENDEAVOR__ACTION_PROTOTYPE = MODEL_ELEMENT__ACTION_PROTOTYPE;
+
+	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1198,6 +1234,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int INCREMENT__UUID = NAMED_ELEMENT__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Action Prototype</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INCREMENT__ACTION_PROTOTYPE = NAMED_ELEMENT__ACTION_PROTOTYPE;
 
 	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
@@ -1461,6 +1506,15 @@ public interface EngineeringPackage extends EPackage {
 	int AIM__UUID = NAMED_ELEMENT__UUID;
 
 	/**
+	 * The feature id for the '<em><b>Action Prototype</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AIM__ACTION_PROTOTYPE = NAMED_ELEMENT__ACTION_PROTOTYPE;
+
+	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1594,6 +1648,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int ISSUE_CATEGORY__UUID = AIM__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Action Prototype</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE_CATEGORY__ACTION_PROTOTYPE = AIM__ACTION_PROTOTYPE;
 
 	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
@@ -1776,6 +1839,15 @@ public interface EngineeringPackage extends EPackage {
 	int ISSUE_STATUS__UUID = NAMED_ELEMENT__UUID;
 
 	/**
+	 * The feature id for the '<em><b>Action Prototype</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE_STATUS__ACTION_PROTOTYPE = NAMED_ELEMENT__ACTION_PROTOTYPE;
+
+	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1911,6 +1983,15 @@ public interface EngineeringPackage extends EPackage {
 	int ISSUE_PRIORITY__UUID = NAMED_ELEMENT__UUID;
 
 	/**
+	 * The feature id for the '<em><b>Action Prototype</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE_PRIORITY__ACTION_PROTOTYPE = NAMED_ELEMENT__ACTION_PROTOTYPE;
+
+	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2037,6 +2118,15 @@ public interface EngineeringPackage extends EPackage {
 	int ISSUE_SEVERITY__UUID = NAMED_ELEMENT__UUID;
 
 	/**
+	 * The feature id for the '<em><b>Action Prototype</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE_SEVERITY__ACTION_PROTOTYPE = NAMED_ELEMENT__ACTION_PROTOTYPE;
+
+	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2161,6 +2251,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int CAPABILITY__UUID = NAMED_ELEMENT__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Action Prototype</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY__ACTION_PROTOTYPE = NAMED_ELEMENT__ACTION_PROTOTYPE;
 
 	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
@@ -2323,6 +2422,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int ENGINEERED_CAPABILITY__UUID = CAPABILITY__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Action Prototype</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEERED_CAPABILITY__ACTION_PROTOTYPE = CAPABILITY__ACTION_PROTOTYPE;
 
 	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
@@ -2575,6 +2683,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int ISSUE__UUID = ENGINEERED_CAPABILITY__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Action Prototype</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE__ACTION_PROTOTYPE = ENGINEERED_CAPABILITY__ACTION_PROTOTYPE;
 
 	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
@@ -2973,6 +3090,15 @@ public interface EngineeringPackage extends EPackage {
 	int NOTE__UUID = MODEL_ELEMENT__UUID;
 
 	/**
+	 * The feature id for the '<em><b>Action Prototype</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NOTE__ACTION_PROTOTYPE = MODEL_ELEMENT__ACTION_PROTOTYPE;
+
+	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3144,6 +3270,15 @@ public interface EngineeringPackage extends EPackage {
 	int FORUM__UUID = NAMED_ELEMENT__UUID;
 
 	/**
+	 * The feature id for the '<em><b>Action Prototype</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORUM__ACTION_PROTOTYPE = NAMED_ELEMENT__ACTION_PROTOTYPE;
+
+	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3277,6 +3412,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int ENGINEERED_ELEMENT__UUID = FORUM__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Action Prototype</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEERED_ELEMENT__ACTION_PROTOTYPE = FORUM__ACTION_PROTOTYPE;
 
 	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
@@ -3493,6 +3637,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int DOCUMENT__UUID = ENGINEERED_ELEMENT__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Action Prototype</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT__ACTION_PROTOTYPE = ENGINEERED_ELEMENT__ACTION_PROTOTYPE;
 
 	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
@@ -3727,6 +3880,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int PERSONA__UUID = ENGINEERED_ELEMENT__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Action Prototype</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSONA__ACTION_PROTOTYPE = ENGINEERED_ELEMENT__ACTION_PROTOTYPE;
 
 	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
@@ -3979,6 +4141,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int ENGINEER__UUID = PERSONA__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Action Prototype</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEER__ACTION_PROTOTYPE = PERSONA__ACTION_PROTOTYPE;
 
 	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
@@ -4405,6 +4576,15 @@ public interface EngineeringPackage extends EPackage {
 	int DOMAIN__UUID = ENGINEERED_ELEMENT__UUID;
 
 	/**
+	 * The feature id for the '<em><b>Action Prototype</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN__ACTION_PROTOTYPE = ENGINEERED_ELEMENT__ACTION_PROTOTYPE;
+
+	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4628,6 +4808,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int ORGANIZATION__UUID = ENGINEER__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Action Prototype</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANIZATION__ACTION_PROTOTYPE = ENGINEER__ACTION_PROTOTYPE;
 
 	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
@@ -5053,6 +5242,15 @@ public interface EngineeringPackage extends EPackage {
 	int MODULE__UUID = ENGINEERED_ELEMENT__UUID;
 
 	/**
+	 * The feature id for the '<em><b>Action Prototype</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODULE__ACTION_PROTOTYPE = ENGINEERED_ELEMENT__ACTION_PROTOTYPE;
+
+	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5294,6 +5492,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int PRODUCT__UUID = MODULE__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Action Prototype</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT__ACTION_PROTOTYPE = MODULE__ACTION_PROTOTYPE;
 
 	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
@@ -5555,6 +5762,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int RELEASE__UUID = ENGINEERED_CAPABILITY__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Action Prototype</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RELEASE__ACTION_PROTOTYPE = ENGINEERED_CAPABILITY__ACTION_PROTOTYPE;
 
 	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
@@ -5836,6 +6052,15 @@ public interface EngineeringPackage extends EPackage {
 	int FEATURE__UUID = ENGINEERED_CAPABILITY__UUID;
 
 	/**
+	 * The feature id for the '<em><b>Action Prototype</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE__ACTION_PROTOTYPE = ENGINEERED_CAPABILITY__ACTION_PROTOTYPE;
+
+	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6115,6 +6340,15 @@ public interface EngineeringPackage extends EPackage {
 	int DIRECTORY__UUID = ENGINEERED_ELEMENT__UUID;
 
 	/**
+	 * The feature id for the '<em><b>Action Prototype</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIRECTORY__ACTION_PROTOTYPE = ENGINEERED_ELEMENT__ACTION_PROTOTYPE;
+
+	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6340,6 +6574,15 @@ public interface EngineeringPackage extends EPackage {
 	int CAPACITY__UUID = MODEL_ELEMENT__UUID;
 
 	/**
+	 * The feature id for the '<em><b>Action Prototype</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPACITY__ACTION_PROTOTYPE = MODEL_ELEMENT__ACTION_PROTOTYPE;
+
+	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6482,6 +6725,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int ALLOCATION__UUID = CAPACITY__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Action Prototype</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ALLOCATION__ACTION_PROTOTYPE = CAPACITY__ACTION_PROTOTYPE;
 
 	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
@@ -6646,6 +6898,15 @@ public interface EngineeringPackage extends EPackage {
 	int PRINCIPLE__UUID = AIM__UUID;
 
 	/**
+	 * The feature id for the '<em><b>Action Prototype</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRINCIPLE__ACTION_PROTOTYPE = AIM__ACTION_PROTOTYPE;
+
+	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6790,6 +7051,15 @@ public interface EngineeringPackage extends EPackage {
 	int ALIGNMENT__UUID = MODEL_ELEMENT__UUID;
 
 	/**
+	 * The feature id for the '<em><b>Action Prototype</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ALIGNMENT__ACTION_PROTOTYPE = MODEL_ELEMENT__ACTION_PROTOTYPE;
+
+	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6914,6 +7184,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int GOAL__UUID = AIM__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Action Prototype</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GOAL__ACTION_PROTOTYPE = AIM__ACTION_PROTOTYPE;
 
 	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
@@ -7060,6 +7339,15 @@ public interface EngineeringPackage extends EPackage {
 	int MESSAGE__UUID = NAMED_ELEMENT__UUID;
 
 	/**
+	 * The feature id for the '<em><b>Action Prototype</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE__ACTION_PROTOTYPE = NAMED_ELEMENT__ACTION_PROTOTYPE;
+
+	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7193,6 +7481,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int TOPIC__UUID = MESSAGE__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Action Prototype</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TOPIC__ACTION_PROTOTYPE = MESSAGE__ACTION_PROTOTYPE;
 
 	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
@@ -7349,6 +7646,15 @@ public interface EngineeringPackage extends EPackage {
 	int NAMED_ELEMENT_REFERENCE__UUID = NAMED_ELEMENT__UUID;
 
 	/**
+	 * The feature id for the '<em><b>Action Prototype</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NAMED_ELEMENT_REFERENCE__ACTION_PROTOTYPE = NAMED_ELEMENT__ACTION_PROTOTYPE;
+
+	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7485,6 +7791,15 @@ public interface EngineeringPackage extends EPackage {
 	int LINK__UUID = NAMED_ELEMENT__UUID;
 
 	/**
+	 * The feature id for the '<em><b>Action Prototype</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINK__ACTION_PROTOTYPE = NAMED_ELEMENT__ACTION_PROTOTYPE;
+
+	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7619,6 +7934,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int KEY_RESULT__UUID = AIM__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Action Prototype</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int KEY_RESULT__ACTION_PROTOTYPE = AIM__ACTION_PROTOTYPE;
 
 	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
@@ -7791,6 +8115,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int OBJECTIVE__UUID = KEY_RESULT__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Action Prototype</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBJECTIVE__ACTION_PROTOTYPE = KEY_RESULT__ACTION_PROTOTYPE;
 
 	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
@@ -8017,6 +8350,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int DECISION__UUID = ISSUE__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Action Prototype</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DECISION__ACTION_PROTOTYPE = ISSUE__ACTION_PROTOTYPE;
 
 	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.

@@ -32,7 +32,7 @@ public interface Forum extends NamedElement {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Discussion</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getForum_Discussion()
-	 * @model containment="true"
+	 * @model containment="true" keys="path"
 	 *        annotation="urn:org.nasdanika homogenous='true'"
 	 * @generated
 	 */
@@ -48,7 +48,7 @@ public interface Forum extends NamedElement {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Topics</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getForum_Topics()
-	 * @model containment="true"
+	 * @model containment="true" keys="path"
 	 *        annotation="urn:org.nasdanika homogenous='true'"
 	 * @generated
 	 */

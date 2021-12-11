@@ -104,10 +104,6 @@ public class PersonaImpl extends EngineeredElementImpl implements Persona {
 		switch (featureID) {
 			case EngineeringPackage.PERSONA__REPRESENTATIVES:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getRepresentatives()).basicAdd(otherEnd, msgs);
-			case EngineeringPackage.PERSONA__EXTENDS:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getExtends()).basicAdd(otherEnd, msgs);
-			case EngineeringPackage.PERSONA__EXTENSIONS:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getExtensions()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -124,10 +120,6 @@ public class PersonaImpl extends EngineeredElementImpl implements Persona {
 				return ((InternalEList<?>)getGoals()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.PERSONA__REPRESENTATIVES:
 				return ((InternalEList<?>)getRepresentatives()).basicRemove(otherEnd, msgs);
-			case EngineeringPackage.PERSONA__EXTENDS:
-				return ((InternalEList<?>)getExtends()).basicRemove(otherEnd, msgs);
-			case EngineeringPackage.PERSONA__EXTENSIONS:
-				return ((InternalEList<?>)getExtensions()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}

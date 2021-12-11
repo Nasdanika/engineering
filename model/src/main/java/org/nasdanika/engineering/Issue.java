@@ -47,7 +47,7 @@ public interface Issue extends EngineeredCapability {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Children</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getIssue_Children()
-	 * @model containment="true"
+	 * @model containment="true" keys="path"
 	 *        annotation="urn:org.nasdanika homogenous='true'"
 	 * @generated
 	 */
@@ -300,7 +300,7 @@ public interface Issue extends EngineeredCapability {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Notes</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getIssue_Notes()
-	 * @model containment="true"
+	 * @model containment="true" keys="path"
 	 *        annotation="urn:org.nasdanika homogenous='true'"
 	 * @generated
 	 */

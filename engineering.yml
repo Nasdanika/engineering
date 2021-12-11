@@ -16,7 +16,10 @@ engineering-product:
           If no compatibility - a primitive XML-based output - don't need much functionality.
           Longer-term potentially - diagram editing plug-in for Eclipse.
           Two levels of draw.io support: a) Token expansion on hand-crafted diagrams - decompress, expand tokens, re-compress and embed - handle at the core. b) Generation of (initial) diagrams and merging of changes - handle at its own product, try to leverage mxGraph.
-          Support of Mermaid output.
- 
+          Support of Mermaid output. 
+     branch-progress:
+       name: Branch progress
+       description: |+2
+          Add to features - branch progress, e.g. feature branch - earned but not yet released value/benefit.
 
 

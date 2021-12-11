@@ -17,7 +17,7 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="resources" upperBound="-1"
-        eType="#//NamedElement" containment="true">
+        eType="#//NamedElement" containment="true" eKeys="#//ModelElement/path">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Resources associated with the element, e.g. documentation."/>
       </eAnnotations>
@@ -280,7 +280,7 @@
       <details key="constraints" value="increment"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
-        eType="#//Issue" containment="true">
+        eType="#//Issue" containment="true" eKeys="#//ModelElement/path">
       <eAnnotations source="urn:org.nasdanika">
         <details key="homogenous" value="true"/>
       </eAnnotations>
@@ -315,7 +315,7 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="notes" upperBound="-1"
-        eType="#//Note" containment="true">
+        eType="#//Note" containment="true" eKeys="#//ModelElement/path">
       <eAnnotations source="urn:org.nasdanika">
         <details key="homogenous" value="true"/>
       </eAnnotations>
@@ -448,7 +448,7 @@
       <details key="documentation-reference" value="doc/forum.md"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="discussion" upperBound="-1"
-        eType="#//Forum" containment="true">
+        eType="#//Forum" containment="true" eKeys="#//ModelElement/path">
       <eAnnotations source="urn:org.nasdanika">
         <details key="homogenous" value="true"/>
       </eAnnotations>
@@ -457,7 +457,7 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="topics" upperBound="-1"
-        eType="#//Topic" containment="true">
+        eType="#//Topic" containment="true" eKeys="#//ModelElement/path">
       <eAnnotations source="urn:org.nasdanika">
         <details key="homogenous" value="true"/>
       </eAnnotations>
@@ -555,15 +555,18 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="extends" upperBound="-1"
-        eType="#//Persona" eOpposite="#//Persona/extensions">
+        eType="#//Persona">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="A persona may extend another persona. E.g. &quot;Moderator&quot; discussion forum persona extends &quot;User&quot; persona, which may in turn extend &quot;Visitor&quot; persona. This persona inherits goals for the extended personas."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="extensions" upperBound="-1"
-        eType="#//Persona" changeable="false" derived="true" eOpposite="#//Persona/extends">
+        eType="#//Persona" changeable="false" transient="true" derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Personas extending this persona."/>
+      </eAnnotations>
+      <eAnnotations source="urn:org.nasdanika">
+        <details key="opposite" value="extends"/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
@@ -1018,7 +1021,7 @@
       <details key="documentation-reference" value="doc/topic.md"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="messages" upperBound="-1"
-        eType="#//Message" containment="true">
+        eType="#//Message" containment="true" eKeys="#//ModelElement/path">
       <eAnnotations source="urn:org.nasdanika">
         <details key="homogenous" value="true"/>
       </eAnnotations>

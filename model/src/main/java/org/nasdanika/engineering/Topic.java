@@ -31,7 +31,7 @@ public interface Topic extends Message {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Messages</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getTopic_Messages()
-	 * @model containment="true"
+	 * @model containment="true" keys="path"
 	 *        annotation="urn:org.nasdanika homogenous='true'"
 	 * @generated
 	 */
