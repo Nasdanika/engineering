@@ -33,4 +33,20 @@ engineering-module:
         Drop issues back-reference in release and rename features back-reference to capabilities.
         Modify completion and effort computation.
         At the UI use group-by and report Releases/Features/Issues - borrow from Engineer assignments.
+    configurable-tables:
+      name: Configurable tables
+      description: |+2 
+        Sortable, filterable, pagination, column selection - remember in local storage. Consider using Vue, Knockout is obsolete - 
+        https://v3.vuejs.org/guide/introduction.html#getting-started
+        Forms doc: https://vuejs.org/v2/guide/forms.html, https://bootstrap-vue.org/docs/components/form-checkbox, https://vuejs.org/v2/guide/events.html Form example: https://codepen.io/riix/pen/MeYogB
+        https://codepen.io/zhaoqize/pen/JWGGrL, https://codepen.io/beyondverage0908/pen/ebWzYj 
+        https://codepen.io/pespantelis/pen/ojwgPB, see my modifications in vue.md
+        https://www.raymondcamden.com/2018/02/08/building-table-sorting-and-pagination-in-vuejs
+        Paginated table: https://codepen.io/cslinmiso/pen/pbqALW
+        React is also an option, but Vue seems to be simpler: https://codesandbox.io/embed/table-sorting-example-ur2z9?fontsize=14&hidenavigation=1&theme=dark
+        https://github.com/wenzhixin/bootstrap-table 
+        Make a reusable component? Or a method, say buildDynamicTable() similar to buildTable().
+        Table configuration also bordered, striped, condensed, etc.
+        https://cdnjs.com/libraries/vue
+        https://techformist.com/use-vue-from-url-simple-app/ https://cdn.jsdelivr.net/npm/vue@3.2.24
    
