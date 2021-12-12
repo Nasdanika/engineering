@@ -147,7 +147,7 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 	}
 
 	/**
-	 * Issue increment. If not set defaults to release's increment or feature release increment. 
+	 * Issue increment. If not set computes from the end if set.  
 	 * @generated NOT
 	 */
 	@Override
@@ -156,25 +156,13 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 		if (ret == null) {
 			Temporal end = getEnd();
 			if (end != null) {
-				// Computing increment from the end date if the end data is set and the increment is not.
+				// Computing increment from the end date if the end date is set and the increment is not.
 				for (EObject ancestor = eContainer(); ancestor != null; ancestor = ancestor.eContainer()) {
 					if (ancestor instanceof Engineer) {
 						Increment increment = findIncrement(getEnd(), ((Engineer) ancestor).getIncrements());
 						if (increment != null) {
 							return increment;
 						}
-					}
-				}
-			}
-			for (Release release: getReleases()) {
-				if (release.eIsSet(EngineeringPackage.Literals.RELEASE__INCREMENT)) {
-					return release.getIncrement();
-				}
-			}
-			for (Feature feature: getContributesTo()) {
-				for (Release release: feature.getReleases()) {
-					if (release.eIsSet(EngineeringPackage.Literals.RELEASE__INCREMENT)) {
-						return release.getIncrement();
 					}
 				}
 			}
