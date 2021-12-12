@@ -7,12 +7,16 @@ import java.util.function.BiConsumer;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.ETypedElement;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.nasdanika.common.Context;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.engineering.EngineeringPackage;
+import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.IssueCategory;
 import org.nasdanika.html.model.app.Action;
 import org.nasdanika.html.model.app.AppFactory;
+import org.nasdanika.html.model.bootstrap.Table;
+import org.nasdanika.ncore.NcorePackage;
 
 public class IssueCategoryActionProvider extends AimActionProvider<IssueCategory> {
 	
@@ -90,7 +94,29 @@ public class IssueCategoryActionProvider extends AimActionProvider<IssueCategory
 			childrenAction.getContent().add(renderList(children, true, issueCategoryChildrenListProvider, action, EngineeringPackage.Literals.ENGINEER__ISSUE_CATEGORIES, context, progressMonitor));
 		}
 		
-		// TODO - issues
+		List<Issue> issues = getTarget().getIssues();
+		if (!issues.isEmpty()) {
+			Table issuesTable = buildTable(
+					issues, 
+					action, 
+					EngineeringPackage.Literals.ISSUE_CATEGORY__ISSUES, 
+					context, 
+					progressMonitor,
+					createColumnBuilder("Issue"),
+					createColumnBuilder(EcorePackage.Literals.EOBJECT___ECONTAINER, "Module"),
+					createColumnBuilder(EngineeringPackage.Literals.ISSUE__INCREMENT),
+					createColumnBuilder(EngineeringPackage.Literals.ENDEAVOR__ASSIGNEE),
+					createColumnBuilder(NcorePackage.Literals.PERIOD__START),
+					createColumnBuilder(NcorePackage.Literals.PERIOD__END),
+					createColumnBuilder(NcorePackage.Literals.PERIOD__DURATION),
+					createColumnBuilder(EngineeringPackage.Literals.ENDEAVOR__COMPLETION));
+			
+			Action section = AppFactory.eINSTANCE.createAction();
+			section.setText("Issues");
+			section.getContent().add(issuesTable);
+		
+			action.getSections().add(section);
+		}			
 	}
 	
 }

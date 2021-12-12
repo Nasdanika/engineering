@@ -113,47 +113,47 @@ engineering-organization:
                       description: Got to do something about it
                       effort: 4
   personas:
-    - path: java-developer
+    java-developer:
       name: Java Developer
       goals:
-        - path: efficiency
+        efficiency:
           name: Efficiency
           children:
-            - path: generated-doc
+            generated-doc:
               name: Generated Documentation
   issue-categories:
-    - path: development
+    development:
       name: Development
       children:
-        - path: back-end
+        back-end:
           name: Back end
-        - path: front-end
+        front-end:
           name: Front end            
   issue-priorities:
-    - path: low
+    low:
       name: Low
-    - path: medium
+    medium:
       name: Medium
-    - path: high
+    high:
       name: High
   issue-severities:
-    - path: critical
+    critical:
       name: Critical
-    - path: major
+    major:
       name: Major
-    - path: medium
+    medium:
       name: Medium
-    - path: low
+    low:
       name: Low
   issue-statuses:
-    - path: open
+    open:
       name: Open
-    - path: in-progress
+    in-progress:
       name: In Progress
-    - path: done
+    done:
       name: Done
       done: true
-    - path: cancelled
+    cancelled:
       name: Cancelled
   increments:
     "2021":
