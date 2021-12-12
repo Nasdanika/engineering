@@ -17,9 +17,11 @@ import org.nasdanika.emf.FunctionAdapterFactory;
 import org.nasdanika.engineering.Domain;
 import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeringPackage;
+import org.nasdanika.engineering.Forum;
 import org.nasdanika.engineering.KeyResult;
 import org.nasdanika.engineering.Objective;
 import org.nasdanika.engineering.Persona;
+import org.nasdanika.engineering.Topic;
 import org.nasdanika.html.flow.FlowActionProviderAdapterFactory;
 import org.nasdanika.html.model.app.util.ActionProvider;
 
@@ -159,7 +161,21 @@ public class EngineeringActionProviderAdapterFactory extends FlowActionProviderA
 					ActionProvider.class, 
 					this.getClass().getClassLoader(), 
 					e -> new ObjectiveActionProvider(e, context)));
-			
+		
+		registerAdapterFactory(
+				new FunctionAdapterFactory<ActionProvider, Forum>(
+					EngineeringPackage.Literals.FORUM, 
+					ActionProvider.class, 
+					this.getClass().getClassLoader(), 
+					e -> new ForumActionProvider<Forum>(e, context)));
+
+		registerAdapterFactory(
+				new FunctionAdapterFactory<ActionProvider, Topic>(
+					EngineeringPackage.Literals.TOPIC, 
+					ActionProvider.class, 
+					this.getClass().getClassLoader(), 
+					e -> new TopicActionProvider(e, context)));
+		
 	}
 			
 	@Override

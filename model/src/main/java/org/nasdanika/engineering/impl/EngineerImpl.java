@@ -301,8 +301,6 @@ public class EngineerImpl extends PersonaImpl implements Engineer {
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getDesignations()).basicAdd(otherEnd, msgs);
 			case EngineeringPackage.ENGINEER__REPRESENTS:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getRepresents()).basicAdd(otherEnd, msgs);
-			case EngineeringPackage.ENGINEER__MESSAGES:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getMessages()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -343,8 +341,6 @@ public class EngineerImpl extends PersonaImpl implements Engineer {
 				return ((InternalEList<?>)getCapacity()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.ENGINEER__REPRESENTS:
 				return ((InternalEList<?>)getRepresents()).basicRemove(otherEnd, msgs);
-			case EngineeringPackage.ENGINEER__MESSAGES:
-				return ((InternalEList<?>)getMessages()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.ENGINEER__OBJECTIVES:
 				return ((InternalEList<?>)getObjectives()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.ENGINEER__DOMAINS:

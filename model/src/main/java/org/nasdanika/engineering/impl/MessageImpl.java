@@ -3,10 +3,7 @@
 package org.nasdanika.engineering.impl;
 
 import java.util.Date;
-
-import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Message;
@@ -99,50 +96,9 @@ public class MessageImpl extends NamedElementImpl implements Message {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetAuthor(Engineer newAuthor, NotificationChain msgs) {
-		msgs = eDynamicInverseAdd((InternalEObject)newAuthor, EngineeringPackage.MESSAGE__AUTHOR, msgs);
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public void setAuthor(Engineer newAuthor) {
 		eDynamicSet(EngineeringPackage.MESSAGE__AUTHOR, EngineeringPackage.Literals.MESSAGE__AUTHOR, newAuthor);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case EngineeringPackage.MESSAGE__AUTHOR:
-				Engineer author = basicGetAuthor();
-				if (author != null)
-					msgs = ((InternalEObject)author).eInverseRemove(this, EngineeringPackage.ENGINEER__MESSAGES, Engineer.class, msgs);
-				return basicSetAuthor((Engineer)otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case EngineeringPackage.MESSAGE__AUTHOR:
-				return basicSetAuthor(null, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**

@@ -42,4 +42,8 @@ engineering-module:
         Table configuration also bordered, striped, condensed, etc.
         https://cdnjs.com/libraries/vue
         https://techformist.com/use-vue-from-url-simple-app/ https://cdn.jsdelivr.net/npm/vue@3.2.24
+        Also render data as either hidden text or static table for search indexing - configurable.
+    git-marker-message-enrichment:
+      name: GitMarker Message Enrichment
+      description: Enrhich topic messages and topics themselves with GitMarker information - author, date if not set. May not work correctly with pull requests - need to check - maybe author remains and only committer changes. 
    

@@ -293,7 +293,6 @@ public interface Engineer extends Persona {
 	/**
 	 * Returns the value of the '<em><b>Messages</b></em>' reference list.
 	 * The list contents are of type {@link org.nasdanika.engineering.Message}.
-	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Message#getAuthor <em>Author</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -301,8 +300,7 @@ public interface Engineer extends Persona {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Messages</em>' reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getEngineer_Messages()
-	 * @see org.nasdanika.engineering.Message#getAuthor
-	 * @model opposite="author" changeable="false" derived="true"
+	 * @model transient="true" changeable="false" derived="true"
 	 * @generated
 	 */
 	EList<Message> getMessages();

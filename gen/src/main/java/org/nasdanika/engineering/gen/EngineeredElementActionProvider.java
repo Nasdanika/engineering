@@ -12,8 +12,10 @@ import org.nasdanika.common.Context;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.engineering.EngineeredElement;
 import org.nasdanika.engineering.EngineeringPackage;
+import org.nasdanika.engineering.Forum;
 import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.Principle;
+import org.nasdanika.engineering.Topic;
 import org.nasdanika.html.model.app.Action;
 import org.nasdanika.html.model.app.AppFactory;
 import org.nasdanika.html.model.bootstrap.Table;
@@ -42,6 +44,7 @@ public class EngineeredElementActionProvider<T extends EngineeredElement> extend
 		createIssuesAction(action, registry, resolveConsumer, progressMonitor);		
 		createAllIssuesAction(action, registry, resolveConsumer, progressMonitor);		
 		createPrinciplesActions(action, registry, resolveConsumer, progressMonitor);
+		createDiscussionAction(action, registry, resolveConsumer, progressMonitor);		
 		
 		return action;
 	}
@@ -85,6 +88,24 @@ public class EngineeredElementActionProvider<T extends EngineeredElement> extend
 			action.getNavigation().add(group);
 		}
 		
+	}
+	
+	protected void createDiscussionAction(
+			Action action,
+			BiConsumer<EObject,Action> registry, 
+			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
+			ProgressMonitor progressMonitor) throws Exception {
+		
+		List<Forum> discussion = getTarget().getDiscussion();
+		EList<Topic> topics = getTarget().getTopics();
+		if (!discussion.isEmpty() || !topics.isEmpty()) {
+			Action group = AppFactory.eINSTANCE.createAction();
+			group.setText("Discussion");
+			group.setIcon("far fa-comments");
+			group.setUuid(action.getUuid() + "-discussion");
+			group.setLocation("discussion.html");
+			action.getNavigation().add(group);
+		}		
 	}
 		
 	@Override

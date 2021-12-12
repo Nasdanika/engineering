@@ -88,6 +88,56 @@ engineering-organization:
           - engineering-module:
               path: common
               name: Common
+              discussion:
+                how-to-do-this:
+                  name: How to do this?
+                  description: Summary
+                  documentation:
+                    content-markdown:
+                      style: true
+                      source:
+                        content-text: |+2
+                          ``Some`` details here
+                  discussion:
+                    and-that:
+                      name: And that?
+                      description: Summary
+                      documentation:
+                        content-markdown:
+                          style: true
+                          source:
+                            content-text: |+2
+                              ``Some`` **additional** details here
+                  topics:
+                    and-that:
+                      name: And that?
+                      description: Summary
+                      documentation:
+                        content-markdown:
+                          style: true
+                          source:
+                            content-text: |+2
+                              ``Some`` **additional** details her
+                      messages:
+                        impossible:
+                          author: engineering://nasdanika/engineers/joe-doe
+                          name: There is no way
+                          date: 2021/12/12
+                          description: AFAIK it is not possible.
+                        not-quite:
+                          author: engineering://nasdanika/engineers/joe-doe
+                          date: 2021/12/14
+                          documentation: 
+                            content-markdown:
+                              style: true
+                              source:
+                                content-text: |+2
+                                  Use this ``code``:
+                                  
+                                  ```java
+                                  int i=5;
+                                  ```
+                      
               issues:
                 - name: My Issue
                   path: my-issue

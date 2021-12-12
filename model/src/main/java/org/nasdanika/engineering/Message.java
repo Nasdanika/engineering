@@ -49,7 +49,6 @@ public interface Message extends NamedElement {
 
 	/**
 	 * Returns the value of the '<em><b>Author</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link org.nasdanika.engineering.Engineer#getMessages <em>Messages</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -58,8 +57,7 @@ public interface Message extends NamedElement {
 	 * @return the value of the '<em>Author</em>' reference.
 	 * @see #setAuthor(Engineer)
 	 * @see org.nasdanika.engineering.EngineeringPackage#getMessage_Author()
-	 * @see org.nasdanika.engineering.Engineer#getMessages
-	 * @model opposite="messages"
+	 * @model annotation="urn:org.nasdanika opposite='messages'"
 	 * @generated
 	 */
 	Engineer getAuthor();

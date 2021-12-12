@@ -19,6 +19,10 @@ engineering-module:
         Defined at either engineer or increment level. 
         Options - explicit/none - endeavor must specify increment, validation of end or overlap, start, end, duration (shall fit into the increment for the entire duration).
         Explicit assignment overrides matching - can be used for endeavors spanning several increments and perhaps not matching any. E.g. a long running feature spanning two or more years.
+    answer-ranking:
+      name: Answer ranking
+      description: |+2
+        Ranks collection or something like this. Simple way - update rank - long. More advanced way - use some external mechanism and pull data during generation. 
       
             
                            

@@ -694,7 +694,7 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="messages" upperBound="-1"
-        eType="#//Message" changeable="false" derived="true" eOpposite="#//Message/author">
+        eType="#//Message" changeable="false" transient="true" derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Discussion messages authored by this engineer."/>
       </eAnnotations>
@@ -994,10 +994,12 @@
         <details key="documentation" value="Date/time when this message was posted."/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="author" eType="#//Engineer"
-        eOpposite="#//Engineer/messages">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="author" eType="#//Engineer">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Message author."/>
+      </eAnnotations>
+      <eAnnotations source="urn:org.nasdanika">
+        <details key="opposite" value="messages"/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
