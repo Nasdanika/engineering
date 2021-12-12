@@ -214,7 +214,7 @@ public class IncrementActionProvider extends NamedElementActionProvider<Incremen
 					.filter(a -> issuesGroupUUID.equals(a.getUuid()))
 					.findFirst();
 			Action issuesAction = issuesActionOptional.get();
-			Table allIssuesTable = buildTable(
+			Table issuesTable = buildTable(
 					issues, 
 					action, 
 					EngineeringPackage.Literals.INCREMENT__ISSUES, 
@@ -237,7 +237,7 @@ public class IncrementActionProvider extends NamedElementActionProvider<Incremen
 					createColumnBuilder(EngineeringPackage.Literals.ISSUE__CONTRIBUTES_TO),					
 					createColumnBuilder(EngineeringPackage.Literals.ENDEAVOR__COMPLETION));
 			
-			issuesAction.getContent().add(allIssuesTable);
+			issuesAction.getContent().add(issuesTable);
 		}
 		
 		// All Issues
