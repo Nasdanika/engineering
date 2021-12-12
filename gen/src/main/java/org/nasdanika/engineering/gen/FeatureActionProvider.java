@@ -24,12 +24,6 @@ public class FeatureActionProvider extends EngineeredCapabilityActionProvider<Fe
 		super(target, context);		
 	}
 	
-	protected List<ETypedElement> getProperties() {
-		List<ETypedElement> properties = super.getProperties();
-		properties.add(EngineeringPackage.Literals.FEATURE__RELEASES);
-		return properties;
-	}	
-
 	@Override
 	protected Action createAction(
 			BiConsumer<EObject,Action> registry, 

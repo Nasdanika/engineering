@@ -21,6 +21,7 @@ import org.nasdanika.engineering.EngineeredElement;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.Objective;
+import org.nasdanika.engineering.Release;
 
 /**
  * <!-- begin-user-doc -->
@@ -40,6 +41,7 @@ import org.nasdanika.engineering.Objective;
  *   <li>{@link org.nasdanika.engineering.impl.EngineeredCapabilityImpl#getObjectives <em>Objectives</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineeredCapabilityImpl#getLinkedObjectives <em>Linked Objectives</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineeredCapabilityImpl#getAllObjectives <em>All Objectives</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.EngineeredCapabilityImpl#getReleases <em>Releases</em>}</li>
  * </ul>
  *
  * @generated
@@ -240,6 +242,17 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
+	public EList<Release> getReleases() {
+		return (EList<Release>)eDynamicGet(EngineeringPackage.ENGINEERED_CAPABILITY__RELEASES, EngineeringPackage.Literals.ENGINEERED_CAPABILITY__RELEASES, true, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public EList<Alignment> getAligns() {
 		return (EList<Alignment>)eDynamicGet(EngineeringPackage.ENGINEERED_CAPABILITY__ALIGNS, EngineeringPackage.Literals.ALIGNABLE__ALIGNS, true, true);
 	}
@@ -310,6 +323,8 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 				return getLinkedObjectives();
 			case EngineeringPackage.ENGINEERED_CAPABILITY__ALL_OBJECTIVES:
 				return getAllObjectives();
+			case EngineeringPackage.ENGINEERED_CAPABILITY__RELEASES:
+				return getReleases();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -345,6 +360,10 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 				getAllObjectives().clear();
 				getAllObjectives().addAll((Collection<? extends Objective>)newValue);
 				return;
+			case EngineeringPackage.ENGINEERED_CAPABILITY__RELEASES:
+				getReleases().clear();
+				getReleases().addAll((Collection<? extends Release>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -374,6 +393,9 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 				return;
 			case EngineeringPackage.ENGINEERED_CAPABILITY__ALL_OBJECTIVES:
 				getAllObjectives().clear();
+				return;
+			case EngineeringPackage.ENGINEERED_CAPABILITY__RELEASES:
+				getReleases().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -407,6 +429,8 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 				return !getLinkedObjectives().isEmpty();
 			case EngineeringPackage.ENGINEERED_CAPABILITY__ALL_OBJECTIVES:
 				return !getAllObjectives().isEmpty();
+			case EngineeringPackage.ENGINEERED_CAPABILITY__RELEASES:
+				return !getReleases().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

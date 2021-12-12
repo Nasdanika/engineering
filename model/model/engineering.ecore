@@ -352,15 +352,6 @@
         <details key="documentation" value="Issue is workable if it doesn't have any unavailable required capabilities."/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="releases" upperBound="-1"
-        eType="#//Release">
-      <eAnnotations source="urn:org.nasdanika">
-        <details key="opposite" value="issues"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Issue can be planned for zero or more releases directly. It can be also indirectly planned for releases via contribution to [features](Feature.html)."/>
-      </eAnnotations>
-    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="effort" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Effort for this issue."/>
@@ -828,6 +819,15 @@
     <eAnnotations source="urn:org.nasdanika">
       <details key="documentation-reference" value="doc/engineered-capability.md"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="releases" upperBound="-1"
+        eType="#//Release">
+      <eAnnotations source="urn:org.nasdanika">
+        <details key="opposite" value="capabilities"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Engineered capabiloity can be planned for zero or more releases."/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Release" eSuperTypes="#//EngineeredCapability">
     <eAnnotations source="urn:org.nasdanika">
@@ -841,16 +841,10 @@
         <details key="documentation" value="Increment for which this release is scheduled."/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="features" upperBound="-1"
-        eType="#//Feature" changeable="false" transient="true" derived="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="capabilities" upperBound="-1"
+        eType="#//EngineeredCapability" changeable="false" transient="true" derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Features planned for this release."/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="issues" upperBound="-1"
-        eType="#//Issue" changeable="false" transient="true" derived="true">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Issues planned for this release."/>
+        <details key="documentation" value="Engineered capabilities planned for this release."/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
@@ -858,15 +852,6 @@
     <eAnnotations source="urn:org.nasdanika">
       <details key="documentation-reference" value="doc/feature.md"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="releases" upperBound="-1"
-        eType="#//Release">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Releases for which this feature is planned."/>
-      </eAnnotations>
-      <eAnnotations source="urn:org.nasdanika">
-        <details key="opposite" value="features"/>
-      </eAnnotations>
-    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="issues" upperBound="-1"
         eType="#//Issue" changeable="false" derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">

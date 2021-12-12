@@ -1121,6 +1121,16 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
+	public EReference getEngineeredCapability_Releases() {
+		return (EReference)engineeredCapabilityEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getIncrement() {
 		return incrementEClass;
 	}
@@ -1311,17 +1321,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EReference getRelease_Issues() {
-		return (EReference)releaseEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getRelease_Features() {
+	public EReference getRelease_Capabilities() {
 		return (EReference)releaseEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -1341,7 +1341,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EReference getFeature_Releases() {
+	public EReference getFeature_Issues() {
 		return (EReference)featureEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -1351,18 +1351,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EReference getFeature_Issues() {
-		return (EReference)featureEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EReference getFeature_Children() {
-		return (EReference)featureEClass.getEStructuralFeatures().get(2);
+		return (EReference)featureEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1441,18 +1431,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EReference getIssue_Releases() {
-		return (EReference)issueEClass.getEStructuralFeatures().get(9);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EAttribute getIssue_Effort() {
-		return (EAttribute)issueEClass.getEStructuralFeatures().get(10);
+		return (EAttribute)issueEClass.getEStructuralFeatures().get(9);
 	}
 
 	/**
@@ -1462,7 +1442,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 */
 	@Override
 	public EAttribute getIssue_Cost() {
-		return (EAttribute)issueEClass.getEStructuralFeatures().get(11);
+		return (EAttribute)issueEClass.getEStructuralFeatures().get(10);
 	}
 
 	/**
@@ -1472,7 +1452,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 */
 	@Override
 	public EAttribute getIssue_RemainingEffort() {
-		return (EAttribute)issueEClass.getEStructuralFeatures().get(12);
+		return (EAttribute)issueEClass.getEStructuralFeatures().get(11);
 	}
 
 	/**
@@ -1482,7 +1462,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 */
 	@Override
 	public EAttribute getIssue_RemainingCost() {
-		return (EAttribute)issueEClass.getEStructuralFeatures().get(13);
+		return (EAttribute)issueEClass.getEStructuralFeatures().get(12);
 	}
 
 	/**
@@ -1492,7 +1472,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 */
 	@Override
 	public EReference getIssue_Priority() {
-		return (EReference)issueEClass.getEStructuralFeatures().get(14);
+		return (EReference)issueEClass.getEStructuralFeatures().get(13);
 	}
 
 	/**
@@ -1502,7 +1482,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 */
 	@Override
 	public EReference getIssue_Severity() {
-		return (EReference)issueEClass.getEStructuralFeatures().get(15);
+		return (EReference)issueEClass.getEStructuralFeatures().get(14);
 	}
 
 	/**
@@ -2237,7 +2217,6 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		createEReference(issueEClass, ISSUE__TARGET);
 		createEReference(issueEClass, ISSUE__STATUS);
 		createEAttribute(issueEClass, ISSUE__WORKABLE);
-		createEReference(issueEClass, ISSUE__RELEASES);
 		createEAttribute(issueEClass, ISSUE__EFFORT);
 		createEAttribute(issueEClass, ISSUE__COST);
 		createEAttribute(issueEClass, ISSUE__REMAINING_EFFORT);
@@ -2316,14 +2295,13 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		createEAttribute(capabilityEClass, CAPABILITY__AVAILABLE);
 
 		engineeredCapabilityEClass = createEClass(ENGINEERED_CAPABILITY);
+		createEReference(engineeredCapabilityEClass, ENGINEERED_CAPABILITY__RELEASES);
 
 		releaseEClass = createEClass(RELEASE);
 		createEReference(releaseEClass, RELEASE__INCREMENT);
-		createEReference(releaseEClass, RELEASE__FEATURES);
-		createEReference(releaseEClass, RELEASE__ISSUES);
+		createEReference(releaseEClass, RELEASE__CAPABILITIES);
 
 		featureEClass = createEClass(FEATURE);
-		createEReference(featureEClass, FEATURE__RELEASES);
 		createEReference(featureEClass, FEATURE__ISSUES);
 		createEReference(featureEClass, FEATURE__CHILDREN);
 
@@ -2543,7 +2521,6 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		initEReference(getIssue_Target(), this.getEngineeredElement(), null, "target", null, 0, 1, Issue.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getIssue_Status(), this.getIssueStatus(), null, "status", null, 0, 1, Issue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getIssue_Workable(), ecorePackage.getEBoolean(), "workable", null, 0, 1, Issue.class, IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEReference(getIssue_Releases(), this.getRelease(), null, "releases", null, 0, -1, Issue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getIssue_Effort(), ecorePackage.getEDouble(), "effort", null, 0, 1, Issue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getIssue_Cost(), ecorePackage.getEDouble(), "cost", null, 0, 1, Issue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getIssue_RemainingEffort(), ecorePackage.getEDouble(), "remainingEffort", null, 0, 1, Issue.class, IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
@@ -2641,14 +2618,13 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		initEAttribute(getCapability_Available(), ecorePackage.getEBoolean(), "available", null, 0, 1, Capability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(engineeredCapabilityEClass, EngineeredCapability.class, "EngineeredCapability", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getEngineeredCapability_Releases(), this.getRelease(), null, "releases", null, 0, -1, EngineeredCapability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(releaseEClass, Release.class, "Release", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getRelease_Increment(), this.getIncrement(), null, "increment", null, 0, 1, Release.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getRelease_Features(), this.getFeature(), null, "features", null, 0, -1, Release.class, IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEReference(getRelease_Issues(), this.getIssue(), null, "issues", null, 0, -1, Release.class, IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getRelease_Capabilities(), this.getEngineeredCapability(), null, "capabilities", null, 0, -1, Release.class, IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEClass(featureEClass, Feature.class, "Feature", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getFeature_Releases(), this.getRelease(), null, "releases", null, 0, -1, Feature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getFeature_Issues(), this.getIssue(), null, "issues", null, 0, -1, Feature.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getFeature_Children(), this.getFeature(), null, "children", null, 0, -1, Feature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		getFeature_Children().getEKeys().add(this.getModelElement_Path());
@@ -2922,12 +2898,6 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 			   "opposite", "issues"
 		   });
 		addAnnotation
-		  (getIssue_Releases(),
-		   source,
-		   new String[] {
-			   "opposite", "issues"
-		   });
-		addAnnotation
 		  (getIssue_Priority(),
 		   source,
 		   new String[] {
@@ -3172,6 +3142,12 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 			   "documentation-reference", "doc/engineered-capability.md"
 		   });
 		addAnnotation
+		  (getEngineeredCapability_Releases(),
+		   source,
+		   new String[] {
+			   "opposite", "capabilities"
+		   });
+		addAnnotation
 		  (releaseEClass,
 		   source,
 		   new String[] {
@@ -3182,12 +3158,6 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		   source,
 		   new String[] {
 			   "documentation-reference", "doc/feature.md"
-		   });
-		addAnnotation
-		  (getFeature_Releases(),
-		   source,
-		   new String[] {
-			   "opposite", "features"
 		   });
 		addAnnotation
 		  (getFeature_Children(),
@@ -3586,12 +3556,6 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 			   "documentation", "Issue is workable if it doesn\'t have any unavailable required capabilities."
 		   });
 		addAnnotation
-		  (getIssue_Releases(),
-		   source,
-		   new String[] {
-			   "documentation", "Issue can be planned for zero or more releases directly. It can be also indirectly planned for releases via contribution to [features](Feature.html)."
-		   });
-		addAnnotation
 		  (getIssue_Effort(),
 		   source,
 		   new String[] {
@@ -3916,28 +3880,22 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 			   "documentation", "Indicates that this capability is available and [issues](Issue.html) which require it are workable, unless they have other unavailable requirements."
 		   });
 		addAnnotation
+		  (getEngineeredCapability_Releases(),
+		   source,
+		   new String[] {
+			   "documentation", "Engineered capabiloity can be planned for zero or more releases."
+		   });
+		addAnnotation
 		  (getRelease_Increment(),
 		   source,
 		   new String[] {
 			   "documentation", "Increment for which this release is scheduled."
 		   });
 		addAnnotation
-		  (getRelease_Features(),
+		  (getRelease_Capabilities(),
 		   source,
 		   new String[] {
-			   "documentation", "Features planned for this release."
-		   });
-		addAnnotation
-		  (getRelease_Issues(),
-		   source,
-		   new String[] {
-			   "documentation", "Issues planned for this release."
-		   });
-		addAnnotation
-		  (getFeature_Releases(),
-		   source,
-		   new String[] {
-			   "documentation", "Releases for which this feature is planned."
+			   "documentation", "Engineered capabilities planned for this release."
 		   });
 		addAnnotation
 		  (getFeature_Issues(),

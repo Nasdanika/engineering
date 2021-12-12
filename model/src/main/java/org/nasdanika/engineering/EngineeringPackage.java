@@ -2631,13 +2631,22 @@ public interface EngineeringPackage extends EPackage {
 	int ENGINEERED_CAPABILITY__ALL_OBJECTIVES = CAPABILITY_FEATURE_COUNT + 9;
 
 	/**
+	 * The feature id for the '<em><b>Releases</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEERED_CAPABILITY__RELEASES = CAPABILITY_FEATURE_COUNT + 10;
+
+	/**
 	 * The number of structural features of the '<em>Engineered Capability</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEERED_CAPABILITY_FEATURE_COUNT = CAPABILITY_FEATURE_COUNT + 10;
+	int ENGINEERED_CAPABILITY_FEATURE_COUNT = CAPABILITY_FEATURE_COUNT + 11;
 
 	/**
 	 * The number of operations of the '<em>Engineered Capability</em>' class.
@@ -2892,6 +2901,15 @@ public interface EngineeringPackage extends EPackage {
 	int ISSUE__ALL_OBJECTIVES = ENGINEERED_CAPABILITY__ALL_OBJECTIVES;
 
 	/**
+	 * The feature id for the '<em><b>Releases</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE__RELEASES = ENGINEERED_CAPABILITY__RELEASES;
+
+	/**
 	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2973,22 +2991,13 @@ public interface EngineeringPackage extends EPackage {
 	int ISSUE__WORKABLE = ENGINEERED_CAPABILITY_FEATURE_COUNT + 8;
 
 	/**
-	 * The feature id for the '<em><b>Releases</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ISSUE__RELEASES = ENGINEERED_CAPABILITY_FEATURE_COUNT + 9;
-
-	/**
 	 * The feature id for the '<em><b>Effort</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ISSUE__EFFORT = ENGINEERED_CAPABILITY_FEATURE_COUNT + 10;
+	int ISSUE__EFFORT = ENGINEERED_CAPABILITY_FEATURE_COUNT + 9;
 
 	/**
 	 * The feature id for the '<em><b>Cost</b></em>' attribute.
@@ -2997,7 +3006,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ISSUE__COST = ENGINEERED_CAPABILITY_FEATURE_COUNT + 11;
+	int ISSUE__COST = ENGINEERED_CAPABILITY_FEATURE_COUNT + 10;
 
 	/**
 	 * The feature id for the '<em><b>Remaining Effort</b></em>' attribute.
@@ -3006,7 +3015,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ISSUE__REMAINING_EFFORT = ENGINEERED_CAPABILITY_FEATURE_COUNT + 12;
+	int ISSUE__REMAINING_EFFORT = ENGINEERED_CAPABILITY_FEATURE_COUNT + 11;
 
 	/**
 	 * The feature id for the '<em><b>Remaining Cost</b></em>' attribute.
@@ -3015,7 +3024,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ISSUE__REMAINING_COST = ENGINEERED_CAPABILITY_FEATURE_COUNT + 13;
+	int ISSUE__REMAINING_COST = ENGINEERED_CAPABILITY_FEATURE_COUNT + 12;
 
 	/**
 	 * The feature id for the '<em><b>Priority</b></em>' reference.
@@ -3024,7 +3033,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ISSUE__PRIORITY = ENGINEERED_CAPABILITY_FEATURE_COUNT + 14;
+	int ISSUE__PRIORITY = ENGINEERED_CAPABILITY_FEATURE_COUNT + 13;
 
 	/**
 	 * The feature id for the '<em><b>Severity</b></em>' reference.
@@ -3033,7 +3042,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ISSUE__SEVERITY = ENGINEERED_CAPABILITY_FEATURE_COUNT + 15;
+	int ISSUE__SEVERITY = ENGINEERED_CAPABILITY_FEATURE_COUNT + 14;
 
 	/**
 	 * The number of structural features of the '<em>Issue</em>' class.
@@ -3042,7 +3051,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ISSUE_FEATURE_COUNT = ENGINEERED_CAPABILITY_FEATURE_COUNT + 16;
+	int ISSUE_FEATURE_COUNT = ENGINEERED_CAPABILITY_FEATURE_COUNT + 15;
 
 	/**
 	 * The number of operations of the '<em>Issue</em>' class.
@@ -5971,6 +5980,15 @@ public interface EngineeringPackage extends EPackage {
 	int RELEASE__ALL_OBJECTIVES = ENGINEERED_CAPABILITY__ALL_OBJECTIVES;
 
 	/**
+	 * The feature id for the '<em><b>Releases</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RELEASE__RELEASES = ENGINEERED_CAPABILITY__RELEASES;
+
+	/**
 	 * The feature id for the '<em><b>Increment</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5980,22 +5998,13 @@ public interface EngineeringPackage extends EPackage {
 	int RELEASE__INCREMENT = ENGINEERED_CAPABILITY_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Features</b></em>' reference list.
+	 * The feature id for the '<em><b>Capabilities</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RELEASE__FEATURES = ENGINEERED_CAPABILITY_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Issues</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RELEASE__ISSUES = ENGINEERED_CAPABILITY_FEATURE_COUNT + 2;
+	int RELEASE__CAPABILITIES = ENGINEERED_CAPABILITY_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Release</em>' class.
@@ -6004,7 +6013,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RELEASE_FEATURE_COUNT = ENGINEERED_CAPABILITY_FEATURE_COUNT + 3;
+	int RELEASE_FEATURE_COUNT = ENGINEERED_CAPABILITY_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Release</em>' class.
@@ -6265,7 +6274,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FEATURE__RELEASES = ENGINEERED_CAPABILITY_FEATURE_COUNT + 0;
+	int FEATURE__RELEASES = ENGINEERED_CAPABILITY__RELEASES;
 
 	/**
 	 * The feature id for the '<em><b>Issues</b></em>' reference list.
@@ -6274,7 +6283,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FEATURE__ISSUES = ENGINEERED_CAPABILITY_FEATURE_COUNT + 1;
+	int FEATURE__ISSUES = ENGINEERED_CAPABILITY_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
@@ -6283,7 +6292,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FEATURE__CHILDREN = ENGINEERED_CAPABILITY_FEATURE_COUNT + 2;
+	int FEATURE__CHILDREN = ENGINEERED_CAPABILITY_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Feature</em>' class.
@@ -6292,7 +6301,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FEATURE_FEATURE_COUNT = ENGINEERED_CAPABILITY_FEATURE_COUNT + 3;
+	int FEATURE_FEATURE_COUNT = ENGINEERED_CAPABILITY_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Feature</em>' class.
@@ -8559,6 +8568,15 @@ public interface EngineeringPackage extends EPackage {
 	int DECISION__ALL_OBJECTIVES = ISSUE__ALL_OBJECTIVES;
 
 	/**
+	 * The feature id for the '<em><b>Releases</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DECISION__RELEASES = ISSUE__RELEASES;
+
+	/**
 	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8638,15 +8656,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int DECISION__WORKABLE = ISSUE__WORKABLE;
-
-	/**
-	 * The feature id for the '<em><b>Releases</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DECISION__RELEASES = ISSUE__RELEASES;
 
 	/**
 	 * The feature id for the '<em><b>Effort</b></em>' attribute.
@@ -9520,6 +9529,17 @@ public interface EngineeringPackage extends EPackage {
 	EClass getEngineeredCapability();
 
 	/**
+	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.EngineeredCapability#getReleases <em>Releases</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Releases</em>'.
+	 * @see org.nasdanika.engineering.EngineeredCapability#getReleases()
+	 * @see #getEngineeredCapability()
+	 * @generated
+	 */
+	EReference getEngineeredCapability_Releases();
+
+	/**
 	 * Returns the meta object for class '{@link org.nasdanika.engineering.Increment <em>Increment</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9723,26 +9743,15 @@ public interface EngineeringPackage extends EPackage {
 	EReference getRelease_Increment();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.Release#getIssues <em>Issues</em>}'.
+	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.Release#getCapabilities <em>Capabilities</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Issues</em>'.
-	 * @see org.nasdanika.engineering.Release#getIssues()
+	 * @return the meta object for the reference list '<em>Capabilities</em>'.
+	 * @see org.nasdanika.engineering.Release#getCapabilities()
 	 * @see #getRelease()
 	 * @generated
 	 */
-	EReference getRelease_Issues();
-
-	/**
-	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.Release#getFeatures <em>Features</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Features</em>'.
-	 * @see org.nasdanika.engineering.Release#getFeatures()
-	 * @see #getRelease()
-	 * @generated
-	 */
-	EReference getRelease_Features();
+	EReference getRelease_Capabilities();
 
 	/**
 	 * Returns the meta object for class '{@link org.nasdanika.engineering.Feature <em>Feature</em>}'.
@@ -9753,17 +9762,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getFeature();
-
-	/**
-	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.Feature#getReleases <em>Releases</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Releases</em>'.
-	 * @see org.nasdanika.engineering.Feature#getReleases()
-	 * @see #getFeature()
-	 * @generated
-	 */
-	EReference getFeature_Releases();
 
 	/**
 	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.Feature#getIssues <em>Issues</em>}'.
@@ -9862,17 +9860,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getIssue_Workable();
-
-	/**
-	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.Issue#getReleases <em>Releases</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Releases</em>'.
-	 * @see org.nasdanika.engineering.Issue#getReleases()
-	 * @see #getIssue()
-	 * @generated
-	 */
-	EReference getIssue_Releases();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Issue#getEffort <em>Effort</em>}'.
@@ -11230,6 +11217,14 @@ public interface EngineeringPackage extends EPackage {
 		EClass ENGINEERED_CAPABILITY = eINSTANCE.getEngineeredCapability();
 
 		/**
+		 * The meta object literal for the '<em><b>Releases</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ENGINEERED_CAPABILITY__RELEASES = eINSTANCE.getEngineeredCapability_Releases();
+
+		/**
 		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.IncrementImpl <em>Increment</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -11394,20 +11389,12 @@ public interface EngineeringPackage extends EPackage {
 		EReference RELEASE__INCREMENT = eINSTANCE.getRelease_Increment();
 
 		/**
-		 * The meta object literal for the '<em><b>Issues</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Capabilities</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference RELEASE__ISSUES = eINSTANCE.getRelease_Issues();
-
-		/**
-		 * The meta object literal for the '<em><b>Features</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference RELEASE__FEATURES = eINSTANCE.getRelease_Features();
+		EReference RELEASE__CAPABILITIES = eINSTANCE.getRelease_Capabilities();
 
 		/**
 		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.FeatureImpl <em>Feature</em>}' class.
@@ -11418,14 +11405,6 @@ public interface EngineeringPackage extends EPackage {
 		 * @generated
 		 */
 		EClass FEATURE = eINSTANCE.getFeature();
-
-		/**
-		 * The meta object literal for the '<em><b>Releases</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference FEATURE__RELEASES = eINSTANCE.getFeature_Releases();
 
 		/**
 		 * The meta object literal for the '<em><b>Issues</b></em>' reference list feature.
@@ -11500,14 +11479,6 @@ public interface EngineeringPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ISSUE__WORKABLE = eINSTANCE.getIssue_Workable();
-
-		/**
-		 * The meta object literal for the '<em><b>Releases</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ISSUE__RELEASES = eINSTANCE.getIssue_Releases();
 
 		/**
 		 * The meta object literal for the '<em><b>Effort</b></em>' attribute feature.

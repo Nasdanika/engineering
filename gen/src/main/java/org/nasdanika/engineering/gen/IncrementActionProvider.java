@@ -233,7 +233,7 @@ public class IncrementActionProvider extends NamedElementActionProvider<Incremen
 					createColumnBuilder(EngineeringPackage.Literals.ISSUE__EFFORT),
 					createColumnBuilder(EngineeringPackage.Literals.ISSUE__REMAINING_COST),
 					createColumnBuilder(EngineeringPackage.Literals.ISSUE__REMAINING_EFFORT),
-					createColumnBuilder(EngineeringPackage.Literals.ISSUE__RELEASES),
+					createColumnBuilder(EngineeringPackage.Literals.ENGINEERED_CAPABILITY__RELEASES),
 					createColumnBuilder(EngineeringPackage.Literals.ISSUE__CONTRIBUTES_TO),					
 					createColumnBuilder(EngineeringPackage.Literals.ENDEAVOR__COMPLETION));
 			
@@ -269,7 +269,7 @@ public class IncrementActionProvider extends NamedElementActionProvider<Incremen
 					createColumnBuilder(EngineeringPackage.Literals.ISSUE__EFFORT),
 					createColumnBuilder(EngineeringPackage.Literals.ISSUE__REMAINING_COST),
 					createColumnBuilder(EngineeringPackage.Literals.ISSUE__REMAINING_EFFORT),
-					createColumnBuilder(EngineeringPackage.Literals.ISSUE__RELEASES),
+					createColumnBuilder(EngineeringPackage.Literals.ENGINEERED_CAPABILITY__RELEASES),
 					createColumnBuilder(EngineeringPackage.Literals.ISSUE__CONTRIBUTES_TO),					
 					createColumnBuilder(EngineeringPackage.Literals.ENDEAVOR__COMPLETION));
 			

@@ -14,7 +14,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Feature;
 import org.nasdanika.engineering.Issue;
-import org.nasdanika.engineering.Release;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,7 +23,6 @@ import org.nasdanika.engineering.Release;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.nasdanika.engineering.impl.FeatureImpl#getReleases <em>Releases</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.FeatureImpl#getIssues <em>Issues</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.FeatureImpl#getChildren <em>Children</em>}</li>
  * </ul>
@@ -49,17 +47,6 @@ public class FeatureImpl extends EngineeredCapabilityImpl implements Feature {
 	@Override
 	protected EClass eStaticClass() {
 		return EngineeringPackage.Literals.FEATURE;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public EList<Release> getReleases() {
-		return (EList<Release>)eDynamicGet(EngineeringPackage.FEATURE__RELEASES, EngineeringPackage.Literals.FEATURE__RELEASES, true, true);
 	}
 
 	/**
@@ -105,8 +92,6 @@ public class FeatureImpl extends EngineeredCapabilityImpl implements Feature {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EngineeringPackage.FEATURE__RELEASES:
-				return getReleases();
 			case EngineeringPackage.FEATURE__ISSUES:
 				return getIssues();
 			case EngineeringPackage.FEATURE__CHILDREN:
@@ -124,10 +109,6 @@ public class FeatureImpl extends EngineeredCapabilityImpl implements Feature {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EngineeringPackage.FEATURE__RELEASES:
-				getReleases().clear();
-				getReleases().addAll((Collection<? extends Release>)newValue);
-				return;
 			case EngineeringPackage.FEATURE__CHILDREN:
 				getChildren().clear();
 				getChildren().addAll((Collection<? extends Feature>)newValue);
@@ -144,9 +125,6 @@ public class FeatureImpl extends EngineeredCapabilityImpl implements Feature {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EngineeringPackage.FEATURE__RELEASES:
-				getReleases().clear();
-				return;
 			case EngineeringPackage.FEATURE__CHILDREN:
 				getChildren().clear();
 				return;
@@ -162,8 +140,6 @@ public class FeatureImpl extends EngineeredCapabilityImpl implements Feature {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EngineeringPackage.FEATURE__RELEASES:
-				return !getReleases().isEmpty();
 			case EngineeringPackage.FEATURE__ISSUES:
 				return !getIssues().isEmpty();
 			case EngineeringPackage.FEATURE__CHILDREN:

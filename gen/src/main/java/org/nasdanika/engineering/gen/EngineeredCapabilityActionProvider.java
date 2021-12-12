@@ -34,7 +34,9 @@ public class EngineeredCapabilityActionProvider<T extends EngineeredCapability> 
 		properties.add(EngineeringPackage.Literals.ENDEAVOR__COMPLETION);
 		properties.add(EngineeringPackage.Literals.ENDEAVOR__TOTAL_COST);
 		properties.add(EngineeringPackage.Literals.ENDEAVOR__BENEFIT);
-		// TODO - 
+
+		// Engineered Capability
+		properties.add(EngineeringPackage.Literals.ENGINEERED_CAPABILITY__RELEASES);
 		
 		return properties;
 	}

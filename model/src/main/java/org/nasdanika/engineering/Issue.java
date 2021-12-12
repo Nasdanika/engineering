@@ -22,7 +22,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.nasdanika.engineering.Issue#getTarget <em>Target</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Issue#getStatus <em>Status</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Issue#isWorkable <em>Workable</em>}</li>
- *   <li>{@link org.nasdanika.engineering.Issue#getReleases <em>Releases</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Issue#getEffort <em>Effort</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Issue#getCost <em>Cost</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Issue#getRemainingEffort <em>Remaining Effort</em>}</li>
@@ -146,21 +145,6 @@ public interface Issue extends EngineeredCapability {
 	 * @generated
 	 */
 	boolean isWorkable();
-
-	/**
-	 * Returns the value of the '<em><b>Releases</b></em>' reference list.
-	 * The list contents are of type {@link org.nasdanika.engineering.Release}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Issue can be planned for zero or more releases directly. It can be also indirectly planned for releases via contribution to [features](Feature.html).
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Releases</em>' reference list.
-	 * @see org.nasdanika.engineering.EngineeringPackage#getIssue_Releases()
-	 * @model annotation="urn:org.nasdanika opposite='issues'"
-	 * @generated
-	 */
-	EList<Release> getReleases();
 
 	/**
 	 * Returns the value of the '<em><b>Effort</b></em>' attribute.

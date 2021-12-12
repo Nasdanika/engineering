@@ -35,7 +35,6 @@ public class IssueActionProvider extends EngineeredCapabilityActionProvider<Issu
 		properties.add(EngineeringPackage.Literals.ISSUE__SEVERITY);
 		properties.add(EngineeringPackage.Literals.ISSUE__STATUS);
 		properties.add(EngineeringPackage.Literals.ISSUE__CONTRIBUTES_TO);
-		properties.add(EngineeringPackage.Literals.ISSUE__RELEASES);
 		properties.add(EngineeringPackage.Literals.ISSUE__COST);
 		properties.add(EngineeringPackage.Literals.ISSUE__EFFORT);
 		properties.add(EngineeringPackage.Literals.ISSUE__REMAINING_COST);

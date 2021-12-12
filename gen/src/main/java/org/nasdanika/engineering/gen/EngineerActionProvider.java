@@ -393,7 +393,7 @@ public class EngineerActionProvider<T extends Engineer> extends PersonaActionPro
 						progressMonitor,
 						createColumnBuilder("Feature"),
 						createColumnBuilder(EcorePackage.Literals.EOBJECT___ECONTAINER, "Product"),
-						createColumnBuilder(EngineeringPackage.Literals.FEATURE__RELEASES),
+						createColumnBuilder(EngineeringPackage.Literals.ENGINEERED_CAPABILITY__RELEASES),
 						createColumnBuilder(NcorePackage.Literals.PERIOD__START),
 						createColumnBuilder(NcorePackage.Literals.PERIOD__END),
 						createColumnBuilder(NcorePackage.Literals.PERIOD__DURATION),
@@ -471,10 +471,8 @@ public class EngineerActionProvider<T extends Engineer> extends PersonaActionPro
 				section.getContent().add(releasesTable);
 			
 				assignmentsAction.getSections().add(section);
-			}
-			
-		}
-		
+			}			
+		}		
 	}
 
 	private ContentProvider<IssueCategory> createIssueCategoryChildrenProvider() {

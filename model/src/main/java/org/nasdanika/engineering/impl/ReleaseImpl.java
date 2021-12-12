@@ -4,11 +4,12 @@ package org.nasdanika.engineering.impl;
 
 import java.util.Collection;
 import java.util.HashSet;
+
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
+import org.nasdanika.engineering.EngineeredCapability;
 import org.nasdanika.engineering.EngineeringPackage;
-import org.nasdanika.engineering.Feature;
 import org.nasdanika.engineering.Increment;
 import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.Release;
@@ -22,8 +23,7 @@ import org.nasdanika.engineering.Release;
  * </p>
  * <ul>
  *   <li>{@link org.nasdanika.engineering.impl.ReleaseImpl#getIncrement <em>Increment</em>}</li>
- *   <li>{@link org.nasdanika.engineering.impl.ReleaseImpl#getFeatures <em>Features</em>}</li>
- *   <li>{@link org.nasdanika.engineering.impl.ReleaseImpl#getIssues <em>Issues</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.ReleaseImpl#getCapabilities <em>Capabilities</em>}</li>
  * </ul>
  *
  * @generated
@@ -82,19 +82,10 @@ public class ReleaseImpl extends EngineeredCapabilityImpl implements Release {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
-	public EList<Issue> getIssues() {
-		return getOppositeReferrers(EngineeringPackage.Literals.RELEASE__ISSUES);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	@Override
-	public EList<Feature> getFeatures() {
-		return getOppositeReferrers(EngineeringPackage.Literals.RELEASE__FEATURES);
+	public EList<EngineeredCapability> getCapabilities() {
+		return getOppositeReferrers(EngineeringPackage.Literals.RELEASE__CAPABILITIES);
 	}
 
 	/**
@@ -108,10 +99,8 @@ public class ReleaseImpl extends EngineeredCapabilityImpl implements Release {
 			case EngineeringPackage.RELEASE__INCREMENT:
 				if (resolve) return getIncrement();
 				return basicGetIncrement();
-			case EngineeringPackage.RELEASE__FEATURES:
-				return getFeatures();
-			case EngineeringPackage.RELEASE__ISSUES:
-				return getIssues();
+			case EngineeringPackage.RELEASE__CAPABILITIES:
+				return getCapabilities();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -156,10 +145,8 @@ public class ReleaseImpl extends EngineeredCapabilityImpl implements Release {
 		switch (featureID) {
 			case EngineeringPackage.RELEASE__INCREMENT:
 				return basicGetIncrement() != null;
-			case EngineeringPackage.RELEASE__FEATURES:
-				return !getFeatures().isEmpty();
-			case EngineeringPackage.RELEASE__ISSUES:
-				return !getIssues().isEmpty();
+			case EngineeringPackage.RELEASE__CAPABILITIES:
+				return !getCapabilities().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -168,17 +155,9 @@ public class ReleaseImpl extends EngineeredCapabilityImpl implements Release {
 	public double getCompletion() {
 		double remaining = 0;
 		double total = 0;
-		for (Issue issue: getIssues()) {
-			double cc = issue.getCompletion();
-			double ctc = issue.getTotalCost();
-			total += ctc;
-			if (Double.isFinite(cc)) {
-				remaining += (1 - cc) * ctc; 
-			}
-		}
-		for (Feature feature: getFeatures()) {
-			double cc = feature.getCompletion();
-			double ctc = feature.getTotalCost();
+		for (EngineeredCapability capability: getCapabilities()) {
+			double cc = capability.getCompletion();
+			double ctc = capability.getTotalCost();
 			total += ctc;
 			if (Double.isFinite(cc)) {
 				remaining += (1 - cc) * ctc; 
@@ -190,11 +169,8 @@ public class ReleaseImpl extends EngineeredCapabilityImpl implements Release {
 	@Override
 	public double getTotalCost() {
 		double ret = 0;
-		for (Issue issue: getIssues()) {
-			ret += issue.getTotalCost();
-		}
-		for (Feature feature: getFeatures()) {
-			ret += feature.getTotalCost();
+		for (EngineeredCapability capability: getCapabilities()) {
+			ret += capability.getTotalCost();
 		}
 		return ret;
 	}
@@ -207,13 +183,8 @@ public class ReleaseImpl extends EngineeredCapabilityImpl implements Release {
 	@Override
 	public EList<Issue> getAllIssues() {
 		Collection<Issue> allIssues = new HashSet<>();
-		for (Issue issue: getIssues()) {
-			allIssues.addAll(issue.getAllIssues());
-		}
-		for (Feature feature: getFeatures()) {
-			for (Issue fi: feature.getAllIssues()) {
-				allIssues.add(fi);
-			}					
+		for (EngineeredCapability capability: getCapabilities()) {
+			allIssues.addAll(capability.getAllIssues());
 		}
 		return new BasicEList<>(allIssues);		
 	}

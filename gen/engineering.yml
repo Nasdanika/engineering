@@ -26,13 +26,6 @@ engineering-module:
     in-browser-editing:
       name: In-browsing editing feature
       description: Collaboration, inner source. Create pull request. Related to Data Provenance.
-    composite-releases:
-      name: Composite releases
-      description: |+2
-        Move releases reference from Issue and Feature to Capability.
-        Drop issues back-reference in release and rename features back-reference to capabilities.
-        Modify completion and effort computation.
-        At the UI use group-by and report Releases/Features/Issues - borrow from Engineer assignments.
     configurable-tables:
       name: Configurable tables
       description: |+2 

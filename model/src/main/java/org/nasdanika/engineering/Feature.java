@@ -14,7 +14,6 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.nasdanika.engineering.Feature#getReleases <em>Releases</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Feature#getIssues <em>Issues</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Feature#getChildren <em>Children</em>}</li>
  * </ul>
@@ -24,21 +23,6 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface Feature extends EngineeredCapability {
-	/**
-	 * Returns the value of the '<em><b>Releases</b></em>' reference list.
-	 * The list contents are of type {@link org.nasdanika.engineering.Release}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Releases for which this feature is planned.
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Releases</em>' reference list.
-	 * @see org.nasdanika.engineering.EngineeringPackage#getFeature_Releases()
-	 * @model annotation="urn:org.nasdanika opposite='features'"
-	 * @generated
-	 */
-	EList<Release> getReleases();
-
 	/**
 	 * Returns the value of the '<em><b>Issues</b></em>' reference list.
 	 * The list contents are of type {@link org.nasdanika.engineering.Issue}.

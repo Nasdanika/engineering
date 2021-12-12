@@ -26,7 +26,6 @@ import org.nasdanika.engineering.IssuePriority;
 import org.nasdanika.engineering.IssueSeverity;
 import org.nasdanika.engineering.IssueStatus;
 import org.nasdanika.engineering.Note;
-import org.nasdanika.engineering.Release;
 import org.nasdanika.ncore.Temporal;
 
 /**
@@ -46,7 +45,6 @@ import org.nasdanika.ncore.Temporal;
  *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getTarget <em>Target</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getStatus <em>Status</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#isWorkable <em>Workable</em>}</li>
- *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getReleases <em>Releases</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getEffort <em>Effort</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getCost <em>Cost</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IssueImpl#getRemainingEffort <em>Remaining Effort</em>}</li>
@@ -280,17 +278,6 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 			}
 		}
 		return true;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public EList<Release> getReleases() {
-		return (EList<Release>)eDynamicGet(EngineeringPackage.ISSUE__RELEASES, EngineeringPackage.Literals.ISSUE__RELEASES, true, true);
 	}
 
 	/**
@@ -557,8 +544,6 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 				return basicGetStatus();
 			case EngineeringPackage.ISSUE__WORKABLE:
 				return isWorkable();
-			case EngineeringPackage.ISSUE__RELEASES:
-				return getReleases();
 			case EngineeringPackage.ISSUE__EFFORT:
 				return getEffort();
 			case EngineeringPackage.ISSUE__COST:
@@ -612,10 +597,6 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 			case EngineeringPackage.ISSUE__STATUS:
 				setStatus((IssueStatus)newValue);
 				return;
-			case EngineeringPackage.ISSUE__RELEASES:
-				getReleases().clear();
-				getReleases().addAll((Collection<? extends Release>)newValue);
-				return;
 			case EngineeringPackage.ISSUE__EFFORT:
 				setEffort((Double)newValue);
 				return;
@@ -661,9 +642,6 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 			case EngineeringPackage.ISSUE__STATUS:
 				setStatus((IssueStatus)null);
 				return;
-			case EngineeringPackage.ISSUE__RELEASES:
-				getReleases().clear();
-				return;
 			case EngineeringPackage.ISSUE__EFFORT:
 				setEffort(EFFORT_EDEFAULT);
 				return;
@@ -706,8 +684,6 @@ public class IssueImpl extends EngineeredCapabilityImpl implements Issue {
 				return basicGetStatus() != null;
 			case EngineeringPackage.ISSUE__WORKABLE:
 				return isWorkable() != WORKABLE_EDEFAULT;
-			case EngineeringPackage.ISSUE__RELEASES:
-				return !getReleases().isEmpty();
 			case EngineeringPackage.ISSUE__EFFORT:
 				return getEffort() != EFFORT_EDEFAULT;
 			case EngineeringPackage.ISSUE__COST:

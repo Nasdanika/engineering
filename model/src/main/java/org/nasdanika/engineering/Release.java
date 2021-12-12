@@ -14,8 +14,7 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link org.nasdanika.engineering.Release#getIncrement <em>Increment</em>}</li>
- *   <li>{@link org.nasdanika.engineering.Release#getFeatures <em>Features</em>}</li>
- *   <li>{@link org.nasdanika.engineering.Release#getIssues <em>Issues</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.Release#getCapabilities <em>Capabilities</em>}</li>
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getRelease()
@@ -50,33 +49,18 @@ public interface Release extends EngineeredCapability {
 	void setIncrement(Increment value);
 
 	/**
-	 * Returns the value of the '<em><b>Issues</b></em>' reference list.
-	 * The list contents are of type {@link org.nasdanika.engineering.Issue}.
+	 * Returns the value of the '<em><b>Capabilities</b></em>' reference list.
+	 * The list contents are of type {@link org.nasdanika.engineering.EngineeredCapability}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Issues planned for this release.
+	 * Engineered capabilities planned for this release.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Issues</em>' reference list.
-	 * @see org.nasdanika.engineering.EngineeringPackage#getRelease_Issues()
+	 * @return the value of the '<em>Capabilities</em>' reference list.
+	 * @see org.nasdanika.engineering.EngineeringPackage#getRelease_Capabilities()
 	 * @model transient="true" changeable="false" derived="true"
 	 * @generated
 	 */
-	EList<Issue> getIssues();
-
-	/**
-	 * Returns the value of the '<em><b>Features</b></em>' reference list.
-	 * The list contents are of type {@link org.nasdanika.engineering.Feature}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Features planned for this release.
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Features</em>' reference list.
-	 * @see org.nasdanika.engineering.EngineeringPackage#getRelease_Features()
-	 * @model transient="true" changeable="false" derived="true"
-	 * @generated
-	 */
-	EList<Feature> getFeatures();
+	EList<EngineeredCapability> getCapabilities();
 
 } // Release
