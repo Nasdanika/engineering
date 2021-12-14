@@ -35,8 +35,8 @@ public class TopicActionProvider extends MessageActionProvider<Topic> {
 			Appearance appearance = BootstrapFactory.eINSTANCE.createAppearance();
 			messageCard.setAppearance(appearance);
 			Spacing mTop = BootstrapFactory.eINSTANCE.createSpacing();
-			mTop.setTop(true);
-			mTop.setSize(Size.S2);
+			mTop.setY(true);
+			mTop.setSize(Size.S1);
 			appearance.getMargin().add(mTop);
 			
 			if (!Util.isBlank(message.getName())) {
