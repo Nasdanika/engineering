@@ -88,6 +88,11 @@ engineering-organization:
           - engineering-module:
               path: common
               name: Common
+              documentation:
+                content-markdown:
+                  style: true
+                  source:
+                    content-resource: common.md
               discussion:
                 how-to-do-this:
                   name: How to do this?
@@ -96,8 +101,7 @@ engineering-organization:
                     content-markdown:
                       style: true
                       source:
-                        content-text: |+2
-                          ``Some`` details here
+                        content-resource: common.md
                   discussion:
                     and-that:
                       name: And that?
