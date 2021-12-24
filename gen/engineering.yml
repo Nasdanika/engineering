@@ -46,4 +46,7 @@ engineering-module:
     git-marker-message-enrichment:
       name: GitMarker Message Enrichment
       description: Enrhich topic messages and topics themselves with GitMarker information - author, date if not set. May not work correctly with pull requests - need to check - maybe author remains and only committer changes. 
+    engineer-activity:
+      name: Engineer activity
+      description: Messages, notes, issues (assignments). Filtering - date range, increments. Use for plans, e.g. what's next and progress reports - what has been done. 
    
