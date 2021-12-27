@@ -18,7 +18,7 @@ import org.nasdanika.engineering.Principle;
 import org.nasdanika.engineering.Topic;
 import org.nasdanika.html.model.app.Action;
 import org.nasdanika.html.model.app.AppFactory;
-import org.nasdanika.html.model.bootstrap.Table;
+import org.nasdanika.html.model.html.Tag;
 import org.nasdanika.ncore.NcorePackage;
 
 public class EngineeredElementActionProvider<T extends EngineeredElement> extends ForumActionProvider<T> {
@@ -138,32 +138,34 @@ public class EngineeredElementActionProvider<T extends EngineeredElement> extend
 					.filter(a -> allIssuesGroupUUID.equals(a.getUuid()))
 					.findFirst();
 			Action allIssuesAction = allIssuesActionOptional.get();
-			Table allIssuesTable = buildTable(
+			Tag allIssuesTable = buildDynamicTable(
 					allIssues, 
 					action, 
-					EngineeringPackage.Literals.ENGINEERED_ELEMENT__ALL_ISSUES, 
+					EngineeringPackage.Literals.ENGINEERED_ELEMENT__ALL_ISSUES,
+					"engineered-element--all-issues",
+					null,
 					context, 
 					progressMonitor,
-					createColumnBuilder("Issue"),
-					createColumnBuilder(EngineeringPackage.Literals.ISSUE__TARGET),
-					createColumnBuilder(EngineeringPackage.Literals.ENDEAVOR__ASSIGNEE),
-					createColumnBuilder(EngineeringPackage.Literals.ISSUE__CATEGORIES),
-					createColumnBuilder(EngineeringPackage.Literals.ISSUE__PRIORITY),
-					createColumnBuilder(EngineeringPackage.Literals.ISSUE__SEVERITY),
-					createColumnBuilder(EngineeringPackage.Literals.ISSUE__STATUS),
-					createColumnBuilder(EngineeringPackage.Literals.ISSUE__WORKABLE),
-					createColumnBuilder(EngineeringPackage.Literals.ENDEAVOR__BENEFIT),
-					createColumnBuilder(EngineeringPackage.Literals.ISSUE__COST),
-					createColumnBuilder(EngineeringPackage.Literals.ISSUE__EFFORT),
-					createColumnBuilder(EngineeringPackage.Literals.ISSUE__REMAINING_COST),
-					createColumnBuilder(EngineeringPackage.Literals.ISSUE__REMAINING_EFFORT),
-					createColumnBuilder(EngineeringPackage.Literals.ENDEAVOR__COMPLETION),
-					createColumnBuilder(EngineeringPackage.Literals.ENGINEERED_CAPABILITY__RELEASES),
-					createColumnBuilder(EngineeringPackage.Literals.ISSUE__CONTRIBUTES_TO),
-					createColumnBuilder(EngineeringPackage.Literals.ISSUE__INCREMENT),
-					createColumnBuilder(NcorePackage.Literals.PERIOD__START),
-					createColumnBuilder(NcorePackage.Literals.PERIOD__END),
-					createColumnBuilder(NcorePackage.Literals.PERIOD__DURATION));
+					createDynamicColumnBuilder("Issue", true),
+					createDynamicColumnBuilder(EngineeringPackage.Literals.ISSUE__TARGET, true),
+					createDynamicColumnBuilder(EngineeringPackage.Literals.ENDEAVOR__ASSIGNEE, true),
+					createDynamicColumnBuilder(EngineeringPackage.Literals.ISSUE__CATEGORIES, true),
+					createDynamicColumnBuilder(EngineeringPackage.Literals.ISSUE__PRIORITY, true),
+					createDynamicColumnBuilder(EngineeringPackage.Literals.ISSUE__SEVERITY, true),
+					createDynamicColumnBuilder(EngineeringPackage.Literals.ISSUE__STATUS, true),
+					createDynamicColumnBuilder(EngineeringPackage.Literals.ISSUE__WORKABLE, true),
+					createDynamicColumnBuilder(EngineeringPackage.Literals.ENDEAVOR__BENEFIT, false),
+					createDynamicColumnBuilder(EngineeringPackage.Literals.ISSUE__COST, false),
+					createDynamicColumnBuilder(EngineeringPackage.Literals.ISSUE__EFFORT, false),
+					createDynamicColumnBuilder(EngineeringPackage.Literals.ISSUE__REMAINING_COST, false),
+					createDynamicColumnBuilder(EngineeringPackage.Literals.ISSUE__REMAINING_EFFORT, false),
+					createDynamicColumnBuilder(EngineeringPackage.Literals.ENDEAVOR__COMPLETION, true),
+					createDynamicColumnBuilder(EngineeringPackage.Literals.ENGINEERED_CAPABILITY__RELEASES, true),
+					createDynamicColumnBuilder(EngineeringPackage.Literals.ISSUE__CONTRIBUTES_TO, true),
+					createDynamicColumnBuilder(EngineeringPackage.Literals.ISSUE__INCREMENT, true),
+					createDynamicColumnBuilder(NcorePackage.Literals.PERIOD__START, true),
+					createDynamicColumnBuilder(NcorePackage.Literals.PERIOD__END, true),
+					createDynamicColumnBuilder(NcorePackage.Literals.PERIOD__DURATION, false));
 			
 			allIssuesAction.getContent().add(allIssuesTable);
 		}
