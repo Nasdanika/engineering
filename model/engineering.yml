@@ -1,6 +1,7 @@
 engineering-module:
   name: Model
   path: model
+  action-prototype: "../../nasdanika.github.io/target/model-doc/actions/engineering.genmodel.xml#/"    
   dependencies:
     - engineering://nasdanika/modules/core/modules/flow
     - engineering://nasdanika/modules/html/modules/models/modules/app/modules/model
@@ -23,6 +24,10 @@ engineering-module:
       name: Answer ranking
       description: |+2
         Ranks collection or something like this. Simple way - update rank - long. More advanced way - use some external mechanism and pull data during generation. 
+    reporter:
+      name: Reported
+      description: |+2
+        Add reported Engineer reference to Issue. Opposite reference reportedIssues - nav action similar to All Issues. 
       
             
                            

@@ -49,4 +49,13 @@ engineering-module:
     engineer-activity:
       name: Engineer activity
       description: Messages, notes, issues (assignments). Filtering - date range, increments. Use for plans, e.g. what's next and progress reports - what has been done. 
+    issues-table:
+      name: issuesTable() methods
+      description: Generate items for all available features or at least the most of them. Take arguments for feature/column visibility, sortability, and filterability. Support of keying by model element and by string for computed features.  
+    element-tables:
+      name: Element table methods
+      description: Similar to issue tables. Include aggregated things, e.g. reportedIssues, messages, assignments for engineers - numbers linking to respective pages. Create child issues for each model element.   
+    element-icons:
+      name: Element icons from action prototypes
+      description: Update action providers to set an icon only if it is not already set by a prototype action.   
    

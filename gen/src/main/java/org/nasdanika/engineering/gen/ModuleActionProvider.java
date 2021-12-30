@@ -8,6 +8,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.ETypedElement;
 import org.nasdanika.common.Context;
 import org.nasdanika.common.ProgressMonitor;
+import org.nasdanika.common.Util;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.html.model.app.Action;
 
@@ -22,8 +23,11 @@ public class ModuleActionProvider<T extends org.nasdanika.engineering.Module> ex
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
 			ProgressMonitor progressMonitor) throws Exception {
+
 		Action action = super.createAction(registry, resolveConsumer, progressMonitor);
-		action.setIcon("fas fa-cube");		
+		if (Util.isBlank(action.getIcon())) {
+			action.setIcon("fas fa-cube");		
+		}
 		
 		createModuleActions(action, registry, resolveConsumer, progressMonitor);
 		
