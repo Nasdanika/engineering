@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.ETypedElement;
 import org.nasdanika.common.Context;
 import org.nasdanika.common.ProgressMonitor;
+import org.nasdanika.common.Util;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Feature;
 import org.nasdanika.engineering.Product;
@@ -30,7 +31,9 @@ public class ProductActionProvider extends ModuleActionProvider<Product> {
 			Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer,
 			ProgressMonitor progressMonitor) throws Exception {
 		Action action = super.createAction(registry, resolveConsumer, progressMonitor);
-		action.setIcon("fas fa-box");
+		if (Util.isBlank(action.getIcon())) {
+			action.setIcon("fas fa-box");
+		}
 		
 		createReleaseActions(action, registry, resolveConsumer, progressMonitor);		
 		createFeatureActions(action, registry, resolveConsumer, progressMonitor);
