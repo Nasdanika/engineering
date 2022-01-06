@@ -59,4 +59,7 @@ engineering-module:
     element-icons:
       name: Element icons from action prototypes
       description: Update action providers to set an icon only if it is not already set by a prototype action.   
+    marker-relative-drawio-representation:
+      name: Marker-relative drawio representations 
+      description: Currently is resolved relative to the instance model. If URL starts with ./ resolve relative to the marker. Or interpolate with ${marker-location} token.   
    
