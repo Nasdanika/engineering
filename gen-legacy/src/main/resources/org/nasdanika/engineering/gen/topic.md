@@ -1,2 +1,0 @@
-[Topic](${doc-uri}Topic.html) is a group of related [messages](${doc-uri}Message.html) in a [forum](${doc-uri}Forum.html). 
-Topic itself is a message, i.e. it is the first message in the group, for example a question.

@@ -1,2 +1,0 @@
-[Priority](${doc-uri}IssuePriority.html) assigned to an [issue](${doc-uri}Issue.html), e.g. ``Low``, ``Medium``, ``High``. 
-Issue priority defines the order in which issues shall be worked on. Higher priority workable issues shall be worked on before lower priority issues.

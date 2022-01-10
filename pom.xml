@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.nasdanika.engineering</groupId>
-	<version>2022.1.0</version>
+	<version>2022.1.1</version>
 	<artifactId>parent</artifactId>
 	<packaging>pom</packaging>
 	<name>Nasdanika Engineering Parent</name>
@@ -19,8 +19,8 @@
 	</licenses>
 
 	<properties>
-		<core.version>2022.1.0</core.version>
-		<html.version>2022.1.0</html.version>
+		<core.version>2022.1.2</core.version>
+		<html.version>2022.1.2</html.version>
 		<jacoco.version>0.8.7</jacoco.version>
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -169,18 +169,6 @@
 								<offlineLink>
 									<url>https://docs.nasdanika.org/modules/html/modules/jstree/apidocs/</url>
 									<location>${project.parent.basedir}/../html/jstree/target/apidocs/</location>
-								</offlineLink>
-								<offlineLink>
-									<url>https://docs.nasdanika.org/modules/html/modules/knockout/apidocs/</url>
-									<location>${project.parent.basedir}/../html/knockout/target/apidocs/</location>
-								</offlineLink>
-								<offlineLink>
-									<url>https://docs.nasdanika.org/modules/html/modules/fontawesome/apidocs/</url>
-									<location>${project.parent.basedir}/../html/fontawesome/target/apidocs/</location>
-								</offlineLink>
-								<offlineLink>
-									<url>https://docs.nasdanika.org/modules/html/modules/echarts/apidocs/</url>
-									<location>${project.parent.basedir}/../html/echarts/target/apidocs/</location>
 								</offlineLink>
 								<offlineLink>
 									<url>https://docs.nasdanika.org/modules/html/modules/emf/apidocs/</url>
