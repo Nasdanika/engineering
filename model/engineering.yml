@@ -25,9 +25,17 @@ engineering-module:
       description: |+2
         Ranks collection or something like this. Simple way - update rank - long. More advanced way - use some external mechanism and pull data during generation. 
     reporter:
-      name: Reported
+      name: Reporter
       description: |+2
         Add reported Engineer reference to Issue. Opposite reference reportedIssues - nav action similar to All Issues. 
+    technology-stack:
+      name: Technology Stack
+      description: |+2
+        Containment reference in Engineer, similar to Domains, render in the navigation menu - idented table or a tree. Experts/expertise - a way track skills. 
+    blog:
+      name: Blog
+      description: |+2
+        The same reference type as discussion forum. The difference is that a blog starts with an "answer" topic and may contain questions, and discussion typicall starts with a question and then contains answers. 
       
             
                            

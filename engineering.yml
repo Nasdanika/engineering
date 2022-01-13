@@ -21,5 +21,9 @@ engineering-product:
        name: Branch progress
        description: |+2
           Add to features - branch progress, e.g. feature branch - earned but not yet released value/benefit.
+     skills-and-technologies:
+       name: Skills and Technologies
+       description: |+2
+          Engineers have skills which may reference technologies and have level. Projects use technologies. Trees for both skills and technologies. Maybe not skills, but expertise - can be with technologies or other things such as engineered elements - modules, products.
 
 
