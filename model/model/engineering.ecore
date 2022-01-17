@@ -457,7 +457,7 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="EngineeredElement" abstract="true" eSuperTypes="#//Forum ../../org.nasdanika.ncore/model/ncore.ecore#//Period">
+  <eClassifiers xsi:type="ecore:EClass" name="EngineeredElement" eSuperTypes="#//Forum ../../org.nasdanika.ncore/model/ncore.ecore#//Period">
     <eAnnotations source="urn:org.nasdanika">
       <details key="documentation-reference" value="doc/engineered-element.md"/>
     </eAnnotations>

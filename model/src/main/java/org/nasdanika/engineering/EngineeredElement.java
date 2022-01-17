@@ -23,8 +23,7 @@ import org.nasdanika.ncore.Period;
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getEngineeredElement()
- * @model abstract="true"
- *        annotation="urn:org.nasdanika documentation-reference='doc/engineered-element.md'"
+ * @model annotation="urn:org.nasdanika documentation-reference='doc/engineered-element.md'"
  *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='capacity'"
  * @generated
  */

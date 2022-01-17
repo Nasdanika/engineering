@@ -43,7 +43,7 @@ import org.nasdanika.ncore.Temporal;
  *
  * @generated
  */
-public abstract class EngineeredElementImpl extends ForumImpl implements EngineeredElement {
+public class EngineeredElementImpl extends ForumImpl implements EngineeredElement {
 	/**
 	 * The default value of the '{@link #getDuration() <em>Duration</em>}' attribute.
 	 * <!-- begin-user-doc -->

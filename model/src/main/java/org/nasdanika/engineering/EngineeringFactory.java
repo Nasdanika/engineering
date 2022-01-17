@@ -283,6 +283,15 @@ public interface EngineeringFactory extends EFactory {
 	Forum createForum();
 
 	/**
+	 * Returns a new object of class '<em>Engineered Element</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Engineered Element</em>'.
+	 * @generated
+	 */
+	EngineeredElement createEngineeredElement();
+
+	/**
 	 * Returns a new object of class '<em>Topic</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
