@@ -2,7 +2,6 @@ package org.nasdanika.engineering.gen.tests;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.OutputStreamWriter;
 import java.net.URL;
 import java.nio.file.Files;
@@ -19,9 +18,6 @@ import java.util.function.Consumer;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.URIHandlerImpl;
-import org.nasdanika.common.Command;
 import org.nasdanika.common.ConsumerFactory;
 import org.nasdanika.common.Context;
 import org.nasdanika.common.Diagnostic;
@@ -34,7 +30,7 @@ import org.nasdanika.common.SupplierFactory;
 import org.nasdanika.common.Util;
 import org.nasdanika.common.resources.BinaryEntityContainer;
 import org.nasdanika.emf.EObjectAdaptable;
-import org.nasdanika.engineering.util.EngineeringYamlLoadingExecutionParticipant;
+import org.nasdanika.engineering.util.EngineeringYamlSupplier;
 import org.nasdanika.html.model.app.gen.AppGenYamlLoadingExecutionParticipant;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.DumperOptions.FlowStyle;
@@ -285,48 +281,20 @@ public class TestBase {
 
 		URI resourceURI = URI.createURI(TestBase.this.getClass().getResource(resource).toString());
 
-		class TestCommand extends EngineeringYamlLoadingExecutionParticipant implements Command {
 
-			public TestCommand(Context context) {
-				super(context);
-			}
-
+		@SuppressWarnings("resource")
+		Supplier<EObject> engineeringSupplier = new EngineeringYamlSupplier(resourceURI, context) {
+			
 			@Override
-			protected Collection<URI> getResources() {				
-				return Collections.singleton(resourceURI);
-			}
-
-			@Override
-			protected ResourceSet createResourceSet(ProgressMonitor progressMonitor) {
-				ResourceSet rs = super.createResourceSet(progressMonitor);
-				rs.getURIConverter().getURIHandlers().add(new URIHandlerImpl() {
-
-					@Override
-					public boolean canHandle(URI uri) {
-						return uri != null && "classpath".equals(uri.scheme());
-					}
-
-					@Override
-					public InputStream createInputStream(URI uri, Map<?, ?> options) throws IOException {
-						return getClass().getClassLoader().getResourceAsStream(uri.path());
-					}
-					
-				});
-				return rs;
-			}
-
-			@Override
-			public void execute(ProgressMonitor progressMonitor) throws Exception {
-				if (consumer != null) {
-					consumer.accept(resourceSet.getResource(resourceURI, false).getContents().get(0));
-				}
+			protected boolean isDiagnoseModel() {
+				return false;
 			}
 			
 		};
 		
 		// Diagnosing loaded resources. 
 		try {
-			org.nasdanika.common.Diagnostic diagnostic = Util.call(new TestCommand(context), progressMonitor);
+			org.nasdanika.common.Diagnostic diagnostic = Util.call(engineeringSupplier.then(org.nasdanika.common.Consumer.fromConsumer(consumer, "Engineering consumer", 1)), progressMonitor);
 			if (diagnosticConsumer != null) {
 				diagnosticConsumer.accept(diagnostic);
 			}
