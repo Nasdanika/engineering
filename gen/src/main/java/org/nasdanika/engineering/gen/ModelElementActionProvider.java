@@ -37,11 +37,8 @@ public class ModelElementActionProvider<T extends ModelElement> extends EObjectA
 	 */
 	protected int descriptionTabLengthThreshold = 2500;
 
-	protected Context context;
-		
 	public ModelElementActionProvider(T value, Context context) {
-		super(value);		
-		this.context = context;
+		super(value, context);		
 	}
 	
 	@Override
