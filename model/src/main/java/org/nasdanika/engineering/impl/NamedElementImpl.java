@@ -71,29 +71,6 @@ public class NamedElementImpl extends ModelElementImpl implements NamedElement {
 		return (String)eDynamicGet(EngineeringPackage.NAMED_ELEMENT__NAME, NcorePackage.Literals.NAMED_ELEMENT__NAME, true, true);
 	}
 
-	//	/**
-//	 * <!-- begin-user-doc -->
-//	 * <!-- end-user-doc -->
-//	 * @generated NOT
-//	 */
-//	@Override
-//	public String getName() {
-//		String name = (String)eDynamicGet(NcorePackage.NAMED_ELEMENT__NAME, NcorePackage.Literals.NAMED_ELEMENT__NAME, true, true);
-//		// Deriving name from path
-//		if (name == null) {
-//			String path = getPath();
-//			if (!Util.isBlank(path)) {
-//				String[] cca = path.split("-");
-//				cca[0] = StringUtils.capitalize(cca[0]);
-//				for (int i=1; i<cca.length; ++i) {
-//					cca[i] = cca[i].toLowerCase();
-//				}
-//				return StringUtils.join(cca, " ");				
-//			}
-//		}
-//		return name;
-//	}
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

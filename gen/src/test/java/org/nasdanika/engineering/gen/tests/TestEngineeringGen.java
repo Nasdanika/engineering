@@ -4,13 +4,18 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.UUID;
+import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
 import java.util.function.Consumer;
 
@@ -26,12 +31,14 @@ import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.junit.Test;
+import org.nasdanika.common.ConsumerFactory;
 import org.nasdanika.common.Context;
 import org.nasdanika.common.Diagnostic;
-import org.nasdanika.common.NasdanikaException;
+import org.nasdanika.common.DiagnosticException;
 import org.nasdanika.common.NullProgressMonitor;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.common.Status;
+import org.nasdanika.common.Supplier;
 import org.nasdanika.common.resources.BinaryEntityContainer;
 import org.nasdanika.common.resources.FileSystemContainer;
 import org.nasdanika.diagram.DiagramPackage;
@@ -40,6 +47,7 @@ import org.nasdanika.emf.EmfUtil;
 import org.nasdanika.emf.persistence.FeatureCacheAdapter;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.gen.EngineeringActionProviderAdapterFactory;
+import org.nasdanika.engineering.util.EngineeringYamlSupplier;
 import org.nasdanika.exec.ExecPackage;
 import org.nasdanika.exec.content.ContentPackage;
 import org.nasdanika.exec.resources.Container;
@@ -51,6 +59,7 @@ import org.nasdanika.html.emf.EObjectActionResolver;
 import org.nasdanika.html.model.app.Action;
 import org.nasdanika.html.model.app.AppPackage;
 import org.nasdanika.html.model.app.gen.AppAdapterFactory;
+import org.nasdanika.html.model.app.gen.AppGenYamlLoadingExecutionParticipant;
 import org.nasdanika.html.model.app.gen.Util;
 import org.nasdanika.html.model.app.util.ActionProvider;
 import org.nasdanika.html.model.bootstrap.BootstrapPackage;
@@ -63,7 +72,7 @@ import org.nasdanika.ncore.util.NcoreResourceSet;
  * @author Pavel
  *
  */
-public class TestEngineeringGen extends TestBase {
+public class TestEngineeringGen /* extends TestBase */ {
 	
 	private static final File GENERATED_MODELS_BASE_DIR = new File("target/model-doc");
 	private static final File ENGINEERING_MODELS_DIR = new File(GENERATED_MODELS_BASE_DIR, "models");
@@ -80,58 +89,84 @@ public class TestEngineeringGen extends TestBase {
 	 * @param progressMonitor
 	 * @throws Exception
 	 */
-	protected void generateEngineeringModel(String name, ProgressMonitor progressMonitor) throws Exception {	
-		load(
-				"engineering/" + name + ".yml", 
-				obj -> {
-					EObject copy = EcoreUtil.copy(obj);
-					ResourceSet resourceSet = new NcoreResourceSet();
-					resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put(org.eclipse.emf.ecore.resource.Resource.Factory.Registry.DEFAULT_EXTENSION, new XMIResourceFactoryImpl());
-					
-					org.eclipse.emf.ecore.resource.Resource instanceModelResource = resourceSet.createResource(URI.createURI(name + ".xml").resolve(ENGINEERING_MODELS_URI));
-					instanceModelResource.getContents().add(copy);
-					
-					org.eclipse.emf.common.util.Diagnostic copyDiagnostic = org.nasdanika.emf.EmfUtil.resolveClearCacheAndDiagnose(resourceSet, Context.EMPTY_CONTEXT);
-					int severity = copyDiagnostic.getSeverity();
-					if (severity != org.eclipse.emf.common.util.Diagnostic.OK) {
-						EmfUtil.dumpDiagnostic(copyDiagnostic, 2, System.err);
-					}
-					assertThat(severity).isEqualTo(org.eclipse.emf.common.util.Diagnostic.OK);
-										
-					try {
-						instanceModelResource.save(null);
-					} catch (IOException ioe) {
-						throw new NasdanikaException(ioe);
-					}
-				},
-				diagnostic -> {
-					if (diagnostic.getStatus() == Status.FAIL || diagnostic.getStatus() == Status.ERROR) {
-						System.err.println("***********************");
-						System.err.println("*      Diagnostic     *");
-						System.err.println("***********************");
-						diagnostic.dump(System.err, 4, Status.FAIL, Status.ERROR);
-					}
-					assertThat(diagnostic.getStatus()).isEqualTo(Status.SUCCESS);
-				},
-				progressMonitor);		
+	protected void generateEngineeringModel(String name, Context context, ProgressMonitor progressMonitor) throws Exception {
+		URI resourceURI = URI.createURI(getClass().getResource("engineering/" + name + ".yml").toString());		
+		@SuppressWarnings("resource")
+		Supplier<EObject> engineeringSupplier = new EngineeringYamlSupplier(resourceURI, context);
+		org.nasdanika.common.Consumer<EObject> engineeringConsumer = new org.nasdanika.common.Consumer<EObject>() {
+
+			@Override
+			public double size() {
+				return 1;
+			}
+
+			@Override
+			public String name() {
+				return "Saving loaded engineering model";
+			}
+
+			@Override
+			public void execute(EObject obj, ProgressMonitor progressMonitor) throws Exception {
+				EObject copy = EcoreUtil.copy(obj);
+				ResourceSet resourceSet = new NcoreResourceSet();
+				resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put(org.eclipse.emf.ecore.resource.Resource.Factory.Registry.DEFAULT_EXTENSION, new XMIResourceFactoryImpl());
+				
+				org.eclipse.emf.ecore.resource.Resource instanceModelResource = resourceSet.createResource(URI.createURI(name + ".xml").resolve(ENGINEERING_MODELS_URI));
+				instanceModelResource.getContents().add(copy);
+				
+				org.eclipse.emf.common.util.Diagnostic copyDiagnostic = org.nasdanika.emf.EmfUtil.resolveClearCacheAndDiagnose(resourceSet, Context.EMPTY_CONTEXT);
+				int severity = copyDiagnostic.getSeverity();
+				if (severity != org.eclipse.emf.common.util.Diagnostic.OK) {
+					EmfUtil.dumpDiagnostic(copyDiagnostic, 2, System.err);
+				}
+				assertThat(severity).isEqualTo(org.eclipse.emf.common.util.Diagnostic.OK);
+									
+				instanceModelResource.save(null);
+			}
+			
+		};
+		
+		try {
+			org.nasdanika.common.Diagnostic diagnostic = org.nasdanika.common.Util.call(engineeringSupplier.then(engineeringConsumer), progressMonitor);
+			if (diagnostic.getStatus() == Status.FAIL || diagnostic.getStatus() == Status.ERROR) {
+				System.err.println("***********************");
+				System.err.println("*      Diagnostic     *");
+				System.err.println("***********************");
+				diagnostic.dump(System.err, 4, Status.FAIL, Status.ERROR);
+			}
+			assertThat(diagnostic.getStatus()).isEqualTo(Status.SUCCESS);
+			
+			if (diagnostic.getStatus() == Status.WARNING || diagnostic.getStatus() == Status.ERROR) {
+				System.err.println("***********************");
+				System.err.println("*      Diagnostic     *");
+				System.err.println("***********************");
+				diagnostic.dump(System.err, 4, Status.ERROR, Status.WARNING);
+			}
+		} catch (DiagnosticException e) {
+			System.err.println("******************************");
+			System.err.println("*      Diagnostic failed     *");
+			System.err.println("******************************");
+			e.getDiagnostic().dump(System.err, 4, Status.FAIL);
+			throw e;
+		}
 	}
 	
 	/**
 	 * Loads instance model from previously generated XMI, diagnoses, generates action model.
 	 * @throws Exception
 	 */
-	public void generateActionModel(String name, ProgressMonitor progressMonitor) throws Exception {
+	public void generateActionModel(String name, Context context, ProgressMonitor progressMonitor) throws Exception {
 		ResourceSet instanceModelsResourceSet = createResourceSet();
 		Resource instanceModelResource = instanceModelsResourceSet.getResource(URI.createURI(name + ".xml").resolve(ENGINEERING_MODELS_URI), true);
 
-		org.eclipse.emf.common.util.Diagnostic instanceDiagnostic = org.nasdanika.emf.EmfUtil.resolveClearCacheAndDiagnose(instanceModelsResourceSet, Context.EMPTY_CONTEXT);
+		org.eclipse.emf.common.util.Diagnostic instanceDiagnostic = org.nasdanika.emf.EmfUtil.resolveClearCacheAndDiagnose(instanceModelsResourceSet, context);
 		int severity = instanceDiagnostic.getSeverity();
 		if (severity != org.eclipse.emf.common.util.Diagnostic.OK) {
 			EmfUtil.dumpDiagnostic(instanceDiagnostic, 2, System.err);
 		}
 		assertThat(severity).isEqualTo(org.eclipse.emf.common.util.Diagnostic.OK);
 		
-		instanceModelsResourceSet.getAdapterFactories().add(new EngineeringActionProviderAdapterFactory(Context.EMPTY_CONTEXT) {
+		instanceModelsResourceSet.getAdapterFactories().add(new EngineeringActionProviderAdapterFactory(context) {
 			
 			private void collect(Notifier target, org.eclipse.emf.common.util.Diagnostic source, Collection<org.eclipse.emf.common.util.Diagnostic> accumulator) {
 				List<?> data = source.getData();
@@ -212,7 +247,7 @@ public class TestEngineeringGen extends TestBase {
 	 * Generates a resource model from an action model.
 	 * @throws Exception
 	 */
-	public void generateResourceModel(String name, ProgressMonitor progressMonitor) throws Exception {
+	public void generateResourceModel(String name, Context context, ProgressMonitor progressMonitor) throws Exception {
 		Consumer<Diagnostic> diagnosticConsumer = diagnostic -> {
 			if (diagnostic.getStatus() == Status.FAIL || diagnostic.getStatus() == Status.ERROR) {
 				System.err.println("***********************");
@@ -225,7 +260,7 @@ public class TestEngineeringGen extends TestBase {
 		
 		Context modelContext = Context.singleton("model-name", name);
 		String actionsResource = "actions.yml";
-		Action root = (Action) Objects.requireNonNull(loadObject(actionsResource, diagnosticConsumer, modelContext, progressMonitor), "Loaded null from " + actionsResource);
+		Action root = (Action) loadObject(actionsResource, diagnosticConsumer, modelContext, progressMonitor);
 		
 		Container container = ResourcesFactory.eINSTANCE.createContainer();
 		container.setName(name);
@@ -237,23 +272,67 @@ public class TestEngineeringGen extends TestBase {
 		modelResource.getContents().add(container);
 		
 		String pageTemplateResource = "page-template.yml";
-		org.nasdanika.html.model.bootstrap.Page pageTemplate = (org.nasdanika.html.model.bootstrap.Page) Objects.requireNonNull(loadObject(pageTemplateResource, diagnosticConsumer, modelContext, progressMonitor), "Loaded null from " + pageTemplateResource);
+		org.nasdanika.html.model.bootstrap.Page pageTemplate = (org.nasdanika.html.model.bootstrap.Page) loadObject(pageTemplateResource, diagnosticConsumer, modelContext, progressMonitor);
 		
 		Util.generateSite(
 				root, 
 				pageTemplate,
 				container,
-				Context.EMPTY_CONTEXT,
+				context,
 				progressMonitor);
 		
 		modelResource.save(null);
 	}
 	
+	protected EObject loadObject(
+			String resource, 
+			Consumer<org.nasdanika.common.Diagnostic> diagnosticConsumer,
+			Context context,
+			ProgressMonitor progressMonitor) throws Exception {
+		
+		Class<?> clazz = getClass();
+		URL resourceURL = clazz.getResource(resource);
+		if (resourceURL == null) {
+			throw new IllegalArgumentException("Classloader resource not found: " + resource + " by " + clazz); 
+		}
+		URI resourceURI = URI.createURI(resourceURL.toString());
+
+		class ObjectSupplier extends AppGenYamlLoadingExecutionParticipant implements Supplier<EObject> {
+
+			public ObjectSupplier(Context context) {
+				super(context);
+			}
+
+			@Override
+			protected Collection<URI> getResources() {
+				return Collections.singleton(resourceURI);
+			}
+
+			@Override
+			public EObject execute(ProgressMonitor progressMonitor) throws Exception {				
+				return resourceSet.getResource(resourceURI, false).getContents().iterator().next();
+			}
+			
+		};
+		
+		// Diagnosing loaded resources. 
+		try {
+			return Objects.requireNonNull(org.nasdanika.common.Util.call(new ObjectSupplier(context), progressMonitor, diagnosticConsumer), "Loaded null from " + resource);
+		} catch (DiagnosticException e) {
+			System.err.println("******************************");
+			System.err.println("*      Diagnostic failed     *");
+			System.err.println("******************************");
+			e.getDiagnostic().dump(System.err, 4, Status.FAIL);
+			throw e;
+		}		
+	}
+	
+	
 	/**
 	 * Generates files from the previously generated resource model.
 	 * @throws Exception
 	 */
-	public void generateContainer(String name, ProgressMonitor progressMonitor) throws Exception {
+	public void generateContainer(String name, Context context, ProgressMonitor progressMonitor) throws Exception {
 		ResourceSet resourceSet = createResourceSet();
 		
 		resourceSet.getAdapterFactories().add(new AppAdapterFactory());
@@ -265,7 +344,24 @@ public class TestEngineeringGen extends TestBase {
 			Diagnostician diagnostician = new Diagnostician();
 			org.eclipse.emf.common.util.Diagnostic diagnostic = diagnostician.validate(eObject);
 			assertThat(diagnostic.getSeverity()).isNotEqualTo(org.eclipse.emf.common.util.Diagnostic.ERROR);
-			generate(eObject, container, Context.EMPTY_CONTEXT, progressMonitor);
+			// Diagnosing loaded resources. 
+			try {
+				ConsumerFactory<BinaryEntityContainer> consumerFactory = Objects.requireNonNull(EObjectAdaptable.adaptToConsumerFactory(eObject, BinaryEntityContainer.class), "Cannot adapt to ConsumerFactory");
+				Diagnostic callDiagnostic = org.nasdanika.common.Util.call(consumerFactory.create(context), container, progressMonitor);
+				if (callDiagnostic.getStatus() == Status.FAIL || callDiagnostic.getStatus() == Status.ERROR) {
+					System.err.println("***********************");
+					System.err.println("*      Diagnostic     *");
+					System.err.println("***********************");
+					callDiagnostic.dump(System.err, 4, Status.FAIL, Status.ERROR);
+				}
+				assertThat(callDiagnostic.getStatus()).isEqualTo(Status.SUCCESS);
+			} catch (DiagnosticException e) {
+				System.err.println("******************************");
+				System.err.println("*      Diagnostic failed     *");
+				System.err.println("******************************");
+				e.getDiagnostic().dump(System.err, 4, Status.FAIL);
+				throw e;
+			}
 		}		
 	}
 	
@@ -287,6 +383,36 @@ public class TestEngineeringGen extends TestBase {
 		return resourceSet;
 	}
 	
+	
+	public static void copy(File source, File target, boolean cleanTarget, BiConsumer<File,File> listener) throws IOException {
+		if (cleanTarget && target.isDirectory()) {
+			delete(target.listFiles());
+		}
+		if (source.isDirectory()) {
+			target.mkdirs();
+			for (File sc: source.listFiles()) {
+				copy(sc, new File(target, sc.getName()), false, listener);
+			}
+		} else if (source.isFile()) {
+			Files.copy(source.toPath(), target.toPath(), StandardCopyOption.REPLACE_EXISTING);			
+			if (listener != null) {
+				listener.accept(source, target);
+			}
+		}
+	}
+	
+	public static void delete(File... files) {
+		for (File file: files) {
+			if (file.exists()) {
+				if (file.isDirectory()) {
+					delete(file.listFiles());
+				}
+				file.delete();
+			}
+		}
+	}	
+	
+	
 	@Test
 	public void generate() throws Exception {
 		delete(ENGINEERING_MODELS_DIR);
@@ -307,22 +433,23 @@ public class TestEngineeringGen extends TestBase {
 	
 	private void generateSite(String name) throws Exception {
 		System.out.println("Generating site: " + name);
+		Context context = Context.EMPTY_CONTEXT;
 		ProgressMonitor progressMonitor = new NullProgressMonitor(); // PrintStreamProgressMonitor();
 		
 		long start = System.currentTimeMillis();
-		generateEngineeringModel(name, progressMonitor);
+		generateEngineeringModel(name, context, progressMonitor);
 		System.out.println("\tGenerated instance model in " + (System.currentTimeMillis() - start) + " milliseconds");
 		start = System.currentTimeMillis();
 		
-		generateActionModel(name, progressMonitor);
+		generateActionModel(name, context, progressMonitor);
 		System.out.println("\tGenerated action model in " + (System.currentTimeMillis() - start) + " milliseconds");
 		start = System.currentTimeMillis();
 		
-		generateResourceModel(name, progressMonitor);
+		generateResourceModel(name, context, progressMonitor);
 		System.out.println("\tGenerated resource model in " + (System.currentTimeMillis() - start) + " milliseconds");
 		start = System.currentTimeMillis();
 		
-		generateContainer(name, progressMonitor);
+		generateContainer(name, context, progressMonitor);
 		System.out.println("\tGenerated site in " + (System.currentTimeMillis() - start) + " milliseconds");
 	}
 	
