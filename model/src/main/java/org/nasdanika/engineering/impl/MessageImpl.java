@@ -3,6 +3,7 @@
 package org.nasdanika.engineering.impl;
 
 import java.util.Date;
+
 import org.eclipse.emf.ecore.EClass;
 import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeringPackage;

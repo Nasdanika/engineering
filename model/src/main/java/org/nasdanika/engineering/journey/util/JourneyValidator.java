@@ -9,7 +9,6 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.EObjectValidator;
-import org.nasdanika.engineering.journey.*;
 import org.nasdanika.engineering.journey.Activity;
 import org.nasdanika.engineering.journey.Journey;
 import org.nasdanika.engineering.journey.JourneyPackage;
