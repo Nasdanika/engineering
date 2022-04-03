@@ -2,21 +2,29 @@ package org.nasdanika.engineering.gen;
 
 import java.util.List;
 
+import org.eclipse.emf.ecore.ETypedElement;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.nasdanika.common.Context;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Issue;
-import org.nasdanika.engineering.IssueSeverity;
+import org.nasdanika.engineering.IssueStatus;
 import org.nasdanika.html.model.app.Action;
 import org.nasdanika.html.model.app.AppFactory;
 import org.nasdanika.html.model.bootstrap.Table;
 import org.nasdanika.ncore.NcorePackage;
 
-public class IssueSeverityActionProvider extends NamedElementActionProvider<IssueSeverity> {
+public class IssueStatusActionBuilder extends NamedElementActionBuilder<IssueStatus> {
 	
-	public IssueSeverityActionProvider(IssueSeverity target, Context context) {
+	public IssueStatusActionBuilder(IssueStatus target, Context context) {
 		super(target, context);		
+	}
+	
+	@Override
+	protected List<ETypedElement> getProperties() {
+		List<ETypedElement> properties = super.getProperties();
+		properties.add(EngineeringPackage.Literals.ISSUE_STATUS__DONE);
+		return properties;
 	}
 		
 	@Override

@@ -16,18 +16,19 @@ import org.nasdanika.engineering.KeyResult;
 import org.nasdanika.html.model.app.Action;
 import org.nasdanika.html.model.app.AppFactory;
 
-public class KeyResultActionProvider<T extends KeyResult> extends AimActionProvider<T> {
+public class KeyResultActionBuilder<T extends KeyResult> extends AimActionBuilder<T> {
 	
-	public KeyResultActionProvider(T target, Context context) {
+	public KeyResultActionBuilder(T target, Context context) {
 		super(target, context);		
 	}
 	
 	@Override
-	protected Action createAction(
+	protected Action buildAction(
+			Action action,
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
 			ProgressMonitor progressMonitor) throws Exception {
-		Action action = super.createAction(registry, resolveConsumer, progressMonitor);
+		action = super.buildAction(action, registry, resolveConsumer, progressMonitor);
 		
 		createInitiativesAction(action, registry, resolveConsumer, progressMonitor);		
 		

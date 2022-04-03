@@ -17,7 +17,7 @@ import org.nasdanika.diagram.Diagram;
 import org.nasdanika.diagram.gen.Generator;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.ModelElement;
-import org.nasdanika.html.emf.EObjectActionProvider;
+import org.nasdanika.html.emf.EObjectActionBuilder;
 import org.nasdanika.html.model.app.Action;
 import org.nasdanika.html.model.app.AppFactory;
 import org.nasdanika.html.model.app.SectionStyle;
@@ -29,7 +29,7 @@ import org.nasdanika.html.model.bootstrap.TableSection;
 import org.nasdanika.html.model.html.HtmlFactory;
 import org.nasdanika.ncore.util.NcoreUtil;
 
-public class ModelElementActionProvider<T extends ModelElement> extends EObjectActionProvider<T> {
+public class ModelElementActionBuilder<T extends ModelElement> extends EObjectActionBuilder<T> {
 	
 	/**
 	 * Descriptions shorter than this value are put on the top of the tabs, longer
@@ -37,16 +37,17 @@ public class ModelElementActionProvider<T extends ModelElement> extends EObjectA
 	 */
 	protected int descriptionTabLengthThreshold = 2500;
 
-	public ModelElementActionProvider(T value, Context context) {
+	public ModelElementActionBuilder(T value, Context context) {
 		super(value, context);		
 	}
 	
 	@Override
-	protected Action createAction(
+	protected Action buildAction(
+			Action action,
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
 			ProgressMonitor progressMonitor) throws Exception {
-		Action ret = super.createAction(registry, resolveConsumer, progressMonitor);		
+		Action ret = super.buildAction(action, registry, resolveConsumer, progressMonitor);		
 		T eObj = getTarget();
 		URI uri = NcoreUtil.getUri(eObj);
 		String id = uri == null ? eObj.getUuid() : uri.toString();

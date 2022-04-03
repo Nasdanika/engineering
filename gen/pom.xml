@@ -61,6 +61,10 @@
 			<version>3.20.2</version>
 			<scope>test</scope>
 		</dependency>				
-		
+		<dependency>
+		  <groupId>com.github.dfabulich</groupId>
+		  <artifactId>sitemapgen4j</artifactId>
+		  <version>1.1.2</version>
+		</dependency>		
 	</dependencies>
 </project>

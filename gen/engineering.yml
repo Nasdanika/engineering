@@ -21,6 +21,8 @@ engineering-module:
         Generate static cross-refrencing JSON files which can be used for programmatic access by, say, single-page applications. For example, an issues table with filtering and sorting or by charts.   
         May also generate a JavaScript API on top of the JSON "dumb" data - read-only properties returning promises.
         Ideally, the JSON should be loadable back to the model. Also may publish XMI at the root of the generated site - an alternative to Maven repository.      
+        To be used in SPA's, e.g. Vue.js - generate specifically for Vue.js? Separate gen module, e.g. gen.vue?
+        In this case rename this one to gen.html?          
     help-dialogs:
       name: Help dialogs
       description: Markdown help resource. Superscript question mark if present.    
@@ -62,4 +64,7 @@ engineering-module:
     marker-relative-drawio-representation:
       name: Marker-relative drawio representations 
       description: Currently is resolved relative to the instance model. If URL starts with ./ resolve relative to the marker. Or interpolate with ${marker-location} token.   
+    gantt-representation:
+      name: Gantt representation 
+      description: For endeavors. PlantUML or Mermaid. PlantUML has more features, but Mermaid is more visually attractive. Mermaid might be better for roadmap representations.   
    

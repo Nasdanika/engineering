@@ -11,22 +11,23 @@ import org.eclipse.emf.ecore.ETypedElement;
 import org.nasdanika.common.Context;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.engineering.EngineeringPackage;
-import org.nasdanika.engineering.Principle;
+import org.nasdanika.engineering.Goal;
 import org.nasdanika.html.model.app.Action;
 import org.nasdanika.html.model.app.AppFactory;
 
-public class PrincipleActionProvider extends AimActionProvider<Principle> {
+public class GoalActionBuilder extends AimActionBuilder<Goal> {
 	
-	public PrincipleActionProvider(Principle target, Context context) {
+	public GoalActionBuilder(Goal target, Context context) {
 		super(target, context);		
 	}
 	
 	@Override
-	protected Action createAction(
+	protected Action buildAction(
+			Action action,
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
 			ProgressMonitor progressMonitor) throws Exception {
-		Action action = super.createAction(registry, resolveConsumer, progressMonitor);
+		action = super.buildAction(action, registry, resolveConsumer, progressMonitor);
 		
 		createChildrenActions(action, registry, resolveConsumer, progressMonitor);
 		
@@ -39,14 +40,14 @@ public class PrincipleActionProvider extends AimActionProvider<Principle> {
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
 			ProgressMonitor progressMonitor) throws Exception {
 		
-		List<Principle> children = getTarget().getChildren();
+		List<Goal> children = getTarget().getChildren();
 		if (!children.isEmpty()) {
 			Action group = AppFactory.eINSTANCE.createAction();
 			group.setText("Children");
 			group.setUuid(action.getUuid() + "-children");
 			action.getSections().add(group);
 			EList<Action> groupAnonymous = group.getAnonymous();
-			for (Principle goal: children) {
+			for (Goal goal: children) {
 				groupAnonymous.add(createChildAction(goal, registry, resolveConsumer, progressMonitor));
 			}
 		}
@@ -59,36 +60,36 @@ public class PrincipleActionProvider extends AimActionProvider<Principle> {
 			ProgressMonitor progressMonitor) throws Exception {
 		super.resolve(action, context, progressMonitor);
 		
-		EList<Principle> children = getTarget().getChildren();
+		EList<Goal> children = getTarget().getChildren();
 		if (!children.isEmpty()) {
 			String childrenGroupUUID = action.getUuid() + "-children";
 			Optional<Action> childrenActionOptional = action.getSections().stream()
 					.filter(a -> childrenGroupUUID.equals(a.getUuid()))
 					.findFirst();
-			childrenActionOptional.get().getContent().add(renderList(children, true, createGoalChildrenListProvider(), action, EngineeringPackage.Literals.ENGINEERED_ELEMENT__PRINCIPLES, context, progressMonitor));
+			childrenActionOptional.get().getContent().add(renderList(children, true, createGoalChildrenListProvider(), action, EngineeringPackage.Literals.PERSONA__GOALS, context, progressMonitor));
 		}
 	}
 
-	protected ContentProvider<Principle> createGoalChildrenListProvider() {
-		ContentProvider<Principle> principleChildrenListProvider = new ContentProvider<Principle>() {
+	protected ContentProvider<Goal> createGoalChildrenListProvider() {
+		ContentProvider<Goal> goalChildrenListProvider = new ContentProvider<Goal>() {
 
 			@Override
 			public List<EObject> createContent(
-					Principle element, 
+					Goal element, 
 					Action base, 
 					ETypedElement typedElement,
 					org.nasdanika.html.emf.EObjectActionResolver.Context context, 
 					ProgressMonitor progressMonitor) throws Exception {
 				
-				EList<Principle> children = element.getChildren();
+				EList<Goal> children = element.getChildren();
 				if (children.isEmpty()) {
 					return null;
 				}
-				return Collections.singletonList(renderList(children, true, this, base, EngineeringPackage.Literals.PRINCIPLE__CHILDREN, context, progressMonitor));
+				return Collections.singletonList(renderList(children, true, this, base, EngineeringPackage.Literals.GOAL__CHILDREN, context, progressMonitor));
 			}
 			
 		};
-		return principleChildrenListProvider;
+		return goalChildrenListProvider;
 	}
 	
 }

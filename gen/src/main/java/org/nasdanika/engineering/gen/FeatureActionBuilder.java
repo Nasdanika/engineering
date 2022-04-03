@@ -18,18 +18,19 @@ import org.nasdanika.html.model.app.AppFactory;
 import org.nasdanika.html.model.bootstrap.Table;
 import org.nasdanika.ncore.NcorePackage;
 
-public class FeatureActionProvider extends EngineeredCapabilityActionProvider<Feature> {
+public class FeatureActionBuilder extends EngineeredCapabilityActionBuilder<Feature> {
 	
-	public FeatureActionProvider(Feature target, Context context) {
+	public FeatureActionBuilder(Feature target, Context context) {
 		super(target, context);		
 	}
 	
 	@Override
-	protected Action createAction(
+	protected Action buildAction(
+			Action action,
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
 			ProgressMonitor progressMonitor) throws Exception {
-		Action action = super.createAction(registry, resolveConsumer, progressMonitor);
+		action = super.buildAction(action, registry, resolveConsumer, progressMonitor);
 		
 		action.getSections().addAll(createChildrenActions(registry, resolveConsumer, progressMonitor));
 		createIssuesAction(action, registry, resolveConsumer, progressMonitor);		

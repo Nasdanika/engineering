@@ -16,9 +16,9 @@ import org.nasdanika.engineering.Objective;
 import org.nasdanika.html.model.app.Action;
 import org.nasdanika.html.model.app.AppFactory;
 
-public class ObjectiveActionProvider extends KeyResultActionProvider<Objective> {
+public class ObjectiveActionBuilder extends KeyResultActionBuilder<Objective> {
 	
-	public ObjectiveActionProvider(Objective target, Context context) {
+	public ObjectiveActionBuilder(Objective target, Context context) {
 		super(target, context);		
 	}
 	
@@ -32,11 +32,12 @@ public class ObjectiveActionProvider extends KeyResultActionProvider<Objective> 
 	}
 	
 	@Override
-	protected Action createAction(
+	protected Action buildAction(
+			Action action,
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
 			ProgressMonitor progressMonitor) throws Exception {
-		Action action = super.createAction(registry, resolveConsumer, progressMonitor);
+		action = super.buildAction(action, registry, resolveConsumer, progressMonitor);
 		
 		createSubObjectiveActions(action, registry, resolveConsumer, progressMonitor);
 		createKeyResultActions(action, registry, resolveConsumer, progressMonitor);

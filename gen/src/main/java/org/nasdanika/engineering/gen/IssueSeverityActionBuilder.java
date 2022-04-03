@@ -7,18 +7,18 @@ import org.nasdanika.common.Context;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Issue;
-import org.nasdanika.engineering.IssuePriority;
+import org.nasdanika.engineering.IssueSeverity;
 import org.nasdanika.html.model.app.Action;
 import org.nasdanika.html.model.app.AppFactory;
 import org.nasdanika.html.model.bootstrap.Table;
 import org.nasdanika.ncore.NcorePackage;
 
-public class IssuePriorityActionProvider extends NamedElementActionProvider<IssuePriority> {
+public class IssueSeverityActionBuilder extends NamedElementActionBuilder<IssueSeverity> {
 	
-	public IssuePriorityActionProvider(IssuePriority target, Context context) {
+	public IssueSeverityActionBuilder(IssueSeverity target, Context context) {
 		super(target, context);		
 	}
-	
+		
 	@Override
 	protected void resolve(
 			Action action, 

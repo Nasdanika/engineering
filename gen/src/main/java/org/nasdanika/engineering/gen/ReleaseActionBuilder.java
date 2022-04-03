@@ -19,9 +19,9 @@ import org.nasdanika.html.model.app.AppFactory;
 import org.nasdanika.html.model.bootstrap.Table;
 import org.nasdanika.ncore.NcorePackage;
 
-public class ReleaseActionProvider extends EngineeredCapabilityActionProvider<Release> {
+public class ReleaseActionBuilder extends EngineeredCapabilityActionBuilder<Release> {
 	
-	public ReleaseActionProvider(Release target, Context context) {
+	public ReleaseActionBuilder(Release target, Context context) {
 		super(target, context);		
 	}
 	

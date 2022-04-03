@@ -21,19 +21,20 @@ import org.nasdanika.html.model.bootstrap.Table;
 import org.nasdanika.html.model.bootstrap.TableCell;
 import org.nasdanika.html.model.bootstrap.Text;
 
-public class ForumActionProvider<T extends Forum> extends NamedElementActionProvider<T> {
+public class ForumActionBuilder<T extends Forum> extends NamedElementActionBuilder<T> {
 	
-	public ForumActionProvider(T target, Context context) {
+	public ForumActionBuilder(T target, Context context) {
 		super(target, context);		
 	}
 	
 	@Override
-	protected Action createAction(
+	protected Action buildAction(
+			Action action,
 			BiConsumer<EObject, Action> registry,
 			Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer,
 			ProgressMonitor progressMonitor) throws Exception {
 		
-		Action action = super.createAction(registry, resolveConsumer, progressMonitor);
+		action = super.buildAction(action, registry, resolveConsumer, progressMonitor);
 		
 		EList<Action> groupAnonymous = action.getAnonymous();
 		for (Forum forum: getTarget().getDiscussion()) {

@@ -7,9 +7,9 @@ import org.nasdanika.common.Context;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Message;
 
-public class MessageActionProvider<T extends Message> extends NamedElementActionProvider<T> {
+public class MessageActionBuilder<T extends Message> extends NamedElementActionBuilder<T> {
 	
-	public MessageActionProvider(T target, Context context) {
+	public MessageActionBuilder(T target, Context context) {
 		super(target, context);		
 	}
 	

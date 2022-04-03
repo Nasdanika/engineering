@@ -41,140 +41,140 @@ public class EngineeringActionProviderAdapterFactory extends FlowActionProviderA
 				EngineeringPackage.Literals.PERSONA, 
 				ActionProvider.class, 
 				this.getClass().getClassLoader(), 
-				e -> new PersonaActionProvider<Persona>(e, context)));
+				e -> new PersonaActionBuilder<Persona>(e, context).asActionProvider()));
 		
 		registerAdapterFactory(
 				new FunctionAdapterFactory<ActionProvider, org.nasdanika.engineering.Engineer>(
 					EngineeringPackage.Literals.ENGINEER, 
 					ActionProvider.class, 
 					this.getClass().getClassLoader(), 
-					e -> new EngineerActionProvider<Engineer>(e, context)));
+					e -> new EngineerActionBuilder<Engineer>(e, context).asActionProvider()));
 			
 		registerAdapterFactory(
 				new FunctionAdapterFactory<ActionProvider, org.nasdanika.engineering.Organization>(
 					EngineeringPackage.Literals.ORGANIZATION, 
 					ActionProvider.class, 
 					this.getClass().getClassLoader(), 
-					e -> new OrganizationActionProvider(e, context)));
+					e -> new OrganizationActionBuilder(e, context).asActionProvider()));
 		
 		registerAdapterFactory(
 				new FunctionAdapterFactory<ActionProvider, org.nasdanika.engineering.Module>(
 					EngineeringPackage.Literals.MODULE, 
 					ActionProvider.class, 
 					this.getClass().getClassLoader(), 
-					e -> new ModuleActionProvider<org.nasdanika.engineering.Module>(e, context)));
+					e -> new ModuleActionBuilder<org.nasdanika.engineering.Module>(e, context).asActionProvider()));
 		
 		registerAdapterFactory(
 				new FunctionAdapterFactory<ActionProvider, Domain>(
 					EngineeringPackage.Literals.DOMAIN, 
 					ActionProvider.class, 
 					this.getClass().getClassLoader(), 
-					e -> new DomainActionProvider(e, context)));
+					e -> new DomainActionBuilder(e, context).asActionProvider()));
 	
 		registerAdapterFactory(
 				new FunctionAdapterFactory<ActionProvider, org.nasdanika.engineering.Product>(
 					EngineeringPackage.Literals.PRODUCT, 
 					ActionProvider.class, 
 					this.getClass().getClassLoader(), 
-					e -> new ProductActionProvider(e, context)));
+					e -> new ProductActionBuilder(e, context).asActionProvider()));
 		
 		registerAdapterFactory(
 				new FunctionAdapterFactory<ActionProvider, org.nasdanika.engineering.Goal>(
 					EngineeringPackage.Literals.GOAL, 
 					ActionProvider.class, 
 					this.getClass().getClassLoader(), 
-					e -> new GoalActionProvider(e, context)));
+					e -> new GoalActionBuilder(e, context).asActionProvider()));
 		
 		registerAdapterFactory(
 				new FunctionAdapterFactory<ActionProvider, org.nasdanika.engineering.Principle>(
 					EngineeringPackage.Literals.PRINCIPLE, 
 					ActionProvider.class, 
 					this.getClass().getClassLoader(), 
-					e -> new PrincipleActionProvider(e, context)));
+					e -> new PrincipleActionBuilder(e, context).asActionProvider()));
 		
 		registerAdapterFactory(
 				new FunctionAdapterFactory<ActionProvider, org.nasdanika.engineering.IssueCategory>(
 					EngineeringPackage.Literals.ISSUE_CATEGORY, 
 					ActionProvider.class, 
 					this.getClass().getClassLoader(), 
-					e -> new IssueCategoryActionProvider(e, context)));
+					e -> new IssueCategoryActionBuilder(e, context).asActionProvider()));
 		
 		registerAdapterFactory(
 				new FunctionAdapterFactory<ActionProvider, org.nasdanika.engineering.IssuePriority>(
 					EngineeringPackage.Literals.ISSUE_PRIORITY, 
 					ActionProvider.class, 
 					this.getClass().getClassLoader(), 
-					e -> new IssuePriorityActionProvider(e, context)));
+					e -> new IssuePriorityActionBuilder(e, context).asActionProvider()));
 		
 		registerAdapterFactory(
 				new FunctionAdapterFactory<ActionProvider, org.nasdanika.engineering.IssueSeverity>(
 					EngineeringPackage.Literals.ISSUE_SEVERITY, 
 					ActionProvider.class, 
 					this.getClass().getClassLoader(), 
-					e -> new IssueSeverityActionProvider(e, context)));
+					e -> new IssueSeverityActionBuilder(e, context).asActionProvider()));
 		
 		registerAdapterFactory(
 				new FunctionAdapterFactory<ActionProvider, org.nasdanika.engineering.IssueStatus>(
 					EngineeringPackage.Literals.ISSUE_STATUS, 
 					ActionProvider.class, 
 					this.getClass().getClassLoader(), 
-					e -> new IssueStatusActionProvider(e, context)));
+					e -> new IssueStatusActionBuilder(e, context).asActionProvider()));
 		
 		registerAdapterFactory(
 				new FunctionAdapterFactory<ActionProvider, org.nasdanika.engineering.Issue>(
 					EngineeringPackage.Literals.ISSUE, 
 					ActionProvider.class, 
 					this.getClass().getClassLoader(), 
-					e -> new IssueActionProvider(e, context)));
+					e -> new IssueActionBuilder(e, context).asActionProvider()));
 		
 		registerAdapterFactory(
 				new FunctionAdapterFactory<ActionProvider, org.nasdanika.engineering.Feature>(
 					EngineeringPackage.Literals.FEATURE, 
 					ActionProvider.class, 
 					this.getClass().getClassLoader(), 
-					e -> new FeatureActionProvider(e, context)));
+					e -> new FeatureActionBuilder(e, context).asActionProvider()));
 		
 		registerAdapterFactory(
 				new FunctionAdapterFactory<ActionProvider, org.nasdanika.engineering.Release>(
 					EngineeringPackage.Literals.RELEASE, 
 					ActionProvider.class, 
 					this.getClass().getClassLoader(), 
-					e -> new ReleaseActionProvider(e, context)));
+					e -> new ReleaseActionBuilder(e, context).asActionProvider()));
 		
 		registerAdapterFactory(
 				new FunctionAdapterFactory<ActionProvider, org.nasdanika.engineering.Increment>(
 					EngineeringPackage.Literals.INCREMENT, 
 					ActionProvider.class, 
 					this.getClass().getClassLoader(), 
-					e -> new IncrementActionProvider(e, context)));
+					e -> new IncrementActionBuilder(e, context).asActionProvider()));
 		
 		registerAdapterFactory(
 				new FunctionAdapterFactory<ActionProvider, KeyResult>(
 					EngineeringPackage.Literals.KEY_RESULT, 
 					ActionProvider.class, 
 					this.getClass().getClassLoader(), 
-					e -> new KeyResultActionProvider<KeyResult>(e, context)));
+					e -> new KeyResultActionBuilder<KeyResult>(e, context).asActionProvider()));
 		
 		registerAdapterFactory(
 				new FunctionAdapterFactory<ActionProvider, Objective>(
 					EngineeringPackage.Literals.OBJECTIVE, 
 					ActionProvider.class, 
 					this.getClass().getClassLoader(), 
-					e -> new ObjectiveActionProvider(e, context)));
+					e -> new ObjectiveActionBuilder(e, context).asActionProvider()));
 		
 		registerAdapterFactory(
 				new FunctionAdapterFactory<ActionProvider, Forum>(
 					EngineeringPackage.Literals.FORUM, 
 					ActionProvider.class, 
 					this.getClass().getClassLoader(), 
-					e -> new ForumActionProvider<Forum>(e, context)));
+					e -> new ForumActionBuilder<Forum>(e, context).asActionProvider()));
 
 		registerAdapterFactory(
 				new FunctionAdapterFactory<ActionProvider, Topic>(
 					EngineeringPackage.Literals.TOPIC, 
 					ActionProvider.class, 
 					this.getClass().getClassLoader(), 
-					e -> new TopicActionProvider(e, context)));
+					e -> new TopicActionBuilder(e, context).asActionProvider()));
 		
 	}
 			

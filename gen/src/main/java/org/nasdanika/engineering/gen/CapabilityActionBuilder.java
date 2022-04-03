@@ -16,18 +16,19 @@ import org.nasdanika.html.model.app.Action;
 import org.nasdanika.html.model.app.AppFactory;
 import org.nasdanika.html.model.bootstrap.Table;
 
-public class CapabilityActionProvider<T extends Capability> extends NamedElementActionProvider<T> {
+public class CapabilityActionBuilder<T extends Capability> extends NamedElementActionBuilder<T> {
 	
-	public CapabilityActionProvider(T target, Context context) {
+	public CapabilityActionBuilder(T target, Context context) {
 		super(target, context);		
 	}
 	
 	@Override
-	protected Action createAction(
+	protected Action buildAction(
+			Action action,
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
 			ProgressMonitor progressMonitor) throws Exception {
-		Action action = super.createAction(registry, resolveConsumer, progressMonitor);
+		action = super.buildAction(action, registry, resolveConsumer, progressMonitor);
 		
 		createRequiredByAction(action, registry, resolveConsumer, progressMonitor);		
 		

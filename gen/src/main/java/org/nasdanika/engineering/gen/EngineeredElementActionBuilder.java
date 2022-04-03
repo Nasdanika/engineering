@@ -21,9 +21,9 @@ import org.nasdanika.html.model.app.AppFactory;
 import org.nasdanika.html.model.html.Tag;
 import org.nasdanika.ncore.NcorePackage;
 
-public class EngineeredElementActionProvider<T extends EngineeredElement> extends ForumActionProvider<T> {
+public class EngineeredElementActionBuilder<T extends EngineeredElement> extends ForumActionBuilder<T> {
 	
-	public EngineeredElementActionProvider(T target, Context context) {
+	public EngineeredElementActionBuilder(T target, Context context) {
 		super(target, context);		
 	}
 	
@@ -35,11 +35,12 @@ public class EngineeredElementActionProvider<T extends EngineeredElement> extend
 	}	
 	
 	@Override
-	protected Action createAction(
+	protected Action buildAction(
+			Action action,
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
 			ProgressMonitor progressMonitor) throws Exception {
-		Action action = super.createAction(registry, resolveConsumer, progressMonitor);
+		action = super.buildAction(action, registry, resolveConsumer, progressMonitor);
 		
 		createIssuesAction(action, registry, resolveConsumer, progressMonitor);		
 		createAllIssuesAction(action, registry, resolveConsumer, progressMonitor);		

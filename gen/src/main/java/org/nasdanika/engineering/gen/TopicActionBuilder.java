@@ -17,9 +17,9 @@ import org.nasdanika.html.model.bootstrap.BootstrapFactory;
 import org.nasdanika.html.model.bootstrap.Card;
 import org.nasdanika.html.model.bootstrap.Spacing;
 
-public class TopicActionProvider extends MessageActionProvider<Topic> {
+public class TopicActionBuilder extends MessageActionBuilder<Topic> {
 	
-	public TopicActionProvider(Topic target, Context context) {
+	public TopicActionBuilder(Topic target, Context context) {
 		super(target, context);		
 	}
 		

@@ -8,18 +8,19 @@ import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.engineering.NamedElement;
 import org.nasdanika.html.model.app.Action;
 
-public class NamedElementActionProvider<T extends NamedElement> extends ModelElementActionProvider<T> {
+public class NamedElementActionBuilder<T extends NamedElement> extends ModelElementActionBuilder<T> {
 	
-	public NamedElementActionProvider(T target, Context context) {
+	public NamedElementActionBuilder(T target, Context context) {
 		super(target, context);		
 	}
 	
 	@Override
-	protected Action createAction(
+	protected Action buildAction(
+			Action action,
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
 			ProgressMonitor progressMonitor) throws Exception {
-		Action ret = super.createAction(registry, resolveConsumer, progressMonitor);		
+		Action ret = super.buildAction(action, registry, resolveConsumer, progressMonitor);		
 		
 		ret.setText(getTarget().getName()); // Escape?
 		return ret;

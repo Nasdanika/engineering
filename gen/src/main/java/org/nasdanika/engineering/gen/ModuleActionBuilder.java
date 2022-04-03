@@ -12,19 +12,20 @@ import org.nasdanika.common.Util;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.html.model.app.Action;
 
-public class ModuleActionProvider<T extends org.nasdanika.engineering.Module> extends EngineeredElementActionProvider<T> {
+public class ModuleActionBuilder<T extends org.nasdanika.engineering.Module> extends EngineeredElementActionBuilder<T> {
 	
-	public ModuleActionProvider(T target, Context context) {
+	public ModuleActionBuilder(T target, Context context) {
 		super(target, context);		
 	}
 		
 	@Override
-	protected Action createAction(
+	protected Action buildAction(
+			Action action,
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
 			ProgressMonitor progressMonitor) throws Exception {
 
-		Action action = super.createAction(registry, resolveConsumer, progressMonitor);
+		action = super.buildAction(action, registry, resolveConsumer, progressMonitor);
 		if (Util.isBlank(action.getIcon())) {
 			action.setIcon("fas fa-cube");		
 		}

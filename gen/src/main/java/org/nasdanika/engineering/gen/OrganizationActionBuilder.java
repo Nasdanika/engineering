@@ -16,18 +16,19 @@ import org.nasdanika.engineering.Organization;
 import org.nasdanika.html.model.app.Action;
 import org.nasdanika.html.model.app.AppFactory;
 
-public class OrganizationActionProvider extends EngineerActionProvider<Organization> {
+public class OrganizationActionBuilder extends EngineerActionBuilder<Organization> {
 	
-	public OrganizationActionProvider(Organization target, Context context) {
+	public OrganizationActionBuilder(Organization target, Context context) {
 		super(target, context);	
 	}
 	
 	@Override
-	protected Action createAction(
+	protected Action buildAction(
+			Action action,
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
 			ProgressMonitor progressMonitor) throws Exception {
-		Action action = super.createAction(registry, resolveConsumer, progressMonitor);
+		action = super.buildAction(action, registry, resolveConsumer, progressMonitor);
 		createEngineersActions(action, registry, resolveConsumer, progressMonitor);
 		return action;
 	}

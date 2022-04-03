@@ -17,18 +17,19 @@ import org.nasdanika.html.model.app.AppFactory;
 import org.nasdanika.html.model.bootstrap.Table;
 import org.nasdanika.ncore.NcorePackage;
 
-public class AimActionProvider<T extends Aim> extends NamedElementActionProvider<T> {
+public class AimActionBuilder<T extends Aim> extends NamedElementActionBuilder<T> {
 	
-	public AimActionProvider(T target, Context context) {
+	public AimActionBuilder(T target, Context context) {
 		super(target, context);		
 	}
 		
 	@Override
-	protected Action createAction(
+	protected Action buildAction(
+			Action action,
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
 			ProgressMonitor progressMonitor) throws Exception {
-		Action action = super.createAction(registry, resolveConsumer, progressMonitor);
+		action = super.buildAction(action, registry, resolveConsumer, progressMonitor);
 		
 		createAlignsActions(action, registry, resolveConsumer, progressMonitor);
 		createAlignmentsActions(action, registry, resolveConsumer, progressMonitor);

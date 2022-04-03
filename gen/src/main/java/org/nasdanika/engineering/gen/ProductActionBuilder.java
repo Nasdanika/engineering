@@ -19,18 +19,19 @@ import org.nasdanika.engineering.Release;
 import org.nasdanika.html.model.app.Action;
 import org.nasdanika.html.model.app.AppFactory;
 
-public class ProductActionProvider extends ModuleActionProvider<Product> {
+public class ProductActionBuilder extends ModuleActionBuilder<Product> {
 	
-	public ProductActionProvider(Product target, Context context) {
+	public ProductActionBuilder(Product target, Context context) {
 		super(target, context);		
 	}
 	
 	@Override
-	protected Action createAction(
+	protected Action buildAction(
+			Action action,
 			BiConsumer<EObject, Action> registry,
 			Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer,
 			ProgressMonitor progressMonitor) throws Exception {
-		Action action = super.createAction(registry, resolveConsumer, progressMonitor);
+		action = super.buildAction(action, registry, resolveConsumer, progressMonitor);
 		if (Util.isBlank(action.getIcon())) {
 			action.setIcon("fas fa-box");
 		}
