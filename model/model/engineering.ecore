@@ -13,7 +13,7 @@
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="path" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Resources associated with the element, e.g. documentation."/>
+        <details key="documentation" value="Element path is typically used as a key (EKey) in a containing collection."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="resources" upperBound="-1"
@@ -23,12 +23,19 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="documentation" upperBound="-1"
-        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject" containment="true"/>
+        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject" containment="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Element documentation, e.g. [Markdown](${classifier/Markdown@urn:org.nasdanika.exec.content}) documentation."/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="tableOfContents" eType="#//TableOfContents"
         containment="true">
       <eAnnotations source="urn:org.nasdanika">
         <details key="homogenous" value="true"/>
         <details key="strict-containment" value="true"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Table of contents configuration."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="sections" upperBound="-1"
@@ -37,14 +44,14 @@
         <details key="homogenous" value="true"/>
       </eAnnotations>
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Sections for model element descriptions. In documents sections apply to the document content, i.e. document descriptions cannot have sections. Sections can be nested."/>
+        <details key="documentation" value="Sections for model element documentation."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="representations" upperBound="-1"
         eType="ecore:EClass ../../org.nasdanika.diagram/model/diagram.ecore#//Diagram"
         containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Pluggable representations of a model element, e.g. a component diagram for engineers and modules."/>
+        <details key="documentation" value="Pluggable representations of a model element, e.g. a component diagram for modules."/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>

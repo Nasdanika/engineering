@@ -25,10 +25,10 @@ import org.nasdanika.engineering.Increment;
 import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.Objective;
 import org.nasdanika.engineering.Release;
-import org.nasdanika.engineering.util.EngineeringUtil;
 import org.nasdanika.ncore.NcorePackage;
 import org.nasdanika.ncore.Period;
 import org.nasdanika.ncore.Temporal;
+import org.nasdanika.ncore.util.NcoreUtil;
 
 /**
  * <!-- begin-user-doc -->
@@ -188,7 +188,7 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 	@Override
 	public void setStart(Temporal newStart) {
 		eDynamicSet(EngineeringPackage.INCREMENT__START, NcorePackage.Literals.PERIOD__START, newStart);
-		EngineeringUtil.onStart(this, newStart);
+		NcoreUtil.onStart(this, newStart);
 	}
 
 	/**
@@ -219,7 +219,7 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 	@Override
 	public void setEnd(Temporal newEnd) {
 		eDynamicSet(EngineeringPackage.INCREMENT__END, NcorePackage.Literals.PERIOD__END, newEnd);
-		EngineeringUtil.onEnd(this, newEnd);
+		NcoreUtil.onEnd(this, newEnd);
 	}
 
 	/**
@@ -240,7 +240,7 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 	@Override
 	public void setDuration(Duration newDuration) {
 		eDynamicSet(EngineeringPackage.INCREMENT__DURATION, NcorePackage.Literals.PERIOD__DURATION, newDuration);
-		EngineeringUtil.onDuration(this, newDuration);
+		NcoreUtil.onDuration(this, newDuration);
 	}
 
 	/**

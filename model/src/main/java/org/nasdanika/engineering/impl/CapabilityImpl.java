@@ -11,10 +11,10 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.nasdanika.engineering.Capability;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Issue;
-import org.nasdanika.engineering.util.EngineeringUtil;
 import org.nasdanika.ncore.NcorePackage;
 import org.nasdanika.ncore.Period;
 import org.nasdanika.ncore.Temporal;
+import org.nasdanika.ncore.util.NcoreUtil;
 
 /**
  * <!-- begin-user-doc -->
@@ -100,7 +100,7 @@ public class CapabilityImpl extends NamedElementImpl implements Capability {
 	@Override
 	public void setStart(Temporal newStart) {
 		eDynamicSet(EngineeringPackage.CAPABILITY__START, NcorePackage.Literals.PERIOD__START, newStart);
-		EngineeringUtil.onStart(this, newStart);
+		NcoreUtil.onStart(this, newStart);
 	}
 
 	/**
@@ -131,7 +131,7 @@ public class CapabilityImpl extends NamedElementImpl implements Capability {
 	@Override
 	public void setEnd(Temporal newEnd) {
 		eDynamicSet(EngineeringPackage.CAPABILITY__END, NcorePackage.Literals.PERIOD__END, newEnd);
-		EngineeringUtil.onEnd(this, newEnd);
+		NcoreUtil.onEnd(this, newEnd);
 	}
 
 	/**
@@ -152,7 +152,7 @@ public class CapabilityImpl extends NamedElementImpl implements Capability {
 	@Override
 	public void setDuration(Duration newDuration) {
 		eDynamicSet(EngineeringPackage.CAPABILITY__DURATION, NcorePackage.Literals.PERIOD__DURATION, newDuration);
-		EngineeringUtil.onDuration(this, newDuration);
+		NcoreUtil.onDuration(this, newDuration);
 	}
 
 	/**
