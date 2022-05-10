@@ -67,6 +67,7 @@ import org.nasdanika.flow.FlowPackage;
 import org.nasdanika.html.emf.EObjectActionResolver;
 import org.nasdanika.html.model.app.Action;
 import org.nasdanika.html.model.app.AppPackage;
+import org.nasdanika.html.model.app.Label;
 import org.nasdanika.html.model.app.gen.AppAdapterFactory;
 import org.nasdanika.html.model.app.gen.AppGenYamlLoadingExecutionParticipant;
 import org.nasdanika.html.model.app.gen.Util;
@@ -233,7 +234,7 @@ public class TestEngineeringGen /* extends TestBase */ {
 		EObject instance = instanceModelResource.getContents().get(0);
 		Action rootAction = EObjectAdaptable.adaptTo(instance, ActionProvider.class).execute(registry::put, progressMonitor);
 		Context uriResolverContext = Context.singleton(Context.BASE_URI_PROPERTY, URI.createURI("temp://" + UUID.randomUUID() + "/" + UUID.randomUUID() + "/"));
-		BiFunction<Action, URI, URI> uriResolver = org.nasdanika.html.model.app.gen.Util.uriResolver(rootAction, uriResolverContext);
+		BiFunction<Label, URI, URI> uriResolver = org.nasdanika.html.model.app.gen.Util.uriResolver(rootAction, uriResolverContext);
 		Adapter resolver = EcoreUtil.getExistingAdapter(rootAction, EObjectActionResolver.class);
 		if (resolver instanceof EObjectActionResolver) {														
 			org.nasdanika.html.emf.EObjectActionResolver.Context resolverContext = new org.nasdanika.html.emf.EObjectActionResolver.Context() {
@@ -433,7 +434,7 @@ public class TestEngineeringGen /* extends TestBase */ {
 			writer.write("var searchDocuments = " + searchDocuments);
 		}
 		
-		if (problems.get() != 94) { // 94 known problems to be fixed over time
+		if (problems.get() != 136) { // 94 known problems to be fixed over time
 			fail("There are broken links: " + problems.get());
 		};
 	}

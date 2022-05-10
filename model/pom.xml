@@ -5,7 +5,7 @@
 	<parent>
 		<artifactId>parent</artifactId>
 		<groupId>org.nasdanika.engineering</groupId>
-		<version>2022.4.1</version>
+		<version>2022.5.0</version>
 		<relativePath>..</relativePath>
 	</parent>
 	<artifactId>model</artifactId>
@@ -75,7 +75,7 @@
 		<dependency>
 			<groupId>org.nasdanika.html</groupId>
 			<artifactId>app-model</artifactId>
-			<version>${core.version}</version>
+			<version>${html.version}</version>
 		</dependency>
 
 		<dependency>
