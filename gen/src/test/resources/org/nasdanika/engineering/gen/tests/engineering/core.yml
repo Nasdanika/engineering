@@ -143,8 +143,8 @@ engineering-organization:
                                   ```
                       
               issues:
-                - name: My Issue
-                  path: my-issue
+                my-issue: 
+                  name: My Issue
                   description: Issue description/summary.
                   documentation: 
                     content-text: Issue documentation.
@@ -233,5 +233,11 @@ engineering-organization:
           objectives:
             my-objective:
               name: My Objective
-              
+  issues:
+    - |+2
+      fileset:
+        base: issues
+        include: 
+          - "*.yml"              
+        exclude: "*another*.yml" 
                             
