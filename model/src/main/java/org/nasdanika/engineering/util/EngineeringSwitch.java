@@ -138,8 +138,11 @@ public class EngineeringSwitch<T> extends Switch<T> {
 			case EngineeringPackage.EVENT: {
 				Event event = (Event)theEObject;
 				T result = caseEvent(event);
-				if (result == null) result = caseNamedElement(event);
+				if (result == null) result = caseEngineeredElement(event);
 				if (result == null) result = caseTemporal(event);
+				if (result == null) result = caseForum(event);
+				if (result == null) result = casePeriod(event);
+				if (result == null) result = caseNamedElement(event);
 				if (result == null) result = caseModelElement(event);
 				if (result == null) result = caseNcore_NamedElement(event);
 				if (result == null) result = caseNcore_ModelElement(event);

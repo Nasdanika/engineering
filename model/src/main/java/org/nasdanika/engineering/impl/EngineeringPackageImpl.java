@@ -2404,7 +2404,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		modelElementEClass.getESuperTypes().add(theNcorePackage.getModelElement());
 		namedElementEClass.getESuperTypes().add(this.getModelElement());
 		namedElementEClass.getESuperTypes().add(theNcorePackage.getNamedElement());
-		eventEClass.getESuperTypes().add(this.getNamedElement());
+		eventEClass.getESuperTypes().add(this.getEngineeredElement());
 		eventEClass.getESuperTypes().add(theNcorePackage.getTemporal());
 		endeavorEClass.getESuperTypes().add(this.getModelElement());
 		endeavorEClass.getESuperTypes().add(theNcorePackage.getPeriod());
@@ -3337,7 +3337,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		  (getModelElement_Path(),
 		   source,
 		   new String[] {
-			   "documentation", "Resources associated with the element, e.g. documentation."
+			   "documentation", "Element path is typically used as a key (EKey) in a containing collection."
 		   });
 		addAnnotation
 		  (getModelElement_Resources(),
@@ -3346,16 +3346,28 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 			   "documentation", "Resources associated with the element, e.g. documentation."
 		   });
 		addAnnotation
+		  (getModelElement_Documentation(),
+		   source,
+		   new String[] {
+			   "documentation", "Element documentation, e.g. [Markdown](${classifier/Markdown@urn:org.nasdanika.exec.content}) documentation."
+		   });
+		addAnnotation
+		  (getModelElement_TableOfContents(),
+		   source,
+		   new String[] {
+			   "documentation", "Table of contents configuration."
+		   });
+		addAnnotation
 		  (getModelElement_Sections(),
 		   source,
 		   new String[] {
-			   "documentation", "Sections for model element descriptions. In documents sections apply to the document content, i.e. document descriptions cannot have sections. Sections can be nested."
+			   "documentation", "Sections for model element documentation."
 		   });
 		addAnnotation
 		  (getModelElement_Representations(),
 		   source,
 		   new String[] {
-			   "documentation", "Pluggable representations of a model element, e.g. a component diagram for engineers and modules."
+			   "documentation", "Pluggable representations of a model element, e.g. a component diagram for modules."
 		   });
 		addAnnotation
 		  (getTableOfContents_Role(),

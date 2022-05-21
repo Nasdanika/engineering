@@ -35,7 +35,7 @@ public interface ModelElement extends org.nasdanika.ncore.ModelElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Resources associated with the element, e.g. documentation.
+	 * Element path is typically used as a key (EKey) in a containing collection.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Path</em>' attribute.
 	 * @see #setPath(String)
@@ -75,6 +75,9 @@ public interface ModelElement extends org.nasdanika.ncore.ModelElement {
 	 * The list contents are of type {@link org.eclipse.emf.ecore.EObject}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Element documentation, e.g. [Markdown](${classifier/Markdown@urn:org.nasdanika.exec.content}) documentation.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Documentation</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getModelElement_Documentation()
 	 * @model containment="true"
@@ -86,6 +89,9 @@ public interface ModelElement extends org.nasdanika.ncore.ModelElement {
 	 * Returns the value of the '<em><b>Table Of Contents</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Table of contents configuration.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Table Of Contents</em>' containment reference.
 	 * @see #setTableOfContents(TableOfContents)
 	 * @see org.nasdanika.engineering.EngineeringPackage#getModelElement_TableOfContents()
@@ -111,7 +117,7 @@ public interface ModelElement extends org.nasdanika.ncore.ModelElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Sections for model element descriptions. In documents sections apply to the document content, i.e. document descriptions cannot have sections. Sections can be nested.
+	 * Sections for model element documentation.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Sections</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getModelElement_Sections()
@@ -127,7 +133,7 @@ public interface ModelElement extends org.nasdanika.ncore.ModelElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Pluggable representations of a model element, e.g. a component diagram for engineers and modules.
+	 * Pluggable representations of a model element, e.g. a component diagram for modules.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Representations</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getModelElement_Representations()

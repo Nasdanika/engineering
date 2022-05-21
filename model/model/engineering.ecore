@@ -83,7 +83,7 @@
       <details key="documentation-reference" value="doc/named-element.md"/>
     </eAnnotations>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Event" eSuperTypes="#//NamedElement ../../org.nasdanika.ncore/model/ncore.ecore#//Temporal">
+  <eClassifiers xsi:type="ecore:EClass" name="Event" eSuperTypes="#//EngineeredElement ../../org.nasdanika.ncore/model/ncore.ecore#//Temporal">
     <eAnnotations source="urn:org.nasdanika">
       <details key="documentation-reference" value="doc/event.md"/>
     </eAnnotations>

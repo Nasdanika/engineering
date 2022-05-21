@@ -288,12 +288,12 @@ public class EngineeringAdapterFactory extends AdapterFactoryImpl {
 				return createNcore_NamedElementAdapter();
 			}
 			@Override
-			public Adapter caseTemporal(Temporal object) {
-				return createTemporalAdapter();
-			}
-			@Override
 			public Adapter casePeriod(Period object) {
 				return createPeriodAdapter();
+			}
+			@Override
+			public Adapter caseTemporal(Temporal object) {
+				return createTemporalAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {

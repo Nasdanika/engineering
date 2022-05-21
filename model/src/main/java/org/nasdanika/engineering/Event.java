@@ -15,5 +15,5 @@ import org.nasdanika.ncore.Temporal;
  * @model annotation="urn:org.nasdanika documentation-reference='doc/event.md'"
  * @generated
  */
-public interface Event extends NamedElement, Temporal {
+public interface Event extends EngineeredElement, Temporal {
 } // Event

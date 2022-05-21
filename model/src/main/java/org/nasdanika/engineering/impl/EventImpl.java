@@ -37,7 +37,7 @@ import org.nasdanika.ncore.Temporal;
  *
  * @generated
  */
-public class EventImpl extends NamedElementImpl implements Event {
+public class EventImpl extends EngineeredElementImpl implements Event {
 	/**
 	 * The default value of the '{@link #getInstant() <em>Instant</em>}' attribute.
 	 * <!-- begin-user-doc -->

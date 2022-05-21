@@ -308,6 +308,8 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(event, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(event, diagnostics, context);
 		if (result || diagnostics != null) result &= validateModelElement_path(event, diagnostics, context);
+		if (result || diagnostics != null) result &= ncoreValidator.validatePeriod_start_end(event, diagnostics, context);
+		if (result || diagnostics != null) result &= validateEngineeredElement_capacity(event, diagnostics, context);
 		if (result || diagnostics != null) result &= ncoreValidator.validateTemporal_bounds(event, diagnostics, context);
 		if (result || diagnostics != null) result &= ncoreValidator.validateTemporal_offset(event, diagnostics, context);
 		return result;
