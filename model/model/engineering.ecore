@@ -832,7 +832,7 @@
         <details key="opposite" value="capabilities"/>
       </eAnnotations>
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Engineered capabiloity can be planned for zero or more releases."/>
+        <details key="documentation" value="Engineered capability can be planned for zero or more releases."/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>

@@ -28,7 +28,7 @@ public interface EngineeredCapability extends Capability, Endeavor {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Engineered capabiloity can be planned for zero or more releases.
+	 * Engineered capability can be planned for zero or more releases.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Releases</em>' reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getEngineeredCapability_Releases()

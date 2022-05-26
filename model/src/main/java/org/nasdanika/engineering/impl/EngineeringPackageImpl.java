@@ -3901,7 +3901,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		  (getEngineeredCapability_Releases(),
 		   source,
 		   new String[] {
-			   "documentation", "Engineered capabiloity can be planned for zero or more releases."
+			   "documentation", "Engineered capability can be planned for zero or more releases."
 		   });
 		addAnnotation
 		  (getRelease_Increment(),
