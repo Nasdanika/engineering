@@ -37,10 +37,12 @@ import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.json.JSONObject;
+import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.junit.Test;
 import org.nasdanika.common.ConsumerFactory;
 import org.nasdanika.common.Context;
+import org.nasdanika.common.DefaultConverter;
 import org.nasdanika.common.Diagnostic;
 import org.nasdanika.common.DiagnosticException;
 import org.nasdanika.common.NasdanikaException;
@@ -395,6 +397,8 @@ public class TestEngineeringGen /* extends TestBase */ {
 		JSONObject searchDocuments = new JSONObject();		
 		String domain = "https://docs.nasdanika.org";
 		WebSitemapGenerator wsg = new WebSitemapGenerator(domain, siteDir);
+		
+		
 		BiConsumer<File, String> listener = new BiConsumer<File, String>() {
 			
 			@Override
@@ -416,7 +420,8 @@ public class TestEngineeringGen /* extends TestBase */ {
 								System.err.println("[" + path +"] " + error);
 								problems.incrementAndGet();
 							});
-							JSONObject searchDocument = org.nasdanika.html.model.app.gen.Util.createSearchDocument(path, file, inspector);
+							
+							JSONObject searchDocument = org.nasdanika.html.model.app.gen.Util.createSearchDocument(path, file, inspector, TestEngineeringGen.this::configureSearch);
 							if (searchDocument != null) {
 								searchDocuments.put(path, searchDocument);
 							}
@@ -438,6 +443,25 @@ public class TestEngineeringGen /* extends TestBase */ {
 			fail("There are broken links: " + problems.get());
 		};
 	}
+	
+	protected boolean configureSearch(String path, Document doc) {
+		Element head = doc.head();
+		URI base = URI.createURI("temp://" + UUID.randomUUID() + "/");
+		URI searchScriptURI = URI.createURI("search-documents.js").resolve(base);
+		URI thisURI = URI.createURI(path).resolve(base);
+		URI relativeSearchScriptURI = searchScriptURI.deresolve(thisURI, true, true, true);
+		head.append(System.lineSeparator() + "<script src=\"" + relativeSearchScriptURI + "\"></script>" + System.lineSeparator());
+		head.append(System.lineSeparator() + "<script src=\"https://unpkg.com/lunr/lunr.js\"></script>" + System.lineSeparator());
+		
+		try {
+			head.append(System.lineSeparator() + "<script>" + System.lineSeparator() + DefaultConverter.INSTANCE.toString(getClass().getResourceAsStream("search.js")) + System.lineSeparator() + "</script>" + System.lineSeparator());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return true;
+	}
+	
 	
 	protected ResourceSet createResourceSet() {
 		// Load model from XMI
