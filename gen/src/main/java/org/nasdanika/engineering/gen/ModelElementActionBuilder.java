@@ -5,6 +5,7 @@ import java.security.MessageDigest;
 import java.util.function.BiConsumer;
 
 import org.apache.commons.codec.binary.Hex;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.ETypedElement;
@@ -55,7 +56,6 @@ public class ModelElementActionBuilder<T extends ModelElement> extends EObjectAc
 		ret.setId(digest);
 		
 		String description = eObj.getDescription();
-		addContent(ret, description);
 		ret.setDescription(description);
 
 		BiSupplier<EObject, String> cPath = NcoreUtil.containmentPath(eObj);
@@ -85,7 +85,14 @@ public class ModelElementActionBuilder<T extends ModelElement> extends EObjectAc
 		
 		// Adding documentation here so it appears under the properties table
 		T semanticElement = getTarget();
-		action.getContent().addAll(EcoreUtil.copyAll(semanticElement.getDocumentation()));		
+		EList<EObject> documentation = semanticElement.getDocumentation();
+		if (documentation.isEmpty()) {
+			// Using description as documentation only if documentation is empty.
+			String description = semanticElement.getDescription();
+			addContent(action, description);
+		} else {
+			action.getContent().addAll(EcoreUtil.copyAll(documentation)); // TODO - wrap into a group in order to inject uri's properties, optionally save into its own resource.
+		}		
 		
 		// Representations
 		for (Diagram representation: semanticElement.getRepresentations()) {
