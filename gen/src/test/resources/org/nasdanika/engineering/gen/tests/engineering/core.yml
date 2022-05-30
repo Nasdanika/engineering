@@ -1,8 +1,33 @@
-engineering-organization:
+engineering-product-organization:
   uri: engineering://nasdanika
   path: nasdanika
   name: Nasdanika
   description: Engineering model to test core model classes.
+  features:
+    f1:
+      name: Feature 1
+      children: 
+        sfa:
+          name: Sub-feature A
+    f2:
+      name: Feature 2
+      description: Zorro
+      releases: engineering://nasdanika/releases/2022-06            
+      aligns:
+        generated-doc:
+          aim: engineering://nasdanika/personas/java-developer/goals/efficiency/children/generated-doc
+          weight: 0.5
+          description: Feature 2 simplifies generation of documentation. 
+        my-objective:
+          aim: engineering://nasdanika/increments/2021/children/Q4/objectives/my-objective
+          weight: 0.5
+          description: Some info here. 
+  releases:
+    2022-06 :
+      name: 2022-06
+      description: zaza
+      documentation: 
+        content-text: zuzu
   principles:
     written-communication:
       name: Written Communication

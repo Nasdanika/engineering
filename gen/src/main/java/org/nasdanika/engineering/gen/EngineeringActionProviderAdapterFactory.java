@@ -55,7 +55,14 @@ public class EngineeringActionProviderAdapterFactory extends FlowActionProviderA
 					EngineeringPackage.Literals.ORGANIZATION, 
 					ActionProvider.class, 
 					this.getClass().getClassLoader(), 
-					e -> new OrganizationActionBuilder(e, context).asActionProvider()));
+					e -> new OrganizationActionBuilder<>(e, context).asActionProvider()));
+		
+		registerAdapterFactory(
+				new FunctionAdapterFactory<ActionProvider, org.nasdanika.engineering.ProductOrganization>(
+					EngineeringPackage.Literals.PRODUCT_ORGANIZATION, 
+					ActionProvider.class, 
+					this.getClass().getClassLoader(), 
+					e -> new ProductOrganizationActionBuilder(e, context).asActionProvider()));
 		
 		registerAdapterFactory(
 				new FunctionAdapterFactory<ActionProvider, org.nasdanika.engineering.Module>(

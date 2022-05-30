@@ -16,9 +16,9 @@ import org.nasdanika.engineering.Organization;
 import org.nasdanika.html.model.app.Action;
 import org.nasdanika.html.model.app.AppFactory;
 
-public class OrganizationActionBuilder extends EngineerActionBuilder<Organization> {
+public class OrganizationActionBuilder<T extends Organization> extends EngineerActionBuilder<T> {
 	
-	public OrganizationActionBuilder(Organization target, Context context) {
+	public OrganizationActionBuilder(T target, Context context) {
 		super(target, context);	
 	}
 	

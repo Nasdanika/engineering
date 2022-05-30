@@ -461,8 +461,7 @@ public class TestEngineeringGen /* extends TestBase */ {
 		
 		return true;
 	}
-	
-	
+		
 	protected ResourceSet createResourceSet() {
 		// Load model from XMI
 		ResourceSet resourceSet = new NcoreResourceSet();
@@ -479,8 +478,7 @@ public class TestEngineeringGen /* extends TestBase */ {
 		resourceSet.getPackageRegistry().put(FlowPackage.eNS_URI, FlowPackage.eINSTANCE);
 		resourceSet.getPackageRegistry().put(EngineeringPackage.eNS_URI, EngineeringPackage.eINSTANCE);
 		return resourceSet;
-	}
-	
+	}	
 	
 	public static void copy(File source, File target, boolean cleanTarget, BiConsumer<File,File> listener) throws IOException {
 		if (cleanTarget && target.isDirectory()) {
