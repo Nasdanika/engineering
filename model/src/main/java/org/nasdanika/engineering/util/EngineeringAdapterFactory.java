@@ -14,6 +14,9 @@ import org.nasdanika.engineering.Alignment;
 import org.nasdanika.engineering.Allocation;
 import org.nasdanika.engineering.Capability;
 import org.nasdanika.engineering.Capacity;
+import org.nasdanika.engineering.Connection;
+import org.nasdanika.engineering.ConnectionSource;
+import org.nasdanika.engineering.ConnectionTarget;
 import org.nasdanika.engineering.Decision;
 import org.nasdanika.engineering.Directory;
 import org.nasdanika.engineering.Document;
@@ -28,6 +31,7 @@ import org.nasdanika.engineering.Feature;
 import org.nasdanika.engineering.Forum;
 import org.nasdanika.engineering.Goal;
 import org.nasdanika.engineering.Increment;
+import org.nasdanika.engineering.Interface;
 import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.IssueCategory;
 import org.nasdanika.engineering.IssuePriority;
@@ -45,6 +49,7 @@ import org.nasdanika.engineering.Organization;
 import org.nasdanika.engineering.Persona;
 import org.nasdanika.engineering.Principle;
 import org.nasdanika.engineering.Product;
+import org.nasdanika.engineering.ProductOrganization;
 import org.nasdanika.engineering.Release;
 import org.nasdanika.engineering.TableOfContents;
 import org.nasdanika.engineering.Topic;
@@ -266,6 +271,26 @@ public class EngineeringAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseDecision(Decision object) {
 				return createDecisionAdapter();
+			}
+			@Override
+			public Adapter caseProductOrganization(ProductOrganization object) {
+				return createProductOrganizationAdapter();
+			}
+			@Override
+			public Adapter caseConnectionSource(ConnectionSource object) {
+				return createConnectionSourceAdapter();
+			}
+			@Override
+			public Adapter caseConnection(Connection object) {
+				return createConnectionAdapter();
+			}
+			@Override
+			public Adapter caseConnectionTarget(ConnectionTarget object) {
+				return createConnectionTargetAdapter();
+			}
+			@Override
+			public Adapter caseInterface(Interface object) {
+				return createInterfaceAdapter();
 			}
 			@Override
 			public Adapter caseIMarked(Marked object) {
@@ -928,6 +953,76 @@ public class EngineeringAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createDecisionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.ProductOrganization <em>Product Organization</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.nasdanika.engineering.ProductOrganization
+	 * @generated
+	 */
+	public Adapter createProductOrganizationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.ConnectionSource <em>Connection Source</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.nasdanika.engineering.ConnectionSource
+	 * @generated
+	 */
+	public Adapter createConnectionSourceAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.Connection <em>Connection</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.nasdanika.engineering.Connection
+	 * @generated
+	 */
+	public Adapter createConnectionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.ConnectionTarget <em>Connection Target</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.nasdanika.engineering.ConnectionTarget
+	 * @generated
+	 */
+	public Adapter createConnectionTargetAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.Interface <em>Interface</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.nasdanika.engineering.Interface
+	 * @generated
+	 */
+	public Adapter createInterfaceAdapter() {
 		return null;
 	}
 

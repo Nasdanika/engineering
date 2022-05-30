@@ -13,6 +13,9 @@ import org.nasdanika.engineering.Alignment;
 import org.nasdanika.engineering.Allocation;
 import org.nasdanika.engineering.Capability;
 import org.nasdanika.engineering.Capacity;
+import org.nasdanika.engineering.Connection;
+import org.nasdanika.engineering.ConnectionSource;
+import org.nasdanika.engineering.ConnectionTarget;
 import org.nasdanika.engineering.Decision;
 import org.nasdanika.engineering.Directory;
 import org.nasdanika.engineering.Document;
@@ -27,6 +30,7 @@ import org.nasdanika.engineering.Feature;
 import org.nasdanika.engineering.Forum;
 import org.nasdanika.engineering.Goal;
 import org.nasdanika.engineering.Increment;
+import org.nasdanika.engineering.Interface;
 import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.IssueCategory;
 import org.nasdanika.engineering.IssuePriority;
@@ -44,6 +48,7 @@ import org.nasdanika.engineering.Organization;
 import org.nasdanika.engineering.Persona;
 import org.nasdanika.engineering.Principle;
 import org.nasdanika.engineering.Product;
+import org.nasdanika.engineering.ProductOrganization;
 import org.nasdanika.engineering.Release;
 import org.nasdanika.engineering.TableOfContents;
 import org.nasdanika.engineering.Topic;
@@ -385,6 +390,8 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				org.nasdanika.engineering.Module module = (org.nasdanika.engineering.Module)theEObject;
 				T result = caseModule(module);
 				if (result == null) result = caseEngineeredElement(module);
+				if (result == null) result = caseConnectionSource(module);
+				if (result == null) result = caseConnectionTarget(module);
 				if (result == null) result = caseForum(module);
 				if (result == null) result = casePeriod(module);
 				if (result == null) result = caseNamedElement(module);
@@ -402,6 +409,8 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				T result = caseProduct(product);
 				if (result == null) result = caseModule(product);
 				if (result == null) result = caseEngineeredElement(product);
+				if (result == null) result = caseConnectionSource(product);
+				if (result == null) result = caseConnectionTarget(product);
 				if (result == null) result = caseForum(product);
 				if (result == null) result = casePeriod(product);
 				if (result == null) result = caseNamedElement(product);
@@ -676,6 +685,70 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				if (result == null) result = caseMarked(decision);
 				if (result == null) result = caseAdaptable(decision);
 				if (result == null) result = caseIMarked(decision);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EngineeringPackage.PRODUCT_ORGANIZATION: {
+				ProductOrganization productOrganization = (ProductOrganization)theEObject;
+				T result = caseProductOrganization(productOrganization);
+				if (result == null) result = caseOrganization(productOrganization);
+				if (result == null) result = caseEngineer(productOrganization);
+				if (result == null) result = casePersona(productOrganization);
+				if (result == null) result = caseEngineeredElement(productOrganization);
+				if (result == null) result = caseForum(productOrganization);
+				if (result == null) result = casePeriod(productOrganization);
+				if (result == null) result = caseNamedElement(productOrganization);
+				if (result == null) result = caseModelElement(productOrganization);
+				if (result == null) result = caseNcore_NamedElement(productOrganization);
+				if (result == null) result = caseNcore_ModelElement(productOrganization);
+				if (result == null) result = caseMarked(productOrganization);
+				if (result == null) result = caseAdaptable(productOrganization);
+				if (result == null) result = caseIMarked(productOrganization);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EngineeringPackage.CONNECTION_SOURCE: {
+				ConnectionSource connectionSource = (ConnectionSource)theEObject;
+				T result = caseConnectionSource(connectionSource);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EngineeringPackage.CONNECTION: {
+				Connection connection = (Connection)theEObject;
+				T result = caseConnection(connection);
+				if (result == null) result = caseEngineeredElement(connection);
+				if (result == null) result = caseForum(connection);
+				if (result == null) result = casePeriod(connection);
+				if (result == null) result = caseNamedElement(connection);
+				if (result == null) result = caseModelElement(connection);
+				if (result == null) result = caseNcore_NamedElement(connection);
+				if (result == null) result = caseNcore_ModelElement(connection);
+				if (result == null) result = caseMarked(connection);
+				if (result == null) result = caseAdaptable(connection);
+				if (result == null) result = caseIMarked(connection);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EngineeringPackage.CONNECTION_TARGET: {
+				ConnectionTarget connectionTarget = (ConnectionTarget)theEObject;
+				T result = caseConnectionTarget(connectionTarget);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EngineeringPackage.INTERFACE: {
+				Interface interface_ = (Interface)theEObject;
+				T result = caseInterface(interface_);
+				if (result == null) result = caseEngineeredElement(interface_);
+				if (result == null) result = caseConnectionTarget(interface_);
+				if (result == null) result = caseForum(interface_);
+				if (result == null) result = casePeriod(interface_);
+				if (result == null) result = caseNamedElement(interface_);
+				if (result == null) result = caseModelElement(interface_);
+				if (result == null) result = caseNcore_NamedElement(interface_);
+				if (result == null) result = caseNcore_ModelElement(interface_);
+				if (result == null) result = caseMarked(interface_);
+				if (result == null) result = caseAdaptable(interface_);
+				if (result == null) result = caseIMarked(interface_);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1340,6 +1413,81 @@ public class EngineeringSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseDecision(Decision object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Product Organization</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Product Organization</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseProductOrganization(ProductOrganization object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Connection Source</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Connection Source</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseConnectionSource(ConnectionSource object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Connection</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Connection</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseConnection(Connection object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Connection Target</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Connection Target</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseConnectionTarget(ConnectionTarget object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Interface</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Interface</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseInterface(Interface object) {
 		return null;
 	}
 

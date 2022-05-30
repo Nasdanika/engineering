@@ -355,6 +355,42 @@ public interface EngineeringFactory extends EFactory {
 	Decision createDecision();
 
 	/**
+	 * Returns a new object of class '<em>Product Organization</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Product Organization</em>'.
+	 * @generated
+	 */
+	ProductOrganization createProductOrganization();
+
+	/**
+	 * Returns a new object of class '<em>Connection</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Connection</em>'.
+	 * @generated
+	 */
+	Connection createConnection();
+
+	/**
+	 * Returns a new object of class '<em>Connection Target</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Connection Target</em>'.
+	 * @generated
+	 */
+	ConnectionTarget createConnectionTarget();
+
+	/**
+	 * Returns a new object of class '<em>Interface</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Interface</em>'.
+	 * @generated
+	 */
+	Interface createInterface();
+
+	/**
 	 * Returns a new object of class '<em>Message</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

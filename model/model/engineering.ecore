@@ -751,7 +751,7 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Module" eSuperTypes="#//EngineeredElement">
+  <eClassifiers xsi:type="ecore:EClass" name="Module" eSuperTypes="#//EngineeredElement #//ConnectionSource #//ConnectionTarget">
     <eAnnotations source="urn:org.nasdanika">
       <details key="documentation-reference" value="doc/module.md"/>
     </eAnnotations>
@@ -776,6 +776,8 @@
         <details key="opposite" value="dependencies"/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="interfaces" upperBound="-1"
+        eType="#//Interface" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Product" eSuperTypes="#//Module">
     <eAnnotations source="urn:org.nasdanika">
@@ -1159,6 +1161,47 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ProductOrganization" eSuperTypes="#//Organization">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="An organization has some properties of a product - features and releases. E.g. an IT department may be a product organization delivering value to its larger organization as features organized into releases. In this regard a feature is an organizational capability."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="releases" upperBound="-1"
+        eType="#//Release" containment="true" eKeys="#//ModelElement/path">
+      <eAnnotations source="urn:org.nasdanika">
+        <details key="homogenous" value="true"/>
+        <details key="strict-containment" value="true"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Product organization releases."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="features" upperBound="-1"
+        eType="#//Feature" containment="true" eKeys="#//ModelElement/path">
+      <eAnnotations source="urn:org.nasdanika">
+        <details key="homogenous" value="true"/>
+        <details key="strict-containment" value="true"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Product organization features."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConnectionSource" abstract="true" interface="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outboundConnections" upperBound="-1"
+        eType="#//Connection" containment="true" eKeys="#//ModelElement/path"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Connection" eSuperTypes="#//EngineeredElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//ConnectionTarget"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConnectionTarget">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inboundConnections" upperBound="-1"
+        eType="#//Connection" changeable="false" derived="true">
+      <eAnnotations source="urn:org.nasdanika">
+        <details key="opposite" value="target"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Interface" eSuperTypes="#//EngineeredElement #//ConnectionTarget"/>
   <eSubpackages name="journey" nsURI="urn:org.nasdanika.engineering.journey" nsPrefix="org.nasdanika.engineering.journey">
     <eAnnotations source="urn:org.nasdanika">
       <details key="documentation-reference" value="doc/journey/package-summary.md"/>

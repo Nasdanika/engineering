@@ -15,6 +15,9 @@ import org.nasdanika.engineering.Alignment;
 import org.nasdanika.engineering.Allocation;
 import org.nasdanika.engineering.Capability;
 import org.nasdanika.engineering.Capacity;
+import org.nasdanika.engineering.Connection;
+import org.nasdanika.engineering.ConnectionSource;
+import org.nasdanika.engineering.ConnectionTarget;
 import org.nasdanika.engineering.Decision;
 import org.nasdanika.engineering.Directory;
 import org.nasdanika.engineering.Document;
@@ -30,6 +33,7 @@ import org.nasdanika.engineering.Feature;
 import org.nasdanika.engineering.Forum;
 import org.nasdanika.engineering.Goal;
 import org.nasdanika.engineering.Increment;
+import org.nasdanika.engineering.Interface;
 import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.IssueCategory;
 import org.nasdanika.engineering.IssuePriority;
@@ -47,6 +51,7 @@ import org.nasdanika.engineering.Organization;
 import org.nasdanika.engineering.Persona;
 import org.nasdanika.engineering.Principle;
 import org.nasdanika.engineering.Product;
+import org.nasdanika.engineering.ProductOrganization;
 import org.nasdanika.engineering.Release;
 import org.nasdanika.engineering.TableOfContents;
 import org.nasdanika.engineering.Topic;
@@ -335,6 +340,41 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	private EClass decisionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass productOrganizationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass connectionSourceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass connectionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass connectionTargetEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass interfaceEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1043,6 +1083,16 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	@Override
 	public EReference getModule_Dependants() {
 		return (EReference)moduleEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getModule_Interfaces() {
+		return (EReference)moduleEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -2081,6 +2131,106 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
+	public EClass getProductOrganization() {
+		return productOrganizationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getProductOrganization_Releases() {
+		return (EReference)productOrganizationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getProductOrganization_Features() {
+		return (EReference)productOrganizationEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getConnectionSource() {
+		return connectionSourceEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getConnectionSource_OutboundConnections() {
+		return (EReference)connectionSourceEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getConnection() {
+		return connectionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getConnection_Target() {
+		return (EReference)connectionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getConnectionTarget() {
+		return connectionTargetEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getConnectionTarget_InboundConnections() {
+		return (EReference)connectionTargetEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getInterface() {
+		return interfaceEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EAttribute getDocument_Content() {
 		return (EAttribute)documentEClass.getEStructuralFeatures().get(0);
 	}
@@ -2285,6 +2435,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		createEReference(moduleEClass, MODULE__MODULES);
 		createEReference(moduleEClass, MODULE__DEPENDENCIES);
 		createEReference(moduleEClass, MODULE__DEPENDANTS);
+		createEReference(moduleEClass, MODULE__INTERFACES);
 
 		productEClass = createEClass(PRODUCT);
 		createEReference(productEClass, PRODUCT__RELEASES);
@@ -2363,6 +2514,21 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		createEReference(decisionEClass, DECISION__SUPERCEDES);
 		createEReference(decisionEClass, DECISION__SUPERCEDED_BY);
 		createEAttribute(decisionEClass, DECISION__RESOLUTION);
+
+		productOrganizationEClass = createEClass(PRODUCT_ORGANIZATION);
+		createEReference(productOrganizationEClass, PRODUCT_ORGANIZATION__RELEASES);
+		createEReference(productOrganizationEClass, PRODUCT_ORGANIZATION__FEATURES);
+
+		connectionSourceEClass = createEClass(CONNECTION_SOURCE);
+		createEReference(connectionSourceEClass, CONNECTION_SOURCE__OUTBOUND_CONNECTIONS);
+
+		connectionEClass = createEClass(CONNECTION);
+		createEReference(connectionEClass, CONNECTION__TARGET);
+
+		connectionTargetEClass = createEClass(CONNECTION_TARGET);
+		createEReference(connectionTargetEClass, CONNECTION_TARGET__INBOUND_CONNECTIONS);
+
+		interfaceEClass = createEClass(INTERFACE);
 	}
 
 	/**
@@ -2426,6 +2592,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		domainEClass.getESuperTypes().add(this.getEngineeredElement());
 		organizationEClass.getESuperTypes().add(this.getEngineer());
 		moduleEClass.getESuperTypes().add(this.getEngineeredElement());
+		moduleEClass.getESuperTypes().add(this.getConnectionSource());
+		moduleEClass.getESuperTypes().add(this.getConnectionTarget());
 		productEClass.getESuperTypes().add(this.getModule());
 		capabilityEClass.getESuperTypes().add(this.getNamedElement());
 		capabilityEClass.getESuperTypes().add(theNcorePackage.getPeriod());
@@ -2449,6 +2617,10 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		objectiveEClass.getESuperTypes().add(this.getKeyResult());
 		decisionEClass.getESuperTypes().add(this.getIssue());
 		decisionEClass.getESuperTypes().add(this.getAim());
+		productOrganizationEClass.getESuperTypes().add(this.getOrganization());
+		connectionEClass.getESuperTypes().add(this.getEngineeredElement());
+		interfaceEClass.getESuperTypes().add(this.getEngineeredElement());
+		interfaceEClass.getESuperTypes().add(this.getConnectionTarget());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(modelElementEClass, ModelElement.class, "ModelElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -2606,6 +2778,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		getModule_Modules().getEKeys().add(this.getModelElement_Path());
 		initEReference(getModule_Dependencies(), this.getModule(), null, "dependencies", null, 0, -1, org.nasdanika.engineering.Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getModule_Dependants(), this.getModule(), null, "dependants", null, 0, -1, org.nasdanika.engineering.Module.class, IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getModule_Interfaces(), this.getInterface(), null, "interfaces", null, 0, -1, org.nasdanika.engineering.Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(productEClass, Product.class, "Product", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getProduct_Releases(), this.getRelease(), null, "releases", null, 0, -1, Product.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2693,6 +2866,24 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		initEReference(getDecision_Supercedes(), this.getDecision(), this.getDecision_SupercededBy(), "supercedes", null, 0, -1, Decision.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDecision_SupercededBy(), this.getDecision(), this.getDecision_Supercedes(), "supercededBy", null, 0, -1, Decision.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDecision_Resolution(), ecorePackage.getEString(), "resolution", null, 0, 1, Decision.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(productOrganizationEClass, ProductOrganization.class, "ProductOrganization", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getProductOrganization_Releases(), this.getRelease(), null, "releases", null, 0, -1, ProductOrganization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		getProductOrganization_Releases().getEKeys().add(this.getModelElement_Path());
+		initEReference(getProductOrganization_Features(), this.getFeature(), null, "features", null, 0, -1, ProductOrganization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		getProductOrganization_Features().getEKeys().add(this.getModelElement_Path());
+
+		initEClass(connectionSourceEClass, ConnectionSource.class, "ConnectionSource", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getConnectionSource_OutboundConnections(), this.getConnection(), null, "outboundConnections", null, 0, -1, ConnectionSource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		getConnectionSource_OutboundConnections().getEKeys().add(this.getModelElement_Path());
+
+		initEClass(connectionEClass, Connection.class, "Connection", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getConnection_Target(), this.getConnectionTarget(), null, "target", null, 0, 1, Connection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(connectionTargetEClass, ConnectionTarget.class, "ConnectionTarget", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getConnectionTarget_InboundConnections(), this.getConnection(), null, "inboundConnections", null, 0, -1, ConnectionTarget.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+
+		initEClass(interfaceEClass, Interface.class, "Interface", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -3322,6 +3513,26 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		   source,
 		   new String[] {
 			   "documentation-reference", "doc/decision.md"
+		   });
+		addAnnotation
+		  (getProductOrganization_Releases(),
+		   source,
+		   new String[] {
+			   "homogenous", "true",
+			   "strict-containment", "true"
+		   });
+		addAnnotation
+		  (getProductOrganization_Features(),
+		   source,
+		   new String[] {
+			   "homogenous", "true",
+			   "strict-containment", "true"
+		   });
+		addAnnotation
+		  (getConnectionTarget_InboundConnections(),
+		   source,
+		   new String[] {
+			   "opposite", "target"
 		   });
 	}
 
@@ -4112,6 +4323,24 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		   source,
 		   new String[] {
 			   "documentation", "Documentation of what has been decided (decision process outcome)."
+		   });
+		addAnnotation
+		  (productOrganizationEClass,
+		   source,
+		   new String[] {
+			   "documentation", "An organization has some properties of a product - features and releases. E.g. an IT department may be a product organization delivering value to its larger organization as features organized into releases. In this regard a feature is an organizational capability."
+		   });
+		addAnnotation
+		  (getProductOrganization_Releases(),
+		   source,
+		   new String[] {
+			   "documentation", "Product organization releases."
+		   });
+		addAnnotation
+		  (getProductOrganization_Features(),
+		   source,
+		   new String[] {
+			   "documentation", "Product organization features."
 		   });
 	}
 

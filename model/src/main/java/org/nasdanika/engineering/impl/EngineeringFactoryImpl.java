@@ -12,6 +12,8 @@ import org.nasdanika.engineering.Alignment;
 import org.nasdanika.engineering.Allocation;
 import org.nasdanika.engineering.Capability;
 import org.nasdanika.engineering.Capacity;
+import org.nasdanika.engineering.Connection;
+import org.nasdanika.engineering.ConnectionTarget;
 import org.nasdanika.engineering.Decision;
 import org.nasdanika.engineering.Directory;
 import org.nasdanika.engineering.Document;
@@ -27,6 +29,7 @@ import org.nasdanika.engineering.Feature;
 import org.nasdanika.engineering.Forum;
 import org.nasdanika.engineering.Goal;
 import org.nasdanika.engineering.Increment;
+import org.nasdanika.engineering.Interface;
 import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.IssueCategory;
 import org.nasdanika.engineering.IssuePriority;
@@ -43,6 +46,7 @@ import org.nasdanika.engineering.Organization;
 import org.nasdanika.engineering.Persona;
 import org.nasdanika.engineering.Principle;
 import org.nasdanika.engineering.Product;
+import org.nasdanika.engineering.ProductOrganization;
 import org.nasdanika.engineering.Release;
 import org.nasdanika.engineering.TableOfContents;
 import org.nasdanika.engineering.Topic;
@@ -129,6 +133,10 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 			case EngineeringPackage.KEY_RESULT: return createKeyResult();
 			case EngineeringPackage.OBJECTIVE: return createObjective();
 			case EngineeringPackage.DECISION: return createDecision();
+			case EngineeringPackage.PRODUCT_ORGANIZATION: return createProductOrganization();
+			case EngineeringPackage.CONNECTION: return createConnection();
+			case EngineeringPackage.CONNECTION_TARGET: return createConnectionTarget();
+			case EngineeringPackage.INTERFACE: return createInterface();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -539,6 +547,50 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 	public Decision createDecision() {
 		DecisionImpl decision = new DecisionImpl();
 		return decision;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ProductOrganization createProductOrganization() {
+		ProductOrganizationImpl productOrganization = new ProductOrganizationImpl();
+		return productOrganization;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Connection createConnection() {
+		ConnectionImpl connection = new ConnectionImpl();
+		return connection;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ConnectionTarget createConnectionTarget() {
+		ConnectionTargetImpl connectionTarget = new ConnectionTargetImpl();
+		return connectionTarget;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Interface createInterface() {
+		InterfaceImpl interface_ = new InterfaceImpl();
+		return interface_;
 	}
 
 	/**

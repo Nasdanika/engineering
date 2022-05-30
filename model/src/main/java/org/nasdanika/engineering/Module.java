@@ -16,13 +16,14 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.nasdanika.engineering.Module#getModules <em>Modules</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Module#getDependencies <em>Dependencies</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Module#getDependants <em>Dependants</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.Module#getInterfaces <em>Interfaces</em>}</li>
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getModule()
  * @model annotation="urn:org.nasdanika documentation-reference='doc/module.md'"
  * @generated
  */
-public interface Module extends EngineeredElement {
+public interface Module extends EngineeredElement, ConnectionSource, ConnectionTarget {
 	/**
 	 * Returns the value of the '<em><b>Modules</b></em>' containment reference list.
 	 * The list contents are of type {@link org.nasdanika.engineering.Module}.
@@ -68,5 +69,17 @@ public interface Module extends EngineeredElement {
 	 * @generated
 	 */
 	EList<Module> getDependants();
+
+	/**
+	 * Returns the value of the '<em><b>Interfaces</b></em>' containment reference list.
+	 * The list contents are of type {@link org.nasdanika.engineering.Interface}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Interfaces</em>' containment reference list.
+	 * @see org.nasdanika.engineering.EngineeringPackage#getModule_Interfaces()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<Interface> getInterfaces();
 
 } // Module
