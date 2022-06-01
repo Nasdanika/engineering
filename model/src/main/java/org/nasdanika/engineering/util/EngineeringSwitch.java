@@ -24,6 +24,7 @@ import org.nasdanika.engineering.Endeavor;
 import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeredCapability;
 import org.nasdanika.engineering.EngineeredElement;
+import org.nasdanika.engineering.EngineeredElementStatus;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Event;
 import org.nasdanika.engineering.Feature;
@@ -300,6 +301,19 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				if (result == null) result = caseMarked(engineeredElement);
 				if (result == null) result = caseAdaptable(engineeredElement);
 				if (result == null) result = caseIMarked(engineeredElement);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EngineeringPackage.ENGINEERED_ELEMENT_STATUS: {
+				EngineeredElementStatus engineeredElementStatus = (EngineeredElementStatus)theEObject;
+				T result = caseEngineeredElementStatus(engineeredElementStatus);
+				if (result == null) result = caseNamedElement(engineeredElementStatus);
+				if (result == null) result = caseModelElement(engineeredElementStatus);
+				if (result == null) result = caseNcore_NamedElement(engineeredElementStatus);
+				if (result == null) result = caseNcore_ModelElement(engineeredElementStatus);
+				if (result == null) result = caseMarked(engineeredElementStatus);
+				if (result == null) result = caseAdaptable(engineeredElementStatus);
+				if (result == null) result = caseIMarked(engineeredElementStatus);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -918,6 +932,21 @@ public class EngineeringSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseEngineeredElement(EngineeredElement object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Engineered Element Status</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Engineered Element Status</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseEngineeredElementStatus(EngineeredElementStatus object) {
 		return null;
 	}
 

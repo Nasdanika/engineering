@@ -77,7 +77,8 @@ public interface Module extends EngineeredElement, ConnectionSource, ConnectionT
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Interfaces</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getModule_Interfaces()
-	 * @model containment="true"
+	 * @model containment="true" keys="path"
+	 *        annotation="urn:org.nasdanika homogenous='true'"
 	 * @generated
 	 */
 	EList<Interface> getInterfaces();

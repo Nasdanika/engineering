@@ -67,13 +67,13 @@ public interface JourneyPackage extends EPackage {
 	int ACTIVITY = 0;
 
 	/**
-	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * The feature id for the '<em><b>Markers</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY__MARKER = FlowPackage.ACTIVITY__MARKER;
+	int ACTIVITY__MARKERS = FlowPackage.ACTIVITY__MARKERS;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -446,13 +446,13 @@ public interface JourneyPackage extends EPackage {
 	int JOURNEY = 1;
 
 	/**
-	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * The feature id for the '<em><b>Markers</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JOURNEY__MARKER = FlowPackage.FLOW__MARKER;
+	int JOURNEY__MARKERS = FlowPackage.FLOW__MARKERS;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.

@@ -20,6 +20,7 @@ import org.nasdanika.ncore.Period;
  *   <li>{@link org.nasdanika.engineering.EngineeredElement#getAllocations <em>Allocations</em>}</li>
  *   <li>{@link org.nasdanika.engineering.EngineeredElement#getPrinciples <em>Principles</em>}</li>
  *   <li>{@link org.nasdanika.engineering.EngineeredElement#getAllIssues <em>All Issues</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.EngineeredElement#getStatus <em>Status</em>}</li>
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getEngineeredElement()
@@ -120,5 +121,27 @@ public interface EngineeredElement extends Forum, Period {
 	 * @generated
 	 */
 	EList<Issue> getAllIssues();
+
+	/**
+	 * Returns the value of the '<em><b>Status</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Status</em>' reference.
+	 * @see #setStatus(EngineeredElementStatus)
+	 * @see org.nasdanika.engineering.EngineeringPackage#getEngineeredElement_Status()
+	 * @model
+	 * @generated
+	 */
+	EngineeredElementStatus getStatus();
+
+	/**
+	 * Sets the value of the '{@link org.nasdanika.engineering.EngineeredElement#getStatus <em>Status</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Status</em>' reference.
+	 * @see #getStatus()
+	 * @generated
+	 */
+	void setStatus(EngineeredElementStatus value);
 
 } // EngineeredElement

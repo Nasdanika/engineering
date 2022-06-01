@@ -31,6 +31,7 @@ public interface ConnectionSource extends EObject {
 	 * @return the value of the '<em>Outbound Connections</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getConnectionSource_OutboundConnections()
 	 * @model containment="true" keys="path"
+	 *        annotation="urn:org.nasdanika homogenous='true'"
 	 * @generated
 	 */
 	EList<Connection> getOutboundConnections();

@@ -29,6 +29,7 @@ public class EngineeredElementActionBuilder<T extends EngineeredElement> extends
 	
 	protected List<ETypedElement> getProperties() {
 		List<ETypedElement> properties = super.getProperties();
+		properties.add(EngineeringPackage.Literals.ENGINEERED_ELEMENT__STATUS);
 		properties.add(EngineeringPackage.Literals.ENGINEERED_ELEMENT__OWNERS);
 		properties.add(EngineeringPackage.Literals.ENGINEERED_ELEMENT__EXPERTS);
 		return properties;

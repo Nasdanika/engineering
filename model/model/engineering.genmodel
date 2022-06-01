@@ -97,6 +97,11 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//EngineeredElement/allocations"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//EngineeredElement/principles"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference engineering.ecore#//EngineeredElement/allIssues"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//EngineeredElement/status"/>
+    </genClasses>
+    <genClasses ecoreClass="engineering.ecore#//EngineeredElementStatus">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//EngineeredElementStatus/children"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference engineering.ecore#//EngineeredElementStatus/elements"/>
     </genClasses>
     <genClasses ecoreClass="engineering.ecore#//Document">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Document/content"/>
@@ -127,6 +132,7 @@
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference engineering.ecore#//Engineer/messages"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//Engineer/objectives"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//Engineer/domains"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//Engineer/engineeredElementStatuses"/>
     </genClasses>
     <genClasses ecoreClass="engineering.ecore#//Domain">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//Domain/elements"/>
@@ -231,7 +237,9 @@
     <genClasses ecoreClass="engineering.ecore#//ConnectionTarget">
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference engineering.ecore#//ConnectionTarget/inboundConnections"/>
     </genClasses>
-    <genClasses ecoreClass="engineering.ecore#//Interface"/>
+    <genClasses ecoreClass="engineering.ecore#//Interface">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//Interface/children"/>
+    </genClasses>
     <nestedGenPackages prefix="Journey" basePackage="org.nasdanika.engineering" disposableProviderFactory="true"
         ecorePackage="engineering.ecore#//journey">
       <genClasses ecoreClass="engineering.ecore#//journey/Activity"/>

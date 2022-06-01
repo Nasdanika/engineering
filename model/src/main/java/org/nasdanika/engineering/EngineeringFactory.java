@@ -292,6 +292,15 @@ public interface EngineeringFactory extends EFactory {
 	EngineeredElement createEngineeredElement();
 
 	/**
+	 * Returns a new object of class '<em>Engineered Element Status</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Engineered Element Status</em>'.
+	 * @generated
+	 */
+	EngineeredElementStatus createEngineeredElementStatus();
+
+	/**
 	 * Returns a new object of class '<em>Topic</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

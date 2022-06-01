@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.nasdanika.engineering.Allocation;
 import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeredElement;
+import org.nasdanika.engineering.EngineeredElementStatus;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.Principle;
@@ -39,6 +40,7 @@ import org.nasdanika.ncore.util.NcoreUtil;
  *   <li>{@link org.nasdanika.engineering.impl.EngineeredElementImpl#getAllocations <em>Allocations</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineeredElementImpl#getPrinciples <em>Principles</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineeredElementImpl#getAllIssues <em>All Issues</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.EngineeredElementImpl#getStatus <em>Status</em>}</li>
  * </ul>
  *
  * @generated
@@ -233,6 +235,35 @@ public class EngineeredElementImpl extends ForumImpl implements EngineeredElemen
 	 * @generated
 	 */
 	@Override
+	public EngineeredElementStatus getStatus() {
+		return (EngineeredElementStatus)eDynamicGet(EngineeringPackage.ENGINEERED_ELEMENT__STATUS, EngineeringPackage.Literals.ENGINEERED_ELEMENT__STATUS, true, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EngineeredElementStatus basicGetStatus() {
+		return (EngineeredElementStatus)eDynamicGet(EngineeringPackage.ENGINEERED_ELEMENT__STATUS, EngineeringPackage.Literals.ENGINEERED_ELEMENT__STATUS, false, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setStatus(EngineeredElementStatus newStatus) {
+		eDynamicSet(EngineeringPackage.ENGINEERED_ELEMENT__STATUS, EngineeringPackage.Literals.ENGINEERED_ELEMENT__STATUS, newStatus);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case EngineeringPackage.ENGINEERED_ELEMENT__START:
@@ -275,6 +306,9 @@ public class EngineeredElementImpl extends ForumImpl implements EngineeredElemen
 				return getPrinciples();
 			case EngineeringPackage.ENGINEERED_ELEMENT__ALL_ISSUES:
 				return getAllIssues();
+			case EngineeringPackage.ENGINEERED_ELEMENT__STATUS:
+				if (resolve) return getStatus();
+				return basicGetStatus();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -317,6 +351,9 @@ public class EngineeredElementImpl extends ForumImpl implements EngineeredElemen
 				getPrinciples().clear();
 				getPrinciples().addAll((Collection<? extends Principle>)newValue);
 				return;
+			case EngineeringPackage.ENGINEERED_ELEMENT__STATUS:
+				setStatus((EngineeredElementStatus)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -353,6 +390,9 @@ public class EngineeredElementImpl extends ForumImpl implements EngineeredElemen
 			case EngineeringPackage.ENGINEERED_ELEMENT__PRINCIPLES:
 				getPrinciples().clear();
 				return;
+			case EngineeringPackage.ENGINEERED_ELEMENT__STATUS:
+				setStatus((EngineeredElementStatus)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -383,6 +423,8 @@ public class EngineeredElementImpl extends ForumImpl implements EngineeredElemen
 				return !getPrinciples().isEmpty();
 			case EngineeringPackage.ENGINEERED_ELEMENT__ALL_ISSUES:
 				return !getAllIssues().isEmpty();
+			case EngineeringPackage.ENGINEERED_ELEMENT__STATUS:
+				return basicGetStatus() != null;
 		}
 		return super.eIsSet(featureID);
 	}

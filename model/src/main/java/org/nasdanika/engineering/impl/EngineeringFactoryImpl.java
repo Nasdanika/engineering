@@ -22,6 +22,7 @@ import org.nasdanika.engineering.Endeavor;
 import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeredCapability;
 import org.nasdanika.engineering.EngineeredElement;
+import org.nasdanika.engineering.EngineeredElementStatus;
 import org.nasdanika.engineering.EngineeringFactory;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Event;
@@ -108,6 +109,7 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 			case EngineeringPackage.NOTE: return createNote();
 			case EngineeringPackage.FORUM: return createForum();
 			case EngineeringPackage.ENGINEERED_ELEMENT: return createEngineeredElement();
+			case EngineeringPackage.ENGINEERED_ELEMENT_STATUS: return createEngineeredElementStatus();
 			case EngineeringPackage.DOCUMENT: return createDocument();
 			case EngineeringPackage.PERSONA: return createPersona();
 			case EngineeringPackage.ENGINEER: return createEngineer();
@@ -470,6 +472,17 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 	public EngineeredElement createEngineeredElement() {
 		EngineeredElementImpl engineeredElement = new EngineeredElementImpl();
 		return engineeredElement;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EngineeredElementStatus createEngineeredElementStatus() {
+		EngineeredElementStatusImpl engineeredElementStatus = new EngineeredElementStatusImpl();
+		return engineeredElementStatus;
 	}
 
 	/**

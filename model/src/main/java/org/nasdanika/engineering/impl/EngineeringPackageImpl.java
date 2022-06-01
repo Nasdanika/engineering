@@ -26,6 +26,7 @@ import org.nasdanika.engineering.Endeavor;
 import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeredCapability;
 import org.nasdanika.engineering.EngineeredElement;
+import org.nasdanika.engineering.EngineeredElementStatus;
 import org.nasdanika.engineering.EngineeringFactory;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Event;
@@ -109,6 +110,13 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	private EClass engineeredElementEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass engineeredElementStatusEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -771,6 +779,46 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
+	public EReference getEngineeredElement_Status() {
+		return (EReference)engineeredElementEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getEngineeredElementStatus() {
+		return engineeredElementStatusEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getEngineeredElementStatus_Children() {
+		return (EReference)engineeredElementStatusEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getEngineeredElementStatus_Elements() {
+		return (EReference)engineeredElementStatusEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getPersona() {
 		return personaEClass;
 	}
@@ -1003,6 +1051,16 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	@Override
 	public EReference getEngineer_Domains() {
 		return (EReference)engineerEClass.getEStructuralFeatures().get(17);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getEngineer_EngineeredElementStatuses() {
+		return (EReference)engineerEClass.getEStructuralFeatures().get(18);
 	}
 
 	/**
@@ -2231,6 +2289,16 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
+	public EReference getInterface_Children() {
+		return (EReference)interfaceEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EAttribute getDocument_Content() {
 		return (EAttribute)documentEClass.getEStructuralFeatures().get(0);
 	}
@@ -2394,6 +2462,11 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		createEReference(engineeredElementEClass, ENGINEERED_ELEMENT__ALLOCATIONS);
 		createEReference(engineeredElementEClass, ENGINEERED_ELEMENT__PRINCIPLES);
 		createEReference(engineeredElementEClass, ENGINEERED_ELEMENT__ALL_ISSUES);
+		createEReference(engineeredElementEClass, ENGINEERED_ELEMENT__STATUS);
+
+		engineeredElementStatusEClass = createEClass(ENGINEERED_ELEMENT_STATUS);
+		createEReference(engineeredElementStatusEClass, ENGINEERED_ELEMENT_STATUS__CHILDREN);
+		createEReference(engineeredElementStatusEClass, ENGINEERED_ELEMENT_STATUS__ELEMENTS);
 
 		documentEClass = createEClass(DOCUMENT);
 		createEAttribute(documentEClass, DOCUMENT__CONTENT);
@@ -2424,6 +2497,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		createEReference(engineerEClass, ENGINEER__MESSAGES);
 		createEReference(engineerEClass, ENGINEER__OBJECTIVES);
 		createEReference(engineerEClass, ENGINEER__DOMAINS);
+		createEReference(engineerEClass, ENGINEER__ENGINEERED_ELEMENT_STATUSES);
 
 		domainEClass = createEClass(DOMAIN);
 		createEReference(domainEClass, DOMAIN__ELEMENTS);
@@ -2529,6 +2603,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		createEReference(connectionTargetEClass, CONNECTION_TARGET__INBOUND_CONNECTIONS);
 
 		interfaceEClass = createEClass(INTERFACE);
+		createEReference(interfaceEClass, INTERFACE__CHILDREN);
 	}
 
 	/**
@@ -2586,6 +2661,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		forumEClass.getESuperTypes().add(this.getNamedElement());
 		engineeredElementEClass.getESuperTypes().add(this.getForum());
 		engineeredElementEClass.getESuperTypes().add(theNcorePackage.getPeriod());
+		engineeredElementStatusEClass.getESuperTypes().add(this.getNamedElement());
 		documentEClass.getESuperTypes().add(this.getEngineeredElement());
 		personaEClass.getESuperTypes().add(this.getEngineeredElement());
 		engineerEClass.getESuperTypes().add(this.getPersona());
@@ -2724,6 +2800,11 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		initEReference(getEngineeredElement_Principles(), this.getPrinciple(), null, "principles", null, 0, -1, EngineeredElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		getEngineeredElement_Principles().getEKeys().add(this.getModelElement_Path());
 		initEReference(getEngineeredElement_AllIssues(), this.getIssue(), null, "allIssues", null, 0, -1, EngineeredElement.class, IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getEngineeredElement_Status(), this.getEngineeredElementStatus(), null, "status", null, 0, 1, EngineeredElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(engineeredElementStatusEClass, EngineeredElementStatus.class, "EngineeredElementStatus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getEngineeredElementStatus_Children(), this.getEngineeredElementStatus(), null, "children", null, 0, -1, EngineeredElementStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEngineeredElementStatus_Elements(), this.getEngineeredElement(), null, "elements", null, 0, -1, EngineeredElementStatus.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEClass(documentEClass, Document.class, "Document", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDocument_Content(), ecorePackage.getEString(), "content", null, 0, 1, Document.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2764,6 +2845,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		getEngineer_Objectives().getEKeys().add(this.getModelElement_Path());
 		initEReference(getEngineer_Domains(), this.getDomain(), null, "domains", null, 0, -1, Engineer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		getEngineer_Domains().getEKeys().add(this.getModelElement_Path());
+		initEReference(getEngineer_EngineeredElementStatuses(), this.getEngineeredElementStatus(), null, "engineeredElementStatuses", null, 0, -1, Engineer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		getEngineer_EngineeredElementStatuses().getEKeys().add(this.getModelElement_Path());
 
 		initEClass(domainEClass, Domain.class, "Domain", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDomain_Elements(), this.getEngineeredElement(), null, "elements", null, 0, -1, Domain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2779,6 +2862,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		initEReference(getModule_Dependencies(), this.getModule(), null, "dependencies", null, 0, -1, org.nasdanika.engineering.Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getModule_Dependants(), this.getModule(), null, "dependants", null, 0, -1, org.nasdanika.engineering.Module.class, IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getModule_Interfaces(), this.getInterface(), null, "interfaces", null, 0, -1, org.nasdanika.engineering.Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		getModule_Interfaces().getEKeys().add(this.getModelElement_Path());
 
 		initEClass(productEClass, Product.class, "Product", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getProduct_Releases(), this.getRelease(), null, "releases", null, 0, -1, Product.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2884,6 +2968,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		initEReference(getConnectionTarget_InboundConnections(), this.getConnection(), null, "inboundConnections", null, 0, -1, ConnectionTarget.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEClass(interfaceEClass, Interface.class, "Interface", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getInterface_Children(), this.getInterface(), null, "children", null, 0, -1, Interface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		getInterface_Children().getEKeys().add(this.getModelElement_Path());
 
 		// Create resource
 		createResource(eNS_URI);
@@ -3155,6 +3241,18 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 			   "homogenous", "true"
 		   });
 		addAnnotation
+		  (getEngineeredElementStatus_Children(),
+		   source,
+		   new String[] {
+			   "homogenous", "true"
+		   });
+		addAnnotation
+		  (getEngineeredElementStatus_Elements(),
+		   source,
+		   new String[] {
+			   "opposite", "status"
+		   });
+		addAnnotation
 		  (documentEClass,
 		   source,
 		   new String[] {
@@ -3263,6 +3361,12 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 			   "homogenous", "true"
 		   });
 		addAnnotation
+		  (getEngineer_EngineeredElementStatuses(),
+		   source,
+		   new String[] {
+			   "homogenous", "true"
+		   });
+		addAnnotation
 		  (domainEClass,
 		   source,
 		   new String[] {
@@ -3292,6 +3396,12 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		   source,
 		   new String[] {
 			   "opposite", "dependencies"
+		   });
+		addAnnotation
+		  (getModule_Interfaces(),
+		   source,
+		   new String[] {
+			   "homogenous", "true"
 		   });
 		addAnnotation
 		  (productEClass,
@@ -3529,10 +3639,22 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 			   "strict-containment", "true"
 		   });
 		addAnnotation
+		  (getConnectionSource_OutboundConnections(),
+		   source,
+		   new String[] {
+			   "homogenous", "true"
+		   });
+		addAnnotation
 		  (getConnectionTarget_InboundConnections(),
 		   source,
 		   new String[] {
 			   "opposite", "target"
+		   });
+		addAnnotation
+		  (getInterface_Children(),
+		   source,
+		   new String[] {
+			   "homogenous", "true"
 		   });
 	}
 
@@ -3909,6 +4031,18 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		   source,
 		   new String[] {
 			   "documentation", "Issues (work items) for this element."
+		   });
+		addAnnotation
+		  (getEngineeredElementStatus_Children(),
+		   source,
+		   new String[] {
+			   "documentation", "EngineeredElement statuses can form a hierarchy."
+		   });
+		addAnnotation
+		  (getEngineeredElementStatus_Elements(),
+		   source,
+		   new String[] {
+			   "documentation", "Engineered elements in this status."
 		   });
 		addAnnotation
 		  (getDocument_Content(),
@@ -4341,6 +4475,12 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		   source,
 		   new String[] {
 			   "documentation", "Product organization features."
+		   });
+		addAnnotation
+		  (getInterface_Children(),
+		   source,
+		   new String[] {
+			   "documentation", "Interfaces can be nested. For example, a TCP/IP interface may have an REST interface at port 443 as its child and that interface may have multiple endpoints at different paths. Similarly, there might be a messaging interface at a different port with multiple destination endpoints."
 		   });
 	}
 

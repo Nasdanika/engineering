@@ -69,13 +69,13 @@ public interface EngineeringPackage extends EPackage {
 	int MODEL_ELEMENT = 0;
 
 	/**
-	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * The feature id for the '<em><b>Markers</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_ELEMENT__MARKER = NcorePackage.MODEL_ELEMENT__MARKER;
+	int MODEL_ELEMENT__MARKERS = NcorePackage.MODEL_ELEMENT__MARKERS;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -251,13 +251,13 @@ public interface EngineeringPackage extends EPackage {
 	int NAMED_ELEMENT = 2;
 
 	/**
-	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * The feature id for the '<em><b>Markers</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NAMED_ELEMENT__MARKER = MODEL_ELEMENT__MARKER;
+	int NAMED_ELEMENT__MARKERS = MODEL_ELEMENT__MARKERS;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -424,7 +424,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getPersona()
 	 * @generated
 	 */
-	int PERSONA = 16;
+	int PERSONA = 17;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.EngineerImpl <em>Engineer</em>}' class.
@@ -434,7 +434,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getEngineer()
 	 * @generated
 	 */
-	int ENGINEER = 17;
+	int ENGINEER = 18;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.OrganizationImpl <em>Organization</em>}' class.
@@ -444,7 +444,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getOrganization()
 	 * @generated
 	 */
-	int ORGANIZATION = 19;
+	int ORGANIZATION = 20;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.ModuleImpl <em>Module</em>}' class.
@@ -454,7 +454,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getModule()
 	 * @generated
 	 */
-	int MODULE = 20;
+	int MODULE = 21;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.ProductImpl <em>Product</em>}' class.
@@ -464,7 +464,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getProduct()
 	 * @generated
 	 */
-	int PRODUCT = 21;
+	int PRODUCT = 22;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.CapabilityImpl <em>Capability</em>}' class.
@@ -474,7 +474,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getCapability()
 	 * @generated
 	 */
-	int CAPABILITY = 22;
+	int CAPABILITY = 23;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.IncrementImpl <em>Increment</em>}' class.
@@ -514,7 +514,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getEngineeredCapability()
 	 * @generated
 	 */
-	int ENGINEERED_CAPABILITY = 23;
+	int ENGINEERED_CAPABILITY = 24;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.ReleaseImpl <em>Release</em>}' class.
@@ -524,7 +524,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getRelease()
 	 * @generated
 	 */
-	int RELEASE = 24;
+	int RELEASE = 25;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.FeatureImpl <em>Feature</em>}' class.
@@ -534,7 +534,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getFeature()
 	 * @generated
 	 */
-	int FEATURE = 25;
+	int FEATURE = 26;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.IssueImpl <em>Issue</em>}' class.
@@ -564,7 +564,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getDirectory()
 	 * @generated
 	 */
-	int DIRECTORY = 26;
+	int DIRECTORY = 27;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.CapacityImpl <em>Capacity</em>}' class.
@@ -574,7 +574,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getCapacity()
 	 * @generated
 	 */
-	int CAPACITY = 27;
+	int CAPACITY = 28;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.AllocationImpl <em>Allocation</em>}' class.
@@ -584,7 +584,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getAllocation()
 	 * @generated
 	 */
-	int ALLOCATION = 28;
+	int ALLOCATION = 29;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.AimImpl <em>Aim</em>}' class.
@@ -594,7 +594,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getAim()
 	 * @generated
 	 */
-	int AIM = 29;
+	int AIM = 30;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.PrincipleImpl <em>Principle</em>}' class.
@@ -604,7 +604,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getPrinciple()
 	 * @generated
 	 */
-	int PRINCIPLE = 30;
+	int PRINCIPLE = 31;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.AlignmentImpl <em>Alignment</em>}' class.
@@ -614,7 +614,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getAlignment()
 	 * @generated
 	 */
-	int ALIGNMENT = 31;
+	int ALIGNMENT = 32;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.GoalImpl <em>Goal</em>}' class.
@@ -624,7 +624,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getGoal()
 	 * @generated
 	 */
-	int GOAL = 32;
+	int GOAL = 33;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.ForumImpl <em>Forum</em>}' class.
@@ -635,6 +635,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 */
 	int FORUM = 13;
+
+	/**
+	 * The feature id for the '<em><b>Markers</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORUM__MARKERS = NAMED_ELEMENT__MARKERS;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.IssuePriorityImpl <em>Issue Priority</em>}' class.
@@ -664,7 +673,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getTopic()
 	 * @generated
 	 */
-	int TOPIC = 34;
+	int TOPIC = 35;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.MessageImpl <em>Message</em>}' class.
@@ -674,7 +683,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getMessage()
 	 * @generated
 	 */
-	int MESSAGE = 33;
+	int MESSAGE = 34;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.DocumentImpl <em>Document</em>}' class.
@@ -684,16 +693,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getDocument()
 	 * @generated
 	 */
-	int DOCUMENT = 15;
-
-	/**
-	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FORUM__MARKER = NAMED_ELEMENT__MARKER;
+	int DOCUMENT = 16;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -831,13 +831,13 @@ public interface EngineeringPackage extends EPackage {
 	int FORUM_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * The feature id for the '<em><b>Markers</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEERED_ELEMENT__MARKER = FORUM__MARKER;
+	int ENGINEERED_ELEMENT__MARKERS = FORUM__MARKERS;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -1038,13 +1038,22 @@ public interface EngineeringPackage extends EPackage {
 	int ENGINEERED_ELEMENT__ALL_ISSUES = FORUM_FEATURE_COUNT + 8;
 
 	/**
+	 * The feature id for the '<em><b>Status</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEERED_ELEMENT__STATUS = FORUM_FEATURE_COUNT + 9;
+
+	/**
 	 * The number of structural features of the '<em>Engineered Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEERED_ELEMENT_FEATURE_COUNT = FORUM_FEATURE_COUNT + 9;
+	int ENGINEERED_ELEMENT_FEATURE_COUNT = FORUM_FEATURE_COUNT + 10;
 
 	/**
 	 * The number of operations of the '<em>Engineered Element</em>' class.
@@ -1056,13 +1065,13 @@ public interface EngineeringPackage extends EPackage {
 	int ENGINEERED_ELEMENT_OPERATION_COUNT = FORUM_OPERATION_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * The feature id for the '<em><b>Markers</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EVENT__MARKER = ENGINEERED_ELEMENT__MARKER;
+	int EVENT__MARKERS = ENGINEERED_ELEMENT__MARKERS;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -1263,6 +1272,15 @@ public interface EngineeringPackage extends EPackage {
 	int EVENT__ALL_ISSUES = ENGINEERED_ELEMENT__ALL_ISSUES;
 
 	/**
+	 * The feature id for the '<em><b>Status</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT__STATUS = ENGINEERED_ELEMENT__STATUS;
+
+	/**
 	 * The feature id for the '<em><b>Instant</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1434,13 +1452,13 @@ public interface EngineeringPackage extends EPackage {
 	int ALIGNABLE_OPERATION_COUNT = 0;
 
 	/**
-	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * The feature id for the '<em><b>Markers</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENDEAVOR__MARKER = MODEL_ELEMENT__MARKER;
+	int ENDEAVOR__MARKERS = MODEL_ELEMENT__MARKERS;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -1668,13 +1686,13 @@ public interface EngineeringPackage extends EPackage {
 	int ENDEAVOR_OPERATION_COUNT = MODEL_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * The feature id for the '<em><b>Markers</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INCREMENT__MARKER = NAMED_ELEMENT__MARKER;
+	int INCREMENT__MARKERS = NAMED_ELEMENT__MARKERS;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -1938,13 +1956,13 @@ public interface EngineeringPackage extends EPackage {
 	int INCREMENT_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * The feature id for the '<em><b>Markers</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int AIM__MARKER = NAMED_ELEMENT__MARKER;
+	int AIM__MARKERS = NAMED_ELEMENT__MARKERS;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -2082,13 +2100,13 @@ public interface EngineeringPackage extends EPackage {
 	int AIM_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * The feature id for the '<em><b>Markers</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ISSUE_CATEGORY__MARKER = AIM__MARKER;
+	int ISSUE_CATEGORY__MARKERS = AIM__MARKERS;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -2271,13 +2289,13 @@ public interface EngineeringPackage extends EPackage {
 	int ISSUE_CATEGORY_OPERATION_COUNT = AIM_OPERATION_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * The feature id for the '<em><b>Markers</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ISSUE_STATUS__MARKER = NAMED_ELEMENT__MARKER;
+	int ISSUE_STATUS__MARKERS = NAMED_ELEMENT__MARKERS;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -2415,13 +2433,13 @@ public interface EngineeringPackage extends EPackage {
 	int ISSUE_STATUS_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * The feature id for the '<em><b>Markers</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ISSUE_PRIORITY__MARKER = NAMED_ELEMENT__MARKER;
+	int ISSUE_PRIORITY__MARKERS = NAMED_ELEMENT__MARKERS;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -2550,13 +2568,13 @@ public interface EngineeringPackage extends EPackage {
 	int ISSUE_PRIORITY_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * The feature id for the '<em><b>Markers</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ISSUE_SEVERITY__MARKER = NAMED_ELEMENT__MARKER;
+	int ISSUE_SEVERITY__MARKERS = NAMED_ELEMENT__MARKERS;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -2685,13 +2703,13 @@ public interface EngineeringPackage extends EPackage {
 	int ISSUE_SEVERITY_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * The feature id for the '<em><b>Markers</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY__MARKER = NAMED_ELEMENT__MARKER;
+	int CAPABILITY__MARKERS = NAMED_ELEMENT__MARKERS;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -2856,13 +2874,13 @@ public interface EngineeringPackage extends EPackage {
 	int CAPABILITY_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * The feature id for the '<em><b>Markers</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEERED_CAPABILITY__MARKER = CAPABILITY__MARKER;
+	int ENGINEERED_CAPABILITY__MARKERS = CAPABILITY__MARKERS;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -3126,13 +3144,13 @@ public interface EngineeringPackage extends EPackage {
 	int ENGINEERED_CAPABILITY_OPERATION_COUNT = CAPABILITY_OPERATION_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * The feature id for the '<em><b>Markers</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ISSUE__MARKER = ENGINEERED_CAPABILITY__MARKER;
+	int ISSUE__MARKERS = ENGINEERED_CAPABILITY__MARKERS;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -3531,13 +3549,13 @@ public interface EngineeringPackage extends EPackage {
 	int ISSUE_OPERATION_COUNT = ENGINEERED_CAPABILITY_OPERATION_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * The feature id for the '<em><b>Markers</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NOTE__MARKER = MODEL_ELEMENT__MARKER;
+	int NOTE__MARKERS = MODEL_ELEMENT__MARKERS;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -3711,13 +3729,167 @@ public interface EngineeringPackage extends EPackage {
 	int NOTE_OPERATION_COUNT = MODEL_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.EngineeredElementStatusImpl <em>Engineered Element Status</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.EngineeredElementStatusImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getEngineeredElementStatus()
+	 * @generated
+	 */
+	int ENGINEERED_ELEMENT_STATUS = 15;
+
+	/**
+	 * The feature id for the '<em><b>Markers</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DOCUMENT__MARKER = ENGINEERED_ELEMENT__MARKER;
+	int ENGINEERED_ELEMENT_STATUS__MARKERS = NAMED_ELEMENT__MARKERS;
+
+	/**
+	 * The feature id for the '<em><b>Uri</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEERED_ELEMENT_STATUS__URI = NAMED_ELEMENT__URI;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEERED_ELEMENT_STATUS__DESCRIPTION = NAMED_ELEMENT__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEERED_ELEMENT_STATUS__UUID = NAMED_ELEMENT__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Action Prototype</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEERED_ELEMENT_STATUS__ACTION_PROTOTYPE = NAMED_ELEMENT__ACTION_PROTOTYPE;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEERED_ELEMENT_STATUS__PATH = NAMED_ELEMENT__PATH;
+
+	/**
+	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEERED_ELEMENT_STATUS__RESOURCES = NAMED_ELEMENT__RESOURCES;
+
+	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEERED_ELEMENT_STATUS__DOCUMENTATION = NAMED_ELEMENT__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Table Of Contents</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEERED_ELEMENT_STATUS__TABLE_OF_CONTENTS = NAMED_ELEMENT__TABLE_OF_CONTENTS;
+
+	/**
+	 * The feature id for the '<em><b>Sections</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEERED_ELEMENT_STATUS__SECTIONS = NAMED_ELEMENT__SECTIONS;
+
+	/**
+	 * The feature id for the '<em><b>Representations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEERED_ELEMENT_STATUS__REPRESENTATIONS = NAMED_ELEMENT__REPRESENTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEERED_ELEMENT_STATUS__NAME = NAMED_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEERED_ELEMENT_STATUS__CHILDREN = NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Elements</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEERED_ELEMENT_STATUS__ELEMENTS = NAMED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Engineered Element Status</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEERED_ELEMENT_STATUS_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Engineered Element Status</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEERED_ELEMENT_STATUS_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Markers</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT__MARKERS = ENGINEERED_ELEMENT__MARKERS;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -3918,6 +4090,15 @@ public interface EngineeringPackage extends EPackage {
 	int DOCUMENT__ALL_ISSUES = ENGINEERED_ELEMENT__ALL_ISSUES;
 
 	/**
+	 * The feature id for the '<em><b>Status</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT__STATUS = ENGINEERED_ELEMENT__STATUS;
+
+	/**
 	 * The feature id for the '<em><b>Content</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3954,13 +4135,13 @@ public interface EngineeringPackage extends EPackage {
 	int DOCUMENT_OPERATION_COUNT = ENGINEERED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * The feature id for the '<em><b>Markers</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PERSONA__MARKER = ENGINEERED_ELEMENT__MARKER;
+	int PERSONA__MARKERS = ENGINEERED_ELEMENT__MARKERS;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -4161,6 +4342,15 @@ public interface EngineeringPackage extends EPackage {
 	int PERSONA__ALL_ISSUES = ENGINEERED_ELEMENT__ALL_ISSUES;
 
 	/**
+	 * The feature id for the '<em><b>Status</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSONA__STATUS = ENGINEERED_ELEMENT__STATUS;
+
+	/**
 	 * The feature id for the '<em><b>Goals</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4215,13 +4405,13 @@ public interface EngineeringPackage extends EPackage {
 	int PERSONA_OPERATION_COUNT = ENGINEERED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * The feature id for the '<em><b>Markers</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEER__MARKER = PERSONA__MARKER;
+	int ENGINEER__MARKERS = PERSONA__MARKERS;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -4422,6 +4612,15 @@ public interface EngineeringPackage extends EPackage {
 	int ENGINEER__ALL_ISSUES = PERSONA__ALL_ISSUES;
 
 	/**
+	 * The feature id for the '<em><b>Status</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEER__STATUS = PERSONA__STATUS;
+
+	/**
 	 * The feature id for the '<em><b>Goals</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4620,13 +4819,22 @@ public interface EngineeringPackage extends EPackage {
 	int ENGINEER__DOMAINS = PERSONA_FEATURE_COUNT + 17;
 
 	/**
+	 * The feature id for the '<em><b>Engineered Element Statuses</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEER__ENGINEERED_ELEMENT_STATUSES = PERSONA_FEATURE_COUNT + 18;
+
+	/**
 	 * The number of structural features of the '<em>Engineer</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEER_FEATURE_COUNT = PERSONA_FEATURE_COUNT + 18;
+	int ENGINEER_FEATURE_COUNT = PERSONA_FEATURE_COUNT + 19;
 
 	/**
 	 * The number of operations of the '<em>Engineer</em>' class.
@@ -4645,16 +4853,16 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getDomain()
 	 * @generated
 	 */
-	int DOMAIN = 18;
+	int DOMAIN = 19;
 
 	/**
-	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * The feature id for the '<em><b>Markers</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DOMAIN__MARKER = ENGINEERED_ELEMENT__MARKER;
+	int DOMAIN__MARKERS = ENGINEERED_ELEMENT__MARKERS;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -4855,6 +5063,15 @@ public interface EngineeringPackage extends EPackage {
 	int DOMAIN__ALL_ISSUES = ENGINEERED_ELEMENT__ALL_ISSUES;
 
 	/**
+	 * The feature id for the '<em><b>Status</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN__STATUS = ENGINEERED_ELEMENT__STATUS;
+
+	/**
 	 * The feature id for the '<em><b>Elements</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4882,13 +5099,13 @@ public interface EngineeringPackage extends EPackage {
 	int DOMAIN_OPERATION_COUNT = ENGINEERED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * The feature id for the '<em><b>Markers</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ORGANIZATION__MARKER = ENGINEER__MARKER;
+	int ORGANIZATION__MARKERS = ENGINEER__MARKERS;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -5089,6 +5306,15 @@ public interface EngineeringPackage extends EPackage {
 	int ORGANIZATION__ALL_ISSUES = ENGINEER__ALL_ISSUES;
 
 	/**
+	 * The feature id for the '<em><b>Status</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANIZATION__STATUS = ENGINEER__STATUS;
+
+	/**
 	 * The feature id for the '<em><b>Goals</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5287,6 +5513,15 @@ public interface EngineeringPackage extends EPackage {
 	int ORGANIZATION__DOMAINS = ENGINEER__DOMAINS;
 
 	/**
+	 * The feature id for the '<em><b>Engineered Element Statuses</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANIZATION__ENGINEERED_ELEMENT_STATUSES = ENGINEER__ENGINEERED_ELEMENT_STATUSES;
+
+	/**
 	 * The feature id for the '<em><b>Engineers</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5314,13 +5549,13 @@ public interface EngineeringPackage extends EPackage {
 	int ORGANIZATION_OPERATION_COUNT = ENGINEER_OPERATION_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * The feature id for the '<em><b>Markers</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE__MARKER = ENGINEERED_ELEMENT__MARKER;
+	int MODULE__MARKERS = ENGINEERED_ELEMENT__MARKERS;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -5521,6 +5756,15 @@ public interface EngineeringPackage extends EPackage {
 	int MODULE__ALL_ISSUES = ENGINEERED_ELEMENT__ALL_ISSUES;
 
 	/**
+	 * The feature id for the '<em><b>Status</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODULE__STATUS = ENGINEERED_ELEMENT__STATUS;
+
+	/**
 	 * The feature id for the '<em><b>Outbound Connections</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5593,13 +5837,13 @@ public interface EngineeringPackage extends EPackage {
 	int MODULE_OPERATION_COUNT = ENGINEERED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * The feature id for the '<em><b>Markers</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT__MARKER = MODULE__MARKER;
+	int PRODUCT__MARKERS = MODULE__MARKERS;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -5800,6 +6044,15 @@ public interface EngineeringPackage extends EPackage {
 	int PRODUCT__ALL_ISSUES = MODULE__ALL_ISSUES;
 
 	/**
+	 * The feature id for the '<em><b>Status</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT__STATUS = MODULE__STATUS;
+
+	/**
 	 * The feature id for the '<em><b>Outbound Connections</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5890,13 +6143,13 @@ public interface EngineeringPackage extends EPackage {
 	int PRODUCT_OPERATION_COUNT = MODULE_OPERATION_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * The feature id for the '<em><b>Markers</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RELEASE__MARKER = ENGINEERED_CAPABILITY__MARKER;
+	int RELEASE__MARKERS = ENGINEERED_CAPABILITY__MARKERS;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -6178,13 +6431,13 @@ public interface EngineeringPackage extends EPackage {
 	int RELEASE_OPERATION_COUNT = ENGINEERED_CAPABILITY_OPERATION_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * The feature id for the '<em><b>Markers</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FEATURE__MARKER = ENGINEERED_CAPABILITY__MARKER;
+	int FEATURE__MARKERS = ENGINEERED_CAPABILITY__MARKERS;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -6466,13 +6719,13 @@ public interface EngineeringPackage extends EPackage {
 	int FEATURE_OPERATION_COUNT = ENGINEERED_CAPABILITY_OPERATION_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * The feature id for the '<em><b>Markers</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DIRECTORY__MARKER = ENGINEERED_ELEMENT__MARKER;
+	int DIRECTORY__MARKERS = ENGINEERED_ELEMENT__MARKERS;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -6673,6 +6926,15 @@ public interface EngineeringPackage extends EPackage {
 	int DIRECTORY__ALL_ISSUES = ENGINEERED_ELEMENT__ALL_ISSUES;
 
 	/**
+	 * The feature id for the '<em><b>Status</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIRECTORY__STATUS = ENGINEERED_ELEMENT__STATUS;
+
+	/**
 	 * The feature id for the '<em><b>Elements</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6700,13 +6962,13 @@ public interface EngineeringPackage extends EPackage {
 	int DIRECTORY_OPERATION_COUNT = ENGINEERED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * The feature id for the '<em><b>Markers</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CAPACITY__MARKER = MODEL_ELEMENT__MARKER;
+	int CAPACITY__MARKERS = MODEL_ELEMENT__MARKERS;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -6853,13 +7115,13 @@ public interface EngineeringPackage extends EPackage {
 	int CAPACITY_OPERATION_COUNT = MODEL_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * The feature id for the '<em><b>Markers</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ALLOCATION__MARKER = CAPACITY__MARKER;
+	int ALLOCATION__MARKERS = CAPACITY__MARKERS;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -7024,13 +7286,13 @@ public interface EngineeringPackage extends EPackage {
 	int ALLOCATION_OPERATION_COUNT = CAPACITY_OPERATION_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * The feature id for the '<em><b>Markers</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PRINCIPLE__MARKER = AIM__MARKER;
+	int PRINCIPLE__MARKERS = AIM__MARKERS;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -7177,13 +7439,13 @@ public interface EngineeringPackage extends EPackage {
 	int PRINCIPLE_OPERATION_COUNT = AIM_OPERATION_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * The feature id for the '<em><b>Markers</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ALIGNMENT__MARKER = MODEL_ELEMENT__MARKER;
+	int ALIGNMENT__MARKERS = MODEL_ELEMENT__MARKERS;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -7312,13 +7574,13 @@ public interface EngineeringPackage extends EPackage {
 	int ALIGNMENT_OPERATION_COUNT = MODEL_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * The feature id for the '<em><b>Markers</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GOAL__MARKER = AIM__MARKER;
+	int GOAL__MARKERS = AIM__MARKERS;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -7465,13 +7727,13 @@ public interface EngineeringPackage extends EPackage {
 	int GOAL_OPERATION_COUNT = AIM_OPERATION_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * The feature id for the '<em><b>Markers</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE__MARKER = NAMED_ELEMENT__MARKER;
+	int MESSAGE__MARKERS = NAMED_ELEMENT__MARKERS;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -7609,13 +7871,13 @@ public interface EngineeringPackage extends EPackage {
 	int MESSAGE_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * The feature id for the '<em><b>Markers</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TOPIC__MARKER = MESSAGE__MARKER;
+	int TOPIC__MARKERS = MESSAGE__MARKERS;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -7769,16 +8031,16 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getNamedElementReference()
 	 * @generated
 	 */
-	int NAMED_ELEMENT_REFERENCE = 35;
+	int NAMED_ELEMENT_REFERENCE = 36;
 
 	/**
-	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * The feature id for the '<em><b>Markers</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NAMED_ELEMENT_REFERENCE__MARKER = NAMED_ELEMENT__MARKER;
+	int NAMED_ELEMENT_REFERENCE__MARKERS = NAMED_ELEMENT__MARKERS;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -7914,16 +8176,16 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getLink()
 	 * @generated
 	 */
-	int LINK = 36;
+	int LINK = 37;
 
 	/**
-	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * The feature id for the '<em><b>Markers</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LINK__MARKER = NAMED_ELEMENT__MARKER;
+	int LINK__MARKERS = NAMED_ELEMENT__MARKERS;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -8059,16 +8321,16 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getKeyResult()
 	 * @generated
 	 */
-	int KEY_RESULT = 37;
+	int KEY_RESULT = 38;
 
 	/**
-	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * The feature id for the '<em><b>Markers</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int KEY_RESULT__MARKER = AIM__MARKER;
+	int KEY_RESULT__MARKERS = AIM__MARKERS;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -8240,16 +8502,16 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getObjective()
 	 * @generated
 	 */
-	int OBJECTIVE = 38;
+	int OBJECTIVE = 39;
 
 	/**
-	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * The feature id for the '<em><b>Markers</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OBJECTIVE__MARKER = KEY_RESULT__MARKER;
+	int OBJECTIVE__MARKERS = KEY_RESULT__MARKERS;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -8475,16 +8737,16 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getDecision()
 	 * @generated
 	 */
-	int DECISION = 39;
+	int DECISION = 40;
 
 	/**
-	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * The feature id for the '<em><b>Markers</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DECISION__MARKER = ISSUE__MARKER;
+	int DECISION__MARKERS = ISSUE__MARKERS;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -8944,16 +9206,16 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getProductOrganization()
 	 * @generated
 	 */
-	int PRODUCT_ORGANIZATION = 40;
+	int PRODUCT_ORGANIZATION = 41;
 
 	/**
-	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * The feature id for the '<em><b>Markers</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_ORGANIZATION__MARKER = ORGANIZATION__MARKER;
+	int PRODUCT_ORGANIZATION__MARKERS = ORGANIZATION__MARKERS;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -9154,6 +9416,15 @@ public interface EngineeringPackage extends EPackage {
 	int PRODUCT_ORGANIZATION__ALL_ISSUES = ORGANIZATION__ALL_ISSUES;
 
 	/**
+	 * The feature id for the '<em><b>Status</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_ORGANIZATION__STATUS = ORGANIZATION__STATUS;
+
+	/**
 	 * The feature id for the '<em><b>Goals</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9352,6 +9623,15 @@ public interface EngineeringPackage extends EPackage {
 	int PRODUCT_ORGANIZATION__DOMAINS = ORGANIZATION__DOMAINS;
 
 	/**
+	 * The feature id for the '<em><b>Engineered Element Statuses</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_ORGANIZATION__ENGINEERED_ELEMENT_STATUSES = ORGANIZATION__ENGINEERED_ELEMENT_STATUSES;
+
+	/**
 	 * The feature id for the '<em><b>Engineers</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9404,7 +9684,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getConnectionSource()
 	 * @generated
 	 */
-	int CONNECTION_SOURCE = 41;
+	int CONNECTION_SOURCE = 42;
 
 	/**
 	 * The feature id for the '<em><b>Outbound Connections</b></em>' containment reference list.
@@ -9441,16 +9721,16 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getConnection()
 	 * @generated
 	 */
-	int CONNECTION = 42;
+	int CONNECTION = 43;
 
 	/**
-	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * The feature id for the '<em><b>Markers</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONNECTION__MARKER = ENGINEERED_ELEMENT__MARKER;
+	int CONNECTION__MARKERS = ENGINEERED_ELEMENT__MARKERS;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -9651,6 +9931,15 @@ public interface EngineeringPackage extends EPackage {
 	int CONNECTION__ALL_ISSUES = ENGINEERED_ELEMENT__ALL_ISSUES;
 
 	/**
+	 * The feature id for the '<em><b>Status</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTION__STATUS = ENGINEERED_ELEMENT__STATUS;
+
+	/**
 	 * The feature id for the '<em><b>Target</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9685,7 +9974,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getConnectionTarget()
 	 * @generated
 	 */
-	int CONNECTION_TARGET = 43;
+	int CONNECTION_TARGET = 44;
 
 	/**
 	 * The feature id for the '<em><b>Inbound Connections</b></em>' reference list.
@@ -9722,16 +10011,16 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getInterface()
 	 * @generated
 	 */
-	int INTERFACE = 44;
+	int INTERFACE = 45;
 
 	/**
-	 * The feature id for the '<em><b>Marker</b></em>' containment reference.
+	 * The feature id for the '<em><b>Markers</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INTERFACE__MARKER = ENGINEERED_ELEMENT__MARKER;
+	int INTERFACE__MARKERS = ENGINEERED_ELEMENT__MARKERS;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -9932,6 +10221,15 @@ public interface EngineeringPackage extends EPackage {
 	int INTERFACE__ALL_ISSUES = ENGINEERED_ELEMENT__ALL_ISSUES;
 
 	/**
+	 * The feature id for the '<em><b>Status</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERFACE__STATUS = ENGINEERED_ELEMENT__STATUS;
+
+	/**
 	 * The feature id for the '<em><b>Inbound Connections</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9941,13 +10239,22 @@ public interface EngineeringPackage extends EPackage {
 	int INTERFACE__INBOUND_CONNECTIONS = ENGINEERED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERFACE__CHILDREN = ENGINEERED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Interface</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INTERFACE_FEATURE_COUNT = ENGINEERED_ELEMENT_FEATURE_COUNT + 1;
+	int INTERFACE_FEATURE_COUNT = ENGINEERED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Interface</em>' class.
@@ -10283,6 +10590,49 @@ public interface EngineeringPackage extends EPackage {
 	EReference getEngineeredElement_AllIssues();
 
 	/**
+	 * Returns the meta object for the reference '{@link org.nasdanika.engineering.EngineeredElement#getStatus <em>Status</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Status</em>'.
+	 * @see org.nasdanika.engineering.EngineeredElement#getStatus()
+	 * @see #getEngineeredElement()
+	 * @generated
+	 */
+	EReference getEngineeredElement_Status();
+
+	/**
+	 * Returns the meta object for class '{@link org.nasdanika.engineering.EngineeredElementStatus <em>Engineered Element Status</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Engineered Element Status</em>'.
+	 * @see org.nasdanika.engineering.EngineeredElementStatus
+	 * @generated
+	 */
+	EClass getEngineeredElementStatus();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.nasdanika.engineering.EngineeredElementStatus#getChildren <em>Children</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Children</em>'.
+	 * @see org.nasdanika.engineering.EngineeredElementStatus#getChildren()
+	 * @see #getEngineeredElementStatus()
+	 * @generated
+	 */
+	EReference getEngineeredElementStatus_Children();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.EngineeredElementStatus#getElements <em>Elements</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Elements</em>'.
+	 * @see org.nasdanika.engineering.EngineeredElementStatus#getElements()
+	 * @see #getEngineeredElementStatus()
+	 * @generated
+	 */
+	EReference getEngineeredElementStatus_Elements();
+
+	/**
 	 * Returns the meta object for class '{@link org.nasdanika.engineering.Persona <em>Persona</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -10543,6 +10893,17 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getEngineer_Domains();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.nasdanika.engineering.Engineer#getEngineeredElementStatuses <em>Engineered Element Statuses</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Engineered Element Statuses</em>'.
+	 * @see org.nasdanika.engineering.Engineer#getEngineeredElementStatuses()
+	 * @see #getEngineer()
+	 * @generated
+	 */
+	EReference getEngineer_EngineeredElementStatuses();
 
 	/**
 	 * Returns the meta object for class '{@link org.nasdanika.engineering.Domain <em>Domain</em>}'.
@@ -11851,6 +12212,17 @@ public interface EngineeringPackage extends EPackage {
 	EClass getInterface();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link org.nasdanika.engineering.Interface#getChildren <em>Children</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Children</em>'.
+	 * @see org.nasdanika.engineering.Interface#getChildren()
+	 * @see #getInterface()
+	 * @generated
+	 */
+	EReference getInterface_Children();
+
+	/**
 	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Document#getContent <em>Content</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -12180,6 +12552,40 @@ public interface EngineeringPackage extends EPackage {
 		EReference ENGINEERED_ELEMENT__ALL_ISSUES = eINSTANCE.getEngineeredElement_AllIssues();
 
 		/**
+		 * The meta object literal for the '<em><b>Status</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ENGINEERED_ELEMENT__STATUS = eINSTANCE.getEngineeredElement_Status();
+
+		/**
+		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.EngineeredElementStatusImpl <em>Engineered Element Status</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.engineering.impl.EngineeredElementStatusImpl
+		 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getEngineeredElementStatus()
+		 * @generated
+		 */
+		EClass ENGINEERED_ELEMENT_STATUS = eINSTANCE.getEngineeredElementStatus();
+
+		/**
+		 * The meta object literal for the '<em><b>Children</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ENGINEERED_ELEMENT_STATUS__CHILDREN = eINSTANCE.getEngineeredElementStatus_Children();
+
+		/**
+		 * The meta object literal for the '<em><b>Elements</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ENGINEERED_ELEMENT_STATUS__ELEMENTS = eINSTANCE.getEngineeredElementStatus_Elements();
+
+		/**
 		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.PersonaImpl <em>Persona</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -12374,6 +12780,14 @@ public interface EngineeringPackage extends EPackage {
 		 * @generated
 		 */
 		EReference ENGINEER__DOMAINS = eINSTANCE.getEngineer_Domains();
+
+		/**
+		 * The meta object literal for the '<em><b>Engineered Element Statuses</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ENGINEER__ENGINEERED_ELEMENT_STATUSES = eINSTANCE.getEngineer_EngineeredElementStatuses();
 
 		/**
 		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.DomainImpl <em>Domain</em>}' class.
@@ -13422,6 +13836,14 @@ public interface EngineeringPackage extends EPackage {
 		 * @generated
 		 */
 		EClass INTERFACE = eINSTANCE.getInterface();
+
+		/**
+		 * The meta object literal for the '<em><b>Children</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INTERFACE__CHILDREN = eINSTANCE.getInterface_Children();
 
 		/**
 		 * The meta object literal for the '<em><b>Content</b></em>' attribute feature.

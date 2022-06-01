@@ -191,6 +191,32 @@ engineering-product-organization:
                     2021-11-13:  
                       description: Got to do something about it
                       effort: 4
+    - engineering-product:
+        path: server
+        name: Server
+        description: Testing connections and interfaces.
+        status: engineering://nasdanika/engineered-element-statuses/implemented
+        interfaces:
+          tcp:
+            name: TCP/IP
+            children:
+              tls:
+                name: TLS (443)
+                status: engineering://nasdanika/engineered-element-statuses/proposed   
+    - engineering-product:
+        path: client
+        name: Client
+        description: Testing connections and interfaces.
+        status: engineering://nasdanika/engineered-element-statuses/proposed
+        outbound-connections:
+          rest:
+            target: engineering://nasdanika/modules/server/interfaces/tcp/children/tls      
+            #name: REST
+            description: Some description.              
+          direct:
+            target: engineering://nasdanika/modules/server      
+            #name: REST
+            description: Some description.              
   personas:
     java-developer:
       name: Java Developer
@@ -265,4 +291,9 @@ engineering-product-organization:
         include: 
           - "*.yml"              
         exclude: "*another*.yml" 
+  engineered-element-statuses:
+    proposed:
+      name: Proposed
+    implemented:
+      name: Implemented
                             

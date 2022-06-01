@@ -26,6 +26,7 @@ import org.nasdanika.engineering.Endeavor;
 import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeredCapability;
 import org.nasdanika.engineering.EngineeredElement;
+import org.nasdanika.engineering.EngineeredElementStatus;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Event;
 import org.nasdanika.engineering.Feature;
@@ -167,6 +168,8 @@ public class EngineeringValidator extends EObjectValidator {
 				return validateForum((Forum)value, diagnostics, context);
 			case EngineeringPackage.ENGINEERED_ELEMENT:
 				return validateEngineeredElement((EngineeredElement)value, diagnostics, context);
+			case EngineeringPackage.ENGINEERED_ELEMENT_STATUS:
+				return validateEngineeredElementStatus((EngineeredElementStatus)value, diagnostics, context);
 			case EngineeringPackage.DOCUMENT:
 				return validateDocument((Document)value, diagnostics, context);
 			case EngineeringPackage.PERSONA:
@@ -680,6 +683,25 @@ public class EngineeringValidator extends EObjectValidator {
 			return false;
 		}
 		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateEngineeredElementStatus(EngineeredElementStatus engineeredElementStatus, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(engineeredElementStatus, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(engineeredElementStatus, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(engineeredElementStatus, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(engineeredElementStatus, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(engineeredElementStatus, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(engineeredElementStatus, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(engineeredElementStatus, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(engineeredElementStatus, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(engineeredElementStatus, diagnostics, context);
+		if (result || diagnostics != null) result &= validateModelElement_path(engineeredElementStatus, diagnostics, context);
+		return result;
 	}
 
 	/**

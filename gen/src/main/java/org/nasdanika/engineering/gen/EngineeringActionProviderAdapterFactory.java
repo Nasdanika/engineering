@@ -14,6 +14,7 @@ import org.nasdanika.common.Context;
 import org.nasdanika.emf.DiagnosticProvider;
 import org.nasdanika.emf.DiagnosticProviderAdapter;
 import org.nasdanika.emf.FunctionAdapterFactory;
+import org.nasdanika.engineering.Connection;
 import org.nasdanika.engineering.Domain;
 import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeringPackage;
@@ -107,6 +108,20 @@ public class EngineeringActionProviderAdapterFactory extends FlowActionProviderA
 					e -> new IssueCategoryActionBuilder(e, context).asActionProvider()));
 		
 		registerAdapterFactory(
+				new FunctionAdapterFactory<ActionProvider, org.nasdanika.engineering.EngineeredElementStatus>(
+					EngineeringPackage.Literals.ENGINEERED_ELEMENT_STATUS, 
+					ActionProvider.class, 
+					this.getClass().getClassLoader(), 
+					e -> new EngineeredElementStatusActionBuilder(e, context).asActionProvider()));
+		
+		registerAdapterFactory(
+				new FunctionAdapterFactory<ActionProvider, org.nasdanika.engineering.Interface>(
+					EngineeringPackage.Literals.INTERFACE, 
+					ActionProvider.class, 
+					this.getClass().getClassLoader(), 
+					e -> new InterfaceActionBuilder(e, context).asActionProvider()));
+		
+		registerAdapterFactory(
 				new FunctionAdapterFactory<ActionProvider, org.nasdanika.engineering.IssuePriority>(
 					EngineeringPackage.Literals.ISSUE_PRIORITY, 
 					ActionProvider.class, 
@@ -182,6 +197,13 @@ public class EngineeringActionProviderAdapterFactory extends FlowActionProviderA
 					ActionProvider.class, 
 					this.getClass().getClassLoader(), 
 					e -> new TopicActionBuilder(e, context).asActionProvider()));
+
+		registerAdapterFactory(
+				new FunctionAdapterFactory<ActionProvider, Connection>(
+					EngineeringPackage.Literals.CONNECTION, 
+					ActionProvider.class, 
+					this.getClass().getClassLoader(), 
+					e -> new ConnectionActionBuilder(e, context).asActionProvider()));
 		
 	}
 			

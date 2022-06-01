@@ -18,6 +18,7 @@ import org.nasdanika.common.Util;
 import org.nasdanika.engineering.Domain;
 import org.nasdanika.engineering.Endeavor;
 import org.nasdanika.engineering.Engineer;
+import org.nasdanika.engineering.EngineeredElementStatus;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Increment;
 import org.nasdanika.engineering.IssueCategory;
@@ -53,6 +54,7 @@ public class EngineerActionBuilder<T extends Engineer> extends PersonaActionBuil
 		createIssueGroupingActions(action, registry, resolveConsumer, progressMonitor);
 		createObjectiveActions(action, registry, resolveConsumer, progressMonitor);
 		createAssignmentsAction(action, registry, resolveConsumer, progressMonitor);		
+		createEngineeredElementStatusAction(action, registry, resolveConsumer, progressMonitor);		
 		
 		return action;
 	}
@@ -66,6 +68,30 @@ public class EngineerActionBuilder<T extends Engineer> extends PersonaActionBuil
 
 		return properties;
 	}
+	
+	protected void createEngineeredElementStatusAction(
+			Action action,
+			BiConsumer<EObject,Action> registry, 
+			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
+			ProgressMonitor progressMonitor) throws Exception {
+		
+		T engineer = getTarget();
+		EList<EngineeredElementStatus> engineeredElementStatuses = engineer.getEngineeredElementStatuses();
+		if (engineeredElementStatuses.isEmpty()) {
+			return;
+		}
+
+		Action group = AppFactory.eINSTANCE.createAction();
+		group.setText("Engineered Element Statuses");
+		group.setUuid(action.getUuid() + "-engineered-element-statuses");
+		group.setLocation("engineered-element-statuses.html");
+		EList<Action> groupAnonymous = group.getAnonymous();
+		for (EngineeredElementStatus status: engineeredElementStatuses) {
+			groupAnonymous.add(createChildAction(status, registry, resolveConsumer, progressMonitor));
+		}
+	
+		action.getNavigation().add(group);
+	}	
 	
 	protected void createAssignmentsAction(
 			Action action,
@@ -370,7 +396,21 @@ public class EngineerActionBuilder<T extends Engineer> extends PersonaActionBuil
 				Action issueStatusesAction = issueStatusesActionOptional.get();
 				issueStatusesAction.getContent().add(renderList(issueStatuses, false, null, issueStatusesAction, EngineeringPackage.Literals.ENGINEER__ISSUE_STATUSES, context, progressMonitor)); // Table?
 			}
-		}		
+		}
+		
+		// EngineeredElement statuses		
+		EList<EngineeredElementStatus> engineeredElementStatuses = engineer.getEngineeredElementStatuses();
+		if (!engineeredElementStatuses.isEmpty()) {
+			String engineeredElementStatusesUUID = action.getUuid() + "-engineered-element-statuses";
+			Optional<Action> engineeredElementStatusesActionOptional = action.getNavigation().stream()
+					.filter(Action.class::isInstance)					
+					.map(Action.class::cast)
+					.filter(a -> engineeredElementStatusesUUID.equals(a.getUuid()))
+					.findFirst();
+							
+			Action engineeredElementStatusesAction = engineeredElementStatusesActionOptional.get();
+			engineeredElementStatusesAction.getContent().add(renderList(engineeredElementStatuses, false, createEngineeredElementStatusChildrenProvider(), engineeredElementStatusesAction, EngineeringPackage.Literals.ENGINEER__ENGINEERED_ELEMENT_STATUSES, context, progressMonitor)); // Table?
+		}
 		
 		// Assignments		
 		EList<Endeavor> assignments = getTarget().getAssignments();
@@ -474,6 +514,27 @@ public class EngineerActionBuilder<T extends Engineer> extends PersonaActionBuil
 				assignmentsAction.getSections().add(section);
 			}			
 		}		
+	}
+
+	private ContentProvider<EngineeredElementStatus> createEngineeredElementStatusChildrenProvider() {
+		return new ContentProvider<EngineeredElementStatus>() {
+
+			@Override
+			public List<EObject> createContent(
+					EngineeredElementStatus element, 
+					Action base, 
+					ETypedElement typedElement,
+					org.nasdanika.html.emf.EObjectActionResolver.Context context, 
+					ProgressMonitor progressMonitor) throws Exception {
+				
+				EList<EngineeredElementStatus> children = element.getChildren();
+				if (children.isEmpty()) {
+					return null;
+				}
+				return Collections.singletonList(renderList(children, true, this, base, EngineeringPackage.Literals.ENGINEERED_ELEMENT_STATUS__CHILDREN, context, progressMonitor));
+			}
+			
+		};
 	}
 
 	private ContentProvider<IssueCategory> createIssueCategoryChildrenProvider() {
