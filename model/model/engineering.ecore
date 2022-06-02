@@ -48,10 +48,21 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="representations" upperBound="-1"
-        eType="ecore:EClass ../../org.nasdanika.diagram/model/diagram.ecore#//Diagram"
-        containment="true">
+        eType="#//Representation" containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Pluggable representations of a model element, e.g. a component diagram for modules."/>
+      </eAnnotations>
+      <eAnnotations source="urn:org.nasdanika">
+        <details key="homogenous" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Representation" eSuperTypes="../../org.nasdanika.diagram/model/diagram.ecore#//Diagram">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="generator" eType="ecore:EClass ../../org.nasdanika.exec/model/exec.ecore#//Call"
+        containment="true">
+      <eAnnotations source="urn:org.nasdanika">
+        <details key="homogenous" value="true"/>
+        <details key="strict-containment" value="true"/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
@@ -535,6 +546,18 @@
       </eAnnotations>
       <eAnnotations source="urn:org.nasdanika">
         <details key="opposite" value="status"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="elementStyle" eType="ecore:EClass ../../org.nasdanika.diagram/model/diagram.ecore#//DiagramElement"
+        containment="true">
+      <eAnnotations source="urn:org.nasdanika">
+        <details key="homogenous" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="connectionStyle" eType="ecore:EClass ../../org.nasdanika.diagram/model/diagram.ecore#//Connection"
+        containment="true">
+      <eAnnotations source="urn:org.nasdanika">
+        <details key="homogenous" value="true"/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>

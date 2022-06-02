@@ -11,14 +11,11 @@ import org.eclipse.emf.ecore.EcorePackage;
 import org.nasdanika.common.Context;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.engineering.Connection;
-import org.nasdanika.engineering.EngineeredElement;
-import org.nasdanika.engineering.EngineeredElementStatus;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Interface;
 import org.nasdanika.html.model.app.Action;
 import org.nasdanika.html.model.app.AppFactory;
 import org.nasdanika.html.model.bootstrap.Table;
-import org.nasdanika.html.model.html.Tag;
 import org.nasdanika.ncore.NcorePackage;
 
 public class InterfaceActionBuilder extends EngineeredElementActionBuilder<Interface> {

@@ -19,7 +19,6 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.BasicInternalEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.nasdanika.common.Util;
-import org.nasdanika.diagram.Diagram;
 import org.nasdanika.emf.EObjectAdaptable;
 import org.nasdanika.emf.EmfUtil;
 import org.nasdanika.emf.persistence.FeatureCache;
@@ -27,6 +26,7 @@ import org.nasdanika.engineering.Document;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.ModelElement;
 import org.nasdanika.engineering.NamedElement;
+import org.nasdanika.engineering.Representation;
 import org.nasdanika.engineering.TableOfContents;
 
 /**
@@ -172,8 +172,8 @@ public abstract class ModelElementImpl extends org.nasdanika.ncore.impl.ModelEle
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public EList<Diagram> getRepresentations() {
-		return (EList<Diagram>)eDynamicGet(EngineeringPackage.MODEL_ELEMENT__REPRESENTATIONS, EngineeringPackage.Literals.MODEL_ELEMENT__REPRESENTATIONS, true, true);
+	public EList<Representation> getRepresentations() {
+		return (EList<Representation>)eDynamicGet(EngineeringPackage.MODEL_ELEMENT__REPRESENTATIONS, EngineeringPackage.Literals.MODEL_ELEMENT__REPRESENTATIONS, true, true);
 	}
 
 	/**
@@ -251,7 +251,7 @@ public abstract class ModelElementImpl extends org.nasdanika.ncore.impl.ModelEle
 				return;
 			case EngineeringPackage.MODEL_ELEMENT__REPRESENTATIONS:
 				getRepresentations().clear();
-				getRepresentations().addAll((Collection<? extends Diagram>)newValue);
+				getRepresentations().addAll((Collection<? extends Representation>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

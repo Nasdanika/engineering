@@ -8,6 +8,7 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
 import org.nasdanika.common.Adaptable;
 import org.nasdanika.common.persistence.Marked;
+import org.nasdanika.diagram.Diagram;
 import org.nasdanika.engineering.Aim;
 import org.nasdanika.engineering.Alignable;
 import org.nasdanika.engineering.Alignment;
@@ -52,6 +53,7 @@ import org.nasdanika.engineering.Principle;
 import org.nasdanika.engineering.Product;
 import org.nasdanika.engineering.ProductOrganization;
 import org.nasdanika.engineering.Release;
+import org.nasdanika.engineering.Representation;
 import org.nasdanika.engineering.TableOfContents;
 import org.nasdanika.engineering.Topic;
 import org.nasdanika.ncore.Period;
@@ -116,6 +118,10 @@ public class EngineeringAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseModelElement(ModelElement object) {
 				return createModelElementAdapter();
+			}
+			@Override
+			public Adapter caseRepresentation(Representation object) {
+				return createRepresentationAdapter();
 			}
 			@Override
 			public Adapter caseTableOfContents(TableOfContents object) {
@@ -318,6 +324,10 @@ public class EngineeringAdapterFactory extends AdapterFactoryImpl {
 				return createNcore_NamedElementAdapter();
 			}
 			@Override
+			public Adapter caseDiagram(Diagram object) {
+				return createDiagramAdapter();
+			}
+			@Override
 			public Adapter casePeriod(Period object) {
 				return createPeriodAdapter();
 			}
@@ -388,6 +398,20 @@ public class EngineeringAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.diagram.Diagram <em>Diagram</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.nasdanika.diagram.Diagram
+	 * @generated
+	 */
+	public Adapter createDiagramAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.ModelElement <em>Model Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -398,6 +422,20 @@ public class EngineeringAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createModelElementAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.Representation <em>Representation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.nasdanika.engineering.Representation
+	 * @generated
+	 */
+	public Adapter createRepresentationAdapter() {
 		return null;
 	}
 

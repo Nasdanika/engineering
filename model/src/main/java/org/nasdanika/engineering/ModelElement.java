@@ -4,7 +4,6 @@ package org.nasdanika.engineering;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.nasdanika.diagram.Diagram;
 
 /**
  * <!-- begin-user-doc -->
@@ -129,7 +128,7 @@ public interface ModelElement extends org.nasdanika.ncore.ModelElement {
 
 	/**
 	 * Returns the value of the '<em><b>Representations</b></em>' containment reference list.
-	 * The list contents are of type {@link org.nasdanika.diagram.Diagram}.
+	 * The list contents are of type {@link org.nasdanika.engineering.Representation}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -138,8 +137,9 @@ public interface ModelElement extends org.nasdanika.ncore.ModelElement {
 	 * @return the value of the '<em>Representations</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getModelElement_Representations()
 	 * @model containment="true"
+	 *        annotation="urn:org.nasdanika homogenous='true'"
 	 * @generated
 	 */
-	EList<Diagram> getRepresentations();
+	EList<Representation> getRepresentations();
 
 } // ModelElement

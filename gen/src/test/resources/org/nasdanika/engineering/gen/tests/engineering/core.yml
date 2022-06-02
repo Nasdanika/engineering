@@ -216,7 +216,10 @@ engineering-product-organization:
           direct:
             target: engineering://nasdanika/modules/server      
             #name: REST
-            description: Some description.              
+            description: Some description.
+        representations:
+         - description: My cool representation    
+           generator: org.nasdanika.engineering.gen.tests.MyRepresentationGenerator          
   personas:
     java-developer:
       name: Java Developer

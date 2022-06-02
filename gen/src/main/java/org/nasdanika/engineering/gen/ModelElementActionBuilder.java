@@ -14,10 +14,11 @@ import org.nasdanika.common.BiSupplier;
 import org.nasdanika.common.Context;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.common.Util;
-import org.nasdanika.diagram.Diagram;
 import org.nasdanika.diagram.gen.Generator;
+import org.nasdanika.emf.EObjectAdaptable;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.ModelElement;
+import org.nasdanika.engineering.Representation;
 import org.nasdanika.html.emf.EObjectActionBuilder;
 import org.nasdanika.html.model.app.Action;
 import org.nasdanika.html.model.app.AppFactory;
@@ -95,7 +96,7 @@ public class ModelElementActionBuilder<T extends ModelElement> extends EObjectAc
 		}		
 		
 		// Representations
-		for (Diagram representation: semanticElement.getRepresentations()) {
+		for (Representation representation: semanticElement.getRepresentations()) {
 			if (representation.getElements().isEmpty()) {
 				populateRepresentation(representation, action, context, progressMonitor);
 			}			
@@ -140,11 +141,14 @@ public class ModelElementActionBuilder<T extends ModelElement> extends EObjectAc
 	 * @param representation
 	 */
 	protected void populateRepresentation(
-			Diagram representation, 
+			Representation representation, 
 			Action action, 
 			org.nasdanika.html.emf.EObjectActionResolver.Context context,
 			ProgressMonitor progressMonitor) throws Exception {
-		
+		RepresentationGeneratorAdapter adapter = EObjectAdaptable.adaptTo(representation, RepresentationGeneratorAdapter.class);
+		if (adapter != null) {
+			adapter.generate(action, context, progressMonitor);
+		}
 	}
 	
 	@Override

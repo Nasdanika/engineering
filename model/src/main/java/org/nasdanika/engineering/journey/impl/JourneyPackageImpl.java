@@ -88,6 +88,7 @@ public class JourneyPackageImpl extends EPackageImpl implements JourneyPackage {
 
 		// Initialize simple dependencies
 		DiagramPackage.eINSTANCE.eClass();
+		org.nasdanika.exec.ExecPackage.eINSTANCE.eClass();
 		FlowPackage.eINSTANCE.eClass();
 		NcorePackage.eINSTANCE.eClass();
 

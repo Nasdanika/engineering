@@ -4,7 +4,7 @@
     editorDirectory="" modelPluginID="org.nasdanika.engineering" modelName="Engineering"
     rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore"
     featureDelegation="Dynamic" complianceLevel="8.0" suppressGenModelAnnotations="false"
-    copyrightFields="false" usedGenPackages="../../org.nasdanika.diagram/model/diagram.genmodel#//diagram ../../org.nasdanika.flow/model/flow.genmodel#//flow ../../org.nasdanika.ncore/model/ncore.genmodel#//ncore"
+    copyrightFields="false" usedGenPackages="../../org.nasdanika.diagram/model/diagram.genmodel#//diagram ../../org.nasdanika.exec/model/exec.genmodel#//exec ../../org.nasdanika.flow/model/flow.genmodel#//flow ../../org.nasdanika.ncore/model/ncore.genmodel#//ncore"
     operationReflection="true" importOrganizing="true">
   <foreignModel>engineering.ecore</foreignModel>
   <genPackages prefix="Engineering" basePackage="org.nasdanika" disposableProviderFactory="true"
@@ -16,6 +16,9 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//ModelElement/tableOfContents"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//ModelElement/sections"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//ModelElement/representations"/>
+    </genClasses>
+    <genClasses ecoreClass="engineering.ecore#//Representation">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//Representation/generator"/>
     </genClasses>
     <genClasses ecoreClass="engineering.ecore#//TableOfContents">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//TableOfContents/role"/>
@@ -102,6 +105,8 @@
     <genClasses ecoreClass="engineering.ecore#//EngineeredElementStatus">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//EngineeredElementStatus/children"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference engineering.ecore#//EngineeredElementStatus/elements"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//EngineeredElementStatus/elementStyle"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//EngineeredElementStatus/connectionStyle"/>
     </genClasses>
     <genClasses ecoreClass="engineering.ecore#//Document">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Document/content"/>
