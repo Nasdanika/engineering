@@ -6,13 +6,13 @@ import static org.junit.Assert.fail;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -27,6 +27,7 @@ import java.util.function.Predicate;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
+import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -50,6 +51,7 @@ import org.nasdanika.common.NullProgressMonitor;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.common.Status;
 import org.nasdanika.common.Supplier;
+import org.nasdanika.common.SupplierFactory;
 import org.nasdanika.common.resources.BinaryEntityContainer;
 import org.nasdanika.common.resources.FileSystemContainer;
 import org.nasdanika.diagram.DiagramPackage;
@@ -60,6 +62,7 @@ import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.gen.EngineeringActionProviderAdapterFactory;
 import org.nasdanika.engineering.util.EngineeringYamlSupplier;
 import org.nasdanika.exec.ExecPackage;
+import org.nasdanika.exec.content.ContentFactory;
 import org.nasdanika.exec.content.ContentPackage;
 import org.nasdanika.exec.resources.Container;
 import org.nasdanika.exec.resources.ReconcileAction;
@@ -70,10 +73,12 @@ import org.nasdanika.html.emf.EObjectActionResolver;
 import org.nasdanika.html.model.app.Action;
 import org.nasdanika.html.model.app.AppPackage;
 import org.nasdanika.html.model.app.Label;
+import org.nasdanika.html.model.app.gen.ActionContentProvider;
 import org.nasdanika.html.model.app.gen.AppAdapterFactory;
-import org.nasdanika.html.model.app.gen.AppGenYamlLoadingExecutionParticipant;
+import org.nasdanika.html.model.app.gen.PageContentProvider;
 import org.nasdanika.html.model.app.gen.Util;
 import org.nasdanika.html.model.app.util.ActionProvider;
+import org.nasdanika.html.model.app.util.AppYamlSupplier;
 import org.nasdanika.html.model.bootstrap.BootstrapPackage;
 import org.nasdanika.html.model.html.HtmlPackage;
 import org.nasdanika.ncore.NcorePackage;
@@ -277,6 +282,7 @@ public class TestEngineeringGen /* extends TestBase */ {
 		Context modelContext = Context.singleton("model-name", name);
 		String actionsResource = "actions.yml";
 		Action root = (Action) loadObject(actionsResource, diagnosticConsumer, modelContext, progressMonitor);
+		root.eResource().getResourceSet().getAdapterFactories().add(new AppAdapterFactory());
 		
 		Container container = ResourcesFactory.eINSTANCE.createContainer();
 		container.setName(name);
@@ -289,15 +295,66 @@ public class TestEngineeringGen /* extends TestBase */ {
 		
 		String pageTemplateResource = "page-template.yml";
 		org.nasdanika.html.model.bootstrap.Page pageTemplate = (org.nasdanika.html.model.bootstrap.Page) loadObject(pageTemplateResource, diagnosticConsumer, modelContext, progressMonitor);
+			
+		File contentDir = new File(RESOURCE_MODELS_DIR, "content");
+		contentDir.mkdirs();
+		// Generating content file from action content 
+		ActionContentProvider.Factory actionContentProviderFactory = (contentProviderContext) -> (action, uriResolver, pMonitor) -> {
+			String fileName = action.getUuid() + ".html";
+			SupplierFactory<InputStream> contentFactory = org.nasdanika.common.Util.asInputStreamSupplierFactory(action.getContent());			
+			try (InputStream contentStream = org.nasdanika.common.Util.call(contentFactory.create(contentProviderContext), pMonitor, diagnosticConsumer, Status.FAIL, Status.ERROR)) {
+				Files.copy(contentStream, new File(contentDir, fileName).toPath(), StandardCopyOption.REPLACE_EXISTING);
+			}
+			
+			org.nasdanika.exec.content.Resource contentResource = ContentFactory.eINSTANCE.createResource();
+			contentResource.setLocation("../content/" + fileName);
+			System.out.println("[Action content] " + action.getName() + " -> " + fileName);
+			return ECollections.singletonEList(contentResource);			
+		};
 		
+		File pagesDir = new File(RESOURCE_MODELS_DIR, "pages");
+		pagesDir.mkdirs();
+		PageContentProvider.Factory pageContentProviderFactory = (contentProviderContext) -> (page, baseURI, uriResolver, pMonitor) -> {
+			// Saving a page to .xml and creating a reference to .html; Pages shall be processed from .xml to .html individually.
+			page.setUuid(UUID.randomUUID().toString());
+			
+			ResourceSet pageResourceSet = new ResourceSetImpl();
+			pageResourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put(Resource.Factory.Registry.DEFAULT_EXTENSION, new XMIResourceFactoryImpl());			
+			URI pageURI = URI.createFileURI(new File(pagesDir, page.getUuid() + ".xml").getCanonicalPath());
+			Resource pageEResource = pageResourceSet.createResource(pageURI);
+			pageEResource.getContents().add(page);
+			pageEResource.save(null);
+			
+			org.nasdanika.exec.content.Resource pageResource = ContentFactory.eINSTANCE.createResource();
+			pageResource.setLocation("pages/" + page.getUuid() + ".html");
+			System.out.println("[Page content] " + page.getName() + " -> " + pageResource.getLocation());
+			return pageResource;			
+		};
+						
 		Util.generateSite(
 				root, 
 				pageTemplate,
 				container,
+				actionContentProviderFactory,
+				pageContentProviderFactory,
 				context,
 				progressMonitor);
 		
 		modelResource.save(null);
+		
+		// Page model to XML conversion
+		ResourceSet pageResourceSet = new ResourceSetImpl();
+		pageResourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put(Resource.Factory.Registry.DEFAULT_EXTENSION, new XMIResourceFactoryImpl());			
+		pageResourceSet.getAdapterFactories().add(new AppAdapterFactory());
+		for (File pageFile: pagesDir.listFiles(f -> f.getName().endsWith(".xml"))) {
+			URI pageURI = URI.createFileURI(pageFile.getCanonicalPath());
+			Resource pageEResource = pageResourceSet.getResource(pageURI, true);
+			SupplierFactory<InputStream> contentFactory = org.nasdanika.common.Util.asInputStreamSupplierFactory(pageEResource.getContents());			
+			try (InputStream contentStream = org.nasdanika.common.Util.call(contentFactory.create(context), progressMonitor, diagnosticConsumer, Status.FAIL, Status.ERROR)) {
+				Files.copy(contentStream, new File(pageFile.getCanonicalPath().replace(".xml", ".html")).toPath(), StandardCopyOption.REPLACE_EXISTING);
+				System.out.println("[Page xml -> html] " + pageFile.getName());
+			}
+		}		
 	}
 	
 	protected EObject loadObject(
@@ -312,28 +369,10 @@ public class TestEngineeringGen /* extends TestBase */ {
 			throw new IllegalArgumentException("Classloader resource not found: " + resource + " by " + clazz); 
 		}
 		URI resourceURI = URI.createURI(resourceURL.toString());
-
-		class ObjectSupplier extends AppGenYamlLoadingExecutionParticipant implements Supplier<EObject> {
-
-			public ObjectSupplier(Context context) {
-				super(context);
-			}
-
-			@Override
-			protected Collection<URI> getResources() {
-				return Collections.singleton(resourceURI);
-			}
-
-			@Override
-			public EObject execute(ProgressMonitor progressMonitor) throws Exception {				
-				return resourceSet.getResource(resourceURI, false).getContents().iterator().next();
-			}
-			
-		};
 		
 		// Diagnosing loaded resources. 
 		try {
-			return Objects.requireNonNull(org.nasdanika.common.Util.call(new ObjectSupplier(context), progressMonitor, diagnosticConsumer), "Loaded null from " + resource);
+			return Objects.requireNonNull(org.nasdanika.common.Util.call(new AppYamlSupplier(resourceURI, context), progressMonitor, diagnosticConsumer), "Loaded null from " + resource);
 		} catch (DiagnosticException e) {
 			System.err.println("******************************");
 			System.err.println("*      Diagnostic failed     *");
@@ -379,7 +418,6 @@ public class TestEngineeringGen /* extends TestBase */ {
 				throw e;
 			}
 		}	
-		
 		
 		generateSitemapAndSearch(new File(siteDir, name));		
 	}
@@ -477,6 +515,8 @@ public class TestEngineeringGen /* extends TestBase */ {
 		resourceSet.getPackageRegistry().put(AppPackage.eNS_URI, AppPackage.eINSTANCE);
 		resourceSet.getPackageRegistry().put(FlowPackage.eNS_URI, FlowPackage.eINSTANCE);
 		resourceSet.getPackageRegistry().put(EngineeringPackage.eNS_URI, EngineeringPackage.eINSTANCE);
+		
+//		resourceSet.getAdapterFactories().add(new AppAdapterFactory())		
 		return resourceSet;
 	}	
 	
