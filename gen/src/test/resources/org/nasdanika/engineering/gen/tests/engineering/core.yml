@@ -117,7 +117,9 @@ engineering-product-organization:
                 content-markdown:
                   style: true
                   source:
-                    content-resource: common.md
+                    content-interpolator:
+                      source:
+                        content-resource: common.md
               discussion:
                 how-to-do-this:
                   name: How to do this?

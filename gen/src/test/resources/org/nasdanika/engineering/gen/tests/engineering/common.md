@@ -12,3 +12,5 @@ sequence.plantuml
 aws.drawio
 ```
 
+
+[TLS](${uri/engineering://nasdanika/modules/server/interfaces/tcp/children/tls})

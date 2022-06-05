@@ -17,6 +17,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Objects;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -46,9 +47,11 @@ import org.nasdanika.common.Context;
 import org.nasdanika.common.DefaultConverter;
 import org.nasdanika.common.Diagnostic;
 import org.nasdanika.common.DiagnosticException;
+import org.nasdanika.common.MutableContext;
 import org.nasdanika.common.NasdanikaException;
 import org.nasdanika.common.NullProgressMonitor;
 import org.nasdanika.common.ProgressMonitor;
+import org.nasdanika.common.PropertyComputer;
 import org.nasdanika.common.Status;
 import org.nasdanika.common.Supplier;
 import org.nasdanika.common.SupplierFactory;
@@ -83,6 +86,7 @@ import org.nasdanika.html.model.bootstrap.BootstrapPackage;
 import org.nasdanika.html.model.html.HtmlPackage;
 import org.nasdanika.ncore.NcorePackage;
 import org.nasdanika.ncore.util.NcoreResourceSet;
+import org.nasdanika.ncore.util.NcoreUtil;
 
 import com.redfin.sitemapgenerator.ChangeFreq;
 import com.redfin.sitemapgenerator.WebSitemapGenerator;
@@ -176,7 +180,7 @@ public class TestEngineeringGen /* extends TestBase */ {
 	 * Loads instance model from previously generated XMI, diagnoses, generates action model.
 	 * @throws Exception
 	 */
-	public void generateActionModel(String name, Context context, ProgressMonitor progressMonitor) throws Exception {
+	public Map<EObject,Action> generateActionModel(String name, Context context, ProgressMonitor progressMonitor) throws Exception {
 		ResourceSet instanceModelsResourceSet = createResourceSet();
 		Resource instanceModelResource = instanceModelsResourceSet.getResource(URI.createURI(name + ".xml").resolve(ENGINEERING_MODELS_URI), true);
 
@@ -262,13 +266,15 @@ public class TestEngineeringGen /* extends TestBase */ {
 		actionModelResource.getContents().add(rootAction);
 
 		actionModelResource.save(null);
+		
+		return registry;		
 	}
 	
 	/**
 	 * Generates a resource model from an action model.
 	 * @throws Exception
 	 */
-	public void generateResourceModel(String name, Context context, ProgressMonitor progressMonitor) throws Exception {
+	public void generateResourceModel(String name, Map<EObject, Action> registry, Context context, ProgressMonitor progressMonitor) throws Exception {
 		Consumer<Diagnostic> diagnosticConsumer = diagnostic -> {
 			if (diagnostic.getStatus() == Status.FAIL || diagnostic.getStatus() == Status.ERROR) {
 				System.err.println("***********************");
@@ -298,11 +304,36 @@ public class TestEngineeringGen /* extends TestBase */ {
 			
 		File contentDir = new File(RESOURCE_MODELS_DIR, "content");
 		contentDir.mkdirs();
-		// Generating content file from action content 
+		// Generating content file from action content
+		Map<URI, Action> uriMap = new HashMap<>();
+		for (Entry<EObject, Action> re: registry.entrySet()) {
+			URI uri = NcoreUtil.getUri(re.getKey());
+			if (uri != null) {
+				uriMap.put(uri, re.getValue());
+			}
+		}
 		ActionContentProvider.Factory actionContentProviderFactory = (contentProviderContext) -> (action, uriResolver, pMonitor) -> {
+			PropertyComputer uriPropertyComputer = new PropertyComputer() {
+				
+				@SuppressWarnings("unchecked")
+				@Override
+				public <P> P compute(Context context, String key, String path, Class<P> type) {
+					Action targetAction = uriMap.get(URI.createURI(path));
+					if (targetAction == null) {
+						return null;
+					}
+					URI bURI = uriResolver.apply(action, (URI) null);
+					URI tURI = uriResolver.apply(targetAction, bURI);
+					return tURI == null ? null : (P) tURI.toString();
+				}
+				
+			};
+			MutableContext mctx = contentProviderContext.fork();
+			mctx.put("uri", uriPropertyComputer);			
+			
 			String fileName = action.getUuid() + ".html";
 			SupplierFactory<InputStream> contentFactory = org.nasdanika.common.Util.asInputStreamSupplierFactory(action.getContent());			
-			try (InputStream contentStream = org.nasdanika.common.Util.call(contentFactory.create(contentProviderContext), pMonitor, diagnosticConsumer, Status.FAIL, Status.ERROR)) {
+			try (InputStream contentStream = org.nasdanika.common.Util.call(contentFactory.create(mctx), pMonitor, diagnosticConsumer, Status.FAIL, Status.ERROR)) {
 				Files.copy(contentStream, new File(contentDir, fileName).toPath(), StandardCopyOption.REPLACE_EXISTING);
 			}
 			
@@ -576,11 +607,11 @@ public class TestEngineeringGen /* extends TestBase */ {
 		System.out.println("\tGenerated instance model in " + (System.currentTimeMillis() - start) + " milliseconds");
 		start = System.currentTimeMillis();
 		
-		generateActionModel(name, context, progressMonitor);
+		Map<EObject, Action> registry = generateActionModel(name, context, progressMonitor);
 		System.out.println("\tGenerated action model in " + (System.currentTimeMillis() - start) + " milliseconds");
 		start = System.currentTimeMillis();
 		
-		generateResourceModel(name, context, progressMonitor);
+		generateResourceModel(name, registry, context, progressMonitor);
 		System.out.println("\tGenerated resource model in " + (System.currentTimeMillis() - start) + " milliseconds");
 		start = System.currentTimeMillis();
 		
