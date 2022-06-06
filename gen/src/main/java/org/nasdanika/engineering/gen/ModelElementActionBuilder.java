@@ -16,6 +16,7 @@ import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.common.Util;
 import org.nasdanika.diagram.gen.Generator;
 import org.nasdanika.emf.EObjectAdaptable;
+import org.nasdanika.engineering.Document;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.ModelElement;
 import org.nasdanika.engineering.Representation;
@@ -67,6 +68,11 @@ public class ModelElementActionBuilder<T extends ModelElement> extends EObjectAc
 		}
 		
 		ret.setSectionStyle(SectionStyle.HEADER);
+		
+		EList<Action> sections = ret.getSections();
+		for (Document section: eObj.getSections()) {
+			sections.add(createChildAction(section, registry, resolveConsumer, progressMonitor));			
+		}
 		return ret;
 	}
 	

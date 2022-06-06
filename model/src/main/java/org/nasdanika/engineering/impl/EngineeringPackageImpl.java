@@ -60,6 +60,7 @@ import org.nasdanika.engineering.Topic;
 import org.nasdanika.engineering.journey.JourneyPackage;
 import org.nasdanika.engineering.journey.impl.JourneyPackageImpl;
 import org.nasdanika.engineering.util.EngineeringValidator;
+import org.nasdanika.exec.ExecPackage;
 import org.nasdanika.flow.FlowPackage;
 import org.nasdanika.ncore.NcorePackage;
 
@@ -448,7 +449,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 
 		// Initialize simple dependencies
 		DiagramPackage.eINSTANCE.eClass();
-		org.nasdanika.exec.ExecPackage.eINSTANCE.eClass();
+		ExecPackage.eINSTANCE.eClass();
 		FlowPackage.eINSTANCE.eClass();
 		NcorePackage.eINSTANCE.eClass();
 
@@ -2348,26 +2349,6 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
-	public EAttribute getDocument_Content() {
-		return (EAttribute)documentEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getDocument_MarkdownContent() {
-		return (EAttribute)documentEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EClass getMessage() {
 		return messageEClass;
 	}
@@ -2523,8 +2504,6 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		createEReference(engineeredElementStatusEClass, ENGINEERED_ELEMENT_STATUS__CONNECTION_STYLE);
 
 		documentEClass = createEClass(DOCUMENT);
-		createEAttribute(documentEClass, DOCUMENT__CONTENT);
-		createEAttribute(documentEClass, DOCUMENT__MARKDOWN_CONTENT);
 
 		personaEClass = createEClass(PERSONA);
 		createEReference(personaEClass, PERSONA__GOALS);
@@ -2687,7 +2666,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		JourneyPackage theJourneyPackage = (JourneyPackage)EPackage.Registry.INSTANCE.getEPackage(JourneyPackage.eNS_URI);
 		NcorePackage theNcorePackage = (NcorePackage)EPackage.Registry.INSTANCE.getEPackage(NcorePackage.eNS_URI);
 		DiagramPackage theDiagramPackage = (DiagramPackage)EPackage.Registry.INSTANCE.getEPackage(DiagramPackage.eNS_URI);
-		org.nasdanika.exec.ExecPackage theExecPackage = (org.nasdanika.exec.ExecPackage)EPackage.Registry.INSTANCE.getEPackage(org.nasdanika.exec.ExecPackage.eNS_URI);
+		ExecPackage theExecPackage = (ExecPackage)EPackage.Registry.INSTANCE.getEPackage(ExecPackage.eNS_URI);
 
 		// Add subpackages
 		getESubpackages().add(theJourneyPackage);
@@ -2717,6 +2696,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		forumEClass.getESuperTypes().add(this.getNamedElement());
 		engineeredElementEClass.getESuperTypes().add(this.getForum());
 		engineeredElementEClass.getESuperTypes().add(theNcorePackage.getPeriod());
+		engineeredElementEClass.getESuperTypes().add(this.getConnectionSource());
+		engineeredElementEClass.getESuperTypes().add(this.getConnectionTarget());
 		engineeredElementStatusEClass.getESuperTypes().add(this.getNamedElement());
 		documentEClass.getESuperTypes().add(this.getEngineeredElement());
 		personaEClass.getESuperTypes().add(this.getEngineeredElement());
@@ -2724,8 +2705,6 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		domainEClass.getESuperTypes().add(this.getEngineeredElement());
 		organizationEClass.getESuperTypes().add(this.getEngineer());
 		moduleEClass.getESuperTypes().add(this.getEngineeredElement());
-		moduleEClass.getESuperTypes().add(this.getConnectionSource());
-		moduleEClass.getESuperTypes().add(this.getConnectionTarget());
 		productEClass.getESuperTypes().add(this.getModule());
 		capabilityEClass.getESuperTypes().add(this.getNamedElement());
 		capabilityEClass.getESuperTypes().add(theNcorePackage.getPeriod());
@@ -2762,6 +2741,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		initEReference(getModelElement_Documentation(), ecorePackage.getEObject(), null, "documentation", null, 0, -1, ModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getModelElement_TableOfContents(), this.getTableOfContents(), null, "tableOfContents", null, 0, 1, ModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getModelElement_Sections(), this.getDocument(), null, "sections", null, 0, -1, ModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		getModelElement_Sections().getEKeys().add(this.getModelElement_Path());
 		initEReference(getModelElement_Representations(), this.getRepresentation(), null, "representations", null, 0, -1, ModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(representationEClass, Representation.class, "Representation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -2868,8 +2848,6 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		initEReference(getEngineeredElementStatus_ConnectionStyle(), theDiagramPackage.getConnection(), null, "connectionStyle", null, 0, 1, EngineeredElementStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(documentEClass, Document.class, "Document", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getDocument_Content(), ecorePackage.getEString(), "content", null, 0, 1, Document.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getDocument_MarkdownContent(), ecorePackage.getEString(), "markdownContent", null, 0, 1, Document.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(personaEClass, Persona.class, "Persona", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getPersona_Goals(), this.getGoal(), null, "goals", null, 0, -1, Persona.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -4129,18 +4107,6 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		   source,
 		   new String[] {
 			   "documentation", "Engineered elements in this status."
-		   });
-		addAnnotation
-		  (getDocument_Content(),
-		   source,
-		   new String[] {
-			   "documentation", "Document/section content in HTML."
-		   });
-		addAnnotation
-		  (getDocument_MarkdownContent(),
-		   source,
-		   new String[] {
-			   "documentation", "Document/section content in [Markdown](https://en.wikipedia.org/wiki/Markdown)."
 		   });
 		addAnnotation
 		  (getPersona_Goals(),

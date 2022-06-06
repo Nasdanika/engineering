@@ -12,6 +12,9 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.nasdanika.engineering.Allocation;
+import org.nasdanika.engineering.Connection;
+import org.nasdanika.engineering.ConnectionSource;
+import org.nasdanika.engineering.ConnectionTarget;
 import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeredElement;
 import org.nasdanika.engineering.EngineeredElementStatus;
@@ -34,6 +37,8 @@ import org.nasdanika.ncore.util.NcoreUtil;
  *   <li>{@link org.nasdanika.engineering.impl.EngineeredElementImpl#getStart <em>Start</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineeredElementImpl#getEnd <em>End</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineeredElementImpl#getDuration <em>Duration</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.EngineeredElementImpl#getOutboundConnections <em>Outbound Connections</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.EngineeredElementImpl#getInboundConnections <em>Inbound Connections</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineeredElementImpl#getIssues <em>Issues</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineeredElementImpl#getOwners <em>Owners</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineeredElementImpl#getExperts <em>Experts</em>}</li>
@@ -165,6 +170,28 @@ public class EngineeredElementImpl extends ForumImpl implements EngineeredElemen
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
+	public EList<Connection> getOutboundConnections() {
+		return (EList<Connection>)eDynamicGet(EngineeringPackage.ENGINEERED_ELEMENT__OUTBOUND_CONNECTIONS, EngineeringPackage.Literals.CONNECTION_SOURCE__OUTBOUND_CONNECTIONS, true, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public EList<Connection> getInboundConnections() {
+		return (EList<Connection>)eDynamicGet(EngineeringPackage.ENGINEERED_ELEMENT__INBOUND_CONNECTIONS, EngineeringPackage.Literals.CONNECTION_TARGET__INBOUND_CONNECTIONS, true, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public EList<Issue> getIssues() {
 		return (EList<Issue>)eDynamicGet(EngineeringPackage.ENGINEERED_ELEMENT__ISSUES, EngineeringPackage.Literals.ENGINEERED_ELEMENT__ISSUES, true, true);
 	}
@@ -270,6 +297,8 @@ public class EngineeredElementImpl extends ForumImpl implements EngineeredElemen
 				return basicSetStart(null, msgs);
 			case EngineeringPackage.ENGINEERED_ELEMENT__END:
 				return basicSetEnd(null, msgs);
+			case EngineeringPackage.ENGINEERED_ELEMENT__OUTBOUND_CONNECTIONS:
+				return ((InternalEList<?>)getOutboundConnections()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.ENGINEERED_ELEMENT__ISSUES:
 				return ((InternalEList<?>)getIssues()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.ENGINEERED_ELEMENT__ALLOCATIONS:
@@ -294,6 +323,10 @@ public class EngineeredElementImpl extends ForumImpl implements EngineeredElemen
 				return getEnd();
 			case EngineeringPackage.ENGINEERED_ELEMENT__DURATION:
 				return getDuration();
+			case EngineeringPackage.ENGINEERED_ELEMENT__OUTBOUND_CONNECTIONS:
+				return getOutboundConnections();
+			case EngineeringPackage.ENGINEERED_ELEMENT__INBOUND_CONNECTIONS:
+				return getInboundConnections();
 			case EngineeringPackage.ENGINEERED_ELEMENT__ISSUES:
 				return getIssues();
 			case EngineeringPackage.ENGINEERED_ELEMENT__OWNERS:
@@ -330,6 +363,10 @@ public class EngineeredElementImpl extends ForumImpl implements EngineeredElemen
 				return;
 			case EngineeringPackage.ENGINEERED_ELEMENT__DURATION:
 				setDuration((Duration)newValue);
+				return;
+			case EngineeringPackage.ENGINEERED_ELEMENT__OUTBOUND_CONNECTIONS:
+				getOutboundConnections().clear();
+				getOutboundConnections().addAll((Collection<? extends Connection>)newValue);
 				return;
 			case EngineeringPackage.ENGINEERED_ELEMENT__ISSUES:
 				getIssues().clear();
@@ -375,6 +412,9 @@ public class EngineeredElementImpl extends ForumImpl implements EngineeredElemen
 			case EngineeringPackage.ENGINEERED_ELEMENT__DURATION:
 				setDuration(DURATION_EDEFAULT);
 				return;
+			case EngineeringPackage.ENGINEERED_ELEMENT__OUTBOUND_CONNECTIONS:
+				getOutboundConnections().clear();
+				return;
 			case EngineeringPackage.ENGINEERED_ELEMENT__ISSUES:
 				getIssues().clear();
 				return;
@@ -411,6 +451,10 @@ public class EngineeredElementImpl extends ForumImpl implements EngineeredElemen
 				return getEnd() != null;
 			case EngineeringPackage.ENGINEERED_ELEMENT__DURATION:
 				return DURATION_EDEFAULT == null ? getDuration() != null : !DURATION_EDEFAULT.equals(getDuration());
+			case EngineeringPackage.ENGINEERED_ELEMENT__OUTBOUND_CONNECTIONS:
+				return !getOutboundConnections().isEmpty();
+			case EngineeringPackage.ENGINEERED_ELEMENT__INBOUND_CONNECTIONS:
+				return !getInboundConnections().isEmpty();
 			case EngineeringPackage.ENGINEERED_ELEMENT__ISSUES:
 				return !getIssues().isEmpty();
 			case EngineeringPackage.ENGINEERED_ELEMENT__OWNERS:
@@ -444,6 +488,18 @@ public class EngineeredElementImpl extends ForumImpl implements EngineeredElemen
 				default: return -1;
 			}
 		}
+		if (baseClass == ConnectionSource.class) {
+			switch (derivedFeatureID) {
+				case EngineeringPackage.ENGINEERED_ELEMENT__OUTBOUND_CONNECTIONS: return EngineeringPackage.CONNECTION_SOURCE__OUTBOUND_CONNECTIONS;
+				default: return -1;
+			}
+		}
+		if (baseClass == ConnectionTarget.class) {
+			switch (derivedFeatureID) {
+				case EngineeringPackage.ENGINEERED_ELEMENT__INBOUND_CONNECTIONS: return EngineeringPackage.CONNECTION_TARGET__INBOUND_CONNECTIONS;
+				default: return -1;
+			}
+		}
 		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
 	}
 
@@ -459,6 +515,18 @@ public class EngineeredElementImpl extends ForumImpl implements EngineeredElemen
 				case NcorePackage.PERIOD__START: return EngineeringPackage.ENGINEERED_ELEMENT__START;
 				case NcorePackage.PERIOD__END: return EngineeringPackage.ENGINEERED_ELEMENT__END;
 				case NcorePackage.PERIOD__DURATION: return EngineeringPackage.ENGINEERED_ELEMENT__DURATION;
+				default: return -1;
+			}
+		}
+		if (baseClass == ConnectionSource.class) {
+			switch (baseFeatureID) {
+				case EngineeringPackage.CONNECTION_SOURCE__OUTBOUND_CONNECTIONS: return EngineeringPackage.ENGINEERED_ELEMENT__OUTBOUND_CONNECTIONS;
+				default: return -1;
+			}
+		}
+		if (baseClass == ConnectionTarget.class) {
+			switch (baseFeatureID) {
+				case EngineeringPackage.CONNECTION_TARGET__INBOUND_CONNECTIONS: return EngineeringPackage.ENGINEERED_ELEMENT__INBOUND_CONNECTIONS;
 				default: return -1;
 			}
 		}

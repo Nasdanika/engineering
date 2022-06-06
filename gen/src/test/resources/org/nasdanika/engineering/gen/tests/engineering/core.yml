@@ -120,6 +120,26 @@ engineering-product-organization:
                     content-interpolator:
                       source:
                         content-resource: common.md
+              sections:
+                get-started:
+                  name: Get Started
+                  documentation:
+                    content-markdown:
+                      style: true
+                      source:
+                        content-interpolator:
+                          source:
+                            content-resource: get-started.md
+                  sections:
+                    install:
+                      name: Install
+                      documentation:
+                        content-markdown:
+                          style: true
+                          source:
+                            content-interpolator:
+                              source:
+                                content-resource: install.md                                                        
               discussion:
                 how-to-do-this:
                   name: How to do this?

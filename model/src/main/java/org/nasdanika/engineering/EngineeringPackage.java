@@ -1157,13 +1157,31 @@ public interface EngineeringPackage extends EPackage {
 	int ENGINEERED_ELEMENT__DURATION = FORUM_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Outbound Connections</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEERED_ELEMENT__OUTBOUND_CONNECTIONS = FORUM_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Inbound Connections</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEERED_ELEMENT__INBOUND_CONNECTIONS = FORUM_FEATURE_COUNT + 4;
+
+	/**
 	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEERED_ELEMENT__ISSUES = FORUM_FEATURE_COUNT + 3;
+	int ENGINEERED_ELEMENT__ISSUES = FORUM_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Owners</b></em>' reference list.
@@ -1172,7 +1190,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEERED_ELEMENT__OWNERS = FORUM_FEATURE_COUNT + 4;
+	int ENGINEERED_ELEMENT__OWNERS = FORUM_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Experts</b></em>' reference list.
@@ -1181,7 +1199,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEERED_ELEMENT__EXPERTS = FORUM_FEATURE_COUNT + 5;
+	int ENGINEERED_ELEMENT__EXPERTS = FORUM_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Allocations</b></em>' containment reference list.
@@ -1190,7 +1208,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEERED_ELEMENT__ALLOCATIONS = FORUM_FEATURE_COUNT + 6;
+	int ENGINEERED_ELEMENT__ALLOCATIONS = FORUM_FEATURE_COUNT + 8;
 
 	/**
 	 * The feature id for the '<em><b>Principles</b></em>' containment reference list.
@@ -1199,7 +1217,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEERED_ELEMENT__PRINCIPLES = FORUM_FEATURE_COUNT + 7;
+	int ENGINEERED_ELEMENT__PRINCIPLES = FORUM_FEATURE_COUNT + 9;
 
 	/**
 	 * The feature id for the '<em><b>All Issues</b></em>' reference list.
@@ -1208,7 +1226,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEERED_ELEMENT__ALL_ISSUES = FORUM_FEATURE_COUNT + 8;
+	int ENGINEERED_ELEMENT__ALL_ISSUES = FORUM_FEATURE_COUNT + 10;
 
 	/**
 	 * The feature id for the '<em><b>Status</b></em>' reference.
@@ -1217,7 +1235,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEERED_ELEMENT__STATUS = FORUM_FEATURE_COUNT + 9;
+	int ENGINEERED_ELEMENT__STATUS = FORUM_FEATURE_COUNT + 11;
 
 	/**
 	 * The number of structural features of the '<em>Engineered Element</em>' class.
@@ -1226,7 +1244,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEERED_ELEMENT_FEATURE_COUNT = FORUM_FEATURE_COUNT + 10;
+	int ENGINEERED_ELEMENT_FEATURE_COUNT = FORUM_FEATURE_COUNT + 12;
 
 	/**
 	 * The number of operations of the '<em>Engineered Element</em>' class.
@@ -1389,6 +1407,24 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int EVENT__DURATION = ENGINEERED_ELEMENT__DURATION;
+
+	/**
+	 * The feature id for the '<em><b>Outbound Connections</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT__OUTBOUND_CONNECTIONS = ENGINEERED_ELEMENT__OUTBOUND_CONNECTIONS;
+
+	/**
+	 * The feature id for the '<em><b>Inbound Connections</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT__INBOUND_CONNECTIONS = ENGINEERED_ELEMENT__INBOUND_CONNECTIONS;
 
 	/**
 	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
@@ -4227,6 +4263,24 @@ public interface EngineeringPackage extends EPackage {
 	int DOCUMENT__DURATION = ENGINEERED_ELEMENT__DURATION;
 
 	/**
+	 * The feature id for the '<em><b>Outbound Connections</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT__OUTBOUND_CONNECTIONS = ENGINEERED_ELEMENT__OUTBOUND_CONNECTIONS;
+
+	/**
+	 * The feature id for the '<em><b>Inbound Connections</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT__INBOUND_CONNECTIONS = ENGINEERED_ELEMENT__INBOUND_CONNECTIONS;
+
+	/**
 	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4290,31 +4344,13 @@ public interface EngineeringPackage extends EPackage {
 	int DOCUMENT__STATUS = ENGINEERED_ELEMENT__STATUS;
 
 	/**
-	 * The feature id for the '<em><b>Content</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DOCUMENT__CONTENT = ENGINEERED_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Markdown Content</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DOCUMENT__MARKDOWN_CONTENT = ENGINEERED_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
 	 * The number of structural features of the '<em>Document</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DOCUMENT_FEATURE_COUNT = ENGINEERED_ELEMENT_FEATURE_COUNT + 2;
+	int DOCUMENT_FEATURE_COUNT = ENGINEERED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>Document</em>' class.
@@ -4477,6 +4513,24 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int PERSONA__DURATION = ENGINEERED_ELEMENT__DURATION;
+
+	/**
+	 * The feature id for the '<em><b>Outbound Connections</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSONA__OUTBOUND_CONNECTIONS = ENGINEERED_ELEMENT__OUTBOUND_CONNECTIONS;
+
+	/**
+	 * The feature id for the '<em><b>Inbound Connections</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSONA__INBOUND_CONNECTIONS = ENGINEERED_ELEMENT__INBOUND_CONNECTIONS;
 
 	/**
 	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
@@ -4747,6 +4801,24 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int ENGINEER__DURATION = PERSONA__DURATION;
+
+	/**
+	 * The feature id for the '<em><b>Outbound Connections</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEER__OUTBOUND_CONNECTIONS = PERSONA__OUTBOUND_CONNECTIONS;
+
+	/**
+	 * The feature id for the '<em><b>Inbound Connections</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEER__INBOUND_CONNECTIONS = PERSONA__INBOUND_CONNECTIONS;
 
 	/**
 	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
@@ -5200,6 +5272,24 @@ public interface EngineeringPackage extends EPackage {
 	int DOMAIN__DURATION = ENGINEERED_ELEMENT__DURATION;
 
 	/**
+	 * The feature id for the '<em><b>Outbound Connections</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN__OUTBOUND_CONNECTIONS = ENGINEERED_ELEMENT__OUTBOUND_CONNECTIONS;
+
+	/**
+	 * The feature id for the '<em><b>Inbound Connections</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN__INBOUND_CONNECTIONS = ENGINEERED_ELEMENT__INBOUND_CONNECTIONS;
+
+	/**
 	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5441,6 +5531,24 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int ORGANIZATION__DURATION = ENGINEER__DURATION;
+
+	/**
+	 * The feature id for the '<em><b>Outbound Connections</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANIZATION__OUTBOUND_CONNECTIONS = ENGINEER__OUTBOUND_CONNECTIONS;
+
+	/**
+	 * The feature id for the '<em><b>Inbound Connections</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANIZATION__INBOUND_CONNECTIONS = ENGINEER__INBOUND_CONNECTIONS;
 
 	/**
 	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
@@ -5893,6 +6001,24 @@ public interface EngineeringPackage extends EPackage {
 	int MODULE__DURATION = ENGINEERED_ELEMENT__DURATION;
 
 	/**
+	 * The feature id for the '<em><b>Outbound Connections</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODULE__OUTBOUND_CONNECTIONS = ENGINEERED_ELEMENT__OUTBOUND_CONNECTIONS;
+
+	/**
+	 * The feature id for the '<em><b>Inbound Connections</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODULE__INBOUND_CONNECTIONS = ENGINEERED_ELEMENT__INBOUND_CONNECTIONS;
+
+	/**
 	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5956,31 +6082,13 @@ public interface EngineeringPackage extends EPackage {
 	int MODULE__STATUS = ENGINEERED_ELEMENT__STATUS;
 
 	/**
-	 * The feature id for the '<em><b>Outbound Connections</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODULE__OUTBOUND_CONNECTIONS = ENGINEERED_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Inbound Connections</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODULE__INBOUND_CONNECTIONS = ENGINEERED_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
 	 * The feature id for the '<em><b>Modules</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE__MODULES = ENGINEERED_ELEMENT_FEATURE_COUNT + 2;
+	int MODULE__MODULES = ENGINEERED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Dependencies</b></em>' reference list.
@@ -5989,7 +6097,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE__DEPENDENCIES = ENGINEERED_ELEMENT_FEATURE_COUNT + 3;
+	int MODULE__DEPENDENCIES = ENGINEERED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Dependants</b></em>' reference list.
@@ -5998,7 +6106,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE__DEPENDANTS = ENGINEERED_ELEMENT_FEATURE_COUNT + 4;
+	int MODULE__DEPENDANTS = ENGINEERED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Interfaces</b></em>' containment reference list.
@@ -6007,7 +6115,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE__INTERFACES = ENGINEERED_ELEMENT_FEATURE_COUNT + 5;
+	int MODULE__INTERFACES = ENGINEERED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Module</em>' class.
@@ -6016,7 +6124,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE_FEATURE_COUNT = ENGINEERED_ELEMENT_FEATURE_COUNT + 6;
+	int MODULE_FEATURE_COUNT = ENGINEERED_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of operations of the '<em>Module</em>' class.
@@ -6181,6 +6289,24 @@ public interface EngineeringPackage extends EPackage {
 	int PRODUCT__DURATION = MODULE__DURATION;
 
 	/**
+	 * The feature id for the '<em><b>Outbound Connections</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT__OUTBOUND_CONNECTIONS = MODULE__OUTBOUND_CONNECTIONS;
+
+	/**
+	 * The feature id for the '<em><b>Inbound Connections</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT__INBOUND_CONNECTIONS = MODULE__INBOUND_CONNECTIONS;
+
+	/**
 	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6242,24 +6368,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int PRODUCT__STATUS = MODULE__STATUS;
-
-	/**
-	 * The feature id for the '<em><b>Outbound Connections</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PRODUCT__OUTBOUND_CONNECTIONS = MODULE__OUTBOUND_CONNECTIONS;
-
-	/**
-	 * The feature id for the '<em><b>Inbound Connections</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PRODUCT__INBOUND_CONNECTIONS = MODULE__INBOUND_CONNECTIONS;
 
 	/**
 	 * The feature id for the '<em><b>Modules</b></em>' containment reference list.
@@ -7061,6 +7169,24 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int DIRECTORY__DURATION = ENGINEERED_ELEMENT__DURATION;
+
+	/**
+	 * The feature id for the '<em><b>Outbound Connections</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIRECTORY__OUTBOUND_CONNECTIONS = ENGINEERED_ELEMENT__OUTBOUND_CONNECTIONS;
+
+	/**
+	 * The feature id for the '<em><b>Inbound Connections</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIRECTORY__INBOUND_CONNECTIONS = ENGINEERED_ELEMENT__INBOUND_CONNECTIONS;
 
 	/**
 	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
@@ -9553,6 +9679,24 @@ public interface EngineeringPackage extends EPackage {
 	int PRODUCT_ORGANIZATION__DURATION = ORGANIZATION__DURATION;
 
 	/**
+	 * The feature id for the '<em><b>Outbound Connections</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_ORGANIZATION__OUTBOUND_CONNECTIONS = ORGANIZATION__OUTBOUND_CONNECTIONS;
+
+	/**
+	 * The feature id for the '<em><b>Inbound Connections</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_ORGANIZATION__INBOUND_CONNECTIONS = ORGANIZATION__INBOUND_CONNECTIONS;
+
+	/**
 	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -10068,6 +10212,24 @@ public interface EngineeringPackage extends EPackage {
 	int CONNECTION__DURATION = ENGINEERED_ELEMENT__DURATION;
 
 	/**
+	 * The feature id for the '<em><b>Outbound Connections</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTION__OUTBOUND_CONNECTIONS = ENGINEERED_ELEMENT__OUTBOUND_CONNECTIONS;
+
+	/**
+	 * The feature id for the '<em><b>Inbound Connections</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTION__INBOUND_CONNECTIONS = ENGINEERED_ELEMENT__INBOUND_CONNECTIONS;
+
+	/**
 	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -10358,6 +10520,24 @@ public interface EngineeringPackage extends EPackage {
 	int INTERFACE__DURATION = ENGINEERED_ELEMENT__DURATION;
 
 	/**
+	 * The feature id for the '<em><b>Outbound Connections</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERFACE__OUTBOUND_CONNECTIONS = ENGINEERED_ELEMENT__OUTBOUND_CONNECTIONS;
+
+	/**
+	 * The feature id for the '<em><b>Inbound Connections</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERFACE__INBOUND_CONNECTIONS = ENGINEERED_ELEMENT__INBOUND_CONNECTIONS;
+
+	/**
 	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -10421,22 +10601,13 @@ public interface EngineeringPackage extends EPackage {
 	int INTERFACE__STATUS = ENGINEERED_ELEMENT__STATUS;
 
 	/**
-	 * The feature id for the '<em><b>Inbound Connections</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERFACE__INBOUND_CONNECTIONS = ENGINEERED_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
 	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INTERFACE__CHILDREN = ENGINEERED_ELEMENT_FEATURE_COUNT + 1;
+	int INTERFACE__CHILDREN = ENGINEERED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Interface</em>' class.
@@ -10445,7 +10616,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INTERFACE_FEATURE_COUNT = ENGINEERED_ELEMENT_FEATURE_COUNT + 2;
+	int INTERFACE_FEATURE_COUNT = ENGINEERED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Interface</em>' class.
@@ -12457,28 +12628,6 @@ public interface EngineeringPackage extends EPackage {
 	EReference getInterface_Children();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Document#getContent <em>Content</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Content</em>'.
-	 * @see org.nasdanika.engineering.Document#getContent()
-	 * @see #getDocument()
-	 * @generated
-	 */
-	EAttribute getDocument_Content();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Document#getMarkdownContent <em>Markdown Content</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Markdown Content</em>'.
-	 * @see org.nasdanika.engineering.Document#getMarkdownContent()
-	 * @see #getDocument()
-	 * @generated
-	 */
-	EAttribute getDocument_MarkdownContent();
-
-	/**
 	 * Returns the meta object for class '{@link org.nasdanika.engineering.Message <em>Message</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -14112,22 +14261,6 @@ public interface EngineeringPackage extends EPackage {
 		 * @generated
 		 */
 		EReference INTERFACE__CHILDREN = eINSTANCE.getInterface_Children();
-
-		/**
-		 * The meta object literal for the '<em><b>Content</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute DOCUMENT__CONTENT = eINSTANCE.getDocument_Content();
-
-		/**
-		 * The meta object literal for the '<em><b>Markdown Content</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute DOCUMENT__MARKDOWN_CONTENT = eINSTANCE.getDocument_MarkdownContent();
 
 		/**
 		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.MessageImpl <em>Message</em>}' class.

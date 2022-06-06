@@ -39,7 +39,7 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="sections" upperBound="-1"
-        eType="#//Document" containment="true">
+        eType="#//Document" containment="true" eKeys="#//ModelElement/path">
       <eAnnotations source="urn:org.nasdanika">
         <details key="homogenous" value="true"/>
       </eAnnotations>
@@ -475,7 +475,7 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="EngineeredElement" eSuperTypes="#//Forum ../../org.nasdanika.ncore/model/ncore.ecore#//Period">
+  <eClassifiers xsi:type="ecore:EClass" name="EngineeredElement" eSuperTypes="#//Forum ../../org.nasdanika.ncore/model/ncore.ecore#//Period #//ConnectionSource #//ConnectionTarget">
     <eAnnotations source="urn:org.nasdanika">
       <details key="documentation-reference" value="doc/engineered-element.md"/>
     </eAnnotations>
@@ -565,16 +565,6 @@
     <eAnnotations source="urn:org.nasdanika">
       <details key="documentation-reference" value="doc/document.md"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="content" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Document/section content in HTML."/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="markdownContent" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Document/section content in [Markdown](https://en.wikipedia.org/wiki/Markdown)."/>
-      </eAnnotations>
-    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Persona" eSuperTypes="#//EngineeredElement">
     <eAnnotations source="urn:org.nasdanika">
@@ -801,7 +791,7 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Module" eSuperTypes="#//EngineeredElement #//ConnectionSource #//ConnectionTarget">
+  <eClassifiers xsi:type="ecore:EClass" name="Module" eSuperTypes="#//EngineeredElement">
     <eAnnotations source="urn:org.nasdanika">
       <details key="documentation-reference" value="doc/module.md"/>
     </eAnnotations>

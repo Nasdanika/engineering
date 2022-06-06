@@ -162,6 +162,8 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				if (result == null) result = caseTemporal(event);
 				if (result == null) result = caseForum(event);
 				if (result == null) result = casePeriod(event);
+				if (result == null) result = caseConnectionSource(event);
+				if (result == null) result = caseConnectionTarget(event);
 				if (result == null) result = caseNamedElement(event);
 				if (result == null) result = caseModelElement(event);
 				if (result == null) result = caseNcore_NamedElement(event);
@@ -308,6 +310,8 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				T result = caseEngineeredElement(engineeredElement);
 				if (result == null) result = caseForum(engineeredElement);
 				if (result == null) result = casePeriod(engineeredElement);
+				if (result == null) result = caseConnectionSource(engineeredElement);
+				if (result == null) result = caseConnectionTarget(engineeredElement);
 				if (result == null) result = caseNamedElement(engineeredElement);
 				if (result == null) result = caseModelElement(engineeredElement);
 				if (result == null) result = caseNcore_NamedElement(engineeredElement);
@@ -337,6 +341,8 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				if (result == null) result = caseEngineeredElement(document);
 				if (result == null) result = caseForum(document);
 				if (result == null) result = casePeriod(document);
+				if (result == null) result = caseConnectionSource(document);
+				if (result == null) result = caseConnectionTarget(document);
 				if (result == null) result = caseNamedElement(document);
 				if (result == null) result = caseModelElement(document);
 				if (result == null) result = caseNcore_NamedElement(document);
@@ -353,6 +359,8 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				if (result == null) result = caseEngineeredElement(persona);
 				if (result == null) result = caseForum(persona);
 				if (result == null) result = casePeriod(persona);
+				if (result == null) result = caseConnectionSource(persona);
+				if (result == null) result = caseConnectionTarget(persona);
 				if (result == null) result = caseNamedElement(persona);
 				if (result == null) result = caseModelElement(persona);
 				if (result == null) result = caseNcore_NamedElement(persona);
@@ -370,6 +378,8 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				if (result == null) result = caseEngineeredElement(engineer);
 				if (result == null) result = caseForum(engineer);
 				if (result == null) result = casePeriod(engineer);
+				if (result == null) result = caseConnectionSource(engineer);
+				if (result == null) result = caseConnectionTarget(engineer);
 				if (result == null) result = caseNamedElement(engineer);
 				if (result == null) result = caseModelElement(engineer);
 				if (result == null) result = caseNcore_NamedElement(engineer);
@@ -386,6 +396,8 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				if (result == null) result = caseEngineeredElement(domain);
 				if (result == null) result = caseForum(domain);
 				if (result == null) result = casePeriod(domain);
+				if (result == null) result = caseConnectionSource(domain);
+				if (result == null) result = caseConnectionTarget(domain);
 				if (result == null) result = caseNamedElement(domain);
 				if (result == null) result = caseModelElement(domain);
 				if (result == null) result = caseNcore_NamedElement(domain);
@@ -404,6 +416,8 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				if (result == null) result = caseEngineeredElement(organization);
 				if (result == null) result = caseForum(organization);
 				if (result == null) result = casePeriod(organization);
+				if (result == null) result = caseConnectionSource(organization);
+				if (result == null) result = caseConnectionTarget(organization);
 				if (result == null) result = caseNamedElement(organization);
 				if (result == null) result = caseModelElement(organization);
 				if (result == null) result = caseNcore_NamedElement(organization);
@@ -418,10 +432,10 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				org.nasdanika.engineering.Module module = (org.nasdanika.engineering.Module)theEObject;
 				T result = caseModule(module);
 				if (result == null) result = caseEngineeredElement(module);
-				if (result == null) result = caseConnectionSource(module);
-				if (result == null) result = caseConnectionTarget(module);
 				if (result == null) result = caseForum(module);
 				if (result == null) result = casePeriod(module);
+				if (result == null) result = caseConnectionSource(module);
+				if (result == null) result = caseConnectionTarget(module);
 				if (result == null) result = caseNamedElement(module);
 				if (result == null) result = caseModelElement(module);
 				if (result == null) result = caseNcore_NamedElement(module);
@@ -437,10 +451,10 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				T result = caseProduct(product);
 				if (result == null) result = caseModule(product);
 				if (result == null) result = caseEngineeredElement(product);
-				if (result == null) result = caseConnectionSource(product);
-				if (result == null) result = caseConnectionTarget(product);
 				if (result == null) result = caseForum(product);
 				if (result == null) result = casePeriod(product);
+				if (result == null) result = caseConnectionSource(product);
+				if (result == null) result = caseConnectionTarget(product);
 				if (result == null) result = caseNamedElement(product);
 				if (result == null) result = caseModelElement(product);
 				if (result == null) result = caseNcore_NamedElement(product);
@@ -524,6 +538,8 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				if (result == null) result = caseEngineeredElement(directory);
 				if (result == null) result = caseForum(directory);
 				if (result == null) result = casePeriod(directory);
+				if (result == null) result = caseConnectionSource(directory);
+				if (result == null) result = caseConnectionTarget(directory);
 				if (result == null) result = caseNamedElement(directory);
 				if (result == null) result = caseModelElement(directory);
 				if (result == null) result = caseNcore_NamedElement(directory);
@@ -725,6 +741,8 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				if (result == null) result = caseEngineeredElement(productOrganization);
 				if (result == null) result = caseForum(productOrganization);
 				if (result == null) result = casePeriod(productOrganization);
+				if (result == null) result = caseConnectionSource(productOrganization);
+				if (result == null) result = caseConnectionTarget(productOrganization);
 				if (result == null) result = caseNamedElement(productOrganization);
 				if (result == null) result = caseModelElement(productOrganization);
 				if (result == null) result = caseNcore_NamedElement(productOrganization);
@@ -747,6 +765,8 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				if (result == null) result = caseEngineeredElement(connection);
 				if (result == null) result = caseForum(connection);
 				if (result == null) result = casePeriod(connection);
+				if (result == null) result = caseConnectionSource(connection);
+				if (result == null) result = caseConnectionTarget(connection);
 				if (result == null) result = caseNamedElement(connection);
 				if (result == null) result = caseModelElement(connection);
 				if (result == null) result = caseNcore_NamedElement(connection);
@@ -767,9 +787,10 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				Interface interface_ = (Interface)theEObject;
 				T result = caseInterface(interface_);
 				if (result == null) result = caseEngineeredElement(interface_);
-				if (result == null) result = caseConnectionTarget(interface_);
 				if (result == null) result = caseForum(interface_);
 				if (result == null) result = casePeriod(interface_);
+				if (result == null) result = caseConnectionSource(interface_);
+				if (result == null) result = caseConnectionTarget(interface_);
 				if (result == null) result = caseNamedElement(interface_);
 				if (result == null) result = caseModelElement(interface_);
 				if (result == null) result = caseNcore_NamedElement(interface_);

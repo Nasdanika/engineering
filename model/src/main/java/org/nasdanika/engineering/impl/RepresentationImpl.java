@@ -11,6 +11,7 @@ import org.nasdanika.diagram.impl.DiagramImpl;
 
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Representation;
+import org.nasdanika.exec.Call;
 
 /**
  * <!-- begin-user-doc -->
@@ -51,8 +52,8 @@ public class RepresentationImpl extends DiagramImpl implements Representation {
 	 * @generated
 	 */
 	@Override
-	public org.nasdanika.exec.Call getGenerator() {
-		return (org.nasdanika.exec.Call)eDynamicGet(EngineeringPackage.REPRESENTATION__GENERATOR, EngineeringPackage.Literals.REPRESENTATION__GENERATOR, true, true);
+	public Call getGenerator() {
+		return (Call)eDynamicGet(EngineeringPackage.REPRESENTATION__GENERATOR, EngineeringPackage.Literals.REPRESENTATION__GENERATOR, true, true);
 	}
 
 	/**
@@ -60,7 +61,7 @@ public class RepresentationImpl extends DiagramImpl implements Representation {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetGenerator(org.nasdanika.exec.Call newGenerator, NotificationChain msgs) {
+	public NotificationChain basicSetGenerator(Call newGenerator, NotificationChain msgs) {
 		msgs = eDynamicInverseAdd((InternalEObject)newGenerator, EngineeringPackage.REPRESENTATION__GENERATOR, msgs);
 		return msgs;
 	}
@@ -71,7 +72,7 @@ public class RepresentationImpl extends DiagramImpl implements Representation {
 	 * @generated
 	 */
 	@Override
-	public void setGenerator(org.nasdanika.exec.Call newGenerator) {
+	public void setGenerator(Call newGenerator) {
 		eDynamicSet(EngineeringPackage.REPRESENTATION__GENERATOR, EngineeringPackage.Literals.REPRESENTATION__GENERATOR, newGenerator);
 	}
 
@@ -112,7 +113,7 @@ public class RepresentationImpl extends DiagramImpl implements Representation {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case EngineeringPackage.REPRESENTATION__GENERATOR:
-				setGenerator((org.nasdanika.exec.Call)newValue);
+				setGenerator((Call)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -127,7 +128,7 @@ public class RepresentationImpl extends DiagramImpl implements Representation {
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case EngineeringPackage.REPRESENTATION__GENERATOR:
-				setGenerator((org.nasdanika.exec.Call)null);
+				setGenerator((Call)null);
 				return;
 		}
 		super.eUnset(featureID);

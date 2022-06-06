@@ -108,10 +108,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//EngineeredElementStatus/elementStyle"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//EngineeredElementStatus/connectionStyle"/>
     </genClasses>
-    <genClasses ecoreClass="engineering.ecore#//Document">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Document/content"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute engineering.ecore#//Document/markdownContent"/>
-    </genClasses>
+    <genClasses ecoreClass="engineering.ecore#//Document"/>
     <genClasses ecoreClass="engineering.ecore#//Persona">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference engineering.ecore#//Persona/goals"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference engineering.ecore#//Persona/representatives"/>

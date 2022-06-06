@@ -120,7 +120,7 @@ public interface ModelElement extends org.nasdanika.ncore.ModelElement {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Sections</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getModelElement_Sections()
-	 * @model containment="true"
+	 * @model containment="true" keys="path"
 	 *        annotation="urn:org.nasdanika homogenous='true'"
 	 * @generated
 	 */

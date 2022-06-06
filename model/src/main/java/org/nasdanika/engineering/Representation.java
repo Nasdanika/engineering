@@ -3,6 +3,7 @@
 package org.nasdanika.engineering;
 
 import org.nasdanika.diagram.Diagram;
+import org.nasdanika.exec.Call;
 
 /**
  * <!-- begin-user-doc -->
@@ -26,13 +27,13 @@ public interface Representation extends Diagram {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Generator</em>' containment reference.
-	 * @see #setGenerator(org.nasdanika.exec.Call)
+	 * @see #setGenerator(Call)
 	 * @see org.nasdanika.engineering.EngineeringPackage#getRepresentation_Generator()
 	 * @model containment="true"
 	 *        annotation="urn:org.nasdanika homogenous='true' strict-containment='true'"
 	 * @generated
 	 */
-	org.nasdanika.exec.Call getGenerator();
+	Call getGenerator();
 
 	/**
 	 * Sets the value of the '{@link org.nasdanika.engineering.Representation#getGenerator <em>Generator</em>}' containment reference.
@@ -42,6 +43,6 @@ public interface Representation extends Diagram {
 	 * @see #getGenerator()
 	 * @generated
 	 */
-	void setGenerator(org.nasdanika.exec.Call value);
+	void setGenerator(Call value);
 
 } // Representation

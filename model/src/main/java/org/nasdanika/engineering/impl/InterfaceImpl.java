@@ -11,7 +11,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.nasdanika.engineering.Connection;
-import org.nasdanika.engineering.ConnectionTarget;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Interface;
 
@@ -23,7 +22,6 @@ import org.nasdanika.engineering.Interface;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.nasdanika.engineering.impl.InterfaceImpl#getInboundConnections <em>Inbound Connections</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.InterfaceImpl#getChildren <em>Children</em>}</li>
  * </ul>
  *
@@ -92,8 +90,6 @@ public class InterfaceImpl extends EngineeredElementImpl implements Interface {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EngineeringPackage.INTERFACE__INBOUND_CONNECTIONS:
-				return getInboundConnections();
 			case EngineeringPackage.INTERFACE__CHILDREN:
 				return getChildren();
 		}
@@ -140,44 +136,10 @@ public class InterfaceImpl extends EngineeredElementImpl implements Interface {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EngineeringPackage.INTERFACE__INBOUND_CONNECTIONS:
-				return !getInboundConnections().isEmpty();
 			case EngineeringPackage.INTERFACE__CHILDREN:
 				return !getChildren().isEmpty();
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-		if (baseClass == ConnectionTarget.class) {
-			switch (derivedFeatureID) {
-				case EngineeringPackage.INTERFACE__INBOUND_CONNECTIONS: return EngineeringPackage.CONNECTION_TARGET__INBOUND_CONNECTIONS;
-				default: return -1;
-			}
-		}
-		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-		if (baseClass == ConnectionTarget.class) {
-			switch (baseFeatureID) {
-				case EngineeringPackage.CONNECTION_TARGET__INBOUND_CONNECTIONS: return EngineeringPackage.INTERFACE__INBOUND_CONNECTIONS;
-				default: return -1;
-			}
-		}
-		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
 } //InterfaceImpl

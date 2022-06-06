@@ -15,6 +15,7 @@ import org.nasdanika.engineering.journey.Journey;
 import org.nasdanika.engineering.journey.JourneyFactory;
 import org.nasdanika.engineering.journey.JourneyPackage;
 import org.nasdanika.engineering.journey.util.JourneyValidator;
+import org.nasdanika.exec.ExecPackage;
 import org.nasdanika.flow.FlowPackage;
 import org.nasdanika.ncore.NcorePackage;
 
@@ -88,7 +89,7 @@ public class JourneyPackageImpl extends EPackageImpl implements JourneyPackage {
 
 		// Initialize simple dependencies
 		DiagramPackage.eINSTANCE.eClass();
-		org.nasdanika.exec.ExecPackage.eINSTANCE.eClass();
+		ExecPackage.eINSTANCE.eClass();
 		FlowPackage.eINSTANCE.eClass();
 		NcorePackage.eINSTANCE.eClass();
 

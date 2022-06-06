@@ -47,6 +47,7 @@ import org.nasdanika.common.Context;
 import org.nasdanika.common.DefaultConverter;
 import org.nasdanika.common.Diagnostic;
 import org.nasdanika.common.DiagnosticException;
+import org.nasdanika.common.DiagramGenerator;
 import org.nasdanika.common.MutableContext;
 import org.nasdanika.common.NasdanikaException;
 import org.nasdanika.common.NullProgressMonitor;
@@ -328,8 +329,39 @@ public class TestEngineeringGen /* extends TestBase */ {
 				}
 				
 			};
+			
+			DiagramGenerator chain = contentProviderContext.get(DiagramGenerator.class, DiagramGenerator.INSTANCE);
 			MutableContext mctx = contentProviderContext.fork();
-			mctx.put("uri", uriPropertyComputer);			
+			mctx.put("uri", uriPropertyComputer);		
+			
+			DiagramGenerator interpolatingDiagramGenerator = new DiagramGenerator() {
+
+				@Override
+				public String generateDiagram(String spec, Dialect dialect) throws Exception {
+					if (dialect == Dialect.DRAWIO) {
+						spec = Util.filterMxGraphModel(spec, cell -> {
+							Object cellValue = cell.getValue();
+							if (cellValue instanceof org.w3c.dom.Element) {
+								org.w3c.dom.Element cellValueElement = (org.w3c.dom.Element) cellValue;
+								if (cellValueElement.hasAttribute("link")) {
+									String link = cellValueElement.getAttribute("link");
+									cellValueElement.setAttribute("link", mctx.interpolateToString(link));
+								}
+								if (cellValueElement.hasAttribute("label")) {
+									String link = cellValueElement.getAttribute("label");
+									cellValueElement.setAttribute("label", mctx.interpolateToString(link));
+								}
+							} else if (cellValue instanceof String) {
+								cell.setValue(mctx.interpolateToString((String) cellValue));
+							}
+						});
+					}
+					return chain.generateDiagram(spec, dialect);
+				}
+				
+			};
+			
+			mctx.register(DiagramGenerator.class, interpolatingDiagramGenerator);
 			
 			String fileName = action.getUuid() + ".html";
 			SupplierFactory<InputStream> contentFactory = org.nasdanika.common.Util.asInputStreamSupplierFactory(action.getContent());			

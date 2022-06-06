@@ -23,7 +23,7 @@ import org.eclipse.emf.common.util.EList;
  * @model annotation="urn:org.nasdanika documentation-reference='doc/module.md'"
  * @generated
  */
-public interface Module extends EngineeredElement, ConnectionSource, ConnectionTarget {
+public interface Module extends EngineeredElement {
 	/**
 	 * Returns the value of the '<em><b>Modules</b></em>' containment reference list.
 	 * The list contents are of type {@link org.nasdanika.engineering.Module}.
