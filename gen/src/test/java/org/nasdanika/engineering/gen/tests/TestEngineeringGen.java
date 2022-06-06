@@ -85,6 +85,7 @@ import org.nasdanika.html.model.app.util.ActionProvider;
 import org.nasdanika.html.model.app.util.AppYamlSupplier;
 import org.nasdanika.html.model.bootstrap.BootstrapPackage;
 import org.nasdanika.html.model.html.HtmlPackage;
+import org.nasdanika.ncore.ModelElement;
 import org.nasdanika.ncore.NcorePackage;
 import org.nasdanika.ncore.util.NcoreResourceSet;
 import org.nasdanika.ncore.util.NcoreUtil;
@@ -307,10 +308,19 @@ public class TestEngineeringGen /* extends TestBase */ {
 		contentDir.mkdirs();
 		// Generating content file from action content
 		Map<URI, Action> uriMap = new HashMap<>();
+		Map<String, Action> uuidMap = new HashMap<>();
 		for (Entry<EObject, Action> re: registry.entrySet()) {
-			URI uri = NcoreUtil.getUri(re.getKey());
+			EObject key = re.getKey();
+			URI uri = NcoreUtil.getUri(key);
+			Action value = re.getValue();
 			if (uri != null) {
-				uriMap.put(uri, re.getValue());
+				uriMap.put(uri, value);
+			}
+			if (key instanceof ModelElement) {
+				String uuid = ((ModelElement) key).getUuid();
+				if (uuid != null) {
+					uuidMap.put(uuid, value);					
+				}
 			}
 		}
 		ActionContentProvider.Factory actionContentProviderFactory = (contentProviderContext) -> (action, uriResolver, pMonitor) -> {
@@ -329,10 +339,26 @@ public class TestEngineeringGen /* extends TestBase */ {
 				}
 				
 			};
+			PropertyComputer uuidPropertyComputer = new PropertyComputer() {
+				
+				@SuppressWarnings("unchecked")
+				@Override
+				public <P> P compute(Context context, String key, String path, Class<P> type) {
+					Action targetAction = uuidMap.get(path);
+					if (targetAction == null) {
+						return null;
+					}
+					URI bURI = uriResolver.apply(action, (URI) null);
+					URI tURI = uriResolver.apply(targetAction, bURI);
+					return tURI == null ? null : (P) tURI.toString();
+				}
+				
+			};
 			
 			DiagramGenerator chain = contentProviderContext.get(DiagramGenerator.class, DiagramGenerator.INSTANCE);
 			MutableContext mctx = contentProviderContext.fork();
 			mctx.put("uri", uriPropertyComputer);		
+			mctx.put("uuid", uuidPropertyComputer);		
 			
 			DiagramGenerator interpolatingDiagramGenerator = new DiagramGenerator() {
 

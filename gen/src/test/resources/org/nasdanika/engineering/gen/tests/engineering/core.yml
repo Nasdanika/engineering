@@ -224,6 +224,7 @@ engineering-product-organization:
             children:
               tls:
                 name: TLS (443)
+                uuid: 79305de3-eecb-4231-ad63-66ba90ca942f
                 status: engineering://nasdanika/engineered-element-statuses/proposed   
     - engineering-product:
         path: client
