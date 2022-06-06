@@ -7,17 +7,13 @@ import java.util.function.BiConsumer;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.ETypedElement;
-import org.eclipse.emf.ecore.EcorePackage;
 import org.nasdanika.common.Context;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.common.Util;
-import org.nasdanika.engineering.Connection;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Interface;
 import org.nasdanika.html.model.app.Action;
 import org.nasdanika.html.model.app.AppFactory;
-import org.nasdanika.html.model.bootstrap.Table;
-import org.nasdanika.ncore.NcorePackage;
 
 public class ModuleActionBuilder<T extends org.nasdanika.engineering.Module> extends EngineeredElementActionBuilder<T> {
 	
@@ -39,8 +35,6 @@ public class ModuleActionBuilder<T extends org.nasdanika.engineering.Module> ext
 		
 		createModuleActions(action, registry, resolveConsumer, progressMonitor);
 		createInterfaceActions(action, registry, resolveConsumer, progressMonitor);
-		createOutboundConnectionsActions(action, registry, resolveConsumer, progressMonitor);
-//		action.getSections().addAll(createInboundConnectionsActions(registry, resolveConsumer, progressMonitor));
 		
 		return action;
 	}
@@ -83,18 +77,6 @@ public class ModuleActionBuilder<T extends org.nasdanika.engineering.Module> ext
 		}		
 	}
 		
-	protected void createOutboundConnectionsActions(
-			Action action,
-			BiConsumer<EObject,Action> registry, 
-			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
-			ProgressMonitor progressMonitor) throws Exception {
-		
-		EList<Action> groupAnonymous = action.getAnonymous();
-		for (Connection outboundConnection: getTarget().getOutboundConnections()) {
-			groupAnonymous.add(createChildAction(outboundConnection, registry, resolveConsumer, progressMonitor));
-		}
-	}
-		
 	@Override
 	protected void resolve(
 			Action action, 
@@ -130,46 +112,6 @@ public class ModuleActionBuilder<T extends org.nasdanika.engineering.Module> ext
 			
 			interfacesAction.getContent().add(renderList(interfaces, true, interfaceChildrenListProvider, action, EngineeringPackage.Literals.MODULE__INTERFACES, context, progressMonitor));
 			
-		}
-		
-		// Outbound connections
-		EList<Connection> outboundConnections = getTarget().getOutboundConnections();
-		if (!outboundConnections.isEmpty()) {
-			Action outboundConnectionsAction = AppFactory.eINSTANCE.createAction();
-			outboundConnectionsAction.setText("Outbound connections");
-			action.getSections().add(outboundConnectionsAction);
-			
-			Table outboundConnectionsTable = buildTable(
-					outboundConnections, 
-					action, 
-					EngineeringPackage.Literals.CONNECTION_SOURCE__OUTBOUND_CONNECTIONS, 
-					context, 
-					progressMonitor, 
-					createColumnBuilder("Name"),
-					createColumnBuilder(EngineeringPackage.Literals.CONNECTION__TARGET),
-					createColumnBuilder(NcorePackage.Literals.MODEL_ELEMENT__DESCRIPTION));
-			
-			outboundConnectionsAction.getContent().add(outboundConnectionsTable);			
-		}
-				
-		// Inbound connections
-		EList<Connection> inboundConnections = getTarget().getInboundConnections();
-		if (!inboundConnections.isEmpty()) {
-			Action inboundConnectionsAction = AppFactory.eINSTANCE.createAction();
-			inboundConnectionsAction.setText("Inbound connections");
-			action.getSections().add(inboundConnectionsAction);
-			
-			Table inboundConnectionsTable = buildTable(
-					inboundConnections, 
-					action, 
-					EngineeringPackage.Literals.CONNECTION_TARGET__INBOUND_CONNECTIONS, 
-					context, 
-					progressMonitor, 
-					createColumnBuilder("Name"),
-					createColumnBuilder(EcorePackage.Literals.EOBJECT___ECONTAINER, "Source"),
-					createColumnBuilder(NcorePackage.Literals.MODEL_ELEMENT__DESCRIPTION));
-			
-			inboundConnectionsAction.getContent().add(inboundConnectionsTable);			
 		}
 				
 	}	

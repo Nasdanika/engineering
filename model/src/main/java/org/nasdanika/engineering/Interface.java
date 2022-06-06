@@ -21,7 +21,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface Interface extends EngineeredElement, ConnectionTarget {
+public interface Interface extends EngineeredElement {
 
 	/**
 	 * Returns the value of the '<em><b>Children</b></em>' containment reference list.

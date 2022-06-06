@@ -2731,7 +2731,6 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		productOrganizationEClass.getESuperTypes().add(this.getOrganization());
 		connectionEClass.getESuperTypes().add(this.getEngineeredElement());
 		interfaceEClass.getESuperTypes().add(this.getEngineeredElement());
-		interfaceEClass.getESuperTypes().add(this.getConnectionTarget());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(modelElementEClass, ModelElement.class, "ModelElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

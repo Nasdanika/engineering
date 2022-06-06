@@ -566,7 +566,7 @@ public class TestEngineeringGen /* extends TestBase */ {
 			writer.write("var searchDocuments = " + searchDocuments);
 		}
 		
-		if (problems.get() != 94) { // 94 known problems to be fixed over time
+		if (problems.get() != 92) { // 92 known problems to be fixed over time
 			fail("There are broken links: " + problems.get());
 		};
 	}
