@@ -2,6 +2,9 @@ package org.nasdanika.engineering.gen;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
 import java.util.function.BiConsumer;
 
 import org.apache.commons.codec.binary.Hex;
@@ -16,9 +19,11 @@ import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.common.Util;
 import org.nasdanika.diagram.gen.Generator;
 import org.nasdanika.emf.EObjectAdaptable;
+import org.nasdanika.engineering.Directory;
 import org.nasdanika.engineering.Document;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.ModelElement;
+import org.nasdanika.engineering.NamedElement;
 import org.nasdanika.engineering.Representation;
 import org.nasdanika.html.emf.EObjectActionBuilder;
 import org.nasdanika.html.model.app.Action;
@@ -73,7 +78,30 @@ public class ModelElementActionBuilder<T extends ModelElement> extends EObjectAc
 		for (Document section: eObj.getSections()) {
 			sections.add(createChildAction(section, registry, resolveConsumer, progressMonitor));			
 		}
+		
+		createResourcesAction(ret, registry, resolveConsumer, progressMonitor);				
 		return ret;
+	}
+
+	protected void createResourcesAction(
+			Action action,
+			BiConsumer<EObject,Action> registry, 
+			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
+			ProgressMonitor progressMonitor) throws Exception {
+		
+		EList<NamedElement> resources = getTarget().getResources();
+		if (!resources.isEmpty()) {
+			Action group = AppFactory.eINSTANCE.createAction();
+			group.setText("Resources");
+			group.setUuid(action.getUuid() + "-resources");
+			group.setLocation("resources.html");
+			EList<Action> groupAnonymous = group.getAnonymous();
+			for (NamedElement resource: resources) {
+				groupAnonymous.add(createChildAction(resource, registry, resolveConsumer, progressMonitor));
+			}
+		
+			action.getNavigation().add(group);
+		}	
 	}
 	
 	@Override
@@ -139,7 +167,43 @@ public class ModelElementActionBuilder<T extends ModelElement> extends EObjectAc
 			}
 		}
 		
+		EList<NamedElement> resources = semanticElement.getResources();
+		if (!resources.isEmpty()) {
+			String resourcesGroupUUID = action.getUuid() + "-resources";
+			Optional<Action> resourcesActionOptional = action.getNavigation().stream()
+					.filter(Action.class::isInstance)					
+					.map(Action.class::cast)
+					.filter(a -> resourcesGroupUUID.equals(a.getUuid()))
+					.findFirst();
+			
+			Action resourcesAction = resourcesActionOptional.get();
+			resourcesAction.getContent().add(renderList(resources, true, createResourceChildrenProvider(), resourcesAction, EngineeringPackage.Literals.MODEL_ELEMENT__RESOURCES, context, progressMonitor)); // Table?
+		}
+				
 	}
+	
+	private ContentProvider<NamedElement> createResourceChildrenProvider() {
+		return new ContentProvider<NamedElement>() {
+	
+			@Override
+			public List<EObject> createContent(
+					NamedElement element, 
+					Action base, 
+					ETypedElement typedElement,
+					org.nasdanika.html.emf.EObjectActionResolver.Context context, 
+					ProgressMonitor progressMonitor) throws Exception {
+	
+				if (element instanceof Directory) {
+					EList<NamedElement> children = ((Directory) element).getElements();
+					if (!children.isEmpty()) {
+						return Collections.singletonList(renderList(children, true, this, base, EngineeringPackage.Literals.DIRECTORY__ELEMENTS, context, progressMonitor));
+					}
+				}
+				return null;
+			}
+			
+		};
+	}	
 	
 	/**
 	 * Populates empty representations. An empty representation indicates that it has to be auto-populated. 

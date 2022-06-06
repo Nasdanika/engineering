@@ -225,7 +225,24 @@ engineering-product-organization:
               tls:
                 name: TLS (443)
                 uuid: 79305de3-eecb-4231-ad63-66ba90ca942f
-                status: engineering://nasdanika/engineered-element-statuses/proposed   
+                status: engineering://nasdanika/engineered-element-statuses/proposed
+                resources:
+                  intro:
+                    engineering-document:
+                      name: Intro
+                      documentation:
+                        content-text: Very important documentation about this and that.
+                  ref-library:
+                    engineering-directory:
+                      name: Reference library
+                      documentation:
+                        content-text: A collection of documentation
+                      elements:
+                        data-elements:
+                          engineering-document:
+                            name: Data elements
+                            documentation:
+                              content-text: Data elements documentation.                              
     - engineering-product:
         path: client
         name: Client

@@ -15,6 +15,7 @@ import org.nasdanika.emf.DiagnosticProvider;
 import org.nasdanika.emf.DiagnosticProviderAdapter;
 import org.nasdanika.emf.FunctionAdapterFactory;
 import org.nasdanika.engineering.Connection;
+import org.nasdanika.engineering.Directory;
 import org.nasdanika.engineering.Document;
 import org.nasdanika.engineering.Domain;
 import org.nasdanika.engineering.Engineer;
@@ -229,6 +230,13 @@ public class EngineeringActionProviderAdapterFactory extends FlowActionProviderA
 					ActionProvider.class, 
 					this.getClass().getClassLoader(), 
 					e -> new DocumentActionBuilder(e, context).asActionProvider()));
+
+		registerAdapterFactory(
+				new FunctionAdapterFactory<ActionProvider, Directory>(
+					EngineeringPackage.Literals.DIRECTORY, 
+					ActionProvider.class, 
+					this.getClass().getClassLoader(), 
+					e -> new DirectoryActionBuilder(e, context).asActionProvider()));
 		
 	}
 			

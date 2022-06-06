@@ -31,7 +31,7 @@ public interface Directory extends EngineeredElement {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Elements</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getDirectory_Elements()
-	 * @model containment="true"
+	 * @model containment="true" keys="path"
 	 * @generated
 	 */
 	EList<NamedElement> getElements();
