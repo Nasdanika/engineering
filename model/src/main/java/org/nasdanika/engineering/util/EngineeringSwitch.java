@@ -8,6 +8,7 @@ import org.eclipse.emf.ecore.util.Switch;
 import org.nasdanika.common.Adaptable;
 import org.nasdanika.common.persistence.Marked;
 import org.nasdanika.diagram.Diagram;
+import org.nasdanika.diagram.Layer;
 import org.nasdanika.engineering.Aim;
 import org.nasdanika.engineering.Alignable;
 import org.nasdanika.engineering.Alignment;
@@ -129,6 +130,7 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				Representation representation = (Representation)theEObject;
 				T result = caseRepresentation(representation);
 				if (result == null) result = caseDiagram(representation);
+				if (result == null) result = caseLayer(representation);
 				if (result == null) result = caseNcore_NamedElement(representation);
 				if (result == null) result = caseNcore_ModelElement(representation);
 				if (result == null) result = caseMarked(representation);
@@ -847,6 +849,21 @@ public class EngineeringSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseNcore_NamedElement(org.nasdanika.ncore.NamedElement object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Layer</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Layer</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLayer(Layer object) {
 		return null;
 	}
 

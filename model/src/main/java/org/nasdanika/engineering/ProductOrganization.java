@@ -37,7 +37,7 @@ public interface ProductOrganization extends Organization {
 	 * @return the value of the '<em>Releases</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getProductOrganization_Releases()
 	 * @model containment="true" keys="path"
-	 *        annotation="urn:org.nasdanika homogenous='true' strict-containment='true'"
+	 *        annotation="urn:org.nasdanika homogenous='true'"
 	 * @generated
 	 */
 	EList<Release> getReleases();
@@ -53,7 +53,7 @@ public interface ProductOrganization extends Organization {
 	 * @return the value of the '<em>Features</em>' containment reference list.
 	 * @see org.nasdanika.engineering.EngineeringPackage#getProductOrganization_Features()
 	 * @model containment="true" keys="path"
-	 *        annotation="urn:org.nasdanika homogenous='true' strict-containment='true'"
+	 *        annotation="urn:org.nasdanika homogenous='true'"
 	 * @generated
 	 */
 	EList<Feature> getFeatures();

@@ -3478,15 +3478,13 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		  (getProduct_Releases(),
 		   source,
 		   new String[] {
-			   "homogenous", "true",
-			   "strict-containment", "true"
+			   "homogenous", "true"
 		   });
 		addAnnotation
 		  (getProduct_Features(),
 		   source,
 		   new String[] {
-			   "homogenous", "true",
-			   "strict-containment", "true"
+			   "homogenous", "true"
 		   });
 		addAnnotation
 		  (capabilityEClass,
@@ -3692,15 +3690,13 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		  (getProductOrganization_Releases(),
 		   source,
 		   new String[] {
-			   "homogenous", "true",
-			   "strict-containment", "true"
+			   "homogenous", "true"
 		   });
 		addAnnotation
 		  (getProductOrganization_Features(),
 		   source,
 		   new String[] {
-			   "homogenous", "true",
-			   "strict-containment", "true"
+			   "homogenous", "true"
 		   });
 		addAnnotation
 		  (getConnectionSource_OutboundConnections(),

@@ -260,6 +260,15 @@ public interface EngineeringPackage extends EPackage {
 	int REPRESENTATION__ELEMENTS = DiagramPackage.DIAGRAM__ELEMENTS;
 
 	/**
+	 * The feature id for the '<em><b>Notes</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REPRESENTATION__NOTES = DiagramPackage.DIAGRAM__NOTES;
+
+	/**
 	 * The feature id for the '<em><b>Vertical</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -296,15 +305,6 @@ public interface EngineeringPackage extends EPackage {
 	int REPRESENTATION__TYPE = DiagramPackage.DIAGRAM__TYPE;
 
 	/**
-	 * The feature id for the '<em><b>Notes</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REPRESENTATION__NOTES = DiagramPackage.DIAGRAM__NOTES;
-
-	/**
 	 * The feature id for the '<em><b>Properties</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -330,6 +330,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int REPRESENTATION__DEPTH = DiagramPackage.DIAGRAM__DEPTH;
+
+	/**
+	 * The feature id for the '<em><b>Layers</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REPRESENTATION__LAYERS = DiagramPackage.DIAGRAM__LAYERS;
 
 	/**
 	 * The feature id for the '<em><b>Generator</b></em>' containment reference.
