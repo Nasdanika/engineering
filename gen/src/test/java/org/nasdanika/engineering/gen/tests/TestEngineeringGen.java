@@ -29,6 +29,7 @@ import java.util.function.Predicate;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.util.ECollections;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -87,6 +88,8 @@ import org.nasdanika.html.model.bootstrap.BootstrapPackage;
 import org.nasdanika.html.model.html.HtmlPackage;
 import org.nasdanika.ncore.ModelElement;
 import org.nasdanika.ncore.NcorePackage;
+import org.nasdanika.ncore.Property;
+import org.nasdanika.ncore.StringProperty;
 import org.nasdanika.ncore.util.NcoreResourceSet;
 import org.nasdanika.ncore.util.NcoreUtil;
 
@@ -135,6 +138,11 @@ public class TestEngineeringGen /* extends TestBase */ {
 			@Override
 			public void execute(EObject obj, ProgressMonitor progressMonitor) throws Exception {
 				EObject copy = EcoreUtil.copy(obj);
+				
+				EList<Property> annotations = ((org.nasdanika.engineering.ModelElement) copy).getAnnotations();
+				assertThat(annotations).singleElement().isInstanceOf(StringProperty.class);
+				assertThat(((StringProperty) annotations.get(0)).getValue()).isEqualTo("XYZ");
+				
 				ResourceSet resourceSet = new NcoreResourceSet();
 				resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put(org.eclipse.emf.ecore.resource.Resource.Factory.Registry.DEFAULT_EXTENSION, new XMIResourceFactoryImpl());
 				

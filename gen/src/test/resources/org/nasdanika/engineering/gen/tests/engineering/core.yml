@@ -3,6 +3,8 @@ engineering-product-organization:
   path: nasdanika
   name: Nasdanika
   description: Engineering model to test core model classes.
+  annotations:
+    my-annotation: XYZ
   features:
     f1:
       name: Feature 1
@@ -36,6 +38,14 @@ engineering-product-organization:
     joe-doe:
       engineering-engineer:
         name: Joe Doe   
+    team-a:
+      engineering-organization:
+        name: Team A
+        engineers:
+          jane-doe:
+            engineering-engineer:
+              name: Jane Doe   
+           
   domains:
     cloud:
       name: Cloud

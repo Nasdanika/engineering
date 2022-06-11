@@ -4,6 +4,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.BiConsumer;
+import java.util.stream.Collectors;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -15,6 +16,7 @@ import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Organization;
 import org.nasdanika.html.model.app.Action;
 import org.nasdanika.html.model.app.AppFactory;
+import org.nasdanika.ncore.util.NamedElementComparator;
 
 public class OrganizationActionBuilder<T extends Organization> extends EngineerActionBuilder<T> {
 	
@@ -53,7 +55,7 @@ public class OrganizationActionBuilder<T extends Organization> extends EngineerA
 			group.setLocation("engineers.html");
 			// TODO - icon, ...
 			EList<Action> groupAnonymous = group.getAnonymous();
-			for (Engineer engineer: engineers) {
+			for (Engineer engineer: engineers.stream().sorted(NamedElementComparator.INSTANCE).collect(Collectors.toList())) {
 				groupAnonymous.add(createChildAction(engineer, registry, resolveConsumer, progressMonitor));
 			}
 		
