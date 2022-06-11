@@ -177,12 +177,11 @@ public class EngineeredElementImpl extends ForumImpl implements EngineeredElemen
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public EList<Connection> getInboundConnections() {
-		return (EList<Connection>)eDynamicGet(EngineeringPackage.ENGINEERED_ELEMENT__INBOUND_CONNECTIONS, EngineeringPackage.Literals.CONNECTION_TARGET__INBOUND_CONNECTIONS, true, true);
+		return getOppositeReferrers(EngineeringPackage.Literals.CONNECTION_TARGET__INBOUND_CONNECTIONS);		
 	}
 
 	/**

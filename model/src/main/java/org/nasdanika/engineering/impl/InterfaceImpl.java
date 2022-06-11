@@ -3,14 +3,12 @@
 package org.nasdanika.engineering.impl;
 
 import java.util.Collection;
+
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.nasdanika.engineering.Connection;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Interface;
 
@@ -45,16 +43,6 @@ public class InterfaceImpl extends EngineeredElementImpl implements Interface {
 	@Override
 	protected EClass eStaticClass() {
 		return EngineeringPackage.Literals.INTERFACE;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	@Override
-	public EList<Connection> getInboundConnections() {
-		return getOppositeReferrers(EngineeringPackage.Literals.CONNECTION_TARGET__INBOUND_CONNECTIONS);		
 	}
 
 	/**
