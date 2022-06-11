@@ -559,6 +559,16 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
+	public EReference getModelElement_Annotations() {
+		return (EReference)modelElementEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getRepresentation() {
 		return representationEClass;
 	}
@@ -2409,6 +2419,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		createEReference(modelElementEClass, MODEL_ELEMENT__TABLE_OF_CONTENTS);
 		createEReference(modelElementEClass, MODEL_ELEMENT__SECTIONS);
 		createEReference(modelElementEClass, MODEL_ELEMENT__REPRESENTATIONS);
+		createEReference(modelElementEClass, MODEL_ELEMENT__ANNOTATIONS);
 
 		representationEClass = createEClass(REPRESENTATION);
 		createEReference(representationEClass, REPRESENTATION__GENERATOR);
@@ -2742,6 +2753,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		initEReference(getModelElement_Sections(), this.getDocument(), null, "sections", null, 0, -1, ModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		getModelElement_Sections().getEKeys().add(this.getModelElement_Path());
 		initEReference(getModelElement_Representations(), this.getRepresentation(), null, "representations", null, 0, -1, ModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getModelElement_Annotations(), theNcorePackage.getProperty(), null, "annotations", null, 0, -1, ModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		getModelElement_Annotations().getEKeys().add(theNcorePackage.getProperty_Name());
 
 		initEClass(representationEClass, Representation.class, "Representation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getRepresentation_Generator(), theExecPackage.getCall(), null, "generator", null, 0, 1, Representation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3060,6 +3073,13 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		   source,
 		   new String[] {
 			   "homogenous", "true"
+		   });
+		addAnnotation
+		  (getModelElement_Annotations(),
+		   source,
+		   new String[] {
+			   "reference-type", "map: \n  ns-uri: urn:org.nasdanika.ncore\n  name: MapProperty\nlist: \n  ns-uri: urn:org.nasdanika.ncore\n  name: ListProperty\nstring: \n  ns-uri: urn:org.nasdanika.ncore\n  name: StringProperty\ninteger: \n  ns-uri: urn:org.nasdanika.ncore\n  name: IntegerProperty",
+			   "value-feature", "value"
 		   });
 		addAnnotation
 		  (getRepresentation_Generator(),
@@ -3761,6 +3781,12 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		   source,
 		   new String[] {
 			   "documentation", "Pluggable representations of a model element, e.g. a component diagram for modules."
+		   });
+		addAnnotation
+		  (getModelElement_Annotations(),
+		   source,
+		   new String[] {
+			   "documentation", "Map entries"
 		   });
 		addAnnotation
 		  (getTableOfContents_Role(),

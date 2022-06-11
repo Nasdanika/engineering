@@ -4,6 +4,7 @@ package org.nasdanika.engineering;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.nasdanika.ncore.Property;
 
 /**
  * <!-- begin-user-doc -->
@@ -20,6 +21,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.nasdanika.engineering.ModelElement#getTableOfContents <em>Table Of Contents</em>}</li>
  *   <li>{@link org.nasdanika.engineering.ModelElement#getSections <em>Sections</em>}</li>
  *   <li>{@link org.nasdanika.engineering.ModelElement#getRepresentations <em>Representations</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.ModelElement#getAnnotations <em>Annotations</em>}</li>
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getModelElement()
@@ -141,5 +143,21 @@ public interface ModelElement extends org.nasdanika.ncore.ModelElement {
 	 * @generated
 	 */
 	EList<Representation> getRepresentations();
+
+	/**
+	 * Returns the value of the '<em><b>Annotations</b></em>' containment reference list.
+	 * The list contents are of type {@link org.nasdanika.ncore.Property}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Map entries
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Annotations</em>' containment reference list.
+	 * @see org.nasdanika.engineering.EngineeringPackage#getModelElement_Annotations()
+	 * @model containment="true" keys="name"
+	 *        annotation="urn:org.nasdanika reference-type='map: \n  ns-uri: urn:org.nasdanika.ncore\n  name: MapProperty\nlist: \n  ns-uri: urn:org.nasdanika.ncore\n  name: ListProperty\nstring: \n  ns-uri: urn:org.nasdanika.ncore\n  name: StringProperty\ninteger: \n  ns-uri: urn:org.nasdanika.ncore\n  name: IntegerProperty' value-feature='value'"
+	 * @generated
+	 */
+	EList<Property> getAnnotations();
 
 } // ModelElement

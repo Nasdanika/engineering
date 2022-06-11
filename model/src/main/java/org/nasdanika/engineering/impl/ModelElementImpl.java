@@ -28,6 +28,7 @@ import org.nasdanika.engineering.ModelElement;
 import org.nasdanika.engineering.NamedElement;
 import org.nasdanika.engineering.Representation;
 import org.nasdanika.engineering.TableOfContents;
+import org.nasdanika.ncore.Property;
 
 /**
  * <!-- begin-user-doc -->
@@ -43,6 +44,7 @@ import org.nasdanika.engineering.TableOfContents;
  *   <li>{@link org.nasdanika.engineering.impl.ModelElementImpl#getTableOfContents <em>Table Of Contents</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.ModelElementImpl#getSections <em>Sections</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.ModelElementImpl#getRepresentations <em>Representations</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.ModelElementImpl#getAnnotations <em>Annotations</em>}</li>
  * </ul>
  *
  * @generated
@@ -181,6 +183,17 @@ public abstract class ModelElementImpl extends org.nasdanika.ncore.impl.ModelEle
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public EList<Property> getAnnotations() {
+		return (EList<Property>)eDynamicGet(EngineeringPackage.MODEL_ELEMENT__ANNOTATIONS, EngineeringPackage.Literals.MODEL_ELEMENT__ANNOTATIONS, true, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -194,6 +207,8 @@ public abstract class ModelElementImpl extends org.nasdanika.ncore.impl.ModelEle
 				return ((InternalEList<?>)getSections()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.MODEL_ELEMENT__REPRESENTATIONS:
 				return ((InternalEList<?>)getRepresentations()).basicRemove(otherEnd, msgs);
+			case EngineeringPackage.MODEL_ELEMENT__ANNOTATIONS:
+				return ((InternalEList<?>)getAnnotations()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -218,6 +233,8 @@ public abstract class ModelElementImpl extends org.nasdanika.ncore.impl.ModelEle
 				return getSections();
 			case EngineeringPackage.MODEL_ELEMENT__REPRESENTATIONS:
 				return getRepresentations();
+			case EngineeringPackage.MODEL_ELEMENT__ANNOTATIONS:
+				return getAnnotations();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -253,6 +270,10 @@ public abstract class ModelElementImpl extends org.nasdanika.ncore.impl.ModelEle
 				getRepresentations().clear();
 				getRepresentations().addAll((Collection<? extends Representation>)newValue);
 				return;
+			case EngineeringPackage.MODEL_ELEMENT__ANNOTATIONS:
+				getAnnotations().clear();
+				getAnnotations().addAll((Collection<? extends Property>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -283,6 +304,9 @@ public abstract class ModelElementImpl extends org.nasdanika.ncore.impl.ModelEle
 			case EngineeringPackage.MODEL_ELEMENT__REPRESENTATIONS:
 				getRepresentations().clear();
 				return;
+			case EngineeringPackage.MODEL_ELEMENT__ANNOTATIONS:
+				getAnnotations().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -307,6 +331,8 @@ public abstract class ModelElementImpl extends org.nasdanika.ncore.impl.ModelEle
 				return !getSections().isEmpty();
 			case EngineeringPackage.MODEL_ELEMENT__REPRESENTATIONS:
 				return !getRepresentations().isEmpty();
+			case EngineeringPackage.MODEL_ELEMENT__ANNOTATIONS:
+				return !getAnnotations().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
