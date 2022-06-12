@@ -45,9 +45,7 @@
 			        	<b-card-text><span v-html="searchResult.content"></span></b-card-text>
 			        </b-card>
 	        	</div>
-	        </div>
-	        
-	        <!-- TODO - tree search callback function: tree.search.search_callback = function(results, node) { console.dir(results.split(' ')); console.dir(node.original['data-nsd-action-uuid']); -->
+	        </div>	        
      	</div>
      
 		<script>		      
@@ -190,5 +188,9 @@
 						return [];
 					}  
 				  }
-			});        	        	
+			});   			
 		</script>
+		
+${nsd-site-map-tree-script}
+				
+		

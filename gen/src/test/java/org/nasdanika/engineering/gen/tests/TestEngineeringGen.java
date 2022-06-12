@@ -13,12 +13,14 @@ import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Objects;
+import java.util.TreeMap;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.BiConsumer;
@@ -32,6 +34,7 @@ import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -75,11 +78,17 @@ import org.nasdanika.exec.resources.ResourcesFactory;
 import org.nasdanika.exec.resources.ResourcesPackage;
 import org.nasdanika.flow.FlowPackage;
 import org.nasdanika.html.emf.EObjectActionResolver;
+import org.nasdanika.html.jstree.JsTreeFactory;
+import org.nasdanika.html.jstree.JsTreeNode;
 import org.nasdanika.html.model.app.Action;
+import org.nasdanika.html.model.app.AppFactory;
 import org.nasdanika.html.model.app.AppPackage;
 import org.nasdanika.html.model.app.Label;
+import org.nasdanika.html.model.app.Link;
 import org.nasdanika.html.model.app.gen.ActionContentProvider;
 import org.nasdanika.html.model.app.gen.AppAdapterFactory;
+import org.nasdanika.html.model.app.gen.LinkJsTreeNodeSupplierFactoryAdapter;
+import org.nasdanika.html.model.app.gen.NavigationPanelConsumerFactoryAdapter;
 import org.nasdanika.html.model.app.gen.PageContentProvider;
 import org.nasdanika.html.model.app.gen.Util;
 import org.nasdanika.html.model.app.util.ActionProvider;
@@ -332,6 +341,8 @@ public class TestEngineeringGen /* extends TestBase */ {
 			}
 		}
 		ActionContentProvider.Factory actionContentProviderFactory = (contentProviderContext) -> (action, uriResolver, pMonitor) -> {
+			DiagramGenerator chain = contentProviderContext.get(DiagramGenerator.class, DiagramGenerator.INSTANCE);
+			MutableContext mctx = contentProviderContext.fork();
 			PropertyComputer uriPropertyComputer = new PropertyComputer() {
 				
 				@SuppressWarnings("unchecked")
@@ -347,6 +358,8 @@ public class TestEngineeringGen /* extends TestBase */ {
 				}
 				
 			};
+			mctx.put("uri", uriPropertyComputer);
+			
 			PropertyComputer uuidPropertyComputer = new PropertyComputer() {
 				
 				@SuppressWarnings("unchecked")
@@ -361,13 +374,90 @@ public class TestEngineeringGen /* extends TestBase */ {
 					return tURI == null ? null : (P) tURI.toString();
 				}
 				
-			};
+			};			
+			mctx.put("uuid", uuidPropertyComputer);
 			
-			DiagramGenerator chain = contentProviderContext.get(DiagramGenerator.class, DiagramGenerator.INSTANCE);
-			MutableContext mctx = contentProviderContext.fork();
-			mctx.put("uri", uriPropertyComputer);		
-			mctx.put("uuid", uuidPropertyComputer);		
-			
+			@SuppressWarnings("unchecked")
+			java.util.function.Function<Context, String> siteMapTreeScriptComputer = ctx -> {
+				JsTreeFactory jsTreeFactory = context.get(JsTreeFactory.class, JsTreeFactory.INSTANCE);
+				Map<EObject, JsTreeNode> nodeMap = new HashMap<>();
+				for (Entry<EObject, Action> re: registry.entrySet()) {
+					Action treeAction = re.getValue();
+					
+					Link link = AppFactory.eINSTANCE.createLink();
+					link.setText(treeAction.getText());
+					link.setIcon(treeAction.getIcon());
+					
+					URI bURI = uriResolver.apply(action, (URI) null);
+					URI tURI = uriResolver.apply(treeAction, bURI);
+					link.setLocation(tURI.toString());
+					LinkJsTreeNodeSupplierFactoryAdapter<Link> adapter = new LinkJsTreeNodeSupplierFactoryAdapter<>(link);
+					
+					try {
+						JsTreeNode jsTreeNode = adapter.create(ctx).execute(progressMonitor);
+						jsTreeNode.attribute(Util.DATA_NSD_ACTION_UUID_ATTRIBUTE, treeAction.getUuid());
+						nodeMap.put(re.getKey(), jsTreeNode);
+					} catch (Exception e) {
+						throw new NasdanikaException(e);
+					}
+				}
+				
+				Map<EObject, JsTreeNode> roots = new HashMap<>(nodeMap);
+				
+				Map<EObject,Map<String,List<JsTreeNode>>> refMap = new HashMap<>();
+				for (EObject eObj: new ArrayList<>(nodeMap.keySet())) {
+					Map<String,List<JsTreeNode>> rMap = new TreeMap<>();					
+					for (EReference eRef: eObj.eClass().getEAllReferences()) {
+						if (eRef.isContainment()) {
+							Object eRefValue = eObj.eGet(eRef);
+							List<JsTreeNode> refNodes = new ArrayList<>();
+							for (Object ve: eRefValue instanceof Collection ? (Collection<Object>) eRefValue : Collections.singletonList(eRefValue)) {
+								JsTreeNode refNode = roots.remove(ve);
+								if (refNode != null) {
+									refNodes.add(refNode);
+								}
+							}
+							if (!refNodes.isEmpty()) {
+								rMap.put(org.nasdanika.common.Util.nameToLabel(eRef.getName()) , refNodes);
+							}
+						}
+					}
+					if (!rMap.isEmpty()) {
+						refMap.put(eObj, rMap);
+					}
+				}
+				
+				for (Entry<EObject, JsTreeNode> ne: nodeMap.entrySet()) {
+					Map<String, List<JsTreeNode>> refs = refMap.get(ne.getKey());
+					if (refs != null) {
+						for (Entry<String, List<JsTreeNode>> ref: refs.entrySet()) {
+							JsTreeNode refNode = jsTreeFactory.jsTreeNode();
+							refNode.text(ref.getKey());
+							refNode.children().addAll(ref.getValue());
+							ne.getValue().children().add(refNode);
+						}
+					}
+				}
+				
+				JSONObject jsTree = jsTreeFactory.buildJsTree(roots.values());
+		
+				List<String> plugins = new ArrayList<>();
+				plugins.add("state");
+				plugins.add("search");
+				JSONObject searchConfig = new JSONObject();
+				searchConfig.put("show_only_matches", true);
+				searchConfig.put("show_only_matches_children", true);
+				jsTree.put("search", searchConfig);
+				jsTree.put("plugins", plugins); 		
+				jsTree.put("state", Collections.singletonMap("key", "nsd-site-map-tree"));
+				
+				// Deletes selection from state
+				String filter = NavigationPanelConsumerFactoryAdapter.CLEAR_STATE_FILTER + " tree.search.search_callback = (results, node) => results.split(' ').includes(node.original['data-nsd-action-uuid']);";
+				
+				return jsTreeFactory.bind("#nsd-site-map-tree", jsTree, filter, null).toString();				
+			};			
+			mctx.put("nsd-site-map-tree-script", siteMapTreeScriptComputer);		
+						
 			DiagramGenerator interpolatingDiagramGenerator = new DiagramGenerator() {
 
 				@Override
@@ -427,7 +517,7 @@ public class TestEngineeringGen /* extends TestBase */ {
 			System.out.println("[Page content] " + page.getName() + " -> " + pageResource.getLocation());
 			return pageResource;			
 		};
-						
+								
 		Util.generateSite(
 				root, 
 				pageTemplate,
