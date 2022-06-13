@@ -36,7 +36,7 @@ import org.nasdanika.ncore.NcorePackage;
 public class EngineerActionBuilder<T extends Engineer> extends PersonaActionBuilder<T> {
 	
 	public EngineerActionBuilder(T target, Context context) {
-		super(target, context);		
+		super(target, context);
 	}
 		
 	@Override

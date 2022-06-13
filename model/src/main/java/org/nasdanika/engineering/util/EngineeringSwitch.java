@@ -9,10 +9,12 @@ import org.nasdanika.common.Adaptable;
 import org.nasdanika.common.persistence.Marked;
 import org.nasdanika.diagram.Diagram;
 import org.nasdanika.diagram.Layer;
+import org.nasdanika.engineering.Activity;
 import org.nasdanika.engineering.Aim;
 import org.nasdanika.engineering.Alignable;
 import org.nasdanika.engineering.Alignment;
 import org.nasdanika.engineering.Allocation;
+import org.nasdanika.engineering.Call;
 import org.nasdanika.engineering.Capability;
 import org.nasdanika.engineering.Capacity;
 import org.nasdanika.engineering.Connection;
@@ -47,6 +49,7 @@ import org.nasdanika.engineering.NamedElement;
 import org.nasdanika.engineering.NamedElementReference;
 import org.nasdanika.engineering.Note;
 import org.nasdanika.engineering.Objective;
+import org.nasdanika.engineering.Operation;
 import org.nasdanika.engineering.Organization;
 import org.nasdanika.engineering.Persona;
 import org.nasdanika.engineering.Principle;
@@ -56,6 +59,7 @@ import org.nasdanika.engineering.Release;
 import org.nasdanika.engineering.Representation;
 import org.nasdanika.engineering.TableOfContents;
 import org.nasdanika.engineering.Topic;
+import org.nasdanika.engineering.Transition;
 import org.nasdanika.ncore.Period;
 import org.nasdanika.ncore.Temporal;
 
@@ -800,6 +804,69 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				if (result == null) result = caseMarked(interface_);
 				if (result == null) result = caseAdaptable(interface_);
 				if (result == null) result = caseIMarked(interface_);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EngineeringPackage.OPERATION: {
+				Operation operation = (Operation)theEObject;
+				T result = caseOperation(operation);
+				if (result == null) result = caseEngineeredElement(operation);
+				if (result == null) result = caseForum(operation);
+				if (result == null) result = casePeriod(operation);
+				if (result == null) result = caseConnectionSource(operation);
+				if (result == null) result = caseConnectionTarget(operation);
+				if (result == null) result = caseNamedElement(operation);
+				if (result == null) result = caseModelElement(operation);
+				if (result == null) result = caseNcore_NamedElement(operation);
+				if (result == null) result = caseNcore_ModelElement(operation);
+				if (result == null) result = caseMarked(operation);
+				if (result == null) result = caseAdaptable(operation);
+				if (result == null) result = caseIMarked(operation);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EngineeringPackage.ACTIVITY: {
+				Activity activity = (Activity)theEObject;
+				T result = caseActivity(activity);
+				if (result == null) result = caseOperation(activity);
+				if (result == null) result = caseEngineeredElement(activity);
+				if (result == null) result = caseForum(activity);
+				if (result == null) result = casePeriod(activity);
+				if (result == null) result = caseConnectionSource(activity);
+				if (result == null) result = caseConnectionTarget(activity);
+				if (result == null) result = caseNamedElement(activity);
+				if (result == null) result = caseModelElement(activity);
+				if (result == null) result = caseNcore_NamedElement(activity);
+				if (result == null) result = caseNcore_ModelElement(activity);
+				if (result == null) result = caseMarked(activity);
+				if (result == null) result = caseAdaptable(activity);
+				if (result == null) result = caseIMarked(activity);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EngineeringPackage.TRANSITION: {
+				Transition transition = (Transition)theEObject;
+				T result = caseTransition(transition);
+				if (result == null) result = caseNamedElement(transition);
+				if (result == null) result = caseModelElement(transition);
+				if (result == null) result = caseNcore_NamedElement(transition);
+				if (result == null) result = caseNcore_ModelElement(transition);
+				if (result == null) result = caseMarked(transition);
+				if (result == null) result = caseAdaptable(transition);
+				if (result == null) result = caseIMarked(transition);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EngineeringPackage.CALL: {
+				Call call = (Call)theEObject;
+				T result = caseCall(call);
+				if (result == null) result = caseNamedElement(call);
+				if (result == null) result = caseModelElement(call);
+				if (result == null) result = caseNcore_NamedElement(call);
+				if (result == null) result = caseNcore_ModelElement(call);
+				if (result == null) result = caseMarked(call);
+				if (result == null) result = caseAdaptable(call);
+				if (result == null) result = caseIMarked(call);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1599,6 +1666,66 @@ public class EngineeringSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseInterface(Interface object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Operation</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Operation</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseOperation(Operation object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Activity</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Activity</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseActivity(Activity object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Transition</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Transition</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTransition(Transition object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Call</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Call</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseCall(Call object) {
 		return null;
 	}
 

@@ -21,6 +21,7 @@ import org.nasdanika.engineering.EngineeredElement;
 import org.nasdanika.engineering.EngineeredElementStatus;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Issue;
+import org.nasdanika.engineering.Operation;
 import org.nasdanika.engineering.Principle;
 import org.nasdanika.ncore.NcorePackage;
 import org.nasdanika.ncore.Period;
@@ -40,6 +41,7 @@ import org.nasdanika.ncore.util.NcoreUtil;
  *   <li>{@link org.nasdanika.engineering.impl.EngineeredElementImpl#getDuration <em>Duration</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineeredElementImpl#getOutboundConnections <em>Outbound Connections</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineeredElementImpl#getInboundConnections <em>Inbound Connections</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.EngineeredElementImpl#getExports <em>Exports</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineeredElementImpl#getIssues <em>Issues</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineeredElementImpl#getOwners <em>Owners</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineeredElementImpl#getExperts <em>Experts</em>}</li>
@@ -48,6 +50,7 @@ import org.nasdanika.ncore.util.NcoreUtil;
  *   <li>{@link org.nasdanika.engineering.impl.EngineeredElementImpl#getAllIssues <em>All Issues</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineeredElementImpl#getStatus <em>Status</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineeredElementImpl#getAffectedBy <em>Affected By</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.EngineeredElementImpl#getOperations <em>Operations</em>}</li>
  * </ul>
  *
  * @generated
@@ -193,6 +196,17 @@ public class EngineeredElementImpl extends ForumImpl implements EngineeredElemen
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
+	public EList<Operation> getExports() {
+		return (EList<Operation>)eDynamicGet(EngineeringPackage.ENGINEERED_ELEMENT__EXPORTS, EngineeringPackage.Literals.CONNECTION_TARGET__EXPORTS, true, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public EList<Issue> getIssues() {
 		return (EList<Issue>)eDynamicGet(EngineeringPackage.ENGINEERED_ELEMENT__ISSUES, EngineeringPackage.Literals.ENGINEERED_ELEMENT__ISSUES, true, true);
 	}
@@ -301,6 +315,17 @@ public class EngineeredElementImpl extends ForumImpl implements EngineeredElemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public EList<Operation> getOperations() {
+		return (EList<Operation>)eDynamicGet(EngineeringPackage.ENGINEERED_ELEMENT__OPERATIONS, EngineeringPackage.Literals.ENGINEERED_ELEMENT__OPERATIONS, true, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -316,6 +341,8 @@ public class EngineeredElementImpl extends ForumImpl implements EngineeredElemen
 				return ((InternalEList<?>)getAllocations()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.ENGINEERED_ELEMENT__PRINCIPLES:
 				return ((InternalEList<?>)getPrinciples()).basicRemove(otherEnd, msgs);
+			case EngineeringPackage.ENGINEERED_ELEMENT__OPERATIONS:
+				return ((InternalEList<?>)getOperations()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -338,6 +365,8 @@ public class EngineeredElementImpl extends ForumImpl implements EngineeredElemen
 				return getOutboundConnections();
 			case EngineeringPackage.ENGINEERED_ELEMENT__INBOUND_CONNECTIONS:
 				return getInboundConnections();
+			case EngineeringPackage.ENGINEERED_ELEMENT__EXPORTS:
+				return getExports();
 			case EngineeringPackage.ENGINEERED_ELEMENT__ISSUES:
 				return getIssues();
 			case EngineeringPackage.ENGINEERED_ELEMENT__OWNERS:
@@ -355,6 +384,8 @@ public class EngineeredElementImpl extends ForumImpl implements EngineeredElemen
 				return basicGetStatus();
 			case EngineeringPackage.ENGINEERED_ELEMENT__AFFECTED_BY:
 				return getAffectedBy();
+			case EngineeringPackage.ENGINEERED_ELEMENT__OPERATIONS:
+				return getOperations();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -381,6 +412,10 @@ public class EngineeredElementImpl extends ForumImpl implements EngineeredElemen
 				getOutboundConnections().clear();
 				getOutboundConnections().addAll((Collection<? extends Connection>)newValue);
 				return;
+			case EngineeringPackage.ENGINEERED_ELEMENT__EXPORTS:
+				getExports().clear();
+				getExports().addAll((Collection<? extends Operation>)newValue);
+				return;
 			case EngineeringPackage.ENGINEERED_ELEMENT__ISSUES:
 				getIssues().clear();
 				getIssues().addAll((Collection<? extends Issue>)newValue);
@@ -403,6 +438,10 @@ public class EngineeredElementImpl extends ForumImpl implements EngineeredElemen
 				return;
 			case EngineeringPackage.ENGINEERED_ELEMENT__STATUS:
 				setStatus((EngineeredElementStatus)newValue);
+				return;
+			case EngineeringPackage.ENGINEERED_ELEMENT__OPERATIONS:
+				getOperations().clear();
+				getOperations().addAll((Collection<? extends Operation>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -428,6 +467,9 @@ public class EngineeredElementImpl extends ForumImpl implements EngineeredElemen
 			case EngineeringPackage.ENGINEERED_ELEMENT__OUTBOUND_CONNECTIONS:
 				getOutboundConnections().clear();
 				return;
+			case EngineeringPackage.ENGINEERED_ELEMENT__EXPORTS:
+				getExports().clear();
+				return;
 			case EngineeringPackage.ENGINEERED_ELEMENT__ISSUES:
 				getIssues().clear();
 				return;
@@ -445,6 +487,9 @@ public class EngineeredElementImpl extends ForumImpl implements EngineeredElemen
 				return;
 			case EngineeringPackage.ENGINEERED_ELEMENT__STATUS:
 				setStatus((EngineeredElementStatus)null);
+				return;
+			case EngineeringPackage.ENGINEERED_ELEMENT__OPERATIONS:
+				getOperations().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -468,6 +513,8 @@ public class EngineeredElementImpl extends ForumImpl implements EngineeredElemen
 				return !getOutboundConnections().isEmpty();
 			case EngineeringPackage.ENGINEERED_ELEMENT__INBOUND_CONNECTIONS:
 				return !getInboundConnections().isEmpty();
+			case EngineeringPackage.ENGINEERED_ELEMENT__EXPORTS:
+				return !getExports().isEmpty();
 			case EngineeringPackage.ENGINEERED_ELEMENT__ISSUES:
 				return !getIssues().isEmpty();
 			case EngineeringPackage.ENGINEERED_ELEMENT__OWNERS:
@@ -484,6 +531,8 @@ public class EngineeredElementImpl extends ForumImpl implements EngineeredElemen
 				return basicGetStatus() != null;
 			case EngineeringPackage.ENGINEERED_ELEMENT__AFFECTED_BY:
 				return !getAffectedBy().isEmpty();
+			case EngineeringPackage.ENGINEERED_ELEMENT__OPERATIONS:
+				return !getOperations().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -512,6 +561,7 @@ public class EngineeredElementImpl extends ForumImpl implements EngineeredElemen
 		if (baseClass == ConnectionTarget.class) {
 			switch (derivedFeatureID) {
 				case EngineeringPackage.ENGINEERED_ELEMENT__INBOUND_CONNECTIONS: return EngineeringPackage.CONNECTION_TARGET__INBOUND_CONNECTIONS;
+				case EngineeringPackage.ENGINEERED_ELEMENT__EXPORTS: return EngineeringPackage.CONNECTION_TARGET__EXPORTS;
 				default: return -1;
 			}
 		}
@@ -542,6 +592,7 @@ public class EngineeredElementImpl extends ForumImpl implements EngineeredElemen
 		if (baseClass == ConnectionTarget.class) {
 			switch (baseFeatureID) {
 				case EngineeringPackage.CONNECTION_TARGET__INBOUND_CONNECTIONS: return EngineeringPackage.ENGINEERED_ELEMENT__INBOUND_CONNECTIONS;
+				case EngineeringPackage.CONNECTION_TARGET__EXPORTS: return EngineeringPackage.ENGINEERED_ELEMENT__EXPORTS;
 				default: return -1;
 			}
 		}

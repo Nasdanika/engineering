@@ -233,6 +233,10 @@ engineering-product-organization:
         name: Server
         description: Testing connections and interfaces.
         status: engineering://nasdanika/engineered-element-statuses/implemented
+        operations:
+          do-this:
+            engineering-operation:
+              name: Do this            
         interfaces:
           tcp:
             name: TCP/IP

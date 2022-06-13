@@ -9,10 +9,12 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.EObjectValidator;
+import org.nasdanika.engineering.Activity;
 import org.nasdanika.engineering.Aim;
 import org.nasdanika.engineering.Alignable;
 import org.nasdanika.engineering.Alignment;
 import org.nasdanika.engineering.Allocation;
+import org.nasdanika.engineering.Call;
 import org.nasdanika.engineering.Capability;
 import org.nasdanika.engineering.Capacity;
 import org.nasdanika.engineering.Connection;
@@ -47,6 +49,7 @@ import org.nasdanika.engineering.NamedElement;
 import org.nasdanika.engineering.NamedElementReference;
 import org.nasdanika.engineering.Note;
 import org.nasdanika.engineering.Objective;
+import org.nasdanika.engineering.Operation;
 import org.nasdanika.engineering.Organization;
 import org.nasdanika.engineering.Persona;
 import org.nasdanika.engineering.Principle;
@@ -56,6 +59,7 @@ import org.nasdanika.engineering.Release;
 import org.nasdanika.engineering.Representation;
 import org.nasdanika.engineering.TableOfContents;
 import org.nasdanika.engineering.Topic;
+import org.nasdanika.engineering.Transition;
 import org.nasdanika.ncore.util.NcoreValidator;
 
 /**
@@ -233,6 +237,14 @@ public class EngineeringValidator extends EObjectValidator {
 				return validateConnectionTarget((ConnectionTarget)value, diagnostics, context);
 			case EngineeringPackage.INTERFACE:
 				return validateInterface((Interface)value, diagnostics, context);
+			case EngineeringPackage.OPERATION:
+				return validateOperation((Operation)value, diagnostics, context);
+			case EngineeringPackage.ACTIVITY:
+				return validateActivity((Activity)value, diagnostics, context);
+			case EngineeringPackage.TRANSITION:
+				return validateTransition((Transition)value, diagnostics, context);
+			case EngineeringPackage.CALL:
+				return validateCall((Call)value, diagnostics, context);
 			default:
 				return true;
 		}
@@ -1386,6 +1398,86 @@ public class EngineeringValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validateModelElement_path(interface_, diagnostics, context);
 		if (result || diagnostics != null) result &= ncoreValidator.validatePeriod_start_end(interface_, diagnostics, context);
 		if (result || diagnostics != null) result &= validateEngineeredElement_capacity(interface_, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateOperation(Operation operation, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(operation, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(operation, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(operation, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(operation, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(operation, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(operation, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(operation, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(operation, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(operation, diagnostics, context);
+		if (result || diagnostics != null) result &= validateModelElement_path(operation, diagnostics, context);
+		if (result || diagnostics != null) result &= ncoreValidator.validatePeriod_start_end(operation, diagnostics, context);
+		if (result || diagnostics != null) result &= validateEngineeredElement_capacity(operation, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateActivity(Activity activity, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(activity, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(activity, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(activity, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(activity, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(activity, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(activity, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(activity, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(activity, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(activity, diagnostics, context);
+		if (result || diagnostics != null) result &= validateModelElement_path(activity, diagnostics, context);
+		if (result || diagnostics != null) result &= ncoreValidator.validatePeriod_start_end(activity, diagnostics, context);
+		if (result || diagnostics != null) result &= validateEngineeredElement_capacity(activity, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateTransition(Transition transition, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(transition, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(transition, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(transition, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(transition, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(transition, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(transition, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(transition, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(transition, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(transition, diagnostics, context);
+		if (result || diagnostics != null) result &= validateModelElement_path(transition, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateCall(Call call, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(call, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(call, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(call, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(call, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(call, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(call, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(call, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(call, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(call, diagnostics, context);
+		if (result || diagnostics != null) result &= validateModelElement_path(call, diagnostics, context);
 		return result;
 	}
 

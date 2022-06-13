@@ -1220,13 +1220,22 @@ public interface EngineeringPackage extends EPackage {
 	int ENGINEERED_ELEMENT__INBOUND_CONNECTIONS = FORUM_FEATURE_COUNT + 4;
 
 	/**
+	 * The feature id for the '<em><b>Exports</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEERED_ELEMENT__EXPORTS = FORUM_FEATURE_COUNT + 5;
+
+	/**
 	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEERED_ELEMENT__ISSUES = FORUM_FEATURE_COUNT + 5;
+	int ENGINEERED_ELEMENT__ISSUES = FORUM_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Owners</b></em>' reference list.
@@ -1235,7 +1244,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEERED_ELEMENT__OWNERS = FORUM_FEATURE_COUNT + 6;
+	int ENGINEERED_ELEMENT__OWNERS = FORUM_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Experts</b></em>' reference list.
@@ -1244,7 +1253,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEERED_ELEMENT__EXPERTS = FORUM_FEATURE_COUNT + 7;
+	int ENGINEERED_ELEMENT__EXPERTS = FORUM_FEATURE_COUNT + 8;
 
 	/**
 	 * The feature id for the '<em><b>Allocations</b></em>' containment reference list.
@@ -1253,7 +1262,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEERED_ELEMENT__ALLOCATIONS = FORUM_FEATURE_COUNT + 8;
+	int ENGINEERED_ELEMENT__ALLOCATIONS = FORUM_FEATURE_COUNT + 9;
 
 	/**
 	 * The feature id for the '<em><b>Principles</b></em>' containment reference list.
@@ -1262,7 +1271,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEERED_ELEMENT__PRINCIPLES = FORUM_FEATURE_COUNT + 9;
+	int ENGINEERED_ELEMENT__PRINCIPLES = FORUM_FEATURE_COUNT + 10;
 
 	/**
 	 * The feature id for the '<em><b>All Issues</b></em>' reference list.
@@ -1271,7 +1280,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEERED_ELEMENT__ALL_ISSUES = FORUM_FEATURE_COUNT + 10;
+	int ENGINEERED_ELEMENT__ALL_ISSUES = FORUM_FEATURE_COUNT + 11;
 
 	/**
 	 * The feature id for the '<em><b>Status</b></em>' reference.
@@ -1280,7 +1289,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEERED_ELEMENT__STATUS = FORUM_FEATURE_COUNT + 11;
+	int ENGINEERED_ELEMENT__STATUS = FORUM_FEATURE_COUNT + 12;
 
 	/**
 	 * The feature id for the '<em><b>Affected By</b></em>' reference list.
@@ -1289,7 +1298,16 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEERED_ELEMENT__AFFECTED_BY = FORUM_FEATURE_COUNT + 12;
+	int ENGINEERED_ELEMENT__AFFECTED_BY = FORUM_FEATURE_COUNT + 13;
+
+	/**
+	 * The feature id for the '<em><b>Operations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEERED_ELEMENT__OPERATIONS = FORUM_FEATURE_COUNT + 14;
 
 	/**
 	 * The number of structural features of the '<em>Engineered Element</em>' class.
@@ -1298,7 +1316,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEERED_ELEMENT_FEATURE_COUNT = FORUM_FEATURE_COUNT + 13;
+	int ENGINEERED_ELEMENT_FEATURE_COUNT = FORUM_FEATURE_COUNT + 15;
 
 	/**
 	 * The number of operations of the '<em>Engineered Element</em>' class.
@@ -1490,6 +1508,15 @@ public interface EngineeringPackage extends EPackage {
 	int EVENT__INBOUND_CONNECTIONS = ENGINEERED_ELEMENT__INBOUND_CONNECTIONS;
 
 	/**
+	 * The feature id for the '<em><b>Exports</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT__EXPORTS = ENGINEERED_ELEMENT__EXPORTS;
+
+	/**
 	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1560,6 +1587,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int EVENT__AFFECTED_BY = ENGINEERED_ELEMENT__AFFECTED_BY;
+
+	/**
+	 * The feature id for the '<em><b>Operations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT__OPERATIONS = ENGINEERED_ELEMENT__OPERATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Instant</b></em>' attribute.
@@ -4506,6 +4542,15 @@ public interface EngineeringPackage extends EPackage {
 	int DOCUMENT__INBOUND_CONNECTIONS = ENGINEERED_ELEMENT__INBOUND_CONNECTIONS;
 
 	/**
+	 * The feature id for the '<em><b>Exports</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT__EXPORTS = ENGINEERED_ELEMENT__EXPORTS;
+
+	/**
 	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4576,6 +4621,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int DOCUMENT__AFFECTED_BY = ENGINEERED_ELEMENT__AFFECTED_BY;
+
+	/**
+	 * The feature id for the '<em><b>Operations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT__OPERATIONS = ENGINEERED_ELEMENT__OPERATIONS;
 
 	/**
 	 * The number of structural features of the '<em>Document</em>' class.
@@ -4776,6 +4830,15 @@ public interface EngineeringPackage extends EPackage {
 	int PERSONA__INBOUND_CONNECTIONS = ENGINEERED_ELEMENT__INBOUND_CONNECTIONS;
 
 	/**
+	 * The feature id for the '<em><b>Exports</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSONA__EXPORTS = ENGINEERED_ELEMENT__EXPORTS;
+
+	/**
 	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4846,6 +4909,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int PERSONA__AFFECTED_BY = ENGINEERED_ELEMENT__AFFECTED_BY;
+
+	/**
+	 * The feature id for the '<em><b>Operations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSONA__OPERATIONS = ENGINEERED_ELEMENT__OPERATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Goals</b></em>' containment reference list.
@@ -5082,6 +5154,15 @@ public interface EngineeringPackage extends EPackage {
 	int ENGINEER__INBOUND_CONNECTIONS = PERSONA__INBOUND_CONNECTIONS;
 
 	/**
+	 * The feature id for the '<em><b>Exports</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEER__EXPORTS = PERSONA__EXPORTS;
+
+	/**
 	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5152,6 +5233,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int ENGINEER__AFFECTED_BY = PERSONA__AFFECTED_BY;
+
+	/**
+	 * The feature id for the '<em><b>Operations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEER__OPERATIONS = PERSONA__OPERATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Goals</b></em>' containment reference list.
@@ -5587,6 +5677,15 @@ public interface EngineeringPackage extends EPackage {
 	int DOMAIN__INBOUND_CONNECTIONS = ENGINEERED_ELEMENT__INBOUND_CONNECTIONS;
 
 	/**
+	 * The feature id for the '<em><b>Exports</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN__EXPORTS = ENGINEERED_ELEMENT__EXPORTS;
+
+	/**
 	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5657,6 +5756,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int DOMAIN__AFFECTED_BY = ENGINEERED_ELEMENT__AFFECTED_BY;
+
+	/**
+	 * The feature id for the '<em><b>Operations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN__OPERATIONS = ENGINEERED_ELEMENT__OPERATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Elements</b></em>' containment reference list.
@@ -5866,6 +5974,15 @@ public interface EngineeringPackage extends EPackage {
 	int ORGANIZATION__INBOUND_CONNECTIONS = ENGINEER__INBOUND_CONNECTIONS;
 
 	/**
+	 * The feature id for the '<em><b>Exports</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANIZATION__EXPORTS = ENGINEER__EXPORTS;
+
+	/**
 	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5936,6 +6053,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int ORGANIZATION__AFFECTED_BY = ENGINEER__AFFECTED_BY;
+
+	/**
+	 * The feature id for the '<em><b>Operations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANIZATION__OPERATIONS = ENGINEER__OPERATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Goals</b></em>' containment reference list.
@@ -6370,6 +6496,15 @@ public interface EngineeringPackage extends EPackage {
 	int MODULE__INBOUND_CONNECTIONS = ENGINEERED_ELEMENT__INBOUND_CONNECTIONS;
 
 	/**
+	 * The feature id for the '<em><b>Exports</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODULE__EXPORTS = ENGINEERED_ELEMENT__EXPORTS;
+
+	/**
 	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6440,6 +6575,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int MODULE__AFFECTED_BY = ENGINEERED_ELEMENT__AFFECTED_BY;
+
+	/**
+	 * The feature id for the '<em><b>Operations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODULE__OPERATIONS = ENGINEERED_ELEMENT__OPERATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Modules</b></em>' containment reference list.
@@ -6676,6 +6820,15 @@ public interface EngineeringPackage extends EPackage {
 	int PRODUCT__INBOUND_CONNECTIONS = MODULE__INBOUND_CONNECTIONS;
 
 	/**
+	 * The feature id for the '<em><b>Exports</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT__EXPORTS = MODULE__EXPORTS;
+
+	/**
 	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6746,6 +6899,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int PRODUCT__AFFECTED_BY = MODULE__AFFECTED_BY;
+
+	/**
+	 * The feature id for the '<em><b>Operations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT__OPERATIONS = MODULE__OPERATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Modules</b></em>' containment reference list.
@@ -7612,6 +7774,15 @@ public interface EngineeringPackage extends EPackage {
 	int DIRECTORY__INBOUND_CONNECTIONS = ENGINEERED_ELEMENT__INBOUND_CONNECTIONS;
 
 	/**
+	 * The feature id for the '<em><b>Exports</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIRECTORY__EXPORTS = ENGINEERED_ELEMENT__EXPORTS;
+
+	/**
 	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7682,6 +7853,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int DIRECTORY__AFFECTED_BY = ENGINEERED_ELEMENT__AFFECTED_BY;
+
+	/**
+	 * The feature id for the '<em><b>Operations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIRECTORY__OPERATIONS = ENGINEERED_ELEMENT__OPERATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Elements</b></em>' containment reference list.
@@ -10255,6 +10435,15 @@ public interface EngineeringPackage extends EPackage {
 	int PRODUCT_ORGANIZATION__INBOUND_CONNECTIONS = ORGANIZATION__INBOUND_CONNECTIONS;
 
 	/**
+	 * The feature id for the '<em><b>Exports</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_ORGANIZATION__EXPORTS = ORGANIZATION__EXPORTS;
+
+	/**
 	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -10325,6 +10514,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int PRODUCT_ORGANIZATION__AFFECTED_BY = ORGANIZATION__AFFECTED_BY;
+
+	/**
+	 * The feature id for the '<em><b>Operations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_ORGANIZATION__OPERATIONS = ORGANIZATION__OPERATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Goals</b></em>' containment reference list.
@@ -10824,6 +11022,15 @@ public interface EngineeringPackage extends EPackage {
 	int CONNECTION__INBOUND_CONNECTIONS = ENGINEERED_ELEMENT__INBOUND_CONNECTIONS;
 
 	/**
+	 * The feature id for the '<em><b>Exports</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTION__EXPORTS = ENGINEERED_ELEMENT__EXPORTS;
+
+	/**
 	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -10896,6 +11103,15 @@ public interface EngineeringPackage extends EPackage {
 	int CONNECTION__AFFECTED_BY = ENGINEERED_ELEMENT__AFFECTED_BY;
 
 	/**
+	 * The feature id for the '<em><b>Operations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTION__OPERATIONS = ENGINEERED_ELEMENT__OPERATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Target</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -10905,13 +11121,40 @@ public interface EngineeringPackage extends EPackage {
 	int CONNECTION__TARGET = ENGINEERED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Bidirectional</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTION__BIDIRECTIONAL = ENGINEERED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Target Operations</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTION__TARGET_OPERATIONS = ENGINEERED_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Source Operations</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTION__SOURCE_OPERATIONS = ENGINEERED_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Connection</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONNECTION_FEATURE_COUNT = ENGINEERED_ELEMENT_FEATURE_COUNT + 1;
+	int CONNECTION_FEATURE_COUNT = ENGINEERED_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of operations of the '<em>Connection</em>' class.
@@ -10942,13 +11185,22 @@ public interface EngineeringPackage extends EPackage {
 	int CONNECTION_TARGET__INBOUND_CONNECTIONS = 0;
 
 	/**
+	 * The feature id for the '<em><b>Exports</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTION_TARGET__EXPORTS = 1;
+
+	/**
 	 * The number of structural features of the '<em>Connection Target</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONNECTION_TARGET_FEATURE_COUNT = 1;
+	int CONNECTION_TARGET_FEATURE_COUNT = 2;
 
 	/**
 	 * The number of operations of the '<em>Connection Target</em>' class.
@@ -11150,6 +11402,15 @@ public interface EngineeringPackage extends EPackage {
 	int INTERFACE__INBOUND_CONNECTIONS = ENGINEERED_ELEMENT__INBOUND_CONNECTIONS;
 
 	/**
+	 * The feature id for the '<em><b>Exports</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERFACE__EXPORTS = ENGINEERED_ELEMENT__EXPORTS;
+
+	/**
 	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -11222,6 +11483,15 @@ public interface EngineeringPackage extends EPackage {
 	int INTERFACE__AFFECTED_BY = ENGINEERED_ELEMENT__AFFECTED_BY;
 
 	/**
+	 * The feature id for the '<em><b>Operations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERFACE__OPERATIONS = ENGINEERED_ELEMENT__OPERATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -11247,6 +11517,1000 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int INTERFACE_OPERATION_COUNT = ENGINEERED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.OperationImpl <em>Operation</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.OperationImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getOperation()
+	 * @generated
+	 */
+	int OPERATION = 47;
+
+	/**
+	 * The feature id for the '<em><b>Markers</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION__MARKERS = ENGINEERED_ELEMENT__MARKERS;
+
+	/**
+	 * The feature id for the '<em><b>Uri</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION__URI = ENGINEERED_ELEMENT__URI;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION__DESCRIPTION = ENGINEERED_ELEMENT__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION__UUID = ENGINEERED_ELEMENT__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Action Prototype</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION__ACTION_PROTOTYPE = ENGINEERED_ELEMENT__ACTION_PROTOTYPE;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION__PATH = ENGINEERED_ELEMENT__PATH;
+
+	/**
+	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION__RESOURCES = ENGINEERED_ELEMENT__RESOURCES;
+
+	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION__DOCUMENTATION = ENGINEERED_ELEMENT__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Table Of Contents</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION__TABLE_OF_CONTENTS = ENGINEERED_ELEMENT__TABLE_OF_CONTENTS;
+
+	/**
+	 * The feature id for the '<em><b>Sections</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION__SECTIONS = ENGINEERED_ELEMENT__SECTIONS;
+
+	/**
+	 * The feature id for the '<em><b>Representations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION__REPRESENTATIONS = ENGINEERED_ELEMENT__REPRESENTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION__ANNOTATIONS = ENGINEERED_ELEMENT__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION__NAME = ENGINEERED_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Discussion</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION__DISCUSSION = ENGINEERED_ELEMENT__DISCUSSION;
+
+	/**
+	 * The feature id for the '<em><b>Topics</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION__TOPICS = ENGINEERED_ELEMENT__TOPICS;
+
+	/**
+	 * The feature id for the '<em><b>Start</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION__START = ENGINEERED_ELEMENT__START;
+
+	/**
+	 * The feature id for the '<em><b>End</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION__END = ENGINEERED_ELEMENT__END;
+
+	/**
+	 * The feature id for the '<em><b>Duration</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION__DURATION = ENGINEERED_ELEMENT__DURATION;
+
+	/**
+	 * The feature id for the '<em><b>Outbound Connections</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION__OUTBOUND_CONNECTIONS = ENGINEERED_ELEMENT__OUTBOUND_CONNECTIONS;
+
+	/**
+	 * The feature id for the '<em><b>Inbound Connections</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION__INBOUND_CONNECTIONS = ENGINEERED_ELEMENT__INBOUND_CONNECTIONS;
+
+	/**
+	 * The feature id for the '<em><b>Exports</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION__EXPORTS = ENGINEERED_ELEMENT__EXPORTS;
+
+	/**
+	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION__ISSUES = ENGINEERED_ELEMENT__ISSUES;
+
+	/**
+	 * The feature id for the '<em><b>Owners</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION__OWNERS = ENGINEERED_ELEMENT__OWNERS;
+
+	/**
+	 * The feature id for the '<em><b>Experts</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION__EXPERTS = ENGINEERED_ELEMENT__EXPERTS;
+
+	/**
+	 * The feature id for the '<em><b>Allocations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION__ALLOCATIONS = ENGINEERED_ELEMENT__ALLOCATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Principles</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION__PRINCIPLES = ENGINEERED_ELEMENT__PRINCIPLES;
+
+	/**
+	 * The feature id for the '<em><b>All Issues</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION__ALL_ISSUES = ENGINEERED_ELEMENT__ALL_ISSUES;
+
+	/**
+	 * The feature id for the '<em><b>Status</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION__STATUS = ENGINEERED_ELEMENT__STATUS;
+
+	/**
+	 * The feature id for the '<em><b>Affected By</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION__AFFECTED_BY = ENGINEERED_ELEMENT__AFFECTED_BY;
+
+	/**
+	 * The feature id for the '<em><b>Operations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION__OPERATIONS = ENGINEERED_ELEMENT__OPERATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Calls</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION__CALLS = ENGINEERED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Invocations</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION__INVOCATIONS = ENGINEERED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Exported By</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION__EXPORTED_BY = ENGINEERED_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Used By</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION__USED_BY = ENGINEERED_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the '<em>Operation</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION_FEATURE_COUNT = ENGINEERED_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
+	 * The number of operations of the '<em>Operation</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION_OPERATION_COUNT = ENGINEERED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.ActivityImpl <em>Activity</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.ActivityImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getActivity()
+	 * @generated
+	 */
+	int ACTIVITY = 48;
+
+	/**
+	 * The feature id for the '<em><b>Markers</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__MARKERS = OPERATION__MARKERS;
+
+	/**
+	 * The feature id for the '<em><b>Uri</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__URI = OPERATION__URI;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__DESCRIPTION = OPERATION__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__UUID = OPERATION__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Action Prototype</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__ACTION_PROTOTYPE = OPERATION__ACTION_PROTOTYPE;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__PATH = OPERATION__PATH;
+
+	/**
+	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__RESOURCES = OPERATION__RESOURCES;
+
+	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__DOCUMENTATION = OPERATION__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Table Of Contents</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__TABLE_OF_CONTENTS = OPERATION__TABLE_OF_CONTENTS;
+
+	/**
+	 * The feature id for the '<em><b>Sections</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__SECTIONS = OPERATION__SECTIONS;
+
+	/**
+	 * The feature id for the '<em><b>Representations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__REPRESENTATIONS = OPERATION__REPRESENTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__ANNOTATIONS = OPERATION__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__NAME = OPERATION__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Discussion</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__DISCUSSION = OPERATION__DISCUSSION;
+
+	/**
+	 * The feature id for the '<em><b>Topics</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__TOPICS = OPERATION__TOPICS;
+
+	/**
+	 * The feature id for the '<em><b>Start</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__START = OPERATION__START;
+
+	/**
+	 * The feature id for the '<em><b>End</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__END = OPERATION__END;
+
+	/**
+	 * The feature id for the '<em><b>Duration</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__DURATION = OPERATION__DURATION;
+
+	/**
+	 * The feature id for the '<em><b>Outbound Connections</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__OUTBOUND_CONNECTIONS = OPERATION__OUTBOUND_CONNECTIONS;
+
+	/**
+	 * The feature id for the '<em><b>Inbound Connections</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__INBOUND_CONNECTIONS = OPERATION__INBOUND_CONNECTIONS;
+
+	/**
+	 * The feature id for the '<em><b>Exports</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__EXPORTS = OPERATION__EXPORTS;
+
+	/**
+	 * The feature id for the '<em><b>Issues</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__ISSUES = OPERATION__ISSUES;
+
+	/**
+	 * The feature id for the '<em><b>Owners</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__OWNERS = OPERATION__OWNERS;
+
+	/**
+	 * The feature id for the '<em><b>Experts</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__EXPERTS = OPERATION__EXPERTS;
+
+	/**
+	 * The feature id for the '<em><b>Allocations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__ALLOCATIONS = OPERATION__ALLOCATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Principles</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__PRINCIPLES = OPERATION__PRINCIPLES;
+
+	/**
+	 * The feature id for the '<em><b>All Issues</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__ALL_ISSUES = OPERATION__ALL_ISSUES;
+
+	/**
+	 * The feature id for the '<em><b>Status</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__STATUS = OPERATION__STATUS;
+
+	/**
+	 * The feature id for the '<em><b>Affected By</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__AFFECTED_BY = OPERATION__AFFECTED_BY;
+
+	/**
+	 * The feature id for the '<em><b>Operations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__OPERATIONS = OPERATION__OPERATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Calls</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__CALLS = OPERATION__CALLS;
+
+	/**
+	 * The feature id for the '<em><b>Invocations</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__INVOCATIONS = OPERATION__INVOCATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Exported By</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__EXPORTED_BY = OPERATION__EXPORTED_BY;
+
+	/**
+	 * The feature id for the '<em><b>Used By</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__USED_BY = OPERATION__USED_BY;
+
+	/**
+	 * The feature id for the '<em><b>Outbound Transitions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__OUTBOUND_TRANSITIONS = OPERATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Inbound Transitions</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__INBOUND_TRANSITIONS = OPERATION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Activity</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY_FEATURE_COUNT = OPERATION_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Activity</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY_OPERATION_COUNT = OPERATION_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.TransitionImpl <em>Transition</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.TransitionImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getTransition()
+	 * @generated
+	 */
+	int TRANSITION = 49;
+
+	/**
+	 * The feature id for the '<em><b>Markers</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION__MARKERS = NAMED_ELEMENT__MARKERS;
+
+	/**
+	 * The feature id for the '<em><b>Uri</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION__URI = NAMED_ELEMENT__URI;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION__DESCRIPTION = NAMED_ELEMENT__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION__UUID = NAMED_ELEMENT__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Action Prototype</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION__ACTION_PROTOTYPE = NAMED_ELEMENT__ACTION_PROTOTYPE;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION__PATH = NAMED_ELEMENT__PATH;
+
+	/**
+	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION__RESOURCES = NAMED_ELEMENT__RESOURCES;
+
+	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION__DOCUMENTATION = NAMED_ELEMENT__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Table Of Contents</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION__TABLE_OF_CONTENTS = NAMED_ELEMENT__TABLE_OF_CONTENTS;
+
+	/**
+	 * The feature id for the '<em><b>Sections</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION__SECTIONS = NAMED_ELEMENT__SECTIONS;
+
+	/**
+	 * The feature id for the '<em><b>Representations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION__REPRESENTATIONS = NAMED_ELEMENT__REPRESENTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION__ANNOTATIONS = NAMED_ELEMENT__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION__NAME = NAMED_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Target</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION__TARGET = NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Transition</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Transition</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.engineering.impl.CallImpl <em>Call</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.engineering.impl.CallImpl
+	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getCall()
+	 * @generated
+	 */
+	int CALL = 50;
+
+	/**
+	 * The feature id for the '<em><b>Markers</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL__MARKERS = NAMED_ELEMENT__MARKERS;
+
+	/**
+	 * The feature id for the '<em><b>Uri</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL__URI = NAMED_ELEMENT__URI;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL__DESCRIPTION = NAMED_ELEMENT__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL__UUID = NAMED_ELEMENT__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Action Prototype</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL__ACTION_PROTOTYPE = NAMED_ELEMENT__ACTION_PROTOTYPE;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL__PATH = NAMED_ELEMENT__PATH;
+
+	/**
+	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL__RESOURCES = NAMED_ELEMENT__RESOURCES;
+
+	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL__DOCUMENTATION = NAMED_ELEMENT__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Table Of Contents</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL__TABLE_OF_CONTENTS = NAMED_ELEMENT__TABLE_OF_CONTENTS;
+
+	/**
+	 * The feature id for the '<em><b>Sections</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL__SECTIONS = NAMED_ELEMENT__SECTIONS;
+
+	/**
+	 * The feature id for the '<em><b>Representations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL__REPRESENTATIONS = NAMED_ELEMENT__REPRESENTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL__ANNOTATIONS = NAMED_ELEMENT__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL__NAME = NAMED_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Target</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL__TARGET = NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Call</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Call</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * Returns the meta object for class '{@link org.nasdanika.engineering.ModelElement <em>Model Element</em>}'.
@@ -11636,6 +12900,17 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getEngineeredElement_AffectedBy();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.nasdanika.engineering.EngineeredElement#getOperations <em>Operations</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Operations</em>'.
+	 * @see org.nasdanika.engineering.EngineeredElement#getOperations()
+	 * @see #getEngineeredElement()
+	 * @generated
+	 */
+	EReference getEngineeredElement_Operations();
 
 	/**
 	 * Returns the meta object for class '{@link org.nasdanika.engineering.EngineeredElementStatus <em>Engineered Element Status</em>}'.
@@ -13262,6 +14537,39 @@ public interface EngineeringPackage extends EPackage {
 	EReference getConnection_Target();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.nasdanika.engineering.Connection#isBidirectional <em>Bidirectional</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Bidirectional</em>'.
+	 * @see org.nasdanika.engineering.Connection#isBidirectional()
+	 * @see #getConnection()
+	 * @generated
+	 */
+	EAttribute getConnection_Bidirectional();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.Connection#getTargetOperations <em>Target Operations</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Target Operations</em>'.
+	 * @see org.nasdanika.engineering.Connection#getTargetOperations()
+	 * @see #getConnection()
+	 * @generated
+	 */
+	EReference getConnection_TargetOperations();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.Connection#getSourceOperations <em>Source Operations</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Source Operations</em>'.
+	 * @see org.nasdanika.engineering.Connection#getSourceOperations()
+	 * @see #getConnection()
+	 * @generated
+	 */
+	EReference getConnection_SourceOperations();
+
+	/**
 	 * Returns the meta object for class '{@link org.nasdanika.engineering.ConnectionTarget <em>Connection Target</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -13283,6 +14591,17 @@ public interface EngineeringPackage extends EPackage {
 	EReference getConnectionTarget_InboundConnections();
 
 	/**
+	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.ConnectionTarget#getExports <em>Exports</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Exports</em>'.
+	 * @see org.nasdanika.engineering.ConnectionTarget#getExports()
+	 * @see #getConnectionTarget()
+	 * @generated
+	 */
+	EReference getConnectionTarget_Exports();
+
+	/**
 	 * Returns the meta object for class '{@link org.nasdanika.engineering.Interface <em>Interface</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -13302,6 +14621,134 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getInterface_Children();
+
+	/**
+	 * Returns the meta object for class '{@link org.nasdanika.engineering.Operation <em>Operation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Operation</em>'.
+	 * @see org.nasdanika.engineering.Operation
+	 * @generated
+	 */
+	EClass getOperation();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.nasdanika.engineering.Operation#getCalls <em>Calls</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Calls</em>'.
+	 * @see org.nasdanika.engineering.Operation#getCalls()
+	 * @see #getOperation()
+	 * @generated
+	 */
+	EReference getOperation_Calls();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.Operation#getInvocations <em>Invocations</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Invocations</em>'.
+	 * @see org.nasdanika.engineering.Operation#getInvocations()
+	 * @see #getOperation()
+	 * @generated
+	 */
+	EReference getOperation_Invocations();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.Operation#getExportedBy <em>Exported By</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Exported By</em>'.
+	 * @see org.nasdanika.engineering.Operation#getExportedBy()
+	 * @see #getOperation()
+	 * @generated
+	 */
+	EReference getOperation_ExportedBy();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.Operation#getUsedBy <em>Used By</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Used By</em>'.
+	 * @see org.nasdanika.engineering.Operation#getUsedBy()
+	 * @see #getOperation()
+	 * @generated
+	 */
+	EReference getOperation_UsedBy();
+
+	/**
+	 * Returns the meta object for class '{@link org.nasdanika.engineering.Activity <em>Activity</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Activity</em>'.
+	 * @see org.nasdanika.engineering.Activity
+	 * @generated
+	 */
+	EClass getActivity();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.nasdanika.engineering.Activity#getOutboundTransitions <em>Outbound Transitions</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Outbound Transitions</em>'.
+	 * @see org.nasdanika.engineering.Activity#getOutboundTransitions()
+	 * @see #getActivity()
+	 * @generated
+	 */
+	EReference getActivity_OutboundTransitions();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.Activity#getInboundTransitions <em>Inbound Transitions</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Inbound Transitions</em>'.
+	 * @see org.nasdanika.engineering.Activity#getInboundTransitions()
+	 * @see #getActivity()
+	 * @generated
+	 */
+	EReference getActivity_InboundTransitions();
+
+	/**
+	 * Returns the meta object for class '{@link org.nasdanika.engineering.Transition <em>Transition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Transition</em>'.
+	 * @see org.nasdanika.engineering.Transition
+	 * @generated
+	 */
+	EClass getTransition();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.nasdanika.engineering.Transition#getTarget <em>Target</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Target</em>'.
+	 * @see org.nasdanika.engineering.Transition#getTarget()
+	 * @see #getTransition()
+	 * @generated
+	 */
+	EReference getTransition_Target();
+
+	/**
+	 * Returns the meta object for class '{@link org.nasdanika.engineering.Call <em>Call</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Call</em>'.
+	 * @see org.nasdanika.engineering.Call
+	 * @generated
+	 */
+	EClass getCall();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.nasdanika.engineering.Call#getTarget <em>Target</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Target</em>'.
+	 * @see org.nasdanika.engineering.Call#getTarget()
+	 * @see #getCall()
+	 * @generated
+	 */
+	EReference getCall_Target();
 
 	/**
 	 * Returns the meta object for class '{@link org.nasdanika.engineering.Message <em>Message</em>}'.
@@ -13659,6 +15106,14 @@ public interface EngineeringPackage extends EPackage {
 		 * @generated
 		 */
 		EReference ENGINEERED_ELEMENT__AFFECTED_BY = eINSTANCE.getEngineeredElement_AffectedBy();
+
+		/**
+		 * The meta object literal for the '<em><b>Operations</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ENGINEERED_ELEMENT__OPERATIONS = eINSTANCE.getEngineeredElement_Operations();
 
 		/**
 		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.EngineeredElementStatusImpl <em>Engineered Element Status</em>}' class.
@@ -14943,6 +16398,30 @@ public interface EngineeringPackage extends EPackage {
 		EReference CONNECTION__TARGET = eINSTANCE.getConnection_Target();
 
 		/**
+		 * The meta object literal for the '<em><b>Bidirectional</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONNECTION__BIDIRECTIONAL = eINSTANCE.getConnection_Bidirectional();
+
+		/**
+		 * The meta object literal for the '<em><b>Target Operations</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONNECTION__TARGET_OPERATIONS = eINSTANCE.getConnection_TargetOperations();
+
+		/**
+		 * The meta object literal for the '<em><b>Source Operations</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONNECTION__SOURCE_OPERATIONS = eINSTANCE.getConnection_SourceOperations();
+
+		/**
 		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.ConnectionTargetImpl <em>Connection Target</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -14961,6 +16440,14 @@ public interface EngineeringPackage extends EPackage {
 		EReference CONNECTION_TARGET__INBOUND_CONNECTIONS = eINSTANCE.getConnectionTarget_InboundConnections();
 
 		/**
+		 * The meta object literal for the '<em><b>Exports</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONNECTION_TARGET__EXPORTS = eINSTANCE.getConnectionTarget_Exports();
+
+		/**
 		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.InterfaceImpl <em>Interface</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -14977,6 +16464,110 @@ public interface EngineeringPackage extends EPackage {
 		 * @generated
 		 */
 		EReference INTERFACE__CHILDREN = eINSTANCE.getInterface_Children();
+
+		/**
+		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.OperationImpl <em>Operation</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.engineering.impl.OperationImpl
+		 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getOperation()
+		 * @generated
+		 */
+		EClass OPERATION = eINSTANCE.getOperation();
+
+		/**
+		 * The meta object literal for the '<em><b>Calls</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference OPERATION__CALLS = eINSTANCE.getOperation_Calls();
+
+		/**
+		 * The meta object literal for the '<em><b>Invocations</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference OPERATION__INVOCATIONS = eINSTANCE.getOperation_Invocations();
+
+		/**
+		 * The meta object literal for the '<em><b>Exported By</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference OPERATION__EXPORTED_BY = eINSTANCE.getOperation_ExportedBy();
+
+		/**
+		 * The meta object literal for the '<em><b>Used By</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference OPERATION__USED_BY = eINSTANCE.getOperation_UsedBy();
+
+		/**
+		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.ActivityImpl <em>Activity</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.engineering.impl.ActivityImpl
+		 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getActivity()
+		 * @generated
+		 */
+		EClass ACTIVITY = eINSTANCE.getActivity();
+
+		/**
+		 * The meta object literal for the '<em><b>Outbound Transitions</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ACTIVITY__OUTBOUND_TRANSITIONS = eINSTANCE.getActivity_OutboundTransitions();
+
+		/**
+		 * The meta object literal for the '<em><b>Inbound Transitions</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ACTIVITY__INBOUND_TRANSITIONS = eINSTANCE.getActivity_InboundTransitions();
+
+		/**
+		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.TransitionImpl <em>Transition</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.engineering.impl.TransitionImpl
+		 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getTransition()
+		 * @generated
+		 */
+		EClass TRANSITION = eINSTANCE.getTransition();
+
+		/**
+		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TRANSITION__TARGET = eINSTANCE.getTransition_Target();
+
+		/**
+		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.CallImpl <em>Call</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.engineering.impl.CallImpl
+		 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getCall()
+		 * @generated
+		 */
+		EClass CALL = eINSTANCE.getCall();
+
+		/**
+		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CALL__TARGET = eINSTANCE.getCall_Target();
 
 		/**
 		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.MessageImpl <em>Message</em>}' class.

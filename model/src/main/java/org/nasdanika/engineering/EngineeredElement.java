@@ -22,6 +22,7 @@ import org.nasdanika.ncore.Period;
  *   <li>{@link org.nasdanika.engineering.EngineeredElement#getAllIssues <em>All Issues</em>}</li>
  *   <li>{@link org.nasdanika.engineering.EngineeredElement#getStatus <em>Status</em>}</li>
  *   <li>{@link org.nasdanika.engineering.EngineeredElement#getAffectedBy <em>Affected By</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.EngineeredElement#getOperations <em>Operations</em>}</li>
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getEngineeredElement()
@@ -160,5 +161,17 @@ public interface EngineeredElement extends Forum, Period, ConnectionSource, Conn
 	 * @generated
 	 */
 	EList<Endeavor> getAffectedBy();
+
+	/**
+	 * Returns the value of the '<em><b>Operations</b></em>' containment reference list.
+	 * The list contents are of type {@link org.nasdanika.engineering.Operation}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Operations</em>' containment reference list.
+	 * @see org.nasdanika.engineering.EngineeringPackage#getEngineeredElement_Operations()
+	 * @model containment="true" keys="path"
+	 * @generated
+	 */
+	EList<Operation> getOperations();
 
 } // EngineeredElement

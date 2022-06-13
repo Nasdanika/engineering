@@ -9,10 +9,12 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.nasdanika.diagram.DiagramPackage;
+import org.nasdanika.engineering.Activity;
 import org.nasdanika.engineering.Aim;
 import org.nasdanika.engineering.Alignable;
 import org.nasdanika.engineering.Alignment;
 import org.nasdanika.engineering.Allocation;
+import org.nasdanika.engineering.Call;
 import org.nasdanika.engineering.Capability;
 import org.nasdanika.engineering.Capacity;
 import org.nasdanika.engineering.Connection;
@@ -48,6 +50,7 @@ import org.nasdanika.engineering.NamedElement;
 import org.nasdanika.engineering.NamedElementReference;
 import org.nasdanika.engineering.Note;
 import org.nasdanika.engineering.Objective;
+import org.nasdanika.engineering.Operation;
 import org.nasdanika.engineering.Organization;
 import org.nasdanika.engineering.Persona;
 import org.nasdanika.engineering.Principle;
@@ -57,6 +60,7 @@ import org.nasdanika.engineering.Release;
 import org.nasdanika.engineering.Representation;
 import org.nasdanika.engineering.TableOfContents;
 import org.nasdanika.engineering.Topic;
+import org.nasdanika.engineering.Transition;
 import org.nasdanika.engineering.journey.JourneyPackage;
 import org.nasdanika.engineering.journey.impl.JourneyPackageImpl;
 import org.nasdanika.engineering.util.EngineeringValidator;
@@ -392,6 +396,34 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	private EClass interfaceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass operationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass activityEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass transitionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass callEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -841,6 +873,16 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	@Override
 	public EReference getEngineeredElement_AffectedBy() {
 		return (EReference)engineeredElementEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getEngineeredElement_Operations() {
+		return (EReference)engineeredElementEClass.getEStructuralFeatures().get(8);
 	}
 
 	/**
@@ -2359,6 +2401,36 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
+	public EAttribute getConnection_Bidirectional() {
+		return (EAttribute)connectionEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getConnection_TargetOperations() {
+		return (EReference)connectionEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getConnection_SourceOperations() {
+		return (EReference)connectionEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getConnectionTarget() {
 		return connectionTargetEClass;
 	}
@@ -2379,6 +2451,16 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
+	public EReference getConnectionTarget_Exports() {
+		return (EReference)connectionTargetEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getInterface() {
 		return interfaceEClass;
 	}
@@ -2391,6 +2473,126 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	@Override
 	public EReference getInterface_Children() {
 		return (EReference)interfaceEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getOperation() {
+		return operationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getOperation_Calls() {
+		return (EReference)operationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getOperation_Invocations() {
+		return (EReference)operationEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getOperation_ExportedBy() {
+		return (EReference)operationEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getOperation_UsedBy() {
+		return (EReference)operationEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getActivity() {
+		return activityEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getActivity_OutboundTransitions() {
+		return (EReference)activityEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getActivity_InboundTransitions() {
+		return (EReference)activityEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getTransition() {
+		return transitionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getTransition_Target() {
+		return (EReference)transitionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getCall() {
+		return callEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getCall_Target() {
+		return (EReference)callEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -2549,6 +2751,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		createEReference(engineeredElementEClass, ENGINEERED_ELEMENT__ALL_ISSUES);
 		createEReference(engineeredElementEClass, ENGINEERED_ELEMENT__STATUS);
 		createEReference(engineeredElementEClass, ENGINEERED_ELEMENT__AFFECTED_BY);
+		createEReference(engineeredElementEClass, ENGINEERED_ELEMENT__OPERATIONS);
 
 		engineeredElementStatusEClass = createEClass(ENGINEERED_ELEMENT_STATUS);
 		createEReference(engineeredElementStatusEClass, ENGINEERED_ELEMENT_STATUS__CHILDREN);
@@ -2686,12 +2889,32 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 
 		connectionEClass = createEClass(CONNECTION);
 		createEReference(connectionEClass, CONNECTION__TARGET);
+		createEAttribute(connectionEClass, CONNECTION__BIDIRECTIONAL);
+		createEReference(connectionEClass, CONNECTION__TARGET_OPERATIONS);
+		createEReference(connectionEClass, CONNECTION__SOURCE_OPERATIONS);
 
 		connectionTargetEClass = createEClass(CONNECTION_TARGET);
 		createEReference(connectionTargetEClass, CONNECTION_TARGET__INBOUND_CONNECTIONS);
+		createEReference(connectionTargetEClass, CONNECTION_TARGET__EXPORTS);
 
 		interfaceEClass = createEClass(INTERFACE);
 		createEReference(interfaceEClass, INTERFACE__CHILDREN);
+
+		operationEClass = createEClass(OPERATION);
+		createEReference(operationEClass, OPERATION__CALLS);
+		createEReference(operationEClass, OPERATION__INVOCATIONS);
+		createEReference(operationEClass, OPERATION__EXPORTED_BY);
+		createEReference(operationEClass, OPERATION__USED_BY);
+
+		activityEClass = createEClass(ACTIVITY);
+		createEReference(activityEClass, ACTIVITY__OUTBOUND_TRANSITIONS);
+		createEReference(activityEClass, ACTIVITY__INBOUND_TRANSITIONS);
+
+		transitionEClass = createEClass(TRANSITION);
+		createEReference(transitionEClass, TRANSITION__TARGET);
+
+		callEClass = createEClass(CALL);
+		createEReference(callEClass, CALL__TARGET);
 	}
 
 	/**
@@ -2786,6 +3009,10 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		productOrganizationEClass.getESuperTypes().add(this.getOrganization());
 		connectionEClass.getESuperTypes().add(this.getEngineeredElement());
 		interfaceEClass.getESuperTypes().add(this.getEngineeredElement());
+		operationEClass.getESuperTypes().add(this.getEngineeredElement());
+		activityEClass.getESuperTypes().add(this.getOperation());
+		transitionEClass.getESuperTypes().add(this.getNamedElement());
+		callEClass.getESuperTypes().add(this.getNamedElement());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(modelElementEClass, ModelElement.class, "ModelElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -2898,6 +3125,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		initEReference(getEngineeredElement_AllIssues(), this.getIssue(), null, "allIssues", null, 0, -1, EngineeredElement.class, IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getEngineeredElement_Status(), this.getEngineeredElementStatus(), null, "status", null, 0, 1, EngineeredElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEngineeredElement_AffectedBy(), this.getEndeavor(), null, "affectedBy", null, 0, -1, EngineeredElement.class, IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getEngineeredElement_Operations(), this.getOperation(), null, "operations", null, 0, -1, EngineeredElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		getEngineeredElement_Operations().getEKeys().add(this.getModelElement_Path());
 
 		initEClass(engineeredElementStatusEClass, EngineeredElementStatus.class, "EngineeredElementStatus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEngineeredElementStatus_Children(), this.getEngineeredElementStatus(), null, "children", null, 0, -1, EngineeredElementStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3063,13 +3292,34 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 
 		initEClass(connectionEClass, Connection.class, "Connection", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getConnection_Target(), this.getConnectionTarget(), null, "target", null, 0, 1, Connection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getConnection_Bidirectional(), ecorePackage.getEBoolean(), "bidirectional", null, 0, 1, Connection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConnection_TargetOperations(), this.getOperation(), null, "targetOperations", null, 0, -1, Connection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConnection_SourceOperations(), this.getOperation(), null, "sourceOperations", null, 0, -1, Connection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(connectionTargetEClass, ConnectionTarget.class, "ConnectionTarget", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getConnectionTarget_InboundConnections(), this.getConnection(), null, "inboundConnections", null, 0, -1, ConnectionTarget.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getConnectionTarget_Exports(), this.getOperation(), null, "exports", null, 0, -1, ConnectionTarget.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(interfaceEClass, Interface.class, "Interface", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getInterface_Children(), this.getInterface(), null, "children", null, 0, -1, Interface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		getInterface_Children().getEKeys().add(this.getModelElement_Path());
+
+		initEClass(operationEClass, Operation.class, "Operation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getOperation_Calls(), this.getCall(), null, "calls", null, 0, -1, Operation.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		getOperation_Calls().getEKeys().add(this.getModelElement_Path());
+		initEReference(getOperation_Invocations(), this.getCall(), null, "invocations", null, 0, -1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOperation_ExportedBy(), this.getConnectionTarget(), null, "exportedBy", null, 0, -1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOperation_UsedBy(), this.getConnection(), null, "usedBy", null, 0, -1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(activityEClass, Activity.class, "Activity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getActivity_OutboundTransitions(), this.getTransition(), null, "outboundTransitions", null, 0, -1, Activity.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getActivity_InboundTransitions(), this.getTransition(), null, "inboundTransitions", null, 0, -1, Activity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(transitionEClass, Transition.class, "Transition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getTransition_Target(), this.getActivity(), null, "target", null, 0, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(callEClass, Call.class, "Call", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getCall_Target(), this.getOperation(), null, "target", null, 0, 1, Call.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -3795,6 +4045,40 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		   source,
 		   new String[] {
 			   "homogenous", "true"
+		   });
+		addAnnotation
+		  (getOperation_Calls(),
+		   source,
+		   new String[] {
+			   "homogenous", "true",
+			   "strict-containment", "true"
+		   });
+		addAnnotation
+		  (getOperation_ExportedBy(),
+		   source,
+		   new String[] {
+			   "opposite", "exports"
+		   });
+		addAnnotation
+		  (getActivity_OutboundTransitions(),
+		   source,
+		   new String[] {
+			   "homogenous", "true",
+			   "strict-containment", "true"
+		   });
+		addAnnotation
+		  (getTransition_Target(),
+		   source,
+		   new String[] {
+			   "opposite", "inboundTransitions",
+			   "default-feature", "true"
+		   });
+		addAnnotation
+		  (getCall_Target(),
+		   source,
+		   new String[] {
+			   "opposite", "invocations",
+			   "default-feature", "true"
 		   });
 	}
 
@@ -4635,10 +4919,88 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 			   "documentation", "Product organization features."
 		   });
 		addAnnotation
+		  (getConnection_TargetOperations(),
+		   source,
+		   new String[] {
+			   "documentation", "Target operations used by this connection."
+		   });
+		addAnnotation
+		  (getConnection_SourceOperations(),
+		   source,
+		   new String[] {
+			   "documentation", "Source operations used by this connection if it is bi-directional."
+		   });
+		addAnnotation
+		  (getConnectionTarget_Exports(),
+		   source,
+		   new String[] {
+			   "documentation", "Operations exported by this connection target, e.g. module operations exported by its interface."
+		   });
+		addAnnotation
 		  (getInterface_Children(),
 		   source,
 		   new String[] {
 			   "documentation", "Interfaces can be nested. For example, a TCP/IP interface may have an REST interface at port 443 as its child and that interface may have multiple endpoints at different paths. Similarly, there might be a messaging interface at a different port with multiple destination endpoints."
+		   });
+		addAnnotation
+		  (operationEClass,
+		   source,
+		   new String[] {
+			   "documentation", "Operation is something that its containing engineered element \"can do\"."
+		   });
+		addAnnotation
+		  (getOperation_Calls(),
+		   source,
+		   new String[] {
+			   "documentation", "Calls to other operations from this operation."
+		   });
+		addAnnotation
+		  (getOperation_Invocations(),
+		   source,
+		   new String[] {
+			   "documentation", "Calls of this operation."
+		   });
+		addAnnotation
+		  (getOperation_ExportedBy(),
+		   source,
+		   new String[] {
+			   "documentation", "Calls of this operation."
+		   });
+		addAnnotation
+		  (getOperation_UsedBy(),
+		   source,
+		   new String[] {
+			   "documentation", "Connections using this operation."
+		   });
+		addAnnotation
+		  (activityEClass,
+		   source,
+		   new String[] {
+			   "documentation", "Activity is an operation which can pass control to another activity."
+		   });
+		addAnnotation
+		  (getActivity_OutboundTransitions(),
+		   source,
+		   new String[] {
+			   "documentation", "Transitions from this activity."
+		   });
+		addAnnotation
+		  (getActivity_InboundTransitions(),
+		   source,
+		   new String[] {
+			   "documentation", "Transitions to this activity."
+		   });
+		addAnnotation
+		  (transitionEClass,
+		   source,
+		   new String[] {
+			   "documentation", "Transition from one activity to another, fire and forget."
+		   });
+		addAnnotation
+		  (callEClass,
+		   source,
+		   new String[] {
+			   "documentation", "Call from one operation to another, request/reply."
 		   });
 	}
 
