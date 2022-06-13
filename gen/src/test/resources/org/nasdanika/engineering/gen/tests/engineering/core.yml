@@ -95,6 +95,11 @@ engineering-product-organization:
         owners: engineering://nasdanika/engineers/joe-doe
         experts: engineering://nasdanika/engineers/joe-doe
         action-prototype: "ncore.genmodel.xml#/"
+        outbound-connections:
+          async:
+            target: engineering://nasdanika/modules/server      
+            #name: REST
+            description: For testing.        
         releases:
           "0.1":
             name: "0.1"

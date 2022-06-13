@@ -1,9 +1,11 @@
 package org.nasdanika.engineering.gen;
 
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.BiConsumer;
+import java.util.stream.Collectors;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -11,6 +13,7 @@ import org.eclipse.emf.ecore.ETypedElement;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.nasdanika.common.Context;
 import org.nasdanika.common.ProgressMonitor;
+import org.nasdanika.common.Util;
 import org.nasdanika.engineering.Connection;
 import org.nasdanika.engineering.EngineeredElement;
 import org.nasdanika.engineering.EngineeringPackage;
@@ -127,6 +130,28 @@ public class EngineeredElementActionBuilder<T extends EngineeredElement> extends
 			action.getNavigation().add(group);
 		}		
 	}
+	
+	private static int compareActions(Action a, Action b) {
+		if (a == null) {
+			if (b == null) {
+				return 0;
+			}
+			return 1;
+		}
+		if (b == null) {
+			return -1;
+		}
+		
+		String aText = a.getText();
+		String bText = b.getText();		
+		if (Util.isBlank(aText)) {
+			return Util.isBlank(bText) ? 0 : 1;
+		}
+		if (Util.isBlank(bText)) {
+			return -1;
+		}
+		return aText.compareTo(bText);
+	}
 		
 	@Override
 	protected void resolve(
@@ -156,7 +181,16 @@ public class EngineeredElementActionBuilder<T extends EngineeredElement> extends
 		}
 				
 		// Inbound connections
-		EList<Connection> inboundConnections = getTarget().getInboundConnections();
+		Comparator<Connection> inboundConnectionComparator = (a, b) -> {
+			if (a == b) {
+				return 0;
+			}
+			
+			// Connections
+			int ret = compareActions(context.getAction(a), context.getAction(b));
+			return ret == 0 ? compareActions(context.getAction(a.eContainer()), context.getAction(b.eContainer())) : ret;
+		};
+		List<Connection> inboundConnections = getTarget().getInboundConnections().stream().sorted(inboundConnectionComparator).collect(Collectors.toList());
 		if (!inboundConnections.isEmpty()) {
 			Action inboundConnectionsAction = AppFactory.eINSTANCE.createAction();
 			inboundConnectionsAction.setText("Inbound connections");
