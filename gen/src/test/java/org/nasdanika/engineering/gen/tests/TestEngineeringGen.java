@@ -446,7 +446,6 @@ public class TestEngineeringGen /* extends TestBase */ {
 				plugins.add("search");
 				JSONObject searchConfig = new JSONObject();
 				searchConfig.put("show_only_matches", true);
-				searchConfig.put("show_only_matches_children", true);
 				jsTree.put("search", searchConfig);
 				jsTree.put("plugins", plugins); 		
 				jsTree.put("state", Collections.singletonMap("key", "nsd-site-map-tree"));
@@ -467,6 +466,18 @@ public class TestEngineeringGen /* extends TestBase */ {
 							Object cellValue = cell.getValue();
 							if (cellValue instanceof org.w3c.dom.Element) {
 								org.w3c.dom.Element cellValueElement = (org.w3c.dom.Element) cellValue;
+								String uriAttribute = "uri";
+								if (cellValueElement.hasAttribute(uriAttribute)) {
+									Action targetAction = uriMap.get(Util.resolveMxICellURI(cell, uriAttribute, null, null));
+									if (targetAction != null && targetAction != action) {
+										URI bURI = uriResolver.apply(action, null);
+										URI tURI = uriResolver.apply(targetAction, bURI);
+										if (tURI != null) {
+											cellValueElement.setAttribute("link", tURI.toString());
+										}
+									}
+								}
+								
 								if (cellValueElement.hasAttribute("link")) {
 									String link = cellValueElement.getAttribute("link");
 									cellValueElement.setAttribute("link", mctx.interpolateToString(link));
@@ -474,7 +485,8 @@ public class TestEngineeringGen /* extends TestBase */ {
 								if (cellValueElement.hasAttribute("label")) {
 									String link = cellValueElement.getAttribute("label");
 									cellValueElement.setAttribute("label", mctx.interpolateToString(link));
-								}
+								}								
+								
 							} else if (cellValue instanceof String) {
 								cell.setValue(mctx.interpolateToString((String) cellValue));
 							}

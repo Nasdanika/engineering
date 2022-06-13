@@ -1,4 +1,4 @@
-<mxfile modified="2022-06-11T16:26:04.484Z" host="Electron" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/19.0.3 Chrome/102.0.5005.63 Electron/19.0.3 Safari/537.36" etag="ddiBwRgl3hT7ZlK1GAUP" compressed="false" version="19.0.3" type="device" pages="2">
+<mxfile modified="2022-06-12T21:40:24.585Z" host="Electron" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/19.0.3 Chrome/102.0.5005.63 Electron/19.0.3 Safari/537.36" etag="yUa9akLa_KJZklYsSUZB" compressed="false" version="19.0.3" type="device" pages="2">
   <diagram id="Ht1M8jgEwFfnCIfOTk4-" name="Page-1">
     <mxGraphModel dx="1102" dy="1852" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
@@ -173,13 +173,33 @@
         <mxCell id="wqAg0du4qXXx4KvR7UhO-0" />
         <mxCell id="wqAg0du4qXXx4KvR7UhO-1" parent="wqAg0du4qXXx4KvR7UhO-0" />
         <object label="Team A" uri="engineering://nasdanika/engineers/team-a" id="nvFklWlve-_imhRsXd-P-1">
-          <mxCell style="swimlane;" vertex="1" parent="wqAg0du4qXXx4KvR7UhO-1">
+          <mxCell style="swimlane;" parent="wqAg0du4qXXx4KvR7UhO-1" vertex="1">
             <mxGeometry x="40" y="40" width="200" height="200" as="geometry" />
           </mxCell>
         </object>
         <object label="Jane Doe" uri="engineers/jane-doe" id="nvFklWlve-_imhRsXd-P-0">
-          <mxCell style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="nvFklWlve-_imhRsXd-P-1">
+          <mxCell style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" parent="nvFklWlve-_imhRsXd-P-1" vertex="1">
             <mxGeometry x="80" y="70" width="30" height="60" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="Nasdanika" uri="engineering://nasdanika" id="yKVJmLE1C94YF4ECzW6z-0">
+          <mxCell style="swimlane;" vertex="1" parent="wqAg0du4qXXx4KvR7UhO-1">
+            <mxGeometry x="60" y="340" width="460" height="150" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="Server" uri="modules/server" id="yKVJmLE1C94YF4ECzW6z-2">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="yKVJmLE1C94YF4ECzW6z-0">
+            <mxGeometry x="305" y="50" width="120" height="60" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="Client" uri="modules/client" id="yKVJmLE1C94YF4ECzW6z-1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="yKVJmLE1C94YF4ECzW6z-0">
+            <mxGeometry x="30" y="40" width="120" height="60" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="" uri="outbound-connections/direct" id="yKVJmLE1C94YF4ECzW6z-3">
+          <mxCell style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;" edge="1" parent="yKVJmLE1C94YF4ECzW6z-0" source="yKVJmLE1C94YF4ECzW6z-1" target="yKVJmLE1C94YF4ECzW6z-2">
+            <mxGeometry relative="1" as="geometry" />
           </mxCell>
         </object>
       </root>
