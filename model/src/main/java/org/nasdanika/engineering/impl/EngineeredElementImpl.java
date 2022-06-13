@@ -15,6 +15,7 @@ import org.nasdanika.engineering.Allocation;
 import org.nasdanika.engineering.Connection;
 import org.nasdanika.engineering.ConnectionSource;
 import org.nasdanika.engineering.ConnectionTarget;
+import org.nasdanika.engineering.Endeavor;
 import org.nasdanika.engineering.Engineer;
 import org.nasdanika.engineering.EngineeredElement;
 import org.nasdanika.engineering.EngineeredElementStatus;
@@ -46,6 +47,7 @@ import org.nasdanika.ncore.util.NcoreUtil;
  *   <li>{@link org.nasdanika.engineering.impl.EngineeredElementImpl#getPrinciples <em>Principles</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineeredElementImpl#getAllIssues <em>All Issues</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineeredElementImpl#getStatus <em>Status</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.EngineeredElementImpl#getAffectedBy <em>Affected By</em>}</li>
  * </ul>
  *
  * @generated
@@ -287,6 +289,16 @@ public class EngineeredElementImpl extends ForumImpl implements EngineeredElemen
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public EList<Endeavor> getAffectedBy() {
+		return getOppositeReferrers(EngineeringPackage.Literals.ENGINEERED_ELEMENT__AFFECTED_BY);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -341,6 +353,8 @@ public class EngineeredElementImpl extends ForumImpl implements EngineeredElemen
 			case EngineeringPackage.ENGINEERED_ELEMENT__STATUS:
 				if (resolve) return getStatus();
 				return basicGetStatus();
+			case EngineeringPackage.ENGINEERED_ELEMENT__AFFECTED_BY:
+				return getAffectedBy();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -468,6 +482,8 @@ public class EngineeredElementImpl extends ForumImpl implements EngineeredElemen
 				return !getAllIssues().isEmpty();
 			case EngineeringPackage.ENGINEERED_ELEMENT__STATUS:
 				return basicGetStatus() != null;
+			case EngineeringPackage.ENGINEERED_ELEMENT__AFFECTED_BY:
+				return !getAffectedBy().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

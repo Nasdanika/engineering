@@ -749,6 +749,16 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	 * @generated
 	 */
 	@Override
+	public EReference getEndeavor_Affects() {
+		return (EReference)endeavorEClass.getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getEngineeredElement() {
 		return engineeredElementEClass;
 	}
@@ -821,6 +831,16 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	@Override
 	public EReference getEngineeredElement_Status() {
 		return (EReference)engineeredElementEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getEngineeredElement_AffectedBy() {
+		return (EReference)engineeredElementEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
@@ -1121,6 +1141,26 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 	@Override
 	public EReference getEngineer_EngineeredElementStatuses() {
 		return (EReference)engineerEClass.getEStructuralFeatures().get(18);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getEngineer_Manages() {
+		return (EReference)engineerEClass.getEStructuralFeatures().get(19);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getEngineer_Managers() {
+		return (EReference)engineerEClass.getEStructuralFeatures().get(20);
 	}
 
 	/**
@@ -2446,6 +2486,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		createEReference(endeavorEClass, ENDEAVOR__OBJECTIVES);
 		createEReference(endeavorEClass, ENDEAVOR__LINKED_OBJECTIVES);
 		createEReference(endeavorEClass, ENDEAVOR__ALL_OBJECTIVES);
+		createEReference(endeavorEClass, ENDEAVOR__AFFECTS);
 
 		incrementEClass = createEClass(INCREMENT);
 		createEReference(incrementEClass, INCREMENT__CHILDREN);
@@ -2507,6 +2548,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		createEReference(engineeredElementEClass, ENGINEERED_ELEMENT__PRINCIPLES);
 		createEReference(engineeredElementEClass, ENGINEERED_ELEMENT__ALL_ISSUES);
 		createEReference(engineeredElementEClass, ENGINEERED_ELEMENT__STATUS);
+		createEReference(engineeredElementEClass, ENGINEERED_ELEMENT__AFFECTED_BY);
 
 		engineeredElementStatusEClass = createEClass(ENGINEERED_ELEMENT_STATUS);
 		createEReference(engineeredElementStatusEClass, ENGINEERED_ELEMENT_STATUS__CHILDREN);
@@ -2542,6 +2584,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		createEReference(engineerEClass, ENGINEER__OBJECTIVES);
 		createEReference(engineerEClass, ENGINEER__DOMAINS);
 		createEReference(engineerEClass, ENGINEER__ENGINEERED_ELEMENT_STATUSES);
+		createEReference(engineerEClass, ENGINEER__MANAGES);
+		createEReference(engineerEClass, ENGINEER__MANAGERS);
 
 		domainEClass = createEClass(DOMAIN);
 		createEReference(domainEClass, DOMAIN__ELEMENTS);
@@ -2783,6 +2827,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		getEndeavor_Objectives().getEKeys().add(this.getModelElement_Path());
 		initEReference(getEndeavor_LinkedObjectives(), this.getObjective(), this.getObjective_Endeavor(), "linkedObjectives", null, 0, -1, Endeavor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getEndeavor_AllObjectives(), this.getObjective(), null, "allObjectives", null, 0, -1, Endeavor.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getEndeavor_Affects(), this.getEngineeredElement(), null, "affects", null, 0, -1, Endeavor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(incrementEClass, Increment.class, "Increment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getIncrement_Children(), this.getIncrement(), null, "children", null, 0, -1, Increment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2852,6 +2897,7 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		getEngineeredElement_Principles().getEKeys().add(this.getModelElement_Path());
 		initEReference(getEngineeredElement_AllIssues(), this.getIssue(), null, "allIssues", null, 0, -1, EngineeredElement.class, IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getEngineeredElement_Status(), this.getEngineeredElementStatus(), null, "status", null, 0, 1, EngineeredElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEngineeredElement_AffectedBy(), this.getEndeavor(), null, "affectedBy", null, 0, -1, EngineeredElement.class, IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEClass(engineeredElementStatusEClass, EngineeredElementStatus.class, "EngineeredElementStatus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEngineeredElementStatus_Children(), this.getEngineeredElementStatus(), null, "children", null, 0, -1, EngineeredElementStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2898,6 +2944,8 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		getEngineer_Domains().getEKeys().add(this.getModelElement_Path());
 		initEReference(getEngineer_EngineeredElementStatuses(), this.getEngineeredElementStatus(), null, "engineeredElementStatuses", null, 0, -1, Engineer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		getEngineer_EngineeredElementStatuses().getEKeys().add(this.getModelElement_Path());
+		initEReference(getEngineer_Manages(), this.getEngineer(), null, "manages", null, 0, -1, Engineer.class, IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getEngineer_Managers(), this.getEngineer(), null, "managers", null, 0, -1, Engineer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(domainEClass, Domain.class, "Domain", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDomain_Elements(), this.getEngineeredElement(), null, "elements", null, 0, -1, Domain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3313,6 +3361,12 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 			   "homogenous", "true"
 		   });
 		addAnnotation
+		  (getEngineeredElement_AffectedBy(),
+		   source,
+		   new String[] {
+			   "opposite", "affects"
+		   });
+		addAnnotation
 		  (getEngineeredElementStatus_Children(),
 		   source,
 		   new String[] {
@@ -3449,6 +3503,12 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		   source,
 		   new String[] {
 			   "homogenous", "true"
+		   });
+		addAnnotation
+		  (getEngineer_Manages(),
+		   source,
+		   new String[] {
+			   "opposite", "managers"
 		   });
 		addAnnotation
 		  (domainEClass,
@@ -3867,6 +3927,12 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 			   "documentation", "All objectives for this endeavor - a union of objectives and linkedObjectives."
 		   });
 		addAnnotation
+		  (getEndeavor_Affects(),
+		   source,
+		   new String[] {
+			   "documentation", "Engineer manager(s)."
+		   });
+		addAnnotation
 		  (getIncrement_Children(),
 		   source,
 		   new String[] {
@@ -4119,6 +4185,12 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 			   "documentation", "Issues (work items) for this element."
 		   });
 		addAnnotation
+		  (getEngineeredElement_AffectedBy(),
+		   source,
+		   new String[] {
+			   "documentation", "Engineers managed by this engineer. "
+		   });
+		addAnnotation
 		  (getEngineeredElementStatus_Children(),
 		   source,
 		   new String[] {
@@ -4261,6 +4333,18 @@ public class EngineeringPackageImpl extends EPackageImpl implements EngineeringP
 		   source,
 		   new String[] {
 			   "documentation", "Engineer\'s domains"
+		   });
+		addAnnotation
+		  (getEngineer_Manages(),
+		   source,
+		   new String[] {
+			   "documentation", "Engineers managed by this engineer. "
+		   });
+		addAnnotation
+		  (getEngineer_Managers(),
+		   source,
+		   new String[] {
+			   "documentation", "Engineer manager(s)."
 		   });
 		addAnnotation
 		  (getDomain_Elements(),

@@ -51,6 +51,7 @@ import org.nasdanika.ncore.util.NcoreUtil;
  *   <li>{@link org.nasdanika.engineering.impl.IncrementImpl#getObjectives <em>Objectives</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IncrementImpl#getLinkedObjectives <em>Linked Objectives</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IncrementImpl#getAllObjectives <em>All Objectives</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.IncrementImpl#getAffects <em>Affects</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IncrementImpl#getChildren <em>Children</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IncrementImpl#getIssues <em>Issues</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.IncrementImpl#getReleases <em>Releases</em>}</li>
@@ -326,6 +327,17 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public EList<EngineeredElement> getAffects() {
+		return (EList<EngineeredElement>)eDynamicGet(EngineeringPackage.INCREMENT__AFFECTS, EngineeringPackage.Literals.ENDEAVOR__AFFECTS, true, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
 	@Override
@@ -403,6 +415,8 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 				return getLinkedObjectives();
 			case EngineeringPackage.INCREMENT__ALL_OBJECTIVES:
 				return getAllObjectives();
+			case EngineeringPackage.INCREMENT__AFFECTS:
+				return getAffects();
 			case EngineeringPackage.INCREMENT__CHILDREN:
 				return getChildren();
 			case EngineeringPackage.INCREMENT__ISSUES:
@@ -453,6 +467,10 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 				getAllObjectives().clear();
 				getAllObjectives().addAll((Collection<? extends Objective>)newValue);
 				return;
+			case EngineeringPackage.INCREMENT__AFFECTS:
+				getAffects().clear();
+				getAffects().addAll((Collection<? extends EngineeredElement>)newValue);
+				return;
 			case EngineeringPackage.INCREMENT__CHILDREN:
 				getChildren().clear();
 				getChildren().addAll((Collection<? extends Increment>)newValue);
@@ -496,6 +514,9 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 			case EngineeringPackage.INCREMENT__ALL_OBJECTIVES:
 				getAllObjectives().clear();
 				return;
+			case EngineeringPackage.INCREMENT__AFFECTS:
+				getAffects().clear();
+				return;
 			case EngineeringPackage.INCREMENT__CHILDREN:
 				getChildren().clear();
 				return;
@@ -537,6 +558,8 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 				return !getLinkedObjectives().isEmpty();
 			case EngineeringPackage.INCREMENT__ALL_OBJECTIVES:
 				return !getAllObjectives().isEmpty();
+			case EngineeringPackage.INCREMENT__AFFECTS:
+				return !getAffects().isEmpty();
 			case EngineeringPackage.INCREMENT__CHILDREN:
 				return !getChildren().isEmpty();
 			case EngineeringPackage.INCREMENT__ISSUES:
@@ -579,6 +602,7 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 				case EngineeringPackage.INCREMENT__OBJECTIVES: return EngineeringPackage.ENDEAVOR__OBJECTIVES;
 				case EngineeringPackage.INCREMENT__LINKED_OBJECTIVES: return EngineeringPackage.ENDEAVOR__LINKED_OBJECTIVES;
 				case EngineeringPackage.INCREMENT__ALL_OBJECTIVES: return EngineeringPackage.ENDEAVOR__ALL_OBJECTIVES;
+				case EngineeringPackage.INCREMENT__AFFECTS: return EngineeringPackage.ENDEAVOR__AFFECTS;
 				default: return -1;
 			}
 		}
@@ -617,6 +641,7 @@ public class IncrementImpl extends NamedElementImpl implements Increment {
 				case EngineeringPackage.ENDEAVOR__OBJECTIVES: return EngineeringPackage.INCREMENT__OBJECTIVES;
 				case EngineeringPackage.ENDEAVOR__LINKED_OBJECTIVES: return EngineeringPackage.INCREMENT__LINKED_OBJECTIVES;
 				case EngineeringPackage.ENDEAVOR__ALL_OBJECTIVES: return EngineeringPackage.INCREMENT__ALL_OBJECTIVES;
+				case EngineeringPackage.ENDEAVOR__AFFECTS: return EngineeringPackage.INCREMENT__AFFECTS;
 				default: return -1;
 			}
 		}

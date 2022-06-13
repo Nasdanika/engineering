@@ -1283,13 +1283,22 @@ public interface EngineeringPackage extends EPackage {
 	int ENGINEERED_ELEMENT__STATUS = FORUM_FEATURE_COUNT + 11;
 
 	/**
+	 * The feature id for the '<em><b>Affected By</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEERED_ELEMENT__AFFECTED_BY = FORUM_FEATURE_COUNT + 12;
+
+	/**
 	 * The number of structural features of the '<em>Engineered Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEERED_ELEMENT_FEATURE_COUNT = FORUM_FEATURE_COUNT + 12;
+	int ENGINEERED_ELEMENT_FEATURE_COUNT = FORUM_FEATURE_COUNT + 13;
 
 	/**
 	 * The number of operations of the '<em>Engineered Element</em>' class.
@@ -1542,6 +1551,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int EVENT__STATUS = ENGINEERED_ELEMENT__STATUS;
+
+	/**
+	 * The feature id for the '<em><b>Affected By</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT__AFFECTED_BY = ENGINEERED_ELEMENT__AFFECTED_BY;
 
 	/**
 	 * The feature id for the '<em><b>Instant</b></em>' attribute.
@@ -1940,13 +1958,22 @@ public interface EngineeringPackage extends EPackage {
 	int ENDEAVOR__ALL_OBJECTIVES = MODEL_ELEMENT_FEATURE_COUNT + 12;
 
 	/**
+	 * The feature id for the '<em><b>Affects</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENDEAVOR__AFFECTS = MODEL_ELEMENT_FEATURE_COUNT + 13;
+
+	/**
 	 * The number of structural features of the '<em>Endeavor</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENDEAVOR_FEATURE_COUNT = MODEL_ELEMENT_FEATURE_COUNT + 13;
+	int ENDEAVOR_FEATURE_COUNT = MODEL_ELEMENT_FEATURE_COUNT + 14;
 
 	/**
 	 * The number of operations of the '<em>Endeavor</em>' class.
@@ -2192,13 +2219,22 @@ public interface EngineeringPackage extends EPackage {
 	int INCREMENT__ALL_OBJECTIVES = NAMED_ELEMENT_FEATURE_COUNT + 12;
 
 	/**
+	 * The feature id for the '<em><b>Affects</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INCREMENT__AFFECTS = NAMED_ELEMENT_FEATURE_COUNT + 13;
+
+	/**
 	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INCREMENT__CHILDREN = NAMED_ELEMENT_FEATURE_COUNT + 13;
+	int INCREMENT__CHILDREN = NAMED_ELEMENT_FEATURE_COUNT + 14;
 
 	/**
 	 * The feature id for the '<em><b>Issues</b></em>' reference list.
@@ -2207,7 +2243,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INCREMENT__ISSUES = NAMED_ELEMENT_FEATURE_COUNT + 14;
+	int INCREMENT__ISSUES = NAMED_ELEMENT_FEATURE_COUNT + 15;
 
 	/**
 	 * The feature id for the '<em><b>Releases</b></em>' reference list.
@@ -2216,7 +2252,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INCREMENT__RELEASES = NAMED_ELEMENT_FEATURE_COUNT + 15;
+	int INCREMENT__RELEASES = NAMED_ELEMENT_FEATURE_COUNT + 16;
 
 	/**
 	 * The number of structural features of the '<em>Increment</em>' class.
@@ -2225,7 +2261,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INCREMENT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 16;
+	int INCREMENT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 17;
 
 	/**
 	 * The number of operations of the '<em>Increment</em>' class.
@@ -3461,13 +3497,22 @@ public interface EngineeringPackage extends EPackage {
 	int ENGINEERED_CAPABILITY__ALL_OBJECTIVES = CAPABILITY_FEATURE_COUNT + 9;
 
 	/**
+	 * The feature id for the '<em><b>Affects</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEERED_CAPABILITY__AFFECTS = CAPABILITY_FEATURE_COUNT + 10;
+
+	/**
 	 * The feature id for the '<em><b>Releases</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEERED_CAPABILITY__RELEASES = CAPABILITY_FEATURE_COUNT + 10;
+	int ENGINEERED_CAPABILITY__RELEASES = CAPABILITY_FEATURE_COUNT + 11;
 
 	/**
 	 * The number of structural features of the '<em>Engineered Capability</em>' class.
@@ -3476,7 +3521,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEERED_CAPABILITY_FEATURE_COUNT = CAPABILITY_FEATURE_COUNT + 11;
+	int ENGINEERED_CAPABILITY_FEATURE_COUNT = CAPABILITY_FEATURE_COUNT + 12;
 
 	/**
 	 * The number of operations of the '<em>Engineered Capability</em>' class.
@@ -3738,6 +3783,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int ISSUE__ALL_OBJECTIVES = ENGINEERED_CAPABILITY__ALL_OBJECTIVES;
+
+	/**
+	 * The feature id for the '<em><b>Affects</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE__AFFECTS = ENGINEERED_CAPABILITY__AFFECTS;
 
 	/**
 	 * The feature id for the '<em><b>Releases</b></em>' reference list.
@@ -4515,6 +4569,15 @@ public interface EngineeringPackage extends EPackage {
 	int DOCUMENT__STATUS = ENGINEERED_ELEMENT__STATUS;
 
 	/**
+	 * The feature id for the '<em><b>Affected By</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT__AFFECTED_BY = ENGINEERED_ELEMENT__AFFECTED_BY;
+
+	/**
 	 * The number of structural features of the '<em>Document</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4774,6 +4837,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int PERSONA__STATUS = ENGINEERED_ELEMENT__STATUS;
+
+	/**
+	 * The feature id for the '<em><b>Affected By</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSONA__AFFECTED_BY = ENGINEERED_ELEMENT__AFFECTED_BY;
 
 	/**
 	 * The feature id for the '<em><b>Goals</b></em>' containment reference list.
@@ -5073,6 +5145,15 @@ public interface EngineeringPackage extends EPackage {
 	int ENGINEER__STATUS = PERSONA__STATUS;
 
 	/**
+	 * The feature id for the '<em><b>Affected By</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEER__AFFECTED_BY = PERSONA__AFFECTED_BY;
+
+	/**
 	 * The feature id for the '<em><b>Goals</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5280,13 +5361,31 @@ public interface EngineeringPackage extends EPackage {
 	int ENGINEER__ENGINEERED_ELEMENT_STATUSES = PERSONA_FEATURE_COUNT + 18;
 
 	/**
+	 * The feature id for the '<em><b>Manages</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEER__MANAGES = PERSONA_FEATURE_COUNT + 19;
+
+	/**
+	 * The feature id for the '<em><b>Managers</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEER__MANAGERS = PERSONA_FEATURE_COUNT + 20;
+
+	/**
 	 * The number of structural features of the '<em>Engineer</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEER_FEATURE_COUNT = PERSONA_FEATURE_COUNT + 19;
+	int ENGINEER_FEATURE_COUNT = PERSONA_FEATURE_COUNT + 21;
 
 	/**
 	 * The number of operations of the '<em>Engineer</em>' class.
@@ -5549,6 +5648,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int DOMAIN__STATUS = ENGINEERED_ELEMENT__STATUS;
+
+	/**
+	 * The feature id for the '<em><b>Affected By</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN__AFFECTED_BY = ENGINEERED_ELEMENT__AFFECTED_BY;
 
 	/**
 	 * The feature id for the '<em><b>Elements</b></em>' containment reference list.
@@ -5821,6 +5929,15 @@ public interface EngineeringPackage extends EPackage {
 	int ORGANIZATION__STATUS = ENGINEER__STATUS;
 
 	/**
+	 * The feature id for the '<em><b>Affected By</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANIZATION__AFFECTED_BY = ENGINEER__AFFECTED_BY;
+
+	/**
 	 * The feature id for the '<em><b>Goals</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6026,6 +6143,24 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int ORGANIZATION__ENGINEERED_ELEMENT_STATUSES = ENGINEER__ENGINEERED_ELEMENT_STATUSES;
+
+	/**
+	 * The feature id for the '<em><b>Manages</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANIZATION__MANAGES = ENGINEER__MANAGES;
+
+	/**
+	 * The feature id for the '<em><b>Managers</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANIZATION__MANAGERS = ENGINEER__MANAGERS;
 
 	/**
 	 * The feature id for the '<em><b>Engineers</b></em>' containment reference list.
@@ -6296,6 +6431,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int MODULE__STATUS = ENGINEERED_ELEMENT__STATUS;
+
+	/**
+	 * The feature id for the '<em><b>Affected By</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODULE__AFFECTED_BY = ENGINEERED_ELEMENT__AFFECTED_BY;
 
 	/**
 	 * The feature id for the '<em><b>Modules</b></em>' containment reference list.
@@ -6593,6 +6737,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int PRODUCT__STATUS = MODULE__STATUS;
+
+	/**
+	 * The feature id for the '<em><b>Affected By</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT__AFFECTED_BY = MODULE__AFFECTED_BY;
 
 	/**
 	 * The feature id for the '<em><b>Modules</b></em>' containment reference list.
@@ -6919,6 +7072,15 @@ public interface EngineeringPackage extends EPackage {
 	int RELEASE__ALL_OBJECTIVES = ENGINEERED_CAPABILITY__ALL_OBJECTIVES;
 
 	/**
+	 * The feature id for the '<em><b>Affects</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RELEASE__AFFECTS = ENGINEERED_CAPABILITY__AFFECTS;
+
+	/**
 	 * The feature id for the '<em><b>Releases</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7216,6 +7378,15 @@ public interface EngineeringPackage extends EPackage {
 	int FEATURE__ALL_OBJECTIVES = ENGINEERED_CAPABILITY__ALL_OBJECTIVES;
 
 	/**
+	 * The feature id for the '<em><b>Affects</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE__AFFECTS = ENGINEERED_CAPABILITY__AFFECTS;
+
+	/**
 	 * The feature id for the '<em><b>Releases</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7502,6 +7673,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int DIRECTORY__STATUS = ENGINEERED_ELEMENT__STATUS;
+
+	/**
+	 * The feature id for the '<em><b>Affected By</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIRECTORY__AFFECTED_BY = ENGINEERED_ELEMENT__AFFECTED_BY;
 
 	/**
 	 * The feature id for the '<em><b>Elements</b></em>' containment reference list.
@@ -9660,6 +9840,15 @@ public interface EngineeringPackage extends EPackage {
 	int DECISION__ALL_OBJECTIVES = ISSUE__ALL_OBJECTIVES;
 
 	/**
+	 * The feature id for the '<em><b>Affects</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DECISION__AFFECTS = ISSUE__AFFECTS;
+
+	/**
 	 * The feature id for the '<em><b>Releases</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -10129,6 +10318,15 @@ public interface EngineeringPackage extends EPackage {
 	int PRODUCT_ORGANIZATION__STATUS = ORGANIZATION__STATUS;
 
 	/**
+	 * The feature id for the '<em><b>Affected By</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_ORGANIZATION__AFFECTED_BY = ORGANIZATION__AFFECTED_BY;
+
+	/**
 	 * The feature id for the '<em><b>Goals</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -10334,6 +10532,24 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int PRODUCT_ORGANIZATION__ENGINEERED_ELEMENT_STATUSES = ORGANIZATION__ENGINEERED_ELEMENT_STATUSES;
+
+	/**
+	 * The feature id for the '<em><b>Manages</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_ORGANIZATION__MANAGES = ORGANIZATION__MANAGES;
+
+	/**
+	 * The feature id for the '<em><b>Managers</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_ORGANIZATION__MANAGERS = ORGANIZATION__MANAGERS;
 
 	/**
 	 * The feature id for the '<em><b>Engineers</b></em>' containment reference list.
@@ -10671,6 +10887,15 @@ public interface EngineeringPackage extends EPackage {
 	int CONNECTION__STATUS = ENGINEERED_ELEMENT__STATUS;
 
 	/**
+	 * The feature id for the '<em><b>Affected By</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTION__AFFECTED_BY = ENGINEERED_ELEMENT__AFFECTED_BY;
+
+	/**
 	 * The feature id for the '<em><b>Target</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -10988,6 +11213,15 @@ public interface EngineeringPackage extends EPackage {
 	int INTERFACE__STATUS = ENGINEERED_ELEMENT__STATUS;
 
 	/**
+	 * The feature id for the '<em><b>Affected By</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERFACE__AFFECTED_BY = ENGINEERED_ELEMENT__AFFECTED_BY;
+
+	/**
 	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -11295,6 +11529,17 @@ public interface EngineeringPackage extends EPackage {
 	EReference getEndeavor_AllObjectives();
 
 	/**
+	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.Endeavor#getAffects <em>Affects</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Affects</em>'.
+	 * @see org.nasdanika.engineering.Endeavor#getAffects()
+	 * @see #getEndeavor()
+	 * @generated
+	 */
+	EReference getEndeavor_Affects();
+
+	/**
 	 * Returns the meta object for class '{@link org.nasdanika.engineering.EngineeredElement <em>Engineered Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -11380,6 +11625,17 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getEngineeredElement_Status();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.EngineeredElement#getAffectedBy <em>Affected By</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Affected By</em>'.
+	 * @see org.nasdanika.engineering.EngineeredElement#getAffectedBy()
+	 * @see #getEngineeredElement()
+	 * @generated
+	 */
+	EReference getEngineeredElement_AffectedBy();
 
 	/**
 	 * Returns the meta object for class '{@link org.nasdanika.engineering.EngineeredElementStatus <em>Engineered Element Status</em>}'.
@@ -11707,6 +11963,28 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getEngineer_EngineeredElementStatuses();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.Engineer#getManages <em>Manages</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Manages</em>'.
+	 * @see org.nasdanika.engineering.Engineer#getManages()
+	 * @see #getEngineer()
+	 * @generated
+	 */
+	EReference getEngineer_Manages();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.nasdanika.engineering.Engineer#getManagers <em>Managers</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Managers</em>'.
+	 * @see org.nasdanika.engineering.Engineer#getManagers()
+	 * @see #getEngineer()
+	 * @generated
+	 */
+	EReference getEngineer_Managers();
 
 	/**
 	 * Returns the meta object for class '{@link org.nasdanika.engineering.Domain <em>Domain</em>}'.
@@ -13301,6 +13579,14 @@ public interface EngineeringPackage extends EPackage {
 		EReference ENDEAVOR__ALL_OBJECTIVES = eINSTANCE.getEndeavor_AllObjectives();
 
 		/**
+		 * The meta object literal for the '<em><b>Affects</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ENDEAVOR__AFFECTS = eINSTANCE.getEndeavor_Affects();
+
+		/**
 		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.EngineeredElementImpl <em>Engineered Element</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -13365,6 +13651,14 @@ public interface EngineeringPackage extends EPackage {
 		 * @generated
 		 */
 		EReference ENGINEERED_ELEMENT__STATUS = eINSTANCE.getEngineeredElement_Status();
+
+		/**
+		 * The meta object literal for the '<em><b>Affected By</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ENGINEERED_ELEMENT__AFFECTED_BY = eINSTANCE.getEngineeredElement_AffectedBy();
 
 		/**
 		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.EngineeredElementStatusImpl <em>Engineered Element Status</em>}' class.
@@ -13611,6 +13905,22 @@ public interface EngineeringPackage extends EPackage {
 		 * @generated
 		 */
 		EReference ENGINEER__ENGINEERED_ELEMENT_STATUSES = eINSTANCE.getEngineer_EngineeredElementStatuses();
+
+		/**
+		 * The meta object literal for the '<em><b>Manages</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ENGINEER__MANAGES = eINSTANCE.getEngineer_Manages();
+
+		/**
+		 * The meta object literal for the '<em><b>Managers</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ENGINEER__MANAGERS = eINSTANCE.getEngineer_Managers();
 
 		/**
 		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.DomainImpl <em>Domain</em>}' class.

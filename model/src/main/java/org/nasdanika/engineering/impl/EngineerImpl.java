@@ -54,6 +54,8 @@ import org.nasdanika.engineering.journey.Activity;
  *   <li>{@link org.nasdanika.engineering.impl.EngineerImpl#getObjectives <em>Objectives</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineerImpl#getDomains <em>Domains</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineerImpl#getEngineeredElementStatuses <em>Engineered Element Statuses</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.EngineerImpl#getManages <em>Manages</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.EngineerImpl#getManagers <em>Managers</em>}</li>
  * </ul>
  *
  * @generated
@@ -304,6 +306,27 @@ public class EngineerImpl extends PersonaImpl implements Engineer {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public EList<Engineer> getManages() {
+		return getOppositeReferrers(EngineeringPackage.Literals.ENGINEER__MANAGES);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public EList<Engineer> getManagers() {
+		return (EList<Engineer>)eDynamicGet(EngineeringPackage.ENGINEER__MANAGERS, EngineeringPackage.Literals.ENGINEER__MANAGERS, true, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -317,12 +340,6 @@ public class EngineerImpl extends PersonaImpl implements Engineer {
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
-
-//	@Override
-//	public EList<Engineer> getOwners() {
-//		EList<Engineer> owners = super.getOwners();
-//		return owners.isEmpty() ? ECollections.singletonEList(this) : owners;
-//	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -410,6 +427,10 @@ public class EngineerImpl extends PersonaImpl implements Engineer {
 				return getDomains();
 			case EngineeringPackage.ENGINEER__ENGINEERED_ELEMENT_STATUSES:
 				return getEngineeredElementStatuses();
+			case EngineeringPackage.ENGINEER__MANAGES:
+				return getManages();
+			case EngineeringPackage.ENGINEER__MANAGERS:
+				return getManagers();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -474,6 +495,10 @@ public class EngineerImpl extends PersonaImpl implements Engineer {
 				getEngineeredElementStatuses().clear();
 				getEngineeredElementStatuses().addAll((Collection<? extends EngineeredElementStatus>)newValue);
 				return;
+			case EngineeringPackage.ENGINEER__MANAGERS:
+				getManagers().clear();
+				getManagers().addAll((Collection<? extends Engineer>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -525,6 +550,9 @@ public class EngineerImpl extends PersonaImpl implements Engineer {
 			case EngineeringPackage.ENGINEER__ENGINEERED_ELEMENT_STATUSES:
 				getEngineeredElementStatuses().clear();
 				return;
+			case EngineeringPackage.ENGINEER__MANAGERS:
+				getManagers().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -575,6 +603,10 @@ public class EngineerImpl extends PersonaImpl implements Engineer {
 				return !getDomains().isEmpty();
 			case EngineeringPackage.ENGINEER__ENGINEERED_ELEMENT_STATUSES:
 				return !getEngineeredElementStatuses().isEmpty();
+			case EngineeringPackage.ENGINEER__MANAGES:
+				return !getManages().isEmpty();
+			case EngineeringPackage.ENGINEER__MANAGERS:
+				return !getManagers().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

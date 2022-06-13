@@ -23,6 +23,7 @@ import org.nasdanika.ncore.Period;
  *   <li>{@link org.nasdanika.engineering.Endeavor#getObjectives <em>Objectives</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Endeavor#getLinkedObjectives <em>Linked Objectives</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Endeavor#getAllObjectives <em>All Objectives</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.Endeavor#getAffects <em>Affects</em>}</li>
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getEndeavor()
@@ -188,5 +189,20 @@ public interface Endeavor extends ModelElement, Period, Alignable {
 	 * @generated
 	 */
 	EList<Objective> getAllObjectives();
+
+	/**
+	 * Returns the value of the '<em><b>Affects</b></em>' reference list.
+	 * The list contents are of type {@link org.nasdanika.engineering.EngineeredElement}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Engineer manager(s).
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Affects</em>' reference list.
+	 * @see org.nasdanika.engineering.EngineeringPackage#getEndeavor_Affects()
+	 * @model
+	 * @generated
+	 */
+	EList<EngineeredElement> getAffects();
 
 } // Endeavor

@@ -187,6 +187,12 @@
         <details key="documentation" value="All objectives for this endeavor - a union of objectives and linkedObjectives."/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="affects" upperBound="-1"
+        eType="#//EngineeredElement">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Engineer manager(s)."/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Increment" eSuperTypes="#//NamedElement #//Endeavor">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
@@ -539,6 +545,15 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="status" eType="#//EngineeredElementStatus"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="affectedBy" upperBound="-1"
+        eType="#//Endeavor" changeable="false" transient="true" derived="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Engineers managed by this engineer. "/>
+      </eAnnotations>
+      <eAnnotations source="urn:org.nasdanika">
+        <details key="opposite" value="affects"/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EngineeredElementStatus" eSuperTypes="#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
@@ -773,6 +788,21 @@
         upperBound="-1" eType="#//EngineeredElementStatus" containment="true" eKeys="#//ModelElement/path">
       <eAnnotations source="urn:org.nasdanika">
         <details key="homogenous" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="manages" upperBound="-1"
+        eType="#//Engineer" changeable="false" transient="true" derived="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Engineers managed by this engineer. "/>
+      </eAnnotations>
+      <eAnnotations source="urn:org.nasdanika">
+        <details key="opposite" value="managers"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="managers" upperBound="-1"
+        eType="#//Engineer">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Engineer manager(s)."/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>

@@ -41,6 +41,7 @@ import org.nasdanika.engineering.Release;
  *   <li>{@link org.nasdanika.engineering.impl.EngineeredCapabilityImpl#getObjectives <em>Objectives</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineeredCapabilityImpl#getLinkedObjectives <em>Linked Objectives</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineeredCapabilityImpl#getAllObjectives <em>All Objectives</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.EngineeredCapabilityImpl#getAffects <em>Affects</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EngineeredCapabilityImpl#getReleases <em>Releases</em>}</li>
  * </ul>
  *
@@ -242,6 +243,17 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
+	public EList<EngineeredElement> getAffects() {
+		return (EList<EngineeredElement>)eDynamicGet(EngineeringPackage.ENGINEERED_CAPABILITY__AFFECTS, EngineeringPackage.Literals.ENDEAVOR__AFFECTS, true, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public EList<Release> getReleases() {
 		return (EList<Release>)eDynamicGet(EngineeringPackage.ENGINEERED_CAPABILITY__RELEASES, EngineeringPackage.Literals.ENGINEERED_CAPABILITY__RELEASES, true, true);
 	}
@@ -323,6 +335,8 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 				return getLinkedObjectives();
 			case EngineeringPackage.ENGINEERED_CAPABILITY__ALL_OBJECTIVES:
 				return getAllObjectives();
+			case EngineeringPackage.ENGINEERED_CAPABILITY__AFFECTS:
+				return getAffects();
 			case EngineeringPackage.ENGINEERED_CAPABILITY__RELEASES:
 				return getReleases();
 		}
@@ -360,6 +374,10 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 				getAllObjectives().clear();
 				getAllObjectives().addAll((Collection<? extends Objective>)newValue);
 				return;
+			case EngineeringPackage.ENGINEERED_CAPABILITY__AFFECTS:
+				getAffects().clear();
+				getAffects().addAll((Collection<? extends EngineeredElement>)newValue);
+				return;
 			case EngineeringPackage.ENGINEERED_CAPABILITY__RELEASES:
 				getReleases().clear();
 				getReleases().addAll((Collection<? extends Release>)newValue);
@@ -393,6 +411,9 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 				return;
 			case EngineeringPackage.ENGINEERED_CAPABILITY__ALL_OBJECTIVES:
 				getAllObjectives().clear();
+				return;
+			case EngineeringPackage.ENGINEERED_CAPABILITY__AFFECTS:
+				getAffects().clear();
 				return;
 			case EngineeringPackage.ENGINEERED_CAPABILITY__RELEASES:
 				getReleases().clear();
@@ -429,6 +450,8 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 				return !getLinkedObjectives().isEmpty();
 			case EngineeringPackage.ENGINEERED_CAPABILITY__ALL_OBJECTIVES:
 				return !getAllObjectives().isEmpty();
+			case EngineeringPackage.ENGINEERED_CAPABILITY__AFFECTS:
+				return !getAffects().isEmpty();
 			case EngineeringPackage.ENGINEERED_CAPABILITY__RELEASES:
 				return !getReleases().isEmpty();
 		}
@@ -459,6 +482,7 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 				case EngineeringPackage.ENGINEERED_CAPABILITY__OBJECTIVES: return EngineeringPackage.ENDEAVOR__OBJECTIVES;
 				case EngineeringPackage.ENGINEERED_CAPABILITY__LINKED_OBJECTIVES: return EngineeringPackage.ENDEAVOR__LINKED_OBJECTIVES;
 				case EngineeringPackage.ENGINEERED_CAPABILITY__ALL_OBJECTIVES: return EngineeringPackage.ENDEAVOR__ALL_OBJECTIVES;
+				case EngineeringPackage.ENGINEERED_CAPABILITY__AFFECTS: return EngineeringPackage.ENDEAVOR__AFFECTS;
 				default: return -1;
 			}
 		}
@@ -489,6 +513,7 @@ public class EngineeredCapabilityImpl extends CapabilityImpl implements Engineer
 				case EngineeringPackage.ENDEAVOR__OBJECTIVES: return EngineeringPackage.ENGINEERED_CAPABILITY__OBJECTIVES;
 				case EngineeringPackage.ENDEAVOR__LINKED_OBJECTIVES: return EngineeringPackage.ENGINEERED_CAPABILITY__LINKED_OBJECTIVES;
 				case EngineeringPackage.ENDEAVOR__ALL_OBJECTIVES: return EngineeringPackage.ENGINEERED_CAPABILITY__ALL_OBJECTIVES;
+				case EngineeringPackage.ENDEAVOR__AFFECTS: return EngineeringPackage.ENGINEERED_CAPABILITY__AFFECTS;
 				default: return -1;
 			}
 		}

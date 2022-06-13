@@ -36,6 +36,7 @@ public class IncrementActionBuilder extends NamedElementActionBuilder<Increment>
 		properties.add(EngineeringPackage.Literals.ENDEAVOR__COMPLETION);
 		properties.add(EngineeringPackage.Literals.ENDEAVOR__TOTAL_COST);
 		properties.add(EngineeringPackage.Literals.ENDEAVOR__BENEFIT);
+		properties.add(EngineeringPackage.Literals.ENDEAVOR__AFFECTS);
 		
 		return properties;
 	}

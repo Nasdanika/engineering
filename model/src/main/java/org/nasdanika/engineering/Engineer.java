@@ -33,6 +33,8 @@ import org.nasdanika.engineering.journey.Activity;
  *   <li>{@link org.nasdanika.engineering.Engineer#getObjectives <em>Objectives</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Engineer#getDomains <em>Domains</em>}</li>
  *   <li>{@link org.nasdanika.engineering.Engineer#getEngineeredElementStatuses <em>Engineered Element Statuses</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.Engineer#getManages <em>Manages</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.Engineer#getManagers <em>Managers</em>}</li>
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getEngineer()
@@ -350,5 +352,36 @@ public interface Engineer extends Persona {
 	 * @generated
 	 */
 	EList<EngineeredElementStatus> getEngineeredElementStatuses();
+
+	/**
+	 * Returns the value of the '<em><b>Manages</b></em>' reference list.
+	 * The list contents are of type {@link org.nasdanika.engineering.Engineer}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Engineers managed by this engineer. 
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Manages</em>' reference list.
+	 * @see org.nasdanika.engineering.EngineeringPackage#getEngineer_Manages()
+	 * @model transient="true" changeable="false" derived="true"
+	 *        annotation="urn:org.nasdanika opposite='managers'"
+	 * @generated
+	 */
+	EList<Engineer> getManages();
+
+	/**
+	 * Returns the value of the '<em><b>Managers</b></em>' reference list.
+	 * The list contents are of type {@link org.nasdanika.engineering.Engineer}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Engineer manager(s).
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Managers</em>' reference list.
+	 * @see org.nasdanika.engineering.EngineeringPackage#getEngineer_Managers()
+	 * @model
+	 * @generated
+	 */
+	EList<Engineer> getManagers();
 
 } // Engineer

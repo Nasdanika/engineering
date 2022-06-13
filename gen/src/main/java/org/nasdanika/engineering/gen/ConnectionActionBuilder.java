@@ -27,7 +27,7 @@ public class ConnectionActionBuilder extends EngineeredElementActionBuilder<Conn
 			ProgressMonitor progressMonitor) throws Exception {
 		Action ret = super.buildAction(action, registry, resolveConsumer, progressMonitor);
 		if (Util.isBlank(ret.getText())) {
-			ret.setText("(unnamed)");
+			ret.setText("(" + getTarget().getPath() + ")");
 		}
 		return ret;
 	}

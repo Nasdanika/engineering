@@ -65,6 +65,8 @@ public class EngineerActionBuilder<T extends Engineer> extends PersonaActionBuil
 		properties.add(EngineeringPackage.Literals.ENGINEER__OWNS);
 		properties.add(EngineeringPackage.Literals.ENGINEER__EXPERTISE);
 		properties.add(EngineeringPackage.Literals.ENGINEER__REPRESENTS);
+		properties.add(EngineeringPackage.Literals.ENGINEER__MANAGERS);
+		properties.add(EngineeringPackage.Literals.ENGINEER__MANAGES);
 
 		return properties;
 	}

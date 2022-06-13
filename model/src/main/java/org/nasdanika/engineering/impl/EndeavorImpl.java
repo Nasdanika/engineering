@@ -18,6 +18,7 @@ import org.nasdanika.engineering.Alignment;
 import org.nasdanika.engineering.Capacity;
 import org.nasdanika.engineering.Endeavor;
 import org.nasdanika.engineering.Engineer;
+import org.nasdanika.engineering.EngineeredElement;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.Issue;
 import org.nasdanika.engineering.Objective;
@@ -46,6 +47,7 @@ import org.nasdanika.ncore.Temporal;
  *   <li>{@link org.nasdanika.engineering.impl.EndeavorImpl#getObjectives <em>Objectives</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EndeavorImpl#getLinkedObjectives <em>Linked Objectives</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.EndeavorImpl#getAllObjectives <em>All Objectives</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.impl.EndeavorImpl#getAffects <em>Affects</em>}</li>
  * </ul>
  *
  * @generated
@@ -332,6 +334,17 @@ public class EndeavorImpl extends ModelElementImpl implements Endeavor {
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
+	public EList<EngineeredElement> getAffects() {
+		return (EList<EngineeredElement>)eDynamicGet(EngineeringPackage.ENDEAVOR__AFFECTS, EngineeringPackage.Literals.ENDEAVOR__AFFECTS, true, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case EngineeringPackage.ENDEAVOR__CAPACITY:
@@ -401,6 +414,8 @@ public class EndeavorImpl extends ModelElementImpl implements Endeavor {
 				return getLinkedObjectives();
 			case EngineeringPackage.ENDEAVOR__ALL_OBJECTIVES:
 				return getAllObjectives();
+			case EngineeringPackage.ENDEAVOR__AFFECTS:
+				return getAffects();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -445,6 +460,10 @@ public class EndeavorImpl extends ModelElementImpl implements Endeavor {
 				getAllObjectives().clear();
 				getAllObjectives().addAll((Collection<? extends Objective>)newValue);
 				return;
+			case EngineeringPackage.ENDEAVOR__AFFECTS:
+				getAffects().clear();
+				getAffects().addAll((Collection<? extends EngineeredElement>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -484,6 +503,9 @@ public class EndeavorImpl extends ModelElementImpl implements Endeavor {
 			case EngineeringPackage.ENDEAVOR__ALL_OBJECTIVES:
 				getAllObjectives().clear();
 				return;
+			case EngineeringPackage.ENDEAVOR__AFFECTS:
+				getAffects().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -522,6 +544,8 @@ public class EndeavorImpl extends ModelElementImpl implements Endeavor {
 				return !getLinkedObjectives().isEmpty();
 			case EngineeringPackage.ENDEAVOR__ALL_OBJECTIVES:
 				return !getAllObjectives().isEmpty();
+			case EngineeringPackage.ENDEAVOR__AFFECTS:
+				return !getAffects().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

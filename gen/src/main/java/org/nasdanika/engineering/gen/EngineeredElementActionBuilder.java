@@ -35,6 +35,7 @@ public class EngineeredElementActionBuilder<T extends EngineeredElement> extends
 		properties.add(EngineeringPackage.Literals.ENGINEERED_ELEMENT__STATUS);
 		properties.add(EngineeringPackage.Literals.ENGINEERED_ELEMENT__OWNERS);
 		properties.add(EngineeringPackage.Literals.ENGINEERED_ELEMENT__EXPERTS);
+		properties.add(EngineeringPackage.Literals.ENGINEERED_ELEMENT__AFFECTED_BY);
 		return properties;
 	}	
 	

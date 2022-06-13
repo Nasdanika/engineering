@@ -21,6 +21,7 @@ import org.nasdanika.ncore.Period;
  *   <li>{@link org.nasdanika.engineering.EngineeredElement#getPrinciples <em>Principles</em>}</li>
  *   <li>{@link org.nasdanika.engineering.EngineeredElement#getAllIssues <em>All Issues</em>}</li>
  *   <li>{@link org.nasdanika.engineering.EngineeredElement#getStatus <em>Status</em>}</li>
+ *   <li>{@link org.nasdanika.engineering.EngineeredElement#getAffectedBy <em>Affected By</em>}</li>
  * </ul>
  *
  * @see org.nasdanika.engineering.EngineeringPackage#getEngineeredElement()
@@ -143,5 +144,21 @@ public interface EngineeredElement extends Forum, Period, ConnectionSource, Conn
 	 * @generated
 	 */
 	void setStatus(EngineeredElementStatus value);
+
+	/**
+	 * Returns the value of the '<em><b>Affected By</b></em>' reference list.
+	 * The list contents are of type {@link org.nasdanika.engineering.Endeavor}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Engineers managed by this engineer. 
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Affected By</em>' reference list.
+	 * @see org.nasdanika.engineering.EngineeringPackage#getEngineeredElement_AffectedBy()
+	 * @model transient="true" changeable="false" derived="true"
+	 *        annotation="urn:org.nasdanika opposite='affects'"
+	 * @generated
+	 */
+	EList<Endeavor> getAffectedBy();
 
 } // EngineeredElement
