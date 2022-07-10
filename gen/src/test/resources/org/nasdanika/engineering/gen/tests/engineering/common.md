@@ -2,8 +2,8 @@ Common documentation
 
 ## Sequence diagram
 
-```uml-resource
-sequence.plantuml
+```mermaid-resource
+sequence.mermaid
 ```
 
 ## AWS

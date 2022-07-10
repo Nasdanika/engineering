@@ -1,0 +1,4 @@
+engineering-domain:
+  name: My Domain
+  path: my-domain
+  elements: fileset:*/engineering.yml

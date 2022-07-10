@@ -26,6 +26,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
 import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.function.Predicate;
 
 import org.eclipse.emf.common.notify.Adapter;
@@ -52,6 +53,7 @@ import org.nasdanika.common.DefaultConverter;
 import org.nasdanika.common.Diagnostic;
 import org.nasdanika.common.DiagnosticException;
 import org.nasdanika.common.DiagramGenerator;
+import org.nasdanika.common.FilterDiagramGenerator;
 import org.nasdanika.common.MutableContext;
 import org.nasdanika.common.NasdanikaException;
 import org.nasdanika.common.NullProgressMonitor;
@@ -63,6 +65,7 @@ import org.nasdanika.common.SupplierFactory;
 import org.nasdanika.common.resources.BinaryEntityContainer;
 import org.nasdanika.common.resources.FileSystemContainer;
 import org.nasdanika.diagram.DiagramPackage;
+import org.nasdanika.drawio.ConnectionBase;
 import org.nasdanika.emf.EObjectAdaptable;
 import org.nasdanika.emf.EmfUtil;
 import org.nasdanika.emf.persistence.FeatureCacheAdapter;
@@ -341,7 +344,6 @@ public class TestEngineeringGen /* extends TestBase */ {
 			}
 		}
 		ActionContentProvider.Factory actionContentProviderFactory = (contentProviderContext) -> (action, uriResolver, pMonitor) -> {
-			DiagramGenerator chain = contentProviderContext.get(DiagramGenerator.class, DiagramGenerator.INSTANCE);
 			MutableContext mctx = contentProviderContext.fork();
 			PropertyComputer uriPropertyComputer = new PropertyComputer() {
 				
@@ -457,44 +459,13 @@ public class TestEngineeringGen /* extends TestBase */ {
 			};			
 			mctx.put("nsd-site-map-tree-script", siteMapTreeScriptComputer);		
 						
-			DiagramGenerator interpolatingDiagramGenerator = new DiagramGenerator() {
-
-				@Override
-				public String generateDiagram(String spec, Dialect dialect) throws Exception {
-					if (dialect == Dialect.DRAWIO) {
-						spec = Util.filterMxGraphModel(spec, cell -> {
-							Object cellValue = cell.getValue();
-							if (cellValue instanceof org.w3c.dom.Element) {
-								org.w3c.dom.Element cellValueElement = (org.w3c.dom.Element) cellValue;
-								String uriAttribute = "uri";
-								if (cellValueElement.hasAttribute(uriAttribute)) {
-									Action targetAction = uriMap.get(Util.resolveMxICellURI(cell, uriAttribute, null, null));
-									if (targetAction != null && targetAction != action) {
-										URI bURI = uriResolver.apply(action, null);
-										URI tURI = uriResolver.apply(targetAction, bURI);
-										if (tURI != null) {
-											cellValueElement.setAttribute("link", tURI.toString());
-										}
-									}
-								}
-								
-								if (cellValueElement.hasAttribute("link")) {
-									String link = cellValueElement.getAttribute("link");
-									cellValueElement.setAttribute("link", mctx.interpolateToString(link));
-								}
-								if (cellValueElement.hasAttribute("label")) {
-									String link = cellValueElement.getAttribute("label");
-									cellValueElement.setAttribute("label", mctx.interpolateToString(link));
-								}								
-								
-							} else if (cellValue instanceof String) {
-								cell.setValue(mctx.interpolateToString((String) cellValue));
-							}
-						});
-					}
-					return chain.generateDiagram(spec, dialect);
-				}
+			DiagramGenerator interpolatingDiagramGenerator = new FilterDiagramGenerator(contentProviderContext.get(DiagramGenerator.class, DiagramGenerator.INSTANCE)) {
 				
+				@Override
+				public String generateDiagram(String spec, String dialect) throws Exception {
+					return super.generateDiagram(filterDiagram(spec, dialect, uriMap, uriResolver, action, mctx), dialect);
+				}
+
 			};
 			
 			mctx.register(DiagramGenerator.class, interpolatingDiagramGenerator);
@@ -554,6 +525,58 @@ public class TestEngineeringGen /* extends TestBase */ {
 				System.out.println("[Page xml -> html] " + pageFile.getName());
 			}
 		}		
+	}
+	
+	private static String URI_PROPERTY = "uri";
+
+	private static Function<org.nasdanika.drawio.ModelElement, URI> URI_PROVIDER = e -> {
+		String uriProperty = e.getProperty(URI_PROPERTY);
+		if (org.nasdanika.common.Util.isBlank(uriProperty)) {
+			return null;
+		}
+		URI uri = URI.createURI(uriProperty);
+		return uri.appendSegment(""); // Adding a hanging / for "under the parent" resolution.
+	};				
+		
+	protected String filterDiagram(String spec, String dialect, Map<URI,Action> uriMap, BiFunction<Label,URI,URI> uriResolver, Action action, Context mctx) throws Exception {
+		if (DiagramGenerator.DRAWIO_DIALECT.equals(dialect)) {
+			spec = Util.filterDrawio(spec, element -> {
+				if (element instanceof org.nasdanika.drawio.ModelElement) {
+					org.nasdanika.drawio.ModelElement modelElement = (org.nasdanika.drawio.ModelElement) element;
+					String uriStrVal = modelElement.getProperty(URI_PROPERTY);
+					if (!org.nasdanika.common.Util.isBlank(uriStrVal)) {									
+						URI uri = modelElement.resolveURI(null, URI_PROVIDER, ConnectionBase.SOURCE);
+						if (uri != null && org.nasdanika.common.Util.isBlank(uri.lastSegment())) {
+							uri = uri.trimSegments(1);
+						}
+						Action targetAction = uriMap.get(uri);
+						if (targetAction != null && targetAction != action) {
+							URI bURI = uriResolver.apply(action, null);
+							URI tURI = uriResolver.apply(targetAction, bURI);
+							if (tURI != null) {
+								modelElement.setLink(tURI.toString());
+							}
+						}
+					}
+	
+					String link = modelElement.getLink();
+					if (!org.nasdanika.common.Util.isBlank(link)) {
+						String interpolatedLink = mctx.interpolateToString(link);
+						if (!Objects.equals(link, interpolatedLink)) {
+							modelElement.setLink(interpolatedLink);
+						}
+					}
+					String label = modelElement.getLabel();
+					if (!org.nasdanika.common.Util.isBlank(label)) {
+						String interpolatedLabel = mctx.interpolateToString(label);
+						if (!Objects.equals(label, interpolatedLabel)) {
+							modelElement.setLabel(interpolatedLabel);
+						}
+					}
+				}
+			}, null, true);
+		}
+		return spec;
 	}
 	
 	protected EObject loadObject(
