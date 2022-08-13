@@ -26,7 +26,7 @@ public class ModuleActionBuilder<T extends org.nasdanika.engineering.Module> ext
 			Action action,
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 
 		action = super.buildAction(action, registry, resolveConsumer, progressMonitor);
 		if (Util.isBlank(action.getIcon())) {
@@ -52,13 +52,12 @@ public class ModuleActionBuilder<T extends org.nasdanika.engineering.Module> ext
 	 * Creates a list of actions for sub-packages. 
 	 * @param progressMonitor
 	 * @return An empty list if there are no sub-packages. A singleton list containing a grouping action containing sub-package actions otherwise.
-	 * @throws Exception 
 	 */
 	protected void createModuleActions(
 			Action action,
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		EList<EObject> children = action.getChildren();
 		for (org.nasdanika.engineering.Module module: getTarget().getModules()) {
 			children.add(createChildAction(module, registry, resolveConsumer, progressMonitor));
@@ -69,7 +68,7 @@ public class ModuleActionBuilder<T extends org.nasdanika.engineering.Module> ext
 			Action action,
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		
 		EList<Action> groupAnonymous = action.getAnonymous();
 		for (Interface moduleInterface: getTarget().getInterfaces()) {
@@ -81,7 +80,7 @@ public class ModuleActionBuilder<T extends org.nasdanika.engineering.Module> ext
 	protected void resolve(
 			Action action, 
 			org.nasdanika.html.emf.EObjectActionResolver.Context context,
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		super.resolve(action, context, progressMonitor);
 
 		// TODO - indented table with numbers of inbound connections?
@@ -99,7 +98,7 @@ public class ModuleActionBuilder<T extends org.nasdanika.engineering.Module> ext
 						Action base, 
 						ETypedElement typedElement,
 						org.nasdanika.html.emf.EObjectActionResolver.Context context, 
-						ProgressMonitor progressMonitor) throws Exception {
+						ProgressMonitor progressMonitor) {
 					
 					EList<Interface> children = element.getChildren();
 					if (children.isEmpty()) {

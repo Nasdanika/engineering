@@ -2,6 +2,7 @@ package org.nasdanika.engineering.gen;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -15,6 +16,7 @@ import org.eclipse.emf.ecore.ETypedElement;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.nasdanika.common.BiSupplier;
 import org.nasdanika.common.Context;
+import org.nasdanika.common.NasdanikaException;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.common.Util;
 import org.nasdanika.diagram.gen.Generator;
@@ -54,13 +56,17 @@ public class ModelElementActionBuilder<T extends ModelElement> extends EObjectAc
 			Action action,
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		Action ret = super.buildAction(action, registry, resolveConsumer, progressMonitor);		
 		T eObj = getTarget();
 		URI uri = NcoreUtil.getUri(eObj);
 		String id = uri == null ? eObj.getUuid() : uri.toString();
-		String digest = Hex.encodeHexString(MessageDigest.getInstance("SHA-256").digest(id.getBytes(StandardCharsets.UTF_8)));
-		ret.setId(digest);
+		try {
+			String digest = Hex.encodeHexString(MessageDigest.getInstance("SHA-256").digest(id.getBytes(StandardCharsets.UTF_8)));
+			ret.setId(digest);
+		} catch (NoSuchAlgorithmException e) {
+			throw new NasdanikaException(e);
+		}
 		
 		String description = eObj.getDescription();
 		ret.setDescription(description);
@@ -87,7 +93,7 @@ public class ModelElementActionBuilder<T extends ModelElement> extends EObjectAc
 			Action action,
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		
 		EList<NamedElement> resources = getTarget().getResources();
 		if (!resources.isEmpty()) {
@@ -108,14 +114,14 @@ public class ModelElementActionBuilder<T extends ModelElement> extends EObjectAc
 	protected Table createPropertiesTable(
 			Action action,
 			org.nasdanika.html.emf.EObjectActionResolver.Context context,
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		Table propertiesTable = super.createPropertiesTable(action, context, progressMonitor);
 		propertiesTable.getAttributes().put("style", createText("width:auto"));
 		return propertiesTable;
 	}
 	
 	@Override
-	protected void resolve(Action action, org.nasdanika.html.emf.EObjectActionResolver.Context context,	ProgressMonitor progressMonitor) throws Exception {
+	protected void resolve(Action action, org.nasdanika.html.emf.EObjectActionResolver.Context context,	ProgressMonitor progressMonitor) {
 		super.resolve(action, context, progressMonitor);
 		
 		// Adding documentation here so it appears under the properties table
@@ -191,7 +197,7 @@ public class ModelElementActionBuilder<T extends ModelElement> extends EObjectAc
 					Action base, 
 					ETypedElement typedElement,
 					org.nasdanika.html.emf.EObjectActionResolver.Context context, 
-					ProgressMonitor progressMonitor) throws Exception {
+					ProgressMonitor progressMonitor) {
 	
 				if (element instanceof Directory) {
 					EList<NamedElement> children = ((Directory) element).getElements();
@@ -214,7 +220,7 @@ public class ModelElementActionBuilder<T extends ModelElement> extends EObjectAc
 			Representation representation, 
 			Action action, 
 			org.nasdanika.html.emf.EObjectActionResolver.Context context,
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		RepresentationGeneratorAdapter adapter = EObjectAdaptable.adaptTo(representation, RepresentationGeneratorAdapter.class);
 		if (adapter != null) {
 			adapter.generate(action, context, progressMonitor);
@@ -226,8 +232,7 @@ public class ModelElementActionBuilder<T extends ModelElement> extends EObjectAc
 			Action base, 
 			ETypedElement typedElement, 
 			Object value,
-			org.nasdanika.html.emf.EObjectActionResolver.Context context, ProgressMonitor progressMonitor)
-			throws Exception {
+			org.nasdanika.html.emf.EObjectActionResolver.Context context, ProgressMonitor progressMonitor) {
 
 		if ((typedElement == EngineeringPackage.Literals.ENDEAVOR__COMPLETION || typedElement == EngineeringPackage.Literals.KEY_RESULT__COMPLETION) && value instanceof Double) {
 			double completion = (Double) value;

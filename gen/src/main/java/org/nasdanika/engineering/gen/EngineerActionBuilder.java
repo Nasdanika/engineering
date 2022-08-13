@@ -44,7 +44,7 @@ public class EngineerActionBuilder<T extends Engineer> extends PersonaActionBuil
 			Action action,
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		action = super.buildAction(action, registry, resolveConsumer, progressMonitor);
 		
 		createDomainActions(action, registry, resolveConsumer, progressMonitor);		
@@ -75,7 +75,7 @@ public class EngineerActionBuilder<T extends Engineer> extends PersonaActionBuil
 			Action action,
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		
 		T engineer = getTarget();
 		EList<EngineeredElementStatus> engineeredElementStatuses = engineer.getEngineeredElementStatuses();
@@ -99,7 +99,7 @@ public class EngineerActionBuilder<T extends Engineer> extends PersonaActionBuil
 			Action action,
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		
 		List<Endeavor> assignments = getTarget().getAssignments();
 		if (!assignments.isEmpty()) {
@@ -116,7 +116,7 @@ public class EngineerActionBuilder<T extends Engineer> extends PersonaActionBuil
 			Action action,
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		List<Domain> domains = getTarget().getDomains();
 		if (!domains.isEmpty()) {
 			Action group = AppFactory.eINSTANCE.createAction();
@@ -134,13 +134,12 @@ public class EngineerActionBuilder<T extends Engineer> extends PersonaActionBuil
 	 * Creates a list of actions for modules. 
 	 * @param progressMonitor
 	 * @return An empty list if there are no modules. A singleton list containing a grouping action containing module actions otherwise.
-	 * @throws Exception 
 	 */
 	protected void createModuleActions(
 			Action action,
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		List<org.nasdanika.engineering.Module> modules = getTarget().getModules();
 		if (!modules.isEmpty()) {
 			Action group = AppFactory.eINSTANCE.createAction();
@@ -160,7 +159,7 @@ public class EngineerActionBuilder<T extends Engineer> extends PersonaActionBuil
 			Action action,
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		List<Increment> increments = getTarget().getIncrements();
 		if (!increments.isEmpty()) {
 			Action group = AppFactory.eINSTANCE.createAction();
@@ -179,13 +178,12 @@ public class EngineerActionBuilder<T extends Engineer> extends PersonaActionBuil
 	 * Creates a list of actions for personas and adds them to the list of group's anonymous actions. 
 	 * @param progressMonitor
 	 * @return An empty list if there are no personas. A singleton list containing a grouping action containing persona actions otherwise.
-	 * @throws Exception 
 	 */
 	protected void createPersonaActions(
 			Action action,
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		
 		List<Persona> personas = getTarget().getPersonas();
 		if (!personas.isEmpty()) {
@@ -207,7 +205,7 @@ public class EngineerActionBuilder<T extends Engineer> extends PersonaActionBuil
 			Action action,
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		
 		List<Objective> objectives = getTarget().getObjectives();
 		if (!objectives.isEmpty()) {
@@ -229,7 +227,7 @@ public class EngineerActionBuilder<T extends Engineer> extends PersonaActionBuil
 			Action action,
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		
 		T engineer = getTarget();
 		EList<IssueCategory> issueCategories = engineer.getIssueCategories();
@@ -306,7 +304,7 @@ public class EngineerActionBuilder<T extends Engineer> extends PersonaActionBuil
 	protected void resolve(
 			Action action, 
 			org.nasdanika.html.emf.EObjectActionResolver.Context context,
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		super.resolve(action, context, progressMonitor);
 		
 		T engineer = getTarget();
@@ -527,7 +525,7 @@ public class EngineerActionBuilder<T extends Engineer> extends PersonaActionBuil
 					Action base, 
 					ETypedElement typedElement,
 					org.nasdanika.html.emf.EObjectActionResolver.Context context, 
-					ProgressMonitor progressMonitor) throws Exception {
+					ProgressMonitor progressMonitor) {
 				
 				EList<EngineeredElementStatus> children = element.getChildren();
 				if (children.isEmpty()) {
@@ -548,7 +546,7 @@ public class EngineerActionBuilder<T extends Engineer> extends PersonaActionBuil
 					Action base, 
 					ETypedElement typedElement,
 					org.nasdanika.html.emf.EObjectActionResolver.Context context, 
-					ProgressMonitor progressMonitor) throws Exception {
+					ProgressMonitor progressMonitor) {
 				
 				EList<IssueCategory> children = element.getChildren();
 				if (children.isEmpty()) {

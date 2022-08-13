@@ -32,7 +32,7 @@ public class ForumActionBuilder<T extends Forum> extends NamedElementActionBuild
 			Action action,
 			BiConsumer<EObject, Action> registry,
 			Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer,
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		
 		action = super.buildAction(action, registry, resolveConsumer, progressMonitor);
 		
@@ -51,7 +51,7 @@ public class ForumActionBuilder<T extends Forum> extends NamedElementActionBuild
 	protected void resolve(
 			Action action, 
 			org.nasdanika.html.emf.EObjectActionResolver.Context context,
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		super.resolve(action, context, progressMonitor);
 		
 		T forum = getTarget();
@@ -79,7 +79,7 @@ public class ForumActionBuilder<T extends Forum> extends NamedElementActionBuild
 						Action base, 
 						ETypedElement typedElement,
 						org.nasdanika.html.emf.EObjectActionResolver.Context context, 
-						ProgressMonitor progressMonitor) throws Exception {
+						ProgressMonitor progressMonitor) {
 
 					header.getContent().add(createText("Topics"));
 				}
@@ -91,7 +91,7 @@ public class ForumActionBuilder<T extends Forum> extends NamedElementActionBuild
 						Action base, 
 						ETypedElement typedElement,
 						org.nasdanika.html.emf.EObjectActionResolver.Context context, 
-						ProgressMonitor progressMonitor) throws Exception {
+						ProgressMonitor progressMonitor) {
 
 					cell.getContent().add(createText(String.valueOf(rowElement.getTopics().size())));
 					Appearance cellAppearance = cell.getAppearance();
@@ -136,7 +136,7 @@ public class ForumActionBuilder<T extends Forum> extends NamedElementActionBuild
 						Action base, 
 						ETypedElement typedElement,
 						org.nasdanika.html.emf.EObjectActionResolver.Context context, 
-						ProgressMonitor progressMonitor) throws Exception {
+						ProgressMonitor progressMonitor) {
 
 					header.getContent().add(createText("Messages"));
 				}
@@ -148,7 +148,7 @@ public class ForumActionBuilder<T extends Forum> extends NamedElementActionBuild
 						Action base, 
 						ETypedElement typedElement,
 						org.nasdanika.html.emf.EObjectActionResolver.Context context, 
-						ProgressMonitor progressMonitor) throws Exception {
+						ProgressMonitor progressMonitor) {
 
 					cell.getContent().add(createText(String.valueOf(rowElement.getMessages().size())));
 					Appearance cellAppearance = cell.getAppearance();

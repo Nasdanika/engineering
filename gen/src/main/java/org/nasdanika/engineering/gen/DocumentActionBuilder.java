@@ -17,7 +17,7 @@ public class DocumentActionBuilder extends EngineeredElementActionBuilder<Docume
 	protected Table createPropertiesTable(
 			Action action, 
 			org.nasdanika.html.emf.EObjectActionResolver.Context context,
-			ProgressMonitor progressMonitor) throws Exception {		
+			ProgressMonitor progressMonitor) {		
 		Table propertiesTable = super.createPropertiesTable(action, context, progressMonitor);
 		if (propertiesTable != null) {
 			Action propertiesAction = AppFactory.eINSTANCE.createAction();

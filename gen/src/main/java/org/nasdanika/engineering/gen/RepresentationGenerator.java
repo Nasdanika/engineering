@@ -22,6 +22,6 @@ public interface RepresentationGenerator {
 			Representation representation, 
 			Action action, 
 			org.nasdanika.html.emf.EObjectActionResolver.Context resolverContext,
-			ProgressMonitor progressMonitor) throws Exception;	
+			ProgressMonitor progressMonitor);	
 
 }

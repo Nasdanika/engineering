@@ -12,7 +12,7 @@ public class MyRepresentationGenerator implements RepresentationGenerator {
 	public void generate(
 			Representation representation, 
 			Action action, Context resolverContext,
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		System.out.println("Here we go!!!");
 
 	}

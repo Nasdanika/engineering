@@ -1,7 +1,9 @@
 package org.nasdanika.engineering.gen;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.List;
@@ -20,6 +22,7 @@ import org.nasdanika.common.Context;
 import org.nasdanika.common.Converter;
 import org.nasdanika.common.DefaultConverter;
 import org.nasdanika.common.Diagnostic;
+import org.nasdanika.common.ExecutionException;
 import org.nasdanika.common.Function;
 import org.nasdanika.common.ListCompoundSupplierFactory;
 import org.nasdanika.common.MapCompoundSupplierFactory;
@@ -46,7 +49,7 @@ public class CallRepresentationGeneratorSupplierFactoryAdapter extends AdapterIm
 	}
 	
 	@Override
-	public Supplier<RepresentationGenerator> create(Context context) throws Exception {
+	public Supplier<RepresentationGenerator> create(Context context) {
 		MapCompoundSupplierFactory<EStructuralFeature, Object> featureMapFactory = new MapCompoundSupplierFactory<>("Feature map factory");
 		Call call = (Call) getTarget();
 		EList<EObject> init = call.getInit();
@@ -223,7 +226,7 @@ public class CallRepresentationGeneratorSupplierFactoryAdapter extends AdapterIm
 
 			@SuppressWarnings("unchecked")
 			@Override
-			public RepresentationGenerator execute(Map<EStructuralFeature,Object> data, ProgressMonitor progressMonitor) throws Exception {
+			public RepresentationGenerator execute(Map<EStructuralFeature,Object> data, ProgressMonitor progressMonitor) {
 				List<Object> initList = (List<Object>) data.get(ExecPackage.Literals.CALL__INIT);
 				
 				Object obj;
@@ -233,7 +236,11 @@ public class CallRepresentationGeneratorSupplierFactoryAdapter extends AdapterIm
 					obj = null;
 				} else {
 					Object[] constructorArguments = coerce(context, initList, constructor.getParameterTypes(), progressMonitor);
-					obj = constructor.newInstance(constructorArguments);
+					try {
+						obj = constructor.newInstance(constructorArguments);
+					} catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+						throw new ExecutionException(e, this);
+					}
 					Map<String,Object> properties = (Map<String,Object>) data.get(ExecPackage.Literals.CALL__PROPERTIES);					
 					if (properties != null) {
 						for (Entry<String, Object> pe: properties.entrySet()) {
@@ -248,7 +255,11 @@ public class CallRepresentationGeneratorSupplierFactoryAdapter extends AdapterIm
 				} else {
 					List<Object> argList = (List<Object>) data.get(ExecPackage.Literals.CALL__ARGUMENTS);
 					Object[] methodArguments = coerce(context, argList, method.getParameterTypes(), progressMonitor);
-					result = method.invoke(obj, methodArguments);					
+					try {
+						result = method.invoke(obj, methodArguments);
+					} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+						throw new ExecutionException(e, this);
+					}					
 				}
 
 				if (result instanceof SupplierFactory) {
@@ -256,7 +267,11 @@ public class CallRepresentationGeneratorSupplierFactoryAdapter extends AdapterIm
 				} 
 				
 				if (result instanceof Supplier) {
-					result = Util.call((Supplier<?>) result, progressMonitor, null);
+					try {
+						result = Util.call((Supplier<?>) result, progressMonitor, null);
+					} catch (Exception e) {
+						throw new ExecutionException(e, this);
+					}
 				}
 				
 				if (result instanceof RepresentationGenerator) {
@@ -273,9 +288,8 @@ public class CallRepresentationGeneratorSupplierFactoryAdapter extends AdapterIm
 	 * @param arguments
 	 * @param parameterTypes
 	 * @return
-	 * @throws Exception
 	 */
-	private Object[] coerce(Context context, List<Object> arguments, Class<?>[] parameterTypes, ProgressMonitor progressMonitor) throws Exception {
+	private Object[] coerce(Context context, List<Object> arguments, Class<?>[] parameterTypes, ProgressMonitor progressMonitor) {
 		if (arguments == null) {
 			return null;
 		}
@@ -291,14 +305,17 @@ public class CallRepresentationGeneratorSupplierFactoryAdapter extends AdapterIm
 	 * @param argument
 	 * @param parameterType
 	 * @return
-	 * @throws Exception
 	 */
-	private Object coerce(Context context, Object argument, Class<?> parameterType, ProgressMonitor progressMonitor) throws Exception {
+	private Object coerce(Context context, Object argument, Class<?> parameterType, ProgressMonitor progressMonitor) {
 		if (argument == null || parameterType.isInstance(argument)) {
 			return argument;
 		}
 		if (parameterType == String.class && argument instanceof InputStream) {
-			return Util.toString(context, (InputStream ) argument);
+			try {
+				return Util.toString(context, (InputStream ) argument);
+			} catch (IOException e) {
+				throw new ExecutionException(e);
+			}
 		}
 		Converter converter = context.get(Converter.class, DefaultConverter.INSTANCE);
 		Object ret = converter.convert(argument, parameterType);

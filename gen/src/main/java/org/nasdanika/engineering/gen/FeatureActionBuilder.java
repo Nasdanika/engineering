@@ -29,7 +29,7 @@ public class FeatureActionBuilder extends EngineeredCapabilityActionBuilder<Feat
 			Action action,
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		action = super.buildAction(action, registry, resolveConsumer, progressMonitor);
 		
 		action.getSections().addAll(createChildrenActions(registry, resolveConsumer, progressMonitor));
@@ -42,7 +42,7 @@ public class FeatureActionBuilder extends EngineeredCapabilityActionBuilder<Feat
 			Action action,
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		
 		List<Issue> issues = getTarget().getIssues();
 		if (!issues.isEmpty()) {
@@ -61,7 +61,7 @@ public class FeatureActionBuilder extends EngineeredCapabilityActionBuilder<Feat
 	protected List<Action> createChildrenActions(
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		
 		List<Feature> children = getTarget().getChildren();
 		if (children.isEmpty()) {
@@ -81,7 +81,7 @@ public class FeatureActionBuilder extends EngineeredCapabilityActionBuilder<Feat
 	protected void resolve(
 			Action action, 
 			org.nasdanika.html.emf.EObjectActionResolver.Context context,
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		super.resolve(action, context, progressMonitor);
 		
 		EList<Feature> children = getTarget().getChildren();
@@ -95,7 +95,7 @@ public class FeatureActionBuilder extends EngineeredCapabilityActionBuilder<Feat
 						Action base, 
 						ETypedElement typedElement,
 						org.nasdanika.html.emf.EObjectActionResolver.Context context, 
-						ProgressMonitor progressMonitor) throws Exception {
+						ProgressMonitor progressMonitor) {
 					
 					EList<Feature> children = element.getChildren();
 					if (children.isEmpty()) {

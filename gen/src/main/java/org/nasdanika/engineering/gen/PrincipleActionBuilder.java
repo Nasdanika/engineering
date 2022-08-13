@@ -26,7 +26,7 @@ public class PrincipleActionBuilder extends AimActionBuilder<Principle> {
 			Action action,
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		action = super.buildAction(action, registry, resolveConsumer, progressMonitor);
 		
 		createChildrenActions(action, registry, resolveConsumer, progressMonitor);
@@ -38,7 +38,7 @@ public class PrincipleActionBuilder extends AimActionBuilder<Principle> {
 			Action action, 
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		
 		List<Principle> children = getTarget().getChildren();
 		if (!children.isEmpty()) {
@@ -57,7 +57,7 @@ public class PrincipleActionBuilder extends AimActionBuilder<Principle> {
 	protected void resolve(
 			Action action, 
 			org.nasdanika.html.emf.EObjectActionResolver.Context context,
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		super.resolve(action, context, progressMonitor);
 		
 		EList<Principle> children = getTarget().getChildren();
@@ -79,7 +79,7 @@ public class PrincipleActionBuilder extends AimActionBuilder<Principle> {
 					Action base, 
 					ETypedElement typedElement,
 					org.nasdanika.html.emf.EObjectActionResolver.Context context, 
-					ProgressMonitor progressMonitor) throws Exception {
+					ProgressMonitor progressMonitor) {
 				
 				EList<Principle> children = element.getChildren();
 				if (children.isEmpty()) {

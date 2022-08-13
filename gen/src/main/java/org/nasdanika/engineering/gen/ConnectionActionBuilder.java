@@ -24,7 +24,7 @@ public class ConnectionActionBuilder extends EngineeredElementActionBuilder<Conn
 			Action action, 
 			BiConsumer<EObject, Action> registry,
 			Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer,
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		Action ret = super.buildAction(action, registry, resolveConsumer, progressMonitor);
 		if (Util.isBlank(ret.getText())) {
 			ret.setText("(" + getTarget().getPath() + ")");

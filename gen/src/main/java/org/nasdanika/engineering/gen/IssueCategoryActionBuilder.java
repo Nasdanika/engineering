@@ -36,7 +36,7 @@ public class IssueCategoryActionBuilder extends AimActionBuilder<IssueCategory> 
 			Action action,
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		action = super.buildAction(action, registry, resolveConsumer, progressMonitor);
 		
 		action.getSections().addAll(createChildrenActions(registry, resolveConsumer, progressMonitor));
@@ -47,7 +47,7 @@ public class IssueCategoryActionBuilder extends AimActionBuilder<IssueCategory> 
 	protected List<Action> createChildrenActions(
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		
 		List<IssueCategory> children = getTarget().getChildren();
 		if (children.isEmpty()) {
@@ -67,7 +67,7 @@ public class IssueCategoryActionBuilder extends AimActionBuilder<IssueCategory> 
 	protected void resolve(
 			Action action, 
 			org.nasdanika.html.emf.EObjectActionResolver.Context context,
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		super.resolve(action, context, progressMonitor);
 		
 		EList<IssueCategory> children = getTarget().getChildren();
@@ -81,7 +81,7 @@ public class IssueCategoryActionBuilder extends AimActionBuilder<IssueCategory> 
 						Action base, 
 						ETypedElement typedElement,
 						org.nasdanika.html.emf.EObjectActionResolver.Context context, 
-						ProgressMonitor progressMonitor) throws Exception {
+						ProgressMonitor progressMonitor) {
 					
 					EList<IssueCategory> children = element.getChildren();
 					if (children.isEmpty()) {

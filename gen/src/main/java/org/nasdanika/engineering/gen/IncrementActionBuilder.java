@@ -46,7 +46,7 @@ public class IncrementActionBuilder extends NamedElementActionBuilder<Increment>
 			Action action,
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		action = super.buildAction(action, registry, resolveConsumer, progressMonitor);
 		action.setIcon("far fa-calendar-alt");
 		
@@ -64,7 +64,7 @@ public class IncrementActionBuilder extends NamedElementActionBuilder<Increment>
 			Action action,
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		
 		if (!getTarget().getAllObjectives().isEmpty()) {
 			Action group = AppFactory.eINSTANCE.createAction();
@@ -84,7 +84,7 @@ public class IncrementActionBuilder extends NamedElementActionBuilder<Increment>
 			Action action, 
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 	
 		List<Alignment> alignments = getTarget().getAligns();
 		if (!alignments.isEmpty()) {
@@ -100,7 +100,7 @@ public class IncrementActionBuilder extends NamedElementActionBuilder<Increment>
 			Action action,
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		
 		List<Release> releases = getTarget().getReleases();
 		if (!releases.isEmpty()) {
@@ -115,7 +115,7 @@ public class IncrementActionBuilder extends NamedElementActionBuilder<Increment>
 			Action action,
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		
 		List<Issue> issues = getTarget().getIssues();
 		if (!issues.isEmpty()) {
@@ -130,7 +130,7 @@ public class IncrementActionBuilder extends NamedElementActionBuilder<Increment>
 			Action action,
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		
 		List<Issue> allIssues = getTarget().getAllIssues();
 		if (!allIssues.isEmpty()) {
@@ -147,7 +147,7 @@ public class IncrementActionBuilder extends NamedElementActionBuilder<Increment>
 	protected void resolve(
 			Action action, 
 			org.nasdanika.html.emf.EObjectActionResolver.Context context,
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		super.resolve(action, context, progressMonitor);
 		
 		// Endeavor's - aligns, all objectives (objectives), all issues, capacity (TODO)
@@ -284,13 +284,12 @@ public class IncrementActionBuilder extends NamedElementActionBuilder<Increment>
 	 * Creates a list of actions for sub-packages. 
 	 * @param progressMonitor
 	 * @return An empty list if there are no sub-packages. A singleton list containing a grouping action containing sub-package actions otherwise.
-	 * @throws Exception 
 	 */
 	protected void createChildrenActions(
 			Action action,
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		List<Increment> children = getTarget().getChildren();
 		if (!children.isEmpty()) {
 			EList<EObject> actionChildren = action.getChildren();

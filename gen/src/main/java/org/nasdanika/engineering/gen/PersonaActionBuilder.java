@@ -27,7 +27,7 @@ public class PersonaActionBuilder<T extends Persona> extends EngineeredElementAc
 			Action action,
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		action = super.buildAction(action, registry, resolveConsumer, progressMonitor);
 		
 		createGoalActions(action, registry, resolveConsumer, progressMonitor);
@@ -48,7 +48,7 @@ public class PersonaActionBuilder<T extends Persona> extends EngineeredElementAc
 			Action action, 
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		
 		List<Goal> goals = getTarget().getGoals();
 		if (!goals.isEmpty()) {
@@ -67,7 +67,7 @@ public class PersonaActionBuilder<T extends Persona> extends EngineeredElementAc
 	protected void resolve(
 			Action action, 
 			org.nasdanika.html.emf.EObjectActionResolver.Context context,
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		super.resolve(action, context, progressMonitor);
 		
 		EList<Goal> goals = getTarget().getGoals();
@@ -91,7 +91,7 @@ public class PersonaActionBuilder<T extends Persona> extends EngineeredElementAc
 					Action base, 
 					ETypedElement typedElement,
 					org.nasdanika.html.emf.EObjectActionResolver.Context context, 
-					ProgressMonitor progressMonitor) throws Exception {
+					ProgressMonitor progressMonitor) {
 				
 				EList<Goal> children = element.getChildren();
 				if (children.isEmpty()) {

@@ -29,6 +29,9 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
+
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.util.ECollections;
@@ -53,6 +56,7 @@ import org.nasdanika.common.DefaultConverter;
 import org.nasdanika.common.Diagnostic;
 import org.nasdanika.common.DiagnosticException;
 import org.nasdanika.common.DiagramGenerator;
+import org.nasdanika.common.ExecutionException;
 import org.nasdanika.common.FilterDiagramGenerator;
 import org.nasdanika.common.MutableContext;
 import org.nasdanika.common.NasdanikaException;
@@ -104,6 +108,7 @@ import org.nasdanika.ncore.Property;
 import org.nasdanika.ncore.StringProperty;
 import org.nasdanika.ncore.util.NcoreResourceSet;
 import org.nasdanika.ncore.util.NcoreUtil;
+import org.xml.sax.SAXException;
 
 import com.redfin.sitemapgenerator.ChangeFreq;
 import com.redfin.sitemapgenerator.WebSitemapGenerator;
@@ -148,7 +153,7 @@ public class TestEngineeringGen /* extends TestBase */ {
 			}
 
 			@Override
-			public void execute(EObject obj, ProgressMonitor progressMonitor) throws Exception {
+			public void execute(EObject obj, ProgressMonitor progressMonitor) {
 				EObject copy = EcoreUtil.copy(obj);
 				
 				EList<Property> annotations = ((org.nasdanika.engineering.ModelElement) copy).getAnnotations();
@@ -168,7 +173,11 @@ public class TestEngineeringGen /* extends TestBase */ {
 				}
 				assertThat(severity).isEqualTo(org.eclipse.emf.common.util.Diagnostic.OK);
 									
-				instanceModelResource.save(null);
+				try {
+					instanceModelResource.save(null);
+				} catch (IOException e) {
+					throw new ExecutionException(e, this);
+				}
 			}
 			
 		};
@@ -462,7 +471,7 @@ public class TestEngineeringGen /* extends TestBase */ {
 			DiagramGenerator interpolatingDiagramGenerator = new FilterDiagramGenerator(contentProviderContext.get(DiagramGenerator.class, DiagramGenerator.INSTANCE)) {
 				
 				@Override
-				public String generateDiagram(String spec, String dialect) throws Exception {
+				public String generateDiagram(String spec, String dialect) {
 					return super.generateDiagram(filterDiagram(spec, dialect, uriMap, uriResolver, action, mctx), dialect);
 				}
 
@@ -474,6 +483,8 @@ public class TestEngineeringGen /* extends TestBase */ {
 			SupplierFactory<InputStream> contentFactory = org.nasdanika.common.Util.asInputStreamSupplierFactory(action.getContent());			
 			try (InputStream contentStream = org.nasdanika.common.Util.call(contentFactory.create(mctx), pMonitor, diagnosticConsumer, Status.FAIL, Status.ERROR)) {
 				Files.copy(contentStream, new File(contentDir, fileName).toPath(), StandardCopyOption.REPLACE_EXISTING);
+			} catch (Exception e) {
+				throw new NasdanikaException(e);
 			}
 			
 			org.nasdanika.exec.content.Resource contentResource = ContentFactory.eINSTANCE.createResource();
@@ -485,20 +496,24 @@ public class TestEngineeringGen /* extends TestBase */ {
 		File pagesDir = new File(RESOURCE_MODELS_DIR, "pages");
 		pagesDir.mkdirs();
 		PageContentProvider.Factory pageContentProviderFactory = (contentProviderContext) -> (page, baseURI, uriResolver, pMonitor) -> {
-			// Saving a page to .xml and creating a reference to .html; Pages shall be processed from .xml to .html individually.
-			page.setUuid(UUID.randomUUID().toString());
-			
-			ResourceSet pageResourceSet = new ResourceSetImpl();
-			pageResourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put(Resource.Factory.Registry.DEFAULT_EXTENSION, new XMIResourceFactoryImpl());			
-			URI pageURI = URI.createFileURI(new File(pagesDir, page.getUuid() + ".xml").getCanonicalPath());
-			Resource pageEResource = pageResourceSet.createResource(pageURI);
-			pageEResource.getContents().add(page);
-			pageEResource.save(null);
-			
-			org.nasdanika.exec.content.Resource pageResource = ContentFactory.eINSTANCE.createResource();
-			pageResource.setLocation("pages/" + page.getUuid() + ".html");
-			System.out.println("[Page content] " + page.getName() + " -> " + pageResource.getLocation());
-			return pageResource;			
+			try {
+				// Saving a page to .xml and creating a reference to .html; Pages shall be processed from .xml to .html individually.
+				page.setUuid(UUID.randomUUID().toString());
+				
+				ResourceSet pageResourceSet = new ResourceSetImpl();
+				pageResourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put(Resource.Factory.Registry.DEFAULT_EXTENSION, new XMIResourceFactoryImpl());			
+				URI pageURI = URI.createFileURI(new File(pagesDir, page.getUuid() + ".xml").getCanonicalPath());
+				Resource pageEResource = pageResourceSet.createResource(pageURI);
+				pageEResource.getContents().add(page);
+				pageEResource.save(null);
+				
+				org.nasdanika.exec.content.Resource pageResource = ContentFactory.eINSTANCE.createResource();
+				pageResource.setLocation("pages/" + page.getUuid() + ".html");
+				System.out.println("[Page content] " + page.getName() + " -> " + pageResource.getLocation());
+				return pageResource;
+			} catch (Exception e) {
+				throw new NasdanikaException(e);
+			}
 		};
 								
 		Util.generateSite(
@@ -538,43 +553,47 @@ public class TestEngineeringGen /* extends TestBase */ {
 		return uri.appendSegment(""); // Adding a hanging / for "under the parent" resolution.
 	};				
 		
-	protected String filterDiagram(String spec, String dialect, Map<URI,Action> uriMap, BiFunction<Label,URI,URI> uriResolver, Action action, Context mctx) throws Exception {
+	protected String filterDiagram(String spec, String dialect, Map<URI,Action> uriMap, BiFunction<Label,URI,URI> uriResolver, Action action, Context mctx) {
 		if (DiagramGenerator.DRAWIO_DIALECT.equals(dialect)) {
-			spec = Util.filterDrawio(spec, element -> {
-				if (element instanceof org.nasdanika.drawio.ModelElement) {
-					org.nasdanika.drawio.ModelElement modelElement = (org.nasdanika.drawio.ModelElement) element;
-					String uriStrVal = modelElement.getProperty(URI_PROPERTY);
-					if (!org.nasdanika.common.Util.isBlank(uriStrVal)) {									
-						URI uri = modelElement.resolveURI(null, URI_PROVIDER, ConnectionBase.SOURCE);
-						if (uri != null && org.nasdanika.common.Util.isBlank(uri.lastSegment())) {
-							uri = uri.trimSegments(1);
+			try {
+				spec = Util.filterDrawio(spec, element -> {
+					if (element instanceof org.nasdanika.drawio.ModelElement) {
+						org.nasdanika.drawio.ModelElement modelElement = (org.nasdanika.drawio.ModelElement) element;
+						String uriStrVal = modelElement.getProperty(URI_PROPERTY);
+						if (!org.nasdanika.common.Util.isBlank(uriStrVal)) {									
+							URI uri = modelElement.resolveURI(null, URI_PROVIDER, ConnectionBase.SOURCE);
+							if (uri != null && org.nasdanika.common.Util.isBlank(uri.lastSegment())) {
+								uri = uri.trimSegments(1);
+							}
+							Action targetAction = uriMap.get(uri);
+							if (targetAction != null && targetAction != action) {
+								URI bURI = uriResolver.apply(action, null);
+								URI tURI = uriResolver.apply(targetAction, bURI);
+								if (tURI != null) {
+									modelElement.setLink(tURI.toString());
+								}
+							}
 						}
-						Action targetAction = uriMap.get(uri);
-						if (targetAction != null && targetAction != action) {
-							URI bURI = uriResolver.apply(action, null);
-							URI tURI = uriResolver.apply(targetAction, bURI);
-							if (tURI != null) {
-								modelElement.setLink(tURI.toString());
+
+						String link = modelElement.getLink();
+						if (!org.nasdanika.common.Util.isBlank(link)) {
+							String interpolatedLink = mctx.interpolateToString(link);
+							if (!Objects.equals(link, interpolatedLink)) {
+								modelElement.setLink(interpolatedLink);
+							}
+						}
+						String label = modelElement.getLabel();
+						if (!org.nasdanika.common.Util.isBlank(label)) {
+							String interpolatedLabel = mctx.interpolateToString(label);
+							if (!Objects.equals(label, interpolatedLabel)) {
+								modelElement.setLabel(interpolatedLabel);
 							}
 						}
 					}
-	
-					String link = modelElement.getLink();
-					if (!org.nasdanika.common.Util.isBlank(link)) {
-						String interpolatedLink = mctx.interpolateToString(link);
-						if (!Objects.equals(link, interpolatedLink)) {
-							modelElement.setLink(interpolatedLink);
-						}
-					}
-					String label = modelElement.getLabel();
-					if (!org.nasdanika.common.Util.isBlank(label)) {
-						String interpolatedLabel = mctx.interpolateToString(label);
-						if (!Objects.equals(label, interpolatedLabel)) {
-							modelElement.setLabel(interpolatedLabel);
-						}
-					}
-				}
-			}, null, true);
+				}, null, true);
+			} catch (ParserConfigurationException | SAXException | IOException | TransformerException e) {
+				throw new NasdanikaException(e);
+			}
 		}
 		return spec;
 	}

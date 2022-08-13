@@ -47,7 +47,7 @@ public class EngineeredElementActionBuilder<T extends EngineeredElement> extends
 			Action action,
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		action = super.buildAction(action, registry, resolveConsumer, progressMonitor);
 		
 		createIssuesAction(action, registry, resolveConsumer, progressMonitor);		
@@ -64,7 +64,7 @@ public class EngineeredElementActionBuilder<T extends EngineeredElement> extends
 			Action action,
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		
 		EList<Action> groupAnonymous = action.getAnonymous();
 		for (Connection outboundConnection: getTarget().getOutboundConnections()) {
@@ -76,7 +76,7 @@ public class EngineeredElementActionBuilder<T extends EngineeredElement> extends
 			Action action,
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		
 		List<Issue> issues = getTarget().getIssues();
 		if (!issues.isEmpty()) {
@@ -100,7 +100,7 @@ public class EngineeredElementActionBuilder<T extends EngineeredElement> extends
 			Action action,
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		
 		List<Issue> allIssues = getTarget().getAllIssues();
 		if (!allIssues.isEmpty()) {
@@ -117,7 +117,7 @@ public class EngineeredElementActionBuilder<T extends EngineeredElement> extends
 			Action action,
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		
 		List<Forum> discussion = getTarget().getDiscussion();
 		EList<Topic> topics = getTarget().getTopics();
@@ -157,7 +157,7 @@ public class EngineeredElementActionBuilder<T extends EngineeredElement> extends
 	protected void resolve(
 			Action action, 
 			org.nasdanika.html.emf.EObjectActionResolver.Context context,
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		super.resolve(action, context, progressMonitor);
 		
 		// Outbound connections
@@ -287,7 +287,7 @@ public class EngineeredElementActionBuilder<T extends EngineeredElement> extends
 					Action base, 
 					ETypedElement typedElement,
 					org.nasdanika.html.emf.EObjectActionResolver.Context context, 
-					ProgressMonitor progressMonitor) throws Exception {
+					ProgressMonitor progressMonitor) {
 				
 				EList<Principle> children = element.getChildren();
 				if (children.isEmpty()) {
@@ -309,7 +309,7 @@ public class EngineeredElementActionBuilder<T extends EngineeredElement> extends
 					Action base, 
 					ETypedElement typedElement,
 					org.nasdanika.html.emf.EObjectActionResolver.Context context, 
-					ProgressMonitor progressMonitor) throws Exception {
+					ProgressMonitor progressMonitor) {
 				
 				EList<Issue> children = element.getChildren();
 				if (children.isEmpty()) {
@@ -325,7 +325,7 @@ public class EngineeredElementActionBuilder<T extends EngineeredElement> extends
 			Action action, 
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		
 		List<Principle> principles = getTarget().getPrinciples();
 		if (!principles.isEmpty()) {

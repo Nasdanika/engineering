@@ -21,7 +21,7 @@ public class DomainActionBuilder extends EngineeredElementActionBuilder<Domain> 
 			Action action,
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		action = super.buildAction(action, registry, resolveConsumer, progressMonitor);		
 		createElementActions(action, registry, resolveConsumer, progressMonitor);		
 		return action;
@@ -31,7 +31,7 @@ public class DomainActionBuilder extends EngineeredElementActionBuilder<Domain> 
 			Action action,
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		EList<EObject> children = action.getChildren();
 		for (EngineeredElement element: getTarget().getElements()) {
 			children.add(createChildAction(element, registry, resolveConsumer, progressMonitor));

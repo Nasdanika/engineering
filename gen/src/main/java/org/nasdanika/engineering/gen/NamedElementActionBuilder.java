@@ -19,7 +19,7 @@ public class NamedElementActionBuilder<T extends NamedElement> extends ModelElem
 			Action action,
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		Action ret = super.buildAction(action, registry, resolveConsumer, progressMonitor);		
 		
 		ret.setText(getTarget().getName()); // Escape?

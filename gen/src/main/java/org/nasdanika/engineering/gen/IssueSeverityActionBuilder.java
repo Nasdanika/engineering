@@ -23,7 +23,7 @@ public class IssueSeverityActionBuilder extends NamedElementActionBuilder<IssueS
 	protected void resolve(
 			Action action, 
 			org.nasdanika.html.emf.EObjectActionResolver.Context context,
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		super.resolve(action, context, progressMonitor);
 		
 		List<Issue> issues = getTarget().getIssues();

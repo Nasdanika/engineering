@@ -25,7 +25,7 @@ public class InterfaceActionBuilder extends EngineeredElementActionBuilder<Inter
 			Action action,
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		action = super.buildAction(action, registry, resolveConsumer, progressMonitor);
 		
 		action.getSections().addAll(createChildrenActions(registry, resolveConsumer, progressMonitor));
@@ -36,7 +36,7 @@ public class InterfaceActionBuilder extends EngineeredElementActionBuilder<Inter
 	protected List<Action> createChildrenActions(
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		
 		List<Interface> children = getTarget().getChildren();
 		if (children.isEmpty()) {
@@ -56,7 +56,7 @@ public class InterfaceActionBuilder extends EngineeredElementActionBuilder<Inter
 	protected void resolve(
 			Action action, 
 			org.nasdanika.html.emf.EObjectActionResolver.Context context,
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		super.resolve(action, context, progressMonitor);
 		
 		EList<Interface> children = getTarget().getChildren();
@@ -70,7 +70,7 @@ public class InterfaceActionBuilder extends EngineeredElementActionBuilder<Inter
 						Action base, 
 						ETypedElement typedElement,
 						org.nasdanika.html.emf.EObjectActionResolver.Context context, 
-						ProgressMonitor progressMonitor) throws Exception {
+						ProgressMonitor progressMonitor) {
 					
 					EList<Interface> children = element.getChildren();
 					if (children.isEmpty()) {

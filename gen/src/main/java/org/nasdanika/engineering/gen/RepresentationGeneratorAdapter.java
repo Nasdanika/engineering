@@ -5,6 +5,7 @@ import java.util.function.Consumer;
 
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.nasdanika.common.Diagnostic;
+import org.nasdanika.common.NasdanikaException;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.emf.EObjectAdaptable;
 import org.nasdanika.engineering.Representation;
@@ -20,7 +21,7 @@ public class RepresentationGeneratorAdapter extends AdapterImpl {
 		this.context = context;
 	}
 
-	public void generate(Action action, org.nasdanika.html.emf.EObjectActionResolver.Context resolverContext, ProgressMonitor progressMonitor) throws Exception {
+	public void generate(Action action, org.nasdanika.html.emf.EObjectActionResolver.Context resolverContext, ProgressMonitor progressMonitor) {
 		Representation representation = (Representation) getTarget();
 		Call generator = representation.getGenerator();
 		if (generator != null) {
@@ -33,8 +34,14 @@ public class RepresentationGeneratorAdapter extends AdapterImpl {
 				}
 			};
 			
-			RepresentationGenerator adapter = Objects.requireNonNull(org.nasdanika.common.Util.call(factory.create(context), progressMonitor, diagnosticConsumer, org.nasdanika.common.Status.ERROR, org.nasdanika.common.Status.FAIL), "Cannot create representation generator adapter");
-			adapter.generate(representation, action, resolverContext, progressMonitor);
+			try {
+				RepresentationGenerator adapter = Objects.requireNonNull(org.nasdanika.common.Util.call(factory.create(context), progressMonitor, diagnosticConsumer, org.nasdanika.common.Status.ERROR, org.nasdanika.common.Status.FAIL), "Cannot create representation generator adapter");
+				adapter.generate(representation, action, resolverContext, progressMonitor);
+			} catch (NasdanikaException e) {
+				throw e;
+			} catch (Exception e) {
+				throw new NasdanikaException(e);
+			}
 		}
 	}
 	

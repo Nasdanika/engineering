@@ -27,7 +27,7 @@ public class EngineeredElementStatusActionBuilder extends NamedElementActionBuil
 			Action action,
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		action = super.buildAction(action, registry, resolveConsumer, progressMonitor);
 		
 		action.getSections().addAll(createChildrenActions(registry, resolveConsumer, progressMonitor));
@@ -38,7 +38,7 @@ public class EngineeredElementStatusActionBuilder extends NamedElementActionBuil
 	protected List<Action> createChildrenActions(
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		
 		List<EngineeredElementStatus> children = getTarget().getChildren();
 		if (children.isEmpty()) {
@@ -58,7 +58,7 @@ public class EngineeredElementStatusActionBuilder extends NamedElementActionBuil
 	protected void resolve(
 			Action action, 
 			org.nasdanika.html.emf.EObjectActionResolver.Context context,
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		super.resolve(action, context, progressMonitor);
 		
 		EList<EngineeredElementStatus> children = getTarget().getChildren();
@@ -72,7 +72,7 @@ public class EngineeredElementStatusActionBuilder extends NamedElementActionBuil
 						Action base, 
 						ETypedElement typedElement,
 						org.nasdanika.html.emf.EObjectActionResolver.Context context, 
-						ProgressMonitor progressMonitor) throws Exception {
+						ProgressMonitor progressMonitor) {
 					
 					EList<EngineeredElementStatus> children = element.getChildren();
 					if (children.isEmpty()) {

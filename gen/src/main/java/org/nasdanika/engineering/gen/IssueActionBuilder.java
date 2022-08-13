@@ -50,7 +50,7 @@ public class IssueActionBuilder extends EngineeredCapabilityActionBuilder<Issue>
 			Action action,
 			BiConsumer<EObject, Action> registry,
 			Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer,
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		action = super.buildAction(action, registry, resolveConsumer, progressMonitor);
 		
 		createRequiresAction(action, registry, resolveConsumer, progressMonitor);		
@@ -64,7 +64,7 @@ public class IssueActionBuilder extends EngineeredCapabilityActionBuilder<Issue>
 			Action action,
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		
 		List<Issue> children = getTarget().getChildren();
 		if (!children.isEmpty()) {
@@ -84,7 +84,7 @@ public class IssueActionBuilder extends EngineeredCapabilityActionBuilder<Issue>
 			Action action,
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		
 		List<Note> notes = getTarget().getNotes();
 		if (!notes.isEmpty()) {
@@ -99,7 +99,7 @@ public class IssueActionBuilder extends EngineeredCapabilityActionBuilder<Issue>
 	protected void resolve(
 			Action action, 
 			org.nasdanika.html.emf.EObjectActionResolver.Context context,
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		super.resolve(action, context, progressMonitor);
 		
 		Issue issue = getTarget();
@@ -140,7 +140,7 @@ public class IssueActionBuilder extends EngineeredCapabilityActionBuilder<Issue>
 						Action base, 
 						ETypedElement typedElement,
 						org.nasdanika.html.emf.EObjectActionResolver.Context context, 
-						ProgressMonitor progressMonitor) throws Exception {
+						ProgressMonitor progressMonitor) {
 					
 					EList<Issue> children = element.getChildren();
 					if (children.isEmpty()) {
@@ -185,7 +185,7 @@ public class IssueActionBuilder extends EngineeredCapabilityActionBuilder<Issue>
 			Action action,
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		
 		List<Capability> requires = getTarget().getRequires();
 		if (!requires.isEmpty()) {

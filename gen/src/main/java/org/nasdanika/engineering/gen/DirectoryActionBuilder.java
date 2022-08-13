@@ -28,7 +28,7 @@ public class DirectoryActionBuilder extends EngineeredElementActionBuilder<Direc
 			Action action, 
 			BiConsumer<EObject, Action> registry,
 			Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer,
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		Action ret = super.buildAction(action, registry, resolveConsumer, progressMonitor);
 		
 		EList<Action> anonymous = ret.getAnonymous();
@@ -43,7 +43,7 @@ public class DirectoryActionBuilder extends EngineeredElementActionBuilder<Direc
 	protected Table createPropertiesTable(
 			Action action, 
 			org.nasdanika.html.emf.EObjectActionResolver.Context context,
-			ProgressMonitor progressMonitor) throws Exception {		
+			ProgressMonitor progressMonitor) {		
 		Table propertiesTable = super.createPropertiesTable(action, context, progressMonitor);
 		if (propertiesTable != null) {
 			Action propertiesAction = AppFactory.eINSTANCE.createAction();
@@ -59,7 +59,7 @@ public class DirectoryActionBuilder extends EngineeredElementActionBuilder<Direc
 	protected void resolve(
 			Action action, 
 			org.nasdanika.html.emf.EObjectActionResolver.Context context,
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		super.resolve(action, context, progressMonitor);
 	
 		action.getContent().add(renderList(getTarget().getElements(), true, createElementChildrenProvider(), action, EngineeringPackage.Literals.MODEL_ELEMENT__RESOURCES, context, progressMonitor)); // Table?		
@@ -75,7 +75,7 @@ public class DirectoryActionBuilder extends EngineeredElementActionBuilder<Direc
 					Action base, 
 					ETypedElement typedElement,
 					org.nasdanika.html.emf.EObjectActionResolver.Context context, 
-					ProgressMonitor progressMonitor) throws Exception {
+					ProgressMonitor progressMonitor) {
 	
 				if (element instanceof Directory) {
 					EList<NamedElement> children = ((Directory) element).getElements();

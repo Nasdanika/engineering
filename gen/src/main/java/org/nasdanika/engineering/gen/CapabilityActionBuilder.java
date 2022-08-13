@@ -27,7 +27,7 @@ public class CapabilityActionBuilder<T extends Capability> extends NamedElementA
 			Action action,
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		action = super.buildAction(action, registry, resolveConsumer, progressMonitor);
 		
 		createRequiredByAction(action, registry, resolveConsumer, progressMonitor);		
@@ -46,7 +46,7 @@ public class CapabilityActionBuilder<T extends Capability> extends NamedElementA
 			Action action,
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		
 		List<Issue> requiredBy = getTarget().getRequiredBy();
 		if (!requiredBy.isEmpty()) {
@@ -62,7 +62,7 @@ public class CapabilityActionBuilder<T extends Capability> extends NamedElementA
 	protected void resolve(
 			Action action, 
 			org.nasdanika.html.emf.EObjectActionResolver.Context context,
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		super.resolve(action, context, progressMonitor);
 		
 		EList<Issue> requiredBy = getTarget().getRequiredBy();

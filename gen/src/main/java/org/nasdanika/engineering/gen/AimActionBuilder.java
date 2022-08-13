@@ -28,7 +28,7 @@ public class AimActionBuilder<T extends Aim> extends NamedElementActionBuilder<T
 			Action action,
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		action = super.buildAction(action, registry, resolveConsumer, progressMonitor);
 		
 		createAlignsActions(action, registry, resolveConsumer, progressMonitor);
@@ -41,7 +41,7 @@ public class AimActionBuilder<T extends Aim> extends NamedElementActionBuilder<T
 			Action action, 
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		
 		List<Alignment> alignments = getTarget().getAlignments();
 		if (!alignments.isEmpty()) {
@@ -56,7 +56,7 @@ public class AimActionBuilder<T extends Aim> extends NamedElementActionBuilder<T
 			Action action, 
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		
 		List<Alignment> alignments = getTarget().getAligns();
 		if (!alignments.isEmpty()) {
@@ -71,7 +71,7 @@ public class AimActionBuilder<T extends Aim> extends NamedElementActionBuilder<T
 	protected void resolve(
 			Action action, 
 			org.nasdanika.html.emf.EObjectActionResolver.Context context,
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		super.resolve(action, context, progressMonitor);
 		
 		EList<Alignment> aligns = getTarget().getAligns();

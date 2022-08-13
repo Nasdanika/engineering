@@ -27,7 +27,7 @@ public class TopicActionBuilder extends MessageActionBuilder<Topic> {
 	protected void resolve(
 			Action action, 
 			org.nasdanika.html.emf.EObjectActionResolver.Context context,
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		super.resolve(action, context, progressMonitor);
 		
 		for (Message message: getTarget().getMessages()) {

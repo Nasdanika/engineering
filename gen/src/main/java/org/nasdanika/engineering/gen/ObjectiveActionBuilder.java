@@ -36,7 +36,7 @@ public class ObjectiveActionBuilder extends KeyResultActionBuilder<Objective> {
 			Action action,
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		action = super.buildAction(action, registry, resolveConsumer, progressMonitor);
 		
 		createSubObjectiveActions(action, registry, resolveConsumer, progressMonitor);
@@ -49,7 +49,7 @@ public class ObjectiveActionBuilder extends KeyResultActionBuilder<Objective> {
 			Action action, 
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		
 		if (!getTarget().getSubObjectives().isEmpty()) {
 			Action group = AppFactory.eINSTANCE.createAction();
@@ -67,7 +67,7 @@ public class ObjectiveActionBuilder extends KeyResultActionBuilder<Objective> {
 			Action action, 
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		
 		EList<KeyResult> keyResults = getTarget().getKeyResults();
 		if (!keyResults.isEmpty()) {
@@ -86,7 +86,7 @@ public class ObjectiveActionBuilder extends KeyResultActionBuilder<Objective> {
 	protected void resolve(
 			Action action, 
 			org.nasdanika.html.emf.EObjectActionResolver.Context context,
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		super.resolve(action, context, progressMonitor);
 		
 		EList<Objective> subObjectives = getTarget().getSubObjectives();
@@ -117,7 +117,7 @@ public class ObjectiveActionBuilder extends KeyResultActionBuilder<Objective> {
 					Action base, 
 					ETypedElement typedElement,
 					org.nasdanika.html.emf.EObjectActionResolver.Context context, 
-					ProgressMonitor progressMonitor) throws Exception {
+					ProgressMonitor progressMonitor) {
 				
 				EList<Objective> subObjectives = element.getSubObjectives();
 				if (subObjectives.isEmpty()) {

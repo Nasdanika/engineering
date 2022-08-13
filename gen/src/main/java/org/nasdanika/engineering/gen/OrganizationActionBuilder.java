@@ -29,7 +29,7 @@ public class OrganizationActionBuilder<T extends Organization> extends EngineerA
 			Action action,
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		action = super.buildAction(action, registry, resolveConsumer, progressMonitor);
 		createEngineersActions(action, registry, resolveConsumer, progressMonitor);
 		return action;
@@ -39,13 +39,12 @@ public class OrganizationActionBuilder<T extends Organization> extends EngineerA
 	 * Creates a list of actions for personas and adds them to the list of group's anonymous actions. 
 	 * @param progressMonitor
 	 * @return An empty list if there are no personas. A singleton list containing a grouping action containing persona actions otherwise.
-	 * @throws Exception 
 	 */
 	protected void createEngineersActions(
 			Action action,
 			BiConsumer<EObject,Action> registry, 
 			java.util.function.Consumer<org.nasdanika.common.Consumer<org.nasdanika.html.emf.EObjectActionResolver.Context>> resolveConsumer, 
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		
 		List<Engineer> engineers = getTarget().getEngineers();
 		if (!engineers.isEmpty()) {
@@ -67,7 +66,7 @@ public class OrganizationActionBuilder<T extends Organization> extends EngineerA
 	protected void resolve(
 			Action action, 
 			org.nasdanika.html.emf.EObjectActionResolver.Context context,
-			ProgressMonitor progressMonitor) throws Exception {
+			ProgressMonitor progressMonitor) {
 		super.resolve(action, context, progressMonitor);
 		
 		Organization semanticElement = getTarget();
@@ -95,7 +94,7 @@ public class OrganizationActionBuilder<T extends Organization> extends EngineerA
 					Action base, 
 					ETypedElement typedElement,
 					org.nasdanika.html.emf.EObjectActionResolver.Context context, 
-					ProgressMonitor progressMonitor) throws Exception {
+					ProgressMonitor progressMonitor) {
 				
 				if (element instanceof Organization) {
 					EList<Engineer> engineers = ((Organization) element).getEngineers();
