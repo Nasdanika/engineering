@@ -7,7 +7,6 @@ import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
 import org.nasdanika.common.Adaptable;
-import org.nasdanika.common.persistence.Marked;
 import org.nasdanika.diagram.Diagram;
 import org.nasdanika.diagram.Layer;
 import org.nasdanika.engineering.Activity;
@@ -325,7 +324,7 @@ public class EngineeringAdapterFactory extends AdapterFactoryImpl {
 				return createCallAdapter();
 			}
 			@Override
-			public Adapter caseIMarked(Marked object) {
+			public Adapter caseIMarked(org.nasdanika.persistence.Marked object) {
 				return createIMarkedAdapter();
 			}
 			@Override
@@ -1179,13 +1178,13 @@ public class EngineeringAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.common.persistence.Marked <em>IMarked</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.persistence.Marked <em>IMarked</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.nasdanika.common.persistence.Marked
+	 * @see org.nasdanika.persistence.Marked
 	 * @generated
 	 */
 	public Adapter createIMarkedAdapter() {

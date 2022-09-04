@@ -6,7 +6,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
 import org.nasdanika.common.Adaptable;
-import org.nasdanika.common.persistence.Marked;
 import org.nasdanika.diagram.Diagram;
 import org.nasdanika.diagram.Layer;
 import org.nasdanika.engineering.Activity;
@@ -1740,7 +1739,7 @@ public class EngineeringSwitch<T> extends Switch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseIMarked(Marked object) {
+	public T caseIMarked(org.nasdanika.persistence.Marked object) {
 		return null;
 	}
 

@@ -31,8 +31,8 @@ import org.nasdanika.common.Status;
 import org.nasdanika.common.Supplier;
 import org.nasdanika.common.SupplierFactory;
 import org.nasdanika.common.Util;
-import org.nasdanika.common.persistence.ConfigurationException;
-import org.nasdanika.common.persistence.Marked;
+import org.nasdanika.persistence.ConfigurationException;
+import org.nasdanika.persistence.Marked;
 import org.nasdanika.emf.EObjectAdaptable;
 import org.nasdanika.exec.Call;
 import org.nasdanika.exec.ExecPackage;
@@ -320,7 +320,8 @@ public class CallRepresentationGeneratorSupplierFactoryAdapter extends AdapterIm
 		Converter converter = context.get(Converter.class, DefaultConverter.INSTANCE);
 		Object ret = converter.convert(argument, parameterType);
 		if (ret == null) {
-			throw new ConfigurationException("Cannot convert " + argument + " to " + parameterType, EObjectAdaptable.adaptTo((EObject) getTarget(), Marked.class));
+			Marked marked = EObjectAdaptable.adaptTo((EObject) getTarget(), Marked.class);
+			throw new ConfigurationException("Cannot convert " + argument + " to " + parameterType, marked);
 		}
 		return ret;
 	}	

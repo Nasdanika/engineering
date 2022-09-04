@@ -9,5 +9,6 @@ module org.nasdanika.egineering {
 	
 	requires transitive org.nasdanika.flow;
 	requires transitive org.nasdanika.html.model.app;
+	requires org.apache.commons.codec;
 	
 }

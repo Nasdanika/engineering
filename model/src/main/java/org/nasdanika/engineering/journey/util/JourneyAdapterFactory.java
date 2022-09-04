@@ -7,7 +7,8 @@ import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
 import org.nasdanika.common.Adaptable;
-import org.nasdanika.common.persistence.Marked;
+import org.nasdanika.engineering.journey.*;
+import org.nasdanika.persistence.Marked;
 import org.nasdanika.engineering.journey.Activity;
 import org.nasdanika.engineering.journey.Journey;
 import org.nasdanika.engineering.journey.JourneyPackage;
@@ -171,13 +172,13 @@ public class JourneyAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.common.persistence.Marked <em>IMarked</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.persistence.Marked <em>IMarked</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.nasdanika.common.persistence.Marked
+	 * @see org.nasdanika.persistence.Marked
 	 * @generated
 	 */
 	public Adapter createIMarkedAdapter() {

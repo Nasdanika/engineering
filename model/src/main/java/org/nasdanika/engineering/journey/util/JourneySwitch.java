@@ -6,7 +6,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
 import org.nasdanika.common.Adaptable;
-import org.nasdanika.common.persistence.Marked;
+import org.nasdanika.engineering.journey.*;
 import org.nasdanika.engineering.journey.Activity;
 import org.nasdanika.engineering.journey.Journey;
 import org.nasdanika.engineering.journey.JourneyPackage;
@@ -150,7 +150,7 @@ public class JourneySwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseIMarked(Marked object) {
+	public T1 caseIMarked(org.nasdanika.persistence.Marked object) {
 		return null;
 	}
 

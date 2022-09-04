@@ -278,6 +278,15 @@ public interface EngineeringPackage extends EPackage {
 	int REPRESENTATION__NOTES = DiagramPackage.DIAGRAM__NOTES;
 
 	/**
+	 * The feature id for the '<em><b>Visible</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REPRESENTATION__VISIBLE = DiagramPackage.DIAGRAM__VISIBLE;
+
+	/**
 	 * The feature id for the '<em><b>Vertical</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
