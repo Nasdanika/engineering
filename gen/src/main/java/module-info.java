@@ -2,7 +2,7 @@ module org.nasdanika.egineering.gen {
 	
 	exports org.nasdanika.engineering.gen;
 	
-	requires transitive org.nasdanika.egineering;
+	requires transitive org.nasdanika.engineering;
 	requires transitive org.nasdanika.html.flow;
 	requires transitive org.nasdanika.html.emf;
 	requires org.nasdanika.exec.gen;

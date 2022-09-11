@@ -1,29 +1,7 @@
 engineering-product:
-   name: Engineering
-   path: engineering
-   releases:
-     "2021-12-4":
-       name: "2021.12.4"
-   modules:
-      - model/engineering.yml
-      - gen/engineering.yml
-   issues:
-     diagramming:
-       name: Diagramming
-       description: |+2
-          Diagramming model - PlantUML is the first generation target. mxGraph is the next - option to specify layout and merge updates with manually laid out diagrams - match by ID (URI digest), update only the semantic part if found. 
-          Delete if no match, some primitive layout for new - below all or similar to text wrapping - grow proportionally. First, validate compatibility of mxGraph-produced output with draw.io - mxGraph is end of life, but it is ostensibly used by draw.io
-          If no compatibility - a primitive XML-based output - don't need much functionality.
-          Longer-term potentially - diagram editing plug-in for Eclipse.
-          Two levels of draw.io support: a) Token expansion on hand-crafted diagrams - decompress, expand tokens, re-compress and embed - handle at the core. b) Generation of (initial) diagrams and merging of changes - handle at its own product, try to leverage mxGraph.
-          Support of Mermaid output. 
-     branch-progress:
-       name: Branch progress
-       description: |+2
-          Add to features - branch progress, e.g. feature branch - earned but not yet released value/benefit.
-     skills-and-technologies:
-       name: Skills and Technologies
-       description: |+2
-          Engineers have skills which may reference technologies and have level. Projects use technologies. Trees for both skills and technologies. Maybe not skills, but expertise - can be with technologies or other things such as engineered elements - modules, products.
-
-
+  name: Engineering
+  path: engineering
+  action-prototype: "javadoc-action-prototype.xml#/"
+  modules:
+    - model/engineering.yml
+    - gen/engineering.yml

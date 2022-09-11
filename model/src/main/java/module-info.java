@@ -1,4 +1,4 @@
-module org.nasdanika.egineering {
+module org.nasdanika.engineering {
 	
 	exports org.nasdanika.engineering;
 	exports org.nasdanika.engineering.impl;
