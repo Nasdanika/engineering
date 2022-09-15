@@ -11,7 +11,7 @@
 	<artifactId>model</artifactId>
 	<packaging>jar</packaging>
 	<name>Nasdanika Engineering Model</name>
-
+	<url>https://docs.nasdanika.org/modules/engineering/modules/model/index.html</url>
 	<build>
 		<plugins>
 			<plugin>

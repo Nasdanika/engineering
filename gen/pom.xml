@@ -10,7 +10,7 @@
 	<artifactId>gen</artifactId>
 	<packaging>jar</packaging>
 	<name>Nasdanika Engineering Generation Adapters</name>
-
+	<url>https://docs.nasdanika.org/modules/engineering/modules/gen/index.html</url>
 	<build>
 	    <plugins>
 			<plugin>
