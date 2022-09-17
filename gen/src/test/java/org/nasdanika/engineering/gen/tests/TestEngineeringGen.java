@@ -28,6 +28,7 @@ import java.util.function.BiFunction;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.stream.Stream;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
@@ -66,8 +67,6 @@ import org.nasdanika.common.PropertyComputer;
 import org.nasdanika.common.Status;
 import org.nasdanika.common.Supplier;
 import org.nasdanika.common.SupplierFactory;
-import org.nasdanika.resources.BinaryEntityContainer;
-import org.nasdanika.resources.FileSystemContainer;
 import org.nasdanika.diagram.DiagramPackage;
 import org.nasdanika.drawio.ConnectionBase;
 import org.nasdanika.emf.EObjectAdaptable;
@@ -102,12 +101,15 @@ import org.nasdanika.html.model.app.util.ActionProvider;
 import org.nasdanika.html.model.app.util.AppYamlSupplier;
 import org.nasdanika.html.model.bootstrap.BootstrapPackage;
 import org.nasdanika.html.model.html.HtmlPackage;
+import org.nasdanika.html.model.html.gen.ContentConsumer;
 import org.nasdanika.ncore.ModelElement;
 import org.nasdanika.ncore.NcorePackage;
 import org.nasdanika.ncore.Property;
 import org.nasdanika.ncore.StringProperty;
 import org.nasdanika.ncore.util.NcoreResourceSet;
 import org.nasdanika.ncore.util.NcoreUtil;
+import org.nasdanika.resources.BinaryEntityContainer;
+import org.nasdanika.resources.FileSystemContainer;
 import org.xml.sax.SAXException;
 
 import com.redfin.sitemapgenerator.ChangeFreq;
@@ -479,10 +481,26 @@ public class TestEngineeringGen /* extends TestBase */ {
 			
 			mctx.register(DiagramGenerator.class, interpolatingDiagramGenerator);
 			
+			List<Object> contentContributions = new ArrayList<>();
+			mctx.register(ContentConsumer.class, (ContentConsumer) contentContributions::add);			
+			
 			String fileName = action.getUuid() + ".html";
-			SupplierFactory<InputStream> contentFactory = org.nasdanika.common.Util.asInputStreamSupplierFactory(action.getContent());			
+			SupplierFactory<InputStream> contentFactory = org.nasdanika.common.Util.asInputStreamSupplierFactory(action.getContent());	
+			
 			try (InputStream contentStream = org.nasdanika.common.Util.call(contentFactory.create(mctx), pMonitor, diagnosticConsumer, Status.FAIL, Status.ERROR)) {
-				Files.copy(contentStream, new File(contentDir, fileName).toPath(), StandardCopyOption.REPLACE_EXISTING);
+				if (contentContributions.isEmpty()) {
+					Files.copy(contentStream, new File(contentDir, fileName).toPath(), StandardCopyOption.REPLACE_EXISTING);
+				} else {
+					Stream<InputStream> pageBodyContributionsStream = contentContributions.stream().filter(Objects::nonNull).map(e -> {
+						try {
+							return DefaultConverter.INSTANCE.toInputStream(e.toString());
+						} catch (IOException ex) {
+							throw new NasdanikaException("Error converting element to InputStream: " + ex, ex);
+						}
+					});
+					Stream<InputStream> concatenatedStream = Stream.concat(pageBodyContributionsStream, Stream.of(contentStream));
+					Files.copy(org.nasdanika.common.Util.join(concatenatedStream), new File(contentDir, fileName).toPath(), StandardCopyOption.REPLACE_EXISTING);
+				}
 			} catch (Exception e) {
 				throw new NasdanikaException(e);
 			}
