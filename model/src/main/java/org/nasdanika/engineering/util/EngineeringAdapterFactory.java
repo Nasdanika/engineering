@@ -7,8 +7,6 @@ import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
 import org.nasdanika.common.Adaptable;
-import org.nasdanika.diagram.Diagram;
-import org.nasdanika.diagram.Layer;
 import org.nasdanika.engineering.Activity;
 import org.nasdanika.engineering.Aim;
 import org.nasdanika.engineering.Alignable;
@@ -56,12 +54,12 @@ import org.nasdanika.engineering.Principle;
 import org.nasdanika.engineering.Product;
 import org.nasdanika.engineering.ProductOrganization;
 import org.nasdanika.engineering.Release;
-import org.nasdanika.engineering.Representation;
 import org.nasdanika.engineering.TableOfContents;
 import org.nasdanika.engineering.Topic;
 import org.nasdanika.engineering.Transition;
 import org.nasdanika.ncore.Period;
 import org.nasdanika.ncore.Temporal;
+import org.nasdanika.persistence.Marked;
 
 /**
  * <!-- begin-user-doc -->
@@ -122,10 +120,6 @@ public class EngineeringAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseModelElement(ModelElement object) {
 				return createModelElementAdapter();
-			}
-			@Override
-			public Adapter caseRepresentation(Representation object) {
-				return createRepresentationAdapter();
 			}
 			@Override
 			public Adapter caseTableOfContents(TableOfContents object) {
@@ -324,7 +318,7 @@ public class EngineeringAdapterFactory extends AdapterFactoryImpl {
 				return createCallAdapter();
 			}
 			@Override
-			public Adapter caseIMarked(org.nasdanika.persistence.Marked object) {
+			public Adapter caseIMarked(Marked object) {
 				return createIMarkedAdapter();
 			}
 			@Override
@@ -342,14 +336,6 @@ public class EngineeringAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseNcore_NamedElement(org.nasdanika.ncore.NamedElement object) {
 				return createNcore_NamedElementAdapter();
-			}
-			@Override
-			public Adapter caseLayer(Layer object) {
-				return createLayerAdapter();
-			}
-			@Override
-			public Adapter caseDiagram(Diagram object) {
-				return createDiagramAdapter();
 			}
 			@Override
 			public Adapter casePeriod(Period object) {
@@ -422,34 +408,6 @@ public class EngineeringAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.diagram.Layer <em>Layer</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.diagram.Layer
-	 * @generated
-	 */
-	public Adapter createLayerAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.diagram.Diagram <em>Diagram</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.diagram.Diagram
-	 * @generated
-	 */
-	public Adapter createDiagramAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.ModelElement <em>Model Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -460,20 +418,6 @@ public class EngineeringAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createModelElementAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.engineering.Representation <em>Representation</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.engineering.Representation
-	 * @generated
-	 */
-	public Adapter createRepresentationAdapter() {
 		return null;
 	}
 

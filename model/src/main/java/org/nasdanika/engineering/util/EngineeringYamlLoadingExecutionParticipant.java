@@ -6,7 +6,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.nasdanika.common.Context;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.journey.JourneyPackage;
-import org.nasdanika.flow.util.FlowYamlLoadingExecutionParticipant;
+import org.nasdanika.flow.util.FlowObjectLoaderExecutionParticipant;
 import org.nasdanika.html.model.app.AppPackage;
 import org.nasdanika.html.model.bootstrap.BootstrapPackage;
 import org.nasdanika.html.model.html.HtmlPackage;
@@ -17,7 +17,7 @@ import org.nasdanika.html.model.html.HtmlPackage;
  * @author Pavel
  *
  */
-public abstract class EngineeringYamlLoadingExecutionParticipant extends FlowYamlLoadingExecutionParticipant {
+public abstract class EngineeringYamlLoadingExecutionParticipant extends FlowObjectLoaderExecutionParticipant {
 
 	public EngineeringYamlLoadingExecutionParticipant(Context context) {
 		super(context);

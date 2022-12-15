@@ -19,23 +19,16 @@ import org.nasdanika.common.Context;
 import org.nasdanika.common.NasdanikaException;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.common.Util;
-import org.nasdanika.diagram.gen.Generator;
-import org.nasdanika.emf.EObjectAdaptable;
 import org.nasdanika.engineering.Directory;
 import org.nasdanika.engineering.Document;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.ModelElement;
 import org.nasdanika.engineering.NamedElement;
-import org.nasdanika.engineering.Representation;
 import org.nasdanika.html.emf.EObjectActionBuilder;
 import org.nasdanika.html.model.app.Action;
 import org.nasdanika.html.model.app.AppFactory;
 import org.nasdanika.html.model.app.SectionStyle;
-import org.nasdanika.html.model.bootstrap.BootstrapFactory;
 import org.nasdanika.html.model.bootstrap.Table;
-import org.nasdanika.html.model.bootstrap.TableCell;
-import org.nasdanika.html.model.bootstrap.TableRow;
-import org.nasdanika.html.model.bootstrap.TableSection;
 import org.nasdanika.html.model.html.HtmlFactory;
 import org.nasdanika.ncore.util.NcoreUtil;
 
@@ -135,44 +128,6 @@ public class ModelElementActionBuilder<T extends ModelElement> extends EObjectAc
 			action.getContent().addAll(EcoreUtil.copyAll(documentation)); // TODO - wrap into a group in order to inject uri's properties, optionally save into its own resource.
 		}		
 		
-		// Representations
-		for (Representation representation: semanticElement.getRepresentations()) {
-			if (representation.getElements().isEmpty()) {
-				populateRepresentation(representation, action, context, progressMonitor);
-			}			
-			Action representationAction;
-			if (Util.isBlank(representation.getName())) {
-				representationAction = action;
-			} else {
-				representationAction = AppFactory.eINSTANCE.createAction();
-				representationAction.setText(representation.getName());
-				action.getSections().add(representationAction); // TODO - support of navigation/navigation-modal - get from properties.
-			}
-			String rDescr = representation.getDescription();
-			if (Util.isBlank(rDescr)) {
-				addContent(representationAction, createGenerator().generate(representation));				
-			} else {
-				Table table = BootstrapFactory.eINSTANCE.createTable();
-				action.getContent().add(table);
-				table.setBordered(true);
-				TableSection body = BootstrapFactory.eINSTANCE.createTableSection();
-				table.setBody(body);
-				table.getAttributes().put("style", createText("width:auto"));				
-				
-				TableRow diagramRow = BootstrapFactory.eINSTANCE.createTableRow();
-				body.getRows().add(diagramRow);
-				TableCell diagramCell = BootstrapFactory.eINSTANCE.createTableCell();
-				diagramRow.getCells().add(diagramCell);				
-				diagramCell.getContent().add(createText(createGenerator().generate(representation)));
-				
-				TableRow descriptionRow = BootstrapFactory.eINSTANCE.createTableRow();
-				body.getRows().add(descriptionRow);
-				TableCell descriptionCell = BootstrapFactory.eINSTANCE.createTableCell();
-				descriptionRow.getCells().add(descriptionCell);				
-				descriptionCell.getContent().add(createText(rDescr));								
-			}
-		}
-		
 		EList<NamedElement> resources = semanticElement.getResources();
 		if (!resources.isEmpty()) {
 			String resourcesGroupUUID = action.getUuid() + "-resources";
@@ -211,22 +166,6 @@ public class ModelElementActionBuilder<T extends ModelElement> extends EObjectAc
 		};
 	}	
 	
-	/**
-	 * Populates empty representations. An empty representation indicates that it has to be auto-populated. 
-	 * Non-empty representations indicate that they were pre-populated, e.g. manually, and should not be auto-populated. 
-	 * @param representation
-	 */
-	protected void populateRepresentation(
-			Representation representation, 
-			Action action, 
-			org.nasdanika.html.emf.EObjectActionResolver.Context context,
-			ProgressMonitor progressMonitor) {
-		RepresentationGeneratorAdapter adapter = EObjectAdaptable.adaptTo(representation, RepresentationGeneratorAdapter.class);
-		if (adapter != null) {
-			adapter.generate(action, context, progressMonitor);
-		}
-	}
-	
 	@Override
 	protected EObject renderValue(
 			Action base, 
@@ -254,14 +193,6 @@ public class ModelElementActionBuilder<T extends ModelElement> extends EObjectAc
 		}		
 		
 		return super.renderValue(base, typedElement, value, context, progressMonitor);
-	}
-	
-	/**
-	 * Creates a diagram {@link Generator}.
-	 * @return
-	 */
-	protected Generator createGenerator() {
-		return new Generator();
 	}
 	
 }

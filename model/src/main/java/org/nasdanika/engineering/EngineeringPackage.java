@@ -6,7 +6,6 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-import org.nasdanika.diagram.DiagramPackage;
 import org.nasdanika.ncore.NcorePackage;
 
 /**
@@ -115,6 +114,15 @@ public interface EngineeringPackage extends EPackage {
 	int MODEL_ELEMENT__ACTION_PROTOTYPE = NcorePackage.MODEL_ELEMENT__ACTION_PROTOTYPE;
 
 	/**
+	 * The feature id for the '<em><b>Representations</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL_ELEMENT__REPRESENTATIONS = NcorePackage.MODEL_ELEMENT__REPRESENTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -160,22 +168,13 @@ public interface EngineeringPackage extends EPackage {
 	int MODEL_ELEMENT__SECTIONS = NcorePackage.MODEL_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
-	 * The feature id for the '<em><b>Representations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODEL_ELEMENT__REPRESENTATIONS = NcorePackage.MODEL_ELEMENT_FEATURE_COUNT + 5;
-
-	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_ELEMENT__ANNOTATIONS = NcorePackage.MODEL_ELEMENT_FEATURE_COUNT + 6;
+	int MODEL_ELEMENT__ANNOTATIONS = NcorePackage.MODEL_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of structural features of the '<em>Model Element</em>' class.
@@ -184,7 +183,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_ELEMENT_FEATURE_COUNT = NcorePackage.MODEL_ELEMENT_FEATURE_COUNT + 7;
+	int MODEL_ELEMENT_FEATURE_COUNT = NcorePackage.MODEL_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
 	 * The number of operations of the '<em>Model Element</em>' class.
@@ -196,196 +195,6 @@ public interface EngineeringPackage extends EPackage {
 	int MODEL_ELEMENT_OPERATION_COUNT = NcorePackage.MODEL_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.nasdanika.engineering.impl.RepresentationImpl <em>Representation</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.engineering.impl.RepresentationImpl
-	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getRepresentation()
-	 * @generated
-	 */
-	int REPRESENTATION = 1;
-
-	/**
-	 * The feature id for the '<em><b>Markers</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REPRESENTATION__MARKERS = DiagramPackage.DIAGRAM__MARKERS;
-
-	/**
-	 * The feature id for the '<em><b>Uri</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REPRESENTATION__URI = DiagramPackage.DIAGRAM__URI;
-
-	/**
-	 * The feature id for the '<em><b>Description</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REPRESENTATION__DESCRIPTION = DiagramPackage.DIAGRAM__DESCRIPTION;
-
-	/**
-	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REPRESENTATION__UUID = DiagramPackage.DIAGRAM__UUID;
-
-	/**
-	 * The feature id for the '<em><b>Action Prototype</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REPRESENTATION__ACTION_PROTOTYPE = DiagramPackage.DIAGRAM__ACTION_PROTOTYPE;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REPRESENTATION__NAME = DiagramPackage.DIAGRAM__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Elements</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REPRESENTATION__ELEMENTS = DiagramPackage.DIAGRAM__ELEMENTS;
-
-	/**
-	 * The feature id for the '<em><b>Notes</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REPRESENTATION__NOTES = DiagramPackage.DIAGRAM__NOTES;
-
-	/**
-	 * The feature id for the '<em><b>Visible</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REPRESENTATION__VISIBLE = DiagramPackage.DIAGRAM__VISIBLE;
-
-	/**
-	 * The feature id for the '<em><b>Vertical</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REPRESENTATION__VERTICAL = DiagramPackage.DIAGRAM__VERTICAL;
-
-	/**
-	 * The feature id for the '<em><b>Hide Empty Description</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REPRESENTATION__HIDE_EMPTY_DESCRIPTION = DiagramPackage.DIAGRAM__HIDE_EMPTY_DESCRIPTION;
-
-	/**
-	 * The feature id for the '<em><b>Hide Footbox</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REPRESENTATION__HIDE_FOOTBOX = DiagramPackage.DIAGRAM__HIDE_FOOTBOX;
-
-	/**
-	 * The feature id for the '<em><b>Type</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REPRESENTATION__TYPE = DiagramPackage.DIAGRAM__TYPE;
-
-	/**
-	 * The feature id for the '<em><b>Properties</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REPRESENTATION__PROPERTIES = DiagramPackage.DIAGRAM__PROPERTIES;
-
-	/**
-	 * The feature id for the '<em><b>Context</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REPRESENTATION__CONTEXT = DiagramPackage.DIAGRAM__CONTEXT;
-
-	/**
-	 * The feature id for the '<em><b>Depth</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REPRESENTATION__DEPTH = DiagramPackage.DIAGRAM__DEPTH;
-
-	/**
-	 * The feature id for the '<em><b>Layers</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REPRESENTATION__LAYERS = DiagramPackage.DIAGRAM__LAYERS;
-
-	/**
-	 * The feature id for the '<em><b>Generator</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REPRESENTATION__GENERATOR = DiagramPackage.DIAGRAM_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Representation</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REPRESENTATION_FEATURE_COUNT = DiagramPackage.DIAGRAM_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of operations of the '<em>Representation</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REPRESENTATION_OPERATION_COUNT = DiagramPackage.DIAGRAM_OPERATION_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.TableOfContentsImpl <em>Table Of Contents</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -393,7 +202,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getTableOfContents()
 	 * @generated
 	 */
-	int TABLE_OF_CONTENTS = 2;
+	int TABLE_OF_CONTENTS = 1;
 
 	/**
 	 * The feature id for the '<em><b>Role</b></em>' attribute.
@@ -448,7 +257,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getNamedElement()
 	 * @generated
 	 */
-	int NAMED_ELEMENT = 3;
+	int NAMED_ELEMENT = 2;
 
 	/**
 	 * The feature id for the '<em><b>Markers</b></em>' containment reference list.
@@ -496,6 +305,15 @@ public interface EngineeringPackage extends EPackage {
 	int NAMED_ELEMENT__ACTION_PROTOTYPE = MODEL_ELEMENT__ACTION_PROTOTYPE;
 
 	/**
+	 * The feature id for the '<em><b>Representations</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NAMED_ELEMENT__REPRESENTATIONS = MODEL_ELEMENT__REPRESENTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -541,15 +359,6 @@ public interface EngineeringPackage extends EPackage {
 	int NAMED_ELEMENT__SECTIONS = MODEL_ELEMENT__SECTIONS;
 
 	/**
-	 * The feature id for the '<em><b>Representations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NAMED_ELEMENT__REPRESENTATIONS = MODEL_ELEMENT__REPRESENTATIONS;
-
-	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -593,7 +402,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getEvent()
 	 * @generated
 	 */
-	int EVENT = 4;
+	int EVENT = 3;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.Alignable <em>Alignable</em>}' class.
@@ -603,7 +412,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getAlignable()
 	 * @generated
 	 */
-	int ALIGNABLE = 5;
+	int ALIGNABLE = 4;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.EndeavorImpl <em>Endeavor</em>}' class.
@@ -613,7 +422,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getEndeavor()
 	 * @generated
 	 */
-	int ENDEAVOR = 6;
+	int ENDEAVOR = 5;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.EngineeredElementImpl <em>Engineered Element</em>}' class.
@@ -623,7 +432,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getEngineeredElement()
 	 * @generated
 	 */
-	int ENGINEERED_ELEMENT = 15;
+	int ENGINEERED_ELEMENT = 14;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.PersonaImpl <em>Persona</em>}' class.
@@ -633,7 +442,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getPersona()
 	 * @generated
 	 */
-	int PERSONA = 18;
+	int PERSONA = 17;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.EngineerImpl <em>Engineer</em>}' class.
@@ -643,7 +452,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getEngineer()
 	 * @generated
 	 */
-	int ENGINEER = 19;
+	int ENGINEER = 18;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.OrganizationImpl <em>Organization</em>}' class.
@@ -653,7 +462,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getOrganization()
 	 * @generated
 	 */
-	int ORGANIZATION = 21;
+	int ORGANIZATION = 20;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.ModuleImpl <em>Module</em>}' class.
@@ -663,7 +472,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getModule()
 	 * @generated
 	 */
-	int MODULE = 22;
+	int MODULE = 21;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.ProductImpl <em>Product</em>}' class.
@@ -673,7 +482,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getProduct()
 	 * @generated
 	 */
-	int PRODUCT = 23;
+	int PRODUCT = 22;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.CapabilityImpl <em>Capability</em>}' class.
@@ -683,7 +492,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getCapability()
 	 * @generated
 	 */
-	int CAPABILITY = 24;
+	int CAPABILITY = 23;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.IncrementImpl <em>Increment</em>}' class.
@@ -693,7 +502,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getIncrement()
 	 * @generated
 	 */
-	int INCREMENT = 7;
+	int INCREMENT = 6;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.IssueCategoryImpl <em>Issue Category</em>}' class.
@@ -703,7 +512,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getIssueCategory()
 	 * @generated
 	 */
-	int ISSUE_CATEGORY = 8;
+	int ISSUE_CATEGORY = 7;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.IssueStatusImpl <em>Issue Status</em>}' class.
@@ -713,7 +522,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getIssueStatus()
 	 * @generated
 	 */
-	int ISSUE_STATUS = 9;
+	int ISSUE_STATUS = 8;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.EngineeredCapabilityImpl <em>Engineered Capability</em>}' class.
@@ -723,7 +532,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getEngineeredCapability()
 	 * @generated
 	 */
-	int ENGINEERED_CAPABILITY = 25;
+	int ENGINEERED_CAPABILITY = 24;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.ReleaseImpl <em>Release</em>}' class.
@@ -733,7 +542,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getRelease()
 	 * @generated
 	 */
-	int RELEASE = 26;
+	int RELEASE = 25;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.FeatureImpl <em>Feature</em>}' class.
@@ -743,7 +552,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getFeature()
 	 * @generated
 	 */
-	int FEATURE = 27;
+	int FEATURE = 26;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.IssueImpl <em>Issue</em>}' class.
@@ -753,7 +562,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getIssue()
 	 * @generated
 	 */
-	int ISSUE = 12;
+	int ISSUE = 11;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.NoteImpl <em>Note</em>}' class.
@@ -763,7 +572,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getNote()
 	 * @generated
 	 */
-	int NOTE = 13;
+	int NOTE = 12;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.DirectoryImpl <em>Directory</em>}' class.
@@ -773,7 +582,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getDirectory()
 	 * @generated
 	 */
-	int DIRECTORY = 28;
+	int DIRECTORY = 27;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.CapacityImpl <em>Capacity</em>}' class.
@@ -783,7 +592,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getCapacity()
 	 * @generated
 	 */
-	int CAPACITY = 29;
+	int CAPACITY = 28;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.AllocationImpl <em>Allocation</em>}' class.
@@ -793,7 +602,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getAllocation()
 	 * @generated
 	 */
-	int ALLOCATION = 30;
+	int ALLOCATION = 29;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.AimImpl <em>Aim</em>}' class.
@@ -803,7 +612,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getAim()
 	 * @generated
 	 */
-	int AIM = 31;
+	int AIM = 30;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.PrincipleImpl <em>Principle</em>}' class.
@@ -813,7 +622,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getPrinciple()
 	 * @generated
 	 */
-	int PRINCIPLE = 32;
+	int PRINCIPLE = 31;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.AlignmentImpl <em>Alignment</em>}' class.
@@ -823,7 +632,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getAlignment()
 	 * @generated
 	 */
-	int ALIGNMENT = 33;
+	int ALIGNMENT = 32;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.GoalImpl <em>Goal</em>}' class.
@@ -833,7 +642,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getGoal()
 	 * @generated
 	 */
-	int GOAL = 34;
+	int GOAL = 33;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.ForumImpl <em>Forum</em>}' class.
@@ -843,7 +652,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getForum()
 	 * @generated
 	 */
-	int FORUM = 14;
+	int FORUM = 13;
 
 	/**
 	 * The feature id for the '<em><b>Markers</b></em>' containment reference list.
@@ -862,7 +671,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getIssuePriority()
 	 * @generated
 	 */
-	int ISSUE_PRIORITY = 10;
+	int ISSUE_PRIORITY = 9;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.IssueSeverityImpl <em>Issue Severity</em>}' class.
@@ -872,7 +681,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getIssueSeverity()
 	 * @generated
 	 */
-	int ISSUE_SEVERITY = 11;
+	int ISSUE_SEVERITY = 10;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.TopicImpl <em>Topic</em>}' class.
@@ -882,7 +691,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getTopic()
 	 * @generated
 	 */
-	int TOPIC = 36;
+	int TOPIC = 35;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.MessageImpl <em>Message</em>}' class.
@@ -892,7 +701,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getMessage()
 	 * @generated
 	 */
-	int MESSAGE = 35;
+	int MESSAGE = 34;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.engineering.impl.DocumentImpl <em>Document</em>}' class.
@@ -902,7 +711,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getDocument()
 	 * @generated
 	 */
-	int DOCUMENT = 17;
+	int DOCUMENT = 16;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -939,6 +748,15 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int FORUM__ACTION_PROTOTYPE = NAMED_ELEMENT__ACTION_PROTOTYPE;
+
+	/**
+	 * The feature id for the '<em><b>Representations</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORUM__REPRESENTATIONS = NAMED_ELEMENT__REPRESENTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
@@ -984,15 +802,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int FORUM__SECTIONS = NAMED_ELEMENT__SECTIONS;
-
-	/**
-	 * The feature id for the '<em><b>Representations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FORUM__REPRESENTATIONS = NAMED_ELEMENT__REPRESENTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -1094,6 +903,15 @@ public interface EngineeringPackage extends EPackage {
 	int ENGINEERED_ELEMENT__ACTION_PROTOTYPE = FORUM__ACTION_PROTOTYPE;
 
 	/**
+	 * The feature id for the '<em><b>Representations</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEERED_ELEMENT__REPRESENTATIONS = FORUM__REPRESENTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1137,15 +955,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int ENGINEERED_ELEMENT__SECTIONS = FORUM__SECTIONS;
-
-	/**
-	 * The feature id for the '<em><b>Representations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENGINEERED_ELEMENT__REPRESENTATIONS = FORUM__REPRESENTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -1382,6 +1191,15 @@ public interface EngineeringPackage extends EPackage {
 	int EVENT__ACTION_PROTOTYPE = ENGINEERED_ELEMENT__ACTION_PROTOTYPE;
 
 	/**
+	 * The feature id for the '<em><b>Representations</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT__REPRESENTATIONS = ENGINEERED_ELEMENT__REPRESENTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1425,15 +1243,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int EVENT__SECTIONS = ENGINEERED_ELEMENT__SECTIONS;
-
-	/**
-	 * The feature id for the '<em><b>Representations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EVENT__REPRESENTATIONS = ENGINEERED_ELEMENT__REPRESENTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -1823,6 +1632,15 @@ public interface EngineeringPackage extends EPackage {
 	int ENDEAVOR__ACTION_PROTOTYPE = MODEL_ELEMENT__ACTION_PROTOTYPE;
 
 	/**
+	 * The feature id for the '<em><b>Representations</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENDEAVOR__REPRESENTATIONS = MODEL_ELEMENT__REPRESENTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1866,15 +1684,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int ENDEAVOR__SECTIONS = MODEL_ELEMENT__SECTIONS;
-
-	/**
-	 * The feature id for the '<em><b>Representations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENDEAVOR__REPRESENTATIONS = MODEL_ELEMENT__REPRESENTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -2075,6 +1884,15 @@ public interface EngineeringPackage extends EPackage {
 	int INCREMENT__ACTION_PROTOTYPE = NAMED_ELEMENT__ACTION_PROTOTYPE;
 
 	/**
+	 * The feature id for the '<em><b>Representations</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INCREMENT__REPRESENTATIONS = NAMED_ELEMENT__REPRESENTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2118,15 +1936,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int INCREMENT__SECTIONS = NAMED_ELEMENT__SECTIONS;
-
-	/**
-	 * The feature id for the '<em><b>Representations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INCREMENT__REPRESENTATIONS = NAMED_ELEMENT__REPRESENTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -2363,6 +2172,15 @@ public interface EngineeringPackage extends EPackage {
 	int AIM__ACTION_PROTOTYPE = NAMED_ELEMENT__ACTION_PROTOTYPE;
 
 	/**
+	 * The feature id for the '<em><b>Representations</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AIM__REPRESENTATIONS = NAMED_ELEMENT__REPRESENTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2406,15 +2224,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int AIM__SECTIONS = NAMED_ELEMENT__SECTIONS;
-
-	/**
-	 * The feature id for the '<em><b>Representations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AIM__REPRESENTATIONS = NAMED_ELEMENT__REPRESENTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -2516,6 +2325,15 @@ public interface EngineeringPackage extends EPackage {
 	int ISSUE_CATEGORY__ACTION_PROTOTYPE = AIM__ACTION_PROTOTYPE;
 
 	/**
+	 * The feature id for the '<em><b>Representations</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE_CATEGORY__REPRESENTATIONS = AIM__REPRESENTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2559,15 +2377,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int ISSUE_CATEGORY__SECTIONS = AIM__SECTIONS;
-
-	/**
-	 * The feature id for the '<em><b>Representations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ISSUE_CATEGORY__REPRESENTATIONS = AIM__REPRESENTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -2714,6 +2523,15 @@ public interface EngineeringPackage extends EPackage {
 	int ISSUE_STATUS__ACTION_PROTOTYPE = NAMED_ELEMENT__ACTION_PROTOTYPE;
 
 	/**
+	 * The feature id for the '<em><b>Representations</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE_STATUS__REPRESENTATIONS = NAMED_ELEMENT__REPRESENTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2757,15 +2575,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int ISSUE_STATUS__SECTIONS = NAMED_ELEMENT__SECTIONS;
-
-	/**
-	 * The feature id for the '<em><b>Representations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ISSUE_STATUS__REPRESENTATIONS = NAMED_ELEMENT__REPRESENTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -2867,6 +2676,15 @@ public interface EngineeringPackage extends EPackage {
 	int ISSUE_PRIORITY__ACTION_PROTOTYPE = NAMED_ELEMENT__ACTION_PROTOTYPE;
 
 	/**
+	 * The feature id for the '<em><b>Representations</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE_PRIORITY__REPRESENTATIONS = NAMED_ELEMENT__REPRESENTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2910,15 +2728,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int ISSUE_PRIORITY__SECTIONS = NAMED_ELEMENT__SECTIONS;
-
-	/**
-	 * The feature id for the '<em><b>Representations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ISSUE_PRIORITY__REPRESENTATIONS = NAMED_ELEMENT__REPRESENTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -3011,6 +2820,15 @@ public interface EngineeringPackage extends EPackage {
 	int ISSUE_SEVERITY__ACTION_PROTOTYPE = NAMED_ELEMENT__ACTION_PROTOTYPE;
 
 	/**
+	 * The feature id for the '<em><b>Representations</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE_SEVERITY__REPRESENTATIONS = NAMED_ELEMENT__REPRESENTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3054,15 +2872,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int ISSUE_SEVERITY__SECTIONS = NAMED_ELEMENT__SECTIONS;
-
-	/**
-	 * The feature id for the '<em><b>Representations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ISSUE_SEVERITY__REPRESENTATIONS = NAMED_ELEMENT__REPRESENTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -3155,6 +2964,15 @@ public interface EngineeringPackage extends EPackage {
 	int CAPABILITY__ACTION_PROTOTYPE = NAMED_ELEMENT__ACTION_PROTOTYPE;
 
 	/**
+	 * The feature id for the '<em><b>Representations</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY__REPRESENTATIONS = NAMED_ELEMENT__REPRESENTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3198,15 +3016,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int CAPABILITY__SECTIONS = NAMED_ELEMENT__SECTIONS;
-
-	/**
-	 * The feature id for the '<em><b>Representations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CAPABILITY__REPRESENTATIONS = NAMED_ELEMENT__REPRESENTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -3335,6 +3144,15 @@ public interface EngineeringPackage extends EPackage {
 	int ENGINEERED_CAPABILITY__ACTION_PROTOTYPE = CAPABILITY__ACTION_PROTOTYPE;
 
 	/**
+	 * The feature id for the '<em><b>Representations</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEERED_CAPABILITY__REPRESENTATIONS = CAPABILITY__REPRESENTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3378,15 +3196,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int ENGINEERED_CAPABILITY__SECTIONS = CAPABILITY__SECTIONS;
-
-	/**
-	 * The feature id for the '<em><b>Representations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENGINEERED_CAPABILITY__REPRESENTATIONS = CAPABILITY__REPRESENTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -3623,6 +3432,15 @@ public interface EngineeringPackage extends EPackage {
 	int ISSUE__ACTION_PROTOTYPE = ENGINEERED_CAPABILITY__ACTION_PROTOTYPE;
 
 	/**
+	 * The feature id for the '<em><b>Representations</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISSUE__REPRESENTATIONS = ENGINEERED_CAPABILITY__REPRESENTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3666,15 +3484,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int ISSUE__SECTIONS = ENGINEERED_CAPABILITY__SECTIONS;
-
-	/**
-	 * The feature id for the '<em><b>Representations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ISSUE__REPRESENTATIONS = ENGINEERED_CAPABILITY__REPRESENTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -4046,6 +3855,15 @@ public interface EngineeringPackage extends EPackage {
 	int NOTE__ACTION_PROTOTYPE = MODEL_ELEMENT__ACTION_PROTOTYPE;
 
 	/**
+	 * The feature id for the '<em><b>Representations</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NOTE__REPRESENTATIONS = MODEL_ELEMENT__REPRESENTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4089,15 +3907,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int NOTE__SECTIONS = MODEL_ELEMENT__SECTIONS;
-
-	/**
-	 * The feature id for the '<em><b>Representations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NOTE__REPRESENTATIONS = MODEL_ELEMENT__REPRESENTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -4197,7 +4006,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getEngineeredElementStatus()
 	 * @generated
 	 */
-	int ENGINEERED_ELEMENT_STATUS = 16;
+	int ENGINEERED_ELEMENT_STATUS = 15;
 
 	/**
 	 * The feature id for the '<em><b>Markers</b></em>' containment reference list.
@@ -4245,6 +4054,15 @@ public interface EngineeringPackage extends EPackage {
 	int ENGINEERED_ELEMENT_STATUS__ACTION_PROTOTYPE = NAMED_ELEMENT__ACTION_PROTOTYPE;
 
 	/**
+	 * The feature id for the '<em><b>Representations</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEERED_ELEMENT_STATUS__REPRESENTATIONS = NAMED_ELEMENT__REPRESENTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4290,15 +4108,6 @@ public interface EngineeringPackage extends EPackage {
 	int ENGINEERED_ELEMENT_STATUS__SECTIONS = NAMED_ELEMENT__SECTIONS;
 
 	/**
-	 * The feature id for the '<em><b>Representations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENGINEERED_ELEMENT_STATUS__REPRESENTATIONS = NAMED_ELEMENT__REPRESENTATIONS;
-
-	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4335,31 +4144,13 @@ public interface EngineeringPackage extends EPackage {
 	int ENGINEERED_ELEMENT_STATUS__ELEMENTS = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Element Style</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENGINEERED_ELEMENT_STATUS__ELEMENT_STYLE = NAMED_ELEMENT_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Connection Style</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENGINEERED_ELEMENT_STATUS__CONNECTION_STYLE = NAMED_ELEMENT_FEATURE_COUNT + 3;
-
-	/**
 	 * The number of structural features of the '<em>Engineered Element Status</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENGINEERED_ELEMENT_STATUS_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 4;
+	int ENGINEERED_ELEMENT_STATUS_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Engineered Element Status</em>' class.
@@ -4416,6 +4207,15 @@ public interface EngineeringPackage extends EPackage {
 	int DOCUMENT__ACTION_PROTOTYPE = ENGINEERED_ELEMENT__ACTION_PROTOTYPE;
 
 	/**
+	 * The feature id for the '<em><b>Representations</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT__REPRESENTATIONS = ENGINEERED_ELEMENT__REPRESENTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4459,15 +4259,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int DOCUMENT__SECTIONS = ENGINEERED_ELEMENT__SECTIONS;
-
-	/**
-	 * The feature id for the '<em><b>Representations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DOCUMENT__REPRESENTATIONS = ENGINEERED_ELEMENT__REPRESENTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -4704,6 +4495,15 @@ public interface EngineeringPackage extends EPackage {
 	int PERSONA__ACTION_PROTOTYPE = ENGINEERED_ELEMENT__ACTION_PROTOTYPE;
 
 	/**
+	 * The feature id for the '<em><b>Representations</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSONA__REPRESENTATIONS = ENGINEERED_ELEMENT__REPRESENTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4747,15 +4547,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int PERSONA__SECTIONS = ENGINEERED_ELEMENT__SECTIONS;
-
-	/**
-	 * The feature id for the '<em><b>Representations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PERSONA__REPRESENTATIONS = ENGINEERED_ELEMENT__REPRESENTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -5028,6 +4819,15 @@ public interface EngineeringPackage extends EPackage {
 	int ENGINEER__ACTION_PROTOTYPE = PERSONA__ACTION_PROTOTYPE;
 
 	/**
+	 * The feature id for the '<em><b>Representations</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENGINEER__REPRESENTATIONS = PERSONA__REPRESENTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5071,15 +4871,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int ENGINEER__SECTIONS = PERSONA__SECTIONS;
-
-	/**
-	 * The feature id for the '<em><b>Representations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENGINEER__REPRESENTATIONS = PERSONA__REPRESENTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -5503,7 +5294,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getDomain()
 	 * @generated
 	 */
-	int DOMAIN = 20;
+	int DOMAIN = 19;
 
 	/**
 	 * The feature id for the '<em><b>Markers</b></em>' containment reference list.
@@ -5551,6 +5342,15 @@ public interface EngineeringPackage extends EPackage {
 	int DOMAIN__ACTION_PROTOTYPE = ENGINEERED_ELEMENT__ACTION_PROTOTYPE;
 
 	/**
+	 * The feature id for the '<em><b>Representations</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN__REPRESENTATIONS = ENGINEERED_ELEMENT__REPRESENTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5594,15 +5394,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int DOMAIN__SECTIONS = ENGINEERED_ELEMENT__SECTIONS;
-
-	/**
-	 * The feature id for the '<em><b>Representations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DOMAIN__REPRESENTATIONS = ENGINEERED_ELEMENT__REPRESENTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -5848,6 +5639,15 @@ public interface EngineeringPackage extends EPackage {
 	int ORGANIZATION__ACTION_PROTOTYPE = ENGINEER__ACTION_PROTOTYPE;
 
 	/**
+	 * The feature id for the '<em><b>Representations</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANIZATION__REPRESENTATIONS = ENGINEER__REPRESENTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5891,15 +5691,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int ORGANIZATION__SECTIONS = ENGINEER__SECTIONS;
-
-	/**
-	 * The feature id for the '<em><b>Representations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ORGANIZATION__REPRESENTATIONS = ENGINEER__REPRESENTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -6370,6 +6161,15 @@ public interface EngineeringPackage extends EPackage {
 	int MODULE__ACTION_PROTOTYPE = ENGINEERED_ELEMENT__ACTION_PROTOTYPE;
 
 	/**
+	 * The feature id for the '<em><b>Representations</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODULE__REPRESENTATIONS = ENGINEERED_ELEMENT__REPRESENTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6413,15 +6213,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int MODULE__SECTIONS = ENGINEERED_ELEMENT__SECTIONS;
-
-	/**
-	 * The feature id for the '<em><b>Representations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODULE__REPRESENTATIONS = ENGINEERED_ELEMENT__REPRESENTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -6694,6 +6485,15 @@ public interface EngineeringPackage extends EPackage {
 	int PRODUCT__ACTION_PROTOTYPE = MODULE__ACTION_PROTOTYPE;
 
 	/**
+	 * The feature id for the '<em><b>Representations</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT__REPRESENTATIONS = MODULE__REPRESENTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6737,15 +6537,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int PRODUCT__SECTIONS = MODULE__SECTIONS;
-
-	/**
-	 * The feature id for the '<em><b>Representations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PRODUCT__REPRESENTATIONS = MODULE__REPRESENTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -7036,6 +6827,15 @@ public interface EngineeringPackage extends EPackage {
 	int RELEASE__ACTION_PROTOTYPE = ENGINEERED_CAPABILITY__ACTION_PROTOTYPE;
 
 	/**
+	 * The feature id for the '<em><b>Representations</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RELEASE__REPRESENTATIONS = ENGINEERED_CAPABILITY__REPRESENTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7079,15 +6879,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int RELEASE__SECTIONS = ENGINEERED_CAPABILITY__SECTIONS;
-
-	/**
-	 * The feature id for the '<em><b>Representations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RELEASE__REPRESENTATIONS = ENGINEERED_CAPABILITY__REPRESENTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -7342,6 +7133,15 @@ public interface EngineeringPackage extends EPackage {
 	int FEATURE__ACTION_PROTOTYPE = ENGINEERED_CAPABILITY__ACTION_PROTOTYPE;
 
 	/**
+	 * The feature id for the '<em><b>Representations</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE__REPRESENTATIONS = ENGINEERED_CAPABILITY__REPRESENTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7385,15 +7185,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int FEATURE__SECTIONS = ENGINEERED_CAPABILITY__SECTIONS;
-
-	/**
-	 * The feature id for the '<em><b>Representations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FEATURE__REPRESENTATIONS = ENGINEERED_CAPABILITY__REPRESENTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -7648,6 +7439,15 @@ public interface EngineeringPackage extends EPackage {
 	int DIRECTORY__ACTION_PROTOTYPE = ENGINEERED_ELEMENT__ACTION_PROTOTYPE;
 
 	/**
+	 * The feature id for the '<em><b>Representations</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIRECTORY__REPRESENTATIONS = ENGINEERED_ELEMENT__REPRESENTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7691,15 +7491,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int DIRECTORY__SECTIONS = ENGINEERED_ELEMENT__SECTIONS;
-
-	/**
-	 * The feature id for the '<em><b>Representations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIRECTORY__REPRESENTATIONS = ENGINEERED_ELEMENT__REPRESENTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -7945,6 +7736,15 @@ public interface EngineeringPackage extends EPackage {
 	int CAPACITY__ACTION_PROTOTYPE = MODEL_ELEMENT__ACTION_PROTOTYPE;
 
 	/**
+	 * The feature id for the '<em><b>Representations</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPACITY__REPRESENTATIONS = MODEL_ELEMENT__REPRESENTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7988,15 +7788,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int CAPACITY__SECTIONS = MODEL_ELEMENT__SECTIONS;
-
-	/**
-	 * The feature id for the '<em><b>Representations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CAPACITY__REPRESENTATIONS = MODEL_ELEMENT__REPRESENTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -8107,6 +7898,15 @@ public interface EngineeringPackage extends EPackage {
 	int ALLOCATION__ACTION_PROTOTYPE = CAPACITY__ACTION_PROTOTYPE;
 
 	/**
+	 * The feature id for the '<em><b>Representations</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ALLOCATION__REPRESENTATIONS = CAPACITY__REPRESENTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8150,15 +7950,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int ALLOCATION__SECTIONS = CAPACITY__SECTIONS;
-
-	/**
-	 * The feature id for the '<em><b>Representations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ALLOCATION__REPRESENTATIONS = CAPACITY__REPRESENTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -8287,6 +8078,15 @@ public interface EngineeringPackage extends EPackage {
 	int PRINCIPLE__ACTION_PROTOTYPE = AIM__ACTION_PROTOTYPE;
 
 	/**
+	 * The feature id for the '<em><b>Representations</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRINCIPLE__REPRESENTATIONS = AIM__REPRESENTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8330,15 +8130,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int PRINCIPLE__SECTIONS = AIM__SECTIONS;
-
-	/**
-	 * The feature id for the '<em><b>Representations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PRINCIPLE__REPRESENTATIONS = AIM__REPRESENTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -8449,6 +8240,15 @@ public interface EngineeringPackage extends EPackage {
 	int ALIGNMENT__ACTION_PROTOTYPE = MODEL_ELEMENT__ACTION_PROTOTYPE;
 
 	/**
+	 * The feature id for the '<em><b>Representations</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ALIGNMENT__REPRESENTATIONS = MODEL_ELEMENT__REPRESENTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8492,15 +8292,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int ALIGNMENT__SECTIONS = MODEL_ELEMENT__SECTIONS;
-
-	/**
-	 * The feature id for the '<em><b>Representations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ALIGNMENT__REPRESENTATIONS = MODEL_ELEMENT__REPRESENTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -8593,6 +8384,15 @@ public interface EngineeringPackage extends EPackage {
 	int GOAL__ACTION_PROTOTYPE = AIM__ACTION_PROTOTYPE;
 
 	/**
+	 * The feature id for the '<em><b>Representations</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GOAL__REPRESENTATIONS = AIM__REPRESENTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8636,15 +8436,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int GOAL__SECTIONS = AIM__SECTIONS;
-
-	/**
-	 * The feature id for the '<em><b>Representations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GOAL__REPRESENTATIONS = AIM__REPRESENTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -8755,6 +8546,15 @@ public interface EngineeringPackage extends EPackage {
 	int MESSAGE__ACTION_PROTOTYPE = NAMED_ELEMENT__ACTION_PROTOTYPE;
 
 	/**
+	 * The feature id for the '<em><b>Representations</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE__REPRESENTATIONS = NAMED_ELEMENT__REPRESENTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8798,15 +8598,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int MESSAGE__SECTIONS = NAMED_ELEMENT__SECTIONS;
-
-	/**
-	 * The feature id for the '<em><b>Representations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MESSAGE__REPRESENTATIONS = NAMED_ELEMENT__REPRESENTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -8908,6 +8699,15 @@ public interface EngineeringPackage extends EPackage {
 	int TOPIC__ACTION_PROTOTYPE = MESSAGE__ACTION_PROTOTYPE;
 
 	/**
+	 * The feature id for the '<em><b>Representations</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TOPIC__REPRESENTATIONS = MESSAGE__REPRESENTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8951,15 +8751,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int TOPIC__SECTIONS = MESSAGE__SECTIONS;
-
-	/**
-	 * The feature id for the '<em><b>Representations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TOPIC__REPRESENTATIONS = MESSAGE__REPRESENTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -9032,7 +8823,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getNamedElementReference()
 	 * @generated
 	 */
-	int NAMED_ELEMENT_REFERENCE = 37;
+	int NAMED_ELEMENT_REFERENCE = 36;
 
 	/**
 	 * The feature id for the '<em><b>Markers</b></em>' containment reference list.
@@ -9080,6 +8871,15 @@ public interface EngineeringPackage extends EPackage {
 	int NAMED_ELEMENT_REFERENCE__ACTION_PROTOTYPE = NAMED_ELEMENT__ACTION_PROTOTYPE;
 
 	/**
+	 * The feature id for the '<em><b>Representations</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NAMED_ELEMENT_REFERENCE__REPRESENTATIONS = NAMED_ELEMENT__REPRESENTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9123,15 +8923,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int NAMED_ELEMENT_REFERENCE__SECTIONS = NAMED_ELEMENT__SECTIONS;
-
-	/**
-	 * The feature id for the '<em><b>Representations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NAMED_ELEMENT_REFERENCE__REPRESENTATIONS = NAMED_ELEMENT__REPRESENTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -9186,7 +8977,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getLink()
 	 * @generated
 	 */
-	int LINK = 38;
+	int LINK = 37;
 
 	/**
 	 * The feature id for the '<em><b>Markers</b></em>' containment reference list.
@@ -9234,6 +9025,15 @@ public interface EngineeringPackage extends EPackage {
 	int LINK__ACTION_PROTOTYPE = NAMED_ELEMENT__ACTION_PROTOTYPE;
 
 	/**
+	 * The feature id for the '<em><b>Representations</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINK__REPRESENTATIONS = NAMED_ELEMENT__REPRESENTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9277,15 +9077,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int LINK__SECTIONS = NAMED_ELEMENT__SECTIONS;
-
-	/**
-	 * The feature id for the '<em><b>Representations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LINK__REPRESENTATIONS = NAMED_ELEMENT__REPRESENTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -9340,7 +9131,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getKeyResult()
 	 * @generated
 	 */
-	int KEY_RESULT = 39;
+	int KEY_RESULT = 38;
 
 	/**
 	 * The feature id for the '<em><b>Markers</b></em>' containment reference list.
@@ -9388,6 +9179,15 @@ public interface EngineeringPackage extends EPackage {
 	int KEY_RESULT__ACTION_PROTOTYPE = AIM__ACTION_PROTOTYPE;
 
 	/**
+	 * The feature id for the '<em><b>Representations</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int KEY_RESULT__REPRESENTATIONS = AIM__REPRESENTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9431,15 +9231,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int KEY_RESULT__SECTIONS = AIM__SECTIONS;
-
-	/**
-	 * The feature id for the '<em><b>Representations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int KEY_RESULT__REPRESENTATIONS = AIM__REPRESENTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -9530,7 +9321,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getObjective()
 	 * @generated
 	 */
-	int OBJECTIVE = 40;
+	int OBJECTIVE = 39;
 
 	/**
 	 * The feature id for the '<em><b>Markers</b></em>' containment reference list.
@@ -9578,6 +9369,15 @@ public interface EngineeringPackage extends EPackage {
 	int OBJECTIVE__ACTION_PROTOTYPE = KEY_RESULT__ACTION_PROTOTYPE;
 
 	/**
+	 * The feature id for the '<em><b>Representations</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBJECTIVE__REPRESENTATIONS = KEY_RESULT__REPRESENTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9621,15 +9421,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int OBJECTIVE__SECTIONS = KEY_RESULT__SECTIONS;
-
-	/**
-	 * The feature id for the '<em><b>Representations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OBJECTIVE__REPRESENTATIONS = KEY_RESULT__REPRESENTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -9774,7 +9565,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getDecision()
 	 * @generated
 	 */
-	int DECISION = 41;
+	int DECISION = 40;
 
 	/**
 	 * The feature id for the '<em><b>Markers</b></em>' containment reference list.
@@ -9822,6 +9613,15 @@ public interface EngineeringPackage extends EPackage {
 	int DECISION__ACTION_PROTOTYPE = ISSUE__ACTION_PROTOTYPE;
 
 	/**
+	 * The feature id for the '<em><b>Representations</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DECISION__REPRESENTATIONS = ISSUE__REPRESENTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9865,15 +9665,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int DECISION__SECTIONS = ISSUE__SECTIONS;
-
-	/**
-	 * The feature id for the '<em><b>Representations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DECISION__REPRESENTATIONS = ISSUE__REPRESENTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -10261,7 +10052,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getProductOrganization()
 	 * @generated
 	 */
-	int PRODUCT_ORGANIZATION = 42;
+	int PRODUCT_ORGANIZATION = 41;
 
 	/**
 	 * The feature id for the '<em><b>Markers</b></em>' containment reference list.
@@ -10309,6 +10100,15 @@ public interface EngineeringPackage extends EPackage {
 	int PRODUCT_ORGANIZATION__ACTION_PROTOTYPE = ORGANIZATION__ACTION_PROTOTYPE;
 
 	/**
+	 * The feature id for the '<em><b>Representations</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_ORGANIZATION__REPRESENTATIONS = ORGANIZATION__REPRESENTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -10352,15 +10152,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int PRODUCT_ORGANIZATION__SECTIONS = ORGANIZATION__SECTIONS;
-
-	/**
-	 * The feature id for the '<em><b>Representations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PRODUCT_ORGANIZATION__REPRESENTATIONS = ORGANIZATION__REPRESENTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -10811,7 +10602,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getConnectionSource()
 	 * @generated
 	 */
-	int CONNECTION_SOURCE = 43;
+	int CONNECTION_SOURCE = 42;
 
 	/**
 	 * The feature id for the '<em><b>Outbound Connections</b></em>' containment reference list.
@@ -10848,7 +10639,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getConnection()
 	 * @generated
 	 */
-	int CONNECTION = 44;
+	int CONNECTION = 43;
 
 	/**
 	 * The feature id for the '<em><b>Markers</b></em>' containment reference list.
@@ -10896,6 +10687,15 @@ public interface EngineeringPackage extends EPackage {
 	int CONNECTION__ACTION_PROTOTYPE = ENGINEERED_ELEMENT__ACTION_PROTOTYPE;
 
 	/**
+	 * The feature id for the '<em><b>Representations</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTION__REPRESENTATIONS = ENGINEERED_ELEMENT__REPRESENTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -10939,15 +10739,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int CONNECTION__SECTIONS = ENGINEERED_ELEMENT__SECTIONS;
-
-	/**
-	 * The feature id for the '<em><b>Representations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONNECTION__REPRESENTATIONS = ENGINEERED_ELEMENT__REPRESENTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -11182,7 +10973,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getConnectionTarget()
 	 * @generated
 	 */
-	int CONNECTION_TARGET = 45;
+	int CONNECTION_TARGET = 44;
 
 	/**
 	 * The feature id for the '<em><b>Inbound Connections</b></em>' reference list.
@@ -11228,7 +11019,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getInterface()
 	 * @generated
 	 */
-	int INTERFACE = 46;
+	int INTERFACE = 45;
 
 	/**
 	 * The feature id for the '<em><b>Markers</b></em>' containment reference list.
@@ -11276,6 +11067,15 @@ public interface EngineeringPackage extends EPackage {
 	int INTERFACE__ACTION_PROTOTYPE = ENGINEERED_ELEMENT__ACTION_PROTOTYPE;
 
 	/**
+	 * The feature id for the '<em><b>Representations</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERFACE__REPRESENTATIONS = ENGINEERED_ELEMENT__REPRESENTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -11319,15 +11119,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int INTERFACE__SECTIONS = ENGINEERED_ELEMENT__SECTIONS;
-
-	/**
-	 * The feature id for the '<em><b>Representations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERFACE__REPRESENTATIONS = ENGINEERED_ELEMENT__REPRESENTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -11535,7 +11326,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getOperation()
 	 * @generated
 	 */
-	int OPERATION = 47;
+	int OPERATION = 46;
 
 	/**
 	 * The feature id for the '<em><b>Markers</b></em>' containment reference list.
@@ -11583,6 +11374,15 @@ public interface EngineeringPackage extends EPackage {
 	int OPERATION__ACTION_PROTOTYPE = ENGINEERED_ELEMENT__ACTION_PROTOTYPE;
 
 	/**
+	 * The feature id for the '<em><b>Representations</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION__REPRESENTATIONS = ENGINEERED_ELEMENT__REPRESENTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -11626,15 +11426,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int OPERATION__SECTIONS = ENGINEERED_ELEMENT__SECTIONS;
-
-	/**
-	 * The feature id for the '<em><b>Representations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPERATION__REPRESENTATIONS = ENGINEERED_ELEMENT__REPRESENTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -11869,7 +11660,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getActivity()
 	 * @generated
 	 */
-	int ACTIVITY = 48;
+	int ACTIVITY = 47;
 
 	/**
 	 * The feature id for the '<em><b>Markers</b></em>' containment reference list.
@@ -11917,6 +11708,15 @@ public interface EngineeringPackage extends EPackage {
 	int ACTIVITY__ACTION_PROTOTYPE = OPERATION__ACTION_PROTOTYPE;
 
 	/**
+	 * The feature id for the '<em><b>Representations</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__REPRESENTATIONS = OPERATION__REPRESENTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -11960,15 +11760,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int ACTIVITY__SECTIONS = OPERATION__SECTIONS;
-
-	/**
-	 * The feature id for the '<em><b>Representations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__REPRESENTATIONS = OPERATION__REPRESENTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -12221,7 +12012,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getTransition()
 	 * @generated
 	 */
-	int TRANSITION = 49;
+	int TRANSITION = 48;
 
 	/**
 	 * The feature id for the '<em><b>Markers</b></em>' containment reference list.
@@ -12269,6 +12060,15 @@ public interface EngineeringPackage extends EPackage {
 	int TRANSITION__ACTION_PROTOTYPE = NAMED_ELEMENT__ACTION_PROTOTYPE;
 
 	/**
+	 * The feature id for the '<em><b>Representations</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION__REPRESENTATIONS = NAMED_ELEMENT__REPRESENTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -12312,15 +12112,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int TRANSITION__SECTIONS = NAMED_ELEMENT__SECTIONS;
-
-	/**
-	 * The feature id for the '<em><b>Representations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRANSITION__REPRESENTATIONS = NAMED_ELEMENT__REPRESENTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -12375,7 +12166,7 @@ public interface EngineeringPackage extends EPackage {
 	 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getCall()
 	 * @generated
 	 */
-	int CALL = 50;
+	int CALL = 49;
 
 	/**
 	 * The feature id for the '<em><b>Markers</b></em>' containment reference list.
@@ -12423,6 +12214,15 @@ public interface EngineeringPackage extends EPackage {
 	int CALL__ACTION_PROTOTYPE = NAMED_ELEMENT__ACTION_PROTOTYPE;
 
 	/**
+	 * The feature id for the '<em><b>Representations</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL__REPRESENTATIONS = NAMED_ELEMENT__REPRESENTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -12466,15 +12266,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @ordered
 	 */
 	int CALL__SECTIONS = NAMED_ELEMENT__SECTIONS;
-
-	/**
-	 * The feature id for the '<em><b>Representations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CALL__REPRESENTATIONS = NAMED_ELEMENT__REPRESENTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -12587,17 +12378,6 @@ public interface EngineeringPackage extends EPackage {
 	EReference getModelElement_Sections();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.nasdanika.engineering.ModelElement#getRepresentations <em>Representations</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Representations</em>'.
-	 * @see org.nasdanika.engineering.ModelElement#getRepresentations()
-	 * @see #getModelElement()
-	 * @generated
-	 */
-	EReference getModelElement_Representations();
-
-	/**
 	 * Returns the meta object for the containment reference list '{@link org.nasdanika.engineering.ModelElement#getAnnotations <em>Annotations</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -12607,27 +12387,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getModelElement_Annotations();
-
-	/**
-	 * Returns the meta object for class '{@link org.nasdanika.engineering.Representation <em>Representation</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Representation</em>'.
-	 * @see org.nasdanika.engineering.Representation
-	 * @generated
-	 */
-	EClass getRepresentation();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link org.nasdanika.engineering.Representation#getGenerator <em>Generator</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Generator</em>'.
-	 * @see org.nasdanika.engineering.Representation#getGenerator()
-	 * @see #getRepresentation()
-	 * @generated
-	 */
-	EReference getRepresentation_Generator();
 
 	/**
 	 * Returns the meta object for class '{@link org.nasdanika.engineering.TableOfContents <em>Table Of Contents</em>}'.
@@ -12952,28 +12711,6 @@ public interface EngineeringPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getEngineeredElementStatus_Elements();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link org.nasdanika.engineering.EngineeredElementStatus#getElementStyle <em>Element Style</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Element Style</em>'.
-	 * @see org.nasdanika.engineering.EngineeredElementStatus#getElementStyle()
-	 * @see #getEngineeredElementStatus()
-	 * @generated
-	 */
-	EReference getEngineeredElementStatus_ElementStyle();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link org.nasdanika.engineering.EngineeredElementStatus#getConnectionStyle <em>Connection Style</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Connection Style</em>'.
-	 * @see org.nasdanika.engineering.EngineeredElementStatus#getConnectionStyle()
-	 * @see #getEngineeredElementStatus()
-	 * @generated
-	 */
-	EReference getEngineeredElementStatus_ConnectionStyle();
 
 	/**
 	 * Returns the meta object for class '{@link org.nasdanika.engineering.Persona <em>Persona</em>}'.
@@ -14865,38 +14602,12 @@ public interface EngineeringPackage extends EPackage {
 		EReference MODEL_ELEMENT__SECTIONS = eINSTANCE.getModelElement_Sections();
 
 		/**
-		 * The meta object literal for the '<em><b>Representations</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference MODEL_ELEMENT__REPRESENTATIONS = eINSTANCE.getModelElement_Representations();
-
-		/**
 		 * The meta object literal for the '<em><b>Annotations</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EReference MODEL_ELEMENT__ANNOTATIONS = eINSTANCE.getModelElement_Annotations();
-
-		/**
-		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.RepresentationImpl <em>Representation</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.nasdanika.engineering.impl.RepresentationImpl
-		 * @see org.nasdanika.engineering.impl.EngineeringPackageImpl#getRepresentation()
-		 * @generated
-		 */
-		EClass REPRESENTATION = eINSTANCE.getRepresentation();
-
-		/**
-		 * The meta object literal for the '<em><b>Generator</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference REPRESENTATION__GENERATOR = eINSTANCE.getRepresentation_Generator();
 
 		/**
 		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.TableOfContentsImpl <em>Table Of Contents</em>}' class.
@@ -15149,22 +14860,6 @@ public interface EngineeringPackage extends EPackage {
 		 * @generated
 		 */
 		EReference ENGINEERED_ELEMENT_STATUS__ELEMENTS = eINSTANCE.getEngineeredElementStatus_Elements();
-
-		/**
-		 * The meta object literal for the '<em><b>Element Style</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ENGINEERED_ELEMENT_STATUS__ELEMENT_STYLE = eINSTANCE.getEngineeredElementStatus_ElementStyle();
-
-		/**
-		 * The meta object literal for the '<em><b>Connection Style</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ENGINEERED_ELEMENT_STATUS__CONNECTION_STYLE = eINSTANCE.getEngineeredElementStatus_ConnectionStyle();
 
 		/**
 		 * The meta object literal for the '{@link org.nasdanika.engineering.impl.PersonaImpl <em>Persona</em>}' class.

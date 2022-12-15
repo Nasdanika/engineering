@@ -24,10 +24,7 @@ import org.nasdanika.engineering.Forum;
 import org.nasdanika.engineering.KeyResult;
 import org.nasdanika.engineering.Objective;
 import org.nasdanika.engineering.Persona;
-import org.nasdanika.engineering.Representation;
 import org.nasdanika.engineering.Topic;
-import org.nasdanika.exec.Call;
-import org.nasdanika.exec.ExecPackage;
 import org.nasdanika.html.flow.FlowActionProviderAdapterFactory;
 import org.nasdanika.html.model.app.util.ActionProvider;
 
@@ -209,20 +206,6 @@ public class EngineeringActionProviderAdapterFactory extends FlowActionProviderA
 					ActionProvider.class, 
 					this.getClass().getClassLoader(), 
 					e -> new ConnectionActionBuilder(e, context).asActionProvider()));
-
-		registerAdapterFactory(
-				new FunctionAdapterFactory<RepresentationGeneratorAdapter, Representation>(
-					EngineeringPackage.Literals.REPRESENTATION, 
-					RepresentationGeneratorAdapter.class, 
-					this.getClass().getClassLoader(), 
-					e -> new RepresentationGeneratorAdapter(e, context)));
-
-		registerAdapterFactory(
-				new FunctionAdapterFactory<RepresentationGenerator.Supplier.Factory, Call>(
-					ExecPackage.Literals.CALL, 
-					RepresentationGenerator.Supplier.Factory.class, 
-					this.getClass().getClassLoader(), 
-					CallRepresentationGeneratorSupplierFactoryAdapter::new));
 
 		registerAdapterFactory(
 				new FunctionAdapterFactory<ActionProvider, Document>(

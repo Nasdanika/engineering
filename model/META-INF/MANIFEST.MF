@@ -15,7 +15,6 @@ Export-Package: org.nasdanika.engineering,
  org.nasdanika.engineering.util
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
- org.nasdanika.diagram;visibility:=reexport,
  org.nasdanika.exec;visibility:=reexport,
  org.nasdanika.flow;visibility:=reexport,
  org.nasdanika.ncore;visibility:=reexport,

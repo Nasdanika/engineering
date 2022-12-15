@@ -56,7 +56,6 @@ import org.nasdanika.engineering.Principle;
 import org.nasdanika.engineering.Product;
 import org.nasdanika.engineering.ProductOrganization;
 import org.nasdanika.engineering.Release;
-import org.nasdanika.engineering.Representation;
 import org.nasdanika.engineering.TableOfContents;
 import org.nasdanika.engineering.Topic;
 import org.nasdanika.engineering.Transition;
@@ -145,8 +144,6 @@ public class EngineeringValidator extends EObjectValidator {
 		switch (classifierID) {
 			case EngineeringPackage.MODEL_ELEMENT:
 				return validateModelElement((ModelElement)value, diagnostics, context);
-			case EngineeringPackage.REPRESENTATION:
-				return validateRepresentation((Representation)value, diagnostics, context);
 			case EngineeringPackage.TABLE_OF_CONTENTS:
 				return validateTableOfContents((TableOfContents)value, diagnostics, context);
 			case EngineeringPackage.NAMED_ELEMENT:
@@ -295,15 +292,6 @@ public class EngineeringValidator extends EObjectValidator {
 			return false;
 		}
 		return true;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateRepresentation(Representation representation, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(representation, diagnostics, context);
 	}
 
 	/**

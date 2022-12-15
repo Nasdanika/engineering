@@ -52,7 +52,6 @@ import org.nasdanika.engineering.Principle;
 import org.nasdanika.engineering.Product;
 import org.nasdanika.engineering.ProductOrganization;
 import org.nasdanika.engineering.Release;
-import org.nasdanika.engineering.Representation;
 import org.nasdanika.engineering.TableOfContents;
 import org.nasdanika.engineering.Topic;
 import org.nasdanika.engineering.Transition;
@@ -101,7 +100,6 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case EngineeringPackage.REPRESENTATION: return createRepresentation();
 			case EngineeringPackage.TABLE_OF_CONTENTS: return createTableOfContents();
 			case EngineeringPackage.NAMED_ELEMENT: return createNamedElement();
 			case EngineeringPackage.EVENT: return createEvent();
@@ -152,17 +150,6 @@ public class EngineeringFactoryImpl extends EFactoryImpl implements EngineeringF
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Representation createRepresentation() {
-		RepresentationImpl representation = new RepresentationImpl();
-		return representation;
 	}
 
 	/**

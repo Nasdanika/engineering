@@ -6,8 +6,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
 import org.nasdanika.common.Adaptable;
-import org.nasdanika.diagram.Diagram;
-import org.nasdanika.diagram.Layer;
 import org.nasdanika.engineering.Activity;
 import org.nasdanika.engineering.Aim;
 import org.nasdanika.engineering.Alignable;
@@ -55,12 +53,12 @@ import org.nasdanika.engineering.Principle;
 import org.nasdanika.engineering.Product;
 import org.nasdanika.engineering.ProductOrganization;
 import org.nasdanika.engineering.Release;
-import org.nasdanika.engineering.Representation;
 import org.nasdanika.engineering.TableOfContents;
 import org.nasdanika.engineering.Topic;
 import org.nasdanika.engineering.Transition;
 import org.nasdanika.ncore.Period;
 import org.nasdanika.ncore.Temporal;
+import org.nasdanika.persistence.Marked;
 
 /**
  * <!-- begin-user-doc -->
@@ -126,19 +124,6 @@ public class EngineeringSwitch<T> extends Switch<T> {
 				if (result == null) result = caseMarked(modelElement);
 				if (result == null) result = caseAdaptable(modelElement);
 				if (result == null) result = caseIMarked(modelElement);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case EngineeringPackage.REPRESENTATION: {
-				Representation representation = (Representation)theEObject;
-				T result = caseRepresentation(representation);
-				if (result == null) result = caseDiagram(representation);
-				if (result == null) result = caseLayer(representation);
-				if (result == null) result = caseNcore_NamedElement(representation);
-				if (result == null) result = caseNcore_ModelElement(representation);
-				if (result == null) result = caseMarked(representation);
-				if (result == null) result = caseAdaptable(representation);
-				if (result == null) result = caseIMarked(representation);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -919,36 +904,6 @@ public class EngineeringSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Layer</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Layer</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseLayer(Layer object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Diagram</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Diagram</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseDiagram(Diagram object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Temporal</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -990,21 +945,6 @@ public class EngineeringSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseModelElement(ModelElement object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Representation</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Representation</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseRepresentation(Representation object) {
 		return null;
 	}
 
@@ -1739,7 +1679,7 @@ public class EngineeringSwitch<T> extends Switch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseIMarked(org.nasdanika.persistence.Marked object) {
+	public T caseIMarked(Marked object) {
 		return null;
 	}
 

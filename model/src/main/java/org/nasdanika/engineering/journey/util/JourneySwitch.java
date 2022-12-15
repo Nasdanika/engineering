@@ -16,6 +16,7 @@ import org.nasdanika.flow.PackageElement;
 import org.nasdanika.flow.ParticipantResponsibility;
 import org.nasdanika.ncore.ModelElement;
 import org.nasdanika.ncore.NamedElement;
+import org.nasdanika.persistence.Marked;
 
 /**
  * <!-- begin-user-doc -->
@@ -150,7 +151,7 @@ public class JourneySwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseIMarked(org.nasdanika.persistence.Marked object) {
+	public T1 caseIMarked(Marked object) {
 		return null;
 	}
 

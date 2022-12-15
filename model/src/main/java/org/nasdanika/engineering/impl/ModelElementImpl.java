@@ -26,7 +26,6 @@ import org.nasdanika.engineering.Document;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.ModelElement;
 import org.nasdanika.engineering.NamedElement;
-import org.nasdanika.engineering.Representation;
 import org.nasdanika.engineering.TableOfContents;
 import org.nasdanika.ncore.Property;
 
@@ -43,7 +42,6 @@ import org.nasdanika.ncore.Property;
  *   <li>{@link org.nasdanika.engineering.impl.ModelElementImpl#getDocumentation <em>Documentation</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.ModelElementImpl#getTableOfContents <em>Table Of Contents</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.ModelElementImpl#getSections <em>Sections</em>}</li>
- *   <li>{@link org.nasdanika.engineering.impl.ModelElementImpl#getRepresentations <em>Representations</em>}</li>
  *   <li>{@link org.nasdanika.engineering.impl.ModelElementImpl#getAnnotations <em>Annotations</em>}</li>
  * </ul>
  *
@@ -174,17 +172,6 @@ public abstract class ModelElementImpl extends org.nasdanika.ncore.impl.ModelEle
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public EList<Representation> getRepresentations() {
-		return (EList<Representation>)eDynamicGet(EngineeringPackage.MODEL_ELEMENT__REPRESENTATIONS, EngineeringPackage.Literals.MODEL_ELEMENT__REPRESENTATIONS, true, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@SuppressWarnings("unchecked")
-	@Override
 	public EList<Property> getAnnotations() {
 		return (EList<Property>)eDynamicGet(EngineeringPackage.MODEL_ELEMENT__ANNOTATIONS, EngineeringPackage.Literals.MODEL_ELEMENT__ANNOTATIONS, true, true);
 	}
@@ -205,8 +192,6 @@ public abstract class ModelElementImpl extends org.nasdanika.ncore.impl.ModelEle
 				return basicSetTableOfContents(null, msgs);
 			case EngineeringPackage.MODEL_ELEMENT__SECTIONS:
 				return ((InternalEList<?>)getSections()).basicRemove(otherEnd, msgs);
-			case EngineeringPackage.MODEL_ELEMENT__REPRESENTATIONS:
-				return ((InternalEList<?>)getRepresentations()).basicRemove(otherEnd, msgs);
 			case EngineeringPackage.MODEL_ELEMENT__ANNOTATIONS:
 				return ((InternalEList<?>)getAnnotations()).basicRemove(otherEnd, msgs);
 		}
@@ -231,8 +216,6 @@ public abstract class ModelElementImpl extends org.nasdanika.ncore.impl.ModelEle
 				return getTableOfContents();
 			case EngineeringPackage.MODEL_ELEMENT__SECTIONS:
 				return getSections();
-			case EngineeringPackage.MODEL_ELEMENT__REPRESENTATIONS:
-				return getRepresentations();
 			case EngineeringPackage.MODEL_ELEMENT__ANNOTATIONS:
 				return getAnnotations();
 		}
@@ -266,10 +249,6 @@ public abstract class ModelElementImpl extends org.nasdanika.ncore.impl.ModelEle
 				getSections().clear();
 				getSections().addAll((Collection<? extends Document>)newValue);
 				return;
-			case EngineeringPackage.MODEL_ELEMENT__REPRESENTATIONS:
-				getRepresentations().clear();
-				getRepresentations().addAll((Collection<? extends Representation>)newValue);
-				return;
 			case EngineeringPackage.MODEL_ELEMENT__ANNOTATIONS:
 				getAnnotations().clear();
 				getAnnotations().addAll((Collection<? extends Property>)newValue);
@@ -301,9 +280,6 @@ public abstract class ModelElementImpl extends org.nasdanika.ncore.impl.ModelEle
 			case EngineeringPackage.MODEL_ELEMENT__SECTIONS:
 				getSections().clear();
 				return;
-			case EngineeringPackage.MODEL_ELEMENT__REPRESENTATIONS:
-				getRepresentations().clear();
-				return;
 			case EngineeringPackage.MODEL_ELEMENT__ANNOTATIONS:
 				getAnnotations().clear();
 				return;
@@ -329,8 +305,6 @@ public abstract class ModelElementImpl extends org.nasdanika.ncore.impl.ModelEle
 				return getTableOfContents() != null;
 			case EngineeringPackage.MODEL_ELEMENT__SECTIONS:
 				return !getSections().isEmpty();
-			case EngineeringPackage.MODEL_ELEMENT__REPRESENTATIONS:
-				return !getRepresentations().isEmpty();
 			case EngineeringPackage.MODEL_ELEMENT__ANNOTATIONS:
 				return !getAnnotations().isEmpty();
 		}

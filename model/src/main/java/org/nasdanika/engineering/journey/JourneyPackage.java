@@ -112,6 +112,15 @@ public interface JourneyPackage extends EPackage {
 	int ACTIVITY__ACTION_PROTOTYPE = FlowPackage.ACTIVITY__ACTION_PROTOTYPE;
 
 	/**
+	 * The feature id for the '<em><b>Representations</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__REPRESENTATIONS = FlowPackage.ACTIVITY__REPRESENTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -164,15 +173,6 @@ public interface JourneyPackage extends EPackage {
 	 * @ordered
 	 */
 	int ACTIVITY__DOCUMENTATION = FlowPackage.ACTIVITY__DOCUMENTATION;
-
-	/**
-	 * The feature id for the '<em><b>Representations</b></em>' map.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__REPRESENTATIONS = FlowPackage.ACTIVITY__REPRESENTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Properties</b></em>' containment reference list.
@@ -491,6 +491,15 @@ public interface JourneyPackage extends EPackage {
 	int JOURNEY__ACTION_PROTOTYPE = FlowPackage.FLOW__ACTION_PROTOTYPE;
 
 	/**
+	 * The feature id for the '<em><b>Representations</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOURNEY__REPRESENTATIONS = FlowPackage.FLOW__REPRESENTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -543,15 +552,6 @@ public interface JourneyPackage extends EPackage {
 	 * @ordered
 	 */
 	int JOURNEY__DOCUMENTATION = FlowPackage.FLOW__DOCUMENTATION;
-
-	/**
-	 * The feature id for the '<em><b>Representations</b></em>' map.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JOURNEY__REPRESENTATIONS = FlowPackage.FLOW__REPRESENTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Properties</b></em>' containment reference list.

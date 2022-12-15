@@ -7,7 +7,6 @@ import org.eclipse.emf.ecore.EGenericType;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-import org.nasdanika.diagram.DiagramPackage;
 import org.nasdanika.engineering.EngineeringPackage;
 import org.nasdanika.engineering.impl.EngineeringPackageImpl;
 import org.nasdanika.engineering.journey.Activity;
@@ -15,7 +14,6 @@ import org.nasdanika.engineering.journey.Journey;
 import org.nasdanika.engineering.journey.JourneyFactory;
 import org.nasdanika.engineering.journey.JourneyPackage;
 import org.nasdanika.engineering.journey.util.JourneyValidator;
-import org.nasdanika.exec.ExecPackage;
 import org.nasdanika.flow.FlowPackage;
 import org.nasdanika.ncore.NcorePackage;
 
@@ -88,8 +86,6 @@ public class JourneyPackageImpl extends EPackageImpl implements JourneyPackage {
 		isInited = true;
 
 		// Initialize simple dependencies
-		DiagramPackage.eINSTANCE.eClass();
-		ExecPackage.eINSTANCE.eClass();
 		FlowPackage.eINSTANCE.eClass();
 		NcorePackage.eINSTANCE.eClass();
 

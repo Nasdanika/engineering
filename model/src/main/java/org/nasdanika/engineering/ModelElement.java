@@ -20,7 +20,6 @@ import org.nasdanika.ncore.Property;
  *   <li>{@link org.nasdanika.engineering.ModelElement#getDocumentation <em>Documentation</em>}</li>
  *   <li>{@link org.nasdanika.engineering.ModelElement#getTableOfContents <em>Table Of Contents</em>}</li>
  *   <li>{@link org.nasdanika.engineering.ModelElement#getSections <em>Sections</em>}</li>
- *   <li>{@link org.nasdanika.engineering.ModelElement#getRepresentations <em>Representations</em>}</li>
  *   <li>{@link org.nasdanika.engineering.ModelElement#getAnnotations <em>Annotations</em>}</li>
  * </ul>
  *
@@ -127,22 +126,6 @@ public interface ModelElement extends org.nasdanika.ncore.ModelElement {
 	 * @generated
 	 */
 	EList<Document> getSections();
-
-	/**
-	 * Returns the value of the '<em><b>Representations</b></em>' containment reference list.
-	 * The list contents are of type {@link org.nasdanika.engineering.Representation}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Pluggable representations of a model element, e.g. a component diagram for modules.
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Representations</em>' containment reference list.
-	 * @see org.nasdanika.engineering.EngineeringPackage#getModelElement_Representations()
-	 * @model containment="true"
-	 *        annotation="urn:org.nasdanika homogenous='true'"
-	 * @generated
-	 */
-	EList<Representation> getRepresentations();
 
 	/**
 	 * Returns the value of the '<em><b>Annotations</b></em>' containment reference list.
